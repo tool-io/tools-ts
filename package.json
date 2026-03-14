@@ -1,0 +1,14 @@
+{
+  "name": "toolio-tools-ts",
+  "private": true,
+  "packageManager": "pnpm@10.28.2",
+  "scripts": {
+    "build": "pnpm --filter @toolio/tools build",
+    "check": "pnpm --filter @toolio/tools check",
+    "unittest": "pnpm --filter @toolio/tools unittest"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  }
+}
