@@ -1,0 +1,36 @@
+{
+  "name": "@toolio/tools",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Framework-independent TypeScript tools for tool.io",
+  "license": "MIT",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./body-mass-index": {
+      "types": "./dist/body-mass-index/index.d.ts",
+      "import": "./dist/body-mass-index/index.js"
+    },
+    "./registry": {
+      "types": "./dist/registry.d.ts",
+      "import": "./dist/registry.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "unittest": "vitest run"
+  }
+}

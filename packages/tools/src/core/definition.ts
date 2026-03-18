@@ -1,0 +1,25 @@
+import type { ToolResult } from './result.js';
+
+export type ToolJsonSchema = Readonly<Record<string, unknown>>;
+
+export type ToolExecutionKind =
+  | 'data-backed'
+  | 'device'
+  | 'pure'
+  | 'remote';
+
+export type ToolDefinition<Input, Output> = {
+  readonly contractVersion: number;
+  readonly description: string;
+  readonly execute: (input: unknown) => ToolResult<Output>;
+  readonly executionKind: ToolExecutionKind;
+  readonly id: string;
+  readonly inputSchema: ToolJsonSchema;
+  readonly isOutput: (value: unknown) => value is Output;
+  readonly outputSchema: ToolJsonSchema;
+  readonly title: string;
+};
+
+export const defineTool = <Input, Output>(
+  definition: ToolDefinition<Input, Output>
+): ToolDefinition<Input, Output> => definition;
