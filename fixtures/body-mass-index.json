@@ -1,0 +1,40 @@
+[
+  {
+    "input": {
+      "weightKg": 70,
+      "heightM": 1.8
+    },
+    "output": {
+      "bmi": 21.604938271604937
+    }
+  },
+  {
+    "input": {
+      "weightKg": 0,
+      "heightM": 1.8
+    },
+    "error": "invalid_input"
+  },
+  {
+    "input": {
+      "weightKg": 70,
+      "heightM": 0
+    },
+    "error": "invalid_input"
+  },
+  {
+    "input": {
+      "weightKg": "70",
+      "heightM": 1.8
+    },
+    "error": "invalid_input"
+  },
+  {
+    "input": {
+      "weightKg": 70,
+      "heightM": 1.8,
+      "unit": "imperial"
+    },
+    "error": "invalid_input"
+  }
+]
