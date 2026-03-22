@@ -1,0 +1,9 @@
+{
+  "name": "@toolio/tools-svelte",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Optional Svelte bindings for tool.io tools",
+  "license": "MIT",
+  "type": "module"
+}
+
