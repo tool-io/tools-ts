@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tool.io/contracts/word-relations.schema.json",
+  "title": "Tool.io word-relations dataset",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "formatVersion",
+    "datasetId",
+    "datasetVersion",
+    "language",
+    "entries"
+  ],
+  "properties": {
+    "format": {
+      "const": "toolio.word-relations"
+    },
+    "formatVersion": {
+      "const": 1
+    },
+    "datasetId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "datasetVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "language": {
+      "type": "string",
+      "minLength": 2
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "headword",
+          "normalizedHeadword",
+          "language",
+          "partOfSpeech",
+          "synonyms",
+          "antonyms",
+          "attribution"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "headword": {
+            "type": "string",
+            "minLength": 1
+          },
+          "normalizedHeadword": {
+            "type": "string",
+            "minLength": 1
+          },
+          "language": {
+            "type": "string",
+            "minLength": 2
+          },
+          "partOfSpeech": {
+            "type": "string",
+            "minLength": 1
+          },
+          "synonyms": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/relatedWord"
+            }
+          },
+          "antonyms": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/relatedWord"
+            }
+          },
+          "attribution": {
+            "$ref": "#/$defs/attribution"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "relatedWord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "qualifier": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "attribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "license",
+        "licenseUrl",
+        "sourceTitle",
+        "sourceUrl"
+      ],
+      "properties": {
+        "license": {
+          "type": "string",
+          "minLength": 1
+        },
+        "licenseUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "sourceTitle": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    }
+  }
+}
