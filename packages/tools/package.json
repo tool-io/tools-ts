@@ -32,5 +32,8 @@
     "build": "tsc -p tsconfig.build.json",
     "check": "tsc -p tsconfig.json --noEmit",
     "unittest": "vitest run"
+  },
+  "dependencies": {
+    "ts-fsrs": "5.4.1"
   }
 }
