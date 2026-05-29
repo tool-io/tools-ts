@@ -1,0 +1,32 @@
+{
+  "format": "toolio.flashcards",
+  "formatVersion": 1,
+  "id": "deck-german-a1",
+  "slug": "german-a1",
+  "title": "German A1",
+  "description": "A minimal conformance deck.",
+  "language": "en",
+  "contentLanguage": "de",
+  "license": "CC0-1.0",
+  "notes": [
+    {
+      "id": "note-house",
+      "noteType": "basic",
+      "fields": {
+        "front": "Haus",
+        "back": "house"
+      },
+      "tags": ["noun", "a1"]
+    },
+    {
+      "id": "note-cat",
+      "noteType": "basic-and-reversed",
+      "fields": {
+        "front": "Katze",
+        "back": "cat"
+      },
+      "tags": ["noun", "a1"]
+    }
+  ]
+}
+

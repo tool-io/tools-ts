@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://data.tool.io/schemas/flashcard-deck-v1.json",
+  "title": "Tool.io flashcard deck",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "formatVersion", "id", "slug", "title", "notes"],
+  "properties": {
+    "format": { "const": "toolio.flashcards" },
+    "formatVersion": { "const": 1 },
+    "id": { "type": "string", "minLength": 1 },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "description": { "type": "string" },
+    "language": { "type": "string" },
+    "contentLanguage": { "type": "string" },
+    "license": { "type": "string" },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "noteType", "fields", "tags"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "noteType": {
+            "enum": ["basic", "basic-and-reversed"]
+          },
+          "fields": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["front", "back"],
+            "properties": {
+              "front": { "type": "string", "minLength": 1 },
+              "back": { "type": "string", "minLength": 1 }
+            }
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
+  }
+}
+
