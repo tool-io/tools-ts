@@ -7,6 +7,7 @@ export const colorOklchType = "color/oklch";
 export const colorRgbType = "color/rgb";
 export const currencyAmountType = "currency/amount";
 export const dateCalendarType = "date/calendar";
+export const datasetNumberType = "dataset/number";
 export const datetimeInstantType = "datetime/instant";
 export const documentToolioType = "document/toolio";
 export const fileReferenceType = "file/reference";
@@ -41,6 +42,7 @@ export const toolSemanticTypes = {
   colorRgb: colorRgbType,
   currencyAmount: currencyAmountType,
   dateCalendar: dateCalendarType,
+  datasetNumber: datasetNumberType,
   datetimeInstant: datetimeInstantType,
   documentToolio: documentToolioType,
   fileReference: fileReferenceType,

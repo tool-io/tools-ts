@@ -91,4 +91,8 @@ describe("package architecture", () => {
     for (const file of sources.keys()) visit(file);
     expect(cycles).toEqual([]);
   });
+
+  it.each(["./parse/numeric-dataset"])("publishes the %s subpath", (subpath) => {
+    expect(manifest.exports).toHaveProperty(subpath);
+  });
 });

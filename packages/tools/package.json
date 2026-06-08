@@ -27,6 +27,10 @@
       "types": "./dist/core/index.d.ts",
       "import": "./dist/core/index.js"
     },
+    "./parse/numeric-dataset": {
+      "types": "./dist/parse/numeric-dataset/index.d.ts",
+      "import": "./dist/parse/numeric-dataset/index.js"
+    },
     "./compare": {
       "types": "./dist/compare/index.d.ts",
       "import": "./dist/compare/index.js"

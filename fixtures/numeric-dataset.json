@@ -1,0 +1,38 @@
+[
+  {
+    "input": { "value": "1, 2, 3" },
+    "output": { "normalized": "1,2,3", "values": [1, 2, 3] }
+  },
+  {
+    "input": { "value": "1\n2\n3" },
+    "output": { "normalized": "1,2,3", "values": [1, 2, 3] }
+  },
+  {
+    "input": { "value": "1; 2\t3" },
+    "output": { "normalized": "1,2,3", "values": [1, 2, 3] }
+  },
+  {
+    "input": { "value": "-1 2.5 3e2" },
+    "output": { "normalized": "-1,2.5,300", "values": [-1, 2.5, 300] }
+  },
+  {
+    "input": { "value": 42 },
+    "output": { "normalized": "42", "values": [42] }
+  },
+  {
+    "input": { "value": "1,,3" },
+    "error": "invalid_input"
+  },
+  {
+    "input": { "value": "1,,3", "emptyEntryPolicy": "ignore" },
+    "output": { "normalized": "1,3", "values": [1, 3] }
+  },
+  {
+    "input": { "value": "1,Infinity,3" },
+    "error": "invalid_input"
+  },
+  {
+    "input": { "value": "" },
+    "error": "invalid_input"
+  }
+]
