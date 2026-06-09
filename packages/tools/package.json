@@ -31,6 +31,10 @@
       "types": "./dist/parse/numeric-dataset/index.d.ts",
       "import": "./dist/parse/numeric-dataset/index.js"
     },
+    "./statistics/median": {
+      "types": "./dist/statistics/median/index.d.ts",
+      "import": "./dist/statistics/median/index.js"
+    },
     "./compare": {
       "types": "./dist/compare/index.d.ts",
       "import": "./dist/compare/index.js"

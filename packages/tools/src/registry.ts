@@ -2,6 +2,7 @@ import { bodyMassIndexTool } from "./body-mass-index/index.js";
 import { compareTool } from "./compare/index.js";
 import type { ToolDefinition } from "./core/definition.js";
 import { numericDatasetParserTool } from "./parse/numeric-dataset/index.js";
+import { medianTool } from "./statistics/median/index.js";
 import { createMeasurementSizeTool, measurementSizeConfigs } from './size/measurements/index.js';
 import {
   bedSizeTool,
@@ -29,6 +30,7 @@ export const toolRegistry = new Map<string, RegisteredTool>([
   [bodyMassIndexTool.id, bodyMassIndexTool],
   [compareTool.id, compareTool],
   [numericDatasetParserTool.id, numericDatasetParserTool],
+  [medianTool.id, medianTool],
   [bedSizeTool.id, bedSizeTool],
   [beltSizeTool.id, beltSizeTool],
   [collarSizeTool.id, collarSizeTool],

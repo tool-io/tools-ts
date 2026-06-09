@@ -92,7 +92,10 @@ describe("package architecture", () => {
     expect(cycles).toEqual([]);
   });
 
-  it.each(["./parse/numeric-dataset"])("publishes the %s subpath", (subpath) => {
+  it.each(["./parse/numeric-dataset", "./statistics/median"])(
+    "publishes the %s subpath",
+    (subpath) => {
     expect(manifest.exports).toHaveProperty(subpath);
-  });
+    },
+  );
 });
