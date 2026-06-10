@@ -1,5 +1,6 @@
 import type { ToolResult } from "./result.js";
 import type { ToolSemanticType } from "./semantic-type.js";
+import type { ToolValueType } from "./value-type.js";
 
 export type ToolJsonSchema = Readonly<Record<string, unknown>>;
 
@@ -12,6 +13,7 @@ export type ToolPortDefinition = {
   readonly path?: readonly string[];
   readonly required?: boolean;
   readonly type: ToolSemanticType;
+  readonly valueType?: ToolValueType;
 };
 
 export type ToolPortsDefinition = {
