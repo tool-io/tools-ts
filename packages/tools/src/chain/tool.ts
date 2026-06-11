@@ -3,6 +3,7 @@ import {
   isToolSemanticType,
   quantityLengthType,
 } from "../core/semantic-type.js";
+import { isToolValueType, type ToolValueType } from "../core/value-type.js";
 import type {
   ChainDocument,
   ChainEdge,
@@ -32,15 +33,29 @@ export const isJsonValue = (value: unknown): value is JsonValue => {
   return Object.values(value).every(isJsonValue);
 };
 
+const areValueTypesCompatible = (
+  output: ToolValueType,
+  input: ToolValueType,
+): boolean =>
+  output.type === input.type &&
+  (!output.format || !input.format || output.format === input.format) &&
+  (!output.unit || !input.unit || output.unit === input.unit) &&
+  (output.type !== "list" ||
+    !output.items ||
+    !input.items ||
+    areValueTypesCompatible(output.items, input.items));
+
 export const arePortTypesCompatible = (
   output: ToolPortDefinition,
   input: ToolPortDefinition,
 ): boolean =>
-  output.type === input.type ||
-  (output.type.startsWith(`${quantityLengthType}/`) &&
-    input.type === quantityLengthType) ||
-  (output.type === quantityLengthType &&
-    input.type.startsWith(`${quantityLengthType}/`));
+  output.valueType && input.valueType
+    ? areValueTypesCompatible(output.valueType, input.valueType)
+    : output.type === input.type ||
+      (output.type.startsWith(`${quantityLengthType}/`) &&
+        input.type === quantityLengthType) ||
+      (output.type === quantityLengthType &&
+        input.type.startsWith(`${quantityLengthType}/`));
 
 const isPortDefinition = (value: unknown): value is ToolPortDefinition =>
   isRecord(value) &&
@@ -49,6 +64,7 @@ const isPortDefinition = (value: unknown): value is ToolPortDefinition =>
   typeof value.label === "string" &&
   value.label.length > 0 &&
   isToolSemanticType(value.type) &&
+  (value.valueType === undefined || isToolValueType(value.valueType)) &&
   (value.path === undefined ||
     (Array.isArray(value.path) &&
       value.path.length > 0 &&
@@ -66,8 +82,6 @@ export const isChainToolDefinition = (
   typeof value.execute === "function" &&
   typeof value.isOutput === "function" &&
   isRecord(value.ports) &&
-  (value.ports.connector === undefined ||
-    typeof value.ports.connector === "boolean") &&
   Array.isArray(value.ports.inputs) &&
   value.ports.inputs.every(isPortDefinition) &&
   hasUniquePortIds(value.ports.inputs) &&
@@ -288,18 +302,6 @@ const resolveChain = async (
         message: `Input port ${edge.to.portId} does not exist on ${target.tool.id}.`,
         nodeId: target.node.id,
         portId: edge.to.portId,
-      });
-    if (
-      outputPort &&
-      inputPort &&
-      !arePortTypesCompatible(outputPort, inputPort)
-    )
-      issues.push({
-        code: "incompatible_port_type",
-        edgeIndex,
-        message: `${outputPort.type} cannot connect directly to ${inputPort.type}.`,
-        nodeId: target.node.id,
-        portId: inputPort.id,
       });
     const targetKey = `${edge.to.nodeId}:${edge.to.portId}`;
     if (connectedInputs.has(targetKey))

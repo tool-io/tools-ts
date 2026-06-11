@@ -40,7 +40,7 @@ describe("chain connector discovery", () => {
     ).toEqual({ connectors: [], direct: true });
   });
 
-  it("recommends an explicitly marked one-step connector", () => {
+  it("recommends an ordinary one-step tool for a semantic mismatch", () => {
     expect(
       recommendConnection(
         requirePort(abaya, "outputs", "height"),
@@ -58,11 +58,11 @@ describe("chain connector discovery", () => {
           toolVersion: 1,
         },
       ],
-      direct: false,
+      direct: true,
     });
   });
 
-  it("does not recommend an ordinary tool as an implicit connector", () => {
+  it("treats connector use as context rather than tool membership", () => {
     const ordinaryConverter = requireChainTool({
       ...convertLength,
       id: "fixture/ordinary-length-converter",
@@ -78,7 +78,19 @@ describe("chain connector discovery", () => {
         requirePort(bmi, "inputs", "heightM"),
         [ordinaryConverter],
       ),
-    ).toEqual({ connectors: [], direct: false });
+    ).toEqual({
+      connectors: [
+        {
+          inputPortId: "value",
+          outputPortId: "value",
+          requiredInputPortIds: ["fromUnit", "toUnit"],
+          title: "Convert Length",
+          toolId: "fixture/ordinary-length-converter",
+          toolVersion: 1,
+        },
+      ],
+      direct: true,
+    });
   });
 
   it("executes a user-confirmed connector as a visible node", async () => {

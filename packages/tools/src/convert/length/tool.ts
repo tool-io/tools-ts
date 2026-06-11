@@ -127,25 +127,27 @@ export const lengthConversionTool = defineTool<
     type: "object",
   },
   ports: {
-    connector: true,
     inputs: [
       {
         id: "value",
         label: "Length",
         required: true,
         type: quantityLengthType,
+        valueType: { format: "length", type: "number" },
       },
       {
         id: "fromUnit",
         label: "From unit",
         required: true,
         type: textPlainType,
+        valueType: { format: "length-unit", type: "string" },
       },
       {
         id: "toUnit",
         label: "To unit",
         required: true,
         type: textPlainType,
+        valueType: { format: "length-unit", type: "string" },
       },
     ],
     outputs: [
@@ -154,6 +156,7 @@ export const lengthConversionTool = defineTool<
         label: "Converted length",
         path: ["value"],
         type: quantityLengthType,
+        valueType: { format: "length", type: "number" },
       },
     ],
   },

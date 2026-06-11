@@ -17,7 +17,6 @@ export type ToolPortDefinition = {
 };
 
 export type ToolPortsDefinition = {
-  readonly connector?: boolean;
   readonly inputs: readonly ToolPortDefinition[];
   readonly outputs: readonly ToolPortDefinition[];
 };

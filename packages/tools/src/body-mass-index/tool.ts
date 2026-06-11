@@ -128,12 +128,14 @@ export const bodyMassIndexTool = defineTool<
         label: "Weight",
         required: true,
         type: quantityMassKilogramsType,
+        valueType: { format: "mass", type: "number", unit: "kg" },
       },
       {
         id: "heightM",
         label: "Height",
         required: true,
         type: quantityLengthMetersType,
+        valueType: { format: "length", type: "number", unit: "m" },
       },
     ],
     outputs: [
@@ -141,6 +143,7 @@ export const bodyMassIndexTool = defineTool<
         id: "bmi",
         label: "Body mass index",
         type: indexBodyMassType,
+        valueType: { format: "body-mass-index", type: "number" },
       },
     ],
   },

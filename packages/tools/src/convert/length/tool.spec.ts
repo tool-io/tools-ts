@@ -27,8 +27,13 @@ describe("convert length", () => {
       expect(convertLength(input)).toMatchObject({ ok: false });
   });
 
-  it("is a configurable length connector", () => {
-    expect(lengthConversionTool.ports).toMatchObject({ connector: true });
+  it("publishes portable length ports for contextual connector discovery", () => {
+    expect(lengthConversionTool.ports?.inputs[0]).toMatchObject({
+      valueType: { format: "length", type: "number" },
+    });
+    expect(lengthConversionTool.ports?.outputs[0]).toMatchObject({
+      valueType: { format: "length", type: "number" },
+    });
     expect(lengthConversionTool.ports?.inputs.map(({ id }) => id)).toEqual([
       "value",
       "fromUnit",

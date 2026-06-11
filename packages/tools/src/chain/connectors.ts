@@ -13,7 +13,6 @@ export const recommendOneStepConnectors = (
 ): readonly ChainConnectorCandidate[] => {
   const candidates: ChainConnectorCandidate[] = [];
   for (const tool of tools) {
-    if (!tool.ports.connector) continue;
     for (const input of tool.ports.inputs) {
       if (!arePortTypesCompatible(sourceOutput, input)) continue;
       for (const output of tool.ports.outputs) {
@@ -50,5 +49,7 @@ export const recommendConnection = (
   connectors: arePortTypesCompatible(sourceOutput, targetInput)
     ? []
     : recommendOneStepConnectors(sourceOutput, targetInput, tools),
-  direct: arePortTypesCompatible(sourceOutput, targetInput),
+  // A chain is an explicit user-authored data flow. Compatibility affects
+  // recommendations, never whether the user is allowed to connect two ports.
+  direct: true,
 });

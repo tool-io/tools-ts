@@ -18,7 +18,7 @@ describe("centimeters to meters", () => {
       expect(convertCentimetersToMeters(input)).toMatchObject({ ok: false });
   });
 
-  it("is a narrow wrapper rather than a separately registered connector", () => {
-    expect(centimetersToMetersTool.ports?.connector).not.toBe(true);
+  it("does not require special connector registration", () => {
+    expect(centimetersToMetersTool.ports).not.toHaveProperty("connector");
   });
 });

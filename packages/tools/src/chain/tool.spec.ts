@@ -207,7 +207,7 @@ describe("tool chain", () => {
     });
   });
 
-  it("rejects incompatible semantic port types", async () => {
+  it("allows an explicit connection between different semantic types", async () => {
     const textTool = {
       ...sourceTool,
       id: "fixture/text",
@@ -236,10 +236,7 @@ describe("tool chain", () => {
         resolveTool: (id) => (id === textTool.id ? textTool : resolveTool(id)),
       },
     );
-    expect(result).toMatchObject({
-      issues: [{ code: "incompatible_port_type" }],
-      ok: false,
-    });
+    expect(result).toEqual({ issues: [], ok: true });
   });
 
   it("detects cycles", async () => {
