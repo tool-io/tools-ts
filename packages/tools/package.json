@@ -35,6 +35,46 @@
       "types": "./dist/statistics/median/index.d.ts",
       "import": "./dist/statistics/median/index.js"
     },
+    "./statistics/benjamini-hochberg": {
+      "types": "./dist/statistics/benjamini-hochberg/index.d.ts",
+      "import": "./dist/statistics/benjamini-hochberg/index.js"
+    },
+    "./statistics/bonferroni-correction": {
+      "types": "./dist/statistics/bonferroni-correction/index.d.ts",
+      "import": "./dist/statistics/bonferroni-correction/index.js"
+    },
+    "./statistics/bootstrap-standard-error": {
+      "types": "./dist/statistics/bootstrap-standard-error/index.d.ts",
+      "import": "./dist/statistics/bootstrap-standard-error/index.js"
+    },
+    "./statistics/holm-bonferroni": {
+      "types": "./dist/statistics/holm-bonferroni/index.d.ts",
+      "import": "./dist/statistics/holm-bonferroni/index.js"
+    },
+    "./statistics/jackknife-bias": {
+      "types": "./dist/statistics/jackknife-bias/index.d.ts",
+      "import": "./dist/statistics/jackknife-bias/index.js"
+    },
+    "./statistics/kruskal-wallis": {
+      "types": "./dist/statistics/kruskal-wallis/index.d.ts",
+      "import": "./dist/statistics/kruskal-wallis/index.js"
+    },
+    "./statistics/mann-whitney-u": {
+      "types": "./dist/statistics/mann-whitney-u/index.d.ts",
+      "import": "./dist/statistics/mann-whitney-u/index.js"
+    },
+    "./statistics/paired-t-test": {
+      "types": "./dist/statistics/paired-t-test/index.d.ts",
+      "import": "./dist/statistics/paired-t-test/index.js"
+    },
+    "./statistics/two-sample-t-test": {
+      "types": "./dist/statistics/two-sample-t-test/index.d.ts",
+      "import": "./dist/statistics/two-sample-t-test/index.js"
+    },
+    "./statistics/wilcoxon-signed-rank": {
+      "types": "./dist/statistics/wilcoxon-signed-rank/index.d.ts",
+      "import": "./dist/statistics/wilcoxon-signed-rank/index.js"
+    },
     "./compare": {
       "types": "./dist/compare/index.d.ts",
       "import": "./dist/compare/index.js"
