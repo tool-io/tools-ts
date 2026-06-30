@@ -5,10 +5,6 @@ import {
   type ToolResult,
 } from "../../core/result.js";
 import {
-  datasetNumberType,
-  numberFiniteType,
-} from "../../core/semantic-type.js";
-import {
   averageRanks,
   finiteGroups,
   isRecord,
@@ -92,21 +88,36 @@ export const kruskalWallisTool = defineTool<
   description:
     "Calculate the tie-corrected Kruskal-Wallis H statistic for independent groups.",
   execute: calculateKruskalWallis,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "statistics/kruskal-wallis",
-  inputSchema: { type: "object" },
-  isOutput: (value): value is KruskalWallisOutput =>
-    isRecord(value) &&
-    typeof value.statistic === "number" &&
-    Number.isFinite(value.statistic),
-  outputSchema: { type: "object" },
+  inputSchema: {
+    additionalProperties: false,
+    properties: {
+      groups: {
+        items: { items: { type: "number" }, minItems: 1, type: "array" },
+        minItems: 2,
+        type: "array",
+      },
+    },
+    required: ["groups"],
+    type: "object",
+  },
+  outputSchema: {
+    additionalProperties: false,
+    properties: {
+      degreesOfFreedom: { minimum: 1, type: "integer" },
+      groupRankSums: { items: { minimum: 0, type: "number" }, type: "array" },
+      statistic: { minimum: 0, type: "number" },
+    },
+    required: ["degreesOfFreedom", "groupRankSums", "statistic"],
+    type: "object",
+  },
   ports: {
     inputs: [
       {
         id: "groups",
         label: "Groups",
         required: true,
-        type: datasetNumberType,
         valueType: {
           items: { items: { type: "number" }, type: "list" },
           type: "list",
@@ -118,7 +129,6 @@ export const kruskalWallisTool = defineTool<
         id: "statistic",
         label: "H statistic",
         path: ["statistic"],
-        type: numberFiniteType,
         valueType: { format: "kruskal-wallis-h-statistic", type: "number" },
       },
     ],

@@ -4,10 +4,6 @@ import {
   toolSuccess,
   type ToolResult,
 } from "../../core/result.js";
-import {
-  quantityLengthCentimetersType,
-  quantityLengthMetersType,
-} from "../../core/semantic-type.js";
 import { convertLengthByFactors } from "../length/calculation.js";
 
 export type CentimetersToMetersInput = {
@@ -50,7 +46,7 @@ export const centimetersToMetersTool = defineTool<
   contractVersion: 1,
   description: "Convert a finite length from centimeters to meters.",
   execute: convertCentimetersToMeters,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "convert/centimeters-to-meters",
   inputSchema: {
     additionalProperties: false,
@@ -58,10 +54,6 @@ export const centimetersToMetersTool = defineTool<
     required: ["centimeters"],
     type: "object",
   },
-  isOutput: (value): value is CentimetersToMetersOutput =>
-    isRecord(value) &&
-    typeof value.meters === "number" &&
-    Number.isFinite(value.meters),
   outputSchema: {
     additionalProperties: false,
     properties: { meters: { type: "number" } },
@@ -74,14 +66,14 @@ export const centimetersToMetersTool = defineTool<
         id: "centimeters",
         label: "Centimeters",
         required: true,
-        type: quantityLengthCentimetersType,
+        valueType: { format: "length", type: "number", unit: "cm" },
       },
     ],
     outputs: [
       {
         id: "meters",
         label: "Meters",
-        type: quantityLengthMetersType,
+        valueType: { format: "length", type: "number", unit: "m" },
       },
     ],
   },

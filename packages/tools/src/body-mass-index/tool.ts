@@ -1,10 +1,5 @@
 import { defineTool } from "../core/definition.js";
 import {
-  indexBodyMassType,
-  quantityLengthMetersType,
-  quantityMassKilogramsType,
-} from "../core/semantic-type.js";
-import {
   invalidInput,
   toolSuccess,
   type ToolIssue,
@@ -116,10 +111,9 @@ export const bodyMassIndexTool = defineTool<
   description:
     "Calculate body mass index from weight in kilograms and height in metres.",
   execute: calculateBodyMassIndex,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "body-mass-index",
   inputSchema: bodyMassIndexInputSchema,
-  isOutput: isBodyMassIndexOutput,
   outputSchema: bodyMassIndexOutputSchema,
   ports: {
     inputs: [
@@ -127,14 +121,12 @@ export const bodyMassIndexTool = defineTool<
         id: "weightKg",
         label: "Weight",
         required: true,
-        type: quantityMassKilogramsType,
         valueType: { format: "mass", type: "number", unit: "kg" },
       },
       {
         id: "heightM",
         label: "Height",
         required: true,
-        type: quantityLengthMetersType,
         valueType: { format: "length", type: "number", unit: "m" },
       },
     ],
@@ -142,10 +134,11 @@ export const bodyMassIndexTool = defineTool<
       {
         id: "bmi",
         label: "Body mass index",
-        type: indexBodyMassType,
         valueType: { format: "body-mass-index", type: "number" },
       },
     ],
   },
   title: "Body Mass Index",
 });
+
+export default bodyMassIndexTool;

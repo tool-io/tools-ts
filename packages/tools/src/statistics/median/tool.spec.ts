@@ -29,7 +29,7 @@ describe("median", () => {
   it("accepts the parser output port directly", () => {
     expect(medianTool.ports?.inputs[0]).toMatchObject({
       id: "values",
-      type: "dataset/number",
+      valueType: { items: { type: "number" }, type: "list" },
     });
   });
 });

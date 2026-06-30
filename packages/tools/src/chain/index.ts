@@ -10,7 +10,6 @@ export {
   recommendConnection,
   recommendOneStepConnectors,
 } from "./connectors.js";
-export * from "../core/semantic-type.js";
 export type {
   ChainConnectionRecommendation,
   ChainConnectorCandidate,

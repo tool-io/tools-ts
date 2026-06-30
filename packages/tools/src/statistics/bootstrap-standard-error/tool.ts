@@ -5,12 +5,12 @@ import {
   type ToolResult,
 } from "../../core/result.js";
 import {
-  datasetNumberType,
-  integerSafeType,
-  numberFiniteType,
-  textPlainType,
-} from "../../core/semantic-type.js";
-import { finiteDataset, isRecord, mean, roundStatistic } from "../input.js";
+  finiteDataset,
+  isRecord,
+  mean,
+  numericDatasetSchema,
+  roundStatistic,
+} from "../input.js";
 
 export type BootstrapStatistic = "mean" | "median";
 
@@ -119,42 +119,54 @@ export const bootstrapStandardErrorTool = defineTool<
   description:
     "Estimate the standard error of a sample mean or median with deterministic bootstrap resampling.",
   execute: calculateBootstrapStandardError,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "statistics/bootstrap-standard-error",
-  inputSchema: { type: "object" },
-  isOutput: (value): value is BootstrapStandardErrorOutput =>
-    isRecord(value) &&
-    typeof value.standardError === "number" &&
-    Number.isFinite(value.standardError),
-  outputSchema: { type: "object" },
+  inputSchema: {
+    additionalProperties: false,
+    properties: {
+      resamples: { default: 1000, minimum: 2, type: "integer" },
+      seed: { default: 2026, type: "integer" },
+      statistic: { default: "mean", enum: ["mean", "median"], type: "string" },
+      values: numericDatasetSchema,
+    },
+    required: ["values"],
+    type: "object",
+  },
+  outputSchema: {
+    additionalProperties: false,
+    properties: {
+      estimate: { type: "number" },
+      resamples: { minimum: 2, type: "integer" },
+      standardError: { minimum: 0, type: "number" },
+      statistic: { enum: ["mean", "median"], type: "string" },
+    },
+    required: ["estimate", "resamples", "standardError", "statistic"],
+    type: "object",
+  },
   ports: {
     inputs: [
       {
         id: "values",
         label: "Sample",
         required: true,
-        type: datasetNumberType,
         valueType: { items: { type: "number" }, type: "list" },
       },
       {
         id: "resamples",
         label: "Resamples",
         required: false,
-        type: integerSafeType,
         valueType: { format: "count", type: "integer" },
       },
       {
         id: "seed",
         label: "Random seed",
         required: false,
-        type: integerSafeType,
         valueType: { format: "random-seed", type: "integer" },
       },
       {
         id: "statistic",
         label: "Statistic",
         required: false,
-        type: textPlainType,
         valueType: { format: "statistic-name", type: "string" },
       },
     ],
@@ -163,7 +175,6 @@ export const bootstrapStandardErrorTool = defineTool<
         id: "standardError",
         label: "Standard error",
         path: ["standardError"],
-        type: numberFiniteType,
         valueType: { format: "standard-error", type: "number" },
       },
     ],

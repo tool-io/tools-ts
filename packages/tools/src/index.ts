@@ -13,8 +13,6 @@ export {
   type ToolIssue,
   type ToolResult,
 } from "./core/result.js";
-export * from "./core/semantic-type.js";
 export * from "./core/value-type.js";
-export * from "./size/index.js";
-export * from "./compare/index.js";
-export * from "./chain/index.js";
+export * from "./core/catalog.js";
+export * from "./core/contract.js";

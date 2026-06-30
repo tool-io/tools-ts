@@ -5,14 +5,10 @@ import {
   type ToolResult,
 } from "../../core/result.js";
 import {
-  booleanType,
-  datasetNumberType,
-  numberFiniteType,
-} from "../../core/semantic-type.js";
-import {
   finiteDataset,
   isRecord,
   mean,
+  numericDatasetSchema,
   roundStatistic,
   sampleVariance,
 } from "../input.js";
@@ -111,35 +107,48 @@ export const twoSampleTTestTool = defineTool<
   contractVersion: 1,
   description: "Calculate Welch's or pooled two-sample t-test statistic.",
   execute: calculateTwoSampleTTest,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "statistics/two-sample-t-test",
-  inputSchema: { type: "object" },
-  isOutput: (value): value is TwoSampleTTestOutput =>
-    isRecord(value) &&
-    typeof value.tStatistic === "number" &&
-    Number.isFinite(value.tStatistic),
-  outputSchema: { type: "object" },
+  inputSchema: {
+    additionalProperties: false,
+    properties: {
+      equalVariance: { default: false, type: "boolean" },
+      first: numericDatasetSchema,
+      second: numericDatasetSchema,
+    },
+    required: ["first", "second"],
+    type: "object",
+  },
+  outputSchema: {
+    additionalProperties: false,
+    properties: {
+      degreesOfFreedom: { exclusiveMinimum: 0, type: "number" },
+      firstMean: { type: "number" },
+      secondMean: { type: "number" },
+      standardError: { minimum: 0, type: "number" },
+      tStatistic: { type: "number" },
+    },
+    required: ["degreesOfFreedom", "firstMean", "secondMean", "standardError", "tStatistic"],
+    type: "object",
+  },
   ports: {
     inputs: [
       {
         id: "first",
         label: "First sample",
         required: true,
-        type: datasetNumberType,
         valueType: { items: { type: "number" }, type: "list" },
       },
       {
         id: "second",
         label: "Second sample",
         required: true,
-        type: datasetNumberType,
         valueType: { items: { type: "number" }, type: "list" },
       },
       {
         id: "equalVariance",
         label: "Assume equal variance",
         required: false,
-        type: booleanType,
         valueType: { type: "boolean" },
       },
     ],
@@ -148,7 +157,6 @@ export const twoSampleTTestTool = defineTool<
         id: "tStatistic",
         label: "T statistic",
         path: ["tStatistic"],
-        type: numberFiniteType,
         valueType: { format: "t-statistic", type: "number" },
       },
     ],

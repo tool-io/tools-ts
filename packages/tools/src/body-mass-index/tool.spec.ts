@@ -32,7 +32,7 @@ describe('body mass index', () => {
   it('publishes a stable pure-tool contract', () => {
     expect(bodyMassIndexTool).toMatchObject({
       contractVersion: 1,
-      executionKind: 'pure',
+      execution: { kind: 'pure' },
       id: 'body-mass-index'
     });
   });

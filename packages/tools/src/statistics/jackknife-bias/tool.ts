@@ -5,11 +5,12 @@ import {
   type ToolResult,
 } from "../../core/result.js";
 import {
-  datasetNumberType,
-  numberFiniteType,
-  textPlainType,
-} from "../../core/semantic-type.js";
-import { finiteDataset, isRecord, mean, roundStatistic } from "../input.js";
+  finiteDataset,
+  isRecord,
+  mean,
+  numericDatasetSchema,
+  roundStatistic,
+} from "../input.js";
 
 export type JackknifeStatistic = "mean" | "median";
 
@@ -86,28 +87,40 @@ export const jackknifeBiasTool = defineTool<
   description:
     "Estimate the bias of a sample mean or median with leave-one-out jackknife resampling.",
   execute: calculateJackknifeBias,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "statistics/jackknife-bias",
-  inputSchema: { type: "object" },
-  isOutput: (value): value is JackknifeBiasOutput =>
-    isRecord(value) &&
-    typeof value.bias === "number" &&
-    Number.isFinite(value.bias),
-  outputSchema: { type: "object" },
+  inputSchema: {
+    additionalProperties: false,
+    properties: {
+      statistic: { default: "mean", enum: ["mean", "median"], type: "string" },
+      values: numericDatasetSchema,
+    },
+    required: ["values"],
+    type: "object",
+  },
+  outputSchema: {
+    additionalProperties: false,
+    properties: {
+      bias: { type: "number" },
+      estimate: { type: "number" },
+      jackknifeEstimate: { type: "number" },
+      statistic: { enum: ["mean", "median"], type: "string" },
+    },
+    required: ["bias", "estimate", "jackknifeEstimate", "statistic"],
+    type: "object",
+  },
   ports: {
     inputs: [
       {
         id: "values",
         label: "Sample",
         required: true,
-        type: datasetNumberType,
         valueType: { items: { type: "number" }, type: "list" },
       },
       {
         id: "statistic",
         label: "Statistic",
         required: false,
-        type: textPlainType,
         valueType: { format: "statistic-name", type: "string" },
       },
     ],
@@ -116,7 +129,6 @@ export const jackknifeBiasTool = defineTool<
         id: "bias",
         label: "Estimated bias",
         path: ["bias"],
-        type: numberFiniteType,
         valueType: { format: "bias-estimate", type: "number" },
       },
     ],

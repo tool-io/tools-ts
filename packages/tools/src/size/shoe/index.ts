@@ -18,3 +18,4 @@ export {
   type ShoeSizeTableRow,
   type SizeConfidence,
 } from "../core.js";
+export { default } from "./tool.js";

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "tool": { "id": "body-mass-index", "contractVersion": 1 },
+  "cases": [
+    {
+      "name": "calculates a finite BMI",
+      "input": { "weightKg": 70, "heightM": 1.8 },
+      "expected": {
+        "ok": true,
+        "output": { "bmi": 21.604938271604937 },
+        "absoluteTolerance": 1e-12
+      }
+    },
+    {
+      "name": "rejects a zero height",
+      "input": { "weightKg": 70, "heightM": 0 },
+      "expected": {
+        "ok": false,
+        "errorCode": "invalid_input",
+        "issueCodes": ["positive_finite_number_required"]
+      }
+    }
+  ]
+}

@@ -4,7 +4,6 @@ import {
   toolSuccess,
   type ToolResult,
 } from "../../core/result.js";
-import { integerSafeType, numberFiniteType } from "../../core/semantic-type.js";
 import { isRecord, roundStatistic } from "../input.js";
 
 export type BonferroniCorrectionInput = {
@@ -50,28 +49,38 @@ export const bonferroniCorrectionTool = defineTool<
   description:
     "Apply the Bonferroni multiplier to one p-value and cap the adjusted value at one.",
   execute: calculateBonferroniCorrection,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "statistics/bonferroni-correction",
-  inputSchema: { type: "object" },
-  isOutput: (value): value is BonferroniCorrectionOutput =>
-    isRecord(value) &&
-    typeof value.adjustedPValue === "number" &&
-    Number.isFinite(value.adjustedPValue),
-  outputSchema: { type: "object" },
+  inputSchema: {
+    additionalProperties: false,
+    properties: {
+      comparisons: { minimum: 1, type: "integer" },
+      pValue: { maximum: 1, minimum: 0, type: "number" },
+    },
+    required: ["pValue", "comparisons"],
+    type: "object",
+  },
+  outputSchema: {
+    additionalProperties: false,
+    properties: {
+      adjustedPValue: { maximum: 1, minimum: 0, type: "number" },
+      multiplier: { minimum: 1, type: "integer" },
+    },
+    required: ["adjustedPValue", "multiplier"],
+    type: "object",
+  },
   ports: {
     inputs: [
       {
         id: "pValue",
         label: "P-value",
         required: true,
-        type: numberFiniteType,
         valueType: { format: "probability", type: "number" },
       },
       {
         id: "comparisons",
         label: "Comparisons",
         required: true,
-        type: integerSafeType,
         valueType: { format: "count", type: "integer" },
       },
     ],
@@ -80,7 +89,6 @@ export const bonferroniCorrectionTool = defineTool<
         id: "adjustedPValue",
         label: "Adjusted p-value",
         path: ["adjustedPValue"],
-        type: numberFiniteType,
         valueType: { format: "probability", type: "number" },
       },
     ],

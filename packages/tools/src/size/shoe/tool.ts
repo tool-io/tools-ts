@@ -197,8 +197,8 @@ export const shoeSizeOutputSchema = {
   additionalProperties: false,
   properties: {
     footLengthMm: { exclusiveMinimum: 0, type: "number" },
-    input: { type: "object" },
-    matches: { type: "array" },
+    input: { additionalProperties: true, type: "object" },
+    matches: { items: { additionalProperties: true, type: "object" }, type: "array" },
     profile: { enum: profiles, type: "string" },
     warning: { type: "string" },
   },
@@ -287,10 +287,23 @@ export const shoeSizeTool = defineTool<ShoeSizeInput, ShoeSizeOutput>({
   description:
     "Compare shoe sizes through foot length across Mondopoint, EU, UK, US, Japanese, Chinese, and Korean systems.",
   execute: compareShoeSizes,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "size/shoe",
   inputSchema: shoeSizeInputSchema,
-  isOutput: isShoeSizeOutput,
   outputSchema: shoeSizeOutputSchema,
+  ports: {
+    inputs: [
+      { id: "profile", label: "Profile", required: true, valueType: { format: "shoe-profile", type: "string" } },
+      { id: "size", label: "Shoe size", required: true, valueType: { format: "shoe-size", type: "string" } },
+      { id: "system", label: "Size system", required: true, valueType: { format: "shoe-size-system", type: "string" } },
+    ],
+    outputs: [
+      { id: "footLengthMm", label: "Foot length", valueType: { format: "length", type: "number", unit: "mm" } },
+      { id: "matches", label: "Matching sizes", valueType: { items: { type: "object" }, type: "list" } },
+      { id: "warning", label: "Sizing warning", valueType: { format: "warning", type: "string" } },
+    ],
+  },
   title: "Shoe Size Comparison",
 });
+
+export default shoeSizeTool;

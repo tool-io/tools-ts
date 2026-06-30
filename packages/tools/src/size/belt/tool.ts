@@ -1,11 +1,5 @@
 import { defineTool } from "../../core/definition.js";
 import {
-  listTextType,
-  quantityLengthCentimetersType,
-  textPlainType,
-  unitMeasurementType,
-} from "../../core/semantic-type.js";
-import {
   invalidInput,
   toolSuccess,
   type ToolResult,
@@ -88,27 +82,33 @@ export const beltSizeTool = defineTool<BeltSizeInput, BeltSizeOutput>({
   description:
     "Estimate belt labels and finished length from the waist position where the belt will be worn.",
   execute: recommendBeltSize,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "size/belt",
   inputSchema: {
     additionalProperties: false,
     properties: {
       unit: { enum: ["cm", "in"], type: "string" },
-      values: { type: "object" },
+      values: {
+        additionalProperties: false,
+        properties: { waist: { type: "number" } },
+        required: ["waist"],
+        type: "object",
+      },
     },
     required: ["values"],
     type: "object",
   },
-  isOutput: (value): value is BeltSizeOutput =>
-    typeof value === "object" &&
-    value !== null &&
-    (value as { kind?: unknown }).kind === "belt",
   outputSchema: {
     additionalProperties: false,
     properties: {
-      equivalents: { type: "array" },
-      kind: { const: "belt" },
-      measurementsCm: { type: "object" },
+      equivalents: { items: { type: "string" }, type: "array" },
+      kind: { const: "belt", type: "string" },
+      measurementsCm: {
+        additionalProperties: false,
+        properties: { waist: { type: "number" } },
+        required: ["waist"],
+        type: "object",
+      },
       primary: { type: "string" },
       warning: { type: "string" },
     },
@@ -120,14 +120,14 @@ export const beltSizeTool = defineTool<BeltSizeInput, BeltSizeOutput>({
       {
         id: "unit",
         label: "Input unit",
-        type: unitMeasurementType,
+        valueType: { format: "measurement-unit", type: "string" },
       },
       {
         id: "waist",
         label: "Waist at belt position",
         path: ["values", "waist"],
         required: true,
-        type: quantityLengthCentimetersType,
+        valueType: { format: "length", type: "number", unit: "cm" },
       },
     ],
     outputs: [
@@ -135,22 +135,22 @@ export const beltSizeTool = defineTool<BeltSizeInput, BeltSizeOutput>({
         id: "waist",
         label: "Waist in centimeters",
         path: ["measurementsCm", "waist"],
-        type: quantityLengthCentimetersType,
+        valueType: { format: "length", type: "number", unit: "cm" },
       },
       {
         id: "primary",
         label: "Recommended size",
-        type: textPlainType,
+        valueType: { format: "size-label", type: "string" },
       },
       {
         id: "equivalents",
         label: "Equivalent sizes",
-        type: listTextType,
+        valueType: { items: { type: "string" }, type: "list" },
       },
       {
         id: "warning",
         label: "Sizing warning",
-        type: textPlainType,
+        valueType: { format: "warning", type: "string" },
       },
     ],
   },

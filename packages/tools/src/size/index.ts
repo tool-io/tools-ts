@@ -7,3 +7,4 @@ export {
 export * from "./bed/index.js";
 export * from './measurements/index.js';
 export * from "./shoe/index.js";
+export { default } from "./tool.js";

@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import { invalidInput, toolSuccess } from "../core/result.js";
-import { toolSemanticTypes } from "../core/semantic-type.js";
 import { chokerSizeTool } from "../size/choker/tool.js";
 import { collarSizeTool } from "../size/collar/tool.js";
 import { executeChain, validateChain } from "./tool.js";
@@ -28,13 +27,9 @@ const sourceTool = {
             message: "Value must be a finite number.",
           },
         ]),
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "fixture/number",
   inputSchema: { type: "object" },
-  isOutput: (value: unknown): value is { readonly value: number } =>
-    isRecord(value) &&
-    typeof value.value === "number" &&
-    Number.isFinite(value.value),
   outputSchema: { type: "object" },
   ports: {
     inputs: [
@@ -42,11 +37,11 @@ const sourceTool = {
         id: "value",
         label: "Value",
         required: true,
-        type: toolSemanticTypes.numberFinite,
+        valueType: { type: "number" },
       },
     ],
     outputs: [
-      { id: "value", label: "Value", type: toolSemanticTypes.numberFinite },
+      { id: "value", label: "Value", valueType: { type: "number" } },
     ],
   },
   title: "Number",
@@ -69,13 +64,9 @@ const addTool = {
             message: "Two finite numbers are required.",
           },
         ]),
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "fixture/add",
   inputSchema: { type: "object" },
-  isOutput: (value: unknown): value is { readonly sum: number } =>
-    isRecord(value) &&
-    typeof value.sum === "number" &&
-    Number.isFinite(value.sum),
   outputSchema: { type: "object" },
   ports: {
     inputs: [
@@ -83,17 +74,17 @@ const addTool = {
         id: "left",
         label: "Left",
         required: true,
-        type: toolSemanticTypes.numberFinite,
+        valueType: { type: "number" },
       },
       {
         id: "right",
         label: "Right",
         required: true,
-        type: toolSemanticTypes.numberFinite,
+        valueType: { type: "number" },
       },
     ],
     outputs: [
-      { id: "sum", label: "Sum", type: toolSemanticTypes.numberFinite },
+      { id: "sum", label: "Sum", valueType: { type: "number" } },
     ],
   },
   title: "Add",
@@ -214,7 +205,7 @@ describe("tool chain", () => {
       ports: {
         ...sourceTool.ports,
         outputs: [
-          { id: "value", label: "Value", type: toolSemanticTypes.textPlain },
+          { id: "value", label: "Value", valueType: { type: "string" } },
         ],
       },
     } satisfies ChainToolDefinition;

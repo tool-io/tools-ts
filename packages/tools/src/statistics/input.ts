@@ -1,5 +1,25 @@
 import { parseNumericDataset } from "../parse/numeric-dataset/tool.js";
 
+export const numericDatasetSchema = {
+  anyOf: [
+    { items: { type: "number" }, minItems: 1, type: "array" },
+    { type: "number" },
+    { minLength: 1, type: "string" },
+  ],
+} as const;
+
+export const probabilityDatasetSchema = {
+  anyOf: [
+    {
+      items: { maximum: 1, minimum: 0, type: "number" },
+      minItems: 1,
+      type: "array",
+    },
+    { maximum: 1, minimum: 0, type: "number" },
+    { minLength: 1, type: "string" },
+  ],
+} as const;
+
 export const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
 

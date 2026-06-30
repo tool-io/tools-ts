@@ -5,7 +5,10 @@
   "scripts": {
     "build": "pnpm --filter @toolio/tools build",
     "check": "pnpm --filter @toolio/tools check",
-    "unittest": "pnpm --filter @toolio/tools unittest"
+    "check:generated": "pnpm --filter @toolio/tools check:generated",
+    "generate": "pnpm --filter @toolio/tools generate",
+    "unittest": "pnpm --filter @toolio/tools unittest",
+    "validate": "pnpm --filter @toolio/tools validate"
   },
   "devDependencies": {
     "typescript": "^7.0.2",

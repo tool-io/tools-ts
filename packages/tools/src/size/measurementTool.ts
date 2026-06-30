@@ -1,14 +1,6 @@
 import { defineTool, type ToolDefinition } from "../core/definition.js";
-import {
-  listTextType,
-  numberFiniteType,
-  quantityLengthCentimetersType,
-  quantityMassKilogramsType,
-  textPlainType,
-  type ToolSemanticType,
-  unitMeasurementType,
-} from "../core/semantic-type.js";
 import { invalidInput, toolSuccess, type ToolResult } from "../core/result.js";
+import type { ToolValueType } from "../core/value-type.js";
 
 export type MeasurementSizeKind = string;
 
@@ -663,37 +655,46 @@ export const createMeasurementSizeTool = (
   config: MeasurementSizeConfig,
 ): ToolDefinition<MeasurementSizeInput, MeasurementSizeOutput> => {
   const kind = config.kind;
-  const measurementType = (field: MeasurementField): ToolSemanticType =>
+  const measurementType = (field: MeasurementField): ToolValueType =>
     field.quantity === "mass"
-      ? quantityMassKilogramsType
+      ? { format: "mass", type: "number", unit: "kg" }
       : field.quantity === "number"
-        ? numberFiniteType
-        : quantityLengthCentimetersType;
+        ? { type: "number" }
+        : { format: "length", type: "number", unit: "cm" };
+  const measurementProperties = Object.fromEntries(
+    Object.keys(config.fields).map((id) => [id, { type: "number" as const }]),
+  );
   return defineTool({
     contractVersion: 1,
     description: config.intro,
     execute: (input) => recommendMeasurementSizeForConfig(config, input),
-    executionKind: "pure",
+    execution: { kind: "pure" },
     id: `size/${kind}`,
     inputSchema: {
       additionalProperties: false,
       properties: {
         unit: { enum: ["cm", "in"], type: "string" },
-        values: { type: "object" },
+        values: {
+          additionalProperties: false,
+          properties: measurementProperties,
+          required: Object.keys(config.fields),
+          type: "object",
+        },
       },
       required: ["values"],
       type: "object",
     },
-    isOutput: (value): value is MeasurementSizeOutput =>
-      typeof value === "object" &&
-      value !== null &&
-      (value as { kind?: unknown }).kind === kind,
     outputSchema: {
       additionalProperties: false,
       properties: {
-        equivalents: { type: "array" },
-        kind: { const: kind },
-        measurementsCm: { type: "object" },
+        equivalents: { items: { type: "string" }, type: "array" },
+        kind: { const: kind, type: "string" },
+        measurementsCm: {
+          additionalProperties: false,
+          properties: measurementProperties,
+          required: Object.keys(config.fields),
+          type: "object",
+        },
         primary: { type: "string" },
         warning: { type: "string" },
       },
@@ -706,14 +707,14 @@ export const createMeasurementSizeTool = (
           id: "unit",
           label: "Input unit",
           path: ["unit"],
-          type: unitMeasurementType,
+          valueType: { format: "measurement-unit", type: "string" },
         },
         ...Object.entries(config.fields).map(([id, field]) => ({
           id,
           label: field.label,
           path: ["values", id],
           required: true,
-          type: measurementType(field),
+          valueType: measurementType(field),
         })),
       ],
       outputs: [
@@ -721,22 +722,22 @@ export const createMeasurementSizeTool = (
           id,
           label: `${field.label} in canonical units`,
           path: ["measurementsCm", id],
-          type: measurementType(field),
+          valueType: measurementType(field),
         })),
         {
           id: "primary",
           label: "Recommended size",
-          type: textPlainType,
+          valueType: { format: "size-label", type: "string" },
         },
         {
           id: "equivalents",
           label: "Equivalent sizes",
-          type: listTextType,
+          valueType: { items: { type: "string" }, type: "list" },
         },
         {
           id: "warning",
           label: "Sizing warning",
-          type: textPlainType,
+          valueType: { format: "warning", type: "string" },
         },
       ],
     },

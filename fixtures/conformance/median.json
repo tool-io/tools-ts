@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "tool": { "id": "statistics/median", "contractVersion": 1 },
+  "cases": [
+    {
+      "name": "calculates an even-sample median",
+      "input": { "values": [1, 2, 3, 4] },
+      "expected": { "ok": true, "output": { "median": 2.5 } }
+    },
+    {
+      "name": "rejects an empty sample",
+      "input": { "values": [] },
+      "expected": {
+        "ok": false,
+        "errorCode": "invalid_input",
+        "issueCodes": ["finite_numeric_dataset_required"]
+      }
+    }
+  ]
+}

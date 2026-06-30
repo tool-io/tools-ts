@@ -1,9 +1,5 @@
 import { defineTool } from "../../core/definition.js";
 import {
-  datasetNumberType,
-  textPlainType,
-} from "../../core/semantic-type.js";
-import {
   invalidInput,
   toolSuccess,
   type ToolIssue,
@@ -176,17 +172,9 @@ export const numericDatasetParserTool = defineTool<
   contractVersion: 1,
   description: "Parse and normalize a list of finite numeric values.",
   execute: parseNumericDataset,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "parse/numeric-dataset",
   inputSchema: parseNumericDatasetInputSchema,
-  isOutput: (value): value is ParseNumericDatasetOutput =>
-    isRecord(value) &&
-    Array.isArray(value.values) &&
-    value.values.length > 0 &&
-    value.values.every(
-      (entry) => typeof entry === "number" && Number.isFinite(entry),
-    ) &&
-    typeof value.normalized === "string",
   outputSchema: parseNumericDatasetOutputSchema,
   ports: {
     inputs: [
@@ -194,13 +182,13 @@ export const numericDatasetParserTool = defineTool<
         id: "value",
         label: "Dataset",
         required: true,
-        type: textPlainType,
+        valueType: { format: "numeric-dataset", type: "string" },
       },
       {
         id: "emptyEntryPolicy",
         label: "Empty entries",
         required: false,
-        type: textPlainType,
+        valueType: { format: "empty-entry-policy", type: "string" },
       },
     ],
     outputs: [
@@ -208,13 +196,13 @@ export const numericDatasetParserTool = defineTool<
         id: "values",
         label: "Numeric dataset",
         path: ["values"],
-        type: datasetNumberType,
+        valueType: { items: { type: "number" }, type: "list" },
       },
       {
         id: "normalized",
         label: "Normalized dataset",
         path: ["normalized"],
-        type: textPlainType,
+        valueType: { format: "numeric-dataset", type: "string" },
       },
     ],
   },

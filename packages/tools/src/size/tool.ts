@@ -72,7 +72,7 @@ export const sizeTool = defineTool<SizeToolInput, SizeToolOutput>({
   description:
     "Dispatch to an independently importable Tool.io size comparison tool.",
   execute: compareSizes,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "size",
   inputSchema: {
     additionalProperties: false,
@@ -86,23 +86,26 @@ export const sizeTool = defineTool<SizeToolInput, SizeToolOutput>({
         type: "string",
       },
       unit: { enum: ['cm', 'in'], type: 'string' },
-      values: { type: 'object' },
+      values: { additionalProperties: true, type: 'object' },
     },
     required: ["item"],
     type: "object",
   },
-  isOutput: (value): value is SizeToolOutput =>
-    typeof value === "object" &&
-    value !== null &&
-    (((value as { item?: unknown }).item === "bed" && isBedSizeOutput(value)) ||
-      (typeof (value as { item?: unknown }).item === 'string' &&
-        (value as { item: string }).item in measurementSizeConfigs) ||
-      ((value as { item?: unknown }).item === "shoe" && isShoeSizeOutput(value))),
   outputSchema: {
     additionalProperties: true,
     properties: { item: { enum: supportedSizeItems, type: "string" } },
     required: ["item"],
     type: "object",
   },
+  ports: {
+    inputs: [
+      { id: "item", label: "Size category", required: true, valueType: { format: "size-category", type: "string" } },
+    ],
+    outputs: [
+      { id: "item", label: "Size category", valueType: { format: "size-category", type: "string" } },
+    ],
+  },
   title: "Size Comparison",
 });
+
+export default sizeTool;

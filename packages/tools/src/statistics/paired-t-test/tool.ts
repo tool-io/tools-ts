@@ -5,13 +5,10 @@ import {
   type ToolResult,
 } from "../../core/result.js";
 import {
-  datasetNumberType,
-  numberFiniteType,
-} from "../../core/semantic-type.js";
-import {
   finiteDataset,
   isRecord,
   mean,
+  numericDatasetSchema,
   roundStatistic,
   sampleVariance,
 } from "../input.js";
@@ -81,27 +78,40 @@ export const pairedTTestTool = defineTool<PairedTTestInput, PairedTTestOutput>({
   description:
     "Calculate the paired-samples t statistic for matched observations.",
   execute: calculatePairedTTest,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "statistics/paired-t-test",
-  inputSchema: { type: "object" },
-  isOutput: (value): value is PairedTTestOutput =>
-    isRecord(value) &&
-    typeof value.tStatistic === "number" &&
-    Number.isFinite(value.tStatistic),
-  outputSchema: { type: "object" },
+  inputSchema: {
+    additionalProperties: false,
+    properties: { first: numericDatasetSchema, second: numericDatasetSchema },
+    required: ["first", "second"],
+    type: "object",
+  },
+  outputSchema: {
+    additionalProperties: false,
+    properties: {
+      degreesOfFreedom: { minimum: 1, type: "integer" },
+      meanDifference: { type: "number" },
+      sampleSize: { minimum: 2, type: "integer" },
+      standardDeviation: { minimum: 0, type: "number" },
+      standardError: { minimum: 0, type: "number" },
+      tStatistic: { type: "number" },
+    },
+    required: ["degreesOfFreedom", "meanDifference", "sampleSize", "standardDeviation", "standardError", "tStatistic"],
+    type: "object",
+  },
   ports: {
     inputs: [
       {
         id: "first",
         label: "First matched sample",
         required: true,
-        type: datasetNumberType,
+        valueType: { items: { type: "number" }, type: "list" },
       },
       {
         id: "second",
         label: "Second matched sample",
         required: true,
-        type: datasetNumberType,
+        valueType: { items: { type: "number" }, type: "list" },
       },
     ],
     outputs: [
@@ -109,7 +119,6 @@ export const pairedTTestTool = defineTool<PairedTTestInput, PairedTTestOutput>({
         id: "tStatistic",
         label: "T statistic",
         path: ["tStatistic"],
-        type: numberFiniteType,
         valueType: { format: "t-statistic", type: "number" },
       },
     ],

@@ -275,29 +275,41 @@ export const compareTool = defineTool<CompareInput, CompareOutput>({
   description:
     "Compare two or more catalog items using canonical typed attributes and explicit missing values.",
   execute: compareCatalogItems,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "compare",
   inputSchema: {
+    additionalProperties: false,
     properties: {
-      attributeDefinitions: { type: "array" },
-      categories: { type: "array" },
-      items: { type: "array" },
+      attributeDefinitions: { items: { additionalProperties: true, type: "object" }, type: "array" },
+      categories: { items: { additionalProperties: true, type: "object" }, type: "array" },
+      items: { items: { additionalProperties: true, type: "object" }, minItems: 2, type: "array" },
     },
     required: ["attributeDefinitions", "categories", "items"],
     type: "object",
   },
-  isOutput: (value): value is CompareOutput =>
-    isRecord(value) &&
-    Array.isArray(value.sections) &&
-    typeof value.differenceCount === "number",
   outputSchema: {
+    additionalProperties: false,
     properties: {
-      differenceCount: { type: "number" },
-      itemIds: { type: "array" },
-      sections: { type: "array" },
+      differenceCount: { minimum: 0, type: "integer" },
+      itemIds: { items: { type: "string" }, type: "array" },
+      sections: { items: { additionalProperties: true, type: "object" }, type: "array" },
     },
     required: ["differenceCount", "itemIds", "sections"],
     type: "object",
   },
+  ports: {
+    inputs: [
+      { id: "attributeDefinitions", label: "Attribute definitions", required: true, valueType: { items: { type: "object" }, type: "list" } },
+      { id: "categories", label: "Categories", required: true, valueType: { items: { type: "object" }, type: "list" } },
+      { id: "items", label: "Items", required: true, valueType: { items: { type: "object" }, type: "list" } },
+    ],
+    outputs: [
+      { id: "differenceCount", label: "Differences", valueType: { format: "count", type: "integer" } },
+      { id: "itemIds", label: "Item IDs", valueType: { items: { type: "string" }, type: "list" } },
+      { id: "sections", label: "Comparison sections", valueType: { items: { type: "object" }, type: "list" } },
+    ],
+  },
   title: "Compare Anything",
 });
+
+export default compareTool;

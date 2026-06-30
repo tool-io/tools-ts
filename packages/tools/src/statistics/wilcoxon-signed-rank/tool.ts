@@ -5,13 +5,10 @@ import {
   type ToolResult,
 } from "../../core/result.js";
 import {
-  datasetNumberType,
-  numberFiniteType,
-} from "../../core/semantic-type.js";
-import {
   averageRanks,
   finiteDataset,
   isRecord,
+  numericDatasetSchema,
   roundStatistic,
 } from "../input.js";
 
@@ -79,27 +76,38 @@ export const wilcoxonSignedRankTool = defineTool<
   description:
     "Calculate the two-sided Wilcoxon signed-rank statistic with average ranks for ties and zero differences removed.",
   execute: calculateWilcoxonSignedRank,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "statistics/wilcoxon-signed-rank",
-  inputSchema: { type: "object" },
-  isOutput: (value): value is WilcoxonSignedRankOutput =>
-    isRecord(value) &&
-    typeof value.statistic === "number" &&
-    Number.isFinite(value.statistic),
-  outputSchema: { type: "object" },
+  inputSchema: {
+    additionalProperties: false,
+    properties: { first: numericDatasetSchema, second: numericDatasetSchema },
+    required: ["first", "second"],
+    type: "object",
+  },
+  outputSchema: {
+    additionalProperties: false,
+    properties: {
+      negativeRankSum: { minimum: 0, type: "number" },
+      nonzeroPairs: { minimum: 1, type: "integer" },
+      positiveRankSum: { minimum: 0, type: "number" },
+      statistic: { minimum: 0, type: "number" },
+    },
+    required: ["negativeRankSum", "nonzeroPairs", "positiveRankSum", "statistic"],
+    type: "object",
+  },
   ports: {
     inputs: [
       {
         id: "first",
         label: "First matched sample",
         required: true,
-        type: datasetNumberType,
+        valueType: { items: { type: "number" }, type: "list" },
       },
       {
         id: "second",
         label: "Second matched sample",
         required: true,
-        type: datasetNumberType,
+        valueType: { items: { type: "number" }, type: "list" },
       },
     ],
     outputs: [
@@ -107,7 +115,6 @@ export const wilcoxonSignedRankTool = defineTool<
         id: "statistic",
         label: "W statistic",
         path: ["statistic"],
-        type: numberFiniteType,
         valueType: { format: "wilcoxon-signed-rank-statistic", type: "number" },
       },
     ],

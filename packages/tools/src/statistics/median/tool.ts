@@ -1,9 +1,5 @@
 import { defineTool } from "../../core/definition.js";
 import {
-  datasetNumberType,
-  numberFiniteType,
-} from "../../core/semantic-type.js";
-import {
   invalidInput,
   toolSuccess,
   type ToolIssue,
@@ -103,13 +99,9 @@ export const medianTool = defineTool<MedianInput, MedianOutput>({
   contractVersion: 1,
   description: "Calculate the median of a finite numeric dataset.",
   execute: calculateMedian,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "statistics/median",
   inputSchema: medianInputSchema,
-  isOutput: (value): value is MedianOutput =>
-    isRecord(value) &&
-    typeof value.median === "number" &&
-    Number.isFinite(value.median),
   outputSchema: medianOutputSchema,
   ports: {
     inputs: [
@@ -117,14 +109,14 @@ export const medianTool = defineTool<MedianInput, MedianOutput>({
         id: "values",
         label: "Numeric dataset",
         required: true,
-        type: datasetNumberType,
+        valueType: { items: { type: "number" }, type: "list" },
       },
     ],
     outputs: [
       {
         id: "median",
         label: "Median",
-        type: numberFiniteType,
+        valueType: { type: "number" },
       },
     ],
   },

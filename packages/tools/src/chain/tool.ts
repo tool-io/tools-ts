@@ -1,8 +1,4 @@
 import type { ToolPortDefinition } from "../core/definition.js";
-import {
-  isToolSemanticType,
-  quantityLengthType,
-} from "../core/semantic-type.js";
 import { isToolValueType, type ToolValueType } from "../core/value-type.js";
 import type {
   ChainDocument,
@@ -48,14 +44,7 @@ const areValueTypesCompatible = (
 export const arePortTypesCompatible = (
   output: ToolPortDefinition,
   input: ToolPortDefinition,
-): boolean =>
-  output.valueType && input.valueType
-    ? areValueTypesCompatible(output.valueType, input.valueType)
-    : output.type === input.type ||
-      (output.type.startsWith(`${quantityLengthType}/`) &&
-        input.type === quantityLengthType) ||
-      (output.type === quantityLengthType &&
-        input.type.startsWith(`${quantityLengthType}/`));
+): boolean => areValueTypesCompatible(output.valueType, input.valueType);
 
 const isPortDefinition = (value: unknown): value is ToolPortDefinition =>
   isRecord(value) &&
@@ -63,8 +52,7 @@ const isPortDefinition = (value: unknown): value is ToolPortDefinition =>
   value.id.length > 0 &&
   typeof value.label === "string" &&
   value.label.length > 0 &&
-  isToolSemanticType(value.type) &&
-  (value.valueType === undefined || isToolValueType(value.valueType)) &&
+  isToolValueType(value.valueType) &&
   (value.path === undefined ||
     (Array.isArray(value.path) &&
       value.path.length > 0 &&
@@ -80,7 +68,6 @@ export const isChainToolDefinition = (
   typeof value.id === "string" &&
   typeof value.contractVersion === "number" &&
   typeof value.execute === "function" &&
-  typeof value.isOutput === "function" &&
   isRecord(value.ports) &&
   Array.isArray(value.ports.inputs) &&
   value.ports.inputs.every(isPortDefinition) &&
@@ -431,7 +418,7 @@ export const executeChain = async (
         nodes: executions,
         ok: false,
       };
-    if (!tool.isOutput(result.output) || !isJsonValue(result.output))
+    if (!isJsonValue(result.output))
       return {
         error: {
           code: "output_invalid",

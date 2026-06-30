@@ -32,14 +32,14 @@ describe("numeric dataset parser", () => {
     expect(parseFiniteNumberList("invalid")).toBeNull();
   });
 
-  it("publishes chainable semantic ports", () => {
+  it("publishes chainable value ports", () => {
     expect(numericDatasetParserTool).toMatchObject({
-      executionKind: "pure",
+      execution: { kind: "pure" },
       id: "parse/numeric-dataset",
       ports: {
         outputs: [
-          { id: "values", type: "dataset/number" },
-          { id: "normalized", type: "text/plain" },
+          { id: "values", valueType: { items: { type: "number" }, type: "list" } },
+          { id: "normalized", valueType: { format: "numeric-dataset", type: "string" } },
         ],
       },
     });

@@ -5,13 +5,10 @@ import {
   type ToolResult,
 } from "../../core/result.js";
 import {
-  datasetNumberType,
-  numberFiniteType,
-} from "../../core/semantic-type.js";
-import {
   averageRanks,
   finiteDataset,
   isRecord,
+  numericDatasetSchema,
   roundStatistic,
 } from "../input.js";
 
@@ -66,27 +63,37 @@ export const mannWhitneyUTool = defineTool<
   description:
     "Calculate the Mann-Whitney U statistic for two independent samples using average ranks for ties.",
   execute: calculateMannWhitneyU,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "statistics/mann-whitney-u",
-  inputSchema: { type: "object" },
-  isOutput: (value): value is MannWhitneyUOutput =>
-    isRecord(value) &&
-    typeof value.statistic === "number" &&
-    Number.isFinite(value.statistic),
-  outputSchema: { type: "object" },
+  inputSchema: {
+    additionalProperties: false,
+    properties: { first: numericDatasetSchema, second: numericDatasetSchema },
+    required: ["first", "second"],
+    type: "object",
+  },
+  outputSchema: {
+    additionalProperties: false,
+    properties: {
+      firstU: { minimum: 0, type: "number" },
+      secondU: { minimum: 0, type: "number" },
+      statistic: { minimum: 0, type: "number" },
+    },
+    required: ["firstU", "secondU", "statistic"],
+    type: "object",
+  },
   ports: {
     inputs: [
       {
         id: "first",
         label: "First sample",
         required: true,
-        type: datasetNumberType,
+        valueType: { items: { type: "number" }, type: "list" },
       },
       {
         id: "second",
         label: "Second sample",
         required: true,
-        type: datasetNumberType,
+        valueType: { items: { type: "number" }, type: "list" },
       },
     ],
     outputs: [
@@ -94,7 +101,6 @@ export const mannWhitneyUTool = defineTool<
         id: "statistic",
         label: "U statistic",
         path: ["statistic"],
-        type: numberFiniteType,
         valueType: { format: "mann-whitney-u-statistic", type: "number" },
       },
     ],

@@ -11,6 +11,7 @@
   "sideEffects": false,
   "files": [
     "dist",
+    "catalog.generated.json",
     "LICENSE",
     "README.md"
   ],
@@ -23,17 +24,558 @@
       "types": "./dist/body-mass-index/index.d.ts",
       "import": "./dist/body-mass-index/index.js"
     },
+    "./catalog": "./catalog.generated.json",
+    "./chain": {
+      "types": "./dist/chain/index.d.ts",
+      "import": "./dist/chain/index.js"
+    },
+    "./compare": {
+      "types": "./dist/compare/index.d.ts",
+      "import": "./dist/compare/index.js"
+    },
+    "./convert/centimeters-to-meters": {
+      "types": "./dist/convert/centimeters-to-meters/index.d.ts",
+      "import": "./dist/convert/centimeters-to-meters/index.js"
+    },
+    "./convert/length": {
+      "types": "./dist/convert/length/index.d.ts",
+      "import": "./dist/convert/length/index.js"
+    },
     "./core": {
       "types": "./dist/core/index.d.ts",
       "import": "./dist/core/index.js"
+    },
+    "./dictionary": {
+      "types": "./dist/dictionary/index.d.ts",
+      "import": "./dist/dictionary/index.js"
+    },
+    "./flashcards": {
+      "types": "./dist/flashcards/index.d.ts",
+      "import": "./dist/flashcards/index.js"
     },
     "./parse/numeric-dataset": {
       "types": "./dist/parse/numeric-dataset/index.d.ts",
       "import": "./dist/parse/numeric-dataset/index.js"
     },
-    "./statistics/median": {
-      "types": "./dist/statistics/median/index.d.ts",
-      "import": "./dist/statistics/median/index.js"
+    "./registry": {
+      "types": "./dist/registry.d.ts",
+      "import": "./dist/registry.js"
+    },
+    "./size": {
+      "types": "./dist/size/index.d.ts",
+      "import": "./dist/size/index.js"
+    },
+    "./size/abaya-reconstruction": {
+      "types": "./dist/size/abaya-reconstruction/index.d.ts",
+      "import": "./dist/size/abaya-reconstruction/index.js"
+    },
+    "./size/anklet": {
+      "types": "./dist/size/anklet/index.d.ts",
+      "import": "./dist/size/anklet/index.js"
+    },
+    "./size/baby-clothing": {
+      "types": "./dist/size/baby-clothing/index.d.ts",
+      "import": "./dist/size/baby-clothing/index.js"
+    },
+    "./size/backpack": {
+      "types": "./dist/size/backpack/index.d.ts",
+      "import": "./dist/size/backpack/index.js"
+    },
+    "./size/bangle": {
+      "types": "./dist/size/bangle/index.d.ts",
+      "import": "./dist/size/bangle/index.js"
+    },
+    "./size/battery": {
+      "types": "./dist/size/battery/index.d.ts",
+      "import": "./dist/size/battery/index.js"
+    },
+    "./size/bed": {
+      "types": "./dist/size/bed/index.d.ts",
+      "import": "./dist/size/bed/index.js"
+    },
+    "./size/belt": {
+      "types": "./dist/size/belt/index.d.ts",
+      "import": "./dist/size/belt/index.js"
+    },
+    "./size/bicycle-frame": {
+      "types": "./dist/size/bicycle-frame/index.d.ts",
+      "import": "./dist/size/bicycle-frame/index.js"
+    },
+    "./size/blanket": {
+      "types": "./dist/size/blanket/index.d.ts",
+      "import": "./dist/size/blanket/index.js"
+    },
+    "./size/blazer": {
+      "types": "./dist/size/blazer/index.d.ts",
+      "import": "./dist/size/blazer/index.js"
+    },
+    "./size/bodice-reconstruction": {
+      "types": "./dist/size/bodice-reconstruction/index.d.ts",
+      "import": "./dist/size/bodice-reconstruction/index.js"
+    },
+    "./size/book-format": {
+      "types": "./dist/size/book-format/index.d.ts",
+      "import": "./dist/size/book-format/index.js"
+    },
+    "./size/boot": {
+      "types": "./dist/size/boot/index.d.ts",
+      "import": "./dist/size/boot/index.js"
+    },
+    "./size/bow-tie": {
+      "types": "./dist/size/bow-tie/index.d.ts",
+      "import": "./dist/size/bow-tie/index.js"
+    },
+    "./size/bra": {
+      "types": "./dist/size/bra/index.d.ts",
+      "import": "./dist/size/bra/index.js"
+    },
+    "./size/bracelet": {
+      "types": "./dist/size/bracelet/index.d.ts",
+      "import": "./dist/size/bracelet/index.js"
+    },
+    "./size/breeches-reconstruction": {
+      "types": "./dist/size/breeches-reconstruction/index.d.ts",
+      "import": "./dist/size/breeches-reconstruction/index.js"
+    },
+    "./size/bustle-reconstruction": {
+      "types": "./dist/size/bustle-reconstruction/index.d.ts",
+      "import": "./dist/size/bustle-reconstruction/index.js"
+    },
+    "./size/cap": {
+      "types": "./dist/size/cap/index.d.ts",
+      "import": "./dist/size/cap/index.js"
+    },
+    "./size/chemise-reconstruction": {
+      "types": "./dist/size/chemise-reconstruction/index.d.ts",
+      "import": "./dist/size/chemise-reconstruction/index.js"
+    },
+    "./size/child-car-seat": {
+      "types": "./dist/size/child-car-seat/index.d.ts",
+      "import": "./dist/size/child-car-seat/index.js"
+    },
+    "./size/children-clothing": {
+      "types": "./dist/size/children-clothing/index.d.ts",
+      "import": "./dist/size/children-clothing/index.js"
+    },
+    "./size/chiton-reconstruction": {
+      "types": "./dist/size/chiton-reconstruction/index.d.ts",
+      "import": "./dist/size/chiton-reconstruction/index.js"
+    },
+    "./size/choker": {
+      "types": "./dist/size/choker/index.d.ts",
+      "import": "./dist/size/choker/index.js"
+    },
+    "./size/climbing-harness": {
+      "types": "./dist/size/climbing-harness/index.d.ts",
+      "import": "./dist/size/climbing-harness/index.js"
+    },
+    "./size/climbing-shoe": {
+      "types": "./dist/size/climbing-shoe/index.d.ts",
+      "import": "./dist/size/climbing-shoe/index.js"
+    },
+    "./size/cloak-reconstruction": {
+      "types": "./dist/size/cloak-reconstruction/index.d.ts",
+      "import": "./dist/size/cloak-reconstruction/index.js"
+    },
+    "./size/coat": {
+      "types": "./dist/size/coat/index.d.ts",
+      "import": "./dist/size/coat/index.js"
+    },
+    "./size/collar": {
+      "types": "./dist/size/collar/index.d.ts",
+      "import": "./dist/size/collar/index.js"
+    },
+    "./size/compression-garment": {
+      "types": "./dist/size/compression-garment/index.d.ts",
+      "import": "./dist/size/compression-garment/index.js"
+    },
+    "./size/corset-reconstruction": {
+      "types": "./dist/size/corset-reconstruction/index.d.ts",
+      "import": "./dist/size/corset-reconstruction/index.js"
+    },
+    "./size/crinoline-reconstruction": {
+      "types": "./dist/size/crinoline-reconstruction/index.d.ts",
+      "import": "./dist/size/crinoline-reconstruction/index.js"
+    },
+    "./size/curtain": {
+      "types": "./dist/size/curtain/index.d.ts",
+      "import": "./dist/size/curtain/index.js"
+    },
+    "./size/dhoti-reconstruction": {
+      "types": "./dist/size/dhoti-reconstruction/index.d.ts",
+      "import": "./dist/size/dhoti-reconstruction/index.js"
+    },
+    "./size/dog-coat": {
+      "types": "./dist/size/dog-coat/index.d.ts",
+      "import": "./dist/size/dog-coat/index.js"
+    },
+    "./size/dog-collar": {
+      "types": "./dist/size/dog-collar/index.d.ts",
+      "import": "./dist/size/dog-collar/index.js"
+    },
+    "./size/dog-harness": {
+      "types": "./dist/size/dog-harness/index.d.ts",
+      "import": "./dist/size/dog-harness/index.js"
+    },
+    "./size/dog-shoe": {
+      "types": "./dist/size/dog-shoe/index.d.ts",
+      "import": "./dist/size/dog-shoe/index.js"
+    },
+    "./size/doublet-reconstruction": {
+      "types": "./dist/size/doublet-reconstruction/index.d.ts",
+      "import": "./dist/size/doublet-reconstruction/index.js"
+    },
+    "./size/dress": {
+      "types": "./dist/size/dress/index.d.ts",
+      "import": "./dist/size/dress/index.js"
+    },
+    "./size/dress-shirt": {
+      "types": "./dist/size/dress-shirt/index.d.ts",
+      "import": "./dist/size/dress-shirt/index.js"
+    },
+    "./size/drill-bit": {
+      "types": "./dist/size/drill-bit/index.d.ts",
+      "import": "./dist/size/drill-bit/index.js"
+    },
+    "./size/duvet": {
+      "types": "./dist/size/duvet/index.d.ts",
+      "import": "./dist/size/duvet/index.js"
+    },
+    "./size/duvet-cover": {
+      "types": "./dist/size/duvet-cover/index.d.ts",
+      "import": "./dist/size/duvet-cover/index.js"
+    },
+    "./size/electrical-connector": {
+      "types": "./dist/size/electrical-connector/index.d.ts",
+      "import": "./dist/size/electrical-connector/index.js"
+    },
+    "./size/envelope": {
+      "types": "./dist/size/envelope/index.d.ts",
+      "import": "./dist/size/envelope/index.js"
+    },
+    "./size/fitted-sheet": {
+      "types": "./dist/size/fitted-sheet/index.d.ts",
+      "import": "./dist/size/fitted-sheet/index.js"
+    },
+    "./size/flat-sheet": {
+      "types": "./dist/size/flat-sheet/index.d.ts",
+      "import": "./dist/size/flat-sheet/index.js"
+    },
+    "./size/frock-coat-reconstruction": {
+      "types": "./dist/size/frock-coat-reconstruction/index.d.ts",
+      "import": "./dist/size/frock-coat-reconstruction/index.js"
+    },
+    "./size/gambeson-reconstruction": {
+      "types": "./dist/size/gambeson-reconstruction/index.d.ts",
+      "import": "./dist/size/gambeson-reconstruction/index.js"
+    },
+    "./size/glasses": {
+      "types": "./dist/size/glasses/index.d.ts",
+      "import": "./dist/size/glasses/index.js"
+    },
+    "./size/gloves": {
+      "types": "./dist/size/gloves/index.d.ts",
+      "import": "./dist/size/gloves/index.js"
+    },
+    "./size/golf-club": {
+      "types": "./dist/size/golf-club/index.d.ts",
+      "import": "./dist/size/golf-club/index.js"
+    },
+    "./size/hakama-reconstruction": {
+      "types": "./dist/size/hakama-reconstruction/index.d.ts",
+      "import": "./dist/size/hakama-reconstruction/index.js"
+    },
+    "./size/hanbok-reconstruction": {
+      "types": "./dist/size/hanbok-reconstruction/index.d.ts",
+      "import": "./dist/size/hanbok-reconstruction/index.js"
+    },
+    "./size/hanfu-reconstruction": {
+      "types": "./dist/size/hanfu-reconstruction/index.d.ts",
+      "import": "./dist/size/hanfu-reconstruction/index.js"
+    },
+    "./size/hat": {
+      "types": "./dist/size/hat/index.d.ts",
+      "import": "./dist/size/hat/index.js"
+    },
+    "./size/headphones": {
+      "types": "./dist/size/headphones/index.d.ts",
+      "import": "./dist/size/headphones/index.js"
+    },
+    "./size/helmet": {
+      "types": "./dist/size/helmet/index.d.ts",
+      "import": "./dist/size/helmet/index.js"
+    },
+    "./size/hiking-boot": {
+      "types": "./dist/size/hiking-boot/index.d.ts",
+      "import": "./dist/size/hiking-boot/index.js"
+    },
+    "./size/hoop-skirt-reconstruction": {
+      "types": "./dist/size/hoop-skirt-reconstruction/index.d.ts",
+      "import": "./dist/size/hoop-skirt-reconstruction/index.js"
+    },
+    "./size/horse-blanket": {
+      "types": "./dist/size/horse-blanket/index.d.ts",
+      "import": "./dist/size/horse-blanket/index.js"
+    },
+    "./size/ice-skate": {
+      "types": "./dist/size/ice-skate/index.d.ts",
+      "import": "./dist/size/ice-skate/index.js"
+    },
+    "./size/jacket": {
+      "types": "./dist/size/jacket/index.d.ts",
+      "import": "./dist/size/jacket/index.js"
+    },
+    "./size/jeans": {
+      "types": "./dist/size/jeans/index.d.ts",
+      "import": "./dist/size/jeans/index.js"
+    },
+    "./size/kaftan-reconstruction": {
+      "types": "./dist/size/kaftan-reconstruction/index.d.ts",
+      "import": "./dist/size/kaftan-reconstruction/index.js"
+    },
+    "./size/kilt-reconstruction": {
+      "types": "./dist/size/kilt-reconstruction/index.d.ts",
+      "import": "./dist/size/kilt-reconstruction/index.js"
+    },
+    "./size/kimono-reconstruction": {
+      "types": "./dist/size/kimono-reconstruction/index.d.ts",
+      "import": "./dist/size/kimono-reconstruction/index.js"
+    },
+    "./size/kurta-reconstruction": {
+      "types": "./dist/size/kurta-reconstruction/index.d.ts",
+      "import": "./dist/size/kurta-reconstruction/index.js"
+    },
+    "./size/leggings": {
+      "types": "./dist/size/leggings/index.d.ts",
+      "import": "./dist/size/leggings/index.js"
+    },
+    "./size/life-jacket": {
+      "types": "./dist/size/life-jacket/index.d.ts",
+      "import": "./dist/size/life-jacket/index.js"
+    },
+    "./size/luggage": {
+      "types": "./dist/size/luggage/index.d.ts",
+      "import": "./dist/size/luggage/index.js"
+    },
+    "./size/lumber": {
+      "types": "./dist/size/lumber/index.d.ts",
+      "import": "./dist/size/lumber/index.js"
+    },
+    "./size/maternity-clothing": {
+      "types": "./dist/size/maternity-clothing/index.d.ts",
+      "import": "./dist/size/maternity-clothing/index.js"
+    },
+    "./size/mattress": {
+      "types": "./dist/size/mattress/index.d.ts",
+      "import": "./dist/size/mattress/index.js"
+    },
+    "./size/necklace": {
+      "types": "./dist/size/necklace/index.d.ts",
+      "import": "./dist/size/necklace/index.js"
+    },
+    "./size/nut": {
+      "types": "./dist/size/nut/index.d.ts",
+      "import": "./dist/size/nut/index.js"
+    },
+    "./size/overalls": {
+      "types": "./dist/size/overalls/index.d.ts",
+      "import": "./dist/size/overalls/index.js"
+    },
+    "./size/pants": {
+      "types": "./dist/size/pants/index.d.ts",
+      "import": "./dist/size/pants/index.js"
+    },
+    "./size/paper": {
+      "types": "./dist/size/paper/index.d.ts",
+      "import": "./dist/size/paper/index.js"
+    },
+    "./size/peplos-reconstruction": {
+      "types": "./dist/size/peplos-reconstruction/index.d.ts",
+      "import": "./dist/size/peplos-reconstruction/index.js"
+    },
+    "./size/petticoat-reconstruction": {
+      "types": "./dist/size/petticoat-reconstruction/index.d.ts",
+      "import": "./dist/size/petticoat-reconstruction/index.js"
+    },
+    "./size/photograph": {
+      "types": "./dist/size/photograph/index.d.ts",
+      "import": "./dist/size/photograph/index.js"
+    },
+    "./size/picture-frame": {
+      "types": "./dist/size/picture-frame/index.d.ts",
+      "import": "./dist/size/picture-frame/index.js"
+    },
+    "./size/pillow": {
+      "types": "./dist/size/pillow/index.d.ts",
+      "import": "./dist/size/pillow/index.js"
+    },
+    "./size/pillowcase": {
+      "types": "./dist/size/pillowcase/index.d.ts",
+      "import": "./dist/size/pillowcase/index.js"
+    },
+    "./size/pipe": {
+      "types": "./dist/size/pipe/index.d.ts",
+      "import": "./dist/size/pipe/index.js"
+    },
+    "./size/poncho-reconstruction": {
+      "types": "./dist/size/poncho-reconstruction/index.d.ts",
+      "import": "./dist/size/poncho-reconstruction/index.js"
+    },
+    "./size/protective-pad": {
+      "types": "./dist/size/protective-pad/index.d.ts",
+      "import": "./dist/size/protective-pad/index.js"
+    },
+    "./size/qipao-reconstruction": {
+      "types": "./dist/size/qipao-reconstruction/index.d.ts",
+      "import": "./dist/size/qipao-reconstruction/index.js"
+    },
+    "./size/racket-grip": {
+      "types": "./dist/size/racket-grip/index.d.ts",
+      "import": "./dist/size/racket-grip/index.js"
+    },
+    "./size/ring": {
+      "types": "./dist/size/ring/index.d.ts",
+      "import": "./dist/size/ring/index.js"
+    },
+    "./size/roller-skate": {
+      "types": "./dist/size/roller-skate/index.d.ts",
+      "import": "./dist/size/roller-skate/index.js"
+    },
+    "./size/rug": {
+      "types": "./dist/size/rug/index.d.ts",
+      "import": "./dist/size/rug/index.js"
+    },
+    "./size/saddle": {
+      "types": "./dist/size/saddle/index.d.ts",
+      "import": "./dist/size/saddle/index.js"
+    },
+    "./size/sari-reconstruction": {
+      "types": "./dist/size/sari-reconstruction/index.d.ts",
+      "import": "./dist/size/sari-reconstruction/index.js"
+    },
+    "./size/screw": {
+      "types": "./dist/size/screw/index.d.ts",
+      "import": "./dist/size/screw/index.js"
+    },
+    "./size/shawl": {
+      "types": "./dist/size/shawl/index.d.ts",
+      "import": "./dist/size/shawl/index.js"
+    },
+    "./size/shoe": {
+      "types": "./dist/size/shoe/index.d.ts",
+      "import": "./dist/size/shoe/index.js"
+    },
+    "./size/shorts": {
+      "types": "./dist/size/shorts/index.d.ts",
+      "import": "./dist/size/shorts/index.js"
+    },
+    "./size/ski": {
+      "types": "./dist/size/ski/index.d.ts",
+      "import": "./dist/size/ski/index.js"
+    },
+    "./size/ski-boot": {
+      "types": "./dist/size/ski-boot/index.d.ts",
+      "import": "./dist/size/ski-boot/index.js"
+    },
+    "./size/skirt": {
+      "types": "./dist/size/skirt/index.d.ts",
+      "import": "./dist/size/skirt/index.js"
+    },
+    "./size/smart-ring": {
+      "types": "./dist/size/smart-ring/index.d.ts",
+      "import": "./dist/size/smart-ring/index.js"
+    },
+    "./size/smartwatch": {
+      "types": "./dist/size/smartwatch/index.d.ts",
+      "import": "./dist/size/smartwatch/index.js"
+    },
+    "./size/snowboard": {
+      "types": "./dist/size/snowboard/index.d.ts",
+      "import": "./dist/size/snowboard/index.js"
+    },
+    "./size/snowshoe": {
+      "types": "./dist/size/snowshoe/index.d.ts",
+      "import": "./dist/size/snowshoe/index.js"
+    },
+    "./size/socks": {
+      "types": "./dist/size/socks/index.d.ts",
+      "import": "./dist/size/socks/index.js"
+    },
+    "./size/stays-reconstruction": {
+      "types": "./dist/size/stays-reconstruction/index.d.ts",
+      "import": "./dist/size/stays-reconstruction/index.js"
+    },
+    "./size/suit-jacket": {
+      "types": "./dist/size/suit-jacket/index.d.ts",
+      "import": "./dist/size/suit-jacket/index.js"
+    },
+    "./size/sunglasses": {
+      "types": "./dist/size/sunglasses/index.d.ts",
+      "import": "./dist/size/sunglasses/index.js"
+    },
+    "./size/surfboard": {
+      "types": "./dist/size/surfboard/index.d.ts",
+      "import": "./dist/size/surfboard/index.js"
+    },
+    "./size/sweater": {
+      "types": "./dist/size/sweater/index.d.ts",
+      "import": "./dist/size/sweater/index.js"
+    },
+    "./size/swimwear": {
+      "types": "./dist/size/swimwear/index.d.ts",
+      "import": "./dist/size/swimwear/index.js"
+    },
+    "./size/t-shirt": {
+      "types": "./dist/size/t-shirt/index.d.ts",
+      "import": "./dist/size/t-shirt/index.js"
+    },
+    "./size/tablecloth": {
+      "types": "./dist/size/tablecloth/index.d.ts",
+      "import": "./dist/size/tablecloth/index.js"
+    },
+    "./size/thobe-reconstruction": {
+      "types": "./dist/size/thobe-reconstruction/index.d.ts",
+      "import": "./dist/size/thobe-reconstruction/index.js"
+    },
+    "./size/tie": {
+      "types": "./dist/size/tie/index.d.ts",
+      "import": "./dist/size/tie/index.js"
+    },
+    "./size/tire-wheel": {
+      "types": "./dist/size/tire-wheel/index.d.ts",
+      "import": "./dist/size/tire-wheel/index.js"
+    },
+    "./size/toga-reconstruction": {
+      "types": "./dist/size/toga-reconstruction/index.d.ts",
+      "import": "./dist/size/toga-reconstruction/index.js"
+    },
+    "./size/underwear": {
+      "types": "./dist/size/underwear/index.d.ts",
+      "import": "./dist/size/underwear/index.js"
+    },
+    "./size/waistcoat-reconstruction": {
+      "types": "./dist/size/waistcoat-reconstruction/index.d.ts",
+      "import": "./dist/size/waistcoat-reconstruction/index.js"
+    },
+    "./size/watch-band": {
+      "types": "./dist/size/watch-band/index.d.ts",
+      "import": "./dist/size/watch-band/index.js"
+    },
+    "./size/watch-case": {
+      "types": "./dist/size/watch-case/index.d.ts",
+      "import": "./dist/size/watch-case/index.js"
+    },
+    "./size/wetsuit": {
+      "types": "./dist/size/wetsuit/index.d.ts",
+      "import": "./dist/size/wetsuit/index.js"
+    },
+    "./size/wire-gauge": {
+      "types": "./dist/size/wire-gauge/index.d.ts",
+      "import": "./dist/size/wire-gauge/index.js"
+    },
+    "./size/yukata-reconstruction": {
+      "types": "./dist/size/yukata-reconstruction/index.d.ts",
+      "import": "./dist/size/yukata-reconstruction/index.js"
     },
     "./statistics/benjamini-hochberg": {
       "types": "./dist/statistics/benjamini-hochberg/index.d.ts",
@@ -63,6 +605,10 @@
       "types": "./dist/statistics/mann-whitney-u/index.d.ts",
       "import": "./dist/statistics/mann-whitney-u/index.js"
     },
+    "./statistics/median": {
+      "types": "./dist/statistics/median/index.d.ts",
+      "import": "./dist/statistics/median/index.js"
+    },
     "./statistics/paired-t-test": {
       "types": "./dist/statistics/paired-t-test/index.d.ts",
       "import": "./dist/statistics/paired-t-test/index.js"
@@ -75,102 +621,6 @@
       "types": "./dist/statistics/wilcoxon-signed-rank/index.d.ts",
       "import": "./dist/statistics/wilcoxon-signed-rank/index.js"
     },
-    "./compare": {
-      "types": "./dist/compare/index.d.ts",
-      "import": "./dist/compare/index.js"
-    },
-    "./convert/centimeters-to-meters": {
-      "types": "./dist/convert/centimeters-to-meters/index.d.ts",
-      "import": "./dist/convert/centimeters-to-meters/index.js"
-    },
-    "./convert/length": {
-      "types": "./dist/convert/length/index.d.ts",
-      "import": "./dist/convert/length/index.js"
-    },
-    "./chain": {
-      "types": "./dist/chain/index.d.ts",
-      "import": "./dist/chain/index.js"
-    },
-    "./size": {
-      "types": "./dist/size/index.d.ts",
-      "import": "./dist/size/index.js"
-    },
-    "./size/bed": {
-      "types": "./dist/size/bed/index.d.ts",
-      "import": "./dist/size/bed/index.js"
-    },
-    "./size/belt": {
-      "types": "./dist/size/belt/index.d.ts",
-      "import": "./dist/size/belt/index.js"
-    },
-    "./size/collar": {
-      "types": "./dist/size/collar/index.d.ts",
-      "import": "./dist/size/collar/index.js"
-    },
-    "./size/dress": {
-      "types": "./dist/size/dress/index.d.ts",
-      "import": "./dist/size/dress/index.js"
-    },
-    "./size/dress-shirt": {
-      "types": "./dist/size/dress-shirt/index.d.ts",
-      "import": "./dist/size/dress-shirt/index.js"
-    },
-    "./size/gloves": {
-      "types": "./dist/size/gloves/index.d.ts",
-      "import": "./dist/size/gloves/index.js"
-    },
-    "./size/pants": {
-      "types": "./dist/size/pants/index.d.ts",
-      "import": "./dist/size/pants/index.js"
-    },
-    "./size/ring": {
-      "types": "./dist/size/ring/index.d.ts",
-      "import": "./dist/size/ring/index.js"
-    },
-    "./size/shawl": {
-      "types": "./dist/size/shawl/index.d.ts",
-      "import": "./dist/size/shawl/index.js"
-    },
-    "./size/smart-ring": {
-      "types": "./dist/size/smart-ring/index.d.ts",
-      "import": "./dist/size/smart-ring/index.js"
-    },
-    "./size/socks": {
-      "types": "./dist/size/socks/index.d.ts",
-      "import": "./dist/size/socks/index.js"
-    },
-    "./size/suit-jacket": {
-      "types": "./dist/size/suit-jacket/index.d.ts",
-      "import": "./dist/size/suit-jacket/index.js"
-    },
-    "./size/sweater": {
-      "types": "./dist/size/sweater/index.d.ts",
-      "import": "./dist/size/sweater/index.js"
-    },
-    "./size/t-shirt": {
-      "types": "./dist/size/t-shirt/index.d.ts",
-      "import": "./dist/size/t-shirt/index.js"
-    },
-    "./size/watch-band": {
-      "types": "./dist/size/watch-band/index.d.ts",
-      "import": "./dist/size/watch-band/index.js"
-    },
-    "./size/*": {
-      "types": "./dist/size/*/index.d.ts",
-      "import": "./dist/size/*/index.js"
-    },
-    "./size/shoe": {
-      "types": "./dist/size/shoe/index.d.ts",
-      "import": "./dist/size/shoe/index.js"
-    },
-    "./flashcards": {
-      "types": "./dist/flashcards/index.d.ts",
-      "import": "./dist/flashcards/index.js"
-    },
-    "./dictionary": {
-      "types": "./dist/dictionary/index.d.ts",
-      "import": "./dist/dictionary/index.js"
-    },
     "./weather": {
       "types": "./dist/weather/index.d.ts",
       "import": "./dist/weather/index.js"
@@ -178,16 +628,15 @@
     "./word-relations": {
       "types": "./dist/word-relations/index.d.ts",
       "import": "./dist/word-relations/index.js"
-    },
-    "./registry": {
-      "types": "./dist/registry.d.ts",
-      "import": "./dist/registry.js"
     }
   },
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "node ../../scripts/generate-structure.mjs && tsc -p tsconfig.build.json && node ../../scripts/generate-catalog.mjs",
     "check": "tsc -p tsconfig.json --noEmit",
-    "unittest": "vitest run"
+    "check:generated": "node ../../scripts/generate-structure.mjs --check && tsc -p tsconfig.build.json && node ../../scripts/generate-catalog.mjs --check",
+    "generate": "node ../../scripts/generate-structure.mjs",
+    "unittest": "vitest run",
+    "validate": "pnpm build && node ../../scripts/validate-package.mjs"
   },
   "dependencies": {
     "ts-fsrs": "5.4.1"

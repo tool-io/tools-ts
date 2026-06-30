@@ -4,8 +4,12 @@ import {
   toolSuccess,
   type ToolResult,
 } from "../../core/result.js";
-import { datasetNumberType } from "../../core/semantic-type.js";
-import { isRecord, pValues, roundStatistic } from "../input.js";
+import {
+  isRecord,
+  probabilityDatasetSchema,
+  pValues,
+  roundStatistic,
+} from "../input.js";
 
 export type HolmBonferroniInput = {
   readonly pValues: readonly number[] | number | string;
@@ -55,19 +59,31 @@ export const holmBonferroniTool = defineTool<
   description:
     "Adjust a family of p-values using the step-down Holm-Bonferroni procedure.",
   execute: calculateHolmBonferroni,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "statistics/holm-bonferroni",
-  inputSchema: { type: "object" },
-  isOutput: (value): value is HolmBonferroniOutput =>
-    isRecord(value) && Array.isArray(value.adjustedPValues),
-  outputSchema: { type: "object" },
+  inputSchema: {
+    additionalProperties: false,
+    properties: { pValues: probabilityDatasetSchema },
+    required: ["pValues"],
+    type: "object",
+  },
+  outputSchema: {
+    additionalProperties: false,
+    properties: {
+      adjustedPValues: {
+        items: { maximum: 1, minimum: 0, type: "number" },
+        type: "array",
+      },
+    },
+    required: ["adjustedPValues"],
+    type: "object",
+  },
   ports: {
     inputs: [
       {
         id: "pValues",
         label: "P-values",
         required: true,
-        type: datasetNumberType,
         valueType: {
           format: "probability",
           items: { format: "probability", type: "number" },
@@ -80,7 +96,6 @@ export const holmBonferroniTool = defineTool<
         id: "adjustedPValues",
         label: "Adjusted p-values",
         path: ["adjustedPValues"],
-        type: datasetNumberType,
         valueType: {
           format: "probability",
           items: { format: "probability", type: "number" },

@@ -11,3 +11,4 @@ export {
   type BedSizeMatch,
   type BedSizeOutput,
 } from "./tool.js";
+export { default } from "./tool.js";

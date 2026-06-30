@@ -5,10 +5,6 @@ import {
   type ToolIssue,
   type ToolResult,
 } from "../../core/result.js";
-import {
-  quantityLengthType,
-  textPlainType,
-} from "../../core/semantic-type.js";
 import { convertLengthByFactors } from "./calculation.js";
 import { isLengthUnit, lengthUnits } from "./factors.js";
 
@@ -100,7 +96,7 @@ export const lengthConversionTool = defineTool<
   contractVersion: 1,
   description: "Convert a finite value between supported length units.",
   execute: convertLength,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "convert/length",
   inputSchema: {
     additionalProperties: false,
@@ -112,11 +108,6 @@ export const lengthConversionTool = defineTool<
     required: ["value", "fromUnit", "toUnit"],
     type: "object",
   },
-  isOutput: (value): value is ConvertLengthOutput =>
-    isRecord(value) &&
-    typeof value.value === "number" &&
-    Number.isFinite(value.value) &&
-    isLengthUnit(value.unit),
   outputSchema: {
     additionalProperties: false,
     properties: {
@@ -132,21 +123,18 @@ export const lengthConversionTool = defineTool<
         id: "value",
         label: "Length",
         required: true,
-        type: quantityLengthType,
         valueType: { format: "length", type: "number" },
       },
       {
         id: "fromUnit",
         label: "From unit",
         required: true,
-        type: textPlainType,
         valueType: { format: "length-unit", type: "string" },
       },
       {
         id: "toUnit",
         label: "To unit",
         required: true,
-        type: textPlainType,
         valueType: { format: "length-unit", type: "string" },
       },
     ],
@@ -155,7 +143,6 @@ export const lengthConversionTool = defineTool<
         id: "value",
         label: "Converted length",
         path: ["value"],
-        type: quantityLengthType,
         valueType: { format: "length", type: "number" },
       },
     ],

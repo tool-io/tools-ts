@@ -9,3 +9,4 @@ export {
   type ParseNumericDatasetInput,
   type ParseNumericDatasetOutput,
 } from "./tool.js";
+export { default } from "./tool.js";

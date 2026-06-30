@@ -258,7 +258,7 @@ export const bedSizeTool = defineTool<BedSizeInput, BedSizeOutput>({
   description:
     "Compare common bed and mattress names through nominal width and length across major regional markets.",
   execute: compareBedSizes,
-  executionKind: "pure",
+  execution: { kind: "pure" },
   id: "size/bed",
   inputSchema: {
     additionalProperties: false,
@@ -269,16 +269,28 @@ export const bedSizeTool = defineTool<BedSizeInput, BedSizeOutput>({
     required: ["market", "size"],
     type: "object",
   },
-  isOutput: isBedSizeOutput,
   outputSchema: {
     additionalProperties: false,
     properties: {
-      input: { type: "object" },
-      matches: { type: "array" },
+      input: { additionalProperties: true, type: "object" },
+      matches: { items: { additionalProperties: true, type: "object" }, type: "array" },
       warning: { type: "string" },
     },
     required: ["input", "matches", "warning"],
     type: "object",
   },
+  ports: {
+    inputs: [
+      { id: "market", label: "Market", required: true, valueType: { format: "market", type: "string" } },
+      { id: "size", label: "Bed size", required: true, valueType: { format: "bed-size", type: "string" } },
+    ],
+    outputs: [
+      { id: "input", label: "Selected bed", valueType: { type: "object" } },
+      { id: "matches", label: "Matching sizes", valueType: { items: { type: "object" }, type: "list" } },
+      { id: "warning", label: "Sizing warning", valueType: { format: "warning", type: "string" } },
+    ],
+  },
   title: "Bed Size Comparison",
 });
+
+export default bedSizeTool;

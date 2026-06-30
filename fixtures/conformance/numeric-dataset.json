@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "tool": { "id": "parse/numeric-dataset", "contractVersion": 1 },
+  "cases": [
+    {
+      "name": "normalizes comma-separated values",
+      "input": { "value": "1, 2, 3" },
+      "expected": {
+        "ok": true,
+        "output": { "normalized": "1,2,3", "values": [1, 2, 3] }
+      }
+    },
+    {
+      "name": "rejects an empty entry by default",
+      "input": { "value": "1,,3" },
+      "expected": {
+        "ok": false,
+        "errorCode": "invalid_input",
+        "issueCodes": ["empty_entry"]
+      }
+    }
+  ]
+}
