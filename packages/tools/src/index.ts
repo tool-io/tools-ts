@@ -16,3 +16,5 @@ export {
 export * from "./core/value-type.js";
 export * from "./core/catalog.js";
 export * from "./core/contract.js";
+export * from "./core/limits.js";
+export * from "./core/random.js";

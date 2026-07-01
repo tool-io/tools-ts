@@ -1,4 +1,6 @@
-import { defineTool } from "../../core/definition.js";
+import { defineTool, type ToolExecutionContext } from "../../core/definition.js";
+import { resourceLimitIssue, toolResourceLimits } from "../../core/limits.js";
+import { resolveRandom } from "../../core/random.js";
 import {
   invalidInput,
   toolSuccess,
@@ -41,16 +43,9 @@ const estimator = (
 ): ((values: readonly number[]) => number) =>
   statistic === "median" ? median : mean;
 
-const createRandom = (seed: number): (() => number) => {
-  let state = seed >>> 0;
-  return () => {
-    state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
-    return state / 4294967296;
-  };
-};
-
 export const calculateBootstrapStandardError = (
   input: unknown,
+  context?: ToolExecutionContext,
 ): ToolResult<BootstrapStandardErrorOutput> => {
   if (!isRecord(input)) {
     return invalidInput([
@@ -66,6 +61,11 @@ export const calculateBootstrapStandardError = (
   const resamples = input.resamples ?? 1000;
   const seed = input.seed ?? 2026;
   const statistic = input.statistic ?? "mean";
+  const limitIssues = [
+    resourceLimitIssue("samples", values?.length ?? 0, "values"),
+    resourceLimitIssue("iterations", Number(resamples), "resamples"),
+  ].filter((issue) => issue !== undefined);
+  if (limitIssues.length > 0) return invalidInput(limitIssues);
   if (
     !values ||
     values.length < 2 ||
@@ -85,7 +85,7 @@ export const calculateBootstrapStandardError = (
   }
 
   const summarize = estimator(statistic);
-  const random = createRandom(seed as number);
+  const random = resolveRandom(input.seed === undefined ? undefined : (seed as number), context);
   const estimates: number[] = [];
   for (let iteration = 0; iteration < (resamples as number); iteration += 1) {
     const sample = Array.from(
@@ -124,7 +124,7 @@ export const bootstrapStandardErrorTool = defineTool<
   inputSchema: {
     additionalProperties: false,
     properties: {
-      resamples: { default: 1000, minimum: 2, type: "integer" },
+      resamples: { default: 1000, maximum: toolResourceLimits.iterations, minimum: 2, type: "integer" },
       seed: { default: 2026, type: "integer" },
       statistic: { default: "mean", enum: ["mean", "median"], type: "string" },
       values: numericDatasetSchema,

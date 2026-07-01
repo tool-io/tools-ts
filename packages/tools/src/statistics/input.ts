@@ -1,10 +1,11 @@
 import { parseNumericDataset } from "../parse/numeric-dataset/tool.js";
+import { toolResourceLimits } from "../core/limits.js";
 
 export const numericDatasetSchema = {
   anyOf: [
-    { items: { type: "number" }, minItems: 1, type: "array" },
+    { items: { type: "number" }, maxItems: toolResourceLimits.samples, minItems: 1, type: "array" },
     { type: "number" },
-    { minLength: 1, type: "string" },
+    { maxLength: toolResourceLimits.textCharacters, minLength: 1, type: "string" },
   ],
 } as const;
 
@@ -12,11 +13,12 @@ export const probabilityDatasetSchema = {
   anyOf: [
     {
       items: { maximum: 1, minimum: 0, type: "number" },
+      maxItems: toolResourceLimits.samples,
       minItems: 1,
       type: "array",
     },
     { maximum: 1, minimum: 0, type: "number" },
-    { minLength: 1, type: "string" },
+    { maxLength: toolResourceLimits.textCharacters, minLength: 1, type: "string" },
   ],
 } as const;
 

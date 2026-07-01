@@ -1,4 +1,5 @@
 import { defineTool } from "../../core/definition.js";
+import { resourceLimitIssue, toolResourceLimits } from "../../core/limits.js";
 import {
   invalidInput,
   toolSuccess,
@@ -37,6 +38,7 @@ export const parseNumericDatasetInputSchema = {
       anyOf: [{ type: "string" }, { type: "number" }],
       description:
         "Finite numbers separated by commas, semicolons, whitespace, tabs, or new lines.",
+      maxLength: toolResourceLimits.textCharacters,
     },
   },
   required: ["value"],
@@ -103,6 +105,8 @@ export const parseNumericDataset = (
   if (issues.length > 0) return invalidInput(issues);
 
   const normalizedInput = String(value).trim();
+  const textLimit = resourceLimitIssue("textCharacters", normalizedInput.length, "value");
+  if (textLimit) return invalidInput([textLimit]);
   if (normalizedInput === "") {
     return invalidInput([
       {
@@ -133,6 +137,9 @@ export const parseNumericDataset = (
     .map((entry) => entry.trim())
     .filter((entry) => entry !== "");
   const values = entries.map(Number);
+
+  const sampleLimit = resourceLimitIssue("samples", values.length, "value");
+  if (sampleLimit) return invalidInput([sampleLimit]);
 
   if (values.length === 0 || !values.every(Number.isFinite)) {
     return invalidInput([
