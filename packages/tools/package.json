@@ -29,6 +29,10 @@
       "types": "./dist/chain/index.d.ts",
       "import": "./dist/chain/index.js"
     },
+    "./clustering/k-means-plus-plus": {
+      "types": "./dist/clustering/k-means-plus-plus/index.d.ts",
+      "import": "./dist/clustering/k-means-plus-plus/index.js"
+    },
     "./compare": {
       "types": "./dist/compare/index.d.ts",
       "import": "./dist/compare/index.js"
@@ -49,9 +53,25 @@
       "types": "./dist/dictionary/index.d.ts",
       "import": "./dist/dictionary/index.js"
     },
+    "./distance/mahalanobis": {
+      "types": "./dist/distance/mahalanobis/index.d.ts",
+      "import": "./dist/distance/mahalanobis/index.js"
+    },
+    "./distance/manhattan": {
+      "types": "./dist/distance/manhattan/index.d.ts",
+      "import": "./dist/distance/manhattan/index.js"
+    },
     "./flashcards": {
       "types": "./dist/flashcards/index.d.ts",
       "import": "./dist/flashcards/index.js"
+    },
+    "./math/logarithmic-mean": {
+      "types": "./dist/math/logarithmic-mean/index.d.ts",
+      "import": "./dist/math/logarithmic-mean/index.js"
+    },
+    "./optimization/stochastic-gradient-descent": {
+      "types": "./dist/optimization/stochastic-gradient-descent/index.d.ts",
+      "import": "./dist/optimization/stochastic-gradient-descent/index.js"
     },
     "./parse/numeric-dataset": {
       "types": "./dist/parse/numeric-dataset/index.d.ts",
@@ -589,6 +609,10 @@
       "types": "./dist/statistics/bootstrap-standard-error/index.d.ts",
       "import": "./dist/statistics/bootstrap-standard-error/index.js"
     },
+    "./statistics/f-statistic": {
+      "types": "./dist/statistics/f-statistic/index.d.ts",
+      "import": "./dist/statistics/f-statistic/index.js"
+    },
     "./statistics/holm-bonferroni": {
       "types": "./dist/statistics/holm-bonferroni/index.d.ts",
       "import": "./dist/statistics/holm-bonferroni/index.js"
@@ -605,6 +629,10 @@
       "types": "./dist/statistics/mann-whitney-u/index.d.ts",
       "import": "./dist/statistics/mann-whitney-u/index.js"
     },
+    "./statistics/margin-of-error": {
+      "types": "./dist/statistics/margin-of-error/index.d.ts",
+      "import": "./dist/statistics/margin-of-error/index.js"
+    },
     "./statistics/median": {
       "types": "./dist/statistics/median/index.d.ts",
       "import": "./dist/statistics/median/index.js"
@@ -613,6 +641,26 @@
       "types": "./dist/statistics/paired-t-test/index.d.ts",
       "import": "./dist/statistics/paired-t-test/index.js"
     },
+    "./statistics/sample-variance": {
+      "types": "./dist/statistics/sample-variance/index.d.ts",
+      "import": "./dist/statistics/sample-variance/index.js"
+    },
+    "./statistics/standard-error": {
+      "types": "./dist/statistics/standard-error/index.d.ts",
+      "import": "./dist/statistics/standard-error/index.js"
+    },
+    "./statistics/sum-of-squares": {
+      "types": "./dist/statistics/sum-of-squares/index.d.ts",
+      "import": "./dist/statistics/sum-of-squares/index.js"
+    },
+    "./statistics/t-interval": {
+      "types": "./dist/statistics/t-interval/index.d.ts",
+      "import": "./dist/statistics/t-interval/index.js"
+    },
+    "./statistics/t-score": {
+      "types": "./dist/statistics/t-score/index.d.ts",
+      "import": "./dist/statistics/t-score/index.js"
+    },
     "./statistics/two-sample-t-test": {
       "types": "./dist/statistics/two-sample-t-test/index.d.ts",
       "import": "./dist/statistics/two-sample-t-test/index.js"
@@ -620,6 +668,14 @@
     "./statistics/wilcoxon-signed-rank": {
       "types": "./dist/statistics/wilcoxon-signed-rank/index.d.ts",
       "import": "./dist/statistics/wilcoxon-signed-rank/index.js"
+    },
+    "./statistics/z-score": {
+      "types": "./dist/statistics/z-score/index.d.ts",
+      "import": "./dist/statistics/z-score/index.js"
+    },
+    "./text/shingling": {
+      "types": "./dist/text/shingling/index.d.ts",
+      "import": "./dist/text/shingling/index.js"
     },
     "./weather": {
       "types": "./dist/weather/index.d.ts",

@@ -2,9 +2,14 @@
   "schemaVersion": 1,
   "tools": [
     "body-mass-index",
+    "clustering/k-means-plus-plus",
     "compare",
     "convert/centimeters-to-meters",
     "convert/length",
+    "distance/mahalanobis",
+    "distance/manhattan",
+    "math/logarithmic-mean",
+    "optimization/stochastic-gradient-descent",
     "parse/numeric-dataset",
     "size",
     "size/abaya-reconstruction",
@@ -138,13 +143,22 @@
     "statistics/benjamini-hochberg",
     "statistics/bonferroni-correction",
     "statistics/bootstrap-standard-error",
+    "statistics/f-statistic",
     "statistics/holm-bonferroni",
     "statistics/jackknife-bias",
     "statistics/kruskal-wallis",
     "statistics/mann-whitney-u",
+    "statistics/margin-of-error",
     "statistics/median",
     "statistics/paired-t-test",
+    "statistics/sample-variance",
+    "statistics/standard-error",
+    "statistics/sum-of-squares",
+    "statistics/t-interval",
+    "statistics/t-score",
     "statistics/two-sample-t-test",
-    "statistics/wilcoxon-signed-rank"
+    "statistics/wilcoxon-signed-rank",
+    "statistics/z-score",
+    "text/shingling"
   ]
 }
