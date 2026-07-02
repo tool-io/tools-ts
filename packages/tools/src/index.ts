@@ -1,3 +1,5 @@
+export * from "./core/encoding.js";
+export * from "./core/date.js";
 export {
   defineTool,
   type ToolDefinition,
@@ -18,3 +20,4 @@ export * from "./core/catalog.js";
 export * from "./core/contract.js";
 export * from "./core/limits.js";
 export * from "./core/random.js";
+export * from "./core/simple.js";
