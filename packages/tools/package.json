@@ -20,6 +20,54 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./arithmetic/absolute-difference": {
+      "types": "./dist/arithmetic/absolute-difference/index.d.ts",
+      "import": "./dist/arithmetic/absolute-difference/index.js"
+    },
+    "./arithmetic/ceiling-to-multiple": {
+      "types": "./dist/arithmetic/ceiling-to-multiple/index.d.ts",
+      "import": "./dist/arithmetic/ceiling-to-multiple/index.js"
+    },
+    "./arithmetic/clamp": {
+      "types": "./dist/arithmetic/clamp/index.d.ts",
+      "import": "./dist/arithmetic/clamp/index.js"
+    },
+    "./arithmetic/cube": {
+      "types": "./dist/arithmetic/cube/index.d.ts",
+      "import": "./dist/arithmetic/cube/index.js"
+    },
+    "./arithmetic/divmod": {
+      "types": "./dist/arithmetic/divmod/index.d.ts",
+      "import": "./dist/arithmetic/divmod/index.js"
+    },
+    "./arithmetic/floor-to-multiple": {
+      "types": "./dist/arithmetic/floor-to-multiple/index.d.ts",
+      "import": "./dist/arithmetic/floor-to-multiple/index.js"
+    },
+    "./arithmetic/fractional-integer-parts": {
+      "types": "./dist/arithmetic/fractional-integer-parts/index.d.ts",
+      "import": "./dist/arithmetic/fractional-integer-parts/index.js"
+    },
+    "./arithmetic/modulo": {
+      "types": "./dist/arithmetic/modulo/index.d.ts",
+      "import": "./dist/arithmetic/modulo/index.js"
+    },
+    "./arithmetic/reciprocal": {
+      "types": "./dist/arithmetic/reciprocal/index.d.ts",
+      "import": "./dist/arithmetic/reciprocal/index.js"
+    },
+    "./arithmetic/round-to-multiple": {
+      "types": "./dist/arithmetic/round-to-multiple/index.d.ts",
+      "import": "./dist/arithmetic/round-to-multiple/index.js"
+    },
+    "./arithmetic/sign": {
+      "types": "./dist/arithmetic/sign/index.d.ts",
+      "import": "./dist/arithmetic/sign/index.js"
+    },
+    "./arithmetic/square": {
+      "types": "./dist/arithmetic/square/index.d.ts",
+      "import": "./dist/arithmetic/square/index.js"
+    },
     "./body-mass-index": {
       "types": "./dist/body-mass-index/index.d.ts",
       "import": "./dist/body-mass-index/index.js"
@@ -29,29 +77,173 @@
       "types": "./dist/chain/index.d.ts",
       "import": "./dist/chain/index.js"
     },
+    "./classification/accuracy": {
+      "types": "./dist/classification/accuracy/index.d.ts",
+      "import": "./dist/classification/accuracy/index.js"
+    },
+    "./classification/balanced-accuracy": {
+      "types": "./dist/classification/balanced-accuracy/index.d.ts",
+      "import": "./dist/classification/balanced-accuracy/index.js"
+    },
+    "./classification/f1-score": {
+      "types": "./dist/classification/f1-score/index.d.ts",
+      "import": "./dist/classification/f1-score/index.js"
+    },
+    "./classification/precision": {
+      "types": "./dist/classification/precision/index.d.ts",
+      "import": "./dist/classification/precision/index.js"
+    },
+    "./classification/recall": {
+      "types": "./dist/classification/recall/index.d.ts",
+      "import": "./dist/classification/recall/index.js"
+    },
+    "./classification/specificity": {
+      "types": "./dist/classification/specificity/index.d.ts",
+      "import": "./dist/classification/specificity/index.js"
+    },
     "./clustering/k-means-plus-plus": {
       "types": "./dist/clustering/k-means-plus-plus/index.d.ts",
       "import": "./dist/clustering/k-means-plus-plus/index.js"
+    },
+    "./combinatorics/combination-count": {
+      "types": "./dist/combinatorics/combination-count/index.d.ts",
+      "import": "./dist/combinatorics/combination-count/index.js"
+    },
+    "./combinatorics/double-factorial": {
+      "types": "./dist/combinatorics/double-factorial/index.d.ts",
+      "import": "./dist/combinatorics/double-factorial/index.js"
+    },
+    "./combinatorics/factorial": {
+      "types": "./dist/combinatorics/factorial/index.d.ts",
+      "import": "./dist/combinatorics/factorial/index.js"
+    },
+    "./combinatorics/permutation-count": {
+      "types": "./dist/combinatorics/permutation-count/index.d.ts",
+      "import": "./dist/combinatorics/permutation-count/index.js"
     },
     "./compare": {
       "types": "./dist/compare/index.d.ts",
       "import": "./dist/compare/index.js"
     },
+    "./convert/ascii-code-to-character": {
+      "types": "./dist/convert/ascii-code-to-character/index.d.ts",
+      "import": "./dist/convert/ascii-code-to-character/index.js"
+    },
+    "./convert/binary-to-decimal": {
+      "types": "./dist/convert/binary-to-decimal/index.d.ts",
+      "import": "./dist/convert/binary-to-decimal/index.js"
+    },
+    "./convert/bytes-to-hex": {
+      "types": "./dist/convert/bytes-to-hex/index.d.ts",
+      "import": "./dist/convert/bytes-to-hex/index.js"
+    },
+    "./convert/bytes-to-text": {
+      "types": "./dist/convert/bytes-to-text/index.d.ts",
+      "import": "./dist/convert/bytes-to-text/index.js"
+    },
     "./convert/centimeters-to-meters": {
       "types": "./dist/convert/centimeters-to-meters/index.d.ts",
       "import": "./dist/convert/centimeters-to-meters/index.js"
+    },
+    "./convert/character-to-ascii-code": {
+      "types": "./dist/convert/character-to-ascii-code/index.d.ts",
+      "import": "./dist/convert/character-to-ascii-code/index.js"
+    },
+    "./convert/character-to-code-point": {
+      "types": "./dist/convert/character-to-code-point/index.d.ts",
+      "import": "./dist/convert/character-to-code-point/index.js"
+    },
+    "./convert/code-point-to-character": {
+      "types": "./dist/convert/code-point-to-character/index.d.ts",
+      "import": "./dist/convert/code-point-to-character/index.js"
+    },
+    "./convert/decimal-to-binary": {
+      "types": "./dist/convert/decimal-to-binary/index.d.ts",
+      "import": "./dist/convert/decimal-to-binary/index.js"
+    },
+    "./convert/decimal-to-hexadecimal": {
+      "types": "./dist/convert/decimal-to-hexadecimal/index.d.ts",
+      "import": "./dist/convert/decimal-to-hexadecimal/index.js"
+    },
+    "./convert/decimal-to-octal": {
+      "types": "./dist/convert/decimal-to-octal/index.d.ts",
+      "import": "./dist/convert/decimal-to-octal/index.js"
+    },
+    "./convert/hex-to-bytes": {
+      "types": "./dist/convert/hex-to-bytes/index.d.ts",
+      "import": "./dist/convert/hex-to-bytes/index.js"
+    },
+    "./convert/hexadecimal-to-decimal": {
+      "types": "./dist/convert/hexadecimal-to-decimal/index.d.ts",
+      "import": "./dist/convert/hexadecimal-to-decimal/index.js"
+    },
+    "./convert/hours-minutes-to-decimal": {
+      "types": "./dist/convert/hours-minutes-to-decimal/index.d.ts",
+      "import": "./dist/convert/hours-minutes-to-decimal/index.js"
     },
     "./convert/length": {
       "types": "./dist/convert/length/index.d.ts",
       "import": "./dist/convert/length/index.js"
     },
+    "./convert/minutes-to-hours-minutes": {
+      "types": "./dist/convert/minutes-to-hours-minutes/index.d.ts",
+      "import": "./dist/convert/minutes-to-hours-minutes/index.js"
+    },
+    "./convert/octal-to-decimal": {
+      "types": "./dist/convert/octal-to-decimal/index.d.ts",
+      "import": "./dist/convert/octal-to-decimal/index.js"
+    },
+    "./convert/odds-to-probability": {
+      "types": "./dist/convert/odds-to-probability/index.d.ts",
+      "import": "./dist/convert/odds-to-probability/index.js"
+    },
+    "./convert/probability-to-odds": {
+      "types": "./dist/convert/probability-to-odds/index.d.ts",
+      "import": "./dist/convert/probability-to-odds/index.js"
+    },
+    "./convert/text-to-bytes": {
+      "types": "./dist/convert/text-to-bytes/index.d.ts",
+      "import": "./dist/convert/text-to-bytes/index.js"
+    },
     "./core": {
       "types": "./dist/core/index.d.ts",
       "import": "./dist/core/index.js"
     },
+    "./date/add-days": {
+      "types": "./dist/date/add-days/index.d.ts",
+      "import": "./dist/date/add-days/index.js"
+    },
+    "./date/day-of-year": {
+      "types": "./dist/date/day-of-year/index.d.ts",
+      "import": "./dist/date/day-of-year/index.js"
+    },
+    "./date/days-in-month": {
+      "types": "./dist/date/days-in-month/index.d.ts",
+      "import": "./dist/date/days-in-month/index.js"
+    },
+    "./date/difference": {
+      "types": "./dist/date/difference/index.d.ts",
+      "import": "./dist/date/difference/index.js"
+    },
+    "./date/iso-weekday": {
+      "types": "./dist/date/iso-weekday/index.d.ts",
+      "import": "./dist/date/iso-weekday/index.js"
+    },
+    "./date/leap-year-checker": {
+      "types": "./dist/date/leap-year-checker/index.d.ts",
+      "import": "./dist/date/leap-year-checker/index.js"
+    },
+    "./decode/url-component": {
+      "types": "./dist/decode/url-component/index.d.ts",
+      "import": "./dist/decode/url-component/index.js"
+    },
     "./dictionary": {
       "types": "./dist/dictionary/index.d.ts",
       "import": "./dist/dictionary/index.js"
+    },
+    "./distance/hamming": {
+      "types": "./dist/distance/hamming/index.d.ts",
+      "import": "./dist/distance/hamming/index.js"
     },
     "./distance/mahalanobis": {
       "types": "./dist/distance/mahalanobis/index.d.ts",
@@ -61,13 +253,269 @@
       "types": "./dist/distance/manhattan/index.d.ts",
       "import": "./dist/distance/manhattan/index.js"
     },
+    "./electricity/current": {
+      "types": "./dist/electricity/current/index.d.ts",
+      "import": "./dist/electricity/current/index.js"
+    },
+    "./electricity/power": {
+      "types": "./dist/electricity/power/index.d.ts",
+      "import": "./dist/electricity/power/index.js"
+    },
+    "./electricity/resistance": {
+      "types": "./dist/electricity/resistance/index.d.ts",
+      "import": "./dist/electricity/resistance/index.js"
+    },
+    "./electricity/voltage": {
+      "types": "./dist/electricity/voltage/index.d.ts",
+      "import": "./dist/electricity/voltage/index.js"
+    },
+    "./encode/url-component": {
+      "types": "./dist/encode/url-component/index.d.ts",
+      "import": "./dist/encode/url-component/index.js"
+    },
+    "./finance/annualized-return": {
+      "types": "./dist/finance/annualized-return/index.d.ts",
+      "import": "./dist/finance/annualized-return/index.js"
+    },
+    "./finance/break-even-units": {
+      "types": "./dist/finance/break-even-units/index.d.ts",
+      "import": "./dist/finance/break-even-units/index.js"
+    },
+    "./finance/commission": {
+      "types": "./dist/finance/commission/index.d.ts",
+      "import": "./dist/finance/commission/index.js"
+    },
+    "./finance/debt-to-income-ratio": {
+      "types": "./dist/finance/debt-to-income-ratio/index.d.ts",
+      "import": "./dist/finance/debt-to-income-ratio/index.js"
+    },
+    "./finance/discount-price": {
+      "types": "./dist/finance/discount-price/index.d.ts",
+      "import": "./dist/finance/discount-price/index.js"
+    },
+    "./finance/expense-ratio-cost": {
+      "types": "./dist/finance/expense-ratio-cost/index.d.ts",
+      "import": "./dist/finance/expense-ratio-cost/index.js"
+    },
+    "./finance/gross-margin": {
+      "types": "./dist/finance/gross-margin/index.d.ts",
+      "import": "./dist/finance/gross-margin/index.js"
+    },
+    "./finance/loan-to-value-ratio": {
+      "types": "./dist/finance/loan-to-value-ratio/index.d.ts",
+      "import": "./dist/finance/loan-to-value-ratio/index.js"
+    },
+    "./finance/markup-margin": {
+      "types": "./dist/finance/markup-margin/index.d.ts",
+      "import": "./dist/finance/markup-margin/index.js"
+    },
+    "./finance/price-per-unit": {
+      "types": "./dist/finance/price-per-unit/index.d.ts",
+      "import": "./dist/finance/price-per-unit/index.js"
+    },
+    "./finance/profit-margin": {
+      "types": "./dist/finance/profit-margin/index.d.ts",
+      "import": "./dist/finance/profit-margin/index.js"
+    },
+    "./finance/return-on-investment": {
+      "types": "./dist/finance/return-on-investment/index.d.ts",
+      "import": "./dist/finance/return-on-investment/index.js"
+    },
+    "./finance/rule-of-72": {
+      "types": "./dist/finance/rule-of-72/index.d.ts",
+      "import": "./dist/finance/rule-of-72/index.js"
+    },
+    "./finance/simple-interest": {
+      "types": "./dist/finance/simple-interest/index.d.ts",
+      "import": "./dist/finance/simple-interest/index.js"
+    },
     "./flashcards": {
       "types": "./dist/flashcards/index.d.ts",
       "import": "./dist/flashcards/index.js"
     },
+    "./format/zero-pad-number": {
+      "types": "./dist/format/zero-pad-number/index.d.ts",
+      "import": "./dist/format/zero-pad-number/index.js"
+    },
+    "./information/binary-cross-entropy": {
+      "types": "./dist/information/binary-cross-entropy/index.d.ts",
+      "import": "./dist/information/binary-cross-entropy/index.js"
+    },
+    "./information/binary-entropy": {
+      "types": "./dist/information/binary-entropy/index.d.ts",
+      "import": "./dist/information/binary-entropy/index.js"
+    },
+    "./information/log-loss": {
+      "types": "./dist/information/log-loss/index.d.ts",
+      "import": "./dist/information/log-loss/index.js"
+    },
+    "./information/shannon-entropy": {
+      "types": "./dist/information/shannon-entropy/index.d.ts",
+      "import": "./dist/information/shannon-entropy/index.js"
+    },
+    "./interpolation/inverse-linear": {
+      "types": "./dist/interpolation/inverse-linear/index.d.ts",
+      "import": "./dist/interpolation/inverse-linear/index.js"
+    },
+    "./interpolation/linear": {
+      "types": "./dist/interpolation/linear/index.d.ts",
+      "import": "./dist/interpolation/linear/index.js"
+    },
+    "./list/chunk": {
+      "types": "./dist/list/chunk/index.d.ts",
+      "import": "./dist/list/chunk/index.js"
+    },
+    "./list/cumulative-product": {
+      "types": "./dist/list/cumulative-product/index.d.ts",
+      "import": "./dist/list/cumulative-product/index.js"
+    },
+    "./list/cumulative-sum": {
+      "types": "./dist/list/cumulative-sum/index.d.ts",
+      "import": "./dist/list/cumulative-sum/index.js"
+    },
+    "./list/frequency": {
+      "types": "./dist/list/frequency/index.d.ts",
+      "import": "./dist/list/frequency/index.js"
+    },
+    "./list/reverse": {
+      "types": "./dist/list/reverse/index.d.ts",
+      "import": "./dist/list/reverse/index.js"
+    },
+    "./list/rotate": {
+      "types": "./dist/list/rotate/index.d.ts",
+      "import": "./dist/list/rotate/index.js"
+    },
+    "./list/sort-numbers": {
+      "types": "./dist/list/sort-numbers/index.d.ts",
+      "import": "./dist/list/sort-numbers/index.js"
+    },
+    "./list/unique": {
+      "types": "./dist/list/unique/index.d.ts",
+      "import": "./dist/list/unique/index.js"
+    },
+    "./math/logarithm": {
+      "types": "./dist/math/logarithm/index.d.ts",
+      "import": "./dist/math/logarithm/index.js"
+    },
     "./math/logarithmic-mean": {
       "types": "./dist/math/logarithmic-mean/index.d.ts",
       "import": "./dist/math/logarithmic-mean/index.js"
+    },
+    "./matrix/add": {
+      "types": "./dist/matrix/add/index.d.ts",
+      "import": "./dist/matrix/add/index.js"
+    },
+    "./matrix/diagonal": {
+      "types": "./dist/matrix/diagonal/index.d.ts",
+      "import": "./dist/matrix/diagonal/index.js"
+    },
+    "./matrix/dimensions": {
+      "types": "./dist/matrix/dimensions/index.d.ts",
+      "import": "./dist/matrix/dimensions/index.js"
+    },
+    "./matrix/identity": {
+      "types": "./dist/matrix/identity/index.d.ts",
+      "import": "./dist/matrix/identity/index.js"
+    },
+    "./matrix/scalar-multiply": {
+      "types": "./dist/matrix/scalar-multiply/index.d.ts",
+      "import": "./dist/matrix/scalar-multiply/index.js"
+    },
+    "./matrix/subtract": {
+      "types": "./dist/matrix/subtract/index.d.ts",
+      "import": "./dist/matrix/subtract/index.js"
+    },
+    "./matrix/symmetry-checker": {
+      "types": "./dist/matrix/symmetry-checker/index.d.ts",
+      "import": "./dist/matrix/symmetry-checker/index.js"
+    },
+    "./matrix/trace": {
+      "types": "./dist/matrix/trace/index.d.ts",
+      "import": "./dist/matrix/trace/index.js"
+    },
+    "./matrix/transpose": {
+      "types": "./dist/matrix/transpose/index.d.ts",
+      "import": "./dist/matrix/transpose/index.js"
+    },
+    "./metrics/mean-absolute-error": {
+      "types": "./dist/metrics/mean-absolute-error/index.d.ts",
+      "import": "./dist/metrics/mean-absolute-error/index.js"
+    },
+    "./metrics/mean-squared-error": {
+      "types": "./dist/metrics/mean-squared-error/index.d.ts",
+      "import": "./dist/metrics/mean-squared-error/index.js"
+    },
+    "./metrics/residual-sum-of-squares": {
+      "types": "./dist/metrics/residual-sum-of-squares/index.d.ts",
+      "import": "./dist/metrics/residual-sum-of-squares/index.js"
+    },
+    "./metrics/root-mean-squared-error": {
+      "types": "./dist/metrics/root-mean-squared-error/index.d.ts",
+      "import": "./dist/metrics/root-mean-squared-error/index.js"
+    },
+    "./metrics/symmetric-mean-absolute-percentage-error": {
+      "types": "./dist/metrics/symmetric-mean-absolute-percentage-error/index.d.ts",
+      "import": "./dist/metrics/symmetric-mean-absolute-percentage-error/index.js"
+    },
+    "./normalize/min-max": {
+      "types": "./dist/normalize/min-max/index.d.ts",
+      "import": "./dist/normalize/min-max/index.js"
+    },
+    "./normalize/standard-score": {
+      "types": "./dist/normalize/standard-score/index.d.ts",
+      "import": "./dist/normalize/standard-score/index.js"
+    },
+    "./number/coprime-checker": {
+      "types": "./dist/number/coprime-checker/index.d.ts",
+      "import": "./dist/number/coprime-checker/index.js"
+    },
+    "./number/digit-count": {
+      "types": "./dist/number/digit-count/index.d.ts",
+      "import": "./dist/number/digit-count/index.js"
+    },
+    "./number/digit-sum": {
+      "types": "./dist/number/digit-sum/index.d.ts",
+      "import": "./dist/number/digit-sum/index.js"
+    },
+    "./number/digital-root": {
+      "types": "./dist/number/digital-root/index.d.ts",
+      "import": "./dist/number/digital-root/index.js"
+    },
+    "./number/divisibility-checker": {
+      "types": "./dist/number/divisibility-checker/index.d.ts",
+      "import": "./dist/number/divisibility-checker/index.js"
+    },
+    "./number/greatest-common-factor": {
+      "types": "./dist/number/greatest-common-factor/index.d.ts",
+      "import": "./dist/number/greatest-common-factor/index.js"
+    },
+    "./number/least-common-multiple": {
+      "types": "./dist/number/least-common-multiple/index.d.ts",
+      "import": "./dist/number/least-common-multiple/index.js"
+    },
+    "./number/palindrome-checker": {
+      "types": "./dist/number/palindrome-checker/index.d.ts",
+      "import": "./dist/number/palindrome-checker/index.js"
+    },
+    "./number/parity-checker": {
+      "types": "./dist/number/parity-checker/index.d.ts",
+      "import": "./dist/number/parity-checker/index.js"
+    },
+    "./number/perfect-cube-checker": {
+      "types": "./dist/number/perfect-cube-checker/index.d.ts",
+      "import": "./dist/number/perfect-cube-checker/index.js"
+    },
+    "./number/perfect-square-checker": {
+      "types": "./dist/number/perfect-square-checker/index.d.ts",
+      "import": "./dist/number/perfect-square-checker/index.js"
+    },
+    "./number/prime-checker": {
+      "types": "./dist/number/prime-checker/index.d.ts",
+      "import": "./dist/number/prime-checker/index.js"
+    },
+    "./number/reverse-digits": {
+      "types": "./dist/number/reverse-digits/index.d.ts",
+      "import": "./dist/number/reverse-digits/index.js"
     },
     "./optimization/stochastic-gradient-descent": {
       "types": "./dist/optimization/stochastic-gradient-descent/index.d.ts",
@@ -77,9 +525,101 @@
       "types": "./dist/parse/numeric-dataset/index.d.ts",
       "import": "./dist/parse/numeric-dataset/index.js"
     },
+    "./physics/average-speed": {
+      "types": "./dist/physics/average-speed/index.d.ts",
+      "import": "./dist/physics/average-speed/index.js"
+    },
+    "./probability/complement": {
+      "types": "./dist/probability/complement/index.d.ts",
+      "import": "./dist/probability/complement/index.js"
+    },
+    "./probability/empirical": {
+      "types": "./dist/probability/empirical/index.d.ts",
+      "import": "./dist/probability/empirical/index.js"
+    },
+    "./probability/expected-value": {
+      "types": "./dist/probability/expected-value/index.d.ts",
+      "import": "./dist/probability/expected-value/index.js"
+    },
+    "./probability/log-odds": {
+      "types": "./dist/probability/log-odds/index.d.ts",
+      "import": "./dist/probability/log-odds/index.js"
+    },
+    "./proportions/aspect-ratio": {
+      "types": "./dist/proportions/aspect-ratio/index.d.ts",
+      "import": "./dist/proportions/aspect-ratio/index.js"
+    },
+    "./proportions/inverse": {
+      "types": "./dist/proportions/inverse/index.d.ts",
+      "import": "./dist/proportions/inverse/index.js"
+    },
+    "./proportions/number-as-percentage": {
+      "types": "./dist/proportions/number-as-percentage/index.d.ts",
+      "import": "./dist/proportions/number-as-percentage/index.js"
+    },
+    "./proportions/percentage-change": {
+      "types": "./dist/proportions/percentage-change/index.d.ts",
+      "import": "./dist/proportions/percentage-change/index.js"
+    },
+    "./proportions/percentage-decrease": {
+      "types": "./dist/proportions/percentage-decrease/index.d.ts",
+      "import": "./dist/proportions/percentage-decrease/index.js"
+    },
+    "./proportions/percentage-difference": {
+      "types": "./dist/proportions/percentage-difference/index.d.ts",
+      "import": "./dist/proportions/percentage-difference/index.js"
+    },
+    "./proportions/percentage-error": {
+      "types": "./dist/proportions/percentage-error/index.d.ts",
+      "import": "./dist/proportions/percentage-error/index.js"
+    },
+    "./proportions/percentage-increase": {
+      "types": "./dist/proportions/percentage-increase/index.d.ts",
+      "import": "./dist/proportions/percentage-increase/index.js"
+    },
+    "./proportions/percentage-of-number": {
+      "types": "./dist/proportions/percentage-of-number/index.d.ts",
+      "import": "./dist/proportions/percentage-of-number/index.js"
+    },
+    "./proportions/unit-rate": {
+      "types": "./dist/proportions/unit-rate/index.d.ts",
+      "import": "./dist/proportions/unit-rate/index.js"
+    },
     "./registry": {
       "types": "./dist/registry.d.ts",
       "import": "./dist/registry.js"
+    },
+    "./sequence/arithmetic": {
+      "types": "./dist/sequence/arithmetic/index.d.ts",
+      "import": "./dist/sequence/arithmetic/index.js"
+    },
+    "./sequence/geometric": {
+      "types": "./dist/sequence/geometric/index.d.ts",
+      "import": "./dist/sequence/geometric/index.js"
+    },
+    "./sequence/triangular-number": {
+      "types": "./dist/sequence/triangular-number/index.d.ts",
+      "import": "./dist/sequence/triangular-number/index.js"
+    },
+    "./set/difference": {
+      "types": "./dist/set/difference/index.d.ts",
+      "import": "./dist/set/difference/index.js"
+    },
+    "./set/intersection": {
+      "types": "./dist/set/intersection/index.d.ts",
+      "import": "./dist/set/intersection/index.js"
+    },
+    "./set/symmetric-difference": {
+      "types": "./dist/set/symmetric-difference/index.d.ts",
+      "import": "./dist/set/symmetric-difference/index.js"
+    },
+    "./set/union": {
+      "types": "./dist/set/union/index.d.ts",
+      "import": "./dist/set/union/index.js"
+    },
+    "./similarity/dice": {
+      "types": "./dist/similarity/dice/index.d.ts",
+      "import": "./dist/similarity/dice/index.js"
     },
     "./size": {
       "types": "./dist/size/index.d.ts",
@@ -609,9 +1149,25 @@
       "types": "./dist/statistics/bootstrap-standard-error/index.d.ts",
       "import": "./dist/statistics/bootstrap-standard-error/index.js"
     },
+    "./statistics/coefficient-of-range": {
+      "types": "./dist/statistics/coefficient-of-range/index.d.ts",
+      "import": "./dist/statistics/coefficient-of-range/index.js"
+    },
+    "./statistics/cumulative-frequency": {
+      "types": "./dist/statistics/cumulative-frequency/index.d.ts",
+      "import": "./dist/statistics/cumulative-frequency/index.js"
+    },
     "./statistics/f-statistic": {
       "types": "./dist/statistics/f-statistic/index.d.ts",
       "import": "./dist/statistics/f-statistic/index.js"
+    },
+    "./statistics/fisher-z-transform": {
+      "types": "./dist/statistics/fisher-z-transform/index.d.ts",
+      "import": "./dist/statistics/fisher-z-transform/index.js"
+    },
+    "./statistics/frequency-table": {
+      "types": "./dist/statistics/frequency-table/index.d.ts",
+      "import": "./dist/statistics/frequency-table/index.js"
     },
     "./statistics/holm-bonferroni": {
       "types": "./dist/statistics/holm-bonferroni/index.d.ts",
@@ -633,13 +1189,69 @@
       "types": "./dist/statistics/margin-of-error/index.d.ts",
       "import": "./dist/statistics/margin-of-error/index.js"
     },
+    "./statistics/maximum": {
+      "types": "./dist/statistics/maximum/index.d.ts",
+      "import": "./dist/statistics/maximum/index.js"
+    },
+    "./statistics/mean-absolute-deviation": {
+      "types": "./dist/statistics/mean-absolute-deviation/index.d.ts",
+      "import": "./dist/statistics/mean-absolute-deviation/index.js"
+    },
     "./statistics/median": {
       "types": "./dist/statistics/median/index.d.ts",
       "import": "./dist/statistics/median/index.js"
     },
+    "./statistics/midrange": {
+      "types": "./dist/statistics/midrange/index.d.ts",
+      "import": "./dist/statistics/midrange/index.js"
+    },
+    "./statistics/minimum": {
+      "types": "./dist/statistics/minimum/index.d.ts",
+      "import": "./dist/statistics/minimum/index.js"
+    },
+    "./statistics/number-needed-to-treat": {
+      "types": "./dist/statistics/number-needed-to-treat/index.d.ts",
+      "import": "./dist/statistics/number-needed-to-treat/index.js"
+    },
+    "./statistics/odds-ratio": {
+      "types": "./dist/statistics/odds-ratio/index.d.ts",
+      "import": "./dist/statistics/odds-ratio/index.js"
+    },
     "./statistics/paired-t-test": {
       "types": "./dist/statistics/paired-t-test/index.d.ts",
       "import": "./dist/statistics/paired-t-test/index.js"
+    },
+    "./statistics/pooled-standard-deviation": {
+      "types": "./dist/statistics/pooled-standard-deviation/index.d.ts",
+      "import": "./dist/statistics/pooled-standard-deviation/index.js"
+    },
+    "./statistics/pooled-variance": {
+      "types": "./dist/statistics/pooled-variance/index.d.ts",
+      "import": "./dist/statistics/pooled-variance/index.js"
+    },
+    "./statistics/population-covariance": {
+      "types": "./dist/statistics/population-covariance/index.d.ts",
+      "import": "./dist/statistics/population-covariance/index.js"
+    },
+    "./statistics/quartile-coefficient-of-dispersion": {
+      "types": "./dist/statistics/quartile-coefficient-of-dispersion/index.d.ts",
+      "import": "./dist/statistics/quartile-coefficient-of-dispersion/index.js"
+    },
+    "./statistics/relative-risk": {
+      "types": "./dist/statistics/relative-risk/index.d.ts",
+      "import": "./dist/statistics/relative-risk/index.js"
+    },
+    "./statistics/relative-standard-error": {
+      "types": "./dist/statistics/relative-standard-error/index.d.ts",
+      "import": "./dist/statistics/relative-standard-error/index.js"
+    },
+    "./statistics/risk-difference": {
+      "types": "./dist/statistics/risk-difference/index.d.ts",
+      "import": "./dist/statistics/risk-difference/index.js"
+    },
+    "./statistics/sample-covariance": {
+      "types": "./dist/statistics/sample-covariance/index.d.ts",
+      "import": "./dist/statistics/sample-covariance/index.js"
     },
     "./statistics/sample-variance": {
       "types": "./dist/statistics/sample-variance/index.d.ts",
@@ -665,6 +1277,10 @@
       "types": "./dist/statistics/two-sample-t-test/index.d.ts",
       "import": "./dist/statistics/two-sample-t-test/index.js"
     },
+    "./statistics/weighted-mean": {
+      "types": "./dist/statistics/weighted-mean/index.d.ts",
+      "import": "./dist/statistics/weighted-mean/index.js"
+    },
     "./statistics/wilcoxon-signed-rank": {
       "types": "./dist/statistics/wilcoxon-signed-rank/index.d.ts",
       "import": "./dist/statistics/wilcoxon-signed-rank/index.js"
@@ -673,9 +1289,137 @@
       "types": "./dist/statistics/z-score/index.d.ts",
       "import": "./dist/statistics/z-score/index.js"
     },
+    "./text/byte-count": {
+      "types": "./dist/text/byte-count/index.d.ts",
+      "import": "./dist/text/byte-count/index.js"
+    },
+    "./text/character-count": {
+      "types": "./dist/text/character-count/index.d.ts",
+      "import": "./dist/text/character-count/index.js"
+    },
+    "./text/join": {
+      "types": "./dist/text/join/index.d.ts",
+      "import": "./dist/text/join/index.js"
+    },
+    "./text/line-count": {
+      "types": "./dist/text/line-count/index.d.ts",
+      "import": "./dist/text/line-count/index.js"
+    },
+    "./text/lowercase": {
+      "types": "./dist/text/lowercase/index.d.ts",
+      "import": "./dist/text/lowercase/index.js"
+    },
+    "./text/normalize-whitespace": {
+      "types": "./dist/text/normalize-whitespace/index.d.ts",
+      "import": "./dist/text/normalize-whitespace/index.js"
+    },
+    "./text/prefix-lines": {
+      "types": "./dist/text/prefix-lines/index.d.ts",
+      "import": "./dist/text/prefix-lines/index.js"
+    },
+    "./text/remove-blank-lines": {
+      "types": "./dist/text/remove-blank-lines/index.d.ts",
+      "import": "./dist/text/remove-blank-lines/index.js"
+    },
+    "./text/repeat": {
+      "types": "./dist/text/repeat/index.d.ts",
+      "import": "./dist/text/repeat/index.js"
+    },
+    "./text/replace-literal": {
+      "types": "./dist/text/replace-literal/index.d.ts",
+      "import": "./dist/text/replace-literal/index.js"
+    },
+    "./text/reverse": {
+      "types": "./dist/text/reverse/index.d.ts",
+      "import": "./dist/text/reverse/index.js"
+    },
+    "./text/sentence-count": {
+      "types": "./dist/text/sentence-count/index.d.ts",
+      "import": "./dist/text/sentence-count/index.js"
+    },
     "./text/shingling": {
       "types": "./dist/text/shingling/index.d.ts",
       "import": "./dist/text/shingling/index.js"
+    },
+    "./text/sort-lines": {
+      "types": "./dist/text/sort-lines/index.d.ts",
+      "import": "./dist/text/sort-lines/index.js"
+    },
+    "./text/split": {
+      "types": "./dist/text/split/index.d.ts",
+      "import": "./dist/text/split/index.js"
+    },
+    "./text/substring-count": {
+      "types": "./dist/text/substring-count/index.d.ts",
+      "import": "./dist/text/substring-count/index.js"
+    },
+    "./text/suffix-lines": {
+      "types": "./dist/text/suffix-lines/index.d.ts",
+      "import": "./dist/text/suffix-lines/index.js"
+    },
+    "./text/trim": {
+      "types": "./dist/text/trim/index.d.ts",
+      "import": "./dist/text/trim/index.js"
+    },
+    "./text/unique-lines": {
+      "types": "./dist/text/unique-lines/index.d.ts",
+      "import": "./dist/text/unique-lines/index.js"
+    },
+    "./text/uppercase": {
+      "types": "./dist/text/uppercase/index.d.ts",
+      "import": "./dist/text/uppercase/index.js"
+    },
+    "./text/word-count": {
+      "types": "./dist/text/word-count/index.d.ts",
+      "import": "./dist/text/word-count/index.js"
+    },
+    "./vector/add": {
+      "types": "./dist/vector/add/index.d.ts",
+      "import": "./dist/vector/add/index.js"
+    },
+    "./vector/angle": {
+      "types": "./dist/vector/angle/index.d.ts",
+      "import": "./dist/vector/angle/index.js"
+    },
+    "./vector/cross-product": {
+      "types": "./dist/vector/cross-product/index.d.ts",
+      "import": "./dist/vector/cross-product/index.js"
+    },
+    "./vector/dot-product": {
+      "types": "./dist/vector/dot-product/index.d.ts",
+      "import": "./dist/vector/dot-product/index.js"
+    },
+    "./vector/l-infinity-norm": {
+      "types": "./dist/vector/l-infinity-norm/index.d.ts",
+      "import": "./dist/vector/l-infinity-norm/index.js"
+    },
+    "./vector/l1-norm": {
+      "types": "./dist/vector/l1-norm/index.d.ts",
+      "import": "./dist/vector/l1-norm/index.js"
+    },
+    "./vector/magnitude": {
+      "types": "./dist/vector/magnitude/index.d.ts",
+      "import": "./dist/vector/magnitude/index.js"
+    },
+    "./vector/normalize": {
+      "types": "./dist/vector/normalize/index.d.ts",
+      "import": "./dist/vector/normalize/index.js"
+    },
+    "./vector/projection": {
+      "types": "./dist/vector/projection/index.d.ts",
+      "import": "./dist/vector/projection/index.js"
+    },
+    "./vector/rejection": {
+      "types": "./dist/vector/rejection/index.d.ts",
+      "import": "./dist/vector/rejection/index.js"
+    },
+    "./vector/scalar-multiply": {
+      "types": "./dist/vector/scalar-multiply/index.d.ts",
+      "import": "./dist/vector/scalar-multiply/index.js"
+    },
+    "./vector/subtract": {
+      "types": "./dist/vector/subtract/index.d.ts",
+      "import": "./dist/vector/subtract/index.js"
     },
     "./weather": {
       "types": "./dist/weather/index.d.ts",
