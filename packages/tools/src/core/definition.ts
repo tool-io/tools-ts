@@ -2,13 +2,7 @@ import type { ToolResult } from "./result.js";
 import type { ToolValueType } from "./value-type.js";
 
 export type ToolJsonSchemaType =
-  | "array"
-  | "boolean"
-  | "integer"
-  | "null"
-  | "number"
-  | "object"
-  | "string";
+  "array" | "boolean" | "integer" | "null" | "number" | "object" | "string";
 
 export type ToolJsonSchema = {
   readonly additionalProperties?: boolean | ToolJsonSchema;
@@ -54,7 +48,6 @@ export type ToolDiscovery = {
 
 export type ToolCancellationSignal = {
   readonly aborted: boolean;
-  readonly throwIfAborted?: () => void;
 };
 
 export type ToolProgress = {

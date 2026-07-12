@@ -1,8 +1,17 @@
-import { defineTool, type ToolExecutionContext } from "../../core/definition.js";
+import {
+  defineTool,
+  type ToolExecutionContext,
+} from "../../core/definition.js";
+import {
+  createToolExecutionControl,
+  progressInterval,
+  shouldReportProgress,
+} from "../../core/execution.js";
 import { resourceLimitIssue, toolResourceLimits } from "../../core/limits.js";
 import { resolveRandom } from "../../core/random.js";
 import {
   invalidInput,
+  toolExecutionCancelled,
   toolSuccess,
   type ToolResult,
 } from "../../core/result.js";
@@ -47,6 +56,8 @@ export const calculateBootstrapStandardError = (
   input: unknown,
   context?: ToolExecutionContext,
 ): ToolResult<BootstrapStandardErrorOutput> => {
+  const execution = createToolExecutionControl(context);
+  if (!execution.checkpoint()) return toolExecutionCancelled();
   if (!isRecord(input)) {
     return invalidInput([
       {
@@ -85,14 +96,38 @@ export const calculateBootstrapStandardError = (
   }
 
   const summarize = estimator(statistic);
-  const random = resolveRandom(input.seed === undefined ? undefined : (seed as number), context);
+  const random = resolveRandom(
+    input.seed === undefined ? undefined : (seed as number),
+    context,
+  );
   const estimates: number[] = [];
+  const progressEvery = progressInterval(resamples as number);
+  const progressMessage = "Generating bootstrap resamples";
+  if (
+    !execution.checkpoint({
+      completed: 0,
+      message: progressMessage,
+      total: resamples as number,
+    })
+  )
+    return toolExecutionCancelled();
   for (let iteration = 0; iteration < (resamples as number); iteration += 1) {
+    if (!execution.checkpoint()) return toolExecutionCancelled();
     const sample = Array.from(
       { length: values.length },
       () => values[Math.floor(random() * values.length)]!,
     );
     estimates.push(summarize(sample));
+    const completed = iteration + 1;
+    if (
+      shouldReportProgress(completed, resamples as number, progressEvery) &&
+      !execution.checkpoint({
+        completed,
+        message: progressMessage,
+        total: resamples as number,
+      })
+    )
+      return toolExecutionCancelled();
   }
   const estimateMean = mean(estimates);
   const standardError = Math.sqrt(
@@ -124,7 +159,12 @@ export const bootstrapStandardErrorTool = defineTool<
   inputSchema: {
     additionalProperties: false,
     properties: {
-      resamples: { default: 1000, maximum: toolResourceLimits.iterations, minimum: 2, type: "integer" },
+      resamples: {
+        default: 1000,
+        maximum: toolResourceLimits.iterations,
+        minimum: 2,
+        type: "integer",
+      },
       seed: { default: 2026, type: "integer" },
       statistic: { default: "mean", enum: ["mean", "median"], type: "string" },
       values: numericDatasetSchema,

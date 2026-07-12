@@ -5,9 +5,16 @@ export type ToolIssue = {
 };
 
 export type ToolInputError = {
-  readonly code: 'invalid_input';
+  readonly code: "invalid_input";
   readonly issues: readonly ToolIssue[];
 };
+
+export type ToolExecutionCancelledError = {
+  readonly code: "execution_cancelled";
+  readonly issues: readonly ToolIssue[];
+};
+
+export type ToolError = ToolExecutionCancelledError | ToolInputError;
 
 export type ToolResult<Output> =
   | {
@@ -15,23 +22,37 @@ export type ToolResult<Output> =
       readonly output: Output;
     }
   | {
-      readonly error: ToolInputError;
+      readonly error: ToolError;
       readonly ok: false;
     };
 
 export const invalidInput = (
-  issues: readonly ToolIssue[]
+  issues: readonly ToolIssue[],
 ): ToolResult<never> => ({
   error: {
-    code: 'invalid_input',
-    issues
+    code: "invalid_input",
+    issues,
   },
-  ok: false
+  ok: false,
 });
 
-export const toolSuccess = <Output>(
-  output: Output
-): ToolResult<Output> => ({
+export const toolSuccess = <Output>(output: Output): ToolResult<Output> => ({
   ok: true,
-  output
+  output,
+});
+
+export const toolExecutionCancelled = (
+  message = "Tool execution was canceled.",
+): ToolResult<never> => ({
+  error: {
+    code: "execution_cancelled",
+    issues: [
+      {
+        code: "execution_cancelled",
+        field: "",
+        message,
+      },
+    ],
+  },
+  ok: false,
 });
