@@ -1,6 +1,7 @@
 export * from "./core/encoding.js";
 export * from "./core/date.js";
 export * from "./core/execution.js";
+export type { ToolExample } from "./core/example.js";
 export {
   defineTool,
   type ToolCancellationSignal,

@@ -19,6 +19,7 @@ export type SimpleValueKind =
   | "stringList";
 export type SimpleField = {
   readonly default?: unknown;
+  readonly description?: string;
   readonly enum?: readonly string[];
   readonly format?: string;
   readonly id: string;
@@ -49,6 +50,9 @@ export const simpleError = (
 const schemaFor = (field: SimpleField): ToolJsonSchema => {
   const limits = {
     ...(field.default === undefined ? {} : { default: field.default }),
+    ...(field.description === undefined
+      ? {}
+      : { description: field.description }),
     ...(field.enum === undefined ? {} : { enum: field.enum }),
     ...(field.maximum === undefined ? {} : { maximum: field.maximum }),
     ...(field.minimum === undefined ? {} : { minimum: field.minimum }),
@@ -233,12 +237,18 @@ export const createSimpleTool = (
     },
     ports: {
       inputs: config.inputs.map((field) => ({
+        ...(field.description === undefined
+          ? {}
+          : { description: field.description }),
         id: field.id,
         label: field.label,
         required: requiredInputs.includes(field.id),
         valueType: valueTypeFor(field),
       })),
       outputs: config.outputs.map((field) => ({
+        ...(field.description === undefined
+          ? {}
+          : { description: field.description }),
         id: field.id,
         label: field.label,
         valueType: valueTypeFor(field),
