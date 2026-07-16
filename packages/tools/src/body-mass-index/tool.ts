@@ -1,4 +1,5 @@
 import { defineTool } from "../core/definition.js";
+import type { ToolExample } from "../core/example.js";
 import {
   invalidInput,
   toolSuccess,
@@ -14,6 +15,16 @@ export type BodyMassIndexInput = {
 export type BodyMassIndexOutput = {
   readonly bmi: number;
 };
+
+export const bodyMassIndexExample = {
+  input: {
+    heightM: 1.8,
+    weightKg: 70,
+  },
+  output: {
+    bmi: 21.604938271604937,
+  },
+} satisfies ToolExample<BodyMassIndexInput, BodyMassIndexOutput>;
 
 export const bodyMassIndexInputSchema = {
   additionalProperties: false,
