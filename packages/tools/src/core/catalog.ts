@@ -17,6 +17,7 @@ export type ToolCatalogEntry = {
   readonly execution: ToolExecutionRequirements;
   readonly fields: readonly string[];
   readonly id: string;
+  readonly implementedAt: string;
   readonly keywords: readonly string[];
   readonly packageExport: string;
   readonly ports: ToolPortsDefinition;
@@ -28,8 +29,12 @@ export type ToolCatalog = {
   readonly schemaVersion: typeof toolCatalogSchemaVersion;
 };
 
-const normalizeList = (values: readonly string[] | undefined): readonly string[] =>
-  [...new Set((values ?? []).map((value) => value.trim()).filter(Boolean))].sort((left, right) => left.localeCompare(right, "en"));
+const normalizeList = (
+  values: readonly string[] | undefined,
+): readonly string[] =>
+  [
+    ...new Set((values ?? []).map((value) => value.trim()).filter(Boolean)),
+  ].sort((left, right) => left.localeCompare(right, "en"));
 
 export const normalizeToolDiscovery = (
   discovery: ToolDiscovery | undefined,
@@ -53,15 +58,23 @@ export const toolCatalogSource = (
 export const createToolCatalogEntry = (
   definition: ToolDefinition<unknown, unknown>,
   contractFingerprint: string,
-): ToolCatalogEntry => ({
-  ...normalizeToolDiscovery(definition.discovery),
-  canonicalUrl: `/${definition.id}`,
-  contractFingerprint,
-  contractVersion: definition.contractVersion,
-  description: definition.description,
-  execution: definition.execution,
-  id: definition.id,
-  packageExport: `@toolio/tools/${definition.id}`,
-  ports: definition.ports,
-  title: definition.title,
-});
+  implementedAt: string,
+): ToolCatalogEntry => {
+  if (Number.isNaN(Date.parse(implementedAt))) {
+    throw new TypeError("Tool implementation date must be a valid date-time.");
+  }
+
+  return {
+    ...normalizeToolDiscovery(definition.discovery),
+    canonicalUrl: `/${definition.id}`,
+    contractFingerprint,
+    contractVersion: definition.contractVersion,
+    description: definition.description,
+    execution: definition.execution,
+    id: definition.id,
+    implementedAt,
+    packageExport: `@toolio/tools/${definition.id}`,
+    ports: definition.ports,
+    title: definition.title,
+  };
+};
