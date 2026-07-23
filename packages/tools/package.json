@@ -20,9 +20,21 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./air-displacement-body-composition": {
+      "types": "./dist/air-displacement-body-composition/index.d.ts",
+      "import": "./dist/air-displacement-body-composition/index.js"
+    },
     "./arithmetic/absolute-difference": {
       "types": "./dist/arithmetic/absolute-difference/index.d.ts",
       "import": "./dist/arithmetic/absolute-difference/index.js"
+    },
+    "./arithmetic/absolute-value": {
+      "types": "./dist/arithmetic/absolute-value/index.d.ts",
+      "import": "./dist/arithmetic/absolute-value/index.js"
+    },
+    "./arithmetic/add-two-numbers": {
+      "types": "./dist/arithmetic/add-two-numbers/index.d.ts",
+      "import": "./dist/arithmetic/add-two-numbers/index.js"
     },
     "./arithmetic/ceiling-to-multiple": {
       "types": "./dist/arithmetic/ceiling-to-multiple/index.d.ts",
@@ -35,6 +47,10 @@
     "./arithmetic/cube": {
       "types": "./dist/arithmetic/cube/index.d.ts",
       "import": "./dist/arithmetic/cube/index.js"
+    },
+    "./arithmetic/divide-two-numbers": {
+      "types": "./dist/arithmetic/divide-two-numbers/index.d.ts",
+      "import": "./dist/arithmetic/divide-two-numbers/index.js"
     },
     "./arithmetic/divmod": {
       "types": "./dist/arithmetic/divmod/index.d.ts",
@@ -52,6 +68,18 @@
       "types": "./dist/arithmetic/modulo/index.d.ts",
       "import": "./dist/arithmetic/modulo/index.js"
     },
+    "./arithmetic/multiply-two-numbers": {
+      "types": "./dist/arithmetic/multiply-two-numbers/index.d.ts",
+      "import": "./dist/arithmetic/multiply-two-numbers/index.js"
+    },
+    "./arithmetic/nth-root": {
+      "types": "./dist/arithmetic/nth-root/index.d.ts",
+      "import": "./dist/arithmetic/nth-root/index.js"
+    },
+    "./arithmetic/power": {
+      "types": "./dist/arithmetic/power/index.d.ts",
+      "import": "./dist/arithmetic/power/index.js"
+    },
     "./arithmetic/reciprocal": {
       "types": "./dist/arithmetic/reciprocal/index.d.ts",
       "import": "./dist/arithmetic/reciprocal/index.js"
@@ -67,6 +95,18 @@
     "./arithmetic/square": {
       "types": "./dist/arithmetic/square/index.d.ts",
       "import": "./dist/arithmetic/square/index.js"
+    },
+    "./arithmetic/subtract-two-numbers": {
+      "types": "./dist/arithmetic/subtract-two-numbers/index.d.ts",
+      "import": "./dist/arithmetic/subtract-two-numbers/index.js"
+    },
+    "./bioelectrical-impedance-index": {
+      "types": "./dist/bioelectrical-impedance-index/index.d.ts",
+      "import": "./dist/bioelectrical-impedance-index/index.js"
+    },
+    "./body-density-to-body-fat": {
+      "types": "./dist/body-density-to-body-fat/index.d.ts",
+      "import": "./dist/body-density-to-body-fat/index.js"
     },
     "./body-mass-index": {
       "types": "./dist/body-mass-index/index.d.ts",
@@ -173,6 +213,18 @@
       "types": "./dist/convert/hex-to-bytes/index.d.ts",
       "import": "./dist/convert/hex-to-bytes/index.js"
     },
+    "./convert/hex-to-hsl": {
+      "types": "./dist/convert/hex-to-hsl/index.d.ts",
+      "import": "./dist/convert/hex-to-hsl/index.js"
+    },
+    "./convert/hex-to-hsv": {
+      "types": "./dist/convert/hex-to-hsv/index.d.ts",
+      "import": "./dist/convert/hex-to-hsv/index.js"
+    },
+    "./convert/hex-to-rgb": {
+      "types": "./dist/convert/hex-to-rgb/index.d.ts",
+      "import": "./dist/convert/hex-to-rgb/index.js"
+    },
     "./convert/hexadecimal-to-decimal": {
       "types": "./dist/convert/hexadecimal-to-decimal/index.d.ts",
       "import": "./dist/convert/hexadecimal-to-decimal/index.js"
@@ -180,6 +232,30 @@
     "./convert/hours-minutes-to-decimal": {
       "types": "./dist/convert/hours-minutes-to-decimal/index.d.ts",
       "import": "./dist/convert/hours-minutes-to-decimal/index.js"
+    },
+    "./convert/hsl-to-hex": {
+      "types": "./dist/convert/hsl-to-hex/index.d.ts",
+      "import": "./dist/convert/hsl-to-hex/index.js"
+    },
+    "./convert/hsl-to-hsv": {
+      "types": "./dist/convert/hsl-to-hsv/index.d.ts",
+      "import": "./dist/convert/hsl-to-hsv/index.js"
+    },
+    "./convert/hsl-to-rgb": {
+      "types": "./dist/convert/hsl-to-rgb/index.d.ts",
+      "import": "./dist/convert/hsl-to-rgb/index.js"
+    },
+    "./convert/hsv-to-hex": {
+      "types": "./dist/convert/hsv-to-hex/index.d.ts",
+      "import": "./dist/convert/hsv-to-hex/index.js"
+    },
+    "./convert/hsv-to-hsl": {
+      "types": "./dist/convert/hsv-to-hsl/index.d.ts",
+      "import": "./dist/convert/hsv-to-hsl/index.js"
+    },
+    "./convert/hsv-to-rgb": {
+      "types": "./dist/convert/hsv-to-rgb/index.d.ts",
+      "import": "./dist/convert/hsv-to-rgb/index.js"
     },
     "./convert/length": {
       "types": "./dist/convert/length/index.d.ts",
@@ -200,6 +276,18 @@
     "./convert/probability-to-odds": {
       "types": "./dist/convert/probability-to-odds/index.d.ts",
       "import": "./dist/convert/probability-to-odds/index.js"
+    },
+    "./convert/rgb-to-hex": {
+      "types": "./dist/convert/rgb-to-hex/index.d.ts",
+      "import": "./dist/convert/rgb-to-hex/index.js"
+    },
+    "./convert/rgb-to-hsl": {
+      "types": "./dist/convert/rgb-to-hsl/index.d.ts",
+      "import": "./dist/convert/rgb-to-hsl/index.js"
+    },
+    "./convert/rgb-to-hsv": {
+      "types": "./dist/convert/rgb-to-hsv/index.d.ts",
+      "import": "./dist/convert/rgb-to-hsv/index.js"
     },
     "./convert/text-to-bytes": {
       "types": "./dist/convert/text-to-bytes/index.d.ts",
@@ -252,6 +340,10 @@
     "./distance/manhattan": {
       "types": "./dist/distance/manhattan/index.d.ts",
       "import": "./dist/distance/manhattan/index.js"
+    },
+    "./dxa-body-composition-summary": {
+      "types": "./dist/dxa-body-composition-summary/index.d.ts",
+      "import": "./dist/dxa-body-composition-summary/index.js"
     },
     "./electricity/current": {
       "types": "./dist/electricity/current/index.d.ts",
@@ -360,6 +452,10 @@
     "./interpolation/linear": {
       "types": "./dist/interpolation/linear/index.d.ts",
       "import": "./dist/interpolation/linear/index.js"
+    },
+    "./jackson-pollock-3-site-body-fat": {
+      "types": "./dist/jackson-pollock-3-site-body-fat/index.d.ts",
+      "import": "./dist/jackson-pollock-3-site-body-fat/index.js"
     },
     "./list/chunk": {
       "types": "./dist/list/chunk/index.d.ts",
@@ -1193,6 +1289,10 @@
       "types": "./dist/statistics/maximum/index.d.ts",
       "import": "./dist/statistics/maximum/index.js"
     },
+    "./statistics/mean": {
+      "types": "./dist/statistics/mean/index.d.ts",
+      "import": "./dist/statistics/mean/index.js"
+    },
     "./statistics/mean-absolute-deviation": {
       "types": "./dist/statistics/mean-absolute-deviation/index.d.ts",
       "import": "./dist/statistics/mean-absolute-deviation/index.js"
@@ -1208,6 +1308,10 @@
     "./statistics/minimum": {
       "types": "./dist/statistics/minimum/index.d.ts",
       "import": "./dist/statistics/minimum/index.js"
+    },
+    "./statistics/mode": {
+      "types": "./dist/statistics/mode/index.d.ts",
+      "import": "./dist/statistics/mode/index.js"
     },
     "./statistics/number-needed-to-treat": {
       "types": "./dist/statistics/number-needed-to-treat/index.d.ts",
@@ -1236,6 +1340,10 @@
     "./statistics/quartile-coefficient-of-dispersion": {
       "types": "./dist/statistics/quartile-coefficient-of-dispersion/index.d.ts",
       "import": "./dist/statistics/quartile-coefficient-of-dispersion/index.js"
+    },
+    "./statistics/range": {
+      "types": "./dist/statistics/range/index.d.ts",
+      "import": "./dist/statistics/range/index.js"
     },
     "./statistics/relative-risk": {
       "types": "./dist/statistics/relative-risk/index.d.ts",
@@ -1420,6 +1528,10 @@
     "./vector/subtract": {
       "types": "./dist/vector/subtract/index.d.ts",
       "import": "./dist/vector/subtract/index.js"
+    },
+    "./waist-circumference": {
+      "types": "./dist/waist-circumference/index.d.ts",
+      "import": "./dist/waist-circumference/index.js"
     },
     "./weather": {
       "types": "./dist/weather/index.d.ts",
