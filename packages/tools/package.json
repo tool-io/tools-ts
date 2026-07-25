@@ -1265,6 +1265,14 @@
       "types": "./dist/statistics/frequency-table/index.d.ts",
       "import": "./dist/statistics/frequency-table/index.js"
     },
+    "./statistics/geometric-mean": {
+      "types": "./dist/statistics/geometric-mean/index.d.ts",
+      "import": "./dist/statistics/geometric-mean/index.js"
+    },
+    "./statistics/harmonic-mean": {
+      "types": "./dist/statistics/harmonic-mean/index.d.ts",
+      "import": "./dist/statistics/harmonic-mean/index.js"
+    },
     "./statistics/holm-bonferroni": {
       "types": "./dist/statistics/holm-bonferroni/index.d.ts",
       "import": "./dist/statistics/holm-bonferroni/index.js"
@@ -1356,6 +1364,10 @@
     "./statistics/risk-difference": {
       "types": "./dist/statistics/risk-difference/index.d.ts",
       "import": "./dist/statistics/risk-difference/index.js"
+    },
+    "./statistics/root-mean-square": {
+      "types": "./dist/statistics/root-mean-square/index.d.ts",
+      "import": "./dist/statistics/root-mean-square/index.js"
     },
     "./statistics/sample-covariance": {
       "types": "./dist/statistics/sample-covariance/index.d.ts",
