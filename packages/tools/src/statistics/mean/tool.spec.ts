@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { runMean } from "./tool.js";
+import { meanExample, runMean } from "./tool.js";
 
 describe("Mean Calculator", () => {
   it("calculates the arithmetic mean", () =>
@@ -10,4 +10,11 @@ describe("Mean Calculator", () => {
 
   it("rejects an empty list", () =>
     expect(runMean({ values: [] }).ok).toBe(false));
+
+  it("publishes an executable authored example", () => {
+    expect(runMean(meanExample.input)).toEqual({
+      ok: true,
+      output: meanExample.output,
+    });
+  });
 });

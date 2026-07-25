@@ -1,4 +1,13 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export type MeanInput = { readonly values: readonly number[] };
+export type MeanOutput = { readonly mean: number };
+
+export const meanExample = {
+  input: { values: [2, 4, 6, 8] },
+  output: { mean: 5 },
+} satisfies ToolExample<MeanInput, MeanOutput>;
 
 export const meanTool = createSimpleTool({
   id: "statistics/mean",
