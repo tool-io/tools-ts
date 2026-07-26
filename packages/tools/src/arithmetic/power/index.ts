@@ -1,1 +1,7 @@
-export { default, powerTool, runPower } from "./tool.js";
+export {
+  default,
+  powerExample,
+  powerExample as example,
+  powerTool,
+  runPower,
+} from "./tool.js";

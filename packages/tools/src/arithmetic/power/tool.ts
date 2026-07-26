@@ -1,4 +1,12 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const powerExample = {
+  input: { base: 2, exponent: -3 },
+} satisfies ToolExample<{
+  readonly base: number;
+  readonly exponent: number;
+}>;
 
 export const powerTool = createSimpleTool({
   id: "arithmetic/power",
