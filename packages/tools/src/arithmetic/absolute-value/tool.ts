@@ -1,4 +1,9 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool } from "../../core/simple.js";
+
+export const absoluteValueExample = {
+  input: { value: -12.5 },
+} satisfies ToolExample<{ readonly value: number }>;
 
 export const absoluteValueTool = createSimpleTool({
   id: "arithmetic/absolute-value",

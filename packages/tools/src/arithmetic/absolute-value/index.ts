@@ -1,1 +1,7 @@
-export { default, absoluteValueTool, runAbsoluteValue } from "./tool.js";
+export {
+  default,
+  absoluteValueExample,
+  absoluteValueExample as example,
+  absoluteValueTool,
+  runAbsoluteValue,
+} from "./tool.js";
