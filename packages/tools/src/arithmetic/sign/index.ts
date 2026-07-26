@@ -1,1 +1,7 @@
-export { default, signTool, runSign } from "./tool.js";
+export {
+  default,
+  runSign,
+  signExample,
+  signExample as example,
+  signTool,
+} from "./tool.js";

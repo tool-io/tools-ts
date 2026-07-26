@@ -1,4 +1,10 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool } from "../../core/simple.js";
+
+export const signExample = {
+  input: { value: -4 },
+} satisfies ToolExample<{ readonly value: number }>;
+
 export const signTool = createSimpleTool({
   id: "arithmetic/sign",
   title: "Sign of Number Calculator",
