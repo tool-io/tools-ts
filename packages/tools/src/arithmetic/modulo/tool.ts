@@ -1,4 +1,13 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const moduloExample = {
+  input: { dividend: -3, modulus: 5 },
+} satisfies ToolExample<{
+  readonly dividend: number;
+  readonly modulus: number;
+}>;
+
 export const moduloTool = createSimpleTool({
   id: "arithmetic/modulo",
   title: "Positive Modulo Calculator",

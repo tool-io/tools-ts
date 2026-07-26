@@ -1,1 +1,7 @@
-export { default, moduloTool, runModulo } from "./tool.js";
+export {
+  default,
+  moduloExample,
+  moduloExample as example,
+  moduloTool,
+  runModulo,
+} from "./tool.js";
