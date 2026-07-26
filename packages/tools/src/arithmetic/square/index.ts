@@ -1,1 +1,7 @@
-export { default, squareTool, runSquare } from "./tool.js";
+export {
+  default,
+  runSquare,
+  squareExample,
+  squareExample as example,
+  squareTool,
+} from "./tool.js";

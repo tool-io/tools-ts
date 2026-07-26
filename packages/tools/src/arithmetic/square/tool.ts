@@ -1,4 +1,10 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const squareExample = {
+  input: { value: -5 },
+} satisfies ToolExample<{ readonly value: number }>;
+
 export const squareTool = createSimpleTool({
   id: "arithmetic/square",
   title: "Square Calculator",
