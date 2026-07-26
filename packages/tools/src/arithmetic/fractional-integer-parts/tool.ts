@@ -1,4 +1,10 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool } from "../../core/simple.js";
+
+export const fractionalIntegerPartsExample = {
+  input: { value: 12.75 },
+} satisfies ToolExample<{ readonly value: number }>;
+
 export const fractionalIntegerPartsTool = createSimpleTool({
   id: "arithmetic/fractional-integer-parts",
   title: "Fractional and Integer Parts Calculator",
