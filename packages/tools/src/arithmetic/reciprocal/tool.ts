@@ -1,4 +1,10 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const reciprocalExample = {
+  input: { value: 4 },
+} satisfies ToolExample<{ readonly value: number }>;
+
 export const reciprocalTool = createSimpleTool({
   id: "arithmetic/reciprocal",
   title: "Reciprocal Calculator",
