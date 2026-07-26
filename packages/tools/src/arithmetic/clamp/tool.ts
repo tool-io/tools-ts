@@ -1,4 +1,14 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const clampExample = {
+  input: { maximum: 10, minimum: 0, value: 12 },
+} satisfies ToolExample<{
+  readonly maximum: number;
+  readonly minimum: number;
+  readonly value: number;
+}>;
+
 export const clampTool = createSimpleTool({
   id: "arithmetic/clamp",
   title: "Clamp Number to Range",

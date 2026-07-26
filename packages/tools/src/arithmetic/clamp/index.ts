@@ -1,1 +1,7 @@
-export { default, clampTool, runClamp } from "./tool.js";
+export {
+  default,
+  clampExample,
+  clampExample as example,
+  clampTool,
+  runClamp,
+} from "./tool.js";
