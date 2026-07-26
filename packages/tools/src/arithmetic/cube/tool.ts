@@ -1,4 +1,10 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const cubeExample = {
+  input: { value: 3 },
+} satisfies ToolExample<{ readonly value: number }>;
+
 export const cubeTool = createSimpleTool({
   id: "arithmetic/cube",
   title: "Cube Calculator",
