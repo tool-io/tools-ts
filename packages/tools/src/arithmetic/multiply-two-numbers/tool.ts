@@ -1,4 +1,12 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const multiplyTwoNumbersExample = {
+  input: { first: -2.5, second: 4 },
+} satisfies ToolExample<{
+  readonly first: number;
+  readonly second: number;
+}>;
 
 export const multiplyTwoNumbersTool = createSimpleTool({
   id: "arithmetic/multiply-two-numbers",
