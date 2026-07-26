@@ -1,4 +1,12 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const subtractTwoNumbersExample = {
+  input: { minuend: 4, subtrahend: 9 },
+} satisfies ToolExample<{
+  readonly minuend: number;
+  readonly subtrahend: number;
+}>;
 
 export const subtractTwoNumbersTool = createSimpleTool({
   id: "arithmetic/subtract-two-numbers",
