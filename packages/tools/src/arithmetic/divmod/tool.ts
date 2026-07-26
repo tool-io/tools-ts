@@ -1,4 +1,13 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const divmodExample = {
+  input: { dividend: 17, divisor: 5 },
+} satisfies ToolExample<{
+  readonly dividend: number;
+  readonly divisor: number;
+}>;
+
 export const divmodTool = createSimpleTool({
   id: "arithmetic/divmod",
   title: "Division with Remainder Calculator",
