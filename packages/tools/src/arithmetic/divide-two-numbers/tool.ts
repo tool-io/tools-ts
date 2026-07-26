@@ -1,4 +1,12 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const divideTwoNumbersExample = {
+  input: { dividend: 7, divisor: 2 },
+} satisfies ToolExample<{
+  readonly dividend: number;
+  readonly divisor: number;
+}>;
 
 export const divideTwoNumbersTool = createSimpleTool({
   id: "arithmetic/divide-two-numbers",

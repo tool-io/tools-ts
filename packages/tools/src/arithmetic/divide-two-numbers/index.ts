@@ -1,1 +1,7 @@
-export { default, divideTwoNumbersTool, runDivideTwoNumbers } from "./tool.js";
+export {
+  default,
+  divideTwoNumbersExample,
+  divideTwoNumbersExample as example,
+  divideTwoNumbersTool,
+  runDivideTwoNumbers,
+} from "./tool.js";
