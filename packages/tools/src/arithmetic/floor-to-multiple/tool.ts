@@ -1,4 +1,13 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const floorToMultipleExample = {
+  input: { multiple: 5, value: 13 },
+} satisfies ToolExample<{
+  readonly multiple: number;
+  readonly value: number;
+}>;
+
 export const floorToMultipleTool = createSimpleTool({
   id: "arithmetic/floor-to-multiple",
   title: "Floor to Multiple Calculator",

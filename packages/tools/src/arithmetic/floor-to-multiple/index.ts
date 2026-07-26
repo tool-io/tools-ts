@@ -1,1 +1,7 @@
-export { default, floorToMultipleTool, runFloorToMultiple } from "./tool.js";
+export {
+  default,
+  floorToMultipleExample,
+  floorToMultipleExample as example,
+  floorToMultipleTool,
+  runFloorToMultiple,
+} from "./tool.js";
