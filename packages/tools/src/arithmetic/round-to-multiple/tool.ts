@@ -1,4 +1,13 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const roundToMultipleExample = {
+  input: { multiple: 5, value: 13 },
+} satisfies ToolExample<{
+  readonly multiple: number;
+  readonly value: number;
+}>;
+
 export const roundToMultipleTool = createSimpleTool({
   id: "arithmetic/round-to-multiple",
   title: "Round to Multiple Calculator",
