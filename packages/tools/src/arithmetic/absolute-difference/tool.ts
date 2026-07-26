@@ -1,4 +1,10 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool } from "../../core/simple.js";
+
+export const absoluteDifferenceExample = {
+  input: { first: 9, second: 4 },
+} satisfies ToolExample<{ readonly first: number; readonly second: number }>;
+
 export const absoluteDifferenceTool = createSimpleTool({
   id: "arithmetic/absolute-difference",
   title: "Absolute Difference Calculator",
