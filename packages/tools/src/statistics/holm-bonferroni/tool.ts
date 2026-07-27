@@ -1,4 +1,5 @@
 import { defineTool } from "../../core/definition.js";
+import type { ToolExample } from "../../core/example.js";
 import {
   invalidInput,
   toolSuccess,
@@ -17,6 +18,11 @@ export type HolmBonferroniInput = {
 export type HolmBonferroniOutput = {
   readonly adjustedPValues: readonly number[];
 };
+
+export const holmBonferroniExample = {
+  input: { pValues: [0.01, 0.04, 0.03] },
+} satisfies ToolExample<HolmBonferroniInput>;
+
 export const calculateHolmBonferroni = (
   input: unknown,
 ): ToolResult<HolmBonferroniOutput> => {

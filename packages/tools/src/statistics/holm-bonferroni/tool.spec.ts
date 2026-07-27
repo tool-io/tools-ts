@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { calculateHolmBonferroni } from "./tool.js";
+import { calculateHolmBonferroni, holmBonferroniExample } from "./tool.js";
 
 describe("Holm-Bonferroni", () => {
   it("adjusts values stepwise and restores input order", () => {
@@ -14,5 +14,9 @@ describe("Holm-Bonferroni", () => {
       error: { code: "invalid_input" },
       ok: false,
     });
+  });
+
+  it("publishes an executable example", () => {
+    expect(calculateHolmBonferroni(holmBonferroniExample.input).ok).toBe(true);
   });
 });
