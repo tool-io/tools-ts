@@ -2,6 +2,7 @@ import {
   defineTool,
   type ToolExecutionContext,
 } from "../../core/definition.js";
+import type { ToolExample } from "../../core/example.js";
 import {
   createToolExecutionControl,
   progressInterval,
@@ -38,6 +39,10 @@ export type BootstrapStandardErrorOutput = {
   readonly standardError: number;
   readonly statistic: BootstrapStatistic;
 };
+
+export const bootstrapStandardErrorExample = {
+  input: { resamples: 200, seed: 42, values: [1, 2, 4, 8] },
+} satisfies ToolExample<BootstrapStandardErrorInput>;
 
 const median = (values: readonly number[]): number => {
   const ordered = [...values].sort((left, right) => left - right);

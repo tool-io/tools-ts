@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { calculateBootstrapStandardError } from "./tool.js";
+import {
+  bootstrapStandardErrorExample,
+  calculateBootstrapStandardError,
+} from "./tool.js";
 
 describe("bootstrap standard error", () => {
   it("returns zero for a constant sample", () => {
@@ -17,6 +20,12 @@ describe("bootstrap standard error", () => {
       }),
     ).toEqual(calculateBootstrapStandardError(input));
     expect(progress.length).toBeGreaterThan(0);
+  });
+
+  it("publishes an executable example", () => {
+    expect(
+      calculateBootstrapStandardError(bootstrapStandardErrorExample.input).ok,
+    ).toBe(true);
   });
 
   it("rejects too few resamples", () => {
