@@ -1,4 +1,5 @@
 import { defineTool } from "../../core/definition.js";
+import type { ToolExample } from "../../core/example.js";
 import {
   invalidInput,
   toolSuccess,
@@ -25,6 +26,13 @@ export type TwoSampleTTestOutput = {
   readonly standardError: number;
   readonly tStatistic: number;
 };
+
+export const twoSampleTTestExample = {
+  input: {
+    first: [1, 2, 3],
+    second: [4, 5, 6],
+  },
+} satisfies ToolExample<TwoSampleTTestInput>;
 
 export const calculateTwoSampleTTest = (
   input: unknown,
@@ -128,7 +136,13 @@ export const twoSampleTTestTool = defineTool<
       standardError: { minimum: 0, type: "number" },
       tStatistic: { type: "number" },
     },
-    required: ["degreesOfFreedom", "firstMean", "secondMean", "standardError", "tStatistic"],
+    required: [
+      "degreesOfFreedom",
+      "firstMean",
+      "secondMean",
+      "standardError",
+      "tStatistic",
+    ],
     type: "object",
   },
   ports: {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { calculateTwoSampleTTest } from "./tool.js";
+import { calculateTwoSampleTTest, twoSampleTTestExample } from "./tool.js";
 
 describe("two-sample t-test", () => {
   it("calculates Welch's statistic by default", () => {
@@ -28,5 +28,9 @@ describe("two-sample t-test", () => {
       error: { code: "invalid_input" },
       ok: false,
     });
+  });
+
+  it("publishes an executable example", () => {
+    expect(calculateTwoSampleTTest(twoSampleTTestExample.input).ok).toBe(true);
   });
 });
