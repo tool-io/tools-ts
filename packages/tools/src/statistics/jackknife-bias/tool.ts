@@ -1,4 +1,5 @@
 import { defineTool } from "../../core/definition.js";
+import type { ToolExample } from "../../core/example.js";
 import {
   invalidInput,
   toolSuccess,
@@ -25,6 +26,10 @@ export type JackknifeBiasOutput = {
   readonly jackknifeEstimate: number;
   readonly statistic: JackknifeStatistic;
 };
+
+export const jackknifeBiasExample = {
+  input: { values: [1, 2, 10] },
+} satisfies ToolExample<JackknifeBiasInput>;
 
 const median = (values: readonly number[]): number => {
   const ordered = [...values].sort((left, right) => left - right);

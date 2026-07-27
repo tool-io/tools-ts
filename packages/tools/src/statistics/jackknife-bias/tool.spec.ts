@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { calculateJackknifeBias } from "./tool.js";
+import { calculateJackknifeBias, jackknifeBiasExample } from "./tool.js";
 
 describe("jackknife bias", () => {
   it("finds zero bias for the sample mean", () => {
@@ -23,5 +23,9 @@ describe("jackknife bias", () => {
       error: { code: "invalid_input" },
       ok: false,
     });
+  });
+
+  it("publishes an executable example", () => {
+    expect(calculateJackknifeBias(jackknifeBiasExample.input).ok).toBe(true);
   });
 });
