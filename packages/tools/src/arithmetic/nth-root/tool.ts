@@ -1,20 +1,55 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export type NthRootInput = {
+  readonly degree: number;
+  readonly value: number;
+};
+
+export type NthRootOutput = {
+  readonly root: number;
+};
+
+export const nthRootExample = {
+  input: {
+    degree: 2,
+    value: 16,
+  },
+} satisfies ToolExample<NthRootInput>;
 
 export const nthRootTool = createSimpleTool({
   id: "arithmetic/nth-root",
   title: "Nth Root Calculator",
-  description: "Calculate a real nth root using a nonzero integer degree.",
+  description:
+    "Calculate square roots, cube roots, and other principal real nth roots.",
   inputs: [
-    { id: "value", label: "Value", kind: "number" },
-    { id: "degree", label: "Root degree", kind: "integer" },
+    {
+      description: "The number whose principal real root will be calculated.",
+      id: "value",
+      label: "Number",
+      kind: "number",
+    },
+    {
+      description:
+        "An integer of 2 or greater; use 2 for a square root or 3 for a cube root.",
+      id: "degree",
+      label: "Root degree",
+      kind: "integer",
+      minimum: 2,
+    },
   ],
-  outputs: [{ id: "root", label: "Root", kind: "number" }],
+  outputs: [
+    {
+      description: "The principal real nth root.",
+      id: "root",
+      label: "Root",
+      kind: "number",
+    },
+  ],
   calculate: (input) => {
     const value = input.value as number;
     const degree = input.degree as number;
-    if (degree === 0)
-      simpleError("degree", "The root degree must not be zero.");
-    if (value < 0 && Math.abs(degree) % 2 === 0)
+    if (value < 0 && degree % 2 === 0)
       simpleError(
         "value",
         "A negative value has no real root for an even degree.",
