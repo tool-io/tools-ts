@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { calculateMannWhitneyU } from "./tool.js";
+import { calculateMannWhitneyU, mannWhitneyUExample } from "./tool.js";
 
 describe("Mann-Whitney U", () => {
   it("calculates both U statistics", () => {
@@ -14,5 +14,9 @@ describe("Mann-Whitney U", () => {
       error: { code: "invalid_input" },
       ok: false,
     });
+  });
+
+  it("publishes an executable example", () => {
+    expect(calculateMannWhitneyU(mannWhitneyUExample.input).ok).toBe(true);
   });
 });

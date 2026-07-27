@@ -1,4 +1,5 @@
 import { defineTool } from "../../core/definition.js";
+import type { ToolExample } from "../../core/example.js";
 import {
   invalidInput,
   toolSuccess,
@@ -21,6 +22,11 @@ export type MannWhitneyUOutput = {
   readonly secondU: number;
   readonly statistic: number;
 };
+
+export const mannWhitneyUExample = {
+  input: { first: [1, 2], second: [3, 4] },
+} satisfies ToolExample<MannWhitneyUInput>;
+
 export const calculateMannWhitneyU = (
   input: unknown,
 ): ToolResult<MannWhitneyUOutput> => {
