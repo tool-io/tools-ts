@@ -1,4 +1,13 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const symmetricMeanAbsolutePercentageErrorExample = {
+  input: { actual: [100, 200], predicted: [110, 190] },
+} satisfies ToolExample<{
+  readonly actual: readonly number[];
+  readonly predicted: readonly number[];
+}>;
+
 export const symmetricMeanAbsolutePercentageErrorTool = createSimpleTool({
   id: "metrics/symmetric-mean-absolute-percentage-error",
   title: "Symmetric Mean Absolute Percentage Error Calculator",
