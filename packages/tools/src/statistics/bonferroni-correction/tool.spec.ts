@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { calculateBonferroniCorrection } from "./tool.js";
+import {
+  bonferroniCorrectionExample,
+  calculateBonferroniCorrection,
+} from "./tool.js";
 
 describe("Bonferroni correction", () => {
   it("multiplies and caps a p-value", () => {
@@ -24,5 +27,11 @@ describe("Bonferroni correction", () => {
       error: { code: "invalid_input" },
       ok: false,
     });
+  });
+
+  it("publishes an executable example", () => {
+    expect(
+      calculateBonferroniCorrection(bonferroniCorrectionExample.input).ok,
+    ).toBe(true);
   });
 });

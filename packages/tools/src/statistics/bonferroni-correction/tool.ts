@@ -1,4 +1,5 @@
 import { defineTool } from "../../core/definition.js";
+import type { ToolExample } from "../../core/example.js";
 import {
   invalidInput,
   toolSuccess,
@@ -14,6 +15,11 @@ export type BonferroniCorrectionOutput = {
   readonly adjustedPValue: number;
   readonly multiplier: number;
 };
+
+export const bonferroniCorrectionExample = {
+  input: { comparisons: 5, pValue: 0.01 },
+} satisfies ToolExample<BonferroniCorrectionInput>;
+
 export const calculateBonferroniCorrection = (
   input: unknown,
 ): ToolResult<BonferroniCorrectionOutput> => {
