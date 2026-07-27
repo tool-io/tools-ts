@@ -1,4 +1,5 @@
 import { defineTool } from "../../core/definition.js";
+import type { ToolExample } from "../../core/example.js";
 import {
   invalidInput,
   toolSuccess,
@@ -17,6 +18,11 @@ export type BenjaminiHochbergInput = {
 export type BenjaminiHochbergOutput = {
   readonly adjustedPValues: readonly number[];
 };
+
+export const benjaminiHochbergExample = {
+  input: { pValues: [0.01, 0.04, 0.03] },
+} satisfies ToolExample<BenjaminiHochbergInput>;
+
 export const calculateBenjaminiHochberg = (
   input: unknown,
 ): ToolResult<BenjaminiHochbergOutput> => {

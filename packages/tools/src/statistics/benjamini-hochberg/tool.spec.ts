@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { calculateBenjaminiHochberg } from "./tool.js";
+import {
+  benjaminiHochbergExample,
+  calculateBenjaminiHochberg,
+} from "./tool.js";
 
 describe("Benjamini-Hochberg", () => {
   it("controls FDR and restores input order", () => {
@@ -16,5 +19,11 @@ describe("Benjamini-Hochberg", () => {
       error: { code: "invalid_input" },
       ok: false,
     });
+  });
+
+  it("publishes an executable example", () => {
+    expect(calculateBenjaminiHochberg(benjaminiHochbergExample.input).ok).toBe(
+      true,
+    );
   });
 });
