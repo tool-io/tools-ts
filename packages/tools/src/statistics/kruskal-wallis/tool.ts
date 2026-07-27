@@ -1,4 +1,5 @@
 import { defineTool } from "../../core/definition.js";
+import type { ToolExample } from "../../core/example.js";
 import {
   invalidInput,
   toolSuccess,
@@ -20,6 +21,16 @@ export type KruskalWallisOutput = {
   readonly groupRankSums: readonly number[];
   readonly statistic: number;
 };
+
+export const kruskalWallisExample = {
+  input: {
+    groups: [
+      [1, 2],
+      [3, 4],
+    ],
+  },
+} satisfies ToolExample<KruskalWallisInput>;
+
 export const calculateKruskalWallis = (
   input: unknown,
 ): ToolResult<KruskalWallisOutput> => {

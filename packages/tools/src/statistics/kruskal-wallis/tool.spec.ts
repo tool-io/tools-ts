@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { calculateKruskalWallis } from "./tool.js";
+import { calculateKruskalWallis, kruskalWallisExample } from "./tool.js";
 
 describe("Kruskal-Wallis", () => {
   it("calculates the H statistic", () => {
@@ -21,5 +21,9 @@ describe("Kruskal-Wallis", () => {
       error: { code: "invalid_input" },
       ok: false,
     });
+  });
+
+  it("publishes an executable example", () => {
+    expect(calculateKruskalWallis(kruskalWallisExample.input).ok).toBe(true);
   });
 });
