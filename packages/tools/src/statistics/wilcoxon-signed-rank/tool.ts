@@ -1,4 +1,5 @@
 import { defineTool } from "../../core/definition.js";
+import type { ToolExample } from "../../core/example.js";
 import {
   invalidInput,
   toolSuccess,
@@ -22,6 +23,11 @@ export type WilcoxonSignedRankOutput = {
   readonly positiveRankSum: number;
   readonly statistic: number;
 };
+
+export const wilcoxonSignedRankExample = {
+  input: { first: [1, 2, 3], second: [0, 4, 1] },
+} satisfies ToolExample<WilcoxonSignedRankInput>;
+
 export const calculateWilcoxonSignedRank = (
   input: unknown,
 ): ToolResult<WilcoxonSignedRankOutput> => {
@@ -92,7 +98,12 @@ export const wilcoxonSignedRankTool = defineTool<
       positiveRankSum: { minimum: 0, type: "number" },
       statistic: { minimum: 0, type: "number" },
     },
-    required: ["negativeRankSum", "nonzeroPairs", "positiveRankSum", "statistic"],
+    required: [
+      "negativeRankSum",
+      "nonzeroPairs",
+      "positiveRankSum",
+      "statistic",
+    ],
     type: "object",
   },
   ports: {

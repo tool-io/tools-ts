@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { calculateWilcoxonSignedRank } from "./tool.js";
+import {
+  calculateWilcoxonSignedRank,
+  wilcoxonSignedRankExample,
+} from "./tool.js";
 
 describe("Wilcoxon signed-rank", () => {
   it("uses average ranks for ties", () => {
@@ -20,5 +23,11 @@ describe("Wilcoxon signed-rank", () => {
     expect(
       calculateWilcoxonSignedRank({ first: [1, 2], second: [1, 2] }),
     ).toMatchObject({ error: { code: "invalid_input" }, ok: false });
+  });
+
+  it("publishes an executable example", () => {
+    expect(
+      calculateWilcoxonSignedRank(wilcoxonSignedRankExample.input).ok,
+    ).toBe(true);
   });
 });
