@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { calculatePairedTTest } from "./tool.js";
+import { calculatePairedTTest, pairedTTestExample } from "./tool.js";
 
 describe("paired t-test", () => {
   it("calculates a matched-pairs statistic", () => {
@@ -19,5 +19,9 @@ describe("paired t-test", () => {
       error: { code: "invalid_input" },
       ok: false,
     });
+  });
+
+  it("publishes an executable example", () => {
+    expect(calculatePairedTTest(pairedTTestExample.input).ok).toBe(true);
   });
 });

@@ -1,4 +1,5 @@
 import { defineTool } from "../../core/definition.js";
+import type { ToolExample } from "../../core/example.js";
 import {
   invalidInput,
   toolSuccess,
@@ -25,6 +26,14 @@ export type PairedTTestOutput = {
   readonly standardError: number;
   readonly tStatistic: number;
 };
+
+export const pairedTTestExample = {
+  input: {
+    first: [10, 12, 9, 11, 13],
+    second: [8, 11, 10, 9, 12],
+  },
+} satisfies ToolExample<PairedTTestInput>;
+
 export const calculatePairedTTest = (
   input: unknown,
 ): ToolResult<PairedTTestOutput> => {
@@ -96,7 +105,14 @@ export const pairedTTestTool = defineTool<PairedTTestInput, PairedTTestOutput>({
       standardError: { minimum: 0, type: "number" },
       tStatistic: { type: "number" },
     },
-    required: ["degreesOfFreedom", "meanDifference", "sampleSize", "standardDeviation", "standardError", "tStatistic"],
+    required: [
+      "degreesOfFreedom",
+      "meanDifference",
+      "sampleSize",
+      "standardDeviation",
+      "standardError",
+      "tStatistic",
+    ],
     type: "object",
   },
   ports: {
