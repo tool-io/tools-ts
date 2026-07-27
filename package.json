@@ -3,12 +3,13 @@
   "private": true,
   "packageManager": "pnpm@10.28.2",
   "scripts": {
-    "build": "pnpm --filter @toolio/tools build",
-    "check": "pnpm --filter @toolio/tools check",
-    "check:generated": "pnpm --filter @toolio/tools check:generated",
-    "generate": "pnpm --filter @toolio/tools generate",
-    "unittest": "pnpm --filter @toolio/tools unittest",
-    "validate": "pnpm --filter @toolio/tools validate"
+    "build": "pnpm --filter @tool.io/tools build",
+    "check": "pnpm --filter @tool.io/tools check",
+    "check:generated": "pnpm --filter @tool.io/tools check:generated",
+    "generate": "pnpm --filter @tool.io/tools generate",
+    "test:unit": "pnpm --filter @tool.io/tools test:unit",
+    "unittest": "pnpm --filter @tool.io/tools unittest",
+    "validate": "pnpm --filter @tool.io/tools validate"
   },
   "devDependencies": {
     "prettier": "^3.9.6",

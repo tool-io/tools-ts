@@ -24,6 +24,7 @@
     "bioelectrical-impedance-index",
     "body-density-to-body-fat",
     "body-mass-index",
+    "body-roundness-index",
     "classification/accuracy",
     "classification/balanced-accuracy",
     "classification/f1-score",

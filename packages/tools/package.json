@@ -1,5 +1,5 @@
 {
-  "name": "@toolio/tools",
+  "name": "@tool.io/tools",
   "version": "0.1.0",
   "private": false,
   "description": "Framework-independent TypeScript tools for tool.io",
@@ -111,6 +111,10 @@
     "./body-mass-index": {
       "types": "./dist/body-mass-index/index.d.ts",
       "import": "./dist/body-mass-index/index.js"
+    },
+    "./body-roundness-index": {
+      "types": "./dist/body-roundness-index/index.d.ts",
+      "import": "./dist/body-roundness-index/index.js"
     },
     "./catalog": "./catalog.generated.json",
     "./chain": {
@@ -1559,6 +1563,7 @@
     "check": "tsc -p tsconfig.json --noEmit",
     "check:generated": "node ../../scripts/generate-structure.mjs --check && tsc -p tsconfig.build.json && node ../../scripts/generate-catalog.mjs --check",
     "generate": "node ../../scripts/generate-structure.mjs",
+    "test:unit": "vitest run",
     "unittest": "vitest run",
     "validate": "pnpm build && node ../../scripts/validate-package.mjs"
   },

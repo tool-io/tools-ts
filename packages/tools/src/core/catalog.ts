@@ -73,7 +73,7 @@ export const createToolCatalogEntry = (
     execution: definition.execution,
     id: definition.id,
     implementedAt,
-    packageExport: `@toolio/tools/${definition.id}`,
+    packageExport: `@tool.io/tools/${definition.id}`,
     ports: definition.ports,
     title: definition.title,
   };

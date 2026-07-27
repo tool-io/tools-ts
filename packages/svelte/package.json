@@ -1,5 +1,5 @@
 {
-  "name": "@toolio/tools-svelte",
+  "name": "@tool.io/tools-svelte",
   "version": "0.0.0",
   "private": true,
   "description": "Optional Svelte bindings for tool.io tools",
