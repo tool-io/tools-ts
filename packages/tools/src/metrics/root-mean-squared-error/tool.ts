@@ -1,4 +1,13 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const rootMeanSquaredErrorExample = {
+  input: { actual: [1, 2, 3], predicted: [2, 2, 4] },
+} satisfies ToolExample<{
+  readonly actual: readonly number[];
+  readonly predicted: readonly number[];
+}>;
+
 export const rootMeanSquaredErrorTool = createSimpleTool({
   id: "metrics/root-mean-squared-error",
   title: "Root Mean Squared Error Calculator",
