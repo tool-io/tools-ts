@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { runResidualSumOfSquares } from "./tool.js";
+import {
+  residualSumOfSquaresExample,
+  runResidualSumOfSquares,
+} from "./tool.js";
 describe("Residual Sum of Squares Calculator", () => {
   it("calculates a valid result", () => {
     expect(
@@ -8,4 +11,9 @@ describe("Residual Sum of Squares Calculator", () => {
   });
   it("rejects invalid input", () =>
     expect(runResidualSumOfSquares(null).ok).toBe(false));
+  it("publishes an executable example", () =>
+    expect(runResidualSumOfSquares(residualSumOfSquaresExample.input)).toEqual({
+      ok: true,
+      output: { residualSumOfSquares: 2 },
+    }));
 });

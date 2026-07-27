@@ -1,4 +1,13 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const residualSumOfSquaresExample = {
+  input: { actual: [1, 2, 3], predicted: [2, 2, 4] },
+} satisfies ToolExample<{
+  readonly actual: readonly number[];
+  readonly predicted: readonly number[];
+}>;
+
 export const residualSumOfSquaresTool = createSimpleTool({
   id: "metrics/residual-sum-of-squares",
   title: "Residual Sum of Squares Calculator",
