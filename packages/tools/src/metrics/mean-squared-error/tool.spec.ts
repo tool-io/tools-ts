@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { runMeanSquaredError } from "./tool.js";
+import { meanSquaredErrorExample, runMeanSquaredError } from "./tool.js";
 describe("Mean Squared Error Calculator", () => {
   it("calculates a valid result", () => {
     const result = runMeanSquaredError({
@@ -10,4 +10,9 @@ describe("Mean Squared Error Calculator", () => {
   });
   it("rejects invalid input", () =>
     expect(runMeanSquaredError(null).ok).toBe(false));
+  it("publishes an executable example", () =>
+    expect(runMeanSquaredError(meanSquaredErrorExample.input)).toMatchObject({
+      ok: true,
+      output: { meanSquaredError: 2 / 3 },
+    }));
 });

@@ -1,4 +1,13 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const meanSquaredErrorExample = {
+  input: { actual: [1, 2, 3], predicted: [2, 2, 4] },
+} satisfies ToolExample<{
+  readonly actual: readonly number[];
+  readonly predicted: readonly number[];
+}>;
+
 export const meanSquaredErrorTool = createSimpleTool({
   id: "metrics/mean-squared-error",
   title: "Mean Squared Error Calculator",
