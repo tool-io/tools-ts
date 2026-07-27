@@ -1,4 +1,5 @@
 import { defineTool } from "../../core/definition.js";
+import type { ToolExample } from "../../core/example.js";
 import {
   invalidInput,
   toolSuccess,
@@ -14,6 +15,10 @@ export type MedianInput = {
 export type MedianOutput = {
   readonly median: number;
 };
+
+export const medianExample = {
+  input: { values: [5, 1, 3] },
+} satisfies ToolExample<MedianInput>;
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
@@ -40,9 +45,7 @@ export const medianOutputSchema = {
   type: "object",
 } as const;
 
-export const calculateMedian = (
-  input: unknown,
-): ToolResult<MedianOutput> => {
+export const calculateMedian = (input: unknown): ToolResult<MedianOutput> => {
   if (!isRecord(input)) {
     return invalidInput([
       {

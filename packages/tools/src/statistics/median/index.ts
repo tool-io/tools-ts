@@ -1,6 +1,8 @@
 export {
   calculateMedian,
   medianInputSchema,
+  medianExample,
+  medianExample as example,
   medianOutputSchema,
   medianTool,
   type MedianInput,

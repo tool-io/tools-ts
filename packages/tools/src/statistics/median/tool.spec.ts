@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import fixtures from "../../../../../fixtures/median.json" with { type: "json" };
-import { calculateMedian, medianTool } from "./tool.js";
+import { calculateMedian, medianExample, medianTool } from "./tool.js";
 
 describe("median", () => {
   it("matches the portable conformance fixtures", () => {
@@ -24,6 +24,13 @@ describe("median", () => {
       output: { median: 3 },
     });
     expect(values).toEqual([5, 1, 3]);
+  });
+
+  it("publishes an executable example", () => {
+    expect(calculateMedian(medianExample.input)).toEqual({
+      ok: true,
+      output: { median: 3 },
+    });
   });
 
   it("accepts the parser output port directly", () => {
