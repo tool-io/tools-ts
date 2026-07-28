@@ -1,4 +1,10 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const cumulativeFrequencyExample = {
+  input: { values: [2, 1, 2, 3] },
+} satisfies ToolExample<{ readonly values: readonly number[] }>;
+
 export const cumulativeFrequencyTool = createSimpleTool({
   id: "statistics/cumulative-frequency",
   title: "Cumulative Frequency Calculator",

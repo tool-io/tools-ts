@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { runCumulativeFrequency } from "./tool.js";
+import { cumulativeFrequencyExample, runCumulativeFrequency } from "./tool.js";
 describe("Cumulative Frequency Calculator", () => {
   it("calculates a valid result", () => {
     expect(runCumulativeFrequency({ values: [2, 1, 2, 3] })).toEqual({
@@ -13,4 +13,8 @@ describe("Cumulative Frequency Calculator", () => {
   });
   it("rejects invalid input", () =>
     expect(runCumulativeFrequency(null).ok).toBe(false));
+  it("publishes an executable example", () =>
+    expect(runCumulativeFrequency(cumulativeFrequencyExample.input).ok).toBe(
+      true,
+    ));
 });
