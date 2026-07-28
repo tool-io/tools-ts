@@ -1,4 +1,10 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const midrangeExample = {
+  input: { values: [1, 3, 9] },
+} satisfies ToolExample<{ readonly values: readonly number[] }>;
+
 export const midrangeTool = createSimpleTool({
   id: "statistics/midrange",
   title: "Midrange Calculator",

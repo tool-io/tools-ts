@@ -1,1 +1,7 @@
-export { default, midrangeTool, runMidrange } from "./tool.js";
+export {
+  default,
+  midrangeExample,
+  midrangeExample as example,
+  midrangeTool,
+  runMidrange,
+} from "./tool.js";
