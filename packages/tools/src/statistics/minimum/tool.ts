@@ -1,4 +1,10 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const minimumExample = {
+  input: { values: [-2, 4, 1] },
+} satisfies ToolExample<{ readonly values: readonly number[] }>;
+
 export const minimumTool = createSimpleTool({
   id: "statistics/minimum",
   title: "Minimum Value Calculator",
