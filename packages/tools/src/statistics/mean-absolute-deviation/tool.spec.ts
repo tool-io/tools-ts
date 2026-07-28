@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { runMeanAbsoluteDeviation } from "./tool.js";
+import {
+  meanAbsoluteDeviationExample,
+  runMeanAbsoluteDeviation,
+} from "./tool.js";
 describe("Mean Absolute Deviation Calculator", () => {
   it("calculates a valid result", () => {
     const result = runMeanAbsoluteDeviation({ values: [1, 2, 3] });
@@ -7,4 +10,8 @@ describe("Mean Absolute Deviation Calculator", () => {
   });
   it("rejects invalid input", () =>
     expect(runMeanAbsoluteDeviation(null).ok).toBe(false));
+  it("publishes an executable example", () =>
+    expect(
+      runMeanAbsoluteDeviation(meanAbsoluteDeviationExample.input).ok,
+    ).toBe(true));
 });

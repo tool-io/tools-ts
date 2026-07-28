@@ -1,4 +1,10 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const meanAbsoluteDeviationExample = {
+  input: { values: [1, 2, 3] },
+} satisfies ToolExample<{ readonly values: readonly number[] }>;
+
 export const meanAbsoluteDeviationTool = createSimpleTool({
   id: "statistics/mean-absolute-deviation",
   title: "Mean Absolute Deviation Calculator",
