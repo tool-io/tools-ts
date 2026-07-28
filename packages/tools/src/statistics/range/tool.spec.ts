@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { runRange } from "./tool.js";
+import { rangeExample, runRange } from "./tool.js";
 
 describe("Range Calculator", () => {
   it("returns the endpoints and range", () =>
@@ -10,4 +10,7 @@ describe("Range Calculator", () => {
 
   it("rejects an empty list", () =>
     expect(runRange({ values: [] }).ok).toBe(false));
+
+  it("publishes an executable example", () =>
+    expect(runRange(rangeExample.input).ok).toBe(true));
 });
