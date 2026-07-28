@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { runFrequencyTable } from "./tool.js";
+import { frequencyTableExample, runFrequencyTable } from "./tool.js";
 describe("Frequency Table Generator", () => {
   it("calculates a valid result", () => {
     expect(runFrequencyTable({ values: [2, 1, 2] })).toEqual({
@@ -16,4 +16,6 @@ describe("Frequency Table Generator", () => {
   });
   it("rejects invalid input", () =>
     expect(runFrequencyTable(null).ok).toBe(false));
+  it("publishes an executable example", () =>
+    expect(runFrequencyTable(frequencyTableExample.input).ok).toBe(true));
 });

@@ -1,1 +1,7 @@
-export { default, frequencyTableTool, runFrequencyTable } from "./tool.js";
+export {
+  default,
+  frequencyTableExample,
+  frequencyTableExample as example,
+  frequencyTableTool,
+  runFrequencyTable,
+} from "./tool.js";

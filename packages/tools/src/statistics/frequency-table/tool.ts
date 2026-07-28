@@ -1,4 +1,10 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const frequencyTableExample = {
+  input: { values: [2, 1, 2] },
+} satisfies ToolExample<{ readonly values: readonly number[] }>;
+
 export const frequencyTableTool = createSimpleTool({
   id: "statistics/frequency-table",
   title: "Frequency Table Generator",
