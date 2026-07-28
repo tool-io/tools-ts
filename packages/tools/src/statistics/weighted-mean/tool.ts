@@ -1,4 +1,13 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const weightedMeanExample = {
+  input: { values: [10, 20], weights: [1, 3] },
+} satisfies ToolExample<{
+  readonly values: readonly number[];
+  readonly weights: readonly number[];
+}>;
+
 export const weightedMeanTool = createSimpleTool({
   id: "statistics/weighted-mean",
   title: "Weighted Mean Calculator",

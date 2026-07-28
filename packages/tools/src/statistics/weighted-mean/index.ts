@@ -1,1 +1,7 @@
-export { default, weightedMeanTool, runWeightedMean } from "./tool.js";
+export {
+  default,
+  runWeightedMean,
+  weightedMeanExample,
+  weightedMeanExample as example,
+  weightedMeanTool,
+} from "./tool.js";
