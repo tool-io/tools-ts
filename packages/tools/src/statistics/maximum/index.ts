@@ -1,1 +1,7 @@
-export { default, maximumTool, runMaximum } from "./tool.js";
+export {
+  default,
+  maximumExample,
+  maximumExample as example,
+  maximumTool,
+  runMaximum,
+} from "./tool.js";

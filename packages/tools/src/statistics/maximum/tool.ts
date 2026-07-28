@@ -1,4 +1,10 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const maximumExample = {
+  input: { values: [-2, 4, 1] },
+} satisfies ToolExample<{ readonly values: readonly number[] }>;
+
 export const maximumTool = createSimpleTool({
   id: "statistics/maximum",
   title: "Maximum Value Calculator",
