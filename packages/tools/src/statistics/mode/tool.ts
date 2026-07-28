@@ -1,4 +1,9 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const modeExample = {
+  input: { values: [4, 2, 4, 2, 9] },
+} satisfies ToolExample<{ readonly values: readonly number[] }>;
 
 export const modeTool = createSimpleTool({
   id: "statistics/mode",

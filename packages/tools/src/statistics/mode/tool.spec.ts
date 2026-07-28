@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { runMode } from "./tool.js";
+import { modeExample, runMode } from "./tool.js";
 
 describe("Mode Calculator", () => {
   it("returns all modes and their frequency", () =>
@@ -10,4 +10,7 @@ describe("Mode Calculator", () => {
 
   it("rejects an empty list", () =>
     expect(runMode({ values: [] }).ok).toBe(false));
+
+  it("publishes an executable example", () =>
+    expect(runMode(modeExample.input).ok).toBe(true));
 });
