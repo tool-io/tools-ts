@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { runPooledVariance } from "./tool.js";
+import { pooledVarianceExample, runPooledVariance } from "./tool.js";
 describe("Pooled Variance Calculator", () => {
   it("calculates a valid result", () => {
     expect(
@@ -13,4 +13,6 @@ describe("Pooled Variance Calculator", () => {
   });
   it("rejects invalid input", () =>
     expect(runPooledVariance(null).ok).toBe(false));
+  it("publishes an executable example", () =>
+    expect(runPooledVariance(pooledVarianceExample.input).ok).toBe(true));
 });

@@ -1,4 +1,20 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool } from "../../core/simple.js";
+
+export const pooledVarianceExample = {
+  input: {
+    firstSize: 5,
+    firstVariance: 4,
+    secondSize: 5,
+    secondVariance: 9,
+  },
+} satisfies ToolExample<{
+  readonly firstSize: number;
+  readonly firstVariance: number;
+  readonly secondSize: number;
+  readonly secondVariance: number;
+}>;
+
 export const pooledVarianceTool = createSimpleTool({
   id: "statistics/pooled-variance",
   title: "Pooled Variance Calculator",

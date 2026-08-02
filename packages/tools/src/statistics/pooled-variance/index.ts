@@ -1,1 +1,7 @@
-export { default, pooledVarianceTool, runPooledVariance } from "./tool.js";
+export {
+  default,
+  pooledVarianceExample,
+  pooledVarianceExample as example,
+  pooledVarianceTool,
+  runPooledVariance,
+} from "./tool.js";
