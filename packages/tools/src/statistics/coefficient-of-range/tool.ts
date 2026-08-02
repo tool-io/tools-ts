@@ -1,4 +1,13 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const coefficientOfRangeExample = {
+  input: { maximum: 8, minimum: 2 },
+} satisfies ToolExample<{
+  readonly maximum: number;
+  readonly minimum: number;
+}>;
+
 export const coefficientOfRangeTool = createSimpleTool({
   id: "statistics/coefficient-of-range",
   title: "Coefficient of Range Calculator",

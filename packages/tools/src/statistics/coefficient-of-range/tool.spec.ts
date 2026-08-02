@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { runCoefficientOfRange } from "./tool.js";
+import { coefficientOfRangeExample, runCoefficientOfRange } from "./tool.js";
 describe("Coefficient of Range Calculator", () => {
   it("calculates a valid result", () => {
     expect(runCoefficientOfRange({ minimum: 2, maximum: 8 })).toEqual({
@@ -9,4 +9,8 @@ describe("Coefficient of Range Calculator", () => {
   });
   it("rejects invalid input", () =>
     expect(runCoefficientOfRange(null).ok).toBe(false));
+  it("publishes an executable example", () =>
+    expect(runCoefficientOfRange(coefficientOfRangeExample.input).ok).toBe(
+      true,
+    ));
 });
