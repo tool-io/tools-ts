@@ -1,4 +1,20 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const oddsRatioExample = {
+  input: {
+    controlEvent: 10,
+    controlNoEvent: 90,
+    exposedEvent: 20,
+    exposedNoEvent: 80,
+  },
+} satisfies ToolExample<{
+  readonly controlEvent: number;
+  readonly controlNoEvent: number;
+  readonly exposedEvent: number;
+  readonly exposedNoEvent: number;
+}>;
+
 export const oddsRatioTool = createSimpleTool({
   id: "statistics/odds-ratio",
   title: "Odds Ratio Calculator",
