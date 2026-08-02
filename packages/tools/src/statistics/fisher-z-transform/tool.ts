@@ -1,4 +1,10 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const fisherZTransformExample = {
+  input: { correlation: 0.5 },
+} satisfies ToolExample<{ readonly correlation: number }>;
+
 export const fisherZTransformTool = createSimpleTool({
   id: "statistics/fisher-z-transform",
   title: "Fisher Z-Transformation Calculator",

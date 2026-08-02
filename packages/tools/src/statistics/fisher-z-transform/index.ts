@@ -1,1 +1,7 @@
-export { default, fisherZTransformTool, runFisherZTransform } from "./tool.js";
+export {
+  default,
+  fisherZTransformExample,
+  fisherZTransformExample as example,
+  fisherZTransformTool,
+  runFisherZTransform,
+} from "./tool.js";
