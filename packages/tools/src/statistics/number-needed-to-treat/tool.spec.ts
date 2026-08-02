@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { runNumberNeededToTreat } from "./tool.js";
+import { numberNeededToTreatExample, runNumberNeededToTreat } from "./tool.js";
 describe("Number Needed to Treat Calculator", () => {
   it("calculates a valid result", () => {
     const result = runNumberNeededToTreat({
@@ -10,4 +10,8 @@ describe("Number Needed to Treat Calculator", () => {
   });
   it("rejects invalid input", () =>
     expect(runNumberNeededToTreat(null).ok).toBe(false));
+  it("publishes an executable example", () =>
+    expect(runNumberNeededToTreat(numberNeededToTreatExample.input).ok).toBe(
+      true,
+    ));
 });

@@ -1,4 +1,13 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const numberNeededToTreatExample = {
+  input: { controlRate: 0.2, treatmentRate: 0.1 },
+} satisfies ToolExample<{
+  readonly controlRate: number;
+  readonly treatmentRate: number;
+}>;
+
 export const numberNeededToTreatTool = createSimpleTool({
   id: "statistics/number-needed-to-treat",
   title: "Number Needed to Treat Calculator",
