@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { runQuartileCoefficientOfDispersion } from "./tool.js";
+import {
+  quartileCoefficientOfDispersionExample,
+  runQuartileCoefficientOfDispersion,
+} from "./tool.js";
 describe("Quartile Coefficient of Dispersion Calculator", () => {
   it("calculates a valid result", () => {
     expect(
@@ -11,4 +14,10 @@ describe("Quartile Coefficient of Dispersion Calculator", () => {
   });
   it("rejects invalid input", () =>
     expect(runQuartileCoefficientOfDispersion(null).ok).toBe(false));
+  it("publishes an executable example", () =>
+    expect(
+      runQuartileCoefficientOfDispersion(
+        quartileCoefficientOfDispersionExample.input,
+      ).ok,
+    ).toBe(true));
 });

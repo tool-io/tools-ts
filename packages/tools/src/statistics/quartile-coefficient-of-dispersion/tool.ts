@@ -1,4 +1,13 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const quartileCoefficientOfDispersionExample = {
+  input: { firstQuartile: 10, thirdQuartile: 30 },
+} satisfies ToolExample<{
+  readonly firstQuartile: number;
+  readonly thirdQuartile: number;
+}>;
+
 export const quartileCoefficientOfDispersionTool = createSimpleTool({
   id: "statistics/quartile-coefficient-of-dispersion",
   title: "Quartile Coefficient of Dispersion Calculator",
