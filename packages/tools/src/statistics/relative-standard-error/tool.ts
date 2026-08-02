@@ -1,4 +1,13 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const relativeStandardErrorExample = {
+  input: { estimate: 50, standardError: 2 },
+} satisfies ToolExample<{
+  readonly estimate: number;
+  readonly standardError: number;
+}>;
+
 export const relativeStandardErrorTool = createSimpleTool({
   id: "statistics/relative-standard-error",
   title: "Relative Standard Error Calculator",

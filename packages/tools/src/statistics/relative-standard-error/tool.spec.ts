@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { runRelativeStandardError } from "./tool.js";
+import {
+  relativeStandardErrorExample,
+  runRelativeStandardError,
+} from "./tool.js";
 describe("Relative Standard Error Calculator", () => {
   it("calculates a valid result", () => {
     expect(
@@ -8,4 +11,8 @@ describe("Relative Standard Error Calculator", () => {
   });
   it("rejects invalid input", () =>
     expect(runRelativeStandardError(null).ok).toBe(false));
+  it("publishes an executable example", () =>
+    expect(
+      runRelativeStandardError(relativeStandardErrorExample.input).ok,
+    ).toBe(true));
 });
