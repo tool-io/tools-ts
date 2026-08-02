@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { runSampleCovariance } from "./tool.js";
+import { runSampleCovariance, sampleCovarianceExample } from "./tool.js";
 describe("Sample Covariance Calculator", () => {
   it("calculates a valid result", () => {
     expect(
@@ -8,4 +8,6 @@ describe("Sample Covariance Calculator", () => {
   });
   it("rejects invalid input", () =>
     expect(runSampleCovariance(null).ok).toBe(false));
+  it("publishes an executable example", () =>
+    expect(runSampleCovariance(sampleCovarianceExample.input).ok).toBe(true));
 });

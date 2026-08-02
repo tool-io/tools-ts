@@ -1,1 +1,7 @@
-export { default, sampleCovarianceTool, runSampleCovariance } from "./tool.js";
+export {
+  default,
+  sampleCovarianceExample,
+  sampleCovarianceExample as example,
+  sampleCovarianceTool,
+  runSampleCovariance,
+} from "./tool.js";

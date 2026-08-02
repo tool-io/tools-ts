@@ -1,4 +1,13 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const sampleCovarianceExample = {
+  input: { first: [1, 2, 3], second: [2, 4, 6] },
+} satisfies ToolExample<{
+  readonly first: readonly number[];
+  readonly second: readonly number[];
+}>;
+
 export const sampleCovarianceTool = createSimpleTool({
   id: "statistics/sample-covariance",
   title: "Sample Covariance Calculator",
