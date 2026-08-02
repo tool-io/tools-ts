@@ -1,3 +1,30 @@
 import { describe, expect, it } from "vitest";
-import { calculateTInterval, inverseStudentTCdf } from "./tool.js";
-describe("t interval", () => { it("matches the df=9 97.5th percentile", () => expect(inverseStudentTCdf(0.975, 9)).toBeCloseTo(2.262157, 5)); it("calculates symmetric bounds", () => { const result = calculateTInterval({ sampleMean: 10, sampleStandardDeviation: 2, sampleSize: 10 }); expect(result.ok).toBe(true); if (result.ok) expect(result.output.lower + result.output.upper).toBeCloseTo(20); }); it("rejects one observation", () => expect(calculateTInterval({ sampleMean: 1, sampleStandardDeviation: 1, sampleSize: 1 }).ok).toBe(false)); });
+import {
+  calculateTInterval,
+  inverseStudentTCdf,
+  tIntervalExample,
+} from "./tool.js";
+describe("t interval", () => {
+  it("matches the df=9 97.5th percentile", () =>
+    expect(inverseStudentTCdf(0.975, 9)).toBeCloseTo(2.262157, 5));
+  it("calculates symmetric bounds", () => {
+    const result = calculateTInterval({
+      sampleMean: 10,
+      sampleStandardDeviation: 2,
+      sampleSize: 10,
+    });
+    expect(result.ok).toBe(true);
+    if (result.ok)
+      expect(result.output.lower + result.output.upper).toBeCloseTo(20);
+  });
+  it("rejects one observation", () =>
+    expect(
+      calculateTInterval({
+        sampleMean: 1,
+        sampleStandardDeviation: 1,
+        sampleSize: 1,
+      }).ok,
+    ).toBe(false));
+  it("publishes an executable example", () =>
+    expect(calculateTInterval(tIntervalExample.input).ok).toBe(true));
+});
