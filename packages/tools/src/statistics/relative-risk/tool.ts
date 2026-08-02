@@ -1,4 +1,20 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const relativeRiskExample = {
+  input: {
+    controlEvents: 10,
+    controlTotal: 100,
+    exposedEvents: 20,
+    exposedTotal: 100,
+  },
+} satisfies ToolExample<{
+  readonly controlEvents: number;
+  readonly controlTotal: number;
+  readonly exposedEvents: number;
+  readonly exposedTotal: number;
+}>;
+
 export const relativeRiskTool = createSimpleTool({
   id: "statistics/relative-risk",
   title: "Relative Risk Calculator",

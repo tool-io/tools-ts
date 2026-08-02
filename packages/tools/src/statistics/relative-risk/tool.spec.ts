@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { runRelativeRisk } from "./tool.js";
+import { relativeRiskExample, runRelativeRisk } from "./tool.js";
 describe("Relative Risk Calculator", () => {
   it("calculates a valid result", () => {
     expect(
@@ -13,4 +13,6 @@ describe("Relative Risk Calculator", () => {
   });
   it("rejects invalid input", () =>
     expect(runRelativeRisk(null).ok).toBe(false));
+  it("publishes an executable example", () =>
+    expect(runRelativeRisk(relativeRiskExample.input).ok).toBe(true));
 });
