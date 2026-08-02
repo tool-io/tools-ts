@@ -1,4 +1,20 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const riskDifferenceExample = {
+  input: {
+    controlEvents: 20,
+    controlTotal: 100,
+    treatmentEvents: 10,
+    treatmentTotal: 100,
+  },
+} satisfies ToolExample<{
+  readonly controlEvents: number;
+  readonly controlTotal: number;
+  readonly treatmentEvents: number;
+  readonly treatmentTotal: number;
+}>;
+
 export const riskDifferenceTool = createSimpleTool({
   id: "statistics/risk-difference",
   title: "Risk Difference Calculator",

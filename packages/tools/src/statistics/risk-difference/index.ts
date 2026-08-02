@@ -1,1 +1,7 @@
-export { default, riskDifferenceTool, runRiskDifference } from "./tool.js";
+export {
+  default,
+  riskDifferenceExample,
+  riskDifferenceExample as example,
+  riskDifferenceTool,
+  runRiskDifference,
+} from "./tool.js";

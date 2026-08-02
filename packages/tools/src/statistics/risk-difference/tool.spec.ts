@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { runRiskDifference } from "./tool.js";
+import { riskDifferenceExample, runRiskDifference } from "./tool.js";
 describe("Risk Difference Calculator", () => {
   it("calculates a valid result", () => {
     expect(
@@ -13,4 +13,6 @@ describe("Risk Difference Calculator", () => {
   });
   it("rejects invalid input", () =>
     expect(runRiskDifference(null).ok).toBe(false));
+  it("publishes an executable example", () =>
+    expect(runRiskDifference(riskDifferenceExample.input).ok).toBe(true));
 });
