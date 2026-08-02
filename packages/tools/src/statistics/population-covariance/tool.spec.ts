@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { runPopulationCovariance } from "./tool.js";
+import {
+  populationCovarianceExample,
+  runPopulationCovariance,
+} from "./tool.js";
 describe("Population Covariance Calculator", () => {
   it("calculates a valid result", () => {
     const result = runPopulationCovariance({
@@ -10,4 +13,8 @@ describe("Population Covariance Calculator", () => {
   });
   it("rejects invalid input", () =>
     expect(runPopulationCovariance(null).ok).toBe(false));
+  it("publishes an executable example", () =>
+    expect(runPopulationCovariance(populationCovarianceExample.input).ok).toBe(
+      true,
+    ));
 });
