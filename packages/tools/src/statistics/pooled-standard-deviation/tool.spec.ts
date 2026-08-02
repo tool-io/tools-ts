@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { runPooledStandardDeviation } from "./tool.js";
+import {
+  pooledStandardDeviationExample,
+  runPooledStandardDeviation,
+} from "./tool.js";
 describe("Pooled Standard Deviation Calculator", () => {
   it("calculates a valid result", () => {
     const result = runPooledStandardDeviation({
@@ -14,4 +17,8 @@ describe("Pooled Standard Deviation Calculator", () => {
   });
   it("rejects invalid input", () =>
     expect(runPooledStandardDeviation(null).ok).toBe(false));
+  it("publishes an executable example", () =>
+    expect(
+      runPooledStandardDeviation(pooledStandardDeviationExample.input).ok,
+    ).toBe(true));
 });
