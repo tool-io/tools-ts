@@ -1253,6 +1253,10 @@
       "types": "./dist/statistics/coefficient-of-range/index.d.ts",
       "import": "./dist/statistics/coefficient-of-range/index.js"
     },
+    "./statistics/coefficient-of-variation": {
+      "types": "./dist/statistics/coefficient-of-variation/index.d.ts",
+      "import": "./dist/statistics/coefficient-of-variation/index.js"
+    },
     "./statistics/cumulative-frequency": {
       "types": "./dist/statistics/cumulative-frequency/index.d.ts",
       "import": "./dist/statistics/cumulative-frequency/index.js"
@@ -1280,6 +1284,14 @@
     "./statistics/holm-bonferroni": {
       "types": "./dist/statistics/holm-bonferroni/index.d.ts",
       "import": "./dist/statistics/holm-bonferroni/index.js"
+    },
+    "./statistics/inclusive-quartiles": {
+      "types": "./dist/statistics/inclusive-quartiles/index.d.ts",
+      "import": "./dist/statistics/inclusive-quartiles/index.js"
+    },
+    "./statistics/interquartile-range": {
+      "types": "./dist/statistics/interquartile-range/index.d.ts",
+      "import": "./dist/statistics/interquartile-range/index.js"
     },
     "./statistics/jackknife-bias": {
       "types": "./dist/statistics/jackknife-bias/index.d.ts",
@@ -1349,9 +1361,17 @@
       "types": "./dist/statistics/population-covariance/index.d.ts",
       "import": "./dist/statistics/population-covariance/index.js"
     },
+    "./statistics/population-summary": {
+      "types": "./dist/statistics/population-summary/index.d.ts",
+      "import": "./dist/statistics/population-summary/index.js"
+    },
     "./statistics/quartile-coefficient-of-dispersion": {
       "types": "./dist/statistics/quartile-coefficient-of-dispersion/index.d.ts",
       "import": "./dist/statistics/quartile-coefficient-of-dispersion/index.js"
+    },
+    "./statistics/quartiles": {
+      "types": "./dist/statistics/quartiles/index.d.ts",
+      "import": "./dist/statistics/quartiles/index.js"
     },
     "./statistics/range": {
       "types": "./dist/statistics/range/index.d.ts",
@@ -1381,6 +1401,10 @@
       "types": "./dist/statistics/sample-variance/index.d.ts",
       "import": "./dist/statistics/sample-variance/index.js"
     },
+    "./statistics/standard-deviation": {
+      "types": "./dist/statistics/standard-deviation/index.d.ts",
+      "import": "./dist/statistics/standard-deviation/index.js"
+    },
     "./statistics/standard-error": {
       "types": "./dist/statistics/standard-error/index.d.ts",
       "import": "./dist/statistics/standard-error/index.js"
@@ -1400,6 +1424,10 @@
     "./statistics/two-sample-t-test": {
       "types": "./dist/statistics/two-sample-t-test/index.d.ts",
       "import": "./dist/statistics/two-sample-t-test/index.js"
+    },
+    "./statistics/variance": {
+      "types": "./dist/statistics/variance/index.d.ts",
+      "import": "./dist/statistics/variance/index.js"
     },
     "./statistics/weighted-mean": {
       "types": "./dist/statistics/weighted-mean/index.d.ts",
