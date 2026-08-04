@@ -1249,6 +1249,10 @@
       "types": "./dist/statistics/bootstrap-standard-error/index.d.ts",
       "import": "./dist/statistics/bootstrap-standard-error/index.js"
     },
+    "./statistics/coefficient-of-determination": {
+      "types": "./dist/statistics/coefficient-of-determination/index.d.ts",
+      "import": "./dist/statistics/coefficient-of-determination/index.js"
+    },
     "./statistics/coefficient-of-range": {
       "types": "./dist/statistics/coefficient-of-range/index.d.ts",
       "import": "./dist/statistics/coefficient-of-range/index.js"
@@ -1345,9 +1349,17 @@
       "types": "./dist/statistics/odds-ratio/index.d.ts",
       "import": "./dist/statistics/odds-ratio/index.js"
     },
+    "./statistics/one-way-anova": {
+      "types": "./dist/statistics/one-way-anova/index.d.ts",
+      "import": "./dist/statistics/one-way-anova/index.js"
+    },
     "./statistics/paired-t-test": {
       "types": "./dist/statistics/paired-t-test/index.d.ts",
       "import": "./dist/statistics/paired-t-test/index.js"
+    },
+    "./statistics/pearson-correlation": {
+      "types": "./dist/statistics/pearson-correlation/index.d.ts",
+      "import": "./dist/statistics/pearson-correlation/index.js"
     },
     "./statistics/pooled-standard-deviation": {
       "types": "./dist/statistics/pooled-standard-deviation/index.d.ts",
@@ -1400,6 +1412,10 @@
     "./statistics/sample-variance": {
       "types": "./dist/statistics/sample-variance/index.d.ts",
       "import": "./dist/statistics/sample-variance/index.js"
+    },
+    "./statistics/skewness": {
+      "types": "./dist/statistics/skewness/index.d.ts",
+      "import": "./dist/statistics/skewness/index.js"
     },
     "./statistics/standard-deviation": {
       "types": "./dist/statistics/standard-deviation/index.d.ts",
