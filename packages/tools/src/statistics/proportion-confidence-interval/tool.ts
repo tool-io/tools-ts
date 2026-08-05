@@ -71,7 +71,10 @@ export const proportionConfidenceIntervalTool = createSimpleTool({
       input.confidenceLevel as ProportionConfidenceLevel,
     );
     if (!interval)
-      simpleError("successes", "Enter a valid success count and sample size.");
+      return simpleError(
+        "successes",
+        "Enter a valid success count and sample size.",
+      );
     return { lower: interval[0], upper: interval[1] };
   },
 });
