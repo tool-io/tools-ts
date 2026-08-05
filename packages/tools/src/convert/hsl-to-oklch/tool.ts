@@ -1,6 +1,7 @@
 import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
 import { runHslToRgb } from "../hsl-to-rgb/tool.js";
+import type { HslToRgbOutput } from "../hsl-to-rgb/tool.js";
 import { rgbToOklch } from "../oklch.js";
 
 export type HslToOklchInput = {
@@ -22,7 +23,7 @@ export const convertHslToOklch = (
 ): HslToOklchOutput | null => {
   const result = (() => {
     const rgb = runHslToRgb(input);
-    return rgb.ok ? rgbToOklch(rgb.output) : null;
+    return rgb.ok ? rgbToOklch(rgb.output as HslToRgbOutput) : null;
   })();
   return result
     ? {
