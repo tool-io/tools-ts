@@ -90,7 +90,10 @@ export const zConfidenceIntervalTool = createSimpleTool({
       input.confidenceLevel as ZConfidenceLevel,
     );
     if (!interval)
-      simpleError("sampleSize", "Enter a valid sample and confidence level.");
+      return simpleError(
+        "sampleSize",
+        "Enter a valid sample and confidence level.",
+      );
     return { lower: interval[0], upper: interval[1] };
   },
 });
