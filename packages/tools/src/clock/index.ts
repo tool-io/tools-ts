@@ -1,7 +1,7 @@
 export {
+  default,
   clockExample as example,
   clockTool,
-  default,
   formatClock,
   runClock,
 } from "./tool.js";
