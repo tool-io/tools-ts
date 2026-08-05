@@ -152,7 +152,7 @@ const validValue = (value: unknown, field: SimpleField): boolean => {
 export type SimpleToolConfig = {
   readonly calculate: (
     input: Readonly<Record<string, unknown>>,
-  ) => Readonly<Record<string, unknown>>;
+  ) => Readonly<Record<string, unknown>> | null;
   readonly description: string;
   readonly id: string;
   readonly inputs: readonly SimpleField[];
@@ -195,6 +195,12 @@ export const createSimpleTool = (
     }
     try {
       const output = config.calculate(normalized);
+      if (!isRecord(output))
+        return simpleError(
+          "",
+          "The calculation did not produce an output.",
+          "invalid_output",
+        );
       for (const field of config.outputs)
         if (!validValue(output[field.id], field))
           simpleError(
