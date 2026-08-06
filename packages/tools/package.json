@@ -24,6 +24,10 @@
       "types": "./dist/air-displacement-body-composition/index.d.ts",
       "import": "./dist/air-displacement-body-composition/index.js"
     },
+    "./approximation/vertex-cover-2-approximation": {
+      "types": "./dist/approximation/vertex-cover-2-approximation/index.d.ts",
+      "import": "./dist/approximation/vertex-cover-2-approximation/index.js"
+    },
     "./arithmetic/absolute-difference": {
       "types": "./dist/arithmetic/absolute-difference/index.d.ts",
       "import": "./dist/arithmetic/absolute-difference/index.js"
@@ -165,9 +169,21 @@
       "types": "./dist/clock/index.d.ts",
       "import": "./dist/clock/index.js"
     },
+    "./clustering/affinity-propagation": {
+      "types": "./dist/clustering/affinity-propagation/index.d.ts",
+      "import": "./dist/clustering/affinity-propagation/index.js"
+    },
+    "./clustering/birch-microclusters": {
+      "types": "./dist/clustering/birch-microclusters/index.d.ts",
+      "import": "./dist/clustering/birch-microclusters/index.js"
+    },
     "./clustering/k-means-plus-plus": {
       "types": "./dist/clustering/k-means-plus-plus/index.d.ts",
       "import": "./dist/clustering/k-means-plus-plus/index.js"
+    },
+    "./clustering/optics": {
+      "types": "./dist/clustering/optics/index.d.ts",
+      "import": "./dist/clustering/optics/index.js"
     },
     "./combinatorics/combination-count": {
       "types": "./dist/combinatorics/combination-count/index.d.ts",
@@ -457,6 +473,22 @@
       "types": "./dist/core/index.d.ts",
       "import": "./dist/core/index.js"
     },
+    "./data-analysis/archetypal-analysis": {
+      "types": "./dist/data-analysis/archetypal-analysis/index.d.ts",
+      "import": "./dist/data-analysis/archetypal-analysis/index.js"
+    },
+    "./data-mining/apriori": {
+      "types": "./dist/data-mining/apriori/index.d.ts",
+      "import": "./dist/data-mining/apriori/index.js"
+    },
+    "./data-mining/association-rules": {
+      "types": "./dist/data-mining/association-rules/index.d.ts",
+      "import": "./dist/data-mining/association-rules/index.js"
+    },
+    "./data-structure/bloom-filter": {
+      "types": "./dist/data-structure/bloom-filter/index.d.ts",
+      "import": "./dist/data-structure/bloom-filter/index.js"
+    },
     "./date/add-days": {
       "types": "./dist/date/add-days/index.d.ts",
       "import": "./dist/date/add-days/index.js"
@@ -533,9 +565,17 @@
       "types": "./dist/encode/url-component/index.d.ts",
       "import": "./dist/encode/url-component/index.js"
     },
+    "./estimation/particle-filter": {
+      "types": "./dist/estimation/particle-filter/index.d.ts",
+      "import": "./dist/estimation/particle-filter/index.js"
+    },
     "./finance/annualized-return": {
       "types": "./dist/finance/annualized-return/index.d.ts",
       "import": "./dist/finance/annualized-return/index.js"
+    },
+    "./finance/black-scholes": {
+      "types": "./dist/finance/black-scholes/index.d.ts",
+      "import": "./dist/finance/black-scholes/index.js"
     },
     "./finance/break-even-units": {
       "types": "./dist/finance/break-even-units/index.d.ts",
@@ -581,6 +621,10 @@
       "types": "./dist/finance/return-on-investment/index.d.ts",
       "import": "./dist/finance/return-on-investment/index.js"
     },
+    "./finance/risk-parity": {
+      "types": "./dist/finance/risk-parity/index.d.ts",
+      "import": "./dist/finance/risk-parity/index.js"
+    },
     "./finance/rule-of-72": {
       "types": "./dist/finance/rule-of-72/index.d.ts",
       "import": "./dist/finance/rule-of-72/index.js"
@@ -604,6 +648,42 @@
     "./format/zero-pad-number": {
       "types": "./dist/format/zero-pad-number/index.d.ts",
       "import": "./dist/format/zero-pad-number/index.js"
+    },
+    "./game-search/alpha-beta": {
+      "types": "./dist/game-search/alpha-beta/index.d.ts",
+      "import": "./dist/game-search/alpha-beta/index.js"
+    },
+    "./game-search/alpha-beta-uct": {
+      "types": "./dist/game-search/alpha-beta-uct/index.d.ts",
+      "import": "./dist/game-search/alpha-beta-uct/index.js"
+    },
+    "./game-theory/best-response-dynamics": {
+      "types": "./dist/game-theory/best-response-dynamics/index.d.ts",
+      "import": "./dist/game-theory/best-response-dynamics/index.js"
+    },
+    "./generate/3d-bin-packing-instance": {
+      "types": "./dist/generate/3d-bin-packing-instance/index.d.ts",
+      "import": "./dist/generate/3d-bin-packing-instance/index.js"
+    },
+    "./generate/3sat-instance": {
+      "types": "./dist/generate/3sat-instance/index.d.ts",
+      "import": "./dist/generate/3sat-instance/index.js"
+    },
+    "./generate/bin-packing-instance": {
+      "types": "./dist/generate/bin-packing-instance/index.d.ts",
+      "import": "./dist/generate/bin-packing-instance/index.js"
+    },
+    "./generate/bipartite-matching-instance": {
+      "types": "./dist/generate/bipartite-matching-instance/index.d.ts",
+      "import": "./dist/generate/bipartite-matching-instance/index.js"
+    },
+    "./generate/network-flow-instance": {
+      "types": "./dist/generate/network-flow-instance/index.d.ts",
+      "import": "./dist/generate/network-flow-instance/index.js"
+    },
+    "./generate/open-shop-scheduling-instance": {
+      "types": "./dist/generate/open-shop-scheduling-instance/index.d.ts",
+      "import": "./dist/generate/open-shop-scheduling-instance/index.js"
     },
     "./geometry/chebyshev-distance": {
       "types": "./dist/geometry/chebyshev-distance/index.d.ts",
@@ -632,6 +712,22 @@
     "./geometry/surface-area": {
       "types": "./dist/geometry/surface-area/index.d.ts",
       "import": "./dist/geometry/surface-area/index.js"
+    },
+    "./graph/node-classification": {
+      "types": "./dist/graph/node-classification/index.d.ts",
+      "import": "./dist/graph/node-classification/index.js"
+    },
+    "./graph/node2vec-plus-plus-transition": {
+      "types": "./dist/graph/node2vec-plus-plus-transition/index.d.ts",
+      "import": "./dist/graph/node2vec-plus-plus-transition/index.js"
+    },
+    "./graph/node2vec-transition": {
+      "types": "./dist/graph/node2vec-transition/index.d.ts",
+      "import": "./dist/graph/node2vec-transition/index.js"
+    },
+    "./graph/pinsage-aggregation": {
+      "types": "./dist/graph/pinsage-aggregation/index.d.ts",
+      "import": "./dist/graph/pinsage-aggregation/index.js"
     },
     "./information/binary-cross-entropy": {
       "types": "./dist/information/binary-cross-entropy/index.d.ts",
@@ -693,6 +789,22 @@
       "types": "./dist/list/unique/index.d.ts",
       "import": "./dist/list/unique/index.js"
     },
+    "./machine-learning/adaboost-classifier": {
+      "types": "./dist/machine-learning/adaboost-classifier/index.d.ts",
+      "import": "./dist/machine-learning/adaboost-classifier/index.js"
+    },
+    "./machine-learning/alphazero-puct": {
+      "types": "./dist/machine-learning/alphazero-puct/index.d.ts",
+      "import": "./dist/machine-learning/alphazero-puct/index.js"
+    },
+    "./machine-learning/bayesian-rule-list": {
+      "types": "./dist/machine-learning/bayesian-rule-list/index.d.ts",
+      "import": "./dist/machine-learning/bayesian-rule-list/index.js"
+    },
+    "./machine-learning/scaled-dot-product-attention": {
+      "types": "./dist/machine-learning/scaled-dot-product-attention/index.d.ts",
+      "import": "./dist/machine-learning/scaled-dot-product-attention/index.js"
+    },
     "./math/logarithm": {
       "types": "./dist/math/logarithm/index.d.ts",
       "import": "./dist/math/logarithm/index.js"
@@ -705,6 +817,26 @@
       "types": "./dist/matrix/add/index.d.ts",
       "import": "./dist/matrix/add/index.js"
     },
+    "./matrix/as-csv": {
+      "types": "./dist/matrix/as-csv/index.d.ts",
+      "import": "./dist/matrix/as-csv/index.js"
+    },
+    "./matrix/as-json": {
+      "types": "./dist/matrix/as-json/index.d.ts",
+      "import": "./dist/matrix/as-json/index.js"
+    },
+    "./matrix/as-latex": {
+      "types": "./dist/matrix/as-latex/index.d.ts",
+      "import": "./dist/matrix/as-latex/index.js"
+    },
+    "./matrix/as-plain-text": {
+      "types": "./dist/matrix/as-plain-text/index.d.ts",
+      "import": "./dist/matrix/as-plain-text/index.js"
+    },
+    "./matrix/as-table": {
+      "types": "./dist/matrix/as-table/index.d.ts",
+      "import": "./dist/matrix/as-table/index.js"
+    },
     "./matrix/diagonal": {
       "types": "./dist/matrix/diagonal/index.d.ts",
       "import": "./dist/matrix/diagonal/index.js"
@@ -716,6 +848,10 @@
     "./matrix/identity": {
       "types": "./dist/matrix/identity/index.d.ts",
       "import": "./dist/matrix/identity/index.js"
+    },
+    "./matrix/nonnegative-matrix-factorization": {
+      "types": "./dist/matrix/nonnegative-matrix-factorization/index.d.ts",
+      "import": "./dist/matrix/nonnegative-matrix-factorization/index.js"
     },
     "./matrix/scalar-multiply": {
       "types": "./dist/matrix/scalar-multiply/index.d.ts",
@@ -756,6 +892,10 @@
     "./metrics/symmetric-mean-absolute-percentage-error": {
       "types": "./dist/metrics/symmetric-mean-absolute-percentage-error/index.d.ts",
       "import": "./dist/metrics/symmetric-mean-absolute-percentage-error/index.js"
+    },
+    "./neural-network/feedforward": {
+      "types": "./dist/neural-network/feedforward/index.d.ts",
+      "import": "./dist/neural-network/feedforward/index.js"
     },
     "./normalize/min-max": {
       "types": "./dist/normalize/min-max/index.d.ts",
@@ -817,6 +957,54 @@
       "types": "./dist/number/reverse-digits/index.d.ts",
       "import": "./dist/number/reverse-digits/index.js"
     },
+    "./online-algorithm/ski-rental": {
+      "types": "./dist/online-algorithm/ski-rental/index.d.ts",
+      "import": "./dist/online-algorithm/ski-rental/index.js"
+    },
+    "./optimization/adadelta-step": {
+      "types": "./dist/optimization/adadelta-step/index.d.ts",
+      "import": "./dist/optimization/adadelta-step/index.js"
+    },
+    "./optimization/adagrad-step": {
+      "types": "./dist/optimization/adagrad-step/index.d.ts",
+      "import": "./dist/optimization/adagrad-step/index.js"
+    },
+    "./optimization/adam-step": {
+      "types": "./dist/optimization/adam-step/index.d.ts",
+      "import": "./dist/optimization/adam-step/index.js"
+    },
+    "./optimization/ant-colony-tsp": {
+      "types": "./dist/optimization/ant-colony-tsp/index.d.ts",
+      "import": "./dist/optimization/ant-colony-tsp/index.js"
+    },
+    "./optimization/bfgs-step": {
+      "types": "./dist/optimization/bfgs-step/index.d.ts",
+      "import": "./dist/optimization/bfgs-step/index.js"
+    },
+    "./optimization/nesterov-step": {
+      "types": "./dist/optimization/nesterov-step/index.d.ts",
+      "import": "./dist/optimization/nesterov-step/index.js"
+    },
+    "./optimization/newton-step": {
+      "types": "./dist/optimization/newton-step/index.d.ts",
+      "import": "./dist/optimization/newton-step/index.js"
+    },
+    "./optimization/non-convex-multistart": {
+      "types": "./dist/optimization/non-convex-multistart/index.d.ts",
+      "import": "./dist/optimization/non-convex-multistart/index.js"
+    },
+    "./optimization/particle-swarm": {
+      "types": "./dist/optimization/particle-swarm/index.d.ts",
+      "import": "./dist/optimization/particle-swarm/index.js"
+    },
+    "./optimization/rmsprop-step": {
+      "types": "./dist/optimization/rmsprop-step/index.d.ts",
+      "import": "./dist/optimization/rmsprop-step/index.js"
+    },
+    "./optimization/robust-minimax": {
+      "types": "./dist/optimization/robust-minimax/index.d.ts",
+      "import": "./dist/optimization/robust-minimax/index.js"
+    },
     "./optimization/stochastic-gradient-descent": {
       "types": "./dist/optimization/stochastic-gradient-descent/index.d.ts",
       "import": "./dist/optimization/stochastic-gradient-descent/index.js"
@@ -857,9 +1045,29 @@
       "types": "./dist/parse/quantity/index.d.ts",
       "import": "./dist/parse/quantity/index.js"
     },
+    "./pathfinding/a-star": {
+      "types": "./dist/pathfinding/a-star/index.d.ts",
+      "import": "./dist/pathfinding/a-star/index.js"
+    },
     "./physics/average-speed": {
       "types": "./dist/physics/average-speed/index.d.ts",
       "import": "./dist/physics/average-speed/index.js"
+    },
+    "./probability/bayesian-network-simulator": {
+      "types": "./dist/probability/bayesian-network-simulator/index.d.ts",
+      "import": "./dist/probability/bayesian-network-simulator/index.js"
+    },
+    "./probability/beta-binomial-sampler": {
+      "types": "./dist/probability/beta-binomial-sampler/index.d.ts",
+      "import": "./dist/probability/beta-binomial-sampler/index.js"
+    },
+    "./probability/beta-distribution-sampler": {
+      "types": "./dist/probability/beta-distribution-sampler/index.d.ts",
+      "import": "./dist/probability/beta-distribution-sampler/index.js"
+    },
+    "./probability/binomial-sampler": {
+      "types": "./dist/probability/binomial-sampler/index.d.ts",
+      "import": "./dist/probability/binomial-sampler/index.js"
     },
     "./probability/complement": {
       "types": "./dist/probability/complement/index.d.ts",
@@ -873,9 +1081,33 @@
       "types": "./dist/probability/expected-value/index.d.ts",
       "import": "./dist/probability/expected-value/index.js"
     },
+    "./probability/gamma-sampler": {
+      "types": "./dist/probability/gamma-sampler/index.d.ts",
+      "import": "./dist/probability/gamma-sampler/index.js"
+    },
     "./probability/log-odds": {
       "types": "./dist/probability/log-odds/index.d.ts",
       "import": "./dist/probability/log-odds/index.js"
+    },
+    "./probability/normal-box-muller-sampler": {
+      "types": "./dist/probability/normal-box-muller-sampler/index.d.ts",
+      "import": "./dist/probability/normal-box-muller-sampler/index.js"
+    },
+    "./probability/pareto-sampler": {
+      "types": "./dist/probability/pareto-sampler/index.d.ts",
+      "import": "./dist/probability/pareto-sampler/index.js"
+    },
+    "./probability/poisson-gamma-mixture-sampler": {
+      "types": "./dist/probability/poisson-gamma-mixture-sampler/index.d.ts",
+      "import": "./dist/probability/poisson-gamma-mixture-sampler/index.js"
+    },
+    "./probability/poisson-sampler": {
+      "types": "./dist/probability/poisson-sampler/index.d.ts",
+      "import": "./dist/probability/poisson-sampler/index.js"
+    },
+    "./probability/rejection-sampler": {
+      "types": "./dist/probability/rejection-sampler/index.d.ts",
+      "import": "./dist/probability/rejection-sampler/index.js"
     },
     "./proportions/aspect-ratio": {
       "types": "./dist/proportions/aspect-ratio/index.d.ts",
@@ -917,9 +1149,33 @@
       "types": "./dist/proportions/unit-rate/index.d.ts",
       "import": "./dist/proportions/unit-rate/index.js"
     },
+    "./random/seeded-number": {
+      "types": "./dist/random/seeded-number/index.d.ts",
+      "import": "./dist/random/seeded-number/index.js"
+    },
     "./registry": {
       "types": "./dist/registry.d.ts",
       "import": "./dist/registry.js"
+    },
+    "./regression/ridge": {
+      "types": "./dist/regression/ridge/index.d.ts",
+      "import": "./dist/regression/ridge/index.js"
+    },
+    "./reinforcement-learning/a3c-rollout-update": {
+      "types": "./dist/reinforcement-learning/a3c-rollout-update/index.d.ts",
+      "import": "./dist/reinforcement-learning/a3c-rollout-update/index.js"
+    },
+    "./reinforcement-learning/policy-evaluation": {
+      "types": "./dist/reinforcement-learning/policy-evaluation/index.d.ts",
+      "import": "./dist/reinforcement-learning/policy-evaluation/index.js"
+    },
+    "./reinforcement-learning/policy-gradient-step": {
+      "types": "./dist/reinforcement-learning/policy-gradient-step/index.d.ts",
+      "import": "./dist/reinforcement-learning/policy-gradient-step/index.js"
+    },
+    "./search/beam-search": {
+      "types": "./dist/search/beam-search/index.d.ts",
+      "import": "./dist/search/beam-search/index.js"
     },
     "./sequence/arithmetic": {
       "types": "./dist/sequence/arithmetic/index.d.ts",
@@ -949,9 +1205,17 @@
       "types": "./dist/set/union/index.d.ts",
       "import": "./dist/set/union/index.js"
     },
+    "./similarity/cosine": {
+      "types": "./dist/similarity/cosine/index.d.ts",
+      "import": "./dist/similarity/cosine/index.js"
+    },
     "./similarity/dice": {
       "types": "./dist/similarity/dice/index.d.ts",
       "import": "./dist/similarity/dice/index.js"
+    },
+    "./similarity/jaccard": {
+      "types": "./dist/similarity/jaccard/index.d.ts",
+      "import": "./dist/similarity/jaccard/index.js"
     },
     "./size": {
       "types": "./dist/size/index.d.ts",
