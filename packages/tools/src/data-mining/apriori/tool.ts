@@ -58,13 +58,15 @@ export const aprioriExample = {
   input: {
     maximumSize: 3,
     minimumSupport: 0.6,
-    transactions: [
-      ["bread", "milk"],
-      ["bread", "diapers", "beer"],
-      ["milk", "diapers", "beer"],
-      ["bread", "milk", "diapers", "beer"],
-      ["bread", "milk", "diapers"],
-    ],
+    transactions: {
+      values: [
+        ["bread", "milk"],
+        ["bread", "diapers", "beer"],
+        ["milk", "diapers", "beer"],
+        ["bread", "milk", "diapers", "beer"],
+        ["bread", "milk", "diapers"],
+      ],
+    },
   },
   output: {
     result: {
@@ -85,7 +87,9 @@ export const aprioriExample = {
   {
     readonly maximumSize: number;
     readonly minimumSupport: number;
-    readonly transactions: readonly (readonly string[])[];
+    readonly transactions: {
+      readonly values: readonly (readonly string[])[];
+    };
   },
   { readonly result: AprioriResult }
 >;

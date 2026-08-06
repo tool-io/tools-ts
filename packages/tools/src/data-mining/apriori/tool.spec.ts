@@ -7,10 +7,8 @@ describe("Apriori", () => {
         ?.frequentItemsets,
     ).toContainEqual({ count: 2, items: ["a", "b"], support: 0.666666666667 }));
   it("publishes an executable example", () =>
-    expect(
-      runApriori({
-        ...aprioriExample.input,
-        transactions: { values: aprioriExample.input.transactions },
-      }),
-    ).toEqual({ ok: true, output: aprioriExample.output }));
+    expect(runApriori(aprioriExample.input)).toEqual({
+      ok: true,
+      output: aprioriExample.output,
+    }));
 });
