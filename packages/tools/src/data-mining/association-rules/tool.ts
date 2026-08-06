@@ -55,7 +55,9 @@ export const associationRulesExample = {
     maximumSize: 3,
     minimumConfidence: 0.6,
     minimumSupport: 0.5,
-    transactions: [["bread", "milk"], ["bread", "milk"], ["bread"], ["milk"]],
+    transactions: {
+      values: [["bread", "milk"], ["bread", "milk"], ["bread"], ["milk"]],
+    },
   },
   output: {
     rules: {
@@ -82,7 +84,9 @@ export const associationRulesExample = {
     readonly maximumSize: number;
     readonly minimumConfidence: number;
     readonly minimumSupport: number;
-    readonly transactions: readonly (readonly string[])[];
+    readonly transactions: {
+      readonly values: readonly (readonly string[])[];
+    };
   },
   { readonly rules: { readonly values: readonly AssociationRule[] } }
 >;
