@@ -473,6 +473,58 @@
       "types": "./dist/core/index.d.ts",
       "import": "./dist/core/index.js"
     },
+    "./cost/api": {
+      "types": "./dist/cost/api/index.d.ts",
+      "import": "./dist/cost/api/index.js"
+    },
+    "./cost/appliance": {
+      "types": "./dist/cost/appliance/index.d.ts",
+      "import": "./dist/cost/appliance/index.js"
+    },
+    "./cost/cloud-computing": {
+      "types": "./dist/cost/cloud-computing/index.d.ts",
+      "import": "./dist/cost/cloud-computing/index.js"
+    },
+    "./cost/data-storage": {
+      "types": "./dist/cost/data-storage/index.d.ts",
+      "import": "./dist/cost/data-storage/index.js"
+    },
+    "./cost/electricity": {
+      "types": "./dist/cost/electricity/index.d.ts",
+      "import": "./dist/cost/electricity/index.js"
+    },
+    "./cost/employee": {
+      "types": "./dist/cost/employee/index.d.ts",
+      "import": "./dist/cost/employee/index.js"
+    },
+    "./cost/fuel": {
+      "types": "./dist/cost/fuel/index.d.ts",
+      "import": "./dist/cost/fuel/index.js"
+    },
+    "./cost/heating": {
+      "types": "./dist/cost/heating/index.d.ts",
+      "import": "./dist/cost/heating/index.js"
+    },
+    "./cost/printing": {
+      "types": "./dist/cost/printing/index.d.ts",
+      "import": "./dist/cost/printing/index.js"
+    },
+    "./cost/project": {
+      "types": "./dist/cost/project/index.d.ts",
+      "import": "./dist/cost/project/index.js"
+    },
+    "./cost/road-trip": {
+      "types": "./dist/cost/road-trip/index.d.ts",
+      "import": "./dist/cost/road-trip/index.js"
+    },
+    "./cost/total-ownership": {
+      "types": "./dist/cost/total-ownership/index.d.ts",
+      "import": "./dist/cost/total-ownership/index.js"
+    },
+    "./cost/water": {
+      "types": "./dist/cost/water/index.d.ts",
+      "import": "./dist/cost/water/index.js"
+    },
     "./data-analysis/archetypal-analysis": {
       "types": "./dist/data-analysis/archetypal-analysis/index.d.ts",
       "import": "./dist/data-analysis/archetypal-analysis/index.js"
@@ -1149,9 +1201,53 @@
       "types": "./dist/proportions/unit-rate/index.d.ts",
       "import": "./dist/proportions/unit-rate/index.js"
     },
+    "./random/binary": {
+      "types": "./dist/random/binary/index.d.ts",
+      "import": "./dist/random/binary/index.js"
+    },
+    "./random/date": {
+      "types": "./dist/random/date/index.d.ts",
+      "import": "./dist/random/date/index.js"
+    },
+    "./random/hex-color": {
+      "types": "./dist/random/hex-color/index.d.ts",
+      "import": "./dist/random/hex-color/index.js"
+    },
+    "./random/hexadecimal": {
+      "types": "./dist/random/hexadecimal/index.d.ts",
+      "import": "./dist/random/hexadecimal/index.js"
+    },
+    "./random/item": {
+      "types": "./dist/random/item/index.d.ts",
+      "import": "./dist/random/item/index.js"
+    },
+    "./random/letter": {
+      "types": "./dist/random/letter/index.d.ts",
+      "import": "./dist/random/letter/index.js"
+    },
+    "./random/number": {
+      "types": "./dist/random/number/index.d.ts",
+      "import": "./dist/random/number/index.js"
+    },
+    "./random/octal": {
+      "types": "./dist/random/octal/index.d.ts",
+      "import": "./dist/random/octal/index.js"
+    },
+    "./random/radix-value": {
+      "types": "./dist/random/radix-value/index.d.ts",
+      "import": "./dist/random/radix-value/index.js"
+    },
     "./random/seeded-number": {
       "types": "./dist/random/seeded-number/index.d.ts",
       "import": "./dist/random/seeded-number/index.js"
+    },
+    "./random/time": {
+      "types": "./dist/random/time/index.d.ts",
+      "import": "./dist/random/time/index.js"
+    },
+    "./random/timestamp": {
+      "types": "./dist/random/timestamp/index.d.ts",
+      "import": "./dist/random/timestamp/index.js"
     },
     "./registry": {
       "types": "./dist/registry.d.ts",
