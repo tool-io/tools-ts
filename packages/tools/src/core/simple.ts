@@ -1,5 +1,6 @@
 import {
   defineTool,
+  type ToolExecutionContext,
   type ToolDefinition,
   type ToolJsonSchema,
 } from "./definition.js";
@@ -152,6 +153,7 @@ const validValue = (value: unknown, field: SimpleField): boolean => {
 export type SimpleToolConfig = {
   readonly calculate: (
     input: Readonly<Record<string, unknown>>,
+    context: ToolExecutionContext,
   ) => Readonly<Record<string, unknown>> | null;
   readonly description: string;
   readonly id: string;
@@ -171,7 +173,10 @@ export const createSimpleTool = (
   const requiredInputs = config.inputs
     .filter((field) => field.required !== false && field.default === undefined)
     .map((field) => field.id);
-  const execute = (input: unknown): ToolResult<Record<string, unknown>> => {
+  const execute = (
+    input: unknown,
+    context: ToolExecutionContext = {},
+  ): ToolResult<Record<string, unknown>> => {
     if (!isRecord(input))
       return invalidInput([
         {
@@ -194,7 +199,7 @@ export const createSimpleTool = (
         ]);
     }
     try {
-      const output = config.calculate(normalized);
+      const output = config.calculate(normalized, context);
       if (!isRecord(output))
         return simpleError(
           "",
