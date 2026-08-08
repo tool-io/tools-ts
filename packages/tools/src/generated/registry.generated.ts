@@ -508,45 +508,52 @@ import tool505 from "../statistics/weighted-mean/tool.js";
 import tool506 from "../statistics/wilcoxon-signed-rank/tool.js";
 import tool507 from "../statistics/z-confidence-interval/tool.js";
 import tool508 from "../statistics/z-score/tool.js";
-import tool509 from "../text/byte-count/tool.js";
-import tool510 from "../text/character-count/tool.js";
-import tool511 from "../text/concatenate-two-strings/tool.js";
-import tool512 from "../text/join/tool.js";
-import tool513 from "../text/line-count/tool.js";
-import tool514 from "../text/lowercase/tool.js";
-import tool515 from "../text/normalize-whitespace/tool.js";
-import tool516 from "../text/prefix-lines/tool.js";
-import tool517 from "../text/remove-blank-lines/tool.js";
-import tool518 from "../text/repeat/tool.js";
-import tool519 from "../text/replace-literal/tool.js";
-import tool520 from "../text/reverse/tool.js";
-import tool521 from "../text/sentence-count/tool.js";
-import tool522 from "../text/shingling/tool.js";
-import tool523 from "../text/sort-lines/tool.js";
-import tool524 from "../text/split/tool.js";
-import tool525 from "../text/substring-count/tool.js";
-import tool526 from "../text/suffix-lines/tool.js";
-import tool527 from "../text/trim/tool.js";
-import tool528 from "../text/unique-lines/tool.js";
-import tool529 from "../text/uppercase/tool.js";
-import tool530 from "../text/word-count/tool.js";
-import tool531 from "../vector/add/tool.js";
-import tool532 from "../vector/angle/tool.js";
-import tool533 from "../vector/cross-product/tool.js";
-import tool534 from "../vector/dot-product/tool.js";
-import tool535 from "../vector/l-infinity-norm/tool.js";
-import tool536 from "../vector/l1-norm/tool.js";
-import tool537 from "../vector/magnitude/tool.js";
-import tool538 from "../vector/normalize/tool.js";
-import tool539 from "../vector/projection/tool.js";
-import tool540 from "../vector/rejection/tool.js";
-import tool541 from "../vector/scalar-multiply/tool.js";
-import tool542 from "../vector/subtract/tool.js";
-import tool543 from "../waist-circumference/tool.js";
-import tool544 from "../waist-to-height/tool.js";
-import tool545 from "../waist-to-hip/tool.js";
-import tool546 from "../wcag-contrast-check/tool.js";
-import tool547 from "../world-clock/tool.js";
+import tool509 from "../take-home-pay-calculator/ch/tool.js";
+import tool510 from "../take-home-pay-calculator/de/tool.js";
+import tool511 from "../take-home-pay-calculator/jp/tool.js";
+import tool512 from "../take-home-pay-calculator/nz/tool.js";
+import tool513 from "../take-home-pay-calculator/uk/tool.js";
+import tool514 from "../take-home-pay-calculator/us/tool.js";
+import tool515 from "../tax/progressive/tool.js";
+import tool516 from "../text/byte-count/tool.js";
+import tool517 from "../text/character-count/tool.js";
+import tool518 from "../text/concatenate-two-strings/tool.js";
+import tool519 from "../text/join/tool.js";
+import tool520 from "../text/line-count/tool.js";
+import tool521 from "../text/lowercase/tool.js";
+import tool522 from "../text/normalize-whitespace/tool.js";
+import tool523 from "../text/prefix-lines/tool.js";
+import tool524 from "../text/remove-blank-lines/tool.js";
+import tool525 from "../text/repeat/tool.js";
+import tool526 from "../text/replace-literal/tool.js";
+import tool527 from "../text/reverse/tool.js";
+import tool528 from "../text/sentence-count/tool.js";
+import tool529 from "../text/shingling/tool.js";
+import tool530 from "../text/sort-lines/tool.js";
+import tool531 from "../text/split/tool.js";
+import tool532 from "../text/substring-count/tool.js";
+import tool533 from "../text/suffix-lines/tool.js";
+import tool534 from "../text/trim/tool.js";
+import tool535 from "../text/unique-lines/tool.js";
+import tool536 from "../text/uppercase/tool.js";
+import tool537 from "../text/word-count/tool.js";
+import tool538 from "../vector/add/tool.js";
+import tool539 from "../vector/angle/tool.js";
+import tool540 from "../vector/cross-product/tool.js";
+import tool541 from "../vector/dot-product/tool.js";
+import tool542 from "../vector/l-infinity-norm/tool.js";
+import tool543 from "../vector/l1-norm/tool.js";
+import tool544 from "../vector/magnitude/tool.js";
+import tool545 from "../vector/normalize/tool.js";
+import tool546 from "../vector/projection/tool.js";
+import tool547 from "../vector/rejection/tool.js";
+import tool548 from "../vector/scalar-multiply/tool.js";
+import tool549 from "../vector/subtract/tool.js";
+import tool550 from "../waist-circumference/tool.js";
+import tool551 from "../waist-to-height/tool.js";
+import tool552 from "../waist-to-hip/tool.js";
+import tool553 from "../wcag-contrast-check/tool.js";
+import tool554 from "../world-clock/tool.js";
 import type { ToolDefinition } from "../core/definition.js";
 
 export type RegisteredTool = ToolDefinition<unknown, unknown>;
@@ -1100,6 +1107,13 @@ const definitions: readonly RegisteredTool[] = [
   tool545,
   tool546,
   tool547,
+  tool548,
+  tool549,
+  tool550,
+  tool551,
+  tool552,
+  tool553,
+  tool554,
 ];
 
 export const toolRegistry = new Map<string, RegisteredTool>();

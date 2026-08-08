@@ -2077,6 +2077,34 @@
       "types": "./dist/statistics/z-score/index.d.ts",
       "import": "./dist/statistics/z-score/index.js"
     },
+    "./take-home-pay-calculator/ch": {
+      "types": "./dist/take-home-pay-calculator/ch/index.d.ts",
+      "import": "./dist/take-home-pay-calculator/ch/index.js"
+    },
+    "./take-home-pay-calculator/de": {
+      "types": "./dist/take-home-pay-calculator/de/index.d.ts",
+      "import": "./dist/take-home-pay-calculator/de/index.js"
+    },
+    "./take-home-pay-calculator/jp": {
+      "types": "./dist/take-home-pay-calculator/jp/index.d.ts",
+      "import": "./dist/take-home-pay-calculator/jp/index.js"
+    },
+    "./take-home-pay-calculator/nz": {
+      "types": "./dist/take-home-pay-calculator/nz/index.d.ts",
+      "import": "./dist/take-home-pay-calculator/nz/index.js"
+    },
+    "./take-home-pay-calculator/uk": {
+      "types": "./dist/take-home-pay-calculator/uk/index.d.ts",
+      "import": "./dist/take-home-pay-calculator/uk/index.js"
+    },
+    "./take-home-pay-calculator/us": {
+      "types": "./dist/take-home-pay-calculator/us/index.d.ts",
+      "import": "./dist/take-home-pay-calculator/us/index.js"
+    },
+    "./tax/progressive": {
+      "types": "./dist/tax/progressive/index.d.ts",
+      "import": "./dist/tax/progressive/index.js"
+    },
     "./text/byte-count": {
       "types": "./dist/text/byte-count/index.d.ts",
       "import": "./dist/text/byte-count/index.js"
