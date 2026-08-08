@@ -205,6 +205,10 @@
       "types": "./dist/compare/index.d.ts",
       "import": "./dist/compare/index.js"
     },
+    "./compound-interest-calculator": {
+      "types": "./dist/compound-interest-calculator/index.d.ts",
+      "import": "./dist/compound-interest-calculator/index.js"
+    },
     "./convert/acceleration": {
       "types": "./dist/convert/acceleration/index.d.ts",
       "import": "./dist/convert/acceleration/index.js"
@@ -781,6 +785,18 @@
       "types": "./dist/graph/pinsage-aggregation/index.d.ts",
       "import": "./dist/graph/pinsage-aggregation/index.js"
     },
+    "./hydrology/river-discharge": {
+      "types": "./dist/hydrology/river-discharge/index.d.ts",
+      "import": "./dist/hydrology/river-discharge/index.js"
+    },
+    "./hydrology/river-flow-percentiles": {
+      "types": "./dist/hydrology/river-flow-percentiles/index.d.ts",
+      "import": "./dist/hydrology/river-flow-percentiles/index.js"
+    },
+    "./ideal-body-weight": {
+      "types": "./dist/ideal-body-weight/index.d.ts",
+      "import": "./dist/ideal-body-weight/index.js"
+    },
     "./information/binary-cross-entropy": {
       "types": "./dist/information/binary-cross-entropy/index.d.ts",
       "import": "./dist/information/binary-cross-entropy/index.js"
@@ -1104,6 +1120,10 @@
     "./physics/average-speed": {
       "types": "./dist/physics/average-speed/index.d.ts",
       "import": "./dist/physics/average-speed/index.js"
+    },
+    "./ponderal-index": {
+      "types": "./dist/ponderal-index/index.d.ts",
+      "import": "./dist/ponderal-index/index.js"
     },
     "./probability/bayesian-network-simulator": {
       "types": "./dist/probability/bayesian-network-simulator/index.d.ts",
@@ -2196,6 +2216,18 @@
     "./waist-circumference": {
       "types": "./dist/waist-circumference/index.d.ts",
       "import": "./dist/waist-circumference/index.js"
+    },
+    "./waist-to-height": {
+      "types": "./dist/waist-to-height/index.d.ts",
+      "import": "./dist/waist-to-height/index.js"
+    },
+    "./waist-to-hip": {
+      "types": "./dist/waist-to-hip/index.d.ts",
+      "import": "./dist/waist-to-hip/index.js"
+    },
+    "./wcag-contrast-check": {
+      "types": "./dist/wcag-contrast-check/index.d.ts",
+      "import": "./dist/wcag-contrast-check/index.js"
     },
     "./weather": {
       "types": "./dist/weather/index.d.ts",

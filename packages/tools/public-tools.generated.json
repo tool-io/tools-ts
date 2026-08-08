@@ -46,6 +46,7 @@
     "combinatorics/factorial",
     "combinatorics/permutation-count",
     "compare",
+    "compound-interest-calculator",
     "convert/acceleration",
     "convert/amount-of-substance",
     "convert/angle",
@@ -187,6 +188,9 @@
     "graph/node2vec-plus-plus-transition",
     "graph/node2vec-transition",
     "graph/pinsage-aggregation",
+    "hydrology/river-discharge",
+    "hydrology/river-flow-percentiles",
+    "ideal-body-weight",
     "information/binary-cross-entropy",
     "information/binary-entropy",
     "information/log-loss",
@@ -268,6 +272,7 @@
     "parse/quantity",
     "pathfinding/a-star",
     "physics/average-speed",
+    "ponderal-index",
     "probability/bayesian-network-simulator",
     "probability/beta-binomial-sampler",
     "probability/beta-distribution-sampler",
@@ -540,6 +545,9 @@
     "vector/scalar-multiply",
     "vector/subtract",
     "waist-circumference",
+    "waist-to-height",
+    "waist-to-hip",
+    "wcag-contrast-check",
     "world-clock"
   ]
 }
