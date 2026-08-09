@@ -10,6 +10,12 @@ describe("Sum Calculator", () => {
     expect(sumParsedValues("1, nope, 3", "numbers")).toBe(4);
     expect(sumParsedValues("nope", "numbers")).toBeNull();
   });
+  it("supports defined extended-real sums", () => {
+    expect(sumParsedValues("Infinity, 1", "numbers")).toBe(Infinity);
+    expect(sumParsedValues("-Infinity, 1", "numbers")).toBe(-Infinity);
+    expect(sumParsedValues("1e308, 1e308", "numbers")).toBe(Infinity);
+    expect(sumParsedValues("Infinity, -Infinity", "numbers")).toBeNull();
+  });
   it("publishes an executable example", () =>
     expect(runSum(sumExample.input)).toEqual({
       ok: true,

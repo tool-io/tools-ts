@@ -15,16 +15,22 @@ export const sumParsedValues = (
     .map((token) => token.trim())
     .filter(Boolean)
     .flatMap((token) => {
+      if (token === "Infinity" || token === "+Infinity") return [Infinity];
+      if (token === "-Infinity") return [-Infinity];
       if (decimalNumber.test(token)) return [Number(token)];
       if (interpretation === "numbers-and-ascii" && /^[A-Za-z]$/.test(token))
         return [token.charCodeAt(0)];
       return [];
     });
-  if (values.length === 0 || !values.every(Number.isFinite)) return null;
+  if (values.length === 0 || values.some(Number.isNaN)) return null;
+  if (values.includes(Infinity) && values.includes(-Infinity)) return null;
+  if (values.includes(Infinity)) return Infinity;
+  if (values.includes(-Infinity)) return -Infinity;
   let total = 0;
   let compensation = 0;
   for (const value of values) {
     const next = total + value;
+    if (!Number.isFinite(next)) return next;
     compensation +=
       Math.abs(total) >= Math.abs(value)
         ? total - next + value
@@ -32,7 +38,7 @@ export const sumParsedValues = (
     total = next;
   }
   const sum = total + compensation;
-  return Number.isFinite(sum) ? (Object.is(sum, -0) ? 0 : sum) : null;
+  return Number.isNaN(sum) ? null : Object.is(sum, -0) ? 0 : sum;
 };
 
 export const sumExample = {
@@ -64,7 +70,7 @@ export const sumTool = createSimpleTool({
       input.interpretation as SumInterpretation,
     );
     if (sum === null)
-      simpleError("text", "Enter at least one supported finite value.");
+      simpleError("text", "Enter at least one supported value with a defined sum.");
     return { sum };
   },
 });
