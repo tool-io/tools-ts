@@ -8,6 +8,15 @@ import {
 describe("Matrix as Plain Text", () => {
   it("aligns columns", () =>
     expect(matrixAsPlainText("1 20\n300 4")).toBe("  1  20\n300   4"));
+  it("formats canonical matrix values from a chain", () =>
+    expect(
+      matrixAsPlainText({
+        values: [
+          [1, 20],
+          [300, 4],
+        ],
+      }),
+    ).toBe("  1  20\n300   4"));
   it("rejects malformed matrices", () =>
     expect(runMatrixAsPlainText({ matrix: "1 2\n3" }).ok).toBe(false));
   it("publishes an executable example", () =>

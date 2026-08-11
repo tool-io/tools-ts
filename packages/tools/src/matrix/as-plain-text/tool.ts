@@ -2,8 +2,8 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
 import { parseNumericMatrix } from "../../parse/matrix/tool.js";
 
-export const matrixAsPlainText = (text: string): string | null => {
-  const matrix = parseNumericMatrix(text);
+export const matrixAsPlainText = (input: unknown): string | null => {
+  const matrix = parseNumericMatrix(input);
   if (!matrix) return null;
   const widths = Array.from({ length: matrix.columns }, (_, column) =>
     Math.max(...matrix.values.map((row) => String(row[column]).length)),
