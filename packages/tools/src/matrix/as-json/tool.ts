@@ -3,10 +3,10 @@ import { createSimpleTool, simpleError } from "../../core/simple.js";
 import { parseNumericMatrix } from "../../parse/matrix/tool.js";
 
 export const matrixAsJson = (
-  text: string,
+  input: unknown,
   indentation: number,
 ): string | null => {
-  const matrix = parseNumericMatrix(text);
+  const matrix = parseNumericMatrix(input);
   return matrix && [0, 2, 4].includes(indentation)
     ? JSON.stringify(matrix.values, null, indentation)
     : null;
