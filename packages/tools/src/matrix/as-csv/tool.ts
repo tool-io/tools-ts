@@ -2,8 +2,8 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
 import { parseNumericMatrix } from "../../parse/matrix/tool.js";
 
-export const matrixAsCsv = (text: string): string | null => {
-  const matrix = parseNumericMatrix(text);
+export const matrixAsCsv = (input: unknown): string | null => {
+  const matrix = parseNumericMatrix(input);
   return matrix ? matrix.values.map((row) => row.join(",")).join("\n") : null;
 };
 
