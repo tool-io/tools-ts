@@ -13,8 +13,8 @@ export type NumericTable = {
   readonly version: 1;
 };
 
-export const matrixAsTable = (text: string): NumericTable | null => {
-  const matrix = parseNumericMatrix(text);
+export const matrixAsTable = (input: unknown): NumericTable | null => {
+  const matrix = parseNumericMatrix(input);
   return matrix
     ? {
         columns: Array.from({ length: matrix.columns }, (_, index) => ({
