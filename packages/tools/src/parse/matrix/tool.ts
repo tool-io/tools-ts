@@ -9,24 +9,36 @@ export type NumericMatrix = {
   readonly version: 1;
 };
 
-export const parseNumericMatrix = (input: string): NumericMatrix | null => {
+const parseRows = (input: unknown): unknown[][] | null => {
+  if (Array.isArray(input)) return input.every(Array.isArray) ? input : null;
+  if (typeof input !== "string") return null;
   const source = input.trim();
   if (!source) return null;
-  let rows: unknown[][];
   if (source.startsWith("[")) {
     try {
       const parsed: unknown = JSON.parse(source);
       if (!Array.isArray(parsed) || !parsed.every(Array.isArray)) return null;
-      rows = parsed;
+      return parsed;
     } catch {
       return null;
     }
-  } else {
-    rows = source
-      .split(/\r?\n/)
-      .filter((row) => row.trim())
-      .map((row) => row.trim().split(/(?:\s*,\s*|\s+)/));
   }
+  return source
+    .split(/\r?\n/)
+    .filter((row) => row.trim())
+    .map((row) => row.trim().split(/(?:\s*,\s*|\s+)/));
+};
+
+export const parseNumericMatrix = (input: unknown): NumericMatrix | null => {
+  const candidate =
+    typeof input === "object" &&
+    input !== null &&
+    !Array.isArray(input) &&
+    "values" in input
+      ? (input as { readonly values: unknown }).values
+      : input;
+  const rows = parseRows(candidate);
+  if (!rows || rows.length === 0) return null;
   const columns = rows[0]?.length ?? 0;
   if (
     !columns ||

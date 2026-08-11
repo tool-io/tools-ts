@@ -13,6 +13,17 @@ describe("Numeric Matrix Parser", () => {
     ]);
     expect(parseNumericMatrix("[[1,2],[3,4]]")?.rows).toBe(2);
   });
+  it("accepts nested arrays and canonical matrix values for chaining", () => {
+    const matrix = parseNumericMatrix([
+      [1, 2],
+      [3, 4],
+    ]);
+    expect(matrix?.values).toEqual([
+      [1, 2],
+      [3, 4],
+    ]);
+    expect(parseNumericMatrix(matrix)).toEqual(matrix);
+  });
   it("rejects ragged and nonnumeric matrices", () => {
     expect(parseNumericMatrix("1,2\n3")).toBeNull();
     expect(parseNumericMatrix("1,x")).toBeNull();
