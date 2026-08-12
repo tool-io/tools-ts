@@ -1,4 +1,5 @@
 import { defineTool } from "../../core/definition.js";
+import type { ToolExample } from "../../core/example.js";
 import {
   invalidInput,
   toolSuccess,
@@ -6,7 +7,11 @@ import {
   type ToolResult,
 } from "../../core/result.js";
 import { convertLengthByFactors } from "./calculation.js";
-import { isLengthUnit, lengthUnits } from "./factors.js";
+import {
+  isLengthConversionUnit,
+  lengthConversionFactors,
+  lengthConversionUnitIds,
+} from "./references.js";
 
 export type ConvertLengthInput = {
   readonly fromUnit: string;
@@ -19,6 +24,18 @@ export type ConvertLengthOutput = {
   readonly value: number;
 };
 
+export const convertLengthExample = {
+  input: {
+    fromUnit: "ft",
+    toUnit: "m",
+    value: 10,
+  },
+  output: {
+    unit: "m",
+    value: 3.048,
+  },
+} satisfies ToolExample<ConvertLengthInput, ConvertLengthOutput>;
+
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
 
@@ -29,8 +46,8 @@ export const convertLengthValue = (
 ): number =>
   convertLengthByFactors(
     value,
-    lengthUnits[fromUnit]!.meters,
-    lengthUnits[toUnit]!.meters,
+    lengthConversionFactors[fromUnit]!.factor,
+    lengthConversionFactors[toUnit]!.factor,
   );
 
 export const convertLength = (
@@ -52,13 +69,13 @@ export const convertLength = (
       field: "value",
       message: "Length must be a finite number.",
     });
-  if (!isLengthUnit(input.fromUnit))
+  if (!isLengthConversionUnit(input.fromUnit))
     issues.push({
       code: "unknown_length_unit",
       field: "fromUnit",
       message: "The source length unit is not supported.",
     });
-  if (!isLengthUnit(input.toUnit))
+  if (!isLengthConversionUnit(input.toUnit))
     issues.push({
       code: "unknown_length_unit",
       field: "toUnit",
@@ -101,8 +118,8 @@ export const lengthConversionTool = defineTool<
   inputSchema: {
     additionalProperties: false,
     properties: {
-      fromUnit: { enum: Object.keys(lengthUnits), type: "string" },
-      toUnit: { enum: Object.keys(lengthUnits), type: "string" },
+      fromUnit: { enum: lengthConversionUnitIds, type: "string" },
+      toUnit: { enum: lengthConversionUnitIds, type: "string" },
       value: { type: "number" },
     },
     required: ["value", "fromUnit", "toUnit"],
@@ -111,7 +128,7 @@ export const lengthConversionTool = defineTool<
   outputSchema: {
     additionalProperties: false,
     properties: {
-      unit: { enum: Object.keys(lengthUnits), type: "string" },
+      unit: { enum: lengthConversionUnitIds, type: "string" },
       value: { type: "number" },
     },
     required: ["value", "unit"],
