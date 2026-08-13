@@ -5,7 +5,7 @@ export const calculateIdealBodyWeight = (
   sex: "female" | "male",
   formula: "devine" | "hamwi",
 ): number | null => {
-  if (heightCm <= 0) return null;
+  if (!Number.isFinite(heightCm) || heightCm <= 0) return null;
   return formula === "hamwi"
     ? sex === "female"
       ? 45.4 + 0.9 * (heightCm - 152)
