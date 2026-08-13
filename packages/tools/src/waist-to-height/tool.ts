@@ -3,7 +3,10 @@ import { createSimpleTool, simpleError } from "../core/simple.js";
 export const calculateWaistToHeight = (
   waist: number,
   height: number,
-): number | null => (waist > 0 && height > 0 ? waist / height : null);
+): number | null =>
+  Number.isFinite(waist) && Number.isFinite(height) && waist > 0 && height > 0
+    ? waist / height
+    : null;
 export const waistToHeightExample = {
   input: { height: 180, waist: 80 },
   output: { ratio: 0.4444444444444444 },
