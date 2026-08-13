@@ -6,7 +6,13 @@ export const calculatePonderalIndex = (
   weight: number,
   height: number,
 ): number | null => {
-  if (weight <= 0 || height <= 0) return null;
+  if (
+    !Number.isFinite(weight) ||
+    !Number.isFinite(height) ||
+    weight <= 0 ||
+    height <= 0
+  )
+    return null;
   const kilograms = system === "metric" ? weight : weight * 0.45359237,
     meters = system === "metric" ? height / 100 : height * 0.0254,
     index = kilograms / meters ** 3;
