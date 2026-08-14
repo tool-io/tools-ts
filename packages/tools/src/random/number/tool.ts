@@ -11,15 +11,18 @@ export const calculateRandomInteger = (
   maximum: number,
   random: RandomSource = Math.random,
 ): number | null => {
-  const sample = sampleRandomSource(random),
-    range = maximum - minimum + 1;
-  return sample === null ||
+  if (
     !Number.isSafeInteger(minimum) ||
     !Number.isSafeInteger(maximum) ||
     minimum > maximum ||
-    !Number.isSafeInteger(range)
+    !Number.isSafeInteger(maximum - minimum + 1)
+  )
+    return null;
+
+  const sample = sampleRandomSource(random);
+  return sample === null
     ? null
-    : minimum + Math.floor(sample * range);
+    : minimum + Math.floor(sample * (maximum - minimum + 1));
 };
 export const randomNumberExample = {
   input: { maximum: 100, minimum: 1 },
