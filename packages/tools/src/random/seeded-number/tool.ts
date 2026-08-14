@@ -22,7 +22,13 @@ export const calculateSeededRandomNumbers = (
   seed: string,
   count: number,
 ): number[] | null => {
-  if (!seed.trim()) return null;
+  if (
+    !seed.trim() ||
+    !Number.isSafeInteger(count) ||
+    count < 1 ||
+    count > 100_000
+  )
+    return null;
   const random = createSeededRandom(seed);
   return Array.from({ length: count }, random);
 };

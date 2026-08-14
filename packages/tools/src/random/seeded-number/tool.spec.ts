@@ -14,6 +14,9 @@ describe("Seeded Random Number Generator", () => {
   });
   it("rejects blank seeds", () =>
     expect(calculateSeededRandomNumbers(" ", 2)).toBeNull());
+  it.each([0, 1.5, 100_001])("rejects an invalid count of %s", (count) =>
+    expect(calculateSeededRandomNumbers("seed", count)).toBeNull(),
+  );
   it("publishes an executable example", () =>
     expect(runSeededNumber(seededNumberExample.input)).toEqual({
       ok: true,
