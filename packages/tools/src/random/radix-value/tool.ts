@@ -6,6 +6,7 @@ export type RandomRadixValue = {
   readonly base: SupportedRadix;
   readonly decimal: number;
   readonly digits: string;
+  readonly prefixed: string;
   readonly text: string;
 };
 const prefixes = { 2: "0b", 8: "0o", 16: "0x" } as const;
@@ -17,14 +18,25 @@ export const calculateRandomRadixValue = (
   includePrefix: boolean,
   random: RandomSource = Math.random,
 ): RandomRadixValue | null => {
+  if (
+    minimum < 0 ||
+    !Number.isSafeInteger(width) ||
+    width < 1 ||
+    width > 64 ||
+    !([2, 8, 16] as const).includes(base)
+  )
+    return null;
+
   const decimal = calculateRandomInteger(minimum, maximum, random);
-  if (decimal === null || minimum < 0 || width < 1 || width > 64) return null;
+  if (decimal === null) return null;
   const digits = decimal.toString(base).toUpperCase().padStart(width, "0");
+  const prefixed = `${prefixes[base]}${digits}`;
   return {
     base,
     decimal,
     digits,
-    text: `${includePrefix ? prefixes[base] : ""}${digits}`,
+    prefixed,
+    text: includePrefix ? prefixed : digits,
   };
 };
 export const randomRadixValueExample = {
