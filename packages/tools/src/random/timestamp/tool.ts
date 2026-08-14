@@ -1,22 +1,36 @@
 import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
 import { calculateRandomInteger } from "../number/tool.js";
+export type TimestampUnit = "milliseconds" | "seconds";
+export const calculateRandomTimestampValue = (
+  startMilliseconds: number,
+  endMilliseconds: number,
+  unit: TimestampUnit,
+  random = Math.random,
+): number | null => {
+  if (
+    !Number.isFinite(startMilliseconds) ||
+    !Number.isFinite(endMilliseconds) ||
+    startMilliseconds > endMilliseconds
+  )
+    return null;
+
+  const divisor = unit === "seconds" ? 1_000 : 1;
+  return calculateRandomInteger(
+    Math.ceil(startMilliseconds / divisor),
+    Math.floor(endMilliseconds / divisor),
+    random,
+  );
+};
 export const calculateRandomTimestamp = (
   start: string,
   end: string,
-  unit: "milliseconds" | "seconds",
+  unit: TimestampUnit,
   random = Math.random,
 ): number | null => {
   const startMs = Date.parse(start),
-    endMs = Date.parse(end),
-    divisor = unit === "seconds" ? 1_000 : 1;
-  if (!Number.isFinite(startMs) || !Number.isFinite(endMs) || startMs > endMs)
-    return null;
-  return calculateRandomInteger(
-    Math.ceil(startMs / divisor),
-    Math.floor(endMs / divisor),
-    random,
-  );
+    endMs = Date.parse(end);
+  return calculateRandomTimestampValue(startMs, endMs, unit, random);
 };
 export const randomTimestampExample = {
   input: {
