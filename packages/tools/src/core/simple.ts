@@ -164,6 +164,8 @@ export type SimpleToolConfig = {
 export const createSimpleTool = (
   config: SimpleToolConfig,
 ): ToolDefinition<Record<string, unknown>, Record<string, unknown>> => {
+  const inputIds = new Set(config.inputs.map((field) => field.id));
+  const outputIds = new Set(config.outputs.map((field) => field.id));
   const inputProperties = Object.fromEntries(
     config.inputs.map((field) => [field.id, schemaFor(field)]),
   );
@@ -185,6 +187,17 @@ export const createSimpleTool = (
           message: "Input must be an object.",
         },
       ]);
+    const unknownFields = Object.keys(input).filter(
+      (field) => !inputIds.has(field),
+    );
+    if (unknownFields.length > 0)
+      return invalidInput(
+        unknownFields.map((field) => ({
+          code: "unknown_field",
+          field,
+          message: `${field} is not a supported input field.`,
+        })),
+      );
     const normalized: Record<string, unknown> = { ...input };
     for (const field of config.inputs) {
       if (normalized[field.id] === undefined && field.default !== undefined)
@@ -206,6 +219,13 @@ export const createSimpleTool = (
           "The calculation did not produce an output.",
           "invalid_output",
         );
+      for (const field of Object.keys(output))
+        if (!outputIds.has(field))
+          simpleError(
+            field,
+            `${field} is not a declared output field.`,
+            "invalid_output",
+          );
       for (const field of config.outputs)
         if (!validValue(output[field.id], field))
           simpleError(
