@@ -4,6 +4,7 @@ import type {
   ToolExecutionRequirements,
   ToolPortsDefinition,
 } from "./definition.js";
+import { portableToolContract } from "./portable-contract.js";
 
 export const toolCatalogSchemaVersion = 1 as const;
 
@@ -47,13 +48,7 @@ export const normalizeToolDiscovery = (
 
 export const toolCatalogSource = (
   definition: ToolDefinition<unknown, unknown>,
-) => ({
-  contractVersion: definition.contractVersion,
-  execution: definition.execution,
-  inputSchema: definition.inputSchema,
-  outputSchema: definition.outputSchema,
-  ports: definition.ports,
-});
+) => portableToolContract(definition);
 
 export const createToolCatalogEntry = (
   definition: ToolDefinition<unknown, unknown>,

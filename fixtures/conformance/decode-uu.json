@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "tool": {
+    "id": "decode/uu",
+    "contractVersion": 1
+  },
+  "cases": [
+    {
+      "name": "decodes the brand",
+      "input": {
+        "uu": "'5&]O;\"YI;P  "
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "text": "Tool.io"
+        }
+      }
+    },
+    {
+      "name": "accepts backtick zero groups",
+      "input": {
+        "uu": "'5&]O;\"YI;P``"
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "text": "Tool.io"
+        }
+      }
+    },
+    {
+      "name": "accepts a trailing newline",
+      "input": {
+        "uu": "#86)C\n"
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "text": "abc"
+        }
+      }
+    },
+    {
+      "name": "rejects an out-of-range length indicator",
+      "input": {
+        "uu": "~86)C"
+      },
+      "expected": {
+        "ok": false,
+        "errorCode": "invalid_input",
+        "issueCodes": [
+          "invalid_length"
+        ]
+      }
+    },
+    {
+      "name": "rejects a terminator line",
+      "input": {
+        "uu": "`"
+      },
+      "expected": {
+        "ok": false,
+        "errorCode": "invalid_input",
+        "issueCodes": [
+          "invalid_length"
+        ]
+      }
+    }
+  ]
+}

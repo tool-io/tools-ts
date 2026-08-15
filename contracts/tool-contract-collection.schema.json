@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tool.io/contracts/tool-contract-collection.schema.json",
+  "title": "Tool.io portable tool contract collection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "contracts"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "contracts": {
+      "type": "array",
+      "items": {
+        "$ref": "tool-contract.schema.json"
+      }
+    }
+  }
+}

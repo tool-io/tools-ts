@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "tool": {
+    "id": "decode/base122",
+    "contractVersion": 1
+  },
+  "cases": [
+    {
+      "name": "decodes a reference artifact",
+      "input": {
+        "base122": "$\u0019-Fc<"
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "text": "Hello"
+        }
+      }
+    },
+    {
+      "name": "decodes the brand",
+      "input": {
+        "base122": "*\u001bmva9Ro"
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "text": "Tool.io"
+        }
+      }
+    },
+    {
+      "name": "decodes an escape-heavy artifact",
+      "input": {
+        "base122": "6\u001a-f)D\u0014l4[LS\u00104\u0014"
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "text": "line1\nline2\r\n"
+        }
+      }
+    },
+    {
+      "name": "rejects a non-canonical artifact",
+      "input": {
+        "base122": "A"
+      },
+      "expected": {
+        "ok": false,
+        "errorCode": "invalid_input",
+        "issueCodes": [
+          "non_canonical_bits"
+        ]
+      }
+    }
+  ]
+}

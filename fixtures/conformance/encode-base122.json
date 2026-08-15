@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "tool": {
+    "id": "encode/base122",
+    "contractVersion": 1
+  },
+  "cases": [
+    {
+      "name": "encodes a reference artifact",
+      "input": {
+        "text": "Hello"
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "base122": "$\u0019-Fc<"
+        }
+      }
+    },
+    {
+      "name": "encodes the brand",
+      "input": {
+        "text": "Tool.io"
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "base122": "*\u001bmva9Ro"
+        }
+      }
+    },
+    {
+      "name": "encodes empty text",
+      "input": {
+        "text": ""
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "base122": ""
+        }
+      }
+    },
+    {
+      "name": "requires text",
+      "input": {},
+      "expected": {
+        "ok": false,
+        "errorCode": "invalid_input",
+        "issueCodes": [
+          "invalid_field"
+        ]
+      }
+    }
+  ]
+}

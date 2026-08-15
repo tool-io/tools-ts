@@ -10,7 +10,11 @@ describe("tool contract linter", () => {
   it("reports incomplete schemas and missing value types without a validator dependency", () => {
     const invalid = {
       ...bodyMassIndexTool,
-      inputSchema: { additionalProperties: false, properties: {}, type: "object" },
+      inputSchema: {
+        additionalProperties: false,
+        properties: {},
+        type: "object",
+      },
       ports: {
         ...bodyMassIndexTool.ports,
         inputs: [
@@ -39,5 +43,30 @@ describe("tool contract linter", () => {
         execution: { capabilities: ["camera"], kind: "pure" },
       }).map(({ code }) => code),
     ).toContain("pure_tool_has_requirements");
+  });
+
+  it("rejects malformed discovery metadata and port presentation", () => {
+    const invalid = {
+      ...bodyMassIndexTool,
+      discovery: { aliases: ["BMI", "BMI"] },
+      ports: {
+        ...bodyMassIndexTool.ports,
+        inputs: [
+          {
+            ...bodyMassIndexTool.ports.inputs[0],
+            id: "WeightKg",
+            label: "",
+          },
+        ],
+      },
+    };
+
+    expect(validateToolContract(invalid).map(({ code }) => code)).toEqual(
+      expect.arrayContaining([
+        "identifier_list_duplicate",
+        "port_id_invalid",
+        "port_label_required",
+      ]),
+    );
   });
 });

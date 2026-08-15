@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
+import abTestFixture from "../../../fixtures/conformance/ab-test.json" with { type: "json" };
 import bodyMassIndexFixture from "../../../fixtures/conformance/body-mass-index.json" with { type: "json" };
+import choleskyFixture from "../../../fixtures/conformance/cholesky-decomposition.json" with { type: "json" };
 import medianFixture from "../../../fixtures/conformance/median.json" with { type: "json" };
 import numericDatasetFixture from "../../../fixtures/conformance/numeric-dataset.json" with { type: "json" };
 import { toolRegistry } from "./registry.js";
@@ -43,7 +45,9 @@ const expectPortableValue = (
 };
 
 const fixtures: readonly Fixture[] = [
+  abTestFixture as unknown as Fixture,
   bodyMassIndexFixture as unknown as Fixture,
+  choleskyFixture as unknown as Fixture,
   medianFixture as unknown as Fixture,
   numericDatasetFixture as unknown as Fixture,
 ];

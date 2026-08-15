@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "tool": { "id": "statistics/ab-test", "contractVersion": 1 },
+  "cases": [
+    {
+      "name": "detects a lift between balanced variants",
+      "input": {
+        "confidenceLevel": 0.95,
+        "conversionsA": 100,
+        "conversionsB": 140,
+        "visitorsA": 1000,
+        "visitorsB": 1000
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "rateA": 0.1,
+          "rateB": 0.14,
+          "difference": 0.04,
+          "significant": true
+        },
+        "absoluteTolerance": 1e-9
+      }
+    },
+    {
+      "name": "is not significant for identical variants",
+      "input": {
+        "confidenceLevel": 0.95,
+        "conversionsA": 50,
+        "conversionsB": 50,
+        "visitorsA": 800,
+        "visitorsB": 800
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "difference": 0,
+          "pValue": 1,
+          "significant": false
+        },
+        "absoluteTolerance": 1e-12
+      }
+    },
+    {
+      "name": "rejects conversions above visitors",
+      "input": {
+        "conversionsA": 1001,
+        "conversionsB": 10,
+        "visitorsA": 1000,
+        "visitorsB": 1000
+      },
+      "expected": {
+        "ok": false,
+        "errorCode": "invalid_input",
+        "issueCodes": ["conversions_exceed_visitors"]
+      }
+    }
+  ]
+}

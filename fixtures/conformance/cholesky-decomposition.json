@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "tool": { "id": "matrix/cholesky-decomposition", "contractVersion": 1 },
+  "cases": [
+    {
+      "name": "factors the textbook positive-definite matrix",
+      "input": {
+        "matrix": [
+          [4, 12, -16],
+          [12, 37, -43],
+          [-16, -43, 98]
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "lower": [
+            [2, 0, 0],
+            [6, 1, 0],
+            [-8, 5, 3]
+          ]
+        }
+      }
+    },
+    {
+      "name": "rejects an asymmetric matrix",
+      "input": {
+        "matrix": [
+          [1, 2],
+          [3, 4]
+        ]
+      },
+      "expected": {
+        "ok": false,
+        "errorCode": "invalid_input",
+        "issueCodes": ["not_symmetric"]
+      }
+    }
+  ]
+}

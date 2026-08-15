@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "tool": {
+    "id": "encode/base91",
+    "contractVersion": 1
+  },
+  "cases": [
+    {
+      "name": "encodes a greeting",
+      "input": {
+        "text": "Hello World!"
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "base91": ">OwJh>Io0Tv!8PE"
+        }
+      }
+    },
+    {
+      "name": "encodes the brand",
+      "input": {
+        "text": "Tool.io"
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "base91": "Lr.J7g${G"
+        }
+      }
+    },
+    {
+      "name": "encodes empty text",
+      "input": {
+        "text": ""
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "base91": ""
+        }
+      }
+    },
+    {
+      "name": "requires text",
+      "input": {},
+      "expected": {
+        "ok": false,
+        "errorCode": "invalid_input",
+        "issueCodes": [
+          "invalid_field"
+        ]
+      }
+    }
+  ]
+}

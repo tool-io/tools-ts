@@ -79,20 +79,28 @@ export type ToolPortsDefinition = {
   readonly outputs: readonly ToolPortDefinition[];
 };
 
-export type ToolDefinition<Input, Output> = {
+/**
+ * JSON-compatible metadata shared by every Tool.io runtime and surface.
+ * Keep executable functions and surface-specific presentation out of this
+ * contract so it can be published for non-TypeScript consumers.
+ */
+export type ToolContract = {
   readonly contractVersion: number;
   readonly description: string;
   readonly discovery?: ToolDiscovery;
-  readonly execute: (
-    input: unknown,
-    context?: ToolExecutionContext,
-  ) => ToolResult<Output>;
   readonly execution: ToolExecutionRequirements;
   readonly id: string;
   readonly inputSchema: ToolJsonSchema;
   readonly outputSchema: ToolJsonSchema;
   readonly ports: ToolPortsDefinition;
   readonly title: string;
+};
+
+export type ToolDefinition<Input, Output> = ToolContract & {
+  readonly execute: (
+    input: unknown,
+    context?: ToolExecutionContext,
+  ) => ToolResult<Output>;
 };
 
 export const defineTool = <Input, Output>(

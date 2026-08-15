@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "tool": {
+    "id": "decode/base91",
+    "contractVersion": 1
+  },
+  "cases": [
+    {
+      "name": "decodes a reference vector",
+      "input": {
+        "base91": ">OwJh>A"
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "text": "Hello"
+        }
+      }
+    },
+    {
+      "name": "decodes the brand",
+      "input": {
+        "base91": "Lr.J7g${G"
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "text": "Tool.io"
+        }
+      }
+    },
+    {
+      "name": "decodes empty text",
+      "input": {
+        "base91": ""
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "text": ""
+        }
+      }
+    },
+    {
+      "name": "rejects characters outside the alphabet",
+      "input": {
+        "base91": "AA AA"
+      },
+      "expected": {
+        "ok": false,
+        "errorCode": "invalid_input",
+        "issueCodes": [
+          "invalid_character"
+        ]
+      }
+    }
+  ]
+}

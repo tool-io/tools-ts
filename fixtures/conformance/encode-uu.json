@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "tool": {
+    "id": "encode/uu",
+    "contractVersion": 1
+  },
+  "cases": [
+    {
+      "name": "encodes the brand",
+      "input": {
+        "text": "Tool.io"
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "uu": "'5&]O;\"YI;P  "
+        }
+      }
+    },
+    {
+      "name": "encodes three bytes",
+      "input": {
+        "text": "abc"
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "uu": "#86)C"
+        }
+      }
+    },
+    {
+      "name": "honors the configured line size",
+      "input": {
+        "text": "a",
+        "lineBytes": 1
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "uu": "!80  "
+        }
+      }
+    },
+    {
+      "name": "encodes empty text",
+      "input": {
+        "text": ""
+      },
+      "expected": {
+        "ok": true,
+        "output": {
+          "uu": ""
+        }
+      }
+    },
+    {
+      "name": "rejects oversized lines",
+      "input": {
+        "text": "abc",
+        "lineBytes": 46
+      },
+      "expected": {
+        "ok": false,
+        "errorCode": "invalid_input",
+        "issueCodes": [
+          "invalid_field"
+        ]
+      }
+    }
+  ]
+}
