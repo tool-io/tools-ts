@@ -5,6 +5,7 @@
   "scripts": {
     "build": "pnpm --filter @tool.io/tools build",
     "check": "pnpm --filter @tool.io/tools check",
+    "check:contribution": "node scripts/validate-contributions.mjs",
     "check:generated": "pnpm --filter @tool.io/tools check:generated",
     "generate": "pnpm --filter @tool.io/tools generate",
     "test:unit": "pnpm --filter @tool.io/tools test:unit",
