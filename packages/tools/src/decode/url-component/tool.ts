@@ -1,4 +1,14 @@
+import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
+
+export const urlComponentExample = {
+  input: { encoded: "hello%20world%20%26%20more" },
+  output: { decoded: "hello world & more" },
+} satisfies ToolExample<
+  { readonly encoded: string },
+  { readonly decoded: string }
+>;
+
 export const urlComponentTool = createSimpleTool({
   id: "decode/url-component",
   title: "URL Component Decoder",
