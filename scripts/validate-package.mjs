@@ -14,6 +14,12 @@ const { toolRegistry } = await import(
 const { validateToolContract } = await import(
   path.join(packageRoot, "dist/core/contract.js")
 );
+const { portableToolContract } = await import(
+  path.join(packageRoot, "dist/core/portable-contract.js")
+);
+const generatedContracts = JSON.parse(
+  await readFile(path.join(packageRoot, "contracts.generated.json"), "utf8"),
+);
 
 const isRecord = (value) =>
   typeof value === "object" && value !== null && !Array.isArray(value);
@@ -36,6 +42,15 @@ if (toolRegistry.size !== manifest.tools.length)
   throw new Error(
     `Registry has ${toolRegistry.size} entries for ${manifest.tools.length} public tools.`,
   );
+if (
+  generatedContracts.schemaVersion !== 1 ||
+  !Array.isArray(generatedContracts.contracts) ||
+  generatedContracts.contracts.length !== manifest.tools.length
+)
+  throw new Error("Generated portable contract collection is incomplete.");
+const contractById = new Map(
+  generatedContracts.contracts.map((contract) => [contract.id, contract]),
+);
 
 const toolsWithoutExamples = [];
 let authoredExampleCount = 0;
@@ -53,6 +68,12 @@ for (const directory of manifest.tools) {
   if (toolRegistry.get(definition.id) !== definition)
     throw new Error(
       `${directory} is missing from the generated runtime registry.`,
+    );
+  const portableContract = portableToolContract(definition);
+  assertJsonSerializable(portableContract, `${directory} portable contract`);
+  if (!isDeepStrictEqual(contractById.get(directory), portableContract))
+    throw new Error(
+      `${directory} does not match its generated portable contract.`,
     );
 
   const example = module.example;

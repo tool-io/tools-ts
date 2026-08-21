@@ -5,6 +5,7 @@ import process from "node:process";
 const root = path.resolve(import.meta.dirname, "..");
 const packageRoot = path.join(root, "packages/tools");
 const sourceRoot = path.join(packageRoot, "src");
+const contractsRoot = path.join(root, "contracts");
 const check = process.argv.includes("--check");
 
 const walk = async (directory) => {
@@ -75,6 +76,8 @@ const exportEntry = (directory) => ({
 const exports = {
   ".": { types: "./dist/index.d.ts", import: "./dist/index.js" },
   "./catalog": "./catalog.generated.json",
+  "./contracts": "./contracts.generated.json",
+  "./contracts/schema": "./tool-contract.schema.json",
   "./chain": exportEntry("chain"),
   "./core": exportEntry("core"),
   "./dictionary": exportEntry("dictionary"),
@@ -90,13 +93,24 @@ for (const directory of toolDirectories) exports[`./${directory}`] = exportEntry
 packageJson.exports = Object.fromEntries(
   Object.entries(exports).sort(([left], [right]) => left.localeCompare(right)),
 );
-packageJson.files = ["dist", "catalog.generated.json", "LICENSE", "README.md"];
+packageJson.files = [
+  "dist",
+  "catalog.generated.json",
+  "contracts.generated.json",
+  "tool-contract.schema.json",
+  "LICENSE",
+  "README.md",
+];
 const packageSource = `${JSON.stringify(packageJson, null, 2)}\n`;
 
 const outputs = [
   [path.join(sourceRoot, "generated/registry.generated.ts"), registrySource],
   [path.join(packageRoot, "public-tools.generated.json"), manifest],
   [packageFile, packageSource],
+  [
+    path.join(packageRoot, "tool-contract.schema.json"),
+    await readFile(path.join(contractsRoot, "tool-contract.schema.json"), "utf8"),
+  ],
 ];
 
 let stale = false;

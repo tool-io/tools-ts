@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tool.io/contracts/tool-contract.schema.json",
+  "title": "Tool.io portable tool contract",
+  "$ref": "#/$defs/toolContract",
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "identifierList": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "valueType": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "enum": [
+            "null",
+            "boolean",
+            "integer",
+            "number",
+            "string",
+            "bytes",
+            "list",
+            "object"
+          ]
+        },
+        "items": {
+          "$ref": "#/$defs/valueType"
+        },
+        "format": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "unit": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["items"]
+          },
+          "then": {
+            "properties": {
+              "type": { "const": "list" }
+            }
+          }
+        }
+      ]
+    },
+    "runtimeSchema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "additionalProperties": {
+          "anyOf": [
+            { "type": "boolean" },
+            { "$ref": "#/$defs/runtimeSchema" }
+          ]
+        },
+        "anyOf": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/runtimeSchema" }
+        },
+        "const": {},
+        "default": {},
+        "description": { "$ref": "#/$defs/nonEmptyString" },
+        "enum": {
+          "type": "array",
+          "minItems": 1
+        },
+        "exclusiveMaximum": { "type": "number" },
+        "exclusiveMinimum": { "type": "number" },
+        "items": { "$ref": "#/$defs/runtimeSchema" },
+        "maximum": { "type": "number" },
+        "maxItems": { "type": "integer", "minimum": 0 },
+        "maxLength": { "type": "integer", "minimum": 0 },
+        "minimum": { "type": "number" },
+        "minItems": { "type": "integer", "minimum": 0 },
+        "minLength": { "type": "integer", "minimum": 0 },
+        "pattern": { "type": "string" },
+        "properties": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/runtimeSchema" }
+        },
+        "required": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "type": {
+          "enum": [
+            "array",
+            "boolean",
+            "integer",
+            "null",
+            "number",
+            "object",
+            "string"
+          ]
+        }
+      },
+      "anyOf": [
+        { "required": ["type"] },
+        { "required": ["anyOf"] },
+        { "required": ["const"] },
+        { "required": ["enum"] }
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": { "type": { "const": "array" } },
+            "required": ["type"]
+          },
+          "then": { "required": ["items"] }
+        },
+        {
+          "if": {
+            "properties": { "type": { "const": "object" } },
+            "required": ["type"]
+          },
+          "then": { "required": ["additionalProperties"] }
+        }
+      ]
+    },
+    "port": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "valueType"],
+      "properties": {
+        "description": { "$ref": "#/$defs/nonEmptyString" },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][A-Za-z0-9]*$"
+        },
+        "label": { "$ref": "#/$defs/nonEmptyString" },
+        "path": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/nonEmptyString" }
+        },
+        "required": { "type": "boolean" },
+        "valueType": { "$ref": "#/$defs/valueType" }
+      }
+    },
+    "toolContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractVersion",
+        "description",
+        "execution",
+        "id",
+        "inputSchema",
+        "outputSchema",
+        "ports",
+        "title"
+      ],
+      "properties": {
+        "contractVersion": { "type": "integer", "minimum": 1 },
+        "description": { "$ref": "#/$defs/nonEmptyString" },
+        "discovery": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "aliases": { "$ref": "#/$defs/identifierList" },
+            "collections": { "$ref": "#/$defs/identifierList" },
+            "fields": { "$ref": "#/$defs/identifierList" },
+            "keywords": { "$ref": "#/$defs/identifierList" }
+          }
+        },
+        "execution": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind"],
+          "properties": {
+            "kind": { "enum": ["data", "device", "pure", "remote"] },
+            "capabilities": { "$ref": "#/$defs/identifierList" },
+            "datasets": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "schemaVersion"],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9]+(?:[/-][a-z0-9]+)*$"
+                  },
+                  "schemaVersion": { "type": "integer", "minimum": 1 }
+                }
+              }
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": { "kind": { "const": "pure" } },
+                "required": ["kind"]
+              },
+              "then": {
+                "properties": {
+                  "capabilities": { "maxItems": 0 },
+                  "datasets": { "maxItems": 0 }
+                }
+              }
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^(?!core(?:/|$)|runner(?:/|$)|registry(?:/|$)|catalog(?:/|$))[a-z0-9]+(?:-[a-z0-9]+)*(?:/[a-z0-9]+(?:-[a-z0-9]+)*)*$"
+        },
+        "inputSchema": { "$ref": "#/$defs/runtimeSchema" },
+        "outputSchema": { "$ref": "#/$defs/runtimeSchema" },
+        "ports": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["inputs", "outputs"],
+          "properties": {
+            "inputs": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/port" }
+            },
+            "outputs": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/port" }
+            }
+          }
+        },
+        "title": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    }
+  }
+}

@@ -12,6 +12,8 @@
   "files": [
     "dist",
     "catalog.generated.json",
+    "contracts.generated.json",
+    "tool-contract.schema.json",
     "LICENSE",
     "README.md"
   ],
@@ -19,6 +21,30 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./activation/leaky-relu": {
+      "types": "./dist/activation/leaky-relu/index.d.ts",
+      "import": "./dist/activation/leaky-relu/index.js"
+    },
+    "./activation/relu": {
+      "types": "./dist/activation/relu/index.d.ts",
+      "import": "./dist/activation/relu/index.js"
+    },
+    "./activation/sigmoid": {
+      "types": "./dist/activation/sigmoid/index.d.ts",
+      "import": "./dist/activation/sigmoid/index.js"
+    },
+    "./activation/softmax": {
+      "types": "./dist/activation/softmax/index.d.ts",
+      "import": "./dist/activation/softmax/index.js"
+    },
+    "./activation/softplus": {
+      "types": "./dist/activation/softplus/index.d.ts",
+      "import": "./dist/activation/softplus/index.js"
+    },
+    "./activation/tanh": {
+      "types": "./dist/activation/tanh/index.d.ts",
+      "import": "./dist/activation/tanh/index.js"
     },
     "./air-displacement-body-composition": {
       "types": "./dist/air-displacement-body-composition/index.d.ts",
@@ -120,9 +146,77 @@
       "types": "./dist/arithmetic/sum/index.d.ts",
       "import": "./dist/arithmetic/sum/index.js"
     },
+    "./aviation/crosswind-component": {
+      "types": "./dist/aviation/crosswind-component/index.d.ts",
+      "import": "./dist/aviation/crosswind-component/index.js"
+    },
+    "./aviation/density-altitude": {
+      "types": "./dist/aviation/density-altitude/index.d.ts",
+      "import": "./dist/aviation/density-altitude/index.js"
+    },
+    "./aviation/ground-speed": {
+      "types": "./dist/aviation/ground-speed/index.d.ts",
+      "import": "./dist/aviation/ground-speed/index.js"
+    },
+    "./aviation/headwind-component": {
+      "types": "./dist/aviation/headwind-component/index.d.ts",
+      "import": "./dist/aviation/headwind-component/index.js"
+    },
+    "./aviation/load-factor": {
+      "types": "./dist/aviation/load-factor/index.d.ts",
+      "import": "./dist/aviation/load-factor/index.js"
+    },
+    "./aviation/mach-number": {
+      "types": "./dist/aviation/mach-number/index.d.ts",
+      "import": "./dist/aviation/mach-number/index.js"
+    },
+    "./aviation/pressure-altitude": {
+      "types": "./dist/aviation/pressure-altitude/index.d.ts",
+      "import": "./dist/aviation/pressure-altitude/index.js"
+    },
+    "./aviation/speed-of-sound": {
+      "types": "./dist/aviation/speed-of-sound/index.d.ts",
+      "import": "./dist/aviation/speed-of-sound/index.js"
+    },
+    "./aviation/true-airspeed": {
+      "types": "./dist/aviation/true-airspeed/index.d.ts",
+      "import": "./dist/aviation/true-airspeed/index.js"
+    },
+    "./aviation/wind-correction-angle": {
+      "types": "./dist/aviation/wind-correction-angle/index.d.ts",
+      "import": "./dist/aviation/wind-correction-angle/index.js"
+    },
+    "./benchmark/ai-models": {
+      "types": "./dist/benchmark/ai-models/index.d.ts",
+      "import": "./dist/benchmark/ai-models/index.js"
+    },
     "./bioelectrical-impedance-index": {
       "types": "./dist/bioelectrical-impedance-index/index.d.ts",
       "import": "./dist/bioelectrical-impedance-index/index.js"
+    },
+    "./bitwise/and": {
+      "types": "./dist/bitwise/and/index.d.ts",
+      "import": "./dist/bitwise/and/index.js"
+    },
+    "./bitwise/left-shift": {
+      "types": "./dist/bitwise/left-shift/index.d.ts",
+      "import": "./dist/bitwise/left-shift/index.js"
+    },
+    "./bitwise/not": {
+      "types": "./dist/bitwise/not/index.d.ts",
+      "import": "./dist/bitwise/not/index.js"
+    },
+    "./bitwise/or": {
+      "types": "./dist/bitwise/or/index.d.ts",
+      "import": "./dist/bitwise/or/index.js"
+    },
+    "./bitwise/right-shift": {
+      "types": "./dist/bitwise/right-shift/index.d.ts",
+      "import": "./dist/bitwise/right-shift/index.js"
+    },
+    "./bitwise/xor": {
+      "types": "./dist/bitwise/xor/index.d.ts",
+      "import": "./dist/bitwise/xor/index.js"
     },
     "./body-density-to-body-fat": {
       "types": "./dist/body-density-to-body-fat/index.d.ts",
@@ -140,6 +234,62 @@
     "./chain": {
       "types": "./dist/chain/index.d.ts",
       "import": "./dist/chain/index.js"
+    },
+    "./check/audio-output": {
+      "types": "./dist/check/audio-output/index.d.ts",
+      "import": "./dist/check/audio-output/index.js"
+    },
+    "./check/battery": {
+      "types": "./dist/check/battery/index.d.ts",
+      "import": "./dist/check/battery/index.js"
+    },
+    "./check/browser-info": {
+      "types": "./dist/check/browser-info/index.d.ts",
+      "import": "./dist/check/browser-info/index.js"
+    },
+    "./check/clock-offset": {
+      "types": "./dist/check/clock-offset/index.d.ts",
+      "import": "./dist/check/clock-offset/index.js"
+    },
+    "./check/device-info": {
+      "types": "./dist/check/device-info/index.d.ts",
+      "import": "./dist/check/device-info/index.js"
+    },
+    "./check/display": {
+      "types": "./dist/check/display/index.d.ts",
+      "import": "./dist/check/display/index.js"
+    },
+    "./check/gpu-info": {
+      "types": "./dist/check/gpu-info/index.d.ts",
+      "import": "./dist/check/gpu-info/index.js"
+    },
+    "./check/keyboard-rollover": {
+      "types": "./dist/check/keyboard-rollover/index.d.ts",
+      "import": "./dist/check/keyboard-rollover/index.js"
+    },
+    "./check/media-support": {
+      "types": "./dist/check/media-support/index.d.ts",
+      "import": "./dist/check/media-support/index.js"
+    },
+    "./check/mic": {
+      "types": "./dist/check/mic/index.d.ts",
+      "import": "./dist/check/mic/index.js"
+    },
+    "./check/network-quality": {
+      "types": "./dist/check/network-quality/index.d.ts",
+      "import": "./dist/check/network-quality/index.js"
+    },
+    "./check/pointer": {
+      "types": "./dist/check/pointer/index.d.ts",
+      "import": "./dist/check/pointer/index.js"
+    },
+    "./check/storage": {
+      "types": "./dist/check/storage/index.d.ts",
+      "import": "./dist/check/storage/index.js"
+    },
+    "./check/webcam": {
+      "types": "./dist/check/webcam/index.d.ts",
+      "import": "./dist/check/webcam/index.js"
     },
     "./classification/accuracy": {
       "types": "./dist/classification/accuracy/index.d.ts",
@@ -185,6 +335,14 @@
       "types": "./dist/clustering/optics/index.d.ts",
       "import": "./dist/clustering/optics/index.js"
     },
+    "./color/alpha-compositing": {
+      "types": "./dist/color/alpha-compositing/index.d.ts",
+      "import": "./dist/color/alpha-compositing/index.js"
+    },
+    "./color/blend": {
+      "types": "./dist/color/blend/index.d.ts",
+      "import": "./dist/color/blend/index.js"
+    },
     "./combinatorics/combination-count": {
       "types": "./dist/combinatorics/combination-count/index.d.ts",
       "import": "./dist/combinatorics/combination-count/index.js"
@@ -209,6 +367,8 @@
       "types": "./dist/compound-interest-calculator/index.d.ts",
       "import": "./dist/compound-interest-calculator/index.js"
     },
+    "./contracts": "./contracts.generated.json",
+    "./contracts/schema": "./tool-contract.schema.json",
     "./convert/acceleration": {
       "types": "./dist/convert/acceleration/index.d.ts",
       "import": "./dist/convert/acceleration/index.js"
@@ -269,6 +429,14 @@
       "types": "./dist/convert/code-point-to-character/index.d.ts",
       "import": "./dist/convert/code-point-to-character/index.js"
     },
+    "./convert/csv-to-json": {
+      "types": "./dist/convert/csv-to-json/index.d.ts",
+      "import": "./dist/convert/csv-to-json/index.js"
+    },
+    "./convert/csv-to-markdown": {
+      "types": "./dist/convert/csv-to-markdown/index.d.ts",
+      "import": "./dist/convert/csv-to-markdown/index.js"
+    },
     "./convert/currency": {
       "types": "./dist/convert/currency/index.d.ts",
       "import": "./dist/convert/currency/index.js"
@@ -276,6 +444,10 @@
     "./convert/data-rate": {
       "types": "./dist/convert/data-rate/index.d.ts",
       "import": "./dist/convert/data-rate/index.js"
+    },
+    "./convert/date-to-unix-timestamp": {
+      "types": "./dist/convert/date-to-unix-timestamp/index.d.ts",
+      "import": "./dist/convert/date-to-unix-timestamp/index.js"
     },
     "./convert/decimal-to-binary": {
       "types": "./dist/convert/decimal-to-binary/index.d.ts",
@@ -409,6 +581,10 @@
       "types": "./dist/convert/minutes-to-hours-minutes/index.d.ts",
       "import": "./dist/convert/minutes-to-hours-minutes/index.js"
     },
+    "./convert/morse-code": {
+      "types": "./dist/convert/morse-code/index.d.ts",
+      "import": "./dist/convert/morse-code/index.js"
+    },
     "./convert/octal-to-decimal": {
       "types": "./dist/convert/octal-to-decimal/index.d.ts",
       "import": "./dist/convert/octal-to-decimal/index.js"
@@ -529,6 +705,10 @@
       "types": "./dist/cost/water/index.d.ts",
       "import": "./dist/cost/water/index.js"
     },
+    "./csv/pivot": {
+      "types": "./dist/csv/pivot/index.d.ts",
+      "import": "./dist/csv/pivot/index.js"
+    },
     "./data-analysis/archetypal-analysis": {
       "types": "./dist/data-analysis/archetypal-analysis/index.d.ts",
       "import": "./dist/data-analysis/archetypal-analysis/index.js"
@@ -549,6 +729,14 @@
       "types": "./dist/date/add-days/index.d.ts",
       "import": "./dist/date/add-days/index.js"
     },
+    "./date/age": {
+      "types": "./dist/date/age/index.d.ts",
+      "import": "./dist/date/age/index.js"
+    },
+    "./date/business-days-between": {
+      "types": "./dist/date/business-days-between/index.d.ts",
+      "import": "./dist/date/business-days-between/index.js"
+    },
     "./date/day-of-year": {
       "types": "./dist/date/day-of-year/index.d.ts",
       "import": "./dist/date/day-of-year/index.js"
@@ -561,6 +749,10 @@
       "types": "./dist/date/difference/index.d.ts",
       "import": "./dist/date/difference/index.js"
     },
+    "./date/iso-week-number": {
+      "types": "./dist/date/iso-week-number/index.d.ts",
+      "import": "./dist/date/iso-week-number/index.js"
+    },
     "./date/iso-weekday": {
       "types": "./dist/date/iso-weekday/index.d.ts",
       "import": "./dist/date/iso-weekday/index.js"
@@ -569,13 +761,45 @@
       "types": "./dist/date/leap-year-checker/index.d.ts",
       "import": "./dist/date/leap-year-checker/index.js"
     },
+    "./decode/base122": {
+      "types": "./dist/decode/base122/index.d.ts",
+      "import": "./dist/decode/base122/index.js"
+    },
+    "./decode/base32": {
+      "types": "./dist/decode/base32/index.d.ts",
+      "import": "./dist/decode/base32/index.js"
+    },
+    "./decode/base58": {
+      "types": "./dist/decode/base58/index.d.ts",
+      "import": "./dist/decode/base58/index.js"
+    },
     "./decode/base64": {
       "types": "./dist/decode/base64/index.d.ts",
       "import": "./dist/decode/base64/index.js"
     },
+    "./decode/base85": {
+      "types": "./dist/decode/base85/index.d.ts",
+      "import": "./dist/decode/base85/index.js"
+    },
+    "./decode/base91": {
+      "types": "./dist/decode/base91/index.d.ts",
+      "import": "./dist/decode/base91/index.js"
+    },
+    "./decode/html-entities": {
+      "types": "./dist/decode/html-entities/index.d.ts",
+      "import": "./dist/decode/html-entities/index.js"
+    },
+    "./decode/run-length": {
+      "types": "./dist/decode/run-length/index.d.ts",
+      "import": "./dist/decode/run-length/index.js"
+    },
     "./decode/url-component": {
       "types": "./dist/decode/url-component/index.d.ts",
       "import": "./dist/decode/url-component/index.js"
+    },
+    "./decode/uu": {
+      "types": "./dist/decode/uu/index.d.ts",
+      "import": "./dist/decode/uu/index.js"
     },
     "./dictionary": {
       "types": "./dist/dictionary/index.d.ts",
@@ -613,13 +837,49 @@
       "types": "./dist/electricity/voltage/index.d.ts",
       "import": "./dist/electricity/voltage/index.js"
     },
+    "./encode/base122": {
+      "types": "./dist/encode/base122/index.d.ts",
+      "import": "./dist/encode/base122/index.js"
+    },
+    "./encode/base32": {
+      "types": "./dist/encode/base32/index.d.ts",
+      "import": "./dist/encode/base32/index.js"
+    },
+    "./encode/base58": {
+      "types": "./dist/encode/base58/index.d.ts",
+      "import": "./dist/encode/base58/index.js"
+    },
     "./encode/base64": {
       "types": "./dist/encode/base64/index.d.ts",
       "import": "./dist/encode/base64/index.js"
     },
+    "./encode/base85": {
+      "types": "./dist/encode/base85/index.d.ts",
+      "import": "./dist/encode/base85/index.js"
+    },
+    "./encode/base91": {
+      "types": "./dist/encode/base91/index.d.ts",
+      "import": "./dist/encode/base91/index.js"
+    },
+    "./encode/crc32": {
+      "types": "./dist/encode/crc32/index.d.ts",
+      "import": "./dist/encode/crc32/index.js"
+    },
+    "./encode/html-entities": {
+      "types": "./dist/encode/html-entities/index.d.ts",
+      "import": "./dist/encode/html-entities/index.js"
+    },
+    "./encode/run-length": {
+      "types": "./dist/encode/run-length/index.d.ts",
+      "import": "./dist/encode/run-length/index.js"
+    },
     "./encode/url-component": {
       "types": "./dist/encode/url-component/index.d.ts",
       "import": "./dist/encode/url-component/index.js"
+    },
+    "./encode/uu": {
+      "types": "./dist/encode/uu/index.d.ts",
+      "import": "./dist/encode/uu/index.js"
     },
     "./estimation/particle-filter": {
       "types": "./dist/estimation/particle-filter/index.d.ts",
@@ -641,6 +901,14 @@
       "types": "./dist/finance/commission/index.d.ts",
       "import": "./dist/finance/commission/index.js"
     },
+    "./finance/compound-annual-growth-rate": {
+      "types": "./dist/finance/compound-annual-growth-rate/index.d.ts",
+      "import": "./dist/finance/compound-annual-growth-rate/index.js"
+    },
+    "./finance/contribution-margin": {
+      "types": "./dist/finance/contribution-margin/index.d.ts",
+      "import": "./dist/finance/contribution-margin/index.js"
+    },
     "./finance/debt-to-income-ratio": {
       "types": "./dist/finance/debt-to-income-ratio/index.d.ts",
       "import": "./dist/finance/debt-to-income-ratio/index.js"
@@ -649,13 +917,25 @@
       "types": "./dist/finance/discount-price/index.d.ts",
       "import": "./dist/finance/discount-price/index.js"
     },
+    "./finance/effective-annual-rate": {
+      "types": "./dist/finance/effective-annual-rate/index.d.ts",
+      "import": "./dist/finance/effective-annual-rate/index.js"
+    },
     "./finance/expense-ratio-cost": {
       "types": "./dist/finance/expense-ratio-cost/index.d.ts",
       "import": "./dist/finance/expense-ratio-cost/index.js"
     },
+    "./finance/future-value": {
+      "types": "./dist/finance/future-value/index.d.ts",
+      "import": "./dist/finance/future-value/index.js"
+    },
     "./finance/gross-margin": {
       "types": "./dist/finance/gross-margin/index.d.ts",
       "import": "./dist/finance/gross-margin/index.js"
+    },
+    "./finance/loan-payment": {
+      "types": "./dist/finance/loan-payment/index.d.ts",
+      "import": "./dist/finance/loan-payment/index.js"
     },
     "./finance/loan-to-value-ratio": {
       "types": "./dist/finance/loan-to-value-ratio/index.d.ts",
@@ -664,6 +944,10 @@
     "./finance/markup-margin": {
       "types": "./dist/finance/markup-margin/index.d.ts",
       "import": "./dist/finance/markup-margin/index.js"
+    },
+    "./finance/net-present-value": {
+      "types": "./dist/finance/net-present-value/index.d.ts",
+      "import": "./dist/finance/net-present-value/index.js"
     },
     "./finance/price-per-unit": {
       "types": "./dist/finance/price-per-unit/index.d.ts",
@@ -685,17 +969,37 @@
       "types": "./dist/finance/rule-of-72/index.d.ts",
       "import": "./dist/finance/rule-of-72/index.js"
     },
+    "./finance/sales-tax": {
+      "types": "./dist/finance/sales-tax/index.d.ts",
+      "import": "./dist/finance/sales-tax/index.js"
+    },
     "./finance/simple-interest": {
       "types": "./dist/finance/simple-interest/index.d.ts",
       "import": "./dist/finance/simple-interest/index.js"
+    },
+    "./fitness/basal-metabolic-rate": {
+      "types": "./dist/fitness/basal-metabolic-rate/index.d.ts",
+      "import": "./dist/fitness/basal-metabolic-rate/index.js"
+    },
+    "./fitness/total-daily-energy-expenditure": {
+      "types": "./dist/fitness/total-daily-energy-expenditure/index.d.ts",
+      "import": "./dist/fitness/total-daily-energy-expenditure/index.js"
     },
     "./flashcards": {
       "types": "./dist/flashcards/index.d.ts",
       "import": "./dist/flashcards/index.js"
     },
+    "./format/byte-size": {
+      "types": "./dist/format/byte-size/index.d.ts",
+      "import": "./dist/format/byte-size/index.js"
+    },
     "./format/currency": {
       "types": "./dist/format/currency/index.d.ts",
       "import": "./dist/format/currency/index.js"
+    },
+    "./format/duration": {
+      "types": "./dist/format/duration/index.d.ts",
+      "import": "./dist/format/duration/index.js"
     },
     "./format/feet-and-inches": {
       "types": "./dist/format/feet-and-inches/index.d.ts",
@@ -741,6 +1045,22 @@
       "types": "./dist/generate/open-shop-scheduling-instance/index.d.ts",
       "import": "./dist/generate/open-shop-scheduling-instance/index.js"
     },
+    "./generate/seeded-uuid": {
+      "types": "./dist/generate/seeded-uuid/index.d.ts",
+      "import": "./dist/generate/seeded-uuid/index.js"
+    },
+    "./geo/bearing": {
+      "types": "./dist/geo/bearing/index.d.ts",
+      "import": "./dist/geo/bearing/index.js"
+    },
+    "./geo/destination-point": {
+      "types": "./dist/geo/destination-point/index.d.ts",
+      "import": "./dist/geo/destination-point/index.js"
+    },
+    "./geo/haversine-distance": {
+      "types": "./dist/geo/haversine-distance/index.d.ts",
+      "import": "./dist/geo/haversine-distance/index.js"
+    },
     "./geometry/chebyshev-distance": {
       "types": "./dist/geometry/chebyshev-distance/index.d.ts",
       "import": "./dist/geometry/chebyshev-distance/index.js"
@@ -769,6 +1089,26 @@
       "types": "./dist/geometry/surface-area/index.d.ts",
       "import": "./dist/geometry/surface-area/index.js"
     },
+    "./graph/adjacency-list-to-matrix": {
+      "types": "./dist/graph/adjacency-list-to-matrix/index.d.ts",
+      "import": "./dist/graph/adjacency-list-to-matrix/index.js"
+    },
+    "./graph/adjacency-matrix-to-list": {
+      "types": "./dist/graph/adjacency-matrix-to-list/index.d.ts",
+      "import": "./dist/graph/adjacency-matrix-to-list/index.js"
+    },
+    "./graph/connected-components": {
+      "types": "./dist/graph/connected-components/index.d.ts",
+      "import": "./dist/graph/connected-components/index.js"
+    },
+    "./graph/degrees": {
+      "types": "./dist/graph/degrees/index.d.ts",
+      "import": "./dist/graph/degrees/index.js"
+    },
+    "./graph/density": {
+      "types": "./dist/graph/density/index.d.ts",
+      "import": "./dist/graph/density/index.js"
+    },
     "./graph/node-classification": {
       "types": "./dist/graph/node-classification/index.d.ts",
       "import": "./dist/graph/node-classification/index.js"
@@ -780,6 +1120,10 @@
     "./graph/node2vec-transition": {
       "types": "./dist/graph/node2vec-transition/index.d.ts",
       "import": "./dist/graph/node2vec-transition/index.js"
+    },
+    "./graph/normalize-edge-list": {
+      "types": "./dist/graph/normalize-edge-list/index.d.ts",
+      "import": "./dist/graph/normalize-edge-list/index.js"
     },
     "./graph/pinsage-aggregation": {
       "types": "./dist/graph/pinsage-aggregation/index.d.ts",
@@ -813,6 +1157,18 @@
       "types": "./dist/information/shannon-entropy/index.d.ts",
       "import": "./dist/information/shannon-entropy/index.js"
     },
+    "./interpolation/bilinear": {
+      "types": "./dist/interpolation/bilinear/index.d.ts",
+      "import": "./dist/interpolation/bilinear/index.js"
+    },
+    "./interpolation/cubic-hermite": {
+      "types": "./dist/interpolation/cubic-hermite/index.d.ts",
+      "import": "./dist/interpolation/cubic-hermite/index.js"
+    },
+    "./interpolation/exponential": {
+      "types": "./dist/interpolation/exponential/index.d.ts",
+      "import": "./dist/interpolation/exponential/index.js"
+    },
     "./interpolation/inverse-linear": {
       "types": "./dist/interpolation/inverse-linear/index.d.ts",
       "import": "./dist/interpolation/inverse-linear/index.js"
@@ -825,9 +1181,33 @@
       "types": "./dist/jackson-pollock-3-site-body-fat/index.d.ts",
       "import": "./dist/jackson-pollock-3-site-body-fat/index.js"
     },
+    "./json/flatten": {
+      "types": "./dist/json/flatten/index.d.ts",
+      "import": "./dist/json/flatten/index.js"
+    },
+    "./json/minify": {
+      "types": "./dist/json/minify/index.d.ts",
+      "import": "./dist/json/minify/index.js"
+    },
+    "./json/pointer": {
+      "types": "./dist/json/pointer/index.d.ts",
+      "import": "./dist/json/pointer/index.js"
+    },
+    "./json/pretty-print": {
+      "types": "./dist/json/pretty-print/index.d.ts",
+      "import": "./dist/json/pretty-print/index.js"
+    },
+    "./json/unflatten": {
+      "types": "./dist/json/unflatten/index.d.ts",
+      "import": "./dist/json/unflatten/index.js"
+    },
     "./list/chunk": {
       "types": "./dist/list/chunk/index.d.ts",
       "import": "./dist/list/chunk/index.js"
+    },
+    "./list/consecutive-differences": {
+      "types": "./dist/list/consecutive-differences/index.d.ts",
+      "import": "./dist/list/consecutive-differences/index.js"
     },
     "./list/cumulative-product": {
       "types": "./dist/list/cumulative-product/index.d.ts",
@@ -856,6 +1236,14 @@
     "./list/unique": {
       "types": "./dist/list/unique/index.d.ts",
       "import": "./dist/list/unique/index.js"
+    },
+    "./list/unzip": {
+      "types": "./dist/list/unzip/index.d.ts",
+      "import": "./dist/list/unzip/index.js"
+    },
+    "./list/zip": {
+      "types": "./dist/list/zip/index.d.ts",
+      "import": "./dist/list/zip/index.js"
     },
     "./machine-learning/adaboost-classifier": {
       "types": "./dist/machine-learning/adaboost-classifier/index.d.ts",
@@ -905,6 +1293,14 @@
       "types": "./dist/matrix/as-table/index.d.ts",
       "import": "./dist/matrix/as-table/index.js"
     },
+    "./matrix/cholesky-decomposition": {
+      "types": "./dist/matrix/cholesky-decomposition/index.d.ts",
+      "import": "./dist/matrix/cholesky-decomposition/index.js"
+    },
+    "./matrix/determinant-2x2": {
+      "types": "./dist/matrix/determinant-2x2/index.d.ts",
+      "import": "./dist/matrix/determinant-2x2/index.js"
+    },
     "./matrix/diagonal": {
       "types": "./dist/matrix/diagonal/index.d.ts",
       "import": "./dist/matrix/diagonal/index.js"
@@ -941,6 +1337,10 @@
       "types": "./dist/matrix/transpose/index.d.ts",
       "import": "./dist/matrix/transpose/index.js"
     },
+    "./metrics/huber-loss": {
+      "types": "./dist/metrics/huber-loss/index.d.ts",
+      "import": "./dist/metrics/huber-loss/index.js"
+    },
     "./metrics/mean-absolute-error": {
       "types": "./dist/metrics/mean-absolute-error/index.d.ts",
       "import": "./dist/metrics/mean-absolute-error/index.js"
@@ -960,6 +1360,38 @@
     "./metrics/symmetric-mean-absolute-percentage-error": {
       "types": "./dist/metrics/symmetric-mean-absolute-percentage-error/index.d.ts",
       "import": "./dist/metrics/symmetric-mean-absolute-percentage-error/index.js"
+    },
+    "./network/integer-to-ipv4": {
+      "types": "./dist/network/integer-to-ipv4/index.d.ts",
+      "import": "./dist/network/integer-to-ipv4/index.js"
+    },
+    "./network/ipv4-cidr": {
+      "types": "./dist/network/ipv4-cidr/index.d.ts",
+      "import": "./dist/network/ipv4-cidr/index.js"
+    },
+    "./network/ipv4-to-integer": {
+      "types": "./dist/network/ipv4-to-integer/index.d.ts",
+      "import": "./dist/network/ipv4-to-integer/index.js"
+    },
+    "./network/ipv6-compress": {
+      "types": "./dist/network/ipv6-compress/index.d.ts",
+      "import": "./dist/network/ipv6-compress/index.js"
+    },
+    "./network/ipv6-expand": {
+      "types": "./dist/network/ipv6-expand/index.d.ts",
+      "import": "./dist/network/ipv6-expand/index.js"
+    },
+    "./network/netmask-to-prefix": {
+      "types": "./dist/network/netmask-to-prefix/index.d.ts",
+      "import": "./dist/network/netmask-to-prefix/index.js"
+    },
+    "./network/prefix-to-netmask": {
+      "types": "./dist/network/prefix-to-netmask/index.d.ts",
+      "import": "./dist/network/prefix-to-netmask/index.js"
+    },
+    "./network/private-ip-checker": {
+      "types": "./dist/network/private-ip-checker/index.d.ts",
+      "import": "./dist/network/private-ip-checker/index.js"
     },
     "./neural-network/feedforward": {
       "types": "./dist/neural-network/feedforward/index.d.ts",
@@ -1024,6 +1456,10 @@
     "./number/reverse-digits": {
       "types": "./dist/number/reverse-digits/index.d.ts",
       "import": "./dist/number/reverse-digits/index.js"
+    },
+    "./nutrition/macronutrient-split": {
+      "types": "./dist/nutrition/macronutrient-split/index.d.ts",
+      "import": "./dist/nutrition/macronutrient-split/index.js"
     },
     "./online-algorithm/ski-rental": {
       "types": "./dist/online-algorithm/ski-rental/index.d.ts",
@@ -1113,6 +1549,10 @@
       "types": "./dist/parse/quantity/index.d.ts",
       "import": "./dist/parse/quantity/index.js"
     },
+    "./password/strength": {
+      "types": "./dist/password/strength/index.d.ts",
+      "import": "./dist/password/strength/index.js"
+    },
     "./pathfinding/a-star": {
       "types": "./dist/pathfinding/a-star/index.d.ts",
       "import": "./dist/pathfinding/a-star/index.js"
@@ -1120,6 +1560,10 @@
     "./physics/average-speed": {
       "types": "./dist/physics/average-speed/index.d.ts",
       "import": "./dist/physics/average-speed/index.js"
+    },
+    "./physics/kinetic-energy": {
+      "types": "./dist/physics/kinetic-energy/index.d.ts",
+      "import": "./dist/physics/kinetic-energy/index.js"
     },
     "./ponderal-index": {
       "types": "./dist/ponderal-index/index.d.ts",
@@ -1292,6 +1736,86 @@
     "./search/beam-search": {
       "types": "./dist/search/beam-search/index.d.ts",
       "import": "./dist/search/beam-search/index.js"
+    },
+    "./semiconductor/bandgap-lookup": {
+      "types": "./dist/semiconductor/bandgap-lookup/index.d.ts",
+      "import": "./dist/semiconductor/bandgap-lookup/index.js"
+    },
+    "./semiconductor/bjt-base-transport-factor": {
+      "types": "./dist/semiconductor/bjt-base-transport-factor/index.d.ts",
+      "import": "./dist/semiconductor/bjt-base-transport-factor/index.js"
+    },
+    "./semiconductor/bjt-common-base-current-gain": {
+      "types": "./dist/semiconductor/bjt-common-base-current-gain/index.d.ts",
+      "import": "./dist/semiconductor/bjt-common-base-current-gain/index.js"
+    },
+    "./semiconductor/bjt-emitter-efficiency": {
+      "types": "./dist/semiconductor/bjt-emitter-efficiency/index.d.ts",
+      "import": "./dist/semiconductor/bjt-emitter-efficiency/index.js"
+    },
+    "./semiconductor/conductivity-from-doping": {
+      "types": "./dist/semiconductor/conductivity-from-doping/index.d.ts",
+      "import": "./dist/semiconductor/conductivity-from-doping/index.js"
+    },
+    "./semiconductor/depletion-capacitance-abrupt": {
+      "types": "./dist/semiconductor/depletion-capacitance-abrupt/index.d.ts",
+      "import": "./dist/semiconductor/depletion-capacitance-abrupt/index.js"
+    },
+    "./semiconductor/depletion-capacitance-linear": {
+      "types": "./dist/semiconductor/depletion-capacitance-linear/index.d.ts",
+      "import": "./dist/semiconductor/depletion-capacitance-linear/index.js"
+    },
+    "./semiconductor/depletion-width-linear": {
+      "types": "./dist/semiconductor/depletion-width-linear/index.d.ts",
+      "import": "./dist/semiconductor/depletion-width-linear/index.js"
+    },
+    "./semiconductor/diffusion-capacitance": {
+      "types": "./dist/semiconductor/diffusion-capacitance/index.d.ts",
+      "import": "./dist/semiconductor/diffusion-capacitance/index.js"
+    },
+    "./semiconductor/diode-ideality-factor": {
+      "types": "./dist/semiconductor/diode-ideality-factor/index.d.ts",
+      "import": "./dist/semiconductor/diode-ideality-factor/index.js"
+    },
+    "./semiconductor/diode-saturation-current": {
+      "types": "./dist/semiconductor/diode-saturation-current/index.d.ts",
+      "import": "./dist/semiconductor/diode-saturation-current/index.js"
+    },
+    "./semiconductor/effective-density-conduction-band": {
+      "types": "./dist/semiconductor/effective-density-conduction-band/index.d.ts",
+      "import": "./dist/semiconductor/effective-density-conduction-band/index.js"
+    },
+    "./semiconductor/effective-density-valence-band": {
+      "types": "./dist/semiconductor/effective-density-valence-band/index.d.ts",
+      "import": "./dist/semiconductor/effective-density-valence-band/index.js"
+    },
+    "./semiconductor/electron-effective-mass": {
+      "types": "./dist/semiconductor/electron-effective-mass/index.d.ts",
+      "import": "./dist/semiconductor/electron-effective-mass/index.js"
+    },
+    "./semiconductor/electron-mobility": {
+      "types": "./dist/semiconductor/electron-mobility/index.d.ts",
+      "import": "./dist/semiconductor/electron-mobility/index.js"
+    },
+    "./semiconductor/hole-effective-mass": {
+      "types": "./dist/semiconductor/hole-effective-mass/index.d.ts",
+      "import": "./dist/semiconductor/hole-effective-mass/index.js"
+    },
+    "./semiconductor/hole-mobility": {
+      "types": "./dist/semiconductor/hole-mobility/index.d.ts",
+      "import": "./dist/semiconductor/hole-mobility/index.js"
+    },
+    "./semiconductor/intrinsic-carrier-concentration": {
+      "types": "./dist/semiconductor/intrinsic-carrier-concentration/index.d.ts",
+      "import": "./dist/semiconductor/intrinsic-carrier-concentration/index.js"
+    },
+    "./semiconductor/junction-capacitance-total": {
+      "types": "./dist/semiconductor/junction-capacitance-total/index.d.ts",
+      "import": "./dist/semiconductor/junction-capacitance-total/index.js"
+    },
+    "./semiconductor/resistivity-from-doping": {
+      "types": "./dist/semiconductor/resistivity-from-doping/index.d.ts",
+      "import": "./dist/semiconductor/resistivity-from-doping/index.js"
     },
     "./sequence/arithmetic": {
       "types": "./dist/sequence/arithmetic/index.d.ts",
@@ -1849,6 +2373,14 @@
       "types": "./dist/size/yukata-reconstruction/index.d.ts",
       "import": "./dist/size/yukata-reconstruction/index.js"
     },
+    "./statistics/ab-test": {
+      "types": "./dist/statistics/ab-test/index.d.ts",
+      "import": "./dist/statistics/ab-test/index.js"
+    },
+    "./statistics/autocorrelation": {
+      "types": "./dist/statistics/autocorrelation/index.d.ts",
+      "import": "./dist/statistics/autocorrelation/index.js"
+    },
     "./statistics/benjamini-hochberg": {
       "types": "./dist/statistics/benjamini-hochberg/index.d.ts",
       "import": "./dist/statistics/benjamini-hochberg/index.js"
@@ -1857,9 +2389,17 @@
       "types": "./dist/statistics/bonferroni-correction/index.d.ts",
       "import": "./dist/statistics/bonferroni-correction/index.js"
     },
+    "./statistics/bootstrap-confidence-interval": {
+      "types": "./dist/statistics/bootstrap-confidence-interval/index.d.ts",
+      "import": "./dist/statistics/bootstrap-confidence-interval/index.js"
+    },
     "./statistics/bootstrap-standard-error": {
       "types": "./dist/statistics/bootstrap-standard-error/index.d.ts",
       "import": "./dist/statistics/bootstrap-standard-error/index.js"
+    },
+    "./statistics/chi-square-goodness-of-fit": {
+      "types": "./dist/statistics/chi-square-goodness-of-fit/index.d.ts",
+      "import": "./dist/statistics/chi-square-goodness-of-fit/index.js"
     },
     "./statistics/coefficient-of-determination": {
       "types": "./dist/statistics/coefficient-of-determination/index.d.ts",
@@ -1876,6 +2416,10 @@
     "./statistics/cumulative-frequency": {
       "types": "./dist/statistics/cumulative-frequency/index.d.ts",
       "import": "./dist/statistics/cumulative-frequency/index.js"
+    },
+    "./statistics/exponential-moving-average": {
+      "types": "./dist/statistics/exponential-moving-average/index.d.ts",
+      "import": "./dist/statistics/exponential-moving-average/index.js"
     },
     "./statistics/f-statistic": {
       "types": "./dist/statistics/f-statistic/index.d.ts",
@@ -2109,13 +2653,25 @@
       "types": "./dist/text/byte-count/index.d.ts",
       "import": "./dist/text/byte-count/index.js"
     },
+    "./text/change-case": {
+      "types": "./dist/text/change-case/index.d.ts",
+      "import": "./dist/text/change-case/index.js"
+    },
     "./text/character-count": {
       "types": "./dist/text/character-count/index.d.ts",
       "import": "./dist/text/character-count/index.js"
     },
+    "./text/character-n-grams": {
+      "types": "./dist/text/character-n-grams/index.d.ts",
+      "import": "./dist/text/character-n-grams/index.js"
+    },
     "./text/concatenate-two-strings": {
       "types": "./dist/text/concatenate-two-strings/index.d.ts",
       "import": "./dist/text/concatenate-two-strings/index.js"
+    },
+    "./text/edit-distance": {
+      "types": "./dist/text/edit-distance/index.d.ts",
+      "import": "./dist/text/edit-distance/index.js"
     },
     "./text/join": {
       "types": "./dist/text/join/index.d.ts",
@@ -2124,6 +2680,10 @@
     "./text/line-count": {
       "types": "./dist/text/line-count/index.d.ts",
       "import": "./dist/text/line-count/index.js"
+    },
+    "./text/longest-common-prefix": {
+      "types": "./dist/text/longest-common-prefix/index.d.ts",
+      "import": "./dist/text/longest-common-prefix/index.js"
     },
     "./text/lowercase": {
       "types": "./dist/text/lowercase/index.d.ts",
@@ -2136,6 +2696,14 @@
     "./text/prefix-lines": {
       "types": "./dist/text/prefix-lines/index.d.ts",
       "import": "./dist/text/prefix-lines/index.js"
+    },
+    "./text/readability-score": {
+      "types": "./dist/text/readability-score/index.d.ts",
+      "import": "./dist/text/readability-score/index.js"
+    },
+    "./text/reading-time": {
+      "types": "./dist/text/reading-time/index.d.ts",
+      "import": "./dist/text/reading-time/index.js"
     },
     "./text/remove-blank-lines": {
       "types": "./dist/text/remove-blank-lines/index.d.ts",
@@ -2160,6 +2728,10 @@
     "./text/shingling": {
       "types": "./dist/text/shingling/index.d.ts",
       "import": "./dist/text/shingling/index.js"
+    },
+    "./text/slugify": {
+      "types": "./dist/text/slugify/index.d.ts",
+      "import": "./dist/text/slugify/index.js"
     },
     "./text/sort-lines": {
       "types": "./dist/text/sort-lines/index.d.ts",
@@ -2192,6 +2764,10 @@
     "./text/word-count": {
       "types": "./dist/text/word-count/index.d.ts",
       "import": "./dist/text/word-count/index.js"
+    },
+    "./validate/luhn": {
+      "types": "./dist/validate/luhn/index.d.ts",
+      "import": "./dist/validate/luhn/index.js"
     },
     "./vector/add": {
       "types": "./dist/vector/add/index.d.ts",
