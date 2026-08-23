@@ -13,9 +13,8 @@ describe("conductivity from doping calculator", () => {
   });
 
   it("is the reciprocal of resistivity for the same doping", async () => {
-    const { runResistivityFromDoping } = await import(
-      "../resistivity-from-doping/tool.js"
-    );
+    const { runResistivityFromDoping } =
+      await import("../resistivity-from-doping/tool.js");
     const conductivity = calculateConductivityFromDoping({
       carrierType: "p",
       dopingConcentrationPerCm3: 1e15,
@@ -37,5 +36,30 @@ describe("conductivity from doping calculator", () => {
         dopingConcentrationPerCm3: -5,
       }).ok,
     ).toBe(false);
+  });
+
+  it("direct and finite checks", () => {
+    expect(() =>
+      calculateConductivityFromDoping({
+        carrierType: "n",
+        dopingConcentrationPerCm3: 0,
+      }),
+    ).toThrow();
+    const invalidCarrier = runConductivityFromDoping({
+      carrierType: "x",
+      dopingConcentrationPerCm3: 1e16,
+    });
+    expect(invalidCarrier.ok).toBe(false);
+    if (!invalidCarrier.ok)
+      expect(invalidCarrier.error.issues[0]).toMatchObject({
+        code: "invalid_field",
+        field: "carrierType",
+      });
+    expect(() =>
+      calculateConductivityFromDoping({
+        carrierType: "n",
+        dopingConcentrationPerCm3: Number.NaN,
+      }),
+    ).toThrow();
   });
 });
