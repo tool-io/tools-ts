@@ -18,22 +18,23 @@ export const loadFactorExample = {
 export const calculateLoadFactor = (
   input: LoadFactorInput,
 ): LoadFactorOutput => {
-  const radians = (input.bankAngleDeg * Math.PI) / 180;
-  const cosine = Math.cos(radians);
-  if (Math.abs(cosine) < 1e-12)
+  if (
+    !Number.isFinite(input.bankAngleDeg) ||
+    Math.abs(input.bankAngleDeg) >= 90
+  )
     simpleError(
       "bankAngleDeg",
-      "Load factor is undefined at a ninety degree bank.",
-      "undefined_load_factor",
+      "The bank angle must be greater than -90 degrees and less than 90 degrees.",
+      "invalid_bank_angle",
     );
-  return { loadFactorG: roundStatistic(1 / cosine) };
+  const radians = (input.bankAngleDeg * Math.PI) / 180;
+  return { loadFactorG: roundStatistic(1 / Math.cos(radians)) };
 };
 
 export const loadFactorTool = createSimpleTool({
   calculate: (input) =>
-    calculateLoadFactor(input as unknown as LoadFactorInput),
-  description:
-    "Compute the load factor in a level turn from the bank angle.",
+    calculateLoadFactor({ bankAngleDeg: input.bankAngleDeg as number }),
+  description: "Compute the load factor in a level turn from the bank angle.",
   id: "aviation/load-factor",
   inputs: [
     {

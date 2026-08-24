@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { calculateLoadFactor, loadFactorExample, runLoadFactor } from "./tool.js";
+import {
+  calculateLoadFactor,
+  loadFactorExample,
+  runLoadFactor,
+} from "./tool.js";
 
 describe("load factor calculator", () => {
   it("reproduces its canonical example exactly", () => {
@@ -21,8 +25,27 @@ describe("load factor calculator", () => {
 
   it("rejects ninety-degree banks through execution", () => {
     expect(runLoadFactor({ bankAngleDeg: 90 })).toMatchObject({
-      error: { issues: [{ code: "undefined_load_factor" }] },
+      error: { issues: [{ code: "invalid_bank_angle" }] },
       ok: false,
     });
+  });
+
+  it("rejects banks beyond ninety degrees through execution", () => {
+    expect(runLoadFactor({ bankAngleDeg: 120 })).toMatchObject({
+      error: { issues: [{ code: "invalid_bank_angle" }] },
+      ok: false,
+    });
+  });
+
+  it("accepts negative bank angles for turns in the opposite direction", () => {
+    expect(calculateLoadFactor({ bankAngleDeg: -60 })).toEqual({
+      loadFactorG: 2,
+    });
+  });
+
+  it("rejects non-finite angles in the direct calculation", () => {
+    expect(() =>
+      calculateLoadFactor({ bankAngleDeg: Number.NaN }),
+    ).toThrowError("greater than -90 degrees");
   });
 });
