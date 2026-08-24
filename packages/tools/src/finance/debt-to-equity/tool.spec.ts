@@ -25,10 +25,10 @@ describe("Debt to Equity Calculator", () => {
     ).toEqual({ ok: true, output: { debtToEquity: 0 } });
   });
 
-  it("allows negative total debt", () => {
+  it("rejects negative total debt", () => {
     expect(
-      runDebtToEquity({ totalDebt: -100000, shareholdersEquity: 400000 }),
-    ).toEqual({ ok: true, output: { debtToEquity: -0.25 } });
+      runDebtToEquity({ totalDebt: -100000, shareholdersEquity: 400000 }).ok,
+    ).toBe(false);
   });
 
   it("rejects zero equity with invalid_shareholders_equity", () => {
@@ -44,10 +44,10 @@ describe("Debt to Equity Calculator", () => {
     });
   });
 
-  it("rejects negative equity with invalid_shareholders_equity", () => {
+  it("reports a negative ratio when shareholders' equity is negative", () => {
     expect(
-      runDebtToEquity({ totalDebt: 300000, shareholdersEquity: -600000 }).ok,
-    ).toBe(false);
+      runDebtToEquity({ totalDebt: 300000, shareholdersEquity: -600000 }),
+    ).toEqual({ ok: true, output: { debtToEquity: -0.5 } });
   });
 
   it("rejects non-finite input", () => {

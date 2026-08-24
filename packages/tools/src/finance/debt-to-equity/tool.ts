@@ -19,18 +19,34 @@ export const calculateDebtToEquity = (
   input: DebtToEquityInput,
 ): DebtToEquityOutput => {
   const { totalDebt, shareholdersEquity } = input;
-  if (shareholdersEquity === 0)
+  if (!Number.isFinite(totalDebt) || totalDebt < 0)
+    simpleError(
+      "totalDebt",
+      "Total debt must be a finite non-negative amount.",
+      "invalid_total_debt",
+    );
+  if (!Number.isFinite(shareholdersEquity) || shareholdersEquity === 0)
     simpleError(
       "shareholdersEquity",
-      "Shareholders' equity must not be zero.",
+      "Shareholders' equity must be finite and nonzero.",
       "invalid_shareholders_equity",
     );
-  return { debtToEquity: totalDebt / shareholdersEquity };
+  const debtToEquity = totalDebt / shareholdersEquity;
+  if (!Number.isFinite(debtToEquity))
+    simpleError(
+      "totalDebt",
+      "The debt-to-equity ratio exceeds the numeric range.",
+      "numeric_range",
+    );
+  return { debtToEquity };
 };
 
 export const debtToEquityTool = createSimpleTool({
   calculate: (input) =>
-    calculateDebtToEquity(input as unknown as DebtToEquityInput),
+    calculateDebtToEquity({
+      totalDebt: input.totalDebt as number,
+      shareholdersEquity: input.shareholdersEquity as number,
+    }),
   description:
     "Calculate leverage as total debt divided by shareholders' equity.",
   id: "finance/debt-to-equity",
@@ -40,10 +56,12 @@ export const debtToEquityTool = createSimpleTool({
       id: "totalDebt",
       kind: "number",
       label: "Total debt",
+      minimum: 0,
       unit: "currency",
     },
     {
-      description: "Total shareholders' equity.",
+      description:
+        "Total shareholders' equity; negative equity produces a negative ratio whose usual leverage interpretation is not meaningful.",
       id: "shareholdersEquity",
       kind: "number",
       label: "Shareholders' equity",
@@ -52,7 +70,8 @@ export const debtToEquityTool = createSimpleTool({
   ],
   outputs: [
     {
-      description: "Total debt per unit of shareholders' equity.",
+      description:
+        "Total debt per unit of shareholders' equity; a negative result reflects negative equity.",
       format: "ratio",
       id: "debtToEquity",
       kind: "number",
