@@ -4,13 +4,19 @@ import { createSimpleTool, simpleError } from "../../core/simple.js";
 export const calculateLensDistortionK2 = (
   input: LensDistortionK2Input,
 ): LensDistortionK2Output => {
-  if (input.idealRadius <= 0 || input.idealRadius > 1)
+  if (
+    !Number.isFinite(input.idealRadius) ||
+    input.idealRadius <= 0 ||
+    input.idealRadius > 1
+  )
     simpleError(
       "idealRadius",
       "The ideal radius must be greater than zero and at most one.",
       "invalid_ideal_radius",
     );
-  if (input.measuredRadius < 0)
+  if (!Number.isFinite(input.k1))
+    simpleError("k1", "The K1 coefficient must be finite.", "invalid_k1");
+  if (!Number.isFinite(input.measuredRadius) || input.measuredRadius < 0)
     simpleError(
       "measuredRadius",
       "The measured radius cannot be negative.",
@@ -18,7 +24,16 @@ export const calculateLensDistortionK2 = (
     );
   const squared = input.idealRadius ** 2;
   const ratio = input.measuredRadius / input.idealRadius - 1;
-  return { k2: (ratio - input.k1 * squared) / squared ** 2 };
+  const numerator = ratio - input.k1 * squared;
+  if (numerator === 0) return { k2: 0 };
+  const k2 = numerator / squared ** 2;
+  if (!Number.isFinite(k2))
+    simpleError(
+      "idealRadius",
+      "The K2 coefficient exceeds the numeric range at this radius.",
+      "numeric_range",
+    );
+  return { k2 };
 };
 
 export const lensDistortionK2Tool = createSimpleTool({
@@ -36,11 +51,11 @@ export const lensDistortionK2Tool = createSimpleTool({
       minimum: 0,
     },
     {
-      description: "First radial distortion coefficient already known.",
+      description:
+        "Signed first radial distortion coefficient already known; negative and positive coefficients are both supported.",
       id: "k1",
       label: "K1 coefficient",
       kind: "number",
-      minimum: 0,
     },
     {
       description: "Measured distorted radius fraction for the same point.",
@@ -58,7 +73,11 @@ export const lensDistortionK2Tool = createSimpleTool({
     },
   ],
   calculate: (input) =>
-    calculateLensDistortionK2(input as LensDistortionK2Input),
+    calculateLensDistortionK2({
+      idealRadius: input.idealRadius as number,
+      k1: input.k1 as number,
+      measuredRadius: input.measuredRadius as number,
+    }),
 });
 export const runLensDistortionK2 = lensDistortionK2Tool.execute;
 export default lensDistortionK2Tool;
@@ -75,5 +94,5 @@ export type LensDistortionK2Output = {
 
 export const lensDistortionK2Example = {
   input: { idealRadius: 0.8, k1: -0.1, measuredRadius: 0.75 },
-  output: { k2: 0.0036621093750000364 },
+  output: { k2: 0.0036621093750000356 },
 } satisfies ToolExample<LensDistortionK2Input, LensDistortionK2Output>;

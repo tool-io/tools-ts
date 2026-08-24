@@ -1,7 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { runLensDistortionK2 } from "./tool.js";
+import { lensDistortionK2Example, runLensDistortionK2 } from "./tool.js";
 
 describe("Lens Distortion K2 Calculator", () => {
+  it("reproduces its signed-k1 canonical example exactly", () => {
+    expect(runLensDistortionK2(lensDistortionK2Example.input)).toEqual({
+      ok: true,
+      output: lensDistortionK2Example.output,
+    });
+  });
+
   it("calculates a valid result", () => {
     expect(
       runLensDistortionK2({
