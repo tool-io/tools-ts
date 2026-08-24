@@ -32,7 +32,11 @@ for (const file of await walk(sourceRoot)) {
   } catch {
     throw new Error(`Public tool ${path.relative(sourceRoot, directory)} needs index.ts.`);
   }
-  if (!/export\s*\{\s*default(?:\s*,|\s*\})[\s\S]*?from\s*["']\.\/tool\.js["']/.test(indexSource))
+  if (
+    !/export\s*\{[^}]*\bdefault\b[^}]*\}\s*from\s*["']\.\/tool\.js["']/.test(
+      indexSource,
+    )
+  )
     throw new Error(`Public tool ${path.relative(sourceRoot, directory)} must re-export its default definition.`);
   toolDirectories.push(path.relative(sourceRoot, directory).split(path.sep).join("/"));
 }
