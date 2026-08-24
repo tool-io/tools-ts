@@ -139,6 +139,55 @@ const base64Pattern =
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
 
+const timeUnits = new Set([
+  "second",
+  "millisecond",
+  "microsecond",
+  "nanosecond",
+]);
+
+function isTableField(value: unknown): value is TableField {
+  return (
+    isRecord(value) &&
+    typeof value.id === "string" &&
+    identifierPattern.test(value.id) &&
+    typeof value.nullable === "boolean" &&
+    isTableDataType(value.dataType)
+  );
+}
+
+function isTableDataType(value: unknown): value is TableDataType {
+  if (!isRecord(value) || typeof value.kind !== "string") return false;
+  if (["boolean", "string", "date", "json"].includes(value.kind)) return true;
+  if (value.kind === "integer")
+    return (
+      [8, 16, 32, 64].includes(value.bits as number) &&
+      typeof value.signed === "boolean"
+    );
+  if (value.kind === "float") return value.bits === 32 || value.bits === 64;
+  if (value.kind === "decimal")
+    return (
+      Number.isInteger(value.precision) &&
+      Number.isInteger(value.scale) &&
+      (value.precision as number) > 0 &&
+      (value.scale as number) >= 0 &&
+      (value.scale as number) <= (value.precision as number)
+    );
+  if (value.kind === "binary") return value.encoding === "base64";
+  if (value.kind === "time") return timeUnits.has(value.unit as string);
+  if (value.kind === "timestamp")
+    return (
+      timeUnits.has(value.unit as string) &&
+      (value.timezone === undefined || typeof value.timezone === "string")
+    );
+  if (value.kind === "duration")
+    return value.unit === "iso8601" || timeUnits.has(value.unit as string);
+  if (value.kind === "list") return isTableField(value.items);
+  if (value.kind === "struct")
+    return Array.isArray(value.fields) && value.fields.every(isTableField);
+  return false;
+}
+
 const isJsonValue = (value: unknown): value is TableJsonValue => {
   if (value === null || typeof value === "boolean" || typeof value === "string")
     return true;
@@ -233,8 +282,7 @@ export const validateTableData = (
       typeof candidate.id !== "string" ||
       !identifierPattern.test(candidate.id) ||
       typeof candidate.nullable !== "boolean" ||
-      !isRecord(candidate.dataType) ||
-      typeof candidate.dataType.kind !== "string"
+      !isTableDataType(candidate.dataType)
     ) {
       issues.push({
         code: "invalid_field",
