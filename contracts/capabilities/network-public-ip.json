@@ -1,0 +1,27 @@
+{
+  "description": "Return the public IPv4 and IPv6 addresses observed for the caller by trusted remote providers. Either address family may be unavailable.",
+  "id": "network/public-ip",
+  "mode": "snapshot",
+  "requestSchema": {
+    "additionalProperties": false,
+    "properties": {},
+    "type": "object"
+  },
+  "responseSchema": {
+    "additionalProperties": false,
+    "properties": {
+      "ipv4Address": {
+        "anyOf": [{ "type": "null" }, { "type": "string", "minLength": 7 }]
+      },
+      "ipv6Address": {
+        "anyOf": [{ "type": "null" }, { "type": "string", "minLength": 2 }]
+      },
+      "observedAt": { "type": "string", "minLength": 1 },
+      "provider": { "type": "string", "minLength": 1 }
+    },
+    "required": ["ipv4Address", "ipv6Address", "observedAt", "provider"],
+    "type": "object"
+  },
+  "schemaVersion": 1,
+  "sensitivity": "personal"
+}
