@@ -171,9 +171,9 @@ export const iiifImageUrlFormatterV2Tool = createSimpleTool({
   calculate: (input) =>
     calculateIiifImageUrlFormatterV2({
       baseUrl: input.baseUrl as string,
-      format: (input.format as string | undefined) ?? undefined,
+      format: input.format as IiifImageUrlFormatterV2Input["format"],
       identifier: input.identifier as string,
-      quality: (input.quality as string | undefined) ?? undefined,
+      quality: input.quality as IiifImageUrlFormatterV2Input["quality"],
       region: (input.region as string | undefined) ?? undefined,
       rotation: (input.rotation as number | undefined) ?? undefined,
       size: (input.size as string | undefined) ?? undefined,
