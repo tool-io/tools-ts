@@ -2,13 +2,13 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
 
 export type ReshapeInput = {
-  readonly matrix: (readonly number[])[];
+  readonly matrix: readonly (readonly number[])[];
   readonly rows: number;
   readonly columns: number;
 };
 
 export type ReshapeOutput = {
-  readonly reshaped: (readonly number[])[];
+  readonly reshaped: readonly (readonly number[])[];
 };
 
 export const calculateReshape = (input: ReshapeInput): ReshapeOutput => {

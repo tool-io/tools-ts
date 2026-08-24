@@ -2,7 +2,7 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
 
 export type RankInput = {
-  readonly matrix: (readonly number[])[];
+  readonly matrix: readonly (readonly number[])[];
 };
 
 export type RankOutput = {

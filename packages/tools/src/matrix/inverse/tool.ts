@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
 
 export type InverseInput = {
-  readonly matrix: (readonly number[])[];
+  readonly matrix: readonly (readonly number[])[];
 };
 
 export type InverseOutput = {
-  readonly inverse: (readonly number[])[];
+  readonly inverse: readonly (readonly number[])[];
 };
 
 export const calculateInverse = (input: InverseInput): InverseOutput => {

@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
 
 export type FlipVerticalInput = {
-  readonly matrix: (readonly number[])[];
+  readonly matrix: readonly (readonly number[])[];
 };
 
 export type FlipVerticalOutput = {
-  readonly flipped: (readonly number[])[];
+  readonly flipped: readonly (readonly number[])[];
 };
 
 export const calculateFlipVertical = (

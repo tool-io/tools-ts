@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
 
 export type LuDecompositionInput = {
-  readonly matrix: (readonly number[])[];
+  readonly matrix: readonly (readonly number[])[];
 };
 
 export type LuDecompositionOutput = {
-  readonly lower: (readonly number[])[];
-  readonly upper: (readonly number[])[];
+  readonly lower: readonly (readonly number[])[];
+  readonly upper: readonly (readonly number[])[];
   readonly permutation: readonly number[];
 };
 

@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
 
 export type MultiplyInput = {
-  readonly first: (readonly number[])[];
-  readonly second: (readonly number[])[];
+  readonly first: readonly (readonly number[])[];
+  readonly second: readonly (readonly number[])[];
 };
 
 export type MultiplyOutput = {
-  readonly product: (readonly number[])[];
+  readonly product: readonly (readonly number[])[];
 };
 
 export const calculateMultiply = (input: MultiplyInput): MultiplyOutput => {
