@@ -275,6 +275,10 @@
       "types": "./dist/check/mic/index.d.ts",
       "import": "./dist/check/mic/index.js"
     },
+    "./check/my-ip": {
+      "types": "./dist/check/my-ip/index.d.ts",
+      "import": "./dist/check/my-ip/index.js"
+    },
     "./check/network-quality": {
       "types": "./dist/check/network-quality/index.d.ts",
       "import": "./dist/check/network-quality/index.js"
@@ -2764,6 +2768,10 @@
     "./text/word-count": {
       "types": "./dist/text/word-count/index.d.ts",
       "import": "./dist/text/word-count/index.js"
+    },
+    "./validate/ip-address": {
+      "types": "./dist/validate/ip-address/index.d.ts",
+      "import": "./dist/validate/ip-address/index.js"
     },
     "./validate/luhn": {
       "types": "./dist/validate/luhn/index.d.ts",

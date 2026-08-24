@@ -697,6 +697,8 @@ import tool694 from "../waist-to-height/tool.js";
 import tool695 from "../waist-to-hip/tool.js";
 import tool696 from "../wcag-contrast-check/tool.js";
 import tool697 from "../world-clock/tool.js";
+import tool698 from "../check/my-ip/tool.js";
+import tool699 from "../validate/ip-address/tool.js";
 import type { ToolDefinition } from "../core/definition.js";
 
 export type RegisteredTool = ToolDefinition<unknown, unknown>;
@@ -1400,6 +1402,8 @@ const definitions: readonly RegisteredTool[] = [
   tool695,
   tool696,
   tool697,
+  tool698,
+  tool699,
 ];
 
 export const toolRegistry = new Map<string, RegisteredTool>();
