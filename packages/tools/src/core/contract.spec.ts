@@ -40,9 +40,46 @@ describe("tool contract linter", () => {
     expect(
       validateToolContract({
         ...bodyMassIndexTool,
-        execution: { capabilities: ["camera"], kind: "pure" },
+        execution: {
+          capabilities: [
+            { id: "device/camera/capture", required: true, schemaVersion: 1 },
+          ],
+          kind: "pure",
+        },
       }).map(({ code }) => code),
     ).toContain("pure_tool_has_requirements");
+  });
+
+  it("validates versioned capability requirements", () => {
+    const definition = {
+      ...bodyMassIndexTool,
+      execution: {
+        capabilities: [
+          {
+            id: "device/sensors/enumerate",
+            required: true,
+            schemaVersion: 1,
+          },
+        ],
+        kind: "device" as const,
+      },
+    };
+    expect(validateToolContract(definition)).toEqual([]);
+    expect(
+      validateToolContract({
+        ...definition,
+        execution: {
+          ...definition.execution,
+          capabilities: [
+            {
+              id: "device/sensors/enumerate",
+              required: true,
+              schemaVersion: 0,
+            },
+          ],
+        },
+      }).map(({ code }) => code),
+    ).toContain("capability_requirement_invalid");
   });
 
   it("rejects malformed discovery metadata and port presentation", () => {

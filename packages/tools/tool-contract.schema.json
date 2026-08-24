@@ -15,6 +15,19 @@
         "$ref": "#/$defs/nonEmptyString"
       }
     },
+    "capabilityRequirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "required", "schemaVersion"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:[/-][a-z0-9]+)*$"
+        },
+        "required": { "type": "boolean" },
+        "schemaVersion": { "type": "integer", "minimum": 1 }
+      }
+    },
     "valueType": {
       "type": "object",
       "additionalProperties": false,
@@ -182,7 +195,11 @@
           "required": ["kind"],
           "properties": {
             "kind": { "enum": ["data", "device", "pure", "remote"] },
-            "capabilities": { "$ref": "#/$defs/identifierList" },
+            "capabilities": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/capabilityRequirement" }
+            },
             "datasets": {
               "type": "array",
               "uniqueItems": true,

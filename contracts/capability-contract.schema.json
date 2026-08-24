@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tool.io/contracts/capability-contract.schema.json",
+  "title": "Tool.io capability contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "description",
+    "id",
+    "mode",
+    "requestSchema",
+    "responseSchema",
+    "schemaVersion",
+    "sensitivity"
+  ],
+  "properties": {
+    "description": { "type": "string", "minLength": 1 },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[/-][a-z0-9]+)*$"
+    },
+    "mode": { "enum": ["snapshot", "stream"] },
+    "requestSchema": {
+      "$ref": "tool-contract.schema.json#/$defs/runtimeSchema"
+    },
+    "responseSchema": {
+      "$ref": "tool-contract.schema.json#/$defs/runtimeSchema"
+    },
+    "schemaVersion": { "type": "integer", "minimum": 1 },
+    "sensitivity": {
+      "enum": ["personal", "public", "sensitive"]
+    }
+  }
+}

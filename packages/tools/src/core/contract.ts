@@ -324,13 +324,32 @@ export const validateToolContract = (
       path: "/execution",
     });
   else {
-    if (definition.execution.capabilities !== undefined)
-      issues.push(
-        ...identifierListIssues(
-          definition.execution.capabilities,
-          "/execution/capabilities",
-        ),
-      );
+    const capabilityIds = new Set<string>();
+    for (const [index, capability] of (
+      definition.execution.capabilities ?? []
+    ).entries()) {
+      if (
+        !isRecord(capability) ||
+        typeof capability.id !== "string" ||
+        !datasetIdPattern.test(capability.id) ||
+        !Number.isSafeInteger(capability.schemaVersion) ||
+        capability.schemaVersion < 1 ||
+        typeof capability.required !== "boolean"
+      )
+        issues.push({
+          code: "capability_requirement_invalid",
+          message:
+            "Capability requirements need an ID, positive schema version, and required flag.",
+          path: `/execution/capabilities/${index}`,
+        });
+      else if (capabilityIds.has(capability.id))
+        issues.push({
+          code: "capability_requirement_duplicate",
+          message: `Capability ${capability.id} is required more than once.`,
+          path: `/execution/capabilities/${index}`,
+        });
+      capabilityIds.add(String(capability.id));
+    }
     const datasetIds = new Set<string>();
     for (const [index, dataset] of (
       definition.execution.datasets ?? []

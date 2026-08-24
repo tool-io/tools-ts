@@ -33,8 +33,19 @@ export type ToolDatasetRequirement = {
   readonly schemaVersion: number;
 };
 
+/**
+ * A versioned capability that a consuming surface must provide before it can
+ * execute a device- or remote-backed tool. Permission prompts and platform
+ * implementation details deliberately remain surface-owned.
+ */
+export type ToolCapabilityRequirement = {
+  readonly id: string;
+  readonly required: boolean;
+  readonly schemaVersion: number;
+};
+
 export type ToolExecutionRequirements = {
-  readonly capabilities?: readonly string[];
+  readonly capabilities?: readonly ToolCapabilityRequirement[];
   readonly datasets?: readonly ToolDatasetRequirement[];
   readonly kind: ToolExecutionKind;
 };
