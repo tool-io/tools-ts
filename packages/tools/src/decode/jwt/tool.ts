@@ -43,17 +43,18 @@ const decodeSegment = (
       "The segment is not valid unpadded base64url.",
       "invalid_segment_encoding",
     );
-  let decoded: string;
-  try {
-    decoded = utf8Decode(base64UrlToBytes(segment), field);
-  } catch (error) {
-    if (error instanceof SimpleToolError) throw error;
-    simpleError(
-      field,
-      "The segment could not be decoded.",
-      "invalid_segment_encoding",
-    );
-  }
+  const decoded = (() => {
+    try {
+      return utf8Decode(base64UrlToBytes(segment), field);
+    } catch (error) {
+      if (error instanceof SimpleToolError) throw error;
+      return simpleError(
+        field,
+        "The segment could not be decoded.",
+        "invalid_segment_encoding",
+      );
+    }
+  })();
   let parsed: unknown;
   try {
     parsed = JSON.parse(decoded) as unknown;
