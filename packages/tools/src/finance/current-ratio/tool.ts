@@ -19,18 +19,34 @@ export const calculateCurrentRatio = (
   input: CurrentRatioInput,
 ): CurrentRatioOutput => {
   const { currentAssets, currentLiabilities } = input;
-  if (currentLiabilities === 0)
+  if (!Number.isFinite(currentAssets))
+    simpleError(
+      "currentAssets",
+      "Current assets must be finite.",
+      "invalid_current_assets",
+    );
+  if (!Number.isFinite(currentLiabilities) || currentLiabilities <= 0)
     simpleError(
       "currentLiabilities",
-      "Current liabilities must not be zero.",
+      "Current liabilities must be greater than zero.",
       "invalid_current_liabilities",
     );
-  return { currentRatio: currentAssets / currentLiabilities };
+  const currentRatio = currentAssets / currentLiabilities;
+  if (!Number.isFinite(currentRatio))
+    simpleError(
+      "currentAssets",
+      "The current ratio exceeds the numeric range.",
+      "numeric_range",
+    );
+  return { currentRatio };
 };
 
 export const currentRatioTool = createSimpleTool({
   calculate: (input) =>
-    calculateCurrentRatio(input as unknown as CurrentRatioInput),
+    calculateCurrentRatio({
+      currentAssets: input.currentAssets as number,
+      currentLiabilities: input.currentLiabilities as number,
+    }),
   description:
     "Calculate liquidity as current assets divided by current liabilities.",
   id: "finance/current-ratio",
@@ -47,6 +63,7 @@ export const currentRatioTool = createSimpleTool({
       id: "currentLiabilities",
       kind: "number",
       label: "Current liabilities",
+      minimum: 0,
       unit: "currency",
     },
   ],
