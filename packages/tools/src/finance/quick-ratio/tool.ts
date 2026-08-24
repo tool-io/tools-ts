@@ -26,21 +26,38 @@ export const calculateQuickRatio = (
   input: QuickRatioInput,
 ): QuickRatioOutput => {
   const { cash, marketableSecurities, receivables, currentLiabilities } = input;
-  if (currentLiabilities === 0)
+  for (const key of ["cash", "marketableSecurities", "receivables"] as const)
+    if (!Number.isFinite(input[key]))
+      simpleError(
+        key,
+        "Quick-asset components must be finite.",
+        "invalid_quick_asset",
+      );
+  if (!Number.isFinite(currentLiabilities) || currentLiabilities <= 0)
     simpleError(
       "currentLiabilities",
-      "Current liabilities must not be zero.",
+      "Current liabilities must be greater than zero.",
       "invalid_current_liabilities",
     );
-  return {
-    quickRatio:
-      (cash + marketableSecurities + receivables) / currentLiabilities,
-  };
+  const quickRatio =
+    (cash + marketableSecurities + receivables) / currentLiabilities;
+  if (!Number.isFinite(quickRatio))
+    simpleError(
+      "cash",
+      "The quick ratio exceeds the numeric range.",
+      "numeric_range",
+    );
+  return { quickRatio };
 };
 
 export const quickRatioTool = createSimpleTool({
   calculate: (input) =>
-    calculateQuickRatio(input as unknown as QuickRatioInput),
+    calculateQuickRatio({
+      cash: input.cash as number,
+      marketableSecurities: input.marketableSecurities as number,
+      receivables: input.receivables as number,
+      currentLiabilities: input.currentLiabilities as number,
+    }),
   description:
     "Calculate the quick ratio as cash, marketable securities, and receivables divided by current liabilities.",
   id: "finance/quick-ratio",
@@ -71,6 +88,7 @@ export const quickRatioTool = createSimpleTool({
       id: "currentLiabilities",
       kind: "number",
       label: "Current liabilities",
+      minimum: 0,
       unit: "currency",
     },
   ],
