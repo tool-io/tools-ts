@@ -1,3 +1,12 @@
-export * from "./tool.js";
-export { effectiveDensityConductionBandExample as example } from "./tool.js";
-export { default } from "./tool.js";
+export {
+  default,
+  calculateEffectiveDensityConductionBand,
+  effectiveDensityConductionBandExample,
+  effectiveDensityConductionBandExample as example,
+  effectiveDensityConductionBandTool,
+  runEffectiveDensityConductionBand,
+} from "./tool.js";
+export type {
+  EffectiveDensityConductionBandInput,
+  EffectiveDensityConductionBandOutput,
+} from "./tool.js";
