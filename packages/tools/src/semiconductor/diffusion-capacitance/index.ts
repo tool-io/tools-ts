@@ -1,3 +1,14 @@
-export * from "./tool.js";
-export { diffusionCapacitanceExample as example } from "./tool.js";
-export { default } from "./tool.js";
+export {
+  calculateDiffusionCapacitance,
+  default,
+  diffusionCapacitanceExample,
+  diffusionCapacitanceExample as example,
+  diffusionCapacitanceTool,
+  diffusionCapacitanceTool as tool,
+  runDiffusionCapacitance,
+  runDiffusionCapacitance as runner,
+} from "./tool.js";
+export type {
+  DiffusionCapacitanceInput,
+  DiffusionCapacitanceOutput,
+} from "./tool.js";
