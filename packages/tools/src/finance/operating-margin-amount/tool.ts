@@ -22,16 +22,34 @@ export const calculateOperatingMarginAmount = (
   input: OperatingMarginAmountInput,
 ): OperatingMarginAmountOutput => {
   const { operatingIncome, revenue } = input;
-  if (revenue === 0)
-    simpleError("revenue", "Revenue must not be zero.", "invalid_revenue");
-  return { operatingMargin: operatingIncome / revenue };
+  if (!Number.isFinite(operatingIncome))
+    simpleError(
+      "operatingIncome",
+      "Operating income must be finite.",
+      "invalid_operating_income",
+    );
+  if (!Number.isFinite(revenue) || revenue <= 0)
+    simpleError(
+      "revenue",
+      "Revenue must be greater than zero.",
+      "invalid_revenue",
+    );
+  const operatingMargin = operatingIncome / revenue;
+  if (!Number.isFinite(operatingMargin))
+    simpleError(
+      "operatingIncome",
+      "The operating margin exceeds the numeric range.",
+      "numeric_range",
+    );
+  return { operatingMargin };
 };
 
 export const operatingMarginAmountTool = createSimpleTool({
   calculate: (input) =>
-    calculateOperatingMarginAmount(
-      input as unknown as OperatingMarginAmountInput,
-    ),
+    calculateOperatingMarginAmount({
+      operatingIncome: input.operatingIncome as number,
+      revenue: input.revenue as number,
+    }),
   description:
     "Calculate operating margin as operating income divided by revenue.",
   id: "finance/operating-margin-amount",
@@ -48,6 +66,7 @@ export const operatingMarginAmountTool = createSimpleTool({
       id: "revenue",
       kind: "number",
       label: "Revenue",
+      minimum: 0,
       unit: "currency",
     },
   ],
