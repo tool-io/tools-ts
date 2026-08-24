@@ -33,4 +33,22 @@ describe("density altitude calculator", () => {
     });
     expect(isa.densityAltitudeFt).toBeCloseTo(6000, 9);
   });
+
+  it("uses the clamped standard temperature above the tropopause", () => {
+    expect(
+      calculateDensityAltitude({
+        oatC: -56.5,
+        pressureAltitudeFt: 40000,
+      }),
+    ).toEqual({ densityAltitudeFt: 40000 });
+  });
+
+  it("rejects altitudes above the modeled lower-stratosphere layer", () => {
+    expect(() =>
+      calculateDensityAltitude({
+        oatC: -50,
+        pressureAltitudeFt: 70_000,
+      }),
+    ).toThrowError("supports pressure altitudes through 65,616.8 feet");
+  });
 });
