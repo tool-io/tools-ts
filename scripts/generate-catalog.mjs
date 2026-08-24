@@ -3,6 +3,10 @@ import { execFileSync } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import {
+  resolveImplementationDates,
+  unknownImplementationDate,
+} from "./implementation-dates.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const packageRoot = path.join(root, "packages/tools");
@@ -28,25 +32,18 @@ const previousDates = new Map(
     entry.implementedAt,
   ]),
 );
-const unknownImplementationDate = "1970-01-01T00:00:00.000Z";
-const firstAuthorDate = (directory) => {
-  const sourceFile = path.join("packages/tools/src", directory, "tool.ts");
-  try {
-    const dates = execFileSync(
-      "git",
-      ["log", "--follow", "--diff-filter=A", "--format=%aI", "--", sourceFile],
-      { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] },
-    )
-      .trim()
-      .split("\n")
-      .filter(Boolean);
-    return (
-      dates.at(-1) ?? previousDates.get(directory) ?? unknownImplementationDate
-    );
-  } catch {
-    return previousDates.get(directory) ?? unknownImplementationDate;
-  }
-};
+const runGit = (arguments_) =>
+  execFileSync("git", arguments_, {
+    cwd: root,
+    encoding: "utf8",
+    maxBuffer: 16 * 1024 * 1024,
+    stdio: ["ignore", "pipe", "ignore"],
+  });
+const implementationDates = resolveImplementationDates({
+  directories: manifest.tools,
+  previousDates,
+  runGit,
+});
 const entries = [];
 const contracts = [];
 for (const directory of manifest.tools) {
@@ -64,7 +61,7 @@ for (const directory of manifest.tools) {
     createToolCatalogEntry(
       definition,
       contractFingerprint,
-      firstAuthorDate(directory),
+      implementationDates.get(directory) ?? unknownImplementationDate,
     ),
   );
   contracts.push(portableToolContract(definition));
