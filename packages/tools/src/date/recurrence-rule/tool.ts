@@ -16,8 +16,8 @@ const MILLISECONDS_PER_DAY = 86_400_000;
 const DATE_PATTERN = /^(\d{4})-(\d{2})-(\d{2})$/;
 
 const parseIsoDate = (value: string): number => {
-  const match = DATE_PATTERN.exec(value);
-  if (!match)
+  const match =
+    DATE_PATTERN.exec(value) ??
     simpleError(
       "startDate",
       "Use an ISO calendar date formatted as YYYY-MM-DD.",

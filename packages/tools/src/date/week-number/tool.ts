@@ -13,8 +13,8 @@ export type WeekNumberOutput = {
 export const calculateWeekNumber = (
   input: WeekNumberInput,
 ): WeekNumberOutput => {
-  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(input.date);
-  if (!match)
+  const match =
+    /^(\d{4})-(\d{2})-(\d{2})$/.exec(input.date) ??
     simpleError("date", "Enter a date in YYYY-MM-DD format.", "invalid_date");
   const timestamp = Date.UTC(
     Number(match[1]),
