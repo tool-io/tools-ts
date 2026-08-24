@@ -1,6 +1,5 @@
 import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
-import { roundStatistic } from "../../statistics/input.js";
 
 export type DiodeSaturationCurrentInput = {
   readonly forwardCurrentMa: number;
@@ -23,66 +22,121 @@ export const diodeSaturationCurrentExample = {
     idealityFactor: 1,
     temperatureK: 300,
   },
-  output: { saturationCurrentPicoA: 0.0120359561947 },
-} satisfies ToolExample<DiodeSaturationCurrentInput, DiodeSaturationCurrentOutput>;
+  output: { saturationCurrentPicoA: 0.012035956194828341 },
+} satisfies ToolExample<
+  DiodeSaturationCurrentInput,
+  DiodeSaturationCurrentOutput
+>;
 
 export const calculateDiodeSaturationCurrent = (
   input: DiodeSaturationCurrentInput,
 ): DiodeSaturationCurrentOutput => {
-  const ideality = input.idealityFactor ?? 1;
+  const forwardCurrentMa = input.forwardCurrentMa;
+  const forwardVoltageV = input.forwardVoltageV;
+  const idealityFactor = input.idealityFactor ?? 1;
   const temperatureK = input.temperatureK ?? 300;
-  if (ideality < 1)
+
+  if (!Number.isFinite(forwardCurrentMa) || forwardCurrentMa <= 0)
     simpleError(
-      "idealityFactor",
-      "The ideality factor cannot be below one.",
-      "invalid_ideality",
+      "forwardCurrentMa",
+      "Forward current must be a finite positive number greater than 0 mA.",
+      "invalid_current",
     );
-  if (temperatureK <= 0)
-    simpleError(
-      "temperatureK",
-      "Temperature must be positive.",
-      "invalid_temperature",
-    );
-  if (input.forwardVoltageV <= 0 || input.forwardCurrentMa <= 0)
+  if (!Number.isFinite(forwardVoltageV) || forwardVoltageV <= 0)
     simpleError(
       "forwardVoltageV",
-      "Provide a positive forward bias point.",
-      "invalid_bias_point",
+      "Forward voltage must be a finite positive number greater than 0 V.",
+      "invalid_voltage",
     );
+  if (!Number.isFinite(idealityFactor) || idealityFactor < 1)
+    simpleError(
+      "idealityFactor",
+      "Ideality factor must be a finite number at least 1.",
+      "invalid_ideality",
+    );
+  if (!Number.isFinite(temperatureK) || temperatureK <= 0)
+    simpleError(
+      "temperatureK",
+      "Temperature must be a finite positive number greater than 0 K.",
+      "invalid_temperature",
+    );
+
   const thermalVoltage =
     (BOLTZMANN_J_PER_K * temperatureK) / ELEMENTARY_CHARGE_C;
-  const saturationA =
-    ((input.forwardCurrentMa * 1e-3) /
-      Math.exp(input.forwardVoltageV / (ideality * thermalVoltage)));
-  return { saturationCurrentPicoA: roundStatistic(saturationA * 1e12) };
+  if (!Number.isFinite(thermalVoltage) || thermalVoltage <= 0)
+    simpleError(
+      "temperatureK",
+      "Thermal voltage could not be calculated due to numeric overflow.",
+      "numeric_overflow",
+    );
+
+  const nVt = idealityFactor * thermalVoltage;
+  if (!Number.isFinite(nVt) || nVt <= 0)
+    simpleError(
+      "idealityFactor",
+      "Ideality times thermal voltage overflowed.",
+      "numeric_overflow",
+    );
+
+  const exponentArg = forwardVoltageV / nVt;
+  if (!Number.isFinite(exponentArg))
+    simpleError(
+      "forwardVoltageV",
+      "Exponent argument overflowed.",
+      "numeric_overflow",
+    );
+
+  const logDenominator =
+    exponentArg > 50
+      ? exponentArg + Math.log1p(-Math.exp(-exponentArg))
+      : Math.log(Math.expm1(exponentArg));
+  const logSaturationPicoA =
+    Math.log(forwardCurrentMa) + Math.log(1e9) - logDenominator;
+  const saturationCurrentPicoA = Math.exp(logSaturationPicoA);
+  if (!Number.isFinite(saturationCurrentPicoA) || saturationCurrentPicoA === 0)
+    simpleError(
+      "forwardVoltageV",
+      "Saturation current is outside the representable positive range.",
+      saturationCurrentPicoA === 0 ? "numeric_underflow" : "numeric_overflow",
+    );
+
+  return {
+    saturationCurrentPicoA:
+      saturationCurrentPicoA === 0 ? 0 : saturationCurrentPicoA,
+  };
 };
 
 export const diodeSaturationCurrentTool = createSimpleTool({
   calculate: (input) =>
-    calculateDiodeSaturationCurrent(
-      input as unknown as DiodeSaturationCurrentInput,
-    ),
+    calculateDiodeSaturationCurrent({
+      forwardCurrentMa: input.forwardCurrentMa as number,
+      forwardVoltageV: input.forwardVoltageV as number,
+      idealityFactor: (input.idealityFactor as number | undefined) ?? undefined,
+      temperatureK: (input.temperatureK as number | undefined) ?? undefined,
+    }),
   description:
-    "Extract the diode saturation current from one forward bias point via the ideal diode law.",
+    "Extract the positive Shockley saturation-current parameter from one forward-bias point using Is = I/[exp(V/(n·Vt))−1]. The logarithmic evaluation remains stable at high forward voltage. This parameter is not necessarily equal to a diode's measured reverse-leakage current.",
   id: "semiconductor/diode-saturation-current",
   inputs: [
     {
-      description: "Measured forward current.",
+      description: "Measured forward current. Must be greater than 0 mA.",
       id: "forwardCurrentMa",
       kind: "number",
       label: "Forward current",
+      minimum: Number.MIN_VALUE,
       unit: "mA",
     },
     {
-      description: "Measured forward voltage.",
+      description: "Measured forward voltage. Must be greater than 0 V.",
       id: "forwardVoltageV",
       kind: "number",
       label: "Forward voltage",
+      minimum: Number.MIN_VALUE,
       unit: "V",
     },
     {
       default: 1,
-      description: "Diode ideality factor.",
+      description: "Diode ideality factor. Must be at least 1.",
       id: "idealityFactor",
       kind: "number",
       label: "Ideality factor",
@@ -90,20 +144,23 @@ export const diodeSaturationCurrentTool = createSimpleTool({
     },
     {
       default: 300,
-      description: "Device temperature.",
+      description: "Device temperature. Must be greater than 0 K.",
       id: "temperatureK",
       kind: "number",
       label: "Temperature",
+      minimum: Number.MIN_VALUE,
       unit: "K",
     },
   ],
   outputs: [
     {
-      description: "Saturation (reverse leakage) current.",
+      description:
+        "Positive saturation-current parameter of the fitted Shockley equation.",
       format: "current-pa",
       id: "saturationCurrentPicoA",
       kind: "number",
       label: "Saturation current",
+      minimum: Number.MIN_VALUE,
       unit: "pA",
     },
   ],
