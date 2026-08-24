@@ -54,7 +54,7 @@ export const silverRatioExample = {
     total: 1,
   },
   output: {
-    larger: 0.7071067811865476,
-    smaller: 0.2928932188134524,
+    larger: 0.7071067811865475,
+    smaller: 0.29289321881345254,
   },
 } satisfies ToolExample<SilverRatioInput, SilverRatioOutput>;

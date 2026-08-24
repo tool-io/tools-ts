@@ -1,7 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { runSilverRatio } from "./tool.js";
+import { runSilverRatio, silverRatioExample } from "./tool.js";
 
 describe("Silver Ratio Calculator", () => {
+  it("reproduces its canonical example exactly", () => {
+    expect(runSilverRatio(silverRatioExample.input)).toEqual({
+      ok: true,
+      output: silverRatioExample.output,
+    });
+  });
+
   it("splits a length into silver ratio segments", () => {
     expect(runSilverRatio({ total: 100 })).toEqual({
       ok: true,
