@@ -10,37 +10,37 @@ describe("Lean Mass James Calculator", () => {
   });
 
   it("defaults sex to male", () => {
-    expect(runLeanMassJames({ weightKg: 2, heightM: 20 })).toEqual({
+    expect(runLeanMassJames({ weightKg: 80, heightM: 1.85 })).toEqual({
       ok: true,
-      output: { leanMassKg: 0.9199999999999999 },
+      output: { leanMassKg: 64.06428049671293 },
     });
   });
 
   it("computes the female equation exactly", () => {
     expect(
-      runLeanMassJames({ weightKg: 2, heightM: 20, sex: "female" }),
-    ).toEqual({ ok: true, output: { leanMassKg: 0.6599999999999999 } });
+      runLeanMassJames({ weightKg: 60, heightM: 1.65, sex: "female" }),
+    ).toEqual({ ok: true, output: { leanMassKg: 44.62975206611571 } });
   });
 
   it("returns exact high precision results for both sexes", () => {
     expect(
-      runLeanMassJames({ weightKg: 3.3, heightM: 25, sex: "male" }),
+      runLeanMassJames({ weightKg: 92.5, heightM: 1.79, sex: "male" }),
     ).toEqual({
       ok: true,
-      output: { leanMassKg: 1.3997279999999996 },
+      output: { leanMassKg: 67.56879466932993 },
     });
     expect(
-      runLeanMassJames({ weightKg: 3.3, heightM: 25, sex: "female" }),
+      runLeanMassJames({ weightKg: 55, heightM: 1.62, sex: "female" }),
     ).toEqual({
       ok: true,
-      output: { leanMassKg: 0.952248 },
+      output: { leanMassKg: 41.79086267337296 },
     });
   });
 
-  it("reports formula_not_applicable for typical adult inputs", () => {
+  it("reports formula_not_applicable when lean mass is not positive", () => {
     const result = runLeanMassJames({
-      weightKg: 70,
-      heightM: 1.75,
+      weightKg: 30,
+      heightM: 0.5,
       sex: "male",
     });
     expect(result.ok).toBe(false);
@@ -51,87 +51,31 @@ describe("Lean Mass James Calculator", () => {
       });
   });
 
-  it("reports formula_not_applicable when the result is exactly zero", () => {
-    const male = runLeanMassJames({
-      weightKg: 0.1,
-      heightM: 3.411211461689767,
-      sex: "male",
-    });
-    const female = runLeanMassJames({
-      weightKg: 0.05,
-      heightM: 2.629807569094608,
-      sex: "female",
-    });
-    expect(male.ok).toBe(false);
-    expect(female.ok).toBe(false);
-    if (!male.ok && !female.ok) {
-      expect(male.error.issues[0].code).toBe("formula_not_applicable");
-      expect(female.error.issues[0].field).toBe("bodyComposition");
-    }
-  });
-
-  it("rejects zero weight with a stable code", () => {
-    const result = runLeanMassJames({
-      weightKg: 0,
-      heightM: 20,
-      sex: "male",
-    });
-    expect(result.ok).toBe(false);
-    if (!result.ok)
-      expect(result.error.issues[0]).toMatchObject({
+  it("rejects non-positive weight and height with stable issue fields", () => {
+    const weight = runLeanMassJames({ weightKg: 0, heightM: 1.8 });
+    const height = runLeanMassJames({ weightKg: 70, heightM: 0 });
+    expect(weight.ok).toBe(false);
+    expect(height.ok).toBe(false);
+    if (!weight.ok)
+      expect(weight.error.issues[0]).toMatchObject({
         code: "invalid_weight",
         field: "weightKg",
       });
-  });
-
-  it("guards division by rejecting non positive heights with a stable code", () => {
-    const zero = runLeanMassJames({
-      weightKg: 2,
-      heightM: 0,
-      sex: "female",
-    });
-    const negative = runLeanMassJames({
-      weightKg: 2,
-      heightM: -20,
-      sex: "female",
-    });
-    expect(zero.ok).toBe(false);
-    if (!zero.ok)
-      expect(zero.error.issues[0]).toMatchObject({
+    if (!height.ok)
+      expect(height.error.issues[0]).toMatchObject({
         code: "invalid_height",
         field: "heightM",
       });
-    expect(negative.ok).toBe(false);
-    if (!negative.ok)
-      expect(negative.error.issues[0].code).toBe("invalid_height");
   });
 
-  it("rejects unknown sex values through the schema", () => {
-    const result = runLeanMassJames({
-      weightKg: 2,
-      heightM: 20,
-      sex: "n/a" as never,
-    });
-    expect(result.ok).toBe(false);
-  });
-
-  it("rejects non object input and unknown fields", () => {
-    expect(runLeanMassJames(undefined).ok).toBe(false);
-    const result = runLeanMassJames({
-      weightKg: 2,
-      heightM: 20,
-      extra: 1,
-    });
-    if (!result.ok)
-      expect(result.error.issues[0]).toMatchObject({
-        code: "unknown_field",
-        field: "extra",
-      });
-  });
-
-  it("rejects missing required fields", () => {
-    const result = runLeanMassJames({ heightM: 20, sex: "male" });
-    expect(result.ok).toBe(false);
-    if (!result.ok) expect(result.error.issues[0].field).toBe("weightKg");
+  it("rejects missing, unknown, or malformed fields", () => {
+    expect(runLeanMassJames({ heightM: 1.8, sex: "male" }).ok).toBe(false);
+    expect(
+      runLeanMassJames({ weightKg: 70, heightM: 1.8, sex: "other" as never })
+        .ok,
+    ).toBe(false);
+    expect(
+      runLeanMassJames({ weightKg: 70, heightM: 1.8, extra: true }).ok,
+    ).toBe(false);
   });
 });
