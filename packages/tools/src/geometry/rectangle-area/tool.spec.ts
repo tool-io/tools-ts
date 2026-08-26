@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { runRectangleArea, RectangleAreaExample } from "./tool.js";
+import { runRectangleArea, rectangleAreaExample } from "./tool.js";
 
 describe("Rectangle Area Calculator", () => {
   it("reproduces its canonical example exactly", () => {
-    expect(runRectangleArea(RectangleAreaExample.input)).toEqual({
+    expect(runRectangleArea(rectangleAreaExample.input)).toEqual({
       ok: true,
-      output: RectangleAreaExample.output,
+      output: rectangleAreaExample.output,
     });
   });
 
