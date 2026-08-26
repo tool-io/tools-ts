@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { runZigzag } from "../../encode/zigzag/tool.js";
+import { runRailFenceEncode } from "../../encode/rail-fence/tool.js";
 import { runRailFenceDecode } from "./tool.js";
 
 describe("Rail Fence Decoder", () => {
@@ -19,7 +19,7 @@ describe("Rail Fence Decoder", () => {
       { rails: 3, text: "x" },
     ];
     for (const { rails, text } of cases) {
-      const encoded = runZigzag({ rails, text });
+      const encoded = runRailFenceEncode({ rails, text });
       if (!encoded.ok) throw new Error("expected success");
       const decoded = runRailFenceDecode({
         cipher: encoded.output.cipher,
