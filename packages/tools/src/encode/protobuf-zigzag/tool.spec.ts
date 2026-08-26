@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { runZigzag } from "../../decode/zigzag/tool.js";
+import { runProtobufZigzagDecode } from "../../decode/protobuf-zigzag/tool.js";
 import { runProtobufZigzagEncode } from "./tool.js";
 
 describe("Protobuf Zigzag Encoder", () => {
@@ -14,7 +14,9 @@ describe("Protobuf Zigzag Encoder", () => {
     const values = [0, 5, -5, 12345, -12345];
     const encoded = runProtobufZigzagEncode({ values });
     if (!encoded.ok) throw new Error("expected success");
-    const decoded = runZigzag({ codes: encoded.output.codes });
+    const codes = encoded.output.codes;
+    if (!Array.isArray(codes)) throw new Error("expected code list");
+    const decoded = runProtobufZigzagDecode({ codes });
     expect(decoded).toEqual({ ok: true, output: { values, negativeCount: 2 } });
   });
 
