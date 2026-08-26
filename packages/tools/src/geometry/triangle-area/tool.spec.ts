@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { runTriangleArea, TriangleAreaExample } from "./tool.js";
+import { runTriangleArea, triangleAreaExample } from "./tool.js";
 
 describe("Triangle Area Calculator", () => {
   it("reproduces its canonical example exactly", () => {
-    expect(runTriangleArea(TriangleAreaExample.input)).toEqual({
+    expect(runTriangleArea(triangleAreaExample.input)).toEqual({
       ok: true,
-      output: TriangleAreaExample.output,
+      output: triangleAreaExample.output,
     });
   });
 
