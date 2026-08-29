@@ -26,6 +26,19 @@ const moduleLoaders = (
   }
 ).glob<ToolModule>("./**/index.ts");
 
+const batchSize = 100;
+const toolBatches = Array.from(
+  { length: Math.ceil(manifest.tools.length / batchSize) },
+  (_, index) => {
+    const start = index * batchSize;
+    const directories = manifest.tools.slice(start, start + batchSize);
+    return {
+      directories,
+      range: `${start + 1}-${start + directories.length}`,
+    };
+  },
+);
+
 const deepEqual = (left: unknown, right: unknown): boolean => {
   if (Object.is(left, right)) return true;
   if (Array.isArray(left) || Array.isArray(right))
@@ -56,43 +69,50 @@ const deepEqual = (left: unknown, right: unknown): boolean => {
 };
 
 describe("authored examples", () => {
-  it("match their source tool execution results", async () => {
-    const errors: string[] = [];
-    for (const directory of manifest.tools) {
-      const load = moduleLoaders[`./${directory}/index.ts`];
-      if (!load) {
-        errors.push(`${directory}: source module is missing`);
-        continue;
+  it.each(toolBatches)(
+    "match source execution for tools $range",
+    async ({ directories }) => {
+      const errors: string[] = [];
+      for (const directory of directories) {
+        const load = moduleLoaders[`./${directory}/index.ts`];
+        if (!load) {
+          errors.push(`${directory}: source module is missing`);
+          continue;
+        }
+        const module = await load();
+        const contractIssues = validateToolContract(module.default);
+        if (contractIssues.length > 0)
+          errors.push(
+            `${directory}: ${contractIssues.map((issue) => issue.code).join(", ")}`,
+          );
+        if (module.example === undefined) {
+          errors.push(`${directory}: canonical example is missing`);
+          continue;
+        }
+        if (
+          !matchesToolJsonSchema(
+            module.example.input,
+            module.default.inputSchema,
+          )
+        ) {
+          errors.push(`${directory}: example input differs from its schema`);
+          continue;
+        }
+        const result = module.default.execute(module.example.input);
+        if (!result.ok) {
+          errors.push(`${directory}: example execution failed`);
+          continue;
+        }
+        if (
+          Object.hasOwn(module.example, "output") &&
+          !deepEqual(result.output, module.example.output)
+        )
+          errors.push(`${directory}: example output differs from execution`);
+        if (!matchesToolJsonSchema(result.output, module.default.outputSchema))
+          errors.push(`${directory}: example output differs from its schema`);
       }
-      const module = await load();
-      const contractIssues = validateToolContract(module.default);
-      if (contractIssues.length > 0)
-        errors.push(
-          `${directory}: ${contractIssues.map((issue) => issue.code).join(", ")}`,
-        );
-      if (module.example === undefined) {
-        errors.push(`${directory}: canonical example is missing`);
-        continue;
-      }
-      if (
-        !matchesToolJsonSchema(module.example.input, module.default.inputSchema)
-      ) {
-        errors.push(`${directory}: example input differs from its schema`);
-        continue;
-      }
-      const result = module.default.execute(module.example.input);
-      if (!result.ok) {
-        errors.push(`${directory}: example execution failed`);
-        continue;
-      }
-      if (
-        Object.hasOwn(module.example, "output") &&
-        !deepEqual(result.output, module.example.output)
-      )
-        errors.push(`${directory}: example output differs from execution`);
-      if (!matchesToolJsonSchema(result.output, module.default.outputSchema))
-        errors.push(`${directory}: example output differs from its schema`);
-    }
-    expect(errors).toEqual([]);
-  }, 30_000);
+      expect(errors).toEqual([]);
+    },
+    15_000,
+  );
 });
