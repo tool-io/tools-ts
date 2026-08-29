@@ -12,7 +12,7 @@ const manifest = JSON.parse(
 const { loadTool, publicToolCount } = await import(
   path.join(packageRoot, "dist/registry.js")
 );
-const { validateToolContract } = await import(
+const { matchesToolJsonSchema, validateToolContract } = await import(
   path.join(packageRoot, "dist/core/contract.js")
 );
 const { portableToolContract } = await import(
@@ -99,6 +99,8 @@ for (const directory of manifest.tools) {
   if (!isRecord(example) || !("input" in example))
     throw new Error(`${directory} exports an invalid authored example.`);
   assertJsonSerializable(example.input, `${directory} example input`);
+  if (!matchesToolJsonSchema(example.input, definition.inputSchema))
+    throw new Error(`${directory} example input does not match its schema.`);
   const result = await definition.execute(example.input);
   if (!result.ok)
     throw new Error(
@@ -111,8 +113,19 @@ for (const directory of manifest.tools) {
         `${directory} example output does not match its execution result.`,
       );
   }
+  if (!matchesToolJsonSchema(result.output, definition.outputSchema))
+    throw new Error(`${directory} example output does not match its schema.`);
   authoredExampleCount += 1;
 }
+
+if (toolsWithoutExamples.length > 0)
+  throw new Error(
+    `${toolsWithoutExamples.length} public tools do not export a canonical example${
+      process.argv.includes("--examples-report")
+        ? `:\n${toolsWithoutExamples.join("\n")}`
+        : ". Run with --examples-report to list them."
+    }`,
+  );
 
 const walk = async (directory) => {
   const files = [];

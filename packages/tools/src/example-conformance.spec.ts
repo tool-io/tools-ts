@@ -1,10 +1,17 @@
 import { describe, expect, it } from "vitest";
 import manifest from "../public-tools.generated.json" with { type: "json" };
+import {
+  matchesToolJsonSchema,
+  validateToolContract,
+} from "./core/contract.js";
+import type { ToolJsonSchema } from "./core/definition.js";
 import type { ToolResult } from "./core/result.js";
 
 type ToolModule = {
   readonly default: {
     readonly id: string;
+    readonly inputSchema: ToolJsonSchema;
+    readonly outputSchema: ToolJsonSchema;
     readonly execute: (input: unknown) => ToolResult<unknown>;
   };
   readonly example?: {
@@ -58,7 +65,21 @@ describe("authored examples", () => {
         continue;
       }
       const module = await load();
-      if (module.example === undefined) continue;
+      const contractIssues = validateToolContract(module.default);
+      if (contractIssues.length > 0)
+        errors.push(
+          `${directory}: ${contractIssues.map((issue) => issue.code).join(", ")}`,
+        );
+      if (module.example === undefined) {
+        errors.push(`${directory}: canonical example is missing`);
+        continue;
+      }
+      if (
+        !matchesToolJsonSchema(module.example.input, module.default.inputSchema)
+      ) {
+        errors.push(`${directory}: example input differs from its schema`);
+        continue;
+      }
       const result = module.default.execute(module.example.input);
       if (!result.ok) {
         errors.push(`${directory}: example execution failed`);
@@ -69,6 +90,8 @@ describe("authored examples", () => {
         !deepEqual(result.output, module.example.output)
       )
         errors.push(`${directory}: example output differs from execution`);
+      if (!matchesToolJsonSchema(result.output, module.default.outputSchema))
+        errors.push(`${directory}: example output differs from its schema`);
     }
     expect(errors).toEqual([]);
   }, 30_000);

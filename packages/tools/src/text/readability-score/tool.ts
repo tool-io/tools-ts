@@ -88,7 +88,10 @@ const round2 = (value: number): number => Math.round(value * 100) / 100;
 
 /** Counts vowel groups, with the classic silent-e adjustment. */
 const countSyllables = (word: string): number => {
-  const groups = word.toLowerCase().replaceAll(/[^a-z]/g, "").match(/[aeiouy]+/g);
+  const groups = word
+    .toLowerCase()
+    .replaceAll(/[^a-z]/g, "")
+    .match(/[aeiouy]+/g);
   if (!groups) return 0;
   let count = groups.length;
   if (count > 1 && /(?:[^aeiouy])e$/.test(word.toLowerCase())) count -= 1;
@@ -99,7 +102,10 @@ const splitWords = (text: string): string[] =>
   text.split(/\s+/).filter((word) => /[a-zA-Z]/.test(word));
 
 const splitSentences = (text: string): string[] =>
-  text.split(/[.!?]+(?:\s|$)/).map((part) => part.trim()).filter(Boolean);
+  text
+    .split(/[.!?]+(?:\s|$)/)
+    .map((part) => part.trim())
+    .filter(Boolean);
 
 export const isReadabilityScoreOutput = (
   value: unknown,
@@ -165,10 +171,7 @@ export const calculateReadabilityScore = (
 
   const words = splitWords(trimmed);
   const sentences = splitSentences(trimmed);
-  const syllables = words.reduce(
-    (sum, word) => sum + countSyllables(word),
-    0,
-  );
+  const syllables = words.reduce((sum, word) => sum + countSyllables(word), 0);
   const safeSentences = Math.max(1, sentences.length);
   const safeWords = Math.max(1, words.length);
   const wordsPerSentence = words.length / safeSentences;
@@ -209,6 +212,7 @@ export const readabilityScoreTool = defineTool<
         description: "English prose to score.",
         id: "text",
         label: "Text",
+        required: true,
         valueType: { format: "document/text", type: "string" },
       },
     ],

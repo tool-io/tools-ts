@@ -56,9 +56,7 @@ const isRecord = (value: unknown): value is Record<string, unknown> =>
 
 const MAX_LUHN_DIGITS = 40;
 
-export const isLuhnCheckOutput = (
-  value: unknown,
-): value is LuhnCheckOutput =>
+export const isLuhnCheckOutput = (value: unknown): value is LuhnCheckOutput =>
   isRecord(value) &&
   typeof value.valid === "boolean" &&
   Number.isSafeInteger(value.digitCount);
@@ -116,7 +114,8 @@ export const calculateLuhnCheck = (
     issues.push({
       code: "digits_required",
       field: "value",
-      message: "value must contain only digits after removing spaces and hyphens.",
+      message:
+        "value must contain only digits after removing spaces and hyphens.",
     });
     return invalidInput(issues);
   }
@@ -164,6 +163,7 @@ export const luhnCheckTool = defineTool<LuhnCheckInput, LuhnCheckOutput>({
         description: "Digits to validate.",
         id: "value",
         label: "Digits",
+        required: true,
         valueType: { format: "digit-string", type: "string" },
       },
     ],

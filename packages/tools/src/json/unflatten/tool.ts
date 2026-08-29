@@ -17,24 +17,36 @@ export type JsonUnflattenOutput = {
 };
 
 export const jsonUnflattenInputSchema = {
-  additionalProperties: {
-    anyOf: [
-      { type: "boolean" },
-      { type: "null" },
-      { type: "number" },
-      { type: "string" },
-    ],
-    description: "Leaf value at the dot path.",
+  additionalProperties: false,
+  properties: {
+    flat: {
+      additionalProperties: {
+        anyOf: [
+          { type: "boolean" },
+          { type: "null" },
+          { type: "number" },
+          { type: "string" },
+        ],
+        description: "Leaf value at the dot path.",
+      },
+      description: "Flat map of dot paths to primitive leaves.",
+      type: "object",
+    },
   },
-  description: "Flat map of dot paths to primitive leaves.",
-  properties: {},
-  required: [],
+  required: ["flat"],
   type: "object",
 } as const;
 
 export const jsonUnflattenOutputSchema = {
-  additionalProperties: true,
-  description: "Rebuilt nested JSON object.",
+  additionalProperties: false,
+  properties: {
+    document: {
+      additionalProperties: true,
+      description: "Rebuilt nested JSON object.",
+      type: "object",
+    },
+  },
+  required: ["document"],
   type: "object",
 } as const;
 
@@ -121,8 +133,7 @@ export const calculateJsonUnflatten = (
           },
         ]);
       node = (node as Record<string, unknown>)[segment] as
-        | Record<string, unknown>
-        | unknown[];
+        Record<string, unknown> | unknown[];
     }
     const last = segments[segments.length - 1];
     if (/^\d+$/.test(last)) {
@@ -153,9 +164,8 @@ export const jsonUnflattenTool = defineTool<
     inputs: [
       {
         description: "Dot-path keyed leaves.",
-        id: "probe",
+        id: "flat",
         label: "Flat map",
-        path: [],
         required: true,
         valueType: { format: "json/flat-map", type: "object" },
       },
@@ -165,7 +175,6 @@ export const jsonUnflattenTool = defineTool<
         description: "Rebuilt nested document.",
         id: "document",
         label: "Document",
-        path: [],
         valueType: { format: "document/json-object", type: "object" },
       },
     ],

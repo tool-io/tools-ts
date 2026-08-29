@@ -57,7 +57,7 @@ export const byteSizeOutputSchema = {
     },
     unit: {
       description: "Selected unit symbol.",
-      enum: [...SI_UNITS, ...IEC_UNITS],
+      enum: [...new Set([...SI_UNITS, ...IEC_UNITS])],
       type: "string",
     },
     value: {
@@ -159,8 +159,7 @@ export const calculateByteSize = (
   }
   const scale = base ** unitIndex;
   const factor = 10 ** (rawPrecision as number);
-  const value =
-    Math.round((resolvedBytes / scale) * factor) / factor;
+  const value = Math.round((resolvedBytes / scale) * factor) / factor;
 
   return toolSuccess({
     formatted: `${value} ${units[unitIndex]}`,

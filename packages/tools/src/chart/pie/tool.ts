@@ -177,14 +177,21 @@ export const pieChartTool = defineTool<PieChartInput, PieChartOutput>({
       {
         id: "data",
         label: "Table data",
+        required: true,
         valueType: { format: "tool.io/table", type: "object" },
       },
       {
         id: "category",
         label: "Category field",
+        required: true,
         valueType: { type: "string" },
       },
-      { id: "value", label: "Value field", valueType: { type: "string" } },
+      {
+        id: "value",
+        label: "Value field",
+        required: true,
+        valueType: { type: "string" },
+      },
     ],
     outputs: [
       {

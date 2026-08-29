@@ -113,11 +113,13 @@ export const chartTool = defineTool<ChartToolInput, ChartToolOutput>({
       {
         id: "data",
         label: "Table data",
+        required: true,
         valueType: { format: "tool.io/table", type: "object" },
       },
       {
         id: "spec",
         label: "Chart specification",
+        required: true,
         valueType: { format: "tool.io/chart-spec", type: "object" },
       },
     ],

@@ -17,26 +17,38 @@ export type JsonFlattenOutput = {
 };
 
 export const jsonFlattenInputSchema = {
-  additionalProperties: true,
-  description:
-    "JSON object with nested objects, arrays, and primitive leaves.",
+  additionalProperties: false,
+  properties: {
+    document: {
+      additionalProperties: true,
+      description:
+        "JSON object with nested objects, arrays, and primitive leaves.",
+      type: "object",
+    },
+  },
+  required: ["document"],
   type: "object",
 } as const;
 
 export const jsonFlattenOutputSchema = {
-  additionalProperties: {
-    anyOf: [
-      { type: "boolean" },
-      { type: "integer" },
-      { type: "null" },
-      { type: "number" },
-      { type: "string" },
-    ],
-    description: "Leaf value addressed by its dot path.",
+  additionalProperties: false,
+  properties: {
+    flat: {
+      additionalProperties: {
+        anyOf: [
+          { type: "boolean" },
+          { type: "integer" },
+          { type: "null" },
+          { type: "number" },
+          { type: "string" },
+        ],
+        description: "Leaf value addressed by its dot path.",
+      },
+      description: "Flattened leaves keyed by dot paths such as a.0.b.",
+      type: "object",
+    },
   },
-  description: "Flattened leaves keyed by dot paths such as a.0.b.",
-  properties: {},
-  required: [],
+  required: ["flat"],
   type: "object",
 } as const;
 
@@ -159,7 +171,6 @@ export const jsonFlattenTool = defineTool<JsonFlattenInput, JsonFlattenOutput>({
         description: "Nested JSON object.",
         id: "document",
         label: "Document",
-        path: [],
         required: true,
         valueType: { format: "document/json-object", type: "object" },
       },
@@ -169,7 +180,6 @@ export const jsonFlattenTool = defineTool<JsonFlattenInput, JsonFlattenOutput>({
         description: "Dot-path keyed leaf values.",
         id: "flat",
         label: "Flat map",
-        path: [],
         valueType: { format: "json/flat-map", type: "object" },
       },
     ],

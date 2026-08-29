@@ -155,11 +155,13 @@ export const mapTool = defineTool<MapToolInput, MapToolOutput>({
       {
         id: "data",
         label: "Table data",
+        required: true,
         valueType: { format: "tool.io/table", type: "object" },
       },
       {
         id: "spec",
         label: "Map specification",
+        required: true,
         valueType: { format: "tool.io/map-spec", type: "object" },
       },
     ],

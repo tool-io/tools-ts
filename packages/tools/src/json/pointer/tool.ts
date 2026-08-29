@@ -19,7 +19,18 @@ export type JsonPointerOutput = {
 
 export const jsonPointerInputSchema = {
   additionalProperties: false,
-  description: "Any JSON document to resolve against.",
+  properties: {
+    document: {
+      additionalProperties: true,
+      description: "JSON document to resolve against.",
+      type: "object",
+    },
+    pointer: {
+      description: "RFC 6901 pointer, empty for the document root.",
+      type: "string",
+    },
+  },
+  required: ["document", "pointer"],
   type: "object",
 } as const;
 
@@ -90,8 +101,7 @@ export const calculateJsonPointer = (
       {
         code: "pointer_invalid",
         field: "pointer",
-        message:
-          'pointer must be empty or start with "/" per RFC 6901.',
+        message: 'pointer must be empty or start with "/" per RFC 6901.',
       },
     ]);
   if (issues.length > 0) return invalidInput(issues);
@@ -106,7 +116,8 @@ export const calculateJsonPointer = (
         }
         node = node[Number(token)];
       } else if (isRecord(node)) {
-        if (!(token in node)) return toolSuccess({ found: false, valueJson: null });
+        if (!(token in node))
+          return toolSuccess({ found: false, valueJson: null });
         node = node[token];
       } else return toolSuccess({ found: false, valueJson: null });
     }
@@ -117,10 +128,7 @@ export const calculateJsonPointer = (
   });
 };
 
-export const jsonPointerTool = defineTool<
-  JsonPointerInput,
-  JsonPointerOutput
->({
+export const jsonPointerTool = defineTool<JsonPointerInput, JsonPointerOutput>({
   contractVersion: 1,
   description:
     "Resolve an RFC 6901 JSON Pointer against a document and report the located value.",
@@ -137,11 +145,17 @@ export const jsonPointerTool = defineTool<
     inputs: [
       {
         description: "Document to resolve against.",
-        id: "probe",
-        label: "Document probe",
-        path: [],
+        id: "document",
+        label: "Document",
         required: true,
         valueType: { format: "document/json", type: "object" },
+      },
+      {
+        description: "RFC 6901 pointer, empty for the document root.",
+        id: "pointer",
+        label: "Pointer",
+        required: true,
+        valueType: { format: "json-pointer", type: "string" },
       },
     ],
     outputs: [

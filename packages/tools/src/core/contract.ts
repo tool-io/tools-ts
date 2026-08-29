@@ -27,6 +27,94 @@ const schemaTypes = new Set([
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
 
+const valuesEqual = (left: unknown, right: unknown): boolean => {
+  if (Object.is(left, right)) return true;
+  if (Array.isArray(left) || Array.isArray(right))
+    return (
+      Array.isArray(left) &&
+      Array.isArray(right) &&
+      left.length === right.length &&
+      left.every((entry, index) => valuesEqual(entry, right[index]))
+    );
+  if (!isRecord(left) || !isRecord(right)) return false;
+  const leftKeys = Object.keys(left);
+  return (
+    leftKeys.length === Object.keys(right).length &&
+    leftKeys.every(
+      (key) => Object.hasOwn(right, key) && valuesEqual(left[key], right[key]),
+    )
+  );
+};
+
+export const matchesToolJsonSchema = (
+  value: unknown,
+  schema: ToolJsonSchema,
+): boolean => {
+  if (
+    schema.anyOf &&
+    !schema.anyOf.some((candidate) => matchesToolJsonSchema(value, candidate))
+  )
+    return false;
+  if (schema.const !== undefined && !valuesEqual(value, schema.const))
+    return false;
+  if (schema.enum && !schema.enum.some((entry) => valuesEqual(value, entry)))
+    return false;
+  if (schema.type === "null") return value === null;
+  if (schema.type === "boolean") return typeof value === "boolean";
+  if (schema.type === "number" || schema.type === "integer")
+    return (
+      typeof value === "number" &&
+      Number.isFinite(value) &&
+      (schema.type !== "integer" || Number.isSafeInteger(value)) &&
+      (schema.minimum === undefined || value >= schema.minimum) &&
+      (schema.maximum === undefined || value <= schema.maximum) &&
+      (schema.exclusiveMinimum === undefined ||
+        value > schema.exclusiveMinimum) &&
+      (schema.exclusiveMaximum === undefined || value < schema.exclusiveMaximum)
+    );
+  if (schema.type === "string") {
+    if (typeof value !== "string") return false;
+    if (schema.minLength !== undefined && value.length < schema.minLength)
+      return false;
+    if (schema.maxLength !== undefined && value.length > schema.maxLength)
+      return false;
+    if (schema.pattern !== undefined) {
+      try {
+        if (!new RegExp(schema.pattern, "u").test(value)) return false;
+      } catch {
+        return false;
+      }
+    }
+    return true;
+  }
+  if (schema.type === "array")
+    return (
+      Array.isArray(value) &&
+      (schema.minItems === undefined || value.length >= schema.minItems) &&
+      (schema.maxItems === undefined || value.length <= schema.maxItems) &&
+      (schema.items === undefined ||
+        value.every((entry) => matchesToolJsonSchema(entry, schema.items!)))
+    );
+  if (schema.type === "object") {
+    if (!isRecord(value)) return false;
+    if (schema.required?.some((property) => !Object.hasOwn(value, property)))
+      return false;
+    for (const [property, entry] of Object.entries(value)) {
+      const propertySchema = schema.properties?.[property];
+      if (propertySchema) {
+        if (!matchesToolJsonSchema(entry, propertySchema)) return false;
+      } else if (schema.additionalProperties === false) return false;
+      else if (
+        isRecord(schema.additionalProperties) &&
+        !matchesToolJsonSchema(entry, schema.additionalProperties)
+      )
+        return false;
+    }
+    return true;
+  }
+  return true;
+};
+
 const identifierListIssues = (
   value: unknown,
   path: string,
@@ -42,7 +130,8 @@ const identifierListIssues = (
         path,
       },
     ];
-  if (new Set(value).size !== value.length)
+  const normalized = value.map((entry) => entry.trim().toLocaleLowerCase("en"));
+  if (new Set(normalized).size !== normalized.length)
     return [
       {
         code: "identifier_list_duplicate",
@@ -66,6 +155,77 @@ const schemaIssues = (
       },
     ];
   const issues: ToolContractIssue[] = [];
+  if (
+    schema.default !== undefined &&
+    !matchesToolJsonSchema(schema.default, schema as ToolJsonSchema)
+  )
+    issues.push({
+      code: "schema_default_invalid",
+      message: "Schema default must satisfy its own constraints.",
+      path: `${path}/default`,
+    });
+  if (schema.enum !== undefined) {
+    const enumValues = Array.isArray(schema.enum) ? schema.enum : undefined;
+    if (!enumValues || enumValues.length === 0)
+      issues.push({
+        code: "schema_enum_invalid",
+        message: "enum must contain at least one value.",
+        path: `${path}/enum`,
+      });
+    else if (
+      enumValues.some((entry, index) =>
+        enumValues.slice(0, index).some((prior) => valuesEqual(entry, prior)),
+      )
+    )
+      issues.push({
+        code: "schema_enum_duplicate",
+        message: "enum values must be unique.",
+        path: `${path}/enum`,
+      });
+  }
+  for (const constraint of [
+    "minimum",
+    "maximum",
+    "exclusiveMinimum",
+    "exclusiveMaximum",
+  ] as const)
+    if (
+      schema[constraint] !== undefined &&
+      (typeof schema[constraint] !== "number" ||
+        !Number.isFinite(schema[constraint]))
+    )
+      issues.push({
+        code: "schema_numeric_bound_invalid",
+        message: `${constraint} must be finite.`,
+        path: `${path}/${constraint}`,
+      });
+  if (
+    typeof schema.minimum === "number" &&
+    typeof schema.maximum === "number" &&
+    schema.minimum > schema.maximum
+  )
+    issues.push({
+      code: "schema_numeric_bounds_inverted",
+      message: "minimum cannot exceed maximum.",
+      path,
+    });
+  for (const constraint of [
+    "minItems",
+    "maxItems",
+    "minLength",
+    "maxLength",
+  ] as const)
+    if (
+      schema[constraint] !== undefined &&
+      (typeof schema[constraint] !== "number" ||
+        !Number.isSafeInteger(schema[constraint]) ||
+        schema[constraint] < 0)
+    )
+      issues.push({
+        code: "schema_size_bound_invalid",
+        message: `${constraint} must be a non-negative safe integer.`,
+        path: `${path}/${constraint}`,
+      });
   if (
     schema.type === undefined &&
     schema.anyOf === undefined &&
@@ -124,14 +284,22 @@ const schemaIssues = (
         message: "required must contain property names.",
         path: `${path}/required`,
       });
-    else if (isRecord(schema.properties))
-      for (const key of schema.required)
-        if (!(key in schema.properties))
-          issues.push({
-            code: "schema_required_unknown",
-            message: `Required property ${key} is not declared.`,
-            path: `${path}/required`,
-          });
+    else {
+      if (new Set(schema.required).size !== schema.required.length)
+        issues.push({
+          code: "schema_required_duplicate",
+          message: "required property names must be unique.",
+          path: `${path}/required`,
+        });
+      if (isRecord(schema.properties))
+        for (const key of schema.required)
+          if (!(key in schema.properties))
+            issues.push({
+              code: "schema_required_unknown",
+              message: `Required property ${key} is not declared.`,
+              path: `${path}/required`,
+            });
+    }
   }
   if (schema.type === "object" && schema.additionalProperties === undefined)
     issues.push({
@@ -175,6 +343,7 @@ const portIssues = (
     direction === "inputs" ? definition.inputSchema : definition.outputSchema;
   const issues: ToolContractIssue[] = [];
   const seen = new Set<string>();
+  const seenPaths = new Set<string>();
   for (const port of ports) {
     const base = `/ports/${direction}/${port.id}`;
     if (seen.has(port.id))
@@ -225,6 +394,14 @@ const portIssues = (
         });
     }
     const path = port.path ?? [port.id];
+    const pathKey = JSON.stringify(path);
+    if (seenPaths.has(pathKey))
+      issues.push({
+        code: "duplicate_port_path",
+        message: `Schema path ${path.join(".")} is exposed more than once.`,
+        path: base,
+      });
+    seenPaths.add(pathKey);
     if (
       path.some(
         (segment) => typeof segment !== "string" || segment.trim() === "",
@@ -250,17 +427,23 @@ const portIssues = (
         message: "Port primitive does not match its schema.",
         path: base,
       });
-    if (direction === "inputs" && port.required) {
+    if (direction === "inputs") {
       let parent: ToolJsonSchema | undefined = schema;
       const requiredPath = path.every((segment) => {
         const required = parent?.required?.includes(segment) ?? false;
         parent = parent?.properties?.[segment];
         return required;
       });
-      if (!requiredPath)
+      if (port.required && !requiredPath)
         issues.push({
           code: "required_port_schema_optional",
           message: "Required port is optional in its schema.",
+          path: base,
+        });
+      else if (!port.required && requiredPath)
+        issues.push({
+          code: "required_schema_port_optional",
+          message: "Schema-required input ports must declare required: true.",
           path: base,
         });
     }

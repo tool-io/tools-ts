@@ -116,6 +116,7 @@ export const tableTool = defineTool<TableToolInput, TableToolOutput>({
       {
         id: "data",
         label: "Table data",
+        required: true,
         valueType: { format: "tool.io/table", type: "object" },
       },
       {

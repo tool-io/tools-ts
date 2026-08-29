@@ -54,7 +54,14 @@ const schemaFor = (field: SimpleField): ToolJsonSchema => {
     ...(field.description === undefined
       ? {}
       : { description: field.description }),
-    ...(field.enum === undefined ? {} : { enum: field.enum }),
+    ...(field.enum === undefined
+      ? {}
+      : {
+          enum:
+            field.kind === "integer" || field.kind === "number"
+              ? field.enum.map(Number)
+              : field.enum,
+        }),
     ...(field.maximum === undefined ? {} : { maximum: field.maximum }),
     ...(field.minimum === undefined ? {} : { minimum: field.minimum }),
   };

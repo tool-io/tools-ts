@@ -193,8 +193,7 @@ export const calculateHaversineDistance = (
     Math.cos(rad(from.latitudeDeg)) *
       Math.cos(rad(to.latitudeDeg)) *
       Math.sin(deltaLon / 2) ** 2;
-  const centralAngle =
-    2 * Math.asin(Math.min(1, Math.sqrt(halfChord)));
+  const centralAngle = 2 * Math.asin(Math.min(1, Math.sqrt(halfChord)));
   const kilometers = round2(EARTH_RADIUS_KM * centralAngle);
   return toolSuccess({
     kilometers,
@@ -224,12 +223,14 @@ export const haversineDistanceTool = defineTool<
         description: "Origin coordinate in decimal degrees.",
         id: "from",
         label: "From",
+        required: true,
         valueType: { format: "geo/coordinate", type: "object" },
       },
       {
         description: "Destination coordinate in decimal degrees.",
         id: "to",
         label: "To",
+        required: true,
         valueType: { format: "geo/coordinate", type: "object" },
       },
     ],

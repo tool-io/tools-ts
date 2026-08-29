@@ -38,7 +38,8 @@ export const editDistanceOutputSchema = {
   additionalProperties: false,
   properties: {
     distance: {
-      description: "Minimum single-element insertions, deletions, and substitutions.",
+      description:
+        "Minimum single-element insertions, deletions, and substitutions.",
       minimum: 0,
       type: "integer",
     },
@@ -124,7 +125,10 @@ export const calculateEditDistance = (
   return toolSuccess({ distance: previous[right.length] });
 };
 
-export const editDistanceTool = defineTool<EditDistanceInput, EditDistanceOutput>({
+export const editDistanceTool = defineTool<
+  EditDistanceInput,
+  EditDistanceOutput
+>({
   contractVersion: 1,
   description:
     "Compute the Levenshtein edit distance between two strings by Unicode code points.",
@@ -143,12 +147,14 @@ export const editDistanceTool = defineTool<EditDistanceInput, EditDistanceOutput
         description: "First string.",
         id: "a",
         label: "String A",
+        required: true,
         valueType: { type: "string" },
       },
       {
         description: "Second string.",
         id: "b",
         label: "String B",
+        required: true,
         valueType: { type: "string" },
       },
     ],

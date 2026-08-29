@@ -161,10 +161,21 @@ export const lineChartTool = defineTool<LineChartInput, LineChartOutput>({
       {
         id: "data",
         label: "Table data",
+        required: true,
         valueType: { format: "tool.io/table", type: "object" },
       },
-      { id: "x", label: "X field", valueType: { type: "string" } },
-      { id: "y", label: "Y field", valueType: { type: "string" } },
+      {
+        id: "x",
+        label: "X field",
+        required: true,
+        valueType: { type: "string" },
+      },
+      {
+        id: "y",
+        label: "Y field",
+        required: true,
+        valueType: { type: "string" },
+      },
     ],
     outputs: [
       {
