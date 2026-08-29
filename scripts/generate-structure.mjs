@@ -190,11 +190,16 @@ const exports = {
   "./dictionary": exportEntry("dictionary"),
   "./discovery": rootExportEntry("discovery"),
   "./flashcards": exportEntry("flashcards"),
+  "./parse/numeric-dataset": exportEntry("parse/numeric-dataset"),
   "./registry": {
     types: "./dist/registry.d.ts",
     import: "./dist/registry.js",
   },
   "./runtime": rootExportEntry("runtime"),
+  "./schemas/portable-value": "./portable-value.schema.json",
+  "./schemas/table-data": "./table-data.schema.json",
+  "./schemas/tabular-presentation": "./tabular-presentation.schema.json",
+  "./statistics/median": exportEntry("statistics/median"),
   "./weather": exportEntry("weather"),
   "./word-relations": exportEntry("word-relations"),
 };
@@ -207,6 +212,9 @@ packageJson.files = [
   "catalog.generated.json",
   "contracts.generated.json",
   "tool-contract.schema.json",
+  "portable-value.schema.json",
+  "table-data.schema.json",
+  "tabular-presentation.schema.json",
   "LICENSE",
   "README.md",
 ];
@@ -230,6 +238,16 @@ const outputs = [
       "utf8",
     ),
   ],
+  ...(await Promise.all(
+    [
+      "portable-value.schema.json",
+      "table-data.schema.json",
+      "tabular-presentation.schema.json",
+    ].map(async (name) => [
+      path.join(packageRoot, name),
+      await readFile(path.join(contractsRoot, name), "utf8"),
+    ]),
+  )),
 ];
 
 const expectedOutputFiles = new Set(outputs.map(([file]) => file));

@@ -1,14 +1,17 @@
 import { describe, expect, it } from "vitest";
-import { runElectrochemicalEquivalent } from "./tool.js";
+import {
+  electrochemicalEquivalentExample,
+  runElectrochemicalEquivalent,
+} from "./tool.js";
 
 describe("Electrochemical Equivalent Calculator", () => {
   it("calculates a valid result", () => {
-    const result = runElectrochemicalEquivalent({
-      molarMassGMol: 1,
-      valence: 1,
+    expect(
+      runElectrochemicalEquivalent(electrochemicalEquivalentExample.input),
+    ).toEqual({
+      ok: true,
+      output: electrochemicalEquivalentExample.output,
     });
-    if (!result.ok) throw new Error("expected success");
-    expect(result.output.electrochemicalEquivalentGMolC).toBeDefined();
   });
   it("rejects invalid input", () =>
     expect(runElectrochemicalEquivalent(null).ok).toBe(false));

@@ -77,7 +77,8 @@ describe("diode ideality factor calculator", () => {
   });
 
   it("rejects missing required inputs", () => {
-    expect(runDiodeIdealityFactor({} as never).ok).toBe(false);
+    const missing = runDiodeIdealityFactor({} as never);
+    expect(missing.ok).toBe(false);
     expect(
       runDiodeIdealityFactor({
         currentTwoMa: 10,
@@ -99,10 +100,7 @@ describe("diode ideality factor calculator", () => {
         voltageTwoV: 0.7,
       } as never).ok,
     ).toBe(false);
-    if (!runDiodeIdealityFactor({} as never).ok)
-      expect(runDiodeIdealityFactor({} as never).error.issues[0].code).toBe(
-        "invalid_field",
-      );
+    if (!missing.ok) expect(missing.error.issues[0].code).toBe("invalid_field");
   });
 
   it("rejects wrong type inputs", () => {
@@ -149,11 +147,10 @@ describe("diode ideality factor calculator", () => {
   });
 
   it("rejects non-object input", () => {
-    expect(runDiodeIdealityFactor(null as never).ok).toBe(false);
-    if (!runDiodeIdealityFactor(null as never).ok)
-      expect(runDiodeIdealityFactor(null as never).error.issues[0].code).toBe(
-        "object_required",
-      );
+    const nonObject = runDiodeIdealityFactor(null as never);
+    expect(nonObject.ok).toBe(false);
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
     expect(runDiodeIdealityFactor([] as never).ok).toBe(false);
     expect(runDiodeIdealityFactor(42 as never).ok).toBe(false);
   });

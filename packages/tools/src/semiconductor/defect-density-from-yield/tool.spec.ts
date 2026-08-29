@@ -106,11 +106,10 @@ describe("Defect Density from Yield", () => {
     }));
 
   it("rejects non-object input", () => {
-    expect(runDefectDensityFromYield(null as never).ok).toBe(false);
-    if (!runDefectDensityFromYield(null as never).ok)
-      expect(
-        runDefectDensityFromYield(null as never).error.issues[0].code,
-      ).toBe("object_required");
+    const nonObject = runDefectDensityFromYield(null as never);
+    expect(nonObject.ok).toBe(false);
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
     expect(runDefectDensityFromYield([] as never).ok).toBe(false);
     expect(runDefectDensityFromYield(1 as never).ok).toBe(false);
   });

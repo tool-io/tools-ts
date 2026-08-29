@@ -7,6 +7,7 @@ import {
   createChartDocument,
   type ChartDocument,
   type ChartSpec,
+  validateChartSpec,
 } from "./definition.js";
 
 export type ChartToolInput = {
@@ -16,7 +17,7 @@ export type ChartToolInput = {
 export type ChartToolOutput = { readonly document: ChartDocument };
 
 const exampleData: TableData = {
-  kind: "toolio/table",
+  kind: "tool.io/table",
   rows: [
     ["20:00", 12],
     ["21:00", 72],
@@ -38,7 +39,7 @@ const exampleSpec: ChartSpec = {
     x: { field: "hour", label: "Hour (UTC)" },
     y: { field: "strike-count", label: "Lightning strikes" },
   },
-  kind: "toolio/chart-spec",
+  kind: "tool.io/chart-spec",
   title: "Lightning strikes by hour",
   type: "bar",
   version: 1,
@@ -69,45 +70,21 @@ export const chartTool = defineTool<ChartToolInput, ChartToolOutput>({
         },
       ]);
     const candidate = input as Partial<ChartToolInput>;
+    const unknown = Object.keys(candidate).filter(
+      (key) => key !== "data" && key !== "spec",
+    );
+    if (unknown.length > 0)
+      return invalidInput(
+        unknown.map((field) => ({
+          code: "unknown_field",
+          field,
+          message: `${field} is not a supported input field.`,
+        })),
+      );
     const issues = validateTableData(candidate.data);
     if (issues.length > 0) return invalidInput(issues);
-    if (
-      typeof candidate.spec !== "object" ||
-      candidate.spec === null ||
-      candidate.spec.kind !== "toolio/chart-spec" ||
-      candidate.spec.version !== 1 ||
-      typeof candidate.spec.type !== "string" ||
-      candidate.spec.type.length === 0 ||
-      typeof candidate.spec.encoding !== "object" ||
-      candidate.spec.encoding === null ||
-      Array.isArray(candidate.spec.encoding)
-    )
-      return invalidInput([
-        {
-          code: "invalid_chart_spec",
-          field: "spec",
-          message: "Enter a Tool.io ChartSpec Version 1 value.",
-        },
-      ]);
-    const encodingValues = Object.values(candidate.spec.encoding).flatMap(
-      (encoding) => (Array.isArray(encoding) ? encoding : [encoding]),
-    );
-    if (
-      encodingValues.some(
-        (encoding) =>
-          typeof encoding !== "object" ||
-          encoding === null ||
-          typeof (encoding as { field?: unknown }).field !== "string" ||
-          (encoding as { field: string }).field.length === 0,
-      )
-    )
-      return invalidInput([
-        {
-          code: "invalid_chart_encoding",
-          field: "spec.encoding",
-          message: "Every chart encoding needs a non-empty field name.",
-        },
-      ]);
+    const specIssues = validateChartSpec(candidate.spec);
+    if (specIssues.length > 0) return invalidInput(specIssues);
     return toolSuccess({
       document: createChartDocument(
         candidate.data as TableData,
@@ -136,19 +113,19 @@ export const chartTool = defineTool<ChartToolInput, ChartToolOutput>({
       {
         id: "data",
         label: "Table data",
-        valueType: { format: "table/toolio", type: "object" },
+        valueType: { format: "tool.io/table", type: "object" },
       },
       {
         id: "spec",
         label: "Chart specification",
-        valueType: { format: "chart/spec", type: "object" },
+        valueType: { format: "tool.io/chart-spec", type: "object" },
       },
     ],
     outputs: [
       {
         id: "document",
         label: "Chart document",
-        valueType: { format: "chart/document", type: "object" },
+        valueType: { format: "tool.io/chart-document", type: "object" },
       },
     ],
   },

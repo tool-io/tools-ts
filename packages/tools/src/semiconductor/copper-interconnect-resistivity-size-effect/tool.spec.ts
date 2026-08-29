@@ -110,14 +110,10 @@ describe("Copper Size Effect Calculator", () => {
     }));
 
   it("rejects non-object input", () => {
-    expect(runCopperInterconnectResistivitySizeEffect(null as never).ok).toBe(
-      false,
-    );
-    if (!runCopperInterconnectResistivitySizeEffect(null as never).ok)
-      expect(
-        runCopperInterconnectResistivitySizeEffect(null as never).error
-          .issues[0].code,
-      ).toBe("object_required");
+    const nonObject = runCopperInterconnectResistivitySizeEffect(null as never);
+    expect(nonObject.ok).toBe(false);
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
     expect(runCopperInterconnectResistivitySizeEffect([] as never).ok).toBe(
       false,
     );

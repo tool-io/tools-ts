@@ -1,5 +1,6 @@
 import type { ToolContract, ToolExecutionContext } from "./core/definition.js";
 import type { ToolExample } from "./core/example.js";
+import { executeToolDefinition } from "./core/execution.js";
 import { portableToolContract } from "./core/portable-contract.js";
 import type { ToolResult } from "./core/result.js";
 import {
@@ -33,4 +34,6 @@ export const executeTool = async (
   input: unknown,
   context?: ToolExecutionContext,
 ): Promise<ToolResult<unknown> | undefined> =>
-  (await loadTool(id))?.execute(input, context);
+  loadTool(id).then((tool) =>
+    tool ? executeToolDefinition(tool, input, context) : undefined,
+  );

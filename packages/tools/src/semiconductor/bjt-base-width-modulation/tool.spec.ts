@@ -274,12 +274,11 @@ describe("bjt base width modulation calculator", () => {
       error: { issues: [{ code: "unknown_field", field: "extra" }] },
       ok: false,
     });
-    expect(runBaseWidthModulation(null as never).ok).toBe(false);
+    const nonObject = runBaseWidthModulation(null as never);
+    expect(nonObject.ok).toBe(false);
     expect(runBaseWidthModulation(42 as never).ok).toBe(false);
-    if (!runBaseWidthModulation(null as never).ok)
-      expect(runBaseWidthModulation(null as never).error.issues[0].code).toBe(
-        "object_required",
-      );
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
   });
 
   it("preserves properties: formula exact, inverse via doping, monotonic with Vcb and doping", () => {

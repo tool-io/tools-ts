@@ -108,10 +108,10 @@ describe("Band-to-Band Tunneling Calculator", () => {
       error: { issues: [{ field: "electricFieldMVPerCm" }] },
       ok: false,
     });
-    expect(["invalid_field", "invalid_electric_field"]).toContain(
-      (r as { ok: false; error: { issues: Array<{ code: string }> } }).error
-        .issues[0].code,
-    );
+    if (!r.ok)
+      expect(["invalid_field", "invalid_electric_field"]).toContain(
+        r.error.issues[0].code,
+      );
     let e: unknown = null;
     try {
       calculateBandToBandTunnelingCurrent({ electricFieldMVPerCm: 0 });
@@ -337,12 +337,11 @@ describe("Band-to-Band Tunneling Calculator", () => {
       error: { issues: [{ code: "unknown_field", field: "extra" }] },
       ok: false,
     });
-    expect(runBandToBandTunnelingCurrent(null as never).ok).toBe(false);
+    const nonObject = runBandToBandTunnelingCurrent(null as never);
+    expect(nonObject.ok).toBe(false);
     expect(runBandToBandTunnelingCurrent(42 as never).ok).toBe(false);
-    if (!runBandToBandTunnelingCurrent(null as never).ok)
-      expect(
-        runBandToBandTunnelingCurrent(null as never).error.issues[0].code,
-      ).toBe("object_required");
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
   });
 
   it("preserves properties: formula exact, monotonic above knee, inverse via E field", () => {

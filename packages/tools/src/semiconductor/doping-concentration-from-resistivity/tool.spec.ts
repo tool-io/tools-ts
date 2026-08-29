@@ -56,17 +56,15 @@ describe("doping concentration from resistivity calculator", () => {
   });
 
   it("rejects missing required inputs", () => {
-    expect(runDopingFromResistivity({} as never).ok).toBe(false);
+    const missing = runDopingFromResistivity({} as never);
+    expect(missing.ok).toBe(false);
     expect(runDopingFromResistivity({ carrierType: "n" } as never).ok).toBe(
       false,
     );
     expect(
       runDopingFromResistivity({ resistivityOhmCm: 0.5 } as never).ok,
     ).toBe(false);
-    if (!runDopingFromResistivity({} as never).ok)
-      expect(runDopingFromResistivity({} as never).error.issues[0].code).toBe(
-        "invalid_field",
-      );
+    if (!missing.ok) expect(missing.error.issues[0].code).toBe("invalid_field");
   });
 
   it("rejects wrong type inputs", () => {
@@ -105,11 +103,10 @@ describe("doping concentration from resistivity calculator", () => {
   });
 
   it("rejects non-object input", () => {
-    expect(runDopingFromResistivity(null as never).ok).toBe(false);
-    if (!runDopingFromResistivity(null as never).ok)
-      expect(runDopingFromResistivity(null as never).error.issues[0].code).toBe(
-        "object_required",
-      );
+    const nonObject = runDopingFromResistivity(null as never);
+    expect(nonObject.ok).toBe(false);
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
     expect(runDopingFromResistivity([] as never).ok).toBe(false);
     expect(runDopingFromResistivity("n" as never).ok).toBe(false);
   });

@@ -202,6 +202,28 @@ const portIssues = (
         message: "Every port needs a valid valueType.",
         path: `${base}/valueType`,
       });
+    if (port.presentation !== undefined) {
+      if (direction === "inputs")
+        issues.push({
+          code: "input_presentation_not_allowed",
+          message: "Only output ports can declare a presentation.",
+          path: `${base}/presentation`,
+        });
+      if (
+        !isRecord(port.presentation) ||
+        !["chart", "map", "table"].includes(String(port.presentation.kind)) ||
+        port.presentation.version !== 1 ||
+        Object.keys(port.presentation).some(
+          (key) => key !== "kind" && key !== "version",
+        )
+      )
+        issues.push({
+          code: "port_presentation_invalid",
+          message:
+            "Port presentation must name a supported Version 1 renderer contract.",
+          path: `${base}/presentation`,
+        });
+    }
     const path = port.path ?? [port.id];
     if (
       path.some(

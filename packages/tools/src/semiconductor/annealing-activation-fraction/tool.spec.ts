@@ -279,11 +279,10 @@ describe("Anneal Activation Fraction Calculator", () => {
     expect(unknown.ok).toBe(false);
     if (!unknown.ok) expect(unknown.error.issues[0].code).toBe("unknown_field");
     expect(runAnnealActivationFraction("anneal" as never).ok).toBe(false);
-    expect(runAnnealActivationFraction(null as never).ok).toBe(false);
-    if (!runAnnealActivationFraction(null as never).ok)
-      expect(
-        runAnnealActivationFraction(null as never).error.issues[0].code,
-      ).toBe("object_required");
+    const nonObject = runAnnealActivationFraction(null as never);
+    expect(nonObject.ok).toBe(false);
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
   });
 
   it("saturates to full activation when exposure exceeds the numeric range", () => {

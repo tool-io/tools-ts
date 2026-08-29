@@ -95,10 +95,10 @@ describe("Avalanche Breakdown Voltage Calculator", () => {
       error: { issues: [{ field: "criticalFieldMVPerCm" }] },
       ok: false,
     });
-    expect(["invalid_field", "invalid_critical_field"]).toContain(
-      (r as { ok: false; error: { issues: Array<{ code: string }> } }).error
-        .issues[0].code,
-    );
+    if (!r.ok)
+      expect(["invalid_field", "invalid_critical_field"]).toContain(
+        r.error.issues[0].code,
+      );
     let e: unknown = null;
     try {
       calculateAvalancheBreakdownVoltage({
@@ -267,12 +267,11 @@ describe("Avalanche Breakdown Voltage Calculator", () => {
       error: { issues: [{ code: "unknown_field", field: "extra" }] },
       ok: false,
     });
-    expect(runAvalancheBreakdownVoltage(null as never).ok).toBe(false);
+    const nonObject = runAvalancheBreakdownVoltage(null as never);
+    expect(nonObject.ok).toBe(false);
     expect(runAvalancheBreakdownVoltage(42 as never).ok).toBe(false);
-    if (!runAvalancheBreakdownVoltage(null as never).ok)
-      expect(
-        runAvalancheBreakdownVoltage(null as never).error.issues[0].code,
-      ).toBe("object_required");
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
   });
 
   it("preserves properties: V=W*E*50 for a triangular field profile", () => {

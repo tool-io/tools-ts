@@ -181,6 +181,7 @@
         },
         "primaryKey": {
           "type": "array",
+          "minItems": 1,
           "uniqueItems": true,
           "items": { "$ref": "#/$defs/identifier" }
         },
@@ -192,7 +193,7 @@
       "additionalProperties": false,
       "required": ["kind", "version", "schema", "rows"],
       "properties": {
-        "kind": { "const": "toolio/table" },
+        "kind": { "const": "tool.io/table" },
         "version": { "const": 1 },
         "schema": { "$ref": "#/$defs/tableSchema" },
         "rows": {

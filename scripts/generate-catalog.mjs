@@ -7,9 +7,11 @@ import {
   resolveImplementationDates,
   unknownImplementationDate,
 } from "./implementation-dates.mjs";
+import { assertContractCollectionMatchesSchema } from "./contract-schema-validation.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const packageRoot = path.join(root, "packages/tools");
+const contractsRoot = path.join(root, "contracts");
 const manifest = JSON.parse(
   await readFile(path.join(packageRoot, "public-tools.generated.json"), "utf8"),
 );
@@ -73,7 +75,22 @@ const catalogFingerprint = createHash("sha256")
   .update(JSON.stringify(catalogPayload))
   .digest("hex");
 const catalog = `${JSON.stringify({ catalogFingerprint, ...catalogPayload })}\n`;
-const contractCollection = `${JSON.stringify({ contracts, schemaVersion: 1 })}\n`;
+const contractCollectionValue = { contracts, schemaVersion: 1 };
+const [collectionSchema, toolSchema] = await Promise.all([
+  readFile(
+    path.join(contractsRoot, "tool-contract-collection.schema.json"),
+    "utf8",
+  ).then(JSON.parse),
+  readFile(path.join(contractsRoot, "tool-contract.schema.json"), "utf8").then(
+    JSON.parse,
+  ),
+]);
+assertContractCollectionMatchesSchema({
+  collection: contractCollectionValue,
+  collectionSchema,
+  toolSchema,
+});
+const contractCollection = `${JSON.stringify(contractCollectionValue)}\n`;
 if (process.argv.includes("--check")) {
   const current = await readFile(committed, "utf8").catch(() => "");
   if (current !== catalog) {

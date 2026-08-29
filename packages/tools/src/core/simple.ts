@@ -150,20 +150,23 @@ const validValue = (value: unknown, field: SimpleField): boolean => {
   );
 };
 
-export type SimpleToolConfig = {
-  readonly calculate: (
-    input: Readonly<Record<string, unknown>>,
-    context: ToolExecutionContext,
-  ) => Readonly<Record<string, unknown>> | null;
-  readonly description: string;
-  readonly id: string;
-  readonly inputs: readonly SimpleField[];
-  readonly outputs: readonly SimpleField[];
-  readonly title: string;
-};
-export const createSimpleTool = (
-  config: SimpleToolConfig,
-): ToolDefinition<Record<string, unknown>, Record<string, unknown>> => {
+export type SimpleToolConfig<Output extends Readonly<Record<string, unknown>>> =
+  {
+    readonly calculate: (
+      input: Readonly<Record<string, unknown>>,
+      context: ToolExecutionContext,
+    ) => Output | null;
+    readonly description: string;
+    readonly id: string;
+    readonly inputs: readonly SimpleField[];
+    readonly outputs: readonly SimpleField[];
+    readonly title: string;
+  };
+export const createSimpleTool = <
+  Output extends Readonly<Record<string, unknown>>,
+>(
+  config: SimpleToolConfig<Output>,
+): ToolDefinition<Record<string, unknown>, Output> => {
   const inputIds = new Set(config.inputs.map((field) => field.id));
   const outputIds = new Set(config.outputs.map((field) => field.id));
   const inputProperties = Object.fromEntries(
@@ -178,7 +181,7 @@ export const createSimpleTool = (
   const execute = (
     input: unknown,
     context: ToolExecutionContext = {},
-  ): ToolResult<Record<string, unknown>> => {
+  ): ToolResult<Output> => {
     if (!isRecord(input))
       return invalidInput([
         {

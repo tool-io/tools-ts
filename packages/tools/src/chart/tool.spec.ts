@@ -24,4 +24,13 @@ describe("chart", () => {
     if (result.ok)
       expect(result.output.document.warnings[0]?.code).toBe("unknown_field");
   });
+
+  it("rejects undeclared tool inputs", () => {
+    expect(
+      runChart({ ...chartExample.input, renderer: "canvas" } as never),
+    ).toMatchObject({
+      error: { issues: [{ code: "unknown_field", field: "renderer" }] },
+      ok: false,
+    });
+  });
 });

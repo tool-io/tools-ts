@@ -310,12 +310,11 @@ describe("APB Energy Calculator", () => {
     } as never);
     expect(unknown.ok).toBe(false);
     if (!unknown.ok) expect(unknown.error.issues[0].code).toBe("unknown_field");
-    expect(runAntiphaseBoundaryEnergy(null as never).ok).toBe(false);
+    const nonObject = runAntiphaseBoundaryEnergy(null as never);
+    expect(nonObject.ok).toBe(false);
     expect(runAntiphaseBoundaryEnergy(42 as never).ok).toBe(false);
-    if (!runAntiphaseBoundaryEnergy(null as never).ok)
-      expect(
-        runAntiphaseBoundaryEnergy(null as never).error.issues[0].code,
-      ).toBe("object_required");
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
   });
 
   it("preserves properties: linear scaling, double density doubles energy, inverse, monotonic", () => {

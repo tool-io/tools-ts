@@ -117,11 +117,10 @@ describe("Die Cost From Wafer Calculator", () => {
     }));
 
   it("rejects non-object input", () => {
-    expect(runDieCostFromWafer(null as never).ok).toBe(false);
-    if (!runDieCostFromWafer(null as never).ok)
-      expect(runDieCostFromWafer(null as never).error.issues[0].code).toBe(
-        "object_required",
-      );
+    const nonObject = runDieCostFromWafer(null as never);
+    expect(nonObject.ok).toBe(false);
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
     expect(runDieCostFromWafer([] as never).ok).toBe(false);
   });
 

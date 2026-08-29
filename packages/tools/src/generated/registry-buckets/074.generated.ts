@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/trouton-rule": () => import("../../chemistry/trouton-rule/index.js"),
   "convert/data-rate": () => import("../../convert/data-rate/index.js"),
   "convert/hsl-to-oklch": () => import("../../convert/hsl-to-oklch/index.js"),
+  "convert/json-to-table": () => import("../../convert/json-to-table/index.js"),
   "convert/rot13": () => import("../../convert/rot13/index.js"),
   "geology/mg-number-vs-silica": () => import("../../geology/mg-number-vs-silica/index.js"),
   "logistics/cycle-count-daily-sample-size": () => import("../../logistics/cycle-count-daily-sample-size/index.js"),

@@ -4,6 +4,13 @@ export type ToolIssue = {
   readonly message: string;
 };
 
+export type ToolErrorCode =
+  | "capability_unavailable"
+  | "dataset_unavailable"
+  | "execution_cancelled"
+  | "execution_failed"
+  | "invalid_input";
+
 export type ToolInputError = {
   readonly code: "invalid_input";
   readonly issues: readonly ToolIssue[];
@@ -14,7 +21,35 @@ export type ToolExecutionCancelledError = {
   readonly issues: readonly ToolIssue[];
 };
 
-export type ToolError = ToolExecutionCancelledError | ToolInputError;
+export type ToolExecutionFailedError = {
+  readonly code: "execution_failed";
+  readonly issues: readonly ToolIssue[];
+};
+
+export type ToolCapabilityUnavailableError = {
+  readonly capability: {
+    readonly id: string;
+    readonly schemaVersion: number;
+  };
+  readonly code: "capability_unavailable";
+  readonly issues: readonly ToolIssue[];
+};
+
+export type ToolDatasetUnavailableError = {
+  readonly code: "dataset_unavailable";
+  readonly dataset: {
+    readonly id: string;
+    readonly schemaVersion: number;
+  };
+  readonly issues: readonly ToolIssue[];
+};
+
+export type ToolError =
+  | ToolCapabilityUnavailableError
+  | ToolDatasetUnavailableError
+  | ToolExecutionCancelledError
+  | ToolExecutionFailedError
+  | ToolInputError;
 
 export type ToolResult<Output> =
   | {
@@ -53,6 +88,42 @@ export const toolExecutionCancelled = (
         message,
       },
     ],
+  },
+  ok: false,
+});
+
+export const toolExecutionFailed = (
+  message = "Tool execution failed.",
+): ToolResult<never> => ({
+  error: {
+    code: "execution_failed",
+    issues: [{ code: "execution_failed", field: "", message }],
+  },
+  ok: false,
+});
+
+export const toolCapabilityUnavailable = (
+  id: string,
+  schemaVersion: number,
+  message = `Required capability "${id}" Version ${schemaVersion} is unavailable.`,
+): ToolResult<never> => ({
+  error: {
+    capability: { id, schemaVersion },
+    code: "capability_unavailable",
+    issues: [{ code: "capability_unavailable", field: "", message }],
+  },
+  ok: false,
+});
+
+export const toolDatasetUnavailable = (
+  id: string,
+  schemaVersion: number,
+  message = `Required dataset "${id}" Version ${schemaVersion} is unavailable.`,
+): ToolResult<never> => ({
+  error: {
+    code: "dataset_unavailable",
+    dataset: { id, schemaVersion },
+    issues: [{ code: "dataset_unavailable", field: "", message }],
   },
   ok: false,
 });

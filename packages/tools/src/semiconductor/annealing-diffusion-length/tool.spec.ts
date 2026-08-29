@@ -234,11 +234,10 @@ describe("Diffusion Length Calculator", () => {
     expect(unknown.ok).toBe(false);
     if (!unknown.ok) expect(unknown.error.issues[0].code).toBe("unknown_field");
     expect(runDiffusionLength(true as never).ok).toBe(false);
-    expect(runDiffusionLength(null as never).ok).toBe(false);
-    if (!runDiffusionLength(null as never).ok)
-      expect(runDiffusionLength(null as never).error.issues[0].code).toBe(
-        "object_required",
-      );
+    const nonObject = runDiffusionLength(null as never);
+    expect(nonObject.ok).toBe(false);
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
   });
 
   it("avoids overflow in D·t when the square root is finite", () => {

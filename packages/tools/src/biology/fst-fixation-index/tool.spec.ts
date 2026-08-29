@@ -4,12 +4,10 @@ import { fstFixationIndexExample, runFstFixationIndex } from "./tool.js";
 describe("FST Fixation Index", () => {
   it("matches the canonical example", () => {
     const result = runFstFixationIndex(fstFixationIndexExample.input);
-    expect(result.ok).toBe(true);
-    if (result.ok)
-      expect(result.output.fixationIndexFst).toBeCloseTo(
-        0.16666666666666663,
-        12,
-      );
+    expect(result).toEqual({
+      ok: true,
+      output: fstFixationIndexExample.output,
+    });
   });
   it("returns zero for equal allele frequencies", () =>
     expect(

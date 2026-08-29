@@ -187,12 +187,11 @@ describe("Bandgap Narrowing Calculator", () => {
       error: { issues: [{ code: "unknown_field", field: "extra" }] },
       ok: false,
     });
-    expect(runBandgapNarrowing(null as never).ok).toBe(false);
+    const nonObject = runBandgapNarrowing(null as never);
+    expect(nonObject.ok).toBe(false);
     expect(runBandgapNarrowing(42 as never).ok).toBe(false);
-    if (!runBandgapNarrowing(null as never).ok)
-      expect(runBandgapNarrowing(null as never).error.issues[0].code).toBe(
-        "object_required",
-      );
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
   });
 
   it("preserves properties: monotonic, 18 per decade, inverse, scaling", () => {

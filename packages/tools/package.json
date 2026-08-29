@@ -14,6 +14,9 @@
     "catalog.generated.json",
     "contracts.generated.json",
     "tool-contract.schema.json",
+    "portable-value.schema.json",
+    "table-data.schema.json",
+    "tabular-presentation.schema.json",
     "LICENSE",
     "README.md"
   ],
@@ -49,6 +52,10 @@
       "types": "./dist/flashcards/index.d.ts",
       "import": "./dist/flashcards/index.js"
     },
+    "./parse/numeric-dataset": {
+      "types": "./dist/parse/numeric-dataset/index.d.ts",
+      "import": "./dist/parse/numeric-dataset/index.js"
+    },
     "./registry": {
       "types": "./dist/registry.d.ts",
       "import": "./dist/registry.js"
@@ -56,6 +63,13 @@
     "./runtime": {
       "types": "./dist/runtime.d.ts",
       "import": "./dist/runtime.js"
+    },
+    "./schemas/portable-value": "./portable-value.schema.json",
+    "./schemas/table-data": "./table-data.schema.json",
+    "./schemas/tabular-presentation": "./tabular-presentation.schema.json",
+    "./statistics/median": {
+      "types": "./dist/statistics/median/index.d.ts",
+      "import": "./dist/statistics/median/index.js"
     },
     "./weather": {
       "types": "./dist/weather/index.d.ts",

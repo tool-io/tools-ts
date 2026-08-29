@@ -267,12 +267,11 @@ describe("APD Breakdown Voltage Temperature Shift Calculator", () => {
     } as never);
     expect(unknown.ok).toBe(false);
     if (!unknown.ok) expect(unknown.error.issues[0].code).toBe("unknown_field");
-    expect(runApdBreakdownVoltage(null as never).ok).toBe(false);
+    const nonObject = runApdBreakdownVoltage(null as never);
+    expect(nonObject.ok).toBe(false);
     expect(runApdBreakdownVoltage(42 as never).ok).toBe(false);
-    if (!runApdBreakdownVoltage(null as never).ok)
-      expect(runApdBreakdownVoltage(null as never).error.issues[0].code).toBe(
-        "object_required",
-      );
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
   });
 
   it("preserves properties: factor scales breakdown, inverse recovers reference, monotonic in both", () => {

@@ -121,7 +121,9 @@ describe("bjt early voltage calculator", () => {
     } catch (err) {
       e = err;
     }
-    expect((e as { code: string }).field).toBe("collectorCurrentMa");
+    expect((e as { code: string; field: string }).field).toBe(
+      "collectorCurrentMa",
+    );
   });
 
   it("reports overflow at conductance field", () => {

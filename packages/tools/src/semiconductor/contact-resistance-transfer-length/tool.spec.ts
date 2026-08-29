@@ -103,11 +103,10 @@ describe("transfer length calculator", () => {
   });
 
   it("rejects non-object input", () => {
-    expect(runTransferLength(null as never).ok).toBe(false);
-    if (!runTransferLength(null as never).ok)
-      expect(runTransferLength(null as never).error.issues[0].code).toBe(
-        "object_required",
-      );
+    const nonObject = runTransferLength(null as never);
+    expect(nonObject.ok).toBe(false);
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
     expect(runTransferLength([] as never).ok).toBe(false);
     expect(runTransferLength(42 as never).ok).toBe(false);
   });

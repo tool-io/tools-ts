@@ -98,7 +98,8 @@ describe("DRAM Retention Time Calculator", () => {
   });
 
   it("rejects missing required inputs", () => {
-    expect(runDramRetentionTime({} as never).ok).toBe(false);
+    const missing = runDramRetentionTime({} as never);
+    expect(missing.ok).toBe(false);
     expect(
       runDramRetentionTime({
         leakageCurrentFemtoAmperes: 10,
@@ -117,10 +118,7 @@ describe("DRAM Retention Time Calculator", () => {
         leakageCurrentFemtoAmperes: 10,
       } as never).ok,
     ).toBe(false);
-    if (!runDramRetentionTime({} as never).ok)
-      expect(runDramRetentionTime({} as never).error.issues[0].code).toBe(
-        "invalid_field",
-      );
+    if (!missing.ok) expect(missing.error.issues[0].code).toBe("invalid_field");
   });
 
   it("rejects wrong type inputs", () => {
@@ -156,11 +154,10 @@ describe("DRAM Retention Time Calculator", () => {
   });
 
   it("rejects non-object input", () => {
-    expect(runDramRetentionTime(null as never).ok).toBe(false);
-    if (!runDramRetentionTime(null as never).ok)
-      expect(runDramRetentionTime(null as never).error.issues[0].code).toBe(
-        "object_required",
-      );
+    const nonObject = runDramRetentionTime(null as never);
+    expect(nonObject.ok).toBe(false);
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
     expect(runDramRetentionTime([] as never).ok).toBe(false);
     expect(runDramRetentionTime(42 as never).ok).toBe(false);
   });

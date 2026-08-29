@@ -178,12 +178,11 @@ describe("AlGaN Bandgap Calculator", () => {
     }));
 
   it("rejects non-object input", () => {
-    expect(runAlganBandgap(null as never).ok).toBe(false);
+    const nonObject = runAlganBandgap(null as never);
+    expect(nonObject.ok).toBe(false);
     expect(runAlganBandgap("0.3" as never).ok).toBe(false);
-    if (!runAlganBandgap(null as never).ok)
-      expect(runAlganBandgap(null as never).error.issues[0].code).toBe(
-        "object_required",
-      );
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
   });
 
   it("reports numeric overflow against an input field", () => {

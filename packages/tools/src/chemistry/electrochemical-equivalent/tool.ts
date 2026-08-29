@@ -60,7 +60,7 @@ export const electrochemicalEquivalentExample = {
     valence: 1,
   },
   output: {
-    electrochemicalEquivalentGMolC: 0.000010364269656262174,
+    electrochemicalEquivalentGMolC: 0.000010364269656617728,
   },
 } satisfies ToolExample<
   ElectrochemicalEquivalentInput,

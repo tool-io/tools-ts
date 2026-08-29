@@ -60,6 +60,7 @@ export const createToolCatalogEntry = (
     throw new TypeError("Tool implementation date must be a valid date-time.");
   }
 
+  const contract = portableToolContract(definition);
   return {
     ...normalizeToolDiscovery(definition.discovery),
     canonicalUrl: `/${definition.id}`,
@@ -70,7 +71,7 @@ export const createToolCatalogEntry = (
     id: definition.id,
     implementedAt,
     packageExport: `@tool.io/tools/${definition.id}`,
-    ports: definition.ports,
+    ports: contract.ports,
     title: definition.title,
   };
 };

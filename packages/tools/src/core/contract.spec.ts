@@ -93,6 +93,7 @@ describe("tool contract linter", () => {
             ...bodyMassIndexTool.ports.inputs[0],
             id: "WeightKg",
             label: "",
+            presentation: { kind: "table", version: 1 },
           },
         ],
       },
@@ -103,6 +104,7 @@ describe("tool contract linter", () => {
         "identifier_list_duplicate",
         "port_id_invalid",
         "port_label_required",
+        "input_presentation_not_allowed",
       ]),
     );
   });

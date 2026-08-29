@@ -343,12 +343,11 @@ describe("APD Multiplication Factor Calculator", () => {
     } as never);
     expect(unknown.ok).toBe(false);
     if (!unknown.ok) expect(unknown.error.issues[0].code).toBe("unknown_field");
-    expect(runApdMultiplicationFactor(null as never).ok).toBe(false);
+    const nonObject = runApdMultiplicationFactor(null as never);
+    expect(nonObject.ok).toBe(false);
     expect(runApdMultiplicationFactor(42 as never).ok).toBe(false);
-    if (!runApdMultiplicationFactor(null as never).ok)
-      expect(
-        runApdMultiplicationFactor(null as never).error.issues[0].code,
-      ).toBe("object_required");
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
   });
 
   it("preserves properties: monotonic in bias, larger breakdown reduces gain at fixed bias, inverse not trivial, scaling", () => {

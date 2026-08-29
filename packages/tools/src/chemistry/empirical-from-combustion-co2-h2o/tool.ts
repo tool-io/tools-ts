@@ -80,13 +80,13 @@ export type EmpiricalFromCombustionCo2H2oOutput = {
 
 export const empiricalFromCombustionCo2H2oExample = {
   input: {
-    co2MassG: 1,
-    h2oMassG: 1,
+    co2MassG: 44.0095,
+    h2oMassG: 36.03056,
   },
   output: {
     subscripts: {
       C: 1,
-      H: 5,
+      H: 4,
     },
   },
 } satisfies ToolExample<

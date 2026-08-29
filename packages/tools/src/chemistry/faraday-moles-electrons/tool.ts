@@ -44,7 +44,7 @@ export const faradayMolesElectronsExample = {
     chargeCoulombs: 1,
   },
   output: {
-    molesElectrons: 0.000010364269656262174,
+    molesElectrons: 0.000010364269656617728,
   },
 } satisfies ToolExample<
   FaradayMolesElectronsInput,

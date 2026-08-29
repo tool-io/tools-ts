@@ -13,6 +13,7 @@ export type ToolJsonSchema = {
   readonly enum?: readonly unknown[];
   readonly exclusiveMaximum?: number;
   readonly exclusiveMinimum?: number;
+  readonly format?: string;
   readonly items?: ToolJsonSchema;
   readonly maximum?: number;
   readonly maxItems?: number;
@@ -44,6 +45,40 @@ export type ToolCapabilityRequirement = {
   readonly schemaVersion: number;
 };
 
+export type ToolCapabilityInvocation = {
+  readonly id: string;
+  readonly input: unknown;
+  readonly schemaVersion: number;
+};
+
+export type ToolCapabilityAdapter = {
+  readonly invoke: (invocation: ToolCapabilityInvocation) => Promise<unknown>;
+  readonly supports: (
+    requirement: ToolCapabilityRequirement,
+  ) => boolean | Promise<boolean>;
+};
+
+export type ToolDatasetRequest = {
+  readonly id: string;
+  readonly parameters?: Readonly<Record<string, unknown>>;
+  readonly resource?: string;
+  readonly schemaVersion: number;
+};
+
+export type ToolDatasetSource = {
+  readonly read: (request: ToolDatasetRequest) => Promise<unknown>;
+  readonly supports: (
+    requirement: ToolDatasetRequirement,
+  ) => boolean | Promise<boolean>;
+};
+
+export type ToolDatasetStore = ToolDatasetSource & {
+  readonly write: (
+    request: ToolDatasetRequest,
+    value: unknown,
+  ) => Promise<void>;
+};
+
 export type ToolExecutionRequirements = {
   readonly capabilities?: readonly ToolCapabilityRequirement[];
   readonly datasets?: readonly ToolDatasetRequirement[];
@@ -68,6 +103,8 @@ export type ToolProgress = {
 };
 
 export type ToolExecutionContext = {
+  readonly capabilities?: ToolCapabilityAdapter;
+  readonly datasets?: ToolDatasetSource;
   readonly locale?: string;
   readonly now?: () => number;
   readonly random?: () => number;
@@ -81,8 +118,14 @@ export type ToolPortDefinition = {
   readonly id: string;
   readonly label: string;
   readonly path?: readonly string[];
+  readonly presentation?: ToolPortPresentation;
   readonly required?: boolean;
   readonly valueType: ToolValueType;
+};
+
+export type ToolPortPresentation = {
+  readonly kind: "chart" | "map" | "table";
+  readonly version: 1;
 };
 
 export type ToolPortsDefinition = {

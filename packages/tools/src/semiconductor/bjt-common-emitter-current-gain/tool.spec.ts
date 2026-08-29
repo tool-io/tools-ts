@@ -180,12 +180,11 @@ describe("bjt common-emitter current gain calculator", () => {
       error: { issues: [{ code: "unknown_field", field: "extra" }] },
       ok: false,
     });
-    expect(runCommonEmitterCurrentGain(null as never).ok).toBe(false);
+    const nonObject = runCommonEmitterCurrentGain(null as never);
+    expect(nonObject.ok).toBe(false);
     expect(runCommonEmitterCurrentGain(42 as never).ok).toBe(false);
-    if (!runCommonEmitterCurrentGain(null as never).ok)
-      expect(
-        runCommonEmitterCurrentGain(null as never).error.issues[0].code,
-      ).toBe("object_required");
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
   });
 
   it("preserves properties: beta=alpha/(1-alpha), inverse alpha=beta/(1+beta), monotonic, scaling", () => {

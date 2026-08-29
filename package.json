@@ -6,15 +6,16 @@
     "build": "pnpm --filter @tool.io/tools build",
     "check": "pnpm --filter @tool.io/tools check",
     "check:contribution": "node scripts/validate-contributions.mjs",
-    "check:generated": "node --test scripts/implementation-dates.test.mjs && pnpm --filter @tool.io/tools check:generated",
+    "check:generated": "node --test scripts/implementation-dates.test.mjs scripts/contract-schema-validation.test.mjs scripts/portable-schema-validation.test.mjs scripts/tabular-schema-validation.test.mjs && pnpm --filter @tool.io/tools check:generated",
     "generate": "pnpm --filter @tool.io/tools generate",
     "test:unit": "pnpm --filter @tool.io/tools test:unit",
     "unittest": "pnpm --filter @tool.io/tools unittest",
     "validate": "pnpm --filter @tool.io/tools validate"
   },
   "devDependencies": {
+    "ajv": "8.20.0",
     "prettier": "^3.9.6",
     "typescript": "^7.0.2",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.11"
   }
 }

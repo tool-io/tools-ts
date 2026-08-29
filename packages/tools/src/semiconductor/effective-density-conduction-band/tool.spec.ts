@@ -93,11 +93,10 @@ describe("semiconductor effective density conduction band", () => {
     } as never);
     expect(unk.ok).toBe(false);
     if (!unk.ok) expect(unk.error.issues[0].code).toBe("unknown_field");
-    expect(runEffectiveDensityConductionBand(null as never).ok).toBe(false);
-    if (!runEffectiveDensityConductionBand(null as never).ok)
-      expect(
-        runEffectiveDensityConductionBand(null as never).error.issues[0].code,
-      ).toBe("object_required");
+    const nonObject = runEffectiveDensityConductionBand(null as never);
+    expect(nonObject.ok).toBe(false);
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
     expect(runEffectiveDensityConductionBand([] as never).ok).toBe(false);
   });
 

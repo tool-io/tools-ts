@@ -12,7 +12,7 @@ export type FstFixationIndexOutput = {
 
 export const fstFixationIndexExample = {
   input: { alleleFrequencyX: 0.6, alleleFrequencyY: 0.2 },
-  output: { fixationIndexFst: 0.16666666666666663 },
+  output: { fixationIndexFst: 0.16666666666666682 },
 } satisfies ToolExample<FstFixationIndexInput, FstFixationIndexOutput>;
 
 export const fstFixationIndexTool = createSimpleTool({

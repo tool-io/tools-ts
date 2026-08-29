@@ -6,7 +6,7 @@ describe("portable map tool", () => {
     const result = runMap(mapExample.input);
     expect(result.ok).toBe(true);
     if (result.ok) {
-      expect(result.output.document.kind).toBe("toolio/map-document");
+      expect(result.output.document.kind).toBe("tool.io/map-document");
       expect(result.output.document.warnings).toEqual([]);
     }
   });

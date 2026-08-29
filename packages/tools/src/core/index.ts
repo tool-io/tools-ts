@@ -8,6 +8,7 @@ export * from "./example.js";
 export * from "./execution.js";
 export * from "./limits.js";
 export * from "./portable-contract.js";
+export * from "./portable-value.js";
 export * from "./random.js";
 export * from "./result.js";
 export * from "./simple.js";

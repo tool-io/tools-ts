@@ -68,10 +68,10 @@ describe("Ballistic Mean Free Path Calculator", () => {
       error: { issues: [{ field: "mobilityCm2PerVs" }] },
       ok: false,
     });
-    expect(["invalid_field", "invalid_mobility"]).toContain(
-      (zero as { ok: false; error: { issues: Array<{ code: string }> } }).error
-        .issues[0].code,
-    );
+    if (!zero.ok)
+      expect(["invalid_field", "invalid_mobility"]).toContain(
+        zero.error.issues[0].code,
+      );
     const neg = runBallisticMeanFreePath({ mobilityCm2PerVs: -1400 });
     expect(neg.ok).toBe(false);
     if (!neg.ok) expect(neg.error.issues[0].code).not.toBe("numeric_overflow");
@@ -184,12 +184,11 @@ describe("Ballistic Mean Free Path Calculator", () => {
     } as never);
     expect(unknown.ok).toBe(false);
     if (!unknown.ok) expect(unknown.error.issues[0].code).toBe("unknown_field");
-    expect(runBallisticMeanFreePath(null as never).ok).toBe(false);
+    const nonObject = runBallisticMeanFreePath(null as never);
+    expect(nonObject.ok).toBe(false);
     expect(runBallisticMeanFreePath(42 as never).ok).toBe(false);
-    if (!runBallisticMeanFreePath(null as never).ok)
-      expect(runBallisticMeanFreePath(null as never).error.issues[0].code).toBe(
-        "object_required",
-      );
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
   });
 
   it("preserves properties: linear scaling, inverse recovers mobility, monotonic", () => {

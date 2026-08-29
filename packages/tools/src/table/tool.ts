@@ -7,6 +7,7 @@ import {
   type TableDocument,
   type TableSpec,
   validateTableData,
+  validateTableSpec,
 } from "./definition.js";
 
 export type TableToolInput = {
@@ -17,7 +18,7 @@ export type TableToolInput = {
 export type TableToolOutput = { readonly document: TableDocument };
 
 const exampleData: TableData = {
-  kind: "toolio/table",
+  kind: "tool.io/table",
   rows: [
     ["2026-08-27T20:00:00Z", 12],
     ["2026-08-27T21:00:00Z", 72],
@@ -52,7 +53,7 @@ export const tableExample = {
 export const tableTool = defineTool<TableToolInput, TableToolOutput>({
   contractVersion: 1,
   description:
-    "Validate portable Tool.io tabular data and create a renderer-independent table document.",
+    "Validate portable tool.io tabular data and create a renderer-independent table document.",
   discovery: {
     collections: ["data"],
     keywords: ["data", "dataset", "grid", "rows", "table"],
@@ -68,57 +69,23 @@ export const tableTool = defineTool<TableToolInput, TableToolOutput>({
         },
       ]);
     const candidate = input as Partial<TableToolInput>;
+    const unknown = Object.keys(candidate).filter(
+      (key) => key !== "data" && key !== "spec",
+    );
+    if (unknown.length > 0)
+      return invalidInput(
+        unknown.map((field) => ({
+          code: "unknown_field",
+          field,
+          message: `${field} is not a supported input field.`,
+        })),
+      );
     const issues = validateTableData(candidate.data);
     if (issues.length > 0) return invalidInput(issues);
-    if (
-      candidate.spec !== undefined &&
-      (typeof candidate.spec !== "object" ||
-        candidate.spec === null ||
-        Array.isArray(candidate.spec))
-    )
-      return invalidInput([
-        {
-          code: "invalid_table_spec",
-          field: "spec",
-          message: "Table specification must be an object.",
-        },
-      ]);
-    if (
-      candidate.spec?.columns !== undefined &&
-      (!Array.isArray(candidate.spec.columns) ||
-        candidate.spec.columns.some(
-          (column) =>
-            typeof column !== "object" ||
-            column === null ||
-            typeof column.field !== "string",
-        ))
-    )
-      return invalidInput([
-        {
-          code: "invalid_table_columns",
-          field: "spec.columns",
-          message: "Every table column needs a field name.",
-        },
-      ]);
-    if (
-      candidate.spec?.defaultSort !== undefined &&
-      (!Array.isArray(candidate.spec.defaultSort) ||
-        candidate.spec.defaultSort.some(
-          (sort) =>
-            typeof sort !== "object" ||
-            sort === null ||
-            typeof sort.field !== "string" ||
-            !["ascending", "descending"].includes(sort.direction),
-        ))
-    )
-      return invalidInput([
-        {
-          code: "invalid_table_sort",
-          field: "spec.defaultSort",
-          message:
-            "Every sort needs a field and ascending or descending direction.",
-        },
-      ]);
+    if (candidate.spec !== undefined) {
+      const specIssues = validateTableSpec(candidate.spec, true);
+      if (specIssues.length > 0) return invalidInput(specIssues);
+    }
     return toolSuccess({
       document: createTableDocument(
         candidate.data as TableData,
@@ -149,20 +116,20 @@ export const tableTool = defineTool<TableToolInput, TableToolOutput>({
       {
         id: "data",
         label: "Table data",
-        valueType: { format: "table/toolio", type: "object" },
+        valueType: { format: "tool.io/table", type: "object" },
       },
       {
         id: "spec",
         label: "Table specification",
         required: false,
-        valueType: { format: "table/spec", type: "object" },
+        valueType: { format: "tool.io/table-spec", type: "object" },
       },
     ],
     outputs: [
       {
         id: "document",
         label: "Table document",
-        valueType: { format: "table/document", type: "object" },
+        valueType: { format: "tool.io/table-document", type: "object" },
       },
     ],
   },

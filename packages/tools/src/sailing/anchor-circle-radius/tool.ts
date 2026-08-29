@@ -14,7 +14,7 @@ const DEFAULT_ANCHOR_SCOPE_RATIO = 7;
 
 export const anchorCircleRadiusExample = {
   input: { anchorScopeRatio: 7, waterDepthMeters: 8 },
-  output: { anchorCircleRadiusMeters: 64 },
+  output: { anchorCircleRadiusMeters: 56 },
 } satisfies ToolExample<AnchorCircleRadiusInput, AnchorCircleRadiusOutput>;
 
 export const calculateAnchorCircleRadius = (

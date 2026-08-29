@@ -12,7 +12,7 @@ describe("table", () => {
   it("rejects rows that do not match the schema width", () => {
     const result = runTable({
       data: {
-        kind: "toolio/table",
+        kind: "tool.io/table",
         rows: [[1, 2]],
         schema: {
           fields: [
@@ -29,5 +29,14 @@ describe("table", () => {
     expect(result.ok).toBe(false);
     if (!result.ok)
       expect(result.error.issues[0]?.code).toBe("invalid_row_width");
+  });
+
+  it("rejects undeclared tool inputs", () => {
+    expect(
+      runTable({ ...tableExample.input, renderer: "html" } as never),
+    ).toMatchObject({
+      error: { issues: [{ code: "unknown_field", field: "renderer" }] },
+      ok: false,
+    });
   });
 });

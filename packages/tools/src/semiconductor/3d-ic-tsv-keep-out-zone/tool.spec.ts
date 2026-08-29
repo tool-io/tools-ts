@@ -159,13 +159,11 @@ describe("TSV Keep-Out Zone Calculator", () => {
     } as never);
     expect(unknown.ok).toBe(false);
     if (!unknown.ok) expect(unknown.error.issues[0].code).toBe("unknown_field");
-    expect(runThreeDIcTsvKeepOutZone(null as never).ok).toBe(false);
+    const nonObject = runThreeDIcTsvKeepOutZone(null as never);
+    expect(nonObject.ok).toBe(false);
     expect(runThreeDIcTsvKeepOutZone("pitch" as never).ok).toBe(false);
-    if (!runThreeDIcTsvKeepOutZone(null as never).ok) {
-      expect(
-        runThreeDIcTsvKeepOutZone(null as never).error.issues[0].code,
-      ).toBe("object_required");
-    }
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
   });
 
   it("reports numeric overflow against an input field", () => {

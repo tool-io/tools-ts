@@ -73,10 +73,7 @@
       "additionalProperties": false,
       "properties": {
         "additionalProperties": {
-          "anyOf": [
-            { "type": "boolean" },
-            { "$ref": "#/$defs/runtimeSchema" }
-          ]
+          "anyOf": [{ "type": "boolean" }, { "$ref": "#/$defs/runtimeSchema" }]
         },
         "anyOf": {
           "type": "array",
@@ -92,6 +89,7 @@
         },
         "exclusiveMaximum": { "type": "number" },
         "exclusiveMinimum": { "type": "number" },
+        "format": { "$ref": "#/$defs/nonEmptyString" },
         "items": { "$ref": "#/$defs/runtimeSchema" },
         "maximum": { "type": "number" },
         "maxItems": { "type": "integer", "minimum": 0 },
@@ -159,6 +157,15 @@
           "type": "array",
           "items": { "$ref": "#/$defs/nonEmptyString" }
         },
+        "presentation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "version"],
+          "properties": {
+            "kind": { "enum": ["chart", "map", "table"] },
+            "version": { "const": 1 }
+          }
+        },
         "required": { "type": "boolean" },
         "valueType": { "$ref": "#/$defs/valueType" }
       }
@@ -225,8 +232,8 @@
               },
               "then": {
                 "properties": {
-                  "capabilities": { "maxItems": 0 },
-                  "datasets": { "maxItems": 0 }
+                  "capabilities": { "type": "array", "maxItems": 0 },
+                  "datasets": { "type": "array", "maxItems": 0 }
                 }
               }
             }

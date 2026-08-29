@@ -234,12 +234,11 @@ describe("Varshni Bandgap Calculator", () => {
       error: { issues: [{ code: "unknown_field", field: "extra" }] },
       ok: false,
     });
-    expect(runBandgapTemperatureVarshni(null as never).ok).toBe(false);
+    const nonObject = runBandgapTemperatureVarshni(null as never);
+    expect(nonObject.ok).toBe(false);
     expect(runBandgapTemperatureVarshni(42 as never).ok).toBe(false);
-    if (!runBandgapTemperatureVarshni(null as never).ok)
-      expect(
-        runBandgapTemperatureVarshni(null as never).error.issues[0].code,
-      ).toBe("object_required");
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
   });
 
   it("preserves properties: formula exact, monotonic, inverse via Eg0, scaling with alpha", () => {

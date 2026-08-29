@@ -1,3 +1,4 @@
+export * from "./adapters.js";
 export * from "./definition.js";
 export * from "./tool.js";
 export { tableExample as example } from "./tool.js";

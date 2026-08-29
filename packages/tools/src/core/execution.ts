@@ -1,4 +1,15 @@
-import type { ToolExecutionContext, ToolProgress } from "./definition.js";
+import type {
+  ToolDefinition,
+  ToolExecutionContext,
+  ToolProgress,
+} from "./definition.js";
+import {
+  toolCapabilityUnavailable,
+  toolDatasetUnavailable,
+  toolExecutionCancelled,
+  toolExecutionFailed,
+  type ToolResult,
+} from "./result.js";
 
 export type ToolExecutionControl = {
   /**
@@ -107,4 +118,43 @@ export const shouldReportProgress = (
     throw new RangeError("Progress interval must be a positive safe integer.");
   }
   return completed === total || completed % interval === 0;
+};
+
+const failureMessage = (error: unknown): string =>
+  error instanceof Error && error.message.trim() !== ""
+    ? `Tool execution failed: ${error.message}`
+    : "Tool execution failed.";
+
+export const executeToolDefinition = async <Output>(
+  tool: ToolDefinition<unknown, Output>,
+  input: unknown,
+  context?: ToolExecutionContext,
+): Promise<ToolResult<Output>> => {
+  if (context?.signal?.aborted) return toolExecutionCancelled();
+
+  try {
+    for (const requirement of tool.execution.capabilities ?? []) {
+      if (!requirement.required) continue;
+      if (
+        !context?.capabilities ||
+        !(await context.capabilities.supports(requirement))
+      )
+        return toolCapabilityUnavailable(
+          requirement.id,
+          requirement.schemaVersion,
+        );
+    }
+    for (const requirement of tool.execution.datasets ?? [])
+      if (!context?.datasets || !(await context.datasets.supports(requirement)))
+        return toolDatasetUnavailable(
+          requirement.id,
+          requirement.schemaVersion,
+        );
+
+    if (context?.signal?.aborted) return toolExecutionCancelled();
+    const result = tool.execute(input, context);
+    return context?.signal?.aborted ? toolExecutionCancelled() : result;
+  } catch (error) {
+    return toolExecutionFailed(failureMessage(error));
+  }
 };

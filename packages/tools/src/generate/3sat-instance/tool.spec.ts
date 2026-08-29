@@ -12,7 +12,7 @@ describe("3SAT instance", () => {
     const result = runThreeSatInstance(threeSatInstanceExample.input);
     expect(
       result.ok &&
-        (result.output.instance as { clauses: number[][] }).clauses.every(
+        result.output.instance.clauses.every(
           (clause) => new Set(clause.map(Math.abs)).size === 3,
         ),
     ).toBe(true);

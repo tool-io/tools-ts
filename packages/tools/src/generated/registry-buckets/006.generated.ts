@@ -7,6 +7,7 @@ export const toolModuleLoaders: Readonly<
   "actuarial/whole-life-annuity-due-epv": () => import("../../actuarial/whole-life-annuity-due-epv/index.js"),
   "archival-studies/checksum-fixity-comparator": () => import("../../archival-studies/checksum-fixity-comparator/index.js"),
   "body-roundness-index": () => import("../../body-roundness-index/index.js"),
+  "chart/pie": () => import("../../chart/pie/index.js"),
   "chemistry/mass-spec-isotopic-pattern": () => import("../../chemistry/mass-spec-isotopic-pattern/index.js"),
   "chemistry/quantum-de-broglie-wavelength": () => import("../../chemistry/quantum-de-broglie-wavelength/index.js"),
   "convert/decimal-to-bcd": () => import("../../convert/decimal-to-bcd/index.js"),

@@ -16,7 +16,7 @@ export type MapToolInput = {
 export type MapToolOutput = { readonly document: MapDocument };
 
 const exampleData: TableData = {
-  kind: "toolio/table",
+  kind: "tool.io/table",
   rows: [[28.59, -80.65, "negative"]],
   schema: {
     fields: [
@@ -43,7 +43,7 @@ const exampleSpec: MapSpec = {
     latitude: { field: "latitude" },
     longitude: { field: "longitude" },
   },
-  kind: "toolio/map-spec",
+  kind: "tool.io/map-spec",
   title: "Lightning observations",
   type: "points",
   version: 1,
@@ -86,7 +86,7 @@ export const mapTool = defineTool<MapToolInput, MapToolOutput>({
     if (
       typeof candidate.spec !== "object" ||
       candidate.spec === null ||
-      candidate.spec.kind !== "toolio/map-spec" ||
+      candidate.spec.kind !== "tool.io/map-spec" ||
       candidate.spec.version !== 1 ||
       candidate.spec.type !== "points" ||
       typeof candidate.spec.encoding?.latitude?.field !== "string" ||
@@ -96,7 +96,7 @@ export const mapTool = defineTool<MapToolInput, MapToolOutput>({
         {
           code: "invalid_map_spec",
           field: "spec",
-          message: "Enter a Tool.io point MapSpec Version 1 value.",
+          message: "Enter a tool.io point MapSpec Version 1 value.",
         },
       ]);
     const mapEncodingValues = Object.values(candidate.spec.encoding).flatMap(
@@ -155,19 +155,19 @@ export const mapTool = defineTool<MapToolInput, MapToolOutput>({
       {
         id: "data",
         label: "Table data",
-        valueType: { format: "table/toolio", type: "object" },
+        valueType: { format: "tool.io/table", type: "object" },
       },
       {
         id: "spec",
         label: "Map specification",
-        valueType: { format: "map/spec", type: "object" },
+        valueType: { format: "tool.io/map-spec", type: "object" },
       },
     ],
     outputs: [
       {
         id: "document",
         label: "Map document",
-        valueType: { format: "map/document", type: "object" },
+        valueType: { format: "tool.io/map-document", type: "object" },
       },
     ],
   },

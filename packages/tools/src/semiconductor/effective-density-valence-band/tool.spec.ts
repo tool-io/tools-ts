@@ -86,11 +86,10 @@ describe("semiconductor effective density valence band", () => {
     } as never);
     expect(unk.ok).toBe(false);
     if (!unk.ok) expect(unk.error.issues[0].code).toBe("unknown_field");
-    expect(runEffectiveDensityValenceBand(null as never).ok).toBe(false);
-    if (!runEffectiveDensityValenceBand(null as never).ok)
-      expect(
-        runEffectiveDensityValenceBand(null as never).error.issues[0].code,
-      ).toBe("object_required");
+    const nonObject = runEffectiveDensityValenceBand(null as never);
+    expect(nonObject.ok).toBe(false);
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
     expect(runEffectiveDensityValenceBand([] as never).ok).toBe(false);
   });
 

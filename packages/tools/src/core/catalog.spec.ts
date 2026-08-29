@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import bodyMassIndexTool from "../body-mass-index/tool.js";
 import { createToolCatalogEntry } from "./catalog.js";
+import tableTool from "../table/tool.js";
 
 describe("tool catalog metadata", () => {
   it("publishes the supplied implementation date", () => {
@@ -22,5 +23,17 @@ describe("tool catalog metadata", () => {
         "not-a-date",
       ),
     ).toThrow("valid date-time");
+  });
+
+  it("publishes generated presentation declarations", () => {
+    const entry = createToolCatalogEntry(
+      tableTool,
+      "test-fingerprint",
+      "2026-08-29T12:00:00+02:00",
+    );
+    expect(entry.ports.outputs[0]?.presentation).toEqual({
+      kind: "table",
+      version: 1,
+    });
   });
 });

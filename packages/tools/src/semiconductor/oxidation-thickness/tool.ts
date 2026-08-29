@@ -32,9 +32,13 @@ export const calculateOxideThickness = (
       "Oxidation time must be a finite number at least 0.",
       "invalid_time",
     );
-  // sqrt(B) * sqrt(t) remains finite whenever the mathematical result does,
-  // even if the intermediate product B*t would overflow.
-  const oxideThicknessNm = Math.sqrt(b) * Math.sqrt(t);
+  const product = b * t;
+  // Use the direct product when representable for the best rounding. Splitting
+  // the square roots avoids intermediate overflow or underflow otherwise.
+  const oxideThicknessNm =
+    t === 0 || (Number.isFinite(product) && product > 0)
+      ? Math.sqrt(product)
+      : Math.sqrt(b) * Math.sqrt(t);
   if (!Number.isFinite(oxideThicknessNm) || (t > 0 && oxideThicknessNm === 0))
     simpleError(
       "oxidationTimeHours",

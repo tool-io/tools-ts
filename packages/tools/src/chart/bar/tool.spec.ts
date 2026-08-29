@@ -8,4 +8,16 @@ describe("chart/bar", () => {
       output: barChartExample.output,
     });
   });
+
+  it("rejects unsupported runtime options", () => {
+    expect(
+      runBarChart({
+        ...barChartExample.input,
+        orientation: "diagonal" as never,
+      }),
+    ).toMatchObject({
+      error: { issues: [{ code: "invalid_option", field: "orientation" }] },
+      ok: false,
+    });
+  });
 });

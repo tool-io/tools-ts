@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tool.io/contracts/table-data.schema.json",
+  "title": "tool.io table data",
+  "$ref": "#/$defs/tableData",
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._/-]*$"
+    },
+    "metadata": {
+      "type": "object",
+      "propertyNames": { "type": "string", "minLength": 1 },
+      "additionalProperties": { "type": "string" }
+    },
+    "jsonValue": {
+      "anyOf": [
+        { "type": "null" },
+        { "type": "boolean" },
+        { "type": "number" },
+        { "type": "string" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/$defs/jsonValue" }
+        },
+        {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/jsonValue" }
+        }
+      ]
+    },
+    "timeUnit": {
+      "enum": ["second", "millisecond", "microsecond", "nanosecond"]
+    },
+    "dataType": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind"],
+          "properties": { "kind": { "const": "boolean" } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "bits", "signed"],
+          "properties": {
+            "kind": { "const": "integer" },
+            "bits": { "enum": [8, 16, 32, 64] },
+            "signed": { "type": "boolean" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "bits"],
+          "properties": {
+            "kind": { "const": "float" },
+            "bits": { "enum": [32, 64] }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "precision", "scale"],
+          "properties": {
+            "kind": { "const": "decimal" },
+            "precision": { "type": "integer", "minimum": 1 },
+            "scale": { "type": "integer", "minimum": 0 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind"],
+          "properties": { "kind": { "const": "string" } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "encoding"],
+          "properties": {
+            "kind": { "const": "binary" },
+            "encoding": { "const": "base64" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind"],
+          "properties": { "kind": { "const": "date" } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "unit"],
+          "properties": {
+            "kind": { "const": "time" },
+            "unit": { "$ref": "#/$defs/timeUnit" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "unit"],
+          "properties": {
+            "kind": { "const": "timestamp" },
+            "unit": { "$ref": "#/$defs/timeUnit" },
+            "timezone": { "type": "string", "minLength": 1 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "unit"],
+          "properties": {
+            "kind": { "const": "duration" },
+            "unit": {
+              "enum": [
+                "iso8601",
+                "second",
+                "millisecond",
+                "microsecond",
+                "nanosecond"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "items"],
+          "properties": {
+            "kind": { "const": "list" },
+            "items": { "$ref": "#/$defs/field" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "fields"],
+          "properties": {
+            "kind": { "const": "struct" },
+            "fields": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/field" }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind"],
+          "properties": { "kind": { "const": "json" } }
+        }
+      ]
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "nullable", "dataType"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "label": { "type": "string", "minLength": 1 },
+        "description": { "type": "string" },
+        "nullable": { "type": "boolean" },
+        "dataType": { "$ref": "#/$defs/dataType" },
+        "unit": { "type": "string", "minLength": 1 },
+        "semanticType": { "type": "string", "minLength": 1 },
+        "metadata": { "$ref": "#/$defs/metadata" }
+      }
+    },
+    "tableSchema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fields"],
+      "properties": {
+        "fields": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/field" }
+        },
+        "primaryKey": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/identifier" }
+        },
+        "metadata": { "$ref": "#/$defs/metadata" }
+      }
+    },
+    "tableData": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "version", "schema", "rows"],
+      "properties": {
+        "kind": { "const": "tool.io/table" },
+        "version": { "const": 1 },
+        "schema": { "$ref": "#/$defs/tableSchema" },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/jsonValue" }
+          }
+        },
+        "metadata": { "$ref": "#/$defs/metadata" }
+      }
+    }
+  }
+}

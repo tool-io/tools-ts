@@ -100,11 +100,10 @@ describe("Coulomb Blockade Voltage Calculator", () => {
   });
 
   it("rejects non-object input", () => {
-    expect(runCoulombBlockadeVoltage(null as never).ok).toBe(false);
-    if (!runCoulombBlockadeVoltage(null as never).ok)
-      expect(
-        runCoulombBlockadeVoltage(null as never).error.issues[0].code,
-      ).toBe("object_required");
+    const nonObject = runCoulombBlockadeVoltage(null as never);
+    expect(nonObject.ok).toBe(false);
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
     expect(runCoulombBlockadeVoltage([] as never).ok).toBe(false);
     expect(runCoulombBlockadeVoltage(1 as never).ok).toBe(false);
   });

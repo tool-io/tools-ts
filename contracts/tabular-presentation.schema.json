@@ -82,7 +82,7 @@
       "additionalProperties": false,
       "required": ["kind", "version"],
       "properties": {
-        "kind": { "const": "toolio/table-spec" },
+        "kind": { "const": "tool.io/table-spec" },
         "version": { "const": 1 },
         "title": { "type": "string" },
         "caption": { "type": "string" },
@@ -159,7 +159,7 @@
       "additionalProperties": false,
       "required": ["kind", "version", "type", "encoding"],
       "properties": {
-        "kind": { "const": "toolio/chart-spec" },
+        "kind": { "const": "tool.io/chart-spec" },
         "version": { "const": 1 },
         "type": {
           "type": "string",
@@ -222,7 +222,7 @@
       "additionalProperties": false,
       "required": ["kind", "version", "type", "encoding"],
       "properties": {
-        "kind": { "const": "toolio/map-spec" },
+        "kind": { "const": "tool.io/map-spec" },
         "version": { "const": 1 },
         "type": { "const": "points" },
         "title": { "type": "string" },
@@ -284,7 +284,7 @@
       "additionalProperties": false,
       "required": ["kind", "version", "data", "spec", "warnings"],
       "properties": {
-        "kind": { "const": "toolio/table-document" },
+        "kind": { "const": "tool.io/table-document" },
         "version": { "const": 1 },
         "data": { "$ref": "table-data.schema.json" },
         "spec": { "$ref": "#/$defs/tableSpec" },
@@ -299,7 +299,7 @@
       "additionalProperties": false,
       "required": ["kind", "version", "data", "spec", "warnings"],
       "properties": {
-        "kind": { "const": "toolio/chart-document" },
+        "kind": { "const": "tool.io/chart-document" },
         "version": { "const": 1 },
         "data": { "$ref": "table-data.schema.json" },
         "spec": { "$ref": "#/$defs/chartSpec" },
@@ -314,7 +314,7 @@
       "additionalProperties": false,
       "required": ["kind", "version", "data", "spec", "warnings"],
       "properties": {
-        "kind": { "const": "toolio/map-document" },
+        "kind": { "const": "tool.io/map-document" },
         "version": { "const": 1 },
         "data": { "$ref": "table-data.schema.json" },
         "spec": { "$ref": "#/$defs/mapSpec" },

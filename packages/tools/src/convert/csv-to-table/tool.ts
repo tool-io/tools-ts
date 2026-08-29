@@ -1,11 +1,12 @@
 import { CsvParseError, parseCsv } from "../../core/csv.js";
 import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, simpleError } from "../../core/simple.js";
-import type {
-  TableData,
-  TableDataType,
-  TableJsonValue,
-} from "../../table/definition.js";
+import {
+  coerceTextTableCell,
+  inferTextTableDataType,
+  tableFieldIds,
+} from "../../table/adapters.js";
+import type { TableData } from "../../table/definition.js";
 
 export type CsvToTableInput = {
   readonly csv: string;
@@ -14,45 +15,6 @@ export type CsvToTableInput = {
   readonly inferTypes?: boolean;
 };
 export type CsvToTableOutput = { readonly table: TableData };
-
-const numberPattern = /^[-+]?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?$/u;
-const integerPattern = /^[-+]?\d+$/u;
-const datePattern = /^\d{4}-\d{2}-\d{2}$/u;
-
-const fieldId = (label: string, index: number): string => {
-  const normalized = label
-    .normalize("NFKD")
-    .replace(/[^A-Za-z0-9]+/gu, "-")
-    .replace(/^-+|-+$/gu, "")
-    .toLowerCase();
-  return /^[a-z]/u.test(normalized) ? normalized : `column-${index + 1}`;
-};
-
-const inferType = (cells: readonly string[]): TableDataType => {
-  const values = cells.filter((cell) => cell.trim() !== "");
-  if (values.length === 0) return { kind: "string" };
-  if (values.every((cell) => /^(?:true|false)$/iu.test(cell.trim())))
-    return { kind: "boolean" };
-  if (values.every((cell) => integerPattern.test(cell.trim())))
-    return { bits: 64, kind: "integer", signed: true };
-  if (values.every((cell) => numberPattern.test(cell.trim())))
-    return { bits: 64, kind: "float" };
-  if (values.every((cell) => datePattern.test(cell.trim())))
-    return { kind: "date" };
-  return { kind: "string" };
-};
-
-const convertCell = (cell: string, type: TableDataType): TableJsonValue => {
-  const value = cell.trim();
-  if (value === "") return null;
-  if (type.kind === "boolean") return value.toLowerCase() === "true";
-  if (type.kind === "integer") {
-    const number = Number(value);
-    return Number.isSafeInteger(number) ? number : value.replace(/^\+/u, "");
-  }
-  if (type.kind === "float") return Number(value);
-  return cell;
-};
 
 export const calculateCsvToTable = (
   input: CsvToTableInput,
@@ -82,23 +44,17 @@ export const calculateCsvToTable = (
     Array.from({ length: width }, (_, index) => `Column ${index + 1}`);
   if (new Set(labels).size !== labels.length)
     simpleError("csv", "CSV headers must be unique.", "duplicate_header");
-  const ids = labels.map(fieldId);
-  if (new Set(ids).size !== ids.length)
-    simpleError(
-      "csv",
-      "CSV headers must remain unique after normalization.",
-      "duplicate_normalized_header",
-    );
+  const ids = tableFieldIds(labels);
   const types = Array.from({ length: width }, (_, index) =>
     input.inferTypes === false
       ? ({ kind: "string" } as const)
-      : inferType(document.rows.map((row) => row[index]!)),
+      : inferTextTableDataType(document.rows.map((row) => row[index]!)),
   );
   return {
     table: {
-      kind: "toolio/table",
+      kind: "tool.io/table",
       rows: document.rows.map((row) =>
-        row.map((cell, index) => convertCell(cell, types[index]!)),
+        row.map((cell, index) => coerceTextTableCell(cell, types[index]!)),
       ),
       schema: {
         fields: labels.map((label, index) => ({
@@ -117,7 +73,7 @@ export const csvToTableExample = {
   input: { csv: "hour,strikes\n20:00,12\n21:00,72\n" },
   output: {
     table: {
-      kind: "toolio/table",
+      kind: "tool.io/table",
       rows: [
         ["20:00", 12],
         ["21:00", 72],
@@ -178,7 +134,7 @@ export const csvToTableTool = createSimpleTool({
   ],
   outputs: [
     {
-      format: "table/toolio",
+      format: "tool.io/table",
       id: "table",
       kind: "object",
       label: "Table",

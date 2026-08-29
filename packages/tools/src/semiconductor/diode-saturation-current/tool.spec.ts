@@ -72,17 +72,15 @@ describe("diode saturation current calculator", () => {
   });
 
   it("rejects missing required inputs", () => {
-    expect(runDiodeSaturationCurrent({} as never).ok).toBe(false);
+    const missing = runDiodeSaturationCurrent({} as never);
+    expect(missing.ok).toBe(false);
     expect(
       runDiodeSaturationCurrent({ forwardVoltageV: 0.65 } as never).ok,
     ).toBe(false);
     expect(runDiodeSaturationCurrent({ forwardCurrentMa: 1 } as never).ok).toBe(
       false,
     );
-    if (!runDiodeSaturationCurrent({} as never).ok)
-      expect(runDiodeSaturationCurrent({} as never).error.issues[0].code).toBe(
-        "invalid_field",
-      );
+    if (!missing.ok) expect(missing.error.issues[0].code).toBe("invalid_field");
   });
 
   it("rejects wrong type inputs", () => {
@@ -121,11 +119,10 @@ describe("diode saturation current calculator", () => {
   });
 
   it("rejects non-object input", () => {
-    expect(runDiodeSaturationCurrent(null as never).ok).toBe(false);
-    if (!runDiodeSaturationCurrent(null as never).ok)
-      expect(
-        runDiodeSaturationCurrent(null as never).error.issues[0].code,
-      ).toBe("object_required");
+    const nonObject = runDiodeSaturationCurrent(null as never);
+    expect(nonObject.ok).toBe(false);
+    if (!nonObject.ok)
+      expect(nonObject.error.issues[0].code).toBe("object_required");
     expect(runDiodeSaturationCurrent([] as never).ok).toBe(false);
   });
 

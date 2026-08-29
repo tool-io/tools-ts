@@ -7,6 +7,7 @@ export const toolModuleLoaders: Readonly<
   "actuarial/compound-poisson-total-variance": () => import("../../actuarial/compound-poisson-total-variance/index.js"),
   "actuarial/reversionary-annuity-epv": () => import("../../actuarial/reversionary-annuity-epv/index.js"),
   "carpentry/kanten-runden-radius-2mm": () => import("../../carpentry/kanten-runden-radius-2mm/index.js"),
+  "chart/line": () => import("../../chart/line/index.js"),
   "chemistry/analytical-standardization-factor": () => import("../../chemistry/analytical-standardization-factor/index.js"),
   "classification/precision": () => import("../../classification/precision/index.js"),
   "convert/atbash-cipher": () => import("../../convert/atbash-cipher/index.js"),

@@ -19,7 +19,7 @@ export type MapSpec = {
     readonly size?: MapEncoding;
     readonly tooltip?: readonly MapEncoding[];
   };
-  readonly kind: "toolio/map-spec";
+  readonly kind: "tool.io/map-spec";
   readonly legend?: {
     readonly position?: "bottom" | "left" | "right" | "top";
     readonly title?: string;
@@ -45,7 +45,7 @@ export type MapSpec = {
 
 export type MapDocument = {
   readonly data: TableData;
-  readonly kind: "toolio/map-document";
+  readonly kind: "tool.io/map-document";
   readonly spec: MapSpec;
   readonly version: 1;
   readonly warnings: readonly PresentationWarning[];
@@ -81,7 +81,7 @@ export const createMapDocument = (
   }
   return {
     data,
-    kind: "toolio/map-document",
+    kind: "tool.io/map-document",
     spec,
     version: 1,
     warnings,

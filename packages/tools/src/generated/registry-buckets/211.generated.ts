@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/gelaender-pfosten-abstand-15m": () => import("../../carpentry/gelaender-pfosten-abstand-15m/index.js"),
   "carpentry/treppen-auftritt-28-29-ideal": () => import("../../carpentry/treppen-auftritt-28-29-ideal/index.js"),
   "chemistry/electrolysis-gas-volume-stp": () => import("../../chemistry/electrolysis-gas-volume-stp/index.js"),
+  "convert/markdown-to-table": () => import("../../convert/markdown-to-table/index.js"),
   "decode/url-component": () => import("../../decode/url-component/index.js"),
   "geology/nodal-analysis-outflow-performance": () => import("../../geology/nodal-analysis-outflow-performance/index.js"),
   "number/least-common-multiple": () => import("../../number/least-common-multiple/index.js"),

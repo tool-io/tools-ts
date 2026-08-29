@@ -1,6 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { isDeepStrictEqual } from "node:util";
+import { assertContractCollectionMatchesSchema } from "./contract-schema-validation.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const packageRoot = path.join(root, "packages/tools");
@@ -20,6 +21,20 @@ const { portableToolContract } = await import(
 const generatedContracts = JSON.parse(
   await readFile(path.join(packageRoot, "contracts.generated.json"), "utf8"),
 );
+const [collectionSchema, toolSchema] = await Promise.all([
+  readFile(
+    path.join(root, "contracts/tool-contract-collection.schema.json"),
+    "utf8",
+  ).then(JSON.parse),
+  readFile(path.join(root, "contracts/tool-contract.schema.json"), "utf8").then(
+    JSON.parse,
+  ),
+]);
+assertContractCollectionMatchesSchema({
+  collection: generatedContracts,
+  collectionSchema,
+  toolSchema,
+});
 
 const isRecord = (value) =>
   typeof value === "object" && value !== null && !Array.isArray(value);

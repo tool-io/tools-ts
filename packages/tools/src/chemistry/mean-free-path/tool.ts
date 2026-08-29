@@ -71,6 +71,6 @@ export const meanFreePathExample = {
     collisionDiameterNM: 1,
   },
   output: {
-    meanFreePathM: 0.000003107552855377614,
+    meanFreePathM: 0.0000031075520539649807,
   },
 } satisfies ToolExample<MeanFreePathInput, MeanFreePathOutput>;

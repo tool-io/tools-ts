@@ -7,7 +7,7 @@ import {
 
 describe("Matrix as Table", () => {
   it("creates numbered columns", () =>
-    expect(matrixAsTable("1 2")?.columns[1]?.id).toBe("column-2"));
+    expect(matrixAsTable("1 2")?.schema.fields[1]?.id).toBe("column-2"));
   it("formats canonical matrix values from a chain", () =>
     expect(
       matrixAsTable({
