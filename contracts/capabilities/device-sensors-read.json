@@ -1,0 +1,29 @@
+{
+  "description": "Read one normalized snapshot from a selected device sensor.",
+  "id": "device/sensors/read",
+  "mode": "snapshot",
+  "requestSchema": {
+    "additionalProperties": false,
+    "properties": {
+      "sensorId": { "type": "string", "minLength": 1 }
+    },
+    "required": ["sensorId"],
+    "type": "object"
+  },
+  "responseSchema": {
+    "additionalProperties": false,
+    "properties": {
+      "observedAt": { "type": "string", "minLength": 1 },
+      "sensorId": { "type": "string", "minLength": 1 },
+      "unit": { "type": "string", "minLength": 1 },
+      "values": {
+        "additionalProperties": { "type": "number" },
+        "type": "object"
+      }
+    },
+    "required": ["observedAt", "sensorId", "unit", "values"],
+    "type": "object"
+  },
+  "schemaVersion": 1,
+  "sensitivity": "sensitive"
+}

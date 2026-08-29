@@ -1,0 +1,36 @@
+{
+  "description": "List normalized sensors that the current device and surface expose.",
+  "id": "device/sensors/enumerate",
+  "mode": "snapshot",
+  "requestSchema": {
+    "additionalProperties": false,
+    "properties": {},
+    "type": "object"
+  },
+  "responseSchema": {
+    "additionalProperties": false,
+    "properties": {
+      "deviceClass": { "type": "string", "minLength": 1 },
+      "sensors": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "id": { "type": "string", "minLength": 1 },
+            "kind": { "type": "string", "minLength": 1 },
+            "label": { "type": "string", "minLength": 1 },
+            "status": {
+              "enum": ["available", "permission-required", "unavailable"]
+            }
+          },
+          "required": ["id", "kind", "label", "status"],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": ["deviceClass", "sensors"],
+    "type": "object"
+  },
+  "schemaVersion": 1,
+  "sensitivity": "personal"
+}
