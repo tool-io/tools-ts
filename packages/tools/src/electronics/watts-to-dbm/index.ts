@@ -1,6 +1,7 @@
 export {
   default,
   runWattsToDbm,
+  wattsToDbmExample as example,
   wattsToDbmExample,
   wattsToDbmTool,
 } from "./tool.js";

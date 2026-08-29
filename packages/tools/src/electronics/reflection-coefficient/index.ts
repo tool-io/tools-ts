@@ -1,5 +1,6 @@
 export {
   default,
+  reflectionCoefficientExample as example,
   reflectionCoefficientExample,
   reflectionCoefficientTool,
   runReflectionCoefficient,

@@ -1,5 +1,6 @@
 export {
   default,
+  qFromBandwidthExample as example,
   qFromBandwidthExample,
   qFromBandwidthTool,
   runQFromBandwidth,

@@ -1,6 +1,7 @@
 export {
   default,
   runTransformerVoltageRatio,
+  transformerVoltageRatioExample as example,
   transformerVoltageRatioExample,
   transformerVoltageRatioTool,
 } from "./tool.js";

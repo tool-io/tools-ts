@@ -1,6 +1,7 @@
 export {
   default,
   runWirePowerLoss,
+  wirePowerLossExample as example,
   wirePowerLossExample,
   wirePowerLossTool,
 } from "./tool.js";

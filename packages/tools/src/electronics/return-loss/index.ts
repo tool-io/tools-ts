@@ -1,5 +1,6 @@
 export {
   default,
+  returnLossExample as example,
   returnLossExample,
   returnLossTool,
   runReturnLoss,

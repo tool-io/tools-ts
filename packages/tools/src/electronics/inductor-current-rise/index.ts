@@ -1,5 +1,6 @@
 export {
   default,
+  inductorCurrentRiseExample as example,
   inductorCurrentRiseExample,
   inductorCurrentRiseTool,
   runInductorCurrentRise,

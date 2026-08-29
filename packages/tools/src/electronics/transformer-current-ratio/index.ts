@@ -1,6 +1,7 @@
 export {
   default,
   runTransformerCurrentRatio,
+  transformerCurrentRatioExample as example,
   transformerCurrentRatioExample,
   transformerCurrentRatioTool,
 } from "./tool.js";

@@ -1,5 +1,6 @@
 export {
   default,
+  dampingFactorExample as example,
   dampingFactorExample,
   dampingFactorTool,
   runDampingFactor,

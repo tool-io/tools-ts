@@ -1,5 +1,6 @@
 export {
   default,
+  resistivityToConductivityExample as example,
   resistivityToConductivityExample,
   resistivityToConductivityTool,
   runResistivityToConductivity,

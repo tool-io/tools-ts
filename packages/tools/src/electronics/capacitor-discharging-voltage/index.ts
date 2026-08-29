@@ -1,5 +1,6 @@
 export {
   default,
+  capacitorDischargingVoltageExample as example,
   capacitorDischargingVoltageExample,
   capacitorDischargingVoltageTool,
   runCapacitorDischargingVoltage,

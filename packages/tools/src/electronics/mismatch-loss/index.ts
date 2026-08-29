@@ -1,5 +1,6 @@
 export {
   default,
+  mismatchLossExample as example,
   mismatchLossExample,
   mismatchLossTool,
   runMismatchLoss,

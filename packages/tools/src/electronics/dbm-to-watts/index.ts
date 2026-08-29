@@ -1,4 +1,5 @@
 export {
+  dbmToWattsExample as example,
   dbmToWattsExample,
   dbmToWattsTool,
   default,

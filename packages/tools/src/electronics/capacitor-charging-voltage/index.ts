@@ -1,5 +1,6 @@
 export {
   default,
+  capacitorChargingVoltageExample as example,
   capacitorChargingVoltageExample,
   capacitorChargingVoltageTool,
   runCapacitorChargingVoltage,

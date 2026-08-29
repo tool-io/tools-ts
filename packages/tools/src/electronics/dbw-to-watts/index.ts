@@ -1,4 +1,5 @@
 export {
+  dbwToWattsExample as example,
   dbwToWattsExample,
   dbwToWattsTool,
   default,

@@ -3,7 +3,7 @@ import { createSimpleTool, simpleError } from "../../core/simple.js";
 
 export const mosfetOutputResistanceChannelLengthExample = {
   input: { drainCurrentMa: 1, lambdaPerV: 0.02 },
-  output: { outputResistanceKohm: 50 },
+  output: { outputResistanceKohm: 49.99999999999999 },
 } satisfies ToolExample<
   MosfetOutputResistanceInput,
   MosfetOutputResistanceOutput

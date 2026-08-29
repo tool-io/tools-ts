@@ -1,6 +1,7 @@
 export {
   default,
   runVswrFromReflection,
+  vswrFromReflectionExample as example,
   vswrFromReflectionExample,
   vswrFromReflectionTool,
 } from "./tool.js";

@@ -1,6 +1,7 @@
 export {
   default,
   runTransformerImpedanceRatio,
+  transformerImpedanceRatioExample as example,
   transformerImpedanceRatioExample,
   transformerImpedanceRatioTool,
 } from "./tool.js";

@@ -1,6 +1,7 @@
 export {
   default,
   runSkinDepth,
+  skinDepthExample as example,
   skinDepthExample,
   skinDepthTool,
 } from "./tool.js";
