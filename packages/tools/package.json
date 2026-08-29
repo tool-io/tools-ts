@@ -84,6 +84,7 @@
     "build": "node ../../scripts/generate-structure.mjs && tsc -p tsconfig.build.json && node ../../scripts/generate-catalog.mjs",
     "check": "tsc -p tsconfig.json --noEmit",
     "check:generated": "node ../../scripts/generate-structure.mjs --check && tsc -p tsconfig.build.json && node ../../scripts/generate-catalog.mjs --check",
+    "check:release": "node ../../scripts/validate-release-package.mjs",
     "generate": "node ../../scripts/generate-structure.mjs",
     "test:unit": "vitest run",
     "unittest": "vitest run",

@@ -7,6 +7,7 @@
     "check": "pnpm --filter @tool.io/tools check",
     "check:contribution": "node scripts/validate-contributions.mjs",
     "check:generated": "node --test scripts/implementation-dates.test.mjs scripts/contract-schema-validation.test.mjs scripts/portable-schema-validation.test.mjs scripts/tabular-schema-validation.test.mjs && pnpm --filter @tool.io/tools check:generated",
+    "check:release": "pnpm --filter @tool.io/tools check:release",
     "generate": "pnpm --filter @tool.io/tools generate",
     "test:unit": "pnpm --filter @tool.io/tools test:unit",
     "unittest": "pnpm --filter @tool.io/tools unittest",
