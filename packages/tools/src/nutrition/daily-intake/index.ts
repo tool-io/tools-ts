@@ -1,0 +1,15 @@
+export {
+  calculateDailyIntake,
+  dailyIntakeExample,
+  dailyIntakeExample as example,
+  dailyIntakeInputSchema,
+  dailyIntakeOutputSchema,
+  dailyIntakeTool,
+  dailyIntakeTool as default,
+  isDailyIntakeOutput,
+  type DailyIntakeFood,
+  type DailyIntakeInput,
+  type DailyIntakeNutrient,
+  type DailyIntakeOutput,
+  type DailyIntakeReferenceValue,
+} from "./tool.js";
