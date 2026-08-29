@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "decode/gray-code": () => import("../../decode/gray-code/index.js"),
   "geology/ar-ar-age": () => import("../../geology/ar-ar-age/index.js"),
   "geology/earth-pressure-at-rest": () => import("../../geology/earth-pressure-at-rest/index.js"),
+  "laser/laser-carrier-envelope-offset-f-to-2f-interferometer-stabilizer-lookup": () => import("../../laser/laser-carrier-envelope-offset-f-to-2f-interferometer-stabilizer-lookup/index.js"),
   "sailing/sheet-load-main": () => import("../../sailing/sheet-load-main/index.js"),
   "seismology/average-radiation-factor-boore-boatwright-lookup": () => import("../../seismology/average-radiation-factor-boore-boatwright-lookup/index.js"),
   "seismology/well-log-acoustic-impedance-reflection-coefficient": () => import("../../seismology/well-log-acoustic-impedance-reflection-coefficient/index.js"),

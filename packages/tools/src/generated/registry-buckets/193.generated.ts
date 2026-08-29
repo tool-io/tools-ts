@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/van-der-waals-pressure-correction": () => import("../../chemistry/van-der-waals-pressure-correction/index.js"),
   "distance/manhattan": () => import("../../distance/manhattan/index.js"),
   "geometry/distance": () => import("../../geometry/distance/index.js"),
+  "laser/laser-chemical-oxygen-iodine-energy-transfer-efficiency-lookup": () => import("../../laser/laser-chemical-oxygen-iodine-energy-transfer-efficiency-lookup/index.js"),
   "logistics/fifo-layer-remaining-quantity-tracker": () => import("../../logistics/fifo-layer-remaining-quantity-tracker/index.js"),
   "logistics/revenue-per-ton-mile": () => import("../../logistics/revenue-per-ton-mile/index.js"),
   "number/lucas-checker": () => import("../../number/lucas-checker/index.js"),

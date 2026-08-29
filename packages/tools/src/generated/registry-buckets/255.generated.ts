@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "demography/intrinsic-birth-rate-b-stable": () => import("../../demography/intrinsic-birth-rate-b-stable/index.js"),
   "demography/youth-bulge-share-checker": () => import("../../demography/youth-bulge-share-checker/index.js"),
   "electronics/pa-efficiency-pae": () => import("../../electronics/pa-efficiency-pae/index.js"),
+  "laser/laser-chirped-pulse-amplification-stretcher-compressor-ratio-calculator": () => import("../../laser/laser-chirped-pulse-amplification-stretcher-compressor-ratio-calculator/index.js"),
   "mycology/sectoring-variant-flag-detector": () => import("../../mycology/sectoring-variant-flag-detector/index.js"),
   "neural-network/feedforward": () => import("../../neural-network/feedforward/index.js"),
   "set/difference": () => import("../../set/difference/index.js"),

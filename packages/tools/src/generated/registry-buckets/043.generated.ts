@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/decibel-power-ratio": () => import("../../electronics/decibel-power-ratio/index.js"),
   "encode/url-component": () => import("../../encode/url-component/index.js"),
   "geology/specific-gravity": () => import("../../geology/specific-gravity/index.js"),
+  "laser/laser-co2-line-selection-isotope-rotation-vibration-wavelength-table-lookup": () => import("../../laser/laser-co2-line-selection-isotope-rotation-vibration-wavelength-table-lookup/index.js"),
   "oenology/cork-soak-planner": () => import("../../oenology/cork-soak-planner/index.js"),
   "proportions/aspect-ratio": () => import("../../proportions/aspect-ratio/index.js"),
   "seismology/attenuation-quality-factor-q": () => import("../../seismology/attenuation-quality-factor-q/index.js"),

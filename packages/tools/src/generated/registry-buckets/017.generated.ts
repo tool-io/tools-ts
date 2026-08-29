@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/boundary-term-detector": () => import("../../epigraphy/boundary-term-detector/index.js"),
   "geology/harker-diagram-silica": () => import("../../geology/harker-diagram-silica/index.js"),
   "geology/relative-permeability-oil-water": () => import("../../geology/relative-permeability-oil-water/index.js"),
+  "laser/laser-he-ne-632-8-nm-mode-hop-free-cavity-length-tube-design-lookup": () => import("../../laser/laser-he-ne-632-8-nm-mode-hop-free-cavity-length-tube-design-lookup/index.js"),
   "matrix/reshape": () => import("../../matrix/reshape/index.js"),
   "semiconductor/doping-concentration-from-resistivity": () => import("../../semiconductor/doping-concentration-from-resistivity/index.js"),
   "semiconductor/polaron-effective-mass": () => import("../../semiconductor/polaron-effective-mass/index.js"),

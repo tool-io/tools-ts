@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/ics-ref-format-validator": () => import("../../epigraphy/ics-ref-format-validator/index.js"),
   "finance/discount-price": () => import("../../finance/discount-price/index.js"),
   "geometry/cuboid-volume": () => import("../../geometry/cuboid-volume/index.js"),
+  "laser/laser-nitrogen-337-superradiant-self-terminating-upper-state-life-note": () => import("../../laser/laser-nitrogen-337-superradiant-self-terminating-upper-state-life-note/index.js"),
   "oenology/va-threshold-checker": () => import("../../oenology/va-threshold-checker/index.js"),
   "seismology/liquefaction-feature-magnitude-bound-lookup": () => import("../../seismology/liquefaction-feature-magnitude-bound-lookup/index.js"),
   "seismology/nearest-neighbor-space-time-linkage-distance": () => import("../../seismology/nearest-neighbor-space-time-linkage-distance/index.js"),

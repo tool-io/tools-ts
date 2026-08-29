@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/faraday-mass-deposited": () => import("../../chemistry/faraday-mass-deposited/index.js"),
   "electronics/coaxial-capacitance-per-meter": () => import("../../electronics/coaxial-capacitance-per-meter/index.js"),
   "epigraphy/seg-entry-parser": () => import("../../epigraphy/seg-entry-parser/index.js"),
+  "laser/laser-ti-sapphire-kerr-lens-soft-aperture-stability-checker": () => import("../../laser/laser-ti-sapphire-kerr-lens-soft-aperture-stability-checker/index.js"),
   "list/rotate": () => import("../../list/rotate/index.js"),
   "mycology/ornamentation-type-classifier": () => import("../../mycology/ornamentation-type-classifier/index.js"),
   "paleography/majuscule-minuscule-balance-calculator": () => import("../../paleography/majuscule-minuscule-balance-calculator/index.js"),

@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/slew-rate-bandwidth-limit": () => import("../../electronics/slew-rate-bandwidth-limit/index.js"),
   "epigraphy/vacat-dot-series-counter": () => import("../../epigraphy/vacat-dot-series-counter/index.js"),
   "geology/coefficient-of-volume-compressibility": () => import("../../geology/coefficient-of-volume-compressibility/index.js"),
+  "laser/laser-autocorrelator-intensity-field-deconvolution-factor-converter": () => import("../../laser/laser-autocorrelator-intensity-field-deconvolution-factor-converter/index.js"),
   "oenology/tca-incidence-probability": () => import("../../oenology/tca-incidence-probability/index.js"),
   "seismology/rms-velocity-dix-equation-interval-velocity-calculator": () => import("../../seismology/rms-velocity-dix-equation-interval-velocity-calculator/index.js"),
   "semiconductor/high-k-dielectric-eot": () => import("../../semiconductor/high-k-dielectric-eot/index.js"),

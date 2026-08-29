@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/libertus-l-suffix-detector": () => import("../../epigraphy/libertus-l-suffix-detector/index.js"),
   "epigraphy/margin-symmetry-deviation-rater": () => import("../../epigraphy/margin-symmetry-deviation-rater/index.js"),
   "geology/secondary-compression-settlement": () => import("../../geology/secondary-compression-settlement/index.js"),
+  "laser/laser-thulium-fiber-1908-nm-holmium-cascade-hard-tissue-lookup": () => import("../../laser/laser-thulium-fiber-1908-nm-holmium-cascade-hard-tissue-lookup/index.js"),
   "matrix/identity": () => import("../../matrix/identity/index.js"),
   "sailing/sail-load": () => import("../../sailing/sail-load/index.js"),
   "semiconductor/subthreshold-swing": () => import("../../semiconductor/subthreshold-swing/index.js"),

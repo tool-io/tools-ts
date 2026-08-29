@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/power-factor": () => import("../../electronics/power-factor/index.js"),
   "electronics/shot-noise-current": () => import("../../electronics/shot-noise-current/index.js"),
   "electronics/strain-gauge-factor": () => import("../../electronics/strain-gauge-factor/index.js"),
+  "filter/hacker-news": () => import("../../filter/hacker-news/index.js"),
   "geometry/circle-circumference": () => import("../../geometry/circle-circumference/index.js"),
   "graph/normalize-edge-list": () => import("../../graph/normalize-edge-list/index.js"),
   "seismology/group-vs-phase-velocity-difference": () => import("../../seismology/group-vs-phase-velocity-difference/index.js"),

@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/inductor-energy": () => import("../../electronics/inductor-energy/index.js"),
   "encode/uu": () => import("../../encode/uu/index.js"),
   "geology/gravity-anomaly-free-air": () => import("../../geology/gravity-anomaly-free-air/index.js"),
+  "laser/laser-m-squared-beam-quality-propagation-factor-divergence-product": () => import("../../laser/laser-m-squared-beam-quality-propagation-factor-divergence-product/index.js"),
   "logistics/redelivery-cost-multiplier-factor": () => import("../../logistics/redelivery-cost-multiplier-factor/index.js"),
   "number/parity-checker": () => import("../../number/parity-checker/index.js"),
   "seismology/p-wave-modulus-constrained": () => import("../../seismology/p-wave-modulus-constrained/index.js"),

@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "cost/employee": () => import("../../cost/employee/index.js"),
   "electronics/magnetic-flux": () => import("../../electronics/magnetic-flux/index.js"),
   "geology/decline-rate-harmonic": () => import("../../geology/decline-rate-harmonic/index.js"),
+  "laser/laser-fiber-bragg-grating-strain-temperature-pitch-shift-formula-calculator": () => import("../../laser/laser-fiber-bragg-grating-strain-temperature-pitch-shift-formula-calculator/index.js"),
   "physics/momentum": () => import("../../physics/momentum/index.js"),
   "reinforcement-learning/a3c-rollout-update": () => import("../../reinforcement-learning/a3c-rollout-update/index.js"),
   "sailing/spinnaker-pole-height": () => import("../../sailing/spinnaker-pole-height/index.js"),

@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/susceptance-inductive": () => import("../../electronics/susceptance-inductive/index.js"),
   "geology/seismic-reflection-coefficient": () => import("../../geology/seismic-reflection-coefficient/index.js"),
   "interpolation/cubic-hermite": () => import("../../interpolation/cubic-hermite/index.js"),
+  "laser/laser-high-harmonic-generation-cutoff-law-three-point-one-seven-up-formula": () => import("../../laser/laser-high-harmonic-generation-cutoff-law-three-point-one-seven-up-formula/index.js"),
   "logistics/hs-code-duty-rate-lookup": () => import("../../logistics/hs-code-duty-rate-lookup/index.js"),
   "mycology/amphotericin-breakpoint-category-mapper": () => import("../../mycology/amphotericin-breakpoint-category-mapper/index.js"),
   "oenology/tannin-addition-dose": () => import("../../oenology/tannin-addition-dose/index.js"),

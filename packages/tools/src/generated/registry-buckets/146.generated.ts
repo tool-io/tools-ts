@@ -10,6 +10,8 @@ export const toolModuleLoaders: Readonly<
   "chemistry/gibbs-from-cell-potential": () => import("../../chemistry/gibbs-from-cell-potential/index.js"),
   "demography/imr-infant-mortality-rate": () => import("../../demography/imr-infant-mortality-rate/index.js"),
   "graph/connected-components": () => import("../../graph/connected-components/index.js"),
+  "laser/laser-group-delay-dispersion-compensation-prism-pair-chirp-mirror-selector": () => import("../../laser/laser-group-delay-dispersion-compensation-prism-pair-chirp-mirror-selector/index.js"),
+  "laser/laser-raman-fiber-stokes-shift-wavelength-cascade-series-lookup": () => import("../../laser/laser-raman-fiber-stokes-shift-wavelength-cascade-series-lookup/index.js"),
   "paleography/marginalia-era-classifier": () => import("../../paleography/marginalia-era-classifier/index.js"),
   "paleography/tower-troy-pound-note-generator": () => import("../../paleography/tower-troy-pound-note-generator/index.js"),
   "seismology/cumulative-moment-release-catalog-summary": () => import("../../seismology/cumulative-moment-release-catalog-summary/index.js"),

@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "convert/currency": () => import("../../convert/currency/index.js"),
   "convert/illuminance": () => import("../../convert/illuminance/index.js"),
   "geology/bearing-capacity-vesic": () => import("../../geology/bearing-capacity-vesic/index.js"),
+  "laser/laser-rayleigh-range-confocal-parameter-waist-distance-formula": () => import("../../laser/laser-rayleigh-range-confocal-parameter-waist-distance-formula/index.js"),
   "logistics/claims-frequency-per-shipment-percent": () => import("../../logistics/claims-frequency-per-shipment-percent/index.js"),
   "oenology/alcohol-adjust-water-blend": () => import("../../oenology/alcohol-adjust-water-blend/index.js"),
   "oenology/cases-per-tank": () => import("../../oenology/cases-per-tank/index.js"),

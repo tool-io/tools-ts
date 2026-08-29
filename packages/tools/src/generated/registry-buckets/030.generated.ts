@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/ionic-mobility": () => import("../../chemistry/ionic-mobility/index.js"),
   "demography/ever-married-by-age-interpolation": () => import("../../demography/ever-married-by-age-interpolation/index.js"),
   "graph/node2vec-plus-plus-transition": () => import("../../graph/node2vec-plus-plus-transition/index.js"),
+  "laser/laser-attosecond-streaking-phase-retrieval-window-note-lookup": () => import("../../laser/laser-attosecond-streaking-phase-retrieval-window-note-lookup/index.js"),
   "logistics/billable-weight-max-actual-dim": () => import("../../logistics/billable-weight-max-actual-dim/index.js"),
   "sailing/persistent-shift-rate": () => import("../../sailing/persistent-shift-rate/index.js"),
 };

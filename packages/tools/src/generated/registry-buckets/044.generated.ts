@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/vixit-annis-age-extractor": () => import("../../epigraphy/vixit-annis-age-extractor/index.js"),
   "geology/hole-cleaning-efficiency": () => import("../../geology/hole-cleaning-efficiency/index.js"),
   "information/log-loss": () => import("../../information/log-loss/index.js"),
+  "laser/laser-core-numerical-aperture-mode-field-diameter-converter": () => import("../../laser/laser-core-numerical-aperture-mode-field-diameter-converter/index.js"),
   "laser/laser-facet-coating-ar-hr-mirror-power-ratio-lookup": () => import("../../laser/laser-facet-coating-ar-hr-mirror-power-ratio-lookup/index.js"),
   "mycology/thermophile-cardinal-temps-recorder": () => import("../../mycology/thermophile-cardinal-temps-recorder/index.js"),
   "proportions/percentage-increase": () => import("../../proportions/percentage-increase/index.js"),

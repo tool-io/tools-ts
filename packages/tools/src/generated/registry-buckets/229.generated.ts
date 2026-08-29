@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "format/zero-pad-number": () => import("../../format/zero-pad-number/index.js"),
   "geology/recovery-factor": () => import("../../geology/recovery-factor/index.js"),
   "geometry/cylinder-volume": () => import("../../geometry/cylinder-volume/index.js"),
+  "laser/laser-pulse-duration-time-bandwidth-product-sech-gaussian-transform-limited-checker": () => import("../../laser/laser-pulse-duration-time-bandwidth-product-sech-gaussian-transform-limited-checker/index.js"),
   "probability/poisson-sampler": () => import("../../probability/poisson-sampler/index.js"),
   "sailing/air-draft-with-heel": () => import("../../sailing/air-draft-with-heel/index.js"),
   "text/capitalize-words": () => import("../../text/capitalize-words/index.js"),

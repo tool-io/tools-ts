@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "geology/fracture-pressure-gradient-eaton": () => import("../../geology/fracture-pressure-gradient-eaton/index.js"),
   "geology/helium-diffusion-closure-temperature": () => import("../../geology/helium-diffusion-closure-temperature/index.js"),
   "json/unflatten": () => import("../../json/unflatten/index.js"),
+  "laser/laser-sesam-modulation-depth-fluence-selection-guide-lookup": () => import("../../laser/laser-sesam-modulation-depth-fluence-selection-guide-lookup/index.js"),
   "network/ipv4-network-address": () => import("../../network/ipv4-network-address/index.js"),
   "oenology/anthocyanin-color-density": () => import("../../oenology/anthocyanin-color-density/index.js"),
   "seismology/between-event-tau-variance": () => import("../../seismology/between-event-tau-variance/index.js"),
