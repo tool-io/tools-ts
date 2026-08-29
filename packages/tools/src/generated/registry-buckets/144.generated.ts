@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "geology/onlap-angle": () => import("../../geology/onlap-angle/index.js"),
   "geology/seismic-acoustic-impedance": () => import("../../geology/seismic-acoustic-impedance/index.js"),
   "mycology/clamp-connection-presence-detector": () => import("../../mycology/clamp-connection-presence-detector/index.js"),
+  "nutrition/daily-intake": () => import("../../nutrition/daily-intake/index.js"),
   "sailing/layline-overstand": () => import("../../sailing/layline-overstand/index.js"),
   "size/life-jacket": () => import("../../size/life-jacket/index.js"),
   "sociology/severe-material-deprivation-rate-eu": () => import("../../sociology/severe-material-deprivation-rate-eu/index.js"),
