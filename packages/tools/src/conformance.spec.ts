@@ -4,11 +4,19 @@ import bodyMassIndexFixture from "../../../fixtures/conformance/body-mass-index.
 import choleskyFixture from "../../../fixtures/conformance/cholesky-decomposition.json" with { type: "json" };
 import medianFixture from "../../../fixtures/conformance/median.json" with { type: "json" };
 import numericDatasetFixture from "../../../fixtures/conformance/numeric-dataset.json" with { type: "json" };
-import { toolRegistry } from "./registry.js";
+import { loadTool } from "./registry.js";
 
 type Expected =
-  | { readonly absoluteTolerance?: number; readonly ok: true; readonly output: unknown }
-  | { readonly errorCode: string; readonly issueCodes?: readonly string[]; readonly ok: false };
+  | {
+      readonly absoluteTolerance?: number;
+      readonly ok: true;
+      readonly output: unknown;
+    }
+  | {
+      readonly errorCode: string;
+      readonly issueCodes?: readonly string[];
+      readonly ok: false;
+    };
 type Fixture = {
   readonly cases: readonly {
     readonly expected: Expected;
@@ -31,14 +39,22 @@ const expectPortableValue = (
   if (Array.isArray(expected)) {
     expect(Array.isArray(actual)).toBe(true);
     expected.forEach((value, index) =>
-      expectPortableValue((actual as readonly unknown[])[index], value, tolerance),
+      expectPortableValue(
+        (actual as readonly unknown[])[index],
+        value,
+        tolerance,
+      ),
     );
     return;
   }
   if (typeof expected === "object" && expected !== null) {
     expect(typeof actual).toBe("object");
     for (const [key, value] of Object.entries(expected))
-      expectPortableValue((actual as Record<string, unknown>)[key], value, tolerance);
+      expectPortableValue(
+        (actual as Record<string, unknown>)[key],
+        value,
+        tolerance,
+      );
     return;
   }
   expect(actual).toEqual(expected);
@@ -55,13 +71,14 @@ const fixtures: readonly Fixture[] = [
 describe("portable conformance fixtures", () => {
   for (const fixture of fixtures) {
     for (const testCase of fixture.cases) {
-      it(`${fixture.tool.id}: ${testCase.name}`, () => {
-        const tool = toolRegistry.get(fixture.tool.id);
+      it(`${fixture.tool.id}: ${testCase.name}`, async () => {
+        const tool = await loadTool(fixture.tool.id);
         expect(tool?.contractVersion).toBe(fixture.tool.contractVersion);
         const result = tool!.execute(testCase.input);
         expect(result.ok).toBe(testCase.expected.ok);
         if (testCase.expected.ok) {
-          if (!result.ok) throw new Error("Expected tool execution to succeed.");
+          if (!result.ok)
+            throw new Error("Expected tool execution to succeed.");
           expectPortableValue(
             result.output,
             testCase.expected.output,

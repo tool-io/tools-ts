@@ -68,7 +68,11 @@ for (const directory of manifest.tools) {
 }
 entries.sort((left, right) => left.id.localeCompare(right.id));
 contracts.sort((left, right) => left.id.localeCompare(right.id));
-const catalog = `${JSON.stringify({ entries, schemaVersion: 1 })}\n`;
+const catalogPayload = { entries, schemaVersion: 1 };
+const catalogFingerprint = createHash("sha256")
+  .update(JSON.stringify(catalogPayload))
+  .digest("hex");
+const catalog = `${JSON.stringify({ catalogFingerprint, ...catalogPayload })}\n`;
 const contractCollection = `${JSON.stringify({ contracts, schemaVersion: 1 })}\n`;
 if (process.argv.includes("--check")) {
   const current = await readFile(committed, "utf8").catch(() => "");

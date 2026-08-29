@@ -26,6 +26,7 @@ export type ToolCatalogEntry = {
 };
 
 export type ToolCatalog = {
+  readonly catalogFingerprint: string;
   readonly entries: readonly ToolCatalogEntry[];
   readonly schemaVersion: typeof toolCatalogSchemaVersion;
 };

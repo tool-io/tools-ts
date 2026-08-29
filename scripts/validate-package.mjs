@@ -8,7 +8,7 @@ const sourceRoot = path.join(packageRoot, "src");
 const manifest = JSON.parse(
   await readFile(path.join(packageRoot, "public-tools.generated.json"), "utf8"),
 );
-const { toolRegistry } = await import(
+const { loadTool, publicToolCount } = await import(
   path.join(packageRoot, "dist/registry.js")
 );
 const { validateToolContract } = await import(
@@ -38,9 +38,9 @@ const assertJsonSerializable = (value, label) => {
     throw new Error(`${label} changes during a JSON round trip.`);
 };
 
-if (toolRegistry.size !== manifest.tools.length)
+if (publicToolCount !== manifest.tools.length)
   throw new Error(
-    `Registry has ${toolRegistry.size} entries for ${manifest.tools.length} public tools.`,
+    `Registry has ${publicToolCount} entries for ${manifest.tools.length} public tools.`,
   );
 if (
   generatedContracts.schemaVersion !== 1 ||
@@ -65,7 +65,7 @@ for (const directory of manifest.tools) {
     throw new Error(`${directory} exports tool ID ${String(definition.id)}.`);
   const issues = validateToolContract(definition);
   if (issues.length) throw new Error(`${directory}: ${JSON.stringify(issues)}`);
-  if (toolRegistry.get(definition.id) !== definition)
+  if ((await loadTool(definition.id)) !== definition)
     throw new Error(
       `${directory} is missing from the generated runtime registry.`,
     );
