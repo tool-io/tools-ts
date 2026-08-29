@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/antenna-gain-db-to-linear": () => import("../../electronics/antenna-gain-db-to-linear/index.js"),
   "electronics/voltage-divider": () => import("../../electronics/voltage-divider/index.js"),
   "epigraphy/ig-corpus-citation-formatter": () => import("../../epigraphy/ig-corpus-citation-formatter/index.js"),
+  "finance/barrier-option-binomial": () => import("../../finance/barrier-option-binomial/index.js"),
   "geometry/surface-area": () => import("../../geometry/surface-area/index.js"),
   "mycology/hartignet-depth-grade-classifier": () => import("../../mycology/hartignet-depth-grade-classifier/index.js"),
   "oenology/btg-cost-recovery": () => import("../../oenology/btg-cost-recovery/index.js"),

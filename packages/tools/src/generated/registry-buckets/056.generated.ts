@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/boyle-temperature": () => import("../../chemistry/boyle-temperature/index.js"),
   "chemistry/combined-gas-law": () => import("../../chemistry/combined-gas-law/index.js"),
   "convert/decimal-to-binary": () => import("../../convert/decimal-to-binary/index.js"),
+  "convert/fuel-economy": () => import("../../convert/fuel-economy/index.js"),
   "demography/yll-years-of-life-lost-standard": () => import("../../demography/yll-years-of-life-lost-standard/index.js"),
   "electronics/impedance-magnitude": () => import("../../electronics/impedance-magnitude/index.js"),
   "electronics/signal-to-noise-ratio": () => import("../../electronics/signal-to-noise-ratio/index.js"),

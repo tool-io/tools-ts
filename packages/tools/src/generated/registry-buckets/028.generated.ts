@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/vapor-pressure-from-dewpoint": () => import("../../chemistry/vapor-pressure-from-dewpoint/index.js"),
   "demography/potential-support-ratio-psr": () => import("../../demography/potential-support-ratio-psr/index.js"),
   "electronics/wire-power-loss": () => import("../../electronics/wire-power-loss/index.js"),
+  "finance/bermudan-option-binomial": () => import("../../finance/bermudan-option-binomial/index.js"),
   "geology/seismic-rms-velocity": () => import("../../geology/seismic-rms-velocity/index.js"),
   "logistics/mpg-loaded-vs-empty-adjusted": () => import("../../logistics/mpg-loaded-vs-empty-adjusted/index.js"),
   "matrix/as-csv": () => import("../../matrix/as-csv/index.js"),

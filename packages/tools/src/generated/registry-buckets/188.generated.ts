@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/magnetic-flux-density": () => import("../../electronics/magnetic-flux-density/index.js"),
   "electronics/pll-output-frequency": () => import("../../electronics/pll-output-frequency/index.js"),
   "electronics/vswr-from-reflection": () => import("../../electronics/vswr-from-reflection/index.js"),
+  "finance/american-option-binomial": () => import("../../finance/american-option-binomial/index.js"),
   "geology/crystal-fractionation": () => import("../../geology/crystal-fractionation/index.js"),
   "laser/laser-edfa-gain-bandwidth-c-band-l-band-split-lookup": () => import("../../laser/laser-edfa-gain-bandwidth-c-band-l-band-split-lookup/index.js"),
   "logistics/slotting-velocity-abc-classifier": () => import("../../logistics/slotting-velocity-abc-classifier/index.js"),

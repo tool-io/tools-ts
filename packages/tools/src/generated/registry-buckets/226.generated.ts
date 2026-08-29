@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "electricity/parallel-resistance": () => import("../../electricity/parallel-resistance/index.js"),
   "electronics/capacitor-energy": () => import("../../electronics/capacitor-energy/index.js"),
   "electronics/watts-to-dbw": () => import("../../electronics/watts-to-dbw/index.js"),
+  "finance/ad-revenue": () => import("../../finance/ad-revenue/index.js"),
   "geology/isopach-thickness": () => import("../../geology/isopach-thickness/index.js"),
   "geology/seismic-stack-velocity": () => import("../../geology/seismic-stack-velocity/index.js"),
   "physics/force": () => import("../../physics/force/index.js"),

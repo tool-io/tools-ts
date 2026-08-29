@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "biology/conduction-velocity-myelinated": () => import("../../biology/conduction-velocity-myelinated/index.js"),
   "chemistry/resonance-count": () => import("../../chemistry/resonance-count/index.js"),
   "chemistry/titration-curve-slope": () => import("../../chemistry/titration-curve-slope/index.js"),
+  "convert/viscosity": () => import("../../convert/viscosity/index.js"),
   "electronics/oversampling-ratio": () => import("../../electronics/oversampling-ratio/index.js"),
   "electronics/parallel-resonant-impedance": () => import("../../electronics/parallel-resonant-impedance/index.js"),
   "electronics/power-gain-linear": () => import("../../electronics/power-gain-linear/index.js"),

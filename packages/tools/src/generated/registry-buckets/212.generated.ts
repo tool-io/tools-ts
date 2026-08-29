@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/inductor-ripple-current": () => import("../../electronics/inductor-ripple-current/index.js"),
   "electronics/logic-threshold-cmos": () => import("../../electronics/logic-threshold-cmos/index.js"),
   "geology/casing-burst-pressure": () => import("../../geology/casing-burst-pressure/index.js"),
+  "mortgage/egypt-subsidized-comparison": () => import("../../mortgage/egypt-subsidized-comparison/index.js"),
   "oenology/headspace-oxygen-uptake": () => import("../../oenology/headspace-oxygen-uptake/index.js"),
   "physics/pressure": () => import("../../physics/pressure/index.js"),
   "sailing/fuel-at-eta": () => import("../../sailing/fuel-at-eta/index.js"),

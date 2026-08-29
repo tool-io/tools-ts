@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/crystal-ppm-error": () => import("../../electronics/crystal-ppm-error/index.js"),
   "electronics/dbm-to-watts": () => import("../../electronics/dbm-to-watts/index.js"),
   "electronics/pcb-trace-resistance": () => import("../../electronics/pcb-trace-resistance/index.js"),
+  "finance/geometric-asian-option": () => import("../../finance/geometric-asian-option/index.js"),
   "geology/core-porosity-helium": () => import("../../geology/core-porosity-helium/index.js"),
   "geometry/sphere-volume": () => import("../../geometry/sphere-volume/index.js"),
   "graph/cycle-checker": () => import("../../graph/cycle-checker/index.js"),

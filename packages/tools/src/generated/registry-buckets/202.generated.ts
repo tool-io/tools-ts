@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/conductivity-from-concentration": () => import("../../chemistry/conductivity-from-concentration/index.js"),
   "chemistry/kb-from-pkb": () => import("../../chemistry/kb-from-pkb/index.js"),
   "chemistry/overpotential": () => import("../../chemistry/overpotential/index.js"),
+  "data-structure/counting-bloom-filter": () => import("../../data-structure/counting-bloom-filter/index.js"),
   "electronics/lna-gain": () => import("../../electronics/lna-gain/index.js"),
   "electronics/pulse-width-from-duty-cycle": () => import("../../electronics/pulse-width-from-duty-cycle/index.js"),
   "electronics/transformer-efficiency": () => import("../../electronics/transformer-efficiency/index.js"),

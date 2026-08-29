@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/formal-charge": () => import("../../chemistry/formal-charge/index.js"),
   "chemistry/mole-fraction-to-mass-fraction": () => import("../../chemistry/mole-fraction-to-mass-fraction/index.js"),
   "chemistry/vapor-pressure-clausius-clapeyron": () => import("../../chemistry/vapor-pressure-clausius-clapeyron/index.js"),
+  "convert/force": () => import("../../convert/force/index.js"),
   "convert/time": () => import("../../convert/time/index.js"),
   "date/week-number": () => import("../../date/week-number/index.js"),
   "demography/direct-standardized-rate-sdr": () => import("../../demography/direct-standardized-rate-sdr/index.js"),

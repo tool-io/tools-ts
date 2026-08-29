@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/faraday-induced-voltage": () => import("../../electronics/faraday-induced-voltage/index.js"),
   "electronics/lna-noise-figure-cascade": () => import("../../electronics/lna-noise-figure-cascade/index.js"),
   "electronics/quantization-noise-snr": () => import("../../electronics/quantization-noise-snr/index.js"),
+  "meteorology/heating-degree-days": () => import("../../meteorology/heating-degree-days/index.js"),
   "mycology/basidium-club-proportion-checker": () => import("../../mycology/basidium-club-proportion-checker/index.js"),
   "random/seeded-number": () => import("../../random/seeded-number/index.js"),
   "sailing/start-line-length-required": () => import("../../sailing/start-line-length-required/index.js"),

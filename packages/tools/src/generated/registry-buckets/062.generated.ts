@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "biology/primer-3prime-gc-clamp-count": () => import("../../biology/primer-3prime-gc-clamp-count/index.js"),
   "chemistry/enzyme-michaelis-menten": () => import("../../chemistry/enzyme-michaelis-menten/index.js"),
   "chemistry/ideal-gas-law-pressure": () => import("../../chemistry/ideal-gas-law-pressure/index.js"),
+  "electricity/ac-power-triangle": () => import("../../electricity/ac-power-triangle/index.js"),
   "finance/break-even-units": () => import("../../finance/break-even-units/index.js"),
   "graph/topological-sort": () => import("../../graph/topological-sort/index.js"),
   "laser/laser-excimer-arf-krf-xecl-f2-gas-mixture-lifespan-table-lookup": () => import("../../laser/laser-excimer-arf-krf-xecl-f2-gas-mixture-lifespan-table-lookup/index.js"),

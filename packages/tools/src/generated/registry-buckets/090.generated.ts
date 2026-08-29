@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "biology/reticulocyte-production-index": () => import("../../biology/reticulocyte-production-index/index.js"),
   "chemistry/solubility-mx2": () => import("../../chemistry/solubility-mx2/index.js"),
   "convert/caesar-cipher": () => import("../../convert/caesar-cipher/index.js"),
+  "convert/flow-rate": () => import("../../convert/flow-rate/index.js"),
   "demography/intrinsic-death-rate-d-stable": () => import("../../demography/intrinsic-death-rate-d-stable/index.js"),
   "electronics/lidar-range-equation": () => import("../../electronics/lidar-range-equation/index.js"),
   "epigraphy/proconsul-province-extractor": () => import("../../epigraphy/proconsul-province-extractor/index.js"),

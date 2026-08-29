@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/pll-lock-time-estimate": () => import("../../electronics/pll-lock-time-estimate/index.js"),
   "electronics/signal-to-noise-and-distortion": () => import("../../electronics/signal-to-noise-and-distortion/index.js"),
   "geology/hydraulic-conductivity-from-permeability": () => import("../../geology/hydraulic-conductivity-from-permeability/index.js"),
+  "mortgage/czech-fixed-period-repricing": () => import("../../mortgage/czech-fixed-period-repricing/index.js"),
   "oenology/ethyl-acetate-threshold": () => import("../../oenology/ethyl-acetate-threshold/index.js"),
   "paleography/date-consensus-median-estimator": () => import("../../paleography/date-consensus-median-estimator/index.js"),
   "sailing/polar-heel-target": () => import("../../sailing/polar-heel-target/index.js"),

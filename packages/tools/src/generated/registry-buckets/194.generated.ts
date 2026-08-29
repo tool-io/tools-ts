@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "convert/minutes-to-hours-minutes": () => import("../../convert/minutes-to-hours-minutes/index.js"),
   "electronics/antenna-directivity-from-gain": () => import("../../electronics/antenna-directivity-from-gain/index.js"),
   "electronics/spurious-free-dynamic-range": () => import("../../electronics/spurious-free-dynamic-range/index.js"),
+  "meteorology/cooling-degree-days": () => import("../../meteorology/cooling-degree-days/index.js"),
   "mycology/ascus-dehiscence-classifier": () => import("../../mycology/ascus-dehiscence-classifier/index.js"),
   "mycology/cellulose-clearance-zone-rater": () => import("../../mycology/cellulose-clearance-zone-rater/index.js"),
   "oenology/food-pairing-score": () => import("../../oenology/food-pairing-score/index.js"),

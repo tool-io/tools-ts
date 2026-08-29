@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/fingerzinken-teilung": () => import("../../carpentry/fingerzinken-teilung/index.js"),
   "carpentry/schleifpapier-bedarf-qm": () => import("../../carpentry/schleifpapier-bedarf-qm/index.js"),
   "combinatorics/permutation-count": () => import("../../combinatorics/permutation-count/index.js"),
+  "finance/european-option-black-scholes": () => import("../../finance/european-option-black-scholes/index.js"),
   "geography/haversine-distance": () => import("../../geography/haversine-distance/index.js"),
   "laser/laser-er-fiber-1550-eye-safe-retina-transmission-safety-class-note": () => import("../../laser/laser-er-fiber-1550-eye-safe-retina-transmission-safety-class-note/index.js"),
   "logistics/pallet-loaded-weight-total": () => import("../../logistics/pallet-loaded-weight-total/index.js"),

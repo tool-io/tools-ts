@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "aviation/vr-speed": () => import("../../aviation/vr-speed/index.js"),
   "biology/pressure-potential": () => import("../../biology/pressure-potential/index.js"),
   "carpentry/leim-fugendicke-01-03mm": () => import("../../carpentry/leim-fugendicke-01-03mm/index.js"),
+  "convert/frequency": () => import("../../convert/frequency/index.js"),
   "electronics/shot-noise-voltage": () => import("../../electronics/shot-noise-voltage/index.js"),
   "epigraphy/boundary-term-detector": () => import("../../epigraphy/boundary-term-detector/index.js"),
   "geology/harker-diagram-silica": () => import("../../geology/harker-diagram-silica/index.js"),

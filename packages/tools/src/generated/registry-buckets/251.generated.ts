@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "date/start-of-month": () => import("../../date/start-of-month/index.js"),
   "demography/cohort-survival-consistency-checker": () => import("../../demography/cohort-survival-consistency-checker/index.js"),
   "electronics/dac-inl": () => import("../../electronics/dac-inl/index.js"),
+  "game-theory/pure-nash-equilibria": () => import("../../game-theory/pure-nash-equilibria/index.js"),
   "geometry/circle-sector-area": () => import("../../geometry/circle-sector-area/index.js"),
   "laser/laser-nd-yag-four-level-rate-equation-threshold-inversion-computation": () => import("../../laser/laser-nd-yag-four-level-rate-equation-threshold-inversion-computation/index.js"),
   "logistics/split-sleeper-restart-effect-lookup": () => import("../../logistics/split-sleeper-restart-effect-lookup/index.js"),
