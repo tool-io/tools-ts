@@ -1,0 +1,14 @@
+import type { ToolExample } from "../../core/example.js";
+
+export const example = {
+  input: {
+    value: 27,
+  },
+  output: {
+    perfectCube: true,
+    root: 3,
+  },
+} as const satisfies ToolExample<
+  Readonly<Record<string, unknown>>,
+  Readonly<Record<string, unknown>>
+>;

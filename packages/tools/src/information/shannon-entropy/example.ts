@@ -1,0 +1,13 @@
+import type { ToolExample } from "../../core/example.js";
+
+export const example = {
+  input: {
+    probabilities: [0.5, 0.25, 0.25],
+  },
+  output: {
+    entropyBits: 1.5,
+  },
+} as const satisfies ToolExample<
+  Readonly<Record<string, unknown>>,
+  Readonly<Record<string, unknown>>
+>;

@@ -1,3 +1,4 @@
+export { example } from "./example.js";
 export {
   calculateJacksonPollock3SiteBodyFat,
   jacksonPollock3SiteBodyFatTool,

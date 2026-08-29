@@ -1,3 +1,4 @@
+export { example } from "./example.js";
 export {
   calculateBodyDensityToBodyFat,
   bodyDensityToBodyFatTool,
