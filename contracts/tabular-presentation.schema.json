@@ -1,0 +1,328 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tool.io/contracts/tabular-presentation.schema.json",
+  "title": "tool.io tabular presentation specifications and documents",
+  "oneOf": [
+    { "$ref": "#/$defs/tableSpec" },
+    { "$ref": "#/$defs/chartSpec" },
+    { "$ref": "#/$defs/mapSpec" },
+    { "$ref": "#/$defs/tableDocument" },
+    { "$ref": "#/$defs/chartDocument" },
+    { "$ref": "#/$defs/mapDocument" }
+  ],
+  "$defs": {
+    "fieldId": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._/-]*$"
+    },
+    "warning": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "message"],
+      "properties": {
+        "code": { "type": "string", "minLength": 1 },
+        "field": { "$ref": "#/$defs/fieldId" },
+        "message": { "type": "string", "minLength": 1 }
+      }
+    },
+    "valueFormat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["style"],
+      "properties": {
+        "style": {
+          "enum": [
+            "text",
+            "number",
+            "integer",
+            "percent",
+            "currency",
+            "date",
+            "datetime",
+            "duration"
+          ]
+        },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "minimumFractionDigits": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 20
+        },
+        "maximumFractionDigits": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 20
+        },
+        "unit": { "type": "string", "minLength": 1 }
+      }
+    },
+    "tableColumn": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field"],
+      "properties": {
+        "field": { "$ref": "#/$defs/fieldId" },
+        "label": { "type": "string", "minLength": 1 },
+        "visible": { "type": "boolean" },
+        "align": { "enum": ["left", "center", "right"] },
+        "format": { "$ref": "#/$defs/valueFormat" }
+      }
+    },
+    "sort": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "direction"],
+      "properties": {
+        "field": { "$ref": "#/$defs/fieldId" },
+        "direction": { "enum": ["ascending", "descending"] }
+      }
+    },
+    "tableSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "version"],
+      "properties": {
+        "kind": { "const": "toolio/table-spec" },
+        "version": { "const": 1 },
+        "title": { "type": "string" },
+        "caption": { "type": "string" },
+        "columns": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/tableColumn" }
+        },
+        "defaultSort": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/sort" }
+        },
+        "options": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "striped": { "type": "boolean" },
+            "compact": { "type": "boolean" },
+            "stickyHeader": { "type": "boolean" },
+            "showRowNumbers": { "type": "boolean" },
+            "pageSize": { "type": "integer", "minimum": 1 }
+          }
+        }
+      }
+    },
+    "scale": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": ["linear", "logarithmic", "temporal", "categorical"]
+        },
+        "minimum": { "type": "number" },
+        "maximum": { "type": "number" },
+        "zero": { "type": "boolean" }
+      }
+    },
+    "encoding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field"],
+      "properties": {
+        "field": { "$ref": "#/$defs/fieldId" },
+        "label": { "type": "string", "minLength": 1 },
+        "format": { "$ref": "#/$defs/valueFormat" },
+        "aggregate": {
+          "enum": ["count", "sum", "minimum", "maximum", "mean", "median"]
+        },
+        "bin": {
+          "oneOf": [{ "type": "boolean" }, { "type": "integer", "minimum": 1 }]
+        },
+        "scale": { "$ref": "#/$defs/scale" }
+      }
+    },
+    "axis": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string" },
+        "grid": { "type": "boolean" }
+      }
+    },
+    "mapEncoding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field"],
+      "properties": {
+        "field": { "$ref": "#/$defs/fieldId" },
+        "label": { "type": "string", "minLength": 1 },
+        "format": { "$ref": "#/$defs/valueFormat" }
+      }
+    },
+    "chartSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "version", "type", "encoding"],
+      "properties": {
+        "kind": { "const": "toolio/chart-spec" },
+        "version": { "const": 1 },
+        "type": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "summary": { "type": "string" },
+        "encoding": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "properties": {
+            "x": { "$ref": "#/$defs/encoding" },
+            "y": { "$ref": "#/$defs/encoding" },
+            "category": { "$ref": "#/$defs/encoding" },
+            "series": { "$ref": "#/$defs/encoding" },
+            "color": { "$ref": "#/$defs/encoding" },
+            "size": { "$ref": "#/$defs/encoding" },
+            "theta": { "$ref": "#/$defs/encoding" },
+            "tooltip": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/encoding" }
+            }
+          }
+        },
+        "axes": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "x": { "$ref": "#/$defs/axis" },
+            "y": { "$ref": "#/$defs/axis" }
+          }
+        },
+        "legend": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "visible": { "type": "boolean" },
+            "title": { "type": "string" },
+            "position": { "enum": ["top", "right", "bottom", "left"] }
+          }
+        },
+        "options": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "orientation": { "enum": ["vertical", "horizontal"] },
+            "stacked": { "type": "boolean" },
+            "normalized": { "type": "boolean" },
+            "showValues": { "type": "boolean" },
+            "connectNulls": { "type": "boolean" },
+            "missingValues": { "enum": ["gap", "zero", "omit"] }
+          }
+        }
+      }
+    },
+    "mapSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "version", "type", "encoding"],
+      "properties": {
+        "kind": { "const": "toolio/map-spec" },
+        "version": { "const": 1 },
+        "type": { "const": "points" },
+        "title": { "type": "string" },
+        "summary": { "type": "string" },
+        "encoding": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["latitude", "longitude"],
+          "properties": {
+            "latitude": { "$ref": "#/$defs/mapEncoding" },
+            "longitude": { "$ref": "#/$defs/mapEncoding" },
+            "label": { "$ref": "#/$defs/mapEncoding" },
+            "color": { "$ref": "#/$defs/mapEncoding" },
+            "size": { "$ref": "#/$defs/mapEncoding" },
+            "tooltip": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/mapEncoding" }
+            }
+          }
+        },
+        "view": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "center": {
+              "type": "array",
+              "prefixItems": [{ "type": "number" }, { "type": "number" }],
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "zoom": { "type": "number" },
+            "minimumZoom": { "type": "number" },
+            "maximumZoom": { "type": "number" }
+          }
+        },
+        "legend": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "visible": { "type": "boolean" },
+            "title": { "type": "string" },
+            "position": { "enum": ["top", "right", "bottom", "left"] }
+          }
+        },
+        "options": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "basemap": { "enum": ["light", "streets", "terrain"] },
+            "cluster": { "type": "boolean" },
+            "fit": { "enum": ["data", "fixed"] },
+            "padding": { "type": "integer", "minimum": 0 }
+          }
+        }
+      }
+    },
+    "tableDocument": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "version", "data", "spec", "warnings"],
+      "properties": {
+        "kind": { "const": "toolio/table-document" },
+        "version": { "const": 1 },
+        "data": { "$ref": "table-data.schema.json" },
+        "spec": { "$ref": "#/$defs/tableSpec" },
+        "warnings": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/warning" }
+        }
+      }
+    },
+    "chartDocument": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "version", "data", "spec", "warnings"],
+      "properties": {
+        "kind": { "const": "toolio/chart-document" },
+        "version": { "const": 1 },
+        "data": { "$ref": "table-data.schema.json" },
+        "spec": { "$ref": "#/$defs/chartSpec" },
+        "warnings": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/warning" }
+        }
+      }
+    },
+    "mapDocument": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "version", "data", "spec", "warnings"],
+      "properties": {
+        "kind": { "const": "toolio/map-document" },
+        "version": { "const": 1 },
+        "data": { "$ref": "table-data.schema.json" },
+        "spec": { "$ref": "#/$defs/mapSpec" },
+        "warnings": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/warning" }
+        }
+      }
+    }
+  }
+}
