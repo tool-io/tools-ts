@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/construction-percent-complete-cost-to-cost-independent-recompute": () => import("../../auditing/construction-percent-complete-cost-to-cost-independent-recompute/index.js"),
   "biology/codon-count": () => import("../../biology/codon-count/index.js"),
   "calculus/simpson-integration": () => import("../../calculus/simpson-integration/index.js"),
   "electronics/dissipation-factor": () => import("../../electronics/dissipation-factor/index.js"),

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/retained-earnings-rollforward-statement": () => import("../../accounting/retained-earnings-rollforward-statement/index.js"),
   "actuarial/gross-premium-expense-loading": () => import("../../actuarial/gross-premium-expense-loading/index.js"),
   "aviation/tropopause-check": () => import("../../aviation/tropopause-check/index.js"),
   "biology/harrison-beta-diversity": () => import("../../biology/harrison-beta-diversity/index.js"),

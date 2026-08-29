@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/lifo-reserve-disclosure-computation": () => import("../../accounting/lifo-reserve-disclosure-computation/index.js"),
   "biology/reverse-complement-dna": () => import("../../biology/reverse-complement-dna/index.js"),
   "chemistry/dalton-partial-pressure": () => import("../../chemistry/dalton-partial-pressure/index.js"),
   "chemistry/reaction-yield-mass": () => import("../../chemistry/reaction-yield-mass/index.js"),

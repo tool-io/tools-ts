@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/ebitda-from-net-income-addbacks": () => import("../../accounting/ebitda-from-net-income-addbacks/index.js"),
   "actuarial/prospective-net-reserve": () => import("../../actuarial/prospective-net-reserve/index.js"),
   "biology/mitotic-index": () => import("../../biology/mitotic-index/index.js"),
   "chemistry/analytical-calibration-slope": () => import("../../chemistry/analytical-calibration-slope/index.js"),

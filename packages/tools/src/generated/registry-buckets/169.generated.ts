@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "biology/fold-change": () => import("../../biology/fold-change/index.js"),
   "biology/pielou-evenness": () => import("../../biology/pielou-evenness/index.js"),
   "chemistry/heat-capacity-cp": () => import("../../chemistry/heat-capacity-cp/index.js"),
+  "convert/inductance": () => import("../../convert/inductance/index.js"),
   "decode/geohash": () => import("../../decode/geohash/index.js"),
   "electronics/hall-voltage": () => import("../../electronics/hall-voltage/index.js"),
   "electronics/norton-current": () => import("../../electronics/norton-current/index.js"),

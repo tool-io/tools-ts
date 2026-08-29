@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/bonus-accrual-monthly-recognition": () => import("../../accounting/bonus-accrual-monthly-recognition/index.js"),
+  "accounting/operating-cycle-inventory-plus-receivable-days": () => import("../../accounting/operating-cycle-inventory-plus-receivable-days/index.js"),
   "biology/bark-thickness-ratio": () => import("../../biology/bark-thickness-ratio/index.js"),
   "biology/cell-migration-speed": () => import("../../biology/cell-migration-speed/index.js"),
   "carpentry/nagel-zugfestigkeit-lookup": () => import("../../carpentry/nagel-zugfestigkeit-lookup/index.js"),

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/cash-conversion-cycle-dso-dpo-dio": () => import("../../accounting/cash-conversion-cycle-dso-dpo-dio/index.js"),
   "biology/dominance-simpson-reciprocal": () => import("../../biology/dominance-simpson-reciprocal/index.js"),
   "biology/lowry-protein-conc": () => import("../../biology/lowry-protein-conc/index.js"),
   "biology/shunt-fraction": () => import("../../biology/shunt-fraction/index.js"),

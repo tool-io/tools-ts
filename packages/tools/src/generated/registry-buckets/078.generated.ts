@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/allowance-doubtful-accounts-percent-of-ar": () => import("../../accounting/allowance-doubtful-accounts-percent-of-ar/index.js"),
+  "accounting/percentage-of-completion-revenue-to-date": () => import("../../accounting/percentage-of-completion-revenue-to-date/index.js"),
   "aviation/required-reserve-fuel": () => import("../../aviation/required-reserve-fuel/index.js"),
   "biology/therapeutic-window": () => import("../../biology/therapeutic-window/index.js"),
   "convert/binary-to-hex": () => import("../../convert/binary-to-hex/index.js"),

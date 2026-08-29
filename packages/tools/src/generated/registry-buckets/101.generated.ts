@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "actuarial/constant-force-fractional-survival": () => import("../../actuarial/constant-force-fractional-survival/index.js"),
   "algebra/synthetic-division": () => import("../../algebra/synthetic-division/index.js"),
+  "auditing/same-day-duplicate-invoice-exact-match-flagger": () => import("../../auditing/same-day-duplicate-invoice-exact-match-flagger/index.js"),
   "aviation/minimum-sink-speed": () => import("../../aviation/minimum-sink-speed/index.js"),
   "biology/anion-gap": () => import("../../biology/anion-gap/index.js"),
   "biology/primer-gc-count": () => import("../../biology/primer-gc-count/index.js"),
