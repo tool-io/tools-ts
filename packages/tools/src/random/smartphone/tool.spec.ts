@@ -1,0 +1,6 @@
+import { describe, expect, it } from "vitest"; import { calculateRandomSmartphone, randomSmartphoneExample, runRandomSmartphone } from "./tool.js";
+describe("Random Smartphone Picker", () => {
+  it("selects exact IDs and preserves provenance", () => { expect(JSON.parse(JSON.stringify(randomSmartphoneExample))).toEqual(randomSmartphoneExample);expect(runRandomSmartphone(randomSmartphoneExample.input,{random:()=>0}).ok).toBe(true); expect(calculateRandomSmartphone(randomSmartphoneExample.input, () => 0)).toEqual({ datasetId: "example/smartphone", datasetVersion: "1", selectedIds: ["candidate-a", "candidate-b"], sourceId: "example" }); });
+  it("is deterministic with injected randomness", () => { expect(calculateRandomSmartphone(randomSmartphoneExample.input, () => 0.75)).toEqual(calculateRandomSmartphone(randomSmartphoneExample.input, () => 0.75)); });
+  it("rejects invalid pools and randomness", () => { expect(runRandomSmartphone({ ...randomSmartphoneExample.input, candidateIds: [] }).ok).toBe(false); expect(runRandomSmartphone({ ...randomSmartphoneExample.input, selectionCount: 4 }).ok).toBe(false); expect(runRandomSmartphone(randomSmartphoneExample.input, { random: () => 1 }).ok).toBe(false); });
+});
