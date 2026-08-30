@@ -1,0 +1,6 @@
+import { describe, expect, it } from "vitest"; import { calculateRandomCatalogProduct, randomCatalogProductExample, runRandomCatalogProduct } from "./tool.js";
+describe("Random Catalog Product Picker", () => {
+  it("selects exact IDs and preserves provenance", () => { expect(JSON.parse(JSON.stringify(randomCatalogProductExample))).toEqual(randomCatalogProductExample);expect(runRandomCatalogProduct(randomCatalogProductExample.input,{random:()=>0}).ok).toBe(true); expect(calculateRandomCatalogProduct(randomCatalogProductExample.input, () => 0)).toEqual({ datasetId: "example/catalog-product", datasetVersion: "1", selectedIds: ["candidate-a", "candidate-b"], sourceId: "example" }); });
+  it("is deterministic with injected randomness", () => { expect(calculateRandomCatalogProduct(randomCatalogProductExample.input, () => 0.75)).toEqual(calculateRandomCatalogProduct(randomCatalogProductExample.input, () => 0.75)); });
+  it("rejects invalid pools and randomness", () => { expect(runRandomCatalogProduct({ ...randomCatalogProductExample.input, candidateIds: [] }).ok).toBe(false); expect(runRandomCatalogProduct({ ...randomCatalogProductExample.input, selectionCount: 4 }).ok).toBe(false); expect(runRandomCatalogProduct(randomCatalogProductExample.input, { random: () => 1 }).ok).toBe(false); });
+});
