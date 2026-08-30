@@ -1,0 +1,20 @@
+import { createSetAudit } from "../../core/operational.js";
+
+const operation = createSetAudit({
+  description: "Audit disaster-recovery failover evidence.",
+  expected: { id: "requiredEvidence", label: "Required failover evidence" },
+  example: {
+    expected: ["alpha", "beta", "gamma", "delta"],
+    observed: ["beta", "alpha", "extra"],
+  },
+  id: "auditing/failover-evidence-coverage",
+  observed: { id: "capturedEvidence", label: "Captured evidence" },
+  title: "Failover Evidence Coverage",
+});
+export type Input = Parameters<typeof operation.calculate>[0];
+export type Output = ReturnType<typeof operation.calculate>;
+export const calculate = operation.calculate;
+export const example = operation.example;
+export const tool = operation.tool;
+export const run = tool.execute;
+export default tool;
