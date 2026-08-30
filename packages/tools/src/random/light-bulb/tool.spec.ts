@@ -1,0 +1,6 @@
+import { describe, expect, it } from "vitest"; import { calculateRandomLightBulb, randomLightBulbExample, runRandomLightBulb } from "./tool.js";
+describe("Random Light Bulb Picker", () => {
+  it("selects exact IDs and preserves provenance", () => { expect(JSON.parse(JSON.stringify(randomLightBulbExample))).toEqual(randomLightBulbExample);expect(runRandomLightBulb(randomLightBulbExample.input,{random:()=>0}).ok).toBe(true); expect(calculateRandomLightBulb(randomLightBulbExample.input, () => 0)).toEqual({ datasetId: "example/light-bulb", datasetVersion: "1", selectedIds: ["candidate-a", "candidate-b"], sourceId: "example" }); });
+  it("is deterministic with injected randomness", () => { expect(calculateRandomLightBulb(randomLightBulbExample.input, () => 0.75)).toEqual(calculateRandomLightBulb(randomLightBulbExample.input, () => 0.75)); });
+  it("rejects invalid pools and randomness", () => { expect(runRandomLightBulb({ ...randomLightBulbExample.input, candidateIds: [] }).ok).toBe(false); expect(runRandomLightBulb({ ...randomLightBulbExample.input, selectionCount: 4 }).ok).toBe(false); expect(runRandomLightBulb(randomLightBulbExample.input, { random: () => 1 }).ok).toBe(false); });
+});
