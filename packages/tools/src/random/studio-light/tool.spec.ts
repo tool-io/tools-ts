@@ -1,0 +1,6 @@
+import { describe, expect, it } from "vitest"; import { calculateRandomStudioLight, randomStudioLightExample, runRandomStudioLight } from "./tool.js";
+describe("Random Studio Light Picker", () => {
+  it("selects exact IDs and preserves provenance", () => { expect(JSON.parse(JSON.stringify(randomStudioLightExample))).toEqual(randomStudioLightExample);expect(runRandomStudioLight(randomStudioLightExample.input,{random:()=>0}).ok).toBe(true); expect(calculateRandomStudioLight(randomStudioLightExample.input, () => 0)).toEqual({ datasetId: "example/studio-light", datasetVersion: "1", selectedIds: ["candidate-a", "candidate-b"], sourceId: "example" }); });
+  it("is deterministic with injected randomness", () => { expect(calculateRandomStudioLight(randomStudioLightExample.input, () => 0.75)).toEqual(calculateRandomStudioLight(randomStudioLightExample.input, () => 0.75)); });
+  it("rejects invalid pools and randomness", () => { expect(runRandomStudioLight({ ...randomStudioLightExample.input, candidateIds: [] }).ok).toBe(false); expect(runRandomStudioLight({ ...randomStudioLightExample.input, selectionCount: 4 }).ok).toBe(false); expect(runRandomStudioLight(randomStudioLightExample.input, { random: () => 1 }).ok).toBe(false); });
+});
