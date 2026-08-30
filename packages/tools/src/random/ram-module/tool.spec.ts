@@ -1,0 +1,6 @@
+import { describe, expect, it } from "vitest"; import { calculateRandomRamModule, randomRamModuleExample, runRandomRamModule } from "./tool.js";
+describe("Random RAM Module Picker", () => {
+  it("selects exact IDs and preserves provenance", () => { expect(JSON.parse(JSON.stringify(randomRamModuleExample))).toEqual(randomRamModuleExample);expect(runRandomRamModule(randomRamModuleExample.input,{random:()=>0}).ok).toBe(true); expect(calculateRandomRamModule(randomRamModuleExample.input, () => 0)).toEqual({ datasetId: "example/ram-module", datasetVersion: "1", selectedIds: ["candidate-a", "candidate-b"], sourceId: "example" }); });
+  it("is deterministic with injected randomness", () => { expect(calculateRandomRamModule(randomRamModuleExample.input, () => 0.75)).toEqual(calculateRandomRamModule(randomRamModuleExample.input, () => 0.75)); });
+  it("rejects invalid pools and randomness", () => { expect(runRandomRamModule({ ...randomRamModuleExample.input, candidateIds: [] }).ok).toBe(false); expect(runRandomRamModule({ ...randomRamModuleExample.input, selectionCount: 4 }).ok).toBe(false); expect(runRandomRamModule(randomRamModuleExample.input, { random: () => 1 }).ok).toBe(false); });
+});
