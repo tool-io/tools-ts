@@ -29,6 +29,7 @@ export const toolModuleLoaders: Readonly<
   "horology/seconds-pendulum-length": () => import("../../horology/seconds-pendulum-length/index.js"),
   "matrix/qr-decomposition": () => import("../../matrix/qr-decomposition/index.js"),
   "mycology/zonation-ring-day-counter": () => import("../../mycology/zonation-ring-day-counter/index.js"),
+  "random/georgian-letter": () => import("../../random/georgian-letter/index.js"),
   "sailing/rudder-aspect-ratio": () => import("../../sailing/rudder-aspect-ratio/index.js"),
   "sailing/tidal-range-springs-neaps": () => import("../../sailing/tidal-range-springs-neaps/index.js"),
   "seismology/catalog-depth-histogram-binner": () => import("../../seismology/catalog-depth-histogram-binner/index.js"),

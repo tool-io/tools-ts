@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "geology/seismic-resolution-vertical": () => import("../../geology/seismic-resolution-vertical/index.js"),
   "microcontroller/pwm-duty-count": () => import("../../microcontroller/pwm-duty-count/index.js"),
   "paleography/regnal-english-year-converter": () => import("../../paleography/regnal-english-year-converter/index.js"),
+  "random/bamum-character": () => import("../../random/bamum-character/index.js"),
   "seismology/tsunamigenic-magnitude-threshold-checker": () => import("../../seismology/tsunamigenic-magnitude-threshold-checker/index.js"),
   "semiconductor/depletion-capacitance-abrupt": () => import("../../semiconductor/depletion-capacitance-abrupt/index.js"),
   "semiconductor/hci-substrate-current": () => import("../../semiconductor/hci-substrate-current/index.js"),

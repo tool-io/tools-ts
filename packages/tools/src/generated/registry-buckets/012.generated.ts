@@ -19,6 +19,8 @@ export const toolModuleLoaders: Readonly<
   "geology/gas-density": () => import("../../geology/gas-density/index.js"),
   "machine-learning/bayesian-rule-list": () => import("../../machine-learning/bayesian-rule-list/index.js"),
   "probability/mcmc-sampler": () => import("../../probability/mcmc-sampler/index.js"),
+  "random/tirhuta-character": () => import("../../random/tirhuta-character/index.js"),
+  "random/ugaritic-letter": () => import("../../random/ugaritic-letter/index.js"),
   "sailing/opposite-tack-layline-bearing": () => import("../../sailing/opposite-tack-layline-bearing/index.js"),
   "seismology/normal-incidence-two-way-time-thickness-calculator": () => import("../../seismology/normal-incidence-two-way-time-thickness-calculator/index.js"),
   "size/belt": () => import("../../size/belt/index.js"),

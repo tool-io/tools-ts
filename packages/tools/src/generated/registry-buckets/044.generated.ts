@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "laser/laser-facet-coating-ar-hr-mirror-power-ratio-lookup": () => import("../../laser/laser-facet-coating-ar-hr-mirror-power-ratio-lookup/index.js"),
   "mycology/thermophile-cardinal-temps-recorder": () => import("../../mycology/thermophile-cardinal-temps-recorder/index.js"),
   "proportions/percentage-increase": () => import("../../proportions/percentage-increase/index.js"),
+  "random/tangut-character": () => import("../../random/tangut-character/index.js"),
   "sailing/time-to-tack": () => import("../../sailing/time-to-tack/index.js"),
   "sailing/wave-making-resistance": () => import("../../sailing/wave-making-resistance/index.js"),
   "size/bodice-reconstruction": () => import("../../size/bodice-reconstruction/index.js"),

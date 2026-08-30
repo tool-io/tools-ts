@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/cystidia-position-note-generator": () => import("../../mycology/cystidia-position-note-generator/index.js"),
   "mycology/osmotolerance-nacl-limit-lookup": () => import("../../mycology/osmotolerance-nacl-limit-lookup/index.js"),
   "network/ipv6-compress": () => import("../../network/ipv6-compress/index.js"),
+  "random/asl-fingerspelling-letter": () => import("../../random/asl-fingerspelling-letter/index.js"),
   "random/time": () => import("../../random/time/index.js"),
   "seismology/apparent-dip-along-section-line-calculator": () => import("../../seismology/apparent-dip-along-section-line-calculator/index.js"),
   "seismology/cumulative-absolute-velocity-cai": () => import("../../seismology/cumulative-absolute-velocity-cai/index.js"),

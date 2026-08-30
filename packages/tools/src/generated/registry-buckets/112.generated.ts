@@ -20,4 +20,5 @@ export const toolModuleLoaders: Readonly<
   "horology/case-luglug-ratio": () => import("../../horology/case-luglug-ratio/index.js"),
   "matrix/as-latex": () => import("../../matrix/as-latex/index.js"),
   "paleography/golden-number-cycle-position": () => import("../../paleography/golden-number-cycle-position/index.js"),
+  "random/old-uyghur-letter": () => import("../../random/old-uyghur-letter/index.js"),
 };

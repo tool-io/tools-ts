@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "geology/atterberg-liquidity-index": () => import("../../geology/atterberg-liquidity-index/index.js"),
   "logistics/putaway-time-per-pallet-estimate": () => import("../../logistics/putaway-time-per-pallet-estimate/index.js"),
   "oenology/sugar-addition-per-hl": () => import("../../oenology/sugar-addition-per-hl/index.js"),
+  "random/tai-xuan-jing-symbol": () => import("../../random/tai-xuan-jing-symbol/index.js"),
   "real-estate/common-area-factor": () => import("../../real-estate/common-area-factor/index.js"),
   "sailing/sector-search-leg-length": () => import("../../sailing/sector-search-leg-length/index.js"),
   "semiconductor/superjunction-charge-balance": () => import("../../semiconductor/superjunction-charge-balance/index.js"),

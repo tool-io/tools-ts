@@ -18,5 +18,7 @@ export const toolModuleLoaders: Readonly<
   "horology/telemeter-distance": () => import("../../horology/telemeter-distance/index.js"),
   "logistics/restocking-fee-net-refund-computation": () => import("../../logistics/restocking-fee-net-refund-computation/index.js"),
   "nautical/true-wind-speed": () => import("../../nautical/true-wind-speed/index.js"),
+  "random/hangul-character": () => import("../../random/hangul-character/index.js"),
+  "random/lepcha-character": () => import("../../random/lepcha-character/index.js"),
   "seismology/wadati-diagram-vp-vs-slope": () => import("../../seismology/wadati-diagram-vp-vs-slope/index.js"),
 };

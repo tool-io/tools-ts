@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "matrix/flip-horizontal": () => import("../../matrix/flip-horizontal/index.js"),
   "metrics/mean-squared-error": () => import("../../metrics/mean-squared-error/index.js"),
   "paleography/grain-quarter-bushel-converter": () => import("../../paleography/grain-quarter-bushel-converter/index.js"),
+  "random/alchemical-symbol": () => import("../../random/alchemical-symbol/index.js"),
   "semiconductor/hemt-sheet-charge-density": () => import("../../semiconductor/hemt-sheet-charge-density/index.js"),
   "semiconductor/sige-bandgap": () => import("../../semiconductor/sige-bandgap/index.js"),
   "semiconductor/transconductance-efficiency-gm-id": () => import("../../semiconductor/transconductance-efficiency-gm-id/index.js"),

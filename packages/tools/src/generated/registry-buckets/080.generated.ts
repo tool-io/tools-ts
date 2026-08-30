@@ -28,5 +28,7 @@ export const toolModuleLoaders: Readonly<
   "paleography/ampersand-era-mapper": () => import("../../paleography/ampersand-era-mapper/index.js"),
   "paleography/beneventan-zone-locator": () => import("../../paleography/beneventan-zone-locator/index.js"),
   "probability/slice-sampler": () => import("../../probability/slice-sampler/index.js"),
+  "random/ahom-character": () => import("../../random/ahom-character/index.js"),
+  "random/signwriting-body-symbol": () => import("../../random/signwriting-body-symbol/index.js"),
   "semiconductor/mosfet-inversion-charge": () => import("../../semiconductor/mosfet-inversion-charge/index.js"),
 };

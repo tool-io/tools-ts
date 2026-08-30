@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "matrix/determinant": () => import("../../matrix/determinant/index.js"),
   "mortgage/kenya-variable-rate": () => import("../../mortgage/kenya-variable-rate/index.js"),
   "mycology/micro-macro-conidia-ratio-classifier": () => import("../../mycology/micro-macro-conidia-ratio-classifier/index.js"),
+  "random/yi-syllable": () => import("../../random/yi-syllable/index.js"),
   "sailing/gybe-loss-distance": () => import("../../sailing/gybe-loss-distance/index.js"),
   "semiconductor/mram-switching-current-density": () => import("../../semiconductor/mram-switching-current-density/index.js"),
   "size/book-format": () => import("../../size/book-format/index.js"),

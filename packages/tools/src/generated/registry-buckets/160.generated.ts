@@ -18,6 +18,8 @@ export const toolModuleLoaders: Readonly<
   "engineering/weld-throat-area": () => import("../../engineering/weld-throat-area/index.js"),
   "forestry/loreys-mean-height": () => import("../../forestry/loreys-mean-height/index.js"),
   "logistics/liftgate-fee-applicability-checker": () => import("../../logistics/liftgate-fee-applicability-checker/index.js"),
+  "random/coptic-letter": () => import("../../random/coptic-letter/index.js"),
+  "random/phaistos-disc-sign": () => import("../../random/phaistos-disc-sign/index.js"),
   "seismology/swarm-vs-mainshock-aftershock-sequence-classifier": () => import("../../seismology/swarm-vs-mainshock-aftershock-sequence-classifier/index.js"),
   "semiconductor/antiphase-boundary-energy": () => import("../../semiconductor/antiphase-boundary-energy/index.js"),
   "size/child-car-seat": () => import("../../size/child-car-seat/index.js"),

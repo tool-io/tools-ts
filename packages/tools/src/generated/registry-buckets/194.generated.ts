@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/cellulose-clearance-zone-rater": () => import("../../mycology/cellulose-clearance-zone-rater/index.js"),
   "oenology/food-pairing-score": () => import("../../oenology/food-pairing-score/index.js"),
   "oenology/yan-requirement": () => import("../../oenology/yan-requirement/index.js"),
+  "random/signwriting-dynamics-symbol": () => import("../../random/signwriting-dynamics-symbol/index.js"),
   "seismology/love-wave-dispersion-period-speed": () => import("../../seismology/love-wave-dispersion-period-speed/index.js"),
   "size/racket-grip": () => import("../../size/racket-grip/index.js"),
   "vector/add": () => import("../../vector/add/index.js"),

@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "geology/fault-heave": () => import("../../geology/fault-heave/index.js"),
   "mycology/melzer-dextrinoid-amyloid-resolver": () => import("../../mycology/melzer-dextrinoid-amyloid-resolver/index.js"),
   "oenology/total-package-oxygen": () => import("../../oenology/total-package-oxygen/index.js"),
+  "random/inscriptional-parthian-character": () => import("../../random/inscriptional-parthian-character/index.js"),
   "regex/escape": () => import("../../regex/escape/index.js"),
   "sailing/outhaul-tension": () => import("../../sailing/outhaul-tension/index.js"),
   "sailing/reef-percentage": () => import("../../sailing/reef-percentage/index.js"),

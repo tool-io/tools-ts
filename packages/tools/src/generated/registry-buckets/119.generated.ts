@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "oenology/screwcap-torque-spec": () => import("../../oenology/screwcap-torque-spec/index.js"),
   "probability/lognormal-sampler": () => import("../../probability/lognormal-sampler/index.js"),
   "proportions/percentage-difference": () => import("../../proportions/percentage-difference/index.js"),
+  "random/hebrew-letter": () => import("../../random/hebrew-letter/index.js"),
   "seismology/annual-rate-to-t-years-exceedance": () => import("../../seismology/annual-rate-to-t-years-exceedance/index.js"),
   "seismology/significant-duration-arias-5-95": () => import("../../seismology/significant-duration-arias-5-95/index.js"),
   "semiconductor/flash-endurance-cycles": () => import("../../semiconductor/flash-endurance-cycles/index.js"),

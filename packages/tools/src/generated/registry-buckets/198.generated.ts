@@ -16,6 +16,8 @@ export const toolModuleLoaders: Readonly<
   "mycology/fairyring-zone-type-classifier": () => import("../../mycology/fairyring-zone-type-classifier/index.js"),
   "network/ipv4-to-integer": () => import("../../network/ipv4-to-integer/index.js"),
   "paleography/pen-angle-thinning-calculator": () => import("../../paleography/pen-angle-thinning-calculator/index.js"),
+  "random/map-symbol": () => import("../../random/map-symbol/index.js"),
+  "random/medefaidrin-letter": () => import("../../random/medefaidrin-letter/index.js"),
   "sailing/start-line-bias": () => import("../../sailing/start-line-bias/index.js"),
   "semiconductor/laser-cavity-photon-lifetime": () => import("../../semiconductor/laser-cavity-photon-lifetime/index.js"),
   "semiconductor/quantum-confinement-energy-nanowire": () => import("../../semiconductor/quantum-confinement-energy-nanowire/index.js"),

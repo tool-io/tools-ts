@@ -23,6 +23,8 @@ export const toolModuleLoaders: Readonly<
   "laser/laser-dfb-grating-period-bragg-wavelength-calculator": () => import("../../laser/laser-dfb-grating-period-bragg-wavelength-calculator/index.js"),
   "math/logarithmic-mean": () => import("../../math/logarithmic-mean/index.js"),
   "oenology/bottle-fill-height-check": () => import("../../oenology/bottle-fill-height-check/index.js"),
+  "random/multani-character": () => import("../../random/multani-character/index.js"),
+  "random/vithkuqi-letter": () => import("../../random/vithkuqi-letter/index.js"),
   "real-estate/gross-rent-multiplier": () => import("../../real-estate/gross-rent-multiplier/index.js"),
   "regression/polynomial": () => import("../../regression/polynomial/index.js"),
   "seismology/brune-displacement-spectrum-peak-frequency-note": () => import("../../seismology/brune-displacement-spectrum-peak-frequency-note/index.js"),

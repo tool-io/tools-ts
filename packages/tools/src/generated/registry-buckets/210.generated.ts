@@ -13,6 +13,8 @@ export const toolModuleLoaders: Readonly<
   "electronics/noise-temperature": () => import("../../electronics/noise-temperature/index.js"),
   "film/file-size-from-bitrate-runtime": () => import("../../film/file-size-from-bitrate-runtime/index.js"),
   "logistics/container-per-diem-charges-computation": () => import("../../logistics/container-per-diem-charges-computation/index.js"),
+  "random/arabic-letter": () => import("../../random/arabic-letter/index.js"),
+  "random/deseret-letter": () => import("../../random/deseret-letter/index.js"),
   "sailing/man-overboard-distance-drift": () => import("../../sailing/man-overboard-distance-drift/index.js"),
   "seismology/head-wave-critical-angle-appearance": () => import("../../seismology/head-wave-critical-angle-appearance/index.js"),
   "seismology/radiated-energy-from-magnitude-gutenberg-richter": () => import("../../seismology/radiated-energy-from-magnitude-gutenberg-richter/index.js"),

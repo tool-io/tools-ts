@@ -20,6 +20,8 @@ export const toolModuleLoaders: Readonly<
   "geology/true-thickness-from-apparent": () => import("../../geology/true-thickness-from-apparent/index.js"),
   "horology/motion-works-ratio": () => import("../../horology/motion-works-ratio/index.js"),
   "logistics/total-cost-per-mile-owner-operator": () => import("../../logistics/total-cost-per-mile-owner-operator/index.js"),
+  "random/malayalam-character": () => import("../../random/malayalam-character/index.js"),
+  "random/tarot-trump": () => import("../../random/tarot-trump/index.js"),
   "semiconductor/hbt-emitter-injection-efficiency": () => import("../../semiconductor/hbt-emitter-injection-efficiency/index.js"),
   "semiconductor/si-diffusion-coefficient-boron": () => import("../../semiconductor/si-diffusion-coefficient-boron/index.js"),
   "size/pillowcase": () => import("../../size/pillowcase/index.js"),

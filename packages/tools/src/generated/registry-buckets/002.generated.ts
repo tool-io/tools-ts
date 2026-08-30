@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "oenology/h2o2-so2-reduction": () => import("../../oenology/h2o2-so2-reduction/index.js"),
   "paleography/ascender-descender-ratio-estimator": () => import("../../paleography/ascender-descender-ratio-estimator/index.js"),
   "physics/work": () => import("../../physics/work/index.js"),
+  "random/grantha-character": () => import("../../random/grantha-character/index.js"),
   "real-estate/annual-rent": () => import("../../real-estate/annual-rent/index.js"),
   "real-estate/storage-income": () => import("../../real-estate/storage-income/index.js"),
   "sailing/polar-target-twa": () => import("../../sailing/polar-target-twa/index.js"),

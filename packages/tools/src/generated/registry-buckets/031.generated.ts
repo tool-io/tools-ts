@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "geology/cement-slurry-density": () => import("../../geology/cement-slurry-density/index.js"),
   "list/permutations": () => import("../../list/permutations/index.js"),
   "optimization/nadam-step": () => import("../../optimization/nadam-step/index.js"),
+  "random/ottoman-siyaq-number": () => import("../../random/ottoman-siyaq-number/index.js"),
   "seismology/mining-collapse-magnitude-norms-lookup": () => import("../../seismology/mining-collapse-magnitude-norms-lookup/index.js"),
   "seismology/tomography-ray-density-cell-coverage": () => import("../../seismology/tomography-ray-density-cell-coverage/index.js"),
   "semiconductor/chiplet-bandwidth-per-mm": () => import("../../semiconductor/chiplet-bandwidth-per-mm/index.js"),

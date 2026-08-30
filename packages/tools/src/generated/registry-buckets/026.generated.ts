@@ -27,6 +27,8 @@ export const toolModuleLoaders: Readonly<
   "music/dotted-note-duration-calculator": () => import("../../music/dotted-note-duration-calculator/index.js"),
   "mycology/ascus-eight-spored-checker": () => import("../../mycology/ascus-eight-spored-checker/index.js"),
   "random/binary": () => import("../../random/binary/index.js"),
+  "random/musical-note": () => import("../../random/musical-note/index.js"),
+  "random/tibetan-character": () => import("../../random/tibetan-character/index.js"),
   "real-estate/tenant-improvement-cost": () => import("../../real-estate/tenant-improvement-cost/index.js"),
   "sailing/keel-lift": () => import("../../sailing/keel-lift/index.js"),
   "sailing/lead-percentage": () => import("../../sailing/lead-percentage/index.js"),

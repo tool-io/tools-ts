@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/rack-cube-utilization-percent": () => import("../../logistics/rack-cube-utilization-percent/index.js"),
   "music/lfo-rate-hz-from-tempo-division": () => import("../../music/lfo-rate-hz-from-tempo-division/index.js"),
   "oenology/cork-fit-checker": () => import("../../oenology/cork-fit-checker/index.js"),
+  "random/duployan-character": () => import("../../random/duployan-character/index.js"),
   "seismology/foreshock-mainshock-probable-classifier": () => import("../../seismology/foreshock-mainshock-probable-classifier/index.js"),
   "size/pipe": () => import("../../size/pipe/index.js"),
   "typography/points-to-pixels-96dpi": () => import("../../typography/points-to-pixels-96dpi/index.js"),

@@ -28,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "optimization/conjugate-gradient-step": () => import("../../optimization/conjugate-gradient-step/index.js"),
   "physics/projectile-motion": () => import("../../physics/projectile-motion/index.js"),
   "probability/exponential-sampler": () => import("../../probability/exponential-sampler/index.js"),
+  "random/laundry-care-symbol": () => import("../../random/laundry-care-symbol/index.js"),
   "seismology/surface-rupture-length-recurrence-lookup": () => import("../../seismology/surface-rupture-length-recurrence-lookup/index.js"),
   "semiconductor/pcm-endurance-cycles": () => import("../../semiconductor/pcm-endurance-cycles/index.js"),
   "text/unique-word-ratio": () => import("../../text/unique-word-ratio/index.js"),

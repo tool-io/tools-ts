@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/quantization-noise-snr": () => import("../../electronics/quantization-noise-snr/index.js"),
   "meteorology/heating-degree-days": () => import("../../meteorology/heating-degree-days/index.js"),
   "mycology/basidium-club-proportion-checker": () => import("../../mycology/basidium-club-proportion-checker/index.js"),
+  "random/old-persian-character": () => import("../../random/old-persian-character/index.js"),
   "random/seeded-number": () => import("../../random/seeded-number/index.js"),
   "real-estate/floor-area-ratio": () => import("../../real-estate/floor-area-ratio/index.js"),
   "sailing/start-line-length-required": () => import("../../sailing/start-line-length-required/index.js"),

@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "horology/seconds-gained-per-day": () => import("../../horology/seconds-gained-per-day/index.js"),
   "music/dbfs-to-linear-amplitude": () => import("../../music/dbfs-to-linear-amplitude/index.js"),
   "paleography/line-count-column-measurer": () => import("../../paleography/line-count-column-measurer/index.js"),
+  "random/electrical-symbol": () => import("../../random/electrical-symbol/index.js"),
   "seismology/eurocode-8-ground-type-lookup": () => import("../../seismology/eurocode-8-ground-type-lookup/index.js"),
   "semiconductor/impact-ionization-coefficient": () => import("../../semiconductor/impact-ionization-coefficient/index.js"),
   "semiconductor/quantum-resistance": () => import("../../semiconductor/quantum-resistance/index.js"),

@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "graph/shortest-unweighted-path": () => import("../../graph/shortest-unweighted-path/index.js"),
   "number/continued-fraction": () => import("../../number/continued-fraction/index.js"),
   "oenology/cuso4-h2s-trial-dose": () => import("../../oenology/cuso4-h2s-trial-dose/index.js"),
+  "random/counting-rod-numeral": () => import("../../random/counting-rod-numeral/index.js"),
   "seismology/topographic-aggravation-factor-ridge": () => import("../../seismology/topographic-aggravation-factor-ridge/index.js"),
   "size/petticoat-reconstruction": () => import("../../size/petticoat-reconstruction/index.js"),
   "sports/pace-per-km": () => import("../../sports/pace-per-km/index.js"),

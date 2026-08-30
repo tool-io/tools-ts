@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "list/frequency": () => import("../../list/frequency/index.js"),
   "logistics/dock-door-utilization-percent": () => import("../../logistics/dock-door-utilization-percent/index.js"),
   "matrix/transpose": () => import("../../matrix/transpose/index.js"),
+  "random/dgs-fingerspelling-letter": () => import("../../random/dgs-fingerspelling-letter/index.js"),
   "sailing/winch-power-ratio": () => import("../../sailing/winch-power-ratio/index.js"),
   "seismology/source-spectral-falloff-high-frequency-slope-checker": () => import("../../seismology/source-spectral-falloff-high-frequency-slope-checker/index.js"),
 };

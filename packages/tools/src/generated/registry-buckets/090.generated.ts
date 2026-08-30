@@ -29,6 +29,8 @@ export const toolModuleLoaders: Readonly<
   "mycology/smut-teliospore-sculpturing-classifier": () => import("../../mycology/smut-teliospore-sculpturing-classifier/index.js"),
   "network/ipv6-expand": () => import("../../network/ipv6-expand/index.js"),
   "oenology/restaurant-markup-price": () => import("../../oenology/restaurant-markup-price/index.js"),
+  "random/modi-character": () => import("../../random/modi-character/index.js"),
+  "random/nushu-character": () => import("../../random/nushu-character/index.js"),
   "seismology/site-class-nehrp-from-vs30-lookup": () => import("../../seismology/site-class-nehrp-from-vs30-lookup/index.js"),
   "seismology/telemetry-block-gap-detector": () => import("../../seismology/telemetry-block-gap-detector/index.js"),
 };

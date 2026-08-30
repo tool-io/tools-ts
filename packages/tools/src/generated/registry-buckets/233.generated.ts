@@ -19,6 +19,8 @@ export const toolModuleLoaders: Readonly<
   "list/rotate": () => import("../../list/rotate/index.js"),
   "mycology/ornamentation-type-classifier": () => import("../../mycology/ornamentation-type-classifier/index.js"),
   "paleography/majuscule-minuscule-balance-calculator": () => import("../../paleography/majuscule-minuscule-balance-calculator/index.js"),
+  "random/cyrillic-letter": () => import("../../random/cyrillic-letter/index.js"),
+  "random/new-tai-lue-character": () => import("../../random/new-tai-lue-character/index.js"),
   "sailing/keel-aspect-ratio": () => import("../../sailing/keel-aspect-ratio/index.js"),
   "semiconductor/negative-bias-temperature-instability-shift": () => import("../../semiconductor/negative-bias-temperature-instability-shift/index.js"),
   "semiconductor/positive-bias-temperature-instability-shift": () => import("../../semiconductor/positive-bias-temperature-instability-shift/index.js"),

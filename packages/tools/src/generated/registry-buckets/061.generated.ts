@@ -24,6 +24,8 @@ export const toolModuleLoaders: Readonly<
   "mortgage/taiwan-grace-period": () => import("../../mortgage/taiwan-grace-period/index.js"),
   "oenology/starter-pitch-rate": () => import("../../oenology/starter-pitch-rate/index.js"),
   "paleography/diplomatic-protocol-checker": () => import("../../paleography/diplomatic-protocol-checker/index.js"),
+  "random/avestan-character": () => import("../../random/avestan-character/index.js"),
+  "random/card-suit": () => import("../../random/card-suit/index.js"),
   "semiconductor/single-electron-transistor-coulomb-gap": () => import("../../semiconductor/single-electron-transistor-coulomb-gap/index.js"),
   "statistics/standard-error": () => import("../../statistics/standard-error/index.js"),
   "text/trigram-count": () => import("../../text/trigram-count/index.js"),

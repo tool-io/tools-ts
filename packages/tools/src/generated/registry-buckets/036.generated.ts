@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "laser/laser-external-cavity-diode-laser-littrow-littman-config-selector": () => import("../../laser/laser-external-cavity-diode-laser-littrow-littman-config-selector/index.js"),
   "number/armstrong-checker": () => import("../../number/armstrong-checker/index.js"),
   "paleography/capitalization-randomness-index": () => import("../../paleography/capitalization-randomness-index/index.js"),
+  "random/old-south-arabian-letter": () => import("../../random/old-south-arabian-letter/index.js"),
   "sailing/horizon-dip": () => import("../../sailing/horizon-dip/index.js"),
   "sailing/layline-understand": () => import("../../sailing/layline-understand/index.js"),
   "sailing/time-to-waypoint-sailing": () => import("../../sailing/time-to-waypoint-sailing/index.js"),

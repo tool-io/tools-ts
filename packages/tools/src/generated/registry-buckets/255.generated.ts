@@ -20,5 +20,6 @@ export const toolModuleLoaders: Readonly<
   "laser/laser-chirped-pulse-amplification-stretcher-compressor-ratio-calculator": () => import("../../laser/laser-chirped-pulse-amplification-stretcher-compressor-ratio-calculator/index.js"),
   "mycology/sectoring-variant-flag-detector": () => import("../../mycology/sectoring-variant-flag-detector/index.js"),
   "neural-network/feedforward": () => import("../../neural-network/feedforward/index.js"),
+  "random/cypro-minoan-sign": () => import("../../random/cypro-minoan-sign/index.js"),
   "set/difference": () => import("../../set/difference/index.js"),
 };

@@ -17,6 +17,8 @@ export const toolModuleLoaders: Readonly<
   "logistics/zone-based-rate-table-step-lookup": () => import("../../logistics/zone-based-rate-table-step-lookup/index.js"),
   "mycology/mycelial-growth-rate-radial-measurer": () => import("../../mycology/mycelial-growth-rate-radial-measurer/index.js"),
   "paleography/byzantine-annomundi-converter": () => import("../../paleography/byzantine-annomundi-converter/index.js"),
+  "random/nyiakeng-puachue-hmong-character": () => import("../../random/nyiakeng-puachue-hmong-character/index.js"),
+  "random/siddham-character": () => import("../../random/siddham-character/index.js"),
   "semiconductor/fe-fet-memory-window": () => import("../../semiconductor/fe-fet-memory-window/index.js"),
   "semiconductor/sige-strain": () => import("../../semiconductor/sige-strain/index.js"),
   "set/symmetric-difference": () => import("../../set/symmetric-difference/index.js"),

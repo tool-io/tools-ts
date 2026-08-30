@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/taste-coded-entry-checker": () => import("../../mycology/taste-coded-entry-checker/index.js"),
   "oenology/abv-simple-sg-drop": () => import("../../oenology/abv-simple-sg-drop/index.js"),
   "paleography/signum-cross-detector": () => import("../../paleography/signum-cross-detector/index.js"),
+  "random/bengali-character": () => import("../../random/bengali-character/index.js"),
   "sailing/capsize-screening-factor": () => import("../../sailing/capsize-screening-factor/index.js"),
   "seismology/uniform-hazard-spectrum-interpolation": () => import("../../seismology/uniform-hazard-spectrum-interpolation/index.js"),
   "seismology/wadati-residual-histogram-binner": () => import("../../seismology/wadati-residual-histogram-binner/index.js"),

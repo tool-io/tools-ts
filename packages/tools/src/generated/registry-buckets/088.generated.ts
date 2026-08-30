@@ -29,5 +29,6 @@ export const toolModuleLoaders: Readonly<
   "paleography/collation-formula-builder": () => import("../../paleography/collation-formula-builder/index.js"),
   "paleography/word-spacing-adoption-rater": () => import("../../paleography/word-spacing-adoption-rater/index.js"),
   "probability/laplace-sampler": () => import("../../probability/laplace-sampler/index.js"),
+  "random/pahawh-hmong-character": () => import("../../random/pahawh-hmong-character/index.js"),
   "semiconductor/substrate-warpage": () => import("../../semiconductor/substrate-warpage/index.js"),
 };

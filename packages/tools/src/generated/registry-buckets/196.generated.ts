@@ -16,6 +16,8 @@ export const toolModuleLoaders: Readonly<
   "logistics/broker-margin-percent-on-carrier": () => import("../../logistics/broker-margin-percent-on-carrier/index.js"),
   "logistics/certificate-origin-fta-threshold-lookup": () => import("../../logistics/certificate-origin-fta-threshold-lookup/index.js"),
   "logistics/cost-per-ton-mile-computed": () => import("../../logistics/cost-per-ton-mile-computed/index.js"),
+  "random/limbu-character": () => import("../../random/limbu-character/index.js"),
+  "random/wancho-letter": () => import("../../random/wancho-letter/index.js"),
   "seismology/gutenberg-richter-a-value-annual-normalization": () => import("../../seismology/gutenberg-richter-a-value-annual-normalization/index.js"),
   "seismology/volcano-repeater-family-correlation-checker": () => import("../../seismology/volcano-repeater-family-correlation-checker/index.js"),
   "semiconductor/interposer-line-capacitance": () => import("../../semiconductor/interposer-line-capacitance/index.js"),

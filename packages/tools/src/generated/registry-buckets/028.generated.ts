@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/slime-mold-migration-speed-rater": () => import("../../mycology/slime-mold-migration-speed-rater/index.js"),
   "oenology/two-wine-abv-blend": () => import("../../oenology/two-wine-abv-blend/index.js"),
   "paleography/nine-final-token-resolver": () => import("../../paleography/nine-final-token-resolver/index.js"),
+  "random/astronomical-symbol": () => import("../../random/astronomical-symbol/index.js"),
   "sailing/dewpoint-spread-fog-risk": () => import("../../sailing/dewpoint-spread-fog-risk/index.js"),
   "sailing/heat-index-apparent": () => import("../../sailing/heat-index-apparent/index.js"),
   "seismology/seismic-landslide-area-volume-scaling": () => import("../../seismology/seismic-landslide-area-volume-scaling/index.js"),

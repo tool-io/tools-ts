@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "music/frequency-to-nearest-midi": () => import("../../music/frequency-to-nearest-midi/index.js"),
   "password/strength": () => import("../../password/strength/index.js"),
   "probability/dirichlet-sampler": () => import("../../probability/dirichlet-sampler/index.js"),
+  "random/nato-phonetic-codeword": () => import("../../random/nato-phonetic-codeword/index.js"),
   "real-estate/cap-rate-spread": () => import("../../real-estate/cap-rate-spread/index.js"),
   "seismology/shake-alert-lead-time-seconds-estimate": () => import("../../seismology/shake-alert-lead-time-seconds-estimate/index.js"),
   "size/horse-blanket": () => import("../../size/horse-blanket/index.js"),

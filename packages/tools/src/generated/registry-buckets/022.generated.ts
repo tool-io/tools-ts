@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "oenology/baume-to-brix": () => import("../../oenology/baume-to-brix/index.js"),
   "oenology/chaptalization-sugar": () => import("../../oenology/chaptalization-sugar/index.js"),
   "paleography/exlibris-inscription-extractor": () => import("../../paleography/exlibris-inscription-extractor/index.js"),
+  "random/chess-piece": () => import("../../random/chess-piece/index.js"),
   "sailing/anchor-rode-length": () => import("../../sailing/anchor-rode-length/index.js"),
   "sailing/traveler-position": () => import("../../sailing/traveler-position/index.js"),
   "seismology/dipping-refractor-true-velocity-updown-dip": () => import("../../seismology/dipping-refractor-true-velocity-updown-dip/index.js"),

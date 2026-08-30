@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "oenology/age-worthiness-score": () => import("../../oenology/age-worthiness-score/index.js"),
   "oenology/casein-fining-dose": () => import("../../oenology/casein-fining-dose/index.js"),
   "paleography/trim-loss-edge-recorder": () => import("../../paleography/trim-loss-edge-recorder/index.js"),
+  "random/buhid-character": () => import("../../random/buhid-character/index.js"),
   "sailing/sail-aspect-ratio-jib": () => import("../../sailing/sail-aspect-ratio-jib/index.js"),
   "seismology/intensity-pga-wald-1999-table-lookup": () => import("../../seismology/intensity-pga-wald-1999-table-lookup/index.js"),
   "seismology/reservoir-induced-stress-change-bar": () => import("../../seismology/reservoir-induced-stress-change-bar/index.js"),

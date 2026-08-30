@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "horology/quartz-ppm-to-month-seconds": () => import("../../horology/quartz-ppm-to-month-seconds/index.js"),
   "logistics/ltl-rate-per-hundredweight": () => import("../../logistics/ltl-rate-per-hundredweight/index.js"),
   "matrix/flip-vertical": () => import("../../matrix/flip-vertical/index.js"),
+  "random/kayah-li-character": () => import("../../random/kayah-li-character/index.js"),
   "real-estate/preferred-return": () => import("../../real-estate/preferred-return/index.js"),
   "sailing/true-wind-speed-from-apparent": () => import("../../sailing/true-wind-speed-from-apparent/index.js"),
   "seismology/tri-station-circle-epicenter-least-squares": () => import("../../seismology/tri-station-circle-epicenter-least-squares/index.js"),

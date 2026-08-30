@@ -19,6 +19,8 @@ export const toolModuleLoaders: Readonly<
   "forestry/height-growth-annual": () => import("../../forestry/height-growth-annual/index.js"),
   "geology/apparent-dip": () => import("../../geology/apparent-dip/index.js"),
   "parse/date": () => import("../../parse/date/index.js"),
+  "random/international-semaphore-letter": () => import("../../random/international-semaphore-letter/index.js"),
+  "random/soyombo-character": () => import("../../random/soyombo-character/index.js"),
   "real-estate/effective-gross-income": () => import("../../real-estate/effective-gross-income/index.js"),
   "real-estate/rent-increase": () => import("../../real-estate/rent-increase/index.js"),
   "sailing/tidal-race-speed": () => import("../../sailing/tidal-race-speed/index.js"),

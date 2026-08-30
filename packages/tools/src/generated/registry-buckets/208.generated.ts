@@ -24,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "matrix/rotate-90": () => import("../../matrix/rotate-90/index.js"),
   "probability/dirichlet-process-sampler": () => import("../../probability/dirichlet-process-sampler/index.js"),
   "probability/weibull-sampler": () => import("../../probability/weibull-sampler/index.js"),
+  "random/mahajani-character": () => import("../../random/mahajani-character/index.js"),
   "sailing/mast-rake-angle": () => import("../../sailing/mast-rake-angle/index.js"),
   "semiconductor/contact-resistance-transfer-length": () => import("../../semiconductor/contact-resistance-transfer-length/index.js"),
   "semiconductor/ionization-fraction": () => import("../../semiconductor/ionization-fraction/index.js"),

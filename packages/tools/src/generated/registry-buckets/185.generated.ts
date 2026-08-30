@@ -25,6 +25,8 @@ export const toolModuleLoaders: Readonly<
   "logistics/stretch-wrap-film-length-needed": () => import("../../logistics/stretch-wrap-film-length-needed/index.js"),
   "number/leading-digit": () => import("../../number/leading-digit/index.js"),
   "oenology/do-at-bottling-checker": () => import("../../oenology/do-at-bottling-checker/index.js"),
+  "random/linear-b-sign": () => import("../../random/linear-b-sign/index.js"),
+  "random/toto-character": () => import("../../random/toto-character/index.js"),
   "sailing/figure-eight-recovery-time": () => import("../../sailing/figure-eight-recovery-time/index.js"),
   "sailing/irc-corrected-time": () => import("../../sailing/irc-corrected-time/index.js"),
   "semiconductor/3d-ic-tsv-keep-out-zone": () => import("../../semiconductor/3d-ic-tsv-keep-out-zone/index.js"),

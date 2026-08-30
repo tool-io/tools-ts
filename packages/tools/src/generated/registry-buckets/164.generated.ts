@@ -26,6 +26,8 @@ export const toolModuleLoaders: Readonly<
   "mycology/ascospore-arrangement-decoder": () => import("../../mycology/ascospore-arrangement-decoder/index.js"),
   "number/mersenne-checker": () => import("../../number/mersenne-checker/index.js"),
   "parse/number": () => import("../../parse/number/index.js"),
+  "random/gothic-letter": () => import("../../random/gothic-letter/index.js"),
+  "random/old-permic-letter": () => import("../../random/old-permic-letter/index.js"),
   "seismology/fracturing-monitor-magnitude-reporting-lookup": () => import("../../seismology/fracturing-monitor-magnitude-reporting-lookup/index.js"),
   "semiconductor/diode-ideality-factor": () => import("../../semiconductor/diode-ideality-factor/index.js"),
   "semiconductor/electromigration-black-equation": () => import("../../semiconductor/electromigration-black-equation/index.js"),

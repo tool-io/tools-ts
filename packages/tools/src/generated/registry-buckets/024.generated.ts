@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/basal-area-increment-percentage": () => import("../../forestry/basal-area-increment-percentage/index.js"),
   "geology/atterberg-plasticity-index": () => import("../../geology/atterberg-plasticity-index/index.js"),
   "laser/laser-ti-sapphire-tuning-range-kerr-lens-mode-locking-prerequisite-checker": () => import("../../laser/laser-ti-sapphire-tuning-range-kerr-lens-mode-locking-prerequisite-checker/index.js"),
+  "random/dogra-character": () => import("../../random/dogra-character/index.js"),
   "real-estate/leasing-commission": () => import("../../real-estate/leasing-commission/index.js"),
   "regression/linear": () => import("../../regression/linear/index.js"),
   "sailing/spinnaker-tack-position": () => import("../../sailing/spinnaker-tack-position/index.js"),

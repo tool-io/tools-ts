@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "oenology/brix-to-specific-gravity": () => import("../../oenology/brix-to-specific-gravity/index.js"),
   "optimization/newton-step": () => import("../../optimization/newton-step/index.js"),
   "paleography/ell-yard-regional-converter": () => import("../../paleography/ell-yard-regional-converter/index.js"),
+  "random/gurmukhi-character": () => import("../../random/gurmukhi-character/index.js"),
   "real-estate/closing-costs": () => import("../../real-estate/closing-costs/index.js"),
   "web/form-urlencoded-encoder": () => import("../../web/form-urlencoded-encoder/index.js"),
 };

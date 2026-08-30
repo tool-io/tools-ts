@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "geodesy/wgs84-semi-major-lookup": () => import("../../geodesy/wgs84-semi-major-lookup/index.js"),
   "interpolation/linear": () => import("../../interpolation/linear/index.js"),
   "mycology/cap-cuticle-texture-mapper": () => import("../../mycology/cap-cuticle-texture-mapper/index.js"),
+  "random/thai-character": () => import("../../random/thai-character/index.js"),
   "sailing/lighthouse-geographic-range": () => import("../../sailing/lighthouse-geographic-range/index.js"),
   "seismology/moment-magnitude-from-moment-hanks-kanamori": () => import("../../seismology/moment-magnitude-from-moment-hanks-kanamori/index.js"),
   "statistics/odds-ratio": () => import("../../statistics/odds-ratio/index.js"),

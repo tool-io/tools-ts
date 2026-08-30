@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "music/pitch-bend-semitone-range-14bit": () => import("../../music/pitch-bend-semitone-range-14bit/index.js"),
   "mycology/odor-intensity-scale-rater": () => import("../../mycology/odor-intensity-scale-rater/index.js"),
   "mycology/spore-size-lw-ratio-measurer": () => import("../../mycology/spore-size-lw-ratio-measurer/index.js"),
+  "random/palmyrene-letter": () => import("../../random/palmyrene-letter/index.js"),
   "sailing/winch-handle-force": () => import("../../sailing/winch-handle-force/index.js"),
   "seismology/ms-mb-explosion-discrimination-note-lookup": () => import("../../seismology/ms-mb-explosion-discrimination-note-lookup/index.js"),
   "semiconductor/perovskite-tolerance-factor": () => import("../../semiconductor/perovskite-tolerance-factor/index.js"),

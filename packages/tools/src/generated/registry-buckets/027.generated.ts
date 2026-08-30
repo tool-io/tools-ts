@@ -17,5 +17,6 @@ export const toolModuleLoaders: Readonly<
   "microcontroller/uart-baud-divider": () => import("../../microcontroller/uart-baud-divider/index.js"),
   "music/melodic-range-span-semitones": () => import("../../music/melodic-range-span-semitones/index.js"),
   "oenology/decanting-time-style": () => import("../../oenology/decanting-time-style/index.js"),
+  "random/lsf-fingerspelling-letter": () => import("../../random/lsf-fingerspelling-letter/index.js"),
   "seismology/refraction-layer-crossover-distance": () => import("../../seismology/refraction-layer-crossover-distance/index.js"),
 };

@@ -19,6 +19,8 @@ export const toolModuleLoaders: Readonly<
   "geology/mineral-density-lookup": () => import("../../geology/mineral-density-lookup/index.js"),
   "geometry/triangle-area": () => import("../../geometry/triangle-area/index.js"),
   "proportions/percentage-change": () => import("../../proportions/percentage-change/index.js"),
+  "random/egyptian-hieroglyph": () => import("../../random/egyptian-hieroglyph/index.js"),
+  "random/hatran-letter": () => import("../../random/hatran-letter/index.js"),
   "sailing/williamson-turn-course": () => import("../../sailing/williamson-turn-course/index.js"),
   "size/dog-harness": () => import("../../size/dog-harness/index.js"),
   "size/nut": () => import("../../size/nut/index.js"),

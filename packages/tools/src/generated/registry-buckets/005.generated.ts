@@ -24,6 +24,8 @@ export const toolModuleLoaders: Readonly<
   "geology/clinoform-height": () => import("../../geology/clinoform-height/index.js"),
   "geology/stratigraphic-thickness-true-vs-apparent": () => import("../../geology/stratigraphic-thickness-true-vs-apparent/index.js"),
   "mycology/pore-density-counter": () => import("../../mycology/pore-density-counter/index.js"),
+  "random/hanunoo-character": () => import("../../random/hanunoo-character/index.js"),
+  "random/maritime-signal-flag": () => import("../../random/maritime-signal-flag/index.js"),
   "text/word-count": () => import("../../text/word-count/index.js"),
   "wcag-contrast-check": () => import("../../wcag-contrast-check/index.js"),
 };

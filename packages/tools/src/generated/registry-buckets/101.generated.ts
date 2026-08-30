@@ -27,6 +27,8 @@ export const toolModuleLoaders: Readonly<
   "microcontroller/watchdog-timeout": () => import("../../microcontroller/watchdog-timeout/index.js"),
   "oenology/oak-stave-surface-area": () => import("../../oenology/oak-stave-surface-area/index.js"),
   "probability/binomial-sampler": () => import("../../probability/binomial-sampler/index.js"),
+  "random/morse-code-character": () => import("../../random/morse-code-character/index.js"),
+  "random/religious-symbol": () => import("../../random/religious-symbol/index.js"),
   "sailing/gybing-angle": () => import("../../sailing/gybing-angle/index.js"),
   "sailing/spinnaker-wind-angle-range": () => import("../../sailing/spinnaker-wind-angle-range/index.js"),
   "semiconductor/mosfet-transconductance-linear": () => import("../../semiconductor/mosfet-transconductance-linear/index.js"),

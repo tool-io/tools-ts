@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/radar-doppler-shift": () => import("../../electronics/radar-doppler-shift/index.js"),
   "engineering/pump-hydraulic-power": () => import("../../engineering/pump-hydraulic-power/index.js"),
   "geology/sequence-boundary-lookup": () => import("../../geology/sequence-boundary-lookup/index.js"),
+  "random/devanagari-character": () => import("../../random/devanagari-character/index.js"),
   "real-estate/operating-expense-ratio": () => import("../../real-estate/operating-expense-ratio/index.js"),
   "sailing/cloud-ceiling-category": () => import("../../sailing/cloud-ceiling-category/index.js"),
   "seismology/etas-aftershock-productivity-alpha": () => import("../../seismology/etas-aftershock-productivity-alpha/index.js"),

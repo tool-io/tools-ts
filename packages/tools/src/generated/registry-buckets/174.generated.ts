@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "geology/neodymium-epsilon": () => import("../../geology/neodymium-epsilon/index.js"),
   "geometry/cone-volume": () => import("../../geometry/cone-volume/index.js"),
   "number/pentagonal-checker": () => import("../../number/pentagonal-checker/index.js"),
+  "random/yezidi-letter": () => import("../../random/yezidi-letter/index.js"),
   "real-estate/annual-debt-service": () => import("../../real-estate/annual-debt-service/index.js"),
   "sailing/current-shear-gain": () => import("../../sailing/current-shear-gain/index.js"),
   "semiconductor/mosfet-oxide-breakdown-field": () => import("../../semiconductor/mosfet-oxide-breakdown-field/index.js"),

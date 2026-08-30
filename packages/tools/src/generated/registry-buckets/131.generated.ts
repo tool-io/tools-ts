@@ -18,6 +18,9 @@ export const toolModuleLoaders: Readonly<
   "music/midi-clock-us-per-quarter-ppqn": () => import("../../music/midi-clock-us-per-quarter-ppqn/index.js"),
   "number/divisor-sum": () => import("../../number/divisor-sum/index.js"),
   "oenology/seed-tannin-index-checker": () => import("../../oenology/seed-tannin-index-checker/index.js"),
+  "random/mongolian-character": () => import("../../random/mongolian-character/index.js"),
+  "random/moon-phase-symbol": () => import("../../random/moon-phase-symbol/index.js"),
+  "random/osage-letter": () => import("../../random/osage-letter/index.js"),
   "sailing/polar-performance-percentage": () => import("../../sailing/polar-performance-percentage/index.js"),
   "vr/tracking-jitter-rms": () => import("../../vr/tracking-jitter-rms/index.js"),
 };

@@ -23,5 +23,6 @@ export const toolModuleLoaders: Readonly<
   "logistics/pallet-loaded-weight-total": () => import("../../logistics/pallet-loaded-weight-total/index.js"),
   "mycology/ergot-alkaloid-assay-recorder": () => import("../../mycology/ergot-alkaloid-assay-recorder/index.js"),
   "paleography/two-column-gutter-checker": () => import("../../paleography/two-column-gutter-checker/index.js"),
+  "random/sogdian-letter": () => import("../../random/sogdian-letter/index.js"),
   "text/reading-time": () => import("../../text/reading-time/index.js"),
 };

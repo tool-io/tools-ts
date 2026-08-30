@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/eld-drive-clock-remaining-today": () => import("../../logistics/eld-drive-clock-remaining-today/index.js"),
   "mycology/growth-form-linear-appressorial-classifier": () => import("../../mycology/growth-form-linear-appressorial-classifier/index.js"),
   "network/ipv4-usable-host-count": () => import("../../network/ipv4-usable-host-count/index.js"),
+  "random/sundanese-character": () => import("../../random/sundanese-character/index.js"),
   "real-estate/cost-approach-value": () => import("../../real-estate/cost-approach-value/index.js"),
   "sailing/estimated-position-leeway": () => import("../../sailing/estimated-position-leeway/index.js"),
   "seismology/brune-source-time-duration-from-corner": () => import("../../seismology/brune-source-time-duration-from-corner/index.js"),

@@ -21,6 +21,9 @@ export const toolModuleLoaders: Readonly<
   "mortgage/vietnam-promotional-floating": () => import("../../mortgage/vietnam-promotional-floating/index.js"),
   "oenology/alcohol-adjust-water-blend": () => import("../../oenology/alcohol-adjust-water-blend/index.js"),
   "oenology/cases-per-tank": () => import("../../oenology/cases-per-tank/index.js"),
+  "random/auslan-fingerspelling-letter": () => import("../../random/auslan-fingerspelling-letter/index.js"),
+  "random/nag-mundari-character": () => import("../../random/nag-mundari-character/index.js"),
+  "random/traffic-sign": () => import("../../random/traffic-sign/index.js"),
   "statistics/midhinge": () => import("../../statistics/midhinge/index.js"),
   "take-home-pay-calculator/de": () => import("../../take-home-pay-calculator/de/index.js"),
 };

@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "laser/laser-attosecond-streaking-phase-retrieval-window-note-lookup": () => import("../../laser/laser-attosecond-streaking-phase-retrieval-window-note-lookup/index.js"),
   "logistics/billable-weight-max-actual-dim": () => import("../../logistics/billable-weight-max-actual-dim/index.js"),
   "music/quarter-tone-microtonal-frequency": () => import("../../music/quarter-tone-microtonal-frequency/index.js"),
+  "random/old-north-arabian-letter": () => import("../../random/old-north-arabian-letter/index.js"),
   "sailing/persistent-shift-rate": () => import("../../sailing/persistent-shift-rate/index.js"),
   "vr/field-of-view-diagonal": () => import("../../vr/field-of-view-diagonal/index.js"),
 };

@@ -27,5 +27,8 @@ export const toolModuleLoaders: Readonly<
   "oenology/sussreserve-so2-uplift": () => import("../../oenology/sussreserve-so2-uplift/index.js"),
   "optimization/lbfgs-step": () => import("../../optimization/lbfgs-step/index.js"),
   "probability/beta-binomial-sampler": () => import("../../probability/beta-binomial-sampler/index.js"),
+  "random/mahjong-tile": () => import("../../random/mahjong-tile/index.js"),
+  "random/samaritan-letter": () => import("../../random/samaritan-letter/index.js"),
+  "random/sunuwar-character": () => import("../../random/sunuwar-character/index.js"),
   "semiconductor/led-wall-plug-efficiency": () => import("../../semiconductor/led-wall-plug-efficiency/index.js"),
 };

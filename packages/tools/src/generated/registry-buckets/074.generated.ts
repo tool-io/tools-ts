@@ -28,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "paleography/insular-family-flag-checker": () => import("../../paleography/insular-family-flag-checker/index.js"),
   "parse/url": () => import("../../parse/url/index.js"),
   "physics/power-work": () => import("../../physics/power-work/index.js"),
+  "random/zodiac-symbol": () => import("../../random/zodiac-symbol/index.js"),
   "sailing/lee-bow-effect-current": () => import("../../sailing/lee-bow-effect-current/index.js"),
   "seismology/fault-seismic-moment-deficit-calculator": () => import("../../seismology/fault-seismic-moment-deficit-calculator/index.js"),
   "semiconductor/fermi-dirac-occupancy": () => import("../../semiconductor/fermi-dirac-occupancy/index.js"),

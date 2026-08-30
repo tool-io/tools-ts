@@ -20,6 +20,8 @@ export const toolModuleLoaders: Readonly<
   "geology/secondary-compression-settlement": () => import("../../geology/secondary-compression-settlement/index.js"),
   "laser/laser-thulium-fiber-1908-nm-holmium-cascade-hard-tissue-lookup": () => import("../../laser/laser-thulium-fiber-1908-nm-holmium-cascade-hard-tissue-lookup/index.js"),
   "matrix/identity": () => import("../../matrix/identity/index.js"),
+  "random/lisu-letter": () => import("../../random/lisu-letter/index.js"),
+  "random/nabataean-letter": () => import("../../random/nabataean-letter/index.js"),
   "sailing/sail-load": () => import("../../sailing/sail-load/index.js"),
   "semiconductor/subthreshold-swing": () => import("../../semiconductor/subthreshold-swing/index.js"),
   "statistics/number-needed-to-treat": () => import("../../statistics/number-needed-to-treat/index.js"),

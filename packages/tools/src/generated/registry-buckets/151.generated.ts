@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "horology/glide-motion-step-rate": () => import("../../horology/glide-motion-step-rate/index.js"),
   "information/binary-entropy": () => import("../../information/binary-entropy/index.js"),
   "oenology/specific-gravity-to-brix": () => import("../../oenology/specific-gravity-to-brix/index.js"),
+  "random/kaithi-character": () => import("../../random/kaithi-character/index.js"),
   "sailing/man-overboard-return-course-quickstop": () => import("../../sailing/man-overboard-return-course-quickstop/index.js"),
   "seismology/site-kappa-path-tstar-decomposition": () => import("../../seismology/site-kappa-path-tstar-decomposition/index.js"),
   "semiconductor/coulomb-blockade-voltage": () => import("../../semiconductor/coulomb-blockade-voltage/index.js"),

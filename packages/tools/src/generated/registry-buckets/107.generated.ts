@@ -17,6 +17,8 @@ export const toolModuleLoaders: Readonly<
   "logistics/accessorial-fees-total-itemizer": () => import("../../logistics/accessorial-fees-total-itemizer/index.js"),
   "oenology/shelf-life-do-threshold": () => import("../../oenology/shelf-life-do-threshold/index.js"),
   "oenology/yeast-inoculation-rate": () => import("../../oenology/yeast-inoculation-rate/index.js"),
+  "random/sharada-character": () => import("../../random/sharada-character/index.js"),
+  "random/zanabazar-square-character": () => import("../../random/zanabazar-square-character/index.js"),
   "semiconductor/spin-valve-gmr-ratio": () => import("../../semiconductor/spin-valve-gmr-ratio/index.js"),
   "text/trim": () => import("../../text/trim/index.js"),
 };

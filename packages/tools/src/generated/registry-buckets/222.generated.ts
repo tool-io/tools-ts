@@ -24,5 +24,6 @@ export const toolModuleLoaders: Readonly<
   "paleography/nib-xheight-consistency-checker": () => import("../../paleography/nib-xheight-consistency-checker/index.js"),
   "paleography/quire-signature-position-finder": () => import("../../paleography/quire-signature-position-finder/index.js"),
   "proportions/number-as-percentage": () => import("../../proportions/number-as-percentage/index.js"),
+  "random/bhaiksuki-character": () => import("../../random/bhaiksuki-character/index.js"),
   "semiconductor/annealing-activation-fraction": () => import("../../semiconductor/annealing-activation-fraction/index.js"),
 };

@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/bjt-base-current": () => import("../../electronics/bjt-base-current/index.js"),
   "json/diff": () => import("../../json/diff/index.js"),
   "logistics/load-factor-weight-utilization-percent": () => import("../../logistics/load-factor-weight-utilization-percent/index.js"),
+  "random/bsl-fingerspelling-letter": () => import("../../random/bsl-fingerspelling-letter/index.js"),
   "seismology/slip-vs-time-predictable-checker": () => import("../../seismology/slip-vs-time-predictable-checker/index.js"),
   "semiconductor/bandgap-lookup": () => import("../../semiconductor/bandgap-lookup/index.js"),
   "semiconductor/gan-hemt-2deg-mobility": () => import("../../semiconductor/gan-hemt-2deg-mobility/index.js"),

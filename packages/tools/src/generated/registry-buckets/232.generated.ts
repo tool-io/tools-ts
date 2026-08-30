@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "geology/bearing-capacity-terzaghi": () => import("../../geology/bearing-capacity-terzaghi/index.js"),
   "logistics/delivery-time-slot-promise-percentile": () => import("../../logistics/delivery-time-slot-promise-percentile/index.js"),
   "number/mobius": () => import("../../number/mobius/index.js"),
+  "random/odia-character": () => import("../../random/odia-character/index.js"),
   "sailing/boom-force": () => import("../../sailing/boom-force/index.js"),
   "semiconductor/bjt-common-emitter-current-gain": () => import("../../semiconductor/bjt-common-emitter-current-gain/index.js"),
   "semiconductor/velocity-saturation-field": () => import("../../semiconductor/velocity-saturation-field/index.js"),

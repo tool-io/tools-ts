@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "number/divisibility-checker": () => import("../../number/divisibility-checker/index.js"),
   "oenology/protein-stability-bentotest": () => import("../../oenology/protein-stability-bentotest/index.js"),
   "physics/average-speed": () => import("../../physics/average-speed/index.js"),
+  "random/bassa-vah-letter": () => import("../../random/bassa-vah-letter/index.js"),
   "real-estate/property-tax": () => import("../../real-estate/property-tax/index.js"),
   "sailing/sail-area-displacement-ratio": () => import("../../sailing/sail-area-displacement-ratio/index.js"),
   "sailing/vang-tension": () => import("../../sailing/vang-tension/index.js"),

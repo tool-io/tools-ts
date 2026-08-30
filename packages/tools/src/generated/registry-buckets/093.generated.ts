@@ -24,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "horology/tachymeter-speed": () => import("../../horology/tachymeter-speed/index.js"),
   "information/shannon-entropy": () => import("../../information/shannon-entropy/index.js"),
   "mortgage/uruguay-ui-indexed": () => import("../../mortgage/uruguay-ui-indexed/index.js"),
+  "random/tifinagh-character": () => import("../../random/tifinagh-character/index.js"),
   "seismology/recurrence-interval-slip-rate-event-slip": () => import("../../seismology/recurrence-interval-slip-rate-event-slip/index.js"),
   "seismology/stoneley-interface-existence-checker": () => import("../../seismology/stoneley-interface-existence-checker/index.js"),
   "take-home-pay-calculator/nz": () => import("../../take-home-pay-calculator/nz/index.js"),

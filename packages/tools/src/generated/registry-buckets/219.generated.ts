@@ -24,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "oenology/caco3-dose": () => import("../../oenology/caco3-dose/index.js"),
   "oenology/isinglass-fining-dose": () => import("../../oenology/isinglass-fining-dose/index.js"),
   "paleography/wormhole-density-rater": () => import("../../paleography/wormhole-density-rater/index.js"),
+  "random/meroitic-hieroglyph": () => import("../../random/meroitic-hieroglyph/index.js"),
   "real-estate/collection-loss": () => import("../../real-estate/collection-loss/index.js"),
   "size/peplos-reconstruction": () => import("../../size/peplos-reconstruction/index.js"),
   "size/screw": () => import("../../size/screw/index.js"),

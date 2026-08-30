@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/fuel-surcharge-index-weekly-lookup": () => import("../../logistics/fuel-surcharge-index-weekly-lookup/index.js"),
   "paleography/seleucid-ag-converter": () => import("../../paleography/seleucid-ag-converter/index.js"),
   "random/hex-color": () => import("../../random/hex-color/index.js"),
+  "random/psalter-pahlavi-character": () => import("../../random/psalter-pahlavi-character/index.js"),
   "real-estate/breakeven-ratio": () => import("../../real-estate/breakeven-ratio/index.js"),
   "sailing/leeway-angle": () => import("../../sailing/leeway-angle/index.js"),
   "sailing/tacking-angle": () => import("../../sailing/tacking-angle/index.js"),

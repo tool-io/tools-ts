@@ -23,5 +23,7 @@ export const toolModuleLoaders: Readonly<
   "oenology/cellar-storage-planner": () => import("../../oenology/cellar-storage-planner/index.js"),
   "oenology/potential-alcohol-sg": () => import("../../oenology/potential-alcohol-sg/index.js"),
   "physics/impulse": () => import("../../physics/impulse/index.js"),
+  "random/brahmi-character": () => import("../../random/brahmi-character/index.js"),
+  "random/indic-siyaq-number": () => import("../../random/indic-siyaq-number/index.js"),
   "size/thobe-reconstruction": () => import("../../size/thobe-reconstruction/index.js"),
 };

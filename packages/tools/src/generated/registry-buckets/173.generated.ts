@@ -20,6 +20,8 @@ export const toolModuleLoaders: Readonly<
   "machine-learning/alphazero-puct": () => import("../../machine-learning/alphazero-puct/index.js"),
   "matrix/subtract": () => import("../../matrix/subtract/index.js"),
   "optimization/ant-colony-tsp": () => import("../../optimization/ant-colony-tsp/index.js"),
+  "random/glagolitic-letter": () => import("../../random/glagolitic-letter/index.js"),
+  "random/kawi-character": () => import("../../random/kawi-character/index.js"),
   "size/necklace": () => import("../../size/necklace/index.js"),
   "sociology/cause-deleted-life-expectancy-gain": () => import("../../sociology/cause-deleted-life-expectancy-gain/index.js"),
   "text/line-ending-normalize": () => import("../../text/line-ending-normalize/index.js"),

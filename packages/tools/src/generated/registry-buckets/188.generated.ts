@@ -27,6 +27,8 @@ export const toolModuleLoaders: Readonly<
   "logistics/slotting-velocity-abc-classifier": () => import("../../logistics/slotting-velocity-abc-classifier/index.js"),
   "number/palindrome-checker": () => import("../../number/palindrome-checker/index.js"),
   "paleography/tironian-et-frequency-counter": () => import("../../paleography/tironian-et-frequency-counter/index.js"),
+  "random/batak-character": () => import("../../random/batak-character/index.js"),
+  "random/tagbanwa-character": () => import("../../random/tagbanwa-character/index.js"),
   "sailing/position-error-circle": () => import("../../sailing/position-error-circle/index.js"),
   "semiconductor/depletion-width-linear": () => import("../../semiconductor/depletion-width-linear/index.js"),
   "typography/letter-spacing-points-from-tracking": () => import("../../typography/letter-spacing-points-from-tracking/index.js"),

@@ -32,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "number/perfect-square-checker": () => import("../../number/perfect-square-checker/index.js"),
   "oenology/angels-share-loss": () => import("../../oenology/angels-share-loss/index.js"),
   "paleography/p-loop-brevigraph-expander": () => import("../../paleography/p-loop-brevigraph-expander/index.js"),
+  "random/meetei-mayek-character": () => import("../../random/meetei-mayek-character/index.js"),
   "semiconductor/schottky-barrier-height": () => import("../../semiconductor/schottky-barrier-height/index.js"),
   "size/golf-club": () => import("../../size/golf-club/index.js"),
   "size/pillow": () => import("../../size/pillow/index.js"),

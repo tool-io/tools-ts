@@ -19,5 +19,6 @@ export const toolModuleLoaders: Readonly<
   "graph/breadth-first-traversal": () => import("../../graph/breadth-first-traversal/index.js"),
   "number/digital-root": () => import("../../number/digital-root/index.js"),
   "nutrition/macronutrient-split": () => import("../../nutrition/macronutrient-split/index.js"),
+  "random/thaana-character": () => import("../../random/thaana-character/index.js"),
   "semiconductor/silicided-source-drain-resistance": () => import("../../semiconductor/silicided-source-drain-resistance/index.js"),
 };

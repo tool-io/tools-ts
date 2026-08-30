@@ -25,5 +25,7 @@ export const toolModuleLoaders: Readonly<
   "geology/seismic-resolution-horizontal-fresnel-zone": () => import("../../geology/seismic-resolution-horizontal-fresnel-zone/index.js"),
   "logistics/days-of-supply-turnover": () => import("../../logistics/days-of-supply-turnover/index.js"),
   "mycology/phialide-collarette-detector": () => import("../../mycology/phialide-collarette-detector/index.js"),
+  "random/balinese-character": () => import("../../random/balinese-character/index.js"),
+  "random/recycling-symbol": () => import("../../random/recycling-symbol/index.js"),
   "semiconductor/heterojunction-2deg-density": () => import("../../semiconductor/heterojunction-2deg-density/index.js"),
 };

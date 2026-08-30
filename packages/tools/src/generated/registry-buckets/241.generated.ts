@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/t-pad-series-resistor": () => import("../../electronics/t-pad-series-resistor/index.js"),
   "list/zip": () => import("../../list/zip/index.js"),
   "matrix/multiply": () => import("../../matrix/multiply/index.js"),
+  "random/khudawadi-character": () => import("../../random/khudawadi-character/index.js"),
   "sailing/wind-pressure-on-sail": () => import("../../sailing/wind-pressure-on-sail/index.js"),
   "semiconductor/bjt-output-conductance": () => import("../../semiconductor/bjt-output-conductance/index.js"),
 };

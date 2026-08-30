@@ -21,6 +21,9 @@ export const toolModuleLoaders: Readonly<
   "finance/return-on-investment": () => import("../../finance/return-on-investment/index.js"),
   "geology/core-permeability-klinkenberg-corrected": () => import("../../geology/core-permeability-klinkenberg-corrected/index.js"),
   "laser/laser-diode-li-curve-kink-detection-threshold-extraction-method": () => import("../../laser/laser-diode-li-curve-kink-detection-threshold-extraction-method/index.js"),
+  "random/hazard-pictogram": () => import("../../random/hazard-pictogram/index.js"),
+  "random/planetary-symbol": () => import("../../random/planetary-symbol/index.js"),
+  "random/tai-viet-character": () => import("../../random/tai-viet-character/index.js"),
   "seismology/depth-conversion-average-velocity-method-calculator": () => import("../../seismology/depth-conversion-average-velocity-method-calculator/index.js"),
   "statistics/weighted-mean": () => import("../../statistics/weighted-mean/index.js"),
 };

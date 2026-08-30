@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "number/abundant-checker": () => import("../../number/abundant-checker/index.js"),
   "paleography/anglicana-secretary-discriminator": () => import("../../paleography/anglicana-secretary-discriminator/index.js"),
   "probability/t-sampler": () => import("../../probability/t-sampler/index.js"),
+  "random/rejang-character": () => import("../../random/rejang-character/index.js"),
   "seismology/s-p-interval-hypocentral-distance-single-layer": () => import("../../seismology/s-p-interval-hypocentral-distance-single-layer/index.js"),
   "sociology/gravity-flow-index-ravenstein": () => import("../../sociology/gravity-flow-index-ravenstein/index.js"),
 };

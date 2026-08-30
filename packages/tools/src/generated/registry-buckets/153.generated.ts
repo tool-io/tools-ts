@@ -23,6 +23,8 @@ export const toolModuleLoaders: Readonly<
   "list/sort-numbers": () => import("../../list/sort-numbers/index.js"),
   "microcontroller/adc-code-to-voltage": () => import("../../microcontroller/adc-code-to-voltage/index.js"),
   "mycology/amyloid-spore-wall-classifier": () => import("../../mycology/amyloid-spore-wall-classifier/index.js"),
+  "random/old-turkic-character": () => import("../../random/old-turkic-character/index.js"),
+  "random/tulu-tigalari-character": () => import("../../random/tulu-tigalari-character/index.js"),
   "seismology/arias-intensity-duration-proxy": () => import("../../seismology/arias-intensity-duration-proxy/index.js"),
   "seismology/poisson-return-period-probability-exceedance": () => import("../../seismology/poisson-return-period-probability-exceedance/index.js"),
   "semiconductor/dislocation-density-from-etch-pit": () => import("../../semiconductor/dislocation-density-from-etch-pit/index.js"),

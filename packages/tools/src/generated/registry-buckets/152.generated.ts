@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "optimization/steepest-descent-step": () => import("../../optimization/steepest-descent-step/index.js"),
   "paleography/gothic-doublestorey-ratio": () => import("../../paleography/gothic-doublestorey-ratio/index.js"),
   "paleography/watermark-twin-match-finder": () => import("../../paleography/watermark-twin-match-finder/index.js"),
+  "random/playing-card": () => import("../../random/playing-card/index.js"),
   "semiconductor/sic-mosfet-on-resistance-tempco": () => import("../../semiconductor/sic-mosfet-on-resistance-tempco/index.js"),
   "size/stays-reconstruction": () => import("../../size/stays-reconstruction/index.js"),
 };

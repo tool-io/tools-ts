@@ -21,6 +21,8 @@ export const toolModuleLoaders: Readonly<
   "oenology/khco3-dose": () => import("../../oenology/khco3-dose/index.js"),
   "oenology/kmbs-grams-ppm": () => import("../../oenology/kmbs-grams-ppm/index.js"),
   "probability/uniform-discrete-sampler": () => import("../../probability/uniform-discrete-sampler/index.js"),
+  "random/kharoshthi-character": () => import("../../random/kharoshthi-character/index.js"),
+  "random/manichaean-character": () => import("../../random/manichaean-character/index.js"),
   "real-estate/debt-yield": () => import("../../real-estate/debt-yield/index.js"),
   "sailing/header-lift-detection": () => import("../../sailing/header-lift-detection/index.js"),
   "sailing/set-and-drift-correction": () => import("../../sailing/set-and-drift-correction/index.js"),

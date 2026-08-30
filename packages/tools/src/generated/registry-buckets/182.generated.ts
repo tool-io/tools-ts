@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "music/adsr-envelope-total-duration": () => import("../../music/adsr-envelope-total-duration/index.js"),
   "network/eui64-link-local": () => import("../../network/eui64-link-local/index.js"),
   "number/kaprekar-checker": () => import("../../number/kaprekar-checker/index.js"),
+  "random/domino-tile": () => import("../../random/domino-tile/index.js"),
   "sailing/cross-track-error": () => import("../../sailing/cross-track-error/index.js"),
   "seismology/amplification-borcherdt-factor-lookup": () => import("../../seismology/amplification-borcherdt-factor-lookup/index.js"),
   "similarity/jaro-winkler": () => import("../../similarity/jaro-winkler/index.js"),

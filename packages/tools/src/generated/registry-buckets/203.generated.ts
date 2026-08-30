@@ -27,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "oenology/citric-acid-cap-checker": () => import("../../oenology/citric-acid-cap-checker/index.js"),
   "oenology/cmc-stability-dose": () => import("../../oenology/cmc-stability-dose/index.js"),
   "probability/multinomial-sampler": () => import("../../probability/multinomial-sampler/index.js"),
+  "random/dives-akuru-character": () => import("../../random/dives-akuru-character/index.js"),
   "seismology/scalar-moment-from-deviatoric-eigenvalues": () => import("../../seismology/scalar-moment-from-deviatoric-eigenvalues/index.js"),
   "semiconductor/chiplet-die-to-die-latency": () => import("../../semiconductor/chiplet-die-to-die-latency/index.js"),
   "semiconductor/resistivity-from-doping": () => import("../../semiconductor/resistivity-from-doping/index.js"),

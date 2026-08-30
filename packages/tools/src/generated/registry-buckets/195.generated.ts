@@ -27,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "geometry/right-triangle": () => import("../../geometry/right-triangle/index.js"),
   "music/tuplet-ratio-duration-calculator": () => import("../../music/tuplet-ratio-duration-calculator/index.js"),
   "mycology/conidiophore-branching-classifier": () => import("../../mycology/conidiophore-branching-classifier/index.js"),
+  "random/kannada-character": () => import("../../random/kannada-character/index.js"),
   "semiconductor/impurity-scattering-mobility": () => import("../../semiconductor/impurity-scattering-mobility/index.js"),
   "statistics/sample-variance": () => import("../../statistics/sample-variance/index.js"),
 };

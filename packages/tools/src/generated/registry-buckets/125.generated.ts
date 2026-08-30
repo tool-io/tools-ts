@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/cartons-per-pallet-ti-hi-calculator": () => import("../../logistics/cartons-per-pallet-ti-hi-calculator/index.js"),
   "music/bit-depth-dynamic-range-db": () => import("../../music/bit-depth-dynamic-range-db/index.js"),
   "paleography/epact-day-moon-lookup": () => import("../../paleography/epact-day-moon-lookup/index.js"),
+  "random/ol-onal-character": () => import("../../random/ol-onal-character/index.js"),
   "seismology/event-count-poisson-confidence-interval-gehrels": () => import("../../seismology/event-count-poisson-confidence-interval-gehrels/index.js"),
   "size/picture-frame": () => import("../../size/picture-frame/index.js"),
   "statistics/exponential-moving-average": () => import("../../statistics/exponential-moving-average/index.js"),

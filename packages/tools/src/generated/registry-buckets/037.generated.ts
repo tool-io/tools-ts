@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/diameter-growth-annual": () => import("../../forestry/diameter-growth-annual/index.js"),
   "horology/tourbillon-revolutions-per-day": () => import("../../horology/tourbillon-revolutions-per-day/index.js"),
   "logistics/limited-access-fee-checker": () => import("../../logistics/limited-access-fee-checker/index.js"),
+  "random/byzantine-musical-symbol": () => import("../../random/byzantine-musical-symbol/index.js"),
   "sailing/tidal-diamond-correction": () => import("../../sailing/tidal-diamond-correction/index.js"),
   "seismology/time-dependent-conditional-probability": () => import("../../seismology/time-dependent-conditional-probability/index.js"),
   "semiconductor/3d-ic-thermal-coupling": () => import("../../semiconductor/3d-ic-thermal-coupling/index.js"),

@@ -21,6 +21,8 @@ export const toolModuleLoaders: Readonly<
   "hydrology/river-flow-percentiles": () => import("../../hydrology/river-flow-percentiles/index.js"),
   "matrix/symmetry-checker": () => import("../../matrix/symmetry-checker/index.js"),
   "mycology/truffle-aroma-trace-note-generator": () => import("../../mycology/truffle-aroma-trace-note-generator/index.js"),
+  "random/gunjala-gondi-character": () => import("../../random/gunjala-gondi-character/index.js"),
+  "random/musical-ornament-symbol": () => import("../../random/musical-ornament-symbol/index.js"),
   "real-estate/piti": () => import("../../real-estate/piti/index.js"),
   "semiconductor/ion-implantation-projected-range": () => import("../../semiconductor/ion-implantation-projected-range/index.js"),
   "size/electrical-connector": () => import("../../size/electrical-connector/index.js"),

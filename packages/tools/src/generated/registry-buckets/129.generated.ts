@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "horology/gear-train-ratio": () => import("../../horology/gear-train-ratio/index.js"),
   "physics/weight-force": () => import("../../physics/weight-force/index.js"),
   "proportions/percentage-of-number": () => import("../../proportions/percentage-of-number/index.js"),
+  "random/i-ching-trigram": () => import("../../random/i-ching-trigram/index.js"),
   "real-estate/equity-multiple": () => import("../../real-estate/equity-multiple/index.js"),
   "real-estate/noi": () => import("../../real-estate/noi/index.js"),
   "semiconductor/latchup-trigger-current": () => import("../../semiconductor/latchup-trigger-current/index.js"),

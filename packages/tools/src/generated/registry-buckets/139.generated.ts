@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/cost-per-drop-last-mile": () => import("../../logistics/cost-per-drop-last-mile/index.js"),
   "paleography/carolingian-singlestorey-flag": () => import("../../paleography/carolingian-singlestorey-flag/index.js"),
   "probability/cauchy-sampler": () => import("../../probability/cauchy-sampler/index.js"),
+  "random/armenian-letter": () => import("../../random/armenian-letter/index.js"),
   "seismology/spatial-grid-cell-count-density-summary": () => import("../../seismology/spatial-grid-cell-count-density-summary/index.js"),
   "typography/pica-to-inches": () => import("../../typography/pica-to-inches/index.js"),
   "vr/eye-tracking-latency-ms": () => import("../../vr/eye-tracking-latency-ms/index.js"),

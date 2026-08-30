@@ -28,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "geology/lead-isotope-ratio": () => import("../../geology/lead-isotope-ratio/index.js"),
   "music/rms-to-peak-factor-audio": () => import("../../music/rms-to-peak-factor-audio/index.js"),
   "paleography/dominical-letter-finder": () => import("../../paleography/dominical-letter-finder/index.js"),
+  "random/imperial-aramaic-letter": () => import("../../random/imperial-aramaic-letter/index.js"),
   "semiconductor/junction-leakage-current": () => import("../../semiconductor/junction-leakage-current/index.js"),
   "statistics/coefficient-of-variation": () => import("../../statistics/coefficient-of-variation/index.js"),
   "typography/cap-height-percent-of-em": () => import("../../typography/cap-height-percent-of-em/index.js"),

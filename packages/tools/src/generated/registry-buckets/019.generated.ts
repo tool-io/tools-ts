@@ -28,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "music/scientific-pitch-notation-octave": () => import("../../music/scientific-pitch-notation-octave/index.js"),
   "oenology/tartaric-acid-addition": () => import("../../oenology/tartaric-acid-addition/index.js"),
   "paleography/charter-witness-ranker": () => import("../../paleography/charter-witness-ranker/index.js"),
+  "random/ancient-greek-numeral": () => import("../../random/ancient-greek-numeral/index.js"),
   "seismology/tremor-slip-episodic-weeks-lookup": () => import("../../seismology/tremor-slip-episodic-weeks-lookup/index.js"),
   "semiconductor/bjt-base-width-modulation": () => import("../../semiconductor/bjt-base-width-modulation/index.js"),
   "semiconductor/conductivity-from-doping": () => import("../../semiconductor/conductivity-from-doping/index.js"),

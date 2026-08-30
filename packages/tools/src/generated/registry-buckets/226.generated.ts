@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "music/guitar-fret-distance-mm-from-scale": () => import("../../music/guitar-fret-distance-mm-from-scale/index.js"),
   "music/note-value-duration-seconds-at-bpm": () => import("../../music/note-value-duration-seconds-at-bpm/index.js"),
   "physics/force": () => import("../../physics/force/index.js"),
+  "random/gurung-khema-character": () => import("../../random/gurung-khema-character/index.js"),
   "sailing/sail-area": () => import("../../sailing/sail-area/index.js"),
   "sailing/under-keel-clearance": () => import("../../sailing/under-keel-clearance/index.js"),
   "seismology/microtremor-array-resolution-frequency-band-checker": () => import("../../seismology/microtremor-array-resolution-frequency-band-checker/index.js"),

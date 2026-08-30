@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/demurrage-free-days-port-checker": () => import("../../logistics/demurrage-free-days-port-checker/index.js"),
   "number/kaprekar-steps": () => import("../../number/kaprekar-steps/index.js"),
   "physics/centripetal-force": () => import("../../physics/centripetal-force/index.js"),
+  "random/elbasan-letter": () => import("../../random/elbasan-letter/index.js"),
   "text/slugify": () => import("../../text/slugify/index.js"),
   "vr/focal-length-from-fov-vr": () => import("../../vr/focal-length-from-fov-vr/index.js"),
 };

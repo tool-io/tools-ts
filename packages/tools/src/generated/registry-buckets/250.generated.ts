@@ -30,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "mortgage/czech-fixed-period-repricing": () => import("../../mortgage/czech-fixed-period-repricing/index.js"),
   "oenology/ethyl-acetate-threshold": () => import("../../oenology/ethyl-acetate-threshold/index.js"),
   "paleography/date-consensus-median-estimator": () => import("../../paleography/date-consensus-median-estimator/index.js"),
+  "random/inscriptional-pahlavi-character": () => import("../../random/inscriptional-pahlavi-character/index.js"),
   "sailing/polar-heel-target": () => import("../../sailing/polar-heel-target/index.js"),
   "sailing/tidal-curve-interpolation": () => import("../../sailing/tidal-curve-interpolation/index.js"),
   "seismology/love-vs-rayleigh-motion-classifier": () => import("../../seismology/love-vs-rayleigh-motion-classifier/index.js"),

@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "laser/laser-diode-driver-pulse-width-current-limit-series-resistor-design": () => import("../../laser/laser-diode-driver-pulse-width-current-limit-series-resistor-design/index.js"),
   "mycology/fruiting-humidity-range-compliance-checker": () => import("../../mycology/fruiting-humidity-range-compliance-checker/index.js"),
   "number/trailing-zeros": () => import("../../number/trailing-zeros/index.js"),
+  "random/miao-character": () => import("../../random/miao-character/index.js"),
   "reinforcement-learning/policy-evaluation": () => import("../../reinforcement-learning/policy-evaluation/index.js"),
   "seismology/within-event-sigma-lambda": () => import("../../seismology/within-event-sigma-lambda/index.js"),
   "semiconductor/electromigration-median-time-to-failure-black": () => import("../../semiconductor/electromigration-median-time-to-failure-black/index.js"),

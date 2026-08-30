@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "linguistics/comparative-adjective": () => import("../../linguistics/comparative-adjective/index.js"),
   "oenology/ph-ta-balance": () => import("../../oenology/ph-ta-balance/index.js"),
   "probability/negative-binomial-sampler": () => import("../../probability/negative-binomial-sampler/index.js"),
+  "random/buginese-character": () => import("../../random/buginese-character/index.js"),
   "real-estate/price-reduction-percentage": () => import("../../real-estate/price-reduction-percentage/index.js"),
   "sailing/lock-water-volume": () => import("../../sailing/lock-water-volume/index.js"),
   "sociology/qx-probability-death-from-mx": () => import("../../sociology/qx-probability-death-from-mx/index.js"),

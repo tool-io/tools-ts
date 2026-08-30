@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "metrics/brier-score": () => import("../../metrics/brier-score/index.js"),
   "metrics/symmetric-mean-absolute-percentage-error": () => import("../../metrics/symmetric-mean-absolute-percentage-error/index.js"),
   "mycology/hymenophore-type-classifier": () => import("../../mycology/hymenophore-type-classifier/index.js"),
+  "random/signwriting-head-face-symbol": () => import("../../random/signwriting-head-face-symbol/index.js"),
   "real-estate/rehab-cost-per-sqft": () => import("../../real-estate/rehab-cost-per-sqft/index.js"),
   "real-estate/vacancy-loss": () => import("../../real-estate/vacancy-loss/index.js"),
   "sailing/secondary-port-correction": () => import("../../sailing/secondary-port-correction/index.js"),

@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "music/tape-speed-cm-s-from-ips": () => import("../../music/tape-speed-cm-s-from-ips/index.js"),
   "mycology/rust-uredinial-cycle-day-counter": () => import("../../mycology/rust-uredinial-cycle-day-counter/index.js"),
   "optimization/nesterov-step": () => import("../../optimization/nesterov-step/index.js"),
+  "random/adlam-character": () => import("../../random/adlam-character/index.js"),
   "seismology/hvsr-nakamura-peak-frequency": () => import("../../seismology/hvsr-nakamura-peak-frequency/index.js"),
   "seismology/slow-slip-equivalent-magnitude-duration-scaling": () => import("../../seismology/slow-slip-equivalent-magnitude-duration-scaling/index.js"),
   "semiconductor/igbt-switching-energy-eon": () => import("../../semiconductor/igbt-switching-energy-eon/index.js"),

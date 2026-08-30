@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "paleography/copperplate-shade-classifier": () => import("../../paleography/copperplate-shade-classifier/index.js"),
   "parse/file-mode": () => import("../../parse/file-mode/index.js"),
   "probability/beta-distribution-sampler": () => import("../../probability/beta-distribution-sampler/index.js"),
+  "random/pau-cin-hau-character": () => import("../../random/pau-cin-hau-character/index.js"),
   "real-estate/pet-fee-income": () => import("../../real-estate/pet-fee-income/index.js"),
   "sailing/halyard-tension-jib": () => import("../../sailing/halyard-tension-jib/index.js"),
   "seismology/adc-clip-level-full-scale-counts": () => import("../../seismology/adc-clip-level-full-scale-counts/index.js"),

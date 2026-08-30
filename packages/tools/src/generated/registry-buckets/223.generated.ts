@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/rfid-read-range": () => import("../../electronics/rfid-read-range/index.js"),
   "epigraphy/bissextile-vi-kal-detector": () => import("../../epigraphy/bissextile-vi-kal-detector/index.js"),
   "oenology/yeast-rehydration-volume": () => import("../../oenology/yeast-rehydration-volume/index.js"),
+  "random/nko-character": () => import("../../random/nko-character/index.js"),
   "real-estate/lot-coverage-ratio": () => import("../../real-estate/lot-coverage-ratio/index.js"),
   "sailing/tide-height-at-time": () => import("../../sailing/tide-height-at-time/index.js"),
   "semiconductor/igbt-conduction-voltage-drop": () => import("../../semiconductor/igbt-conduction-voltage-drop/index.js"),

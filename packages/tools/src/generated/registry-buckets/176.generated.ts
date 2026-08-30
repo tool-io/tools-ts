@@ -15,6 +15,8 @@ export const toolModuleLoaders: Readonly<
   "horology/third-wheel-speed": () => import("../../horology/third-wheel-speed/index.js"),
   "http/method-validator": () => import("../../http/method-validator/index.js"),
   "paleography/hijri-julian-manuscript-converter": () => import("../../paleography/hijri-julian-manuscript-converter/index.js"),
+  "random/bopomofo-character": () => import("../../random/bopomofo-character/index.js"),
+  "random/tamil-character": () => import("../../random/tamil-character/index.js"),
   "sailing/start-line-favored-end": () => import("../../sailing/start-line-favored-end/index.js"),
   "semiconductor/mosfet-work-function-difference": () => import("../../semiconductor/mosfet-work-function-difference/index.js"),
   "web/loading-attribute-validator": () => import("../../web/loading-attribute-validator/index.js"),

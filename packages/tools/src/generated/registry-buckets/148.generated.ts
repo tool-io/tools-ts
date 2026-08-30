@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "microcontroller/timer-compare-frequency": () => import("../../microcontroller/timer-compare-frequency/index.js"),
   "mycology/ergosterol-biomass-marker-calculator": () => import("../../mycology/ergosterol-biomass-marker-calculator/index.js"),
   "oenology/multi-tank-weighted-abv": () => import("../../oenology/multi-tank-weighted-abv/index.js"),
+  "random/myanmar-character": () => import("../../random/myanmar-character/index.js"),
   "sailing/dead-reckoning-position": () => import("../../sailing/dead-reckoning-position/index.js"),
   "sailing/froude-number": () => import("../../sailing/froude-number/index.js"),
   "seismology/strong-motion-linear-baseline-correction": () => import("../../seismology/strong-motion-linear-baseline-correction/index.js"),

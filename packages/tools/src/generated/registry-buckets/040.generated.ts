@@ -24,6 +24,8 @@ export const toolModuleLoaders: Readonly<
   "geology/seismic-two-way-time": () => import("../../geology/seismic-two-way-time/index.js"),
   "geology/uniformity-coefficient": () => import("../../geology/uniformity-coefficient/index.js"),
   "mycology/durham-tube-gas-detector": () => import("../../mycology/durham-tube-gas-detector/index.js"),
+  "random/accessibility-symbol": () => import("../../random/accessibility-symbol/index.js"),
+  "random/newa-character": () => import("../../random/newa-character/index.js"),
   "seismology/depth-phase-pp-minus-p-depth-estimate": () => import("../../seismology/depth-phase-pp-minus-p-depth-estimate/index.js"),
   "seismology/mercalli-vs-jma-crosswalk-lookup": () => import("../../seismology/mercalli-vs-jma-crosswalk-lookup/index.js"),
   "semiconductor/exciton-binding-energy": () => import("../../semiconductor/exciton-binding-energy/index.js"),

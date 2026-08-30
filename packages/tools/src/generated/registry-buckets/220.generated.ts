@@ -19,6 +19,8 @@ export const toolModuleLoaders: Readonly<
   "network/mac-address-normalizer": () => import("../../network/mac-address-normalizer/index.js"),
   "optimization/stochastic-gradient-descent": () => import("../../optimization/stochastic-gradient-descent/index.js"),
   "paleography/feastday-anchor-extractor": () => import("../../paleography/feastday-anchor-extractor/index.js"),
+  "random/cham-character": () => import("../../random/cham-character/index.js"),
+  "random/cross-symbol": () => import("../../random/cross-symbol/index.js"),
   "size/helmet": () => import("../../size/helmet/index.js"),
   "size/watch-band": () => import("../../size/watch-band/index.js"),
   "statistics/two-sample-t-test": () => import("../../statistics/two-sample-t-test/index.js"),

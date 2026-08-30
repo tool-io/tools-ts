@@ -18,6 +18,8 @@ export const toolModuleLoaders: Readonly<
   "mycology/ethanol-yield-theoretical-fraction-calculator": () => import("../../mycology/ethanol-yield-theoretical-fraction-calculator/index.js"),
   "oenology/metatartaric-dose": () => import("../../oenology/metatartaric-dose/index.js"),
   "optimization/interior-point-step": () => import("../../optimization/interior-point-step/index.js"),
+  "random/khojki-character": () => import("../../random/khojki-character/index.js"),
+  "random/ogham-character": () => import("../../random/ogham-character/index.js"),
   "seismology/nehrp-fundamental-period-site-lookup": () => import("../../seismology/nehrp-fundamental-period-site-lookup/index.js"),
   "size/overalls": () => import("../../size/overalls/index.js"),
 };

@@ -18,6 +18,8 @@ export const toolModuleLoaders: Readonly<
   "oenology/barrel-topping-volume": () => import("../../oenology/barrel-topping-volume/index.js"),
   "paleography/carbon-irongall-note-generator": () => import("../../paleography/carbon-irongall-note-generator/index.js"),
   "probability/empirical": () => import("../../probability/empirical/index.js"),
+  "random/braille-cell": () => import("../../random/braille-cell/index.js"),
+  "random/geomantic-figure": () => import("../../random/geomantic-figure/index.js"),
   "real-estate/comparable-adjustment": () => import("../../real-estate/comparable-adjustment/index.js"),
   "real-estate/return-on-cost": () => import("../../real-estate/return-on-cost/index.js"),
   "semiconductor/self-heating-temperature-rise": () => import("../../semiconductor/self-heating-temperature-rise/index.js"),

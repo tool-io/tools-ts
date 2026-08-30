@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "laser/laser-sesam-modulation-depth-fluence-selection-guide-lookup": () => import("../../laser/laser-sesam-modulation-depth-fluence-selection-guide-lookup/index.js"),
   "network/ipv4-network-address": () => import("../../network/ipv4-network-address/index.js"),
   "oenology/anthocyanin-color-density": () => import("../../oenology/anthocyanin-color-density/index.js"),
+  "random/lydian-letter": () => import("../../random/lydian-letter/index.js"),
   "real-estate/building-efficiency-ratio": () => import("../../real-estate/building-efficiency-ratio/index.js"),
   "seismology/between-event-tau-variance": () => import("../../seismology/between-event-tau-variance/index.js"),
   "size/blazer": () => import("../../size/blazer/index.js"),

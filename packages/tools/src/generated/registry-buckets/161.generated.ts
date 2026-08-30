@@ -17,6 +17,8 @@ export const toolModuleLoaders: Readonly<
   "logistics/multi-day-trip-plan-hours-days": () => import("../../logistics/multi-day-trip-plan-hours-days/index.js"),
   "music/equal-temperament-ratio-from-semitones": () => import("../../music/equal-temperament-ratio-from-semitones/index.js"),
   "parse/numeric-dataset": () => import("../../parse/numeric-dataset/index.js"),
+  "random/cherokee-character": () => import("../../random/cherokee-character/index.js"),
+  "random/nandinagari-character": () => import("../../random/nandinagari-character/index.js"),
   "seismology/coda-normalization-lapse-time-amplitude-correction": () => import("../../seismology/coda-normalization-lapse-time-amplitude-correction/index.js"),
   "seismology/miniseed-record-header-parser": () => import("../../seismology/miniseed-record-header-parser/index.js"),
   "semiconductor/bti-threshold-shift": () => import("../../semiconductor/bti-threshold-shift/index.js"),

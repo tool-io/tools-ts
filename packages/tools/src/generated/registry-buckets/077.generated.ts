@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/hartignet-depth-grade-classifier": () => import("../../mycology/hartignet-depth-grade-classifier/index.js"),
   "oenology/btg-cost-recovery": () => import("../../oenology/btg-cost-recovery/index.js"),
   "probability/normal-box-muller-sampler": () => import("../../probability/normal-box-muller-sampler/index.js"),
+  "random/ol-chiki-character": () => import("../../random/ol-chiki-character/index.js"),
   "real-estate/parking-income": () => import("../../real-estate/parking-income/index.js"),
   "sailing/sart-detection-range": () => import("../../sailing/sart-detection-range/index.js"),
   "size/kurta-reconstruction": () => import("../../size/kurta-reconstruction/index.js"),

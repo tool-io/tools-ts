@@ -28,6 +28,8 @@ export const toolModuleLoaders: Readonly<
   "music/loudness-lufs-streaming-target-offset": () => import("../../music/loudness-lufs-streaming-target-offset/index.js"),
   "oenology/so2-addition-ml-hl": () => import("../../oenology/so2-addition-ml-hl/index.js"),
   "optimization/particle-swarm": () => import("../../optimization/particle-swarm/index.js"),
+  "random/ancient-greek-musical-symbol": () => import("../../random/ancient-greek-musical-symbol/index.js"),
+  "random/linear-a-sign": () => import("../../random/linear-a-sign/index.js"),
   "sailing/sail-area-spinnaker": () => import("../../sailing/sail-area-spinnaker/index.js"),
   "semiconductor/plasmon-frequency": () => import("../../semiconductor/plasmon-frequency/index.js"),
   "size/gambeson-reconstruction": () => import("../../size/gambeson-reconstruction/index.js"),

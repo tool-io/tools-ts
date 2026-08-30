@@ -20,6 +20,8 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/underdot-uncertain-validator": () => import("../../epigraphy/underdot-uncertain-validator/index.js"),
   "geology/decline-rate-hyperbolic": () => import("../../geology/decline-rate-hyperbolic/index.js"),
   "geology/preconsolidation-pressure": () => import("../../geology/preconsolidation-pressure/index.js"),
+  "random/hanifi-rohingya-letter": () => import("../../random/hanifi-rohingya-letter/index.js"),
+  "random/syloti-nagri-character": () => import("../../random/syloti-nagri-character/index.js"),
   "real-estate/lease-escalation": () => import("../../real-estate/lease-escalation/index.js"),
   "seismology/first-break-snr-validity-flagger": () => import("../../seismology/first-break-snr-validity-flagger/index.js"),
   "text/word-length-histogram": () => import("../../text/word-length-histogram/index.js"),

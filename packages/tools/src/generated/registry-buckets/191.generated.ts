@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/latex-exudate-detector": () => import("../../mycology/latex-exudate-detector/index.js"),
   "oenology/lees-stirring-frequency": () => import("../../oenology/lees-stirring-frequency/index.js"),
   "oenology/tartrate-saturation-temp": () => import("../../oenology/tartrate-saturation-temp/index.js"),
+  "random/vai-character": () => import("../../random/vai-character/index.js"),
   "sailing/mooring-load-windage": () => import("../../sailing/mooring-load-windage/index.js"),
   "seismology/network-cluster-singleton-fraction-quality": () => import("../../seismology/network-cluster-singleton-fraction-quality/index.js"),
   "semiconductor/laser-threshold-current-density": () => import("../../semiconductor/laser-threshold-current-density/index.js"),

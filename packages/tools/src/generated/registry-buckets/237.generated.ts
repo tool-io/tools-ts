@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "generate/seeded-uuid": () => import("../../generate/seeded-uuid/index.js"),
   "geology/bearing-capacity-factor-nc": () => import("../../geology/bearing-capacity-factor-nc/index.js"),
   "logistics/cross-dock-flow-through-rate-percent": () => import("../../logistics/cross-dock-flow-through-rate-percent/index.js"),
+  "random/old-italic-character": () => import("../../random/old-italic-character/index.js"),
   "sailing/mainsail-roach-area": () => import("../../sailing/mainsail-roach-area/index.js"),
   "seismology/resonance-quarter-wavelength-soft-soil": () => import("../../seismology/resonance-quarter-wavelength-soft-soil/index.js"),
   "size/paper": () => import("../../size/paper/index.js"),

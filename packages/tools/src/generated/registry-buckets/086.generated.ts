@@ -28,6 +28,8 @@ export const toolModuleLoaders: Readonly<
   "geology/recovery-residual-drawdown": () => import("../../geology/recovery-residual-drawdown/index.js"),
   "geometry/euclidean-distance": () => import("../../geometry/euclidean-distance/index.js"),
   "oenology/racking-loss-percentage": () => import("../../oenology/racking-loss-percentage/index.js"),
+  "random/signwriting-location-punctuation-symbol": () => import("../../random/signwriting-location-punctuation-symbol/index.js"),
+  "random/tai-tham-character": () => import("../../random/tai-tham-character/index.js"),
   "sailing/ballast-ratio": () => import("../../sailing/ballast-ratio/index.js"),
   "size/coat": () => import("../../size/coat/index.js"),
 };

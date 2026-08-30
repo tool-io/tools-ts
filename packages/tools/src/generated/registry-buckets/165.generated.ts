@@ -29,6 +29,7 @@ export const toolModuleLoaders: Readonly<
   "number/fibonacci-checker": () => import("../../number/fibonacci-checker/index.js"),
   "oenology/sweetening-reserve-volume": () => import("../../oenology/sweetening-reserve-volume/index.js"),
   "paleography/kalends-medieval-date-parser": () => import("../../paleography/kalends-medieval-date-parser/index.js"),
+  "random/caucasian-albanian-letter": () => import("../../random/caucasian-albanian-letter/index.js"),
   "random/timestamp": () => import("../../random/timestamp/index.js"),
   "real-estate/absorption-rate": () => import("../../real-estate/absorption-rate/index.js"),
   "real-estate/terminal-value": () => import("../../real-estate/terminal-value/index.js"),

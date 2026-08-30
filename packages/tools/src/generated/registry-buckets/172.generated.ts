@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/vgm-verified-gross-mass-solas-total": () => import("../../logistics/vgm-verified-gross-mass-solas-total/index.js"),
   "oenology/oak-chip-dosage": () => import("../../oenology/oak-chip-dosage/index.js"),
   "optimization/bfgs-step": () => import("../../optimization/bfgs-step/index.js"),
+  "random/music-dynamic-mark": () => import("../../random/music-dynamic-mark/index.js"),
   "seismology/gardner-knopoff-declustering-window-lookup": () => import("../../seismology/gardner-knopoff-declustering-window-lookup/index.js"),
   "seismology/geometrical-spreading-body-wave": () => import("../../seismology/geometrical-spreading-body-wave/index.js"),
   "size/baby-clothing": () => import("../../size/baby-clothing/index.js"),
