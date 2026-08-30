@@ -1,0 +1,6 @@
+import { describe, expect, it } from "vitest"; import { calculateRandomProductVariant, randomProductVariantExample, runRandomProductVariant } from "./tool.js";
+describe("Random Product Variant Picker", () => {
+  it("selects exact IDs and preserves provenance", () => { expect(JSON.parse(JSON.stringify(randomProductVariantExample))).toEqual(randomProductVariantExample);expect(runRandomProductVariant(randomProductVariantExample.input,{random:()=>0}).ok).toBe(true); expect(calculateRandomProductVariant(randomProductVariantExample.input, () => 0)).toEqual({ datasetId: "example/product-variant", datasetVersion: "1", selectedIds: ["candidate-a", "candidate-b"], sourceId: "example" }); });
+  it("is deterministic with injected randomness", () => { expect(calculateRandomProductVariant(randomProductVariantExample.input, () => 0.75)).toEqual(calculateRandomProductVariant(randomProductVariantExample.input, () => 0.75)); });
+  it("rejects invalid pools and randomness", () => { expect(runRandomProductVariant({ ...randomProductVariantExample.input, candidateIds: [] }).ok).toBe(false); expect(runRandomProductVariant({ ...randomProductVariantExample.input, selectionCount: 4 }).ok).toBe(false); expect(runRandomProductVariant(randomProductVariantExample.input, { random: () => 1 }).ok).toBe(false); });
+});
