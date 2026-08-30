@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/knudsen-curve-reference": () => import("../../acoustics/knudsen-curve-reference/index.js"),
   "archival-studies/lcsh-string-formattedness-checker": () => import("../../archival-studies/lcsh-string-formattedness-checker/index.js"),
   "arithmetic/ceiling-to-multiple": () => import("../../arithmetic/ceiling-to-multiple/index.js"),
   "biology/conduction-velocity-myelinated": () => import("../../biology/conduction-velocity-myelinated/index.js"),
@@ -18,7 +19,11 @@ export const toolModuleLoaders: Readonly<
   "electronics/power-gain-linear": () => import("../../electronics/power-gain-linear/index.js"),
   "electronics/transformer-core-area-product": () => import("../../electronics/transformer-core-area-product/index.js"),
   "epigraphy/crucis-dagger-marker-checker": () => import("../../epigraphy/crucis-dagger-marker-checker/index.js"),
+  "futurology/state-of-future-index": () => import("../../futurology/state-of-future-index/index.js"),
   "geology/magnetic-anomaly-total-field": () => import("../../geology/magnetic-anomaly-total-field/index.js"),
+  "kinesiology/emg-antagonist-coactivation": () => import("../../kinesiology/emg-antagonist-coactivation/index.js"),
+  "kinesiology/ten-meter-gait-speed": () => import("../../kinesiology/ten-meter-gait-speed/index.js"),
+  "neuroscience/just-noticeable-difference": () => import("../../neuroscience/just-noticeable-difference/index.js"),
   "oenology/fructose-glucose-ratio-checker": () => import("../../oenology/fructose-glucose-ratio-checker/index.js"),
   "paleography/apothecary-weight-converter": () => import("../../paleography/apothecary-weight-converter/index.js"),
   "paleography/historiated-initial-tier-classifier": () => import("../../paleography/historiated-initial-tier-classifier/index.js"),
@@ -29,4 +34,6 @@ export const toolModuleLoaders: Readonly<
   "size/bangle": () => import("../../size/bangle/index.js"),
   "statistics/inclusive-quartiles": () => import("../../statistics/inclusive-quartiles/index.js"),
   "statistics/pooled-variance": () => import("../../statistics/pooled-variance/index.js"),
+  "transcriptomics/combat-location-scale": () => import("../../transcriptomics/combat-location-scale/index.js"),
+  "transcriptomics/strand-specificity": () => import("../../transcriptomics/strand-specificity/index.js"),
 };

@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/balanced-noise-criterion-reference": () => import("../../acoustics/balanced-noise-criterion-reference/index.js"),
+  "acoustics/whispering-gallery-reference": () => import("../../acoustics/whispering-gallery-reference/index.js"),
   "arithmetic/silver-ratio": () => import("../../arithmetic/silver-ratio/index.js"),
   "auditing/written-representation-letter-required-items-checklist": () => import("../../auditing/written-representation-letter-required-items-checklist/index.js"),
   "aviation/load-factor": () => import("../../aviation/load-factor/index.js"),
@@ -21,7 +23,11 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/ig-corpus-citation-formatter": () => import("../../epigraphy/ig-corpus-citation-formatter/index.js"),
   "finance/barrier-option-binomial": () => import("../../finance/barrier-option-binomial/index.js"),
   "geometry/surface-area": () => import("../../geometry/surface-area/index.js"),
+  "kinesiology/gait-duty-factor": () => import("../../kinesiology/gait-duty-factor/index.js"),
+  "laser/fizeau-frequency-precision": () => import("../../laser/fizeau-frequency-precision/index.js"),
+  "laser/light-sheet-phototoxicity": () => import("../../laser/light-sheet-phototoxicity/index.js"),
   "mycology/hartignet-depth-grade-classifier": () => import("../../mycology/hartignet-depth-grade-classifier/index.js"),
+  "numismatics/bullion-security-feature-check": () => import("../../numismatics/bullion-security-feature-check/index.js"),
   "oenology/btg-cost-recovery": () => import("../../oenology/btg-cost-recovery/index.js"),
   "probability/normal-box-muller-sampler": () => import("../../probability/normal-box-muller-sampler/index.js"),
   "random/ol-chiki-character": () => import("../../random/ol-chiki-character/index.js"),
@@ -30,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "size/kurta-reconstruction": () => import("../../size/kurta-reconstruction/index.js"),
   "size/ski-boot": () => import("../../size/ski-boot/index.js"),
   "sociology/spouse-status-gap-difference": () => import("../../sociology/spouse-status-gap-difference/index.js"),
+  "transcriptomics/global-mean-delta-ct": () => import("../../transcriptomics/global-mean-delta-ct/index.js"),
   "typography/perfect-fifth-scale-generator": () => import("../../typography/perfect-fifth-scale-generator/index.js"),
   "validate/ean-8": () => import("../../validate/ean-8/index.js"),
   "vr/reprojection-error-pixels": () => import("../../vr/reprojection-error-pixels/index.js"),

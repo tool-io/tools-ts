@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/absorption-required-for-target-rt": () => import("../../acoustics/absorption-required-for-target-rt/index.js"),
+  "auditing/kam-selection-score": () => import("../../auditing/kam-selection-score/index.js"),
   "biology/inbreeding-pedigree": () => import("../../biology/inbreeding-pedigree/index.js"),
   "biology/leaf-mass-per-area": () => import("../../biology/leaf-mass-per-area/index.js"),
   "biology/specific-stem-density": () => import("../../biology/specific-stem-density/index.js"),
@@ -21,12 +22,15 @@ export const toolModuleLoaders: Readonly<
   "finance/break-even-price": () => import("../../finance/break-even-price/index.js"),
   "futurology/climate-adaptation-driver-implication-chain": () => import("../../futurology/climate-adaptation-driver-implication-chain/index.js"),
   "futurology/h-g-wells-founding-futurism-open-conspiracy-history-lookup": () => import("../../futurology/h-g-wells-founding-futurism-open-conspiracy-history-lookup/index.js"),
+  "horology/amplitude-explicit-threshold-screen": () => import("../../horology/amplitude-explicit-threshold-screen/index.js"),
   "horology/dynamic-pressure-factor": () => import("../../horology/dynamic-pressure-factor/index.js"),
   "logistics/vgm-verified-gross-mass-solas-total": () => import("../../logistics/vgm-verified-gross-mass-solas-total/index.js"),
   "oenology/oak-chip-dosage": () => import("../../oenology/oak-chip-dosage/index.js"),
   "optimization/bfgs-step": () => import("../../optimization/bfgs-step/index.js"),
+  "proteomics/ww-ppxy-motifs": () => import("../../proteomics/ww-ppxy-motifs/index.js"),
   "random/music-dynamic-mark": () => import("../../random/music-dynamic-mark/index.js"),
   "seismology/gardner-knopoff-declustering-window-lookup": () => import("../../seismology/gardner-knopoff-declustering-window-lookup/index.js"),
   "seismology/geometrical-spreading-body-wave": () => import("../../seismology/geometrical-spreading-body-wave/index.js"),
   "size/baby-clothing": () => import("../../size/baby-clothing/index.js"),
+  "taxation/quarterly-estimated-dates": () => import("../../taxation/quarterly-estimated-dates/index.js"),
 };

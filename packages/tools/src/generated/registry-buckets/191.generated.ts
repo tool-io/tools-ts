@@ -15,7 +15,11 @@ export const toolModuleLoaders: Readonly<
   "forestry/canopy-bulk-density-forestry": () => import("../../forestry/canopy-bulk-density-forestry/index.js"),
   "futurology/wright-law-learning-curve-cost-doubling-lookup": () => import("../../futurology/wright-law-learning-curve-cost-doubling-lookup/index.js"),
   "generate/isbn-10": () => import("../../generate/isbn-10/index.js"),
+  "horology/independent-atelier-production-model-lookup": () => import("../../horology/independent-atelier-production-model-lookup/index.js"),
+  "horology/marine-chronometer-gimbal-purpose-lookup": () => import("../../horology/marine-chronometer-gimbal-purpose-lookup/index.js"),
+  "horology/swiss-made-cost-rule-history-lookup": () => import("../../horology/swiss-made-cost-rule-history-lookup/index.js"),
   "machine-learning/adaboost-classifier": () => import("../../machine-learning/adaboost-classifier/index.js"),
+  "metabolomics/creatinine-normalized-excretion": () => import("../../metabolomics/creatinine-normalized-excretion/index.js"),
   "mycology/latex-exudate-detector": () => import("../../mycology/latex-exudate-detector/index.js"),
   "oenology/lees-stirring-frequency": () => import("../../oenology/lees-stirring-frequency/index.js"),
   "oenology/tartrate-saturation-temp": () => import("../../oenology/tartrate-saturation-temp/index.js"),
@@ -28,4 +32,5 @@ export const toolModuleLoaders: Readonly<
   "size/sari-reconstruction": () => import("../../size/sari-reconstruction/index.js"),
   "text/detab": () => import("../../text/detab/index.js"),
   "vr/super-sampling-factor": () => import("../../vr/super-sampling-factor/index.js"),
+  "web/manifest-start-url-extractor": () => import("../../web/manifest-start-url-extractor/index.js"),
 };

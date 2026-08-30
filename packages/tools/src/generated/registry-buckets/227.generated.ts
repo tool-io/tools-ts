@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/quarter-wave-resonator-length": () => import("../../acoustics/quarter-wave-resonator-length/index.js"),
+  "auditing/committee-preread-coverage": () => import("../../auditing/committee-preread-coverage/index.js"),
   "biology/sequence-length": () => import("../../biology/sequence-length/index.js"),
   "chemistry/combustion-hydrogen-mass": () => import("../../chemistry/combustion-hydrogen-mass/index.js"),
   "chemistry/isoelectric-point": () => import("../../chemistry/isoelectric-point/index.js"),
@@ -18,9 +19,14 @@ export const toolModuleLoaders: Readonly<
   "forestry/volume-increment-percentage": () => import("../../forestry/volume-increment-percentage/index.js"),
   "geometry/distance-3d": () => import("../../geometry/distance-3d/index.js"),
   "horology/bph-to-hertz": () => import("../../horology/bph-to-hertz/index.js"),
+  "insurance/transfer-fraud-screen": () => import("../../insurance/transfer-fraud-screen/index.js"),
+  "kinesiology/swim-golf-score": () => import("../../kinesiology/swim-golf-score/index.js"),
+  "kinesiology/walk-run-froude-screen": () => import("../../kinesiology/walk-run-froude-screen/index.js"),
   "laser/laser-diode-driver-pulse-width-current-limit-series-resistor-design": () => import("../../laser/laser-diode-driver-pulse-width-current-limit-series-resistor-design/index.js"),
+  "laser/photon-pressure-nudge": () => import("../../laser/photon-pressure-nudge/index.js"),
   "mycology/fruiting-humidity-range-compliance-checker": () => import("../../mycology/fruiting-humidity-range-compliance-checker/index.js"),
   "number/trailing-zeros": () => import("../../number/trailing-zeros/index.js"),
+  "proteomics/peptide-neutral-mass": () => import("../../proteomics/peptide-neutral-mass/index.js"),
   "random/miao-character": () => import("../../random/miao-character/index.js"),
   "reinforcement-learning/policy-evaluation": () => import("../../reinforcement-learning/policy-evaluation/index.js"),
   "seismology/within-event-sigma-lambda": () => import("../../seismology/within-event-sigma-lambda/index.js"),
@@ -28,6 +34,8 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/oxidation-thickness": () => import("../../semiconductor/oxidation-thickness/index.js"),
   "semiconductor/quasi-fermi-level": () => import("../../semiconductor/quasi-fermi-level/index.js"),
   "size/doublet-reconstruction": () => import("../../size/doublet-reconstruction/index.js"),
+  "taxation/adoption-credit-expense": () => import("../../taxation/adoption-credit-expense/index.js"),
+  "taxation/pfic-distribution-tax": () => import("../../taxation/pfic-distribution-tax/index.js"),
   "text/justify-lines": () => import("../../text/justify-lines/index.js"),
   "vr/texture-memory-required": () => import("../../vr/texture-memory-required/index.js"),
 };

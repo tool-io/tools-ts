@@ -30,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/geophone-natural-period-response-corner": () => import("../../seismology/geophone-natural-period-response-corner/index.js"),
   "semiconductor/latchup-holding-current": () => import("../../semiconductor/latchup-holding-current/index.js"),
   "statistics/population-covariance": () => import("../../statistics/population-covariance/index.js"),
+  "taxation/clean-energy-credit": () => import("../../taxation/clean-energy-credit/index.js"),
   "text/extract-hashtags": () => import("../../text/extract-hashtags/index.js"),
   "web/vary-parser": () => import("../../web/vary-parser/index.js"),
 };

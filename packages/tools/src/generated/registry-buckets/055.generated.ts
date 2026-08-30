@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/schroeder-decay-method-history": () => import("../../acoustics/schroeder-decay-method-history/index.js"),
   "auditing/fee-dependence-contingent-fee-prohibited-services-lookup": () => import("../../auditing/fee-dependence-contingent-fee-prohibited-services-lookup/index.js"),
   "biology/ultrasound-backfat": () => import("../../biology/ultrasound-backfat/index.js"),
   "carpentry/werkstueck-gewicht-aus-rohdichte": () => import("../../carpentry/werkstueck-gewicht-aus-rohdichte/index.js"),
@@ -15,8 +16,14 @@ export const toolModuleLoaders: Readonly<
   "electronics/crystal-drive-level": () => import("../../electronics/crystal-drive-level/index.js"),
   "electronics/decoupling-resonance-frequency": () => import("../../electronics/decoupling-resonance-frequency/index.js"),
   "engineering/soil-at-rest-pressure": () => import("../../engineering/soil-at-rest-pressure/index.js"),
+  "epigenetics/bisulfite-primer-cpg-check": () => import("../../epigenetics/bisulfite-primer-cpg-check/index.js"),
   "epigraphy/erasure-double-slash-detector": () => import("../../epigraphy/erasure-double-slash-detector/index.js"),
   "horology/daylight-saving-shift": () => import("../../horology/daylight-saving-shift/index.js"),
   "horology/gmt-hand-offset": () => import("../../horology/gmt-hand-offset/index.js"),
+  "laser/lidar-photon-return": () => import("../../laser/lidar-photon-return/index.js"),
+  "numismatics/coin-patina-evidence-screen": () => import("../../numismatics/coin-patina-evidence-screen/index.js"),
+  "numismatics/grading-detail-code-match": () => import("../../numismatics/grading-detail-code-match/index.js"),
+  "numismatics/seleukid-anchor-reference": () => import("../../numismatics/seleukid-anchor-reference/index.js"),
+  "pedagogy/spiral-review-intervals": () => import("../../pedagogy/spiral-review-intervals/index.js"),
   "size/hakama-reconstruction": () => import("../../size/hakama-reconstruction/index.js"),
 };

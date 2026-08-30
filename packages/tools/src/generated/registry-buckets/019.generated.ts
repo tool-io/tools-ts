@@ -28,6 +28,8 @@ export const toolModuleLoaders: Readonly<
   "geology/fold-wavelength": () => import("../../geology/fold-wavelength/index.js"),
   "geology/water-content": () => import("../../geology/water-content/index.js"),
   "geometry/pyramid-volume": () => import("../../geometry/pyramid-volume/index.js"),
+  "insurance/classic-car-eligibility": () => import("../../insurance/classic-car-eligibility/index.js"),
+  "laser/underwater-optical-mode-comparison": () => import("../../laser/underwater-optical-mode-comparison/index.js"),
   "music/scientific-pitch-notation-octave": () => import("../../music/scientific-pitch-notation-octave/index.js"),
   "oenology/tartaric-acid-addition": () => import("../../oenology/tartaric-acid-addition/index.js"),
   "paleography/charter-witness-ranker": () => import("../../paleography/charter-witness-ranker/index.js"),
@@ -37,4 +39,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/conductivity-from-doping": () => import("../../semiconductor/conductivity-from-doping/index.js"),
   "size/ice-skate": () => import("../../size/ice-skate/index.js"),
   "text/line-count": () => import("../../text/line-count/index.js"),
+  "web/email-obfuscator": () => import("../../web/email-obfuscator/index.js"),
+  "web/manifest-display-validator": () => import("../../web/manifest-display-validator/index.js"),
 };

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/beranek-concert-hall-reference": () => import("../../acoustics/beranek-concert-hall-reference/index.js"),
   "biology/necrotic-index": () => import("../../biology/necrotic-index/index.js"),
   "chemistry/crystallography-lattice-parameter-from-density": () => import("../../chemistry/crystallography-lattice-parameter-from-density/index.js"),
   "chemistry/gibbs-helmholtz": () => import("../../chemistry/gibbs-helmholtz/index.js"),
@@ -14,6 +15,9 @@ export const toolModuleLoaders: Readonly<
   "electronics/lna-noise-figure-cascade": () => import("../../electronics/lna-noise-figure-cascade/index.js"),
   "electronics/quantization-noise-snr": () => import("../../electronics/quantization-noise-snr/index.js"),
   "futurology/augmentation-automation-strategy-grid": () => import("../../futurology/augmentation-automation-strategy-grid/index.js"),
+  "kinesiology/session-rpe-training-load": () => import("../../kinesiology/session-rpe-training-load/index.js"),
+  "laser/hom-bend-suppression": () => import("../../laser/hom-bend-suppression/index.js"),
+  "laser/welding-mode-threshold": () => import("../../laser/welding-mode-threshold/index.js"),
   "meteorology/heating-degree-days": () => import("../../meteorology/heating-degree-days/index.js"),
   "mycology/basidium-club-proportion-checker": () => import("../../mycology/basidium-club-proportion-checker/index.js"),
   "random/old-persian-character": () => import("../../random/old-persian-character/index.js"),
@@ -22,4 +26,7 @@ export const toolModuleLoaders: Readonly<
   "sailing/start-line-length-required": () => import("../../sailing/start-line-length-required/index.js"),
   "semiconductor/carrier-concentration-n-type": () => import("../../semiconductor/carrier-concentration-n-type/index.js"),
   "size/smart-ring": () => import("../../size/smart-ring/index.js"),
+  "taxation/payroll-reporting-coverage": () => import("../../taxation/payroll-reporting-coverage/index.js"),
+  "theatre/coproduction-cost-allocation": () => import("../../theatre/coproduction-cost-allocation/index.js"),
+  "web/url-hostname": () => import("../../web/url-hostname/index.js"),
 };

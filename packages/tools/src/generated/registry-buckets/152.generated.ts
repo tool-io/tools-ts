@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/sti-method-reference": () => import("../../acoustics/sti-method-reference/index.js"),
   "auditing/sox-404-integrated-audit-dual-opinion-scope-lookup": () => import("../../auditing/sox-404-integrated-audit-dual-opinion-scope-lookup/index.js"),
   "aviation/contingency-fuel-percentage": () => import("../../aviation/contingency-fuel-percentage/index.js"),
   "biology/cell-growth-rate": () => import("../../biology/cell-growth-rate/index.js"),
@@ -18,7 +19,12 @@ export const toolModuleLoaders: Readonly<
   "engineering/youngs-modulus": () => import("../../engineering/youngs-modulus/index.js"),
   "film/screen-brightness-foot-lamberts": () => import("../../film/screen-brightness-foot-lamberts/index.js"),
   "geology/jacob-drawdown": () => import("../../geology/jacob-drawdown/index.js"),
+  "kinesiology/gait-cadence-from-step-count": () => import("../../kinesiology/gait-cadence-from-step-count/index.js"),
+  "laser/doppler-oct-velocity": () => import("../../laser/doppler-oct-velocity/index.js"),
+  "laser/drilling-helical-pitch": () => import("../../laser/drilling-helical-pitch/index.js"),
+  "laser/multipass-weld-fill": () => import("../../laser/multipass-weld-fill/index.js"),
   "logistics/stops-per-hour-route-density": () => import("../../logistics/stops-per-hour-route-density/index.js"),
+  "metabolomics/pareto-scaling": () => import("../../metabolomics/pareto-scaling/index.js"),
   "mycology/lamellae-density-radial-count-recorder": () => import("../../mycology/lamellae-density-radial-count-recorder/index.js"),
   "mycology/volva-base-presence-detector": () => import("../../mycology/volva-base-presence-detector/index.js"),
   "numismatics/tube-capacity-by-diameter": () => import("../../numismatics/tube-capacity-by-diameter/index.js"),
@@ -28,4 +34,6 @@ export const toolModuleLoaders: Readonly<
   "random/playing-card": () => import("../../random/playing-card/index.js"),
   "semiconductor/sic-mosfet-on-resistance-tempco": () => import("../../semiconductor/sic-mosfet-on-resistance-tempco/index.js"),
   "size/stays-reconstruction": () => import("../../size/stays-reconstruction/index.js"),
+  "taxation/transfer-pricing-method-selector": () => import("../../taxation/transfer-pricing-method-selector/index.js"),
+  "web/url-is-absolute": () => import("../../web/url-is-absolute/index.js"),
 };

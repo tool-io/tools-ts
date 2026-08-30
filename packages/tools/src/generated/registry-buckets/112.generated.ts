@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/concert-hall-geometry-screen": () => import("../../acoustics/concert-hall-geometry-screen/index.js"),
   "biology/airway-resistance": () => import("../../biology/airway-resistance/index.js"),
   "biology/blood-pressure-category": () => import("../../biology/blood-pressure-category/index.js"),
   "carpentry/treppen-lauflaenge-auftritt-mal-stufen": () => import("../../carpentry/treppen-lauflaenge-auftritt-mal-stufen/index.js"),
@@ -13,12 +14,17 @@ export const toolModuleLoaders: Readonly<
   "electronics/magnetomotive-force": () => import("../../electronics/magnetomotive-force/index.js"),
   "electronics/pcb-trace-resistance": () => import("../../electronics/pcb-trace-resistance/index.js"),
   "electronics/tvs-peak-pulse-power": () => import("../../electronics/tvs-peak-pulse-power/index.js"),
+  "epigenetics/msp-product-size": () => import("../../epigenetics/msp-product-size/index.js"),
   "finance/geometric-asian-option": () => import("../../finance/geometric-asian-option/index.js"),
   "geology/core-porosity-helium": () => import("../../geology/core-porosity-helium/index.js"),
   "geometry/sphere-volume": () => import("../../geometry/sphere-volume/index.js"),
   "graph/cycle-checker": () => import("../../graph/cycle-checker/index.js"),
   "horology/case-luglug-ratio": () => import("../../horology/case-luglug-ratio/index.js"),
+  "kinesiology/cross-education-gain": () => import("../../kinesiology/cross-education-gain/index.js"),
   "matrix/as-latex": () => import("../../matrix/as-latex/index.js"),
+  "metabolomics/inchikey-format-validator": () => import("../../metabolomics/inchikey-format-validator/index.js"),
+  "metabolomics/lactate-glucose-yield": () => import("../../metabolomics/lactate-glucose-yield/index.js"),
   "paleography/golden-number-cycle-position": () => import("../../paleography/golden-number-cycle-position/index.js"),
+  "pedagogy/curriculum-visibility-audit": () => import("../../pedagogy/curriculum-visibility-audit/index.js"),
   "random/old-uyghur-letter": () => import("../../random/old-uyghur-letter/index.js"),
 };

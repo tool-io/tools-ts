@@ -18,6 +18,8 @@ export const toolModuleLoaders: Readonly<
   "futurology/morphological-analysis-box-grid-combination-explorer": () => import("../../futurology/morphological-analysis-box-grid-combination-explorer/index.js"),
   "geology/afm-diagram": () => import("../../geology/afm-diagram/index.js"),
   "geology/shrinkage-ratio": () => import("../../geology/shrinkage-ratio/index.js"),
+  "horology/accessible-watch-time-output-mode-lookup": () => import("../../horology/accessible-watch-time-output-mode-lookup/index.js"),
+  "journalism/temperature-style": () => import("../../journalism/temperature-style/index.js"),
   "mycology/caselayer-depth-moisture-calculator": () => import("../../mycology/caselayer-depth-moisture-calculator/index.js"),
   "oenology/serving-temp-lookup": () => import("../../oenology/serving-temp-lookup/index.js"),
   "paleography/eschatocol-completeness-checker": () => import("../../paleography/eschatocol-completeness-checker/index.js"),
@@ -25,4 +27,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/network-station-uptime-percent-calculator": () => import("../../seismology/network-station-uptime-percent-calculator/index.js"),
   "seismology/station-gap-azimuthal-coverage-degree": () => import("../../seismology/station-gap-azimuthal-coverage-degree/index.js"),
   "semiconductor/depletion-capacitance-linear": () => import("../../semiconductor/depletion-capacitance-linear/index.js"),
+  "taxation/hard-fork-basis-split": () => import("../../taxation/hard-fork-basis-split/index.js"),
 };

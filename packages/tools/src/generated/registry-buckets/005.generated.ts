@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/ceiling-hanger-layout-screen": () => import("../../acoustics/ceiling-hanger-layout-screen/index.js"),
   "arithmetic/sum": () => import("../../arithmetic/sum/index.js"),
   "carpentry/casing-reveal": () => import("../../carpentry/casing-reveal/index.js"),
   "carpentry/duebellaenge-5x-durchmesser": () => import("../../carpentry/duebellaenge-5x-durchmesser/index.js"),
@@ -25,6 +26,8 @@ export const toolModuleLoaders: Readonly<
   "geology/clinoform-height": () => import("../../geology/clinoform-height/index.js"),
   "geology/stratigraphic-thickness-true-vs-apparent": () => import("../../geology/stratigraphic-thickness-true-vs-apparent/index.js"),
   "mycology/pore-density-counter": () => import("../../mycology/pore-density-counter/index.js"),
+  "proteomics/missed-cleavage-peptide-count": () => import("../../proteomics/missed-cleavage-peptide-count/index.js"),
+  "proteomics/rossmann-motifs": () => import("../../proteomics/rossmann-motifs/index.js"),
   "random/hanunoo-character": () => import("../../random/hanunoo-character/index.js"),
   "random/maritime-signal-flag": () => import("../../random/maritime-signal-flag/index.js"),
   "text/word-count": () => import("../../text/word-count/index.js"),

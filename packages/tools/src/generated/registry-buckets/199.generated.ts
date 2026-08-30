@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/auralization-process-reference": () => import("../../acoustics/auralization-process-reference/index.js"),
+  "acoustics/dnl-segment-level-solver": () => import("../../acoustics/dnl-segment-level-solver/index.js"),
   "actuarial/full-credibility-standard-sqrt": () => import("../../actuarial/full-credibility-standard-sqrt/index.js"),
   "biology/electrolyte-leakage-2": () => import("../../biology/electrolyte-leakage-2/index.js"),
   "biology/kinship-coefficient": () => import("../../biology/kinship-coefficient/index.js"),
@@ -16,9 +18,15 @@ export const toolModuleLoaders: Readonly<
   "electronics/resistor-tolerance-max": () => import("../../electronics/resistor-tolerance-max/index.js"),
   "engineering/radiative-heat-transfer": () => import("../../engineering/radiative-heat-transfer/index.js"),
   "geology/cuttings-transport-velocity": () => import("../../geology/cuttings-transport-velocity/index.js"),
+  "horology/positional-rate-variation-threshold-screen": () => import("../../horology/positional-rate-variation-threshold-screen/index.js"),
+  "kinesiology/knee-wall-dorsiflexion-screen": () => import("../../kinesiology/knee-wall-dorsiflexion-screen/index.js"),
+  "laser/doppler-cooling-limit": () => import("../../laser/doppler-cooling-limit/index.js"),
+  "metabolomics/double-bond-equivalent": () => import("../../metabolomics/double-bond-equivalent/index.js"),
+  "metabolomics/respiratory-exchange-ratio": () => import("../../metabolomics/respiratory-exchange-ratio/index.js"),
   "mycology/biological-efficiency-be-percent-calculator": () => import("../../mycology/biological-efficiency-be-percent-calculator/index.js"),
   "mycology/flesh-oxidation-change-recorder": () => import("../../mycology/flesh-oxidation-change-recorder/index.js"),
   "optimization/gradient-descent-step": () => import("../../optimization/gradient-descent-step/index.js"),
+  "pedagogy/worked-example-fading": () => import("../../pedagogy/worked-example-fading/index.js"),
   "real-estate/capex-reserve": () => import("../../real-estate/capex-reserve/index.js"),
   "sailing/speed-over-ground": () => import("../../sailing/speed-over-ground/index.js"),
   "seismology/radiated-energy-moment-ratio": () => import("../../seismology/radiated-energy-moment-ratio/index.js"),

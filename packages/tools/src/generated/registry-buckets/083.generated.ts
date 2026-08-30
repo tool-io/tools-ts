@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/alert-threshold-tuning": () => import("../../auditing/alert-threshold-tuning/index.js"),
   "aviation/oxygen-required": () => import("../../aviation/oxygen-required/index.js"),
   "aviation/stall-speed-gust": () => import("../../aviation/stall-speed-gust/index.js"),
   "biology/absolute-neutrophil-count": () => import("../../biology/absolute-neutrophil-count/index.js"),
@@ -23,6 +24,14 @@ export const toolModuleLoaders: Readonly<
   "electronics/radar-doppler-shift": () => import("../../electronics/radar-doppler-shift/index.js"),
   "engineering/pump-hydraulic-power": () => import("../../engineering/pump-hydraulic-power/index.js"),
   "geology/sequence-boundary-lookup": () => import("../../geology/sequence-boundary-lookup/index.js"),
+  "horology/escapement-impulse-rate": () => import("../../horology/escapement-impulse-rate/index.js"),
+  "journalism/courtesy-title-repetition": () => import("../../journalism/courtesy-title-repetition/index.js"),
+  "journalism/robots-policy-check": () => import("../../journalism/robots-policy-check/index.js"),
+  "laser/ablation-threshold-fit": () => import("../../laser/ablation-threshold-fit/index.js"),
+  "laser/astigmatic-collimator-design": () => import("../../laser/astigmatic-collimator-design/index.js"),
+  "laser/audience-scan-exposure": () => import("../../laser/audience-scan-exposure/index.js"),
+  "pedagogy/mastery-retry-tracker": () => import("../../pedagogy/mastery-retry-tracker/index.js"),
+  "proteomics/kinase-motif-triad": () => import("../../proteomics/kinase-motif-triad/index.js"),
   "random/devanagari-character": () => import("../../random/devanagari-character/index.js"),
   "real-estate/operating-expense-ratio": () => import("../../real-estate/operating-expense-ratio/index.js"),
   "sailing/cloud-ceiling-category": () => import("../../sailing/cloud-ceiling-category/index.js"),

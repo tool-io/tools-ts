@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/hud-noise-site-reference": () => import("../../acoustics/hud-noise-site-reference/index.js"),
+  "acoustics/missing-fundamental-reference": () => import("../../acoustics/missing-fundamental-reference/index.js"),
   "archival-studies/handle-urn-builder": () => import("../../archival-studies/handle-urn-builder/index.js"),
   "aviation/wind-correction-angle": () => import("../../aviation/wind-correction-angle/index.js"),
   "biology/crop-growth-rate": () => import("../../biology/crop-growth-rate/index.js"),
@@ -17,10 +19,16 @@ export const toolModuleLoaders: Readonly<
   "engineering/aircraft-stall-speed": () => import("../../engineering/aircraft-stall-speed/index.js"),
   "engineering/convective-heat-transfer": () => import("../../engineering/convective-heat-transfer/index.js"),
   "geology/darcy-discharge": () => import("../../geology/darcy-discharge/index.js"),
+  "horology/incabloc-shock-absorber-principle-lookup": () => import("../../horology/incabloc-shock-absorber-principle-lookup/index.js"),
+  "http/status-message": () => import("../../http/status-message/index.js"),
+  "journalism/email-auth-coverage": () => import("../../journalism/email-auth-coverage/index.js"),
+  "laser/assist-gas-cost-comparison": () => import("../../laser/assist-gas-cost-comparison/index.js"),
+  "laser/radial-polarization-spot-comparison": () => import("../../laser/radial-polarization-spot-comparison/index.js"),
   "logistics/shrinkage-percent-inventory-loss": () => import("../../logistics/shrinkage-percent-inventory-loss/index.js"),
   "music/adsr-envelope-total-duration": () => import("../../music/adsr-envelope-total-duration/index.js"),
   "network/eui64-link-local": () => import("../../network/eui64-link-local/index.js"),
   "number/kaprekar-checker": () => import("../../number/kaprekar-checker/index.js"),
+  "pedagogy/bloom-two-dimension-coverage": () => import("../../pedagogy/bloom-two-dimension-coverage/index.js"),
   "random/domino-tile": () => import("../../random/domino-tile/index.js"),
   "sailing/cross-track-error": () => import("../../sailing/cross-track-error/index.js"),
   "seismology/amplification-borcherdt-factor-lookup": () => import("../../seismology/amplification-borcherdt-factor-lookup/index.js"),

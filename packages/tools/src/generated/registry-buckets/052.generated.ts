@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/classroom-background-noise-screen": () => import("../../acoustics/classroom-background-noise-screen/index.js"),
   "aviation/bank-angle-standard-rate": () => import("../../aviation/bank-angle-standard-rate/index.js"),
   "biology/chlorophyll-content-spad": () => import("../../biology/chlorophyll-content-spad/index.js"),
   "biology/selectivity-ratio": () => import("../../biology/selectivity-ratio/index.js"),
@@ -15,11 +16,17 @@ export const toolModuleLoaders: Readonly<
   "convert/hexadecimal-to-decimal": () => import("../../convert/hexadecimal-to-decimal/index.js"),
   "electronics/audio-thd-plus-noise": () => import("../../electronics/audio-thd-plus-noise/index.js"),
   "electronics/output-capacitor-esr-limit": () => import("../../electronics/output-capacitor-esr-limit/index.js"),
+  "epigenetics/epimutation-rate": () => import("../../epigenetics/epimutation-rate/index.js"),
   "futurology/takeoff-speed-fast-slow-scenario-classifier": () => import("../../futurology/takeoff-speed-fast-slow-scenario-classifier/index.js"),
   "geology/coefficient-of-consolidation": () => import("../../geology/coefficient-of-consolidation/index.js"),
   "geology/mineral-streak-lookup": () => import("../../geology/mineral-streak-lookup/index.js"),
   "geology/tas-diagram-plot": () => import("../../geology/tas-diagram-plot/index.js"),
+  "journalism/abc-worker-screen": () => import("../../journalism/abc-worker-screen/index.js"),
+  "laser/selective-emitter-resistance": () => import("../../laser/selective-emitter-resistance/index.js"),
   "matrix/scalar-multiply": () => import("../../matrix/scalar-multiply/index.js"),
+  "metabolomics/coeluting-peak-split": () => import("../../metabolomics/coeluting-peak-split/index.js"),
+  "metabolomics/detection-limit": () => import("../../metabolomics/detection-limit/index.js"),
+  "metabolomics/nmr-reference-offset": () => import("../../metabolomics/nmr-reference-offset/index.js"),
   "number/amicable-pair-checker": () => import("../../number/amicable-pair-checker/index.js"),
   "random/anatolian-hieroglyph": () => import("../../random/anatolian-hieroglyph/index.js"),
   "random/ipa-symbol": () => import("../../random/ipa-symbol/index.js"),
@@ -32,6 +39,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/photodiode-responsivity": () => import("../../semiconductor/photodiode-responsivity/index.js"),
   "text/flesch-reading-ease": () => import("../../text/flesch-reading-ease/index.js"),
   "text/repeat": () => import("../../text/repeat/index.js"),
+  "theatre/costume-plot-coverage": () => import("../../theatre/costume-plot-coverage/index.js"),
   "vector/dot-product": () => import("../../vector/dot-product/index.js"),
   "vr/resolution-from-ppd-fov": () => import("../../vr/resolution-from-ppd-fov/index.js"),
 };

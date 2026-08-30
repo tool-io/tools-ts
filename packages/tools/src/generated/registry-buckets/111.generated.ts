@@ -15,7 +15,10 @@ export const toolModuleLoaders: Readonly<
   "film/flicker-percentage": () => import("../../film/flicker-percentage/index.js"),
   "geology/seismic-reflection-coefficient": () => import("../../geology/seismic-reflection-coefficient/index.js"),
   "horology/mainspring-turns-power-reserve": () => import("../../horology/mainspring-turns-power-reserve/index.js"),
+  "http/cookie-serializer": () => import("../../http/cookie-serializer/index.js"),
+  "insurance/umbrella-underlying-limit-check": () => import("../../insurance/umbrella-underlying-limit-check/index.js"),
   "interpolation/cubic-hermite": () => import("../../interpolation/cubic-hermite/index.js"),
+  "laser/chsh-violation": () => import("../../laser/chsh-violation/index.js"),
   "laser/laser-high-harmonic-generation-cutoff-law-three-point-one-seven-up-formula": () => import("../../laser/laser-high-harmonic-generation-cutoff-law-three-point-one-seven-up-formula/index.js"),
   "logistics/hs-code-duty-rate-lookup": () => import("../../logistics/hs-code-duty-rate-lookup/index.js"),
   "mycology/amphotericin-breakpoint-category-mapper": () => import("../../mycology/amphotericin-breakpoint-category-mapper/index.js"),
@@ -26,4 +29,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/mram-retention-time": () => import("../../semiconductor/mram-retention-time/index.js"),
   "semiconductor/surface-potential": () => import("../../semiconductor/surface-potential/index.js"),
   "size/duvet-cover": () => import("../../size/duvet-cover/index.js"),
+  "taxation/tax-payment-allocation": () => import("../../taxation/tax-payment-allocation/index.js"),
+  "transcriptomics/tumor-purity-proxy": () => import("../../transcriptomics/tumor-purity-proxy/index.js"),
 };

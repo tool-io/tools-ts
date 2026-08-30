@@ -4,7 +4,10 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/image-source-method-reference": () => import("../../acoustics/image-source-method-reference/index.js"),
   "aquaculture/fertilization-rate": () => import("../../aquaculture/fertilization-rate/index.js"),
+  "auditing/frequent-flyer-breakage": () => import("../../auditing/frequent-flyer-breakage/index.js"),
+  "auditing/inherent-risk-score": () => import("../../auditing/inherent-risk-score/index.js"),
   "biology/leaf-potassium-content": () => import("../../biology/leaf-potassium-content/index.js"),
   "biology/mean-arterial-pressure": () => import("../../biology/mean-arterial-pressure/index.js"),
   "carpentry/dado-width": () => import("../../carpentry/dado-width/index.js"),
@@ -21,9 +24,11 @@ export const toolModuleLoaders: Readonly<
   "machine-learning/alphazero-puct": () => import("../../machine-learning/alphazero-puct/index.js"),
   "matrix/subtract": () => import("../../matrix/subtract/index.js"),
   "optimization/ant-colony-tsp": () => import("../../optimization/ant-colony-tsp/index.js"),
+  "proteomics/disulfide-bond-capacity": () => import("../../proteomics/disulfide-bond-capacity/index.js"),
   "random/glagolitic-letter": () => import("../../random/glagolitic-letter/index.js"),
   "random/kawi-character": () => import("../../random/kawi-character/index.js"),
   "size/necklace": () => import("../../size/necklace/index.js"),
   "sociology/cause-deleted-life-expectancy-gain": () => import("../../sociology/cause-deleted-life-expectancy-gain/index.js"),
   "text/line-ending-normalize": () => import("../../text/line-ending-normalize/index.js"),
+  "web/canonical-extractor": () => import("../../web/canonical-extractor/index.js"),
 };

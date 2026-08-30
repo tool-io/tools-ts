@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/calibration-drift-screen": () => import("../../acoustics/calibration-drift-screen/index.js"),
   "aviation/bingo-fuel": () => import("../../aviation/bingo-fuel/index.js"),
   "checksum/xor-8": () => import("../../checksum/xor-8/index.js"),
   "electronics/ethernet-frame-overhead": () => import("../../electronics/ethernet-frame-overhead/index.js"),
@@ -11,10 +12,14 @@ export const toolModuleLoaders: Readonly<
   "electronics/thermal-via-resistance": () => import("../../electronics/thermal-via-resistance/index.js"),
   "engineering/nusselt-number": () => import("../../engineering/nusselt-number/index.js"),
   "fitness/total-daily-energy-expenditure": () => import("../../fitness/total-daily-energy-expenditure/index.js"),
+  "horology/mil-prf-46374-field-watch-specification-lookup": () => import("../../horology/mil-prf-46374-field-watch-specification-lookup/index.js"),
+  "journalism/tease-length": () => import("../../journalism/tease-length/index.js"),
+  "metabolomics/xenobiotic-phase-audit": () => import("../../metabolomics/xenobiotic-phase-audit/index.js"),
   "music/semitones-between": () => import("../../music/semitones-between/index.js"),
   "oenology/age-worthiness-score": () => import("../../oenology/age-worthiness-score/index.js"),
   "oenology/casein-fining-dose": () => import("../../oenology/casein-fining-dose/index.js"),
   "paleography/trim-loss-edge-recorder": () => import("../../paleography/trim-loss-edge-recorder/index.js"),
+  "proteomics/western-band-background-correction": () => import("../../proteomics/western-band-background-correction/index.js"),
   "random/buhid-character": () => import("../../random/buhid-character/index.js"),
   "sailing/sail-aspect-ratio-jib": () => import("../../sailing/sail-aspect-ratio-jib/index.js"),
   "seismology/intensity-pga-wald-1999-table-lookup": () => import("../../seismology/intensity-pga-wald-1999-table-lookup/index.js"),

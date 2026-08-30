@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/day-evening-night-level": () => import("../../acoustics/day-evening-night-level/index.js"),
   "acoustics/distance-doubling-decibel-drop": () => import("../../acoustics/distance-doubling-decibel-drop/index.js"),
   "aquaculture/specific-growth-rate": () => import("../../aquaculture/specific-growth-rate/index.js"),
   "aquaculture/tan-production": () => import("../../aquaculture/tan-production/index.js"),
@@ -19,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/web3-crypto-forecast-spectrum-utopian-critical-lookup": () => import("../../futurology/web3-crypto-forecast-spectrum-utopian-critical-lookup/index.js"),
   "game-theory/pure-nash-equilibria": () => import("../../game-theory/pure-nash-equilibria/index.js"),
   "geometry/circle-sector-area": () => import("../../geometry/circle-sector-area/index.js"),
+  "kinesiology/shoe-heel-drop": () => import("../../kinesiology/shoe-heel-drop/index.js"),
   "laser/laser-nd-yag-four-level-rate-equation-threshold-inversion-computation": () => import("../../laser/laser-nd-yag-four-level-rate-equation-threshold-inversion-computation/index.js"),
   "logistics/split-sleeper-restart-effect-lookup": () => import("../../logistics/split-sleeper-restart-effect-lookup/index.js"),
   "number/reverse-in-base": () => import("../../number/reverse-in-base/index.js"),
@@ -27,4 +29,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/mosfet-drain-induced-barrier-lowering": () => import("../../semiconductor/mosfet-drain-induced-barrier-lowering/index.js"),
   "semiconductor/punch-through-current": () => import("../../semiconductor/punch-through-current/index.js"),
   "semiconductor/solar-cell-fill-factor": () => import("../../semiconductor/solar-cell-fill-factor/index.js"),
+  "theatre/running-sheet-coverage": () => import("../../theatre/running-sheet-coverage/index.js"),
 };

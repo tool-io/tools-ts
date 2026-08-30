@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/amplitude-modulation-depth": () => import("../../acoustics/amplitude-modulation-depth/index.js"),
+  "acoustics/wenz-curve-reference": () => import("../../acoustics/wenz-curve-reference/index.js"),
   "actuarial/deferred-term-epv": () => import("../../actuarial/deferred-term-epv/index.js"),
   "archival-studies/reference-trend-percent-calculator": () => import("../../archival-studies/reference-trend-percent-calculator/index.js"),
   "aviation/speed-of-sound": () => import("../../aviation/speed-of-sound/index.js"),
@@ -25,9 +27,11 @@ export const toolModuleLoaders: Readonly<
   "film/reel-length-2000ft": () => import("../../film/reel-length-2000ft/index.js"),
   "futurology/six-pillars-futures-thinking-methods-map": () => import("../../futurology/six-pillars-futures-thinking-methods-map/index.js"),
   "geology/seismic-resolution-horizontal-fresnel-zone": () => import("../../geology/seismic-resolution-horizontal-fresnel-zone/index.js"),
+  "laser/oct-axial-resolution": () => import("../../laser/oct-axial-resolution/index.js"),
   "logistics/days-of-supply-turnover": () => import("../../logistics/days-of-supply-turnover/index.js"),
   "mycology/phialide-collarette-detector": () => import("../../mycology/phialide-collarette-detector/index.js"),
   "random/balinese-character": () => import("../../random/balinese-character/index.js"),
   "random/recycling-symbol": () => import("../../random/recycling-symbol/index.js"),
   "semiconductor/heterojunction-2deg-density": () => import("../../semiconductor/heterojunction-2deg-density/index.js"),
+  "taxation/duty-day-income-allocation": () => import("../../taxation/duty-day-income-allocation/index.js"),
 };

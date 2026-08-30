@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/iic-floor-assembly-lookup": () => import("../../acoustics/iic-floor-assembly-lookup/index.js"),
   "archival-studies/bagit-required-tag-checker": () => import("../../archival-studies/bagit-required-tag-checker/index.js"),
   "biology/pedigree-inbreeding-coefficient": () => import("../../biology/pedigree-inbreeding-coefficient/index.js"),
   "carpentry/parkett-dehnungsfuge-10-15mm": () => import("../../carpentry/parkett-dehnungsfuge-10-15mm/index.js"),
@@ -15,12 +16,17 @@ export const toolModuleLoaders: Readonly<
   "electronics/fiber-attenuation": () => import("../../electronics/fiber-attenuation/index.js"),
   "geology/ree-normalization": () => import("../../geology/ree-normalization/index.js"),
   "graph/density": () => import("../../graph/density/index.js"),
+  "journalism/ugc-permission-coverage": () => import("../../journalism/ugc-permission-coverage/index.js"),
+  "laser/third-harmonic-output": () => import("../../laser/third-harmonic-output/index.js"),
   "logistics/desiccant-units-per-container-lookup": () => import("../../logistics/desiccant-units-per-container-lookup/index.js"),
   "logistics/detention-detach-hours-trigger-checker": () => import("../../logistics/detention-detach-hours-trigger-checker/index.js"),
+  "metabolomics/esi-additive-screen": () => import("../../metabolomics/esi-additive-screen/index.js"),
+  "metabolomics/ketone-redox-ratio": () => import("../../metabolomics/ketone-redox-ratio/index.js"),
   "number/greatest-common-factor": () => import("../../number/greatest-common-factor/index.js"),
   "oenology/khco3-dose": () => import("../../oenology/khco3-dose/index.js"),
   "oenology/kmbs-grams-ppm": () => import("../../oenology/kmbs-grams-ppm/index.js"),
   "probability/uniform-discrete-sampler": () => import("../../probability/uniform-discrete-sampler/index.js"),
+  "proteomics/peptide-hydrophobicity": () => import("../../proteomics/peptide-hydrophobicity/index.js"),
   "random/kharoshthi-character": () => import("../../random/kharoshthi-character/index.js"),
   "random/manichaean-character": () => import("../../random/manichaean-character/index.js"),
   "real-estate/debt-yield": () => import("../../real-estate/debt-yield/index.js"),
@@ -31,5 +37,6 @@ export const toolModuleLoaders: Readonly<
   "size/hoop-skirt-reconstruction": () => import("../../size/hoop-skirt-reconstruction/index.js"),
   "statistics/mode": () => import("../../statistics/mode/index.js"),
   "statistics/quartile-deviation": () => import("../../statistics/quartile-deviation/index.js"),
+  "taxation/education-assistance-exclusion": () => import("../../taxation/education-assistance-exclusion/index.js"),
   "text/readability-score": () => import("../../text/readability-score/index.js"),
 };

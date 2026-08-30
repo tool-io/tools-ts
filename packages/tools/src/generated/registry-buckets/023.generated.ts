@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/layered-gypsum-wall-stc-lookup": () => import("../../acoustics/layered-gypsum-wall-stc-lookup/index.js"),
   "carpentry/topfband-155-grad-weitwinkel": () => import("../../carpentry/topfband-155-grad-weitwinkel/index.js"),
   "chemistry/industrial-contact-process-conversion": () => import("../../chemistry/industrial-contact-process-conversion/index.js"),
   "construction/lumber-expansion-gap-wood": () => import("../../construction/lumber-expansion-gap-wood/index.js"),
@@ -13,14 +14,20 @@ export const toolModuleLoaders: Readonly<
   "electronics/snr-db": () => import("../../electronics/snr-db/index.js"),
   "electronics/volts-to-dbu": () => import("../../electronics/volts-to-dbu/index.js"),
   "futurology/extrapolation-horizon-limit-warning-checker": () => import("../../futurology/extrapolation-horizon-limit-warning-checker/index.js"),
+  "futurology/tabletop-exercise-coverage": () => import("../../futurology/tabletop-exercise-coverage/index.js"),
   "geology/epicentral-distance": () => import("../../geology/epicentral-distance/index.js"),
   "geometry/rectangle-area": () => import("../../geometry/rectangle-area/index.js"),
+  "horology/iana-zone-offset-at-instant": () => import("../../horology/iana-zone-offset-at-instant/index.js"),
+  "horology/tag-heuer-racing-chronograph-lineage-lookup": () => import("../../horology/tag-heuer-racing-chronograph-lineage-lookup/index.js"),
   "laser/laser-vcsel-versus-edge-emitter-divergence-comparison-table-lookup": () => import("../../laser/laser-vcsel-versus-edge-emitter-divergence-comparison-table-lookup/index.js"),
   "mycology/ethanol-yield-theoretical-fraction-calculator": () => import("../../mycology/ethanol-yield-theoretical-fraction-calculator/index.js"),
   "oenology/metatartaric-dose": () => import("../../oenology/metatartaric-dose/index.js"),
   "optimization/interior-point-step": () => import("../../optimization/interior-point-step/index.js"),
+  "pedagogy/behavior-praise-ratio": () => import("../../pedagogy/behavior-praise-ratio/index.js"),
+  "proteomics/protein-aromaticity": () => import("../../proteomics/protein-aromaticity/index.js"),
   "random/khojki-character": () => import("../../random/khojki-character/index.js"),
   "random/ogham-character": () => import("../../random/ogham-character/index.js"),
   "seismology/nehrp-fundamental-period-site-lookup": () => import("../../seismology/nehrp-fundamental-period-site-lookup/index.js"),
   "size/overalls": () => import("../../size/overalls/index.js"),
+  "theatre/click-track-drift": () => import("../../theatre/click-track-drift/index.js"),
 };

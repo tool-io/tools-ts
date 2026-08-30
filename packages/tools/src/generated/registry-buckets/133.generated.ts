@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/bass-ratio": () => import("../../acoustics/bass-ratio/index.js"),
   "aviation/true-airspeed": () => import("../../aviation/true-airspeed/index.js"),
   "biology/selection-coefficient": () => import("../../biology/selection-coefficient/index.js"),
   "biology/species-richness": () => import("../../biology/species-richness/index.js"),
@@ -23,10 +24,14 @@ export const toolModuleLoaders: Readonly<
   "film/shutter-angle-to-shutter-speed": () => import("../../film/shutter-angle-to-shutter-speed/index.js"),
   "geology/k-ar-age": () => import("../../geology/k-ar-age/index.js"),
   "laser/laser-thulium-holmium-two-micron-water-absorption-cutting-depth-table": () => import("../../laser/laser-thulium-holmium-two-micron-water-absorption-cutting-depth-table/index.js"),
+  "laser/mamyshev-filter-separation": () => import("../../laser/mamyshev-filter-separation/index.js"),
   "logistics/ti-hi-pattern-stability-checker": () => import("../../logistics/ti-hi-pattern-stability-checker/index.js"),
+  "metabolomics/pathway-overrepresentation": () => import("../../metabolomics/pathway-overrepresentation/index.js"),
   "number/digit-frequency": () => import("../../number/digit-frequency/index.js"),
   "ponderal-index": () => import("../../ponderal-index/index.js"),
+  "proteomics/protein-aliphatic-index": () => import("../../proteomics/protein-aliphatic-index/index.js"),
   "real-estate/usable-area": () => import("../../real-estate/usable-area/index.js"),
+  "transcriptomics/loess-intensity-normalization": () => import("../../transcriptomics/loess-intensity-normalization/index.js"),
   "validate/jan": () => import("../../validate/jan/index.js"),
   "vector/hadamard-product": () => import("../../vector/hadamard-product/index.js"),
 };

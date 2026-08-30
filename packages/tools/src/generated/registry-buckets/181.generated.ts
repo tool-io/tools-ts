@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "accounting/units-of-production-depreciation-rate": () => import("../../accounting/units-of-production-depreciation-rate/index.js"),
   "aquaculture/salinity-adjustment": () => import("../../aquaculture/salinity-adjustment/index.js"),
+  "auditing/restatement-frequency-screen": () => import("../../auditing/restatement-frequency-screen/index.js"),
   "biology/absolute-reticulocyte-count": () => import("../../biology/absolute-reticulocyte-count/index.js"),
   "biology/corrected-phenyl-to-tyrosine": () => import("../../biology/corrected-phenyl-to-tyrosine/index.js"),
   "carpentry/treppen-schrittmassregel": () => import("../../carpentry/treppen-schrittmassregel/index.js"),
@@ -21,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/supercapacitor-self-discharge-rate": () => import("../../electronics/supercapacitor-self-discharge-rate/index.js"),
   "engineering/factor-of-safety": () => import("../../engineering/factor-of-safety/index.js"),
   "engineering/fin-efficiency-rectangular": () => import("../../engineering/fin-efficiency-rectangular/index.js"),
+  "epigenetics/compartment-sign-switch": () => import("../../epigenetics/compartment-sign-switch/index.js"),
   "futurology/causal-loop-diagram-reinforcing-balancing-mapper": () => import("../../futurology/causal-loop-diagram-reinforcing-balancing-mapper/index.js"),
   "horology/quartz-battery-life": () => import("../../horology/quartz-battery-life/index.js"),
   "list/unique": () => import("../../list/unique/index.js"),
@@ -32,5 +34,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/wafer-cost-per-die": () => import("../../semiconductor/wafer-cost-per-die/index.js"),
   "statistics/sample-covariance": () => import("../../statistics/sample-covariance/index.js"),
   "take-home-pay-calculator/us": () => import("../../take-home-pay-calculator/us/index.js"),
+  "transcriptomics/correlation-distance-matrix": () => import("../../transcriptomics/correlation-distance-matrix/index.js"),
   "typography/minor-third-scale-generator": () => import("../../typography/minor-third-scale-generator/index.js"),
 };

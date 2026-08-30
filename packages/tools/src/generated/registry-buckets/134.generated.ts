@@ -32,4 +32,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/lithography-line-edge-roughness": () => import("../../semiconductor/lithography-line-edge-roughness/index.js"),
   "semiconductor/stress-migration-drift": () => import("../../semiconductor/stress-migration-drift/index.js"),
   "size/shoe": () => import("../../size/shoe/index.js"),
+  "taxation/efile-rejection-triage": () => import("../../taxation/efile-rejection-triage/index.js"),
+  "transcriptomics/reads-per-kilobase-million": () => import("../../transcriptomics/reads-per-kilobase-million/index.js"),
+  "transcriptomics/rna-velocity-ratio": () => import("../../transcriptomics/rna-velocity-ratio/index.js"),
 };

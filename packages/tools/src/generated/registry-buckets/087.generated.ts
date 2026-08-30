@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/gas-sound-speed-gamma-ratio": () => import("../../acoustics/gas-sound-speed-gamma-ratio/index.js"),
+  "acoustics/microphone-incidence-reference": () => import("../../acoustics/microphone-incidence-reference/index.js"),
   "auditing/management-override-journal-entry-testing-focus-lookup": () => import("../../auditing/management-override-journal-entry-testing-focus-lookup/index.js"),
   "biology/half-life-biology": () => import("../../biology/half-life-biology/index.js"),
   "biology/mic-mbc-ratio": () => import("../../biology/mic-mbc-ratio/index.js"),
@@ -19,7 +20,10 @@ export const toolModuleLoaders: Readonly<
   "futurology/participatory-foresight-citizen-panel-design-checklist": () => import("../../futurology/participatory-foresight-citizen-panel-design-checklist/index.js"),
   "geology/geological-strength-index-gsi": () => import("../../geology/geological-strength-index-gsi/index.js"),
   "hash/blake-384": () => import("../../hash/blake-384/index.js"),
+  "kinesiology/one-rep-max-training-loads": () => import("../../kinesiology/one-rep-max-training-loads/index.js"),
+  "laser/fluorescence-upconversion": () => import("../../laser/fluorescence-upconversion/index.js"),
   "laser/laser-nd-yvo4-vs-nd-yag-absorption-cross-section-compare-lookup": () => import("../../laser/laser-nd-yvo4-vs-nd-yag-absorption-cross-section-compare-lookup/index.js"),
+  "laser/octa-avascular-area": () => import("../../laser/octa-avascular-area/index.js"),
   "mycology/annulus-persistence-classifier": () => import("../../mycology/annulus-persistence-classifier/index.js"),
   "network/ipv6-subnet": () => import("../../network/ipv6-subnet/index.js"),
   "seismology/response-spectrum-corner-period-band-lookup": () => import("../../seismology/response-spectrum-corner-period-band-lookup/index.js"),

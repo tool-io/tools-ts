@@ -24,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "geology/overconsolidation-ratio": () => import("../../geology/overconsolidation-ratio/index.js"),
   "geology/seismic-two-way-time": () => import("../../geology/seismic-two-way-time/index.js"),
   "geology/uniformity-coefficient": () => import("../../geology/uniformity-coefficient/index.js"),
+  "journalism/live-shot-checklist": () => import("../../journalism/live-shot-checklist/index.js"),
   "mycology/durham-tube-gas-detector": () => import("../../mycology/durham-tube-gas-detector/index.js"),
   "random/accessibility-symbol": () => import("../../random/accessibility-symbol/index.js"),
   "random/newa-character": () => import("../../random/newa-character/index.js"),

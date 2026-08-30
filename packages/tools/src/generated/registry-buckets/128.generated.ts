@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/scale-model-one-to-ten-times-ten-frequency-rule": () => import("../../acoustics/scale-model-one-to-ten-times-ten-frequency-rule/index.js"),
+  "acoustics/who-night-noise-reference": () => import("../../acoustics/who-night-noise-reference/index.js"),
   "actuarial/udd-fractional-survival": () => import("../../actuarial/udd-fractional-survival/index.js"),
   "aviation/calibrated-airspeed": () => import("../../aviation/calibrated-airspeed/index.js"),
   "aviation/holding-time": () => import("../../aviation/holding-time/index.js"),
@@ -18,15 +19,20 @@ export const toolModuleLoaders: Readonly<
   "engineering/weir-flow-rectangular": () => import("../../engineering/weir-flow-rectangular/index.js"),
   "epigraphy/pediment-angle-geometry-checker": () => import("../../epigraphy/pediment-angle-geometry-checker/index.js"),
   "forestry/taper-function-simple": () => import("../../forestry/taper-function-simple/index.js"),
+  "futurology/agent-workflow-autonomy": () => import("../../futurology/agent-workflow-autonomy/index.js"),
   "geology/effective-stress": () => import("../../geology/effective-stress/index.js"),
   "geology/qapf-plot": () => import("../../geology/qapf-plot/index.js"),
   "geometry/octahedron-volume": () => import("../../geometry/octahedron-volume/index.js"),
   "graph/minimum-spanning-tree": () => import("../../graph/minimum-spanning-tree/index.js"),
+  "horology/beat-error-orientation-difference-screen": () => import("../../horology/beat-error-orientation-difference-screen/index.js"),
   "horology/train-wheel-teeth-sum": () => import("../../horology/train-wheel-teeth-sum/index.js"),
+  "insurance/wedding-loss": () => import("../../insurance/wedding-loss/index.js"),
+  "laser/nonlinear-length": () => import("../../laser/nonlinear-length/index.js"),
   "matrix/as-plain-text": () => import("../../matrix/as-plain-text/index.js"),
   "number/herons-method": () => import("../../number/herons-method/index.js"),
   "numismatics/average-cost-basis-calculator": () => import("../../numismatics/average-cost-basis-calculator/index.js"),
   "random/greek-letter": () => import("../../random/greek-letter/index.js"),
   "sailing/acceleration-after-tack": () => import("../../sailing/acceleration-after-tack/index.js"),
+  "taxation/partnership-allocation-check": () => import("../../taxation/partnership-allocation-check/index.js"),
   "vr/render-scale-percentage": () => import("../../vr/render-scale-percentage/index.js"),
 };

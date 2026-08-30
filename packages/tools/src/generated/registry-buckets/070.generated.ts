@@ -4,7 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/floor-footfall-frequency-screen": () => import("../../acoustics/floor-footfall-frequency-screen/index.js"),
   "acoustics/mach-angle-shock-wave": () => import("../../acoustics/mach-angle-shock-wave/index.js"),
+  "auditing/cuec-coverage": () => import("../../auditing/cuec-coverage/index.js"),
   "aviation/cabin-altitude-threshold-check": () => import("../../aviation/cabin-altitude-threshold-check/index.js"),
   "aviation/groundspeed-wind-corrected": () => import("../../aviation/groundspeed-wind-corrected/index.js"),
   "aviation/gust-penetration-speed": () => import("../../aviation/gust-penetration-speed/index.js"),
@@ -25,9 +27,11 @@ export const toolModuleLoaders: Readonly<
   "film/aspect-ratio-from-resolution": () => import("../../film/aspect-ratio-from-resolution/index.js"),
   "health/bmr-harris-benedict": () => import("../../health/bmr-harris-benedict/index.js"),
   "horology/amplitude-decline-power-reserve": () => import("../../horology/amplitude-decline-power-reserve/index.js"),
+  "horology/gregorian-leap-year-cycle-calculator": () => import("../../horology/gregorian-leap-year-cycle-calculator/index.js"),
   "numismatics/premium-over-spot-percent": () => import("../../numismatics/premium-over-spot-percent/index.js"),
   "probability/chi-square-sampler": () => import("../../probability/chi-square-sampler/index.js"),
   "sailing/wind-chill-apparent": () => import("../../sailing/wind-chill-apparent/index.js"),
   "seismology/seismic-moment-to-slip-displacement-back-calc": () => import("../../seismology/seismic-moment-to-slip-displacement-back-calc/index.js"),
   "vr/timewarp-correction-angle": () => import("../../vr/timewarp-correction-angle/index.js"),
+  "web/twitter-card-parser": () => import("../../web/twitter-card-parser/index.js"),
 };

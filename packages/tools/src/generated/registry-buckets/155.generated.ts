@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/double-slope-decay-screen": () => import("../../acoustics/double-slope-decay-screen/index.js"),
   "archival-studies/timestamp-to-seconds-converter": () => import("../../archival-studies/timestamp-to-seconds-converter/index.js"),
   "aviation/crosswind-takeoff-check": () => import("../../aviation/crosswind-takeoff-check/index.js"),
   "biology/drought-tolerance-index": () => import("../../biology/drought-tolerance-index/index.js"),
@@ -18,8 +19,14 @@ export const toolModuleLoaders: Readonly<
   "engineering/motor-slip": () => import("../../engineering/motor-slip/index.js"),
   "epigraphy/apex-accent-counter": () => import("../../epigraphy/apex-accent-counter/index.js"),
   "geology/void-ratio-from-porosity": () => import("../../geology/void-ratio-from-porosity/index.js"),
+  "horology/watch-appraisal-age-threshold-screen": () => import("../../horology/watch-appraisal-age-threshold-screen/index.js"),
+  "journalism/onboarding-access-checklist": () => import("../../journalism/onboarding-access-checklist/index.js"),
+  "kinesiology/vertical-loading-rate": () => import("../../kinesiology/vertical-loading-rate/index.js"),
+  "laser/he-cd-line-selector": () => import("../../laser/he-cd-line-selector/index.js"),
+  "laser/laser-safety-audit": () => import("../../laser/laser-safety-audit/index.js"),
   "logistics/otif-on-time-in-full-percent": () => import("../../logistics/otif-on-time-in-full-percent/index.js"),
   "music/just-intonation-ratio-to-cents": () => import("../../music/just-intonation-ratio-to-cents/index.js"),
   "real-estate/days-on-market": () => import("../../real-estate/days-on-market/index.js"),
   "size/yukata-reconstruction": () => import("../../size/yukata-reconstruction/index.js"),
+  "taxation/totalization-contribution-comparison": () => import("../../taxation/totalization-contribution-comparison/index.js"),
 };

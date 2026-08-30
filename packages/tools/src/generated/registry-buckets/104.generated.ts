@@ -4,8 +4,10 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/fem-bem-domain-reference": () => import("../../acoustics/fem-bem-domain-reference/index.js"),
   "acoustics/tangential-mode-frequency": () => import("../../acoustics/tangential-mode-frequency/index.js"),
   "aquaculture/hardness-adjustment": () => import("../../aquaculture/hardness-adjustment/index.js"),
+  "banking/deposit-account-comparison": () => import("../../banking/deposit-account-comparison/index.js"),
   "chemistry/osmotic-pressure": () => import("../../chemistry/osmotic-pressure/index.js"),
   "construction/beam-deflection-uniform-simple": () => import("../../construction/beam-deflection-uniform-simple/index.js"),
   "convert/hex-to-hsv": () => import("../../convert/hex-to-hsv/index.js"),
@@ -18,11 +20,16 @@ export const toolModuleLoaders: Readonly<
   "finance/compound-annual-growth-rate": () => import("../../finance/compound-annual-growth-rate/index.js"),
   "futurology/digital-legacy-posthumous-data-sovereignty-checklist": () => import("../../futurology/digital-legacy-posthumous-data-sovereignty-checklist/index.js"),
   "geology/void-ratio": () => import("../../geology/void-ratio/index.js"),
+  "insurance/leak-device-discount": () => import("../../insurance/leak-device-discount/index.js"),
+  "insurance/title-policy-scope-comparison": () => import("../../insurance/title-policy-scope-comparison/index.js"),
   "logic/sat-to-cnf": () => import("../../logic/sat-to-cnf/index.js"),
+  "metabolomics/eicosanoid-branch": () => import("../../metabolomics/eicosanoid-branch/index.js"),
+  "microcontroller/intel-hex-generate": () => import("../../microcontroller/intel-hex-generate/index.js"),
   "number/prime-factorization": () => import("../../number/prime-factorization/index.js"),
   "numismatics/alloy-percentage-mass-share": () => import("../../numismatics/alloy-percentage-mass-share/index.js"),
   "numismatics/gold-fineness-weight-content": () => import("../../numismatics/gold-fineness-weight-content/index.js"),
   "paleography/abbrev-density-per-hundred-words": () => import("../../paleography/abbrev-density-per-hundred-words/index.js"),
+  "proteomics/methionine-oxidation-screen": () => import("../../proteomics/methionine-oxidation-screen/index.js"),
   "sailing/reefing-wind-speed": () => import("../../sailing/reefing-wind-speed/index.js"),
   "seismology/housner-spectral-intensity": () => import("../../seismology/housner-spectral-intensity/index.js"),
   "seismology/p-wave-azimuthal-residual-vector-sum-split": () => import("../../seismology/p-wave-azimuthal-residual-vector-sum-split/index.js"),

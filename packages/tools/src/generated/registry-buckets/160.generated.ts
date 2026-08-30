@@ -17,6 +17,9 @@ export const toolModuleLoaders: Readonly<
   "electronics/thevenin-resistance": () => import("../../electronics/thevenin-resistance/index.js"),
   "engineering/weld-throat-area": () => import("../../engineering/weld-throat-area/index.js"),
   "forestry/loreys-mean-height": () => import("../../forestry/loreys-mean-height/index.js"),
+  "journalism/video-provenance-check": () => import("../../journalism/video-provenance-check/index.js"),
+  "laser/ao-fitting-strehl": () => import("../../laser/ao-fitting-strehl/index.js"),
+  "laser/cantilever-photoacoustic-gain": () => import("../../laser/cantilever-photoacoustic-gain/index.js"),
   "logistics/liftgate-fee-applicability-checker": () => import("../../logistics/liftgate-fee-applicability-checker/index.js"),
   "numismatics/water-displacement-volume-test": () => import("../../numismatics/water-displacement-volume-test/index.js"),
   "random/coptic-letter": () => import("../../random/coptic-letter/index.js"),
@@ -24,4 +27,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/swarm-vs-mainshock-aftershock-sequence-classifier": () => import("../../seismology/swarm-vs-mainshock-aftershock-sequence-classifier/index.js"),
   "semiconductor/antiphase-boundary-energy": () => import("../../semiconductor/antiphase-boundary-energy/index.js"),
   "size/child-car-seat": () => import("../../size/child-car-seat/index.js"),
+  "web/csp-parser": () => import("../../web/csp-parser/index.js"),
 };

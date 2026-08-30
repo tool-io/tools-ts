@@ -4,6 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/flanking-junction-record-lookup": () => import("../../acoustics/flanking-junction-record-lookup/index.js"),
+  "acoustics/orchestra-reflector-reference": () => import("../../acoustics/orchestra-reflector-reference/index.js"),
+  "acoustics/vc-vibration-curve-reference": () => import("../../acoustics/vc-vibration-curve-reference/index.js"),
   "actuarial/semiannual-premium-conversion": () => import("../../actuarial/semiannual-premium-conversion/index.js"),
   "auditing/client-acceptance-continuance-risk-screening-checklist": () => import("../../auditing/client-acceptance-continuance-risk-screening-checklist/index.js"),
   "aviation/minimum-fuel-required": () => import("../../aviation/minimum-fuel-required/index.js"),
@@ -17,7 +20,13 @@ export const toolModuleLoaders: Readonly<
   "convert/magnetic-field": () => import("../../convert/magnetic-field/index.js"),
   "convert/text-to-mathematical-sans-serif-bold-italic": () => import("../../convert/text-to-mathematical-sans-serif-bold-italic/index.js"),
   "electronics/battery-capacity-at-temperature": () => import("../../electronics/battery-capacity-at-temperature/index.js"),
+  "epigenetics/tad-boundary-distance": () => import("../../epigenetics/tad-boundary-distance/index.js"),
+  "horology/cosc-mechanical-test-program-lookup": () => import("../../horology/cosc-mechanical-test-program-lookup/index.js"),
+  "http/content-type-parser": () => import("../../http/content-type-parser/index.js"),
+  "laser/f-theta-field-error": () => import("../../laser/f-theta-field-error/index.js"),
+  "laser/isoplanatic-field-margin": () => import("../../laser/isoplanatic-field-margin/index.js"),
   "music/frequency-from-midi": () => import("../../music/frequency-from-midi/index.js"),
+  "numismatics/electrolysis-risk-screen": () => import("../../numismatics/electrolysis-risk-screen/index.js"),
   "sailing/chain-catenary-sag": () => import("../../sailing/chain-catenary-sag/index.js"),
   "statistics/sample-size-proportion": () => import("../../statistics/sample-size-proportion/index.js"),
 };

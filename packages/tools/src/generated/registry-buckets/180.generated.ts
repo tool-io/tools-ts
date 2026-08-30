@@ -4,7 +4,10 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/absorption-standard-cross-reference": () => import("../../acoustics/absorption-standard-cross-reference/index.js"),
+  "auditing/lease-liability-recompute": () => import("../../auditing/lease-liability-recompute/index.js"),
   "auditing/rollover-forward-workpaper-prior-year-balance-procedure": () => import("../../auditing/rollover-forward-workpaper-prior-year-balance-procedure/index.js"),
+  "auditing/type-two-gap-coverage": () => import("../../auditing/type-two-gap-coverage/index.js"),
   "biology/proliferation-index-ki67": () => import("../../biology/proliferation-index-ki67/index.js"),
   "carpentry/schrank-tuer-spaltmass-3mm": () => import("../../carpentry/schrank-tuer-spaltmass-3mm/index.js"),
   "chemistry/bond-length-from-order": () => import("../../chemistry/bond-length-from-order/index.js"),
@@ -20,6 +23,10 @@ export const toolModuleLoaders: Readonly<
   "electronics/transistor-collector-resistor": () => import("../../electronics/transistor-collector-resistor/index.js"),
   "engineering/reactor-conversion": () => import("../../engineering/reactor-conversion/index.js"),
   "geology/rock-porosity-calculator": () => import("../../geology/rock-porosity-calculator/index.js"),
+  "http/cookie-parser": () => import("../../http/cookie-parser/index.js"),
+  "http/link-header-parser": () => import("../../http/link-header-parser/index.js"),
+  "metabolomics/carryover-residual": () => import("../../metabolomics/carryover-residual/index.js"),
+  "metabolomics/probabilistic-quotient": () => import("../../metabolomics/probabilistic-quotient/index.js"),
   "paleography/miniature-gold-frame-detector": () => import("../../paleography/miniature-gold-frame-detector/index.js"),
   "paleography/spanish-era-year-converter": () => import("../../paleography/spanish-era-year-converter/index.js"),
   "sailing/gybe-distance": () => import("../../sailing/gybe-distance/index.js"),

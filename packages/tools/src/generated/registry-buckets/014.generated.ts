@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/half-wave-resonator-length": () => import("../../acoustics/half-wave-resonator-length/index.js"),
+  "acoustics/resilient-channel-stc-comparison": () => import("../../acoustics/resilient-channel-stc-comparison/index.js"),
   "aquaculture/fulton-condition-factor": () => import("../../aquaculture/fulton-condition-factor/index.js"),
   "construction/concrete-admixture-dose": () => import("../../construction/concrete-admixture-dose/index.js"),
   "construction/flooring-transition-strip": () => import("../../construction/flooring-transition-strip/index.js"),
@@ -16,11 +17,17 @@ export const toolModuleLoaders: Readonly<
   "electronics/opamp-noninverting-gain": () => import("../../electronics/opamp-noninverting-gain/index.js"),
   "electronics/supercapacitor-balancing-resistor": () => import("../../electronics/supercapacitor-balancing-resistor/index.js"),
   "engineering/charpy-impact-energy": () => import("../../engineering/charpy-impact-energy/index.js"),
+  "epigenetics/ice-convergence-round": () => import("../../epigenetics/ice-convergence-round/index.js"),
   "geometry/polygon-area": () => import("../../geometry/polygon-area/index.js"),
   "graph/breadth-first-traversal": () => import("../../graph/breadth-first-traversal/index.js"),
   "hash/blake-224": () => import("../../hash/blake-224/index.js"),
+  "metabolomics/ecar-glycolysis-screen": () => import("../../metabolomics/ecar-glycolysis-screen/index.js"),
+  "metabolomics/monoisotopic-formula-mass": () => import("../../metabolomics/monoisotopic-formula-mass/index.js"),
   "number/digital-root": () => import("../../number/digital-root/index.js"),
   "nutrition/macronutrient-split": () => import("../../nutrition/macronutrient-split/index.js"),
+  "proteomics/pdz-terminal-motif": () => import("../../proteomics/pdz-terminal-motif/index.js"),
+  "proteomics/silac-heavy-light-ratio": () => import("../../proteomics/silac-heavy-light-ratio/index.js"),
   "random/thaana-character": () => import("../../random/thaana-character/index.js"),
   "semiconductor/silicided-source-drain-resistance": () => import("../../semiconductor/silicided-source-drain-resistance/index.js"),
+  "web/url-is-blob": () => import("../../web/url-is-blob/index.js"),
 };

@@ -14,6 +14,11 @@ export const toolModuleLoaders: Readonly<
   "electricity/voltage": () => import("../../electricity/voltage/index.js"),
   "electronics/eye-height-estimate": () => import("../../electronics/eye-height-estimate/index.js"),
   "electronics/flyback-duty-cycle": () => import("../../electronics/flyback-duty-cycle/index.js"),
+  "epigenetics/hp1-enrichment": () => import("../../epigenetics/hp1-enrichment/index.js"),
+  "horology/lever-escapement-pallet-face-roles-lookup": () => import("../../horology/lever-escapement-pallet-face-roles-lookup/index.js"),
+  "journalism/csv-text-cleaner": () => import("../../journalism/csv-text-cleaner/index.js"),
+  "laser/comb-traceability-uncertainty": () => import("../../laser/comb-traceability-uncertainty/index.js"),
+  "laser/pcsel-aperture-intensity": () => import("../../laser/pcsel-aperture-intensity/index.js"),
   "logistics/accessorial-fees-total-itemizer": () => import("../../logistics/accessorial-fees-total-itemizer/index.js"),
   "oenology/shelf-life-do-threshold": () => import("../../oenology/shelf-life-do-threshold/index.js"),
   "oenology/yeast-inoculation-rate": () => import("../../oenology/yeast-inoculation-rate/index.js"),
@@ -21,4 +26,5 @@ export const toolModuleLoaders: Readonly<
   "random/zanabazar-square-character": () => import("../../random/zanabazar-square-character/index.js"),
   "semiconductor/spin-valve-gmr-ratio": () => import("../../semiconductor/spin-valve-gmr-ratio/index.js"),
   "text/trim": () => import("../../text/trim/index.js"),
+  "transcriptomics/bestkeeper-stability": () => import("../../transcriptomics/bestkeeper-stability/index.js"),
 };

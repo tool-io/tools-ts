@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/clarity-c80": () => import("../../acoustics/clarity-c80/index.js"),
+  "auditing/token-rotation-due": () => import("../../auditing/token-rotation-due/index.js"),
   "aviation/required-descent-gradient": () => import("../../aviation/required-descent-gradient/index.js"),
   "carpentry/bevel-angle": () => import("../../carpentry/bevel-angle/index.js"),
   "carpentry/decking-gap-spacing": () => import("../../carpentry/decking-gap-spacing/index.js"),
@@ -22,6 +24,8 @@ export const toolModuleLoaders: Readonly<
   "futurology/slaughter-waves-of-futures-studies-evolution-lookup": () => import("../../futurology/slaughter-waves-of-futures-studies-evolution-lookup/index.js"),
   "geology/casing-burst-pressure": () => import("../../geology/casing-burst-pressure/index.js"),
   "hash/shake-128": () => import("../../hash/shake-128/index.js"),
+  "journalism/beat-holdings-conflict": () => import("../../journalism/beat-holdings-conflict/index.js"),
+  "metabolomics/chromatography-mode-screen": () => import("../../metabolomics/chromatography-mode-screen/index.js"),
   "mortgage/egypt-subsidized-comparison": () => import("../../mortgage/egypt-subsidized-comparison/index.js"),
   "oenology/headspace-oxygen-uptake": () => import("../../oenology/headspace-oxygen-uptake/index.js"),
   "physics/pressure": () => import("../../physics/pressure/index.js"),

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/pbc-request-status-summary": () => import("../../auditing/pbc-request-status-summary/index.js"),
   "aviation/takeoff-weight": () => import("../../aviation/takeoff-weight/index.js"),
   "aviation/true-bearing-from-magnetic": () => import("../../aviation/true-bearing-from-magnetic/index.js"),
   "biology/electrolyte-leakage": () => import("../../biology/electrolyte-leakage/index.js"),
@@ -14,8 +15,12 @@ export const toolModuleLoaders: Readonly<
   "clustering/birch-microclusters": () => import("../../clustering/birch-microclusters/index.js"),
   "construction/drywall-joint-compound-coverage": () => import("../../construction/drywall-joint-compound-coverage/index.js"),
   "engineering/plate-buckling-critical-stress": () => import("../../engineering/plate-buckling-critical-stress/index.js"),
+  "entrepreneurship/ramen-profitability-gap": () => import("../../entrepreneurship/ramen-profitability-gap/index.js"),
+  "epigenetics/super-enhancer-stitching": () => import("../../epigenetics/super-enhancer-stitching/index.js"),
   "film/rolling-shutter-skew-pixels": () => import("../../film/rolling-shutter-skew-pixels/index.js"),
+  "horology/guilloche-dial-artisan-process-lookup": () => import("../../horology/guilloche-dial-artisan-process-lookup/index.js"),
   "horology/sweep-steps-per-second": () => import("../../horology/sweep-steps-per-second/index.js"),
+  "kinesiology/crank-inseam-ratio": () => import("../../kinesiology/crank-inseam-ratio/index.js"),
   "matrix/as-table": () => import("../../matrix/as-table/index.js"),
   "number/hexagonal-checker": () => import("../../number/hexagonal-checker/index.js"),
   "numismatics/bid-ask-spread-percent": () => import("../../numismatics/bid-ask-spread-percent/index.js"),
@@ -26,4 +31,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/brune-corner-frequency-source-model": () => import("../../seismology/brune-corner-frequency-source-model/index.js"),
   "semiconductor/quantum-dot-photoluminescence-quantum-yield": () => import("../../semiconductor/quantum-dot-photoluminescence-quantum-yield/index.js"),
   "vr/distortion-correction-factor": () => import("../../vr/distortion-correction-factor/index.js"),
+  "web/url-query-count": () => import("../../web/url-query-count/index.js"),
 };

@@ -25,7 +25,9 @@ export const toolModuleLoaders: Readonly<
   "geology/rate-of-penetration": () => import("../../geology/rate-of-penetration/index.js"),
   "hydrology/river-discharge": () => import("../../hydrology/river-discharge/index.js"),
   "interpolation/inverse-linear": () => import("../../interpolation/inverse-linear/index.js"),
+  "kinesiology/double-support-gait-percent": () => import("../../kinesiology/double-support-gait-percent/index.js"),
   "mycology/ascospore-arrangement-decoder": () => import("../../mycology/ascospore-arrangement-decoder/index.js"),
+  "neuroscience/working-memory-capacity-cowan": () => import("../../neuroscience/working-memory-capacity-cowan/index.js"),
   "number/mersenne-checker": () => import("../../number/mersenne-checker/index.js"),
   "numismatics/grade-gap-price-jump-percent": () => import("../../numismatics/grade-gap-price-jump-percent/index.js"),
   "numismatics/war-nickel-silver-content-value": () => import("../../numismatics/war-nickel-silver-content-value/index.js"),
@@ -38,4 +40,6 @@ export const toolModuleLoaders: Readonly<
   "size/flat-sheet": () => import("../../size/flat-sheet/index.js"),
   "statistics/coefficient-of-determination": () => import("../../statistics/coefficient-of-determination/index.js"),
   "statistics/partial-autocorrelation": () => import("../../statistics/partial-autocorrelation/index.js"),
+  "transcriptomics/backsplice-support": () => import("../../transcriptomics/backsplice-support/index.js"),
+  "transcriptomics/cell-mito-percent-filter": () => import("../../transcriptomics/cell-mito-percent-filter/index.js"),
 };

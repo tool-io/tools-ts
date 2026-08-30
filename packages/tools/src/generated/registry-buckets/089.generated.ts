@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/calibration-level-offset": () => import("../../acoustics/calibration-level-offset/index.js"),
   "archival-studies/format-obsolescence-score-rater": () => import("../../archival-studies/format-obsolescence-score-rater/index.js"),
+  "auditing/hedge-effectiveness": () => import("../../auditing/hedge-effectiveness/index.js"),
   "auditing/ratio-projection-misstatement": () => import("../../auditing/ratio-projection-misstatement/index.js"),
   "biology/a260-a230-ratio": () => import("../../biology/a260-a230-ratio/index.js"),
   "construction/decking-waste-factor": () => import("../../construction/decking-waste-factor/index.js"),
@@ -18,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "geometry/rectangle-perimeter": () => import("../../geometry/rectangle-perimeter/index.js"),
   "hash/sha3-256": () => import("../../hash/sha3-256/index.js"),
   "http/etag-parser": () => import("../../http/etag-parser/index.js"),
+  "kinesiology/allometric-lift-strength": () => import("../../kinesiology/allometric-lift-strength/index.js"),
   "logistics/cbm-cubic-meters-from-cartons": () => import("../../logistics/cbm-cubic-meters-from-cartons/index.js"),
   "parse/percentage": () => import("../../parse/percentage/index.js"),
   "real-estate/ltv": () => import("../../real-estate/ltv/index.js"),
@@ -25,4 +27,5 @@ export const toolModuleLoaders: Readonly<
   "sailing/storm-warning-threshold": () => import("../../sailing/storm-warning-threshold/index.js"),
   "seismology/clock-drift-ppm-linear-regression": () => import("../../seismology/clock-drift-ppm-linear-regression/index.js"),
   "semiconductor/bjt-common-base-current-gain": () => import("../../semiconductor/bjt-common-base-current-gain/index.js"),
+  "transcriptomics/doublet-suspicion-score": () => import("../../transcriptomics/doublet-suspicion-score/index.js"),
 };

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/leaf-blower-tonality-reference": () => import("../../acoustics/leaf-blower-tonality-reference/index.js"),
   "acoustics/tissue-attenuation-frequency-loss": () => import("../../acoustics/tissue-attenuation-frequency-loss/index.js"),
   "auditing/variables-sampling-mean-difference-ratio-selector-lookup": () => import("../../auditing/variables-sampling-mean-difference-ratio-selector-lookup/index.js"),
   "biology/gene-length": () => import("../../biology/gene-length/index.js"),
@@ -18,13 +19,22 @@ export const toolModuleLoaders: Readonly<
   "electronics/lvds-differential-voltage": () => import("../../electronics/lvds-differential-voltage/index.js"),
   "electronics/voltage-regulator-power-dissipation": () => import("../../electronics/voltage-regulator-power-dissipation/index.js"),
   "engineering/critical-shaft-speed": () => import("../../engineering/critical-shaft-speed/index.js"),
+  "epigenetics/global-methylation-proxy": () => import("../../epigenetics/global-methylation-proxy/index.js"),
   "finance/payback-period": () => import("../../finance/payback-period/index.js"),
   "geology/moment-magnitude": () => import("../../geology/moment-magnitude/index.js"),
+  "insurance/hsa-deductible-screen": () => import("../../insurance/hsa-deductible-screen/index.js"),
+  "kinesiology/emg-median-frequency-shift": () => import("../../kinesiology/emg-median-frequency-shift/index.js"),
+  "laser/figure-eight-loop-transmission": () => import("../../laser/figure-eight-loop-transmission/index.js"),
+  "laser/fmcw-lidar-range-velocity": () => import("../../laser/fmcw-lidar-range-velocity/index.js"),
+  "laser/q-switch-diffraction-efficiency": () => import("../../laser/q-switch-diffraction-efficiency/index.js"),
   "logistics/reefer-setpoint-temp-mode-lookup": () => import("../../logistics/reefer-setpoint-temp-mode-lookup/index.js"),
   "matrix/nonnegative-matrix-factorization": () => import("../../matrix/nonnegative-matrix-factorization/index.js"),
   "mortgage/hungary-subsidized-fixed-rate": () => import("../../mortgage/hungary-subsidized-fixed-rate/index.js"),
   "probability/gamma-sampler": () => import("../../probability/gamma-sampler/index.js"),
   "seismology/okada-strike-slip-surface-displacement": () => import("../../seismology/okada-strike-slip-surface-displacement/index.js"),
   "size/frock-coat-reconstruction": () => import("../../size/frock-coat-reconstruction/index.js"),
+  "taxation/ptet-savings": () => import("../../taxation/ptet-savings/index.js"),
   "text/kebab-case": () => import("../../text/kebab-case/index.js"),
+  "transcriptomics/community-resolution-selector": () => import("../../transcriptomics/community-resolution-selector/index.js"),
+  "transcriptomics/ma-plot-coordinates": () => import("../../transcriptomics/ma-plot-coordinates/index.js"),
 };

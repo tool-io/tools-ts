@@ -4,7 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/edt-late-decay-reference": () => import("../../acoustics/edt-late-decay-reference/index.js"),
   "archival-studies/scanning-ppi-type-lookup": () => import("../../archival-studies/scanning-ppi-type-lookup/index.js"),
+  "auditing/sampling-coverage": () => import("../../auditing/sampling-coverage/index.js"),
   "aviation/runway-wind-component-specific": () => import("../../aviation/runway-wind-component-specific/index.js"),
   "biology/clotting-time": () => import("../../biology/clotting-time/index.js"),
   "carpentry/miter-angle": () => import("../../carpentry/miter-angle/index.js"),
@@ -20,10 +22,21 @@ export const toolModuleLoaders: Readonly<
   "encode/bacon-cipher": () => import("../../encode/bacon-cipher/index.js"),
   "engineering/bolt-shear-capacity": () => import("../../engineering/bolt-shear-capacity/index.js"),
   "engineering/three-phase-apparent-power": () => import("../../engineering/three-phase-apparent-power/index.js"),
+  "epigenetics/imprinting-loss": () => import("../../epigenetics/imprinting-loss/index.js"),
+  "epigenetics/peak-summit": () => import("../../epigenetics/peak-summit/index.js"),
+  "epigenetics/probe-pvalue-filter": () => import("../../epigenetics/probe-pvalue-filter/index.js"),
   "film/dynamic-range-stops": () => import("../../film/dynamic-range-stops/index.js"),
   "futurology/mind-uploading-whole-brain-emulation-feasibility-map": () => import("../../futurology/mind-uploading-whole-brain-emulation-feasibility-map/index.js"),
   "geometry/frustum-volume": () => import("../../geometry/frustum-volume/index.js"),
+  "horology/cnc-manual-lathe-watchmaking-lookup": () => import("../../horology/cnc-manual-lathe-watchmaking-lookup/index.js"),
+  "insurance/hsa-sweep": () => import("../../insurance/hsa-sweep/index.js"),
+  "journalism/crosstab-suppression": () => import("../../journalism/crosstab-suppression/index.js"),
+  "laser/eyewear-od-visibility-score": () => import("../../laser/eyewear-od-visibility-score/index.js"),
+  "laser/fabry-perot-linewidth": () => import("../../laser/fabry-perot-linewidth/index.js"),
+  "laser/plif-signal-normalization": () => import("../../laser/plif-signal-normalization/index.js"),
+  "laser/transient-absorption-lifetime-fit": () => import("../../laser/transient-absorption-lifetime-fit/index.js"),
   "matrix/flip-horizontal": () => import("../../matrix/flip-horizontal/index.js"),
+  "metabolomics/nmr-bucket-integrals": () => import("../../metabolomics/nmr-bucket-integrals/index.js"),
   "metrics/mean-squared-error": () => import("../../metrics/mean-squared-error/index.js"),
   "numismatics/planchet-thickness-average": () => import("../../numismatics/planchet-thickness-average/index.js"),
   "paleography/grain-quarter-bushel-converter": () => import("../../paleography/grain-quarter-bushel-converter/index.js"),
@@ -32,4 +45,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/sige-bandgap": () => import("../../semiconductor/sige-bandgap/index.js"),
   "semiconductor/transconductance-efficiency-gm-id": () => import("../../semiconductor/transconductance-efficiency-gm-id/index.js"),
   "text/split": () => import("../../text/split/index.js"),
+  "theatre/traverse-sightline": () => import("../../theatre/traverse-sightline/index.js"),
+  "web/manifest-icon-size-parser": () => import("../../web/manifest-icon-size-parser/index.js"),
 };

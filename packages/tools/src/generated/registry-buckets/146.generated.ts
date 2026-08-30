@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/band-loudness-aggregation": () => import("../../acoustics/band-loudness-aggregation/index.js"),
+  "acoustics/binaural-unmasking-reference": () => import("../../acoustics/binaural-unmasking-reference/index.js"),
   "auditing/group-audit-component-materiality-division-instruction-letter": () => import("../../auditing/group-audit-component-materiality-division-instruction-letter/index.js"),
   "biology/brdu-labeling-index": () => import("../../biology/brdu-labeling-index/index.js"),
   "biology/canopy-cover-percentage": () => import("../../biology/canopy-cover-percentage/index.js"),
@@ -16,8 +18,10 @@ export const toolModuleLoaders: Readonly<
   "engineering/machining-time-lathe": () => import("../../engineering/machining-time-lathe/index.js"),
   "futurology/delphi-method-round-consensus-convergence-tracker": () => import("../../futurology/delphi-method-round-consensus-convergence-tracker/index.js"),
   "graph/connected-components": () => import("../../graph/connected-components/index.js"),
+  "kinesiology/negative-split-check": () => import("../../kinesiology/negative-split-check/index.js"),
   "laser/laser-group-delay-dispersion-compensation-prism-pair-chirp-mirror-selector": () => import("../../laser/laser-group-delay-dispersion-compensation-prism-pair-chirp-mirror-selector/index.js"),
   "laser/laser-raman-fiber-stokes-shift-wavelength-cascade-series-lookup": () => import("../../laser/laser-raman-fiber-stokes-shift-wavelength-cascade-series-lookup/index.js"),
+  "laser/plasma-mirror-contrast": () => import("../../laser/plasma-mirror-contrast/index.js"),
   "music/grace-note-duration-subtraction": () => import("../../music/grace-note-duration-subtraction/index.js"),
   "numismatics/precious-metal-allocation-percent": () => import("../../numismatics/precious-metal-allocation-percent/index.js"),
   "paleography/marginalia-era-classifier": () => import("../../paleography/marginalia-era-classifier/index.js"),
@@ -30,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "size/cloak-reconstruction": () => import("../../size/cloak-reconstruction/index.js"),
   "text/longest-word": () => import("../../text/longest-word/index.js"),
   "text/word-wrap": () => import("../../text/word-wrap/index.js"),
+  "theatre/private-scene-throughput": () => import("../../theatre/private-scene-throughput/index.js"),
   "typography/baseline-offset-round-to-grid": () => import("../../typography/baseline-offset-round-to-grid/index.js"),
   "vector/normalize": () => import("../../vector/normalize/index.js"),
   "vector/scalar-multiply": () => import("../../vector/scalar-multiply/index.js"),

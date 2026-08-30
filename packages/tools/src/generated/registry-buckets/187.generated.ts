@@ -22,8 +22,10 @@ export const toolModuleLoaders: Readonly<
   "geology/storativity-confined": () => import("../../geology/storativity-confined/index.js"),
   "geometry/chord-length": () => import("../../geometry/chord-length/index.js"),
   "horology/rotor-wind-rate": () => import("../../horology/rotor-wind-rate/index.js"),
+  "laser/rytov-variance": () => import("../../laser/rytov-variance/index.js"),
   "logistics/pallets-per-container-size-lookup": () => import("../../logistics/pallets-per-container-size-lookup/index.js"),
   "math/logarithm": () => import("../../math/logarithm/index.js"),
+  "metabolomics/dia-window-planner": () => import("../../metabolomics/dia-window-planner/index.js"),
   "oenology/free-so2-target-dose": () => import("../../oenology/free-so2-target-dose/index.js"),
   "oenology/molecular-so2": () => import("../../oenology/molecular-so2/index.js"),
   "oenology/oechsle-to-brix": () => import("../../oenology/oechsle-to-brix/index.js"),
@@ -33,4 +35,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/low-k-interconnect-capacitance": () => import("../../semiconductor/low-k-interconnect-capacitance/index.js"),
   "semiconductor/surface-roughness-mobility": () => import("../../semiconductor/surface-roughness-mobility/index.js"),
   "size/hanbok-reconstruction": () => import("../../size/hanbok-reconstruction/index.js"),
+  "theatre/stage-sound-sync-delay": () => import("../../theatre/stage-sound-sync-delay/index.js"),
 };

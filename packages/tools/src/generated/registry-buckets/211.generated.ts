@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/fta-vibration-criterion-screen": () => import("../../acoustics/fta-vibration-criterion-screen/index.js"),
   "aviation/isa-pressure-at-tropopause": () => import("../../aviation/isa-pressure-at-tropopause/index.js"),
   "biology/cardiac-index": () => import("../../biology/cardiac-index/index.js"),
   "biology/seed-vigor-index": () => import("../../biology/seed-vigor-index/index.js"),
@@ -17,12 +18,18 @@ export const toolModuleLoaders: Readonly<
   "engineering/generator-emf": () => import("../../engineering/generator-emf/index.js"),
   "futurology/horizon-scanning-team-cadence-report-template": () => import("../../futurology/horizon-scanning-team-cadence-report-template/index.js"),
   "geology/nodal-analysis-outflow-performance": () => import("../../geology/nodal-analysis-outflow-performance/index.js"),
+  "horology/pocket-watch-up-down-power-indicator-lookup": () => import("../../horology/pocket-watch-up-down-power-indicator-lookup/index.js"),
+  "kinesiology/antalgic-stance-asymmetry": () => import("../../kinesiology/antalgic-stance-asymmetry/index.js"),
+  "laser/ablation-sampling-area": () => import("../../laser/ablation-sampling-area/index.js"),
   "number/least-common-multiple": () => import("../../number/least-common-multiple/index.js"),
+  "numismatics/colonial-strike-classifier": () => import("../../numismatics/colonial-strike-classifier/index.js"),
   "oenology/egg-white-fining-dose": () => import("../../oenology/egg-white-fining-dose/index.js"),
+  "proteomics/sh2-flvres-motif": () => import("../../proteomics/sh2-flvres-motif/index.js"),
   "sailing/current-correction-angle": () => import("../../sailing/current-correction-angle/index.js"),
   "sailing/sheet-load-jib": () => import("../../sailing/sheet-load-jib/index.js"),
   "seismology/tidal-harmonic-residual-rms-calculator": () => import("../../seismology/tidal-harmonic-residual-rms-calculator/index.js"),
   "semiconductor/mosfet-threshold-voltage-body-effect": () => import("../../semiconductor/mosfet-threshold-voltage-body-effect/index.js"),
   "semiconductor/quantum-cascade-laser-wavelength": () => import("../../semiconductor/quantum-cascade-laser-wavelength/index.js"),
   "semiconductor/single-event-upset-rate": () => import("../../semiconductor/single-event-upset-rate/index.js"),
+  "theatre/magic-sheet-coverage": () => import("../../theatre/magic-sheet-coverage/index.js"),
 };

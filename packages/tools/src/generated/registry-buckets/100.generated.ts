@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/proportional-retained-variance": () => import("../../actuarial/proportional-retained-variance/index.js"),
+  "auditing/subservice-method-selector": () => import("../../auditing/subservice-method-selector/index.js"),
   "biology/ec50-hill": () => import("../../biology/ec50-hill/index.js"),
   "biology/somatic-cell-count": () => import("../../biology/somatic-cell-count/index.js"),
   "cartography/dot-density-dots-per-unit": () => import("../../cartography/dot-density-dots-per-unit/index.js"),
@@ -29,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "geology/solution-gas-oil-ratio": () => import("../../geology/solution-gas-oil-ratio/index.js"),
   "geology/stratal-termination-type-lookup": () => import("../../geology/stratal-termination-type-lookup/index.js"),
   "horology/seconds-pendulum-length": () => import("../../horology/seconds-pendulum-length/index.js"),
+  "laser/bbo-entanglement-setup-check": () => import("../../laser/bbo-entanglement-setup-check/index.js"),
   "matrix/qr-decomposition": () => import("../../matrix/qr-decomposition/index.js"),
   "mycology/zonation-ring-day-counter": () => import("../../mycology/zonation-ring-day-counter/index.js"),
   "random/georgian-letter": () => import("../../random/georgian-letter/index.js"),

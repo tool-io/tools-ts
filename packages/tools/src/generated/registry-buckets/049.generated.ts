@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/parabolic-focus-screen": () => import("../../acoustics/parabolic-focus-screen/index.js"),
+  "acoustics/whale-vocalization-band-reference": () => import("../../acoustics/whale-vocalization-band-reference/index.js"),
   "biology/cfu-per-ml": () => import("../../biology/cfu-per-ml/index.js"),
   "biology/diversity-hill-n0": () => import("../../biology/diversity-hill-n0/index.js"),
   "biology/heterozygosity-expected": () => import("../../biology/heterozygosity-expected/index.js"),
@@ -25,16 +27,20 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/ics-ref-format-validator": () => import("../../epigraphy/ics-ref-format-validator/index.js"),
   "finance/discount-price": () => import("../../finance/discount-price/index.js"),
   "geometry/cuboid-volume": () => import("../../geometry/cuboid-volume/index.js"),
+  "laser/doppler-flow-perfusion-index": () => import("../../laser/doppler-flow-perfusion-index/index.js"),
   "laser/laser-nitrogen-337-superradiant-self-terminating-upper-state-life-note": () => import("../../laser/laser-nitrogen-337-superradiant-self-terminating-upper-state-life-note/index.js"),
   "music/cents-between-two-frequencies": () => import("../../music/cents-between-two-frequencies/index.js"),
   "music/detune-cents-adjust-frequency": () => import("../../music/detune-cents-adjust-frequency/index.js"),
   "numismatics/grams-to-troy-ounces-converter": () => import("../../numismatics/grams-to-troy-ounces-converter/index.js"),
   "numismatics/karat-to-fineness-coin-gold": () => import("../../numismatics/karat-to-fineness-coin-gold/index.js"),
   "oenology/va-threshold-checker": () => import("../../oenology/va-threshold-checker/index.js"),
+  "pedagogy/cold-call-equity-roster": () => import("../../pedagogy/cold-call-equity-roster/index.js"),
+  "proteomics/unique-peptide-tally": () => import("../../proteomics/unique-peptide-tally/index.js"),
   "real-estate/return-on-equity": () => import("../../real-estate/return-on-equity/index.js"),
   "seismology/liquefaction-feature-magnitude-bound-lookup": () => import("../../seismology/liquefaction-feature-magnitude-bound-lookup/index.js"),
   "seismology/nearest-neighbor-space-time-linkage-distance": () => import("../../seismology/nearest-neighbor-space-time-linkage-distance/index.js"),
   "seismology/site-kappa-zero-by-nehrp-class-lookup": () => import("../../seismology/site-kappa-zero-by-nehrp-class-lookup/index.js"),
   "text/uppercase": () => import("../../text/uppercase/index.js"),
+  "theatre/dialect-transcription-coverage": () => import("../../theatre/dialect-transcription-coverage/index.js"),
   "validate/luhn": () => import("../../validate/luhn/index.js"),
 };

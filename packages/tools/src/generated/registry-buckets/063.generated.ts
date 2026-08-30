@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/network-firm-screen": () => import("../../auditing/network-firm-screen/index.js"),
   "biology/elastance": () => import("../../biology/elastance/index.js"),
   "biology/primer-dimer-check": () => import("../../biology/primer-dimer-check/index.js"),
   "cartography/proportional-symbol-radius": () => import("../../cartography/proportional-symbol-radius/index.js"),
@@ -18,9 +19,13 @@ export const toolModuleLoaders: Readonly<
   "encode/crc32": () => import("../../encode/crc32/index.js"),
   "forestry/sawlog-volume-percentage": () => import("../../forestry/sawlog-volume-percentage/index.js"),
   "generate/gtin-14": () => import("../../generate/gtin-14/index.js"),
+  "journalism/eas-cut-in-runtime": () => import("../../journalism/eas-cut-in-runtime/index.js"),
   "matrix/inverse": () => import("../../matrix/inverse/index.js"),
+  "neuroscience/stroop-interference": () => import("../../neuroscience/stroop-interference/index.js"),
   "numismatics/half-dollars-per-ounce-silver-yield": () => import("../../numismatics/half-dollars-per-ounce-silver-yield/index.js"),
   "paleography/italic-slant-degree-rater": () => import("../../paleography/italic-slant-degree-rater/index.js"),
   "random/roman-numeral": () => import("../../random/roman-numeral/index.js"),
+  "taxation/summons-response-window": () => import("../../taxation/summons-response-window/index.js"),
   "text/pangram-checker": () => import("../../text/pangram-checker/index.js"),
+  "web/unicode-to-punycode": () => import("../../web/unicode-to-punycode/index.js"),
 };

@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/final-average-salary": () => import("../../actuarial/final-average-salary/index.js"),
+  "auditing/variance-explanation-check": () => import("../../auditing/variance-explanation-check/index.js"),
   "biology/additive-genetic-variance": () => import("../../biology/additive-genetic-variance/index.js"),
   "biology/brdu-incorporation-rate": () => import("../../biology/brdu-incorporation-rate/index.js"),
   "biology/creatinine-clearance-cockcroft-gault": () => import("../../biology/creatinine-clearance-cockcroft-gault/index.js"),
@@ -29,6 +30,8 @@ export const toolModuleLoaders: Readonly<
   "hash/sha-512-256": () => import("../../hash/sha-512-256/index.js"),
   "horology/pendulum-period": () => import("../../horology/pendulum-period/index.js"),
   "horology/regatta-countdown-steps": () => import("../../horology/regatta-countdown-steps/index.js"),
+  "journalism/dollar-figure-style": () => import("../../journalism/dollar-figure-style/index.js"),
+  "kinesiology/weekly-training-monotony": () => import("../../kinesiology/weekly-training-monotony/index.js"),
   "laser/laser-quantum-well-transition-wavelength-material-algaas-ingaas-gan-table": () => import("../../laser/laser-quantum-well-transition-wavelength-material-algaas-ingaas-gan-table/index.js"),
   "paleography/easter-table-entry-decoder": () => import("../../paleography/easter-table-entry-decoder/index.js"),
   "real-estate/rental-yield-net": () => import("../../real-estate/rental-yield-net/index.js"),
@@ -37,5 +40,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/hot-carrier-degradation-rate": () => import("../../semiconductor/hot-carrier-degradation-rate/index.js"),
   "size/curtain": () => import("../../size/curtain/index.js"),
   "size/suit-jacket": () => import("../../size/suit-jacket/index.js"),
+  "taxation/exit-tax-threshold-screen": () => import("../../taxation/exit-tax-threshold-screen/index.js"),
   "text/dot-case": () => import("../../text/dot-case/index.js"),
 };

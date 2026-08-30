@@ -4,9 +4,11 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/sti-to-cis": () => import("../../acoustics/sti-to-cis/index.js"),
   "algebra/evaluate-polynomial": () => import("../../algebra/evaluate-polynomial/index.js"),
   "archival-studies/migration-cycle-interval-lookup": () => import("../../archival-studies/migration-cycle-interval-lookup/index.js"),
   "arithmetic/negate": () => import("../../arithmetic/negate/index.js"),
+  "auditing/pentest-remediation": () => import("../../auditing/pentest-remediation/index.js"),
   "carpentry/spanplatte-rohdichte-lookup": () => import("../../carpentry/spanplatte-rohdichte-lookup/index.js"),
   "chemistry/vapor-pressure-solution": () => import("../../chemistry/vapor-pressure-solution/index.js"),
   "construction/mortar-joint-thickness-average": () => import("../../construction/mortar-joint-thickness-average/index.js"),
@@ -16,9 +18,12 @@ export const toolModuleLoaders: Readonly<
   "encode/run-length": () => import("../../encode/run-length/index.js"),
   "film/reproduction-ratio": () => import("../../film/reproduction-ratio/index.js"),
   "finance/required-contribution": () => import("../../finance/required-contribution/index.js"),
+  "laser/free-space-link-margin": () => import("../../laser/free-space-link-margin/index.js"),
   "network/mac-address-normalizer": () => import("../../network/mac-address-normalizer/index.js"),
   "optimization/stochastic-gradient-descent": () => import("../../optimization/stochastic-gradient-descent/index.js"),
   "paleography/feastday-anchor-extractor": () => import("../../paleography/feastday-anchor-extractor/index.js"),
+  "proteomics/protein-gravy": () => import("../../proteomics/protein-gravy/index.js"),
+  "proteomics/walker-a-motifs": () => import("../../proteomics/walker-a-motifs/index.js"),
   "random/cham-character": () => import("../../random/cham-character/index.js"),
   "random/cross-symbol": () => import("../../random/cross-symbol/index.js"),
   "size/helmet": () => import("../../size/helmet/index.js"),
@@ -26,4 +31,5 @@ export const toolModuleLoaders: Readonly<
   "statistics/two-sample-t-test": () => import("../../statistics/two-sample-t-test/index.js"),
   "statistics/z-confidence-interval": () => import("../../statistics/z-confidence-interval/index.js"),
   "text/character-count": () => import("../../text/character-count/index.js"),
+  "theatre/quick-change-handoff": () => import("../../theatre/quick-change-handoff/index.js"),
 };

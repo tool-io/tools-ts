@@ -4,16 +4,24 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/fraud-severity": () => import("../../auditing/fraud-severity/index.js"),
   "aviation/weight-shift-cg": () => import("../../aviation/weight-shift-cg/index.js"),
   "checksum/lrc-8": () => import("../../checksum/lrc-8/index.js"),
+  "css/box-shadow-parser": () => import("../../css/box-shadow-parser/index.js"),
   "electronics/boost-converter-duty-cycle": () => import("../../electronics/boost-converter-duty-cycle/index.js"),
   "electronics/capacitor-impedance-at-frequency": () => import("../../electronics/capacitor-impedance-at-frequency/index.js"),
   "electronics/motor-no-load-speed": () => import("../../electronics/motor-no-load-speed/index.js"),
   "engineering/manning-velocity": () => import("../../engineering/manning-velocity/index.js"),
   "futurology/longevity-economy-driver-implication-chain": () => import("../../futurology/longevity-economy-driver-implication-chain/index.js"),
+  "horology/solar-watch-dark-runtime-calculator": () => import("../../horology/solar-watch-dark-runtime-calculator/index.js"),
+  "laser/bathymetric-penetration": () => import("../../laser/bathymetric-penetration/index.js"),
+  "laser/confocal-lateral-resolution": () => import("../../laser/confocal-lateral-resolution/index.js"),
+  "laser/lma-fiber-mode-margin": () => import("../../laser/lma-fiber-mode-margin/index.js"),
+  "laser/relaxation-oscillation-frequency": () => import("../../laser/relaxation-oscillation-frequency/index.js"),
   "logistics/large-package-cubic-capacity-checker": () => import("../../logistics/large-package-cubic-capacity-checker/index.js"),
   "oenology/heat-spike-risk": () => import("../../oenology/heat-spike-risk/index.js"),
   "optimization/adam-step": () => import("../../optimization/adam-step/index.js"),
   "semiconductor/led-light-extraction-efficiency": () => import("../../semiconductor/led-light-extraction-efficiency/index.js"),
   "statistics/moving-average": () => import("../../statistics/moving-average/index.js"),
+  "taxation/deadline-business-day-shift": () => import("../../taxation/deadline-business-day-shift/index.js"),
 };

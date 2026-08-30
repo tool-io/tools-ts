@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/room-type-rt60-reference": () => import("../../acoustics/room-type-rt60-reference/index.js"),
+  "auditing/rto-rpo-tier-classifier": () => import("../../auditing/rto-rpo-tier-classifier/index.js"),
   "biology/half-life-elimination": () => import("../../biology/half-life-elimination/index.js"),
   "biology/rarefaction-curve": () => import("../../biology/rarefaction-curve/index.js"),
   "biology/red-cell-count": () => import("../../biology/red-cell-count/index.js"),
@@ -18,8 +20,11 @@ export const toolModuleLoaders: Readonly<
   "engineering/mach-number-compressible": () => import("../../engineering/mach-number-compressible/index.js"),
   "film/angle-of-view-diagonal": () => import("../../film/angle-of-view-diagonal/index.js"),
   "hash/sha-224": () => import("../../hash/sha-224/index.js"),
+  "laser/q-switch-peak-power": () => import("../../laser/q-switch-peak-power/index.js"),
+  "pedagogy/elaborative-question-builder": () => import("../../pedagogy/elaborative-question-builder/index.js"),
   "probability/rejection-sampler": () => import("../../probability/rejection-sampler/index.js"),
   "probability/sequential-monte-carlo-sampler": () => import("../../probability/sequential-monte-carlo-sampler/index.js"),
+  "proteomics/coiled-coil-register": () => import("../../proteomics/coiled-coil-register/index.js"),
   "random/canadian-syllabics-character": () => import("../../random/canadian-syllabics-character/index.js"),
   "random/japanese-sign-syllable": () => import("../../random/japanese-sign-syllable/index.js"),
   "random/telugu-character": () => import("../../random/telugu-character/index.js"),
@@ -28,6 +33,8 @@ export const toolModuleLoaders: Readonly<
   "seismology/icequake-glacial-magnitude-range-lookup": () => import("../../seismology/icequake-glacial-magnitude-range-lookup/index.js"),
   "set/intersection": () => import("../../set/intersection/index.js"),
   "statistics/population-summary": () => import("../../statistics/population-summary/index.js"),
+  "taxation/home-improvement-credit-cap": () => import("../../taxation/home-improvement-credit-cap/index.js"),
   "text/sentence-case": () => import("../../text/sentence-case/index.js"),
+  "transcriptomics/polya-usage-shift": () => import("../../transcriptomics/polya-usage-shift/index.js"),
   "vr/spacewarp-frame-interpolation": () => import("../../vr/spacewarp-frame-interpolation/index.js"),
 };

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/concert-hall-shape-reference": () => import("../../acoustics/concert-hall-shape-reference/index.js"),
   "actuarial/monthly-premium-conversion": () => import("../../actuarial/monthly-premium-conversion/index.js"),
   "arithmetic/distance-to-next-power-of-two": () => import("../../arithmetic/distance-to-next-power-of-two/index.js"),
   "auditing/contingency-range-accrual-policy-consistency-checker": () => import("../../auditing/contingency-range-accrual-policy-consistency-checker/index.js"),
@@ -24,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "geology/buckley-leverett-front-saturation": () => import("../../geology/buckley-leverett-front-saturation/index.js"),
   "geology/dip-direction-to-strike": () => import("../../geology/dip-direction-to-strike/index.js"),
   "geometry/bounding-box": () => import("../../geometry/bounding-box/index.js"),
+  "horology/split-seconds-chronograph-mechanism-lookup": () => import("../../horology/split-seconds-chronograph-mechanism-lookup/index.js"),
   "http/bearer-extractor": () => import("../../http/bearer-extractor/index.js"),
   "logistics/fill-rate-line-item-percent": () => import("../../logistics/fill-rate-line-item-percent/index.js"),
   "network/integer-to-ipv4": () => import("../../network/integer-to-ipv4/index.js"),

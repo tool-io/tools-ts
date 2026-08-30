@@ -4,11 +4,13 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/practice-room-noise-target-screen": () => import("../../acoustics/practice-room-noise-target-screen/index.js"),
   "aquaculture/gonadosomatic-index": () => import("../../aquaculture/gonadosomatic-index/index.js"),
   "aquaculture/hatching-rate": () => import("../../aquaculture/hatching-rate/index.js"),
   "arithmetic/round-half-to-even": () => import("../../arithmetic/round-half-to-even/index.js"),
   "aviation/turn-radius": () => import("../../aviation/turn-radius/index.js"),
   "biology/bohr-effect-oxygen": () => import("../../biology/bohr-effect-oxygen/index.js"),
+  "browser/language-tag-parser": () => import("../../browser/language-tag-parser/index.js"),
   "chemistry/molar-conductivity": () => import("../../chemistry/molar-conductivity/index.js"),
   "chemistry/polyprotic-ph-first-dissociation": () => import("../../chemistry/polyprotic-ph-first-dissociation/index.js"),
   "chemistry/solubility-mx3": () => import("../../chemistry/solubility-mx3/index.js"),
@@ -24,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/plot-area-circular": () => import("../../forestry/plot-area-circular/index.js"),
   "generate/seeded-uuid": () => import("../../generate/seeded-uuid/index.js"),
   "geology/bearing-capacity-factor-nc": () => import("../../geology/bearing-capacity-factor-nc/index.js"),
+  "kinesiology/hrv-rolling-baseline": () => import("../../kinesiology/hrv-rolling-baseline/index.js"),
   "logistics/cross-dock-flow-through-rate-percent": () => import("../../logistics/cross-dock-flow-through-rate-percent/index.js"),
   "numismatics/face-value-to-melt-premium-checker": () => import("../../numismatics/face-value-to-melt-premium-checker/index.js"),
   "random/old-italic-character": () => import("../../random/old-italic-character/index.js"),
@@ -33,5 +36,7 @@ export const toolModuleLoaders: Readonly<
   "size/smartwatch": () => import("../../size/smartwatch/index.js"),
   "size/tire-wheel": () => import("../../size/tire-wheel/index.js"),
   "statistics/benjamini-hochberg": () => import("../../statistics/benjamini-hochberg/index.js"),
+  "taxation/mining-activity-screen": () => import("../../taxation/mining-activity-screen/index.js"),
   "text/emoji-count": () => import("../../text/emoji-count/index.js"),
+  "transcriptomics/transcriptome-completeness": () => import("../../transcriptomics/transcriptome-completeness/index.js"),
 };

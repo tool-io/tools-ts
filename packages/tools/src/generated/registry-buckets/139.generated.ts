@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "banking/relationship-bonus-tracker": () => import("../../banking/relationship-bonus-tracker/index.js"),
   "chemistry/buffer-capacity": () => import("../../chemistry/buffer-capacity/index.js"),
   "chemistry/clapeyron-slope": () => import("../../chemistry/clapeyron-slope/index.js"),
   "chemistry/formality": () => import("../../chemistry/formality/index.js"),
@@ -15,12 +16,15 @@ export const toolModuleLoaders: Readonly<
   "engineering/battery-series-voltage": () => import("../../engineering/battery-series-voltage/index.js"),
   "engineering/chain-drive-speed-ratio": () => import("../../engineering/chain-drive-speed-ratio/index.js"),
   "engineering/darcy-weisbach-pressure-drop": () => import("../../engineering/darcy-weisbach-pressure-drop/index.js"),
+  "epigenetics/abc-linkage-rank": () => import("../../epigenetics/abc-linkage-rank/index.js"),
   "film/exposure-value-ev": () => import("../../film/exposure-value-ev/index.js"),
+  "kinesiology/minimalist-mileage-progression": () => import("../../kinesiology/minimalist-mileage-progression/index.js"),
   "logistics/cost-per-drop-last-mile": () => import("../../logistics/cost-per-drop-last-mile/index.js"),
   "paleography/carolingian-singlestorey-flag": () => import("../../paleography/carolingian-singlestorey-flag/index.js"),
   "probability/cauchy-sampler": () => import("../../probability/cauchy-sampler/index.js"),
   "random/armenian-letter": () => import("../../random/armenian-letter/index.js"),
   "seismology/spatial-grid-cell-count-density-summary": () => import("../../seismology/spatial-grid-cell-count-density-summary/index.js"),
+  "taxation/cnc-affordability": () => import("../../taxation/cnc-affordability/index.js"),
   "typography/pica-to-inches": () => import("../../typography/pica-to-inches/index.js"),
   "vr/eye-tracking-latency-ms": () => import("../../vr/eye-tracking-latency-ms/index.js"),
 };

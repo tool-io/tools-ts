@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "aquaculture/bod-aquaculture": () => import("../../aquaculture/bod-aquaculture/index.js"),
+  "auditing/adjustment-disposition": () => import("../../auditing/adjustment-disposition/index.js"),
   "biology/shannon-evenness": () => import("../../biology/shannon-evenness/index.js"),
   "biology/work-of-breathing-resistive": () => import("../../biology/work-of-breathing-resistive/index.js"),
   "carpentry/reststuecke-verwaltung-lager": () => import("../../carpentry/reststuecke-verwaltung-lager/index.js"),
@@ -17,6 +18,11 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/weathering-degree-simplified-rater": () => import("../../epigraphy/weathering-degree-simplified-rater/index.js"),
   "geology/travel-time-s-wave": () => import("../../geology/travel-time-s-wave/index.js"),
   "hash/keccak-384": () => import("../../hash/keccak-384/index.js"),
+  "insurance/crop-protection-comparison": () => import("../../insurance/crop-protection-comparison/index.js"),
+  "insurance/pilot-underwriting-score": () => import("../../insurance/pilot-underwriting-score/index.js"),
+  "laser/autocollimator-angle": () => import("../../laser/autocollimator-angle/index.js"),
+  "laser/galvo-grid-error": () => import("../../laser/galvo-grid-error/index.js"),
+  "laser/rgb-projector-white-balance": () => import("../../laser/rgb-projector-white-balance/index.js"),
   "music/frequency-to-nearest-midi": () => import("../../music/frequency-to-nearest-midi/index.js"),
   "password/strength": () => import("../../password/strength/index.js"),
   "probability/dirichlet-sampler": () => import("../../probability/dirichlet-sampler/index.js"),
@@ -28,4 +34,6 @@ export const toolModuleLoaders: Readonly<
   "sociology/overcrowded-dwelling-rate-eurostat": () => import("../../sociology/overcrowded-dwelling-rate-eurostat/index.js"),
   "statistics/fisher-z-transform": () => import("../../statistics/fisher-z-transform/index.js"),
   "text/letter-frequency": () => import("../../text/letter-frequency/index.js"),
+  "theatre/keyboard-patch-coverage": () => import("../../theatre/keyboard-patch-coverage/index.js"),
+  "theatre/lamp-inventory-par": () => import("../../theatre/lamp-inventory-par/index.js"),
 };

@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "actuarial/unearned-premium-pro-rata": () => import("../../actuarial/unearned-premium-pro-rata/index.js"),
   "arithmetic/golden-ratio": () => import("../../arithmetic/golden-ratio/index.js"),
+  "auditing/audit-universe-coverage": () => import("../../auditing/audit-universe-coverage/index.js"),
   "aviation/descent-angle": () => import("../../aviation/descent-angle/index.js"),
   "aviation/wind-gust-factor": () => import("../../aviation/wind-gust-factor/index.js"),
   "biology/cell-concentration": () => import("../../biology/cell-concentration/index.js"),
@@ -26,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "geology/well-log-water-saturation-archie": () => import("../../geology/well-log-water-saturation-archie/index.js"),
   "hash/keccak-224": () => import("../../hash/keccak-224/index.js"),
   "horology/moonphase-drift-per-year": () => import("../../horology/moonphase-drift-per-year/index.js"),
+  "metabolomics/sam-sah-ratio": () => import("../../metabolomics/sam-sah-ratio/index.js"),
   "music/piano-key-number-from-midi": () => import("../../music/piano-key-number-from-midi/index.js"),
   "music/subharmonic-frequency": () => import("../../music/subharmonic-frequency/index.js"),
   "paleography/secretary-e-horn-counter": () => import("../../paleography/secretary-e-horn-counter/index.js"),
@@ -33,4 +35,5 @@ export const toolModuleLoaders: Readonly<
   "sailing/mainsail-twist-angle": () => import("../../sailing/mainsail-twist-angle/index.js"),
   "semiconductor/flash-threshold-voltage-shift": () => import("../../semiconductor/flash-threshold-voltage-shift/index.js"),
   "size/children-clothing": () => import("../../size/children-clothing/index.js"),
+  "transcriptomics/housekeeping-cv-rank": () => import("../../transcriptomics/housekeeping-cv-rank/index.js"),
 };

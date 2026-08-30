@@ -21,10 +21,12 @@ export const toolModuleLoaders: Readonly<
   "futurology/agi-forecast-survey-median-calculator": () => import("../../futurology/agi-forecast-survey-median-calculator/index.js"),
   "futurology/de-jouvenel-futuribles-anticipation-school-lookup": () => import("../../futurology/de-jouvenel-futuribles-anticipation-school-lookup/index.js"),
   "geology/well-log-porosity-density": () => import("../../geology/well-log-porosity-density/index.js"),
+  "horology/beat-error-symmetry-threshold-screen": () => import("../../horology/beat-error-symmetry-threshold-screen/index.js"),
   "logistics/demurrage-free-days-port-checker": () => import("../../logistics/demurrage-free-days-port-checker/index.js"),
   "number/kaprekar-steps": () => import("../../number/kaprekar-steps/index.js"),
   "physics/centripetal-force": () => import("../../physics/centripetal-force/index.js"),
   "random/elbasan-letter": () => import("../../random/elbasan-letter/index.js"),
   "text/slugify": () => import("../../text/slugify/index.js"),
+  "theatre/breakfall-clearance": () => import("../../theatre/breakfall-clearance/index.js"),
   "vr/focal-length-from-fov-vr": () => import("../../vr/focal-length-from-fov-vr/index.js"),
 };

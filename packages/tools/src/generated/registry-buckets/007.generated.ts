@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/mcgurk-effect-reference": () => import("../../acoustics/mcgurk-effect-reference/index.js"),
   "auditing/mus-tainting-factor-projected-misstatement": () => import("../../auditing/mus-tainting-factor-projected-misstatement/index.js"),
   "auditing/payroll-agree-to-tax-return-gross-tie-out-procedure": () => import("../../auditing/payroll-agree-to-tax-return-gross-tie-out-procedure/index.js"),
   "aviation/fuel-burn": () => import("../../aviation/fuel-burn/index.js"),
@@ -17,10 +18,12 @@ export const toolModuleLoaders: Readonly<
   "finance/quick-ratio": () => import("../../finance/quick-ratio/index.js"),
   "forestry/crown-ratio": () => import("../../forestry/crown-ratio/index.js"),
   "generate/ismn-13": () => import("../../generate/ismn-13/index.js"),
+  "laser/comb-ranging-ambiguity": () => import("../../laser/comb-ranging-ambiguity/index.js"),
   "metrics/mean-absolute-error": () => import("../../metrics/mean-absolute-error/index.js"),
   "mycology/spore-shape-q-quotient-rater": () => import("../../mycology/spore-shape-q-quotient-rater/index.js"),
   "numismatics/clipped-planchet-weight-loss": () => import("../../numismatics/clipped-planchet-weight-loss/index.js"),
   "oenology/dap-nitrogen-contribution": () => import("../../oenology/dap-nitrogen-contribution/index.js"),
+  "proteomics/tryptic-peptides": () => import("../../proteomics/tryptic-peptides/index.js"),
   "sailing/mast-bend-amount": () => import("../../sailing/mast-bend-amount/index.js"),
   "seismology/hvsr-clear-peak-confidence-checker": () => import("../../seismology/hvsr-clear-peak-confidence-checker/index.js"),
   "seismology/surface-wave-spreading-half-space": () => import("../../seismology/surface-wave-spreading-half-space/index.js"),
@@ -28,4 +31,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/memristor-on-off-ratio": () => import("../../semiconductor/memristor-on-off-ratio/index.js"),
   "semiconductor/thermoelectric-figure-of-merit-zt": () => import("../../semiconductor/thermoelectric-figure-of-merit-zt/index.js"),
   "text/reverse": () => import("../../text/reverse/index.js"),
+  "transcriptomics/utr-length-ratio": () => import("../../transcriptomics/utr-length-ratio/index.js"),
+  "web/url-password": () => import("../../web/url-password/index.js"),
 };

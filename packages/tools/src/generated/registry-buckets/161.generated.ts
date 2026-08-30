@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/clarity-c50": () => import("../../acoustics/clarity-c50/index.js"),
   "biology/milk-yield-correction": () => import("../../biology/milk-yield-correction/index.js"),
   "carpentry/sockel-ruecksprung": () => import("../../carpentry/sockel-ruecksprung/index.js"),
   "chemistry/kp-from-partial-pressures": () => import("../../chemistry/kp-from-partial-pressures/index.js"),
@@ -15,6 +16,10 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/consular-dating-year-extractor": () => import("../../epigraphy/consular-dating-year-extractor/index.js"),
   "futurology/punk-genre-futures-steampunk-cyberpunk-solarpunk-lookup": () => import("../../futurology/punk-genre-futures-steampunk-cyberpunk-solarpunk-lookup/index.js"),
   "horology/daily-rate-to-annual-drift": () => import("../../horology/daily-rate-to-annual-drift/index.js"),
+  "journalism/archive-redaction-screen": () => import("../../journalism/archive-redaction-screen/index.js"),
+  "journalism/procurement-donor-overlap": () => import("../../journalism/procurement-donor-overlap/index.js"),
+  "laser/pump-probe-delay-stage": () => import("../../laser/pump-probe-delay-stage/index.js"),
+  "laser/wms-2f-error-signal": () => import("../../laser/wms-2f-error-signal/index.js"),
   "logistics/multi-day-trip-plan-hours-days": () => import("../../logistics/multi-day-trip-plan-hours-days/index.js"),
   "music/equal-temperament-ratio-from-semitones": () => import("../../music/equal-temperament-ratio-from-semitones/index.js"),
   "parse/numeric-dataset": () => import("../../parse/numeric-dataset/index.js"),
@@ -27,5 +32,7 @@ export const toolModuleLoaders: Readonly<
   "statistics/minimum": () => import("../../statistics/minimum/index.js"),
   "statistics/sum-of-squares": () => import("../../statistics/sum-of-squares/index.js"),
   "text/remove-diacritics": () => import("../../text/remove-diacritics/index.js"),
+  "theatre/haze-ventilation": () => import("../../theatre/haze-ventilation/index.js"),
   "validate/issn": () => import("../../validate/issn/index.js"),
+  "web/permissions-policy-parser": () => import("../../web/permissions-policy-parser/index.js"),
 };

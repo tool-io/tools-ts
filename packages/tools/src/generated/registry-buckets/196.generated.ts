@@ -4,7 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/ordinance-hours-screen": () => import("../../acoustics/ordinance-hours-screen/index.js"),
   "arithmetic/basis-points": () => import("../../arithmetic/basis-points/index.js"),
+  "banking/bankers-acceptance-discount": () => import("../../banking/bankers-acceptance-discount/index.js"),
   "biology/alveolar-arterial-gradient-2": () => import("../../biology/alveolar-arterial-gradient-2/index.js"),
   "biology/morishita-index": () => import("../../biology/morishita-index/index.js"),
   "carpentry/drawer-front-overlay": () => import("../../carpentry/drawer-front-overlay/index.js"),
@@ -12,9 +14,13 @@ export const toolModuleLoaders: Readonly<
   "electronics/pre-emphasis-db": () => import("../../electronics/pre-emphasis-db/index.js"),
   "electronics/skin-depth": () => import("../../electronics/skin-depth/index.js"),
   "electronics/solenoid-force": () => import("../../electronics/solenoid-force/index.js"),
+  "epigenetics/chromosome-name-normalizer": () => import("../../epigenetics/chromosome-name-normalizer/index.js"),
+  "epigenetics/dunedinpace-ratio": () => import("../../epigenetics/dunedinpace-ratio/index.js"),
   "futurology/personal-futures-life-planning-backcast-worksheet": () => import("../../futurology/personal-futures-life-planning-backcast-worksheet/index.js"),
   "generate/jan": () => import("../../generate/jan/index.js"),
   "geology/drilling-hydraulics-pressure-loss": () => import("../../geology/drilling-hydraulics-pressure-loss/index.js"),
+  "journalism/box-score-reconciliation": () => import("../../journalism/box-score-reconciliation/index.js"),
+  "kinesiology/hip-turn-slide-ratio": () => import("../../kinesiology/hip-turn-slide-ratio/index.js"),
   "logistics/broker-margin-percent-on-carrier": () => import("../../logistics/broker-margin-percent-on-carrier/index.js"),
   "logistics/certificate-origin-fta-threshold-lookup": () => import("../../logistics/certificate-origin-fta-threshold-lookup/index.js"),
   "logistics/cost-per-ton-mile-computed": () => import("../../logistics/cost-per-ton-mile-computed/index.js"),
@@ -26,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/ion-implantation-straggle": () => import("../../semiconductor/ion-implantation-straggle/index.js"),
   "semiconductor/matthiessen-mobility": () => import("../../semiconductor/matthiessen-mobility/index.js"),
   "statistics/z-score": () => import("../../statistics/z-score/index.js"),
+  "taxation/estate-liquidity-gap": () => import("../../taxation/estate-liquidity-gap/index.js"),
   "text/character-n-grams": () => import("../../text/character-n-grams/index.js"),
   "text/normalize-whitespace": () => import("../../text/normalize-whitespace/index.js"),
   "typography/pixels-to-ems": () => import("../../typography/pixels-to-ems/index.js"),

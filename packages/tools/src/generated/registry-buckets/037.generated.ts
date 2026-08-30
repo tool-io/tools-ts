@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/room-criterion-reference": () => import("../../acoustics/room-criterion-reference/index.js"),
+  "auditing/net-worth-method": () => import("../../auditing/net-worth-method/index.js"),
   "aviation/contingency-fuel": () => import("../../aviation/contingency-fuel/index.js"),
   "aviation/fuel-at-waypoint": () => import("../../aviation/fuel-at-waypoint/index.js"),
   "chemistry/collision-frequency": () => import("../../chemistry/collision-frequency/index.js"),
@@ -16,7 +18,13 @@ export const toolModuleLoaders: Readonly<
   "forestry/diameter-growth-annual": () => import("../../forestry/diameter-growth-annual/index.js"),
   "futurology/amara-law-short-run-overestimate-rule-lookup": () => import("../../futurology/amara-law-short-run-overestimate-rule-lookup/index.js"),
   "horology/tourbillon-revolutions-per-day": () => import("../../horology/tourbillon-revolutions-per-day/index.js"),
+  "horology/zirconia-ceramic-case-property-lookup": () => import("../../horology/zirconia-ceramic-case-property-lookup/index.js"),
+  "journalism/donation-disclosure-check": () => import("../../journalism/donation-disclosure-check/index.js"),
+  "laser/contact-angle-classifier": () => import("../../laser/contact-angle-classifier/index.js"),
+  "laser/hermite-gaussian-mode-profile": () => import("../../laser/hermite-gaussian-mode-profile/index.js"),
+  "laser/volume-bragg-bandpass-check": () => import("../../laser/volume-bragg-bandpass-check/index.js"),
   "logistics/limited-access-fee-checker": () => import("../../logistics/limited-access-fee-checker/index.js"),
+  "metabolomics/mplus2-isotope-signature": () => import("../../metabolomics/mplus2-isotope-signature/index.js"),
   "numismatics/junk-silver-face-value-multiplier": () => import("../../numismatics/junk-silver-face-value-multiplier/index.js"),
   "random/byzantine-musical-symbol": () => import("../../random/byzantine-musical-symbol/index.js"),
   "sailing/tidal-diamond-correction": () => import("../../sailing/tidal-diamond-correction/index.js"),
@@ -24,4 +32,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/3d-ic-thermal-coupling": () => import("../../semiconductor/3d-ic-thermal-coupling/index.js"),
   "semiconductor/sram-static-noise-margin": () => import("../../semiconductor/sram-static-noise-margin/index.js"),
   "sociology/duncan-sei-socioeconomic-index": () => import("../../sociology/duncan-sei-socioeconomic-index/index.js"),
+  "taxation/thin-cap-interest-limit": () => import("../../taxation/thin-cap-interest-limit/index.js"),
 };

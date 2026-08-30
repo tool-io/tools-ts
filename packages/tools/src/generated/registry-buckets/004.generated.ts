@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "activation/softmax": () => import("../../activation/softmax/index.js"),
   "approximation/vertex-cover-2-approximation": () => import("../../approximation/vertex-cover-2-approximation/index.js"),
+  "auditing/science-target-readiness": () => import("../../auditing/science-target-readiness/index.js"),
   "biology/primer-hairpin-tm": () => import("../../biology/primer-hairpin-tm/index.js"),
   "biology/wood-specific-gravity": () => import("../../biology/wood-specific-gravity/index.js"),
   "carpentry/gratleiste-breite": () => import("../../carpentry/gratleiste-breite/index.js"),
@@ -21,6 +22,9 @@ export const toolModuleLoaders: Readonly<
   "geology/well-log-shale-volume": () => import("../../geology/well-log-shale-volume/index.js"),
   "graph/pinsage-aggregation": () => import("../../graph/pinsage-aggregation/index.js"),
   "horology/repeater-quarter-strikes": () => import("../../horology/repeater-quarter-strikes/index.js"),
+  "insurance/demand-response-window": () => import("../../insurance/demand-response-window/index.js"),
+  "laser/brillouin-stokes-cascade": () => import("../../laser/brillouin-stokes-cascade/index.js"),
+  "metabolomics/signal-drift-correction": () => import("../../metabolomics/signal-drift-correction/index.js"),
   "microcontroller/spi-transfer-time": () => import("../../microcontroller/spi-transfer-time/index.js"),
   "number/coprime-checker": () => import("../../number/coprime-checker/index.js"),
   "number/digit-sum": () => import("../../number/digit-sum/index.js"),
@@ -29,5 +33,6 @@ export const toolModuleLoaders: Readonly<
   "seismology/rupture-velocity-shear-wave-ratio-checker": () => import("../../seismology/rupture-velocity-shear-wave-ratio-checker/index.js"),
   "semiconductor/cvd-deposition-rate": () => import("../../semiconductor/cvd-deposition-rate/index.js"),
   "semiconductor/packaging-thermal-resistance": () => import("../../semiconductor/packaging-thermal-resistance/index.js"),
+  "taxation/refund-delay": () => import("../../taxation/refund-delay/index.js"),
   "vr/tracking-loss-percentage": () => import("../../vr/tracking-loss-percentage/index.js"),
 };

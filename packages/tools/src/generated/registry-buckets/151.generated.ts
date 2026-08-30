@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/marine-mammal-hearing-group-reference": () => import("../../acoustics/marine-mammal-hearing-group-reference/index.js"),
   "arithmetic/sign": () => import("../../arithmetic/sign/index.js"),
   "auditing/nonresponse-alternative-procedures-second-request-steps": () => import("../../auditing/nonresponse-alternative-procedures-second-request-steps/index.js"),
   "biology/nitrogen-nii-index": () => import("../../biology/nitrogen-nii-index/index.js"),
@@ -12,11 +13,15 @@ export const toolModuleLoaders: Readonly<
   "electronics/antenna-effective-aperture": () => import("../../electronics/antenna-effective-aperture/index.js"),
   "electronics/antenna-far-field-distance": () => import("../../electronics/antenna-far-field-distance/index.js"),
   "electronics/transformer-efficiency-at-load": () => import("../../electronics/transformer-efficiency-at-load/index.js"),
+  "epigenetics/dmr-window-merger": () => import("../../epigenetics/dmr-window-merger/index.js"),
   "forestry/relative-density": () => import("../../forestry/relative-density/index.js"),
   "geology/bearing-capacity-factor-nq": () => import("../../geology/bearing-capacity-factor-nq/index.js"),
   "geology/relative-permeability-gas-oil": () => import("../../geology/relative-permeability-gas-oil/index.js"),
   "horology/glide-motion-step-rate": () => import("../../horology/glide-motion-step-rate/index.js"),
   "information/binary-entropy": () => import("../../information/binary-entropy/index.js"),
+  "journalism/property-flip-pattern-screen": () => import("../../journalism/property-flip-pattern-screen/index.js"),
+  "laser/gm-cross-section-converter": () => import("../../laser/gm-cross-section-converter/index.js"),
+  "microcontroller/srec-parse": () => import("../../microcontroller/srec-parse/index.js"),
   "oenology/specific-gravity-to-brix": () => import("../../oenology/specific-gravity-to-brix/index.js"),
   "random/kaithi-character": () => import("../../random/kaithi-character/index.js"),
   "sailing/man-overboard-return-course-quickstop": () => import("../../sailing/man-overboard-return-course-quickstop/index.js"),

@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/vern-knudsen-history": () => import("../../acoustics/vern-knudsen-history/index.js"),
+  "auditing/allowance-migration-recompute": () => import("../../auditing/allowance-migration-recompute/index.js"),
   "chemistry/equivalent-moles": () => import("../../chemistry/equivalent-moles/index.js"),
   "chemistry/ph-ionic-strength-corrected": () => import("../../chemistry/ph-ionic-strength-corrected/index.js"),
   "chemistry/transport-number": () => import("../../chemistry/transport-number/index.js"),
@@ -15,8 +17,15 @@ export const toolModuleLoaders: Readonly<
   "film/aperture-from-f-stop": () => import("../../film/aperture-from-f-stop/index.js"),
   "geology/buoyant-density": () => import("../../geology/buoyant-density/index.js"),
   "geology/compression-index": () => import("../../geology/compression-index/index.js"),
+  "horology/escapement-contact-friction-comparison-calculator": () => import("../../horology/escapement-contact-friction-comparison-calculator/index.js"),
+  "http/content-disposition-parser": () => import("../../http/content-disposition-parser/index.js"),
+  "insurance/retrocession-waterfall": () => import("../../insurance/retrocession-waterfall/index.js"),
+  "kinesiology/leg-stiffness": () => import("../../kinesiology/leg-stiffness/index.js"),
   "mycology/hyphal-system-classifier": () => import("../../mycology/hyphal-system-classifier/index.js"),
+  "neuroscience/fano-factor": () => import("../../neuroscience/fano-factor/index.js"),
+  "pedagogy/wait-time-gate": () => import("../../pedagogy/wait-time-gate/index.js"),
   "proportions/inverse": () => import("../../proportions/inverse/index.js"),
+  "proteomics/protein-extinction-280": () => import("../../proteomics/protein-extinction-280/index.js"),
   "random/garay-character": () => import("../../random/garay-character/index.js"),
   "random/makasar-character": () => import("../../random/makasar-character/index.js"),
   "random/saurashtra-character": () => import("../../random/saurashtra-character/index.js"),
@@ -25,4 +34,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/mass-action-law": () => import("../../semiconductor/mass-action-law/index.js"),
   "semiconductor/mosfet-depletion-charge": () => import("../../semiconductor/mosfet-depletion-charge/index.js"),
   "size/ring": () => import("../../size/ring/index.js"),
+  "taxation/nft-creator-income": () => import("../../taxation/nft-creator-income/index.js"),
+  "transcriptomics/hub-gene-rank": () => import("../../transcriptomics/hub-gene-rank/index.js"),
+  "transcriptomics/library-complexity": () => import("../../transcriptomics/library-complexity/index.js"),
 };

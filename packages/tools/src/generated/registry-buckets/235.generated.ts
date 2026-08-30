@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/tone-prominence-ratio": () => import("../../acoustics/tone-prominence-ratio/index.js"),
   "aviation/tas-from-mach-temp": () => import("../../aviation/tas-from-mach-temp/index.js"),
   "aviation/turn-load-factor-gust": () => import("../../aviation/turn-load-factor-gust/index.js"),
   "carpentry/kantenanleimer-bedarf": () => import("../../carpentry/kantenanleimer-bedarf/index.js"),
@@ -17,7 +18,9 @@ export const toolModuleLoaders: Readonly<
   "engineering/illuminance-from-flux": () => import("../../engineering/illuminance-from-flux/index.js"),
   "geology/ar-ar-age": () => import("../../geology/ar-ar-age/index.js"),
   "geology/earth-pressure-at-rest": () => import("../../geology/earth-pressure-at-rest/index.js"),
+  "laser/fwm-idler-frequency": () => import("../../laser/fwm-idler-frequency/index.js"),
   "laser/laser-carrier-envelope-offset-f-to-2f-interferometer-stabilizer-lookup": () => import("../../laser/laser-carrier-envelope-offset-f-to-2f-interferometer-stabilizer-lookup/index.js"),
+  "metabolomics/matrix-ion-suppression": () => import("../../metabolomics/matrix-ion-suppression/index.js"),
   "microcontroller/uart-frame-bits": () => import("../../microcontroller/uart-frame-bits/index.js"),
   "sailing/sheet-load-main": () => import("../../sailing/sheet-load-main/index.js"),
   "seismology/average-radiation-factor-boore-boatwright-lookup": () => import("../../seismology/average-radiation-factor-boore-boatwright-lookup/index.js"),

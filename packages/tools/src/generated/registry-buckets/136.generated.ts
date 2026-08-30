@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/room-mean-free-path": () => import("../../acoustics/room-mean-free-path/index.js"),
+  "auditing/record-count-reconciliation": () => import("../../auditing/record-count-reconciliation/index.js"),
   "aviation/groundspeed-required-for-eta": () => import("../../aviation/groundspeed-required-for-eta/index.js"),
   "aviation/range": () => import("../../aviation/range/index.js"),
   "biology/qtc-bazett": () => import("../../biology/qtc-bazett/index.js"),
@@ -13,11 +14,19 @@ export const toolModuleLoaders: Readonly<
   "electronics/hall-sensitivity": () => import("../../electronics/hall-sensitivity/index.js"),
   "electronics/led-luminous-efficacy": () => import("../../electronics/led-luminous-efficacy/index.js"),
   "engineering/gear-ratio": () => import("../../engineering/gear-ratio/index.js"),
+  "epigenetics/nucleosome-band-classifier": () => import("../../epigenetics/nucleosome-band-classifier/index.js"),
   "geology/rb-sr-isochron": () => import("../../geology/rb-sr-isochron/index.js"),
+  "insurance/parametric-index-payout": () => import("../../insurance/parametric-index-payout/index.js"),
+  "kinesiology/foam-energy-return": () => import("../../kinesiology/foam-energy-return/index.js"),
+  "laser/required-optical-density": () => import("../../laser/required-optical-density/index.js"),
+  "laser/thz-cooling-margin": () => import("../../laser/thz-cooling-margin/index.js"),
   "logistics/travel-time-order-picker-batch": () => import("../../logistics/travel-time-order-picker-batch/index.js"),
   "number/harshad-checker": () => import("../../number/harshad-checker/index.js"),
+  "pedagogy/mastery-scale-mapper": () => import("../../pedagogy/mastery-scale-mapper/index.js"),
   "real-estate/rentable-area": () => import("../../real-estate/rentable-area/index.js"),
   "sailing/opposite-tack-course": () => import("../../sailing/opposite-tack-course/index.js"),
   "seismology/okada-dip-slip-surface-displacement": () => import("../../seismology/okada-dip-slip-surface-displacement/index.js"),
   "sociology/migration-effectiveness-index": () => import("../../sociology/migration-effectiveness-index/index.js"),
+  "transcriptomics/quantile-normalization": () => import("../../transcriptomics/quantile-normalization/index.js"),
+  "web/manifest-theme-color-extractor": () => import("../../web/manifest-theme-color-extractor/index.js"),
 };

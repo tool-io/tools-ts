@@ -15,7 +15,11 @@ export const toolModuleLoaders: Readonly<
   "electronics/decoupling-capacitor-impedance": () => import("../../electronics/decoupling-capacitor-impedance/index.js"),
   "electronics/soft-start-capacitor": () => import("../../electronics/soft-start-capacitor/index.js"),
   "engineering/solar-energy-yield": () => import("../../engineering/solar-energy-yield/index.js"),
+  "entrepreneurship/default-alive-runway": () => import("../../entrepreneurship/default-alive-runway/index.js"),
   "geology/bearing-capacity-factor-ngamma": () => import("../../geology/bearing-capacity-factor-ngamma/index.js"),
+  "kinesiology/sprint-shin-angle-screen": () => import("../../kinesiology/sprint-shin-angle-screen/index.js"),
+  "laser/embedded-service-class-check": () => import("../../laser/embedded-service-class-check/index.js"),
+  "laser/marechal-strehl": () => import("../../laser/marechal-strehl/index.js"),
   "logistics/cartons-per-pallet-ti-hi-calculator": () => import("../../logistics/cartons-per-pallet-ti-hi-calculator/index.js"),
   "music/bit-depth-dynamic-range-db": () => import("../../music/bit-depth-dynamic-range-db/index.js"),
   "numismatics/pre-1982-cent-copper-melt-value": () => import("../../numismatics/pre-1982-cent-copper-melt-value/index.js"),
@@ -24,4 +28,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/event-count-poisson-confidence-interval-gehrels": () => import("../../seismology/event-count-poisson-confidence-interval-gehrels/index.js"),
   "size/picture-frame": () => import("../../size/picture-frame/index.js"),
   "statistics/exponential-moving-average": () => import("../../statistics/exponential-moving-average/index.js"),
+  "taxation/crypto-swap-gain": () => import("../../taxation/crypto-swap-gain/index.js"),
 };

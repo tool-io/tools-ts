@@ -4,9 +4,12 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/mlv-product-stc-lookup": () => import("../../acoustics/mlv-product-stc-lookup/index.js"),
   "activation/tanh": () => import("../../activation/tanh/index.js"),
+  "auditing/credit-memo-vouching": () => import("../../auditing/credit-memo-vouching/index.js"),
   "aviation/crab-angle": () => import("../../aviation/crab-angle/index.js"),
   "aviation/qnh-from-qfe-field-elevation": () => import("../../aviation/qnh-from-qfe-field-elevation/index.js"),
+  "banking/investor-threshold-screen": () => import("../../banking/investor-threshold-screen/index.js"),
   "biology/expected-species-chao1-bias-corrected": () => import("../../biology/expected-species-chao1-bias-corrected/index.js"),
   "carpentry/fenster-uw-wert-berechnung": () => import("../../carpentry/fenster-uw-wert-berechnung/index.js"),
   "chemistry/extraction-efficiency": () => import("../../chemistry/extraction-efficiency/index.js"),
@@ -15,10 +18,15 @@ export const toolModuleLoaders: Readonly<
   "electronics/bulk-capacitor-holdup-time": () => import("../../electronics/bulk-capacitor-holdup-time/index.js"),
   "electronics/i2c-bus-capacitance": () => import("../../electronics/i2c-bus-capacitance/index.js"),
   "generate/uuid-v6": () => import("../../generate/uuid-v6/index.js"),
+  "journalism/dimension-mark-check": () => import("../../journalism/dimension-mark-check/index.js"),
+  "kinesiology/vertec-jump-reach": () => import("../../kinesiology/vertec-jump-reach/index.js"),
+  "laser/lidar-point-density": () => import("../../laser/lidar-point-density/index.js"),
   "music/harmonic-series-partial-frequency": () => import("../../music/harmonic-series-partial-frequency/index.js"),
   "oenology/cold-stabilization-chill": () => import("../../oenology/cold-stabilization-chill/index.js"),
   "oenology/diacetyl-threshold-checker": () => import("../../oenology/diacetyl-threshold-checker/index.js"),
+  "proteomics/y-ion-series": () => import("../../proteomics/y-ion-series/index.js"),
   "semiconductor/fermi-level-n-type": () => import("../../semiconductor/fermi-level-n-type/index.js"),
   "statistics/cumulative-frequency": () => import("../../statistics/cumulative-frequency/index.js"),
   "text/byte-count": () => import("../../text/byte-count/index.js"),
+  "theatre/weekly-recoupment": () => import("../../theatre/weekly-recoupment/index.js"),
 };

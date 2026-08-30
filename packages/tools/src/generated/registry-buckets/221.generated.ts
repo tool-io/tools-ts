@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/grant-cost-allowability": () => import("../../auditing/grant-cost-allowability/index.js"),
   "auditing/key-vs-non-key-control-designation-criteria-lookup": () => import("../../auditing/key-vs-non-key-control-designation-criteria-lookup/index.js"),
   "aviation/holding-fuel-required": () => import("../../aviation/holding-fuel-required/index.js"),
   "biology/hematocrit-from-hemoglobin": () => import("../../biology/hematocrit-from-hemoglobin/index.js"),
@@ -17,7 +18,13 @@ export const toolModuleLoaders: Readonly<
   "generate/barcode": () => import("../../generate/barcode/index.js"),
   "geology/overburden-gradient": () => import("../../geology/overburden-gradient/index.js"),
   "graph/depth-first-traversal": () => import("../../graph/depth-first-traversal/index.js"),
+  "horology/ultrasonic-watch-parts-cycle-stage-lookup": () => import("../../horology/ultrasonic-watch-parts-cycle-stage-lookup/index.js"),
+  "journalism/ap-time-style": () => import("../../journalism/ap-time-style/index.js"),
+  "laser/cavity-stability": () => import("../../laser/cavity-stability/index.js"),
   "list/consecutive-differences": () => import("../../list/consecutive-differences/index.js"),
+  "metabolomics/isotopologue-distribution": () => import("../../metabolomics/isotopologue-distribution/index.js"),
+  "metabolomics/kendrick-mass-defect": () => import("../../metabolomics/kendrick-mass-defect/index.js"),
+  "metabolomics/opls-component-variance": () => import("../../metabolomics/opls-component-variance/index.js"),
   "oenology/gross-lees-volume": () => import("../../oenology/gross-lees-volume/index.js"),
   "paleography/copperplate-shade-classifier": () => import("../../paleography/copperplate-shade-classifier/index.js"),
   "parse/file-mode": () => import("../../parse/file-mode/index.js"),
@@ -27,4 +34,6 @@ export const toolModuleLoaders: Readonly<
   "sailing/halyard-tension-jib": () => import("../../sailing/halyard-tension-jib/index.js"),
   "seismology/adc-clip-level-full-scale-counts": () => import("../../seismology/adc-clip-level-full-scale-counts/index.js"),
   "semiconductor/carrier-concentration-p-type": () => import("../../semiconductor/carrier-concentration-p-type/index.js"),
+  "taxation/lien-status-classifier": () => import("../../taxation/lien-status-classifier/index.js"),
+  "transcriptomics/wilcoxon-rank-sum": () => import("../../transcriptomics/wilcoxon-rank-sum/index.js"),
 };

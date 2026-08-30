@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/duplicate-vendor-payment": () => import("../../auditing/duplicate-vendor-payment/index.js"),
   "auditing/unadjusted-misstatement-summary-pass-fail-evaluation": () => import("../../auditing/unadjusted-misstatement-summary-pass-fail-evaluation/index.js"),
   "biology/chlorophyll-a-b-ratio": () => import("../../biology/chlorophyll-a-b-ratio/index.js"),
   "biology/marbling-score": () => import("../../biology/marbling-score/index.js"),
@@ -20,6 +21,8 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/latin-abbreviation-expander": () => import("../../epigraphy/latin-abbreviation-expander/index.js"),
   "geology/passive-earth-pressure": () => import("../../geology/passive-earth-pressure/index.js"),
   "matrix/dimensions": () => import("../../matrix/dimensions/index.js"),
+  "metabolomics/tmao-risk-band": () => import("../../metabolomics/tmao-risk-band/index.js"),
+  "metabolomics/vip-threshold-gate": () => import("../../metabolomics/vip-threshold-gate/index.js"),
   "microcontroller/timer-compare-frequency": () => import("../../microcontroller/timer-compare-frequency/index.js"),
   "mycology/ergosterol-biomass-marker-calculator": () => import("../../mycology/ergosterol-biomass-marker-calculator/index.js"),
   "oenology/multi-tank-weighted-abv": () => import("../../oenology/multi-tank-weighted-abv/index.js"),
@@ -29,4 +32,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/strong-motion-linear-baseline-correction": () => import("../../seismology/strong-motion-linear-baseline-correction/index.js"),
   "sociology/replacement-level-fertility-checker": () => import("../../sociology/replacement-level-fertility-checker/index.js"),
   "text/sentence-count": () => import("../../text/sentence-count/index.js"),
+  "web/url-host": () => import("../../web/url-host/index.js"),
 };

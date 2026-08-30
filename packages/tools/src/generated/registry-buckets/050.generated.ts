@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/oblique-mode-frequency": () => import("../../acoustics/oblique-mode-frequency/index.js"),
+  "banking/money-mule-red-flag-screen": () => import("../../banking/money-mule-red-flag-screen/index.js"),
   "biology/alveolar-gas-equation": () => import("../../biology/alveolar-gas-equation/index.js"),
   "biology/body-surface-area-dubois": () => import("../../biology/body-surface-area-dubois/index.js"),
   "biology/specific-root-area": () => import("../../biology/specific-root-area/index.js"),
@@ -17,6 +18,10 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/sinistroverse-direction-flag": () => import("../../epigraphy/sinistroverse-direction-flag/index.js"),
   "futurology/cone-of-plausibility-wildcard-boundary-map": () => import("../../futurology/cone-of-plausibility-wildcard-boundary-map/index.js"),
   "hash/blake-512": () => import("../../hash/blake-512/index.js"),
+  "journalism/protest-support-conflict": () => import("../../journalism/protest-support-conflict/index.js"),
+  "laser/annealing-thermal-budget": () => import("../../laser/annealing-thermal-budget/index.js"),
+  "laser/fresnel-regime-classifier": () => import("../../laser/fresnel-regime-classifier/index.js"),
+  "metabolomics/blank-fold-filter": () => import("../../metabolomics/blank-fold-filter/index.js"),
   "mycology/ascoma-type-classifier": () => import("../../mycology/ascoma-type-classifier/index.js"),
   "mycology/christensen-urease-rapid-classifier": () => import("../../mycology/christensen-urease-rapid-classifier/index.js"),
   "nautical/knots-to-kph": () => import("../../nautical/knots-to-kph/index.js"),
@@ -29,4 +34,6 @@ export const toolModuleLoaders: Readonly<
   "seismology/network-detection-threshold-coverage": () => import("../../seismology/network-detection-threshold-coverage/index.js"),
   "semiconductor/hole-effective-mass": () => import("../../semiconductor/hole-effective-mass/index.js"),
   "size/wire-gauge": () => import("../../size/wire-gauge/index.js"),
+  "theatre/understudy-cover-matrix": () => import("../../theatre/understudy-cover-matrix/index.js"),
+  "transcriptomics/effective-transcript-length": () => import("../../transcriptomics/effective-transcript-length/index.js"),
 };

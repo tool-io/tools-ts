@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/oitc-reference": () => import("../../acoustics/oitc-reference/index.js"),
   "arithmetic/fractional-integer-parts": () => import("../../arithmetic/fractional-integer-parts/index.js"),
   "biology/hardy-weinberg-carrier-frequency": () => import("../../biology/hardy-weinberg-carrier-frequency/index.js"),
   "biology/punnett-square-mono": () => import("../../biology/punnett-square-mono/index.js"),
@@ -13,13 +14,19 @@ export const toolModuleLoaders: Readonly<
   "electronics/mosfet-transconductance": () => import("../../electronics/mosfet-transconductance/index.js"),
   "electronics/ripple-current-buck": () => import("../../electronics/ripple-current-buck/index.js"),
   "encode/tap-code": () => import("../../encode/tap-code/index.js"),
+  "epigenetics/x-inactivation-skew": () => import("../../epigenetics/x-inactivation-skew/index.js"),
   "geology/sedimentation-rate": () => import("../../geology/sedimentation-rate/index.js"),
+  "horology/radium-tritium-lume-transition-lookup": () => import("../../horology/radium-tritium-lume-transition-lookup/index.js"),
   "http/range-parser": () => import("../../http/range-parser/index.js"),
+  "insurance/rescission-screen": () => import("../../insurance/rescission-screen/index.js"),
+  "insurance/sap-gaap-surplus-bridge": () => import("../../insurance/sap-gaap-surplus-bridge/index.js"),
+  "kinesiology/dolphin-kick-wave-screen": () => import("../../kinesiology/dolphin-kick-wave-screen/index.js"),
   "logistics/trailer-dwell-time-hours-checker": () => import("../../logistics/trailer-dwell-time-hours-checker/index.js"),
   "optimization/rmsprop-step": () => import("../../optimization/rmsprop-step/index.js"),
   "paleography/rubric-red-initial-flag": () => import("../../paleography/rubric-red-initial-flag/index.js"),
   "semiconductor/intrinsic-carrier-concentration": () => import("../../semiconductor/intrinsic-carrier-concentration/index.js"),
   "size/dress-shirt": () => import("../../size/dress-shirt/index.js"),
   "size/leggings": () => import("../../size/leggings/index.js"),
+  "transcriptomics/pseudotime-root-selector": () => import("../../transcriptomics/pseudotime-root-selector/index.js"),
   "vr/render-latency": () => import("../../vr/render-latency/index.js"),
 };

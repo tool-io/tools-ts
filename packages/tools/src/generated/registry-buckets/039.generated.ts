@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/crystal-quality-factor": () => import("../../electronics/crystal-quality-factor/index.js"),
   "electronics/ferrite-bead-attenuation-db": () => import("../../electronics/ferrite-bead-attenuation-db/index.js"),
   "electronics/slew-rate-required": () => import("../../electronics/slew-rate-required/index.js"),
+  "epigenetics/atac-frip-gate": () => import("../../epigenetics/atac-frip-gate/index.js"),
   "epigraphy/libertus-l-suffix-detector": () => import("../../epigraphy/libertus-l-suffix-detector/index.js"),
   "epigraphy/margin-symmetry-deviation-rater": () => import("../../epigraphy/margin-symmetry-deviation-rater/index.js"),
   "film/dcp-bitrate": () => import("../../film/dcp-bitrate/index.js"),
@@ -27,4 +28,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/subthreshold-swing": () => import("../../semiconductor/subthreshold-swing/index.js"),
   "statistics/number-needed-to-treat": () => import("../../statistics/number-needed-to-treat/index.js"),
   "typography/line-height-ratio": () => import("../../typography/line-height-ratio/index.js"),
+  "web/multipart-boundary-generator": () => import("../../web/multipart-boundary-generator/index.js"),
 };

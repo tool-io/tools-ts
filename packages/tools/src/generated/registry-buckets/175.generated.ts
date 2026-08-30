@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/futures-radar-signal-database-tag-schema-designer": () => import("../../futurology/futures-radar-signal-database-tag-schema-designer/index.js"),
   "geology/fracture-pressure-gradient-eaton": () => import("../../geology/fracture-pressure-gradient-eaton/index.js"),
   "geology/helium-diffusion-closure-temperature": () => import("../../geology/helium-diffusion-closure-temperature/index.js"),
+  "journalism/beat-source-coverage": () => import("../../journalism/beat-source-coverage/index.js"),
   "json/unflatten": () => import("../../json/unflatten/index.js"),
   "laser/laser-sesam-modulation-depth-fluence-selection-guide-lookup": () => import("../../laser/laser-sesam-modulation-depth-fluence-selection-guide-lookup/index.js"),
   "network/ipv4-network-address": () => import("../../network/ipv4-network-address/index.js"),

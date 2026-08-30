@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/brilliance-ratio": () => import("../../acoustics/brilliance-ratio/index.js"),
   "algebra/quadratic-equation": () => import("../../algebra/quadratic-equation/index.js"),
   "aviation/pressure-at-altitude": () => import("../../aviation/pressure-at-altitude/index.js"),
   "biology/chao2-estimator": () => import("../../biology/chao2-estimator/index.js"),
@@ -20,11 +21,15 @@ export const toolModuleLoaders: Readonly<
   "geology/mineral-luster-lookup": () => import("../../geology/mineral-luster-lookup/index.js"),
   "geology/porosity-from-void-ratio": () => import("../../geology/porosity-from-void-ratio/index.js"),
   "geology/unconformity-angle": () => import("../../geology/unconformity-angle/index.js"),
+  "laser/gdd-ripple": () => import("../../laser/gdd-ripple/index.js"),
+  "metabolomics/weir-energy-expenditure": () => import("../../metabolomics/weir-energy-expenditure/index.js"),
   "mycology/grain-spawn-colonization-days-estimator": () => import("../../mycology/grain-spawn-colonization-days-estimator/index.js"),
   "paleography/humanist-century-estimator": () => import("../../paleography/humanist-century-estimator/index.js"),
   "paleography/invocatio-trinitarian-detector": () => import("../../paleography/invocatio-trinitarian-detector/index.js"),
+  "proteomics/heptad-hydrophobicity": () => import("../../proteomics/heptad-hydrophobicity/index.js"),
   "real-estate/net-rental-income": () => import("../../real-estate/net-rental-income/index.js"),
   "sailing/wave-period-fetch": () => import("../../sailing/wave-period-fetch/index.js"),
   "semiconductor/mosfet-flatband-voltage": () => import("../../semiconductor/mosfet-flatband-voltage/index.js"),
   "size/dog-coat": () => import("../../size/dog-coat/index.js"),
+  "taxation/spouse-relief-selector": () => import("../../taxation/spouse-relief-selector/index.js"),
 };

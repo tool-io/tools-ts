@@ -4,15 +4,21 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/microphone-placement-reference": () => import("../../acoustics/microphone-placement-reference/index.js"),
   "carpentry/shelf-pin-holes-spacing": () => import("../../carpentry/shelf-pin-holes-spacing/index.js"),
   "checksum/crc-16-modbus": () => import("../../checksum/crc-16-modbus/index.js"),
   "convert/text-to-mathematical-italic": () => import("../../convert/text-to-mathematical-italic/index.js"),
   "electronics/thermal-resistance": () => import("../../electronics/thermal-resistance/index.js"),
+  "entrepreneurship/feature-adoption-matrix": () => import("../../entrepreneurship/feature-adoption-matrix/index.js"),
+  "epigenetics/bisulfite-conversion-efficiency": () => import("../../epigenetics/bisulfite-conversion-efficiency/index.js"),
   "forestry/stand-density-index-reineke": () => import("../../forestry/stand-density-index-reineke/index.js"),
   "futurology/four-day-week-trial-productivity-comparison": () => import("../../futurology/four-day-week-trial-productivity-comparison/index.js"),
   "generate/bin-packing-instance": () => import("../../generate/bin-packing-instance/index.js"),
   "geology/pore-pressure-prediction-eaton-resistivity": () => import("../../geology/pore-pressure-prediction-eaton-resistivity/index.js"),
+  "journalism/document-entity-date-sorter": () => import("../../journalism/document-entity-date-sorter/index.js"),
+  "journalism/tape-sync-drift": () => import("../../journalism/tape-sync-drift/index.js"),
   "math/expression-evaluator": () => import("../../math/expression-evaluator/index.js"),
+  "microcontroller/intel-hex-parse": () => import("../../microcontroller/intel-hex-parse/index.js"),
   "nautical/rhumb-line-distance": () => import("../../nautical/rhumb-line-distance/index.js"),
   "oenology/bottles-per-barrel": () => import("../../oenology/bottles-per-barrel/index.js"),
   "oenology/h2o2-so2-reduction": () => import("../../oenology/h2o2-so2-reduction/index.js"),
@@ -23,4 +29,6 @@ export const toolModuleLoaders: Readonly<
   "real-estate/storage-income": () => import("../../real-estate/storage-income/index.js"),
   "sailing/polar-target-twa": () => import("../../sailing/polar-target-twa/index.js"),
   "text/change-case": () => import("../../text/change-case/index.js"),
+  "transcriptomics/exon-skipping-psi": () => import("../../transcriptomics/exon-skipping-psi/index.js"),
+  "transcriptomics/rna-editing-frequency": () => import("../../transcriptomics/rna-editing-frequency/index.js"),
 };

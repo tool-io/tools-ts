@@ -29,6 +29,7 @@ export const toolModuleLoaders: Readonly<
   "geology/flexural-rigidity": () => import("../../geology/flexural-rigidity/index.js"),
   "hash/keccak-512": () => import("../../hash/keccak-512/index.js"),
   "interpolation/exponential": () => import("../../interpolation/exponential/index.js"),
+  "laser/photobiomodulation-dose": () => import("../../laser/photobiomodulation-dose/index.js"),
   "logistics/double-brokering-risk-flag-checker": () => import("../../logistics/double-brokering-risk-flag-checker/index.js"),
   "microcontroller/timer-tick-period": () => import("../../microcontroller/timer-tick-period/index.js"),
   "music/double-dotted-duration-calculator": () => import("../../music/double-dotted-duration-calculator/index.js"),
@@ -37,6 +38,8 @@ export const toolModuleLoaders: Readonly<
   "size/tie": () => import("../../size/tie/index.js"),
   "statistics/quartile-coefficient-of-dispersion": () => import("../../statistics/quartile-coefficient-of-dispersion/index.js"),
   "take-home-pay-calculator/uk": () => import("../../take-home-pay-calculator/uk/index.js"),
+  "taxation/rehabilitation-credit": () => import("../../taxation/rehabilitation-credit/index.js"),
   "text/edit-distance": () => import("../../text/edit-distance/index.js"),
+  "transcriptomics/mutually-exclusive-exon-switch": () => import("../../transcriptomics/mutually-exclusive-exon-switch/index.js"),
   "vr/field-of-view-horizontal": () => import("../../vr/field-of-view-horizontal/index.js"),
 };

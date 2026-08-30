@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/noise-metric-sel-from-event-leq": () => import("../../acoustics/noise-metric-sel-from-event-leq/index.js"),
+  "acoustics/speech-privacy-class-screen": () => import("../../acoustics/speech-privacy-class-screen/index.js"),
   "arithmetic/floor-to-multiple": () => import("../../arithmetic/floor-to-multiple/index.js"),
   "auditing/qualified-adverse-disclaimer-opinion-condition-crosswalk": () => import("../../auditing/qualified-adverse-disclaimer-opinion-condition-crosswalk/index.js"),
   "aviation/v-speed-vno": () => import("../../aviation/v-speed-vno/index.js"),
@@ -19,7 +20,11 @@ export const toolModuleLoaders: Readonly<
   "forestry/biomas-single-tree": () => import("../../forestry/biomas-single-tree/index.js"),
   "geology/modulus-of-volume-compressibility": () => import("../../geology/modulus-of-volume-compressibility/index.js"),
   "health/bmr-mifflin": () => import("../../health/bmr-mifflin/index.js"),
+  "http/set-cookie-parser": () => import("../../http/set-cookie-parser/index.js"),
+  "kinesiology/deep-squat-flexion-screen": () => import("../../kinesiology/deep-squat-flexion-screen/index.js"),
+  "metabolomics/bile-acid-hydrophobicity": () => import("../../metabolomics/bile-acid-hydrophobicity/index.js"),
   "mycology/skeletal-hyphae-band-rater": () => import("../../mycology/skeletal-hyphae-band-rater/index.js"),
   "numismatics/troy-pound-ounce-count": () => import("../../numismatics/troy-pound-ounce-count/index.js"),
+  "proteomics/protein-volcano-coordinates": () => import("../../proteomics/protein-volcano-coordinates/index.js"),
   "sailing/rudder-angle-required": () => import("../../sailing/rudder-angle-required/index.js"),
 };

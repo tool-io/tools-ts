@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/fluctuation-strength-reference": () => import("../../acoustics/fluctuation-strength-reference/index.js"),
   "actuarial/stop-loss-normal-approximation": () => import("../../actuarial/stop-loss-normal-approximation/index.js"),
   "aviation/landing-distance-required-with-wind": () => import("../../aviation/landing-distance-required-with-wind/index.js"),
   "biology/refractory-period-absolute": () => import("../../biology/refractory-period-absolute/index.js"),
@@ -24,6 +25,11 @@ export const toolModuleLoaders: Readonly<
   "futurology/utopian-dystopian-tech-framing-bias-checker": () => import("../../futurology/utopian-dystopian-tech-framing-bias-checker/index.js"),
   "geology/crystal-fractionation": () => import("../../geology/crystal-fractionation/index.js"),
   "horology/crown-turns-full-wind": () => import("../../horology/crown-turns-full-wind/index.js"),
+  "horology/cylinder-escapement-frictional-rest-history-lookup": () => import("../../horology/cylinder-escapement-frictional-rest-history-lookup/index.js"),
+  "insurance/producer-model-comparison": () => import("../../insurance/producer-model-comparison/index.js"),
+  "journalism/churn-reason-summary": () => import("../../journalism/churn-reason-summary/index.js"),
+  "journalism/update-label-selector": () => import("../../journalism/update-label-selector/index.js"),
+  "laser/brightness-conservation": () => import("../../laser/brightness-conservation/index.js"),
   "laser/laser-edfa-gain-bandwidth-c-band-l-band-split-lookup": () => import("../../laser/laser-edfa-gain-bandwidth-c-band-l-band-split-lookup/index.js"),
   "logistics/slotting-velocity-abc-classifier": () => import("../../logistics/slotting-velocity-abc-classifier/index.js"),
   "number/palindrome-checker": () => import("../../number/palindrome-checker/index.js"),
@@ -32,5 +38,6 @@ export const toolModuleLoaders: Readonly<
   "random/tagbanwa-character": () => import("../../random/tagbanwa-character/index.js"),
   "sailing/position-error-circle": () => import("../../sailing/position-error-circle/index.js"),
   "semiconductor/depletion-width-linear": () => import("../../semiconductor/depletion-width-linear/index.js"),
+  "theatre/projection-pixel-density": () => import("../../theatre/projection-pixel-density/index.js"),
   "typography/letter-spacing-points-from-tracking": () => import("../../typography/letter-spacing-points-from-tracking/index.js"),
 };

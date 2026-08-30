@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "auditing/audit-team-industry-expertise-specialist-use-checker": () => import("../../auditing/audit-team-industry-expertise-specialist-use-checker/index.js"),
+  "auditing/log-retention-evidence-check": () => import("../../auditing/log-retention-evidence-check/index.js"),
   "aviation/eta-from-departure": () => import("../../aviation/eta-from-departure/index.js"),
   "aviation/pressure-altitude": () => import("../../aviation/pressure-altitude/index.js"),
   "biology/ferritin-iron-ratio": () => import("../../biology/ferritin-iron-ratio/index.js"),
@@ -22,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/von-mises-stress": () => import("../../engineering/von-mises-stress/index.js"),
   "geometry/polyline-length": () => import("../../geometry/polyline-length/index.js"),
   "horology/beat-error-milliseconds": () => import("../../horology/beat-error-milliseconds/index.js"),
+  "metabolomics/smiles-delimiter-validator": () => import("../../metabolomics/smiles-delimiter-validator/index.js"),
   "mycology/armillaria-spread-radius-annual-estimate": () => import("../../mycology/armillaria-spread-radius-annual-estimate/index.js"),
   "oenology/potential-alcohol-brix": () => import("../../oenology/potential-alcohol-brix/index.js"),
   "paleography/ductus-complexity-index-rater": () => import("../../paleography/ductus-complexity-index-rater/index.js"),
@@ -31,5 +33,8 @@ export const toolModuleLoaders: Readonly<
   "sailing/sail-aspect-ratio-main": () => import("../../sailing/sail-aspect-ratio-main/index.js"),
   "seismology/completeness-magnitude-max-curvature": () => import("../../seismology/completeness-magnitude-max-curvature/index.js"),
   "sequence/arithmetic": () => import("../../sequence/arithmetic/index.js"),
+  "taxation/land-productivity-rate-classifier": () => import("../../taxation/land-productivity-rate-classifier/index.js"),
+  "taxation/nfa-stamp-tax": () => import("../../taxation/nfa-stamp-tax/index.js"),
   "web/data-uri-size": () => import("../../web/data-uri-size/index.js"),
+  "web/open-graph-parser": () => import("../../web/open-graph-parser/index.js"),
 };

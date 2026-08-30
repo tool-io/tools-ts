@@ -23,7 +23,10 @@ export const toolModuleLoaders: Readonly<
   "electronics/memory-bandwidth": () => import("../../electronics/memory-bandwidth/index.js"),
   "electronics/output-ripple-voltage-buck": () => import("../../electronics/output-ripple-voltage-buck/index.js"),
   "engineering/three-phase-active-power": () => import("../../engineering/three-phase-active-power/index.js"),
+  "epigenetics/upd-segment-screen": () => import("../../epigenetics/upd-segment-screen/index.js"),
+  "futurology/scanning-hit-score": () => import("../../futurology/scanning-hit-score/index.js"),
   "horology/asthmometer-breath-rate": () => import("../../horology/asthmometer-breath-rate/index.js"),
+  "laser/dbr-tuning-span": () => import("../../laser/dbr-tuning-span/index.js"),
   "music/dotted-note-duration-calculator": () => import("../../music/dotted-note-duration-calculator/index.js"),
   "mycology/ascus-eight-spored-checker": () => import("../../mycology/ascus-eight-spored-checker/index.js"),
   "random/binary": () => import("../../random/binary/index.js"),
@@ -33,4 +36,6 @@ export const toolModuleLoaders: Readonly<
   "sailing/keel-lift": () => import("../../sailing/keel-lift/index.js"),
   "sailing/lead-percentage": () => import("../../sailing/lead-percentage/index.js"),
   "seismology/moment-tensor-double-couple-percent-decomposition": () => import("../../seismology/moment-tensor-double-couple-percent-decomposition/index.js"),
+  "taxation/use-tax-amount": () => import("../../taxation/use-tax-amount/index.js"),
+  "transcriptomics/microarray-background-correction": () => import("../../transcriptomics/microarray-background-correction/index.js"),
 };

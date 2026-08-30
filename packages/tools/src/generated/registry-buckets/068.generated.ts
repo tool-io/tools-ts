@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/endowment-insurance-epv": () => import("../../actuarial/endowment-insurance-epv/index.js"),
+  "banking/debt-consolidation-breakeven": () => import("../../banking/debt-consolidation-breakeven/index.js"),
   "biology/ld50": () => import("../../biology/ld50/index.js"),
   "biology/melting-temp-wallace": () => import("../../biology/melting-temp-wallace/index.js"),
   "cartography/naismith-route-time-rule": () => import("../../cartography/naismith-route-time-rule/index.js"),
@@ -16,9 +17,12 @@ export const toolModuleLoaders: Readonly<
   "engineering/bend-deduction": () => import("../../engineering/bend-deduction/index.js"),
   "engineering/horizontal-curve-radius": () => import("../../engineering/horizontal-curve-radius/index.js"),
   "geology/seismic-intensity-mmi-lookup": () => import("../../geology/seismic-intensity-mmi-lookup/index.js"),
+  "horology/john-harrison-h4-longitude-history-lookup": () => import("../../horology/john-harrison-h4-longitude-history-lookup/index.js"),
   "number/betrothed-checker": () => import("../../number/betrothed-checker/index.js"),
   "numismatics/crackout-expected-value-checker": () => import("../../numismatics/crackout-expected-value-checker/index.js"),
+  "numismatics/tooling-evidence-screen": () => import("../../numismatics/tooling-evidence-screen/index.js"),
   "oenology/gelatin-silica-dose": () => import("../../oenology/gelatin-silica-dose/index.js"),
+  "proteomics/low-complexity-windows": () => import("../../proteomics/low-complexity-windows/index.js"),
   "seismology/catalog-magnitude-type-histogram-summary": () => import("../../seismology/catalog-magnitude-type-histogram-summary/index.js"),
   "seismology/geophone-spring-max-acceleration-range-checker": () => import("../../seismology/geophone-spring-max-acceleration-range-checker/index.js"),
   "semiconductor/mosfet-transconductance-saturation": () => import("../../semiconductor/mosfet-transconductance-saturation/index.js"),

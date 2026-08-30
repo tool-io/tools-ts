@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/illuminance-uniformity": () => import("../../engineering/illuminance-uniformity/index.js"),
   "engineering/thermal-diffusivity": () => import("../../engineering/thermal-diffusivity/index.js"),
   "futurology/integral-futures-four-quadrant-approach-lookup": () => import("../../futurology/integral-futures-four-quadrant-approach-lookup/index.js"),
+  "horology/breguet-invention-timeline-lookup": () => import("../../horology/breguet-invention-timeline-lookup/index.js"),
   "sailing/distance-to-layline": () => import("../../sailing/distance-to-layline/index.js"),
   "sailing/drying-height-clearance": () => import("../../sailing/drying-height-clearance/index.js"),
   "sailing/heel-angle": () => import("../../sailing/heel-angle/index.js"),

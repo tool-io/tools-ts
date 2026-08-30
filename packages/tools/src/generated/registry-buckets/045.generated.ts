@@ -19,9 +19,11 @@ export const toolModuleLoaders: Readonly<
   "geology/activity-number": () => import("../../geology/activity-number/index.js"),
   "geology/curvature-coefficient": () => import("../../geology/curvature-coefficient/index.js"),
   "geology/seismic-interval-velocity-dix": () => import("../../geology/seismic-interval-velocity-dix/index.js"),
+  "laser/kerr-gate-suppression": () => import("../../laser/kerr-gate-suppression/index.js"),
   "music/pitch-bend-semitone-range-14bit": () => import("../../music/pitch-bend-semitone-range-14bit/index.js"),
   "mycology/odor-intensity-scale-rater": () => import("../../mycology/odor-intensity-scale-rater/index.js"),
   "mycology/spore-size-lw-ratio-measurer": () => import("../../mycology/spore-size-lw-ratio-measurer/index.js"),
+  "proteomics/protease-digest": () => import("../../proteomics/protease-digest/index.js"),
   "random/palmyrene-letter": () => import("../../random/palmyrene-letter/index.js"),
   "sailing/winch-handle-force": () => import("../../sailing/winch-handle-force/index.js"),
   "seismology/ms-mb-explosion-discrimination-note-lookup": () => import("../../seismology/ms-mb-explosion-discrimination-note-lookup/index.js"),
@@ -30,4 +32,5 @@ export const toolModuleLoaders: Readonly<
   "statistics/root-mean-square": () => import("../../statistics/root-mean-square/index.js"),
   "text/stopword-count": () => import("../../text/stopword-count/index.js"),
   "vector/l-infinity-norm": () => import("../../vector/l-infinity-norm/index.js"),
+  "web/robots-allow-checker": () => import("../../web/robots-allow-checker/index.js"),
 };

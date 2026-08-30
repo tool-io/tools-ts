@@ -21,6 +21,11 @@ export const toolModuleLoaders: Readonly<
   "electronics/relay-bounce-time": () => import("../../electronics/relay-bounce-time/index.js"),
   "engineering/enthalpy-change-sensible": () => import("../../engineering/enthalpy-change-sensible/index.js"),
   "geology/mohr-circle-center": () => import("../../geology/mohr-circle-center/index.js"),
+  "laser/focused-beam-waist-location": () => import("../../laser/focused-beam-waist-location/index.js"),
+  "metabolomics/mass-accuracy-ppm": () => import("../../metabolomics/mass-accuracy-ppm/index.js"),
   "numismatics/melt-value-from-spot-silver": () => import("../../numismatics/melt-value-from-spot-silver/index.js"),
   "oenology/davis-score-card": () => import("../../oenology/davis-score-card/index.js"),
+  "pedagogy/gradual-release-phase-tracker": () => import("../../pedagogy/gradual-release-phase-tracker/index.js"),
+  "transcriptomics/normalized-enrichment-score": () => import("../../transcriptomics/normalized-enrichment-score/index.js"),
+  "web/dns-prefetch-hint-parser": () => import("../../web/dns-prefetch-hint-parser/index.js"),
 };

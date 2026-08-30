@@ -18,6 +18,9 @@ export const toolModuleLoaders: Readonly<
   "engineering/column-slenderness-ratio": () => import("../../engineering/column-slenderness-ratio/index.js"),
   "engineering/drag-coefficient-flat-plate": () => import("../../engineering/drag-coefficient-flat-plate/index.js"),
   "horology/week-disc-advance": () => import("../../horology/week-disc-advance/index.js"),
+  "laser/wakefield-gradient-comparison": () => import("../../laser/wakefield-gradient-comparison/index.js"),
+  "metabolomics/calibration-backcalculation": () => import("../../metabolomics/calibration-backcalculation/index.js"),
+  "metabolomics/stoichiometric-flux-balance": () => import("../../metabolomics/stoichiometric-flux-balance/index.js"),
   "mycology/sclerotium-size-class-rater": () => import("../../mycology/sclerotium-size-class-rater/index.js"),
   "number/aliquot-sum": () => import("../../number/aliquot-sum/index.js"),
   "number/semiprime-checker": () => import("../../number/semiprime-checker/index.js"),
@@ -26,4 +29,5 @@ export const toolModuleLoaders: Readonly<
   "paleography/pricking-hole-row-counter": () => import("../../paleography/pricking-hole-row-counter/index.js"),
   "sailing/vmg-to-leeward": () => import("../../sailing/vmg-to-leeward/index.js"),
   "seismology/ray-parameter-slowness-apparent-velocity": () => import("../../seismology/ray-parameter-slowness-apparent-velocity/index.js"),
+  "taxation/pilot-savings": () => import("../../taxation/pilot-savings/index.js"),
 };

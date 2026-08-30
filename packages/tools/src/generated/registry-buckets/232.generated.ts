@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/sonar-stranding-evidence-reference": () => import("../../acoustics/sonar-stranding-evidence-reference/index.js"),
   "auditing/log-analysis-user-role-itgc-sample-extraction-steps": () => import("../../auditing/log-analysis-user-role-itgc-sample-extraction-steps/index.js"),
   "auditing/three-way-match-po-grn-invoice-field-by-field-test-procedure": () => import("../../auditing/three-way-match-po-grn-invoice-field-by-field-test-procedure/index.js"),
   "aviation/true-heading": () => import("../../aviation/true-heading/index.js"),
@@ -20,11 +21,18 @@ export const toolModuleLoaders: Readonly<
   "engineering/short-circuit-mva": () => import("../../engineering/short-circuit-mva/index.js"),
   "finance/discount-amount": () => import("../../finance/discount-amount/index.js"),
   "geology/bearing-capacity-terzaghi": () => import("../../geology/bearing-capacity-terzaghi/index.js"),
+  "insurance/out-of-network-balance": () => import("../../insurance/out-of-network-balance/index.js"),
+  "journalism/fuzzy-name-match": () => import("../../journalism/fuzzy-name-match/index.js"),
+  "laser/lasik-ablation-depth": () => import("../../laser/lasik-ablation-depth/index.js"),
+  "laser/speckle-decorrelation": () => import("../../laser/speckle-decorrelation/index.js"),
+  "laser/two-photon-depth-comparison": () => import("../../laser/two-photon-depth-comparison/index.js"),
   "logistics/delivery-time-slot-promise-percentile": () => import("../../logistics/delivery-time-slot-promise-percentile/index.js"),
   "number/mobius": () => import("../../number/mobius/index.js"),
+  "pedagogy/curriculum-standards-alignment": () => import("../../pedagogy/curriculum-standards-alignment/index.js"),
   "random/odia-character": () => import("../../random/odia-character/index.js"),
   "sailing/boom-force": () => import("../../sailing/boom-force/index.js"),
   "semiconductor/bjt-common-emitter-current-gain": () => import("../../semiconductor/bjt-common-emitter-current-gain/index.js"),
   "semiconductor/velocity-saturation-field": () => import("../../semiconductor/velocity-saturation-field/index.js"),
+  "taxation/local-income-tax-split": () => import("../../taxation/local-income-tax-split/index.js"),
   "text/shortest-word": () => import("../../text/shortest-word/index.js"),
 };

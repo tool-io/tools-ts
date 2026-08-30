@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/octave-illusion-reference": () => import("../../acoustics/octave-illusion-reference/index.js"),
   "auditing/independence-threat-safeguards-classifier": () => import("../../auditing/independence-threat-safeguards-classifier/index.js"),
   "aviation/true-altitude": () => import("../../aviation/true-altitude/index.js"),
   "biology/leaf-area-index": () => import("../../biology/leaf-area-index/index.js"),
@@ -22,7 +23,11 @@ export const toolModuleLoaders: Readonly<
   "finance/return-on-investment": () => import("../../finance/return-on-investment/index.js"),
   "futurology/design-fiction-diegetic-artifact-from-future-builder": () => import("../../futurology/design-fiction-diegetic-artifact-from-future-builder/index.js"),
   "geology/core-permeability-klinkenberg-corrected": () => import("../../geology/core-permeability-klinkenberg-corrected/index.js"),
+  "horology/gmt-jumping-versus-dragging-mechanism-screen": () => import("../../horology/gmt-jumping-versus-dragging-mechanism-screen/index.js"),
+  "journalism/propaganda-delay-score": () => import("../../journalism/propaganda-delay-score/index.js"),
+  "kinesiology/fms-seven-item-score": () => import("../../kinesiology/fms-seven-item-score/index.js"),
   "laser/laser-diode-li-curve-kink-detection-threshold-extraction-method": () => import("../../laser/laser-diode-li-curve-kink-detection-threshold-extraction-method/index.js"),
+  "microcontroller/eeprom-wear-offset": () => import("../../microcontroller/eeprom-wear-offset/index.js"),
   "numismatics/gold-silver-ratio-calculator": () => import("../../numismatics/gold-silver-ratio-calculator/index.js"),
   "numismatics/grading-submission-cost-per-coin": () => import("../../numismatics/grading-submission-cost-per-coin/index.js"),
   "random/hazard-pictogram": () => import("../../random/hazard-pictogram/index.js"),

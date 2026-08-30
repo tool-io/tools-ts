@@ -23,6 +23,9 @@ export const toolModuleLoaders: Readonly<
   "generate/issn": () => import("../../generate/issn/index.js"),
   "geology/bulk-density-from-porosity": () => import("../../geology/bulk-density-from-porosity/index.js"),
   "geology/mohr-circle-radius": () => import("../../geology/mohr-circle-radius/index.js"),
+  "horology/titanium-grade-5-nickel-caution-lookup": () => import("../../horology/titanium-grade-5-nickel-caution-lookup/index.js"),
+  "journalism/live-blog-chronology-sorter": () => import("../../journalism/live-blog-chronology-sorter/index.js"),
+  "laser/microdisk-q-threshold": () => import("../../laser/microdisk-q-threshold/index.js"),
   "linguistics/singularize-english": () => import("../../linguistics/singularize-english/index.js"),
   "logistics/perfect-order-index-component-product": () => import("../../logistics/perfect-order-index-component-product/index.js"),
   "mycology/xerophile-aw-minimum-threshold-lookup": () => import("../../mycology/xerophile-aw-minimum-threshold-lookup/index.js"),
@@ -32,5 +35,8 @@ export const toolModuleLoaders: Readonly<
   "sailing/sail-area-jib": () => import("../../sailing/sail-area-jib/index.js"),
   "seismology/coda-duration-magnitude-nuttli-formula": () => import("../../seismology/coda-duration-magnitude-nuttli-formula/index.js"),
   "semiconductor/ingaas-bandgap": () => import("../../semiconductor/ingaas-bandgap/index.js"),
+  "taxation/tax-holiday-savings": () => import("../../taxation/tax-holiday-savings/index.js"),
   "text/unique-lines": () => import("../../text/unique-lines/index.js"),
+  "web/url-path-segments": () => import("../../web/url-path-segments/index.js"),
+  "web/websocket-url-validator": () => import("../../web/websocket-url-validator/index.js"),
 };

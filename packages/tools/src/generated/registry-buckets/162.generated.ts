@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/casino-drop-reconciliation": () => import("../../auditing/casino-drop-reconciliation/index.js"),
   "auditing/internal-audit-ippf-attribute-performance-framework-lookup": () => import("../../auditing/internal-audit-ippf-attribute-performance-framework-lookup/index.js"),
   "biology/a260-a280-ratio": () => import("../../biology/a260-a280-ratio/index.js"),
   "biology/hardy-weinberg-genotype-frequency": () => import("../../biology/hardy-weinberg-genotype-frequency/index.js"),
@@ -14,6 +15,10 @@ export const toolModuleLoaders: Readonly<
   "convert/rgb-to-hsv": () => import("../../convert/rgb-to-hsv/index.js"),
   "engineering/orbital-velocity": () => import("../../engineering/orbital-velocity/index.js"),
   "film/focal-length-from-field-of-view": () => import("../../film/focal-length-from-field-of-view/index.js"),
+  "futurology/data-center-power-forecast": () => import("../../futurology/data-center-power-forecast/index.js"),
+  "journalism/obituary-section-coverage": () => import("../../journalism/obituary-section-coverage/index.js"),
+  "journalism/synthetic-voice-disclosure": () => import("../../journalism/synthetic-voice-disclosure/index.js"),
+  "laser/comb-cavity-tooth-match": () => import("../../laser/comb-cavity-tooth-match/index.js"),
   "network/ipv6-reverse-dns": () => import("../../network/ipv6-reverse-dns/index.js"),
   "number/reverse-digits": () => import("../../number/reverse-digits/index.js"),
   "parasitology/epg-mcmaster-calculator": () => import("../../parasitology/epg-mcmaster-calculator/index.js"),
@@ -22,5 +27,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/felt-radius-heuristic-log-scaling-calculator": () => import("../../seismology/felt-radius-heuristic-log-scaling-calculator/index.js"),
   "seismology/gps-week-second-to-days-since-era-converter": () => import("../../seismology/gps-week-second-to-days-since-era-converter/index.js"),
   "size/headphones": () => import("../../size/headphones/index.js"),
+  "taxation/minister-tax-split": () => import("../../taxation/minister-tax-split/index.js"),
+  "transcriptomics/insert-size-mode": () => import("../../transcriptomics/insert-size-mode/index.js"),
   "web/cors-allow-origin-checker": () => import("../../web/cors-allow-origin-checker/index.js"),
 };

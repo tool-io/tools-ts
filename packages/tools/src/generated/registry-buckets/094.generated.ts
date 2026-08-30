@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/listed-assembly-evidence-reference": () => import("../../acoustics/listed-assembly-evidence-reference/index.js"),
   "auditing/client-provided-schedule-reliability-foot-tie-sampler": () => import("../../auditing/client-provided-schedule-reliability-foot-tie-sampler/index.js"),
   "aviation/cabin-altitude-rate": () => import("../../aviation/cabin-altitude-rate/index.js"),
   "aviation/ground-speed": () => import("../../aviation/ground-speed/index.js"),
@@ -19,10 +20,16 @@ export const toolModuleLoaders: Readonly<
   "engineering/log-mean-temp-difference": () => import("../../engineering/log-mean-temp-difference/index.js"),
   "engineering/soil-passive-pressure": () => import("../../engineering/soil-passive-pressure/index.js"),
   "geology/toplap-angle": () => import("../../geology/toplap-angle/index.js"),
+  "horology/spring-bar-strap-change-safety-lookup": () => import("../../horology/spring-bar-strap-change-safety-lookup/index.js"),
+  "insurance/pml-aggregation": () => import("../../insurance/pml-aggregation/index.js"),
+  "kinesiology/gmfm-dimension-score": () => import("../../kinesiology/gmfm-dimension-score/index.js"),
+  "laser/vernier-fsr": () => import("../../laser/vernier-fsr/index.js"),
   "mycology/koh-reaction-note-generator": () => import("../../mycology/koh-reaction-note-generator/index.js"),
   "numismatics/duplicate-swap-value-difference": () => import("../../numismatics/duplicate-swap-value-difference/index.js"),
   "reinforcement-learning/policy-gradient-step": () => import("../../reinforcement-learning/policy-gradient-step/index.js"),
   "seismology/critical-reflection-angle-post-critical-note-checker": () => import("../../seismology/critical-reflection-angle-post-critical-note-checker/index.js"),
   "semiconductor/algan-bandgap": () => import("../../semiconductor/algan-bandgap/index.js"),
   "statistics/geometric-mean": () => import("../../statistics/geometric-mean/index.js"),
+  "theatre/dante-latency-budget": () => import("../../theatre/dante-latency-budget/index.js"),
+  "theatre/pit-singer-balance-ratio": () => import("../../theatre/pit-singer-balance-ratio/index.js"),
 };

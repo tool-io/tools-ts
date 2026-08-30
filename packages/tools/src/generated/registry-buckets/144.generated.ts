@@ -25,6 +25,8 @@ export const toolModuleLoaders: Readonly<
   "geology/onlap-angle": () => import("../../geology/onlap-angle/index.js"),
   "geology/seismic-acoustic-impedance": () => import("../../geology/seismic-acoustic-impedance/index.js"),
   "hash/sha-256": () => import("../../hash/sha-256/index.js"),
+  "journalism/transcription-name-match": () => import("../../journalism/transcription-name-match/index.js"),
+  "laser/scowa-amplifier-output": () => import("../../laser/scowa-amplifier-output/index.js"),
   "mycology/clamp-connection-presence-detector": () => import("../../mycology/clamp-connection-presence-detector/index.js"),
   "nutrition/daily-intake": () => import("../../nutrition/daily-intake/index.js"),
   "random/weather-symbol": () => import("../../random/weather-symbol/index.js"),

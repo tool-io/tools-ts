@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/asa-committee-scope-reference": () => import("../../acoustics/asa-committee-scope-reference/index.js"),
   "auditing/ratio-analysis-common-size-fluctuation-prompt-list": () => import("../../auditing/ratio-analysis-common-size-fluctuation-prompt-list/index.js"),
   "biology/net-photosynthesis-rate": () => import("../../biology/net-photosynthesis-rate/index.js"),
   "carpentry/lathe-speed-rpm": () => import("../../carpentry/lathe-speed-rpm/index.js"),
@@ -18,7 +19,11 @@ export const toolModuleLoaders: Readonly<
   "geometry/circle": () => import("../../geometry/circle/index.js"),
   "health/bmi-prime": () => import("../../health/bmi-prime/index.js"),
   "horology/tachymeter-base-calibration": () => import("../../horology/tachymeter-base-calibration/index.js"),
+  "html/whitespace-collapser": () => import("../../html/whitespace-collapser/index.js"),
+  "kinesiology/timed-up-and-go-screen": () => import("../../kinesiology/timed-up-and-go-screen/index.js"),
+  "laser/photoconductive-antenna-field": () => import("../../laser/photoconductive-antenna-field/index.js"),
   "number/chinese-remainder": () => import("../../number/chinese-remainder/index.js"),
+  "numismatics/die-break-stage-classifier": () => import("../../numismatics/die-break-stage-classifier/index.js"),
   "numismatics/melt-value-from-spot-gold": () => import("../../numismatics/melt-value-from-spot-gold/index.js"),
   "oenology/native-ferment-risk-score": () => import("../../oenology/native-ferment-risk-score/index.js"),
   "paleography/schwabacher-fraktur-note-generator": () => import("../../paleography/schwabacher-fraktur-note-generator/index.js"),

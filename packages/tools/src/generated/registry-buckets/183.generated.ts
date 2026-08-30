@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/isolator-static-deflection-screen": () => import("../../acoustics/isolator-static-deflection-screen/index.js"),
   "actuarial/experience-modification-factor": () => import("../../actuarial/experience-modification-factor/index.js"),
   "auditing/component-auditor-work-reference-usage-decision-lookup": () => import("../../auditing/component-auditor-work-reference-usage-decision-lookup/index.js"),
   "aviation/runway-wind-total": () => import("../../aviation/runway-wind-total/index.js"),
@@ -16,6 +17,10 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/illegible-ndot-encoder": () => import("../../epigraphy/illegible-ndot-encoder/index.js"),
   "geology/strontium-isotope-ratio": () => import("../../geology/strontium-isotope-ratio/index.js"),
   "horology/daily-rate-to-monthly-drift": () => import("../../horology/daily-rate-to-monthly-drift/index.js"),
+  "kinesiology/countermovement-jump-benefit": () => import("../../kinesiology/countermovement-jump-benefit/index.js"),
+  "kinesiology/shoulder-rotation-arc": () => import("../../kinesiology/shoulder-rotation-arc/index.js"),
+  "laser/nominal-ocular-hazard-distance": () => import("../../laser/nominal-ocular-hazard-distance/index.js"),
+  "laser/thermal-lens-coefficient": () => import("../../laser/thermal-lens-coefficient/index.js"),
   "logistics/reorder-point-safety-stock": () => import("../../logistics/reorder-point-safety-stock/index.js"),
   "matrix/cholesky-decomposition": () => import("../../matrix/cholesky-decomposition/index.js"),
   "oenology/barrel-extraction-equivalent-days": () => import("../../oenology/barrel-extraction-equivalent-days/index.js"),

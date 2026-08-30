@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "finance/effective-annual-rate": () => import("../../finance/effective-annual-rate/index.js"),
   "futurology/kurzweil-law-accelerating-returns-lookup": () => import("../../futurology/kurzweil-law-accelerating-returns-lookup/index.js"),
   "geology/choke-flow-rate-gilbert": () => import("../../geology/choke-flow-rate-gilbert/index.js"),
+  "laser/apd-mode-comparison": () => import("../../laser/apd-mode-comparison/index.js"),
   "logistics/cost-per-unit-shipped-allocation": () => import("../../logistics/cost-per-unit-shipped-allocation/index.js"),
   "logistics/lines-per-hour-pack-station": () => import("../../logistics/lines-per-hour-pack-station/index.js"),
   "music/tape-speed-cm-s-from-ips": () => import("../../music/tape-speed-cm-s-from-ips/index.js"),

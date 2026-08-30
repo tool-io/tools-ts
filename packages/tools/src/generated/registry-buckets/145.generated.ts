@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/early-lateral-energy-fraction": () => import("../../acoustics/early-lateral-energy-fraction/index.js"),
   "archival-studies/pdfa-part-selector": () => import("../../archival-studies/pdfa-part-selector/index.js"),
   "aviation/landing-weight": () => import("../../aviation/landing-weight/index.js"),
   "biology/complement-dna": () => import("../../biology/complement-dna/index.js"),
@@ -15,12 +16,17 @@ export const toolModuleLoaders: Readonly<
   "cost/employee": () => import("../../cost/employee/index.js"),
   "electronics/magnetic-flux": () => import("../../electronics/magnetic-flux/index.js"),
   "engineering/earthwork-volume-average-end-area": () => import("../../engineering/earthwork-volume-average-end-area/index.js"),
+  "epigenetics/ctcf-orientation": () => import("../../epigenetics/ctcf-orientation/index.js"),
   "film/mired-to-kelvin": () => import("../../film/mired-to-kelvin/index.js"),
   "film/shutter-speed-to-shutter-angle": () => import("../../film/shutter-speed-to-shutter-angle/index.js"),
   "futurology/global-catastrophic-risk-scenario-register-lookup": () => import("../../futurology/global-catastrophic-risk-scenario-register-lookup/index.js"),
   "geology/decline-rate-harmonic": () => import("../../geology/decline-rate-harmonic/index.js"),
+  "http/accept-language-parser": () => import("../../http/accept-language-parser/index.js"),
+  "journalism/package-runtime": () => import("../../journalism/package-runtime/index.js"),
+  "kinesiology/step-width-screen": () => import("../../kinesiology/step-width-screen/index.js"),
   "laser/laser-fiber-bragg-grating-strain-temperature-pitch-shift-formula-calculator": () => import("../../laser/laser-fiber-bragg-grating-strain-temperature-pitch-shift-formula-calculator/index.js"),
   "physics/momentum": () => import("../../physics/momentum/index.js"),
+  "proteomics/phosphoserine-adapter-motifs": () => import("../../proteomics/phosphoserine-adapter-motifs/index.js"),
   "random/sinhala-character": () => import("../../random/sinhala-character/index.js"),
   "random/tangsa-character": () => import("../../random/tangsa-character/index.js"),
   "random/warang-citi-character": () => import("../../random/warang-citi-character/index.js"),
@@ -31,4 +37,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/magnitude-scaling-saturation-check": () => import("../../seismology/magnitude-scaling-saturation-check/index.js"),
   "semiconductor/ballistic-mean-free-path": () => import("../../semiconductor/ballistic-mean-free-path/index.js"),
   "semiconductor/spin-qubit-zeeman-splitting": () => import("../../semiconductor/spin-qubit-zeeman-splitting/index.js"),
+  "taxation/tanning-excise-tax": () => import("../../taxation/tanning-excise-tax/index.js"),
 };

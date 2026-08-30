@@ -4,10 +4,12 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/astm-c423-method-reference": () => import("../../acoustics/astm-c423-method-reference/index.js"),
   "actuarial/independent-to-dependent-decrement": () => import("../../actuarial/independent-to-dependent-decrement/index.js"),
   "aviation/magnetic-bearing-from-true": () => import("../../aviation/magnetic-bearing-from-true/index.js"),
   "aviation/pressure-altitude-corrected-temp": () => import("../../aviation/pressure-altitude-corrected-temp/index.js"),
   "biology/oxygen-saturation": () => import("../../biology/oxygen-saturation/index.js"),
+  "classics/inscription-letter-normalizer": () => import("../../classics/inscription-letter-normalizer/index.js"),
   "electronics/audio-crossover-slope": () => import("../../electronics/audio-crossover-slope/index.js"),
   "electronics/buck-boost-duty-cycle": () => import("../../electronics/buck-boost-duty-cycle/index.js"),
   "electronics/current-mirror-ratio": () => import("../../electronics/current-mirror-ratio/index.js"),
@@ -21,12 +23,17 @@ export const toolModuleLoaders: Readonly<
   "hash/blake3": () => import("../../hash/blake3/index.js"),
   "hash/keccak-256": () => import("../../hash/keccak-256/index.js"),
   "horology/synodic-cycle-display": () => import("../../horology/synodic-cycle-display/index.js"),
+  "journalism/editor-staffing-ratio": () => import("../../journalism/editor-staffing-ratio/index.js"),
+  "kinesiology/bar-path-classifier": () => import("../../kinesiology/bar-path-classifier/index.js"),
+  "laser/wobble-weld-coverage": () => import("../../laser/wobble-weld-coverage/index.js"),
   "logistics/freight-class-nmfc-density-lookup": () => import("../../logistics/freight-class-nmfc-density-lookup/index.js"),
+  "metabolomics/nadh-nad-redox-index": () => import("../../metabolomics/nadh-nad-redox-index/index.js"),
   "microcontroller/i2c-bitrate": () => import("../../microcontroller/i2c-bitrate/index.js"),
   "number/digit-count": () => import("../../number/digit-count/index.js"),
   "number/divisibility-checker": () => import("../../number/divisibility-checker/index.js"),
   "oenology/protein-stability-bentotest": () => import("../../oenology/protein-stability-bentotest/index.js"),
   "physics/average-speed": () => import("../../physics/average-speed/index.js"),
+  "proteomics/b-ion-series": () => import("../../proteomics/b-ion-series/index.js"),
   "random/bassa-vah-letter": () => import("../../random/bassa-vah-letter/index.js"),
   "real-estate/property-tax": () => import("../../real-estate/property-tax/index.js"),
   "sailing/sail-area-displacement-ratio": () => import("../../sailing/sail-area-displacement-ratio/index.js"),
@@ -34,5 +41,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/renewal-bpt-coefficient-variation": () => import("../../seismology/renewal-bpt-coefficient-variation/index.js"),
   "semiconductor/quantum-well-thickness-from-energy": () => import("../../semiconductor/quantum-well-thickness-from-energy/index.js"),
   "sociology/mean-age-at-childbearing": () => import("../../sociology/mean-age-at-childbearing/index.js"),
+  "transcriptomics/ambient-rna-correction": () => import("../../transcriptomics/ambient-rna-correction/index.js"),
   "validate/ip-address": () => import("../../validate/ip-address/index.js"),
+  "web/modulepreload-detector": () => import("../../web/modulepreload-detector/index.js"),
 };

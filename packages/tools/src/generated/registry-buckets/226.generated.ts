@@ -4,7 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/seat-absorption-delta": () => import("../../acoustics/seat-absorption-delta/index.js"),
   "acoustics/sone-to-phon-converter": () => import("../../acoustics/sone-to-phon-converter/index.js"),
+  "acoustics/speech-to-song-reference": () => import("../../acoustics/speech-to-song-reference/index.js"),
   "arithmetic/add-numbers": () => import("../../arithmetic/add-numbers/index.js"),
   "aviation/v-speed-vs1": () => import("../../aviation/v-speed-vs1/index.js"),
   "biology/pulmonary-vascular-resistance": () => import("../../biology/pulmonary-vascular-resistance/index.js"),
@@ -25,6 +27,9 @@ export const toolModuleLoaders: Readonly<
   "geology/seismic-stack-velocity": () => import("../../geology/seismic-stack-velocity/index.js"),
   "hash/blake2b-512": () => import("../../hash/blake2b-512/index.js"),
   "hash/md5": () => import("../../hash/md5/index.js"),
+  "journalism/correspondent-risk": () => import("../../journalism/correspondent-risk/index.js"),
+  "journalism/roundup-source-coverage": () => import("../../journalism/roundup-source-coverage/index.js"),
+  "laser/lidar-polarization-ratio": () => import("../../laser/lidar-polarization-ratio/index.js"),
   "music/guitar-fret-distance-mm-from-scale": () => import("../../music/guitar-fret-distance-mm-from-scale/index.js"),
   "music/note-value-duration-seconds-at-bpm": () => import("../../music/note-value-duration-seconds-at-bpm/index.js"),
   "physics/force": () => import("../../physics/force/index.js"),

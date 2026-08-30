@@ -20,11 +20,13 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/underdot-uncertain-validator": () => import("../../epigraphy/underdot-uncertain-validator/index.js"),
   "geology/decline-rate-hyperbolic": () => import("../../geology/decline-rate-hyperbolic/index.js"),
   "geology/preconsolidation-pressure": () => import("../../geology/preconsolidation-pressure/index.js"),
+  "kinesiology/berg-balance-score": () => import("../../kinesiology/berg-balance-score/index.js"),
   "numismatics/trade-fairness-value-swap-checker": () => import("../../numismatics/trade-fairness-value-swap-checker/index.js"),
   "random/hanifi-rohingya-letter": () => import("../../random/hanifi-rohingya-letter/index.js"),
   "random/syloti-nagri-character": () => import("../../random/syloti-nagri-character/index.js"),
   "real-estate/lease-escalation": () => import("../../real-estate/lease-escalation/index.js"),
   "seismology/first-break-snr-validity-flagger": () => import("../../seismology/first-break-snr-validity-flagger/index.js"),
+  "taxation/pillar-two-top-up-tax": () => import("../../taxation/pillar-two-top-up-tax/index.js"),
   "text/word-length-histogram": () => import("../../text/word-length-histogram/index.js"),
   "typography/major-third-scale-generator": () => import("../../typography/major-third-scale-generator/index.js"),
 };

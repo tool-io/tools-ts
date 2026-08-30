@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/concert-hall-volume-per-seat": () => import("../../acoustics/concert-hall-volume-per-seat/index.js"),
+  "acoustics/speech-snr-screen": () => import("../../acoustics/speech-snr-screen/index.js"),
   "acoustics/total-absorption-sabins": () => import("../../acoustics/total-absorption-sabins/index.js"),
   "actuarial/last-survivor-probability": () => import("../../actuarial/last-survivor-probability/index.js"),
   "biology/carrying-capacity-checker": () => import("../../biology/carrying-capacity-checker/index.js"),
@@ -15,11 +17,14 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/serif-era-classifier": () => import("../../epigraphy/serif-era-classifier/index.js"),
   "futurology/weak-signal-scanning-horizon-classifier": () => import("../../futurology/weak-signal-scanning-horizon-classifier/index.js"),
   "geometry/sphere-surface-area": () => import("../../geometry/sphere-surface-area/index.js"),
+  "insurance/filing-expiration": () => import("../../insurance/filing-expiration/index.js"),
   "laser/laser-yb-yag-thin-disk-multipass-pump-absorption-efficiency-calculator": () => import("../../laser/laser-yb-yag-thin-disk-multipass-pump-absorption-efficiency-calculator/index.js"),
   "matrix/determinant-2x2": () => import("../../matrix/determinant-2x2/index.js"),
+  "metabolomics/retention-time-drift": () => import("../../metabolomics/retention-time-drift/index.js"),
   "mycology/basidia-four-spored-checker": () => import("../../mycology/basidia-four-spored-checker/index.js"),
   "number/square-free-checker": () => import("../../number/square-free-checker/index.js"),
   "numismatics/slab-tier-break-even-value": () => import("../../numismatics/slab-tier-break-even-value/index.js"),
+  "pedagogy/discussion-rubric-score": () => import("../../pedagogy/discussion-rubric-score/index.js"),
   "seismology/quarter-wave-layer-higher-mode-harmonics-calculator": () => import("../../seismology/quarter-wave-layer-higher-mode-harmonics-calculator/index.js"),
   "seismology/tsunami-runup-empirical-okal-synolakis-lookup": () => import("../../seismology/tsunami-runup-empirical-okal-synolakis-lookup/index.js"),
   "semiconductor/bjt-punch-through-voltage": () => import("../../semiconductor/bjt-punch-through-voltage/index.js"),

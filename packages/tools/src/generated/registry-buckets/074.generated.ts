@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/missing-invoice-sequences": () => import("../../auditing/missing-invoice-sequences/index.js"),
+  "auditing/trust-criteria-coverage": () => import("../../auditing/trust-criteria-coverage/index.js"),
   "biology/chao1-estimator": () => import("../../biology/chao1-estimator/index.js"),
   "carpentry/nail-length-rule": () => import("../../carpentry/nail-length-rule/index.js"),
   "chemistry/bond-polarity": () => import("../../chemistry/bond-polarity/index.js"),
@@ -15,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "convert/hsl-to-oklch": () => import("../../convert/hsl-to-oklch/index.js"),
   "convert/json-to-table": () => import("../../convert/json-to-table/index.js"),
   "convert/rot13": () => import("../../convert/rot13/index.js"),
+  "electronics/crystal-aging-ppm": () => import("../../electronics/crystal-aging-ppm/index.js"),
   "electronics/phototransistor-collector-current": () => import("../../electronics/phototransistor-collector-current/index.js"),
   "encode/varint": () => import("../../encode/varint/index.js"),
   "engineering/flywheel-kinetic-energy": () => import("../../engineering/flywheel-kinetic-energy/index.js"),
@@ -22,7 +25,9 @@ export const toolModuleLoaders: Readonly<
   "film/motion-blur-shutter-angle": () => import("../../film/motion-blur-shutter-angle/index.js"),
   "geology/mg-number-vs-silica": () => import("../../geology/mg-number-vs-silica/index.js"),
   "horology/carrousel-rotation": () => import("../../horology/carrousel-rotation/index.js"),
+  "laser/surface-roughness-improvement": () => import("../../laser/surface-roughness-improvement/index.js"),
   "logistics/cycle-count-daily-sample-size": () => import("../../logistics/cycle-count-daily-sample-size/index.js"),
+  "metabolomics/adduct-mz": () => import("../../metabolomics/adduct-mz/index.js"),
   "network/ipv4-cidr": () => import("../../network/ipv4-cidr/index.js"),
   "number/smith-checker": () => import("../../number/smith-checker/index.js"),
   "paleography/insular-family-flag-checker": () => import("../../paleography/insular-family-flag-checker/index.js"),

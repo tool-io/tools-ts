@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/stud-wall-stc-comparison": () => import("../../acoustics/stud-wall-stc-comparison/index.js"),
   "auditing/haphazard-selection-randomization-bias-warning-checker": () => import("../../auditing/haphazard-selection-randomization-bias-warning-checker/index.js"),
   "carpentry/veneer-sheets-needed": () => import("../../carpentry/veneer-sheets-needed/index.js"),
   "cartography/enlargement-new-scale": () => import("../../cartography/enlargement-new-scale/index.js"),
@@ -11,18 +12,25 @@ export const toolModuleLoaders: Readonly<
   "construction/concrete-slump-water-adjustment": () => import("../../construction/concrete-slump-water-adjustment/index.js"),
   "decode/sqids": () => import("../../decode/sqids/index.js"),
   "decode/varint": () => import("../../decode/varint/index.js"),
+  "epigenetics/methylation-haplotype-tally": () => import("../../epigenetics/methylation-haplotype-tally/index.js"),
   "epigraphy/kalendes-reverse-date-solver": () => import("../../epigraphy/kalendes-reverse-date-solver/index.js"),
   "horology/bracelet-link-adjustment": () => import("../../horology/bracelet-link-adjustment/index.js"),
   "horology/solar-to-sidereal": () => import("../../horology/solar-to-sidereal/index.js"),
+  "html/tag-counter": () => import("../../html/tag-counter/index.js"),
   "json/minify": () => import("../../json/minify/index.js"),
+  "kinesiology/dynamic-valgus-angle-screen": () => import("../../kinesiology/dynamic-valgus-angle-screen/index.js"),
+  "metabolomics/lactate-pyruvate-ratio": () => import("../../metabolomics/lactate-pyruvate-ratio/index.js"),
   "mycology/brown-white-rot-signature-classifier": () => import("../../mycology/brown-white-rot-signature-classifier/index.js"),
   "number/divisors": () => import("../../number/divisors/index.js"),
   "paleography/acre-virgate-hide-converter": () => import("../../paleography/acre-virgate-hide-converter/index.js"),
   "paleography/caroline-era-classifier": () => import("../../paleography/caroline-era-classifier/index.js"),
   "paleography/uvi-interchange-era-checker": () => import("../../paleography/uvi-interchange-era-checker/index.js"),
+  "proteomics/ibaq-abundance": () => import("../../proteomics/ibaq-abundance/index.js"),
+  "proteomics/protein-sequence-isoelectric-point": () => import("../../proteomics/protein-sequence-isoelectric-point/index.js"),
   "random/dice-face": () => import("../../random/dice-face/index.js"),
   "random/gujarati-character": () => import("../../random/gujarati-character/index.js"),
   "semiconductor/effective-density-valence-band": () => import("../../semiconductor/effective-density-valence-band/index.js"),
   "semiconductor/fe-ram-remnant-polarization": () => import("../../semiconductor/fe-ram-remnant-polarization/index.js"),
   "size/bicycle-frame": () => import("../../size/bicycle-frame/index.js"),
+  "transcriptomics/dpcr-poisson-concentration": () => import("../../transcriptomics/dpcr-poisson-concentration/index.js"),
 };

@@ -13,9 +13,11 @@ export const toolModuleLoaders: Readonly<
   "electronics/reluctance-calculation": () => import("../../electronics/reluctance-calculation/index.js"),
   "epigraphy/annorum-format-parser": () => import("../../epigraphy/annorum-format-parser/index.js"),
   "film/projector-throw-distance": () => import("../../film/projector-throw-distance/index.js"),
+  "horology/daily-rate-average-comparison": () => import("../../horology/daily-rate-average-comparison/index.js"),
   "horology/hand-wind-turns-per-day": () => import("../../horology/hand-wind-turns-per-day/index.js"),
   "laser/laser-flashlamp-versus-diode-pumping-wall-plug-efficiency-compare": () => import("../../laser/laser-flashlamp-versus-diode-pumping-wall-plug-efficiency-compare/index.js"),
   "logistics/backorder-rate-percent": () => import("../../logistics/backorder-rate-percent/index.js"),
+  "numismatics/alexander-drachm-monogram-record-lookup": () => import("../../numismatics/alexander-drachm-monogram-record-lookup/index.js"),
   "real-estate/tenant-retention-rate": () => import("../../real-estate/tenant-retention-rate/index.js"),
   "size/jacket": () => import("../../size/jacket/index.js"),
 };

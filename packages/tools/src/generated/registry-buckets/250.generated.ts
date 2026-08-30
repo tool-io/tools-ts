@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/hz-to-mel-converter": () => import("../../acoustics/hz-to-mel-converter/index.js"),
+  "acoustics/one-decibel-jnd-reference": () => import("../../acoustics/one-decibel-jnd-reference/index.js"),
   "actuarial/fackler-reserve-step": () => import("../../actuarial/fackler-reserve-step/index.js"),
   "actuarial/full-preliminary-term-reserve": () => import("../../actuarial/full-preliminary-term-reserve/index.js"),
   "aquaculture/dressing-percentage": () => import("../../aquaculture/dressing-percentage/index.js"),
@@ -31,6 +32,9 @@ export const toolModuleLoaders: Readonly<
   "geology/hydraulic-conductivity-from-permeability": () => import("../../geology/hydraulic-conductivity-from-permeability/index.js"),
   "horology/jumping-hour-advance-rate": () => import("../../horology/jumping-hour-advance-rate/index.js"),
   "horology/tourbillon-rotations-per-hour": () => import("../../horology/tourbillon-rotations-per-hour/index.js"),
+  "laser/fret-efficiency": () => import("../../laser/fret-efficiency/index.js"),
+  "laser/parabolic-pulse-fit": () => import("../../laser/parabolic-pulse-fit/index.js"),
+  "metabolomics/adenylate-energy-charge": () => import("../../metabolomics/adenylate-energy-charge/index.js"),
   "mortgage/czech-fixed-period-repricing": () => import("../../mortgage/czech-fixed-period-repricing/index.js"),
   "numismatics/slab-storage-box-row-count": () => import("../../numismatics/slab-storage-box-row-count/index.js"),
   "numismatics/underinsured-coverage-ratio-checker": () => import("../../numismatics/underinsured-coverage-ratio-checker/index.js"),
@@ -43,4 +47,5 @@ export const toolModuleLoaders: Readonly<
   "size/abaya-reconstruction": () => import("../../size/abaya-reconstruction/index.js"),
   "size/swimwear": () => import("../../size/swimwear/index.js"),
   "sociology/rent-burden-30-percent-checker": () => import("../../sociology/rent-burden-30-percent-checker/index.js"),
+  "taxation/vacation-home-use-split": () => import("../../taxation/vacation-home-use-split/index.js"),
 };

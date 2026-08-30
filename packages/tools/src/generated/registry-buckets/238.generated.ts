@@ -5,7 +5,9 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "auditing/lead-schedule-supporting-detail-tie-out-method-lookup": () => import("../../auditing/lead-schedule-supporting-detail-tie-out-method-lookup/index.js"),
+  "auditing/management-letter-coverage": () => import("../../auditing/management-letter-coverage/index.js"),
   "aviation/total-moment": () => import("../../aviation/total-moment/index.js"),
+  "banking/escrow-cushion-check": () => import("../../banking/escrow-cushion-check/index.js"),
   "biology/fat-percentage-carcass": () => import("../../biology/fat-percentage-carcass/index.js"),
   "carpentry/stueckliste-tuer-rahmen-fuellung": () => import("../../carpentry/stueckliste-tuer-rahmen-fuellung/index.js"),
   "chemistry/titration-equivalence-volume": () => import("../../chemistry/titration-equivalence-volume/index.js"),
@@ -16,8 +18,13 @@ export const toolModuleLoaders: Readonly<
   "engineering/escape-velocity": () => import("../../engineering/escape-velocity/index.js"),
   "futurology/long-now-decade-century-timeframe-scale-lookup": () => import("../../futurology/long-now-decade-century-timeframe-scale-lookup/index.js"),
   "generate/uuid-v5": () => import("../../generate/uuid-v5/index.js"),
+  "horology/bronze-patina-development-factor-lookup": () => import("../../horology/bronze-patina-development-factor-lookup/index.js"),
+  "journalism/internship-conversion-rate": () => import("../../journalism/internship-conversion-rate/index.js"),
   "paleography/batarde-mix-proportion-calculator": () => import("../../paleography/batarde-mix-proportion-calculator/index.js"),
   "parasitology/flotac-two-chamber-epg": () => import("../../parasitology/flotac-two-chamber-epg/index.js"),
+  "pedagogy/desirable-difficulty-calibration": () => import("../../pedagogy/desirable-difficulty-calibration/index.js"),
   "real-estate/transfer-tax": () => import("../../real-estate/transfer-tax/index.js"),
   "sailing/righting-arm-gz": () => import("../../sailing/righting-arm-gz/index.js"),
+  "theatre/show-report-coverage": () => import("../../theatre/show-report-coverage/index.js"),
+  "transcriptomics/polya-signal-scanner": () => import("../../transcriptomics/polya-signal-scanner/index.js"),
 };

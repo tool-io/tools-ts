@@ -4,7 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/cloud-responsibility-coverage": () => import("../../auditing/cloud-responsibility-coverage/index.js"),
   "auditing/preliminary-analytics-percent-change-flagger": () => import("../../auditing/preliminary-analytics-percent-change-flagger/index.js"),
+  "auditing/sample-stratification": () => import("../../auditing/sample-stratification/index.js"),
   "biology/genotype-count": () => import("../../biology/genotype-count/index.js"),
   "biology/vapor-pressure-deficit-plant": () => import("../../biology/vapor-pressure-deficit-plant/index.js"),
   "chemistry/analytical-dilution-correction": () => import("../../chemistry/analytical-dilution-correction/index.js"),
@@ -18,6 +20,13 @@ export const toolModuleLoaders: Readonly<
   "finance/annualized-return": () => import("../../finance/annualized-return/index.js"),
   "geology/fractional-flow-water": () => import("../../geology/fractional-flow-water/index.js"),
   "geometry/ellipsoid-volume": () => import("../../geometry/ellipsoid-volume/index.js"),
+  "horology/vintage-service-schedule-budget-planner": () => import("../../horology/vintage-service-schedule-budget-planner/index.js"),
+  "journalism/digital-security-checklist": () => import("../../journalism/digital-security-checklist/index.js"),
+  "laser/cutting-lead-distance": () => import("../../laser/cutting-lead-distance/index.js"),
+  "laser/lwfa-dephasing-length": () => import("../../laser/lwfa-dephasing-length/index.js"),
+  "laser/mzm-chirp": () => import("../../laser/mzm-chirp/index.js"),
+  "laser/ring-isolation-ratio": () => import("../../laser/ring-isolation-ratio/index.js"),
+  "laser/thermal-blooming-threshold": () => import("../../laser/thermal-blooming-threshold/index.js"),
   "logistics/container-utilization-cbm-percent": () => import("../../logistics/container-utilization-cbm-percent/index.js"),
   "logistics/order-to-door-response-time": () => import("../../logistics/order-to-door-response-time/index.js"),
   "logistics/reefer-fuel-consumption-per-day": () => import("../../logistics/reefer-fuel-consumption-per-day/index.js"),

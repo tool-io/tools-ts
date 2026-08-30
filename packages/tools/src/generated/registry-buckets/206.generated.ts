@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/astc-field-rating-reference": () => import("../../acoustics/astc-field-rating-reference/index.js"),
   "actuarial/chain-ladder-development-factor": () => import("../../actuarial/chain-ladder-development-factor/index.js"),
   "aquaculture/weight-length-relationship": () => import("../../aquaculture/weight-length-relationship/index.js"),
   "aviation/estimated-fuel-trip": () => import("../../aviation/estimated-fuel-trip/index.js"),
@@ -27,14 +28,18 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/stipendiorum-years-extractor": () => import("../../epigraphy/stipendiorum-years-extractor/index.js"),
   "futurology/superforecasting-traits-tetlock-team-traits-lookup": () => import("../../futurology/superforecasting-traits-tetlock-team-traits-lookup/index.js"),
   "graph/bipartite-checker": () => import("../../graph/bipartite-checker/index.js"),
+  "kinesiology/fitness-fatigue-balance": () => import("../../kinesiology/fitness-fatigue-balance/index.js"),
+  "laser/synthetic-wavelength": () => import("../../laser/synthetic-wavelength/index.js"),
   "logistics/parcel-locker-saving-percent-compare": () => import("../../logistics/parcel-locker-saving-percent-compare/index.js"),
   "music/loudness-lufs-streaming-target-offset": () => import("../../music/loudness-lufs-streaming-target-offset/index.js"),
   "oenology/so2-addition-ml-hl": () => import("../../oenology/so2-addition-ml-hl/index.js"),
   "optimization/particle-swarm": () => import("../../optimization/particle-swarm/index.js"),
+  "proteomics/amino-acid-composition": () => import("../../proteomics/amino-acid-composition/index.js"),
   "random/ancient-greek-musical-symbol": () => import("../../random/ancient-greek-musical-symbol/index.js"),
   "random/linear-a-sign": () => import("../../random/linear-a-sign/index.js"),
   "sailing/sail-area-spinnaker": () => import("../../sailing/sail-area-spinnaker/index.js"),
   "semiconductor/plasmon-frequency": () => import("../../semiconductor/plasmon-frequency/index.js"),
   "size/gambeson-reconstruction": () => import("../../size/gambeson-reconstruction/index.js"),
   "text/palindrome-checker": () => import("../../text/palindrome-checker/index.js"),
+  "transcriptomics/fragments-per-kilobase-million": () => import("../../transcriptomics/fragments-per-kilobase-million/index.js"),
 };

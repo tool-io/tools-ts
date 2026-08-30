@@ -4,7 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/iso-3382-part-reference": () => import("../../acoustics/iso-3382-part-reference/index.js"),
   "auditing/attribute-sampling-deviation-rate-size-computation": () => import("../../auditing/attribute-sampling-deviation-rate-size-computation/index.js"),
+  "auditing/disagreement-resolution": () => import("../../auditing/disagreement-resolution/index.js"),
   "auditing/evidence-hierarchy-external-confirmation-ranking-table": () => import("../../auditing/evidence-hierarchy-external-confirmation-ranking-table/index.js"),
   "aviation/runway-required-takeoff": () => import("../../aviation/runway-required-takeoff/index.js"),
   "biology/phosphorus-nii-index": () => import("../../biology/phosphorus-nii-index/index.js"),
@@ -16,13 +18,19 @@ export const toolModuleLoaders: Readonly<
   "electronics/rl-time-constant": () => import("../../electronics/rl-time-constant/index.js"),
   "engineering/fan-power": () => import("../../engineering/fan-power/index.js"),
   "engineering/water-demand-average": () => import("../../engineering/water-demand-average/index.js"),
+  "epigenetics/cobra-retention": () => import("../../epigenetics/cobra-retention/index.js"),
   "epigraphy/fracture-join-piece-reconciler": () => import("../../epigraphy/fracture-join-piece-reconciler/index.js"),
   "epigraphy/guide-line-spacing-checker": () => import("../../epigraphy/guide-line-spacing-checker/index.js"),
   "film/footage-to-runtime": () => import("../../film/footage-to-runtime/index.js"),
+  "futurology/forecast-calibration": () => import("../../futurology/forecast-calibration/index.js"),
   "geology/bit-weight-on-bit": () => import("../../geology/bit-weight-on-bit/index.js"),
+  "kinesiology/hamstring-quadriceps-ratio": () => import("../../kinesiology/hamstring-quadriceps-ratio/index.js"),
+  "kinesiology/mini-bestest-score": () => import("../../kinesiology/mini-bestest-score/index.js"),
+  "laser/repeater-link-success": () => import("../../laser/repeater-link-success/index.js"),
   "logistics/fuel-surcharge-percent-add-on": () => import("../../logistics/fuel-surcharge-percent-add-on/index.js"),
   "network/prefix-to-netmask": () => import("../../network/prefix-to-netmask/index.js"),
   "number/perfect-cube-checker": () => import("../../number/perfect-cube-checker/index.js"),
+  "numismatics/machine-vs-die-doubling": () => import("../../numismatics/machine-vs-die-doubling/index.js"),
   "numismatics/problem-coin-discount-percent": () => import("../../numismatics/problem-coin-discount-percent/index.js"),
   "random/baybayin-character": () => import("../../random/baybayin-character/index.js"),
   "random/khmer-character": () => import("../../random/khmer-character/index.js"),
@@ -31,4 +39,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/built-in-potential": () => import("../../semiconductor/built-in-potential/index.js"),
   "size/shorts": () => import("../../size/shorts/index.js"),
   "size/socks": () => import("../../size/socks/index.js"),
+  "taxation/s-corp-basis-tracker": () => import("../../taxation/s-corp-basis-tracker/index.js"),
+  "theatre/wig-ventilation-hours": () => import("../../theatre/wig-ventilation-hours/index.js"),
+  "transcriptomics/gapmer-layout": () => import("../../transcriptomics/gapmer-layout/index.js"),
 };

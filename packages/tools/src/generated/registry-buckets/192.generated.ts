@@ -4,7 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/sti-edition-history": () => import("../../acoustics/sti-edition-history/index.js"),
   "acoustics/vibrating-string-fundamental": () => import("../../acoustics/vibrating-string-fundamental/index.js"),
+  "auditing/sensitive-matter-routing": () => import("../../auditing/sensitive-matter-routing/index.js"),
   "aviation/vapp-speed": () => import("../../aviation/vapp-speed/index.js"),
   "biology/ec50": () => import("../../biology/ec50/index.js"),
   "biology/population-growth-exponential": () => import("../../biology/population-growth-exponential/index.js"),
@@ -35,4 +37,5 @@ export const toolModuleLoaders: Readonly<
   "size/jeans": () => import("../../size/jeans/index.js"),
   "statistics/interquartile-mean": () => import("../../statistics/interquartile-mean/index.js"),
   "statistics/percentile-value": () => import("../../statistics/percentile-value/index.js"),
+  "transcriptomics/immune-signature-score": () => import("../../transcriptomics/immune-signature-score/index.js"),
 };

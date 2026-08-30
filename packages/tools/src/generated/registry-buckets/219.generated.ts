@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/range-shadow-zone-verification": () => import("../../acoustics/range-shadow-zone-verification/index.js"),
   "acoustics/sound-energy-density": () => import("../../acoustics/sound-energy-density/index.js"),
   "auditing/engagement-quality-review-second-partner-requirements-lookup": () => import("../../auditing/engagement-quality-review-second-partner-requirements-lookup/index.js"),
   "biology/broad-sense-heritability": () => import("../../biology/broad-sense-heritability/index.js"),
@@ -18,7 +19,10 @@ export const toolModuleLoaders: Readonly<
   "film/pixel-density-ppi": () => import("../../film/pixel-density-ppi/index.js"),
   "geology/api-gravity": () => import("../../geology/api-gravity/index.js"),
   "horology/gasket-compression-percent": () => import("../../horology/gasket-compression-percent/index.js"),
+  "horology/grand-feu-enamel-crack-risk-factor-lookup": () => import("../../horology/grand-feu-enamel-crack-risk-factor-lookup/index.js"),
   "horology/thermocompensation-shift": () => import("../../horology/thermocompensation-shift/index.js"),
+  "journalism/rate-term-selector": () => import("../../journalism/rate-term-selector/index.js"),
+  "metabolomics/anaplerosis-flux-split": () => import("../../metabolomics/anaplerosis-flux-split/index.js"),
   "music/bpm-to-ms": () => import("../../music/bpm-to-ms/index.js"),
   "mycology/cap-shape-profile-classifier": () => import("../../mycology/cap-shape-profile-classifier/index.js"),
   "mycology/clone-area-hectares-note-generator": () => import("../../mycology/clone-area-hectares-note-generator/index.js"),
@@ -33,4 +37,5 @@ export const toolModuleLoaders: Readonly<
   "size/screw": () => import("../../size/screw/index.js"),
   "statistics/fisher-exact-test": () => import("../../statistics/fisher-exact-test/index.js"),
   "take-home-pay-calculator/jp": () => import("../../take-home-pay-calculator/jp/index.js"),
+  "taxation/de-minimis-meal-screen": () => import("../../taxation/de-minimis-meal-screen/index.js"),
 };

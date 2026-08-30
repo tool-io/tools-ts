@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/faa-part-150-land-use-reference": () => import("../../acoustics/faa-part-150-land-use-reference/index.js"),
   "aviation/best-glide-speed": () => import("../../aviation/best-glide-speed/index.js"),
   "biology/apoptotic-index": () => import("../../biology/apoptotic-index/index.js"),
   "biology/species-evenness": () => import("../../biology/species-evenness/index.js"),
@@ -16,8 +17,12 @@ export const toolModuleLoaders: Readonly<
   "electronics/battery-self-discharge-per-month": () => import("../../electronics/battery-self-discharge-per-month/index.js"),
   "electronics/inductor-energy-density": () => import("../../electronics/inductor-energy-density/index.js"),
   "engineering/spring-constant": () => import("../../engineering/spring-constant/index.js"),
+  "epigenetics/medip-enrichment": () => import("../../epigenetics/medip-enrichment/index.js"),
   "geology/material-balance-oil-initially-in-place": () => import("../../geology/material-balance-oil-initially-in-place/index.js"),
   "geology/q-system-rating": () => import("../../geology/q-system-rating/index.js"),
+  "horology/bulova-accutron-tuning-fork-history-lookup": () => import("../../horology/bulova-accutron-tuning-fork-history-lookup/index.js"),
+  "horology/radioluminescent-brightness-half-life-calculator": () => import("../../horology/radioluminescent-brightness-half-life-calculator/index.js"),
+  "horology/vermeil-layer-thickness-screen": () => import("../../horology/vermeil-layer-thickness-screen/index.js"),
   "oenology/drinking-window-peak": () => import("../../oenology/drinking-window-peak/index.js"),
   "random/lao-character": () => import("../../random/lao-character/index.js"),
   "random/meroitic-cursive-character": () => import("../../random/meroitic-cursive-character/index.js"),

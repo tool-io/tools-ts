@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "geology/gutenberg-richter-b-value": () => import("../../geology/gutenberg-richter-b-value/index.js"),
   "geology/leak-off-test-formation-strength": () => import("../../geology/leak-off-test-formation-strength/index.js"),
   "geology/slope-stability-factor-of-safety-bishop": () => import("../../geology/slope-stability-factor-of-safety-bishop/index.js"),
+  "insurance/hsa-tax-savings": () => import("../../insurance/hsa-tax-savings/index.js"),
   "logistics/net-freight-after-discount-fsc": () => import("../../logistics/net-freight-after-discount-fsc/index.js"),
   "mycology/lactophenol-clarity-rater": () => import("../../mycology/lactophenol-clarity-rater/index.js"),
   "paleography/hairline-flesh-note-generator": () => import("../../paleography/hairline-flesh-note-generator/index.js"),

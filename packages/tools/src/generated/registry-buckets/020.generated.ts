@@ -4,7 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/audience-absorption-reference": () => import("../../acoustics/audience-absorption-reference/index.js"),
   "aquaculture/hepatosomatic-index": () => import("../../aquaculture/hepatosomatic-index/index.js"),
+  "auditing/open-item-certification": () => import("../../auditing/open-item-certification/index.js"),
   "aviation/takeoff-distance-required-with-slope": () => import("../../aviation/takeoff-distance-required-with-slope/index.js"),
   "biology/cell-volume-sphere": () => import("../../biology/cell-volume-sphere/index.js"),
   "biology/hardy-weinberg-allele-frequency": () => import("../../biology/hardy-weinberg-allele-frequency/index.js"),
@@ -17,13 +19,22 @@ export const toolModuleLoaders: Readonly<
   "electronics/varactor-capacitance": () => import("../../electronics/varactor-capacitance/index.js"),
   "electronics/voltage-gain-db": () => import("../../electronics/voltage-gain-db/index.js"),
   "engineering/bevel-gear-pitch-angle": () => import("../../engineering/bevel-gear-pitch-angle/index.js"),
+  "epigenetics/hydroxymethylation-subtraction": () => import("../../epigenetics/hydroxymethylation-subtraction/index.js"),
   "forestry/leaf-area-index-forestry": () => import("../../forestry/leaf-area-index-forestry/index.js"),
   "generate/uuid-v3": () => import("../../generate/uuid-v3/index.js"),
+  "horology/case-refinishing-removal-budget-calculator": () => import("../../horology/case-refinishing-removal-budget-calculator/index.js"),
+  "horology/provenance-ownership-event-sequence-screen": () => import("../../horology/provenance-ownership-event-sequence-screen/index.js"),
+  "journalism/c2pa-provenance-audit": () => import("../../journalism/c2pa-provenance-audit/index.js"),
+  "laser/cavity-ring-down-reflectivity": () => import("../../laser/cavity-ring-down-reflectivity/index.js"),
+  "metabolomics/average-formula-mass": () => import("../../metabolomics/average-formula-mass/index.js"),
+  "neuroscience/reaction-time-hick": () => import("../../neuroscience/reaction-time-hick/index.js"),
   "numismatics/kennedy-40-percent-silver-content": () => import("../../numismatics/kennedy-40-percent-silver-content/index.js"),
   "paleography/manuscript-format-classifier": () => import("../../paleography/manuscript-format-classifier/index.js"),
   "probability/metropolis-hastings-sampler": () => import("../../probability/metropolis-hastings-sampler/index.js"),
+  "proteomics/target-decoy-fdr": () => import("../../proteomics/target-decoy-fdr/index.js"),
   "sailing/charted-depth-corrected": () => import("../../sailing/charted-depth-corrected/index.js"),
   "sailing/search-pattern-area": () => import("../../sailing/search-pattern-area/index.js"),
   "seismology/survey-design-fold-count-cmp-binning-summary": () => import("../../seismology/survey-design-fold-count-cmp-binning-summary/index.js"),
   "semiconductor/superlattice-miniband-width": () => import("../../semiconductor/superlattice-miniband-width/index.js"),
+  "web/cache-bust-adder": () => import("../../web/cache-bust-adder/index.js"),
 };

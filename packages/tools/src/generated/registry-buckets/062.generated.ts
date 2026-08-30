@@ -25,10 +25,12 @@ export const toolModuleLoaders: Readonly<
   "finance/break-even-units": () => import("../../finance/break-even-units/index.js"),
   "graph/topological-sort": () => import("../../graph/topological-sort/index.js"),
   "laser/laser-excimer-arf-krf-xecl-f2-gas-mixture-lifespan-table-lookup": () => import("../../laser/laser-excimer-arf-krf-xecl-f2-gas-mixture-lifespan-table-lookup/index.js"),
+  "laser/optical-chopper-timing": () => import("../../laser/optical-chopper-timing/index.js"),
   "numismatics/farthing-to-pound-converter": () => import("../../numismatics/farthing-to-pound-converter/index.js"),
   "random/cypriot-syllable": () => import("../../random/cypriot-syllable/index.js"),
   "seismology/gmpe-log-distance-attenuation": () => import("../../seismology/gmpe-log-distance-attenuation/index.js"),
   "seismology/surface-wave-magnitude-vk20-formula": () => import("../../seismology/surface-wave-magnitude-vk20-formula/index.js"),
   "semiconductor/heterojunction-band-offset": () => import("../../semiconductor/heterojunction-band-offset/index.js"),
   "size/protective-pad": () => import("../../size/protective-pad/index.js"),
+  "transcriptomics/tom-symmetry-audit": () => import("../../transcriptomics/tom-symmetry-audit/index.js"),
 };

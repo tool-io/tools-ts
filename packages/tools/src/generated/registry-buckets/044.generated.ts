@@ -4,8 +4,10 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/festival-noise-limit-screen": () => import("../../acoustics/festival-noise-limit-screen/index.js"),
   "actuarial/zillmer-reserve": () => import("../../actuarial/zillmer-reserve/index.js"),
   "auditing/agreed-upon-procedures-specific-findings-format-lookup": () => import("../../auditing/agreed-upon-procedures-specific-findings-format-lookup/index.js"),
+  "auditing/cold-review-escalation": () => import("../../auditing/cold-review-escalation/index.js"),
   "carpentry/gate-diagonal-brace-length": () => import("../../carpentry/gate-diagonal-brace-length/index.js"),
   "chemistry/compressibility-factor": () => import("../../chemistry/compressibility-factor/index.js"),
   "chemistry/electrolysis-time": () => import("../../chemistry/electrolysis-time/index.js"),
@@ -22,8 +24,12 @@ export const toolModuleLoaders: Readonly<
   "geology/hole-cleaning-efficiency": () => import("../../geology/hole-cleaning-efficiency/index.js"),
   "hash/sha3-512": () => import("../../hash/sha3-512/index.js"),
   "information/log-loss": () => import("../../information/log-loss/index.js"),
+  "journalism/ai-image-disclosure": () => import("../../journalism/ai-image-disclosure/index.js"),
   "laser/laser-core-numerical-aperture-mode-field-diameter-converter": () => import("../../laser/laser-core-numerical-aperture-mode-field-diameter-converter/index.js"),
   "laser/laser-facet-coating-ar-hr-mirror-power-ratio-lookup": () => import("../../laser/laser-facet-coating-ar-hr-mirror-power-ratio-lookup/index.js"),
+  "laser/polymerization-voxel-size": () => import("../../laser/polymerization-voxel-size/index.js"),
+  "laser/spatial-filter-pinhole": () => import("../../laser/spatial-filter-pinhole/index.js"),
+  "metabolomics/atp-coupling-efficiency": () => import("../../metabolomics/atp-coupling-efficiency/index.js"),
   "mycology/thermophile-cardinal-temps-recorder": () => import("../../mycology/thermophile-cardinal-temps-recorder/index.js"),
   "numismatics/shipping-insurance-cost-percent": () => import("../../numismatics/shipping-insurance-cost-percent/index.js"),
   "proportions/percentage-increase": () => import("../../proportions/percentage-increase/index.js"),
@@ -33,4 +39,6 @@ export const toolModuleLoaders: Readonly<
   "size/bodice-reconstruction": () => import("../../size/bodice-reconstruction/index.js"),
   "sociology/postponement-proportion-index": () => import("../../sociology/postponement-proportion-index/index.js"),
   "text/syllable-count-approx": () => import("../../text/syllable-count-approx/index.js"),
+  "transcriptomics/silhouette-score": () => import("../../transcriptomics/silhouette-score/index.js"),
+  "web/integrity-attribute-parser": () => import("../../web/integrity-attribute-parser/index.js"),
 };

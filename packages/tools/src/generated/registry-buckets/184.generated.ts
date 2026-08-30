@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "accounting/lifo-reserve-disclosure-computation": () => import("../../accounting/lifo-reserve-disclosure-computation/index.js"),
   "acoustics/mass-law-transmission-loss": () => import("../../acoustics/mass-law-transmission-loss/index.js"),
+  "acoustics/peutz-alcons-estimate": () => import("../../acoustics/peutz-alcons-estimate/index.js"),
   "biology/reverse-complement-dna": () => import("../../biology/reverse-complement-dna/index.js"),
   "chemistry/dalton-partial-pressure": () => import("../../chemistry/dalton-partial-pressure/index.js"),
   "chemistry/reaction-yield-mass": () => import("../../chemistry/reaction-yield-mass/index.js"),
@@ -13,10 +14,13 @@ export const toolModuleLoaders: Readonly<
   "electronics/headphone-impedance": () => import("../../electronics/headphone-impedance/index.js"),
   "forestry/biomass-expansion-factor": () => import("../../forestry/biomass-expansion-factor/index.js"),
   "forestry/form-factor": () => import("../../forestry/form-factor/index.js"),
+  "futurology/evidence-graph-mapper": () => import("../../futurology/evidence-graph-mapper/index.js"),
   "hash/sha-512-224": () => import("../../hash/sha-512-224/index.js"),
   "network/netmask-to-prefix": () => import("../../network/netmask-to-prefix/index.js"),
   "semiconductor/dram-retention-time": () => import("../../semiconductor/dram-retention-time/index.js"),
   "semiconductor/phonon-limited-mobility": () => import("../../semiconductor/phonon-limited-mobility/index.js"),
   "size/drill-bit": () => import("../../size/drill-bit/index.js"),
+  "taxation/grocery-basket-tax": () => import("../../taxation/grocery-basket-tax/index.js"),
   "text/suffix-lines": () => import("../../text/suffix-lines/index.js"),
+  "transcriptomics/sirna-gc-screen": () => import("../../transcriptomics/sirna-gc-screen/index.js"),
 };

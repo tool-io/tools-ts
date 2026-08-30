@@ -16,7 +16,10 @@ export const toolModuleLoaders: Readonly<
   "futurology/morphological-freedom-body-modification-principle-lookup": () => import("../../futurology/morphological-freedom-body-modification-principle-lookup/index.js"),
   "list/zip": () => import("../../list/zip/index.js"),
   "matrix/multiply": () => import("../../matrix/multiply/index.js"),
+  "metabolomics/dda-cycle-budget": () => import("../../metabolomics/dda-cycle-budget/index.js"),
+  "metabolomics/pooled-qc-cv-gate": () => import("../../metabolomics/pooled-qc-cv-gate/index.js"),
   "random/khudawadi-character": () => import("../../random/khudawadi-character/index.js"),
   "sailing/wind-pressure-on-sail": () => import("../../sailing/wind-pressure-on-sail/index.js"),
   "semiconductor/bjt-output-conductance": () => import("../../semiconductor/bjt-output-conductance/index.js"),
+  "transcriptomics/library-mito-fraction": () => import("../../transcriptomics/library-mito-fraction/index.js"),
 };

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/cremer-room-acoustics-history": () => import("../../acoustics/cremer-room-acoustics-history/index.js"),
   "astronomy/daylight": () => import("../../astronomy/daylight/index.js"),
   "biology/plasma-volume": () => import("../../biology/plasma-volume/index.js"),
   "biology/protein-efficiency-ratio": () => import("../../biology/protein-efficiency-ratio/index.js"),
@@ -17,6 +18,9 @@ export const toolModuleLoaders: Readonly<
   "engineering/taylor-tool-life": () => import("../../engineering/taylor-tool-life/index.js"),
   "forestry/volume-newton": () => import("../../forestry/volume-newton/index.js"),
   "geology/argon-diffusion-closure-temperature": () => import("../../geology/argon-diffusion-closure-temperature/index.js"),
+  "kinesiology/cadence-stride-speed-solver": () => import("../../kinesiology/cadence-stride-speed-solver/index.js"),
+  "kinesiology/leg-length-discrepancy": () => import("../../kinesiology/leg-length-discrepancy/index.js"),
+  "laser/holography-fringe-stability": () => import("../../laser/holography-fringe-stability/index.js"),
   "mycology/disc-antifungal-sddr-mapper": () => import("../../mycology/disc-antifungal-sddr-mapper/index.js"),
   "numismatics/appraisal-average-value-per-item": () => import("../../numismatics/appraisal-average-value-per-item/index.js"),
   "probability/poisson-gamma-mixture-sampler": () => import("../../probability/poisson-gamma-mixture-sampler/index.js"),
@@ -28,4 +32,7 @@ export const toolModuleLoaders: Readonly<
   "size/collar": () => import("../../size/collar/index.js"),
   "sociology/life-table-ex-from-lx-step": () => import("../../sociology/life-table-ex-from-lx-step/index.js"),
   "text/soundex-encode": () => import("../../text/soundex-encode/index.js"),
+  "transcriptomics/cell-gene-count-filter": () => import("../../transcriptomics/cell-gene-count-filter/index.js"),
+  "transcriptomics/isoform-tpm-share": () => import("../../transcriptomics/isoform-tpm-share/index.js"),
+  "transcriptomics/volcano-quadrant": () => import("../../transcriptomics/volcano-quadrant/index.js"),
 };

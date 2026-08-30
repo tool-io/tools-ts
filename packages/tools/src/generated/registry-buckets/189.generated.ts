@@ -23,6 +23,8 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/auc-to-bc-ad-converter": () => import("../../epigraphy/auc-to-bc-ad-converter/index.js"),
   "forestry/light-transmission-beer-lambert-forestry": () => import("../../forestry/light-transmission-beer-lambert-forestry/index.js"),
   "futurology/bostrom-superintelligence-paths-taxonomy-lookup": () => import("../../futurology/bostrom-superintelligence-paths-taxonomy-lookup/index.js"),
+  "laser/gerchberg-saxton-phase-retrieval": () => import("../../laser/gerchberg-saxton-phase-retrieval/index.js"),
+  "laser/mode-sorter-crosstalk": () => import("../../laser/mode-sorter-crosstalk/index.js"),
   "linguistics/past-tense-regular": () => import("../../linguistics/past-tense-regular/index.js"),
   "logistics/residential-delivery-surcharge-checker": () => import("../../logistics/residential-delivery-surcharge-checker/index.js"),
   "mortgage/pakistan-diminishing-musharakah": () => import("../../mortgage/pakistan-diminishing-musharakah/index.js"),
@@ -31,4 +33,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/directivity-pulse-duration-near-source": () => import("../../seismology/directivity-pulse-duration-near-source/index.js"),
   "size/pants": () => import("../../size/pants/index.js"),
   "statistics/sample-size-mean": () => import("../../statistics/sample-size-mean/index.js"),
+  "taxation/crut-clat-comparison": () => import("../../taxation/crut-clat-comparison/index.js"),
 };

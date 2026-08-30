@@ -7,6 +7,7 @@ export const toolModuleLoaders: Readonly<
   "accounting/times-interest-earned-ebit-interest": () => import("../../accounting/times-interest-earned-ebit-interest/index.js"),
   "archival-studies/language-code-6392-validator": () => import("../../archival-studies/language-code-6392-validator/index.js"),
   "auditing/ar-credit-balance-negative-account-review-procedure": () => import("../../auditing/ar-credit-balance-negative-account-review-procedure/index.js"),
+  "auditing/donor-restriction-release": () => import("../../auditing/donor-restriction-release/index.js"),
   "biology/effective-population-size": () => import("../../biology/effective-population-size/index.js"),
   "biology/qtc-fridericia": () => import("../../biology/qtc-fridericia/index.js"),
   "clustering/possibilistic-c-means": () => import("../../clustering/possibilistic-c-means/index.js"),
@@ -20,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/basal-area-increment-percentage": () => import("../../forestry/basal-area-increment-percentage/index.js"),
   "geology/atterberg-plasticity-index": () => import("../../geology/atterberg-plasticity-index/index.js"),
   "laser/laser-ti-sapphire-tuning-range-kerr-lens-mode-locking-prerequisite-checker": () => import("../../laser/laser-ti-sapphire-tuning-range-kerr-lens-mode-locking-prerequisite-checker/index.js"),
+  "laser/optogalvanic-modulation-contrast": () => import("../../laser/optogalvanic-modulation-contrast/index.js"),
   "random/dogra-character": () => import("../../random/dogra-character/index.js"),
   "real-estate/leasing-commission": () => import("../../real-estate/leasing-commission/index.js"),
   "regression/linear": () => import("../../regression/linear/index.js"),
@@ -27,6 +29,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/digitizer-input-loading-error-percent-calculator": () => import("../../seismology/digitizer-input-loading-error-percent-calculator/index.js"),
   "size/dhoti-reconstruction": () => import("../../size/dhoti-reconstruction/index.js"),
   "size/hanfu-reconstruction": () => import("../../size/hanfu-reconstruction/index.js"),
+  "taxation/lob-criteria-check": () => import("../../taxation/lob-criteria-check/index.js"),
   "text/snake-case": () => import("../../text/snake-case/index.js"),
   "text/word-frequency": () => import("../../text/word-frequency/index.js"),
 };

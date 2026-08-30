@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/ratio-narrative-check": () => import("../../auditing/ratio-narrative-check/index.js"),
   "aviation/groundspeed-from-wind-triangle": () => import("../../aviation/groundspeed-from-wind-triangle/index.js"),
   "biology/ic50-biology": () => import("../../biology/ic50-biology/index.js"),
   "carpentry/schiebetuer-ueberlappung": () => import("../../carpentry/schiebetuer-ueberlappung/index.js"),
@@ -14,10 +15,17 @@ export const toolModuleLoaders: Readonly<
   "demography/ever-married-by-age-interpolation": () => import("../../demography/ever-married-by-age-interpolation/index.js"),
   "futurology/nbic-convergence-nano-bio-info-cogno-driver-tree": () => import("../../futurology/nbic-convergence-nano-bio-info-cogno-driver-tree/index.js"),
   "graph/node2vec-plus-plus-transition": () => import("../../graph/node2vec-plus-plus-transition/index.js"),
+  "horology/cannon-pinion-setting-force-threshold-screen": () => import("../../horology/cannon-pinion-setting-force-threshold-screen/index.js"),
+  "insurance/trade-credit-exposure": () => import("../../insurance/trade-credit-exposure/index.js"),
+  "laser/copper-vapor-pulse-energy": () => import("../../laser/copper-vapor-pulse-energy/index.js"),
+  "laser/fluoride-fiber-window-margin": () => import("../../laser/fluoride-fiber-window-margin/index.js"),
   "laser/laser-attosecond-streaking-phase-retrieval-window-note-lookup": () => import("../../laser/laser-attosecond-streaking-phase-retrieval-window-note-lookup/index.js"),
+  "laser/thz-time-of-flight-depth": () => import("../../laser/thz-time-of-flight-depth/index.js"),
+  "laser/vibrometer-displacement": () => import("../../laser/vibrometer-displacement/index.js"),
   "logistics/billable-weight-max-actual-dim": () => import("../../logistics/billable-weight-max-actual-dim/index.js"),
   "music/quarter-tone-microtonal-frequency": () => import("../../music/quarter-tone-microtonal-frequency/index.js"),
   "random/old-north-arabian-letter": () => import("../../random/old-north-arabian-letter/index.js"),
   "sailing/persistent-shift-rate": () => import("../../sailing/persistent-shift-rate/index.js"),
+  "taxation/cdp-appeal-window": () => import("../../taxation/cdp-appeal-window/index.js"),
   "vr/field-of-view-diagonal": () => import("../../vr/field-of-view-diagonal/index.js"),
 };

@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/inverse-square-law-level-change": () => import("../../acoustics/inverse-square-law-level-change/index.js"),
+  "acoustics/iso-2631-weighting-reference": () => import("../../acoustics/iso-2631-weighting-reference/index.js"),
   "actuarial/term-insurance-epv": () => import("../../actuarial/term-insurance-epv/index.js"),
   "auditing/change-management-ticket-approval-testing-steps": () => import("../../auditing/change-management-ticket-approval-testing-steps/index.js"),
   "aviation/vr-speed": () => import("../../aviation/vr-speed/index.js"),
@@ -25,9 +26,17 @@ export const toolModuleLoaders: Readonly<
   "generate/upc-a": () => import("../../generate/upc-a/index.js"),
   "geology/harker-diagram-silica": () => import("../../geology/harker-diagram-silica/index.js"),
   "geology/relative-permeability-oil-water": () => import("../../geology/relative-permeability-oil-water/index.js"),
+  "kinesiology/five-times-sit-to-stand-screen": () => import("../../kinesiology/five-times-sit-to-stand-screen/index.js"),
   "laser/laser-he-ne-632-8-nm-mode-hop-free-cavity-length-tube-design-lookup": () => import("../../laser/laser-he-ne-632-8-nm-mode-hop-free-cavity-length-tube-design-lookup/index.js"),
   "matrix/reshape": () => import("../../matrix/reshape/index.js"),
+  "metabolomics/van-krevelen-coordinates": () => import("../../metabolomics/van-krevelen-coordinates/index.js"),
+  "microcontroller/can-bit-timing": () => import("../../microcontroller/can-bit-timing/index.js"),
+  "pedagogy/fraction-error-classifier": () => import("../../pedagogy/fraction-error-classifier/index.js"),
+  "proteomics/lysine-acetylation-context": () => import("../../proteomics/lysine-acetylation-context/index.js"),
   "semiconductor/doping-concentration-from-resistivity": () => import("../../semiconductor/doping-concentration-from-resistivity/index.js"),
   "semiconductor/polaron-effective-mass": () => import("../../semiconductor/polaron-effective-mass/index.js"),
   "statistics/kruskal-wallis": () => import("../../statistics/kruskal-wallis/index.js"),
+  "taxation/housing-allowance-exclusion": () => import("../../taxation/housing-allowance-exclusion/index.js"),
+  "taxation/small-business-health-credit": () => import("../../taxation/small-business-health-credit/index.js"),
+  "transcriptomics/fusion-breakpoint-support": () => import("../../transcriptomics/fusion-breakpoint-support/index.js"),
 };

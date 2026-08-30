@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/noise-exposure-forecast-calculator": () => import("../../acoustics/noise-exposure-forecast-calculator/index.js"),
   "aquaculture/production-yield": () => import("../../aquaculture/production-yield/index.js"),
   "aviation/flight-time": () => import("../../aviation/flight-time/index.js"),
   "aviation/takeoff-distance-factor": () => import("../../aviation/takeoff-distance-factor/index.js"),
@@ -20,6 +21,8 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/cil-citation-parser": () => import("../../epigraphy/cil-citation-parser/index.js"),
   "finance/simple-interest": () => import("../../finance/simple-interest/index.js"),
   "forestry/leaf-area-density": () => import("../../forestry/leaf-area-density/index.js"),
+  "journalism/conflict-map-disclosure": () => import("../../journalism/conflict-map-disclosure/index.js"),
+  "metabolomics/endocannabinoid-ratio": () => import("../../metabolomics/endocannabinoid-ratio/index.js"),
   "nautical/tide-range": () => import("../../nautical/tide-range/index.js"),
   "numismatics/diameter-measurement-average": () => import("../../numismatics/diameter-measurement-average/index.js"),
   "online-algorithm/ski-rental": () => import("../../online-algorithm/ski-rental/index.js"),

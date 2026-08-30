@@ -20,6 +20,9 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/tabula-ansata-note-generator": () => import("../../epigraphy/tabula-ansata-note-generator/index.js"),
   "film/guide-number-distance": () => import("../../film/guide-number-distance/index.js"),
   "forestry/periodic-increment-percentage": () => import("../../forestry/periodic-increment-percentage/index.js"),
+  "futurology/finite-resource-growth-horizon": () => import("../../futurology/finite-resource-growth-horizon/index.js"),
+  "horology/sapphire-ar-coating-side-lookup": () => import("../../horology/sapphire-ar-coating-side-lookup/index.js"),
+  "horology/seiko-astron-1969-launch-history-lookup": () => import("../../horology/seiko-astron-1969-launch-history-lookup/index.js"),
   "logistics/abc-analysis-cumulative-value-classifier": () => import("../../logistics/abc-analysis-cumulative-value-classifier/index.js"),
   "matrix/trace": () => import("../../matrix/trace/index.js"),
   "mycology/mycorrhizal-host-pair-validator": () => import("../../mycology/mycorrhizal-host-pair-validator/index.js"),
@@ -31,4 +34,7 @@ export const toolModuleLoaders: Readonly<
   "random/samaritan-letter": () => import("../../random/samaritan-letter/index.js"),
   "random/sunuwar-character": () => import("../../random/sunuwar-character/index.js"),
   "semiconductor/led-wall-plug-efficiency": () => import("../../semiconductor/led-wall-plug-efficiency/index.js"),
+  "taxation/mileage-depreciation": () => import("../../taxation/mileage-depreciation/index.js"),
+  "transcriptomics/drach-motif-density": () => import("../../transcriptomics/drach-motif-density/index.js"),
+  "transcriptomics/dye-swap-correlation": () => import("../../transcriptomics/dye-swap-correlation/index.js"),
 };

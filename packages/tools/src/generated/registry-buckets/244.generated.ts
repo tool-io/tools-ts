@@ -5,6 +5,9 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/acoustic-power-from-intensity-area": () => import("../../acoustics/acoustic-power-from-intensity-area/index.js"),
+  "acoustics/coupled-room-volume-screen": () => import("../../acoustics/coupled-room-volume-screen/index.js"),
+  "auditing/failover-evidence-coverage": () => import("../../auditing/failover-evidence-coverage/index.js"),
+  "auditing/franchise-sales-crosscheck": () => import("../../auditing/franchise-sales-crosscheck/index.js"),
   "aviation/stall-speed-weight": () => import("../../aviation/stall-speed-weight/index.js"),
   "biology/cell-diameter-from-area": () => import("../../biology/cell-diameter-from-area/index.js"),
   "biology/chest-girth-weight": () => import("../../biology/chest-girth-weight/index.js"),
@@ -29,8 +32,11 @@ export const toolModuleLoaders: Readonly<
   "geology/bubble-point-pressure-vasquez-beggs": () => import("../../geology/bubble-point-pressure-vasquez-beggs/index.js"),
   "geology/parasequence-thickness": () => import("../../geology/parasequence-thickness/index.js"),
   "geology/water-oil-ratio": () => import("../../geology/water-oil-ratio/index.js"),
+  "laser/laser-label-coverage": () => import("../../laser/laser-label-coverage/index.js"),
+  "laser/saturable-absorber-spot-match": () => import("../../laser/saturable-absorber-spot-match/index.js"),
   "logistics/failed-attempt-retry-schedule-lookup": () => import("../../logistics/failed-attempt-retry-schedule-lookup/index.js"),
   "logistics/nmfc-density-to-class-converter": () => import("../../logistics/nmfc-density-to-class-converter/index.js"),
+  "metabolomics/internal-standard-concentration": () => import("../../metabolomics/internal-standard-concentration/index.js"),
   "number/perfect-square-checker": () => import("../../number/perfect-square-checker/index.js"),
   "numismatics/sterling-to-fine-silver-convert": () => import("../../numismatics/sterling-to-fine-silver-convert/index.js"),
   "oenology/angels-share-loss": () => import("../../oenology/angels-share-loss/index.js"),

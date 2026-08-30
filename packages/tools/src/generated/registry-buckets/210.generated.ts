@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/beats-frequency": () => import("../../acoustics/beats-frequency/index.js"),
   "auditing/compensating-control-gap-cover-example-lookup": () => import("../../auditing/compensating-control-gap-cover-example-lookup/index.js"),
+  "auditing/pam-evidence-coverage": () => import("../../auditing/pam-evidence-coverage/index.js"),
   "aviation/compass-heading": () => import("../../aviation/compass-heading/index.js"),
   "biology/aptt-ratio": () => import("../../biology/aptt-ratio/index.js"),
   "biology/whittaker-beta-diversity-2": () => import("../../biology/whittaker-beta-diversity-2/index.js"),
@@ -13,7 +14,14 @@ export const toolModuleLoaders: Readonly<
   "chemistry/base-dissociation-fraction": () => import("../../chemistry/base-dissociation-fraction/index.js"),
   "electronics/noise-temperature": () => import("../../electronics/noise-temperature/index.js"),
   "film/file-size-from-bitrate-runtime": () => import("../../film/file-size-from-bitrate-runtime/index.js"),
+  "journalism/media-policy-coverage": () => import("../../journalism/media-policy-coverage/index.js"),
+  "journalism/read-completion-rate": () => import("../../journalism/read-completion-rate/index.js"),
+  "kinesiology/running-vertical-oscillation-screen": () => import("../../kinesiology/running-vertical-oscillation-screen/index.js"),
+  "kinesiology/stack-reach-fit-screen": () => import("../../kinesiology/stack-reach-fit-screen/index.js"),
+  "laser/diode-stack-heat-flux": () => import("../../laser/diode-stack-heat-flux/index.js"),
   "logistics/container-per-diem-charges-computation": () => import("../../logistics/container-per-diem-charges-computation/index.js"),
+  "metabolomics/nominal-mass-defect": () => import("../../metabolomics/nominal-mass-defect/index.js"),
+  "proteomics/o-glycosylation-windows": () => import("../../proteomics/o-glycosylation-windows/index.js"),
   "random/arabic-letter": () => import("../../random/arabic-letter/index.js"),
   "random/deseret-letter": () => import("../../random/deseret-letter/index.js"),
   "sailing/man-overboard-distance-drift": () => import("../../sailing/man-overboard-distance-drift/index.js"),
@@ -21,4 +29,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/radiated-energy-from-magnitude-gutenberg-richter": () => import("../../seismology/radiated-energy-from-magnitude-gutenberg-richter/index.js"),
   "size/battery": () => import("../../size/battery/index.js"),
   "statistics/outlier-count-iqr": () => import("../../statistics/outlier-count-iqr/index.js"),
+  "web/url-pathname": () => import("../../web/url-pathname/index.js"),
 };

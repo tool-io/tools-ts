@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/useful-life-revision-prospective-change-calculator": () => import("../../accounting/useful-life-revision-prospective-change-calculator/index.js"),
+  "acoustics/roughness-70-hz-reference": () => import("../../acoustics/roughness-70-hz-reference/index.js"),
   "auditing/control-deficiency-significant-material-weakness-severity-waterfall": () => import("../../auditing/control-deficiency-significant-material-weakness-severity-waterfall/index.js"),
   "auditing/round-dollar-manual-adjustment-entry-rmae-filter-method": () => import("../../auditing/round-dollar-manual-adjustment-entry-rmae-filter-method/index.js"),
   "biology/airway-resistance-total": () => import("../../biology/airway-resistance-total/index.js"),
@@ -15,12 +16,16 @@ export const toolModuleLoaders: Readonly<
   "carpentry/wood-movement-expansion": () => import("../../carpentry/wood-movement-expansion/index.js"),
   "checksum/crc-32-bzip2": () => import("../../checksum/crc-32-bzip2/index.js"),
   "chemistry/specific-heat": () => import("../../chemistry/specific-heat/index.js"),
+  "css/media-query-extractor": () => import("../../css/media-query-extractor/index.js"),
   "demography/indirect-standardized-smr": () => import("../../demography/indirect-standardized-smr/index.js"),
   "demography/return-migration-proportion-lookup": () => import("../../demography/return-migration-proportion-lookup/index.js"),
   "electronics/motor-locked-rotor-torque": () => import("../../electronics/motor-locked-rotor-torque/index.js"),
   "electronics/power-gain-db": () => import("../../electronics/power-gain-db/index.js"),
   "electronics/rfid-read-range": () => import("../../electronics/rfid-read-range/index.js"),
   "epigraphy/bissextile-vi-kal-detector": () => import("../../epigraphy/bissextile-vi-kal-detector/index.js"),
+  "horology/french-horology-glossary-translation-lookup": () => import("../../horology/french-horology-glossary-translation-lookup/index.js"),
+  "horology/isochronism-amplitude-rate-slope-calculator": () => import("../../horology/isochronism-amplitude-rate-slope-calculator/index.js"),
+  "kinesiology/limb-symmetry-index": () => import("../../kinesiology/limb-symmetry-index/index.js"),
   "oenology/yeast-rehydration-volume": () => import("../../oenology/yeast-rehydration-volume/index.js"),
   "random/nko-character": () => import("../../random/nko-character/index.js"),
   "real-estate/lot-coverage-ratio": () => import("../../real-estate/lot-coverage-ratio/index.js"),
@@ -28,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/igbt-conduction-voltage-drop": () => import("../../semiconductor/igbt-conduction-voltage-drop/index.js"),
   "size/backpack": () => import("../../size/backpack/index.js"),
   "table": () => import("../../table/index.js"),
+  "taxation/staking-income": () => import("../../taxation/staking-income/index.js"),
   "text/sentence-length-average": () => import("../../text/sentence-length-average/index.js"),
   "typography/modular-scale-step-size": () => import("../../typography/modular-scale-step-size/index.js"),
 };

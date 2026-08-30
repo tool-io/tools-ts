@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "arithmetic/multiply-two-numbers": () => import("../../arithmetic/multiply-two-numbers/index.js"),
+  "auditing/cam-element-coverage": () => import("../../auditing/cam-element-coverage/index.js"),
   "auditing/revenue-cut-shipping-invoice-date-vouching-steps": () => import("../../auditing/revenue-cut-shipping-invoice-date-vouching-steps/index.js"),
   "carpentry/picture-frame-rabbet-width": () => import("../../carpentry/picture-frame-rabbet-width/index.js"),
   "chemistry/bond-energy": () => import("../../chemistry/bond-energy/index.js"),
@@ -14,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/capacitor-color-code-decode": () => import("../../electronics/capacitor-color-code-decode/index.js"),
   "electronics/dynamic-range": () => import("../../electronics/dynamic-range/index.js"),
   "electronics/fpga-hold-time-slack": () => import("../../electronics/fpga-hold-time-slack/index.js"),
+  "epigenetics/salt-extraction-profile": () => import("../../epigenetics/salt-extraction-profile/index.js"),
   "film/credits-scroll-speed": () => import("../../film/credits-scroll-speed/index.js"),
   "finance/return-on-equity": () => import("../../finance/return-on-equity/index.js"),
   "geology/mineral-cleavage-lookup": () => import("../../geology/mineral-cleavage-lookup/index.js"),
@@ -26,4 +28,5 @@ export const toolModuleLoaders: Readonly<
   "sailing/tidal-stream-at-time": () => import("../../sailing/tidal-stream-at-time/index.js"),
   "seismology/seismic-efficiency-energy-partition": () => import("../../seismology/seismic-efficiency-energy-partition/index.js"),
   "semiconductor/electron-effective-mass": () => import("../../semiconductor/electron-effective-mass/index.js"),
+  "transcriptomics/counts-per-million": () => import("../../transcriptomics/counts-per-million/index.js"),
 };

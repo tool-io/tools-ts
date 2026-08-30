@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "generate/qr-code": () => import("../../generate/qr-code/index.js"),
   "geology/gravity-anomaly-bouguer": () => import("../../geology/gravity-anomaly-bouguer/index.js"),
   "geology/mohr-coulomb-shear-strength": () => import("../../geology/mohr-coulomb-shear-strength/index.js"),
+  "horology/unobtainium-collector-term-lookup": () => import("../../horology/unobtainium-collector-term-lookup/index.js"),
   "logistics/tare-payload-net-gross-split": () => import("../../logistics/tare-payload-net-gross-split/index.js"),
   "matrix/singular-value-decomposition": () => import("../../matrix/singular-value-decomposition/index.js"),
   "mycology/cystidia-position-note-generator": () => import("../../mycology/cystidia-position-note-generator/index.js"),
@@ -28,4 +29,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/apparent-dip-along-section-line-calculator": () => import("../../seismology/apparent-dip-along-section-line-calculator/index.js"),
   "seismology/cumulative-absolute-velocity-cai": () => import("../../seismology/cumulative-absolute-velocity-cai/index.js"),
   "text/camel-case": () => import("../../text/camel-case/index.js"),
+  "transcriptomics/probe-off-target-filter": () => import("../../transcriptomics/probe-off-target-filter/index.js"),
 };

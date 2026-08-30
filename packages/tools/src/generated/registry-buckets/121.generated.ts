@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/space-noise-criteria-reference": () => import("../../acoustics/space-noise-criteria-reference/index.js"),
   "archival-studies/duplicate-hash-savings-mb-calculator": () => import("../../archival-studies/duplicate-hash-savings-mb-calculator/index.js"),
   "arithmetic/linear-blend": () => import("../../arithmetic/linear-blend/index.js"),
   "aviation/eta": () => import("../../aviation/eta/index.js"),
@@ -23,8 +24,15 @@ export const toolModuleLoaders: Readonly<
   "geology/ree-anomaly-eu": () => import("../../geology/ree-anomaly-eu/index.js"),
   "geology/spider-diagram-normalization": () => import("../../geology/spider-diagram-normalization/index.js"),
   "graph/adjacency-matrix-to-list": () => import("../../graph/adjacency-matrix-to-list/index.js"),
+  "journalism/percent-range-style": () => import("../../journalism/percent-range-style/index.js"),
+  "microcontroller/register-field-decode": () => import("../../microcontroller/register-field-decode/index.js"),
   "mycology/amatoxin-cap-assay-classifier": () => import("../../mycology/amatoxin-cap-assay-classifier/index.js"),
   "mycology/fae-cycles-hour-requirement-lookup": () => import("../../mycology/fae-cycles-hour-requirement-lookup/index.js"),
+  "pedagogy/curriculum-compacting": () => import("../../pedagogy/curriculum-compacting/index.js"),
   "probability/expected-value": () => import("../../probability/expected-value/index.js"),
+  "proteomics/phosphorylation-sites": () => import("../../proteomics/phosphorylation-sites/index.js"),
   "size/snowshoe": () => import("../../size/snowshoe/index.js"),
+  "taxation/amended-return-delay": () => import("../../taxation/amended-return-delay/index.js"),
+  "theatre/matinee-audience-comparison": () => import("../../theatre/matinee-audience-comparison/index.js"),
+  "web/structured-data-extractor": () => import("../../web/structured-data-extractor/index.js"),
 };

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/iso-9613-2-attenuation-reference": () => import("../../acoustics/iso-9613-2-attenuation-reference/index.js"),
   "arithmetic/add-two-numbers": () => import("../../arithmetic/add-two-numbers/index.js"),
   "arithmetic/subtract-numbers": () => import("../../arithmetic/subtract-numbers/index.js"),
   "auditing/electronic-workpaper-binder-signature-rollforward-lookup": () => import("../../auditing/electronic-workpaper-binder-signature-rollforward-lookup/index.js"),
@@ -26,12 +27,17 @@ export const toolModuleLoaders: Readonly<
   "film/pixel-count-total": () => import("../../film/pixel-count-total/index.js"),
   "geology/magnetic-susceptibility-lookup": () => import("../../geology/magnetic-susceptibility-lookup/index.js"),
   "geometry/regular-hexagon-perimeter": () => import("../../geometry/regular-hexagon-perimeter/index.js"),
+  "insurance/surrender-charge": () => import("../../insurance/surrender-charge/index.js"),
+  "kinesiology/crossover-step-screen": () => import("../../kinesiology/crossover-step-screen/index.js"),
+  "laser/vecsel-frequency-doubling": () => import("../../laser/vecsel-frequency-doubling/index.js"),
   "logistics/rack-cube-utilization-percent": () => import("../../logistics/rack-cube-utilization-percent/index.js"),
   "music/lfo-rate-hz-from-tempo-division": () => import("../../music/lfo-rate-hz-from-tempo-division/index.js"),
   "oenology/cork-fit-checker": () => import("../../oenology/cork-fit-checker/index.js"),
   "random/duployan-character": () => import("../../random/duployan-character/index.js"),
   "seismology/foreshock-mainshock-probable-classifier": () => import("../../seismology/foreshock-mainshock-probable-classifier/index.js"),
   "size/pipe": () => import("../../size/pipe/index.js"),
+  "theatre/fight-beat-continuity": () => import("../../theatre/fight-beat-continuity/index.js"),
+  "transcriptomics/pfaffl-expression-ratio": () => import("../../transcriptomics/pfaffl-expression-ratio/index.js"),
   "typography/points-to-pixels-96dpi": () => import("../../typography/points-to-pixels-96dpi/index.js"),
   "vector/l1-norm": () => import("../../vector/l1-norm/index.js"),
 };

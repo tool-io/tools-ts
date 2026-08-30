@@ -5,6 +5,9 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/quarterly-premium-conversion": () => import("../../actuarial/quarterly-premium-conversion/index.js"),
+  "auditing/ai-code-control-coverage": () => import("../../auditing/ai-code-control-coverage/index.js"),
+  "auditing/eqr-selection-risk": () => import("../../auditing/eqr-selection-risk/index.js"),
+  "auditing/significant-transaction-class": () => import("../../auditing/significant-transaction-class/index.js"),
   "auditing/unrecorded-liabilities-subsequent-disbursements-search-procedure": () => import("../../auditing/unrecorded-liabilities-subsequent-disbursements-search-procedure/index.js"),
   "biology/brain-body-ratio": () => import("../../biology/brain-body-ratio/index.js"),
   "biology/cardiac-output": () => import("../../biology/cardiac-output/index.js"),
@@ -21,6 +24,9 @@ export const toolModuleLoaders: Readonly<
   "electronics/pa-output-power-dbm": () => import("../../electronics/pa-output-power-dbm/index.js"),
   "forestry/arithmetic-mean-diameter": () => import("../../forestry/arithmetic-mean-diameter/index.js"),
   "geology/gas-formation-volume-factor": () => import("../../geology/gas-formation-volume-factor/index.js"),
+  "journalism/military-rank-style": () => import("../../journalism/military-rank-style/index.js"),
+  "journalism/palette-contrast": () => import("../../journalism/palette-contrast/index.js"),
+  "laser/figure-nine-loop-transmission": () => import("../../laser/figure-nine-loop-transmission/index.js"),
   "matrix/determinant": () => import("../../matrix/determinant/index.js"),
   "mortgage/kenya-variable-rate": () => import("../../mortgage/kenya-variable-rate/index.js"),
   "mycology/micro-macro-conidia-ratio-classifier": () => import("../../mycology/micro-macro-conidia-ratio-classifier/index.js"),
@@ -32,5 +38,6 @@ export const toolModuleLoaders: Readonly<
   "sociology/survival-ratio-census-method": () => import("../../sociology/survival-ratio-census-method/index.js"),
   "statistics/mann-whitney-u": () => import("../../statistics/mann-whitney-u/index.js"),
   "statistics/wilcoxon-signed-rank": () => import("../../statistics/wilcoxon-signed-rank/index.js"),
+  "taxation/transcript-requirement-match": () => import("../../taxation/transcript-requirement-match/index.js"),
   "text/lowercase": () => import("../../text/lowercase/index.js"),
 };

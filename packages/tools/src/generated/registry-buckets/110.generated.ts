@@ -15,10 +15,13 @@ export const toolModuleLoaders: Readonly<
   "engineering/retaining-wall-overturning-safety": () => import("../../engineering/retaining-wall-overturning-safety/index.js"),
   "film/intermission-time": () => import("../../film/intermission-time/index.js"),
   "geology/oil-viscosity-beggs-robinson": () => import("../../geology/oil-viscosity-beggs-robinson/index.js"),
+  "journalism/open-rate-inflation": () => import("../../journalism/open-rate-inflation/index.js"),
+  "laser/twin-field-plob-comparison": () => import("../../laser/twin-field-plob-comparison/index.js"),
   "mycology/ph-range-cardinal-classifier": () => import("../../mycology/ph-range-cardinal-classifier/index.js"),
   "paleography/chain-line-spacing-classifier": () => import("../../paleography/chain-line-spacing-classifier/index.js"),
   "random/musical-clef": () => import("../../random/musical-clef/index.js"),
   "sailing/compass-deviation-lookup": () => import("../../sailing/compass-deviation-lookup/index.js"),
   "sailing/helm-balance-ratio": () => import("../../sailing/helm-balance-ratio/index.js"),
   "semiconductor/bjt-emitter-efficiency": () => import("../../semiconductor/bjt-emitter-efficiency/index.js"),
+  "web/url-username": () => import("../../web/url-username/index.js"),
 };

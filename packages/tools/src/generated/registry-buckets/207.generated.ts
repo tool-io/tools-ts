@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/iec-61672-class-reference": () => import("../../acoustics/iec-61672-class-reference/index.js"),
   "body-density-to-body-fat": () => import("../../body-density-to-body-fat/index.js"),
   "carpentry/lochreihe-system32-bohrungen": () => import("../../carpentry/lochreihe-system32-bohrungen/index.js"),
   "chemistry/heat-capacity-cv": () => import("../../chemistry/heat-capacity-cv/index.js"),
@@ -12,13 +13,17 @@ export const toolModuleLoaders: Readonly<
   "electronics/battery-discharge-depth": () => import("../../electronics/battery-discharge-depth/index.js"),
   "electronics/parallel-inductor-current": () => import("../../electronics/parallel-inductor-current/index.js"),
   "engineering/wire-cross-section": () => import("../../engineering/wire-cross-section/index.js"),
+  "epigenetics/fragment-shift-distance": () => import("../../epigenetics/fragment-shift-distance/index.js"),
   "film/flicker-frequency": () => import("../../film/flicker-frequency/index.js"),
   "futurology/technology-readiness-level-trl-scale-lookup": () => import("../../futurology/technology-readiness-level-trl-scale-lookup/index.js"),
+  "kinesiology/torque-curve-sticking-point": () => import("../../kinesiology/torque-curve-sticking-point/index.js"),
   "list/sliding-window": () => import("../../list/sliding-window/index.js"),
   "microcontroller/pwm-frequency": () => import("../../microcontroller/pwm-frequency/index.js"),
   "oenology/barrel-topping-volume": () => import("../../oenology/barrel-topping-volume/index.js"),
   "paleography/carbon-irongall-note-generator": () => import("../../paleography/carbon-irongall-note-generator/index.js"),
+  "pedagogy/negative-question-stem-screen": () => import("../../pedagogy/negative-question-stem-screen/index.js"),
   "probability/empirical": () => import("../../probability/empirical/index.js"),
+  "proteomics/nuclear-localization-clusters": () => import("../../proteomics/nuclear-localization-clusters/index.js"),
   "random/braille-cell": () => import("../../random/braille-cell/index.js"),
   "random/geomantic-figure": () => import("../../random/geomantic-figure/index.js"),
   "real-estate/comparable-adjustment": () => import("../../real-estate/comparable-adjustment/index.js"),
@@ -26,4 +31,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/self-heating-temperature-rise": () => import("../../semiconductor/self-heating-temperature-rise/index.js"),
   "size/glasses": () => import("../../size/glasses/index.js"),
   "text/replace-literal": () => import("../../text/replace-literal/index.js"),
+  "transcriptomics/transcripts-per-million": () => import("../../transcriptomics/transcripts-per-million/index.js"),
 };

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/windscreen-insertion-loss": () => import("../../acoustics/windscreen-insertion-loss/index.js"),
   "archival-studies/country-code-alpha2-validator": () => import("../../archival-studies/country-code-alpha2-validator/index.js"),
   "auditing/nonattest-services-management-responsibility-threat-checker": () => import("../../auditing/nonattest-services-management-responsibility-threat-checker/index.js"),
   "biology/arterial-alveolar-ratio": () => import("../../biology/arterial-alveolar-ratio/index.js"),
@@ -18,11 +19,14 @@ export const toolModuleLoaders: Readonly<
   "futurology/rogers-diffusion-adopter-categories-percent-split": () => import("../../futurology/rogers-diffusion-adopter-categories-percent-split/index.js"),
   "generate/uuid-v1": () => import("../../generate/uuid-v1/index.js"),
   "geology/water-cut": () => import("../../geology/water-cut/index.js"),
+  "horology/watch-case-hallmark-role-lookup": () => import("../../horology/watch-case-hallmark-role-lookup/index.js"),
+  "laser/cherenkov-outcoupling-angle": () => import("../../laser/cherenkov-outcoupling-angle/index.js"),
   "logistics/edge-board-length-pallet-total": () => import("../../logistics/edge-board-length-pallet-total/index.js"),
   "logistics/minimum-charge-floor-application": () => import("../../logistics/minimum-charge-floor-application/index.js"),
   "music/capo-transposition-fret": () => import("../../music/capo-transposition-fret/index.js"),
   "network/ipv4-broadcast-address": () => import("../../network/ipv4-broadcast-address/index.js"),
   "sailing/sail-force": () => import("../../sailing/sail-force/index.js"),
+  "taxation/substantial-presence-days": () => import("../../taxation/substantial-presence-days/index.js"),
   "text/consonant-vowel-ratio": () => import("../../text/consonant-vowel-ratio/index.js"),
   "typography/leading-from-font-size-ratio": () => import("../../typography/leading-from-font-size-ratio/index.js"),
   "vr/frame-time-budget-ms": () => import("../../vr/frame-time-budget-ms/index.js"),

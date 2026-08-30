@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "auditing/positive-vs-negative-confirmation-type-selector-lookup": () => import("../../auditing/positive-vs-negative-confirmation-type-selector-lookup/index.js"),
+  "auditing/rescope-change-log": () => import("../../auditing/rescope-change-log/index.js"),
   "auditing/surprise-cash-count-unannounced-rotation-checker": () => import("../../auditing/surprise-cash-count-unannounced-rotation-checker/index.js"),
   "biology/cell-doubling-time": () => import("../../biology/cell-doubling-time/index.js"),
   "biology/schnabel-estimator": () => import("../../biology/schnabel-estimator/index.js"),
@@ -21,9 +22,13 @@ export const toolModuleLoaders: Readonly<
   "electronics/igbt-gate-charge": () => import("../../electronics/igbt-gate-charge/index.js"),
   "electronics/ntc-temperature-from-resistance": () => import("../../electronics/ntc-temperature-from-resistance/index.js"),
   "engineering/soil-permeability-constant-head": () => import("../../engineering/soil-permeability-constant-head/index.js"),
+  "epigenetics/meqtl-cis-window": () => import("../../epigenetics/meqtl-cis-window/index.js"),
   "epigraphy/recut-overlay-offset-detector": () => import("../../epigraphy/recut-overlay-offset-detector/index.js"),
   "geology/recompression-index": () => import("../../geology/recompression-index/index.js"),
   "hash/shake-256": () => import("../../hash/shake-256/index.js"),
+  "horology/detent-impulse-rate": () => import("../../horology/detent-impulse-rate/index.js"),
+  "laser/sted-resolution": () => import("../../laser/sted-resolution/index.js"),
+  "numismatics/cob-assayer-record-match": () => import("../../numismatics/cob-assayer-record-match/index.js"),
   "probability/hamiltonian-monte-carlo-sampler": () => import("../../probability/hamiltonian-monte-carlo-sampler/index.js"),
   "seismology/apparent-stress-energy-ratio": () => import("../../seismology/apparent-stress-energy-ratio/index.js"),
   "seismology/magnitude-frequency-entropy-shannon": () => import("../../seismology/magnitude-frequency-entropy-shannon/index.js"),

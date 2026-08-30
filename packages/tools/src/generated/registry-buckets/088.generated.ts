@@ -23,9 +23,11 @@ export const toolModuleLoaders: Readonly<
   "electronics/speaker-sensitivity-spl": () => import("../../electronics/speaker-sensitivity-spl/index.js"),
   "electronics/voltage-sensor-divider-ratio": () => import("../../electronics/voltage-sensor-divider-ratio/index.js"),
   "engineering/forging-force-approx": () => import("../../engineering/forging-force-approx/index.js"),
+  "epigenetics/tss-enrichment-gate": () => import("../../epigenetics/tss-enrichment-gate/index.js"),
   "epigraphy/photogrammetry-overlap-rule-checker": () => import("../../epigraphy/photogrammetry-overlap-rule-checker/index.js"),
   "film/color-temperature-kelvin-to-mired": () => import("../../film/color-temperature-kelvin-to-mired/index.js"),
   "horology/power-reserve-depletion": () => import("../../horology/power-reserve-depletion/index.js"),
+  "journalism/age-numeral-style": () => import("../../journalism/age-numeral-style/index.js"),
   "metrics/root-mean-squared-error": () => import("../../metrics/root-mean-squared-error/index.js"),
   "number/pronic-checker": () => import("../../number/pronic-checker/index.js"),
   "paleography/auc-chronicler-converter": () => import("../../paleography/auc-chronicler-converter/index.js"),
@@ -34,4 +36,6 @@ export const toolModuleLoaders: Readonly<
   "probability/laplace-sampler": () => import("../../probability/laplace-sampler/index.js"),
   "random/pahawh-hmong-character": () => import("../../random/pahawh-hmong-character/index.js"),
   "semiconductor/substrate-warpage": () => import("../../semiconductor/substrate-warpage/index.js"),
+  "theatre/wig-measurement-coverage": () => import("../../theatre/wig-measurement-coverage/index.js"),
+  "transcriptomics/miqe-coverage-audit": () => import("../../transcriptomics/miqe-coverage-audit/index.js"),
 };
