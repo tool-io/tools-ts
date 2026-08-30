@@ -1,0 +1,6 @@
+import { describe, expect, it } from "vitest"; import { calculateRandomElectricCar, randomElectricCarExample, runRandomElectricCar } from "./tool.js";
+describe("Random Electric Car Picker", () => {
+  it("selects exact IDs and preserves provenance", () => { expect(JSON.parse(JSON.stringify(randomElectricCarExample))).toEqual(randomElectricCarExample);expect(runRandomElectricCar(randomElectricCarExample.input,{random:()=>0}).ok).toBe(true); expect(calculateRandomElectricCar(randomElectricCarExample.input, () => 0)).toEqual({ datasetId: "example/electric-car", datasetVersion: "1", selectedIds: ["candidate-a", "candidate-b"], sourceId: "example" }); });
+  it("is deterministic with injected randomness", () => { expect(calculateRandomElectricCar(randomElectricCarExample.input, () => 0.75)).toEqual(calculateRandomElectricCar(randomElectricCarExample.input, () => 0.75)); });
+  it("rejects invalid pools and randomness", () => { expect(runRandomElectricCar({ ...randomElectricCarExample.input, candidateIds: [] }).ok).toBe(false); expect(runRandomElectricCar({ ...randomElectricCarExample.input, selectionCount: 4 }).ok).toBe(false); expect(runRandomElectricCar(randomElectricCarExample.input, { random: () => 1 }).ok).toBe(false); });
+});
