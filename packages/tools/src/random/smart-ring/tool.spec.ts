@@ -1,0 +1,6 @@
+import { describe, expect, it } from "vitest"; import { calculateRandomSmartRing, randomSmartRingExample, runRandomSmartRing } from "./tool.js";
+describe("Random Smart Ring Picker", () => {
+  it("selects exact IDs and preserves provenance", () => { expect(JSON.parse(JSON.stringify(randomSmartRingExample))).toEqual(randomSmartRingExample);expect(runRandomSmartRing(randomSmartRingExample.input,{random:()=>0}).ok).toBe(true); expect(calculateRandomSmartRing(randomSmartRingExample.input, () => 0)).toEqual({ datasetId: "example/smart-ring", datasetVersion: "1", selectedIds: ["candidate-a", "candidate-b"], sourceId: "example" }); });
+  it("is deterministic with injected randomness", () => { expect(calculateRandomSmartRing(randomSmartRingExample.input, () => 0.75)).toEqual(calculateRandomSmartRing(randomSmartRingExample.input, () => 0.75)); });
+  it("rejects invalid pools and randomness", () => { expect(runRandomSmartRing({ ...randomSmartRingExample.input, candidateIds: [] }).ok).toBe(false); expect(runRandomSmartRing({ ...randomSmartRingExample.input, selectionCount: 4 }).ok).toBe(false); expect(runRandomSmartRing(randomSmartRingExample.input, { random: () => 1 }).ok).toBe(false); });
+});
