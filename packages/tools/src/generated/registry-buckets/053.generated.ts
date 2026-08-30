@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/traffic-capacity": () => import("../../engineering/traffic-capacity/index.js"),
   "epigraphy/vacat-dot-series-counter": () => import("../../epigraphy/vacat-dot-series-counter/index.js"),
   "film/anarmorphic-squeeze-factor": () => import("../../film/anarmorphic-squeeze-factor/index.js"),
+  "generate/uuid-v8": () => import("../../generate/uuid-v8/index.js"),
   "geology/coefficient-of-volume-compressibility": () => import("../../geology/coefficient-of-volume-compressibility/index.js"),
   "laser/laser-autocorrelator-intensity-field-deconvolution-factor-converter": () => import("../../laser/laser-autocorrelator-intensity-field-deconvolution-factor-converter/index.js"),
   "oenology/tca-incidence-probability": () => import("../../oenology/tca-incidence-probability/index.js"),

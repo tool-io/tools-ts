@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "geology/travel-time-p-wave": () => import("../../geology/travel-time-p-wave/index.js"),
   "geology/well-log-porosity-sonic-wyllie": () => import("../../geology/well-log-porosity-sonic-wyllie/index.js"),
   "geometry/tetrahedron-volume": () => import("../../geometry/tetrahedron-volume/index.js"),
+  "hash/blake-256": () => import("../../hash/blake-256/index.js"),
   "json/apply-patch": () => import("../../json/apply-patch/index.js"),
   "logistics/battery-un3480-soc-30-percent-checker": () => import("../../logistics/battery-un3480-soc-30-percent-checker/index.js"),
   "logistics/incoterms-responsibility-matrix-lookup": () => import("../../logistics/incoterms-responsibility-matrix-lookup/index.js"),

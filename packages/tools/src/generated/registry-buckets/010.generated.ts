@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/polygon-frame-miter-angle": () => import("../../carpentry/polygon-frame-miter-angle/index.js"),
   "cartography/tobler-hiking-speed-estimate": () => import("../../cartography/tobler-hiking-speed-estimate/index.js"),
   "chemistry/entropy-change": () => import("../../chemistry/entropy-change/index.js"),
+  "convert/text-to-keycap-symbols": () => import("../../convert/text-to-keycap-symbols/index.js"),
   "electronics/admittance-magnitude": () => import("../../electronics/admittance-magnitude/index.js"),
   "engineering/butt-weld-stress": () => import("../../engineering/butt-weld-stress/index.js"),
   "epigraphy/concordance-duplicate-merge-detector": () => import("../../epigraphy/concordance-duplicate-merge-detector/index.js"),

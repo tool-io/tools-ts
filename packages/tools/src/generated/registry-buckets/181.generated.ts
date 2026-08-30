@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/treppen-schrittmassregel": () => import("../../carpentry/treppen-schrittmassregel/index.js"),
   "chemistry/oxidation-number": () => import("../../chemistry/oxidation-number/index.js"),
   "convert/absorbed-dose": () => import("../../convert/absorbed-dose/index.js"),
+  "convert/text-to-mathematical-fraktur": () => import("../../convert/text-to-mathematical-fraktur/index.js"),
   "demography/census-date-midyear-conversion": () => import("../../demography/census-date-midyear-conversion/index.js"),
   "demography/hale-health-adjusted-expectancy": () => import("../../demography/hale-health-adjusted-expectancy/index.js"),
   "demography/myers-blended-sex-ratio-index": () => import("../../demography/myers-blended-sex-ratio-index/index.js"),

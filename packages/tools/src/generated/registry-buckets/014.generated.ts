@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/charpy-impact-energy": () => import("../../engineering/charpy-impact-energy/index.js"),
   "geometry/polygon-area": () => import("../../geometry/polygon-area/index.js"),
   "graph/breadth-first-traversal": () => import("../../graph/breadth-first-traversal/index.js"),
+  "hash/blake-224": () => import("../../hash/blake-224/index.js"),
   "number/digital-root": () => import("../../number/digital-root/index.js"),
   "nutrition/macronutrient-split": () => import("../../nutrition/macronutrient-split/index.js"),
   "random/thaana-character": () => import("../../random/thaana-character/index.js"),

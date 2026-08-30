@@ -26,4 +26,5 @@ export const toolModuleLoaders: Readonly<
   "statistics/minimum": () => import("../../statistics/minimum/index.js"),
   "statistics/sum-of-squares": () => import("../../statistics/sum-of-squares/index.js"),
   "text/remove-diacritics": () => import("../../text/remove-diacritics/index.js"),
+  "validate/issn": () => import("../../validate/issn/index.js"),
 };

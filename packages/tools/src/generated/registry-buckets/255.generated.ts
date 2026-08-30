@@ -22,4 +22,5 @@ export const toolModuleLoaders: Readonly<
   "neural-network/feedforward": () => import("../../neural-network/feedforward/index.js"),
   "random/cypro-minoan-sign": () => import("../../random/cypro-minoan-sign/index.js"),
   "set/difference": () => import("../../set/difference/index.js"),
+  "validate/ismn": () => import("../../validate/ismn/index.js"),
 };

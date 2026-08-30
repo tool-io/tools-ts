@@ -13,6 +13,8 @@ export const toolModuleLoaders: Readonly<
   "chemistry/most-probable-speed": () => import("../../chemistry/most-probable-speed/index.js"),
   "chemistry/ppm-to-molarity": () => import("../../chemistry/ppm-to-molarity/index.js"),
   "chemistry/rate-law": () => import("../../chemistry/rate-law/index.js"),
+  "convert/text-to-circled": () => import("../../convert/text-to-circled/index.js"),
+  "convert/text-to-mathematical-bold": () => import("../../convert/text-to-mathematical-bold/index.js"),
   "electronics/amp-hours-from-coulombs": () => import("../../electronics/amp-hours-from-coulombs/index.js"),
   "electronics/buck-converter-duty-cycle": () => import("../../electronics/buck-converter-duty-cycle/index.js"),
   "electronics/load-cell-output-voltage": () => import("../../electronics/load-cell-output-voltage/index.js"),

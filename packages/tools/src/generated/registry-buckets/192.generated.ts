@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/thick-walled-hoop-stress": () => import("../../engineering/thick-walled-hoop-stress/index.js"),
   "engineering/worm-gear-ratio": () => import("../../engineering/worm-gear-ratio/index.js"),
   "epigraphy/pater-patriae-position-checker": () => import("../../epigraphy/pater-patriae-position-checker/index.js"),
+  "hash/sha-384": () => import("../../hash/sha-384/index.js"),
   "proportions/percentage-decrease": () => import("../../proportions/percentage-decrease/index.js"),
   "sailing/tack-distance": () => import("../../sailing/tack-distance/index.js"),
   "semiconductor/laser-slope-efficiency": () => import("../../semiconductor/laser-slope-efficiency/index.js"),

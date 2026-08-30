@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/bragg-angle": () => import("../../chemistry/bragg-angle/index.js"),
   "chemistry/crystallography-packing-fraction": () => import("../../chemistry/crystallography-packing-fraction/index.js"),
   "chemistry/precipitate-mass-from-analyte": () => import("../../chemistry/precipitate-mass-from-analyte/index.js"),
+  "convert/text-to-coptic": () => import("../../convert/text-to-coptic/index.js"),
   "demography/ageing-index-old-young-ratio": () => import("../../demography/ageing-index-old-young-ratio/index.js"),
   "electronics/closed-loop-gain-error": () => import("../../electronics/closed-loop-gain-error/index.js"),
   "electronics/display-pixel-density": () => import("../../electronics/display-pixel-density/index.js"),

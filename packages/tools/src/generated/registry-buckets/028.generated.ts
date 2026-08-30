@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/polymer-polydispersity-index": () => import("../../chemistry/polymer-polydispersity-index/index.js"),
   "chemistry/reaction-extent": () => import("../../chemistry/reaction-extent/index.js"),
   "chemistry/vapor-pressure-from-dewpoint": () => import("../../chemistry/vapor-pressure-from-dewpoint/index.js"),
+  "convert/text-to-mathematical-bold-italic": () => import("../../convert/text-to-mathematical-bold-italic/index.js"),
   "demography/potential-support-ratio-psr": () => import("../../demography/potential-support-ratio-psr/index.js"),
   "electronics/haptic-actuator-force": () => import("../../electronics/haptic-actuator-force/index.js"),
   "electronics/piezoelectric-charge": () => import("../../electronics/piezoelectric-charge/index.js"),

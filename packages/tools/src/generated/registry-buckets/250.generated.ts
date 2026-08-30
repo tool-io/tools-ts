@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/excess-reagent-moles-remaining": () => import("../../chemistry/excess-reagent-moles-remaining/index.js"),
   "chemistry/mean-ionic-activity": () => import("../../chemistry/mean-ionic-activity/index.js"),
   "construction/compaction-factor-adjusted-volume": () => import("../../construction/compaction-factor-adjusted-volume/index.js"),
+  "convert/beta-code-to-greek": () => import("../../convert/beta-code-to-greek/index.js"),
   "demography/population-pyramid-shape-classifier": () => import("../../demography/population-pyramid-shape-classifier/index.js"),
   "electronics/mosfet-conduction-loss": () => import("../../electronics/mosfet-conduction-loss/index.js"),
   "electronics/pin-responsivity": () => import("../../electronics/pin-responsivity/index.js"),

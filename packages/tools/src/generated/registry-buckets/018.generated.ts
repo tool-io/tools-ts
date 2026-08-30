@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "cipher/playfair-decoder": () => import("../../cipher/playfair-decoder/index.js"),
   "clustering/optics": () => import("../../clustering/optics/index.js"),
   "convert/bytes-to-text": () => import("../../convert/bytes-to-text/index.js"),
+  "convert/upc-a-to-upc-e": () => import("../../convert/upc-a-to-upc-e/index.js"),
   "decode/roman-numeral": () => import("../../decode/roman-numeral/index.js"),
   "electronics/emi-inductor-reactance": () => import("../../electronics/emi-inductor-reactance/index.js"),
   "engineering/draft-angle-height": () => import("../../engineering/draft-angle-height/index.js"),

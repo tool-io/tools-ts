@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/uart-bit-time": () => import("../../electronics/uart-bit-time/index.js"),
   "engineering/critical-damping-coefficient": () => import("../../engineering/critical-damping-coefficient/index.js"),
   "geology/geological-strength-index-gsi": () => import("../../geology/geological-strength-index-gsi/index.js"),
+  "hash/blake-384": () => import("../../hash/blake-384/index.js"),
   "laser/laser-nd-yvo4-vs-nd-yag-absorption-cross-section-compare-lookup": () => import("../../laser/laser-nd-yvo4-vs-nd-yag-absorption-cross-section-compare-lookup/index.js"),
   "mycology/annulus-persistence-classifier": () => import("../../mycology/annulus-persistence-classifier/index.js"),
   "network/ipv6-subnet": () => import("../../network/ipv6-subnet/index.js"),

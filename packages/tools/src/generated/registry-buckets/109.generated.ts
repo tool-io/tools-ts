@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "film/nd-filter-factor": () => import("../../film/nd-filter-factor/index.js"),
   "geography/destination-point": () => import("../../geography/destination-point/index.js"),
   "graph/adjacency-list-to-matrix": () => import("../../graph/adjacency-list-to-matrix/index.js"),
+  "hash/sha-512-256": () => import("../../hash/sha-512-256/index.js"),
   "horology/pendulum-period": () => import("../../horology/pendulum-period/index.js"),
   "horology/regatta-countdown-steps": () => import("../../horology/regatta-countdown-steps/index.js"),
   "laser/laser-quantum-well-transition-wavelength-material-algaas-ingaas-gan-table": () => import("../../laser/laser-quantum-well-transition-wavelength-material-algaas-ingaas-gan-table/index.js"),

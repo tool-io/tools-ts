@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/arbeitsplatten-ueberstand": () => import("../../carpentry/arbeitsplatten-ueberstand/index.js"),
   "carpentry/korpus-stueckliste-seiten-boden-deckel": () => import("../../carpentry/korpus-stueckliste-seiten-boden-deckel/index.js"),
   "carpentry/zuschnitt-liste-eindimensional-optimierung": () => import("../../carpentry/zuschnitt-liste-eindimensional-optimierung/index.js"),
+  "checksum/crc-8-autosar": () => import("../../checksum/crc-8-autosar/index.js"),
   "chemistry/enthalpy-from-formation": () => import("../../chemistry/enthalpy-from-formation/index.js"),
   "chemistry/spontaneity-checker": () => import("../../chemistry/spontaneity-checker/index.js"),
   "construction/column-slenderness-ratio": () => import("../../construction/column-slenderness-ratio/index.js"),
@@ -21,4 +22,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/deaggregation-mean-mag-dist-epsilon": () => import("../../seismology/deaggregation-mean-mag-dist-epsilon/index.js"),
   "sociology/migration-age-propensity-schedule": () => import("../../sociology/migration-age-propensity-schedule/index.js"),
   "statistics/pooled-standard-deviation": () => import("../../statistics/pooled-standard-deviation/index.js"),
+  "validate/upc-e": () => import("../../validate/upc-e/index.js"),
 };

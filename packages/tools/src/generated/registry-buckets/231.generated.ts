@@ -27,4 +27,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/mosfet-channel-length-modulation": () => import("../../semiconductor/mosfet-channel-length-modulation/index.js"),
   "size/cap": () => import("../../size/cap/index.js"),
   "sociology/intervening-opportunities-stouffer-index": () => import("../../sociology/intervening-opportunities-stouffer-index/index.js"),
+  "validate/uuid": () => import("../../validate/uuid/index.js"),
 };

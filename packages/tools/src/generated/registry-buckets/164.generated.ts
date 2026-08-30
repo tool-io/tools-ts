@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/ampholyte-ph": () => import("../../chemistry/ampholyte-ph/index.js"),
   "chemistry/dilution-m1v1": () => import("../../chemistry/dilution-m1v1/index.js"),
   "construction/blocks-per-wall": () => import("../../construction/blocks-per-wall/index.js"),
+  "convert/text-to-younger-futhark": () => import("../../convert/text-to-younger-futhark/index.js"),
   "demography/marital-status-distribution-percent": () => import("../../demography/marital-status-distribution-percent/index.js"),
   "electronics/decibel-voltage-ratio": () => import("../../electronics/decibel-voltage-ratio/index.js"),
   "electronics/laser-slope-efficiency": () => import("../../electronics/laser-slope-efficiency/index.js"),

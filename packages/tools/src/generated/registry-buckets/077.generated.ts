@@ -30,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "size/ski-boot": () => import("../../size/ski-boot/index.js"),
   "sociology/spouse-status-gap-difference": () => import("../../sociology/spouse-status-gap-difference/index.js"),
   "typography/perfect-fifth-scale-generator": () => import("../../typography/perfect-fifth-scale-generator/index.js"),
+  "validate/ean-8": () => import("../../validate/ean-8/index.js"),
   "vr/reprojection-error-pixels": () => import("../../vr/reprojection-error-pixels/index.js"),
   "waist-to-height": () => import("../../waist-to-height/index.js"),
 };

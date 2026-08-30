@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "biology/feed-conversion-ratio": () => import("../../biology/feed-conversion-ratio/index.js"),
   "carpentry/arbeitsplatte-stossfuge-5mm": () => import("../../carpentry/arbeitsplatte-stossfuge-5mm/index.js"),
   "cartography/great-circle-initial-bearing": () => import("../../cartography/great-circle-initial-bearing/index.js"),
+  "checksum/crc-8": () => import("../../checksum/crc-8/index.js"),
   "chemistry/cp-minus-cv": () => import("../../chemistry/cp-minus-cv/index.js"),
   "chemistry/mass-spec-mz": () => import("../../chemistry/mass-spec-mz/index.js"),
   "chemistry/unit-cell-density": () => import("../../chemistry/unit-cell-density/index.js"),

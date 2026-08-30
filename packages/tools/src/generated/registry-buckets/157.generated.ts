@@ -14,6 +14,8 @@ export const toolModuleLoaders: Readonly<
   "electronics/audio-power-to-spl": () => import("../../electronics/audio-power-to-spl/index.js"),
   "electronics/crystal-series-resistance": () => import("../../electronics/crystal-series-resistance/index.js"),
   "film/film-frames-count": () => import("../../film/film-frames-count/index.js"),
+  "hash/ripemd-160": () => import("../../hash/ripemd-160/index.js"),
+  "hash/sha-512": () => import("../../hash/sha-512/index.js"),
   "logistics/zone-based-rate-table-step-lookup": () => import("../../logistics/zone-based-rate-table-step-lookup/index.js"),
   "mycology/mycelial-growth-rate-radial-measurer": () => import("../../mycology/mycelial-growth-rate-radial-measurer/index.js"),
   "paleography/byzantine-annomundi-converter": () => import("../../paleography/byzantine-annomundi-converter/index.js"),

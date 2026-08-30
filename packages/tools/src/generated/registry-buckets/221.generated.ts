@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/filiation-f-pattern-extractor": () => import("../../epigraphy/filiation-f-pattern-extractor/index.js"),
   "epigraphy/sigla-stopmark-position-checker": () => import("../../epigraphy/sigla-stopmark-position-checker/index.js"),
   "finance/net-from-gross": () => import("../../finance/net-from-gross/index.js"),
+  "generate/barcode": () => import("../../generate/barcode/index.js"),
   "geology/overburden-gradient": () => import("../../geology/overburden-gradient/index.js"),
   "graph/depth-first-traversal": () => import("../../graph/depth-first-traversal/index.js"),
   "list/consecutive-differences": () => import("../../list/consecutive-differences/index.js"),

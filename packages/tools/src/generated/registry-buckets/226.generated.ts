@@ -23,6 +23,8 @@ export const toolModuleLoaders: Readonly<
   "finance/ad-revenue": () => import("../../finance/ad-revenue/index.js"),
   "geology/isopach-thickness": () => import("../../geology/isopach-thickness/index.js"),
   "geology/seismic-stack-velocity": () => import("../../geology/seismic-stack-velocity/index.js"),
+  "hash/blake2b-512": () => import("../../hash/blake2b-512/index.js"),
+  "hash/md5": () => import("../../hash/md5/index.js"),
   "music/guitar-fret-distance-mm-from-scale": () => import("../../music/guitar-fret-distance-mm-from-scale/index.js"),
   "music/note-value-duration-seconds-at-bpm": () => import("../../music/note-value-duration-seconds-at-bpm/index.js"),
   "physics/force": () => import("../../physics/force/index.js"),

@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "bitwise/left-shift": () => import("../../bitwise/left-shift/index.js"),
   "carpentry/face-frame-rail-length": () => import("../../carpentry/face-frame-rail-length/index.js"),
   "carpentry/holzschraube-vorbohrung-07d": () => import("../../carpentry/holzschraube-vorbohrung-07d/index.js"),
+  "checksum/crc-16-ccitt": () => import("../../checksum/crc-16-ccitt/index.js"),
   "chemistry/diffusion-coefficient": () => import("../../chemistry/diffusion-coefficient/index.js"),
   "chemistry/henderson-hasselbalch": () => import("../../chemistry/henderson-hasselbalch/index.js"),
   "demography/person-years-exposed-risk-computation": () => import("../../demography/person-years-exposed-risk-computation/index.js"),

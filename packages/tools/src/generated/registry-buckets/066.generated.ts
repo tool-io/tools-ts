@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "biology/pcr-yield": () => import("../../biology/pcr-yield/index.js"),
   "carpentry/domino-groesse-lookup": () => import("../../carpentry/domino-groesse-lookup/index.js"),
   "carpentry/holzfeuchte-darrprobe-103grad": () => import("../../carpentry/holzfeuchte-darrprobe-103grad/index.js"),
+  "checksum/crc-16-usb": () => import("../../checksum/crc-16-usb/index.js"),
   "chemistry/chromatography-selectivity": () => import("../../chemistry/chromatography-selectivity/index.js"),
   "chemistry/crystallography-interplanar-cubic": () => import("../../chemistry/crystallography-interplanar-cubic/index.js"),
   "chemistry/electroplating-thickness": () => import("../../chemistry/electroplating-thickness/index.js"),

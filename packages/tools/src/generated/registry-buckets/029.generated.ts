@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "fitness/basal-metabolic-rate": () => import("../../fitness/basal-metabolic-rate/index.js"),
   "geology/degree-of-saturation": () => import("../../geology/degree-of-saturation/index.js"),
   "geology/flexural-rigidity": () => import("../../geology/flexural-rigidity/index.js"),
+  "hash/keccak-512": () => import("../../hash/keccak-512/index.js"),
   "interpolation/exponential": () => import("../../interpolation/exponential/index.js"),
   "logistics/double-brokering-risk-flag-checker": () => import("../../logistics/double-brokering-risk-flag-checker/index.js"),
   "microcontroller/timer-tick-period": () => import("../../microcontroller/timer-tick-period/index.js"),

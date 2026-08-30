@@ -27,5 +27,6 @@ export const toolModuleLoaders: Readonly<
   "number/digit-frequency": () => import("../../number/digit-frequency/index.js"),
   "ponderal-index": () => import("../../ponderal-index/index.js"),
   "real-estate/usable-area": () => import("../../real-estate/usable-area/index.js"),
+  "validate/jan": () => import("../../validate/jan/index.js"),
   "vector/hadamard-product": () => import("../../vector/hadamard-product/index.js"),
 };

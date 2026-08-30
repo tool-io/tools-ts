@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "biology/blood-volume-total": () => import("../../biology/blood-volume-total/index.js"),
   "biology/body-surface-area-mosteller": () => import("../../biology/body-surface-area-mosteller/index.js"),
   "biology/conduction-velocity-unmyelinated": () => import("../../biology/conduction-velocity-unmyelinated/index.js"),
+  "checksum/crc-32": () => import("../../checksum/crc-32/index.js"),
   "chemistry/electronegativity-lookup": () => import("../../chemistry/electronegativity-lookup/index.js"),
   "chemistry/percent-analyte-gravimetry": () => import("../../chemistry/percent-analyte-gravimetry/index.js"),
   "chemistry/quantum-rydberg-wavelength": () => import("../../chemistry/quantum-rydberg-wavelength/index.js"),

@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/gas-density-stp": () => import("../../chemistry/gas-density-stp/index.js"),
   "construction/shingles-bundles": () => import("../../construction/shingles-bundles/index.js"),
   "convert/json-to-csv": () => import("../../convert/json-to-csv/index.js"),
+  "convert/text-to-fullwidth": () => import("../../convert/text-to-fullwidth/index.js"),
   "electronics/dac-glitch-energy": () => import("../../electronics/dac-glitch-energy/index.js"),
   "electronics/junction-temperature": () => import("../../electronics/junction-temperature/index.js"),
   "electronics/motor-torque-constant": () => import("../../electronics/motor-torque-constant/index.js"),

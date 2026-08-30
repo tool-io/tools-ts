@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "biology/oxygenation-index": () => import("../../biology/oxygenation-index/index.js"),
   "carpentry/schleifpapier-grit-folge-lookup": () => import("../../carpentry/schleifpapier-grit-folge-lookup/index.js"),
   "carpentry/wood-movement-expansion": () => import("../../carpentry/wood-movement-expansion/index.js"),
+  "checksum/crc-32-bzip2": () => import("../../checksum/crc-32-bzip2/index.js"),
   "chemistry/specific-heat": () => import("../../chemistry/specific-heat/index.js"),
   "demography/indirect-standardized-smr": () => import("../../demography/indirect-standardized-smr/index.js"),
   "demography/return-migration-proportion-lookup": () => import("../../demography/return-migration-proportion-lookup/index.js"),

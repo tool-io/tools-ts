@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "demography/old-age-proportion-65-plus": () => import("../../demography/old-age-proportion-65-plus/index.js"),
   "electronics/display-refresh-power": () => import("../../electronics/display-refresh-power/index.js"),
   "finance/compound-growth-factor": () => import("../../finance/compound-growth-factor/index.js"),
+  "generate/uuid-v2": () => import("../../generate/uuid-v2/index.js"),
   "geology/carbon-14-age": () => import("../../geology/carbon-14-age/index.js"),
   "geology/drilling-hydraulics-bit-nozzle-velocity": () => import("../../geology/drilling-hydraulics-bit-nozzle-velocity/index.js"),
   "geology/geologic-time-scale-lookup": () => import("../../geology/geologic-time-scale-lookup/index.js"),

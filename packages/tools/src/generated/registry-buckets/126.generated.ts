@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "construction/drywall-weight-total": () => import("../../construction/drywall-weight-total/index.js"),
   "construction/roofing-nails-per-bundle": () => import("../../construction/roofing-nails-per-bundle/index.js"),
   "convert/ascii-code-to-character": () => import("../../convert/ascii-code-to-character/index.js"),
+  "convert/text-to-regional-indicator": () => import("../../convert/text-to-regional-indicator/index.js"),
   "cryptography/caesar-shift": () => import("../../cryptography/caesar-shift/index.js"),
   "demography/tempo-adjustment-bongaarts-feeney": () => import("../../demography/tempo-adjustment-bongaarts-feeney/index.js"),
   "electronics/motor-slip-percentage": () => import("../../electronics/motor-slip-percentage/index.js"),

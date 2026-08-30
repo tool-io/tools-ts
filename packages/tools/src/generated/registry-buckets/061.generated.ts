@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "check/device-info": () => import("../../check/device-info/index.js"),
   "chemistry/heat-capacity-molar-cv": () => import("../../chemistry/heat-capacity-molar-cv/index.js"),
   "construction/electrical-lighting-watts-per-sqft": () => import("../../construction/electrical-lighting-watts-per-sqft/index.js"),
+  "convert/text-to-utf16-code-units": () => import("../../convert/text-to-utf16-code-units/index.js"),
   "electronics/common-mode-choke-impedance-at-frequency": () => import("../../electronics/common-mode-choke-impedance-at-frequency/index.js"),
   "electronics/flexray-cycle-time": () => import("../../electronics/flexray-cycle-time/index.js"),
   "electronics/frequency-to-period": () => import("../../electronics/frequency-to-period/index.js"),

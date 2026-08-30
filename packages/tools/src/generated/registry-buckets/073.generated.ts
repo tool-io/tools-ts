@@ -7,6 +7,7 @@ export const toolModuleLoaders: Readonly<
   "acoustics/area-weighted-absorption-coefficient": () => import("../../acoustics/area-weighted-absorption-coefficient/index.js"),
   "actuarial/total-decrement-rate": () => import("../../actuarial/total-decrement-rate/index.js"),
   "carpentry/beize-verduennung-verhaeltnis": () => import("../../carpentry/beize-verduennung-verhaeltnis/index.js"),
+  "checksum/crc-64-ecma-182": () => import("../../checksum/crc-64-ecma-182/index.js"),
   "chemistry/reaction-quotient": () => import("../../chemistry/reaction-quotient/index.js"),
   "construction/concrete-weight": () => import("../../construction/concrete-weight/index.js"),
   "electricity/rc-time-constant": () => import("../../electricity/rc-time-constant/index.js"),

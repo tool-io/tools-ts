@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "biology/electrolyte-leakage": () => import("../../biology/electrolyte-leakage/index.js"),
   "biology/volume-of-distribution": () => import("../../biology/volume-of-distribution/index.js"),
   "carpentry/turning-blank-diameter": () => import("../../carpentry/turning-blank-diameter/index.js"),
+  "checksum/crc-32-jamcrc": () => import("../../checksum/crc-32-jamcrc/index.js"),
   "chemistry/moles-from-mass": () => import("../../chemistry/moles-from-mass/index.js"),
   "clustering/birch-microclusters": () => import("../../clustering/birch-microclusters/index.js"),
   "construction/drywall-joint-compound-coverage": () => import("../../construction/drywall-joint-compound-coverage/index.js"),

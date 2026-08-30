@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/buffer-dilution-ph": () => import("../../chemistry/buffer-dilution-ph/index.js"),
   "chemistry/specific-activity": () => import("../../chemistry/specific-activity/index.js"),
   "convert/hex-to-oklch": () => import("../../convert/hex-to-oklch/index.js"),
+  "convert/text-to-mathematical-sans-serif-italic": () => import("../../convert/text-to-mathematical-sans-serif-italic/index.js"),
   "demography/lexis-diagram-cell-classifier": () => import("../../demography/lexis-diagram-cell-classifier/index.js"),
   "electronics/accelerometer-noise-density": () => import("../../electronics/accelerometer-noise-density/index.js"),
   "electronics/apparent-power": () => import("../../electronics/apparent-power/index.js"),

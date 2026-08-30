@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/pcb-via-current-capacity": () => import("../../electronics/pcb-via-current-capacity/index.js"),
   "electronics/resonant-frequency": () => import("../../electronics/resonant-frequency/index.js"),
   "forestry/stand-volume-per-hectare": () => import("../../forestry/stand-volume-per-hectare/index.js"),
+  "generate/isbn-13": () => import("../../generate/isbn-13/index.js"),
   "geology/stable-isotope-delta": () => import("../../geology/stable-isotope-delta/index.js"),
   "geometry/scale-factor-area": () => import("../../geometry/scale-factor-area/index.js"),
   "json/flatten": () => import("../../json/flatten/index.js"),

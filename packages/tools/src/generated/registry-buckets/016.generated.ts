@@ -18,6 +18,8 @@ export const toolModuleLoaders: Readonly<
   "geology/hydrostatic-pressure-gradient-brine": () => import("../../geology/hydrostatic-pressure-gradient-brine/index.js"),
   "geology/material-balance-gas-initially-in-place": () => import("../../geology/material-balance-gas-initially-in-place/index.js"),
   "graph/node2vec-transition": () => import("../../graph/node2vec-transition/index.js"),
+  "hash/blake3": () => import("../../hash/blake3/index.js"),
+  "hash/keccak-256": () => import("../../hash/keccak-256/index.js"),
   "horology/synodic-cycle-display": () => import("../../horology/synodic-cycle-display/index.js"),
   "logistics/freight-class-nmfc-density-lookup": () => import("../../logistics/freight-class-nmfc-density-lookup/index.js"),
   "microcontroller/i2c-bitrate": () => import("../../microcontroller/i2c-bitrate/index.js"),

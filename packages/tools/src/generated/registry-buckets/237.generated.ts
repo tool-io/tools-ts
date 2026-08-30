@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/solubility-mx3": () => import("../../chemistry/solubility-mx3/index.js"),
   "construction/site-grade-slope-percentage": () => import("../../construction/site-grade-slope-percentage/index.js"),
   "convert/pressure-stress": () => import("../../convert/pressure-stress/index.js"),
+  "convert/text-to-ogham": () => import("../../convert/text-to-ogham/index.js"),
   "electronics/capacitor-lifetime-arrhenius": () => import("../../electronics/capacitor-lifetime-arrhenius/index.js"),
   "electronics/instrumentation-amplifier-gain": () => import("../../electronics/instrumentation-amplifier-gain/index.js"),
   "electronics/stripline-impedance-approx": () => import("../../electronics/stripline-impedance-approx/index.js"),

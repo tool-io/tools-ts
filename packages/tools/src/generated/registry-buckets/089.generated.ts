@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/zener-current": () => import("../../electronics/zener-current/index.js"),
   "format/byte-size": () => import("../../format/byte-size/index.js"),
   "geometry/rectangle-perimeter": () => import("../../geometry/rectangle-perimeter/index.js"),
+  "hash/sha3-256": () => import("../../hash/sha3-256/index.js"),
   "http/etag-parser": () => import("../../http/etag-parser/index.js"),
   "logistics/cbm-cubic-meters-from-cartons": () => import("../../logistics/cbm-cubic-meters-from-cartons/index.js"),
   "parse/percentage": () => import("../../parse/percentage/index.js"),

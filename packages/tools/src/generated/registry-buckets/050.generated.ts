@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "classification/specificity": () => import("../../classification/specificity/index.js"),
   "engineering/bearing-life-l10": () => import("../../engineering/bearing-life-l10/index.js"),
   "epigraphy/sinistroverse-direction-flag": () => import("../../epigraphy/sinistroverse-direction-flag/index.js"),
+  "hash/blake-512": () => import("../../hash/blake-512/index.js"),
   "mycology/ascoma-type-classifier": () => import("../../mycology/ascoma-type-classifier/index.js"),
   "mycology/christensen-urease-rapid-classifier": () => import("../../mycology/christensen-urease-rapid-classifier/index.js"),
   "nautical/knots-to-kph": () => import("../../nautical/knots-to-kph/index.js"),

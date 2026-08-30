@@ -5,6 +5,8 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "carpentry/shelf-pin-holes-spacing": () => import("../../carpentry/shelf-pin-holes-spacing/index.js"),
+  "checksum/crc-16-modbus": () => import("../../checksum/crc-16-modbus/index.js"),
+  "convert/text-to-mathematical-italic": () => import("../../convert/text-to-mathematical-italic/index.js"),
   "electronics/thermal-resistance": () => import("../../electronics/thermal-resistance/index.js"),
   "forestry/stand-density-index-reineke": () => import("../../forestry/stand-density-index-reineke/index.js"),
   "generate/bin-packing-instance": () => import("../../generate/bin-packing-instance/index.js"),

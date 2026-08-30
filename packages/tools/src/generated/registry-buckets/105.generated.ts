@@ -9,6 +9,8 @@ export const toolModuleLoaders: Readonly<
   "biology/gibbs-donnan-ratio": () => import("../../biology/gibbs-donnan-ratio/index.js"),
   "biology/hemoglobin-a1c": () => import("../../biology/hemoglobin-a1c/index.js"),
   "biology/selection-differential": () => import("../../biology/selection-differential/index.js"),
+  "convert/text-to-negative-circled": () => import("../../convert/text-to-negative-circled/index.js"),
+  "convert/text-to-superscript": () => import("../../convert/text-to-superscript/index.js"),
   "cost/data-storage": () => import("../../cost/data-storage/index.js"),
   "electronics/derating-factor": () => import("../../electronics/derating-factor/index.js"),
   "engineering/wind-turbine-power": () => import("../../engineering/wind-turbine-power/index.js"),

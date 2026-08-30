@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/voltage-gain-db": () => import("../../electronics/voltage-gain-db/index.js"),
   "engineering/bevel-gear-pitch-angle": () => import("../../engineering/bevel-gear-pitch-angle/index.js"),
   "forestry/leaf-area-index-forestry": () => import("../../forestry/leaf-area-index-forestry/index.js"),
+  "generate/uuid-v3": () => import("../../generate/uuid-v3/index.js"),
   "numismatics/kennedy-40-percent-silver-content": () => import("../../numismatics/kennedy-40-percent-silver-content/index.js"),
   "paleography/manuscript-format-classifier": () => import("../../paleography/manuscript-format-classifier/index.js"),
   "probability/metropolis-hastings-sampler": () => import("../../probability/metropolis-hastings-sampler/index.js"),

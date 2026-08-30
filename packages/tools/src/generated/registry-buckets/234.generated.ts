@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/carrier-to-noise-ratio": () => import("../../electronics/carrier-to-noise-ratio/index.js"),
   "electronics/dbv-to-volts": () => import("../../electronics/dbv-to-volts/index.js"),
   "electronics/microphone-max-spl": () => import("../../electronics/microphone-max-spl/index.js"),
+  "encode/sqids": () => import("../../encode/sqids/index.js"),
   "film/aspect-ratio-calculation": () => import("../../film/aspect-ratio-calculation/index.js"),
   "forestry/quadratic-mean-diameter": () => import("../../forestry/quadratic-mean-diameter/index.js"),
   "music/sample-buffer-latency-ms": () => import("../../music/sample-buffer-latency-ms/index.js"),

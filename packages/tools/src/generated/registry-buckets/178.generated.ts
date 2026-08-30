@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/lathe-speed-rpm": () => import("../../carpentry/lathe-speed-rpm/index.js"),
   "cartography/raster-pixels-print-size-calculator": () => import("../../cartography/raster-pixels-print-size-calculator/index.js"),
   "construction/sheathing-cut-waste": () => import("../../construction/sheathing-cut-waste/index.js"),
+  "convert/text-to-utf8-octal": () => import("../../convert/text-to-utf8-octal/index.js"),
   "demography/daly-disability-adjusted-life-years": () => import("../../demography/daly-disability-adjusted-life-years/index.js"),
   "electronics/relay-coil-power": () => import("../../electronics/relay-coil-power/index.js"),
   "finance/cost-plus-price": () => import("../../finance/cost-plus-price/index.js"),

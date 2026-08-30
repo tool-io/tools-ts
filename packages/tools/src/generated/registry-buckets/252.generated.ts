@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/dovetail-spacing": () => import("../../carpentry/dovetail-spacing/index.js"),
   "chemistry/cell-potential-from-gibbs": () => import("../../chemistry/cell-potential-from-gibbs/index.js"),
   "chemistry/electron-balance-redox": () => import("../../chemistry/electron-balance-redox/index.js"),
+  "convert/buckwalter-to-arabic": () => import("../../convert/buckwalter-to-arabic/index.js"),
   "demography/bilateral-stream-matrix-balance": () => import("../../demography/bilateral-stream-matrix-balance/index.js"),
   "electronics/bootstrap-capacitor": () => import("../../electronics/bootstrap-capacitor/index.js"),
   "electronics/eye-width-estimate": () => import("../../electronics/eye-width-estimate/index.js"),

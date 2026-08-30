@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/surface-tension-capillary-rise": () => import("../../chemistry/surface-tension-capillary-rise/index.js"),
   "convert/atbash": () => import("../../convert/atbash/index.js"),
   "convert/hsv-to-rgb": () => import("../../convert/hsv-to-rgb/index.js"),
+  "convert/text-to-utf8-decimal": () => import("../../convert/text-to-utf8-decimal/index.js"),
   "data-structure/minhash": () => import("../../data-structure/minhash/index.js"),
   "date/is-weekend": () => import("../../date/is-weekend/index.js"),
   "electronics/capacitor-charging-voltage": () => import("../../electronics/capacitor-charging-voltage/index.js"),

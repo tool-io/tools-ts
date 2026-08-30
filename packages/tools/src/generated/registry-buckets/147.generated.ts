@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "aviation/weight-shift-cg": () => import("../../aviation/weight-shift-cg/index.js"),
+  "checksum/lrc-8": () => import("../../checksum/lrc-8/index.js"),
   "electronics/boost-converter-duty-cycle": () => import("../../electronics/boost-converter-duty-cycle/index.js"),
   "electronics/capacitor-impedance-at-frequency": () => import("../../electronics/capacitor-impedance-at-frequency/index.js"),
   "electronics/motor-no-load-speed": () => import("../../electronics/motor-no-load-speed/index.js"),

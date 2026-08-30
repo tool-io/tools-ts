@@ -27,4 +27,5 @@ export const toolModuleLoaders: Readonly<
   "parse/matrix": () => import("../../parse/matrix/index.js"),
   "real-estate/mill-rate-tax": () => import("../../real-estate/mill-rate-tax/index.js"),
   "sailing/cunningham-tension": () => import("../../sailing/cunningham-tension/index.js"),
+  "validate/upc-a": () => import("../../validate/upc-a/index.js"),
 };

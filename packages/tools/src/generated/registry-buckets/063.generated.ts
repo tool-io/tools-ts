@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/sample-and-hold-droop-rate": () => import("../../electronics/sample-and-hold-droop-rate/index.js"),
   "encode/crc32": () => import("../../encode/crc32/index.js"),
   "forestry/sawlog-volume-percentage": () => import("../../forestry/sawlog-volume-percentage/index.js"),
+  "generate/gtin-14": () => import("../../generate/gtin-14/index.js"),
   "matrix/inverse": () => import("../../matrix/inverse/index.js"),
   "numismatics/half-dollars-per-ounce-silver-yield": () => import("../../numismatics/half-dollars-per-ounce-silver-yield/index.js"),
   "paleography/italic-slant-degree-rater": () => import("../../paleography/italic-slant-degree-rater/index.js"),

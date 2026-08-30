@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/capacitor-discharging-voltage": () => import("../../electronics/capacitor-discharging-voltage/index.js"),
   "electronics/crosstalk-far-end-voltage": () => import("../../electronics/crosstalk-far-end-voltage/index.js"),
   "electronics/flicker-noise-corner": () => import("../../electronics/flicker-noise-corner/index.js"),
+  "generate/uuid-v1": () => import("../../generate/uuid-v1/index.js"),
   "geology/water-cut": () => import("../../geology/water-cut/index.js"),
   "logistics/edge-board-length-pallet-total": () => import("../../logistics/edge-board-length-pallet-total/index.js"),
   "logistics/minimum-charge-floor-application": () => import("../../logistics/minimum-charge-floor-application/index.js"),

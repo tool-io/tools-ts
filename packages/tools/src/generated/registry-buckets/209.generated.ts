@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "encode/crc16-ccitt": () => import("../../encode/crc16-ccitt/index.js"),
   "engineering/mach-number-compressible": () => import("../../engineering/mach-number-compressible/index.js"),
   "film/angle-of-view-diagonal": () => import("../../film/angle-of-view-diagonal/index.js"),
+  "hash/sha-224": () => import("../../hash/sha-224/index.js"),
   "probability/rejection-sampler": () => import("../../probability/rejection-sampler/index.js"),
   "probability/sequential-monte-carlo-sampler": () => import("../../probability/sequential-monte-carlo-sampler/index.js"),
   "random/canadian-syllabics-character": () => import("../../random/canadian-syllabics-character/index.js"),

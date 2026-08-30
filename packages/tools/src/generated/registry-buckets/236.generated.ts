@@ -27,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "finance/real-rate-of-return": () => import("../../finance/real-rate-of-return/index.js"),
   "geology/well-log-permeability-wyllie-rose": () => import("../../geology/well-log-permeability-wyllie-rose/index.js"),
   "geometry/triangle-perimeter": () => import("../../geometry/triangle-perimeter/index.js"),
+  "hash/sha3-224": () => import("../../hash/sha3-224/index.js"),
   "sailing/hull-resistance-frictional": () => import("../../sailing/hull-resistance-frictional/index.js"),
   "semiconductor/defect-density-from-yield": () => import("../../semiconductor/defect-density-from-yield/index.js"),
   "semiconductor/inp-lattice-constant": () => import("../../semiconductor/inp-lattice-constant/index.js"),

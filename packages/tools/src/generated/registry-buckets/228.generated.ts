@@ -21,11 +21,13 @@ export const toolModuleLoaders: Readonly<
   "engineering/soil-permeability-constant-head": () => import("../../engineering/soil-permeability-constant-head/index.js"),
   "epigraphy/recut-overlay-offset-detector": () => import("../../epigraphy/recut-overlay-offset-detector/index.js"),
   "geology/recompression-index": () => import("../../geology/recompression-index/index.js"),
+  "hash/shake-256": () => import("../../hash/shake-256/index.js"),
   "probability/hamiltonian-monte-carlo-sampler": () => import("../../probability/hamiltonian-monte-carlo-sampler/index.js"),
   "seismology/apparent-stress-energy-ratio": () => import("../../seismology/apparent-stress-energy-ratio/index.js"),
   "seismology/magnitude-frequency-entropy-shannon": () => import("../../seismology/magnitude-frequency-entropy-shannon/index.js"),
   "semiconductor/etch-rate": () => import("../../semiconductor/etch-rate/index.js"),
   "semiconductor/total-ionizing-dose-threshold-shift": () => import("../../semiconductor/total-ionizing-dose-threshold-shift/index.js"),
   "statistics/most-common-value-count": () => import("../../statistics/most-common-value-count/index.js"),
+  "validate/gtin": () => import("../../validate/gtin/index.js"),
   "validate/sudoku-grid": () => import("../../validate/sudoku-grid/index.js"),
 };

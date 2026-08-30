@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/vesicle-count-segment-tally-calculator": () => import("../../mycology/vesicle-count-segment-tally-calculator/index.js"),
   "oenology/color-hue-angle": () => import("../../oenology/color-hue-angle/index.js"),
   "paleography/medieval-currency-denaro-converter": () => import("../../paleography/medieval-currency-denaro-converter/index.js"),
+  "parse/uuid": () => import("../../parse/uuid/index.js"),
   "random/musical-accidental": () => import("../../random/musical-accidental/index.js"),
   "sailing/bowsprit-load": () => import("../../sailing/bowsprit-load/index.js"),
   "seismology/bath-law-largest-aftershock-gap-note-lookup": () => import("../../seismology/bath-law-largest-aftershock-gap-note-lookup/index.js"),

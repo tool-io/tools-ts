@@ -24,5 +24,6 @@ export const toolModuleLoaders: Readonly<
   "seismology/joint-hypocentral-grid-search-step": () => import("../../seismology/joint-hypocentral-grid-search-step/index.js"),
   "sports/speed-to-pace": () => import("../../sports/speed-to-pace/index.js"),
   "text/shingling": () => import("../../text/shingling/index.js"),
+  "validate/isbn": () => import("../../validate/isbn/index.js"),
   "web/fetchpriority-attribute-validator": () => import("../../web/fetchpriority-attribute-validator/index.js"),
 };

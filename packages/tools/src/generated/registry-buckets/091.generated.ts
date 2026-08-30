@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "construction/dewatering-pump-capacity": () => import("../../construction/dewatering-pump-capacity/index.js"),
   "electronics/bulk-capacitor-holdup-time": () => import("../../electronics/bulk-capacitor-holdup-time/index.js"),
   "electronics/i2c-bus-capacitance": () => import("../../electronics/i2c-bus-capacitance/index.js"),
+  "generate/uuid-v6": () => import("../../generate/uuid-v6/index.js"),
   "music/harmonic-series-partial-frequency": () => import("../../music/harmonic-series-partial-frequency/index.js"),
   "oenology/cold-stabilization-chill": () => import("../../oenology/cold-stabilization-chill/index.js"),
   "oenology/diacetyl-threshold-checker": () => import("../../oenology/diacetyl-threshold-checker/index.js"),

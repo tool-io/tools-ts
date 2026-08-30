@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/max-power-load": () => import("../../electronics/max-power-load/index.js"),
   "epigraphy/weathering-degree-simplified-rater": () => import("../../epigraphy/weathering-degree-simplified-rater/index.js"),
   "geology/travel-time-s-wave": () => import("../../geology/travel-time-s-wave/index.js"),
+  "hash/keccak-384": () => import("../../hash/keccak-384/index.js"),
   "music/frequency-to-nearest-midi": () => import("../../music/frequency-to-nearest-midi/index.js"),
   "password/strength": () => import("../../password/strength/index.js"),
   "probability/dirichlet-sampler": () => import("../../probability/dirichlet-sampler/index.js"),

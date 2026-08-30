@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/isotopic-abundance": () => import("../../chemistry/isotopic-abundance/index.js"),
   "chemistry/solubility-with-ionic-strength": () => import("../../chemistry/solubility-with-ionic-strength/index.js"),
   "construction/concrete-retarder-dose": () => import("../../construction/concrete-retarder-dose/index.js"),
+  "convert/text-to-html-decimal-entities": () => import("../../convert/text-to-html-decimal-entities/index.js"),
   "demography/unmet-need-contraception-percent": () => import("../../demography/unmet-need-contraception-percent/index.js"),
   "engineering/electrical-load-diversity": () => import("../../engineering/electrical-load-diversity/index.js"),
   "engineering/weir-flow-rectangular": () => import("../../engineering/weir-flow-rectangular/index.js"),

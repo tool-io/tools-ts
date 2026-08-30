@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/holzschraube-zugfestigkeit-lookup": () => import("../../carpentry/holzschraube-zugfestigkeit-lookup/index.js"),
   "chemistry/quantum-particle-in-box-energy": () => import("../../chemistry/quantum-particle-in-box-energy/index.js"),
   "construction/hardwood-waste-cut": () => import("../../construction/hardwood-waste-cut/index.js"),
+  "convert/text-to-mathematical-sans-serif-bold": () => import("../../convert/text-to-mathematical-sans-serif-bold/index.js"),
   "electronics/diode-conduction-loss": () => import("../../electronics/diode-conduction-loss/index.js"),
   "electronics/thermistor-beta-resistance": () => import("../../electronics/thermistor-beta-resistance/index.js"),
   "engineering/stress-force": () => import("../../engineering/stress-force/index.js"),

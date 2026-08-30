@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/ionic-radius-lookup": () => import("../../chemistry/ionic-radius-lookup/index.js"),
   "clustering/k-means": () => import("../../clustering/k-means/index.js"),
   "convert/hsl-to-hsv": () => import("../../convert/hsl-to-hsv/index.js"),
+  "convert/text-to-nato-phonetic": () => import("../../convert/text-to-nato-phonetic/index.js"),
   "electronics/fpga-setup-time-slack": () => import("../../electronics/fpga-setup-time-slack/index.js"),
   "electronics/power-dissipation-from-temperature": () => import("../../electronics/power-dissipation-from-temperature/index.js"),
   "electronics/power-factor": () => import("../../electronics/power-factor/index.js"),

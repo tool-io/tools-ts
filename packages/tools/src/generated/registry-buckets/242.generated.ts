@@ -9,6 +9,8 @@ export const toolModuleLoaders: Readonly<
   "chemistry/calorimeter-constant": () => import("../../chemistry/calorimeter-constant/index.js"),
   "chemistry/equilibrium-constant-kc": () => import("../../chemistry/equilibrium-constant-kc/index.js"),
   "chemistry/hydration-enthalpy": () => import("../../chemistry/hydration-enthalpy/index.js"),
+  "convert/text-to-glagolitic": () => import("../../convert/text-to-glagolitic/index.js"),
+  "convert/upc-e-to-upc-a": () => import("../../convert/upc-e-to-upc-a/index.js"),
   "electronics/motor-mechanical-power": () => import("../../electronics/motor-mechanical-power/index.js"),
   "electronics/series-capacitor-voltage": () => import("../../electronics/series-capacitor-voltage/index.js"),
   "electronics/stepper-motor-rpm-from-pulse-rate": () => import("../../electronics/stepper-motor-rpm-from-pulse-rate/index.js"),

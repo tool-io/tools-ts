@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "cartography/enlargement-new-scale": () => import("../../cartography/enlargement-new-scale/index.js"),
   "cartography/rf-to-verbal-scale": () => import("../../cartography/rf-to-verbal-scale/index.js"),
   "construction/concrete-slump-water-adjustment": () => import("../../construction/concrete-slump-water-adjustment/index.js"),
+  "decode/sqids": () => import("../../decode/sqids/index.js"),
   "decode/varint": () => import("../../decode/varint/index.js"),
   "epigraphy/kalendes-reverse-date-solver": () => import("../../epigraphy/kalendes-reverse-date-solver/index.js"),
   "horology/bracelet-link-adjustment": () => import("../../horology/bracelet-link-adjustment/index.js"),

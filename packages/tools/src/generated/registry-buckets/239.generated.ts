@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/holzfeuchte-berechnung": () => import("../../carpentry/holzfeuchte-berechnung/index.js"),
   "carpentry/sockelleiste-hoehe-60-100mm-lookup": () => import("../../carpentry/sockelleiste-hoehe-60-100mm-lookup/index.js"),
   "carpentry/topfband-110-grad-aufschlag": () => import("../../carpentry/topfband-110-grad-aufschlag/index.js"),
+  "convert/text-to-parenthesized": () => import("../../convert/text-to-parenthesized/index.js"),
   "cryptography/xor-cipher": () => import("../../cryptography/xor-cipher/index.js"),
   "data-mining/apriori": () => import("../../data-mining/apriori/index.js"),
   "electronics/battery-self-discharge-per-month": () => import("../../electronics/battery-self-discharge-per-month/index.js"),

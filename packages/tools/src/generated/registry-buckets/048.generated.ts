@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "aviation/descent-rate": () => import("../../aviation/descent-rate/index.js"),
   "aviation/tailwind-landing-check": () => import("../../aviation/tailwind-landing-check/index.js"),
   "aviation/turn-diameter": () => import("../../aviation/turn-diameter/index.js"),
+  "checksum/crc-16-kermit": () => import("../../checksum/crc-16-kermit/index.js"),
   "convert/base64url-encode": () => import("../../convert/base64url-encode/index.js"),
   "cryptography/rot5": () => import("../../cryptography/rot5/index.js"),
   "electronics/heatsink-junction-to-case-resistance": () => import("../../electronics/heatsink-junction-to-case-resistance/index.js"),

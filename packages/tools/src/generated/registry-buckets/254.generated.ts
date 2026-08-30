@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/ka-from-kb-kw": () => import("../../chemistry/ka-from-kb-kw/index.js"),
   "color/relative-luminance": () => import("../../color/relative-luminance/index.js"),
   "convert/magnetic-field": () => import("../../convert/magnetic-field/index.js"),
+  "convert/text-to-mathematical-sans-serif-bold-italic": () => import("../../convert/text-to-mathematical-sans-serif-bold-italic/index.js"),
   "electronics/battery-capacity-at-temperature": () => import("../../electronics/battery-capacity-at-temperature/index.js"),
   "music/frequency-from-midi": () => import("../../music/frequency-from-midi/index.js"),
   "sailing/chain-catenary-sag": () => import("../../sailing/chain-catenary-sag/index.js"),

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "checksum/crc-16-dnp": () => import("../../checksum/crc-16-dnp/index.js"),
   "chemistry/ideal-gas-density": () => import("../../chemistry/ideal-gas-density/index.js"),
   "chemistry/isotope-average-mass": () => import("../../chemistry/isotope-average-mass/index.js"),
   "chemistry/solubility-product-quotient": () => import("../../chemistry/solubility-product-quotient/index.js"),

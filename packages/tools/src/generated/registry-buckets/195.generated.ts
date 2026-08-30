@@ -30,4 +30,5 @@ export const toolModuleLoaders: Readonly<
   "random/kannada-character": () => import("../../random/kannada-character/index.js"),
   "semiconductor/impurity-scattering-mobility": () => import("../../semiconductor/impurity-scattering-mobility/index.js"),
   "statistics/sample-variance": () => import("../../statistics/sample-variance/index.js"),
+  "validate/ean-13": () => import("../../validate/ean-13/index.js"),
 };

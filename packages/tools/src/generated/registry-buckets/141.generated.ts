@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "check/webcam": () => import("../../check/webcam/index.js"),
   "chemistry/atomic-radius-lookup": () => import("../../chemistry/atomic-radius-lookup/index.js"),
   "chemistry/packing-efficiency": () => import("../../chemistry/packing-efficiency/index.js"),
+  "convert/text-to-mathematical-sans-serif": () => import("../../convert/text-to-mathematical-sans-serif/index.js"),
   "decode/jwt": () => import("../../decode/jwt/index.js"),
   "engineering/bending-allowance-sheet-metal": () => import("../../engineering/bending-allowance-sheet-metal/index.js"),
   "epigraphy/cil-citation-parser": () => import("../../epigraphy/cil-citation-parser/index.js"),

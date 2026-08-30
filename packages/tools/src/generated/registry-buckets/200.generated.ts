@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "demography/completed-cohort-fertility-cff": () => import("../../demography/completed-cohort-fertility-cff/index.js"),
   "electronics/ptc-thermistor-resistance": () => import("../../electronics/ptc-thermistor-resistance/index.js"),
   "engineering/drill-time": () => import("../../engineering/drill-time/index.js"),
+  "generate/uuid-v7": () => import("../../generate/uuid-v7/index.js"),
   "logistics/additional-handling-fee-trigger-checker": () => import("../../logistics/additional-handling-fee-trigger-checker/index.js"),
   "oenology/blind-tasting-varietal-scorer": () => import("../../oenology/blind-tasting-varietal-scorer/index.js"),
   "optimization/non-convex-multistart": () => import("../../optimization/non-convex-multistart/index.js"),

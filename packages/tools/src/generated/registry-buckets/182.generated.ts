@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "biology/crop-growth-rate": () => import("../../biology/crop-growth-rate/index.js"),
   "biology/ndvi-red-edge": () => import("../../biology/ndvi-red-edge/index.js"),
   "carpentry/saw-kerf-loss": () => import("../../carpentry/saw-kerf-loss/index.js"),
+  "checksum/crc-32q": () => import("../../checksum/crc-32q/index.js"),
   "chemistry/freundlich-isotherm-q": () => import("../../chemistry/freundlich-isotherm-q/index.js"),
   "chemistry/half-life-second-order": () => import("../../chemistry/half-life-second-order/index.js"),
   "convert/decimal-to-roman": () => import("../../convert/decimal-to-roman/index.js"),

@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "encode/roman-numeral": () => import("../../encode/roman-numeral/index.js"),
   "finance/gross-profit-amount": () => import("../../finance/gross-profit-amount/index.js"),
   "geology/time-factor-consolidation": () => import("../../geology/time-factor-consolidation/index.js"),
+  "hash/sha-1": () => import("../../hash/sha-1/index.js"),
   "logistics/commercial-invoice-consistency-checker": () => import("../../logistics/commercial-invoice-consistency-checker/index.js"),
   "oenology/polymeric-pigment-index": () => import("../../oenology/polymeric-pigment-index/index.js"),
   "sailing/tide-gate-window": () => import("../../sailing/tide-gate-window/index.js"),

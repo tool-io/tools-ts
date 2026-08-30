@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "aviation/bingo-fuel": () => import("../../aviation/bingo-fuel/index.js"),
+  "checksum/xor-8": () => import("../../checksum/xor-8/index.js"),
   "electronics/ethernet-frame-overhead": () => import("../../electronics/ethernet-frame-overhead/index.js"),
   "electronics/ntc-thermistor-beta-resistance": () => import("../../electronics/ntc-thermistor-beta-resistance/index.js"),
   "electronics/thermal-via-resistance": () => import("../../electronics/thermal-via-resistance/index.js"),

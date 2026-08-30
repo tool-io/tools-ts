@@ -6,9 +6,11 @@ export const toolModuleLoaders: Readonly<
 > = {
   "agriculture/growing-degree-days": () => import("../../agriculture/growing-degree-days/index.js"),
   "aviation/magnetic-course": () => import("../../aviation/magnetic-course/index.js"),
+  "checksum/crc-64-xz": () => import("../../checksum/crc-64-xz/index.js"),
   "chemistry/bomb-calorimeter-energy": () => import("../../chemistry/bomb-calorimeter-energy/index.js"),
   "construction/rebar-total-weight": () => import("../../construction/rebar-total-weight/index.js"),
   "convert/luminous-flux": () => import("../../convert/luminous-flux/index.js"),
+  "convert/text-to-mathematical-script": () => import("../../convert/text-to-mathematical-script/index.js"),
   "demography/stable-age-distribution-proportion": () => import("../../demography/stable-age-distribution-proportion/index.js"),
   "electronics/decoupling-capacitor-impedance": () => import("../../electronics/decoupling-capacitor-impedance/index.js"),
   "electronics/soft-start-capacitor": () => import("../../electronics/soft-start-capacitor/index.js"),

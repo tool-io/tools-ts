@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "biology/response-to-selection": () => import("../../biology/response-to-selection/index.js"),
   "chemistry/chromatography-tailing-factor": () => import("../../chemistry/chromatography-tailing-factor/index.js"),
   "construction/wire-voltage-drop": () => import("../../construction/wire-voltage-drop/index.js"),
+  "convert/text-to-mathematical-bold-script": () => import("../../convert/text-to-mathematical-bold-script/index.js"),
   "demography/ax-average-years-dying-rule": () => import("../../demography/ax-average-years-dying-rule/index.js"),
   "electronics/wire-voltage-drop": () => import("../../electronics/wire-voltage-drop/index.js"),
   "finance/commission": () => import("../../finance/commission/index.js"),

@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/cooling-tower-approach": () => import("../../engineering/cooling-tower-approach/index.js"),
   "finance/quick-ratio": () => import("../../finance/quick-ratio/index.js"),
   "forestry/crown-ratio": () => import("../../forestry/crown-ratio/index.js"),
+  "generate/ismn-13": () => import("../../generate/ismn-13/index.js"),
   "metrics/mean-absolute-error": () => import("../../metrics/mean-absolute-error/index.js"),
   "mycology/spore-shape-q-quotient-rater": () => import("../../mycology/spore-shape-q-quotient-rater/index.js"),
   "numismatics/clipped-planchet-weight-loss": () => import("../../numismatics/clipped-planchet-weight-loss/index.js"),

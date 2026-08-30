@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/cam-lift-simple-harmonic": () => import("../../engineering/cam-lift-simple-harmonic/index.js"),
   "epigraphy/stone-face-area-calculator": () => import("../../epigraphy/stone-face-area-calculator/index.js"),
   "finance/straight-line-depreciation": () => import("../../finance/straight-line-depreciation/index.js"),
+  "generate/uuid-v4": () => import("../../generate/uuid-v4/index.js"),
   "geology/fault-slip": () => import("../../geology/fault-slip/index.js"),
   "horology/gear-train-ratio": () => import("../../horology/gear-train-ratio/index.js"),
   "physics/weight-force": () => import("../../physics/weight-force/index.js"),

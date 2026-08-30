@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "biology/codon-count": () => import("../../biology/codon-count/index.js"),
   "calculus/simpson-integration": () => import("../../calculus/simpson-integration/index.js"),
   "construction/concrete-yield": () => import("../../construction/concrete-yield/index.js"),
+  "convert/text-to-unicode-escape": () => import("../../convert/text-to-unicode-escape/index.js"),
   "electronics/dissipation-factor": () => import("../../electronics/dissipation-factor/index.js"),
   "electronics/lock-in-amplifier-phase": () => import("../../electronics/lock-in-amplifier-phase/index.js"),
   "electronics/transformer-current-ratio": () => import("../../electronics/transformer-current-ratio/index.js"),

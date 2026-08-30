@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "carpentry/leim-auftrag-einseitig-beidseitig-lookup": () => import("../../carpentry/leim-auftrag-einseitig-beidseitig-lookup/index.js"),
+  "checksum/crc-64-we": () => import("../../checksum/crc-64-we/index.js"),
   "construction/insulation-r-value-additive": () => import("../../construction/insulation-r-value-additive/index.js"),
   "convert/digital-storage": () => import("../../convert/digital-storage/index.js"),
   "electronics/battery-life": () => import("../../electronics/battery-life/index.js"),

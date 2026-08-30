@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/colloid-stability-dlvo": () => import("../../chemistry/colloid-stability-dlvo/index.js"),
   "chemistry/jahn-teller-distortion-checker": () => import("../../chemistry/jahn-teller-distortion-checker/index.js"),
   "construction/rebar-spacing-from-count": () => import("../../construction/rebar-spacing-from-count/index.js"),
+  "convert/text-to-dna-base4": () => import("../../convert/text-to-dna-base4/index.js"),
   "electronics/adc-lsb-voltage": () => import("../../electronics/adc-lsb-voltage/index.js"),
   "electronics/antenna-half-power-beamwidth": () => import("../../electronics/antenna-half-power-beamwidth/index.js"),
   "electronics/core-loss-steinmetz": () => import("../../electronics/core-loss-steinmetz/index.js"),

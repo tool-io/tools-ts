@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "biology/pao2-fio2-ratio": () => import("../../biology/pao2-fio2-ratio/index.js"),
   "biology/phosphorus-resorption-efficiency": () => import("../../biology/phosphorus-resorption-efficiency/index.js"),
   "carpentry/holzfeuchte-messung-widerstand-korrektur": () => import("../../carpentry/holzfeuchte-messung-widerstand-korrektur/index.js"),
+  "checksum/crc-32c": () => import("../../checksum/crc-32c/index.js"),
   "chemistry/mean-free-path": () => import("../../chemistry/mean-free-path/index.js"),
   "construction/tile-grout-volume": () => import("../../construction/tile-grout-volume/index.js"),
   "date/leap-year-checker": () => import("../../date/leap-year-checker/index.js"),

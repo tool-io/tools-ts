@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "biology/melting-temp-gc": () => import("../../biology/melting-temp-gc/index.js"),
   "biology/menhinick-richness": () => import("../../biology/menhinick-richness/index.js"),
   "chemistry/gas-solubility-altitude": () => import("../../chemistry/gas-solubility-altitude/index.js"),
+  "convert/text-to-old-italic": () => import("../../convert/text-to-old-italic/index.js"),
   "electronics/frequency-synthesizer-step-size": () => import("../../electronics/frequency-synthesizer-step-size/index.js"),
   "electronics/resistor-thermal-noise-current": () => import("../../electronics/resistor-thermal-noise-current/index.js"),
   "electronics/volts-to-dbmv": () => import("../../electronics/volts-to-dbmv/index.js"),

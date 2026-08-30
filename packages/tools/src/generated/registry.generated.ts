@@ -300,7 +300,7 @@ const loadBucket = (index: number): Promise<RegistryBucket> => {
   return pending;
 };
 
-export const publicToolCount = 5846;
+export const publicToolCount = 5991;
 
 export const loadToolModule = async (
   id: string,

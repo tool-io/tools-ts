@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/tuer-blatt-dicke-40-44mm": () => import("../../carpentry/tuer-blatt-dicke-40-44mm/index.js"),
   "chemistry/charge-balance": () => import("../../chemistry/charge-balance/index.js"),
   "chemistry/faraday-moles-from-charge": () => import("../../chemistry/faraday-moles-from-charge/index.js"),
+  "convert/text-to-mathematical-bold-fraktur": () => import("../../convert/text-to-mathematical-bold-fraktur/index.js"),
   "data-analysis/archetypal-analysis": () => import("../../data-analysis/archetypal-analysis/index.js"),
   "demography/lifetime-vs-recent-migrant-ratio-lookup": () => import("../../demography/lifetime-vs-recent-migrant-ratio-lookup/index.js"),
   "electronics/linear-regulator-dropout-voltage": () => import("../../electronics/linear-regulator-dropout-voltage/index.js"),
