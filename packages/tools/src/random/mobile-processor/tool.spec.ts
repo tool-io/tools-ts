@@ -1,0 +1,6 @@
+import { describe, expect, it } from "vitest"; import { calculateRandomMobileProcessor, randomMobileProcessorExample, runRandomMobileProcessor } from "./tool.js";
+describe("Random Mobile Processor Picker", () => {
+  it("selects exact IDs and preserves provenance", () => { expect(JSON.parse(JSON.stringify(randomMobileProcessorExample))).toEqual(randomMobileProcessorExample);expect(runRandomMobileProcessor(randomMobileProcessorExample.input,{random:()=>0}).ok).toBe(true); expect(calculateRandomMobileProcessor(randomMobileProcessorExample.input, () => 0)).toEqual({ datasetId: "example/mobile-processor", datasetVersion: "1", selectedIds: ["candidate-a", "candidate-b"], sourceId: "example" }); });
+  it("is deterministic with injected randomness", () => { expect(calculateRandomMobileProcessor(randomMobileProcessorExample.input, () => 0.75)).toEqual(calculateRandomMobileProcessor(randomMobileProcessorExample.input, () => 0.75)); });
+  it("rejects invalid pools and randomness", () => { expect(runRandomMobileProcessor({ ...randomMobileProcessorExample.input, candidateIds: [] }).ok).toBe(false); expect(runRandomMobileProcessor({ ...randomMobileProcessorExample.input, selectionCount: 4 }).ok).toBe(false); expect(runRandomMobileProcessor(randomMobileProcessorExample.input, { random: () => 1 }).ok).toBe(false); });
+});
