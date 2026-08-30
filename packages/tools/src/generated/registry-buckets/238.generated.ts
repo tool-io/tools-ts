@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archaeology/gpr-reflection-amplitude-feature": () => import("../../archaeology/gpr-reflection-amplitude-feature/index.js"),
   "auditing/lead-schedule-supporting-detail-tie-out-method-lookup": () => import("../../auditing/lead-schedule-supporting-detail-tie-out-method-lookup/index.js"),
   "auditing/management-letter-coverage": () => import("../../auditing/management-letter-coverage/index.js"),
   "aviation/total-moment": () => import("../../aviation/total-moment/index.js"),
@@ -20,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/long-now-decade-century-timeframe-scale-lookup": () => import("../../futurology/long-now-decade-century-timeframe-scale-lookup/index.js"),
   "generate/uuid-v5": () => import("../../generate/uuid-v5/index.js"),
   "horology/bronze-patina-development-factor-lookup": () => import("../../horology/bronze-patina-development-factor-lookup/index.js"),
+  "horticulture/easter-lily-forcing-backward-count": () => import("../../horticulture/easter-lily-forcing-backward-count/index.js"),
   "journalism/internship-conversion-rate": () => import("../../journalism/internship-conversion-rate/index.js"),
   "limnology/freshwater-density-from-temperature": () => import("../../limnology/freshwater-density-from-temperature/index.js"),
   "paleography/batarde-mix-proportion-calculator": () => import("../../paleography/batarde-mix-proportion-calculator/index.js"),

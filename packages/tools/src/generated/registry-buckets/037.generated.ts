@@ -30,6 +30,8 @@ export const toolModuleLoaders: Readonly<
   "math/wallis-product-approx": () => import("../../math/wallis-product-approx/index.js"),
   "metabolomics/mplus2-isotope-signature": () => import("../../metabolomics/mplus2-isotope-signature/index.js"),
   "numismatics/junk-silver-face-value-multiplier": () => import("../../numismatics/junk-silver-face-value-multiplier/index.js"),
+  "paleontology/extinction-magnitude-percent": () => import("../../paleontology/extinction-magnitude-percent/index.js"),
+  "paleontology/lognormal-fit-check": () => import("../../paleontology/lognormal-fit-check/index.js"),
   "parasitology/day-three-positivity-screen": () => import("../../parasitology/day-three-positivity-screen/index.js"),
   "random/byzantine-musical-symbol": () => import("../../random/byzantine-musical-symbol/index.js"),
   "sailing/tidal-diamond-correction": () => import("../../sailing/tidal-diamond-correction/index.js"),

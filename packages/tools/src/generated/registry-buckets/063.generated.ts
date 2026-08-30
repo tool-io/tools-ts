@@ -4,7 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "agriculture/farm-budget-gross-margin": () => import("../../agriculture/farm-budget-gross-margin/index.js"),
   "aquaculture/weaning-time": () => import("../../aquaculture/weaning-time/index.js"),
+  "archaeology/orifice-index-vessel": () => import("../../archaeology/orifice-index-vessel/index.js"),
   "auditing/network-firm-screen": () => import("../../auditing/network-firm-screen/index.js"),
   "biology/elastance": () => import("../../biology/elastance/index.js"),
   "biology/primer-dimer-check": () => import("../../biology/primer-dimer-check/index.js"),
@@ -20,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/sample-and-hold-droop-rate": () => import("../../electronics/sample-and-hold-droop-rate/index.js"),
   "encode/crc32": () => import("../../encode/crc32/index.js"),
   "forestry/sawlog-volume-percentage": () => import("../../forestry/sawlog-volume-percentage/index.js"),
+  "gemology/dispersion-value": () => import("../../gemology/dispersion-value/index.js"),
   "generate/gtin-14": () => import("../../generate/gtin-14/index.js"),
   "journalism/eas-cut-in-runtime": () => import("../../journalism/eas-cut-in-runtime/index.js"),
   "matrix/inverse": () => import("../../matrix/inverse/index.js"),

@@ -4,12 +4,15 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "apiculture/propolis-tincture-ratio-alcohol-gram": () => import("../../apiculture/propolis-tincture-ratio-alcohol-gram/index.js"),
+  "apiculture/virgin-mating-flight-window-days": () => import("../../apiculture/virgin-mating-flight-window-days/index.js"),
   "aquaculture/water-exchange-rate": () => import("../../aquaculture/water-exchange-rate/index.js"),
   "bacteriology/biofilm-eradication-endpoint": () => import("../../bacteriology/biofilm-eradication-endpoint/index.js"),
   "biology/carcass-yield-percentage": () => import("../../biology/carcass-yield-percentage/index.js"),
   "chemistry/buffer-effective-checker": () => import("../../chemistry/buffer-effective-checker/index.js"),
   "chemistry/buffer-ratio": () => import("../../chemistry/buffer-ratio/index.js"),
   "classics/latin-elision-marker": () => import("../../classics/latin-elision-marker/index.js"),
+  "climatology/huglin-index": () => import("../../climatology/huglin-index/index.js"),
   "electronics/magnetometer-resolution": () => import("../../electronics/magnetometer-resolution/index.js"),
   "electronics/phantom-power-current": () => import("../../electronics/phantom-power-current/index.js"),
   "electronics/solar-panel-max-power-current": () => import("../../electronics/solar-panel-max-power-current/index.js"),

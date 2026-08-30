@@ -27,7 +27,9 @@ export const toolModuleLoaders: Readonly<
   "laser/tec-stability": () => import("../../laser/tec-stability/index.js"),
   "laser/thz-waveform-spectrum": () => import("../../laser/thz-waveform-spectrum/index.js"),
   "logistics/pallet-loaded-weight-total": () => import("../../logistics/pallet-loaded-weight-total/index.js"),
+  "math/stirling-transform": () => import("../../math/stirling-transform/index.js"),
   "microcontroller/register-field-encode": () => import("../../microcontroller/register-field-encode/index.js"),
+  "museology/peak-flow-congestion-index": () => import("../../museology/peak-flow-congestion-index/index.js"),
   "mycology/ergot-alkaloid-assay-recorder": () => import("../../mycology/ergot-alkaloid-assay-recorder/index.js"),
   "neuroscience/anisotropic-volume-resel-count": () => import("../../neuroscience/anisotropic-volume-resel-count/index.js"),
   "neuroscience/degree-threshold-rich-club": () => import("../../neuroscience/degree-threshold-rich-club/index.js"),
@@ -38,5 +40,7 @@ export const toolModuleLoaders: Readonly<
   "random/sogdian-letter": () => import("../../random/sogdian-letter/index.js"),
   "text/reading-time": () => import("../../text/reading-time/index.js"),
   "transcriptomics/genorm-m-value": () => import("../../transcriptomics/genorm-m-value/index.js"),
+  "viticulture/cane-weight-selection-threshold": () => import("../../viticulture/cane-weight-selection-threshold/index.js"),
+  "viticulture/shoot-density-per-meter-row": () => import("../../viticulture/shoot-density-per-meter-row/index.js"),
   "web/prerender-hint-parser": () => import("../../web/prerender-hint-parser/index.js"),
 };

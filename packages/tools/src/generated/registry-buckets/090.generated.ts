@@ -5,6 +5,8 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/direct-to-reverberant-ratio": () => import("../../acoustics/direct-to-reverberant-ratio/index.js"),
+  "apiculture/moisture-refractometer-honey-percent-water": () => import("../../apiculture/moisture-refractometer-honey-percent-water/index.js"),
+  "archaeology/surface-collection-sample-fraction": () => import("../../archaeology/surface-collection-sample-fraction/index.js"),
   "auditing/plan-audit-threshold": () => import("../../auditing/plan-audit-threshold/index.js"),
   "biology/dna-concentration-od260": () => import("../../biology/dna-concentration-od260/index.js"),
   "biology/fitness-relative": () => import("../../biology/fitness-relative/index.js"),

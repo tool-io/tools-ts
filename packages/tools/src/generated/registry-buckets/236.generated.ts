@@ -43,9 +43,11 @@ export const toolModuleLoaders: Readonly<
   "laser/optogenetic-pulse-dose": () => import("../../laser/optogenetic-pulse-dose/index.js"),
   "limnology/hypolimnetic-aeration-air-requirement": () => import("../../limnology/hypolimnetic-aeration-air-requirement/index.js"),
   "limnology/lead-210-sediment-dating": () => import("../../limnology/lead-210-sediment-dating/index.js"),
+  "math/theta-jacobi-approx": () => import("../../math/theta-jacobi-approx/index.js"),
   "metabolomics/adenylate-kinase-quotient": () => import("../../metabolomics/adenylate-kinase-quotient/index.js"),
   "neuroscience/spike-sorting-isi": () => import("../../neuroscience/spike-sorting-isi/index.js"),
   "neuroscience/synaptic-conductance-trace": () => import("../../neuroscience/synaptic-conductance-trace/index.js"),
+  "paleontology/eggshell-porosity-classifier": () => import("../../paleontology/eggshell-porosity-classifier/index.js"),
   "proteomics/protein-dilution-backcalculation": () => import("../../proteomics/protein-dilution-backcalculation/index.js"),
   "random/catalog-product": () => import("../../random/catalog-product/index.js"),
   "random/headphones": () => import("../../random/headphones/index.js"),
@@ -57,4 +59,5 @@ export const toolModuleLoaders: Readonly<
   "text/substring-count": () => import("../../text/substring-count/index.js"),
   "text/whitespace-count": () => import("../../text/whitespace-count/index.js"),
   "toxicology/route-absorption-aggregate-dose": () => import("../../toxicology/route-absorption-aggregate-dose/index.js"),
+  "viticulture/row-length-vine-count": () => import("../../viticulture/row-length-vine-count/index.js"),
 };

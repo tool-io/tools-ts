@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "kinesiology/snatch-catch-stability-screen": () => import("../../kinesiology/snatch-catch-stability-screen/index.js"),
   "laser/longitudinal-mode-count": () => import("../../laser/longitudinal-mode-count/index.js"),
   "logic/identity-law-neutral-checker": () => import("../../logic/identity-law-neutral-checker/index.js"),
+  "math/napoleon-triangle-area": () => import("../../math/napoleon-triangle-area/index.js"),
   "metabolomics/empirical-permutation-p": () => import("../../metabolomics/empirical-permutation-p/index.js"),
   "microcontroller/pwm-duty-count": () => import("../../microcontroller/pwm-duty-count/index.js"),
   "mining/solvent-extraction-stages": () => import("../../mining/solvent-extraction-stages/index.js"),

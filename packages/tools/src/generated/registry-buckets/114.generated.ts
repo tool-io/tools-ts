@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/stud-wall-stc-comparison": () => import("../../acoustics/stud-wall-stc-comparison/index.js"),
+  "apiculture/brood-pattern-solidity-score-percent": () => import("../../apiculture/brood-pattern-solidity-score-percent/index.js"),
   "aquaculture/cold-storage-requirement": () => import("../../aquaculture/cold-storage-requirement/index.js"),
   "auditing/haphazard-selection-randomization-bias-warning-checker": () => import("../../auditing/haphazard-selection-randomization-bias-warning-checker/index.js"),
   "carpentry/veneer-sheets-needed": () => import("../../carpentry/veneer-sheets-needed/index.js"),
@@ -17,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "entrepreneurship/okr-key-result-score": () => import("../../entrepreneurship/okr-key-result-score/index.js"),
   "epigenetics/methylation-haplotype-tally": () => import("../../epigenetics/methylation-haplotype-tally/index.js"),
   "epigraphy/kalendes-reverse-date-solver": () => import("../../epigraphy/kalendes-reverse-date-solver/index.js"),
+  "forestry/fireline-intensity-byram-kwm": () => import("../../forestry/fireline-intensity-byram-kwm/index.js"),
   "genomics/paralog-age-peaks": () => import("../../genomics/paralog-age-peaks/index.js"),
   "horology/bracelet-link-adjustment": () => import("../../horology/bracelet-link-adjustment/index.js"),
   "horology/solar-to-sidereal": () => import("../../horology/solar-to-sidereal/index.js"),
@@ -27,6 +29,9 @@ export const toolModuleLoaders: Readonly<
   "mycology/brown-white-rot-signature-classifier": () => import("../../mycology/brown-white-rot-signature-classifier/index.js"),
   "neuroscience/anchor-calibrated-centiloid": () => import("../../neuroscience/anchor-calibrated-centiloid/index.js"),
   "number/divisors": () => import("../../number/divisors/index.js"),
+  "oceanography/ekman-layer-depth": () => import("../../oceanography/ekman-layer-depth/index.js"),
+  "oceanography/mixed-layer-depth-density-criterion": () => import("../../oceanography/mixed-layer-depth-density-criterion/index.js"),
+  "oceanography/surge-residual-minus-astronomical": () => import("../../oceanography/surge-residual-minus-astronomical/index.js"),
   "paleography/acre-virgate-hide-converter": () => import("../../paleography/acre-virgate-hide-converter/index.js"),
   "paleography/caroline-era-classifier": () => import("../../paleography/caroline-era-classifier/index.js"),
   "paleography/uvi-interchange-era-checker": () => import("../../paleography/uvi-interchange-era-checker/index.js"),

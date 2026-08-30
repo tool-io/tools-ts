@@ -34,4 +34,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/seismic-efficiency-energy-partition": () => import("../../seismology/seismic-efficiency-energy-partition/index.js"),
   "semiconductor/electron-effective-mass": () => import("../../semiconductor/electron-effective-mass/index.js"),
   "transcriptomics/counts-per-million": () => import("../../transcriptomics/counts-per-million/index.js"),
+  "viticulture/hedging-top-height-trimming": () => import("../../viticulture/hedging-top-height-trimming/index.js"),
 };

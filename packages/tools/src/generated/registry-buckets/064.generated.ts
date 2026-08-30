@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "apiculture/comb-cell-diameter-worker-drone-checker": () => import("../../apiculture/comb-cell-diameter-worker-drone-checker/index.js"),
   "aquaculture/bod-aquaculture": () => import("../../aquaculture/bod-aquaculture/index.js"),
   "astrometry/detector-angular-field-of-view": () => import("../../astrometry/detector-angular-field-of-view/index.js"),
   "auditing/adjustment-disposition": () => import("../../auditing/adjustment-disposition/index.js"),
@@ -13,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/sockelleisten-bedarf": () => import("../../carpentry/sockelleisten-bedarf/index.js"),
   "celestial-mechanics/mutual-event-inclination-band": () => import("../../celestial-mechanics/mutual-event-inclination-band/index.js"),
   "chemistry/analytical-quantification-limit": () => import("../../chemistry/analytical-quantification-limit/index.js"),
+  "climatology/humidex-monthly-stats": () => import("../../climatology/humidex-monthly-stats/index.js"),
   "construction/concrete-bags-needed": () => import("../../construction/concrete-bags-needed/index.js"),
   "demography/census-survival-migration-estimate": () => import("../../demography/census-survival-migration-estimate/index.js"),
   "electronics/emi-filter-cutoff-frequency": () => import("../../electronics/emi-filter-cutoff-frequency/index.js"),
@@ -25,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "laser/autocollimator-angle": () => import("../../laser/autocollimator-angle/index.js"),
   "laser/galvo-grid-error": () => import("../../laser/galvo-grid-error/index.js"),
   "laser/rgb-projector-white-balance": () => import("../../laser/rgb-projector-white-balance/index.js"),
+  "math/balanced-number-checker": () => import("../../math/balanced-number-checker/index.js"),
   "math/jordan-totient-jk": () => import("../../math/jordan-totient-jk/index.js"),
   "music/frequency-to-nearest-midi": () => import("../../music/frequency-to-nearest-midi/index.js"),
   "neuroscience/saccade-speed-threshold-latency": () => import("../../neuroscience/saccade-speed-threshold-latency/index.js"),

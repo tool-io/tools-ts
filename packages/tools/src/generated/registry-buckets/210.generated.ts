@@ -5,6 +5,9 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/beats-frequency": () => import("../../acoustics/beats-frequency/index.js"),
+  "agriculture/stocking-rate": () => import("../../agriculture/stocking-rate/index.js"),
+  "apiculture/comb-honey-sections-per-super": () => import("../../apiculture/comb-honey-sections-per-super/index.js"),
+  "apiculture/swarm-cell-inspection-interval-days": () => import("../../apiculture/swarm-cell-inspection-interval-days/index.js"),
   "auditing/compensating-control-gap-cover-example-lookup": () => import("../../auditing/compensating-control-gap-cover-example-lookup/index.js"),
   "auditing/pam-evidence-coverage": () => import("../../auditing/pam-evidence-coverage/index.js"),
   "aviation/compass-heading": () => import("../../aviation/compass-heading/index.js"),
@@ -36,5 +39,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/radiated-energy-from-magnitude-gutenberg-richter": () => import("../../seismology/radiated-energy-from-magnitude-gutenberg-richter/index.js"),
   "size/battery": () => import("../../size/battery/index.js"),
   "statistics/outlier-count-iqr": () => import("../../statistics/outlier-count-iqr/index.js"),
+  "viticulture/bunch-compactness-index-classifier": () => import("../../viticulture/bunch-compactness-index-classifier/index.js"),
+  "volcanology/juvenile-lithic-proportion-percent": () => import("../../volcanology/juvenile-lithic-proportion-percent/index.js"),
   "web/url-pathname": () => import("../../web/url-pathname/index.js"),
 };

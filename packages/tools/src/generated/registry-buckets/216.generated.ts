@@ -5,8 +5,10 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/net-single-premium": () => import("../../actuarial/net-single-premium/index.js"),
+  "apiculture/honey-yield-per-super-estimate": () => import("../../apiculture/honey-yield-per-super-estimate/index.js"),
   "aquaculture/ammonia-excretion": () => import("../../aquaculture/ammonia-excretion/index.js"),
   "archival-studies/digitization-priority-score-calculator": () => import("../../archival-studies/digitization-priority-score-calculator/index.js"),
+  "archival-studies/extent-statement-normalizer": () => import("../../archival-studies/extent-statement-normalizer/index.js"),
   "chemistry/excess-reagent-mass-remaining": () => import("../../chemistry/excess-reagent-mass-remaining/index.js"),
   "construction/flooring-area-waste": () => import("../../construction/flooring-area-waste/index.js"),
   "construction/joist-hanger-count": () => import("../../construction/joist-hanger-count/index.js"),
@@ -21,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "horology/telemeter-distance": () => import("../../horology/telemeter-distance/index.js"),
   "kinesiology/triple-extension-sequence-check": () => import("../../kinesiology/triple-extension-sequence-check/index.js"),
   "logistics/restocking-fee-net-refund-computation": () => import("../../logistics/restocking-fee-net-refund-computation/index.js"),
+  "math/beta-function-approx": () => import("../../math/beta-function-approx/index.js"),
   "math/dedekind-sum": () => import("../../math/dedekind-sum/index.js"),
   "mining/longwall-support-resistance": () => import("../../mining/longwall-support-resistance/index.js"),
   "nautical/true-wind-speed": () => import("../../nautical/true-wind-speed/index.js"),
@@ -35,4 +38,5 @@ export const toolModuleLoaders: Readonly<
   "taxation/cost-segregation-benefit": () => import("../../taxation/cost-segregation-benefit/index.js"),
   "theatre/exit-capacity": () => import("../../theatre/exit-capacity/index.js"),
   "transcriptomics/cell-cycle-phase": () => import("../../transcriptomics/cell-cycle-phase/index.js"),
+  "viticulture/cluster-thinning-to-target-yield": () => import("../../viticulture/cluster-thinning-to-target-yield/index.js"),
 };

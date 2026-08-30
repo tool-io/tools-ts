@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/cognomen-element-tally": () => import("../../epigraphy/cognomen-element-tally/index.js"),
   "forestry/fuel-moisture-content": () => import("../../forestry/fuel-moisture-content/index.js"),
   "futurology/trend-impact-analysis-event-strength-adjuster": () => import("../../futurology/trend-impact-analysis-event-strength-adjuster/index.js"),
+  "gemology/color-grade-boundary": () => import("../../gemology/color-grade-boundary/index.js"),
   "genomics/assembly-l50": () => import("../../genomics/assembly-l50/index.js"),
   "geo/bearing": () => import("../../geo/bearing/index.js"),
   "geology/mohs-hardness-lookup": () => import("../../geology/mohs-hardness-lookup/index.js"),
@@ -36,6 +37,8 @@ export const toolModuleLoaders: Readonly<
   "random/lithuanian-alphabet-letter": () => import("../../random/lithuanian-alphabet-letter/index.js"),
   "random/tajik-cyrillic-alphabet-letter": () => import("../../random/tajik-cyrillic-alphabet-letter/index.js"),
   "semiconductor/memristor-switching-voltage": () => import("../../semiconductor/memristor-switching-voltage/index.js"),
+  "sericulture/leaf-moisture-nutrition-checker": () => import("../../sericulture/leaf-moisture-nutrition-checker/index.js"),
   "vector/magnitude": () => import("../../vector/magnitude/index.js"),
   "vector/subtract": () => import("../../vector/subtract/index.js"),
+  "volcanology/ring-dike-thickness-estimate": () => import("../../volcanology/ring-dike-thickness-estimate/index.js"),
 };

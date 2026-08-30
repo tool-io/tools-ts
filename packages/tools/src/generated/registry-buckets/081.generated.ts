@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/unearned-premium-pro-rata": () => import("../../actuarial/unearned-premium-pro-rata/index.js"),
+  "agriculture/egg-production-rate": () => import("../../agriculture/egg-production-rate/index.js"),
   "arithmetic/golden-ratio": () => import("../../arithmetic/golden-ratio/index.js"),
   "auditing/audit-universe-coverage": () => import("../../auditing/audit-universe-coverage/index.js"),
   "aviation/descent-angle": () => import("../../aviation/descent-angle/index.js"),
@@ -37,6 +38,8 @@ export const toolModuleLoaders: Readonly<
   "math/jacobi-symbol": () => import("../../math/jacobi-symbol/index.js"),
   "math/safe-prime-checker": () => import("../../math/safe-prime-checker/index.js"),
   "metabolomics/sam-sah-ratio": () => import("../../metabolomics/sam-sah-ratio/index.js"),
+  "museology/datalogger-storage-days-calculator": () => import("../../museology/datalogger-storage-days-calculator/index.js"),
+  "museology/oxygen-scavenger-count": () => import("../../museology/oxygen-scavenger-count/index.js"),
   "music/piano-key-number-from-midi": () => import("../../music/piano-key-number-from-midi/index.js"),
   "music/subharmonic-frequency": () => import("../../music/subharmonic-frequency/index.js"),
   "neuroscience/two-point-psychometric-threshold": () => import("../../neuroscience/two-point-psychometric-threshold/index.js"),

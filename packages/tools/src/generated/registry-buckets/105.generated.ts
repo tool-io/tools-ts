@@ -4,11 +4,13 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archaeology/stratum-depth-interpolation": () => import("../../archaeology/stratum-depth-interpolation/index.js"),
   "aviation/cabin-altitude": () => import("../../aviation/cabin-altitude/index.js"),
   "aviation/cold-temperature-correction": () => import("../../aviation/cold-temperature-correction/index.js"),
   "biology/gibbs-donnan-ratio": () => import("../../biology/gibbs-donnan-ratio/index.js"),
   "biology/hemoglobin-a1c": () => import("../../biology/hemoglobin-a1c/index.js"),
   "biology/selection-differential": () => import("../../biology/selection-differential/index.js"),
+  "climatology/wind-chill-monthly-mean": () => import("../../climatology/wind-chill-monthly-mean/index.js"),
   "convert/text-to-negative-circled": () => import("../../convert/text-to-negative-circled/index.js"),
   "convert/text-to-superscript": () => import("../../convert/text-to-superscript/index.js"),
   "cost/data-storage": () => import("../../cost/data-storage/index.js"),
@@ -19,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "horology/day-disc-advance-rate": () => import("../../horology/day-disc-advance-rate/index.js"),
   "html/img-loading-eager-lazy-default": () => import("../../html/img-loading-eager-lazy-default/index.js"),
   "journalism/obituary-honorific-style": () => import("../../journalism/obituary-honorific-style/index.js"),
+  "math/laguerre-polynomial-approx": () => import("../../math/laguerre-polynomial-approx/index.js"),
   "mining/bench-width": () => import("../../mining/bench-width/index.js"),
   "mining/ramp-gradient": () => import("../../mining/ramp-gradient/index.js"),
   "paleography/thorn-yogh-wynn-counter": () => import("../../paleography/thorn-yogh-wynn-counter/index.js"),

@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/korpus-confirmat-7x50-bohrbild": () => import("../../carpentry/korpus-confirmat-7x50-bohrbild/index.js"),
   "chemistry/analytical-calibration-intercept": () => import("../../chemistry/analytical-calibration-intercept/index.js"),
   "chemistry/real-gas-correction-b": () => import("../../chemistry/real-gas-correction-b/index.js"),
+  "climatology/wet-spell-length": () => import("../../climatology/wet-spell-length/index.js"),
   "convert/rgb-to-oklch": () => import("../../convert/rgb-to-oklch/index.js"),
   "electronics/cmrr-db": () => import("../../electronics/cmrr-db/index.js"),
   "electronics/supercapacitor-self-discharge-time": () => import("../../electronics/supercapacitor-self-discharge-time/index.js"),
@@ -27,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "information/binary-cross-entropy": () => import("../../information/binary-cross-entropy/index.js"),
   "kinesiology/cadence-change-prescription": () => import("../../kinesiology/cadence-change-prescription/index.js"),
   "logic/conjunction-introduction-validator": () => import("../../logic/conjunction-introduction-validator/index.js"),
+  "meteorology/bulk-shear-0-6km": () => import("../../meteorology/bulk-shear-0-6km/index.js"),
   "nautical/fathoms-to-meters": () => import("../../nautical/fathoms-to-meters/index.js"),
   "paleography/longs-ratio-calculator": () => import("../../paleography/longs-ratio-calculator/index.js"),
   "paleography/nib-xheight-consistency-checker": () => import("../../paleography/nib-xheight-consistency-checker/index.js"),
@@ -38,4 +40,5 @@ export const toolModuleLoaders: Readonly<
   "taxation/marketplace-tax-split": () => import("../../taxation/marketplace-tax-split/index.js"),
   "toxicology/continuous-exponential-response-bmd": () => import("../../toxicology/continuous-exponential-response-bmd/index.js"),
   "transcriptomics/expression-zscore": () => import("../../transcriptomics/expression-zscore/index.js"),
+  "volcanology/melt-fraction-solidus-liquidus-interpolation": () => import("../../volcanology/melt-fraction-solidus-liquidus-interpolation/index.js"),
 };

@@ -5,6 +5,8 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/expected-loss-ratio-reserve": () => import("../../actuarial/expected-loss-ratio-reserve/index.js"),
+  "apiculture/stores-depletion-rate-per-week": () => import("../../apiculture/stores-depletion-rate-per-week/index.js"),
+  "archival-studies/offsite-manifest-reconciler": () => import("../../archival-studies/offsite-manifest-reconciler/index.js"),
   "archival-studies/schema-crosswalk-field-finder": () => import("../../archival-studies/schema-crosswalk-field-finder/index.js"),
   "arithmetic/weighted-sum": () => import("../../arithmetic/weighted-sum/index.js"),
   "aviation/wing-loading": () => import("../../aviation/wing-loading/index.js"),
@@ -31,8 +33,10 @@ export const toolModuleLoaders: Readonly<
   "geology/wellhead-pressure-shut-in": () => import("../../geology/wellhead-pressure-shut-in/index.js"),
   "horology/daily-rate-to-weekly-drift": () => import("../../horology/daily-rate-to-weekly-drift/index.js"),
   "html/textarea-input-maxlength-parity": () => import("../../html/textarea-input-maxlength-parity/index.js"),
+  "math/sociable-chain-length-3": () => import("../../math/sociable-chain-length-3/index.js"),
   "number/fibonacci-checker": () => import("../../number/fibonacci-checker/index.js"),
   "numismatics/proof-vs-business-strike": () => import("../../numismatics/proof-vs-business-strike/index.js"),
+  "oceanography/estuary-stratification-numeration-classifier": () => import("../../oceanography/estuary-stratification-numeration-classifier/index.js"),
   "oenology/sweetening-reserve-volume": () => import("../../oenology/sweetening-reserve-volume/index.js"),
   "paleography/kalends-medieval-date-parser": () => import("../../paleography/kalends-medieval-date-parser/index.js"),
   "pedagogy/flexible-grouping-roster": () => import("../../pedagogy/flexible-grouping-roster/index.js"),
@@ -47,4 +51,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/solar-cell-open-circuit-voltage": () => import("../../semiconductor/solar-cell-open-circuit-voltage/index.js"),
   "taxation/collectibles-gain-tax": () => import("../../taxation/collectibles-gain-tax/index.js"),
   "taxation/privilege-communication-screen": () => import("../../taxation/privilege-communication-screen/index.js"),
+  "volcanology/clast-terminal-velocity-lithic": () => import("../../volcanology/clast-terminal-velocity-lithic/index.js"),
 };

@@ -28,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "laser/folded-cavity-astigmatism": () => import("../../laser/folded-cavity-astigmatism/index.js"),
   "logic/kmap-cell-count-grid-resolver": () => import("../../logic/kmap-cell-count-grid-resolver/index.js"),
   "logistics/spot-vs-contract-rate-mix-blend": () => import("../../logistics/spot-vs-contract-rate-mix-blend/index.js"),
+  "meteorology/cup-anemometer-calibration-constant": () => import("../../meteorology/cup-anemometer-calibration-constant/index.js"),
   "microcontroller/debounce-filter": () => import("../../microcontroller/debounce-filter/index.js"),
   "mining/screen-efficiency": () => import("../../mining/screen-efficiency/index.js"),
   "number/coprime-count": () => import("../../number/coprime-count/index.js"),

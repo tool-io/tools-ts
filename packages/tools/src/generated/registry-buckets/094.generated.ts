@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/listed-assembly-evidence-reference": () => import("../../acoustics/listed-assembly-evidence-reference/index.js"),
+  "agriculture/seed-spacing": () => import("../../agriculture/seed-spacing/index.js"),
   "auditing/client-provided-schedule-reliability-foot-tie-sampler": () => import("../../auditing/client-provided-schedule-reliability-foot-tie-sampler/index.js"),
   "aviation/cabin-altitude-rate": () => import("../../aviation/cabin-altitude-rate/index.js"),
   "aviation/ground-speed": () => import("../../aviation/ground-speed/index.js"),
@@ -20,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/t-pad-shunt-resistor": () => import("../../electronics/t-pad-shunt-resistor/index.js"),
   "engineering/log-mean-temp-difference": () => import("../../engineering/log-mean-temp-difference/index.js"),
   "engineering/soil-passive-pressure": () => import("../../engineering/soil-passive-pressure/index.js"),
+  "gemology/fresnel-reflection-loss": () => import("../../gemology/fresnel-reflection-loss/index.js"),
   "genomics/vcf-record-audit": () => import("../../genomics/vcf-record-audit/index.js"),
   "geology/toplap-angle": () => import("../../geology/toplap-angle/index.js"),
   "horology/spring-bar-strap-change-safety-lookup": () => import("../../horology/spring-bar-strap-change-safety-lookup/index.js"),

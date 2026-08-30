@@ -6,6 +6,9 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/noise-metric-sel-from-event-leq": () => import("../../acoustics/noise-metric-sel-from-event-leq/index.js"),
   "acoustics/speech-privacy-class-screen": () => import("../../acoustics/speech-privacy-class-screen/index.js"),
+  "apiculture/feeder-jar-refill-frequency": () => import("../../apiculture/feeder-jar-refill-frequency/index.js"),
+  "archaeology/cut-mark-count-per-bone": () => import("../../archaeology/cut-mark-count-per-bone/index.js"),
+  "archaeology/type-frequency-percent-per-phase": () => import("../../archaeology/type-frequency-percent-per-phase/index.js"),
   "arithmetic/floor-to-multiple": () => import("../../arithmetic/floor-to-multiple/index.js"),
   "auditing/qualified-adverse-disclaimer-opinion-condition-crosswalk": () => import("../../auditing/qualified-adverse-disclaimer-opinion-condition-crosswalk/index.js"),
   "aviation/v-speed-vno": () => import("../../aviation/v-speed-vno/index.js"),
@@ -27,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "math/farey-sequence-order-n": () => import("../../math/farey-sequence-order-n/index.js"),
   "metabolomics/bile-acid-hydrophobicity": () => import("../../metabolomics/bile-acid-hydrophobicity/index.js"),
   "mri/sense-alias-coil-conditioning": () => import("../../mri/sense-alias-coil-conditioning/index.js"),
+  "museology/deaccession-criteria-checker": () => import("../../museology/deaccession-criteria-checker/index.js"),
   "mycology/skeletal-hyphae-band-rater": () => import("../../mycology/skeletal-hyphae-band-rater/index.js"),
   "neuroscience/bold-baseline-task-change": () => import("../../neuroscience/bold-baseline-task-change/index.js"),
   "numismatics/troy-pound-ounce-count": () => import("../../numismatics/troy-pound-ounce-count/index.js"),

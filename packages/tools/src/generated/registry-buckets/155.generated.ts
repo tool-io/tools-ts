@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/double-slope-decay-screen": () => import("../../acoustics/double-slope-decay-screen/index.js"),
+  "agriculture/irrigation-efficiency": () => import("../../agriculture/irrigation-efficiency/index.js"),
   "aquaculture/grading-throughput": () => import("../../aquaculture/grading-throughput/index.js"),
   "archival-studies/timestamp-to-seconds-converter": () => import("../../archival-studies/timestamp-to-seconds-converter/index.js"),
   "aviation/crosswind-takeoff-check": () => import("../../aviation/crosswind-takeoff-check/index.js"),
@@ -29,9 +30,14 @@ export const toolModuleLoaders: Readonly<
   "laser/he-cd-line-selector": () => import("../../laser/he-cd-line-selector/index.js"),
   "laser/laser-safety-audit": () => import("../../laser/laser-safety-audit/index.js"),
   "logistics/otif-on-time-in-full-percent": () => import("../../logistics/otif-on-time-in-full-percent/index.js"),
+  "museology/seasonal-rh-drift-checker": () => import("../../museology/seasonal-rh-drift-checker/index.js"),
   "music/just-intonation-ratio-to-cents": () => import("../../music/just-intonation-ratio-to-cents/index.js"),
+  "oceanography/wave-orbital-velocity-at-bottom": () => import("../../oceanography/wave-orbital-velocity-at-bottom/index.js"),
+  "paleontology/mesowear-diet-classifier": () => import("../../paleontology/mesowear-diet-classifier/index.js"),
+  "paleontology/raup-coil-wd-solver": () => import("../../paleontology/raup-coil-wd-solver/index.js"),
   "random/faroese-alphabet-letter": () => import("../../random/faroese-alphabet-letter/index.js"),
   "real-estate/days-on-market": () => import("../../real-estate/days-on-market/index.js"),
   "size/yukata-reconstruction": () => import("../../size/yukata-reconstruction/index.js"),
   "taxation/totalization-contribution-comparison": () => import("../../taxation/totalization-contribution-comparison/index.js"),
+  "volcanology/hyperconcentrated-flow-density-checker": () => import("../../volcanology/hyperconcentrated-flow-density-checker/index.js"),
 };

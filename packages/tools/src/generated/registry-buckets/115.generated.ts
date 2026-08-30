@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "agriculture/storage-loss-percentage": () => import("../../agriculture/storage-loss-percentage/index.js"),
   "auditing/rpa-bot-audit-trail-versioning-evidence-lookup": () => import("../../auditing/rpa-bot-audit-trail-versioning-evidence-lookup/index.js"),
   "aviation/field-elevation-qnh": () => import("../../aviation/field-elevation-qnh/index.js"),
   "aviation/time-to-descent": () => import("../../aviation/time-to-descent/index.js"),
@@ -25,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "laser/mcwhirter-density-threshold": () => import("../../laser/mcwhirter-density-threshold/index.js"),
   "laser/stealth-dicing-pulse-spacing": () => import("../../laser/stealth-dicing-pulse-spacing/index.js"),
   "logistics/landed-cost-duties-taxes-total": () => import("../../logistics/landed-cost-duties-taxes-total/index.js"),
+  "math/eigenvalues-2x2": () => import("../../math/eigenvalues-2x2/index.js"),
   "math/tribonacci-nth": () => import("../../math/tribonacci-nth/index.js"),
   "metabolomics/detection-limit-imputation": () => import("../../metabolomics/detection-limit-imputation/index.js"),
   "mining/subsidence-strain": () => import("../../mining/subsidence-strain/index.js"),
@@ -42,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/omori-law-aftershock-decay-rate": () => import("../../seismology/omori-law-aftershock-decay-rate/index.js"),
   "semiconductor/avalanche-breakdown-voltage": () => import("../../semiconductor/avalanche-breakdown-voltage/index.js"),
   "semiconductor/cmp-removal-rate": () => import("../../semiconductor/cmp-removal-rate/index.js"),
+  "sericulture/degumming-weight-loss-percent": () => import("../../sericulture/degumming-weight-loss-percent/index.js"),
   "sociology/parity-progression-ratio": () => import("../../sociology/parity-progression-ratio/index.js"),
   "theatre/drafting-sheet-coverage": () => import("../../theatre/drafting-sheet-coverage/index.js"),
 };

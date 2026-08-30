@@ -28,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "metabolomics/isotopologue-distribution": () => import("../../metabolomics/isotopologue-distribution/index.js"),
   "metabolomics/kendrick-mass-defect": () => import("../../metabolomics/kendrick-mass-defect/index.js"),
   "metabolomics/opls-component-variance": () => import("../../metabolomics/opls-component-variance/index.js"),
+  "oceanography/southern-oscillation-index-normalized": () => import("../../oceanography/southern-oscillation-index-normalized/index.js"),
   "oenology/gross-lees-volume": () => import("../../oenology/gross-lees-volume/index.js"),
   "paleography/copperplate-shade-classifier": () => import("../../paleography/copperplate-shade-classifier/index.js"),
   "parse/file-mode": () => import("../../parse/file-mode/index.js"),

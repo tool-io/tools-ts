@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/bornhuetter-ferguson-reserve": () => import("../../actuarial/bornhuetter-ferguson-reserve/index.js"),
+  "archaeology/context-number-sequence-checker": () => import("../../archaeology/context-number-sequence-checker/index.js"),
   "auditing/evidence-relevance-reliability-two-axis-lookup": () => import("../../auditing/evidence-relevance-reliability-two-axis-lookup/index.js"),
   "aviation/lift-to-drag-ratio": () => import("../../aviation/lift-to-drag-ratio/index.js"),
   "biology/stomatal-density": () => import("../../biology/stomatal-density/index.js"),
@@ -26,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "journalism/lower-third-fit": () => import("../../journalism/lower-third-fit/index.js"),
   "laser/swept-frequency-distance": () => import("../../laser/swept-frequency-distance/index.js"),
   "metabolomics/xic-mass-window": () => import("../../metabolomics/xic-mass-window/index.js"),
+  "museology/loan-out-months-limit-checker": () => import("../../museology/loan-out-months-limit-checker/index.js"),
   "numismatics/officina-mark-decoder": () => import("../../numismatics/officina-mark-decoder/index.js"),
   "parasitology/multiplex-target-decode": () => import("../../parasitology/multiplex-target-decode/index.js"),
   "pedagogy/lesson-study-cycle": () => import("../../pedagogy/lesson-study-cycle/index.js"),
@@ -33,7 +35,9 @@ export const toolModuleLoaders: Readonly<
   "random/letter": () => import("../../random/letter/index.js"),
   "sailing/ferry-glide-course": () => import("../../sailing/ferry-glide-course/index.js"),
   "sailing/phrf-time-on-distance": () => import("../../sailing/phrf-time-on-distance/index.js"),
+  "sericulture/larval-days-to-spinning-total": () => import("../../sericulture/larval-days-to-spinning-total/index.js"),
   "size/choker": () => import("../../size/choker/index.js"),
   "taxation/circuit-breaker-refund": () => import("../../taxation/circuit-breaker-refund/index.js"),
   "virology/incubation-exposure-bounds": () => import("../../virology/incubation-exposure-bounds/index.js"),
+  "volcanology/mass-eruption-rate-from-column-height": () => import("../../volcanology/mass-eruption-rate-from-column-height/index.js"),
 };

@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/minimum-charge-floor-application": () => import("../../logistics/minimum-charge-floor-application/index.js"),
   "music/capo-transposition-fret": () => import("../../music/capo-transposition-fret/index.js"),
   "network/ipv4-broadcast-address": () => import("../../network/ipv4-broadcast-address/index.js"),
+  "paleontology/specimen-completeness-percent": () => import("../../paleontology/specimen-completeness-percent/index.js"),
   "random/ipv6-address-set": () => import("../../random/ipv6-address-set/index.js"),
   "sailing/sail-force": () => import("../../sailing/sail-force/index.js"),
   "taxation/substantial-presence-days": () => import("../../taxation/substantial-presence-days/index.js"),

@@ -4,7 +4,10 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "apiculture/migratory-load-strap-count": () => import("../../apiculture/migratory-load-strap-count/index.js"),
+  "apiculture/pollination-hive-strength-grading-score": () => import("../../apiculture/pollination-hive-strength-grading-score/index.js"),
   "aquaculture/von-bertalanffy-growth": () => import("../../aquaculture/von-bertalanffy-growth/index.js"),
+  "archaeology/oxygen-isotope-migration-proxy": () => import("../../archaeology/oxygen-isotope-migration-proxy/index.js"),
   "arithmetic/fraction-to-decimal": () => import("../../arithmetic/fraction-to-decimal/index.js"),
   "auditing/coso-five-components-element-mapping-grid": () => import("../../auditing/coso-five-components-element-mapping-grid/index.js"),
   "auditing/final-analytics-reconciliation": () => import("../../auditing/final-analytics-reconciliation/index.js"),
@@ -22,9 +25,11 @@ export const toolModuleLoaders: Readonly<
   "engineering/wing-lift-coefficient": () => import("../../engineering/wing-lift-coefficient/index.js"),
   "entrepreneurship/nonparticipating-preferred-payout": () => import("../../entrepreneurship/nonparticipating-preferred-payout/index.js"),
   "entrepreneurship/postmoney-safe-shares": () => import("../../entrepreneurship/postmoney-safe-shares/index.js"),
+  "forestry/natural-regeneration-stock-count-per-hectare-minimum": () => import("../../forestry/natural-regeneration-stock-count-per-hectare-minimum/index.js"),
   "futurology/automation-labor-displacement-share-model": () => import("../../futurology/automation-labor-displacement-share-model/index.js"),
   "futurology/space-economy-driver-implication-chain": () => import("../../futurology/space-economy-driver-implication-chain/index.js"),
   "futurology/trend-scale-classifier": () => import("../../futurology/trend-scale-classifier/index.js"),
+  "gemology/crown-angle-height-ratio": () => import("../../gemology/crown-angle-height-ratio/index.js"),
   "genetics/genotype-carrier-penetrance": () => import("../../genetics/genotype-carrier-penetrance/index.js"),
   "geology/lava-viscosity": () => import("../../geology/lava-viscosity/index.js"),
   "geology/passive-earth-pressure-coefficient": () => import("../../geology/passive-earth-pressure-coefficient/index.js"),
@@ -35,6 +40,7 @@ export const toolModuleLoaders: Readonly<
   "laser/pdt-light-dose": () => import("../../laser/pdt-light-dose/index.js"),
   "limnology/chlorophyll-phosphorus-regression-prediction": () => import("../../limnology/chlorophyll-phosphorus-regression-prediction/index.js"),
   "list/reverse": () => import("../../list/reverse/index.js"),
+  "math/lah-transform": () => import("../../math/lah-transform/index.js"),
   "microcontroller/timer-overflow-period": () => import("../../microcontroller/timer-overflow-period/index.js"),
   "mycology/uv-survival-logreduction-jm2-calculator": () => import("../../mycology/uv-survival-logreduction-jm2-calculator/index.js"),
   "neuroscience/pupillary-unrest-normalized-rate": () => import("../../neuroscience/pupillary-unrest-normalized-rate/index.js"),

@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "aquaculture/fcr": () => import("../../aquaculture/fcr/index.js"),
   "aquaculture/feeding-frequency": () => import("../../aquaculture/feeding-frequency/index.js"),
+  "archival-studies/shelf-bay-occupancy-percent": () => import("../../archival-studies/shelf-bay-occupancy-percent/index.js"),
   "astrometry/kasten-young-optical-airmass": () => import("../../astrometry/kasten-young-optical-airmass/index.js"),
   "auditing/ghg-boundary-coverage": () => import("../../auditing/ghg-boundary-coverage/index.js"),
   "aviation/fuel-per-nm": () => import("../../aviation/fuel-per-nm/index.js"),
@@ -30,6 +31,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/tolls-cost-per-route-axle-lookup": () => import("../../logistics/tolls-cost-per-route-axle-lookup/index.js"),
   "logistics/wmape-forecast-accuracy-logistics": () => import("../../logistics/wmape-forecast-accuracy-logistics/index.js"),
   "metabolomics/glutathione-redox-index": () => import("../../metabolomics/glutathione-redox-index/index.js"),
+  "meteorology/trade-wind-inversion-base-height": () => import("../../meteorology/trade-wind-inversion-base-height/index.js"),
   "mri/slice-gap-overlap-audit": () => import("../../mri/slice-gap-overlap-audit/index.js"),
   "proteomics/digest-mass-filter": () => import("../../proteomics/digest-mass-filter/index.js"),
   "seismology/average-moment-rate-from-moment-duration": () => import("../../seismology/average-moment-rate-from-moment-duration/index.js"),

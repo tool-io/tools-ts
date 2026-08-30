@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "agriculture/radiation-use-efficiency": () => import("../../agriculture/radiation-use-efficiency/index.js"),
+  "archaeology/seriation-frequency-ordering": () => import("../../archaeology/seriation-frequency-ordering/index.js"),
   "checksum/crc-16-dnp": () => import("../../checksum/crc-16-dnp/index.js"),
   "chemistry/ideal-gas-density": () => import("../../chemistry/ideal-gas-density/index.js"),
   "chemistry/isotope-average-mass": () => import("../../chemistry/isotope-average-mass/index.js"),
@@ -21,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "genomics/het-hom-ratio-screen": () => import("../../genomics/het-hom-ratio-screen/index.js"),
   "geology/rock-mass-rating-rmr": () => import("../../geology/rock-mass-rating-rmr/index.js"),
   "interpolation/bilinear": () => import("../../interpolation/bilinear/index.js"),
+  "museology/blunder-trap-action-level-checker": () => import("../../museology/blunder-trap-action-level-checker/index.js"),
   "number/automorphic-checker": () => import("../../number/automorphic-checker/index.js"),
   "oenology/glycerol-estimate-abv": () => import("../../oenology/glycerol-estimate-abv/index.js"),
   "oenology/pearson-square-blend": () => import("../../oenology/pearson-square-blend/index.js"),

@@ -6,6 +6,8 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/fluctuation-strength-reference": () => import("../../acoustics/fluctuation-strength-reference/index.js"),
   "actuarial/stop-loss-normal-approximation": () => import("../../actuarial/stop-loss-normal-approximation/index.js"),
+  "archaeology/harris-matrix-depth-order": () => import("../../archaeology/harris-matrix-depth-order/index.js"),
+  "archaeology/population-estimate-roofed-area": () => import("../../archaeology/population-estimate-roofed-area/index.js"),
   "astrometry/declination-altitude-visibility": () => import("../../astrometry/declination-altitude-visibility/index.js"),
   "aviation/landing-distance-required-with-wind": () => import("../../aviation/landing-distance-required-with-wind/index.js"),
   "bacteriology/food-three-class-sampling-plan": () => import("../../bacteriology/food-three-class-sampling-plan/index.js"),
@@ -37,6 +39,7 @@ export const toolModuleLoaders: Readonly<
   "logic/maxterm-index-complement-convention-checker": () => import("../../logic/maxterm-index-complement-convention-checker/index.js"),
   "logic/o-proposition-classifier": () => import("../../logic/o-proposition-classifier/index.js"),
   "logistics/slotting-velocity-abc-classifier": () => import("../../logistics/slotting-velocity-abc-classifier/index.js"),
+  "math/partial-fraction-decomposition": () => import("../../math/partial-fraction-decomposition/index.js"),
   "number/palindrome-checker": () => import("../../number/palindrome-checker/index.js"),
   "paleography/tironian-et-frequency-counter": () => import("../../paleography/tironian-et-frequency-counter/index.js"),
   "random/batak-character": () => import("../../random/batak-character/index.js"),

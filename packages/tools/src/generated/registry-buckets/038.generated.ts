@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archaeology/cortex-percentage-flake": () => import("../../archaeology/cortex-percentage-flake/index.js"),
   "aviation/approach-gradient": () => import("../../aviation/approach-gradient/index.js"),
   "aviation/magnetic-heading": () => import("../../aviation/magnetic-heading/index.js"),
   "biology/clearance-rate": () => import("../../biology/clearance-rate/index.js"),
@@ -11,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/treppen-stufen-dicke-40mm": () => import("../../carpentry/treppen-stufen-dicke-40mm/index.js"),
   "checksum/internet-16": () => import("../../checksum/internet-16/index.js"),
   "chemistry/common-ion-effect-factor": () => import("../../chemistry/common-ion-effect-factor/index.js"),
+  "climatology/consecutive-dry-days": () => import("../../climatology/consecutive-dry-days/index.js"),
   "construction/board-feet": () => import("../../construction/board-feet/index.js"),
   "data-structure/bloom-filter": () => import("../../data-structure/bloom-filter/index.js"),
   "demography/general-growth-balance-completeness": () => import("../../demography/general-growth-balance-completeness/index.js"),

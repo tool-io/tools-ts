@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "horology/daylight-saving-shift": () => import("../../horology/daylight-saving-shift/index.js"),
   "horology/gmt-hand-offset": () => import("../../horology/gmt-hand-offset/index.js"),
   "laser/lidar-photon-return": () => import("../../laser/lidar-photon-return/index.js"),
+  "museology/courier-day-roundtrip-duration": () => import("../../museology/courier-day-roundtrip-duration/index.js"),
   "neuroscience/max-statistic-permutation-threshold": () => import("../../neuroscience/max-statistic-permutation-threshold/index.js"),
   "neuroscience/partial-volume-lesion-volume": () => import("../../neuroscience/partial-volume-lesion-volume/index.js"),
   "numismatics/coin-patina-evidence-screen": () => import("../../numismatics/coin-patina-evidence-screen/index.js"),

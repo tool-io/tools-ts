@@ -29,4 +29,5 @@ export const toolModuleLoaders: Readonly<
   "sailing/wetted-surface-area-hull": () => import("../../sailing/wetted-surface-area-hull/index.js"),
   "statistics/pearson-correlation": () => import("../../statistics/pearson-correlation/index.js"),
   "taxation/income-averaging-comparison": () => import("../../taxation/income-averaging-comparison/index.js"),
+  "volcanology/thermal-camera-hotspot-area-growth": () => import("../../volcanology/thermal-camera-hotspot-area-growth/index.js"),
 };

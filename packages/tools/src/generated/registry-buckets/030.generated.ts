@@ -32,5 +32,6 @@ export const toolModuleLoaders: Readonly<
   "random/old-north-arabian-letter": () => import("../../random/old-north-arabian-letter/index.js"),
   "sailing/persistent-shift-rate": () => import("../../sailing/persistent-shift-rate/index.js"),
   "taxation/cdp-appeal-window": () => import("../../taxation/cdp-appeal-window/index.js"),
+  "volcanology/crystal-content-viscosity-correction": () => import("../../volcanology/crystal-content-viscosity-correction/index.js"),
   "vr/field-of-view-diagonal": () => import("../../vr/field-of-view-diagonal/index.js"),
 };

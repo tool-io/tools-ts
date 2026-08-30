@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "horology/spring-drive-glide-motion-principle-lookup": () => import("../../horology/spring-drive-glide-motion-principle-lookup/index.js"),
   "logistics/fuel-surcharge-index-weekly-lookup": () => import("../../logistics/fuel-surcharge-index-weekly-lookup/index.js"),
   "math/agm-approx": () => import("../../math/agm-approx/index.js"),
+  "oceanography/tsunami-shoaling-amplitude-deep-to-shore": () => import("../../oceanography/tsunami-shoaling-amplitude-deep-to-shore/index.js"),
   "paleography/seleucid-ag-converter": () => import("../../paleography/seleucid-ag-converter/index.js"),
   "pedagogy/feedback-delay-coverage": () => import("../../pedagogy/feedback-delay-coverage/index.js"),
   "random/hex-color": () => import("../../random/hex-color/index.js"),

@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "actuarial/constant-force-fractional-survival": () => import("../../actuarial/constant-force-fractional-survival/index.js"),
   "algebra/synthetic-division": () => import("../../algebra/synthetic-division/index.js"),
+  "archival-studies/hierarchy-level-counter": () => import("../../archival-studies/hierarchy-level-counter/index.js"),
   "auditing/same-day-duplicate-invoice-exact-match-flagger": () => import("../../auditing/same-day-duplicate-invoice-exact-match-flagger/index.js"),
   "aviation/minimum-sink-speed": () => import("../../aviation/minimum-sink-speed/index.js"),
   "biology/anion-gap": () => import("../../biology/anion-gap/index.js"),
@@ -44,6 +45,8 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/mosfet-transconductance-linear": () => import("../../semiconductor/mosfet-transconductance-linear/index.js"),
   "semiconductor/segregation-coefficient": () => import("../../semiconductor/segregation-coefficient/index.js"),
   "semiconductor/tsv-capacitance": () => import("../../semiconductor/tsv-capacitance/index.js"),
+  "sericulture/cocoon-grade-sorting-classifier": () => import("../../sericulture/cocoon-grade-sorting-classifier/index.js"),
   "virology/defective-genome-deletion-union": () => import("../../virology/defective-genome-deletion-union/index.js"),
+  "viticulture/berries-per-cluster-average-count": () => import("../../viticulture/berries-per-cluster-average-count/index.js"),
   "web/url-port": () => import("../../web/url-port/index.js"),
 };

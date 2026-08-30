@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archaeology/diet-delta13c-c3-c4-mix": () => import("../../archaeology/diet-delta13c-c3-c4-mix/index.js"),
   "auditing/pbc-request-status-summary": () => import("../../auditing/pbc-request-status-summary/index.js"),
   "aviation/takeoff-weight": () => import("../../aviation/takeoff-weight/index.js"),
   "aviation/true-bearing-from-magnetic": () => import("../../aviation/true-bearing-from-magnetic/index.js"),
@@ -19,13 +20,16 @@ export const toolModuleLoaders: Readonly<
   "entrepreneurship/ramen-profitability-gap": () => import("../../entrepreneurship/ramen-profitability-gap/index.js"),
   "epigenetics/super-enhancer-stitching": () => import("../../epigenetics/super-enhancer-stitching/index.js"),
   "film/rolling-shutter-skew-pixels": () => import("../../film/rolling-shutter-skew-pixels/index.js"),
+  "gemology/nacre-thickness-estimate": () => import("../../gemology/nacre-thickness-estimate/index.js"),
   "genomics/busco-completeness": () => import("../../genomics/busco-completeness/index.js"),
   "genomics/indel-density": () => import("../../genomics/indel-density/index.js"),
   "horology/guilloche-dial-artisan-process-lookup": () => import("../../horology/guilloche-dial-artisan-process-lookup/index.js"),
   "horology/sweep-steps-per-second": () => import("../../horology/sweep-steps-per-second/index.js"),
   "kinesiology/crank-inseam-ratio": () => import("../../kinesiology/crank-inseam-ratio/index.js"),
+  "math/abel-sum": () => import("../../math/abel-sum/index.js"),
   "matrix/as-table": () => import("../../matrix/as-table/index.js"),
   "mining/pulp-density": () => import("../../mining/pulp-density/index.js"),
+  "museology/dwell-time-average-aggregator": () => import("../../museology/dwell-time-average-aggregator/index.js"),
   "number/hexagonal-checker": () => import("../../number/hexagonal-checker/index.js"),
   "numismatics/bid-ask-spread-percent": () => import("../../numismatics/bid-ask-spread-percent/index.js"),
   "oenology/lightstrike-risk-checker": () => import("../../oenology/lightstrike-risk-checker/index.js"),
@@ -34,6 +38,8 @@ export const toolModuleLoaders: Readonly<
   "regression/ridge": () => import("../../regression/ridge/index.js"),
   "seismology/brune-corner-frequency-source-model": () => import("../../seismology/brune-corner-frequency-source-model/index.js"),
   "semiconductor/quantum-dot-photoluminescence-quantum-yield": () => import("../../semiconductor/quantum-dot-photoluminescence-quantum-yield/index.js"),
+  "viticulture/row-shadow-width-north-south": () => import("../../viticulture/row-shadow-width-north-south/index.js"),
+  "volcanology/co2-so2-molar-ratio-volcanic": () => import("../../volcanology/co2-so2-molar-ratio-volcanic/index.js"),
   "vr/distortion-correction-factor": () => import("../../vr/distortion-correction-factor/index.js"),
   "web/url-query-count": () => import("../../web/url-query-count/index.js"),
 };

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archaeology/retouch-index-edge": () => import("../../archaeology/retouch-index-edge/index.js"),
   "auditing/cpe-hours-requirement-checker": () => import("../../auditing/cpe-hours-requirement-checker/index.js"),
   "aviation/block-fuel": () => import("../../aviation/block-fuel/index.js"),
   "aviation/top-of-descent": () => import("../../aviation/top-of-descent/index.js"),
@@ -15,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "demography/old-age-proportion-65-plus": () => import("../../demography/old-age-proportion-65-plus/index.js"),
   "electronics/display-refresh-power": () => import("../../electronics/display-refresh-power/index.js"),
   "finance/compound-growth-factor": () => import("../../finance/compound-growth-factor/index.js"),
+  "forestry/burn-severity-dnbr-delta-ndvi": () => import("../../forestry/burn-severity-dnbr-delta-ndvi/index.js"),
   "generate/uuid-v2": () => import("../../generate/uuid-v2/index.js"),
   "genomics/isoform-domain-loss": () => import("../../genomics/isoform-domain-loss/index.js"),
   "geology/carbon-14-age": () => import("../../geology/carbon-14-age/index.js"),
@@ -25,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "mri/complex-two-point-dixon": () => import("../../mri/complex-two-point-dixon/index.js"),
   "mri/off-resonance-phase-encode-displacement": () => import("../../mri/off-resonance-phase-encode-displacement/index.js"),
   "mycology/cap-margin-striation-rater": () => import("../../mycology/cap-margin-striation-rater/index.js"),
+  "oceanography/nino34-anomaly-classifier": () => import("../../oceanography/nino34-anomaly-classifier/index.js"),
   "oenology/glass-pour-count": () => import("../../oenology/glass-pour-count/index.js"),
   "random/arabic-indic-digit": () => import("../../random/arabic-indic-digit/index.js"),
   "random/tablet": () => import("../../random/tablet/index.js"),

@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/soft-start-capacitor": () => import("../../electronics/soft-start-capacitor/index.js"),
   "engineering/solar-energy-yield": () => import("../../engineering/solar-energy-yield/index.js"),
   "entrepreneurship/default-alive-runway": () => import("../../entrepreneurship/default-alive-runway/index.js"),
+  "gemology/cut-grade-aggregator": () => import("../../gemology/cut-grade-aggregator/index.js"),
   "geology/bearing-capacity-factor-ngamma": () => import("../../geology/bearing-capacity-factor-ngamma/index.js"),
   "glaciology/glen-flow-law-strain-rate": () => import("../../glaciology/glen-flow-law-strain-rate/index.js"),
   "kinesiology/sprint-shin-angle-screen": () => import("../../kinesiology/sprint-shin-angle-screen/index.js"),
@@ -28,6 +29,7 @@ export const toolModuleLoaders: Readonly<
   "music/bit-depth-dynamic-range-db": () => import("../../music/bit-depth-dynamic-range-db/index.js"),
   "neuroscience/olfactory-staircase-reversal-threshold": () => import("../../neuroscience/olfactory-staircase-reversal-threshold/index.js"),
   "numismatics/pre-1982-cent-copper-melt-value": () => import("../../numismatics/pre-1982-cent-copper-melt-value/index.js"),
+  "oceanography/tsunami-travel-time-constant-depth": () => import("../../oceanography/tsunami-travel-time-constant-depth/index.js"),
   "paleography/epact-day-moon-lookup": () => import("../../paleography/epact-day-moon-lookup/index.js"),
   "random/ol-onal-character": () => import("../../random/ol-onal-character/index.js"),
   "seismology/event-count-poisson-confidence-interval-gehrels": () => import("../../seismology/event-count-poisson-confidence-interval-gehrels/index.js"),
@@ -35,4 +37,5 @@ export const toolModuleLoaders: Readonly<
   "statistics/exponential-moving-average": () => import("../../statistics/exponential-moving-average/index.js"),
   "taxation/crypto-swap-gain": () => import("../../taxation/crypto-swap-gain/index.js"),
   "toxicology/lognormal-species-sensitivity-fit": () => import("../../toxicology/lognormal-species-sensitivity-fit/index.js"),
+  "viticulture/graft-success-rate-percent": () => import("../../viticulture/graft-success-rate-percent/index.js"),
 };

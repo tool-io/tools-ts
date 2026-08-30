@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/final-average-salary": () => import("../../actuarial/final-average-salary/index.js"),
+  "archaeology/metallurgical-slag-iron-yield": () => import("../../archaeology/metallurgical-slag-iron-yield/index.js"),
   "auditing/variance-explanation-check": () => import("../../auditing/variance-explanation-check/index.js"),
   "biology/additive-genetic-variance": () => import("../../biology/additive-genetic-variance/index.js"),
   "biology/brdu-incorporation-rate": () => import("../../biology/brdu-incorporation-rate/index.js"),
@@ -12,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "biology/white-cell-differential": () => import("../../biology/white-cell-differential/index.js"),
   "carpentry/sockelfuss-anzahl": () => import("../../carpentry/sockelfuss-anzahl/index.js"),
   "chemistry/zero-order-integrated": () => import("../../chemistry/zero-order-integrated/index.js"),
+  "climatology/aridity-de-martonne": () => import("../../climatology/aridity-de-martonne/index.js"),
   "construction/block-coursing-count": () => import("../../construction/block-coursing-count/index.js"),
   "convert/capacitance": () => import("../../convert/capacitance/index.js"),
   "cost/total-ownership": () => import("../../cost/total-ownership/index.js"),
@@ -35,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "laser/laser-quantum-well-transition-wavelength-material-algaas-ingaas-gan-table": () => import("../../laser/laser-quantum-well-transition-wavelength-material-algaas-ingaas-gan-table/index.js"),
   "limnology/fall-turnover-density-inversion-trigger": () => import("../../limnology/fall-turnover-density-inversion-trigger/index.js"),
   "logic/cesare-eae2-valid-lookup": () => import("../../logic/cesare-eae2-valid-lookup/index.js"),
+  "museology/audio-guide-fleet-sizing": () => import("../../museology/audio-guide-fleet-sizing/index.js"),
   "neuroscience/partition-network-modularity": () => import("../../neuroscience/partition-network-modularity/index.js"),
   "paleography/easter-table-entry-decoder": () => import("../../paleography/easter-table-entry-decoder/index.js"),
   "random/regional-indicator-pair": () => import("../../random/regional-indicator-pair/index.js"),
@@ -46,4 +49,5 @@ export const toolModuleLoaders: Readonly<
   "size/suit-jacket": () => import("../../size/suit-jacket/index.js"),
   "taxation/exit-tax-threshold-screen": () => import("../../taxation/exit-tax-threshold-screen/index.js"),
   "text/dot-case": () => import("../../text/dot-case/index.js"),
+  "viticulture/acidity-decline-malic-respiration-rate": () => import("../../viticulture/acidity-decline-malic-respiration-rate/index.js"),
 };

@@ -20,6 +20,8 @@ export const toolModuleLoaders: Readonly<
   "electronics/programmable-gain-amplifier-gain": () => import("../../electronics/programmable-gain-amplifier-gain/index.js"),
   "engineering/rational-method-peak-flow": () => import("../../engineering/rational-method-peak-flow/index.js"),
   "entrepreneurship/revenue-projection-growth-screen": () => import("../../entrepreneurship/revenue-projection-growth-screen/index.js"),
+  "gemology/amber-buoyancy-test": () => import("../../gemology/amber-buoyancy-test/index.js"),
+  "gemology/eye-clean-threshold": () => import("../../gemology/eye-clean-threshold/index.js"),
   "genomics/overrepresented-read-screen": () => import("../../genomics/overrepresented-read-screen/index.js"),
   "geology/air-loaded-subsidence": () => import("../../geology/air-loaded-subsidence/index.js"),
   "horology/box-papers-accessory-value-ratio-screen": () => import("../../horology/box-papers-accessory-value-ratio-screen/index.js"),
@@ -44,6 +46,7 @@ export const toolModuleLoaders: Readonly<
   "sociology/bongaarts-proximate-determinant-index": () => import("../../sociology/bongaarts-proximate-determinant-index/index.js"),
   "statistics/standard-deviation": () => import("../../statistics/standard-deviation/index.js"),
   "typography/pica-to-points": () => import("../../typography/pica-to-points/index.js"),
+  "viticulture/crop-estimate-cluster-count-method": () => import("../../viticulture/crop-estimate-cluster-count-method/index.js"),
   "vr/haptic-feedback-latency": () => import("../../vr/haptic-feedback-latency/index.js"),
   "web/srcset-parser": () => import("../../web/srcset-parser/index.js"),
 };

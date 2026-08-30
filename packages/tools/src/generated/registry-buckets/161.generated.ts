@@ -5,10 +5,12 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/clarity-c50": () => import("../../acoustics/clarity-c50/index.js"),
+  "archival-studies/duplication-page-cost-calculator": () => import("../../archival-studies/duplication-page-cost-calculator/index.js"),
   "biology/milk-yield-correction": () => import("../../biology/milk-yield-correction/index.js"),
   "carpentry/sockel-ruecksprung": () => import("../../carpentry/sockel-ruecksprung/index.js"),
   "chemistry/kp-from-partial-pressures": () => import("../../chemistry/kp-from-partial-pressures/index.js"),
   "chemistry/standard-cell-potential": () => import("../../chemistry/standard-cell-potential/index.js"),
+  "climatology/extraterrestrial-radiation-daily": () => import("../../climatology/extraterrestrial-radiation-daily/index.js"),
   "electronics/mixer-ip3": () => import("../../electronics/mixer-ip3/index.js"),
   "electronics/resistor-current-from-power": () => import("../../electronics/resistor-current-from-power/index.js"),
   "encode/geohash": () => import("../../encode/geohash/index.js"),
@@ -37,5 +39,6 @@ export const toolModuleLoaders: Readonly<
   "toxicology/mixed-reservoir-predicted-concentration": () => import("../../toxicology/mixed-reservoir-predicted-concentration/index.js"),
   "validate/issn": () => import("../../validate/issn/index.js"),
   "virology/synonymous-family-enc": () => import("../../virology/synonymous-family-enc/index.js"),
+  "viticulture/sugar-accumulation-brix-per-week": () => import("../../viticulture/sugar-accumulation-brix-per-week/index.js"),
   "web/permissions-policy-parser": () => import("../../web/permissions-policy-parser/index.js"),
 };

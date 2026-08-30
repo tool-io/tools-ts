@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "activation/softmax": () => import("../../activation/softmax/index.js"),
+  "apiculture/site-forage-capacity-colonies": () => import("../../apiculture/site-forage-capacity-colonies/index.js"),
   "approximation/vertex-cover-2-approximation": () => import("../../approximation/vertex-cover-2-approximation/index.js"),
   "auditing/science-target-readiness": () => import("../../auditing/science-target-readiness/index.js"),
   "biology/primer-hairpin-tm": () => import("../../biology/primer-hairpin-tm/index.js"),
@@ -18,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "demography/second-transition-features-checker": () => import("../../demography/second-transition-features-checker/index.js"),
   "electronics/peak-to-rms-voltage": () => import("../../electronics/peak-to-rms-voltage/index.js"),
   "electronics/radar-max-range": () => import("../../electronics/radar-max-range/index.js"),
+  "forestry/effective-wind-speed-midflame-adjust": () => import("../../forestry/effective-wind-speed-midflame-adjust/index.js"),
   "generate/3sat-instance": () => import("../../generate/3sat-instance/index.js"),
   "generate/ean-13": () => import("../../generate/ean-13/index.js"),
   "geology/well-log-shale-volume": () => import("../../geology/well-log-shale-volume/index.js"),
@@ -32,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "microcontroller/spi-transfer-time": () => import("../../microcontroller/spi-transfer-time/index.js"),
   "number/coprime-checker": () => import("../../number/coprime-checker/index.js"),
   "number/digit-sum": () => import("../../number/digit-sum/index.js"),
+  "paleontology/goods-u-coverage": () => import("../../paleontology/goods-u-coverage/index.js"),
   "random/kyrgyz-cyrillic-alphabet-letter": () => import("../../random/kyrgyz-cyrillic-alphabet-letter/index.js"),
   "sailing/day-shape-visibility-range": () => import("../../sailing/day-shape-visibility-range/index.js"),
   "sailing/horizon-distance": () => import("../../sailing/horizon-distance/index.js"),

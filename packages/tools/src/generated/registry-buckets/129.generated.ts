@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "actuarial/frequency-severity-expected-loss": () => import("../../actuarial/frequency-severity-expected-loss/index.js"),
   "aquaculture/daily-growth-coefficient": () => import("../../aquaculture/daily-growth-coefficient/index.js"),
+  "archaeology/magnetic-susceptibility-floor-anomaly": () => import("../../archaeology/magnetic-susceptibility-floor-anomaly/index.js"),
   "auditing/client-delay-impact": () => import("../../auditing/client-delay-impact/index.js"),
   "auditing/team-debrief-coverage": () => import("../../auditing/team-debrief-coverage/index.js"),
   "aviation/corrected-ias-for-weight": () => import("../../aviation/corrected-ias-for-weight/index.js"),

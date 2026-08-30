@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archival-studies/retrieval-cart-capacity-checker": () => import("../../archival-studies/retrieval-cart-capacity-checker/index.js"),
   "aviation/landing-ground-roll": () => import("../../aviation/landing-ground-roll/index.js"),
   "biology/phosphorus-use-efficiency": () => import("../../biology/phosphorus-use-efficiency/index.js"),
   "chemistry/langmuir-isotherm-theta": () => import("../../chemistry/langmuir-isotherm-theta/index.js"),
@@ -15,10 +16,14 @@ export const toolModuleLoaders: Readonly<
   "engineering/stefan-boltzmann-flux": () => import("../../engineering/stefan-boltzmann-flux/index.js"),
   "film/dcp-file-size": () => import("../../film/dcp-file-size/index.js"),
   "forestry/carbon-stock-single-tree": () => import("../../forestry/carbon-stock-single-tree/index.js"),
+  "forestry/shade-removal-stream-temperature-increase-estimate": () => import("../../forestry/shade-removal-stream-temperature-increase-estimate/index.js"),
+  "gemology/refractive-index-snell": () => import("../../gemology/refractive-index-snell/index.js"),
   "kinesiology/heart-rate-reserve-zone": () => import("../../kinesiology/heart-rate-reserve-zone/index.js"),
   "laser/cavity-path-enhancement": () => import("../../laser/cavity-path-enhancement/index.js"),
   "laser/dispersion-map-strength": () => import("../../laser/dispersion-map-strength/index.js"),
   "logic/double-negation-elimination-validator": () => import("../../logic/double-negation-elimination-validator/index.js"),
+  "math/ellipsoid-surface-area-approx": () => import("../../math/ellipsoid-surface-area-approx/index.js"),
+  "math/paraboloid-volume": () => import("../../math/paraboloid-volume/index.js"),
   "metabolomics/cell-normalized-ocr": () => import("../../metabolomics/cell-normalized-ocr/index.js"),
   "meteorology/cooling-degree-days": () => import("../../meteorology/cooling-degree-days/index.js"),
   "mri/asymmetric-partial-fourier-coverage": () => import("../../mri/asymmetric-partial-fourier-coverage/index.js"),

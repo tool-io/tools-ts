@@ -46,4 +46,5 @@ export const toolModuleLoaders: Readonly<
   "statistics/wilcoxon-signed-rank": () => import("../../statistics/wilcoxon-signed-rank/index.js"),
   "taxation/transcript-requirement-match": () => import("../../taxation/transcript-requirement-match/index.js"),
   "text/lowercase": () => import("../../text/lowercase/index.js"),
+  "viticulture/tie-tape-roll-vines-covered": () => import("../../viticulture/tie-tape-roll-vines-covered/index.js"),
 };

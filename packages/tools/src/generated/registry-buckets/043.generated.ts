@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "apiculture/split-ratio-colony-divider": () => import("../../apiculture/split-ratio-colony-divider/index.js"),
   "archival-studies/oral-history-abstract-limit-finder": () => import("../../archival-studies/oral-history-abstract-limit-finder/index.js"),
   "arithmetic/modular-complement": () => import("../../arithmetic/modular-complement/index.js"),
   "astrometry/common-motion-covariance-screen": () => import("../../astrometry/common-motion-covariance-screen/index.js"),
@@ -19,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/transformer-copper-loss-at-load": () => import("../../electronics/transformer-copper-loss-at-load/index.js"),
   "encode/url-component": () => import("../../encode/url-component/index.js"),
   "geology/specific-gravity": () => import("../../geology/specific-gravity/index.js"),
+  "horticulture/peat-perlite-bark-blend-ratio": () => import("../../horticulture/peat-perlite-bark-blend-ratio/index.js"),
   "insurance/buy-sell-structure-comparison": () => import("../../insurance/buy-sell-structure-comparison/index.js"),
   "insurance/gig-coverage-gap": () => import("../../insurance/gig-coverage-gap/index.js"),
   "kinesiology/takeoff-impulse-velocity": () => import("../../kinesiology/takeoff-impulse-velocity/index.js"),

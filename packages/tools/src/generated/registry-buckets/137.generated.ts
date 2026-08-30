@@ -7,6 +7,7 @@ export const toolModuleLoaders: Readonly<
   "acoustics/iso-tc43-scope-reference": () => import("../../acoustics/iso-tc43-scope-reference/index.js"),
   "acoustics/source-array-db-increase": () => import("../../acoustics/source-array-db-increase/index.js"),
   "actuarial/normal-retirement-benefit": () => import("../../actuarial/normal-retirement-benefit/index.js"),
+  "archival-studies/documentation-coverage-percent-checker": () => import("../../archival-studies/documentation-coverage-percent-checker/index.js"),
   "auditing/journal-entry-testing-risk-based-filter-criteria-builder": () => import("../../auditing/journal-entry-testing-risk-based-filter-criteria-builder/index.js"),
   "aviation/bank-angle-from-load": () => import("../../aviation/bank-angle-from-load/index.js"),
   "carpentry/furnierpresse-druck-bar": () => import("../../carpentry/furnierpresse-druck-bar/index.js"),
@@ -37,5 +38,6 @@ export const toolModuleLoaders: Readonly<
   "sailing/waypoint-eta-current-corrected": () => import("../../sailing/waypoint-eta-current-corrected/index.js"),
   "seismology/repeating-pair-slip-compatibility-checker": () => import("../../seismology/repeating-pair-slip-compatibility-checker/index.js"),
   "text/duplicate-word-checker": () => import("../../text/duplicate-word-checker/index.js"),
+  "viticulture/grape-bin-fill-weight-capacity": () => import("../../viticulture/grape-bin-fill-weight-capacity/index.js"),
   "web/url-is-relative": () => import("../../web/url-is-relative/index.js"),
 };

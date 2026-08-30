@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/layered-gypsum-wall-stc-lookup": () => import("../../acoustics/layered-gypsum-wall-stc-lookup/index.js"),
+  "archival-studies/mplp-backlog-reduction-percent": () => import("../../archival-studies/mplp-backlog-reduction-percent/index.js"),
   "carpentry/topfband-155-grad-weitwinkel": () => import("../../carpentry/topfband-155-grad-weitwinkel/index.js"),
   "celestial-mechanics/mutual-hill-separation": () => import("../../celestial-mechanics/mutual-hill-separation/index.js"),
   "chemistry/industrial-contact-process-conversion": () => import("../../chemistry/industrial-contact-process-conversion/index.js"),
@@ -24,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "horology/tag-heuer-racing-chronograph-lineage-lookup": () => import("../../horology/tag-heuer-racing-chronograph-lineage-lookup/index.js"),
   "html/module-vs-classic-script-diff-lookup": () => import("../../html/module-vs-classic-script-diff-lookup/index.js"),
   "laser/laser-vcsel-versus-edge-emitter-divergence-comparison-table-lookup": () => import("../../laser/laser-vcsel-versus-edge-emitter-divergence-comparison-table-lookup/index.js"),
+  "math/extended-gcd-polynomial": () => import("../../math/extended-gcd-polynomial/index.js"),
   "mycology/ethanol-yield-theoretical-fraction-calculator": () => import("../../mycology/ethanol-yield-theoretical-fraction-calculator/index.js"),
   "oenology/metatartaric-dose": () => import("../../oenology/metatartaric-dose/index.js"),
   "optimization/interior-point-step": () => import("../../optimization/interior-point-step/index.js"),

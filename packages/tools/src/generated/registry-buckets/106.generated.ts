@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "apiculture/hive-weight-alert-delta-monitoring": () => import("../../apiculture/hive-weight-alert-delta-monitoring/index.js"),
+  "archival-studies/salvage-priority-rank-resolver": () => import("../../archival-studies/salvage-priority-rank-resolver/index.js"),
   "auditing/subsequent-disbursement-postdated-check-review-window": () => import("../../auditing/subsequent-disbursement-postdated-check-review-window/index.js"),
   "biology/bark-density": () => import("../../biology/bark-density/index.js"),
   "biology/linkage-disequilibrium-r2": () => import("../../biology/linkage-disequilibrium-r2/index.js"),

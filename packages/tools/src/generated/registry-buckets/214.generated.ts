@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archaeology/spit-volume-excavation": () => import("../../archaeology/spit-volume-excavation/index.js"),
   "arithmetic/subtract-two-numbers": () => import("../../arithmetic/subtract-two-numbers/index.js"),
   "auditing/three-lines-model-roles-assurance-lookup": () => import("../../auditing/three-lines-model-roles-assurance-lookup/index.js"),
   "bacteriology/culture-bottle-positivity-timeline": () => import("../../bacteriology/culture-bottle-positivity-timeline/index.js"),
@@ -31,7 +32,9 @@ export const toolModuleLoaders: Readonly<
   "horology/neo-vintage-year-boundary-screen": () => import("../../horology/neo-vintage-year-boundary-screen/index.js"),
   "laser/supercontinuum-octave-span": () => import("../../laser/supercontinuum-octave-span/index.js"),
   "math/motzkin-number": () => import("../../math/motzkin-number/index.js"),
+  "meteorology/k-index-severe-weather": () => import("../../meteorology/k-index-severe-weather/index.js"),
   "music/tessitura-center-estimate": () => import("../../music/tessitura-center-estimate/index.js"),
+  "paleontology/origination-rate-per-lmyr": () => import("../../paleontology/origination-rate-per-lmyr/index.js"),
   "parasitology/skin-scraping-mite-density": () => import("../../parasitology/skin-scraping-mite-density/index.js"),
   "proteomics/trypsin-cleavage-sites": () => import("../../proteomics/trypsin-cleavage-sites/index.js"),
   "seismology/group-vs-phase-velocity-difference": () => import("../../seismology/group-vs-phase-velocity-difference/index.js"),

@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "apiculture/population-growth-from-laying-rate": () => import("../../apiculture/population-growth-from-laying-rate/index.js"),
+  "archaeology/obsidian-hydration-rind-age": () => import("../../archaeology/obsidian-hydration-rind-age/index.js"),
   "arithmetic/proportionate-share": () => import("../../arithmetic/proportionate-share/index.js"),
   "biology/iron-deficiency-index": () => import("../../biology/iron-deficiency-index/index.js"),
   "biology/jaccard-ecology": () => import("../../biology/jaccard-ecology/index.js"),
@@ -34,10 +36,12 @@ export const toolModuleLoaders: Readonly<
   "oenology/deacidification-carbonate-dose": () => import("../../oenology/deacidification-carbonate-dose/index.js"),
   "paleography/grain-hair-folio-mapper": () => import("../../paleography/grain-hair-folio-mapper/index.js"),
   "paleography/hand-count-cluster-variance": () => import("../../paleography/hand-count-cluster-variance/index.js"),
+  "paleontology/hydraulic-equivalence-settling": () => import("../../paleontology/hydraulic-equivalence-settling/index.js"),
   "random/mongolian-cyrillic-alphabet-letter": () => import("../../random/mongolian-cyrillic-alphabet-letter/index.js"),
   "sailing/sail-area-jib": () => import("../../sailing/sail-area-jib/index.js"),
   "seismology/coda-duration-magnitude-nuttli-formula": () => import("../../seismology/coda-duration-magnitude-nuttli-formula/index.js"),
   "semiconductor/ingaas-bandgap": () => import("../../semiconductor/ingaas-bandgap/index.js"),
+  "sericulture/conditioned-weight-international-formula": () => import("../../sericulture/conditioned-weight-international-formula/index.js"),
   "taxation/tax-holiday-savings": () => import("../../taxation/tax-holiday-savings/index.js"),
   "text/unique-lines": () => import("../../text/unique-lines/index.js"),
   "web/url-path-segments": () => import("../../web/url-path-segments/index.js"),

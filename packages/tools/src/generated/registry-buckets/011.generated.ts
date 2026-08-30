@@ -4,6 +4,10 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "apiculture/forage-radius-km-range-estimate": () => import("../../apiculture/forage-radius-km-range-estimate/index.js"),
+  "archaeology/dendro-ring-count": () => import("../../archaeology/dendro-ring-count/index.js"),
+  "archival-studies/accession-number-year-validator": () => import("../../archival-studies/accession-number-year-validator/index.js"),
+  "archival-studies/linear-feet-from-boxes": () => import("../../archival-studies/linear-feet-from-boxes/index.js"),
   "arithmetic/decrement": () => import("../../arithmetic/decrement/index.js"),
   "auditing/journal-entry-weekend-holiday-posting-date-flagger": () => import("../../auditing/journal-entry-weekend-holiday-posting-date-flagger/index.js"),
   "biology/diversity-hill-n2": () => import("../../biology/diversity-hill-n2/index.js"),
@@ -12,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "biology/meat-to-bone-ratio": () => import("../../biology/meat-to-bone-ratio/index.js"),
   "carpentry/holzfehler-ausschuss-prozent": () => import("../../carpentry/holzfehler-ausschuss-prozent/index.js"),
   "chemistry/serial-dilution": () => import("../../chemistry/serial-dilution/index.js"),
+  "climatology/pet-thornthwaite-monthly": () => import("../../climatology/pet-thornthwaite-monthly/index.js"),
   "convert/density": () => import("../../convert/density/index.js"),
   "demography/beers-interpolation-lookup": () => import("../../demography/beers-interpolation-lookup/index.js"),
   "electronics/antenna-radiation-efficiency-2": () => import("../../electronics/antenna-radiation-efficiency-2/index.js"),
@@ -25,7 +30,9 @@ export const toolModuleLoaders: Readonly<
   "glaciology/equilibrium-line-altitude-ela": () => import("../../glaciology/equilibrium-line-altitude-ela/index.js"),
   "insurance/nonappearance-loss": () => import("../../insurance/nonappearance-loss/index.js"),
   "laser/laser-dfb-grating-period-bragg-wavelength-calculator": () => import("../../laser/laser-dfb-grating-period-bragg-wavelength-calculator/index.js"),
+  "math/hypocycloid-area": () => import("../../math/hypocycloid-area/index.js"),
   "math/logarithmic-mean": () => import("../../math/logarithmic-mean/index.js"),
+  "museology/treatment-backlog-aging-days": () => import("../../museology/treatment-backlog-aging-days/index.js"),
   "oenology/bottle-fill-height-check": () => import("../../oenology/bottle-fill-height-check/index.js"),
   "proteomics/transmembrane-window-scan": () => import("../../proteomics/transmembrane-window-scan/index.js"),
   "random/multani-character": () => import("../../random/multani-character/index.js"),

@@ -27,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "laser/frequency-mixing-wavelength": () => import("../../laser/frequency-mixing-wavelength/index.js"),
   "limnology/gran-titration-alkalinity": () => import("../../limnology/gran-titration-alkalinity/index.js"),
   "math/cousin-prime-pair-checker": () => import("../../math/cousin-prime-pair-checker/index.js"),
+  "math/li-function-offset-log-integral": () => import("../../math/li-function-offset-log-integral/index.js"),
   "mining/truck-productivity": () => import("../../mining/truck-productivity/index.js"),
   "mycology/hair-perforation-test-classifier": () => import("../../mycology/hair-perforation-test-classifier/index.js"),
   "numismatics/storage-box-flip-count": () => import("../../numismatics/storage-box-flip-count/index.js"),

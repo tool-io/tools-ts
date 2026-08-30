@@ -54,4 +54,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/schottky-barrier-height": () => import("../../semiconductor/schottky-barrier-height/index.js"),
   "size/golf-club": () => import("../../size/golf-club/index.js"),
   "size/pillow": () => import("../../size/pillow/index.js"),
+  "volcanology/repose-interval-recurrence-mean": () => import("../../volcanology/repose-interval-recurrence-mean/index.js"),
 };

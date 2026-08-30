@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archival-studies/boxes-from-linear-feet": () => import("../../archival-studies/boxes-from-linear-feet/index.js"),
   "aviation/cabin-rate-of-climb": () => import("../../aviation/cabin-rate-of-climb/index.js"),
   "aviation/headwind-component": () => import("../../aviation/headwind-component/index.js"),
   "aviation/v-speed-vle": () => import("../../aviation/v-speed-vle/index.js"),
@@ -42,4 +43,7 @@ export const toolModuleLoaders: Readonly<
   "sailing/irc-corrected-time": () => import("../../sailing/irc-corrected-time/index.js"),
   "semiconductor/3d-ic-tsv-keep-out-zone": () => import("../../semiconductor/3d-ic-tsv-keep-out-zone/index.js"),
   "semiconductor/gate-tunneling-current": () => import("../../semiconductor/gate-tunneling-current/index.js"),
+  "sericulture/late-laying-discards-percent-rule": () => import("../../sericulture/late-laying-discards-percent-rule/index.js"),
+  "sericulture/tray-stack-gap-height": () => import("../../sericulture/tray-stack-gap-height/index.js"),
+  "viticulture/berry-average-weight-from-sample": () => import("../../viticulture/berry-average-weight-from-sample/index.js"),
 };

@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "biology/relationship-coefficient": () => import("../../biology/relationship-coefficient/index.js"),
   "carpentry/kuechen-haengeschrank-montagehoehe": () => import("../../carpentry/kuechen-haengeschrank-montagehoehe/index.js"),
   "chemistry/current-efficiency": () => import("../../chemistry/current-efficiency/index.js"),
+  "climatology/angstrom-prescott-coefficients": () => import("../../climatology/angstrom-prescott-coefficients/index.js"),
   "construction/screw-count-decking": () => import("../../construction/screw-count-decking/index.js"),
   "demography/divorce-duration-table-lookup": () => import("../../demography/divorce-duration-table-lookup/index.js"),
   "demography/mmr-maternal-mortality-ratio": () => import("../../demography/mmr-maternal-mortality-ratio/index.js"),
@@ -32,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "laser/laser-diode-threshold-current-temperature-characteristic-t0-lookup": () => import("../../laser/laser-diode-threshold-current-temperature-characteristic-t0-lookup/index.js"),
   "laser/raman-dts-temperature": () => import("../../laser/raman-dts-temperature/index.js"),
   "logic/dimaris-iai4-valid-lookup": () => import("../../logic/dimaris-iai4-valid-lookup/index.js"),
+  "math/characteristic-polynomial-2x2": () => import("../../math/characteristic-polynomial-2x2/index.js"),
   "math/rough-number-checker": () => import("../../math/rough-number-checker/index.js"),
   "mycology/rhizomorph-extension-rate-recorder": () => import("../../mycology/rhizomorph-extension-rate-recorder/index.js"),
   "network/private-ip-checker": () => import("../../network/private-ip-checker/index.js"),
@@ -45,4 +47,5 @@ export const toolModuleLoaders: Readonly<
   "size/climbing-harness": () => import("../../size/climbing-harness/index.js"),
   "statistics/ab-test": () => import("../../statistics/ab-test/index.js"),
   "transcriptomics/alternative-3prime-splice-shift": () => import("../../transcriptomics/alternative-3prime-splice-shift/index.js"),
+  "viticulture/machine-harvest-loss-percent": () => import("../../viticulture/machine-harvest-loss-percent/index.js"),
 };

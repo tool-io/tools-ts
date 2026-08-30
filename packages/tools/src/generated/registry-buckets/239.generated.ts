@@ -27,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "horology/vermeil-layer-thickness-screen": () => import("../../horology/vermeil-layer-thickness-screen/index.js"),
   "html/hreflang-alternate-lang-pairs-lookup": () => import("../../html/hreflang-alternate-lang-pairs-lookup/index.js"),
   "mri/hrf-temporal-finite-difference": () => import("../../mri/hrf-temporal-finite-difference/index.js"),
+  "oceanography/shoaling-coefficient-h-h0": () => import("../../oceanography/shoaling-coefficient-h-h0/index.js"),
   "oenology/drinking-window-peak": () => import("../../oenology/drinking-window-peak/index.js"),
   "random/lao-character": () => import("../../random/lao-character/index.js"),
   "random/meroitic-cursive-character": () => import("../../random/meroitic-cursive-character/index.js"),

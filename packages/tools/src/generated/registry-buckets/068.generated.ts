@@ -5,12 +5,14 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/endowment-insurance-epv": () => import("../../actuarial/endowment-insurance-epv/index.js"),
+  "apiculture/mating-nuc-resource-allocation-split": () => import("../../apiculture/mating-nuc-resource-allocation-split/index.js"),
   "banking/debt-consolidation-breakeven": () => import("../../banking/debt-consolidation-breakeven/index.js"),
   "biology/ld50": () => import("../../biology/ld50/index.js"),
   "biology/melting-temp-wallace": () => import("../../biology/melting-temp-wallace/index.js"),
   "cartography/naismith-route-time-rule": () => import("../../cartography/naismith-route-time-rule/index.js"),
   "chemistry/freezing-point-depression": () => import("../../chemistry/freezing-point-depression/index.js"),
   "chemistry/normality-from-molarity": () => import("../../chemistry/normality-from-molarity/index.js"),
+  "climatology/pressure-gradient-force": () => import("../../climatology/pressure-gradient-force/index.js"),
   "construction/trench-shoring-boards-area": () => import("../../construction/trench-shoring-boards-area/index.js"),
   "demography/bennett-horiuchi-death-distribution-method": () => import("../../demography/bennett-horiuchi-death-distribution-method/index.js"),
   "electronics/noise-bandwidth-correction": () => import("../../electronics/noise-bandwidth-correction/index.js"),

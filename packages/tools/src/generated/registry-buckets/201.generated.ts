@@ -5,6 +5,8 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/doppler-receding-frequency": () => import("../../acoustics/doppler-receding-frequency/index.js"),
+  "archaeology/microblade-core-index": () => import("../../archaeology/microblade-core-index/index.js"),
+  "archival-studies/freeze-dry-batch-size-planner": () => import("../../archival-studies/freeze-dry-batch-size-planner/index.js"),
   "arithmetic/multiply-numbers": () => import("../../arithmetic/multiply-numbers/index.js"),
   "astronomy/light-travel-time": () => import("../../astronomy/light-travel-time/index.js"),
   "aviation/equivalent-airspeed": () => import("../../aviation/equivalent-airspeed/index.js"),
@@ -25,12 +27,17 @@ export const toolModuleLoaders: Readonly<
   "html/progress-value-max-percent": () => import("../../html/progress-value-max-percent/index.js"),
   "kinesiology/berg-balance-score": () => import("../../kinesiology/berg-balance-score/index.js"),
   "math/bell-triangle-entry": () => import("../../math/bell-triangle-entry/index.js"),
+  "math/kronecker-product-2x2": () => import("../../math/kronecker-product-2x2/index.js"),
+  "meteorology/pressure-tendency-3hr-change": () => import("../../meteorology/pressure-tendency-3hr-change/index.js"),
   "numismatics/trade-fairness-value-swap-checker": () => import("../../numismatics/trade-fairness-value-swap-checker/index.js"),
+  "paleontology/mau-calculator": () => import("../../paleontology/mau-calculator/index.js"),
   "random/hanifi-rohingya-letter": () => import("../../random/hanifi-rohingya-letter/index.js"),
   "random/syloti-nagri-character": () => import("../../random/syloti-nagri-character/index.js"),
   "real-estate/lease-escalation": () => import("../../real-estate/lease-escalation/index.js"),
   "seismology/first-break-snr-validity-flagger": () => import("../../seismology/first-break-snr-validity-flagger/index.js"),
+  "sericulture/bed-spacing-density-checker": () => import("../../sericulture/bed-spacing-density-checker/index.js"),
   "taxation/pillar-two-top-up-tax": () => import("../../taxation/pillar-two-top-up-tax/index.js"),
   "text/word-length-histogram": () => import("../../text/word-length-histogram/index.js"),
   "typography/major-third-scale-generator": () => import("../../typography/major-third-scale-generator/index.js"),
+  "viticulture/mildew-infection-period-gdm-checker": () => import("../../viticulture/mildew-infection-period-gdm-checker/index.js"),
 };

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "agriculture/water-productivity": () => import("../../agriculture/water-productivity/index.js"),
   "archival-studies/email-message-count-summator": () => import("../../archival-studies/email-message-count-summator/index.js"),
   "biology/fick-diffusion-rate": () => import("../../biology/fick-diffusion-rate/index.js"),
   "cartography/scale-bar-segment-length": () => import("../../cartography/scale-bar-segment-length/index.js"),
@@ -16,13 +17,18 @@ export const toolModuleLoaders: Readonly<
   "electronics/noise-figure-db": () => import("../../electronics/noise-figure-db/index.js"),
   "electronics/piezoelectric-actuator-displacement": () => import("../../electronics/piezoelectric-actuator-displacement/index.js"),
   "engineering/minor-head-loss": () => import("../../engineering/minor-head-loss/index.js"),
+  "gemology/heavy-liquid-sg-estimate": () => import("../../gemology/heavy-liquid-sg-estimate/index.js"),
+  "gemology/refractor-single-reading": () => import("../../gemology/refractor-single-reading/index.js"),
   "geology/fault-throw": () => import("../../geology/fault-throw/index.js"),
   "geology/reserve-recoverable": () => import("../../geology/reserve-recoverable/index.js"),
   "graph/shortest-unweighted-path": () => import("../../graph/shortest-unweighted-path/index.js"),
+  "meteorology/double-rainbow-secondary-51-degree": () => import("../../meteorology/double-rainbow-secondary-51-degree/index.js"),
   "neuroscience/crawford-howell-single-case": () => import("../../neuroscience/crawford-howell-single-case/index.js"),
   "number/continued-fraction": () => import("../../number/continued-fraction/index.js"),
   "numismatics/die-rotation-error-degrees": () => import("../../numismatics/die-rotation-error-degrees/index.js"),
+  "oceanography/thermal-expansion-alpha-seawater": () => import("../../oceanography/thermal-expansion-alpha-seawater/index.js"),
   "oenology/cuso4-h2s-trial-dose": () => import("../../oenology/cuso4-h2s-trial-dose/index.js"),
+  "paleontology/range-confidence-strauss-sadler": () => import("../../paleontology/range-confidence-strauss-sadler/index.js"),
   "random/arpeggio": () => import("../../random/arpeggio/index.js"),
   "random/counting-rod-numeral": () => import("../../random/counting-rod-numeral/index.js"),
   "random/gurmukhi-digit": () => import("../../random/gurmukhi-digit/index.js"),
@@ -31,5 +37,6 @@ export const toolModuleLoaders: Readonly<
   "sports/pace-per-km": () => import("../../sports/pace-per-km/index.js"),
   "trading/market-hours": () => import("../../trading/market-hours/index.js"),
   "virology/endotoxin-lot-limit-audit": () => import("../../virology/endotoxin-lot-limit-audit/index.js"),
+  "volcanology/ballistic-ejection-max-range": () => import("../../volcanology/ballistic-ejection-max-range/index.js"),
   "vr/geometry-throughput-triangles-per-frame": () => import("../../vr/geometry-throughput-triangles-per-frame/index.js"),
 };

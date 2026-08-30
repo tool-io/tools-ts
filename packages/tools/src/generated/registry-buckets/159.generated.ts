@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "apiculture/queen-cage-candy-release-days": () => import("../../apiculture/queen-cage-candy-release-days/index.js"),
   "aquaculture/ras-water-balance": () => import("../../aquaculture/ras-water-balance/index.js"),
   "aviation/wind-direction-from-components": () => import("../../aviation/wind-direction-from-components/index.js"),
   "celestial-mechanics/j2-periapsis-precession": () => import("../../celestial-mechanics/j2-periapsis-precession/index.js"),
@@ -24,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "laser/rotary-axis-calibration": () => import("../../laser/rotary-axis-calibration/index.js"),
   "logic/disamis-iai3-valid-lookup": () => import("../../logic/disamis-iai3-valid-lookup/index.js"),
   "logistics/eld-drive-clock-remaining-today": () => import("../../logistics/eld-drive-clock-remaining-today/index.js"),
+  "meteorology/rainbow-primary-42-degree-angle": () => import("../../meteorology/rainbow-primary-42-degree-angle/index.js"),
   "mycology/growth-form-linear-appressorial-classifier": () => import("../../mycology/growth-form-linear-appressorial-classifier/index.js"),
   "network/ipv4-usable-host-count": () => import("../../network/ipv4-usable-host-count/index.js"),
   "proteomics/protein-elemental-formula": () => import("../../proteomics/protein-elemental-formula/index.js"),

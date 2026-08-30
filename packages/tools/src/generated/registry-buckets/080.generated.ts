@@ -35,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "laser/hdfa-window-margin": () => import("../../laser/hdfa-window-margin/index.js"),
   "laser/laser-bar-array-smile-effect-beam-pointing-microradian-budget-checker": () => import("../../laser/laser-bar-array-smile-effect-beam-pointing-microradian-budget-checker/index.js"),
   "mining/cyclone-cut-size-d50": () => import("../../mining/cyclone-cut-size-d50/index.js"),
+  "oceanography/haline-contraction-beta-seawater": () => import("../../oceanography/haline-contraction-beta-seawater/index.js"),
   "paleography/ampersand-era-mapper": () => import("../../paleography/ampersand-era-mapper/index.js"),
   "paleography/beneventan-zone-locator": () => import("../../paleography/beneventan-zone-locator/index.js"),
   "probability/slice-sampler": () => import("../../probability/slice-sampler/index.js"),
@@ -44,4 +45,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/mosfet-inversion-charge": () => import("../../semiconductor/mosfet-inversion-charge/index.js"),
   "taxation/gambling-session-net": () => import("../../taxation/gambling-session-net/index.js"),
   "transcriptomics/umi-matrix-sparsity": () => import("../../transcriptomics/umi-matrix-sparsity/index.js"),
+  "volcanology/bubble-nucleation-supersaturation-drop": () => import("../../volcanology/bubble-nucleation-supersaturation-drop/index.js"),
 };

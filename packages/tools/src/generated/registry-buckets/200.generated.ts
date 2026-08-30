@@ -5,9 +5,11 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "aquaculture/mortality-rate": () => import("../../aquaculture/mortality-rate/index.js"),
+  "archaeology/optically-stimulated-luminescence-age": () => import("../../archaeology/optically-stimulated-luminescence-age/index.js"),
   "arithmetic/modulo": () => import("../../arithmetic/modulo/index.js"),
   "aviation/crossover-altitude": () => import("../../aviation/crossover-altitude/index.js"),
   "carpentry/domino-fraestiefe-lookup": () => import("../../carpentry/domino-fraestiefe-lookup/index.js"),
+  "climatology/geostrophic-wind-speed": () => import("../../climatology/geostrophic-wind-speed/index.js"),
   "demography/completed-cohort-fertility-cff": () => import("../../demography/completed-cohort-fertility-cff/index.js"),
   "electronics/ptc-thermistor-resistance": () => import("../../electronics/ptc-thermistor-resistance/index.js"),
   "engineering/drill-time": () => import("../../engineering/drill-time/index.js"),
@@ -17,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "laser/cladding-dilution": () => import("../../laser/cladding-dilution/index.js"),
   "logic/truth-table-row-count-2n": () => import("../../logic/truth-table-row-count-2n/index.js"),
   "logistics/additional-handling-fee-trigger-checker": () => import("../../logistics/additional-handling-fee-trigger-checker/index.js"),
+  "oceanography/omega-aragonite-carbonate-state": () => import("../../oceanography/omega-aragonite-carbonate-state/index.js"),
   "oenology/blind-tasting-varietal-scorer": () => import("../../oenology/blind-tasting-varietal-scorer/index.js"),
   "optimization/non-convex-multistart": () => import("../../optimization/non-convex-multistart/index.js"),
   "paleography/indiction-cycle-year-solver": () => import("../../paleography/indiction-cycle-year-solver/index.js"),
@@ -31,6 +34,8 @@ export const toolModuleLoaders: Readonly<
   "seismology/coda-q-scattering-intrinsic-split": () => import("../../seismology/coda-q-scattering-intrinsic-split/index.js"),
   "seismology/pgv-pga-correlation-approximation": () => import("../../seismology/pgv-pga-correlation-approximation/index.js"),
   "semiconductor/effective-density-conduction-band": () => import("../../semiconductor/effective-density-conduction-band/index.js"),
+  "sericulture/auction-lot-net-weight-tare-adjustment": () => import("../../sericulture/auction-lot-net-weight-tare-adjustment/index.js"),
   "size/bed": () => import("../../size/bed/index.js"),
   "statistics/risk-difference": () => import("../../statistics/risk-difference/index.js"),
+  "volcanology/eruption-duration-from-dre-volume": () => import("../../volcanology/eruption-duration-from-dre-volume/index.js"),
 };

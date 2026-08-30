@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "logic/distributivity-or-over-and-applier": () => import("../../logic/distributivity-or-over-and-applier/index.js"),
   "neuroscience/surface-gyrification-index": () => import("../../neuroscience/surface-gyrification-index/index.js"),
   "neuroscience/trial-spike-timing-precision": () => import("../../neuroscience/trial-spike-timing-precision/index.js"),
+  "oceanography/sverdrup-interior-transport": () => import("../../oceanography/sverdrup-interior-transport/index.js"),
   "paleography/correction-over-erasure-flag": () => import("../../paleography/correction-over-erasure-flag/index.js"),
   "pedagogy/jigsaw-rotation-schedule": () => import("../../pedagogy/jigsaw-rotation-schedule/index.js"),
   "random/multicolor-dot-pattern": () => import("../../random/multicolor-dot-pattern/index.js"),

@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/polygon-frame-miter-angle": () => import("../../carpentry/polygon-frame-miter-angle/index.js"),
   "cartography/tobler-hiking-speed-estimate": () => import("../../cartography/tobler-hiking-speed-estimate/index.js"),
   "chemistry/entropy-change": () => import("../../chemistry/entropy-change/index.js"),
+  "climatology/albedo-forcing-delta-t": () => import("../../climatology/albedo-forcing-delta-t/index.js"),
   "convert/text-to-keycap-symbols": () => import("../../convert/text-to-keycap-symbols/index.js"),
   "csv/email-format-presence-quick-check-per-cell": () => import("../../csv/email-format-presence-quick-check-per-cell/index.js"),
   "electronics/admittance-magnitude": () => import("../../electronics/admittance-magnitude/index.js"),

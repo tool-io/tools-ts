@@ -4,7 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "apiculture/queen-excluder-slats-spacing-checker": () => import("../../apiculture/queen-excluder-slats-spacing-checker/index.js"),
   "aquaculture/uv-dose": () => import("../../aquaculture/uv-dose/index.js"),
+  "archival-studies/retention-trigger-date-calculator": () => import("../../archival-studies/retention-trigger-date-calculator/index.js"),
   "carpentry/massivholz-verleimregel-lamelle-gestuerzt": () => import("../../carpentry/massivholz-verleimregel-lamelle-gestuerzt/index.js"),
   "carpentry/rafix-bohrbild": () => import("../../carpentry/rafix-bohrbild/index.js"),
   "carpentry/workbench-height": () => import("../../carpentry/workbench-height/index.js"),
@@ -41,4 +43,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/single-electron-transistor-coulomb-gap": () => import("../../semiconductor/single-electron-transistor-coulomb-gap/index.js"),
   "statistics/standard-error": () => import("../../statistics/standard-error/index.js"),
   "text/trigram-count": () => import("../../text/trigram-count/index.js"),
+  "volcanology/channel-levee-height-estimate": () => import("../../volcanology/channel-levee-height-estimate/index.js"),
 };

@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "aquaculture/protein-requirement": () => import("../../aquaculture/protein-requirement/index.js"),
+  "archival-studies/scan-demand-turnaround-estimator": () => import("../../archival-studies/scan-demand-turnaround-estimator/index.js"),
   "aviation/cg-percent-mac": () => import("../../aviation/cg-percent-mac/index.js"),
   "biology/rate-pressure-product": () => import("../../biology/rate-pressure-product/index.js"),
   "carpentry/pergola-rafter-spacing": () => import("../../carpentry/pergola-rafter-spacing/index.js"),
@@ -23,6 +24,8 @@ export const toolModuleLoaders: Readonly<
   "journalism/back-translation-similarity": () => import("../../journalism/back-translation-similarity/index.js"),
   "laser/sagnac-phase-shift": () => import("../../laser/sagnac-phase-shift/index.js"),
   "list/permutations": () => import("../../list/permutations/index.js"),
+  "math/apery-constant-approx": () => import("../../math/apery-constant-approx/index.js"),
+  "math/limacon-area": () => import("../../math/limacon-area/index.js"),
   "neuroscience/subthreshold-upcrossing-frequency": () => import("../../neuroscience/subthreshold-upcrossing-frequency/index.js"),
   "numismatics/profit-loss-on-sale-percent": () => import("../../numismatics/profit-loss-on-sale-percent/index.js"),
   "optimization/nadam-step": () => import("../../optimization/nadam-step/index.js"),
@@ -35,4 +38,5 @@ export const toolModuleLoaders: Readonly<
   "statistics/kaplan-meier": () => import("../../statistics/kaplan-meier/index.js"),
   "theatre/producer-recoup-waterfall": () => import("../../theatre/producer-recoup-waterfall/index.js"),
   "transcriptomics/gene-body-coverage-uniformity": () => import("../../transcriptomics/gene-body-coverage-uniformity/index.js"),
+  "volcanology/isomass-loading-gm2-contour": () => import("../../volcanology/isomass-loading-gm2-contour/index.js"),
 };

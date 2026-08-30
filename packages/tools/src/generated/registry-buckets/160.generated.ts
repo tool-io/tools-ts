@@ -6,10 +6,14 @@ export const toolModuleLoaders: Readonly<
 > = {
   "actuarial/contingent-insurance-probability": () => import("../../actuarial/contingent-insurance-probability/index.js"),
   "actuarial/withdrawal-probability-service-table": () => import("../../actuarial/withdrawal-probability-service-table/index.js"),
+  "agriculture/crop-yield-per-hectare": () => import("../../agriculture/crop-yield-per-hectare/index.js"),
+  "agriculture/milk-yield-per-cow": () => import("../../agriculture/milk-yield-per-cow/index.js"),
+  "archaeology/tree-ring-width-average": () => import("../../archaeology/tree-ring-width-average/index.js"),
   "aviation/groundspeed-from-mach": () => import("../../aviation/groundspeed-from-mach/index.js"),
   "biology/narrow-sense-heritability": () => import("../../biology/narrow-sense-heritability/index.js"),
   "cartography/photo-scale-altitude-focal": () => import("../../cartography/photo-scale-altitude-focal/index.js"),
   "chemistry/solution-mass-for-molarity": () => import("../../chemistry/solution-mass-for-molarity/index.js"),
+  "climatology/csdi-index": () => import("../../climatology/csdi-index/index.js"),
   "data-structure/hyperloglog": () => import("../../data-structure/hyperloglog/index.js"),
   "demography/parity-distribution-percent": () => import("../../demography/parity-distribution-percent/index.js"),
   "electronics/dac-dnl": () => import("../../electronics/dac-dnl/index.js"),
@@ -32,5 +36,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/antiphase-boundary-energy": () => import("../../semiconductor/antiphase-boundary-energy/index.js"),
   "size/child-car-seat": () => import("../../size/child-car-seat/index.js"),
   "virology/replicate-plaque-assay-titer": () => import("../../virology/replicate-plaque-assay-titer/index.js"),
+  "viticulture/heat-wave-shriveling-risk-days": () => import("../../viticulture/heat-wave-shriveling-risk-days/index.js"),
   "web/csp-parser": () => import("../../web/csp-parser/index.js"),
 };

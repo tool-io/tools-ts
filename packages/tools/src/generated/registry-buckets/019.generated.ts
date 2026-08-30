@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/room-volume-from-dimensions": () => import("../../acoustics/room-volume-from-dimensions/index.js"),
   "acoustics/ultrasound-wavelength-tissue": () => import("../../acoustics/ultrasound-wavelength-tissue/index.js"),
+  "archival-studies/supervision-ratio-checker": () => import("../../archival-studies/supervision-ratio-checker/index.js"),
   "auditing/misstatement-projection-qualitative-factors-lookup": () => import("../../auditing/misstatement-projection-qualitative-factors-lookup/index.js"),
   "aviation/vx-speed": () => import("../../aviation/vx-speed/index.js"),
   "biology/genomic-estimated-breeding-value": () => import("../../biology/genomic-estimated-breeding-value/index.js"),
@@ -37,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "logic/bocardo-oao3-valid-lookup": () => import("../../logic/bocardo-oao3-valid-lookup/index.js"),
   "math/eulerian-number": () => import("../../math/eulerian-number/index.js"),
   "music/scientific-pitch-notation-octave": () => import("../../music/scientific-pitch-notation-octave/index.js"),
+  "oceanography/equilibrium-beach-profile-dean-param": () => import("../../oceanography/equilibrium-beach-profile-dean-param/index.js"),
   "oenology/tartaric-acid-addition": () => import("../../oenology/tartaric-acid-addition/index.js"),
   "paleography/charter-witness-ranker": () => import("../../paleography/charter-witness-ranker/index.js"),
   "random/ancient-greek-numeral": () => import("../../random/ancient-greek-numeral/index.js"),

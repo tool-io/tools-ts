@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/db-mean-of-readings": () => import("../../acoustics/db-mean-of-readings/index.js"),
+  "archaeology/withers-height-long-bone-factor": () => import("../../archaeology/withers-height-long-bone-factor/index.js"),
   "auditing/inventory-observation-count-tag-two-team-controls-lookup": () => import("../../auditing/inventory-observation-count-tag-two-team-controls-lookup/index.js"),
   "aviation/mach-number": () => import("../../aviation/mach-number/index.js"),
   "biology/germination-rate-index": () => import("../../biology/germination-rate-index/index.js"),
@@ -29,6 +30,9 @@ export const toolModuleLoaders: Readonly<
   "list/unzip": () => import("../../list/unzip/index.js"),
   "metabolomics/nmr-water-suppression": () => import("../../metabolomics/nmr-water-suppression/index.js"),
   "metabolomics/quantification-limit": () => import("../../metabolomics/quantification-limit/index.js"),
+  "meteorology/gradient-wind-curvature-correction": () => import("../../meteorology/gradient-wind-curvature-correction/index.js"),
+  "museology/flash-prohibition-distance-checker": () => import("../../museology/flash-prohibition-distance-checker/index.js"),
+  "museology/lux-hours-budget-calculator": () => import("../../museology/lux-hours-budget-calculator/index.js"),
   "nautical/hull-speed": () => import("../../nautical/hull-speed/index.js"),
   "neuroscience/baseline-corrected-twitch-force": () => import("../../neuroscience/baseline-corrected-twitch-force/index.js"),
   "neuroscience/sinusoidal-neuronal-impedance": () => import("../../neuroscience/sinusoidal-neuronal-impedance/index.js"),
@@ -47,4 +51,5 @@ export const toolModuleLoaders: Readonly<
   "theatre/rigging-inspection-due": () => import("../../theatre/rigging-inspection-due/index.js"),
   "transcriptomics/biological-variation-coefficient": () => import("../../transcriptomics/biological-variation-coefficient/index.js"),
   "typography/tracking-em-letter-spacing": () => import("../../typography/tracking-em-letter-spacing/index.js"),
+  "viticulture/hand-harvest-picker-days-crew": () => import("../../viticulture/hand-harvest-picker-days-crew/index.js"),
 };

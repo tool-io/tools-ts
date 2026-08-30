@@ -7,6 +7,8 @@ export const toolModuleLoaders: Readonly<
   "acoustics/fem-bem-domain-reference": () => import("../../acoustics/fem-bem-domain-reference/index.js"),
   "acoustics/tangential-mode-frequency": () => import("../../acoustics/tangential-mode-frequency/index.js"),
   "aquaculture/hardness-adjustment": () => import("../../aquaculture/hardness-adjustment/index.js"),
+  "archival-studies/orphan-works-risk-tier-classifier": () => import("../../archival-studies/orphan-works-risk-tier-classifier/index.js"),
+  "archival-studies/preservation-risk-score-calculator": () => import("../../archival-studies/preservation-risk-score-calculator/index.js"),
   "banking/deposit-account-comparison": () => import("../../banking/deposit-account-comparison/index.js"),
   "chemistry/osmotic-pressure": () => import("../../chemistry/osmotic-pressure/index.js"),
   "construction/beam-deflection-uniform-simple": () => import("../../construction/beam-deflection-uniform-simple/index.js"),
@@ -19,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/superelevation-rate": () => import("../../engineering/superelevation-rate/index.js"),
   "epigraphy/tribu-clause-detector": () => import("../../epigraphy/tribu-clause-detector/index.js"),
   "finance/compound-annual-growth-rate": () => import("../../finance/compound-annual-growth-rate/index.js"),
+  "forestry/deer-browse-impact-seedling-leader-percent": () => import("../../forestry/deer-browse-impact-seedling-leader-percent/index.js"),
   "futurology/digital-legacy-posthumous-data-sovereignty-checklist": () => import("../../futurology/digital-legacy-posthumous-data-sovereignty-checklist/index.js"),
   "geology/void-ratio": () => import("../../geology/void-ratio/index.js"),
   "insurance/leak-device-discount": () => import("../../insurance/leak-device-discount/index.js"),
@@ -39,4 +42,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/p-wave-azimuthal-residual-vector-sum-split": () => import("../../seismology/p-wave-azimuthal-residual-vector-sum-split/index.js"),
   "semiconductor/die-cost-from-wafer": () => import("../../semiconductor/die-cost-from-wafer/index.js"),
   "semiconductor/strain-balanced-critical-thickness": () => import("../../semiconductor/strain-balanced-critical-thickness/index.js"),
+  "viticulture/bird-netting-area-per-hectare": () => import("../../viticulture/bird-netting-area-per-hectare/index.js"),
 };

@@ -35,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/annual-rate-to-t-years-exceedance": () => import("../../seismology/annual-rate-to-t-years-exceedance/index.js"),
   "seismology/significant-duration-arias-5-95": () => import("../../seismology/significant-duration-arias-5-95/index.js"),
   "semiconductor/flash-endurance-cycles": () => import("../../semiconductor/flash-endurance-cycles/index.js"),
+  "sericulture/elongation-percent-at-break": () => import("../../sericulture/elongation-percent-at-break/index.js"),
   "statistics/maximum": () => import("../../statistics/maximum/index.js"),
   "virology/genomic-distance-clusters": () => import("../../virology/genomic-distance-clusters/index.js"),
   "vr/field-of-view-vertical": () => import("../../vr/field-of-view-vertical/index.js"),

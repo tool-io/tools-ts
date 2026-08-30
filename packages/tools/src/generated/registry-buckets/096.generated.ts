@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/combination-tone-sum": () => import("../../acoustics/combination-tone-sum/index.js"),
+  "archaeology/calibrated-age-intercept-range": () => import("../../archaeology/calibrated-age-intercept-range/index.js"),
   "aviation/pressure-difference": () => import("../../aviation/pressure-difference/index.js"),
   "biology/haplotype-frequency": () => import("../../biology/haplotype-frequency/index.js"),
   "biology/lincoln-petersen-estimator": () => import("../../biology/lincoln-petersen-estimator/index.js"),
@@ -33,11 +34,13 @@ export const toolModuleLoaders: Readonly<
   "laser/heterodyne-displacement": () => import("../../laser/heterodyne-displacement/index.js"),
   "laser/mode-hop-tuning-ratio": () => import("../../laser/mode-hop-tuning-ratio/index.js"),
   "logistics/container-payload-weight-checker": () => import("../../logistics/container-payload-weight-checker/index.js"),
+  "math/confluent-hypergeometric-1f1-approx": () => import("../../math/confluent-hypergeometric-1f1-approx/index.js"),
   "matrix/add": () => import("../../matrix/add/index.js"),
   "metabolomics/effect-direction-classifier": () => import("../../metabolomics/effect-direction-classifier/index.js"),
   "metabolomics/nitrogen-rule-parity": () => import("../../metabolomics/nitrogen-rule-parity/index.js"),
   "mining/leaching-kinetics": () => import("../../mining/leaching-kinetics/index.js"),
   "mri/hrf-scale-dispersion-derivative": () => import("../../mri/hrf-scale-dispersion-derivative/index.js"),
+  "oceanography/ekman-offshore-upwelling-index": () => import("../../oceanography/ekman-offshore-upwelling-index/index.js"),
   "probability/f-sampler": () => import("../../probability/f-sampler/index.js"),
   "random/double-struck-letter": () => import("../../random/double-struck-letter/index.js"),
   "sailing/metacentric-height": () => import("../../sailing/metacentric-height/index.js"),
@@ -48,4 +51,5 @@ export const toolModuleLoaders: Readonly<
   "statistics/bootstrap-confidence-interval": () => import("../../statistics/bootstrap-confidence-interval/index.js"),
   "statistics/midrange": () => import("../../statistics/midrange/index.js"),
   "text/concatenate-two-strings": () => import("../../text/concatenate-two-strings/index.js"),
+  "viticulture/cluster-zone-height-percent-canopy": () => import("../../viticulture/cluster-zone-height-percent-canopy/index.js"),
 };

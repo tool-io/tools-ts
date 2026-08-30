@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/oitc-reference": () => import("../../acoustics/oitc-reference/index.js"),
+  "archaeology/rank-size-index-settlement": () => import("../../archaeology/rank-size-index-settlement/index.js"),
   "arithmetic/fractional-integer-parts": () => import("../../arithmetic/fractional-integer-parts/index.js"),
   "biology/hardy-weinberg-carrier-frequency": () => import("../../biology/hardy-weinberg-carrier-frequency/index.js"),
   "biology/punnett-square-mono": () => import("../../biology/punnett-square-mono/index.js"),
@@ -17,6 +18,8 @@ export const toolModuleLoaders: Readonly<
   "electronics/ripple-current-buck": () => import("../../electronics/ripple-current-buck/index.js"),
   "encode/tap-code": () => import("../../encode/tap-code/index.js"),
   "epigenetics/x-inactivation-skew": () => import("../../epigenetics/x-inactivation-skew/index.js"),
+  "forestry/gypsy-moth-defoliation-egg-mass-threshold": () => import("../../forestry/gypsy-moth-defoliation-egg-mass-threshold/index.js"),
+  "gemology/bow-tie-predictor": () => import("../../gemology/bow-tie-predictor/index.js"),
   "genomics/cram-compression-savings": () => import("../../genomics/cram-compression-savings/index.js"),
   "geology/sedimentation-rate": () => import("../../geology/sedimentation-rate/index.js"),
   "horology/radium-tritium-lume-transition-lookup": () => import("../../horology/radium-tritium-lume-transition-lookup/index.js"),

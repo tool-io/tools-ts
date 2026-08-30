@@ -5,6 +5,8 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/sonar-stranding-evidence-reference": () => import("../../acoustics/sonar-stranding-evidence-reference/index.js"),
+  "agriculture/sprinkler-precipitation-rate": () => import("../../agriculture/sprinkler-precipitation-rate/index.js"),
+  "archaeology/arbitrary-level-thickness": () => import("../../archaeology/arbitrary-level-thickness/index.js"),
   "auditing/log-analysis-user-role-itgc-sample-extraction-steps": () => import("../../auditing/log-analysis-user-role-itgc-sample-extraction-steps/index.js"),
   "auditing/three-way-match-po-grn-invoice-field-by-field-test-procedure": () => import("../../auditing/three-way-match-po-grn-invoice-field-by-field-test-procedure/index.js"),
   "aviation/true-heading": () => import("../../aviation/true-heading/index.js"),
@@ -30,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "laser/speckle-decorrelation": () => import("../../laser/speckle-decorrelation/index.js"),
   "laser/two-photon-depth-comparison": () => import("../../laser/two-photon-depth-comparison/index.js"),
   "logistics/delivery-time-slot-promise-percentile": () => import("../../logistics/delivery-time-slot-promise-percentile/index.js"),
+  "math/bell-transform": () => import("../../math/bell-transform/index.js"),
   "number/mobius": () => import("../../number/mobius/index.js"),
   "parasitology/incidence-getis-ord-hotspots": () => import("../../parasitology/incidence-getis-ord-hotspots/index.js"),
   "pedagogy/curriculum-standards-alignment": () => import("../../pedagogy/curriculum-standards-alignment/index.js"),

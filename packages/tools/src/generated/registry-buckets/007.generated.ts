@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/mcgurk-effect-reference": () => import("../../acoustics/mcgurk-effect-reference/index.js"),
+  "agriculture/crop-evapotranspiration": () => import("../../agriculture/crop-evapotranspiration/index.js"),
   "auditing/mus-tainting-factor-projected-misstatement": () => import("../../auditing/mus-tainting-factor-projected-misstatement/index.js"),
   "auditing/payroll-agree-to-tax-return-gross-tie-out-procedure": () => import("../../auditing/payroll-agree-to-tax-return-gross-tie-out-procedure/index.js"),
   "aviation/fuel-burn": () => import("../../aviation/fuel-burn/index.js"),
@@ -17,11 +18,13 @@ export const toolModuleLoaders: Readonly<
   "engineering/cooling-tower-approach": () => import("../../engineering/cooling-tower-approach/index.js"),
   "finance/quick-ratio": () => import("../../finance/quick-ratio/index.js"),
   "forestry/crown-ratio": () => import("../../forestry/crown-ratio/index.js"),
+  "forestry/relaskop-critical-distance": () => import("../../forestry/relaskop-critical-distance/index.js"),
   "generate/ismn-13": () => import("../../generate/ismn-13/index.js"),
   "glaciology/longitudinal-strain-rate": () => import("../../glaciology/longitudinal-strain-rate/index.js"),
   "glaciology/strain-heating-contribution": () => import("../../glaciology/strain-heating-contribution/index.js"),
   "laser/comb-ranging-ambiguity": () => import("../../laser/comb-ranging-ambiguity/index.js"),
   "logic/square-contradictory-mapper": () => import("../../logic/square-contradictory-mapper/index.js"),
+  "math/error-function-erfc-approx": () => import("../../math/error-function-erfc-approx/index.js"),
   "metrics/mean-absolute-error": () => import("../../metrics/mean-absolute-error/index.js"),
   "mycology/spore-shape-q-quotient-rater": () => import("../../mycology/spore-shape-q-quotient-rater/index.js"),
   "neuroscience/network-connected-pair-path-length": () => import("../../neuroscience/network-connected-pair-path-length/index.js"),

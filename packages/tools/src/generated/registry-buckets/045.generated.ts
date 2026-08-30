@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "geology/seismic-interval-velocity-dix": () => import("../../geology/seismic-interval-velocity-dix/index.js"),
   "laser/kerr-gate-suppression": () => import("../../laser/kerr-gate-suppression/index.js"),
   "math/bell-number": () => import("../../math/bell-number/index.js"),
+  "math/struve-function-approx": () => import("../../math/struve-function-approx/index.js"),
   "music/pitch-bend-semitone-range-14bit": () => import("../../music/pitch-bend-semitone-range-14bit/index.js"),
   "mycology/odor-intensity-scale-rater": () => import("../../mycology/odor-intensity-scale-rater/index.js"),
   "mycology/spore-size-lw-ratio-measurer": () => import("../../mycology/spore-size-lw-ratio-measurer/index.js"),
@@ -37,5 +38,7 @@ export const toolModuleLoaders: Readonly<
   "statistics/root-mean-square": () => import("../../statistics/root-mean-square/index.js"),
   "text/stopword-count": () => import("../../text/stopword-count/index.js"),
   "vector/l-infinity-norm": () => import("../../vector/l-infinity-norm/index.js"),
+  "viticulture/lag-phase-weight-yield-forecast": () => import("../../viticulture/lag-phase-weight-yield-forecast/index.js"),
+  "volcanology/dome-collapse-block-ash-runout": () => import("../../volcanology/dome-collapse-block-ash-runout/index.js"),
   "web/robots-allow-checker": () => import("../../web/robots-allow-checker/index.js"),
 };

@@ -5,6 +5,8 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/marine-mammal-hearing-group-reference": () => import("../../acoustics/marine-mammal-hearing-group-reference/index.js"),
+  "archaeology/carbon-nitrogen-ratio-diet": () => import("../../archaeology/carbon-nitrogen-ratio-diet/index.js"),
+  "archaeology/thermoluminescence-dose-rate": () => import("../../archaeology/thermoluminescence-dose-rate/index.js"),
   "arithmetic/sign": () => import("../../arithmetic/sign/index.js"),
   "astrometry/homologous-cluster-expansion-age": () => import("../../astrometry/homologous-cluster-expansion-age/index.js"),
   "auditing/nonresponse-alternative-procedures-second-request-steps": () => import("../../auditing/nonresponse-alternative-procedures-second-request-steps/index.js"),
@@ -25,7 +27,9 @@ export const toolModuleLoaders: Readonly<
   "information/binary-entropy": () => import("../../information/binary-entropy/index.js"),
   "journalism/property-flip-pattern-screen": () => import("../../journalism/property-flip-pattern-screen/index.js"),
   "laser/gm-cross-section-converter": () => import("../../laser/gm-cross-section-converter/index.js"),
+  "meteorology/dryline-mixing-ratio-gradient-checker": () => import("../../meteorology/dryline-mixing-ratio-gradient-checker/index.js"),
   "microcontroller/srec-parse": () => import("../../microcontroller/srec-parse/index.js"),
+  "museology/temperature-swing-tolerance-checker": () => import("../../museology/temperature-swing-tolerance-checker/index.js"),
   "neuroscience/signal-detection-from-counts": () => import("../../neuroscience/signal-detection-from-counts/index.js"),
   "oenology/specific-gravity-to-brix": () => import("../../oenology/specific-gravity-to-brix/index.js"),
   "random/kaithi-character": () => import("../../random/kaithi-character/index.js"),
@@ -36,5 +40,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/finfet-fin-height-effect": () => import("../../semiconductor/finfet-fin-height-effect/index.js"),
   "sociology/tempo-adjusted-tfr-bongaarts": () => import("../../sociology/tempo-adjusted-tfr-bongaarts/index.js"),
   "text/starts-with-checker": () => import("../../text/starts-with-checker/index.js"),
+  "volcanology/volatile-solubility-degassing-fraction": () => import("../../volcanology/volatile-solubility-degassing-fraction/index.js"),
   "vr/display-latency": () => import("../../vr/display-latency/index.js"),
 };

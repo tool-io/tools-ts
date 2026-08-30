@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/quarter-wave-resonator-length": () => import("../../acoustics/quarter-wave-resonator-length/index.js"),
+  "agriculture/chilling-hours": () => import("../../agriculture/chilling-hours/index.js"),
   "aquaculture/denitrification-rate": () => import("../../aquaculture/denitrification-rate/index.js"),
   "astrometry/dither-offset-reconstruction": () => import("../../astrometry/dither-offset-reconstruction/index.js"),
   "auditing/committee-preread-coverage": () => import("../../auditing/committee-preread-coverage/index.js"),
@@ -20,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "film/bellows-exposure-compensation": () => import("../../film/bellows-exposure-compensation/index.js"),
   "film/subtitle-reading-speed": () => import("../../film/subtitle-reading-speed/index.js"),
   "forestry/volume-increment-percentage": () => import("../../forestry/volume-increment-percentage/index.js"),
+  "gemology/inclusion-position-code": () => import("../../gemology/inclusion-position-code/index.js"),
   "geometry/distance-3d": () => import("../../geometry/distance-3d/index.js"),
   "horology/bph-to-hertz": () => import("../../horology/bph-to-hertz/index.js"),
   "html/details-summary-native-disclosure-lookup": () => import("../../html/details-summary-native-disclosure-lookup/index.js"),
@@ -30,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "laser/photon-pressure-nudge": () => import("../../laser/photon-pressure-nudge/index.js"),
   "limnology/schmidt-stability-index": () => import("../../limnology/schmidt-stability-index/index.js"),
   "math/munchausen-number-checker": () => import("../../math/munchausen-number-checker/index.js"),
+  "meteorology/halo-22-degree-ice-crystal-checker": () => import("../../meteorology/halo-22-degree-ice-crystal-checker/index.js"),
   "mycology/fruiting-humidity-range-compliance-checker": () => import("../../mycology/fruiting-humidity-range-compliance-checker/index.js"),
   "neuroscience/paired-eeg-log-asymmetry": () => import("../../neuroscience/paired-eeg-log-asymmetry/index.js"),
   "number/trailing-zeros": () => import("../../number/trailing-zeros/index.js"),
@@ -46,5 +49,6 @@ export const toolModuleLoaders: Readonly<
   "taxation/adoption-credit-expense": () => import("../../taxation/adoption-credit-expense/index.js"),
   "taxation/pfic-distribution-tax": () => import("../../taxation/pfic-distribution-tax/index.js"),
   "text/justify-lines": () => import("../../text/justify-lines/index.js"),
+  "viticulture/end-post-anchor-angle-leaning": () => import("../../viticulture/end-post-anchor-angle-leaning/index.js"),
   "vr/texture-memory-required": () => import("../../vr/texture-memory-required/index.js"),
 };

@@ -32,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/principal-tide-constituent-period-lookup": () => import("../../seismology/principal-tide-constituent-period-lookup/index.js"),
   "seismology/shakemap-instrument-intensity-pgv-converter": () => import("../../seismology/shakemap-instrument-intensity-pgv-converter/index.js"),
   "semiconductor/igbt-switching-energy-eoff": () => import("../../semiconductor/igbt-switching-energy-eoff/index.js"),
+  "sericulture/leaf-storage-wilt-percent-limit": () => import("../../sericulture/leaf-storage-wilt-percent-limit/index.js"),
   "size/anklet": () => import("../../size/anklet/index.js"),
   "size/collar": () => import("../../size/collar/index.js"),
   "sociology/life-table-ex-from-lx-step": () => import("../../sociology/life-table-ex-from-lx-step/index.js"),
@@ -39,4 +40,5 @@ export const toolModuleLoaders: Readonly<
   "transcriptomics/cell-gene-count-filter": () => import("../../transcriptomics/cell-gene-count-filter/index.js"),
   "transcriptomics/isoform-tpm-share": () => import("../../transcriptomics/isoform-tpm-share/index.js"),
   "transcriptomics/volcano-quadrant": () => import("../../transcriptomics/volcano-quadrant/index.js"),
+  "viticulture/smart-dyson-up-down-shoot-count": () => import("../../viticulture/smart-dyson-up-down-shoot-count/index.js"),
 };

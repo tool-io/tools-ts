@@ -30,5 +30,6 @@ export const toolModuleLoaders: Readonly<
   "sailing/polar-performance-percentage": () => import("../../sailing/polar-performance-percentage/index.js"),
   "theatre/focus-chart-coverage": () => import("../../theatre/focus-chart-coverage/index.js"),
   "theatre/rigging-signoff-audit": () => import("../../theatre/rigging-signoff-audit/index.js"),
+  "viticulture/frost-risk-budbreak-date-estimate": () => import("../../viticulture/frost-risk-budbreak-date-estimate/index.js"),
   "vr/tracking-jitter-rms": () => import("../../vr/tracking-jitter-rms/index.js"),
 };

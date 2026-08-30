@@ -29,5 +29,6 @@ export const toolModuleLoaders: Readonly<
   "seismology/reservoir-induced-stress-change-bar": () => import("../../seismology/reservoir-induced-stress-change-bar/index.js"),
   "seismology/strike-dip-plane-normal-vector-converter": () => import("../../seismology/strike-dip-plane-normal-vector-converter/index.js"),
   "semiconductor/sige-lattice-mismatch": () => import("../../semiconductor/sige-lattice-mismatch/index.js"),
+  "sericulture/automatic-reeling-capacity-kghr": () => import("../../sericulture/automatic-reeling-capacity-kghr/index.js"),
   "size/envelope": () => import("../../size/envelope/index.js"),
 };

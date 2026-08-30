@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/pipe-end-correction": () => import("../../acoustics/pipe-end-correction/index.js"),
   "aquaculture/daily-feed-rate": () => import("../../aquaculture/daily-feed-rate/index.js"),
+  "archival-studies/paging-wait-average-calculator": () => import("../../archival-studies/paging-wait-average-calculator/index.js"),
   "archival-studies/persistent-id-slug-generator": () => import("../../archival-studies/persistent-id-slug-generator/index.js"),
   "arithmetic/nth-root": () => import("../../arithmetic/nth-root/index.js"),
   "auditing/scope-limitation-decision": () => import("../../auditing/scope-limitation-decision/index.js"),
@@ -26,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "html/audio-preload-metadata-none-auto-values": () => import("../../html/audio-preload-metadata-none-auto-values/index.js"),
   "laser/harmonic-mode-locking-rate": () => import("../../laser/harmonic-mode-locking-rate/index.js"),
   "list/cumulative-sum": () => import("../../list/cumulative-sum/index.js"),
+  "math/partition-generating-function-approx": () => import("../../math/partition-generating-function-approx/index.js"),
   "metabolomics/collision-energy-ramp": () => import("../../metabolomics/collision-energy-ramp/index.js"),
   "mri/field-map-ppm-inhomogeneity": () => import("../../mri/field-map-ppm-inhomogeneity/index.js"),
   "numismatics/coin-show-budget-per-table": () => import("../../numismatics/coin-show-budget-per-table/index.js"),

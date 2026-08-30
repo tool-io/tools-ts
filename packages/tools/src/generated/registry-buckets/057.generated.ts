@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "agriculture/daily-weight-gain": () => import("../../agriculture/daily-weight-gain/index.js"),
   "arithmetic/square": () => import("../../arithmetic/square/index.js"),
   "biology/allele-frequency-from-counts": () => import("../../biology/allele-frequency-from-counts/index.js"),
   "biology/evi-vegetation-index": () => import("../../biology/evi-vegetation-index/index.js"),
@@ -20,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "horology/breguet-invention-timeline-lookup": () => import("../../horology/breguet-invention-timeline-lookup/index.js"),
   "math/dirichlet-convolution": () => import("../../math/dirichlet-convolution/index.js"),
   "mri/rectangular-pgse-diffusion-b-value": () => import("../../mri/rectangular-pgse-diffusion-b-value/index.js"),
+  "oceanography/baroclinic-rossby-wave-speed": () => import("../../oceanography/baroclinic-rossby-wave-speed/index.js"),
   "sailing/distance-to-layline": () => import("../../sailing/distance-to-layline/index.js"),
   "sailing/drying-height-clearance": () => import("../../sailing/drying-height-clearance/index.js"),
   "sailing/heel-angle": () => import("../../sailing/heel-angle/index.js"),

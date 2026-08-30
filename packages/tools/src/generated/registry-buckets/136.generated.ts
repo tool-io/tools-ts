@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/room-mean-free-path": () => import("../../acoustics/room-mean-free-path/index.js"),
+  "agriculture/seed-requirement": () => import("../../agriculture/seed-requirement/index.js"),
   "auditing/record-count-reconciliation": () => import("../../auditing/record-count-reconciliation/index.js"),
   "aviation/groundspeed-required-for-eta": () => import("../../aviation/groundspeed-required-for-eta/index.js"),
   "aviation/range": () => import("../../aviation/range/index.js"),
@@ -24,7 +25,9 @@ export const toolModuleLoaders: Readonly<
   "laser/required-optical-density": () => import("../../laser/required-optical-density/index.js"),
   "laser/thz-cooling-margin": () => import("../../laser/thz-cooling-margin/index.js"),
   "logistics/travel-time-order-picker-batch": () => import("../../logistics/travel-time-order-picker-batch/index.js"),
+  "math/jumping-champion": () => import("../../math/jumping-champion/index.js"),
   "math/lucky-number-checker": () => import("../../math/lucky-number-checker/index.js"),
+  "meteorology/lifted-index-calculator": () => import("../../meteorology/lifted-index-calculator/index.js"),
   "mri/voxel-world-affine-transform": () => import("../../mri/voxel-world-affine-transform/index.js"),
   "number/harshad-checker": () => import("../../number/harshad-checker/index.js"),
   "parasitology/therapeutic-geographic-coverage-gap": () => import("../../parasitology/therapeutic-geographic-coverage-gap/index.js"),
@@ -32,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "real-estate/rentable-area": () => import("../../real-estate/rentable-area/index.js"),
   "sailing/opposite-tack-course": () => import("../../sailing/opposite-tack-course/index.js"),
   "seismology/okada-dip-slip-surface-displacement": () => import("../../seismology/okada-dip-slip-surface-displacement/index.js"),
+  "sericulture/momme-weight-conversion-fabric": () => import("../../sericulture/momme-weight-conversion-fabric/index.js"),
   "sociology/migration-effectiveness-index": () => import("../../sociology/migration-effectiveness-index/index.js"),
   "transcriptomics/quantile-normalization": () => import("../../transcriptomics/quantile-normalization/index.js"),
   "web/manifest-theme-color-extractor": () => import("../../web/manifest-theme-color-extractor/index.js"),

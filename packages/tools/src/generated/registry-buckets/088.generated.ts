@@ -6,6 +6,8 @@ export const toolModuleLoaders: Readonly<
 > = {
   "actuarial/probability-first-cause": () => import("../../actuarial/probability-first-cause/index.js"),
   "aquaculture/length-weight-conversion": () => import("../../aquaculture/length-weight-conversion/index.js"),
+  "archival-studies/cold-storage-staging-hours": () => import("../../archival-studies/cold-storage-staging-hours/index.js"),
+  "archival-studies/gdpr-retention-conflict-flag": () => import("../../archival-studies/gdpr-retention-conflict-flag/index.js"),
   "auditing/rmm-inherent-control-risk-model-lookup": () => import("../../auditing/rmm-inherent-control-risk-model-lookup/index.js"),
   "auditing/those-charged-with-governance-required-communications-checklist": () => import("../../auditing/those-charged-with-governance-required-communications-checklist/index.js"),
   "aviation/vy-speed": () => import("../../aviation/vy-speed/index.js"),
@@ -44,4 +46,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/substrate-warpage": () => import("../../semiconductor/substrate-warpage/index.js"),
   "theatre/wig-measurement-coverage": () => import("../../theatre/wig-measurement-coverage/index.js"),
   "transcriptomics/miqe-coverage-audit": () => import("../../transcriptomics/miqe-coverage-audit/index.js"),
+  "volcanology/umbrella-cloud-spread-radius": () => import("../../volcanology/umbrella-cloud-spread-radius/index.js"),
 };

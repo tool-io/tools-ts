@@ -40,4 +40,5 @@ export const toolModuleLoaders: Readonly<
   "size/shawl": () => import("../../size/shawl/index.js"),
   "taxation/tif-revenue-increment": () => import("../../taxation/tif-revenue-increment/index.js"),
   "text/constant-case": () => import("../../text/constant-case/index.js"),
+  "volcanology/limnic-co2-overturn-nyos-risk": () => import("../../volcanology/limnic-co2-overturn-nyos-risk/index.js"),
 };

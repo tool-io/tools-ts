@@ -32,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "html/picture-source-art-direction-order": () => import("../../html/picture-source-art-direction-order/index.js"),
   "logistics/total-cost-per-mile-owner-operator": () => import("../../logistics/total-cost-per-mile-owner-operator/index.js"),
   "math/sieve-of-eratosthenes-pi": () => import("../../math/sieve-of-eratosthenes-pi/index.js"),
+  "museology/digitisation-throughput-per-day": () => import("../../museology/digitisation-throughput-per-day/index.js"),
   "numismatics/imperial-legend-abbreviation-decoder": () => import("../../numismatics/imperial-legend-abbreviation-decoder/index.js"),
   "proteomics/ef-hand-loop-screen": () => import("../../proteomics/ef-hand-loop-screen/index.js"),
   "proteomics/elisa-four-parameter-inversion": () => import("../../proteomics/elisa-four-parameter-inversion/index.js"),
@@ -41,5 +42,6 @@ export const toolModuleLoaders: Readonly<
   "random/tarot-trump": () => import("../../random/tarot-trump/index.js"),
   "semiconductor/hbt-emitter-injection-efficiency": () => import("../../semiconductor/hbt-emitter-injection-efficiency/index.js"),
   "semiconductor/si-diffusion-coefficient-boron": () => import("../../semiconductor/si-diffusion-coefficient-boron/index.js"),
+  "sericulture/filament-length-single-cocoon-meters": () => import("../../sericulture/filament-length-single-cocoon-meters/index.js"),
   "size/pillowcase": () => import("../../size/pillowcase/index.js"),
 };

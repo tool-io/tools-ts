@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "agriculture/soil-water-holding-capacity": () => import("../../agriculture/soil-water-holding-capacity/index.js"),
   "auditing/fraud-severity": () => import("../../auditing/fraud-severity/index.js"),
   "aviation/weight-shift-cg": () => import("../../aviation/weight-shift-cg/index.js"),
   "checksum/lrc-8": () => import("../../checksum/lrc-8/index.js"),
@@ -14,7 +15,9 @@ export const toolModuleLoaders: Readonly<
   "electronics/capacitor-impedance-at-frequency": () => import("../../electronics/capacitor-impedance-at-frequency/index.js"),
   "electronics/motor-no-load-speed": () => import("../../electronics/motor-no-load-speed/index.js"),
   "engineering/manning-velocity": () => import("../../engineering/manning-velocity/index.js"),
+  "forestry/ndvi-change-annual-defoliation-watch": () => import("../../forestry/ndvi-change-annual-defoliation-watch/index.js"),
   "futurology/longevity-economy-driver-implication-chain": () => import("../../futurology/longevity-economy-driver-implication-chain/index.js"),
+  "gemology/pavilion-angle-depth": () => import("../../gemology/pavilion-angle-depth/index.js"),
   "glaciology/pressure-melting-point-depth": () => import("../../glaciology/pressure-melting-point-depth/index.js"),
   "horology/solar-watch-dark-runtime-calculator": () => import("../../horology/solar-watch-dark-runtime-calculator/index.js"),
   "laser/bathymetric-penetration": () => import("../../laser/bathymetric-penetration/index.js"),
@@ -23,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "laser/relaxation-oscillation-frequency": () => import("../../laser/relaxation-oscillation-frequency/index.js"),
   "logistics/large-package-cubic-capacity-checker": () => import("../../logistics/large-package-cubic-capacity-checker/index.js"),
   "mining/ventilation-heat-removal": () => import("../../mining/ventilation-heat-removal/index.js"),
+  "oceanography/ekman-pumping-wind-curl": () => import("../../oceanography/ekman-pumping-wind-curl/index.js"),
   "oenology/heat-spike-risk": () => import("../../oenology/heat-spike-risk/index.js"),
   "optimization/adam-step": () => import("../../optimization/adam-step/index.js"),
   "random/regular-polygon-set": () => import("../../random/regular-polygon-set/index.js"),

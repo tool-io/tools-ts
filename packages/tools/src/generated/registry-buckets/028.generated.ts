@@ -48,6 +48,7 @@ export const toolModuleLoaders: Readonly<
   "sailing/dewpoint-spread-fog-risk": () => import("../../sailing/dewpoint-spread-fog-risk/index.js"),
   "sailing/heat-index-apparent": () => import("../../sailing/heat-index-apparent/index.js"),
   "seismology/seismic-landslide-area-volume-scaling": () => import("../../seismology/seismic-landslide-area-volume-scaling/index.js"),
+  "sericulture/shell-weight-percent-sr": () => import("../../sericulture/shell-weight-percent-sr/index.js"),
   "virology/paired-hai-titer-rise": () => import("../../virology/paired-hai-titer-rise/index.js"),
   "virology/test-based-isolation-release": () => import("../../virology/test-based-isolation-release/index.js"),
   "vr/motion-to-photon-latency": () => import("../../vr/motion-to-photon-latency/index.js"),

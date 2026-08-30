@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "laser/optogalvanic-modulation-contrast": () => import("../../laser/optogalvanic-modulation-contrast/index.js"),
   "limnology/evaporation-pan-to-lake-coefficient": () => import("../../limnology/evaporation-pan-to-lake-coefficient/index.js"),
   "limnology/hypsographic-curve-integration": () => import("../../limnology/hypsographic-curve-integration/index.js"),
+  "oceanography/littoral-drift-longshore-sediment-rate": () => import("../../oceanography/littoral-drift-longshore-sediment-rate/index.js"),
   "random/dogra-character": () => import("../../random/dogra-character/index.js"),
   "random/khmer-digit": () => import("../../random/khmer-digit/index.js"),
   "random/lch-color": () => import("../../random/lch-color/index.js"),

@@ -5,6 +5,8 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/microphone-placement-reference": () => import("../../acoustics/microphone-placement-reference/index.js"),
+  "apiculture/royal-jelly-per-cell-mg-harvest": () => import("../../apiculture/royal-jelly-per-cell-mg-harvest/index.js"),
+  "archival-studies/storage-tube-size-selector": () => import("../../archival-studies/storage-tube-size-selector/index.js"),
   "carpentry/shelf-pin-holes-spacing": () => import("../../carpentry/shelf-pin-holes-spacing/index.js"),
   "checksum/crc-16-modbus": () => import("../../checksum/crc-16-modbus/index.js"),
   "convert/text-to-mathematical-italic": () => import("../../convert/text-to-mathematical-italic/index.js"),
@@ -15,11 +17,13 @@ export const toolModuleLoaders: Readonly<
   "futurology/four-day-week-trial-productivity-comparison": () => import("../../futurology/four-day-week-trial-productivity-comparison/index.js"),
   "generate/bin-packing-instance": () => import("../../generate/bin-packing-instance/index.js"),
   "geology/pore-pressure-prediction-eaton-resistivity": () => import("../../geology/pore-pressure-prediction-eaton-resistivity/index.js"),
+  "horticulture/led-cost-per-dli-delivered": () => import("../../horticulture/led-cost-per-dli-delivered/index.js"),
   "journalism/document-entity-date-sorter": () => import("../../journalism/document-entity-date-sorter/index.js"),
   "journalism/tape-sync-drift": () => import("../../journalism/tape-sync-drift/index.js"),
   "logic/undistributed-middle-fallacy-detector": () => import("../../logic/undistributed-middle-fallacy-detector/index.js"),
   "math/expression-evaluator": () => import("../../math/expression-evaluator/index.js"),
   "microcontroller/intel-hex-parse": () => import("../../microcontroller/intel-hex-parse/index.js"),
+  "museology/reciprocity-failure-adjustment-factor": () => import("../../museology/reciprocity-failure-adjustment-factor/index.js"),
   "nautical/rhumb-line-distance": () => import("../../nautical/rhumb-line-distance/index.js"),
   "oenology/bottles-per-barrel": () => import("../../oenology/bottles-per-barrel/index.js"),
   "oenology/h2o2-so2-reduction": () => import("../../oenology/h2o2-so2-reduction/index.js"),

@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "geojson/bounding-box": () => import("../../geojson/bounding-box/index.js"),
   "laser/random-fiber-laser-threshold": () => import("../../laser/random-fiber-laser-threshold/index.js"),
   "math/carmichael-number-checker": () => import("../../math/carmichael-number-checker/index.js"),
+  "math/factorial-digit-count": () => import("../../math/factorial-digit-count/index.js"),
   "numismatics/whizzed-surface-screen": () => import("../../numismatics/whizzed-surface-screen/index.js"),
   "oenology/kmw-to-brix": () => import("../../oenology/kmw-to-brix/index.js"),
   "optimization/trust-region-step": () => import("../../optimization/trust-region-step/index.js"),

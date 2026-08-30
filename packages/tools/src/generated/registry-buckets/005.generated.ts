@@ -5,6 +5,8 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/ceiling-hanger-layout-screen": () => import("../../acoustics/ceiling-hanger-layout-screen/index.js"),
+  "agriculture/reference-evapotranspiration-penman-monteith": () => import("../../agriculture/reference-evapotranspiration-penman-monteith/index.js"),
+  "archaeology/faience-glass-composition-ratio": () => import("../../archaeology/faience-glass-composition-ratio/index.js"),
   "arithmetic/sum": () => import("../../arithmetic/sum/index.js"),
   "carpentry/casing-reveal": () => import("../../carpentry/casing-reveal/index.js"),
   "carpentry/duebellaenge-5x-durchmesser": () => import("../../carpentry/duebellaenge-5x-durchmesser/index.js"),
@@ -12,6 +14,8 @@ export const toolModuleLoaders: Readonly<
   "chemistry/electrochemical-equivalent": () => import("../../chemistry/electrochemical-equivalent/index.js"),
   "chemistry/equivalent-weight": () => import("../../chemistry/equivalent-weight/index.js"),
   "chemistry/quantum-heisenberg-uncertainty": () => import("../../chemistry/quantum-heisenberg-uncertainty/index.js"),
+  "climatology/lcl-height": () => import("../../climatology/lcl-height/index.js"),
+  "climatology/r95p-fraction": () => import("../../climatology/r95p-fraction/index.js"),
   "convert/binary-coded-decimal-decode": () => import("../../convert/binary-coded-decimal-decode/index.js"),
   "cooking/recipe-scale": () => import("../../cooking/recipe-scale/index.js"),
   "csv/trailing-comma-extra-field-flagger": () => import("../../csv/trailing-comma-extra-field-flagger/index.js"),
@@ -29,6 +33,8 @@ export const toolModuleLoaders: Readonly<
   "geology/stratigraphic-thickness-true-vs-apparent": () => import("../../geology/stratigraphic-thickness-true-vs-apparent/index.js"),
   "logic/disjunctive-syllogism-validator": () => import("../../logic/disjunctive-syllogism-validator/index.js"),
   "math/rencontres-number": () => import("../../math/rencontres-number/index.js"),
+  "meteorology/ageostrophic-component-magnitude": () => import("../../meteorology/ageostrophic-component-magnitude/index.js"),
+  "meteorology/rank-histogram-flatness-check": () => import("../../meteorology/rank-histogram-flatness-check/index.js"),
   "mycology/pore-density-counter": () => import("../../mycology/pore-density-counter/index.js"),
   "proteomics/missed-cleavage-peptide-count": () => import("../../proteomics/missed-cleavage-peptide-count/index.js"),
   "proteomics/rossmann-motifs": () => import("../../proteomics/rossmann-motifs/index.js"),

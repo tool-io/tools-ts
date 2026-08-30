@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/disposal-gain-loss-book-value-netting": () => import("../../accounting/disposal-gain-loss-book-value-netting/index.js"),
+  "archival-studies/deed-gift-restriction-countdown": () => import("../../archival-studies/deed-gift-restriction-countdown/index.js"),
   "arithmetic/reciprocal": () => import("../../arithmetic/reciprocal/index.js"),
   "astrometry/positive-parallax-distance-uncertainty": () => import("../../astrometry/positive-parallax-distance-uncertainty/index.js"),
   "aviation/cloud-base": () => import("../../aviation/cloud-base/index.js"),

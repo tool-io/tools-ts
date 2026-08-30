@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "aquaculture/mooring-load": () => import("../../aquaculture/mooring-load/index.js"),
+  "archaeology/transect-sherd-density": () => import("../../archaeology/transect-sherd-density/index.js"),
   "auditing/positive-vs-negative-confirmation-type-selector-lookup": () => import("../../auditing/positive-vs-negative-confirmation-type-selector-lookup/index.js"),
   "auditing/rescope-change-log": () => import("../../auditing/rescope-change-log/index.js"),
   "auditing/surprise-cash-count-unannounced-rotation-checker": () => import("../../auditing/surprise-cash-count-unannounced-rotation-checker/index.js"),
@@ -27,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/soil-permeability-constant-head": () => import("../../engineering/soil-permeability-constant-head/index.js"),
   "epigenetics/meqtl-cis-window": () => import("../../epigenetics/meqtl-cis-window/index.js"),
   "epigraphy/recut-overlay-offset-detector": () => import("../../epigraphy/recut-overlay-offset-detector/index.js"),
+  "forestry/pruning-lift-height-to-hdb-green-crown": () => import("../../forestry/pruning-lift-height-to-hdb-green-crown/index.js"),
   "geology/recompression-index": () => import("../../geology/recompression-index/index.js"),
   "glaciology/parabolic-channel-discharge": () => import("../../glaciology/parabolic-channel-discharge/index.js"),
   "hash/shake-256": () => import("../../hash/shake-256/index.js"),
@@ -34,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "html/source-type-codecs-parameter-lookup": () => import("../../html/source-type-codecs-parameter-lookup/index.js"),
   "laser/sted-resolution": () => import("../../laser/sted-resolution/index.js"),
   "logic/denying-antecedent-fallacy-flag": () => import("../../logic/denying-antecedent-fallacy-flag/index.js"),
+  "math/infinite-product-sine": () => import("../../math/infinite-product-sine/index.js"),
   "math/josephus-k-step": () => import("../../math/josephus-k-step/index.js"),
   "math/recaman-sequence-nth": () => import("../../math/recaman-sequence-nth/index.js"),
   "numismatics/cob-assayer-record-match": () => import("../../numismatics/cob-assayer-record-match/index.js"),

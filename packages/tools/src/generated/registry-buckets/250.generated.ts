@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "acoustics/one-decibel-jnd-reference": () => import("../../acoustics/one-decibel-jnd-reference/index.js"),
   "actuarial/fackler-reserve-step": () => import("../../actuarial/fackler-reserve-step/index.js"),
   "actuarial/full-preliminary-term-reserve": () => import("../../actuarial/full-preliminary-term-reserve/index.js"),
+  "apiculture/extraction-room-throughput-frames-hour": () => import("../../apiculture/extraction-room-throughput-frames-hour/index.js"),
   "aquaculture/dressing-percentage": () => import("../../aquaculture/dressing-percentage/index.js"),
   "astrometry/differential-atmospheric-dispersion": () => import("../../astrometry/differential-atmospheric-dispersion/index.js"),
   "astrometry/frame-small-angle-rotation": () => import("../../astrometry/frame-small-angle-rotation/index.js"),

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archaeology/amino-acid-racemization-age": () => import("../../archaeology/amino-acid-racemization-age/index.js"),
   "archival-studies/name-form-normalizer-surname-first": () => import("../../archival-studies/name-form-normalizer-surname-first/index.js"),
   "arithmetic/divide-two-numbers": () => import("../../arithmetic/divide-two-numbers/index.js"),
   "aviation/density-ratio": () => import("../../aviation/density-ratio/index.js"),

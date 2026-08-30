@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "horology/atm-to-meters": () => import("../../horology/atm-to-meters/index.js"),
   "horology/balance-spring-temperature-rate-change": () => import("../../horology/balance-spring-temperature-rate-change/index.js"),
   "horology/demagnetization-process-stage-lookup": () => import("../../horology/demagnetization-process-stage-lookup/index.js"),
+  "horticulture/light-uniformity-grid-checker": () => import("../../horticulture/light-uniformity-grid-checker/index.js"),
   "laser/beam-expander-magnification": () => import("../../laser/beam-expander-magnification/index.js"),
   "laser/laser-rayleigh-range-confocal-parameter-waist-distance-formula": () => import("../../laser/laser-rayleigh-range-confocal-parameter-waist-distance-formula/index.js"),
   "logistics/claims-frequency-per-shipment-percent": () => import("../../logistics/claims-frequency-per-shipment-percent/index.js"),
@@ -41,4 +42,5 @@ export const toolModuleLoaders: Readonly<
   "statistics/midhinge": () => import("../../statistics/midhinge/index.js"),
   "take-home-pay-calculator/de": () => import("../../take-home-pay-calculator/de/index.js"),
   "transcriptomics/cell-fraction-constraint": () => import("../../transcriptomics/cell-fraction-constraint/index.js"),
+  "volcanology/time-predictable-next-eruption-estimate": () => import("../../volcanology/time-predictable-next-eruption-estimate/index.js"),
 };

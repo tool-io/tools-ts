@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archival-studies/folders-per-box-capacity-checker": () => import("../../archival-studies/folders-per-box-capacity-checker/index.js"),
   "auditing/data-reliability-completeness-accuracy-source-testing-steps": () => import("../../auditing/data-reliability-completeness-accuracy-source-testing-steps/index.js"),
   "aviation/landing-distance-wind-scenario": () => import("../../aviation/landing-distance-wind-scenario/index.js"),
   "biology/fst-fixation-index": () => import("../../biology/fst-fixation-index/index.js"),
@@ -28,6 +29,7 @@ export const toolModuleLoaders: Readonly<
   "kinesiology/double-support-gait-percent": () => import("../../kinesiology/double-support-gait-percent/index.js"),
   "limnology/density-current-plunge-depth": () => import("../../limnology/density-current-plunge-depth/index.js"),
   "math/padovan-nth": () => import("../../math/padovan-nth/index.js"),
+  "math/prime-gap-record": () => import("../../math/prime-gap-record/index.js"),
   "mycology/ascospore-arrangement-decoder": () => import("../../mycology/ascospore-arrangement-decoder/index.js"),
   "neuroscience/tetanus-fusion-frequency-screen": () => import("../../neuroscience/tetanus-fusion-frequency-screen/index.js"),
   "neuroscience/working-memory-capacity-cowan": () => import("../../neuroscience/working-memory-capacity-cowan/index.js"),

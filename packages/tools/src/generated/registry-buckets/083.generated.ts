@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/barometric-formula": () => import("../../chemistry/barometric-formula/index.js"),
   "chemistry/indicator-pka-lookup": () => import("../../chemistry/indicator-pka-lookup/index.js"),
   "chemistry/molar-absorptivity-from-slope": () => import("../../chemistry/molar-absorptivity-from-slope/index.js"),
+  "climatology/virtual-temperature-correction": () => import("../../climatology/virtual-temperature-correction/index.js"),
   "construction/roof-underlayment-rolls": () => import("../../construction/roof-underlayment-rolls/index.js"),
   "demography/demographic-dividend-phase-classifier": () => import("../../demography/demographic-dividend-phase-classifier/index.js"),
   "electronics/antenna-effective-length": () => import("../../electronics/antenna-effective-length/index.js"),
@@ -44,4 +45,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/station-residual-outlier-sigma-flagger": () => import("../../seismology/station-residual-outlier-sigma-flagger/index.js"),
   "semiconductor/wafer-bow": () => import("../../semiconductor/wafer-bow/index.js"),
   "size/dog-shoe": () => import("../../size/dog-shoe/index.js"),
+  "viticulture/canopy-width-vigour-classification": () => import("../../viticulture/canopy-width-vigour-classification/index.js"),
 };

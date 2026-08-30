@@ -5,7 +5,10 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/brilliance-ratio": () => import("../../acoustics/brilliance-ratio/index.js"),
+  "agriculture/drip-irrigation-emitter-flow": () => import("../../agriculture/drip-irrigation-emitter-flow/index.js"),
+  "agriculture/irrigation-water-requirement": () => import("../../agriculture/irrigation-water-requirement/index.js"),
   "algebra/quadratic-equation": () => import("../../algebra/quadratic-equation/index.js"),
+  "archaeology/strontium-isotope-provenance-ratio": () => import("../../archaeology/strontium-isotope-provenance-ratio/index.js"),
   "aviation/pressure-at-altitude": () => import("../../aviation/pressure-at-altitude/index.js"),
   "bacteriology/stationary-phase-window-audit": () => import("../../bacteriology/stationary-phase-window-audit/index.js"),
   "biology/chao2-estimator": () => import("../../biology/chao2-estimator/index.js"),
@@ -26,7 +29,9 @@ export const toolModuleLoaders: Readonly<
   "geology/unconformity-angle": () => import("../../geology/unconformity-angle/index.js"),
   "html/cite-q-blockquote-inline-block-classify": () => import("../../html/cite-q-blockquote-inline-block-classify/index.js"),
   "laser/gdd-ripple": () => import("../../laser/gdd-ripple/index.js"),
+  "math/legendre-conjecture": () => import("../../math/legendre-conjecture/index.js"),
   "metabolomics/weir-energy-expenditure": () => import("../../metabolomics/weir-energy-expenditure/index.js"),
+  "museology/wood-borer-exit-hole-flag": () => import("../../museology/wood-borer-exit-hole-flag/index.js"),
   "mycology/grain-spawn-colonization-days-estimator": () => import("../../mycology/grain-spawn-colonization-days-estimator/index.js"),
   "paleography/humanist-century-estimator": () => import("../../paleography/humanist-century-estimator/index.js"),
   "paleography/invocatio-trinitarian-detector": () => import("../../paleography/invocatio-trinitarian-detector/index.js"),

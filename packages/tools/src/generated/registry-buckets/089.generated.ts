@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/coaxial-inductance-per-meter": () => import("../../electronics/coaxial-inductance-per-meter/index.js"),
   "electronics/zener-current": () => import("../../electronics/zener-current/index.js"),
   "format/byte-size": () => import("../../format/byte-size/index.js"),
+  "gemology/appraisal-retail-replacement": () => import("../../gemology/appraisal-retail-replacement/index.js"),
   "genomics/kaks-selection-screen": () => import("../../genomics/kaks-selection-screen/index.js"),
   "geometry/rectangle-perimeter": () => import("../../geometry/rectangle-perimeter/index.js"),
   "hash/sha3-256": () => import("../../hash/sha3-256/index.js"),

@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/edt-late-decay-reference": () => import("../../acoustics/edt-late-decay-reference/index.js"),
+  "agriculture/fertilizer-spreader-calibration": () => import("../../agriculture/fertilizer-spreader-calibration/index.js"),
   "archival-studies/scanning-ppi-type-lookup": () => import("../../archival-studies/scanning-ppi-type-lookup/index.js"),
   "auditing/sampling-coverage": () => import("../../auditing/sampling-coverage/index.js"),
   "aviation/runway-wind-component-specific": () => import("../../aviation/runway-wind-component-specific/index.js"),
@@ -35,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "laser/fabry-perot-linewidth": () => import("../../laser/fabry-perot-linewidth/index.js"),
   "laser/plif-signal-normalization": () => import("../../laser/plif-signal-normalization/index.js"),
   "laser/transient-absorption-lifetime-fit": () => import("../../laser/transient-absorption-lifetime-fit/index.js"),
+  "math/lcm-polynomial": () => import("../../math/lcm-polynomial/index.js"),
   "matrix/flip-horizontal": () => import("../../matrix/flip-horizontal/index.js"),
   "metabolomics/nmr-bucket-integrals": () => import("../../metabolomics/nmr-bucket-integrals/index.js"),
   "metrics/mean-squared-error": () => import("../../metrics/mean-squared-error/index.js"),
@@ -50,5 +52,6 @@ export const toolModuleLoaders: Readonly<
   "text/split": () => import("../../text/split/index.js"),
   "theatre/traverse-sightline": () => import("../../theatre/traverse-sightline/index.js"),
   "virology/breakpoint-region-overlap": () => import("../../virology/breakpoint-region-overlap/index.js"),
+  "volcanology/newtonian-yield-stress-regime-checker": () => import("../../volcanology/newtonian-yield-stress-regime-checker/index.js"),
   "web/manifest-icon-size-parser": () => import("../../web/manifest-icon-size-parser/index.js"),
 };

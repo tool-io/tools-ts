@@ -28,8 +28,11 @@ export const toolModuleLoaders: Readonly<
   "metabolomics/inchikey-format-validator": () => import("../../metabolomics/inchikey-format-validator/index.js"),
   "metabolomics/lactate-glucose-yield": () => import("../../metabolomics/lactate-glucose-yield/index.js"),
   "mining/stripping-ratio-breakeven": () => import("../../mining/stripping-ratio-breakeven/index.js"),
+  "oceanography/ekman-spiral-surface-deflection-angle": () => import("../../oceanography/ekman-spiral-surface-deflection-angle/index.js"),
+  "oceanography/xbt-fall-rate-equation-depth": () => import("../../oceanography/xbt-fall-rate-equation-depth/index.js"),
   "paleography/golden-number-cycle-position": () => import("../../paleography/golden-number-cycle-position/index.js"),
   "pedagogy/curriculum-visibility-audit": () => import("../../pedagogy/curriculum-visibility-audit/index.js"),
   "random/old-uyghur-letter": () => import("../../random/old-uyghur-letter/index.js"),
   "virology/sir-infectious-peak-screen": () => import("../../virology/sir-infectious-peak-screen/index.js"),
+  "volcanology/pumice-density-floating-checker": () => import("../../volcanology/pumice-density-floating-checker/index.js"),
 };

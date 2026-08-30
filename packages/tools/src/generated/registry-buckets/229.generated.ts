@@ -37,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "laser/laser-pulse-duration-time-bandwidth-product-sech-gaussian-transform-limited-checker": () => import("../../laser/laser-pulse-duration-time-bandwidth-product-sech-gaussian-transform-limited-checker/index.js"),
   "logic/fresison-eio4-valid-lookup": () => import("../../logic/fresison-eio4-valid-lookup/index.js"),
   "numismatics/toning-environment-screen": () => import("../../numismatics/toning-environment-screen/index.js"),
+  "oceanography/tidal-constituent-amplitude-combine": () => import("../../oceanography/tidal-constituent-amplitude-combine/index.js"),
   "probability/poisson-sampler": () => import("../../probability/poisson-sampler/index.js"),
   "random/nko-digit": () => import("../../random/nko-digit/index.js"),
   "sailing/air-draft-with-heel": () => import("../../sailing/air-draft-with-heel/index.js"),

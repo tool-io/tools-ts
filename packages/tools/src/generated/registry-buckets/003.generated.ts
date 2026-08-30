@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/leaf-blower-tonality-reference": () => import("../../acoustics/leaf-blower-tonality-reference/index.js"),
   "acoustics/tissue-attenuation-frequency-loss": () => import("../../acoustics/tissue-attenuation-frequency-loss/index.js"),
+  "agriculture/compost-c-n-ratio": () => import("../../agriculture/compost-c-n-ratio/index.js"),
   "auditing/variables-sampling-mean-difference-ratio-selector-lookup": () => import("../../auditing/variables-sampling-mean-difference-ratio-selector-lookup/index.js"),
   "biology/gene-length": () => import("../../biology/gene-length/index.js"),
   "biology/western-blot-band-intensity": () => import("../../biology/western-blot-band-intensity/index.js"),
@@ -28,6 +29,8 @@ export const toolModuleLoaders: Readonly<
   "laser/fmcw-lidar-range-velocity": () => import("../../laser/fmcw-lidar-range-velocity/index.js"),
   "laser/q-switch-diffraction-efficiency": () => import("../../laser/q-switch-diffraction-efficiency/index.js"),
   "logistics/reefer-setpoint-temp-mode-lookup": () => import("../../logistics/reefer-setpoint-temp-mode-lookup/index.js"),
+  "math/andrica-conjecture": () => import("../../math/andrica-conjecture/index.js"),
+  "math/gamma-function-approx": () => import("../../math/gamma-function-approx/index.js"),
   "math/q-binomial-coefficient": () => import("../../math/q-binomial-coefficient/index.js"),
   "matrix/nonnegative-matrix-factorization": () => import("../../matrix/nonnegative-matrix-factorization/index.js"),
   "mortgage/hungary-subsidized-fixed-rate": () => import("../../mortgage/hungary-subsidized-fixed-rate/index.js"),

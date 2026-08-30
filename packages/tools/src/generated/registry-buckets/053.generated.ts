@@ -43,4 +43,6 @@ export const toolModuleLoaders: Readonly<
   "size/tablecloth": () => import("../../size/tablecloth/index.js"),
   "text/prefix-lines": () => import("../../text/prefix-lines/index.js"),
   "transcriptomics/lncrna-coding-potential-gate": () => import("../../transcriptomics/lncrna-coding-potential-gate/index.js"),
+  "volcanology/plume-mass-flux-buoyancy-estimate": () => import("../../volcanology/plume-mass-flux-buoyancy-estimate/index.js"),
+  "volcanology/roof-load-ash-collapse-risk-checker": () => import("../../volcanology/roof-load-ash-collapse-risk-checker/index.js"),
 };

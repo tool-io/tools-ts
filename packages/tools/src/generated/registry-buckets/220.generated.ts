@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "network/mac-address-normalizer": () => import("../../network/mac-address-normalizer/index.js"),
   "optimization/stochastic-gradient-descent": () => import("../../optimization/stochastic-gradient-descent/index.js"),
   "paleography/feastday-anchor-extractor": () => import("../../paleography/feastday-anchor-extractor/index.js"),
+  "paleontology/nisp-to-mne": () => import("../../paleontology/nisp-to-mne/index.js"),
   "proteomics/protein-gravy": () => import("../../proteomics/protein-gravy/index.js"),
   "proteomics/walker-a-motifs": () => import("../../proteomics/walker-a-motifs/index.js"),
   "random/cham-character": () => import("../../random/cham-character/index.js"),

@@ -4,7 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "agriculture/pasture-carrying-capacity": () => import("../../agriculture/pasture-carrying-capacity/index.js"),
   "aquaculture/do-saturation": () => import("../../aquaculture/do-saturation/index.js"),
+  "archaeology/phosphorus-soil-test-anomaly": () => import("../../archaeology/phosphorus-soil-test-anomaly/index.js"),
   "aviation/extra-fuel": () => import("../../aviation/extra-fuel/index.js"),
   "biology/bray-curtis-dissimilarity": () => import("../../biology/bray-curtis-dissimilarity/index.js"),
   "biology/evi-two-band": () => import("../../biology/evi-two-band/index.js"),

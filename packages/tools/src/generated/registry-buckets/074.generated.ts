@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archaeology/trench-profile-area": () => import("../../archaeology/trench-profile-area/index.js"),
   "auditing/missing-invoice-sequences": () => import("../../auditing/missing-invoice-sequences/index.js"),
   "auditing/trust-criteria-coverage": () => import("../../auditing/trust-criteria-coverage/index.js"),
   "biology/chao1-estimator": () => import("../../biology/chao1-estimator/index.js"),

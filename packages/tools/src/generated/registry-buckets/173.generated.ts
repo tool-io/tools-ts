@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "logic/existential-import-invalidity-flag": () => import("../../logic/existential-import-invalidity-flag/index.js"),
   "logistics/returns-reverse-logistics-cost-percent": () => import("../../logistics/returns-reverse-logistics-cost-percent/index.js"),
   "machine-learning/alphazero-puct": () => import("../../machine-learning/alphazero-puct/index.js"),
+  "math/epicycloid-area": () => import("../../math/epicycloid-area/index.js"),
   "math/goldbach-partition-count": () => import("../../math/goldbach-partition-count/index.js"),
   "matrix/subtract": () => import("../../matrix/subtract/index.js"),
   "mining/ground-reaction-curve": () => import("../../mining/ground-reaction-curve/index.js"),

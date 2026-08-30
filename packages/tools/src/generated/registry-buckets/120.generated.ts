@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/iic-floor-assembly-lookup": () => import("../../acoustics/iic-floor-assembly-lookup/index.js"),
+  "agriculture/water-footprint": () => import("../../agriculture/water-footprint/index.js"),
   "archival-studies/bagit-required-tag-checker": () => import("../../archival-studies/bagit-required-tag-checker/index.js"),
   "biology/pedigree-inbreeding-coefficient": () => import("../../biology/pedigree-inbreeding-coefficient/index.js"),
   "carpentry/parkett-dehnungsfuge-10-15mm": () => import("../../carpentry/parkett-dehnungsfuge-10-15mm/index.js"),

@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/bass-ratio": () => import("../../acoustics/bass-ratio/index.js"),
+  "archival-studies/date-span-open-closed-classifier": () => import("../../archival-studies/date-span-open-closed-classifier/index.js"),
   "aviation/true-airspeed": () => import("../../aviation/true-airspeed/index.js"),
   "biology/selection-coefficient": () => import("../../biology/selection-coefficient/index.js"),
   "biology/species-richness": () => import("../../biology/species-richness/index.js"),
@@ -24,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/solar-heat-gain-coefficient": () => import("../../engineering/solar-heat-gain-coefficient/index.js"),
   "epigraphy/palimpsest-visibility-grade-rater": () => import("../../epigraphy/palimpsest-visibility-grade-rater/index.js"),
   "film/shutter-angle-to-shutter-speed": () => import("../../film/shutter-angle-to-shutter-speed/index.js"),
+  "forestry/ice-storm-damage-severity-canopy-retained-percent": () => import("../../forestry/ice-storm-damage-severity-canopy-retained-percent/index.js"),
   "genomics/read-pair-orientation": () => import("../../genomics/read-pair-orientation/index.js"),
   "geology/k-ar-age": () => import("../../geology/k-ar-age/index.js"),
   "laser/laser-thulium-holmium-two-micron-water-absorption-cutting-depth-table": () => import("../../laser/laser-thulium-holmium-two-micron-water-absorption-cutting-depth-table/index.js"),
@@ -39,4 +41,5 @@ export const toolModuleLoaders: Readonly<
   "validate/jan": () => import("../../validate/jan/index.js"),
   "vector/hadamard-product": () => import("../../vector/hadamard-product/index.js"),
   "virology/efficacy-adjusted-herd-coverage": () => import("../../virology/efficacy-adjusted-herd-coverage/index.js"),
+  "viticulture/replant-mortality-replacement-count": () => import("../../viticulture/replant-mortality-replacement-count/index.js"),
 };

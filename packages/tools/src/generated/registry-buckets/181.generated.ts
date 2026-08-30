@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/units-of-production-depreciation-rate": () => import("../../accounting/units-of-production-depreciation-rate/index.js"),
+  "agriculture/soil-organic-matter-percentage": () => import("../../agriculture/soil-organic-matter-percentage/index.js"),
   "aquaculture/salinity-adjustment": () => import("../../aquaculture/salinity-adjustment/index.js"),
   "astrometry/background-weighted-image-centroid": () => import("../../astrometry/background-weighted-image-centroid/index.js"),
   "auditing/restatement-frequency-screen": () => import("../../auditing/restatement-frequency-screen/index.js"),
@@ -37,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/charge-neutrality": () => import("../../semiconductor/charge-neutrality/index.js"),
   "semiconductor/rram-read-window": () => import("../../semiconductor/rram-read-window/index.js"),
   "semiconductor/wafer-cost-per-die": () => import("../../semiconductor/wafer-cost-per-die/index.js"),
+  "sericulture/mulberry-leaf-yield-per-hectare-year": () => import("../../sericulture/mulberry-leaf-yield-per-hectare-year/index.js"),
   "statistics/sample-covariance": () => import("../../statistics/sample-covariance/index.js"),
   "take-home-pay-calculator/us": () => import("../../take-home-pay-calculator/us/index.js"),
   "transcriptomics/correlation-distance-matrix": () => import("../../transcriptomics/correlation-distance-matrix/index.js"),

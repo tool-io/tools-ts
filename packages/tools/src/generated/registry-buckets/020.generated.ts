@@ -5,7 +5,9 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/audience-absorption-reference": () => import("../../acoustics/audience-absorption-reference/index.js"),
+  "agriculture/aeration-airflow-rate": () => import("../../agriculture/aeration-airflow-rate/index.js"),
   "aquaculture/hepatosomatic-index": () => import("../../aquaculture/hepatosomatic-index/index.js"),
+  "archaeology/meat-weight-utility-index": () => import("../../archaeology/meat-weight-utility-index/index.js"),
   "auditing/open-item-certification": () => import("../../auditing/open-item-certification/index.js"),
   "aviation/takeoff-distance-required-with-slope": () => import("../../aviation/takeoff-distance-required-with-slope/index.js"),
   "biology/cell-volume-sphere": () => import("../../biology/cell-volume-sphere/index.js"),
@@ -39,5 +41,7 @@ export const toolModuleLoaders: Readonly<
   "sailing/search-pattern-area": () => import("../../sailing/search-pattern-area/index.js"),
   "seismology/survey-design-fold-count-cmp-binning-summary": () => import("../../seismology/survey-design-fold-count-cmp-binning-summary/index.js"),
   "semiconductor/superlattice-miniband-width": () => import("../../semiconductor/superlattice-miniband-width/index.js"),
+  "sericulture/castor-eri-leaf-consumption-cycle": () => import("../../sericulture/castor-eri-leaf-consumption-cycle/index.js"),
+  "volcanology/fumarole-temperature-trend-monitoring": () => import("../../volcanology/fumarole-temperature-trend-monitoring/index.js"),
   "web/cache-bust-adder": () => import("../../web/cache-bust-adder/index.js"),
 };

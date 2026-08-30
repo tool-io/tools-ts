@@ -30,4 +30,5 @@ export const toolModuleLoaders: Readonly<
   "text/trim": () => import("../../text/trim/index.js"),
   "transcriptomics/bestkeeper-stability": () => import("../../transcriptomics/bestkeeper-stability/index.js"),
   "virology/vaf-uncertainty-threshold": () => import("../../virology/vaf-uncertainty-threshold/index.js"),
+  "viticulture/canopy-height-shoot-length-checker": () => import("../../viticulture/canopy-height-shoot-length-checker/index.js"),
 };

@@ -5,6 +5,8 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/absorption-required-for-target-rt": () => import("../../acoustics/absorption-required-for-target-rt/index.js"),
+  "agriculture/thousand-seed-weight": () => import("../../agriculture/thousand-seed-weight/index.js"),
+  "apiculture/cream-honey-packaging-yield-ratio": () => import("../../apiculture/cream-honey-packaging-yield-ratio/index.js"),
   "auditing/kam-selection-score": () => import("../../auditing/kam-selection-score/index.js"),
   "biology/inbreeding-pedigree": () => import("../../biology/inbreeding-pedigree/index.js"),
   "biology/leaf-mass-per-area": () => import("../../biology/leaf-mass-per-area/index.js"),
@@ -27,6 +29,8 @@ export const toolModuleLoaders: Readonly<
   "horology/dynamic-pressure-factor": () => import("../../horology/dynamic-pressure-factor/index.js"),
   "logistics/vgm-verified-gross-mass-solas-total": () => import("../../logistics/vgm-verified-gross-mass-solas-total/index.js"),
   "mri/readout-window-sample-count": () => import("../../mri/readout-window-sample-count/index.js"),
+  "museology/exhibition-duration-lux-budget": () => import("../../museology/exhibition-duration-lux-budget/index.js"),
+  "museology/interactive-duty-cycle-maintenance": () => import("../../museology/interactive-duty-cycle-maintenance/index.js"),
   "oenology/oak-chip-dosage": () => import("../../oenology/oak-chip-dosage/index.js"),
   "optimization/bfgs-step": () => import("../../optimization/bfgs-step/index.js"),
   "proteomics/ww-ppxy-motifs": () => import("../../proteomics/ww-ppxy-motifs/index.js"),
@@ -37,4 +41,6 @@ export const toolModuleLoaders: Readonly<
   "size/baby-clothing": () => import("../../size/baby-clothing/index.js"),
   "taxation/quarterly-estimated-dates": () => import("../../taxation/quarterly-estimated-dates/index.js"),
   "virology/internal-control-ct-delay": () => import("../../virology/internal-control-ct-delay/index.js"),
+  "volcanology/lava-flow-volume-effusion-duration": () => import("../../volcanology/lava-flow-volume-effusion-duration/index.js"),
+  "volcanology/lava-tube-roof-thickness-stability": () => import("../../volcanology/lava-tube-roof-thickness-stability/index.js"),
 };

@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/room-type-rt60-reference": () => import("../../acoustics/room-type-rt60-reference/index.js"),
+  "apiculture/bee-space-9mm-checker": () => import("../../apiculture/bee-space-9mm-checker/index.js"),
   "auditing/rto-rpo-tier-classifier": () => import("../../auditing/rto-rpo-tier-classifier/index.js"),
   "biology/half-life-elimination": () => import("../../biology/half-life-elimination/index.js"),
   "biology/rarefaction-curve": () => import("../../biology/rarefaction-curve/index.js"),
@@ -24,6 +25,8 @@ export const toolModuleLoaders: Readonly<
   "film/angle-of-view-diagonal": () => import("../../film/angle-of-view-diagonal/index.js"),
   "hash/sha-224": () => import("../../hash/sha-224/index.js"),
   "laser/q-switch-peak-power": () => import("../../laser/q-switch-peak-power/index.js"),
+  "meteorology/ensemble-spread-error-consistency-checker": () => import("../../meteorology/ensemble-spread-error-consistency-checker/index.js"),
+  "museology/crate-density-shipping-classifier": () => import("../../museology/crate-density-shipping-classifier/index.js"),
   "pedagogy/elaborative-question-builder": () => import("../../pedagogy/elaborative-question-builder/index.js"),
   "probability/rejection-sampler": () => import("../../probability/rejection-sampler/index.js"),
   "probability/sequential-monte-carlo-sampler": () => import("../../probability/sequential-monte-carlo-sampler/index.js"),
@@ -39,5 +42,6 @@ export const toolModuleLoaders: Readonly<
   "taxation/home-improvement-credit-cap": () => import("../../taxation/home-improvement-credit-cap/index.js"),
   "text/sentence-case": () => import("../../text/sentence-case/index.js"),
   "transcriptomics/polya-usage-shift": () => import("../../transcriptomics/polya-usage-shift/index.js"),
+  "viticulture/lyre-system-row-width-opening": () => import("../../viticulture/lyre-system-row-width-opening/index.js"),
   "vr/spacewarp-frame-interpolation": () => import("../../vr/spacewarp-frame-interpolation/index.js"),
 };

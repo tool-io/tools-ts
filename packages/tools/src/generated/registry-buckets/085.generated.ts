@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/intensity-level-from-intensity": () => import("../../acoustics/intensity-level-from-intensity/index.js"),
+  "apiculture/honey-frame-weight-full-estimate": () => import("../../apiculture/honey-frame-weight-full-estimate/index.js"),
   "aquaculture/feed-cost-per-kg-gain": () => import("../../aquaculture/feed-cost-per-kg-gain/index.js"),
   "astrometry/anisotropic-psf-sampling": () => import("../../astrometry/anisotropic-psf-sampling/index.js"),
   "auditing/tick-mark-legend-standard-symbols-meaning-table": () => import("../../auditing/tick-mark-legend-standard-symbols-meaning-table/index.js"),
@@ -25,6 +26,9 @@ export const toolModuleLoaders: Readonly<
   "electronics/motor-stall-current": () => import("../../electronics/motor-stall-current/index.js"),
   "electronics/relay-bounce-time": () => import("../../electronics/relay-bounce-time/index.js"),
   "engineering/enthalpy-change-sensible": () => import("../../engineering/enthalpy-change-sensible/index.js"),
+  "forestry/fragmentation-contagion-class-level-metric": () => import("../../forestry/fragmentation-contagion-class-level-metric/index.js"),
+  "forestry/seed-zone-transfer-climate-analog-match": () => import("../../forestry/seed-zone-transfer-climate-analog-match/index.js"),
+  "gemology/surface-area-round-brilliant": () => import("../../gemology/surface-area-round-brilliant/index.js"),
   "geology/mohr-circle-center": () => import("../../geology/mohr-circle-center/index.js"),
   "laser/focused-beam-waist-location": () => import("../../laser/focused-beam-waist-location/index.js"),
   "limnology/phaeophytin-absorbance-correction": () => import("../../limnology/phaeophytin-absorbance-correction/index.js"),
@@ -32,6 +36,9 @@ export const toolModuleLoaders: Readonly<
   "numismatics/melt-value-from-spot-silver": () => import("../../numismatics/melt-value-from-spot-silver/index.js"),
   "oenology/davis-score-card": () => import("../../oenology/davis-score-card/index.js"),
   "pedagogy/gradual-release-phase-tracker": () => import("../../pedagogy/gradual-release-phase-tracker/index.js"),
+  "sericulture/evenness-defects-per-km-counter": () => import("../../sericulture/evenness-defects-per-km-counter/index.js"),
   "transcriptomics/normalized-enrichment-score": () => import("../../transcriptomics/normalized-enrichment-score/index.js"),
+  "viticulture/sample-bunch-weight-scaling-tonnage": () => import("../../viticulture/sample-bunch-weight-scaling-tonnage/index.js"),
+  "volcanology/dre-to-tephra-volume-conversion": () => import("../../volcanology/dre-to-tephra-volume-conversion/index.js"),
   "web/dns-prefetch-hint-parser": () => import("../../web/dns-prefetch-hint-parser/index.js"),
 };

@@ -6,11 +6,13 @@ export const toolModuleLoaders: Readonly<
 > = {
   "actuarial/entry-age-normal-liability": () => import("../../actuarial/entry-age-normal-liability/index.js"),
   "actuarial/net-level-annual-premium": () => import("../../actuarial/net-level-annual-premium/index.js"),
+  "archival-studies/takedown-sla-day-counter": () => import("../../archival-studies/takedown-sla-day-counter/index.js"),
   "arithmetic/normalized-percentage": () => import("../../arithmetic/normalized-percentage/index.js"),
   "aviation/landing-distance-factor": () => import("../../aviation/landing-distance-factor/index.js"),
   "biology/therapeutic-index": () => import("../../biology/therapeutic-index/index.js"),
   "carpentry/domino-depth": () => import("../../carpentry/domino-depth/index.js"),
   "chemistry/spectroscopy-absorptivity-from-slope": () => import("../../chemistry/spectroscopy-absorptivity-from-slope/index.js"),
+  "climatology/rx1day-max": () => import("../../climatology/rx1day-max/index.js"),
   "convert/bytes-to-hex": () => import("../../convert/bytes-to-hex/index.js"),
   "convert/csv-to-table": () => import("../../convert/csv-to-table/index.js"),
   "convert/electric-current": () => import("../../convert/electric-current/index.js"),
@@ -22,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/wgbs-depth-filter": () => import("../../epigenetics/wgbs-depth-filter/index.js"),
   "film/exposure-compensation": () => import("../../film/exposure-compensation/index.js"),
   "geology/fault-heave": () => import("../../geology/fault-heave/index.js"),
+  "horticulture/poinsettia-short-day-trigger-date": () => import("../../horticulture/poinsettia-short-day-trigger-date/index.js"),
   "laser/impedance-swr": () => import("../../laser/impedance-swr/index.js"),
   "math/pi-approx-leibniz": () => import("../../math/pi-approx-leibniz/index.js"),
   "mycology/melzer-dextrinoid-amyloid-resolver": () => import("../../mycology/melzer-dextrinoid-amyloid-resolver/index.js"),
@@ -35,4 +38,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/sheet-conductance": () => import("../../semiconductor/sheet-conductance/index.js"),
   "tax/progressive": () => import("../../tax/progressive/index.js"),
   "text/remove-blank-lines": () => import("../../text/remove-blank-lines/index.js"),
+  "viticulture/shoot-thinning-percent-removal": () => import("../../viticulture/shoot-thinning-percent-removal/index.js"),
 };

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archival-studies/collecting-gap-priority-resolver": () => import("../../archival-studies/collecting-gap-priority-resolver/index.js"),
   "archival-studies/edtf-qualifier-decoder": () => import("../../archival-studies/edtf-qualifier-decoder/index.js"),
   "auditing/partner-rotation-time-out-period-checker": () => import("../../auditing/partner-rotation-time-out-period-checker/index.js"),
   "aviation/eta-at-waypoint": () => import("../../aviation/eta-at-waypoint/index.js"),
@@ -33,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "insurance/annuity-payout-comparison": () => import("../../insurance/annuity-payout-comparison/index.js"),
   "insurance/seven-pay-limit-screen": () => import("../../insurance/seven-pay-limit-screen/index.js"),
   "laser/double-clad-area-ratio": () => import("../../laser/double-clad-area-ratio/index.js"),
+  "math/kelvin-function-ber-approx": () => import("../../math/kelvin-function-ber-approx/index.js"),
   "mining/electrowinning-energy-consumption": () => import("../../mining/electrowinning-energy-consumption/index.js"),
   "music/tuplet-ratio-duration-calculator": () => import("../../music/tuplet-ratio-duration-calculator/index.js"),
   "mycology/conidiophore-branching-classifier": () => import("../../mycology/conidiophore-branching-classifier/index.js"),
@@ -43,4 +45,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/impurity-scattering-mobility": () => import("../../semiconductor/impurity-scattering-mobility/index.js"),
   "statistics/sample-variance": () => import("../../statistics/sample-variance/index.js"),
   "validate/ean-13": () => import("../../validate/ean-13/index.js"),
+  "viticulture/cordon-length-spur-spacing": () => import("../../viticulture/cordon-length-spur-spacing/index.js"),
 };

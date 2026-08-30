@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archaeology/sherd-refit-conjoin-pair-count": () => import("../../archaeology/sherd-refit-conjoin-pair-count/index.js"),
+  "archival-studies/box-folder-format-validator": () => import("../../archival-studies/box-folder-format-validator/index.js"),
   "auditing/lapping-receipt-delay-pattern-detector": () => import("../../auditing/lapping-receipt-delay-pattern-detector/index.js"),
   "carpentry/stueckliste-korpus-generator": () => import("../../carpentry/stueckliste-korpus-generator/index.js"),
   "construction/concrete-water-cement-ratio-water": () => import("../../construction/concrete-water-cement-ratio-water/index.js"),
@@ -14,6 +16,8 @@ export const toolModuleLoaders: Readonly<
   "engineering/pump-efficiency": () => import("../../engineering/pump-efficiency/index.js"),
   "entrepreneurship/organic-paid-traffic-projection": () => import("../../entrepreneurship/organic-paid-traffic-projection/index.js"),
   "epigraphy/beneficiarii-term-detector": () => import("../../epigraphy/beneficiarii-term-detector/index.js"),
+  "forestry/harvest-machine-productivity-m3-per-pmh-system": () => import("../../forestry/harvest-machine-productivity-m3-per-pmh-system/index.js"),
+  "forestry/insect-hazard-rating-bark-beetle-basal-area-host": () => import("../../forestry/insect-hazard-rating-bark-beetle-basal-area-host/index.js"),
   "futurology/futures-radar-signal-database-tag-schema-designer": () => import("../../futurology/futures-radar-signal-database-tag-schema-designer/index.js"),
   "geology/fracture-pressure-gradient-eaton": () => import("../../geology/fracture-pressure-gradient-eaton/index.js"),
   "geology/helium-diffusion-closure-temperature": () => import("../../geology/helium-diffusion-closure-temperature/index.js"),
@@ -26,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "mri/phase-gradient-area-field-of-view": () => import("../../mri/phase-gradient-area-field-of-view/index.js"),
   "network/ipv4-network-address": () => import("../../network/ipv4-network-address/index.js"),
   "oenology/anthocyanin-color-density": () => import("../../oenology/anthocyanin-color-density/index.js"),
+  "paleontology/sampled-bin-normalizer": () => import("../../paleontology/sampled-bin-normalizer/index.js"),
   "random/gpu": () => import("../../random/gpu/index.js"),
   "random/lydian-letter": () => import("../../random/lydian-letter/index.js"),
   "random/vitamin": () => import("../../random/vitamin/index.js"),
@@ -33,4 +38,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/between-event-tau-variance": () => import("../../seismology/between-event-tau-variance/index.js"),
   "size/blazer": () => import("../../size/blazer/index.js"),
   "statistics/quartiles": () => import("../../statistics/quartiles/index.js"),
+  "viticulture/trellis-wire-tension-estimate": () => import("../../viticulture/trellis-wire-tension-estimate/index.js"),
 };

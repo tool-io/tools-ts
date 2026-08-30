@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "list/cumulative-product": () => import("../../list/cumulative-product/index.js"),
   "math/narayana-number": () => import("../../math/narayana-number/index.js"),
   "metabolomics/porphyrin-pattern": () => import("../../metabolomics/porphyrin-pattern/index.js"),
+  "museology/export-licence-delay-days-estimator": () => import("../../museology/export-licence-delay-days-estimator/index.js"),
   "neuroscience/triangulated-cortical-surface-area": () => import("../../neuroscience/triangulated-cortical-surface-area/index.js"),
   "neuroscience/voxel-union-euler-characteristic": () => import("../../neuroscience/voxel-union-euler-characteristic/index.js"),
   "normalize/standard-score": () => import("../../normalize/standard-score/index.js"),

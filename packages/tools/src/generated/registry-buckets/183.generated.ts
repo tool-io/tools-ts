@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "biology/harvest-index": () => import("../../biology/harvest-index/index.js"),
   "chemistry/faraday-charge-from-moles": () => import("../../chemistry/faraday-charge-from-moles/index.js"),
   "chemistry/stern-volmer-quenching": () => import("../../chemistry/stern-volmer-quenching/index.js"),
+  "climatology/frost-free-period": () => import("../../climatology/frost-free-period/index.js"),
   "cost/api": () => import("../../cost/api/index.js"),
   "csv/latin1-mojibake-sequence-detector": () => import("../../csv/latin1-mojibake-sequence-detector/index.js"),
   "epigraphy/illegible-ndot-encoder": () => import("../../epigraphy/illegible-ndot-encoder/index.js"),

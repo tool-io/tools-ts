@@ -5,6 +5,8 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/open-pipe-fundamental": () => import("../../acoustics/open-pipe-fundamental/index.js"),
+  "agriculture/break-even-yield": () => import("../../agriculture/break-even-yield/index.js"),
+  "archaeology/reduction-stage-classify-flake": () => import("../../archaeology/reduction-stage-classify-flake/index.js"),
   "auditing/nonattest-hours-threshold": () => import("../../auditing/nonattest-hours-threshold/index.js"),
   "aviation/v-speed-vs0": () => import("../../aviation/v-speed-vs0/index.js"),
   "aviation/wind-speed-from-components": () => import("../../aviation/wind-speed-from-components/index.js"),
@@ -21,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/nco-frequency-resolution": () => import("../../electronics/nco-frequency-resolution/index.js"),
   "epigenetics/passive-demethylation": () => import("../../epigenetics/passive-demethylation/index.js"),
   "epigraphy/letter-frequency-histogram": () => import("../../epigraphy/letter-frequency-histogram/index.js"),
+  "forestry/road-density-km-per-km2-watershed": () => import("../../forestry/road-density-km-per-km2-watershed/index.js"),
   "futurology/cryonics-information-theoretic-death-threshold-lookup": () => import("../../futurology/cryonics-information-theoretic-death-threshold-lookup/index.js"),
   "futurology/strategy-robustness-across-quadrants-score": () => import("../../futurology/strategy-robustness-across-quadrants-score/index.js"),
   "generate/open-shop-scheduling-instance": () => import("../../generate/open-shop-scheduling-instance/index.js"),
@@ -30,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "linguistics/comparative-adjective": () => import("../../linguistics/comparative-adjective/index.js"),
   "metabolomics/polyamine-progression": () => import("../../metabolomics/polyamine-progression/index.js"),
   "metabolomics/urea-cycle-marker-screen": () => import("../../metabolomics/urea-cycle-marker-screen/index.js"),
+  "meteorology/bias-score-frequency-hit": () => import("../../meteorology/bias-score-frequency-hit/index.js"),
   "oenology/ph-ta-balance": () => import("../../oenology/ph-ta-balance/index.js"),
   "probability/negative-binomial-sampler": () => import("../../probability/negative-binomial-sampler/index.js"),
   "random/buginese-character": () => import("../../random/buginese-character/index.js"),

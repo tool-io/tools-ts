@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "agriculture/spray-calibration-nozzle-flow": () => import("../../agriculture/spray-calibration-nozzle-flow/index.js"),
   "arithmetic/divmod": () => import("../../arithmetic/divmod/index.js"),
   "aviation/fuel-to-climb": () => import("../../aviation/fuel-to-climb/index.js"),
   "biology/gc-content": () => import("../../biology/gc-content/index.js"),
@@ -13,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/heat-capacity-molar-cp": () => import("../../chemistry/heat-capacity-molar-cp/index.js"),
   "chemistry/magnetic-moment-spin-only": () => import("../../chemistry/magnetic-moment-spin-only/index.js"),
   "chemistry/weak-acid-ph": () => import("../../chemistry/weak-acid-ph/index.js"),
+  "climatology/eto-hargreaves": () => import("../../climatology/eto-hargreaves/index.js"),
   "construction/swell-factor-volume": () => import("../../construction/swell-factor-volume/index.js"),
   "convert/character-to-code-point": () => import("../../convert/character-to-code-point/index.js"),
   "csv/crlf-inside-quotes-preserver": () => import("../../csv/crlf-inside-quotes-preserver/index.js"),
@@ -28,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "logic/addition-rule-step-validator": () => import("../../logic/addition-rule-step-validator/index.js"),
   "logistics/eoq-economic-order-quantity": () => import("../../logistics/eoq-economic-order-quantity/index.js"),
   "mri/spin-echo-relaxation-signal": () => import("../../mri/spin-echo-relaxation-signal/index.js"),
+  "museology/textile-rest-period-planner": () => import("../../museology/textile-rest-period-planner/index.js"),
   "music/circle-of-fifths-position-lookup": () => import("../../music/circle-of-fifths-position-lookup/index.js"),
   "mycology/flush-interval-waves-recorder": () => import("../../mycology/flush-interval-waves-recorder/index.js"),
   "neuroscience/release-probability-from-failures": () => import("../../neuroscience/release-probability-from-failures/index.js"),
@@ -40,4 +43,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/resistivity-from-doping": () => import("../../semiconductor/resistivity-from-doping/index.js"),
   "semiconductor/stacking-fault-energy": () => import("../../semiconductor/stacking-fault-energy/index.js"),
   "typography/column-width-from-font-size-ch": () => import("../../typography/column-width-from-font-size-ch/index.js"),
+  "volcanology/crater-lake-temperature-anomaly-checker": () => import("../../volcanology/crater-lake-temperature-anomaly-checker/index.js"),
 };

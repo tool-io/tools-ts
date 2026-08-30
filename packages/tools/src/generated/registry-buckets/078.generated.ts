@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "acoustics/echo-ranging-distance": () => import("../../acoustics/echo-ranging-distance/index.js"),
   "acoustics/room-simulation-engine-reference": () => import("../../acoustics/room-simulation-engine-reference/index.js"),
   "acoustics/stopped-pipe-fundamental": () => import("../../acoustics/stopped-pipe-fundamental/index.js"),
+  "agriculture/water-stress-coefficient-ks": () => import("../../agriculture/water-stress-coefficient-ks/index.js"),
   "aviation/required-reserve-fuel": () => import("../../aviation/required-reserve-fuel/index.js"),
   "biology/therapeutic-window": () => import("../../biology/therapeutic-window/index.js"),
   "carpentry/gehrungswinkel-fuer-unregelmaessiges-eck": () => import("../../carpentry/gehrungswinkel-fuer-unregelmaessiges-eck/index.js"),

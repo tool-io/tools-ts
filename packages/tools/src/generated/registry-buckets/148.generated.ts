@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archaeology/battleship-curve-fit-checker": () => import("../../archaeology/battleship-curve-fit-checker/index.js"),
   "auditing/duplicate-vendor-payment": () => import("../../auditing/duplicate-vendor-payment/index.js"),
   "auditing/unadjusted-misstatement-summary-pass-fail-evaluation": () => import("../../auditing/unadjusted-misstatement-summary-pass-fail-evaluation/index.js"),
   "biology/chlorophyll-a-b-ratio": () => import("../../biology/chlorophyll-a-b-ratio/index.js"),
@@ -19,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/quarter-wave-antenna-length": () => import("../../electronics/quarter-wave-antenna-length/index.js"),
   "epigraphy/dis-manibus-presence-tag-generator": () => import("../../epigraphy/dis-manibus-presence-tag-generator/index.js"),
   "epigraphy/latin-abbreviation-expander": () => import("../../epigraphy/latin-abbreviation-expander/index.js"),
+  "forestry/site-preparation-scarification-soil-disturbance-percent": () => import("../../forestry/site-preparation-scarification-soil-disturbance-percent/index.js"),
   "geology/passive-earth-pressure": () => import("../../geology/passive-earth-pressure/index.js"),
   "math/powerful-number-checker": () => import("../../math/powerful-number-checker/index.js"),
   "math/stirling-second-kind": () => import("../../math/stirling-second-kind/index.js"),

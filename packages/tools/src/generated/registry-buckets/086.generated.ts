@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/phon-to-sone-converter": () => import("../../acoustics/phon-to-sone-converter/index.js"),
+  "apiculture/deep-frame-comb-area": () => import("../../apiculture/deep-frame-comb-area/index.js"),
   "arithmetic/midpoint": () => import("../../arithmetic/midpoint/index.js"),
   "auditing/unmodified-opinion-core-report-elements-checklist": () => import("../../auditing/unmodified-opinion-core-report-elements-checklist/index.js"),
   "biology/leaf-thickness": () => import("../../biology/leaf-thickness/index.js"),
@@ -44,4 +45,7 @@ export const toolModuleLoaders: Readonly<
   "size/coat": () => import("../../size/coat/index.js"),
   "theatre/pit-reduction": () => import("../../theatre/pit-reduction/index.js"),
   "virology/ideal-filter-size-retention": () => import("../../virology/ideal-filter-size-retention/index.js"),
+  "viticulture/head-trained-vine-arm-count": () => import("../../viticulture/head-trained-vine-arm-count/index.js"),
+  "viticulture/spur-pruning-spur-count-vine": () => import("../../viticulture/spur-pruning-spur-count-vine/index.js"),
+  "volcanology/diffuse-co2-soil-flux-average": () => import("../../volcanology/diffuse-co2-soil-flux-average/index.js"),
 };

@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "laser/laser-carrier-envelope-offset-f-to-2f-interferometer-stabilizer-lookup": () => import("../../laser/laser-carrier-envelope-offset-f-to-2f-interferometer-stabilizer-lookup/index.js"),
   "limnology/nitrogen-phosphorus-ratio-limitation": () => import("../../limnology/nitrogen-phosphorus-ratio-limitation/index.js"),
   "metabolomics/matrix-ion-suppression": () => import("../../metabolomics/matrix-ion-suppression/index.js"),
+  "meteorology/freezing-rain-depth-ice-load-mm": () => import("../../meteorology/freezing-rain-depth-ice-load-mm/index.js"),
   "microcontroller/uart-frame-bits": () => import("../../microcontroller/uart-frame-bits/index.js"),
   "neuroscience/trial-baseline-subtracted-evoked-rate": () => import("../../neuroscience/trial-baseline-subtracted-evoked-rate/index.js"),
   "random/electric-car": () => import("../../random/electric-car/index.js"),
@@ -30,6 +31,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/average-radiation-factor-boore-boatwright-lookup": () => import("../../seismology/average-radiation-factor-boore-boatwright-lookup/index.js"),
   "seismology/well-log-acoustic-impedance-reflection-coefficient": () => import("../../seismology/well-log-acoustic-impedance-reflection-coefficient/index.js"),
   "text/punctuation-count": () => import("../../text/punctuation-count/index.js"),
+  "volcanology/so2-mass-flux-tonnes-day": () => import("../../volcanology/so2-mass-flux-tonnes-day/index.js"),
   "waist-to-hip": () => import("../../waist-to-hip/index.js"),
   "web/crossorigin-attribute-parser": () => import("../../web/crossorigin-attribute-parser/index.js"),
 };

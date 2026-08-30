@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/fta-vibration-criterion-screen": () => import("../../acoustics/fta-vibration-criterion-screen/index.js"),
+  "agriculture/seeding-rate": () => import("../../agriculture/seeding-rate/index.js"),
   "aquaculture/nitrite-toxicity": () => import("../../aquaculture/nitrite-toxicity/index.js"),
   "astrometry/four-term-nutation-components": () => import("../../astrometry/four-term-nutation-components/index.js"),
   "astrometry/parametric-trailing-loss": () => import("../../astrometry/parametric-trailing-loss/index.js"),
@@ -31,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/aggregate-imaging-g-ratio": () => import("../../neuroscience/aggregate-imaging-g-ratio/index.js"),
   "number/least-common-multiple": () => import("../../number/least-common-multiple/index.js"),
   "numismatics/colonial-strike-classifier": () => import("../../numismatics/colonial-strike-classifier/index.js"),
+  "oceanography/closure-depth-hallermeier-formula": () => import("../../oceanography/closure-depth-hallermeier-formula/index.js"),
   "oenology/egg-white-fining-dose": () => import("../../oenology/egg-white-fining-dose/index.js"),
   "proteomics/sh2-flvres-motif": () => import("../../proteomics/sh2-flvres-motif/index.js"),
   "sailing/current-correction-angle": () => import("../../sailing/current-correction-angle/index.js"),

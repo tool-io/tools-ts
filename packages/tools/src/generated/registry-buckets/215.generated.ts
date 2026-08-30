@@ -4,6 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "agriculture/nitrogen-footprint": () => import("../../agriculture/nitrogen-footprint/index.js"),
+  "archaeology/copper-alloy-tin-percent": () => import("../../archaeology/copper-alloy-tin-percent/index.js"),
+  "archaeology/root-etching-score-bone": () => import("../../archaeology/root-etching-score-bone/index.js"),
   "arithmetic/cube": () => import("../../arithmetic/cube/index.js"),
   "aviation/climb-gradient": () => import("../../aviation/climb-gradient/index.js"),
   "aviation/density-altitude-isa-correction": () => import("../../aviation/density-altitude-isa-correction/index.js"),
@@ -16,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/touch-screen-resistance": () => import("../../electronics/touch-screen-resistance/index.js"),
   "engineering/thermal-entropy-change": () => import("../../engineering/thermal-entropy-change/index.js"),
   "film/f-stop-from-aperture": () => import("../../film/f-stop-from-aperture/index.js"),
+  "forestry/rut-depth-maximum-operational-limit-checker": () => import("../../forestry/rut-depth-maximum-operational-limit-checker/index.js"),
   "forestry/stocking-percentage": () => import("../../forestry/stocking-percentage/index.js"),
   "geology/brine-density": () => import("../../geology/brine-density/index.js"),
   "geology/depleted-mantle-model-age": () => import("../../geology/depleted-mantle-model-age/index.js"),
@@ -25,9 +29,11 @@ export const toolModuleLoaders: Readonly<
   "journalism/photo-metadata-coverage": () => import("../../journalism/photo-metadata-coverage/index.js"),
   "journalism/royalty-title-style": () => import("../../journalism/royalty-title-style/index.js"),
   "kinesiology/dual-task-gait-cost": () => import("../../kinesiology/dual-task-gait-cost/index.js"),
+  "math/epicycloid-perimeter": () => import("../../math/epicycloid-perimeter/index.js"),
   "math/lcm-list": () => import("../../math/lcm-list/index.js"),
   "metrics/huber-loss": () => import("../../metrics/huber-loss/index.js"),
   "neuroscience/eeg-band-power-alpha": () => import("../../neuroscience/eeg-band-power-alpha/index.js"),
+  "paleontology/crown-height-wear-stage": () => import("../../paleontology/crown-height-wear-stage/index.js"),
   "random/css-repeating-linear-gradient": () => import("../../random/css-repeating-linear-gradient/index.js"),
   "sailing/expanding-square-leg-length": () => import("../../sailing/expanding-square-leg-length/index.js"),
   "sailing/gennaker-tack-load": () => import("../../sailing/gennaker-tack-load/index.js"),

@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/oblique-mode-frequency": () => import("../../acoustics/oblique-mode-frequency/index.js"),
+  "apiculture/walk-away-split-timing-checker": () => import("../../apiculture/walk-away-split-timing-checker/index.js"),
   "banking/money-mule-red-flag-screen": () => import("../../banking/money-mule-red-flag-screen/index.js"),
   "biology/alveolar-gas-equation": () => import("../../biology/alveolar-gas-equation/index.js"),
   "biology/body-surface-area-dubois": () => import("../../biology/body-surface-area-dubois/index.js"),
@@ -41,4 +42,5 @@ export const toolModuleLoaders: Readonly<
   "size/wire-gauge": () => import("../../size/wire-gauge/index.js"),
   "theatre/understudy-cover-matrix": () => import("../../theatre/understudy-cover-matrix/index.js"),
   "transcriptomics/effective-transcript-length": () => import("../../transcriptomics/effective-transcript-length/index.js"),
+  "volcanology/lava-front-advance-speed-basaltic": () => import("../../volcanology/lava-front-advance-speed-basaltic/index.js"),
 };

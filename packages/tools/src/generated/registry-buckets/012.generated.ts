@@ -6,6 +6,8 @@ export const toolModuleLoaders: Readonly<
 > = {
   "accounting/cash-conversion-cycle-dso-dpo-dio": () => import("../../accounting/cash-conversion-cycle-dso-dpo-dio/index.js"),
   "acoustics/wave-number-calculator": () => import("../../acoustics/wave-number-calculator/index.js"),
+  "apiculture/pollen-patty-protein-percent-mix": () => import("../../apiculture/pollen-patty-protein-percent-mix/index.js"),
+  "apiculture/queen-laying-rate-eggs-per-day": () => import("../../apiculture/queen-laying-rate-eggs-per-day/index.js"),
   "auditing/program-expenditure-threshold-screen": () => import("../../auditing/program-expenditure-threshold-screen/index.js"),
   "auditing/workpaper-assembly-deadline": () => import("../../auditing/workpaper-assembly-deadline/index.js"),
   "biology/dominance-simpson-reciprocal": () => import("../../biology/dominance-simpson-reciprocal/index.js"),
@@ -38,4 +40,5 @@ export const toolModuleLoaders: Readonly<
   "typography/ems-to-pixels": () => import("../../typography/ems-to-pixels/index.js"),
   "validate/vin-check-digit": () => import("../../validate/vin-check-digit/index.js"),
   "virology/poisson-corrected-lentiviral-titer": () => import("../../virology/poisson-corrected-lentiviral-titer/index.js"),
+  "volcanology/caldera-collapse-volume-ring-fault": () => import("../../volcanology/caldera-collapse-volume-ring-fault/index.js"),
 };

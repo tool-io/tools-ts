@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/substrate-supplementation-planner": () => import("../../mycology/substrate-supplementation-planner/index.js"),
   "numismatics/provincial-coin-authority-classifier": () => import("../../numismatics/provincial-coin-authority-classifier/index.js"),
   "oenology/pvpp-dose": () => import("../../oenology/pvpp-dose/index.js"),
+  "paleontology/clumped-isotope-temp": () => import("../../paleontology/clumped-isotope-temp/index.js"),
   "real-estate/cap-rate": () => import("../../real-estate/cap-rate/index.js"),
   "sailing/tack-loss-distance": () => import("../../sailing/tack-loss-distance/index.js"),
   "seismology/borehole-ps-logging-average-velocity-calculator": () => import("../../seismology/borehole-ps-logging-average-velocity-calculator/index.js"),

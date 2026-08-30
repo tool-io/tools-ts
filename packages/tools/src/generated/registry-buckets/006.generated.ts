@@ -28,6 +28,8 @@ export const toolModuleLoaders: Readonly<
   "journalism/headline-ab-significance": () => import("../../journalism/headline-ab-significance/index.js"),
   "laser/photoacoustic-hemoglobin-contrast": () => import("../../laser/photoacoustic-hemoglobin-contrast/index.js"),
   "logic/involution-cancel-checker": () => import("../../logic/involution-cancel-checker/index.js"),
+  "math/catenary-length": () => import("../../math/catenary-length/index.js"),
+  "math/jacobi-polynomial-approx": () => import("../../math/jacobi-polynomial-approx/index.js"),
   "mri/pgse-duration-from-target-b": () => import("../../mri/pgse-duration-from-target-b/index.js"),
   "mycology/chlamydospore-position-detector": () => import("../../mycology/chlamydospore-position-detector/index.js"),
   "paleography/bifolium-per-quire-solver": () => import("../../paleography/bifolium-per-quire-solver/index.js"),

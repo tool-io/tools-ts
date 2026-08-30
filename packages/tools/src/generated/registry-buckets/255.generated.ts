@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "demography/youth-bulge-share-checker": () => import("../../demography/youth-bulge-share-checker/index.js"),
   "electronics/pa-efficiency-pae": () => import("../../electronics/pa-efficiency-pae/index.js"),
   "engineering/pump-head-total-dynamic": () => import("../../engineering/pump-head-total-dynamic/index.js"),
+  "forestry/residence-time-flaming-combustion": () => import("../../forestry/residence-time-flaming-combustion/index.js"),
   "futurology/futures-wheel-first-second-third-order-spokes": () => import("../../futurology/futures-wheel-first-second-third-order-spokes/index.js"),
   "futurology/scenario-consistency-driver-coherence-checker": () => import("../../futurology/scenario-consistency-driver-coherence-checker/index.js"),
   "horology/heat-bluing-temperature-table-reader": () => import("../../horology/heat-bluing-temperature-table-reader/index.js"),

@@ -26,7 +26,9 @@ export const toolModuleLoaders: Readonly<
   "electronics/motor-efficiency": () => import("../../electronics/motor-efficiency/index.js"),
   "electronics/power-module-loss-conduction": () => import("../../electronics/power-module-loss-conduction/index.js"),
   "film/subtitle-characters-per-second": () => import("../../film/subtitle-characters-per-second/index.js"),
+  "forestry/top-break-diameter-merchantable-spec-4-inch": () => import("../../forestry/top-break-diameter-merchantable-spec-4-inch/index.js"),
   "futurology/futures-triangle-push-weight-pull-anchor-triangle": () => import("../../futurology/futures-triangle-push-weight-pull-anchor-triangle/index.js"),
+  "gemology/opal-doublet-check": () => import("../../gemology/opal-doublet-check/index.js"),
   "generate/ean-8": () => import("../../generate/ean-8/index.js"),
   "geology/brine-salinity-ppm-to-ppg": () => import("../../geology/brine-salinity-ppm-to-ppg/index.js"),
   "geology/solution-gas-oil-ratio": () => import("../../geology/solution-gas-oil-ratio/index.js"),
@@ -44,6 +46,8 @@ export const toolModuleLoaders: Readonly<
   "seismology/catalog-depth-histogram-binner": () => import("../../seismology/catalog-depth-histogram-binner/index.js"),
   "seismology/tau-p-travel-time-anchor-interpolation": () => import("../../seismology/tau-p-travel-time-anchor-interpolation/index.js"),
   "semiconductor/mosfet-gate-oxide-capacitance": () => import("../../semiconductor/mosfet-gate-oxide-capacitance/index.js"),
+  "sericulture/nonhibernating-acid-incubation-delay-days": () => import("../../sericulture/nonhibernating-acid-incubation-delay-days/index.js"),
   "statistics/bootstrap-standard-error": () => import("../../statistics/bootstrap-standard-error/index.js"),
+  "volcanology/lahar-volume-crater-lake-breach": () => import("../../volcanology/lahar-volume-crater-lake-breach/index.js"),
   "vr/prediction-latency": () => import("../../vr/prediction-latency/index.js"),
 };

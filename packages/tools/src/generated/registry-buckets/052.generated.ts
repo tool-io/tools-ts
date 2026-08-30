@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/classroom-background-noise-screen": () => import("../../acoustics/classroom-background-noise-screen/index.js"),
+  "agriculture/fertilizer-requirement-nitrogen": () => import("../../agriculture/fertilizer-requirement-nitrogen/index.js"),
   "aviation/bank-angle-standard-rate": () => import("../../aviation/bank-angle-standard-rate/index.js"),
   "biology/chlorophyll-content-spad": () => import("../../biology/chlorophyll-content-spad/index.js"),
   "biology/selectivity-ratio": () => import("../../biology/selectivity-ratio/index.js"),
@@ -27,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "journalism/abc-worker-screen": () => import("../../journalism/abc-worker-screen/index.js"),
   "laser/selective-emitter-resistance": () => import("../../laser/selective-emitter-resistance/index.js"),
   "logic/felapton-eao3-valid-lookup": () => import("../../logic/felapton-eao3-valid-lookup/index.js"),
+  "math/legendre-polynomial-approx": () => import("../../math/legendre-polynomial-approx/index.js"),
   "matrix/scalar-multiply": () => import("../../matrix/scalar-multiply/index.js"),
   "metabolomics/coeluting-peak-split": () => import("../../metabolomics/coeluting-peak-split/index.js"),
   "metabolomics/detection-limit": () => import("../../metabolomics/detection-limit/index.js"),

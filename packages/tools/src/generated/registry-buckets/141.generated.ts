@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/noise-exposure-forecast-calculator": () => import("../../acoustics/noise-exposure-forecast-calculator/index.js"),
   "aquaculture/production-yield": () => import("../../aquaculture/production-yield/index.js"),
+  "archival-studies/original-order-deviation-flag": () => import("../../archival-studies/original-order-deviation-flag/index.js"),
   "aviation/flight-time": () => import("../../aviation/flight-time/index.js"),
   "aviation/takeoff-distance-factor": () => import("../../aviation/takeoff-distance-factor/index.js"),
   "aviation/wind-gust-spread": () => import("../../aviation/wind-gust-spread/index.js"),
@@ -37,5 +38,6 @@ export const toolModuleLoaders: Readonly<
   "seismology/aftershock-zone-length-utsu-scaling": () => import("../../seismology/aftershock-zone-length-utsu-scaling/index.js"),
   "seismology/decimation-factor-aliasing-note-lookup": () => import("../../seismology/decimation-factor-aliasing-note-lookup/index.js"),
   "virology/spearman-karber-infectious-titer": () => import("../../virology/spearman-karber-infectious-titer/index.js"),
+  "volcanology/ashfall-load-thickness-conversion": () => import("../../volcanology/ashfall-load-thickness-conversion/index.js"),
   "vr/lens-distortion-k1": () => import("../../vr/lens-distortion-k1/index.js"),
 };

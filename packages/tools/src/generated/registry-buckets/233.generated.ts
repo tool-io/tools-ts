@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "agriculture/plant-population-per-hectare": () => import("../../agriculture/plant-population-per-hectare/index.js"),
   "auditing/dormant-vendor-masterfile-no-activity-period-flag-tester": () => import("../../auditing/dormant-vendor-masterfile-no-activity-period-flag-tester/index.js"),
   "biology/diversity-shannon-wiener": () => import("../../biology/diversity-shannon-wiener/index.js"),
   "carpentry/wood-filler-volume": () => import("../../carpentry/wood-filler-volume/index.js"),
@@ -21,6 +22,8 @@ export const toolModuleLoaders: Readonly<
   "insurance/glwb-withdrawal-amount": () => import("../../insurance/glwb-withdrawal-amount/index.js"),
   "laser/laser-ti-sapphire-kerr-lens-soft-aperture-stability-checker": () => import("../../laser/laser-ti-sapphire-kerr-lens-soft-aperture-stability-checker/index.js"),
   "list/rotate": () => import("../../list/rotate/index.js"),
+  "math/cycloid-area": () => import("../../math/cycloid-area/index.js"),
+  "math/gegenbauer-polynomial-approx": () => import("../../math/gegenbauer-polynomial-approx/index.js"),
   "math/pascal-row": () => import("../../math/pascal-row/index.js"),
   "mining/dilution-skin-thickness": () => import("../../mining/dilution-skin-thickness/index.js"),
   "mri/readout-gradient-from-kspace-span": () => import("../../mri/readout-gradient-from-kspace-span/index.js"),
@@ -28,6 +31,7 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/erp-p300-latency": () => import("../../neuroscience/erp-p300-latency/index.js"),
   "neuroscience/pupillary-constriction-onset": () => import("../../neuroscience/pupillary-constriction-onset/index.js"),
   "paleography/majuscule-minuscule-balance-calculator": () => import("../../paleography/majuscule-minuscule-balance-calculator/index.js"),
+  "paleontology/death-living-offset-corrector": () => import("../../paleontology/death-living-offset-corrector/index.js"),
   "parasitology/pbo-synergy-ratio": () => import("../../parasitology/pbo-synergy-ratio/index.js"),
   "random/complementary-palette": () => import("../../random/complementary-palette/index.js"),
   "random/cyrillic-letter": () => import("../../random/cyrillic-letter/index.js"),
@@ -38,5 +42,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/positive-bias-temperature-instability-shift": () => import("../../semiconductor/positive-bias-temperature-instability-shift/index.js"),
   "theatre/thrust-sightline": () => import("../../theatre/thrust-sightline/index.js"),
   "transcriptomics/hvg-dispersion-selector": () => import("../../transcriptomics/hvg-dispersion-selector/index.js"),
+  "viticulture/veraison-to-harvest-day-span": () => import("../../viticulture/veraison-to-harvest-day-span/index.js"),
   "web/importmap-parser": () => import("../../web/importmap-parser/index.js"),
 };

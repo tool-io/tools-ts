@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "math/e-approx-series": () => import("../../math/e-approx-series/index.js"),
   "metabolomics/nadh-nad-redox-index": () => import("../../metabolomics/nadh-nad-redox-index/index.js"),
   "microcontroller/i2c-bitrate": () => import("../../microcontroller/i2c-bitrate/index.js"),
+  "museology/excursion-alert-breach-counter": () => import("../../museology/excursion-alert-breach-counter/index.js"),
   "neuroscience/reference-normalized-small-world-index": () => import("../../neuroscience/reference-normalized-small-world-index/index.js"),
   "number/digit-count": () => import("../../number/digit-count/index.js"),
   "number/divisibility-checker": () => import("../../number/divisibility-checker/index.js"),

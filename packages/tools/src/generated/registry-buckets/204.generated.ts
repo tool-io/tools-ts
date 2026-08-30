@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "aquaculture/biomass": () => import("../../aquaculture/biomass/index.js"),
   "aquaculture/broodstock-requirement": () => import("../../aquaculture/broodstock-requirement/index.js"),
+  "archaeology/storage-capacity-vessel-volume": () => import("../../archaeology/storage-capacity-vessel-volume/index.js"),
   "astronomy/parsec-to-lightyear": () => import("../../astronomy/parsec-to-lightyear/index.js"),
   "auditing/disaggregated-analytics-margin-location-fluctuation-scanner": () => import("../../auditing/disaggregated-analytics-margin-location-fluctuation-scanner/index.js"),
   "aviation/time-to-climb": () => import("../../aviation/time-to-climb/index.js"),
@@ -13,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/dewpoint-from-vapor-pressure": () => import("../../chemistry/dewpoint-from-vapor-pressure/index.js"),
   "chemistry/polymer-degree-polymerization": () => import("../../chemistry/polymer-degree-polymerization/index.js"),
   "chemistry/strong-base-ph": () => import("../../chemistry/strong-base-ph/index.js"),
+  "climatology/ebm-equilibrium-temp": () => import("../../climatology/ebm-equilibrium-temp/index.js"),
   "css/clip-path-polygon-vertex-validator": () => import("../../css/clip-path-polygon-vertex-validator/index.js"),
   "css/inset-shorthand-all-four-offsets": () => import("../../css/inset-shorthand-all-four-offsets/index.js"),
   "csv/non-empty-count-per-column": () => import("../../csv/non-empty-count-per-column/index.js"),
@@ -22,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/varistor-clamping-voltage": () => import("../../electronics/varistor-clamping-voltage/index.js"),
   "epigraphy/censorial-iteration-decoder": () => import("../../epigraphy/censorial-iteration-decoder/index.js"),
   "finance/rule-of-72": () => import("../../finance/rule-of-72/index.js"),
+  "forestry/snow-load-breakage-critical-stem-bending-stress": () => import("../../forestry/snow-load-breakage-critical-stem-bending-stress/index.js"),
   "geology/mineral-density-lookup": () => import("../../geology/mineral-density-lookup/index.js"),
   "geometry/triangle-area": () => import("../../geometry/triangle-area/index.js"),
   "glaciology/mass-turnover-time": () => import("../../glaciology/mass-turnover-time/index.js"),

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "agriculture/lime-requirement": () => import("../../agriculture/lime-requirement/index.js"),
   "biology/relative-growth-rate-plant": () => import("../../biology/relative-growth-rate-plant/index.js"),
   "carpentry/arbeitsplatten-ueberstand": () => import("../../carpentry/arbeitsplatten-ueberstand/index.js"),
   "carpentry/korpus-stueckliste-seiten-boden-deckel": () => import("../../carpentry/korpus-stueckliste-seiten-boden-deckel/index.js"),
@@ -15,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "construction/insulation-heat-loss": () => import("../../construction/insulation-heat-loss/index.js"),
   "date/day-of-year": () => import("../../date/day-of-year/index.js"),
   "electronics/fiber-dispersion-delay": () => import("../../electronics/fiber-dispersion-delay/index.js"),
+  "forestry/rotation-length-optimal": () => import("../../forestry/rotation-length-optimal/index.js"),
   "futurology/foresight-deliverable-types-report-formats-lookup": () => import("../../futurology/foresight-deliverable-types-report-formats-lookup/index.js"),
   "geology/cooper-jacob-transmissivity": () => import("../../geology/cooper-jacob-transmissivity/index.js"),
   "glaciology/incompressibility-principal-strain-checker": () => import("../../glaciology/incompressibility-principal-strain-checker/index.js"),
@@ -26,6 +28,9 @@ export const toolModuleLoaders: Readonly<
   "limnology/phosphorus-retention-coefficient": () => import("../../limnology/phosphorus-retention-coefficient/index.js"),
   "limnology/thermistor-chain-depth-interpolation": () => import("../../limnology/thermistor-chain-depth-interpolation/index.js"),
   "logic/festino-eio2-valid-lookup": () => import("../../logic/festino-eio2-valid-lookup/index.js"),
+  "math/hypergeometric-2f1-approx": () => import("../../math/hypergeometric-2f1-approx/index.js"),
+  "meteorology/frontal-slope-margules-formula": () => import("../../meteorology/frontal-slope-margules-formula/index.js"),
+  "museology/travel-frame-oversize-checker": () => import("../../museology/travel-frame-oversize-checker/index.js"),
   "neuroscience/iv-regression-reversal-potential": () => import("../../neuroscience/iv-regression-reversal-potential/index.js"),
   "normalize/min-max": () => import("../../normalize/min-max/index.js"),
   "proteomics/western-total-protein-normalization": () => import("../../proteomics/western-total-protein-normalization/index.js"),

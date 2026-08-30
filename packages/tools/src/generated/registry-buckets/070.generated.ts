@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/floor-footfall-frequency-screen": () => import("../../acoustics/floor-footfall-frequency-screen/index.js"),
   "acoustics/mach-angle-shock-wave": () => import("../../acoustics/mach-angle-shock-wave/index.js"),
+  "apiculture/package-bees-pounds-to-count": () => import("../../apiculture/package-bees-pounds-to-count/index.js"),
   "auditing/cuec-coverage": () => import("../../auditing/cuec-coverage/index.js"),
   "aviation/cabin-altitude-threshold-check": () => import("../../aviation/cabin-altitude-threshold-check/index.js"),
   "aviation/groundspeed-wind-corrected": () => import("../../aviation/groundspeed-wind-corrected/index.js"),
@@ -32,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "horology/amplitude-decline-power-reserve": () => import("../../horology/amplitude-decline-power-reserve/index.js"),
   "horology/gregorian-leap-year-cycle-calculator": () => import("../../horology/gregorian-leap-year-cycle-calculator/index.js"),
   "logic/de-morgan-and-to-or-transformer": () => import("../../logic/de-morgan-and-to-or-transformer/index.js"),
+  "math/hermite-polynomial-approx": () => import("../../math/hermite-polynomial-approx/index.js"),
   "numismatics/premium-over-spot-percent": () => import("../../numismatics/premium-over-spot-percent/index.js"),
   "probability/chi-square-sampler": () => import("../../probability/chi-square-sampler/index.js"),
   "random/unit-vector-set": () => import("../../random/unit-vector-set/index.js"),

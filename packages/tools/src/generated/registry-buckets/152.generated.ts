@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "biology/water-use-efficiency": () => import("../../biology/water-use-efficiency/index.js"),
   "carpentry/griff-bohrbild-128-192": () => import("../../carpentry/griff-bohrbild-128-192/index.js"),
   "chemistry/conjugate-base-kb": () => import("../../chemistry/conjugate-base-kb/index.js"),
+  "climatology/brunt-vaisala-frequency": () => import("../../climatology/brunt-vaisala-frequency/index.js"),
   "csv/drop-empty-columns-detector": () => import("../../csv/drop-empty-columns-detector/index.js"),
   "distance/damerau-levenshtein": () => import("../../distance/damerau-levenshtein/index.js"),
   "electronics/snubber-resistor": () => import("../../electronics/snubber-resistor/index.js"),

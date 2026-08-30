@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/helmholtz-port-length": () => import("../../acoustics/helmholtz-port-length/index.js"),
+  "apiculture/nuc-frames-transfer-plan-5frame": () => import("../../apiculture/nuc-frames-transfer-plan-5frame/index.js"),
   "biology/transferrin-saturation": () => import("../../biology/transferrin-saturation/index.js"),
   "bitwise/and": () => import("../../bitwise/and/index.js"),
   "carpentry/treppen-steigung-17-18-ideal": () => import("../../carpentry/treppen-steigung-17-18-ideal/index.js"),
@@ -32,4 +33,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/station-gap-azimuthal-coverage-degree": () => import("../../seismology/station-gap-azimuthal-coverage-degree/index.js"),
   "semiconductor/depletion-capacitance-linear": () => import("../../semiconductor/depletion-capacitance-linear/index.js"),
   "taxation/hard-fork-basis-split": () => import("../../taxation/hard-fork-basis-split/index.js"),
+  "viticulture/buds-per-hectare-total": () => import("../../viticulture/buds-per-hectare-total/index.js"),
 };

@@ -4,12 +4,15 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archaeology/nisp-specimen-count-taxa": () => import("../../archaeology/nisp-specimen-count-taxa/index.js"),
+  "archival-studies/collection-code-prefix-uniqueness-checker": () => import("../../archival-studies/collection-code-prefix-uniqueness-checker/index.js"),
   "astrometry/angular-projected-binary-separation": () => import("../../astrometry/angular-projected-binary-separation/index.js"),
   "aviation/glide-ratio": () => import("../../aviation/glide-ratio/index.js"),
   "biology/cell-passage-number": () => import("../../biology/cell-passage-number/index.js"),
   "biology/ic50-cheng-prusoff": () => import("../../biology/ic50-cheng-prusoff/index.js"),
   "biology/transcript-length": () => import("../../biology/transcript-length/index.js"),
   "biology/williams-alpha": () => import("../../biology/williams-alpha/index.js"),
+  "climatology/rainy-day-threshold-count": () => import("../../climatology/rainy-day-threshold-count/index.js"),
   "construction/cut-fill-net-volume": () => import("../../construction/cut-fill-net-volume/index.js"),
   "convert/text-to-bytes": () => import("../../convert/text-to-bytes/index.js"),
   "csv/header-dedupe-suffix-counter": () => import("../../csv/header-dedupe-suffix-counter/index.js"),
@@ -37,6 +40,7 @@ export const toolModuleLoaders: Readonly<
   "random/kazakh-cyrillic-alphabet-letter": () => import("../../random/kazakh-cyrillic-alphabet-letter/index.js"),
   "random/microtonal-melody": () => import("../../random/microtonal-melody/index.js"),
   "seismology/double-couple-p-t-axis-plunge-style-shortcut": () => import("../../seismology/double-couple-p-t-axis-plunge-style-shortcut/index.js"),
+  "sericulture/bave-filament-diameter-micron-estimate": () => import("../../sericulture/bave-filament-diameter-micron-estimate/index.js"),
   "sociology/clark-urban-density-gradient": () => import("../../sociology/clark-urban-density-gradient/index.js"),
   "web/sse-event-parser": () => import("../../web/sse-event-parser/index.js"),
 };

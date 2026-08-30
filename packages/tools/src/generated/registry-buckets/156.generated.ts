@@ -12,6 +12,8 @@ export const toolModuleLoaders: Readonly<
   "cartography/longitude-degree-to-km-departure": () => import("../../cartography/longitude-degree-to-km-departure/index.js"),
   "chemistry/resonance-count": () => import("../../chemistry/resonance-count/index.js"),
   "chemistry/titration-curve-slope": () => import("../../chemistry/titration-curve-slope/index.js"),
+  "climatology/precip-seasonality-cv": () => import("../../climatology/precip-seasonality-cv/index.js"),
+  "climatology/radiative-forcing-co2-log": () => import("../../climatology/radiative-forcing-co2-log/index.js"),
   "convert/viscosity": () => import("../../convert/viscosity/index.js"),
   "csv/space-in-column-name-flagger": () => import("../../csv/space-in-column-name-flagger/index.js"),
   "electronics/emi-shielding-effectiveness-db": () => import("../../electronics/emi-shielding-effectiveness-db/index.js"),

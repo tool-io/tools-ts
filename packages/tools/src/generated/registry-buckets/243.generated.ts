@@ -29,6 +29,8 @@ export const toolModuleLoaders: Readonly<
   "laser/photothermal-diffusivity": () => import("../../laser/photothermal-diffusivity/index.js"),
   "laser/waveguide-joint-loss": () => import("../../laser/waveguide-joint-loss/index.js"),
   "math/binomial-coefficient-mod-prime-lucas": () => import("../../math/binomial-coefficient-mod-prime-lucas/index.js"),
+  "math/chebyshev-polynomial-approx": () => import("../../math/chebyshev-polynomial-approx/index.js"),
+  "museology/rh-fluctuation-band-checker": () => import("../../museology/rh-fluctuation-band-checker/index.js"),
   "numismatics/bactrian-indo-greek-silver-reference": () => import("../../numismatics/bactrian-indo-greek-silver-reference/index.js"),
   "pedagogy/think-pair-share-timeline": () => import("../../pedagogy/think-pair-share-timeline/index.js"),
   "sailing/handicap-per-mile": () => import("../../sailing/handicap-per-mile/index.js"),
@@ -38,4 +40,5 @@ export const toolModuleLoaders: Readonly<
   "size/sunglasses": () => import("../../size/sunglasses/index.js"),
   "statistics/proportion-within": () => import("../../statistics/proportion-within/index.js"),
   "taxation/mpg-threshold-screen": () => import("../../taxation/mpg-threshold-screen/index.js"),
+  "viticulture/pruning-weight-per-vine": () => import("../../viticulture/pruning-weight-per-vine/index.js"),
 };

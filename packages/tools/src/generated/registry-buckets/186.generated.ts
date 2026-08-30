@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/doppler-approaching-frequency": () => import("../../acoustics/doppler-approaching-frequency/index.js"),
+  "archaeology/ceramic-petrographic-point-count": () => import("../../archaeology/ceramic-petrographic-point-count/index.js"),
   "aviation/headwind-takeoff-factor": () => import("../../aviation/headwind-takeoff-factor/index.js"),
   "bacteriology/mpn-profile-likelihood-bounds": () => import("../../bacteriology/mpn-profile-likelihood-bounds/index.js"),
   "biology/inr-ratio": () => import("../../biology/inr-ratio/index.js"),
@@ -12,6 +13,8 @@ export const toolModuleLoaders: Readonly<
   "carpentry/duebelabstand-32mm-system": () => import("../../carpentry/duebelabstand-32mm-system/index.js"),
   "carpentry/falttuer-beschlag-lookup": () => import("../../carpentry/falttuer-beschlag-lookup/index.js"),
   "celestial-mechanics/bondi-hoyle-capture-radius": () => import("../../celestial-mechanics/bondi-hoyle-capture-radius/index.js"),
+  "climatology/effective-radiating-temp": () => import("../../climatology/effective-radiating-temp/index.js"),
+  "climatology/water-balance-surplus-deficit": () => import("../../climatology/water-balance-surplus-deficit/index.js"),
   "color/alpha-compositing": () => import("../../color/alpha-compositing/index.js"),
   "css/flex-grow-space-distribution": () => import("../../css/flex-grow-space-distribution/index.js"),
   "electronics/attenuator-power": () => import("../../electronics/attenuator-power/index.js"),
@@ -24,6 +27,8 @@ export const toolModuleLoaders: Readonly<
   "film/guide-number-distance": () => import("../../film/guide-number-distance/index.js"),
   "forestry/periodic-increment-percentage": () => import("../../forestry/periodic-increment-percentage/index.js"),
   "futurology/finite-resource-growth-horizon": () => import("../../futurology/finite-resource-growth-horizon/index.js"),
+  "gemology/parting-plane-warning": () => import("../../gemology/parting-plane-warning/index.js"),
+  "gemology/strand-bead-count": () => import("../../gemology/strand-bead-count/index.js"),
   "horology/sapphire-ar-coating-side-lookup": () => import("../../horology/sapphire-ar-coating-side-lookup/index.js"),
   "horology/seiko-astron-1969-launch-history-lookup": () => import("../../horology/seiko-astron-1969-launch-history-lookup/index.js"),
   "logistics/abc-analysis-cumulative-value-classifier": () => import("../../logistics/abc-analysis-cumulative-value-classifier/index.js"),

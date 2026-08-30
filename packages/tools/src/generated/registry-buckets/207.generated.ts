@@ -5,10 +5,12 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/iec-61672-class-reference": () => import("../../acoustics/iec-61672-class-reference/index.js"),
+  "agriculture/carbon-footprint-per-kg": () => import("../../agriculture/carbon-footprint-per-kg/index.js"),
   "body-density-to-body-fat": () => import("../../body-density-to-body-fat/index.js"),
   "carpentry/lochreihe-system32-bohrungen": () => import("../../carpentry/lochreihe-system32-bohrungen/index.js"),
   "chemistry/heat-capacity-cv": () => import("../../chemistry/heat-capacity-cv/index.js"),
   "chemistry/second-order-integrated": () => import("../../chemistry/second-order-integrated/index.js"),
+  "climatology/record-low-margin": () => import("../../climatology/record-low-margin/index.js"),
   "css/steps-timing-jump-end-start-count": () => import("../../css/steps-timing-jump-end-start-count/index.js"),
   "demography/sullivan-method-hle-abridged": () => import("../../demography/sullivan-method-hle-abridged/index.js"),
   "electronics/battery-discharge-depth": () => import("../../electronics/battery-discharge-depth/index.js"),
@@ -26,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/spike-interval-cv": () => import("../../neuroscience/spike-interval-cv/index.js"),
   "oenology/barrel-topping-volume": () => import("../../oenology/barrel-topping-volume/index.js"),
   "paleography/carbon-irongall-note-generator": () => import("../../paleography/carbon-irongall-note-generator/index.js"),
+  "paleontology/articulation-index-skeleton": () => import("../../paleontology/articulation-index-skeleton/index.js"),
   "pedagogy/negative-question-stem-screen": () => import("../../pedagogy/negative-question-stem-screen/index.js"),
   "probability/empirical": () => import("../../probability/empirical/index.js"),
   "proteomics/nuclear-localization-clusters": () => import("../../proteomics/nuclear-localization-clusters/index.js"),

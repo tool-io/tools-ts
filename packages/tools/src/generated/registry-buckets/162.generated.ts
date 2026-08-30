@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archaeology/lead-isotope-ratio-source": () => import("../../archaeology/lead-isotope-ratio-source/index.js"),
   "auditing/casino-drop-reconciliation": () => import("../../auditing/casino-drop-reconciliation/index.js"),
   "auditing/internal-audit-ippf-attribute-performance-framework-lookup": () => import("../../auditing/internal-audit-ippf-attribute-performance-framework-lookup/index.js"),
   "biology/a260-a280-ratio": () => import("../../biology/a260-a280-ratio/index.js"),
@@ -16,11 +17,14 @@ export const toolModuleLoaders: Readonly<
   "cryptography/uuid-v4-randomness-bits-fixed-lookup": () => import("../../cryptography/uuid-v4-randomness-bits-fixed-lookup/index.js"),
   "engineering/orbital-velocity": () => import("../../engineering/orbital-velocity/index.js"),
   "film/focal-length-from-field-of-view": () => import("../../film/focal-length-from-field-of-view/index.js"),
+  "forestry/culmination-age-mai-pai": () => import("../../forestry/culmination-age-mai-pai/index.js"),
   "futurology/data-center-power-forecast": () => import("../../futurology/data-center-power-forecast/index.js"),
   "journalism/obituary-section-coverage": () => import("../../journalism/obituary-section-coverage/index.js"),
   "journalism/synthetic-voice-disclosure": () => import("../../journalism/synthetic-voice-disclosure/index.js"),
   "laser/comb-cavity-tooth-match": () => import("../../laser/comb-cavity-tooth-match/index.js"),
   "logic/e-proposition-classifier": () => import("../../logic/e-proposition-classifier/index.js"),
+  "math/brocard-conjecture": () => import("../../math/brocard-conjecture/index.js"),
+  "math/dedekind-eta-approx": () => import("../../math/dedekind-eta-approx/index.js"),
   "network/ipv6-reverse-dns": () => import("../../network/ipv6-reverse-dns/index.js"),
   "neuroscience/longitudinal-hippocampal-atrophy": () => import("../../neuroscience/longitudinal-hippocampal-atrophy/index.js"),
   "number/reverse-digits": () => import("../../number/reverse-digits/index.js"),

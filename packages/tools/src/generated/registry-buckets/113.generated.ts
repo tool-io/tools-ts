@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/string-tension-for-target-pitch": () => import("../../acoustics/string-tension-for-target-pitch/index.js"),
+  "apiculture/beeswax-yield-cappings-ratio": () => import("../../apiculture/beeswax-yield-cappings-ratio/index.js"),
   "astrometry/moving-source-trail-pixels": () => import("../../astrometry/moving-source-trail-pixels/index.js"),
   "astrometry/rectilinear-astrometric-epoch-propagation": () => import("../../astrometry/rectilinear-astrometric-epoch-propagation/index.js"),
   "biology/cell-cycle-s-phase-fraction": () => import("../../biology/cell-cycle-s-phase-fraction/index.js"),
@@ -36,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "laser/shg-phase-match": () => import("../../laser/shg-phase-match/index.js"),
   "limnology/epilimnion-hypolimnion-volume-split": () => import("../../limnology/epilimnion-hypolimnion-volume-split/index.js"),
   "logistics/orders-per-hour-picker-throughput": () => import("../../logistics/orders-per-hour-picker-throughput/index.js"),
+  "math/best-rational-approximation": () => import("../../math/best-rational-approximation/index.js"),
   "microcontroller/sleep-average-current": () => import("../../microcontroller/sleep-average-current/index.js"),
   "mri/sampled-double-gamma-hrf-peak": () => import("../../mri/sampled-double-gamma-hrf-peak/index.js"),
   "numismatics/quarters-per-ounce-silver-yield": () => import("../../numismatics/quarters-per-ounce-silver-yield/index.js"),
@@ -49,4 +51,8 @@ export const toolModuleLoaders: Readonly<
   "seismology/wadati-origin-time-single-station-formula": () => import("../../seismology/wadati-origin-time-single-station-formula/index.js"),
   "taxation/vat-invoice-gap-check": () => import("../../taxation/vat-invoice-gap-check/index.js"),
   "toxicology/congener-tef-equivalent-concentration": () => import("../../toxicology/congener-tef-equivalent-concentration/index.js"),
+  "viticulture/harvest-window-optimal-days-brix-range": () => import("../../viticulture/harvest-window-optimal-days-brix-range/index.js"),
+  "volcanology/bubble-content-viscosity-reduction": () => import("../../volcanology/bubble-content-viscosity-reduction/index.js"),
+  "volcanology/so2-flux-trend-escalation-checker": () => import("../../volcanology/so2-flux-trend-escalation-checker/index.js"),
+  "volcanology/swarm-rate-acceleration-checker": () => import("../../volcanology/swarm-rate-acceleration-checker/index.js"),
 };

@@ -4,10 +4,14 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archaeology/dendro-master-curve-match": () => import("../../archaeology/dendro-master-curve-match/index.js"),
+  "archaeology/marine-reservoir-correction": () => import("../../archaeology/marine-reservoir-correction/index.js"),
+  "archival-studies/bulk-date-dominant-extractor": () => import("../../archival-studies/bulk-date-dominant-extractor/index.js"),
   "banking/relationship-bonus-tracker": () => import("../../banking/relationship-bonus-tracker/index.js"),
   "chemistry/buffer-capacity": () => import("../../chemistry/buffer-capacity/index.js"),
   "chemistry/clapeyron-slope": () => import("../../chemistry/clapeyron-slope/index.js"),
   "chemistry/formality": () => import("../../chemistry/formality/index.js"),
+  "climatology/potential-temperature-poisson": () => import("../../climatology/potential-temperature-poisson/index.js"),
   "construction/tiles-with-grout": () => import("../../construction/tiles-with-grout/index.js"),
   "convert/rot47": () => import("../../convert/rot47/index.js"),
   "cryptography/keyword-alphabet-builder": () => import("../../cryptography/keyword-alphabet-builder/index.js"),
@@ -19,9 +23,11 @@ export const toolModuleLoaders: Readonly<
   "engineering/darcy-weisbach-pressure-drop": () => import("../../engineering/darcy-weisbach-pressure-drop/index.js"),
   "epigenetics/abc-linkage-rank": () => import("../../epigenetics/abc-linkage-rank/index.js"),
   "film/exposure-value-ev": () => import("../../film/exposure-value-ev/index.js"),
+  "forestry/defect-deduction-percent-gross-scale": () => import("../../forestry/defect-deduction-percent-gross-scale/index.js"),
   "kinesiology/minimalist-mileage-progression": () => import("../../kinesiology/minimalist-mileage-progression/index.js"),
   "logistics/cost-per-drop-last-mile": () => import("../../logistics/cost-per-drop-last-mile/index.js"),
   "math/fibonacci-nth": () => import("../../math/fibonacci-nth/index.js"),
+  "math/gamma-incomplete-lower-approx": () => import("../../math/gamma-incomplete-lower-approx/index.js"),
   "neuroscience/practice-adjusted-cognitive-decline-slope": () => import("../../neuroscience/practice-adjusted-cognitive-decline-slope/index.js"),
   "paleography/carolingian-singlestorey-flag": () => import("../../paleography/carolingian-singlestorey-flag/index.js"),
   "probability/cauchy-sampler": () => import("../../probability/cauchy-sampler/index.js"),
