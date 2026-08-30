@@ -1,0 +1,44 @@
+import { describe, expect, it } from "vitest";
+import { matchesToolJsonSchema } from "../../core/contract.js";
+import tool, { example, percentStringToNumericValueInputSchema, percentStringToNumericValueOutputSchema } from "./index.js";
+describe("csv/percent-string-to-numeric-value", () => {
+  it("executes the canonical example through the public subpath", () => {
+    expect(tool.execute(example.input)).toEqual({ ok: true, output: example.output });
+    expect(JSON.parse(JSON.stringify(example))).toEqual(example);
+  });
+  it("matches portable schemas", () => {
+    expect(matchesToolJsonSchema(example.input, percentStringToNumericValueInputSchema)).toBe(true);
+    expect(matchesToolJsonSchema(example.output, percentStringToNumericValueOutputSchema)).toBe(true);
+  });
+  it("handles independently known values", () => {
+    expect(tool.execute({
+      "text": "-250%"
+    })).toEqual({ ok: true, output: {
+      "value": "-2.5"
+    } });
+  });
+  it("handles boundaries and structure", () => {
+    expect(tool.execute({
+      "text": "0%"
+    })).toEqual({ ok: true, output: {
+      "value": "0"
+    } });
+    expect(tool.execute({
+      "text": "0.0001%"
+    })).toEqual({ ok: true, output: {
+      "value": "0.000001"
+    } });
+  });
+  it("returns stable errors", () => {
+    expect(tool.execute(undefined)).toMatchObject({ ok: false, error: { code: "invalid_input", issues: [{ field: "", code: "object_required" }] } });
+    expect(tool.execute({})).toMatchObject({ ok: false, error: { code: "invalid_input", issues: [{ field: "text", code: "invalid_type" }] } });
+    expect(tool.execute({ ...example.input, unexpected: 1 })).toMatchObject({ ok: false, error: { code: "invalid_input", issues: [{ field: "unexpected", code: "unknown_field" }] } });
+    expect(tool.execute({
+      "text": "12.5"
+    })).toMatchObject({ ok: false, error: { code: "invalid_input", issues: [{ field: "text", code: "invalid_percent" }] } });
+    expect(tool.execute({
+      "text": "1,5%"
+    })).toMatchObject({ ok: false, error: { code: "invalid_input", issues: [{ field: "text", code: "invalid_percent" }] } });
+  });
+
+});
