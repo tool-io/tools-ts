@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/audit-team-industry-expertise-specialist-use-checker": () => import("../../auditing/audit-team-industry-expertise-specialist-use-checker/index.js"),
   "aviation/eta-from-departure": () => import("../../aviation/eta-from-departure/index.js"),
   "aviation/pressure-altitude": () => import("../../aviation/pressure-altitude/index.js"),
   "biology/ferritin-iron-ratio": () => import("../../biology/ferritin-iron-ratio/index.js"),

@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/localization-itd-max-delay": () => import("../../acoustics/localization-itd-max-delay/index.js"),
+  "auditing/audit-strategy-vs-audit-plan-scope-timing-distinction-lookup": () => import("../../auditing/audit-strategy-vs-audit-plan-scope-timing-distinction-lookup/index.js"),
   "carpentry/fence-picket-spacing": () => import("../../carpentry/fence-picket-spacing/index.js"),
   "convert/hex-to-rgb": () => import("../../convert/hex-to-rgb/index.js"),
   "electronics/adc-quantization-error": () => import("../../electronics/adc-quantization-error/index.js"),

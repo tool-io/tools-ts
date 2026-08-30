@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/db-mean-of-readings": () => import("../../acoustics/db-mean-of-readings/index.js"),
+  "auditing/inventory-observation-count-tag-two-team-controls-lookup": () => import("../../auditing/inventory-observation-count-tag-two-team-controls-lookup/index.js"),
   "aviation/mach-number": () => import("../../aviation/mach-number/index.js"),
   "biology/germination-rate-index": () => import("../../biology/germination-rate-index/index.js"),
   "calculus/trapezoidal-integration": () => import("../../calculus/trapezoidal-integration/index.js"),
@@ -21,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/extrusion-pressure": () => import("../../engineering/extrusion-pressure/index.js"),
   "epigraphy/consular-pair-split-parser": () => import("../../epigraphy/consular-pair-split-parser/index.js"),
   "format/url": () => import("../../format/url/index.js"),
+  "futurology/stock-flow-bathtub-intuition-diagram-builder": () => import("../../futurology/stock-flow-bathtub-intuition-diagram-builder/index.js"),
   "geology/nodal-analysis-inflow-performance": () => import("../../geology/nodal-analysis-inflow-performance/index.js"),
   "list/unzip": () => import("../../list/unzip/index.js"),
   "nautical/hull-speed": () => import("../../nautical/hull-speed/index.js"),

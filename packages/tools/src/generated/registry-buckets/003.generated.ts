@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/tissue-attenuation-frequency-loss": () => import("../../acoustics/tissue-attenuation-frequency-loss/index.js"),
+  "auditing/variables-sampling-mean-difference-ratio-selector-lookup": () => import("../../auditing/variables-sampling-mean-difference-ratio-selector-lookup/index.js"),
   "biology/gene-length": () => import("../../biology/gene-length/index.js"),
   "biology/western-blot-band-intensity": () => import("../../biology/western-blot-band-intensity/index.js"),
   "carpentry/board-expansion-gap": () => import("../../carpentry/board-expansion-gap/index.js"),

@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/wire-resistance": () => import("../../electronics/wire-resistance/index.js"),
   "film/data-rate-uncompressed": () => import("../../film/data-rate-uncompressed/index.js"),
   "finance/interest-portion": () => import("../../finance/interest-portion/index.js"),
+  "futurology/longtermism-xrisk-prioritization-frame-lookup": () => import("../../futurology/longtermism-xrisk-prioritization-frame-lookup/index.js"),
   "generate/issn": () => import("../../generate/issn/index.js"),
   "geology/bulk-density-from-porosity": () => import("../../geology/bulk-density-from-porosity/index.js"),
   "geology/mohr-circle-radius": () => import("../../geology/mohr-circle-radius/index.js"),

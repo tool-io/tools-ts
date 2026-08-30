@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "archival-studies/country-code-alpha2-validator": () => import("../../archival-studies/country-code-alpha2-validator/index.js"),
+  "auditing/nonattest-services-management-responsibility-threat-checker": () => import("../../auditing/nonattest-services-management-responsibility-threat-checker/index.js"),
   "biology/arterial-alveolar-ratio": () => import("../../biology/arterial-alveolar-ratio/index.js"),
   "carpentry/auszugsschienen-laenge": () => import("../../carpentry/auszugsschienen-laenge/index.js"),
   "chemistry/hess-law": () => import("../../chemistry/hess-law/index.js"),
@@ -14,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/capacitor-discharging-voltage": () => import("../../electronics/capacitor-discharging-voltage/index.js"),
   "electronics/crosstalk-far-end-voltage": () => import("../../electronics/crosstalk-far-end-voltage/index.js"),
   "electronics/flicker-noise-corner": () => import("../../electronics/flicker-noise-corner/index.js"),
+  "futurology/rogers-diffusion-adopter-categories-percent-split": () => import("../../futurology/rogers-diffusion-adopter-categories-percent-split/index.js"),
   "generate/uuid-v1": () => import("../../generate/uuid-v1/index.js"),
   "geology/water-cut": () => import("../../geology/water-cut/index.js"),
   "logistics/edge-board-length-pallet-total": () => import("../../logistics/edge-board-length-pallet-total/index.js"),

@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/gas-sound-speed-gamma-ratio": () => import("../../acoustics/gas-sound-speed-gamma-ratio/index.js"),
+  "auditing/management-override-journal-entry-testing-focus-lookup": () => import("../../auditing/management-override-journal-entry-testing-focus-lookup/index.js"),
   "biology/half-life-biology": () => import("../../biology/half-life-biology/index.js"),
   "biology/mic-mbc-ratio": () => import("../../biology/mic-mbc-ratio/index.js"),
   "carpentry/weissleim-d2-d3-d4-lookup": () => import("../../carpentry/weissleim-d2-d3-d4-lookup/index.js"),
@@ -15,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/conductance-from-resistance": () => import("../../electronics/conductance-from-resistance/index.js"),
   "electronics/uart-bit-time": () => import("../../electronics/uart-bit-time/index.js"),
   "engineering/critical-damping-coefficient": () => import("../../engineering/critical-damping-coefficient/index.js"),
+  "futurology/participatory-foresight-citizen-panel-design-checklist": () => import("../../futurology/participatory-foresight-citizen-panel-design-checklist/index.js"),
   "geology/geological-strength-index-gsi": () => import("../../geology/geological-strength-index-gsi/index.js"),
   "hash/blake-384": () => import("../../hash/blake-384/index.js"),
   "laser/laser-nd-yvo4-vs-nd-yag-absorption-cross-section-compare-lookup": () => import("../../laser/laser-nd-yvo4-vs-nd-yag-absorption-cross-section-compare-lookup/index.js"),

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/equity-option-grant-board-approval-inspection-steps": () => import("../../auditing/equity-option-grant-board-approval-inspection-steps/index.js"),
   "aviation/standard-temperature": () => import("../../aviation/standard-temperature/index.js"),
   "biology/brillouin-diversity": () => import("../../biology/brillouin-diversity/index.js"),
   "biology/mitotic-index-phase": () => import("../../biology/mitotic-index-phase/index.js"),
@@ -17,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "encode/encoded-polyline": () => import("../../encode/encoded-polyline/index.js"),
   "film/luminance-nits": () => import("../../film/luminance-nits/index.js"),
   "forestry/basal-area-growth-annual": () => import("../../forestry/basal-area-growth-annual/index.js"),
+  "futurology/energy-transition-driver-implication-chain": () => import("../../futurology/energy-transition-driver-implication-chain/index.js"),
   "geology/rock-quality-designation-rqd": () => import("../../geology/rock-quality-designation-rqd/index.js"),
   "json/pointer": () => import("../../json/pointer/index.js"),
   "mycology/germtube-albicans-flag-checker": () => import("../../mycology/germtube-albicans-flag-checker/index.js"),

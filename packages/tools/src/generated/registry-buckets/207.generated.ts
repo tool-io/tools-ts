@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/parallel-inductor-current": () => import("../../electronics/parallel-inductor-current/index.js"),
   "engineering/wire-cross-section": () => import("../../engineering/wire-cross-section/index.js"),
   "film/flicker-frequency": () => import("../../film/flicker-frequency/index.js"),
+  "futurology/technology-readiness-level-trl-scale-lookup": () => import("../../futurology/technology-readiness-level-trl-scale-lookup/index.js"),
   "list/sliding-window": () => import("../../list/sliding-window/index.js"),
   "microcontroller/pwm-frequency": () => import("../../microcontroller/pwm-frequency/index.js"),
   "oenology/barrel-topping-volume": () => import("../../oenology/barrel-topping-volume/index.js"),

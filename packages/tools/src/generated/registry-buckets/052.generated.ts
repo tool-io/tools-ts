@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "convert/hexadecimal-to-decimal": () => import("../../convert/hexadecimal-to-decimal/index.js"),
   "electronics/audio-thd-plus-noise": () => import("../../electronics/audio-thd-plus-noise/index.js"),
   "electronics/output-capacitor-esr-limit": () => import("../../electronics/output-capacitor-esr-limit/index.js"),
+  "futurology/takeoff-speed-fast-slow-scenario-classifier": () => import("../../futurology/takeoff-speed-fast-slow-scenario-classifier/index.js"),
   "geology/coefficient-of-consolidation": () => import("../../geology/coefficient-of-consolidation/index.js"),
   "geology/mineral-streak-lookup": () => import("../../geology/mineral-streak-lookup/index.js"),
   "geology/tas-diagram-plot": () => import("../../geology/tas-diagram-plot/index.js"),

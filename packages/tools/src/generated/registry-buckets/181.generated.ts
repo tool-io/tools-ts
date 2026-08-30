@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/supercapacitor-self-discharge-rate": () => import("../../electronics/supercapacitor-self-discharge-rate/index.js"),
   "engineering/factor-of-safety": () => import("../../engineering/factor-of-safety/index.js"),
   "engineering/fin-efficiency-rectangular": () => import("../../engineering/fin-efficiency-rectangular/index.js"),
+  "futurology/causal-loop-diagram-reinforcing-balancing-mapper": () => import("../../futurology/causal-loop-diagram-reinforcing-balancing-mapper/index.js"),
   "horology/quartz-battery-life": () => import("../../horology/quartz-battery-life/index.js"),
   "list/unique": () => import("../../list/unique/index.js"),
   "logistics/dim-divisor-us-eu-comparison-lookup": () => import("../../logistics/dim-divisor-us-eu-comparison-lookup/index.js"),

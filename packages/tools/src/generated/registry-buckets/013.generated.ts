@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/toroid-inductance": () => import("../../electronics/toroid-inductance/index.js"),
   "film/hyperfocal-distance": () => import("../../film/hyperfocal-distance/index.js"),
   "finance/current-ratio": () => import("../../finance/current-ratio/index.js"),
+  "futurology/meadows-twelve-leverage-points-intervention-lookup": () => import("../../futurology/meadows-twelve-leverage-points-intervention-lookup/index.js"),
   "geojson/bounding-box": () => import("../../geojson/bounding-box/index.js"),
   "oenology/kmw-to-brix": () => import("../../oenology/kmw-to-brix/index.js"),
   "optimization/trust-region-step": () => import("../../optimization/trust-region-step/index.js"),

@@ -17,6 +17,8 @@ export const toolModuleLoaders: Readonly<
   "demography/youth-bulge-share-checker": () => import("../../demography/youth-bulge-share-checker/index.js"),
   "electronics/pa-efficiency-pae": () => import("../../electronics/pa-efficiency-pae/index.js"),
   "engineering/pump-head-total-dynamic": () => import("../../engineering/pump-head-total-dynamic/index.js"),
+  "futurology/futures-wheel-first-second-third-order-spokes": () => import("../../futurology/futures-wheel-first-second-third-order-spokes/index.js"),
+  "futurology/scenario-consistency-driver-coherence-checker": () => import("../../futurology/scenario-consistency-driver-coherence-checker/index.js"),
   "laser/laser-chirped-pulse-amplification-stretcher-compressor-ratio-calculator": () => import("../../laser/laser-chirped-pulse-amplification-stretcher-compressor-ratio-calculator/index.js"),
   "mycology/sectoring-variant-flag-detector": () => import("../../mycology/sectoring-variant-flag-detector/index.js"),
   "neural-network/feedforward": () => import("../../neural-network/feedforward/index.js"),

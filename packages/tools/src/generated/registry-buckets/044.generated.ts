@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/zillmer-reserve": () => import("../../actuarial/zillmer-reserve/index.js"),
+  "auditing/agreed-upon-procedures-specific-findings-format-lookup": () => import("../../auditing/agreed-upon-procedures-specific-findings-format-lookup/index.js"),
   "carpentry/gate-diagonal-brace-length": () => import("../../carpentry/gate-diagonal-brace-length/index.js"),
   "chemistry/compressibility-factor": () => import("../../chemistry/compressibility-factor/index.js"),
   "chemistry/electrolysis-time": () => import("../../chemistry/electrolysis-time/index.js"),
@@ -17,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/onomastic-origin-hint-scorer": () => import("../../epigraphy/onomastic-origin-hint-scorer/index.js"),
   "epigraphy/vixit-annis-age-extractor": () => import("../../epigraphy/vixit-annis-age-extractor/index.js"),
   "film/35mm-equivalent-focal-length": () => import("../../film/35mm-equivalent-focal-length/index.js"),
+  "futurology/p-doom-existential-risk-elicitation-format-lookup": () => import("../../futurology/p-doom-existential-risk-elicitation-format-lookup/index.js"),
   "geology/hole-cleaning-efficiency": () => import("../../geology/hole-cleaning-efficiency/index.js"),
   "hash/sha3-512": () => import("../../hash/sha3-512/index.js"),
   "information/log-loss": () => import("../../information/log-loss/index.js"),

@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "aquaculture/biomass": () => import("../../aquaculture/biomass/index.js"),
   "astronomy/parsec-to-lightyear": () => import("../../astronomy/parsec-to-lightyear/index.js"),
+  "auditing/disaggregated-analytics-margin-location-fluctuation-scanner": () => import("../../auditing/disaggregated-analytics-margin-location-fluctuation-scanner/index.js"),
   "aviation/time-to-climb": () => import("../../aviation/time-to-climb/index.js"),
   "biology/hardy-weinberg-chi-square": () => import("../../biology/hardy-weinberg-chi-square/index.js"),
   "chemistry/dewpoint-from-vapor-pressure": () => import("../../chemistry/dewpoint-from-vapor-pressure/index.js"),

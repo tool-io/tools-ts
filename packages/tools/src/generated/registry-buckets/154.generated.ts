@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/ne555-monostable-time": () => import("../../electronics/ne555-monostable-time/index.js"),
   "electronics/soa-gain": () => import("../../electronics/soa-gain/index.js"),
   "forestry/fuel-load-total": () => import("../../forestry/fuel-load-total/index.js"),
+  "futurology/anticipatory-governance-feedback-loop-lookup": () => import("../../futurology/anticipatory-governance-feedback-loop-lookup/index.js"),
   "generate/ismn-10": () => import("../../generate/ismn-10/index.js"),
   "horology/sidereal-to-solar": () => import("../../horology/sidereal-to-solar/index.js"),
   "logistics/hazmat-class-segregation-storage-checker": () => import("../../logistics/hazmat-class-segregation-storage-checker/index.js"),

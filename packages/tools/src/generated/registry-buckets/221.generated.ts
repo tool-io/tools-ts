@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/key-vs-non-key-control-designation-criteria-lookup": () => import("../../auditing/key-vs-non-key-control-designation-criteria-lookup/index.js"),
   "aviation/holding-fuel-required": () => import("../../aviation/holding-fuel-required/index.js"),
   "biology/hematocrit-from-hemoglobin": () => import("../../biology/hematocrit-from-hemoglobin/index.js"),
   "biology/leaf-dry-matter-content": () => import("../../biology/leaf-dry-matter-content/index.js"),

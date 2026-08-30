@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/source-array-db-increase": () => import("../../acoustics/source-array-db-increase/index.js"),
   "actuarial/normal-retirement-benefit": () => import("../../actuarial/normal-retirement-benefit/index.js"),
+  "auditing/journal-entry-testing-risk-based-filter-criteria-builder": () => import("../../auditing/journal-entry-testing-risk-based-filter-criteria-builder/index.js"),
   "aviation/bank-angle-from-load": () => import("../../aviation/bank-angle-from-load/index.js"),
   "carpentry/furnierpresse-druck-bar": () => import("../../carpentry/furnierpresse-druck-bar/index.js"),
   "construction/concrete-aggregate-volume": () => import("../../construction/concrete-aggregate-volume/index.js"),
@@ -17,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/pi-pad-shunt-resistor": () => import("../../electronics/pi-pad-shunt-resistor/index.js"),
   "electronics/resistor-tolerance-min": () => import("../../electronics/resistor-tolerance-min/index.js"),
   "format/query-string": () => import("../../format/query-string/index.js"),
+  "futurology/after-action-review-expected-actual-template": () => import("../../futurology/after-action-review-expected-actual-template/index.js"),
   "geometry/regular-polygon-area": () => import("../../geometry/regular-polygon-area/index.js"),
   "physics/density": () => import("../../physics/density/index.js"),
   "real-estate/dscr": () => import("../../real-estate/dscr/index.js"),

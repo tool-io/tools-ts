@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/jfet-transconductance": () => import("../../electronics/jfet-transconductance/index.js"),
   "engineering/cable-sizing-current-capacity": () => import("../../engineering/cable-sizing-current-capacity/index.js"),
   "format/feet-and-inches": () => import("../../format/feet-and-inches/index.js"),
+  "futurology/morphological-analysis-box-grid-combination-explorer": () => import("../../futurology/morphological-analysis-box-grid-combination-explorer/index.js"),
   "geology/afm-diagram": () => import("../../geology/afm-diagram/index.js"),
   "geology/shrinkage-ratio": () => import("../../geology/shrinkage-ratio/index.js"),
   "mycology/caselayer-depth-moisture-calculator": () => import("../../mycology/caselayer-depth-moisture-calculator/index.js"),

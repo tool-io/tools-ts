@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/lead-schedule-supporting-detail-tie-out-method-lookup": () => import("../../auditing/lead-schedule-supporting-detail-tie-out-method-lookup/index.js"),
   "aviation/total-moment": () => import("../../aviation/total-moment/index.js"),
   "biology/fat-percentage-carcass": () => import("../../biology/fat-percentage-carcass/index.js"),
   "carpentry/stueckliste-tuer-rahmen-fuellung": () => import("../../carpentry/stueckliste-tuer-rahmen-fuellung/index.js"),
@@ -13,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/common-mode-rejection-ratio-linear": () => import("../../electronics/common-mode-rejection-ratio-linear/index.js"),
   "electronics/total-integrated-noise": () => import("../../electronics/total-integrated-noise/index.js"),
   "engineering/escape-velocity": () => import("../../engineering/escape-velocity/index.js"),
+  "futurology/long-now-decade-century-timeframe-scale-lookup": () => import("../../futurology/long-now-decade-century-timeframe-scale-lookup/index.js"),
   "generate/uuid-v5": () => import("../../generate/uuid-v5/index.js"),
   "paleography/batarde-mix-proportion-calculator": () => import("../../paleography/batarde-mix-proportion-calculator/index.js"),
   "parasitology/flotac-two-chamber-epg": () => import("../../parasitology/flotac-two-chamber-epg/index.js"),

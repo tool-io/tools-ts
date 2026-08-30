@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "accounting/times-interest-earned-ebit-interest": () => import("../../accounting/times-interest-earned-ebit-interest/index.js"),
   "archival-studies/language-code-6392-validator": () => import("../../archival-studies/language-code-6392-validator/index.js"),
+  "auditing/ar-credit-balance-negative-account-review-procedure": () => import("../../auditing/ar-credit-balance-negative-account-review-procedure/index.js"),
   "biology/effective-population-size": () => import("../../biology/effective-population-size/index.js"),
   "biology/qtc-fridericia": () => import("../../biology/qtc-fridericia/index.js"),
   "clustering/possibilistic-c-means": () => import("../../clustering/possibilistic-c-means/index.js"),

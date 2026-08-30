@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/cpe-hours-requirement-checker": () => import("../../auditing/cpe-hours-requirement-checker/index.js"),
   "aviation/block-fuel": () => import("../../aviation/block-fuel/index.js"),
   "aviation/top-of-descent": () => import("../../aviation/top-of-descent/index.js"),
   "carpentry/deckenpaneele-bedarf": () => import("../../carpentry/deckenpaneele-bedarf/index.js"),

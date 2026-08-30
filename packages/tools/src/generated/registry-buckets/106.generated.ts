@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/subsequent-disbursement-postdated-check-review-window": () => import("../../auditing/subsequent-disbursement-postdated-check-review-window/index.js"),
   "biology/bark-density": () => import("../../biology/bark-density/index.js"),
   "biology/linkage-disequilibrium-r2": () => import("../../biology/linkage-disequilibrium-r2/index.js"),
   "biology/osmotic-potential": () => import("../../biology/osmotic-potential/index.js"),
@@ -15,6 +16,8 @@ export const toolModuleLoaders: Readonly<
   "electronics/solar-cell-max-power": () => import("../../electronics/solar-cell-max-power/index.js"),
   "epigraphy/legion-number-extractor": () => import("../../epigraphy/legion-number-extractor/index.js"),
   "epigraphy/raking-light-angle-optimizer": () => import("../../epigraphy/raking-light-angle-optimizer/index.js"),
+  "futurology/foresight-maturity-model-integrated-stages-lookup": () => import("../../futurology/foresight-maturity-model-integrated-stages-lookup/index.js"),
+  "futurology/steepled-category-scanning-checklist": () => import("../../futurology/steepled-category-scanning-checklist/index.js"),
   "geology/clinoform-length": () => import("../../geology/clinoform-length/index.js"),
   "microcontroller/brown-out-threshold-check": () => import("../../microcontroller/brown-out-threshold-check/index.js"),
   "music/crest-factor-peak-to-rms-db": () => import("../../music/crest-factor-peak-to-rms-db/index.js"),

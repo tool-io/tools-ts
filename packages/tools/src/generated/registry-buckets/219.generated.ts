@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/sound-energy-density": () => import("../../acoustics/sound-energy-density/index.js"),
+  "auditing/engagement-quality-review-second-partner-requirements-lookup": () => import("../../auditing/engagement-quality-review-second-partner-requirements-lookup/index.js"),
   "biology/broad-sense-heritability": () => import("../../biology/broad-sense-heritability/index.js"),
   "carpentry/holz-quellung": () => import("../../carpentry/holz-quellung/index.js"),
   "carpentry/tuer-blatt-ueberfaltung": () => import("../../carpentry/tuer-blatt-ueberfaltung/index.js"),

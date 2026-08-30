@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "encode/sqids": () => import("../../encode/sqids/index.js"),
   "film/aspect-ratio-calculation": () => import("../../film/aspect-ratio-calculation/index.js"),
   "forestry/quadratic-mean-diameter": () => import("../../forestry/quadratic-mean-diameter/index.js"),
+  "futurology/moore-law-transistor-density-endgame-note-lookup": () => import("../../futurology/moore-law-transistor-density-endgame-note-lookup/index.js"),
   "music/sample-buffer-latency-ms": () => import("../../music/sample-buffer-latency-ms/index.js"),
   "mycology/mushroom-moisture-freshtodry-ratio-calculator": () => import("../../mycology/mushroom-moisture-freshtodry-ratio-calculator/index.js"),
   "proportions/percentage-error": () => import("../../proportions/percentage-error/index.js"),

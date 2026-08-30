@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/honorific-base-marker-checker": () => import("../../epigraphy/honorific-base-marker-checker/index.js"),
   "film/shutter-efficiency": () => import("../../film/shutter-efficiency/index.js"),
   "finance/present-value": () => import("../../finance/present-value/index.js"),
+  "futurology/crossing-the-chasm-early-majority-gap-strategy-lookup": () => import("../../futurology/crossing-the-chasm-early-majority-gap-strategy-lookup/index.js"),
   "logistics/hos-70-hour-8-day-remaining-checker": () => import("../../logistics/hos-70-hour-8-day-remaining-checker/index.js"),
   "metrics/residual-sum-of-squares": () => import("../../metrics/residual-sum-of-squares/index.js"),
   "mycology/taste-coded-entry-checker": () => import("../../mycology/taste-coded-entry-checker/index.js"),

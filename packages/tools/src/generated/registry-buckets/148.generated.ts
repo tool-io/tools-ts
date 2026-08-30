@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/unadjusted-misstatement-summary-pass-fail-evaluation": () => import("../../auditing/unadjusted-misstatement-summary-pass-fail-evaluation/index.js"),
   "biology/chlorophyll-a-b-ratio": () => import("../../biology/chlorophyll-a-b-ratio/index.js"),
   "biology/marbling-score": () => import("../../biology/marbling-score/index.js"),
   "cartography/horizon-distance-from-height": () => import("../../cartography/horizon-distance-from-height/index.js"),

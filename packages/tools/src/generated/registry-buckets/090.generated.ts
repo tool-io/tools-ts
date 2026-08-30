@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/propeller-efficiency": () => import("../../engineering/propeller-efficiency/index.js"),
   "engineering/rocket-thrust": () => import("../../engineering/rocket-thrust/index.js"),
   "epigraphy/proconsul-province-extractor": () => import("../../epigraphy/proconsul-province-extractor/index.js"),
+  "futurology/scenario-planning-two-axis-quadrant-builder": () => import("../../futurology/scenario-planning-two-axis-quadrant-builder/index.js"),
   "geology/porosity-from-bulk-density": () => import("../../geology/porosity-from-bulk-density/index.js"),
   "geology/systems-tract-lookup": () => import("../../geology/systems-tract-lookup/index.js"),
   "horology/center-to-escape-ratio": () => import("../../horology/center-to-escape-ratio/index.js"),

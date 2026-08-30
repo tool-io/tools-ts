@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/motor-torque-from-power": () => import("../../engineering/motor-torque-from-power/index.js"),
   "epigraphy/formula-position-trend-analyzer": () => import("../../epigraphy/formula-position-trend-analyzer/index.js"),
   "epigraphy/relief-depth-band-classifier": () => import("../../epigraphy/relief-depth-band-classifier/index.js"),
+  "futurology/premortem-prospective-hindsight-failure-checker": () => import("../../futurology/premortem-prospective-hindsight-failure-checker/index.js"),
   "geology/gutenberg-richter-b-value": () => import("../../geology/gutenberg-richter-b-value/index.js"),
   "geology/leak-off-test-formation-strength": () => import("../../geology/leak-off-test-formation-strength/index.js"),
   "geology/slope-stability-factor-of-safety-bishop": () => import("../../geology/slope-stability-factor-of-safety-bishop/index.js"),

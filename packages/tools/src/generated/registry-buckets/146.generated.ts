@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/group-audit-component-materiality-division-instruction-letter": () => import("../../auditing/group-audit-component-materiality-division-instruction-letter/index.js"),
   "biology/brdu-labeling-index": () => import("../../biology/brdu-labeling-index/index.js"),
   "biology/canopy-cover-percentage": () => import("../../biology/canopy-cover-percentage/index.js"),
   "biology/salt-tolerance-index": () => import("../../biology/salt-tolerance-index/index.js"),
@@ -13,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "demography/imr-infant-mortality-rate": () => import("../../demography/imr-infant-mortality-rate/index.js"),
   "electronics/ultrasonic-distance-from-time": () => import("../../electronics/ultrasonic-distance-from-time/index.js"),
   "engineering/machining-time-lathe": () => import("../../engineering/machining-time-lathe/index.js"),
+  "futurology/delphi-method-round-consensus-convergence-tracker": () => import("../../futurology/delphi-method-round-consensus-convergence-tracker/index.js"),
   "graph/connected-components": () => import("../../graph/connected-components/index.js"),
   "laser/laser-group-delay-dispersion-compensation-prism-pair-chirp-mirror-selector": () => import("../../laser/laser-group-delay-dispersion-compensation-prism-pair-chirp-mirror-selector/index.js"),
   "laser/laser-raman-fiber-stokes-shift-wavelength-cascade-series-lookup": () => import("../../laser/laser-raman-fiber-stokes-shift-wavelength-cascade-series-lookup/index.js"),

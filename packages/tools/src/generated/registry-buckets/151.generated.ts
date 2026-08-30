@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "arithmetic/sign": () => import("../../arithmetic/sign/index.js"),
+  "auditing/nonresponse-alternative-procedures-second-request-steps": () => import("../../auditing/nonresponse-alternative-procedures-second-request-steps/index.js"),
   "biology/nitrogen-nii-index": () => import("../../biology/nitrogen-nii-index/index.js"),
   "carpentry/dovetail-tail-count": () => import("../../carpentry/dovetail-tail-count/index.js"),
   "convert/csv-to-markdown": () => import("../../convert/csv-to-markdown/index.js"),

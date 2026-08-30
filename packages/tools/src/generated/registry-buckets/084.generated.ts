@@ -6,6 +6,8 @@ export const toolModuleLoaders: Readonly<
 > = {
   "aquaculture/von-bertalanffy-growth": () => import("../../aquaculture/von-bertalanffy-growth/index.js"),
   "arithmetic/fraction-to-decimal": () => import("../../arithmetic/fraction-to-decimal/index.js"),
+  "auditing/coso-five-components-element-mapping-grid": () => import("../../auditing/coso-five-components-element-mapping-grid/index.js"),
+  "auditing/tolerable-deviation-rate-expected-deviation-inputs-lookup": () => import("../../auditing/tolerable-deviation-rate-expected-deviation-inputs-lookup/index.js"),
   "aviation/remaining-runway": () => import("../../aviation/remaining-runway/index.js"),
   "biology/wound-healing-rate": () => import("../../biology/wound-healing-rate/index.js"),
   "carpentry/dado-depth": () => import("../../carpentry/dado-depth/index.js"),
@@ -17,6 +19,8 @@ export const toolModuleLoaders: Readonly<
   "decode/run-length": () => import("../../decode/run-length/index.js"),
   "engineering/water-demand-peak": () => import("../../engineering/water-demand-peak/index.js"),
   "engineering/wing-lift-coefficient": () => import("../../engineering/wing-lift-coefficient/index.js"),
+  "futurology/automation-labor-displacement-share-model": () => import("../../futurology/automation-labor-displacement-share-model/index.js"),
+  "futurology/space-economy-driver-implication-chain": () => import("../../futurology/space-economy-driver-implication-chain/index.js"),
   "geology/lava-viscosity": () => import("../../geology/lava-viscosity/index.js"),
   "geology/passive-earth-pressure-coefficient": () => import("../../geology/passive-earth-pressure-coefficient/index.js"),
   "geology/volcanic-explosivity-index-calculator": () => import("../../geology/volcanic-explosivity-index-calculator/index.js"),

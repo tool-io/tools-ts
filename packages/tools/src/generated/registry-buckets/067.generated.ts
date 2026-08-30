@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/turnover-number": () => import("../../chemistry/turnover-number/index.js"),
   "construction/flooring-moisture-barrier-coverage": () => import("../../construction/flooring-moisture-barrier-coverage/index.js"),
   "electronics/bjt-base-current": () => import("../../electronics/bjt-base-current/index.js"),
+  "futurology/wind-tunnelling-policy-test-scenarios-method": () => import("../../futurology/wind-tunnelling-policy-test-scenarios-method/index.js"),
   "json/diff": () => import("../../json/diff/index.js"),
   "logistics/load-factor-weight-utilization-percent": () => import("../../logistics/load-factor-weight-utilization-percent/index.js"),
   "random/bsl-fingerspelling-letter": () => import("../../random/bsl-fingerspelling-letter/index.js"),

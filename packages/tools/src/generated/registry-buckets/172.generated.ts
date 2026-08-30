@@ -19,6 +19,8 @@ export const toolModuleLoaders: Readonly<
   "electronics/solar-cell-short-circuit-current": () => import("../../electronics/solar-cell-short-circuit-current/index.js"),
   "epigraphy/hic-situs-est-detector": () => import("../../epigraphy/hic-situs-est-detector/index.js"),
   "finance/break-even-price": () => import("../../finance/break-even-price/index.js"),
+  "futurology/climate-adaptation-driver-implication-chain": () => import("../../futurology/climate-adaptation-driver-implication-chain/index.js"),
+  "futurology/h-g-wells-founding-futurism-open-conspiracy-history-lookup": () => import("../../futurology/h-g-wells-founding-futurism-open-conspiracy-history-lookup/index.js"),
   "horology/dynamic-pressure-factor": () => import("../../horology/dynamic-pressure-factor/index.js"),
   "logistics/vgm-verified-gross-mass-solas-total": () => import("../../logistics/vgm-verified-gross-mass-solas-total/index.js"),
   "oenology/oak-chip-dosage": () => import("../../oenology/oak-chip-dosage/index.js"),

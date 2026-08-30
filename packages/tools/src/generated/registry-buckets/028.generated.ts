@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/second-moment-whole-life-epv": () => import("../../actuarial/second-moment-whole-life-epv/index.js"),
+  "auditing/review-engagement-analytical-inquiry-standard-procedures-lookup": () => import("../../auditing/review-engagement-analytical-inquiry-standard-procedures-lookup/index.js"),
   "aviation/basic-block-fuel-sum": () => import("../../aviation/basic-block-fuel-sum/index.js"),
   "carpentry/bandsaege-bandlaenge": () => import("../../carpentry/bandsaege-bandlaenge/index.js"),
   "carpentry/stair-stringer-length-carpentry": () => import("../../carpentry/stair-stringer-length-carpentry/index.js"),
@@ -20,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/wire-power-loss": () => import("../../electronics/wire-power-loss/index.js"),
   "film/screen-count-required": () => import("../../film/screen-count-required/index.js"),
   "finance/bermudan-option-binomial": () => import("../../finance/bermudan-option-binomial/index.js"),
+  "futurology/s-curve-adoption-phase-innovators-laggards-mapper": () => import("../../futurology/s-curve-adoption-phase-innovators-laggards-mapper/index.js"),
   "geology/seismic-rms-velocity": () => import("../../geology/seismic-rms-velocity/index.js"),
   "logistics/mpg-loaded-vs-empty-adjusted": () => import("../../logistics/mpg-loaded-vs-empty-adjusted/index.js"),
   "matrix/as-csv": () => import("../../matrix/as-csv/index.js"),

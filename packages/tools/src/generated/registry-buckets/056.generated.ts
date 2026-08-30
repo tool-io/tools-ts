@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/de-emphasis-db": () => import("../../electronics/de-emphasis-db/index.js"),
   "electronics/impedance-magnitude": () => import("../../electronics/impedance-magnitude/index.js"),
   "electronics/signal-to-noise-ratio": () => import("../../electronics/signal-to-noise-ratio/index.js"),
+  "futurology/return-to-office-trajectory-scenarios-lookup": () => import("../../futurology/return-to-office-trajectory-scenarios-lookup/index.js"),
   "horology/meters-to-atm": () => import("../../horology/meters-to-atm/index.js"),
   "mycology/ectomycorrhiza-mantle-thickness-rater": () => import("../../mycology/ectomycorrhiza-mantle-thickness-rater/index.js"),
   "mycology/substrate-supplementation-planner": () => import("../../mycology/substrate-supplementation-planner/index.js"),

@@ -18,6 +18,8 @@ export const toolModuleLoaders: Readonly<
   "electronics/transmitter-power-from-eirp": () => import("../../electronics/transmitter-power-from-eirp/index.js"),
   "film/box-office-gross-per-screen": () => import("../../film/box-office-gross-per-screen/index.js"),
   "forestry/canopy-cover-percentage-forestry": () => import("../../forestry/canopy-cover-percentage-forestry/index.js"),
+  "futurology/agi-forecast-survey-median-calculator": () => import("../../futurology/agi-forecast-survey-median-calculator/index.js"),
+  "futurology/de-jouvenel-futuribles-anticipation-school-lookup": () => import("../../futurology/de-jouvenel-futuribles-anticipation-school-lookup/index.js"),
   "geology/well-log-porosity-density": () => import("../../geology/well-log-porosity-density/index.js"),
   "logistics/demurrage-free-days-port-checker": () => import("../../logistics/demurrage-free-days-port-checker/index.js"),
   "number/kaprekar-steps": () => import("../../number/kaprekar-steps/index.js"),

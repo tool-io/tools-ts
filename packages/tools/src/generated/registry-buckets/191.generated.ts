@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/damping-factor": () => import("../../electronics/damping-factor/index.js"),
   "electronics/oscillator-startup-time": () => import("../../electronics/oscillator-startup-time/index.js"),
   "forestry/canopy-bulk-density-forestry": () => import("../../forestry/canopy-bulk-density-forestry/index.js"),
+  "futurology/wright-law-learning-curve-cost-doubling-lookup": () => import("../../futurology/wright-law-learning-curve-cost-doubling-lookup/index.js"),
   "generate/isbn-10": () => import("../../generate/isbn-10/index.js"),
   "machine-learning/adaboost-classifier": () => import("../../machine-learning/adaboost-classifier/index.js"),
   "mycology/latex-exudate-detector": () => import("../../mycology/latex-exudate-detector/index.js"),

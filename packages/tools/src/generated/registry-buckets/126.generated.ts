@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/acoustic-intensity-from-spl": () => import("../../acoustics/acoustic-intensity-from-spl/index.js"),
   "actuarial/joint-life-survival-probability": () => import("../../actuarial/joint-life-survival-probability/index.js"),
+  "auditing/dual-dating-subsequent-event-footnote-usage-lookup": () => import("../../auditing/dual-dating-subsequent-event-footnote-usage-lookup/index.js"),
   "biology/population-doubling-time-ecology": () => import("../../biology/population-doubling-time-ecology/index.js"),
   "carpentry/edge-banding-length": () => import("../../carpentry/edge-banding-length/index.js"),
   "carpentry/mortise-width": () => import("../../carpentry/mortise-width/index.js"),

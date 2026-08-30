@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/distillation-reflux-ratio": () => import("../../engineering/distillation-reflux-ratio/index.js"),
   "engineering/transformer-turns-ratio-simple": () => import("../../engineering/transformer-turns-ratio-simple/index.js"),
   "film/runtime-to-footage": () => import("../../film/runtime-to-footage/index.js"),
+  "futurology/seventh-generation-indigenous-sustainability-principle-lookup": () => import("../../futurology/seventh-generation-indigenous-sustainability-principle-lookup/index.js"),
   "logistics/container-payload-weight-checker": () => import("../../logistics/container-payload-weight-checker/index.js"),
   "matrix/add": () => import("../../matrix/add/index.js"),
   "probability/f-sampler": () => import("../../probability/f-sampler/index.js"),

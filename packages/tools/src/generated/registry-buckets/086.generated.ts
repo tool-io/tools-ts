@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/phon-to-sone-converter": () => import("../../acoustics/phon-to-sone-converter/index.js"),
   "arithmetic/midpoint": () => import("../../arithmetic/midpoint/index.js"),
+  "auditing/unmodified-opinion-core-report-elements-checklist": () => import("../../auditing/unmodified-opinion-core-report-elements-checklist/index.js"),
   "biology/leaf-thickness": () => import("../../biology/leaf-thickness/index.js"),
   "biology/primer-melting-temp-nearest-neighbor": () => import("../../biology/primer-melting-temp-nearest-neighbor/index.js"),
   "carpentry/din-4556-schreibtisch-hoehe": () => import("../../carpentry/din-4556-schreibtisch-hoehe/index.js"),

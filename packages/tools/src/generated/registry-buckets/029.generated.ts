@@ -24,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/laser-cutting-power": () => import("../../engineering/laser-cutting-power/index.js"),
   "finance/debt-to-equity": () => import("../../finance/debt-to-equity/index.js"),
   "fitness/basal-metabolic-rate": () => import("../../fitness/basal-metabolic-rate/index.js"),
+  "futurology/wild-cards-low-probability-high-impact-register": () => import("../../futurology/wild-cards-low-probability-high-impact-register/index.js"),
   "geology/degree-of-saturation": () => import("../../geology/degree-of-saturation/index.js"),
   "geology/flexural-rigidity": () => import("../../geology/flexural-rigidity/index.js"),
   "hash/keccak-512": () => import("../../hash/keccak-512/index.js"),

@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/detector-responsivity-vs-wavelength": () => import("../../electronics/detector-responsivity-vs-wavelength/index.js"),
   "electronics/eia-96-code-decode": () => import("../../electronics/eia-96-code-decode/index.js"),
   "electronics/t-pad-series-resistor": () => import("../../electronics/t-pad-series-resistor/index.js"),
+  "futurology/morphological-freedom-body-modification-principle-lookup": () => import("../../futurology/morphological-freedom-body-modification-principle-lookup/index.js"),
   "list/zip": () => import("../../list/zip/index.js"),
   "matrix/multiply": () => import("../../matrix/multiply/index.js"),
   "random/khudawadi-character": () => import("../../random/khudawadi-character/index.js"),

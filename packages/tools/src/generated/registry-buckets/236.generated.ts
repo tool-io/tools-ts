@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/db-subtract-background": () => import("../../acoustics/db-subtract-background/index.js"),
   "archival-studies/crowdsourcing-consensus-percent-calculator": () => import("../../archival-studies/crowdsourcing-consensus-percent-calculator/index.js"),
+  "auditing/bank-confirmation-form-standard-fields-completion-guide": () => import("../../auditing/bank-confirmation-form-standard-fields-completion-guide/index.js"),
   "aviation/isa-deviation": () => import("../../aviation/isa-deviation/index.js"),
   "benchmark/ai-models": () => import("../../benchmark/ai-models/index.js"),
   "biology/cell-viability-percentage": () => import("../../biology/cell-viability-percentage/index.js"),

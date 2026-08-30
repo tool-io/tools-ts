@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/independence-threat-safeguards-classifier": () => import("../../auditing/independence-threat-safeguards-classifier/index.js"),
   "aviation/true-altitude": () => import("../../aviation/true-altitude/index.js"),
   "biology/leaf-area-index": () => import("../../biology/leaf-area-index/index.js"),
   "carpentry/holz-schwindmass": () => import("../../carpentry/holz-schwindmass/index.js"),
@@ -19,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/traffic-flow-density": () => import("../../engineering/traffic-flow-density/index.js"),
   "finance/loan-to-value-ratio": () => import("../../finance/loan-to-value-ratio/index.js"),
   "finance/return-on-investment": () => import("../../finance/return-on-investment/index.js"),
+  "futurology/design-fiction-diegetic-artifact-from-future-builder": () => import("../../futurology/design-fiction-diegetic-artifact-from-future-builder/index.js"),
   "geology/core-permeability-klinkenberg-corrected": () => import("../../geology/core-permeability-klinkenberg-corrected/index.js"),
   "laser/laser-diode-li-curve-kink-detection-threshold-extraction-method": () => import("../../laser/laser-diode-li-curve-kink-detection-threshold-extraction-method/index.js"),
   "numismatics/gold-silver-ratio-calculator": () => import("../../numismatics/gold-silver-ratio-calculator/index.js"),

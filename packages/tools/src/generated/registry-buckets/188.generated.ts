@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/vswr-from-reflection": () => import("../../electronics/vswr-from-reflection/index.js"),
   "film/cpl-duration": () => import("../../film/cpl-duration/index.js"),
   "finance/american-option-binomial": () => import("../../finance/american-option-binomial/index.js"),
+  "futurology/utopian-dystopian-tech-framing-bias-checker": () => import("../../futurology/utopian-dystopian-tech-framing-bias-checker/index.js"),
   "geology/crystal-fractionation": () => import("../../geology/crystal-fractionation/index.js"),
   "horology/crown-turns-full-wind": () => import("../../horology/crown-turns-full-wind/index.js"),
   "laser/laser-edfa-gain-bandwidth-c-band-l-band-split-lookup": () => import("../../laser/laser-edfa-gain-bandwidth-c-band-l-band-split-lookup/index.js"),

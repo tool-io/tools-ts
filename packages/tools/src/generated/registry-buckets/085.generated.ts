@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/intensity-level-from-intensity": () => import("../../acoustics/intensity-level-from-intensity/index.js"),
   "aquaculture/feed-cost-per-kg-gain": () => import("../../aquaculture/feed-cost-per-kg-gain/index.js"),
+  "auditing/tick-mark-legend-standard-symbols-meaning-table": () => import("../../auditing/tick-mark-legend-standard-symbols-meaning-table/index.js"),
   "biology/lab-dilution-series": () => import("../../biology/lab-dilution-series/index.js"),
   "biology/primer-length": () => import("../../biology/primer-length/index.js"),
   "bitwise/left-shift": () => import("../../bitwise/left-shift/index.js"),

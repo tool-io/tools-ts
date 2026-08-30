@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/payable-turnover-days-purchases": () => import("../../accounting/payable-turnover-days-purchases/index.js"),
+  "auditing/user-access-review-quarterly-recertification-evidence-tester": () => import("../../auditing/user-access-review-quarterly-recertification-evidence-tester/index.js"),
   "chemistry/kb-from-ka-kw": () => import("../../chemistry/kb-from-ka-kw/index.js"),
   "cipher/playfair-encoder": () => import("../../cipher/playfair-encoder/index.js"),
   "construction/concrete-maturity": () => import("../../construction/concrete-maturity/index.js"),

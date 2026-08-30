@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/haphazard-selection-randomization-bias-warning-checker": () => import("../../auditing/haphazard-selection-randomization-bias-warning-checker/index.js"),
   "carpentry/veneer-sheets-needed": () => import("../../carpentry/veneer-sheets-needed/index.js"),
   "cartography/enlargement-new-scale": () => import("../../cartography/enlargement-new-scale/index.js"),
   "cartography/rf-to-verbal-scale": () => import("../../cartography/rf-to-verbal-scale/index.js"),

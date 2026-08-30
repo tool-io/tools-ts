@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/attribute-sampling-deviation-rate-size-computation": () => import("../../auditing/attribute-sampling-deviation-rate-size-computation/index.js"),
+  "auditing/evidence-hierarchy-external-confirmation-ranking-table": () => import("../../auditing/evidence-hierarchy-external-confirmation-ranking-table/index.js"),
   "aviation/runway-required-takeoff": () => import("../../aviation/runway-required-takeoff/index.js"),
   "biology/phosphorus-nii-index": () => import("../../biology/phosphorus-nii-index/index.js"),
   "carpentry/schlitz-zapfen-masse-1-3-regel": () => import("../../carpentry/schlitz-zapfen-masse-1-3-regel/index.js"),

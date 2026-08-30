@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/transformer-voltage-ratio": () => import("../../electronics/transformer-voltage-ratio/index.js"),
   "engineering/torque-force": () => import("../../engineering/torque-force/index.js"),
   "film/data-rate-compressed": () => import("../../film/data-rate-compressed/index.js"),
+  "futurology/ai-alignment-timeline-debate-position-map": () => import("../../futurology/ai-alignment-timeline-debate-position-map/index.js"),
   "geology/seismic-resolution-vertical": () => import("../../geology/seismic-resolution-vertical/index.js"),
   "microcontroller/pwm-duty-count": () => import("../../microcontroller/pwm-duty-count/index.js"),
   "paleography/regnal-english-year-converter": () => import("../../paleography/regnal-english-year-converter/index.js"),

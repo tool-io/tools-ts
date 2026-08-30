@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/semiannual-premium-conversion": () => import("../../actuarial/semiannual-premium-conversion/index.js"),
+  "auditing/client-acceptance-continuance-risk-screening-checklist": () => import("../../auditing/client-acceptance-continuance-risk-screening-checklist/index.js"),
   "aviation/minimum-fuel-required": () => import("../../aviation/minimum-fuel-required/index.js"),
   "biology/species-accumulation-rarefied": () => import("../../biology/species-accumulation-rarefied/index.js"),
   "carpentry/frame-rabbet-depth": () => import("../../carpentry/frame-rabbet-depth/index.js"),

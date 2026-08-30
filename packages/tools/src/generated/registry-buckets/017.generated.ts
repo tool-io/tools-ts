@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/inverse-square-law-level-change": () => import("../../acoustics/inverse-square-law-level-change/index.js"),
   "actuarial/term-insurance-epv": () => import("../../actuarial/term-insurance-epv/index.js"),
+  "auditing/change-management-ticket-approval-testing-steps": () => import("../../auditing/change-management-ticket-approval-testing-steps/index.js"),
   "aviation/vr-speed": () => import("../../aviation/vr-speed/index.js"),
   "biology/pressure-potential": () => import("../../biology/pressure-potential/index.js"),
   "carpentry/box-joint-finger-width": () => import("../../carpentry/box-joint-finger-width/index.js"),

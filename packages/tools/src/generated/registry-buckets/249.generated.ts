@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/bolt-shear-capacity": () => import("../../engineering/bolt-shear-capacity/index.js"),
   "engineering/three-phase-apparent-power": () => import("../../engineering/three-phase-apparent-power/index.js"),
   "film/dynamic-range-stops": () => import("../../film/dynamic-range-stops/index.js"),
+  "futurology/mind-uploading-whole-brain-emulation-feasibility-map": () => import("../../futurology/mind-uploading-whole-brain-emulation-feasibility-map/index.js"),
   "geometry/frustum-volume": () => import("../../geometry/frustum-volume/index.js"),
   "matrix/flip-horizontal": () => import("../../matrix/flip-horizontal/index.js"),
   "metrics/mean-squared-error": () => import("../../metrics/mean-squared-error/index.js"),

@@ -4,6 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/application-control-report-parameter-integrity-checker": () => import("../../auditing/application-control-report-parameter-integrity-checker/index.js"),
+  "auditing/cash-on-hand-count-denomination-sheet-procedure": () => import("../../auditing/cash-on-hand-count-denomination-sheet-procedure/index.js"),
+  "auditing/itgc-access-change-operations-domain-split-lookup": () => import("../../auditing/itgc-access-change-operations-domain-split-lookup/index.js"),
   "biology/average-daily-gain": () => import("../../biology/average-daily-gain/index.js"),
   "biology/systemic-vascular-resistance": () => import("../../biology/systemic-vascular-resistance/index.js"),
   "chemistry/crystallography-void-fraction": () => import("../../chemistry/crystallography-void-fraction/index.js"),

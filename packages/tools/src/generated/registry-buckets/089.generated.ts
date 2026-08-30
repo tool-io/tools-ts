@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/calibration-level-offset": () => import("../../acoustics/calibration-level-offset/index.js"),
   "archival-studies/format-obsolescence-score-rater": () => import("../../archival-studies/format-obsolescence-score-rater/index.js"),
+  "auditing/ratio-projection-misstatement": () => import("../../auditing/ratio-projection-misstatement/index.js"),
   "biology/a260-a230-ratio": () => import("../../biology/a260-a230-ratio/index.js"),
   "construction/decking-waste-factor": () => import("../../construction/decking-waste-factor/index.js"),
   "convert/gray-code-encode": () => import("../../convert/gray-code-encode/index.js"),

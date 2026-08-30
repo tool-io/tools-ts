@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/room-volume-from-dimensions": () => import("../../acoustics/room-volume-from-dimensions/index.js"),
   "acoustics/ultrasound-wavelength-tissue": () => import("../../acoustics/ultrasound-wavelength-tissue/index.js"),
+  "auditing/misstatement-projection-qualitative-factors-lookup": () => import("../../auditing/misstatement-projection-qualitative-factors-lookup/index.js"),
   "aviation/vx-speed": () => import("../../aviation/vx-speed/index.js"),
   "biology/genomic-estimated-breeding-value": () => import("../../biology/genomic-estimated-breeding-value/index.js"),
   "biology/germination-percentage": () => import("../../biology/germination-percentage/index.js"),
@@ -21,6 +22,8 @@ export const toolModuleLoaders: Readonly<
   "electronics/piezo-sensor-charge-amplifier-voltage": () => import("../../electronics/piezo-sensor-charge-amplifier-voltage/index.js"),
   "engineering/flywheel-mass-inertia": () => import("../../engineering/flywheel-mass-inertia/index.js"),
   "format/duration": () => import("../../format/duration/index.js"),
+  "futurology/asilomar-principles-category-map-lookup": () => import("../../futurology/asilomar-principles-category-map-lookup/index.js"),
+  "futurology/delphi-panel-recruitment-anonymity-protocol-lookup": () => import("../../futurology/delphi-panel-recruitment-anonymity-protocol-lookup/index.js"),
   "geology/backstripping-subsidence": () => import("../../geology/backstripping-subsidence/index.js"),
   "geology/fold-wavelength": () => import("../../geology/fold-wavelength/index.js"),
   "geology/water-content": () => import("../../geology/water-content/index.js"),

@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/motor-efficiency": () => import("../../electronics/motor-efficiency/index.js"),
   "electronics/power-module-loss-conduction": () => import("../../electronics/power-module-loss-conduction/index.js"),
   "film/subtitle-characters-per-second": () => import("../../film/subtitle-characters-per-second/index.js"),
+  "futurology/futures-triangle-push-weight-pull-anchor-triangle": () => import("../../futurology/futures-triangle-push-weight-pull-anchor-triangle/index.js"),
   "generate/ean-8": () => import("../../generate/ean-8/index.js"),
   "geology/brine-salinity-ppm-to-ppg": () => import("../../geology/brine-salinity-ppm-to-ppg/index.js"),
   "geology/solution-gas-oil-ratio": () => import("../../geology/solution-gas-oil-ratio/index.js"),

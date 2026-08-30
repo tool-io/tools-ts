@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/hydro-capacity-factor": () => import("../../engineering/hydro-capacity-factor/index.js"),
   "epigraphy/leiden-halfbracket-checker": () => import("../../epigraphy/leiden-halfbracket-checker/index.js"),
   "film/chroma-subsampling-bandwidth": () => import("../../film/chroma-subsampling-bandwidth/index.js"),
+  "futurology/three-horizons-framework-transition-map-lookup": () => import("../../futurology/three-horizons-framework-transition-map-lookup/index.js"),
   "geology/magma-density": () => import("../../geology/magma-density/index.js"),
   "horology/caseback-turns-close": () => import("../../horology/caseback-turns-close/index.js"),
   "horology/moonphase-correction-days": () => import("../../horology/moonphase-correction-days/index.js"),

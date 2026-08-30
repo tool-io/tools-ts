@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/solar-fill-factor": () => import("../../electronics/solar-fill-factor/index.js"),
   "electronics/volt-second-balance": () => import("../../electronics/volt-second-balance/index.js"),
   "engineering/heat-exchanger-ntu-effectiveness": () => import("../../engineering/heat-exchanger-ntu-effectiveness/index.js"),
+  "futurology/futures-literacy-capability-checklist": () => import("../../futurology/futures-literacy-capability-checklist/index.js"),
   "geology/swell-index": () => import("../../geology/swell-index/index.js"),
   "horology/amplitude-lift-ratio": () => import("../../horology/amplitude-lift-ratio/index.js"),
   "horology/telemeter-distance": () => import("../../horology/telemeter-distance/index.js"),

@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/solar-panel-max-power-current": () => import("../../electronics/solar-panel-max-power-current/index.js"),
   "engineering/creep-deflection-multiplier": () => import("../../engineering/creep-deflection-multiplier/index.js"),
   "engineering/fdm-printing-time": () => import("../../engineering/fdm-printing-time/index.js"),
+  "futurology/metaverse-hype-versus-utility-verdict-lookup": () => import("../../futurology/metaverse-hype-versus-utility-verdict-lookup/index.js"),
   "generate/network-flow-instance": () => import("../../generate/network-flow-instance/index.js"),
   "horology/chrono-elapsed-from-steps": () => import("../../horology/chrono-elapsed-from-steps/index.js"),
   "music/staccato-duration-shortening-percent": () => import("../../music/staccato-duration-shortening-percent/index.js"),

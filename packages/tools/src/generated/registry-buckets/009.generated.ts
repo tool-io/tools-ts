@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/audio-equalizer-center-frequency": () => import("../../electronics/audio-equalizer-center-frequency/index.js"),
   "engineering/soil-consolidation-time-factor": () => import("../../engineering/soil-consolidation-time-factor/index.js"),
   "epigraphy/serif-era-classifier": () => import("../../epigraphy/serif-era-classifier/index.js"),
+  "futurology/weak-signal-scanning-horizon-classifier": () => import("../../futurology/weak-signal-scanning-horizon-classifier/index.js"),
   "geometry/sphere-surface-area": () => import("../../geometry/sphere-surface-area/index.js"),
   "laser/laser-yb-yag-thin-disk-multipass-pump-absorption-efficiency-calculator": () => import("../../laser/laser-yb-yag-thin-disk-multipass-pump-absorption-efficiency-calculator/index.js"),
   "matrix/determinant-2x2": () => import("../../matrix/determinant-2x2/index.js"),

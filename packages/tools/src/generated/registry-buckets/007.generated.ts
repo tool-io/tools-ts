@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/mus-tainting-factor-projected-misstatement": () => import("../../auditing/mus-tainting-factor-projected-misstatement/index.js"),
+  "auditing/payroll-agree-to-tax-return-gross-tie-out-procedure": () => import("../../auditing/payroll-agree-to-tax-return-gross-tie-out-procedure/index.js"),
   "aviation/fuel-burn": () => import("../../aviation/fuel-burn/index.js"),
   "aviation/minimum-sector-altitude": () => import("../../aviation/minimum-sector-altitude/index.js"),
   "biology/cfse-dilution-factor": () => import("../../biology/cfse-dilution-factor/index.js"),

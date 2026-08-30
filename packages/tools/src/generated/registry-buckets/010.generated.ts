@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/butt-weld-stress": () => import("../../engineering/butt-weld-stress/index.js"),
   "epigraphy/concordance-duplicate-merge-detector": () => import("../../epigraphy/concordance-duplicate-merge-detector/index.js"),
   "finance/effective-annual-rate": () => import("../../finance/effective-annual-rate/index.js"),
+  "futurology/kurzweil-law-accelerating-returns-lookup": () => import("../../futurology/kurzweil-law-accelerating-returns-lookup/index.js"),
   "geology/choke-flow-rate-gilbert": () => import("../../geology/choke-flow-rate-gilbert/index.js"),
   "logistics/cost-per-unit-shipped-allocation": () => import("../../logistics/cost-per-unit-shipped-allocation/index.js"),
   "logistics/lines-per-hour-pack-station": () => import("../../logistics/lines-per-hour-pack-station/index.js"),

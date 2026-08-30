@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "demography/lifespan-variation-edagger": () => import("../../demography/lifespan-variation-edagger/index.js"),
   "electronics/radar-cross-section": () => import("../../electronics/radar-cross-section/index.js"),
   "engineering/chezy-coefficient": () => import("../../engineering/chezy-coefficient/index.js"),
+  "futurology/early-warning-signposts-per-scenario-generator": () => import("../../futurology/early-warning-signposts-per-scenario-generator/index.js"),
   "logistics/deadhead-empty-miles-ratio": () => import("../../logistics/deadhead-empty-miles-ratio/index.js"),
   "sailing/wetted-surface-area-hull": () => import("../../sailing/wetted-surface-area-hull/index.js"),
   "statistics/pearson-correlation": () => import("../../statistics/pearson-correlation/index.js"),

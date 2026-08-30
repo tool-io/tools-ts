@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/kickback-vendor-bid-splitting-invoice-analytics-checker": () => import("../../auditing/kickback-vendor-bid-splitting-invoice-analytics-checker/index.js"),
   "biology/leaf-area-ratio": () => import("../../biology/leaf-area-ratio/index.js"),
   "biology/relationship-coefficient": () => import("../../biology/relationship-coefficient/index.js"),
   "carpentry/kuechen-haengeschrank-montagehoehe": () => import("../../carpentry/kuechen-haengeschrank-montagehoehe/index.js"),

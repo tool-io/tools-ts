@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/crystal-load-capacitance": () => import("../../electronics/crystal-load-capacitance/index.js"),
   "electronics/snr-db": () => import("../../electronics/snr-db/index.js"),
   "electronics/volts-to-dbu": () => import("../../electronics/volts-to-dbu/index.js"),
+  "futurology/extrapolation-horizon-limit-warning-checker": () => import("../../futurology/extrapolation-horizon-limit-warning-checker/index.js"),
   "geology/epicentral-distance": () => import("../../geology/epicentral-distance/index.js"),
   "geometry/rectangle-area": () => import("../../geometry/rectangle-area/index.js"),
   "laser/laser-vcsel-versus-edge-emitter-divergence-comparison-table-lookup": () => import("../../laser/laser-vcsel-versus-edge-emitter-divergence-comparison-table-lookup/index.js"),

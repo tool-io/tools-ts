@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/beats-frequency": () => import("../../acoustics/beats-frequency/index.js"),
+  "auditing/compensating-control-gap-cover-example-lookup": () => import("../../auditing/compensating-control-gap-cover-example-lookup/index.js"),
   "aviation/compass-heading": () => import("../../aviation/compass-heading/index.js"),
   "biology/aptt-ratio": () => import("../../biology/aptt-ratio/index.js"),
   "biology/whittaker-beta-diversity-2": () => import("../../biology/whittaker-beta-diversity-2/index.js"),

@@ -13,6 +13,8 @@ export const toolModuleLoaders: Readonly<
   "electronics/speaker-box-volume": () => import("../../electronics/speaker-box-volume/index.js"),
   "engineering/short-circuit-current": () => import("../../engineering/short-circuit-current/index.js"),
   "film/circle-of-confusion": () => import("../../film/circle-of-confusion/index.js"),
+  "futurology/gartner-hype-cycle-phase-position-classifier": () => import("../../futurology/gartner-hype-cycle-phase-position-classifier/index.js"),
+  "futurology/signal-insight-action-pipeline-stage-tracker": () => import("../../futurology/signal-insight-action-pipeline-stage-tracker/index.js"),
   "geology/casing-collapse-pressure": () => import("../../geology/casing-collapse-pressure/index.js"),
   "microcontroller/uart-baud-divider": () => import("../../microcontroller/uart-baud-divider/index.js"),
   "music/melodic-range-span-semitones": () => import("../../music/melodic-range-span-semitones/index.js"),

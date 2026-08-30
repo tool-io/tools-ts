@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/inventory-turnover-cogs-average-inventory": () => import("../../accounting/inventory-turnover-cogs-average-inventory/index.js"),
+  "auditing/legal-letter-attorney-litigation-response-scope-lookup": () => import("../../auditing/legal-letter-attorney-litigation-response-scope-lookup/index.js"),
   "aviation/weight-balance-moment": () => import("../../aviation/weight-balance-moment/index.js"),
   "biology/canopy-bulk-density": () => import("../../biology/canopy-bulk-density/index.js"),
   "biology/ld50-probit": () => import("../../biology/ld50-probit/index.js"),
@@ -21,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/fracture-toughness-stress-intensity": () => import("../../engineering/fracture-toughness-stress-intensity/index.js"),
   "epigraphy/auc-to-bc-ad-converter": () => import("../../epigraphy/auc-to-bc-ad-converter/index.js"),
   "forestry/light-transmission-beer-lambert-forestry": () => import("../../forestry/light-transmission-beer-lambert-forestry/index.js"),
+  "futurology/bostrom-superintelligence-paths-taxonomy-lookup": () => import("../../futurology/bostrom-superintelligence-paths-taxonomy-lookup/index.js"),
   "linguistics/past-tense-regular": () => import("../../linguistics/past-tense-regular/index.js"),
   "logistics/residential-delivery-surcharge-checker": () => import("../../logistics/residential-delivery-surcharge-checker/index.js"),
   "mortgage/pakistan-diminishing-musharakah": () => import("../../mortgage/pakistan-diminishing-musharakah/index.js"),

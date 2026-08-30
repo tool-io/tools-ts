@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/logic-threshold-cmos": () => import("../../electronics/logic-threshold-cmos/index.js"),
   "engineering/bolt-group-shear": () => import("../../engineering/bolt-group-shear/index.js"),
   "film/depth-of-field": () => import("../../film/depth-of-field/index.js"),
+  "futurology/slaughter-waves-of-futures-studies-evolution-lookup": () => import("../../futurology/slaughter-waves-of-futures-studies-evolution-lookup/index.js"),
   "geology/casing-burst-pressure": () => import("../../geology/casing-burst-pressure/index.js"),
   "hash/shake-128": () => import("../../hash/shake-128/index.js"),
   "mortgage/egypt-subsidized-comparison": () => import("../../mortgage/egypt-subsidized-comparison/index.js"),

@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "arithmetic/silver-ratio": () => import("../../arithmetic/silver-ratio/index.js"),
+  "auditing/written-representation-letter-required-items-checklist": () => import("../../auditing/written-representation-letter-required-items-checklist/index.js"),
   "aviation/load-factor": () => import("../../aviation/load-factor/index.js"),
   "aviation/power-loading": () => import("../../aviation/power-loading/index.js"),
   "biology/work-of-breathing": () => import("../../biology/work-of-breathing/index.js"),

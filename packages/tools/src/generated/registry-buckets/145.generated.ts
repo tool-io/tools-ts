@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/earthwork-volume-average-end-area": () => import("../../engineering/earthwork-volume-average-end-area/index.js"),
   "film/mired-to-kelvin": () => import("../../film/mired-to-kelvin/index.js"),
   "film/shutter-speed-to-shutter-angle": () => import("../../film/shutter-speed-to-shutter-angle/index.js"),
+  "futurology/global-catastrophic-risk-scenario-register-lookup": () => import("../../futurology/global-catastrophic-risk-scenario-register-lookup/index.js"),
   "geology/decline-rate-harmonic": () => import("../../geology/decline-rate-harmonic/index.js"),
   "laser/laser-fiber-bragg-grating-strain-temperature-pitch-shift-formula-calculator": () => import("../../laser/laser-fiber-bragg-grating-strain-temperature-pitch-shift-formula-calculator/index.js"),
   "physics/momentum": () => import("../../physics/momentum/index.js"),

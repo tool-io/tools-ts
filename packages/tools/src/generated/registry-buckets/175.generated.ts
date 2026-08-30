@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/lapping-receipt-delay-pattern-detector": () => import("../../auditing/lapping-receipt-delay-pattern-detector/index.js"),
   "carpentry/stueckliste-korpus-generator": () => import("../../carpentry/stueckliste-korpus-generator/index.js"),
   "construction/concrete-water-cement-ratio-water": () => import("../../construction/concrete-water-cement-ratio-water/index.js"),
   "construction/drip-edge-length": () => import("../../construction/drip-edge-length/index.js"),
@@ -12,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/spi-max-frequency-from-trace-length": () => import("../../electronics/spi-max-frequency-from-trace-length/index.js"),
   "engineering/pump-efficiency": () => import("../../engineering/pump-efficiency/index.js"),
   "epigraphy/beneficiarii-term-detector": () => import("../../epigraphy/beneficiarii-term-detector/index.js"),
+  "futurology/futures-radar-signal-database-tag-schema-designer": () => import("../../futurology/futures-radar-signal-database-tag-schema-designer/index.js"),
   "geology/fracture-pressure-gradient-eaton": () => import("../../geology/fracture-pressure-gradient-eaton/index.js"),
   "geology/helium-diffusion-closure-temperature": () => import("../../geology/helium-diffusion-closure-temperature/index.js"),
   "json/unflatten": () => import("../../json/unflatten/index.js"),

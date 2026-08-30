@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "construction/insulation-u-value": () => import("../../construction/insulation-u-value/index.js"),
   "convert/byte-swap": () => import("../../convert/byte-swap/index.js"),
   "electronics/transformer-volts-per-turn": () => import("../../electronics/transformer-volts-per-turn/index.js"),
+  "futurology/connectivity-everywhere-driver-chain-builder": () => import("../../futurology/connectivity-everywhere-driver-chain-builder/index.js"),
   "geology/active-earth-pressure-coefficient": () => import("../../geology/active-earth-pressure-coefficient/index.js"),
   "logistics/negotiated-discount-off-invoice-percent": () => import("../../logistics/negotiated-discount-off-invoice-percent/index.js"),
   "metrics/matthews-correlation": () => import("../../metrics/matthews-correlation/index.js"),

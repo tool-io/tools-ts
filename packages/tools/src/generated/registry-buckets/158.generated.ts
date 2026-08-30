@@ -6,6 +6,8 @@ export const toolModuleLoaders: Readonly<
 > = {
   "actuarial/monthly-premium-conversion": () => import("../../actuarial/monthly-premium-conversion/index.js"),
   "arithmetic/distance-to-next-power-of-two": () => import("../../arithmetic/distance-to-next-power-of-two/index.js"),
+  "auditing/contingency-range-accrual-policy-consistency-checker": () => import("../../auditing/contingency-range-accrual-policy-consistency-checker/index.js"),
+  "auditing/key-audit-matters-cam-kam-jurisdiction-crosswalk-lookup": () => import("../../auditing/key-audit-matters-cam-kam-jurisdiction-crosswalk-lookup/index.js"),
   "biology/diversity-hill-n1": () => import("../../biology/diversity-hill-n1/index.js"),
   "chemistry/gibbs-from-k": () => import("../../chemistry/gibbs-from-k/index.js"),
   "chemistry/mass-percent": () => import("../../chemistry/mass-percent/index.js"),
@@ -18,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/cartouche-aspect-ratio-checker": () => import("../../epigraphy/cartouche-aspect-ratio-checker/index.js"),
   "forestry/dominant-height": () => import("../../forestry/dominant-height/index.js"),
   "forestry/volume-smalian": () => import("../../forestry/volume-smalian/index.js"),
+  "futurology/official-future-shadow-scenario-set-builder": () => import("../../futurology/official-future-shadow-scenario-set-builder/index.js"),
   "geology/buckley-leverett-front-saturation": () => import("../../geology/buckley-leverett-front-saturation/index.js"),
   "geology/dip-direction-to-strike": () => import("../../geology/dip-direction-to-strike/index.js"),
   "geometry/bounding-box": () => import("../../geometry/bounding-box/index.js"),

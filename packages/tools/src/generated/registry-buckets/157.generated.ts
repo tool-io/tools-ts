@@ -5,6 +5,8 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/fresnel-number-barrier": () => import("../../acoustics/fresnel-number-barrier/index.js"),
+  "auditing/compilation-review-audit-assurance-level-ladder": () => import("../../auditing/compilation-review-audit-assurance-level-ladder/index.js"),
+  "auditing/engagement-letter-inclusion-elements-checklist": () => import("../../auditing/engagement-letter-inclusion-elements-checklist/index.js"),
   "aviation/cabin-pressure-altitude": () => import("../../aviation/cabin-pressure-altitude/index.js"),
   "biology/area-under-curve-trapezoidal": () => import("../../biology/area-under-curve-trapezoidal/index.js"),
   "chemistry/wet-bulb-temperature": () => import("../../chemistry/wet-bulb-temperature/index.js"),
@@ -14,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/audio-power-to-spl": () => import("../../electronics/audio-power-to-spl/index.js"),
   "electronics/crystal-series-resistance": () => import("../../electronics/crystal-series-resistance/index.js"),
   "film/film-frames-count": () => import("../../film/film-frames-count/index.js"),
+  "futurology/triz-contradiction-matrix-40-principles-lookup": () => import("../../futurology/triz-contradiction-matrix-40-principles-lookup/index.js"),
   "hash/ripemd-160": () => import("../../hash/ripemd-160/index.js"),
   "hash/sha-512": () => import("../../hash/sha-512/index.js"),
   "logistics/zone-based-rate-table-step-lookup": () => import("../../logistics/zone-based-rate-table-step-lookup/index.js"),

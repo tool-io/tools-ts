@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/fistulae-calx-note-generator": () => import("../../epigraphy/fistulae-calx-note-generator/index.js"),
   "epigraphy/fragment-join-confidence-scorer": () => import("../../epigraphy/fragment-join-confidence-scorer/index.js"),
   "epigraphy/stipendiorum-years-extractor": () => import("../../epigraphy/stipendiorum-years-extractor/index.js"),
+  "futurology/superforecasting-traits-tetlock-team-traits-lookup": () => import("../../futurology/superforecasting-traits-tetlock-team-traits-lookup/index.js"),
   "graph/bipartite-checker": () => import("../../graph/bipartite-checker/index.js"),
   "logistics/parcel-locker-saving-percent-compare": () => import("../../logistics/parcel-locker-saving-percent-compare/index.js"),
   "music/loudness-lufs-streaming-target-offset": () => import("../../music/loudness-lufs-streaming-target-offset/index.js"),

@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "actuarial/term-life-annuity-epv": () => import("../../actuarial/term-life-annuity-epv/index.js"),
   "aquaculture/larval-survival-rate": () => import("../../aquaculture/larval-survival-rate/index.js"),
+  "auditing/soc1-vs-soc2-report-user-auditor-usage-lookup": () => import("../../auditing/soc1-vs-soc2-report-user-auditor-usage-lookup/index.js"),
   "aviation/density-at-altitude": () => import("../../aviation/density-at-altitude/index.js"),
   "biology/genomic-relationship": () => import("../../biology/genomic-relationship/index.js"),
   "biology/primer-3prime-gc-clamp-count": () => import("../../biology/primer-3prime-gc-clamp-count/index.js"),

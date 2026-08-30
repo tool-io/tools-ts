@@ -18,6 +18,8 @@ export const toolModuleLoaders: Readonly<
   "electronics/microstrip-impedance-approx": () => import("../../electronics/microstrip-impedance-approx/index.js"),
   "electronics/nco-frequency-resolution": () => import("../../electronics/nco-frequency-resolution/index.js"),
   "epigraphy/letter-frequency-histogram": () => import("../../epigraphy/letter-frequency-histogram/index.js"),
+  "futurology/cryonics-information-theoretic-death-threshold-lookup": () => import("../../futurology/cryonics-information-theoretic-death-threshold-lookup/index.js"),
+  "futurology/strategy-robustness-across-quadrants-score": () => import("../../futurology/strategy-robustness-across-quadrants-score/index.js"),
   "generate/open-shop-scheduling-instance": () => import("../../generate/open-shop-scheduling-instance/index.js"),
   "linguistics/comparative-adjective": () => import("../../linguistics/comparative-adjective/index.js"),
   "oenology/ph-ta-balance": () => import("../../oenology/ph-ta-balance/index.js"),

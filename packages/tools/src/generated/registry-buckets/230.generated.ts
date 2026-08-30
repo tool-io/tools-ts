@@ -7,6 +7,7 @@ export const toolModuleLoaders: Readonly<
   "actuarial/buhlmann-straub-credibility": () => import("../../actuarial/buhlmann-straub-credibility/index.js"),
   "actuarial/decreasing-term-epv": () => import("../../actuarial/decreasing-term-epv/index.js"),
   "arithmetic/percentage-points": () => import("../../arithmetic/percentage-points/index.js"),
+  "auditing/sampling-statistical-nonstatistical-selection-classifier": () => import("../../auditing/sampling-statistical-nonstatistical-selection-classifier/index.js"),
   "aviation/headwind-crosswind-decomposition": () => import("../../aviation/headwind-crosswind-decomposition/index.js"),
   "biology/miniature-endplate-potential": () => import("../../biology/miniature-endplate-potential/index.js"),
   "chemistry/gas-density-stp": () => import("../../chemistry/gas-density-stp/index.js"),

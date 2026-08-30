@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/pulse-repetition-range-ambiguity": () => import("../../acoustics/pulse-repetition-range-ambiguity/index.js"),
+  "auditing/wrap-up-file-final-review-partner-signoff-checklist": () => import("../../auditing/wrap-up-file-final-review-partner-signoff-checklist/index.js"),
   "carpentry/furnier-bild-gestuerzt-geschoben-lookup": () => import("../../carpentry/furnier-bild-gestuerzt-geschoben-lookup/index.js"),
   "carpentry/minifix-bohrbild-34mm": () => import("../../carpentry/minifix-bohrbild-34mm/index.js"),
   "carpentry/tuer-blatt-dicke-40-44mm": () => import("../../carpentry/tuer-blatt-dicke-40-44mm/index.js"),
@@ -20,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/transformer-regulation": () => import("../../electronics/transformer-regulation/index.js"),
   "electronics/triac-trigger-current": () => import("../../electronics/triac-trigger-current/index.js"),
   "engineering/beam-stress-combined-axial-bending": () => import("../../engineering/beam-stress-combined-axial-bending/index.js"),
+  "futurology/ubi-trials-outcomes-catalog-lookup": () => import("../../futurology/ubi-trials-outcomes-catalog-lookup/index.js"),
   "geodesy/wgs84-semi-major-lookup": () => import("../../geodesy/wgs84-semi-major-lookup/index.js"),
   "interpolation/linear": () => import("../../interpolation/linear/index.js"),
   "mycology/cap-cuticle-texture-mapper": () => import("../../mycology/cap-cuticle-texture-mapper/index.js"),

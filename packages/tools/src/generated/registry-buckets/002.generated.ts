@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "convert/text-to-mathematical-italic": () => import("../../convert/text-to-mathematical-italic/index.js"),
   "electronics/thermal-resistance": () => import("../../electronics/thermal-resistance/index.js"),
   "forestry/stand-density-index-reineke": () => import("../../forestry/stand-density-index-reineke/index.js"),
+  "futurology/four-day-week-trial-productivity-comparison": () => import("../../futurology/four-day-week-trial-productivity-comparison/index.js"),
   "generate/bin-packing-instance": () => import("../../generate/bin-packing-instance/index.js"),
   "geology/pore-pressure-prediction-eaton-resistivity": () => import("../../geology/pore-pressure-prediction-eaton-resistivity/index.js"),
   "math/expression-evaluator": () => import("../../math/expression-evaluator/index.js"),

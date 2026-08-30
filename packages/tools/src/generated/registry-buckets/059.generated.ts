@@ -13,6 +13,8 @@ export const toolModuleLoaders: Readonly<
   "electronics/q-from-bandwidth": () => import("../../electronics/q-from-bandwidth/index.js"),
   "electronics/third-order-intercept-point": () => import("../../electronics/third-order-intercept-point/index.js"),
   "forestry/trees-per-hectare-from-plot": () => import("../../forestry/trees-per-hectare-from-plot/index.js"),
+  "futurology/causal-layered-analysis-litany-to-metaphor-depths": () => import("../../futurology/causal-layered-analysis-litany-to-metaphor-depths/index.js"),
+  "futurology/probable-plausible-preferable-scenario-sorter": () => import("../../futurology/probable-plausible-preferable-scenario-sorter/index.js"),
   "logistics/fuel-price-per-mile-burn": () => import("../../logistics/fuel-price-per-mile-burn/index.js"),
   "microcontroller/circular-buffer-index": () => import("../../microcontroller/circular-buffer-index/index.js"),
   "numismatics/type-set-completeness-percent": () => import("../../numismatics/type-set-completeness-percent/index.js"),

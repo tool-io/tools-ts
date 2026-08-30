@@ -6,6 +6,8 @@ export const toolModuleLoaders: Readonly<
 > = {
   "actuarial/probability-first-cause": () => import("../../actuarial/probability-first-cause/index.js"),
   "aquaculture/length-weight-conversion": () => import("../../aquaculture/length-weight-conversion/index.js"),
+  "auditing/rmm-inherent-control-risk-model-lookup": () => import("../../auditing/rmm-inherent-control-risk-model-lookup/index.js"),
+  "auditing/those-charged-with-governance-required-communications-checklist": () => import("../../auditing/those-charged-with-governance-required-communications-checklist/index.js"),
   "aviation/vy-speed": () => import("../../aviation/vy-speed/index.js"),
   "biology/cell-cycle-g1-percentage": () => import("../../biology/cell-cycle-g1-percentage/index.js"),
   "biology/rna-copy-number": () => import("../../biology/rna-copy-number/index.js"),

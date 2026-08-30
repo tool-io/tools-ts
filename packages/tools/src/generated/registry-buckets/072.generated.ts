@@ -5,6 +5,8 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "aquaculture/alkalinity-requirement": () => import("../../aquaculture/alkalinity-requirement/index.js"),
+  "auditing/block-stratified-selection-coverage-adequacy-checker": () => import("../../auditing/block-stratified-selection-coverage-adequacy-checker/index.js"),
+  "auditing/fictitious-vendor-w9-bank-duplicate-detector": () => import("../../auditing/fictitious-vendor-w9-bank-duplicate-detector/index.js"),
   "biology/fat-free-mass": () => import("../../biology/fat-free-mass/index.js"),
   "carpentry/werkstatt-klima-ausgleichsfeuchte-lookup": () => import("../../carpentry/werkstatt-klima-ausgleichsfeuchte-lookup/index.js"),
   "chemistry/analytical-signal-to-noise": () => import("../../chemistry/analytical-signal-to-noise/index.js"),

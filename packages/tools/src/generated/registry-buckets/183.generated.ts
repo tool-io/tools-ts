@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/experience-modification-factor": () => import("../../actuarial/experience-modification-factor/index.js"),
+  "auditing/component-auditor-work-reference-usage-decision-lookup": () => import("../../auditing/component-auditor-work-reference-usage-decision-lookup/index.js"),
   "aviation/runway-wind-total": () => import("../../aviation/runway-wind-total/index.js"),
   "biology/anthocyanin-content": () => import("../../biology/anthocyanin-content/index.js"),
   "biology/fev1-fvc-ratio": () => import("../../biology/fev1-fvc-ratio/index.js"),

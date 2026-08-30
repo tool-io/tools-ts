@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/audio-reverb-decay": () => import("../../electronics/audio-reverb-decay/index.js"),
   "electronics/dac-inl": () => import("../../electronics/dac-inl/index.js"),
   "electronics/supercapacitor-leakage-current": () => import("../../electronics/supercapacitor-leakage-current/index.js"),
+  "futurology/web3-crypto-forecast-spectrum-utopian-critical-lookup": () => import("../../futurology/web3-crypto-forecast-spectrum-utopian-critical-lookup/index.js"),
   "game-theory/pure-nash-equilibria": () => import("../../game-theory/pure-nash-equilibria/index.js"),
   "geometry/circle-sector-area": () => import("../../geometry/circle-sector-area/index.js"),
   "laser/laser-nd-yag-four-level-rate-equation-threshold-inversion-computation": () => import("../../laser/laser-nd-yag-four-level-rate-equation-threshold-inversion-computation/index.js"),

@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "film/trailer-runtime-total": () => import("../../film/trailer-runtime-total/index.js"),
   "forestry/crown-bulk-density": () => import("../../forestry/crown-bulk-density/index.js"),
   "forestry/plot-radius-from-area": () => import("../../forestry/plot-radius-from-area/index.js"),
+  "futurology/digitalization-acceleration-driver-tree": () => import("../../futurology/digitalization-acceleration-driver-tree/index.js"),
   "geojson/centroid": () => import("../../geojson/centroid/index.js"),
   "geology/cement-volume-required": () => import("../../geology/cement-volume-required/index.js"),
   "geology/well-log-rxo-porosity": () => import("../../geology/well-log-rxo-porosity/index.js"),

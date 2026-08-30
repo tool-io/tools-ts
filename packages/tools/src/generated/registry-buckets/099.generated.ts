@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/bornhuetter-ferguson-reserve": () => import("../../actuarial/bornhuetter-ferguson-reserve/index.js"),
+  "auditing/evidence-relevance-reliability-two-axis-lookup": () => import("../../auditing/evidence-relevance-reliability-two-axis-lookup/index.js"),
   "aviation/lift-to-drag-ratio": () => import("../../aviation/lift-to-drag-ratio/index.js"),
   "biology/stomatal-density": () => import("../../biology/stomatal-density/index.js"),
   "chemistry/reduced-temperature": () => import("../../chemistry/reduced-temperature/index.js"),
@@ -17,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/stoichedon-alignment-checker": () => import("../../epigraphy/stoichedon-alignment-checker/index.js"),
   "film/depth-of-field-near-limit": () => import("../../film/depth-of-field-near-limit/index.js"),
   "forestry/dbh-from-circumference": () => import("../../forestry/dbh-from-circumference/index.js"),
+  "futurology/red-team-devils-advocate-assumption-attack-protocol": () => import("../../futurology/red-team-devils-advocate-assumption-attack-protocol/index.js"),
   "geology/cement-compressive-strength": () => import("../../geology/cement-compressive-strength/index.js"),
   "random/letter": () => import("../../random/letter/index.js"),
   "sailing/ferry-glide-course": () => import("../../sailing/ferry-glide-course/index.js"),

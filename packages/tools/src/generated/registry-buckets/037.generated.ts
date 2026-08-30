@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/manning-flow-rate": () => import("../../engineering/manning-flow-rate/index.js"),
   "engineering/pump-npsh-available": () => import("../../engineering/pump-npsh-available/index.js"),
   "forestry/diameter-growth-annual": () => import("../../forestry/diameter-growth-annual/index.js"),
+  "futurology/amara-law-short-run-overestimate-rule-lookup": () => import("../../futurology/amara-law-short-run-overestimate-rule-lookup/index.js"),
   "horology/tourbillon-revolutions-per-day": () => import("../../horology/tourbillon-revolutions-per-day/index.js"),
   "logistics/limited-access-fee-checker": () => import("../../logistics/limited-access-fee-checker/index.js"),
   "numismatics/junk-silver-face-value-multiplier": () => import("../../numismatics/junk-silver-face-value-multiplier/index.js"),

@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/capacitor-impedance-at-frequency": () => import("../../electronics/capacitor-impedance-at-frequency/index.js"),
   "electronics/motor-no-load-speed": () => import("../../electronics/motor-no-load-speed/index.js"),
   "engineering/manning-velocity": () => import("../../engineering/manning-velocity/index.js"),
+  "futurology/longevity-economy-driver-implication-chain": () => import("../../futurology/longevity-economy-driver-implication-chain/index.js"),
   "logistics/large-package-cubic-capacity-checker": () => import("../../logistics/large-package-cubic-capacity-checker/index.js"),
   "oenology/heat-spike-risk": () => import("../../oenology/heat-spike-risk/index.js"),
   "optimization/adam-step": () => import("../../optimization/adam-step/index.js"),

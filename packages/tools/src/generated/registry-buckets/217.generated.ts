@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/frequency-from-wavelength": () => import("../../acoustics/frequency-from-wavelength/index.js"),
   "archival-studies/iiif-image-url-formatter-v2": () => import("../../archival-studies/iiif-image-url-formatter-v2/index.js"),
+  "auditing/emphasis-of-matter-other-matter-paragraph-selector": () => import("../../auditing/emphasis-of-matter-other-matter-paragraph-selector/index.js"),
   "aviation/fuel-per-hour-from-burn": () => import("../../aviation/fuel-per-hour-from-burn/index.js"),
   "biology/heterozygosity-observed": () => import("../../biology/heterozygosity-observed/index.js"),
   "carpentry/vakuumpresse-druck": () => import("../../carpentry/vakuumpresse-druck/index.js"),

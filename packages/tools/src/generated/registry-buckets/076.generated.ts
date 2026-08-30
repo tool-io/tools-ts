@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "construction/insulation-heat-loss": () => import("../../construction/insulation-heat-loss/index.js"),
   "date/day-of-year": () => import("../../date/day-of-year/index.js"),
   "electronics/fiber-dispersion-delay": () => import("../../electronics/fiber-dispersion-delay/index.js"),
+  "futurology/foresight-deliverable-types-report-formats-lookup": () => import("../../futurology/foresight-deliverable-types-report-formats-lookup/index.js"),
   "geology/cooper-jacob-transmissivity": () => import("../../geology/cooper-jacob-transmissivity/index.js"),
   "horology/residual-amplitude": () => import("../../horology/residual-amplitude/index.js"),
   "normalize/min-max": () => import("../../normalize/min-max/index.js"),

@@ -5,6 +5,8 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/speed-of-sound-air-temperature": () => import("../../acoustics/speed-of-sound-air-temperature/index.js"),
+  "auditing/pcaob-inspection-common-deficiency-categories-lookup": () => import("../../auditing/pcaob-inspection-common-deficiency-categories-lookup/index.js"),
+  "auditing/walkthrough-narrative-flowchart-conventions-lookup": () => import("../../auditing/walkthrough-narrative-flowchart-conventions-lookup/index.js"),
   "biology/compliance-static": () => import("../../biology/compliance-static/index.js"),
   "chemistry/activity-coefficient": () => import("../../chemistry/activity-coefficient/index.js"),
   "chemistry/initial-rate": () => import("../../chemistry/initial-rate/index.js"),

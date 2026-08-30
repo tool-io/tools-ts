@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/milling-removal-rate": () => import("../../engineering/milling-removal-rate/index.js"),
   "finance/risk-parity": () => import("../../finance/risk-parity/index.js"),
   "forestry/current-annual-increment": () => import("../../forestry/current-annual-increment/index.js"),
+  "futurology/assumption-reversal-question-generator": () => import("../../futurology/assumption-reversal-question-generator/index.js"),
   "geology/clinoform-height": () => import("../../geology/clinoform-height/index.js"),
   "geology/stratigraphic-thickness-true-vs-apparent": () => import("../../geology/stratigraphic-thickness-true-vs-apparent/index.js"),
   "mycology/pore-density-counter": () => import("../../mycology/pore-density-counter/index.js"),

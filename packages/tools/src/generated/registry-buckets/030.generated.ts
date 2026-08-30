@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/graham-time-effusion": () => import("../../chemistry/graham-time-effusion/index.js"),
   "chemistry/ionic-mobility": () => import("../../chemistry/ionic-mobility/index.js"),
   "demography/ever-married-by-age-interpolation": () => import("../../demography/ever-married-by-age-interpolation/index.js"),
+  "futurology/nbic-convergence-nano-bio-info-cogno-driver-tree": () => import("../../futurology/nbic-convergence-nano-bio-info-cogno-driver-tree/index.js"),
   "graph/node2vec-plus-plus-transition": () => import("../../graph/node2vec-plus-plus-transition/index.js"),
   "laser/laser-attosecond-streaking-phase-retrieval-window-note-lookup": () => import("../../laser/laser-attosecond-streaking-phase-retrieval-window-note-lookup/index.js"),
   "logistics/billable-weight-max-actual-dim": () => import("../../logistics/billable-weight-max-actual-dim/index.js"),

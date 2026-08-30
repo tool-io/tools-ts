@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/stress-force": () => import("../../engineering/stress-force/index.js"),
   "epigraphy/cognomen-element-tally": () => import("../../epigraphy/cognomen-element-tally/index.js"),
   "forestry/fuel-moisture-content": () => import("../../forestry/fuel-moisture-content/index.js"),
+  "futurology/trend-impact-analysis-event-strength-adjuster": () => import("../../futurology/trend-impact-analysis-event-strength-adjuster/index.js"),
   "geo/bearing": () => import("../../geo/bearing/index.js"),
   "geology/mohs-hardness-lookup": () => import("../../geology/mohs-hardness-lookup/index.js"),
   "horology/pulsometer-heart-rate": () => import("../../horology/pulsometer-heart-rate/index.js"),

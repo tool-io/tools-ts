@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/optocoupler-ctr": () => import("../../electronics/optocoupler-ctr/index.js"),
   "engineering/fillet-weld-throat": () => import("../../engineering/fillet-weld-throat/index.js"),
   "engineering/thin-walled-torsion": () => import("../../engineering/thin-walled-torsion/index.js"),
+  "futurology/systems-iceberg-events-patterns-structures-models-lookup": () => import("../../futurology/systems-iceberg-events-patterns-structures-models-lookup/index.js"),
   "geology/activity-number": () => import("../../geology/activity-number/index.js"),
   "geology/curvature-coefficient": () => import("../../geology/curvature-coefficient/index.js"),
   "geology/seismic-interval-velocity-dix": () => import("../../geology/seismic-interval-velocity-dix/index.js"),

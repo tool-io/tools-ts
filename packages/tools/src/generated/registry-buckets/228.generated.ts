@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/positive-vs-negative-confirmation-type-selector-lookup": () => import("../../auditing/positive-vs-negative-confirmation-type-selector-lookup/index.js"),
+  "auditing/surprise-cash-count-unannounced-rotation-checker": () => import("../../auditing/surprise-cash-count-unannounced-rotation-checker/index.js"),
   "biology/cell-doubling-time": () => import("../../biology/cell-doubling-time/index.js"),
   "biology/schnabel-estimator": () => import("../../biology/schnabel-estimator/index.js"),
   "carpentry/cabinet-door-gap": () => import("../../carpentry/cabinet-door-gap/index.js"),

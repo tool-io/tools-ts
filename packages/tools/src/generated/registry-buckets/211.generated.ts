@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "decode/url-component": () => import("../../decode/url-component/index.js"),
   "electronics/fuel-gauge-soc-from-voltage": () => import("../../electronics/fuel-gauge-soc-from-voltage/index.js"),
   "engineering/generator-emf": () => import("../../engineering/generator-emf/index.js"),
+  "futurology/horizon-scanning-team-cadence-report-template": () => import("../../futurology/horizon-scanning-team-cadence-report-template/index.js"),
   "geology/nodal-analysis-outflow-performance": () => import("../../geology/nodal-analysis-outflow-performance/index.js"),
   "number/least-common-multiple": () => import("../../number/least-common-multiple/index.js"),
   "oenology/egg-white-fining-dose": () => import("../../oenology/egg-white-fining-dose/index.js"),

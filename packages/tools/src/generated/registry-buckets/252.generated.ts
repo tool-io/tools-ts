@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/quarterly-premium-conversion": () => import("../../actuarial/quarterly-premium-conversion/index.js"),
+  "auditing/unrecorded-liabilities-subsequent-disbursements-search-procedure": () => import("../../auditing/unrecorded-liabilities-subsequent-disbursements-search-procedure/index.js"),
   "biology/brain-body-ratio": () => import("../../biology/brain-body-ratio/index.js"),
   "biology/cardiac-output": () => import("../../biology/cardiac-output/index.js"),
   "carpentry/dovetail-spacing": () => import("../../carpentry/dovetail-spacing/index.js"),

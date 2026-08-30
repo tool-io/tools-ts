@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/heat-conduction-fourier": () => import("../../engineering/heat-conduction-fourier/index.js"),
   "epigraphy/ae-reference-parser": () => import("../../epigraphy/ae-reference-parser/index.js"),
   "film/box-office-per-capita": () => import("../../film/box-office-per-capita/index.js"),
+  "futurology/aging-population-driver-implication-chain": () => import("../../futurology/aging-population-driver-implication-chain/index.js"),
   "geology/oil-formation-volume-factor": () => import("../../geology/oil-formation-volume-factor/index.js"),
   "horology/strike-train-energy": () => import("../../horology/strike-train-energy/index.js"),
   "logistics/orders-per-hour-picker-throughput": () => import("../../logistics/orders-per-hour-picker-throughput/index.js"),

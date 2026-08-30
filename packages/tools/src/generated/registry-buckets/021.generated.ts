@@ -6,6 +6,8 @@ export const toolModuleLoaders: Readonly<
 > = {
   "arithmetic/add-two-numbers": () => import("../../arithmetic/add-two-numbers/index.js"),
   "arithmetic/subtract-numbers": () => import("../../arithmetic/subtract-numbers/index.js"),
+  "auditing/electronic-workpaper-binder-signature-rollforward-lookup": () => import("../../auditing/electronic-workpaper-binder-signature-rollforward-lookup/index.js"),
+  "auditing/fixed-asset-existence-floor-sample-sight-verification": () => import("../../auditing/fixed-asset-existence-floor-sample-sight-verification/index.js"),
   "aviation/max-range-airspeed": () => import("../../aviation/max-range-airspeed/index.js"),
   "biology/nitrogen-use-efficiency": () => import("../../biology/nitrogen-use-efficiency/index.js"),
   "carpentry/tuer-luft-unten-7mm": () => import("../../carpentry/tuer-luft-unten-7mm/index.js"),

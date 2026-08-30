@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/single-audit-expenditure-threshold-checker": () => import("../../auditing/single-audit-expenditure-threshold-checker/index.js"),
   "aviation/cg-shift-fuel": () => import("../../aviation/cg-shift-fuel/index.js"),
   "aviation/final-reserve-fuel": () => import("../../aviation/final-reserve-fuel/index.js"),
   "biology/fisher-alpha-diversity": () => import("../../biology/fisher-alpha-diversity/index.js"),
@@ -18,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/can-bus-bit-rate-from-length": () => import("../../electronics/can-bus-bit-rate-from-length/index.js"),
   "electronics/schmitt-oscillator-frequency": () => import("../../electronics/schmitt-oscillator-frequency/index.js"),
   "electronics/voltage-gain-linear": () => import("../../electronics/voltage-gain-linear/index.js"),
+  "futurology/hallmarks-of-aging-nine-list-lookup": () => import("../../futurology/hallmarks-of-aging-nine-list-lookup/index.js"),
   "number/catalan-checker": () => import("../../number/catalan-checker/index.js"),
   "number/modular-exponentiation": () => import("../../number/modular-exponentiation/index.js"),
   "parse/query-string": () => import("../../parse/query-string/index.js"),

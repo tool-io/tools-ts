@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "actuarial/crvm-modified-reserve": () => import("../../actuarial/crvm-modified-reserve/index.js"),
   "arithmetic/increment": () => import("../../arithmetic/increment/index.js"),
+  "auditing/fraud-brainstorming-session-required-elements-checklist": () => import("../../auditing/fraud-brainstorming-session-required-elements-checklist/index.js"),
   "biology/ace-estimator": () => import("../../biology/ace-estimator/index.js"),
   "biology/mean-corpuscular-hemoglobin": () => import("../../biology/mean-corpuscular-hemoglobin/index.js"),
   "cartography/sheet-area-at-scale-km2": () => import("../../cartography/sheet-area-at-scale-km2/index.js"),
@@ -14,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/rc-cutoff-frequency": () => import("../../electronics/rc-cutoff-frequency/index.js"),
   "electronics/transformer-winding-resistance-dc": () => import("../../electronics/transformer-winding-resistance-dc/index.js"),
   "engineering/stopping-sight-distance": () => import("../../engineering/stopping-sight-distance/index.js"),
+  "futurology/afrofuturism-cultural-tech-imagination-lookup": () => import("../../futurology/afrofuturism-cultural-tech-imagination-lookup/index.js"),
   "geology/seismic-nmo-correction": () => import("../../geology/seismic-nmo-correction/index.js"),
   "geometry/circular-segment-area": () => import("../../geometry/circular-segment-area/index.js"),
   "http/header-name-normalizer": () => import("../../http/header-name-normalizer/index.js"),

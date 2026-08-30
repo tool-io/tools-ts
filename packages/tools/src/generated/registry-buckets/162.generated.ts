@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/internal-audit-ippf-attribute-performance-framework-lookup": () => import("../../auditing/internal-audit-ippf-attribute-performance-framework-lookup/index.js"),
   "biology/a260-a280-ratio": () => import("../../biology/a260-a280-ratio/index.js"),
   "biology/hardy-weinberg-genotype-frequency": () => import("../../biology/hardy-weinberg-genotype-frequency/index.js"),
   "biology/mcintosh-diversity": () => import("../../biology/mcintosh-diversity/index.js"),

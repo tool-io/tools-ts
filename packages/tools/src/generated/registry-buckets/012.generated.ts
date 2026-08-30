@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "accounting/cash-conversion-cycle-dso-dpo-dio": () => import("../../accounting/cash-conversion-cycle-dso-dpo-dio/index.js"),
   "acoustics/wave-number-calculator": () => import("../../acoustics/wave-number-calculator/index.js"),
+  "auditing/program-expenditure-threshold-screen": () => import("../../auditing/program-expenditure-threshold-screen/index.js"),
   "biology/dominance-simpson-reciprocal": () => import("../../biology/dominance-simpson-reciprocal/index.js"),
   "biology/lowry-protein-conc": () => import("../../biology/lowry-protein-conc/index.js"),
   "biology/shunt-fraction": () => import("../../biology/shunt-fraction/index.js"),

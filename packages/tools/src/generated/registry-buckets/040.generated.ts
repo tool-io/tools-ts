@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "actuarial/increasing-whole-life-epv": () => import("../../actuarial/increasing-whole-life-epv/index.js"),
   "actuarial/last-survivor-annuity-epv": () => import("../../actuarial/last-survivor-annuity-epv/index.js"),
   "arithmetic/ratio-to-percentage": () => import("../../arithmetic/ratio-to-percentage/index.js"),
+  "auditing/electronic-confirmation-direct-source-reliability-checker": () => import("../../auditing/electronic-confirmation-direct-source-reliability-checker/index.js"),
   "aviation/glide-distance": () => import("../../aviation/glide-distance/index.js"),
   "biology/hematocrit-percentage": () => import("../../biology/hematocrit-percentage/index.js"),
   "chemistry/bet-isotherm-monolayer": () => import("../../chemistry/bet-isotherm-monolayer/index.js"),

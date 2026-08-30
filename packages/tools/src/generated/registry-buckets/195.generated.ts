@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "archival-studies/edtf-qualifier-decoder": () => import("../../archival-studies/edtf-qualifier-decoder/index.js"),
+  "auditing/partner-rotation-time-out-period-checker": () => import("../../auditing/partner-rotation-time-out-period-checker/index.js"),
   "aviation/eta-at-waypoint": () => import("../../aviation/eta-at-waypoint/index.js"),
   "biology/cfse-mean-fluorescence": () => import("../../biology/cfse-mean-fluorescence/index.js"),
   "biology/transfection-efficiency": () => import("../../biology/transfection-efficiency/index.js"),

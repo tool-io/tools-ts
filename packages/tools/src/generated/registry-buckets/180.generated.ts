@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/rollover-forward-workpaper-prior-year-balance-procedure": () => import("../../auditing/rollover-forward-workpaper-prior-year-balance-procedure/index.js"),
   "biology/proliferation-index-ki67": () => import("../../biology/proliferation-index-ki67/index.js"),
   "carpentry/schrank-tuer-spaltmass-3mm": () => import("../../carpentry/schrank-tuer-spaltmass-3mm/index.js"),
   "chemistry/bond-length-from-order": () => import("../../chemistry/bond-length-from-order/index.js"),

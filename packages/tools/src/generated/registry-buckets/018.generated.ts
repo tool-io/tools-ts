@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "film/frame-rate-to-shutter-speed": () => import("../../film/frame-rate-to-shutter-speed/index.js"),
   "film/hyperfocal-near-limit": () => import("../../film/hyperfocal-near-limit/index.js"),
   "film/reel-length-2000ft": () => import("../../film/reel-length-2000ft/index.js"),
+  "futurology/six-pillars-futures-thinking-methods-map": () => import("../../futurology/six-pillars-futures-thinking-methods-map/index.js"),
   "geology/seismic-resolution-horizontal-fresnel-zone": () => import("../../geology/seismic-resolution-horizontal-fresnel-zone/index.js"),
   "logistics/days-of-supply-turnover": () => import("../../logistics/days-of-supply-turnover/index.js"),
   "mycology/phialide-collarette-detector": () => import("../../mycology/phialide-collarette-detector/index.js"),

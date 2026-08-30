@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "air-displacement-body-composition": () => import("../../air-displacement-body-composition/index.js"),
+  "auditing/interim-review-quarterly-analytics-checkpoint-lookup": () => import("../../auditing/interim-review-quarterly-analytics-checkpoint-lookup/index.js"),
   "aviation/corrected-altitude": () => import("../../aviation/corrected-altitude/index.js"),
   "aviation/true-course": () => import("../../aviation/true-course/index.js"),
   "carpentry/scharnier-eck-mittel-innen-lookup": () => import("../../carpentry/scharnier-eck-mittel-innen-lookup/index.js"),
@@ -16,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/resistor-color-code-decode": () => import("../../electronics/resistor-color-code-decode/index.js"),
   "electronics/resistor-johnson-noise": () => import("../../electronics/resistor-johnson-noise/index.js"),
   "electronics/transformer-impedance-ratio": () => import("../../electronics/transformer-impedance-ratio/index.js"),
+  "futurology/backcasting-milestone-reverse-planner": () => import("../../futurology/backcasting-milestone-reverse-planner/index.js"),
   "geology/ree-anomaly-ce": () => import("../../geology/ree-anomaly-ce/index.js"),
   "geology/storativity-confined": () => import("../../geology/storativity-confined/index.js"),
   "geometry/chord-length": () => import("../../geometry/chord-length/index.js"),

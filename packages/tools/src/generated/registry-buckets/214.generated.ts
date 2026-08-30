@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "arithmetic/subtract-two-numbers": () => import("../../arithmetic/subtract-two-numbers/index.js"),
+  "auditing/three-lines-model-roles-assurance-lookup": () => import("../../auditing/three-lines-model-roles-assurance-lookup/index.js"),
   "carpentry/finish-coverage": () => import("../../carpentry/finish-coverage/index.js"),
   "carpentry/ueberblattung-tiefe-half": () => import("../../carpentry/ueberblattung-tiefe-half/index.js"),
   "chemistry/ic50-to-ki": () => import("../../chemistry/ic50-to-ki/index.js"),

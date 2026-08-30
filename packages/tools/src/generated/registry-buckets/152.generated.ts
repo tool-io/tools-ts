@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "auditing/sox-404-integrated-audit-dual-opinion-scope-lookup": () => import("../../auditing/sox-404-integrated-audit-dual-opinion-scope-lookup/index.js"),
   "aviation/contingency-fuel-percentage": () => import("../../aviation/contingency-fuel-percentage/index.js"),
   "biology/cell-growth-rate": () => import("../../biology/cell-growth-rate/index.js"),
   "biology/nernst-membrane-potential": () => import("../../biology/nernst-membrane-potential/index.js"),

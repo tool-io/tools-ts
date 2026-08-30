@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/superelevation-rate": () => import("../../engineering/superelevation-rate/index.js"),
   "epigraphy/tribu-clause-detector": () => import("../../epigraphy/tribu-clause-detector/index.js"),
   "finance/compound-annual-growth-rate": () => import("../../finance/compound-annual-growth-rate/index.js"),
+  "futurology/digital-legacy-posthumous-data-sovereignty-checklist": () => import("../../futurology/digital-legacy-posthumous-data-sovereignty-checklist/index.js"),
   "geology/void-ratio": () => import("../../geology/void-ratio/index.js"),
   "logic/sat-to-cnf": () => import("../../logic/sat-to-cnf/index.js"),
   "number/prime-factorization": () => import("../../number/prime-factorization/index.js"),

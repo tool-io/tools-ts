@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/noise-metric-sel-from-event-leq": () => import("../../acoustics/noise-metric-sel-from-event-leq/index.js"),
   "arithmetic/floor-to-multiple": () => import("../../arithmetic/floor-to-multiple/index.js"),
+  "auditing/qualified-adverse-disclaimer-opinion-condition-crosswalk": () => import("../../auditing/qualified-adverse-disclaimer-opinion-condition-crosswalk/index.js"),
   "aviation/v-speed-vno": () => import("../../aviation/v-speed-vno/index.js"),
   "cartography/paper-a-series-area-mm2": () => import("../../cartography/paper-a-series-area-mm2/index.js"),
   "checksum/crc-64-go-iso": () => import("../../checksum/crc-64-go-iso/index.js"),

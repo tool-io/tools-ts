@@ -6,6 +6,8 @@ export const toolModuleLoaders: Readonly<
 > = {
   "algebra/linear-equation": () => import("../../algebra/linear-equation/index.js"),
   "archival-studies/webcrawl-frequency-recommender": () => import("../../archival-studies/webcrawl-frequency-recommender/index.js"),
+  "auditing/gifts-hospitality-threshold-firm-policy-lookup": () => import("../../auditing/gifts-hospitality-threshold-firm-policy-lookup/index.js"),
+  "auditing/workpaper-preparer-reviewer-sign-off-crossref-format": () => import("../../auditing/workpaper-preparer-reviewer-sign-off-crossref-format/index.js"),
   "biology/plasmid-copy-number-per-cell": () => import("../../biology/plasmid-copy-number-per-cell/index.js"),
   "cartography/text-height-ground-equivalent": () => import("../../cartography/text-height-ground-equivalent/index.js"),
   "chemistry/mixing-ratio": () => import("../../chemistry/mixing-ratio/index.js"),

@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/rti-highlight-count-checker": () => import("../../epigraphy/rti-highlight-count-checker/index.js"),
   "film/nd-filter-stops": () => import("../../film/nd-filter-stops/index.js"),
   "forestry/canopy-gap-fraction-forestry": () => import("../../forestry/canopy-gap-fraction-forestry/index.js"),
+  "futurology/urbanization-driver-implication-chain-builder": () => import("../../futurology/urbanization-driver-implication-chain-builder/index.js"),
   "geology/travel-time-p-wave": () => import("../../geology/travel-time-p-wave/index.js"),
   "geology/well-log-porosity-sonic-wyllie": () => import("../../geology/well-log-porosity-sonic-wyllie/index.js"),
   "geometry/tetrahedron-volume": () => import("../../geometry/tetrahedron-volume/index.js"),

@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/ship-buoyancy": () => import("../../engineering/ship-buoyancy/index.js"),
   "engineering/thermal-resistance-series": () => import("../../engineering/thermal-resistance-series/index.js"),
   "epigraphy/gentilicium-origin-hint-checker": () => import("../../epigraphy/gentilicium-origin-hint-checker/index.js"),
+  "futurology/shell-oil-scenario-origin-case-history-lookup": () => import("../../futurology/shell-oil-scenario-origin-case-history-lookup/index.js"),
   "geology/bubble-point-pressure-vasquez-beggs": () => import("../../geology/bubble-point-pressure-vasquez-beggs/index.js"),
   "geology/parasequence-thickness": () => import("../../geology/parasequence-thickness/index.js"),
   "geology/water-oil-ratio": () => import("../../geology/water-oil-ratio/index.js"),

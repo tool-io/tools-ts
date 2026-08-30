@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "actuarial/joint-life-annuity-epv": () => import("../../actuarial/joint-life-annuity-epv/index.js"),
   "actuarial/joint-life-expectation": () => import("../../actuarial/joint-life-expectation/index.js"),
+  "auditing/significant-risk-fraud-factor-flag-checker": () => import("../../auditing/significant-risk-fraud-factor-flag-checker/index.js"),
   "aviation/descent-rate": () => import("../../aviation/descent-rate/index.js"),
   "aviation/tailwind-landing-check": () => import("../../aviation/tailwind-landing-check/index.js"),
   "aviation/turn-diameter": () => import("../../aviation/turn-diameter/index.js"),
