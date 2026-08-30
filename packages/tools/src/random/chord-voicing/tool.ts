@@ -1,0 +1,16 @@
+import type { ToolExample } from "../../core/example.js";
+import { createSimpleTool, simpleError } from "../../core/simple.js";
+import { calculateMelodicRangeSpanSemitones } from "../../music/melodic-range-span-semitones/tool.js";
+import { runFrequencyFromMidi } from "../../music/frequency-from-midi/tool.js";
+import { sampleRandomSource, type RandomSource } from "../number/tool.js";
+export type RandomChordVoicingInput={readonly rootMidi:number;readonly intervals:readonly number[];readonly lowestMidi:number;readonly highestMidi:number};
+export type RandomChordVoicingOutput={readonly notes:readonly {readonly frequencyHertz:number;readonly interval:number;readonly midi:number}[];readonly rangeSemitones:number};
+const frequency=(midi:number):number|null=>{const result=runFrequencyFromMidi({midi});return result.ok?result.output.hz:null};
+export const calculateRandomChordVoicing=(input:RandomChordVoicingInput,random:RandomSource=Math.random):RandomChordVoicingOutput|null=>{
+ if(!Number.isSafeInteger(input.rootMidi)||!Number.isSafeInteger(input.lowestMidi)||!Number.isSafeInteger(input.highestMidi)||input.rootMidi<0||input.rootMidi>127||input.lowestMidi<0||input.highestMidi>127||input.lowestMidi>input.highestMidi||input.intervals.length===0||input.intervals.length>16||input.intervals.some((x)=>!Number.isSafeInteger(x)))return null;
+ const rangeSemitones=calculateMelodicRangeSpanSemitones({lowestMidi:input.lowestMidi,highestMidi:input.highestMidi}).rangeSemitones;const notes=[];
+ for(const interval of input.intervals){const candidates=Array.from({length:11},(_,i)=>input.rootMidi+interval+12*(i-5)).filter((m)=>m>=input.lowestMidi&&m<=input.highestMidi);const sample=sampleRandomSource(random);if(sample===null||candidates.length===0)return null;const midi=candidates[Math.floor(sample*candidates.length)]!;const frequencyHertz=frequency(midi);if(frequencyHertz===null)return null;notes.push({frequencyHertz,interval,midi});}
+ notes.sort((a,b)=>a.midi-b.midi);return{notes,rangeSemitones};};
+export const randomChordVoicingExample={input:{rootMidi:60,intervals:[0,4,7],lowestMidi:48,highestMidi:72}} satisfies ToolExample<RandomChordVoicingInput,{readonly result:RandomChordVoicingOutput}>;
+export const randomChordVoicingTool=createSimpleTool({calculate:(input,context)=>{const output=calculateRandomChordVoicing({rootMidi:input.rootMidi as number,intervals:input.intervals as number[],lowestMidi:input.lowestMidi as number,highestMidi:input.highestMidi as number},context.random??Math.random);if(!output)return simpleError("intervals","Provide chord intervals and a register containing every chord tone with valid randomness.","invalid_voicing_request");return {result:output};},description:"Choose one registered MIDI pitch for each supplied chord interval and return sorted notes with equal-tempered frequencies.",id:"random/chord-voicing",inputs:[{id:"rootMidi",kind:"integer",label:"Root MIDI",minimum:0,maximum:127},{id:"intervals",kind:"numberList",label:"Chord intervals"},{id:"lowestMidi",kind:"integer",label:"Lowest MIDI",minimum:0,maximum:127},{id:"highestMidi",kind:"integer",label:"Highest MIDI",minimum:0,maximum:127}],outputs:[{id:"result",kind:"object",label:"Generated result"}],title:"Random Chord Voicing Generator"});
+export const runRandomChordVoicing=randomChordVoicingTool.execute;export default randomChordVoicingTool;
