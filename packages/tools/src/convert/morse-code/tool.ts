@@ -21,16 +21,44 @@ export type MorseCodeOutput = {
 
 /** ITU Morse code; letters and digits only for version 1. */
 const LETTERS: Readonly<Record<string, string>> = {
-  a: ".-", b: "-...", c: "-.-.", d: "-..", e: ".", f: "..-.",
-  g: "--.", h: "....", i: "..", j: ".---", k: "-.-", l: ".-..",
-  m: "--", n: "-.", o: "---", p: ".--.", q: "--.-", r: ".-.",
-  s: "...", t: "-", u: "..-", v: "...-", w: ".--", x: "-..-",
-  y: "-.--", z: "--..",
+  a: ".-",
+  b: "-...",
+  c: "-.-.",
+  d: "-..",
+  e: ".",
+  f: "..-.",
+  g: "--.",
+  h: "....",
+  i: "..",
+  j: ".---",
+  k: "-.-",
+  l: ".-..",
+  m: "--",
+  n: "-.",
+  o: "---",
+  p: ".--.",
+  q: "--.-",
+  r: ".-.",
+  s: "...",
+  t: "-",
+  u: "..-",
+  v: "...-",
+  w: ".--",
+  x: "-..-",
+  y: "-.--",
+  z: "--..",
 };
 const DIGITS: Readonly<Record<string, string>> = {
-  "0": "-----", "1": ".----", "2": "..---", "3": "...--",
-  "4": "....-", "5": ".....", "6": "-....", "7": "--...",
-  "8": "---..", "9": "----.",
+  "0": "-----",
+  "1": ".----",
+  "2": "..---",
+  "3": "...--",
+  "4": "....-",
+  "5": ".....",
+  "6": "-....",
+  "7": "--...",
+  "8": "---..",
+  "9": "----.",
 };
 const TO_MORSE: Readonly<Record<string, string>> = {
   ...LETTERS,
@@ -44,7 +72,8 @@ export const morseCodeInputSchema = {
   additionalProperties: false,
   properties: {
     direction: {
-      description: "encode turns text into dots and dashes; decode reverses it.",
+      description:
+        "encode turns text into dots and dashes; decode reverses it.",
       enum: ["decode", "encode"],
       type: "string",
     },
@@ -185,9 +214,7 @@ export const calculateMorseCode = (
   if (issues.length > 0) return invalidInput(issues);
 
   const converted =
-    direction === "encode"
-      ? encodeMorse(rawText)
-      : decodeMorse(rawText);
+    direction === "encode" ? encodeMorse(rawText) : decodeMorse(rawText);
   if (converted === null)
     return invalidInput([
       {
@@ -236,7 +263,7 @@ export const morseCodeTool = defineTool<MorseCodeInput, MorseCodeOutput>({
       {
         description: "Converted text or signal.",
         id: "converted",
-        label: "Converted",
+        label: "Morse Code or plain text",
         valueType: { type: "string" },
       },
     ],
