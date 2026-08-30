@@ -1,0 +1,6 @@
+import { describe, expect, it } from "vitest"; import { calculateRandomFoodCategory, randomFoodCategoryExample, runRandomFoodCategory } from "./tool.js";
+describe("Random Food Category Picker", () => {
+  it("selects exact IDs and preserves provenance", () => { expect(JSON.parse(JSON.stringify(randomFoodCategoryExample))).toEqual(randomFoodCategoryExample);expect(runRandomFoodCategory(randomFoodCategoryExample.input,{random:()=>0}).ok).toBe(true); expect(calculateRandomFoodCategory(randomFoodCategoryExample.input, () => 0)).toEqual({ datasetId: "example/food-category", datasetVersion: "1", selectedIds: ["candidate-a", "candidate-b"], sourceId: "example" }); });
+  it("is deterministic with injected randomness", () => { expect(calculateRandomFoodCategory(randomFoodCategoryExample.input, () => 0.75)).toEqual(calculateRandomFoodCategory(randomFoodCategoryExample.input, () => 0.75)); });
+  it("rejects invalid pools and randomness", () => { expect(runRandomFoodCategory({ ...randomFoodCategoryExample.input, candidateIds: [] }).ok).toBe(false); expect(runRandomFoodCategory({ ...randomFoodCategoryExample.input, selectionCount: 4 }).ok).toBe(false); expect(runRandomFoodCategory(randomFoodCategoryExample.input, { random: () => 1 }).ok).toBe(false); });
+});
