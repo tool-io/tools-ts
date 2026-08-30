@@ -28,6 +28,8 @@ export const toolModuleLoaders: Readonly<
   "laser/laser-nitrogen-337-superradiant-self-terminating-upper-state-life-note": () => import("../../laser/laser-nitrogen-337-superradiant-self-terminating-upper-state-life-note/index.js"),
   "music/cents-between-two-frequencies": () => import("../../music/cents-between-two-frequencies/index.js"),
   "music/detune-cents-adjust-frequency": () => import("../../music/detune-cents-adjust-frequency/index.js"),
+  "numismatics/grams-to-troy-ounces-converter": () => import("../../numismatics/grams-to-troy-ounces-converter/index.js"),
+  "numismatics/karat-to-fineness-coin-gold": () => import("../../numismatics/karat-to-fineness-coin-gold/index.js"),
   "oenology/va-threshold-checker": () => import("../../oenology/va-threshold-checker/index.js"),
   "real-estate/return-on-equity": () => import("../../real-estate/return-on-equity/index.js"),
   "seismology/liquefaction-feature-magnitude-bound-lookup": () => import("../../seismology/liquefaction-feature-magnitude-bound-lookup/index.js"),

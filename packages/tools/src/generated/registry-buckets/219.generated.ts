@@ -21,6 +21,8 @@ export const toolModuleLoaders: Readonly<
   "music/bpm-to-ms": () => import("../../music/bpm-to-ms/index.js"),
   "mycology/cap-shape-profile-classifier": () => import("../../mycology/cap-shape-profile-classifier/index.js"),
   "mycology/clone-area-hectares-note-generator": () => import("../../mycology/clone-area-hectares-note-generator/index.js"),
+  "numismatics/auction-buyer-premium-total": () => import("../../numismatics/auction-buyer-premium-total/index.js"),
+  "numismatics/platinum-gold-ratio-calculator": () => import("../../numismatics/platinum-gold-ratio-calculator/index.js"),
   "oenology/caco3-dose": () => import("../../oenology/caco3-dose/index.js"),
   "oenology/isinglass-fining-dose": () => import("../../oenology/isinglass-fining-dose/index.js"),
   "paleography/wormhole-density-rater": () => import("../../paleography/wormhole-density-rater/index.js"),

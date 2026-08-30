@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "aquaculture/fertilization-rate": () => import("../../aquaculture/fertilization-rate/index.js"),
   "biology/leaf-potassium-content": () => import("../../biology/leaf-potassium-content/index.js"),
   "biology/mean-arterial-pressure": () => import("../../biology/mean-arterial-pressure/index.js"),
   "carpentry/dado-width": () => import("../../carpentry/dado-width/index.js"),

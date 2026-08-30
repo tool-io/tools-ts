@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "film/aspect-ratio-from-resolution": () => import("../../film/aspect-ratio-from-resolution/index.js"),
   "health/bmr-harris-benedict": () => import("../../health/bmr-harris-benedict/index.js"),
   "horology/amplitude-decline-power-reserve": () => import("../../horology/amplitude-decline-power-reserve/index.js"),
+  "numismatics/premium-over-spot-percent": () => import("../../numismatics/premium-over-spot-percent/index.js"),
   "probability/chi-square-sampler": () => import("../../probability/chi-square-sampler/index.js"),
   "sailing/wind-chill-apparent": () => import("../../sailing/wind-chill-apparent/index.js"),
   "seismology/seismic-moment-to-slip-displacement-back-calc": () => import("../../seismology/seismic-moment-to-slip-displacement-back-calc/index.js"),

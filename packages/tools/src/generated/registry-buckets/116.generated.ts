@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "aquaculture/viscerosomatic-index": () => import("../../aquaculture/viscerosomatic-index/index.js"),
   "cartography/plan-area-to-real-area": () => import("../../cartography/plan-area-to-real-area/index.js"),
   "chemistry/buffer-range": () => import("../../chemistry/buffer-range/index.js"),
   "chemistry/potentiometry-nernst-slope": () => import("../../chemistry/potentiometry-nernst-slope/index.js"),

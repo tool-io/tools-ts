@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "format/currency": () => import("../../format/currency/index.js"),
   "logistics/spot-vs-contract-rate-mix-blend": () => import("../../logistics/spot-vs-contract-rate-mix-blend/index.js"),
   "number/coprime-count": () => import("../../number/coprime-count/index.js"),
+  "numismatics/weight-deviation-from-standard": () => import("../../numismatics/weight-deviation-from-standard/index.js"),
   "seismology/air-coupled-rayleigh-wave-speed": () => import("../../seismology/air-coupled-rayleigh-wave-speed/index.js"),
   "semiconductor/edge-emitting-laser-far-field-divergence": () => import("../../semiconductor/edge-emitting-laser-far-field-divergence/index.js"),
   "size": () => import("../../size/index.js"),

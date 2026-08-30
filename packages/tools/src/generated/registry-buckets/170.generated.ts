@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "geometry/ellipse-area": () => import("../../geometry/ellipse-area/index.js"),
   "health/lean-mass-james": () => import("../../health/lean-mass-james/index.js"),
   "list/combinations": () => import("../../list/combinations/index.js"),
+  "numismatics/value-multiple-since-purchase": () => import("../../numismatics/value-multiple-since-purchase/index.js"),
   "seismology/double-couple-p-t-axis-plunge-style-shortcut": () => import("../../seismology/double-couple-p-t-axis-plunge-style-shortcut/index.js"),
   "sociology/clark-urban-density-gradient": () => import("../../sociology/clark-urban-density-gradient/index.js"),
 };

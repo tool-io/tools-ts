@@ -21,6 +21,8 @@ export const toolModuleLoaders: Readonly<
   "finance/return-on-investment": () => import("../../finance/return-on-investment/index.js"),
   "geology/core-permeability-klinkenberg-corrected": () => import("../../geology/core-permeability-klinkenberg-corrected/index.js"),
   "laser/laser-diode-li-curve-kink-detection-threshold-extraction-method": () => import("../../laser/laser-diode-li-curve-kink-detection-threshold-extraction-method/index.js"),
+  "numismatics/gold-silver-ratio-calculator": () => import("../../numismatics/gold-silver-ratio-calculator/index.js"),
+  "numismatics/grading-submission-cost-per-coin": () => import("../../numismatics/grading-submission-cost-per-coin/index.js"),
   "random/hazard-pictogram": () => import("../../random/hazard-pictogram/index.js"),
   "random/planetary-symbol": () => import("../../random/planetary-symbol/index.js"),
   "random/tai-viet-character": () => import("../../random/tai-viet-character/index.js"),

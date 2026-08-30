@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "horology/sweep-steps-per-second": () => import("../../horology/sweep-steps-per-second/index.js"),
   "matrix/as-table": () => import("../../matrix/as-table/index.js"),
   "number/hexagonal-checker": () => import("../../number/hexagonal-checker/index.js"),
+  "numismatics/bid-ask-spread-percent": () => import("../../numismatics/bid-ask-spread-percent/index.js"),
   "oenology/lightstrike-risk-checker": () => import("../../oenology/lightstrike-risk-checker/index.js"),
   "paleography/expunging-blackout-rater": () => import("../../paleography/expunging-blackout-rater/index.js"),
   "paleography/scribe-change-detector": () => import("../../paleography/scribe-change-detector/index.js"),

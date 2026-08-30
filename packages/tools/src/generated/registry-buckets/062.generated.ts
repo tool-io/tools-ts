@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/term-life-annuity-epv": () => import("../../actuarial/term-life-annuity-epv/index.js"),
+  "aquaculture/larval-survival-rate": () => import("../../aquaculture/larval-survival-rate/index.js"),
   "aviation/density-at-altitude": () => import("../../aviation/density-at-altitude/index.js"),
   "biology/genomic-relationship": () => import("../../biology/genomic-relationship/index.js"),
   "biology/primer-3prime-gc-clamp-count": () => import("../../biology/primer-3prime-gc-clamp-count/index.js"),
@@ -23,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "finance/break-even-units": () => import("../../finance/break-even-units/index.js"),
   "graph/topological-sort": () => import("../../graph/topological-sort/index.js"),
   "laser/laser-excimer-arf-krf-xecl-f2-gas-mixture-lifespan-table-lookup": () => import("../../laser/laser-excimer-arf-krf-xecl-f2-gas-mixture-lifespan-table-lookup/index.js"),
+  "numismatics/farthing-to-pound-converter": () => import("../../numismatics/farthing-to-pound-converter/index.js"),
   "random/cypriot-syllable": () => import("../../random/cypriot-syllable/index.js"),
   "seismology/gmpe-log-distance-attenuation": () => import("../../seismology/gmpe-log-distance-attenuation/index.js"),
   "seismology/surface-wave-magnitude-vk20-formula": () => import("../../seismology/surface-wave-magnitude-vk20-formula/index.js"),

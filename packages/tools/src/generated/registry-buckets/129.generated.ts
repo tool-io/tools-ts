@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/frequency-severity-expected-loss": () => import("../../actuarial/frequency-severity-expected-loss/index.js"),
+  "aquaculture/daily-growth-coefficient": () => import("../../aquaculture/daily-growth-coefficient/index.js"),
   "aviation/corrected-ias-for-weight": () => import("../../aviation/corrected-ias-for-weight/index.js"),
   "biology/dominance-variance": () => import("../../biology/dominance-variance/index.js"),
   "carpentry/din-68901-kuechen-korpus-tiefe": () => import("../../carpentry/din-68901-kuechen-korpus-tiefe/index.js"),

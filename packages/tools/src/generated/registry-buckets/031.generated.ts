@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "aquaculture/protein-requirement": () => import("../../aquaculture/protein-requirement/index.js"),
   "aviation/cg-percent-mac": () => import("../../aviation/cg-percent-mac/index.js"),
   "biology/rate-pressure-product": () => import("../../biology/rate-pressure-product/index.js"),
   "carpentry/pergola-rafter-spacing": () => import("../../carpentry/pergola-rafter-spacing/index.js"),
@@ -13,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/hydro-turbine-power": () => import("../../engineering/hydro-turbine-power/index.js"),
   "geology/cement-slurry-density": () => import("../../geology/cement-slurry-density/index.js"),
   "list/permutations": () => import("../../list/permutations/index.js"),
+  "numismatics/profit-loss-on-sale-percent": () => import("../../numismatics/profit-loss-on-sale-percent/index.js"),
   "optimization/nadam-step": () => import("../../optimization/nadam-step/index.js"),
   "random/ottoman-siyaq-number": () => import("../../random/ottoman-siyaq-number/index.js"),
   "seismology/mining-collapse-magnitude-norms-lookup": () => import("../../seismology/mining-collapse-magnitude-norms-lookup/index.js"),

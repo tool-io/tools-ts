@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "matrix/determinant-2x2": () => import("../../matrix/determinant-2x2/index.js"),
   "mycology/basidia-four-spored-checker": () => import("../../mycology/basidia-four-spored-checker/index.js"),
   "number/square-free-checker": () => import("../../number/square-free-checker/index.js"),
+  "numismatics/slab-tier-break-even-value": () => import("../../numismatics/slab-tier-break-even-value/index.js"),
   "seismology/quarter-wave-layer-higher-mode-harmonics-calculator": () => import("../../seismology/quarter-wave-layer-higher-mode-harmonics-calculator/index.js"),
   "seismology/tsunami-runup-empirical-okal-synolakis-lookup": () => import("../../seismology/tsunami-runup-empirical-okal-synolakis-lookup/index.js"),
   "semiconductor/bjt-punch-through-voltage": () => import("../../semiconductor/bjt-punch-through-voltage/index.js"),

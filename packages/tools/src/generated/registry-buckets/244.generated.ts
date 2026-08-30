@@ -30,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/failed-attempt-retry-schedule-lookup": () => import("../../logistics/failed-attempt-retry-schedule-lookup/index.js"),
   "logistics/nmfc-density-to-class-converter": () => import("../../logistics/nmfc-density-to-class-converter/index.js"),
   "number/perfect-square-checker": () => import("../../number/perfect-square-checker/index.js"),
+  "numismatics/sterling-to-fine-silver-convert": () => import("../../numismatics/sterling-to-fine-silver-convert/index.js"),
   "oenology/angels-share-loss": () => import("../../oenology/angels-share-loss/index.js"),
   "paleography/p-loop-brevigraph-expander": () => import("../../paleography/p-loop-brevigraph-expander/index.js"),
   "random/meetei-mayek-character": () => import("../../random/meetei-mayek-character/index.js"),

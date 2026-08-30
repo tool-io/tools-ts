@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "aquaculture/aeration-requirement": () => import("../../aquaculture/aeration-requirement/index.js"),
+  "aquaculture/temperature-correction-growth": () => import("../../aquaculture/temperature-correction-growth/index.js"),
   "biology/canopy-gap-fraction": () => import("../../biology/canopy-gap-fraction/index.js"),
   "carpentry/edge-banding-trim-allowance": () => import("../../carpentry/edge-banding-trim-allowance/index.js"),
   "carpentry/treppen-geschosshoehe-durch-steigung-stufenanzahl": () => import("../../carpentry/treppen-geschosshoehe-durch-steigung-stufenanzahl/index.js"),

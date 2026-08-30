@@ -24,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "horology/train-wheel-teeth-sum": () => import("../../horology/train-wheel-teeth-sum/index.js"),
   "matrix/as-plain-text": () => import("../../matrix/as-plain-text/index.js"),
   "number/herons-method": () => import("../../number/herons-method/index.js"),
+  "numismatics/average-cost-basis-calculator": () => import("../../numismatics/average-cost-basis-calculator/index.js"),
   "random/greek-letter": () => import("../../random/greek-letter/index.js"),
   "sailing/acceleration-after-tack": () => import("../../sailing/acceleration-after-tack/index.js"),
   "vr/render-scale-percentage": () => import("../../vr/render-scale-percentage/index.js"),

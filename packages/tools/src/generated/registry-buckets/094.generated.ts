@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/soil-passive-pressure": () => import("../../engineering/soil-passive-pressure/index.js"),
   "geology/toplap-angle": () => import("../../geology/toplap-angle/index.js"),
   "mycology/koh-reaction-note-generator": () => import("../../mycology/koh-reaction-note-generator/index.js"),
+  "numismatics/duplicate-swap-value-difference": () => import("../../numismatics/duplicate-swap-value-difference/index.js"),
   "reinforcement-learning/policy-gradient-step": () => import("../../reinforcement-learning/policy-gradient-step/index.js"),
   "seismology/critical-reflection-angle-post-critical-note-checker": () => import("../../seismology/critical-reflection-angle-post-critical-note-checker/index.js"),
   "semiconductor/algan-bandgap": () => import("../../semiconductor/algan-bandgap/index.js"),

@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/stops-per-hour-route-density": () => import("../../logistics/stops-per-hour-route-density/index.js"),
   "mycology/lamellae-density-radial-count-recorder": () => import("../../mycology/lamellae-density-radial-count-recorder/index.js"),
   "mycology/volva-base-presence-detector": () => import("../../mycology/volva-base-presence-detector/index.js"),
+  "numismatics/tube-capacity-by-diameter": () => import("../../numismatics/tube-capacity-by-diameter/index.js"),
   "optimization/steepest-descent-step": () => import("../../optimization/steepest-descent-step/index.js"),
   "paleography/gothic-doublestorey-ratio": () => import("../../paleography/gothic-doublestorey-ratio/index.js"),
   "paleography/watermark-twin-match-finder": () => import("../../paleography/watermark-twin-match-finder/index.js"),

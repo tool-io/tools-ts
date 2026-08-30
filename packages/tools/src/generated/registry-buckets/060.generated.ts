@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/order-to-door-response-time": () => import("../../logistics/order-to-door-response-time/index.js"),
   "logistics/reefer-fuel-consumption-per-day": () => import("../../logistics/reefer-fuel-consumption-per-day/index.js"),
   "mycology/spore-print-color-mapper": () => import("../../mycology/spore-print-color-mapper/index.js"),
+  "numismatics/wantlist-completion-progress-percent": () => import("../../numismatics/wantlist-completion-progress-percent/index.js"),
   "oenology/ta-titration-gpl": () => import("../../oenology/ta-titration-gpl/index.js"),
   "real-estate/cltv": () => import("../../real-estate/cltv/index.js"),
   "seismology/b-value-standard-error-shi-bolt-formula": () => import("../../seismology/b-value-standard-error-shi-bolt-formula/index.js"),

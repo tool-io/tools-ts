@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/trees-per-hectare-from-plot": () => import("../../forestry/trees-per-hectare-from-plot/index.js"),
   "logistics/fuel-price-per-mile-burn": () => import("../../logistics/fuel-price-per-mile-burn/index.js"),
   "microcontroller/circular-buffer-index": () => import("../../microcontroller/circular-buffer-index/index.js"),
+  "numismatics/type-set-completeness-percent": () => import("../../numismatics/type-set-completeness-percent/index.js"),
   "oenology/brix-to-specific-gravity": () => import("../../oenology/brix-to-specific-gravity/index.js"),
   "optimization/newton-step": () => import("../../optimization/newton-step/index.js"),
   "paleography/ell-yard-regional-converter": () => import("../../paleography/ell-yard-regional-converter/index.js"),

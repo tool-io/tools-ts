@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/tangential-mode-frequency": () => import("../../acoustics/tangential-mode-frequency/index.js"),
+  "aquaculture/hardness-adjustment": () => import("../../aquaculture/hardness-adjustment/index.js"),
   "chemistry/osmotic-pressure": () => import("../../chemistry/osmotic-pressure/index.js"),
   "construction/beam-deflection-uniform-simple": () => import("../../construction/beam-deflection-uniform-simple/index.js"),
   "convert/hex-to-hsv": () => import("../../convert/hex-to-hsv/index.js"),
@@ -18,6 +19,8 @@ export const toolModuleLoaders: Readonly<
   "geology/void-ratio": () => import("../../geology/void-ratio/index.js"),
   "logic/sat-to-cnf": () => import("../../logic/sat-to-cnf/index.js"),
   "number/prime-factorization": () => import("../../number/prime-factorization/index.js"),
+  "numismatics/alloy-percentage-mass-share": () => import("../../numismatics/alloy-percentage-mass-share/index.js"),
+  "numismatics/gold-fineness-weight-content": () => import("../../numismatics/gold-fineness-weight-content/index.js"),
   "paleography/abbrev-density-per-hundred-words": () => import("../../paleography/abbrev-density-per-hundred-words/index.js"),
   "sailing/reefing-wind-speed": () => import("../../sailing/reefing-wind-speed/index.js"),
   "seismology/housner-spectral-intensity": () => import("../../seismology/housner-spectral-intensity/index.js"),

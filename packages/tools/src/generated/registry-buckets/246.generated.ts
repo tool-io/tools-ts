@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/fuel-surcharge-percent-add-on": () => import("../../logistics/fuel-surcharge-percent-add-on/index.js"),
   "network/prefix-to-netmask": () => import("../../network/prefix-to-netmask/index.js"),
   "number/perfect-cube-checker": () => import("../../number/perfect-cube-checker/index.js"),
+  "numismatics/problem-coin-discount-percent": () => import("../../numismatics/problem-coin-discount-percent/index.js"),
   "random/baybayin-character": () => import("../../random/baybayin-character/index.js"),
   "random/khmer-character": () => import("../../random/khmer-character/index.js"),
   "random/number": () => import("../../random/number/index.js"),

@@ -6,6 +6,8 @@ export const toolModuleLoaders: Readonly<
 > = {
   "accounting/bonus-accrual-monthly-recognition": () => import("../../accounting/bonus-accrual-monthly-recognition/index.js"),
   "accounting/operating-cycle-inventory-plus-receivable-days": () => import("../../accounting/operating-cycle-inventory-plus-receivable-days/index.js"),
+  "aquaculture/carrying-capacity": () => import("../../aquaculture/carrying-capacity/index.js"),
+  "aquaculture/fillet-yield": () => import("../../aquaculture/fillet-yield/index.js"),
   "biology/bark-thickness-ratio": () => import("../../biology/bark-thickness-ratio/index.js"),
   "biology/cell-migration-speed": () => import("../../biology/cell-migration-speed/index.js"),
   "carpentry/nagel-zugfestigkeit-lookup": () => import("../../carpentry/nagel-zugfestigkeit-lookup/index.js"),

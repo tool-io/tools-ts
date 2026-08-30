@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/half-wave-resonator-length": () => import("../../acoustics/half-wave-resonator-length/index.js"),
+  "aquaculture/fulton-condition-factor": () => import("../../aquaculture/fulton-condition-factor/index.js"),
   "construction/concrete-admixture-dose": () => import("../../construction/concrete-admixture-dose/index.js"),
   "construction/flooring-transition-strip": () => import("../../construction/flooring-transition-strip/index.js"),
   "convert/rgb-to-hex": () => import("../../convert/rgb-to-hex/index.js"),

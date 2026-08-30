@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "geology/reserve-recoverable": () => import("../../geology/reserve-recoverable/index.js"),
   "graph/shortest-unweighted-path": () => import("../../graph/shortest-unweighted-path/index.js"),
   "number/continued-fraction": () => import("../../number/continued-fraction/index.js"),
+  "numismatics/die-rotation-error-degrees": () => import("../../numismatics/die-rotation-error-degrees/index.js"),
   "oenology/cuso4-h2s-trial-dose": () => import("../../oenology/cuso4-h2s-trial-dose/index.js"),
   "random/counting-rod-numeral": () => import("../../random/counting-rod-numeral/index.js"),
   "seismology/topographic-aggravation-factor-ridge": () => import("../../seismology/topographic-aggravation-factor-ridge/index.js"),

@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "geology/bearing-capacity-factor-ngamma": () => import("../../geology/bearing-capacity-factor-ngamma/index.js"),
   "logistics/cartons-per-pallet-ti-hi-calculator": () => import("../../logistics/cartons-per-pallet-ti-hi-calculator/index.js"),
   "music/bit-depth-dynamic-range-db": () => import("../../music/bit-depth-dynamic-range-db/index.js"),
+  "numismatics/pre-1982-cent-copper-melt-value": () => import("../../numismatics/pre-1982-cent-copper-melt-value/index.js"),
   "paleography/epact-day-moon-lookup": () => import("../../paleography/epact-day-moon-lookup/index.js"),
   "random/ol-onal-character": () => import("../../random/ol-onal-character/index.js"),
   "seismology/event-count-poisson-confidence-interval-gehrels": () => import("../../seismology/event-count-poisson-confidence-interval-gehrels/index.js"),

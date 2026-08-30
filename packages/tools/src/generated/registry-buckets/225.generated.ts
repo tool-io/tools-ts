@@ -24,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "finance/operating-margin-amount": () => import("../../finance/operating-margin-amount/index.js"),
   "laser/laser-ytterbium-fiber-single-mode-kilowatt-power-scaling-record-lookup": () => import("../../laser/laser-ytterbium-fiber-single-mode-kilowatt-power-scaling-record-lookup/index.js"),
   "logistics/miles-per-day-average-longhaul": () => import("../../logistics/miles-per-day-average-longhaul/index.js"),
+  "numismatics/off-center-strike-percent": () => import("../../numismatics/off-center-strike-percent/index.js"),
   "oenology/micro-ox-rate": () => import("../../oenology/micro-ox-rate/index.js"),
   "optimization/conjugate-gradient-step": () => import("../../optimization/conjugate-gradient-step/index.js"),
   "physics/projectile-motion": () => import("../../physics/projectile-motion/index.js"),

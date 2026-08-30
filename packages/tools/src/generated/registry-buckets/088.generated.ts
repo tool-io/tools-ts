@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/probability-first-cause": () => import("../../actuarial/probability-first-cause/index.js"),
+  "aquaculture/length-weight-conversion": () => import("../../aquaculture/length-weight-conversion/index.js"),
   "aviation/vy-speed": () => import("../../aviation/vy-speed/index.js"),
   "biology/cell-cycle-g1-percentage": () => import("../../biology/cell-cycle-g1-percentage/index.js"),
   "biology/rna-copy-number": () => import("../../biology/rna-copy-number/index.js"),

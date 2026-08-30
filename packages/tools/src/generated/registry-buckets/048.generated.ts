@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "number/aliquot-sum": () => import("../../number/aliquot-sum/index.js"),
   "number/semiprime-checker": () => import("../../number/semiprime-checker/index.js"),
   "number/totient": () => import("../../number/totient/index.js"),
+  "numismatics/bag-face-silver-dollar-count": () => import("../../numismatics/bag-face-silver-dollar-count/index.js"),
   "paleography/pricking-hole-row-counter": () => import("../../paleography/pricking-hole-row-counter/index.js"),
   "sailing/vmg-to-leeward": () => import("../../sailing/vmg-to-leeward/index.js"),
   "seismology/ray-parameter-slowness-apparent-velocity": () => import("../../seismology/ray-parameter-slowness-apparent-velocity/index.js"),

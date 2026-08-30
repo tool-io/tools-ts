@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/continuous-whole-life-epv": () => import("../../actuarial/continuous-whole-life-epv/index.js"),
+  "aquaculture/energy-requirement": () => import("../../aquaculture/energy-requirement/index.js"),
   "archival-studies/disk-image-tb-aggregator": () => import("../../archival-studies/disk-image-tb-aggregator/index.js"),
   "archival-studies/transcript-drift-per-hour-estimator": () => import("../../archival-studies/transcript-drift-per-hour-estimator/index.js"),
   "biology/expected-species-ace-bias-corrected": () => import("../../biology/expected-species-ace-bias-corrected/index.js"),

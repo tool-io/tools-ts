@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/theophoric-element-detector": () => import("../../epigraphy/theophoric-element-detector/index.js"),
   "geology/atterberg-liquidity-index": () => import("../../geology/atterberg-liquidity-index/index.js"),
   "logistics/putaway-time-per-pallet-estimate": () => import("../../logistics/putaway-time-per-pallet-estimate/index.js"),
+  "numismatics/album-page-slot-capacity": () => import("../../numismatics/album-page-slot-capacity/index.js"),
   "oenology/sugar-addition-per-hl": () => import("../../oenology/sugar-addition-per-hl/index.js"),
   "random/tai-xuan-jing-symbol": () => import("../../random/tai-xuan-jing-symbol/index.js"),
   "real-estate/common-area-factor": () => import("../../real-estate/common-area-factor/index.js"),

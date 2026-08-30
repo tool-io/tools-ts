@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "aquaculture/hepatosomatic-index": () => import("../../aquaculture/hepatosomatic-index/index.js"),
   "aviation/takeoff-distance-required-with-slope": () => import("../../aviation/takeoff-distance-required-with-slope/index.js"),
   "biology/cell-volume-sphere": () => import("../../biology/cell-volume-sphere/index.js"),
   "biology/hardy-weinberg-allele-frequency": () => import("../../biology/hardy-weinberg-allele-frequency/index.js"),
@@ -17,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/voltage-gain-db": () => import("../../electronics/voltage-gain-db/index.js"),
   "engineering/bevel-gear-pitch-angle": () => import("../../engineering/bevel-gear-pitch-angle/index.js"),
   "forestry/leaf-area-index-forestry": () => import("../../forestry/leaf-area-index-forestry/index.js"),
+  "numismatics/kennedy-40-percent-silver-content": () => import("../../numismatics/kennedy-40-percent-silver-content/index.js"),
   "paleography/manuscript-format-classifier": () => import("../../paleography/manuscript-format-classifier/index.js"),
   "probability/metropolis-hastings-sampler": () => import("../../probability/metropolis-hastings-sampler/index.js"),
   "sailing/charted-depth-corrected": () => import("../../sailing/charted-depth-corrected/index.js"),

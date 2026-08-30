@@ -17,5 +17,6 @@ export const toolModuleLoaders: Readonly<
   "geology/modulus-of-volume-compressibility": () => import("../../geology/modulus-of-volume-compressibility/index.js"),
   "health/bmr-mifflin": () => import("../../health/bmr-mifflin/index.js"),
   "mycology/skeletal-hyphae-band-rater": () => import("../../mycology/skeletal-hyphae-band-rater/index.js"),
+  "numismatics/troy-pound-ounce-count": () => import("../../numismatics/troy-pound-ounce-count/index.js"),
   "sailing/rudder-angle-required": () => import("../../sailing/rudder-angle-required/index.js"),
 };

@@ -25,6 +25,8 @@ export const toolModuleLoaders: Readonly<
   "interpolation/inverse-linear": () => import("../../interpolation/inverse-linear/index.js"),
   "mycology/ascospore-arrangement-decoder": () => import("../../mycology/ascospore-arrangement-decoder/index.js"),
   "number/mersenne-checker": () => import("../../number/mersenne-checker/index.js"),
+  "numismatics/grade-gap-price-jump-percent": () => import("../../numismatics/grade-gap-price-jump-percent/index.js"),
+  "numismatics/war-nickel-silver-content-value": () => import("../../numismatics/war-nickel-silver-content-value/index.js"),
   "parse/number": () => import("../../parse/number/index.js"),
   "random/gothic-letter": () => import("../../random/gothic-letter/index.js"),
   "random/old-permic-letter": () => import("../../random/old-permic-letter/index.js"),

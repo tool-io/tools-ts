@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "encode/crc32": () => import("../../encode/crc32/index.js"),
   "forestry/sawlog-volume-percentage": () => import("../../forestry/sawlog-volume-percentage/index.js"),
   "matrix/inverse": () => import("../../matrix/inverse/index.js"),
+  "numismatics/half-dollars-per-ounce-silver-yield": () => import("../../numismatics/half-dollars-per-ounce-silver-yield/index.js"),
   "paleography/italic-slant-degree-rater": () => import("../../paleography/italic-slant-degree-rater/index.js"),
   "random/roman-numeral": () => import("../../random/roman-numeral/index.js"),
   "text/pangram-checker": () => import("../../text/pangram-checker/index.js"),

@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/pipe-end-correction": () => import("../../acoustics/pipe-end-correction/index.js"),
+  "aquaculture/daily-feed-rate": () => import("../../aquaculture/daily-feed-rate/index.js"),
   "archival-studies/persistent-id-slug-generator": () => import("../../archival-studies/persistent-id-slug-generator/index.js"),
   "arithmetic/nth-root": () => import("../../arithmetic/nth-root/index.js"),
   "biology/heart-girth-weight": () => import("../../biology/heart-girth-weight/index.js"),
@@ -17,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/relative-spacing-index": () => import("../../forestry/relative-spacing-index/index.js"),
   "geology/casing-biaxial-stress": () => import("../../geology/casing-biaxial-stress/index.js"),
   "list/cumulative-sum": () => import("../../list/cumulative-sum/index.js"),
+  "numismatics/coin-show-budget-per-table": () => import("../../numismatics/coin-show-budget-per-table/index.js"),
   "paleography/greek-uncial-minuscule-checker": () => import("../../paleography/greek-uncial-minuscule-checker/index.js"),
   "semiconductor/diode-saturation-current": () => import("../../semiconductor/diode-saturation-current/index.js"),
   "semiconductor/fe-ram-coercive-voltage": () => import("../../semiconductor/fe-ram-coercive-voltage/index.js"),

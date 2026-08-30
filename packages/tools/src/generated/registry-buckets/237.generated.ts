@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "aquaculture/gonadosomatic-index": () => import("../../aquaculture/gonadosomatic-index/index.js"),
+  "aquaculture/hatching-rate": () => import("../../aquaculture/hatching-rate/index.js"),
   "arithmetic/round-half-to-even": () => import("../../arithmetic/round-half-to-even/index.js"),
   "aviation/turn-radius": () => import("../../aviation/turn-radius/index.js"),
   "biology/bohr-effect-oxygen": () => import("../../biology/bohr-effect-oxygen/index.js"),
@@ -22,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "generate/seeded-uuid": () => import("../../generate/seeded-uuid/index.js"),
   "geology/bearing-capacity-factor-nc": () => import("../../geology/bearing-capacity-factor-nc/index.js"),
   "logistics/cross-dock-flow-through-rate-percent": () => import("../../logistics/cross-dock-flow-through-rate-percent/index.js"),
+  "numismatics/face-value-to-melt-premium-checker": () => import("../../numismatics/face-value-to-melt-premium-checker/index.js"),
   "random/old-italic-character": () => import("../../random/old-italic-character/index.js"),
   "sailing/mainsail-roach-area": () => import("../../sailing/mainsail-roach-area/index.js"),
   "seismology/resonance-quarter-wavelength-soft-soil": () => import("../../seismology/resonance-quarter-wavelength-soft-soil/index.js"),

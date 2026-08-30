@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/decay-rate-db-per-second": () => import("../../acoustics/decay-rate-db-per-second/index.js"),
   "acoustics/difference-tone-frequency": () => import("../../acoustics/difference-tone-frequency/index.js"),
+  "aquaculture/survival-rate": () => import("../../aquaculture/survival-rate/index.js"),
   "aviation/max-endurance-airspeed": () => import("../../aviation/max-endurance-airspeed/index.js"),
   "aviation/takeoff-ground-roll": () => import("../../aviation/takeoff-ground-roll/index.js"),
   "biology/hemoglobin-a1c-estimated-average-glucose": () => import("../../biology/hemoglobin-a1c-estimated-average-glucose/index.js"),

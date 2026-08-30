@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/last-survivor-expectation-identity": () => import("../../actuarial/last-survivor-expectation-identity/index.js"),
+  "aquaculture/condition-factor": () => import("../../aquaculture/condition-factor/index.js"),
   "arithmetic/absolute-difference": () => import("../../arithmetic/absolute-difference/index.js"),
   "cartography/proportional-legend-value-solver": () => import("../../cartography/proportional-legend-value-solver/index.js"),
   "chemistry/van-der-waals-pressure-correction": () => import("../../chemistry/van-der-waals-pressure-correction/index.js"),

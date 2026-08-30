@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "aquaculture/production-yield": () => import("../../aquaculture/production-yield/index.js"),
   "aviation/flight-time": () => import("../../aviation/flight-time/index.js"),
   "aviation/takeoff-distance-factor": () => import("../../aviation/takeoff-distance-factor/index.js"),
   "aviation/wind-gust-spread": () => import("../../aviation/wind-gust-spread/index.js"),
@@ -19,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "finance/simple-interest": () => import("../../finance/simple-interest/index.js"),
   "forestry/leaf-area-density": () => import("../../forestry/leaf-area-density/index.js"),
   "nautical/tide-range": () => import("../../nautical/tide-range/index.js"),
+  "numismatics/diameter-measurement-average": () => import("../../numismatics/diameter-measurement-average/index.js"),
   "online-algorithm/ski-rental": () => import("../../online-algorithm/ski-rental/index.js"),
   "paleography/rag-woodpulp-era-boundary-checker": () => import("../../paleography/rag-woodpulp-era-boundary-checker/index.js"),
   "random/old-sogdian-letter": () => import("../../random/old-sogdian-letter/index.js"),

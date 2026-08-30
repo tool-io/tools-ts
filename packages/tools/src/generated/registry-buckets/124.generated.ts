@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/volume-newton": () => import("../../forestry/volume-newton/index.js"),
   "geology/argon-diffusion-closure-temperature": () => import("../../geology/argon-diffusion-closure-temperature/index.js"),
   "mycology/disc-antifungal-sddr-mapper": () => import("../../mycology/disc-antifungal-sddr-mapper/index.js"),
+  "numismatics/appraisal-average-value-per-item": () => import("../../numismatics/appraisal-average-value-per-item/index.js"),
   "probability/poisson-gamma-mixture-sampler": () => import("../../probability/poisson-gamma-mixture-sampler/index.js"),
   "real-estate/dti": () => import("../../real-estate/dti/index.js"),
   "seismology/principal-tide-constituent-period-lookup": () => import("../../seismology/principal-tide-constituent-period-lookup/index.js"),

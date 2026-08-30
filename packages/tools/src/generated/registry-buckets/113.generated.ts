@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "horology/strike-train-energy": () => import("../../horology/strike-train-energy/index.js"),
   "logistics/orders-per-hour-picker-throughput": () => import("../../logistics/orders-per-hour-picker-throughput/index.js"),
   "microcontroller/sleep-average-current": () => import("../../microcontroller/sleep-average-current/index.js"),
+  "numismatics/quarters-per-ounce-silver-yield": () => import("../../numismatics/quarters-per-ounce-silver-yield/index.js"),
   "oenology/stuck-ferment-flag": () => import("../../oenology/stuck-ferment-flag/index.js"),
   "parse/cache-control": () => import("../../parse/cache-control/index.js"),
   "real-estate/months-of-inventory": () => import("../../real-estate/months-of-inventory/index.js"),

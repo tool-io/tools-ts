@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/units-of-production-depreciation-rate": () => import("../../accounting/units-of-production-depreciation-rate/index.js"),
+  "aquaculture/salinity-adjustment": () => import("../../aquaculture/salinity-adjustment/index.js"),
   "biology/absolute-reticulocyte-count": () => import("../../biology/absolute-reticulocyte-count/index.js"),
   "biology/corrected-phenyl-to-tyrosine": () => import("../../biology/corrected-phenyl-to-tyrosine/index.js"),
   "carpentry/treppen-schrittmassregel": () => import("../../carpentry/treppen-schrittmassregel/index.js"),

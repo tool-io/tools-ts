@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "laser/laser-core-numerical-aperture-mode-field-diameter-converter": () => import("../../laser/laser-core-numerical-aperture-mode-field-diameter-converter/index.js"),
   "laser/laser-facet-coating-ar-hr-mirror-power-ratio-lookup": () => import("../../laser/laser-facet-coating-ar-hr-mirror-power-ratio-lookup/index.js"),
   "mycology/thermophile-cardinal-temps-recorder": () => import("../../mycology/thermophile-cardinal-temps-recorder/index.js"),
+  "numismatics/shipping-insurance-cost-percent": () => import("../../numismatics/shipping-insurance-cost-percent/index.js"),
   "proportions/percentage-increase": () => import("../../proportions/percentage-increase/index.js"),
   "random/tangut-character": () => import("../../random/tangut-character/index.js"),
   "sailing/time-to-tack": () => import("../../sailing/time-to-tack/index.js"),

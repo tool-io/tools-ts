@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/net-single-premium": () => import("../../actuarial/net-single-premium/index.js"),
+  "aquaculture/ammonia-excretion": () => import("../../aquaculture/ammonia-excretion/index.js"),
   "archival-studies/digitization-priority-score-calculator": () => import("../../archival-studies/digitization-priority-score-calculator/index.js"),
   "chemistry/excess-reagent-mass-remaining": () => import("../../chemistry/excess-reagent-mass-remaining/index.js"),
   "construction/flooring-area-waste": () => import("../../construction/flooring-area-waste/index.js"),

@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/intensity-level-from-intensity": () => import("../../acoustics/intensity-level-from-intensity/index.js"),
+  "aquaculture/feed-cost-per-kg-gain": () => import("../../aquaculture/feed-cost-per-kg-gain/index.js"),
   "biology/lab-dilution-series": () => import("../../biology/lab-dilution-series/index.js"),
   "biology/primer-length": () => import("../../biology/primer-length/index.js"),
   "bitwise/left-shift": () => import("../../bitwise/left-shift/index.js"),
@@ -18,5 +19,6 @@ export const toolModuleLoaders: Readonly<
   "electronics/relay-bounce-time": () => import("../../electronics/relay-bounce-time/index.js"),
   "engineering/enthalpy-change-sensible": () => import("../../engineering/enthalpy-change-sensible/index.js"),
   "geology/mohr-circle-center": () => import("../../geology/mohr-circle-center/index.js"),
+  "numismatics/melt-value-from-spot-silver": () => import("../../numismatics/melt-value-from-spot-silver/index.js"),
   "oenology/davis-score-card": () => import("../../oenology/davis-score-card/index.js"),
 };

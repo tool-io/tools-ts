@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "film/lens-shift-percentage": () => import("../../film/lens-shift-percentage/index.js"),
   "ideal-body-weight": () => import("../../ideal-body-weight/index.js"),
   "mycology/hair-perforation-test-classifier": () => import("../../mycology/hair-perforation-test-classifier/index.js"),
+  "numismatics/storage-box-flip-count": () => import("../../numismatics/storage-box-flip-count/index.js"),
   "paleography/gothic-textualis-period-band": () => import("../../paleography/gothic-textualis-period-band/index.js"),
   "parse/matrix": () => import("../../parse/matrix/index.js"),
   "real-estate/mill-rate-tax": () => import("../../real-estate/mill-rate-tax/index.js"),

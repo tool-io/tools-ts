@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/crown-ratio": () => import("../../forestry/crown-ratio/index.js"),
   "metrics/mean-absolute-error": () => import("../../metrics/mean-absolute-error/index.js"),
   "mycology/spore-shape-q-quotient-rater": () => import("../../mycology/spore-shape-q-quotient-rater/index.js"),
+  "numismatics/clipped-planchet-weight-loss": () => import("../../numismatics/clipped-planchet-weight-loss/index.js"),
   "oenology/dap-nitrogen-contribution": () => import("../../oenology/dap-nitrogen-contribution/index.js"),
   "sailing/mast-bend-amount": () => import("../../sailing/mast-bend-amount/index.js"),
   "seismology/hvsr-clear-peak-confidence-checker": () => import("../../seismology/hvsr-clear-peak-confidence-checker/index.js"),

@@ -5,6 +5,8 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/distance-doubling-decibel-drop": () => import("../../acoustics/distance-doubling-decibel-drop/index.js"),
+  "aquaculture/specific-growth-rate": () => import("../../aquaculture/specific-growth-rate/index.js"),
+  "aquaculture/tan-production": () => import("../../aquaculture/tan-production/index.js"),
   "biology/bun-creatinine-ratio": () => import("../../biology/bun-creatinine-ratio/index.js"),
   "carpentry/dickenhobel-mass-endmass": () => import("../../carpentry/dickenhobel-mass-endmass/index.js"),
   "convert/centimeters-to-meters": () => import("../../convert/centimeters-to-meters/index.js"),

@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/schroeder-frequency": () => import("../../acoustics/schroeder-frequency/index.js"),
+  "aquaculture/unionized-ammonia": () => import("../../aquaculture/unionized-ammonia/index.js"),
   "biology/corrected-sodium-hyperglycemia": () => import("../../biology/corrected-sodium-hyperglycemia/index.js"),
   "biology/mastitis-risk-score": () => import("../../biology/mastitis-risk-score/index.js"),
   "biology/seed-vigor-index-2": () => import("../../biology/seed-vigor-index-2/index.js"),

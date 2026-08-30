@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "laser/laser-quantum-cascade-laser-mid-ir-fingerprint-selection-table-lookup": () => import("../../laser/laser-quantum-cascade-laser-mid-ir-fingerprint-selection-table-lookup/index.js"),
   "mycology/pinning-co2-threshold-trigger-checker": () => import("../../mycology/pinning-co2-threshold-trigger-checker/index.js"),
   "number/prime-checker": () => import("../../number/prime-checker/index.js"),
+  "numismatics/cleaned-coin-market-hit-percent": () => import("../../numismatics/cleaned-coin-market-hit-percent/index.js"),
   "sailing/bridge-clearance-tide": () => import("../../sailing/bridge-clearance-tide/index.js"),
   "sailing/tidal-stream-at-time": () => import("../../sailing/tidal-stream-at-time/index.js"),
   "seismology/seismic-efficiency-energy-partition": () => import("../../seismology/seismic-efficiency-energy-partition/index.js"),

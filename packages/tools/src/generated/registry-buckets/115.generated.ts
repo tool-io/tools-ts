@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "geology/downlap-angle": () => import("../../geology/downlap-angle/index.js"),
   "horology/foudroyante-steps": () => import("../../horology/foudroyante-steps/index.js"),
   "logistics/landed-cost-duties-taxes-total": () => import("../../logistics/landed-cost-duties-taxes-total/index.js"),
+  "numismatics/broadstrike-diameter-expansion": () => import("../../numismatics/broadstrike-diameter-expansion/index.js"),
   "paleography/catchword-presence-checker": () => import("../../paleography/catchword-presence-checker/index.js"),
   "paleography/writing-block-extractor": () => import("../../paleography/writing-block-extractor/index.js"),
   "random/date": () => import("../../random/date/index.js"),

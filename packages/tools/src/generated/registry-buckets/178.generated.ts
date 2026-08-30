@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "health/bmi-prime": () => import("../../health/bmi-prime/index.js"),
   "horology/tachymeter-base-calibration": () => import("../../horology/tachymeter-base-calibration/index.js"),
   "number/chinese-remainder": () => import("../../number/chinese-remainder/index.js"),
+  "numismatics/melt-value-from-spot-gold": () => import("../../numismatics/melt-value-from-spot-gold/index.js"),
   "oenology/native-ferment-risk-score": () => import("../../oenology/native-ferment-risk-score/index.js"),
   "paleography/schwabacher-fraktur-note-generator": () => import("../../paleography/schwabacher-fraktur-note-generator/index.js"),
   "probability/log-odds": () => import("../../probability/log-odds/index.js"),

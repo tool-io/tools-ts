@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/chain-ladder-development-factor": () => import("../../actuarial/chain-ladder-development-factor/index.js"),
+  "aquaculture/weight-length-relationship": () => import("../../aquaculture/weight-length-relationship/index.js"),
   "aviation/estimated-fuel-trip": () => import("../../aviation/estimated-fuel-trip/index.js"),
   "biology/feed-conversion-ratio": () => import("../../biology/feed-conversion-ratio/index.js"),
   "carpentry/arbeitsplatte-stossfuge-5mm": () => import("../../carpentry/arbeitsplatte-stossfuge-5mm/index.js"),

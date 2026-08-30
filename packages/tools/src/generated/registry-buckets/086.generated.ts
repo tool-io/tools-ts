@@ -27,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "geology/gas-oil-ratio": () => import("../../geology/gas-oil-ratio/index.js"),
   "geology/recovery-residual-drawdown": () => import("../../geology/recovery-residual-drawdown/index.js"),
   "geometry/euclidean-distance": () => import("../../geometry/euclidean-distance/index.js"),
+  "numismatics/dimes-per-ounce-silver-yield": () => import("../../numismatics/dimes-per-ounce-silver-yield/index.js"),
   "oenology/racking-loss-percentage": () => import("../../oenology/racking-loss-percentage/index.js"),
   "random/signwriting-location-punctuation-symbol": () => import("../../random/signwriting-location-punctuation-symbol/index.js"),
   "random/tai-tham-character": () => import("../../random/tai-tham-character/index.js"),

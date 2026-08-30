@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/hazmat-class-segregation-storage-checker": () => import("../../logistics/hazmat-class-segregation-storage-checker/index.js"),
   "mycology/yeast-budding-pattern-classifier": () => import("../../mycology/yeast-budding-pattern-classifier/index.js"),
   "number/abundant-checker": () => import("../../number/abundant-checker/index.js"),
+  "numismatics/troy-ounce-to-grams-converter": () => import("../../numismatics/troy-ounce-to-grams-converter/index.js"),
   "paleography/anglicana-secretary-discriminator": () => import("../../paleography/anglicana-secretary-discriminator/index.js"),
   "probability/t-sampler": () => import("../../probability/t-sampler/index.js"),
   "random/rejang-character": () => import("../../random/rejang-character/index.js"),

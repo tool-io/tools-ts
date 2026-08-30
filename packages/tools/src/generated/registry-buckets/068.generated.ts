@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/horizontal-curve-radius": () => import("../../engineering/horizontal-curve-radius/index.js"),
   "geology/seismic-intensity-mmi-lookup": () => import("../../geology/seismic-intensity-mmi-lookup/index.js"),
   "number/betrothed-checker": () => import("../../number/betrothed-checker/index.js"),
+  "numismatics/crackout-expected-value-checker": () => import("../../numismatics/crackout-expected-value-checker/index.js"),
   "oenology/gelatin-silica-dose": () => import("../../oenology/gelatin-silica-dose/index.js"),
   "seismology/catalog-magnitude-type-histogram-summary": () => import("../../seismology/catalog-magnitude-type-histogram-summary/index.js"),
   "seismology/geophone-spring-max-acceleration-range-checker": () => import("../../seismology/geophone-spring-max-acceleration-range-checker/index.js"),

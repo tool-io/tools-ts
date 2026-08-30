@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "geology/isochore-thickness": () => import("../../geology/isochore-thickness/index.js"),
   "geology/seismic-migration-aperture": () => import("../../geology/seismic-migration-aperture/index.js"),
   "logistics/pick-path-distance-serpentine-estimate": () => import("../../logistics/pick-path-distance-serpentine-estimate/index.js"),
+  "numismatics/plating-weight-delta-estimate": () => import("../../numismatics/plating-weight-delta-estimate/index.js"),
   "parse/integer": () => import("../../parse/integer/index.js"),
   "seismology/dart-pressure-tsunami-flag-checker": () => import("../../seismology/dart-pressure-tsunami-flag-checker/index.js"),
   "seismology/response-poles-zeros-consistency-checker": () => import("../../seismology/response-poles-zeros-consistency-checker/index.js"),

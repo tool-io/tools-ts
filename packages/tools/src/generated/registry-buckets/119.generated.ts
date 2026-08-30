@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "geology/u-pb-concordia": () => import("../../geology/u-pb-concordia/index.js"),
   "geology/well-log-gamma-ray-index": () => import("../../geology/well-log-gamma-ray-index/index.js"),
   "nautical/nautical-mile-to-km": () => import("../../nautical/nautical-mile-to-km/index.js"),
+  "numismatics/silver-fineness-weight-content": () => import("../../numismatics/silver-fineness-weight-content/index.js"),
   "oenology/screwcap-torque-spec": () => import("../../oenology/screwcap-torque-spec/index.js"),
   "probability/lognormal-sampler": () => import("../../probability/lognormal-sampler/index.js"),
   "proportions/percentage-difference": () => import("../../proportions/percentage-difference/index.js"),

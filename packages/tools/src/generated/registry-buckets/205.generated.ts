@@ -18,6 +18,8 @@ export const toolModuleLoaders: Readonly<
   "geology/rock-quality-designation-rqd": () => import("../../geology/rock-quality-designation-rqd/index.js"),
   "json/pointer": () => import("../../json/pointer/index.js"),
   "mycology/germtube-albicans-flag-checker": () => import("../../mycology/germtube-albicans-flag-checker/index.js"),
+  "numismatics/collection-country-completeness-percent": () => import("../../numismatics/collection-country-completeness-percent/index.js"),
+  "numismatics/pennyweight-to-grams-converter": () => import("../../numismatics/pennyweight-to-grams-converter/index.js"),
   "paleography/coptic-module-ratio-classifier": () => import("../../paleography/coptic-module-ratio-classifier/index.js"),
   "paleography/hogshead-barrel-tun-converter": () => import("../../paleography/hogshead-barrel-tun-converter/index.js"),
   "semiconductor/apd-breakdown-voltage": () => import("../../semiconductor/apd-breakdown-voltage/index.js"),

@@ -24,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "geology/well-log-porosity-neutron": () => import("../../geology/well-log-porosity-neutron/index.js"),
   "logistics/stretch-wrap-film-length-needed": () => import("../../logistics/stretch-wrap-film-length-needed/index.js"),
   "number/leading-digit": () => import("../../number/leading-digit/index.js"),
+  "numismatics/medieval-lsd-converter": () => import("../../numismatics/medieval-lsd-converter/index.js"),
   "oenology/do-at-bottling-checker": () => import("../../oenology/do-at-bottling-checker/index.js"),
   "random/linear-b-sign": () => import("../../random/linear-b-sign/index.js"),
   "random/toto-character": () => import("../../random/toto-character/index.js"),
