@@ -1,0 +1,6 @@
+import { describe, expect, it } from "vitest"; import { calculateRandomHeadphones, randomHeadphonesExample, runRandomHeadphones } from "./tool.js";
+describe("Random Headphones Picker", () => {
+  it("selects exact IDs and preserves provenance", () => { expect(JSON.parse(JSON.stringify(randomHeadphonesExample))).toEqual(randomHeadphonesExample);expect(runRandomHeadphones(randomHeadphonesExample.input,{random:()=>0}).ok).toBe(true); expect(calculateRandomHeadphones(randomHeadphonesExample.input, () => 0)).toEqual({ datasetId: "example/headphones", datasetVersion: "1", selectedIds: ["candidate-a", "candidate-b"], sourceId: "example" }); });
+  it("is deterministic with injected randomness", () => { expect(calculateRandomHeadphones(randomHeadphonesExample.input, () => 0.75)).toEqual(calculateRandomHeadphones(randomHeadphonesExample.input, () => 0.75)); });
+  it("rejects invalid pools and randomness", () => { expect(runRandomHeadphones({ ...randomHeadphonesExample.input, candidateIds: [] }).ok).toBe(false); expect(runRandomHeadphones({ ...randomHeadphonesExample.input, selectionCount: 4 }).ok).toBe(false); expect(runRandomHeadphones(randomHeadphonesExample.input, { random: () => 1 }).ok).toBe(false); });
+});
