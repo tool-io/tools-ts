@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/critical-pressure-lookup": () => import("../../chemistry/critical-pressure-lookup/index.js"),
   "chemistry/root-mean-square-speed": () => import("../../chemistry/root-mean-square-speed/index.js"),
   "decode/base85": () => import("../../decode/base85/index.js"),
+  "finance/time-money": () => import("../../finance/time-money/index.js"),
   "geography/bounding-box": () => import("../../geography/bounding-box/index.js"),
   "geology/shelf-edge-trajectory-angle": () => import("../../geology/shelf-edge-trajectory-angle/index.js"),
   "matrix/as-json": () => import("../../matrix/as-json/index.js"),
@@ -21,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/gutenberg-richter-b-value-two-anchor-fit": () => import("../../seismology/gutenberg-richter-b-value-two-anchor-fit/index.js"),
   "seismology/instrument-response-gain-db-lookup": () => import("../../seismology/instrument-response-gain-db-lookup/index.js"),
   "seismology/vertical-horizontal-vh-ratio-lookup": () => import("../../seismology/vertical-horizontal-vh-ratio-lookup/index.js"),
+  "semiconductor/pcm-amorphization-energy": () => import("../../semiconductor/pcm-amorphization-energy/index.js"),
   "statistics/count-above": () => import("../../statistics/count-above/index.js"),
   "vr/fov-from-focal-length-vr": () => import("../../vr/fov-from-focal-length-vr/index.js"),
 };

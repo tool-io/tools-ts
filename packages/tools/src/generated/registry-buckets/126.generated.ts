@@ -4,17 +4,26 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/acoustic-intensity-from-spl": () => import("../../acoustics/acoustic-intensity-from-spl/index.js"),
   "actuarial/joint-life-survival-probability": () => import("../../actuarial/joint-life-survival-probability/index.js"),
   "biology/population-doubling-time-ecology": () => import("../../biology/population-doubling-time-ecology/index.js"),
+  "carpentry/edge-banding-length": () => import("../../carpentry/edge-banding-length/index.js"),
+  "carpentry/mortise-width": () => import("../../carpentry/mortise-width/index.js"),
+  "construction/drywall-mud-coverage": () => import("../../construction/drywall-mud-coverage/index.js"),
+  "construction/drywall-weight-total": () => import("../../construction/drywall-weight-total/index.js"),
+  "construction/roofing-nails-per-bundle": () => import("../../construction/roofing-nails-per-bundle/index.js"),
   "convert/ascii-code-to-character": () => import("../../convert/ascii-code-to-character/index.js"),
   "cryptography/caesar-shift": () => import("../../cryptography/caesar-shift/index.js"),
   "demography/tempo-adjustment-bongaarts-feeney": () => import("../../demography/tempo-adjustment-bongaarts-feeney/index.js"),
+  "electronics/motor-slip-percentage": () => import("../../electronics/motor-slip-percentage/index.js"),
   "encode/base85": () => import("../../encode/base85/index.js"),
   "encode/protobuf-zigzag": () => import("../../encode/protobuf-zigzag/index.js"),
+  "engineering/material-removal-rate": () => import("../../engineering/material-removal-rate/index.js"),
   "geology/atterberg-consistency-index": () => import("../../geology/atterberg-consistency-index/index.js"),
   "logistics/pallet-exchange-pallet-for-pallet-credit-balance": () => import("../../logistics/pallet-exchange-pallet-for-pallet-credit-balance/index.js"),
   "logistics/teu-feu-equivalent-conversion": () => import("../../logistics/teu-feu-equivalent-conversion/index.js"),
   "sailing/waterline-length-from-speed": () => import("../../sailing/waterline-length-from-speed/index.js"),
   "seismology/array-aperture-moveout-resolution-checker": () => import("../../seismology/array-aperture-moveout-resolution-checker/index.js"),
   "seismology/schuster-critical-value-significance-checker": () => import("../../seismology/schuster-critical-value-significance-checker/index.js"),
+  "typography/perfect-fourth-scale-generator": () => import("../../typography/perfect-fourth-scale-generator/index.js"),
 };

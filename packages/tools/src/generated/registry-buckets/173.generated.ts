@@ -6,8 +6,12 @@ export const toolModuleLoaders: Readonly<
 > = {
   "biology/leaf-potassium-content": () => import("../../biology/leaf-potassium-content/index.js"),
   "biology/mean-arterial-pressure": () => import("../../biology/mean-arterial-pressure/index.js"),
+  "carpentry/dado-width": () => import("../../carpentry/dado-width/index.js"),
+  "carpentry/tuerbaender-anzahl-nach-gewicht": () => import("../../carpentry/tuerbaender-anzahl-nach-gewicht/index.js"),
   "chemistry/first-order-integrated": () => import("../../chemistry/first-order-integrated/index.js"),
+  "construction/rebar-chair-spacing": () => import("../../construction/rebar-chair-spacing/index.js"),
   "date/age": () => import("../../date/age/index.js"),
+  "electronics/opamp-short-circuit-power": () => import("../../electronics/opamp-short-circuit-power/index.js"),
   "electronics/total-harmonic-distortion": () => import("../../electronics/total-harmonic-distortion/index.js"),
   "finance/periodic-interest-rate": () => import("../../finance/periodic-interest-rate/index.js"),
   "finance/profit-margin": () => import("../../finance/profit-margin/index.js"),

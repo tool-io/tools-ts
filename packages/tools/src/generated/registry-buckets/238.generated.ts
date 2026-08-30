@@ -11,7 +11,9 @@ export const toolModuleLoaders: Readonly<
   "cost/project": () => import("../../cost/project/index.js"),
   "electronics/common-mode-rejection-ratio-linear": () => import("../../electronics/common-mode-rejection-ratio-linear/index.js"),
   "electronics/total-integrated-noise": () => import("../../electronics/total-integrated-noise/index.js"),
+  "engineering/escape-velocity": () => import("../../engineering/escape-velocity/index.js"),
   "paleography/batarde-mix-proportion-calculator": () => import("../../paleography/batarde-mix-proportion-calculator/index.js"),
   "parasitology/flotac-two-chamber-epg": () => import("../../parasitology/flotac-two-chamber-epg/index.js"),
+  "real-estate/transfer-tax": () => import("../../real-estate/transfer-tax/index.js"),
   "sailing/righting-arm-gz": () => import("../../sailing/righting-arm-gz/index.js"),
 };

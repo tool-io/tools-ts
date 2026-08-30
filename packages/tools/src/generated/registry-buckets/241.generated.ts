@@ -9,6 +9,8 @@ export const toolModuleLoaders: Readonly<
   "biology/primer-self-dimer-tm": () => import("../../biology/primer-self-dimer-tm/index.js"),
   "carpentry/deckenpaneele-nut-feder-dehnungsfuge": () => import("../../carpentry/deckenpaneele-nut-feder-dehnungsfuge/index.js"),
   "decode/bacon-cipher": () => import("../../decode/bacon-cipher/index.js"),
+  "electronics/antenna-polarization-loss": () => import("../../electronics/antenna-polarization-loss/index.js"),
+  "electronics/detector-responsivity-vs-wavelength": () => import("../../electronics/detector-responsivity-vs-wavelength/index.js"),
   "electronics/eia-96-code-decode": () => import("../../electronics/eia-96-code-decode/index.js"),
   "electronics/t-pad-series-resistor": () => import("../../electronics/t-pad-series-resistor/index.js"),
   "list/zip": () => import("../../list/zip/index.js"),

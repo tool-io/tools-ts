@@ -4,13 +4,16 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/oblique-mode-frequency": () => import("../../acoustics/oblique-mode-frequency/index.js"),
   "biology/alveolar-gas-equation": () => import("../../biology/alveolar-gas-equation/index.js"),
   "biology/body-surface-area-dubois": () => import("../../biology/body-surface-area-dubois/index.js"),
   "biology/specific-root-area": () => import("../../biology/specific-root-area/index.js"),
   "biology/wood-ray-proportion": () => import("../../biology/wood-ray-proportion/index.js"),
   "carpentry/parkett-sockelleiste-gehrung-45grad": () => import("../../carpentry/parkett-sockelleiste-gehrung-45grad/index.js"),
+  "cartography/magnetic-to-grid-converter": () => import("../../cartography/magnetic-to-grid-converter/index.js"),
   "chemistry/environmental-bod": () => import("../../chemistry/environmental-bod/index.js"),
   "classification/specificity": () => import("../../classification/specificity/index.js"),
+  "engineering/bearing-life-l10": () => import("../../engineering/bearing-life-l10/index.js"),
   "epigraphy/sinistroverse-direction-flag": () => import("../../epigraphy/sinistroverse-direction-flag/index.js"),
   "mycology/ascoma-type-classifier": () => import("../../mycology/ascoma-type-classifier/index.js"),
   "mycology/christensen-urease-rapid-classifier": () => import("../../mycology/christensen-urease-rapid-classifier/index.js"),

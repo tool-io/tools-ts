@@ -4,14 +4,22 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/absorption-required-for-target-rt": () => import("../../acoustics/absorption-required-for-target-rt/index.js"),
   "biology/inbreeding-pedigree": () => import("../../biology/inbreeding-pedigree/index.js"),
   "biology/leaf-mass-per-area": () => import("../../biology/leaf-mass-per-area/index.js"),
   "biology/specific-stem-density": () => import("../../biology/specific-stem-density/index.js"),
+  "carpentry/finger-joint-count": () => import("../../carpentry/finger-joint-count/index.js"),
+  "carpentry/plug-cutter-size": () => import("../../carpentry/plug-cutter-size/index.js"),
+  "check/regex-expression": () => import("../../check/regex-expression/index.js"),
   "chemistry/specific-humidity": () => import("../../chemistry/specific-humidity/index.js"),
+  "construction/bricks-per-wall": () => import("../../construction/bricks-per-wall/index.js"),
+  "construction/flashing-valley-length": () => import("../../construction/flashing-valley-length/index.js"),
   "convert/electric-conductance": () => import("../../convert/electric-conductance/index.js"),
   "electronics/rl-cutoff-frequency": () => import("../../electronics/rl-cutoff-frequency/index.js"),
+  "electronics/solar-cell-short-circuit-current": () => import("../../electronics/solar-cell-short-circuit-current/index.js"),
   "epigraphy/hic-situs-est-detector": () => import("../../epigraphy/hic-situs-est-detector/index.js"),
   "finance/break-even-price": () => import("../../finance/break-even-price/index.js"),
+  "horology/dynamic-pressure-factor": () => import("../../horology/dynamic-pressure-factor/index.js"),
   "logistics/vgm-verified-gross-mass-solas-total": () => import("../../logistics/vgm-verified-gross-mass-solas-total/index.js"),
   "oenology/oak-chip-dosage": () => import("../../oenology/oak-chip-dosage/index.js"),
   "optimization/bfgs-step": () => import("../../optimization/bfgs-step/index.js"),

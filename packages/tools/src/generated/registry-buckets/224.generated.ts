@@ -4,11 +4,14 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "carpentry/dovetail-slope-ratio": () => import("../../carpentry/dovetail-slope-ratio/index.js"),
   "carpentry/holzfeuchte-ausgleichszeit-tage": () => import("../../carpentry/holzfeuchte-ausgleichszeit-tage/index.js"),
   "chemistry/pm-at-equivalence": () => import("../../chemistry/pm-at-equivalence/index.js"),
   "convert/decimal-to-octal": () => import("../../convert/decimal-to-octal/index.js"),
+  "convert/speed-velocity": () => import("../../convert/speed-velocity/index.js"),
   "demography/lifespan-variation-edagger": () => import("../../demography/lifespan-variation-edagger/index.js"),
   "electronics/radar-cross-section": () => import("../../electronics/radar-cross-section/index.js"),
+  "engineering/chezy-coefficient": () => import("../../engineering/chezy-coefficient/index.js"),
   "logistics/deadhead-empty-miles-ratio": () => import("../../logistics/deadhead-empty-miles-ratio/index.js"),
   "sailing/wetted-surface-area-hull": () => import("../../sailing/wetted-surface-area-hull/index.js"),
   "statistics/pearson-correlation": () => import("../../statistics/pearson-correlation/index.js"),

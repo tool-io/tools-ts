@@ -4,17 +4,26 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/scale-model-one-to-ten-times-ten-frequency-rule": () => import("../../acoustics/scale-model-one-to-ten-times-ten-frequency-rule/index.js"),
   "actuarial/udd-fractional-survival": () => import("../../actuarial/udd-fractional-survival/index.js"),
   "aviation/calibrated-airspeed": () => import("../../aviation/calibrated-airspeed/index.js"),
   "aviation/holding-time": () => import("../../aviation/holding-time/index.js"),
+  "cartography/map-to-ground-distance": () => import("../../cartography/map-to-ground-distance/index.js"),
   "chemistry/isotopic-abundance": () => import("../../chemistry/isotopic-abundance/index.js"),
   "chemistry/solubility-with-ionic-strength": () => import("../../chemistry/solubility-with-ionic-strength/index.js"),
+  "construction/concrete-retarder-dose": () => import("../../construction/concrete-retarder-dose/index.js"),
   "demography/unmet-need-contraception-percent": () => import("../../demography/unmet-need-contraception-percent/index.js"),
+  "engineering/electrical-load-diversity": () => import("../../engineering/electrical-load-diversity/index.js"),
+  "engineering/weir-flow-rectangular": () => import("../../engineering/weir-flow-rectangular/index.js"),
   "epigraphy/pediment-angle-geometry-checker": () => import("../../epigraphy/pediment-angle-geometry-checker/index.js"),
+  "forestry/taper-function-simple": () => import("../../forestry/taper-function-simple/index.js"),
   "geology/effective-stress": () => import("../../geology/effective-stress/index.js"),
   "geology/qapf-plot": () => import("../../geology/qapf-plot/index.js"),
   "geometry/octahedron-volume": () => import("../../geometry/octahedron-volume/index.js"),
   "graph/minimum-spanning-tree": () => import("../../graph/minimum-spanning-tree/index.js"),
+  "horology/train-wheel-teeth-sum": () => import("../../horology/train-wheel-teeth-sum/index.js"),
   "matrix/as-plain-text": () => import("../../matrix/as-plain-text/index.js"),
+  "number/herons-method": () => import("../../number/herons-method/index.js"),
   "sailing/acceleration-after-tack": () => import("../../sailing/acceleration-after-tack/index.js"),
+  "vr/render-scale-percentage": () => import("../../vr/render-scale-percentage/index.js"),
 };

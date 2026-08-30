@@ -4,15 +4,21 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/acoustic-impedance-medium": () => import("../../acoustics/acoustic-impedance-medium/index.js"),
   "aviation/density-altitude": () => import("../../aviation/density-altitude/index.js"),
   "biology/necrosis-percentage": () => import("../../biology/necrosis-percentage/index.js"),
   "carpentry/clamex-p-system-bohrbild": () => import("../../carpentry/clamex-p-system-bohrbild/index.js"),
+  "carpentry/dovetail-angle": () => import("../../carpentry/dovetail-angle/index.js"),
   "check/clock-offset": () => import("../../check/clock-offset/index.js"),
+  "chemistry/surface-tension-capillary-rise": () => import("../../chemistry/surface-tension-capillary-rise/index.js"),
   "convert/atbash": () => import("../../convert/atbash/index.js"),
   "convert/hsv-to-rgb": () => import("../../convert/hsv-to-rgb/index.js"),
+  "data-structure/minhash": () => import("../../data-structure/minhash/index.js"),
   "date/is-weekend": () => import("../../date/is-weekend/index.js"),
   "electronics/capacitor-charging-voltage": () => import("../../electronics/capacitor-charging-voltage/index.js"),
+  "electronics/chopper-amplifier-offset": () => import("../../electronics/chopper-amplifier-offset/index.js"),
   "electronics/speaker-impedance-at-resonance": () => import("../../electronics/speaker-impedance-at-resonance/index.js"),
+  "film/resolution-from-aspect-ratio": () => import("../../film/resolution-from-aspect-ratio/index.js"),
   "geology/hoek-brown-criterion": () => import("../../geology/hoek-brown-criterion/index.js"),
   "geology/shrinkage-limit": () => import("../../geology/shrinkage-limit/index.js"),
   "matrix/diagonal": () => import("../../matrix/diagonal/index.js"),

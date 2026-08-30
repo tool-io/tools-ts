@@ -11,8 +11,10 @@ export const toolModuleLoaders: Readonly<
   "convert/hsl-to-hex": () => import("../../convert/hsl-to-hex/index.js"),
   "demography/median-age-grouped-interpolation": () => import("../../demography/median-age-grouped-interpolation/index.js"),
   "electronics/noise-figure-linear": () => import("../../electronics/noise-figure-linear/index.js"),
+  "engineering/column-effective-length": () => import("../../engineering/column-effective-length/index.js"),
   "epigraphy/sttl-acronym-expander": () => import("../../epigraphy/sttl-acronym-expander/index.js"),
   "finance/sales-tax": () => import("../../finance/sales-tax/index.js"),
+  "forestry/merchantable-volume-percentage": () => import("../../forestry/merchantable-volume-percentage/index.js"),
   "geology/rock-mass-rating-rmr": () => import("../../geology/rock-mass-rating-rmr/index.js"),
   "interpolation/bilinear": () => import("../../interpolation/bilinear/index.js"),
   "number/automorphic-checker": () => import("../../number/automorphic-checker/index.js"),
@@ -26,4 +28,5 @@ export const toolModuleLoaders: Readonly<
   "statistics/unique-count": () => import("../../statistics/unique-count/index.js"),
   "text/char-at-index": () => import("../../text/char-at-index/index.js"),
   "text/longest-common-prefix": () => import("../../text/longest-common-prefix/index.js"),
+  "typography/ratio-from-two-sizes-reverse-engineer": () => import("../../typography/ratio-from-two-sizes-reverse-engineer/index.js"),
 };

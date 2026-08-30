@@ -5,12 +5,17 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/free-cash-flow-simple": () => import("../../accounting/free-cash-flow-simple/index.js"),
+  "acoustics/db-addition-two-sources": () => import("../../acoustics/db-addition-two-sources/index.js"),
+  "acoustics/standing-wave-node-spacing": () => import("../../acoustics/standing-wave-node-spacing/index.js"),
   "electronics/antenna-beamwidth-from-diameter": () => import("../../electronics/antenna-beamwidth-from-diameter/index.js"),
   "electronics/capacity-from-runtime": () => import("../../electronics/capacity-from-runtime/index.js"),
   "electronics/link-budget": () => import("../../electronics/link-budget/index.js"),
+  "electronics/memory-latency": () => import("../../electronics/memory-latency/index.js"),
+  "engineering/cavitation-number": () => import("../../engineering/cavitation-number/index.js"),
   "finance/future-value": () => import("../../finance/future-value/index.js"),
   "geology/vei-lookup": () => import("../../geology/vei-lookup/index.js"),
   "geometry/pythagorean-theorem": () => import("../../geometry/pythagorean-theorem/index.js"),
+  "number/egyptian-fraction": () => import("../../number/egyptian-fraction/index.js"),
   "number/evil-checker": () => import("../../number/evil-checker/index.js"),
   "oenology/ascorbic-complement-dose": () => import("../../oenology/ascorbic-complement-dose/index.js"),
   "oenology/charcoal-decolorizing-dose": () => import("../../oenology/charcoal-decolorizing-dose/index.js"),

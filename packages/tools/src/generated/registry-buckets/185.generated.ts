@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "aviation/cabin-rate-of-climb": () => import("../../aviation/cabin-rate-of-climb/index.js"),
   "aviation/headwind-component": () => import("../../aviation/headwind-component/index.js"),
   "aviation/v-speed-vle": () => import("../../aviation/v-speed-vle/index.js"),
   "biology/corrected-reticulocyte-count": () => import("../../biology/corrected-reticulocyte-count/index.js"),
@@ -12,9 +13,12 @@ export const toolModuleLoaders: Readonly<
   "chemistry/environmental-toc": () => import("../../chemistry/environmental-toc/index.js"),
   "chemistry/nernst-equation": () => import("../../chemistry/nernst-equation/index.js"),
   "chemistry/vsepr-geometry": () => import("../../chemistry/vsepr-geometry/index.js"),
+  "construction/repointing-mortar-volume": () => import("../../construction/repointing-mortar-volume/index.js"),
   "demography/age-standardized-prevalence-weighted": () => import("../../demography/age-standardized-prevalence-weighted/index.js"),
   "demography/bongaarts-proximate-decomposition": () => import("../../demography/bongaarts-proximate-decomposition/index.js"),
+  "electronics/rtd-resistance": () => import("../../electronics/rtd-resistance/index.js"),
   "electronics/vco-gain": () => import("../../electronics/vco-gain/index.js"),
+  "engineering/sedimentation-overflow-rate": () => import("../../engineering/sedimentation-overflow-rate/index.js"),
   "geology/pore-pressure-prediction-eaton-sonic": () => import("../../geology/pore-pressure-prediction-eaton-sonic/index.js"),
   "geology/richter-magnitude-from-amplitude": () => import("../../geology/richter-magnitude-from-amplitude/index.js"),
   "geology/well-log-porosity-neutron": () => import("../../geology/well-log-porosity-neutron/index.js"),

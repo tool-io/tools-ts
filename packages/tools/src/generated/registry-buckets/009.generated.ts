@@ -4,11 +4,14 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/total-absorption-sabins": () => import("../../acoustics/total-absorption-sabins/index.js"),
   "actuarial/last-survivor-probability": () => import("../../actuarial/last-survivor-probability/index.js"),
   "biology/carrying-capacity-checker": () => import("../../biology/carrying-capacity-checker/index.js"),
   "chemistry/absorbance-from-transmittance": () => import("../../chemistry/absorbance-from-transmittance/index.js"),
   "chemistry/bromothymol-blue-range": () => import("../../chemistry/bromothymol-blue-range/index.js"),
   "chemistry/environmental-hardness-caco3": () => import("../../chemistry/environmental-hardness-caco3/index.js"),
+  "electronics/audio-equalizer-center-frequency": () => import("../../electronics/audio-equalizer-center-frequency/index.js"),
+  "engineering/soil-consolidation-time-factor": () => import("../../engineering/soil-consolidation-time-factor/index.js"),
   "epigraphy/serif-era-classifier": () => import("../../epigraphy/serif-era-classifier/index.js"),
   "geometry/sphere-surface-area": () => import("../../geometry/sphere-surface-area/index.js"),
   "laser/laser-yb-yag-thin-disk-multipass-pump-absorption-efficiency-calculator": () => import("../../laser/laser-yb-yag-thin-disk-multipass-pump-absorption-efficiency-calculator/index.js"),

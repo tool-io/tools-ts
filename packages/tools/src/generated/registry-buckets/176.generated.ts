@@ -4,13 +4,18 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/equivalent-continuous-level-leq": () => import("../../acoustics/equivalent-continuous-level-leq/index.js"),
   "activation/relu": () => import("../../activation/relu/index.js"),
   "aviation/obstacle-clearance-gradient": () => import("../../aviation/obstacle-clearance-gradient/index.js"),
   "aviation/va-speed": () => import("../../aviation/va-speed/index.js"),
   "biology/primer-concentration-nm": () => import("../../biology/primer-concentration-nm/index.js"),
   "electronics/microphone-sensitivity-voltage": () => import("../../electronics/microphone-sensitivity-voltage/index.js"),
+  "engineering/venturi-flow-rate": () => import("../../engineering/venturi-flow-rate/index.js"),
   "geometry/rhombus-area": () => import("../../geometry/rhombus-area/index.js"),
+  "horology/third-wheel-speed": () => import("../../horology/third-wheel-speed/index.js"),
+  "http/method-validator": () => import("../../http/method-validator/index.js"),
   "paleography/hijri-julian-manuscript-converter": () => import("../../paleography/hijri-julian-manuscript-converter/index.js"),
   "sailing/start-line-favored-end": () => import("../../sailing/start-line-favored-end/index.js"),
   "semiconductor/mosfet-work-function-difference": () => import("../../semiconductor/mosfet-work-function-difference/index.js"),
+  "web/loading-attribute-validator": () => import("../../web/loading-attribute-validator/index.js"),
 };

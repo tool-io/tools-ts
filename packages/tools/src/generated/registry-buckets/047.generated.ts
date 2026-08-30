@@ -4,10 +4,15 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/particle-velocity-from-pressure": () => import("../../acoustics/particle-velocity-from-pressure/index.js"),
   "actuarial/whole-life-insurance-epv": () => import("../../actuarial/whole-life-insurance-epv/index.js"),
   "aviation/zero-fuel-weight": () => import("../../aviation/zero-fuel-weight/index.js"),
   "biology/canopy-height-model": () => import("../../biology/canopy-height-model/index.js"),
   "electronics/input-capacitor-rms-current-buck": () => import("../../electronics/input-capacitor-rms-current-buck/index.js"),
+  "electronics/pcb-trace-current-capacity-ipc2221": () => import("../../electronics/pcb-trace-current-capacity-ipc2221/index.js"),
+  "engineering/grinding-removal-rate": () => import("../../engineering/grinding-removal-rate/index.js"),
+  "engineering/sound-pressure-level": () => import("../../engineering/sound-pressure-level/index.js"),
+  "horology/depth-static-pressure": () => import("../../horology/depth-static-pressure/index.js"),
   "list/cumulative-product": () => import("../../list/cumulative-product/index.js"),
   "normalize/standard-score": () => import("../../normalize/standard-score/index.js"),
   "oenology/brett-4ep-risk-checker": () => import("../../oenology/brett-4ep-risk-checker/index.js"),

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/sone-to-phon-converter": () => import("../../acoustics/sone-to-phon-converter/index.js"),
   "arithmetic/add-numbers": () => import("../../arithmetic/add-numbers/index.js"),
   "aviation/v-speed-vs1": () => import("../../aviation/v-speed-vs1/index.js"),
   "biology/pulmonary-vascular-resistance": () => import("../../biology/pulmonary-vascular-resistance/index.js"),
@@ -11,14 +12,19 @@ export const toolModuleLoaders: Readonly<
   "carpentry/holzfeuchte-kapazitiv-messung-korrektur": () => import("../../carpentry/holzfeuchte-kapazitiv-messung-korrektur/index.js"),
   "chemistry/d-spacing-bragg": () => import("../../chemistry/d-spacing-bragg/index.js"),
   "chemistry/nuclear-q-value": () => import("../../chemistry/nuclear-q-value/index.js"),
+  "construction/carpet-seam-length": () => import("../../construction/carpet-seam-length/index.js"),
   "date/quarter-of-year": () => import("../../date/quarter-of-year/index.js"),
   "demography/stable-equivalent-population-size": () => import("../../demography/stable-equivalent-population-size/index.js"),
   "electricity/parallel-resistance": () => import("../../electricity/parallel-resistance/index.js"),
+  "electronics/battery-capacity-fade": () => import("../../electronics/battery-capacity-fade/index.js"),
   "electronics/capacitor-energy": () => import("../../electronics/capacitor-energy/index.js"),
   "electronics/watts-to-dbw": () => import("../../electronics/watts-to-dbw/index.js"),
+  "engineering/otto-cycle-efficiency": () => import("../../engineering/otto-cycle-efficiency/index.js"),
   "finance/ad-revenue": () => import("../../finance/ad-revenue/index.js"),
   "geology/isopach-thickness": () => import("../../geology/isopach-thickness/index.js"),
   "geology/seismic-stack-velocity": () => import("../../geology/seismic-stack-velocity/index.js"),
+  "music/guitar-fret-distance-mm-from-scale": () => import("../../music/guitar-fret-distance-mm-from-scale/index.js"),
+  "music/note-value-duration-seconds-at-bpm": () => import("../../music/note-value-duration-seconds-at-bpm/index.js"),
   "physics/force": () => import("../../physics/force/index.js"),
   "sailing/sail-area": () => import("../../sailing/sail-area/index.js"),
   "sailing/under-keel-clearance": () => import("../../sailing/under-keel-clearance/index.js"),
@@ -28,4 +34,5 @@ export const toolModuleLoaders: Readonly<
   "statistics/mean": () => import("../../statistics/mean/index.js"),
   "statistics/proportion-confidence-interval": () => import("../../statistics/proportion-confidence-interval/index.js"),
   "text/digit-count-in-text": () => import("../../text/digit-count-in-text/index.js"),
+  "typography/golden-ratio-type-scale": () => import("../../typography/golden-ratio-type-scale/index.js"),
 };

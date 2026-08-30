@@ -9,8 +9,13 @@ export const toolModuleLoaders: Readonly<
   "chemistry/combustion-oxygen-mass": () => import("../../chemistry/combustion-oxygen-mass/index.js"),
   "chemistry/osmolality": () => import("../../chemistry/osmolality/index.js"),
   "chemistry/quantum-yield": () => import("../../chemistry/quantum-yield/index.js"),
+  "construction/stair-tread-depth": () => import("../../construction/stair-tread-depth/index.js"),
   "convert/unix-timestamp-to-date": () => import("../../convert/unix-timestamp-to-date/index.js"),
+  "electronics/crystal-drive-level": () => import("../../electronics/crystal-drive-level/index.js"),
   "electronics/decoupling-resonance-frequency": () => import("../../electronics/decoupling-resonance-frequency/index.js"),
+  "engineering/soil-at-rest-pressure": () => import("../../engineering/soil-at-rest-pressure/index.js"),
   "epigraphy/erasure-double-slash-detector": () => import("../../epigraphy/erasure-double-slash-detector/index.js"),
+  "horology/daylight-saving-shift": () => import("../../horology/daylight-saving-shift/index.js"),
+  "horology/gmt-hand-offset": () => import("../../horology/gmt-hand-offset/index.js"),
   "size/hakama-reconstruction": () => import("../../size/hakama-reconstruction/index.js"),
 };

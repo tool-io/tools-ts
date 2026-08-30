@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/open-pipe-fundamental": () => import("../../acoustics/open-pipe-fundamental/index.js"),
   "aviation/v-speed-vs0": () => import("../../aviation/v-speed-vs0/index.js"),
   "aviation/wind-speed-from-components": () => import("../../aviation/wind-speed-from-components/index.js"),
   "biology/berger-parker-dominance": () => import("../../biology/berger-parker-dominance/index.js"),
@@ -15,10 +16,13 @@ export const toolModuleLoaders: Readonly<
   "demography/life-table-entropy-keyfitz-h": () => import("../../demography/life-table-entropy-keyfitz-h/index.js"),
   "electronics/inductor-peak-current": () => import("../../electronics/inductor-peak-current/index.js"),
   "electronics/microstrip-impedance-approx": () => import("../../electronics/microstrip-impedance-approx/index.js"),
+  "electronics/nco-frequency-resolution": () => import("../../electronics/nco-frequency-resolution/index.js"),
   "epigraphy/letter-frequency-histogram": () => import("../../epigraphy/letter-frequency-histogram/index.js"),
   "generate/open-shop-scheduling-instance": () => import("../../generate/open-shop-scheduling-instance/index.js"),
   "linguistics/comparative-adjective": () => import("../../linguistics/comparative-adjective/index.js"),
   "oenology/ph-ta-balance": () => import("../../oenology/ph-ta-balance/index.js"),
+  "probability/negative-binomial-sampler": () => import("../../probability/negative-binomial-sampler/index.js"),
+  "real-estate/price-reduction-percentage": () => import("../../real-estate/price-reduction-percentage/index.js"),
   "sailing/lock-water-volume": () => import("../../sailing/lock-water-volume/index.js"),
   "sociology/qx-probability-death-from-mx": () => import("../../sociology/qx-probability-death-from-mx/index.js"),
   "validate/gtin-check-digit": () => import("../../validate/gtin-check-digit/index.js"),

@@ -4,13 +4,22 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/inverse-square-law-level-change": () => import("../../acoustics/inverse-square-law-level-change/index.js"),
   "actuarial/term-insurance-epv": () => import("../../actuarial/term-insurance-epv/index.js"),
   "aviation/vr-speed": () => import("../../aviation/vr-speed/index.js"),
   "biology/pressure-potential": () => import("../../biology/pressure-potential/index.js"),
+  "carpentry/box-joint-finger-width": () => import("../../carpentry/box-joint-finger-width/index.js"),
+  "carpentry/doweling-jig-setting": () => import("../../carpentry/doweling-jig-setting/index.js"),
   "carpentry/leim-fugendicke-01-03mm": () => import("../../carpentry/leim-fugendicke-01-03mm/index.js"),
+  "construction/flooring-transition-height-difference": () => import("../../construction/flooring-transition-height-difference/index.js"),
+  "construction/rebar-weight-per-foot": () => import("../../construction/rebar-weight-per-foot/index.js"),
   "convert/frequency": () => import("../../convert/frequency/index.js"),
+  "electronics/apd-excess-noise-factor": () => import("../../electronics/apd-excess-noise-factor/index.js"),
   "electronics/shot-noise-voltage": () => import("../../electronics/shot-noise-voltage/index.js"),
+  "engineering/deflection-limit-check": () => import("../../engineering/deflection-limit-check/index.js"),
   "epigraphy/boundary-term-detector": () => import("../../epigraphy/boundary-term-detector/index.js"),
+  "forestry/height-diameter-ratio": () => import("../../forestry/height-diameter-ratio/index.js"),
+  "forestry/pulp-volume-percentage": () => import("../../forestry/pulp-volume-percentage/index.js"),
   "geology/harker-diagram-silica": () => import("../../geology/harker-diagram-silica/index.js"),
   "geology/relative-permeability-oil-water": () => import("../../geology/relative-permeability-oil-water/index.js"),
   "laser/laser-he-ne-632-8-nm-mode-hop-free-cavity-length-tube-design-lookup": () => import("../../laser/laser-he-ne-632-8-nm-mode-hop-free-cavity-length-tube-design-lookup/index.js"),

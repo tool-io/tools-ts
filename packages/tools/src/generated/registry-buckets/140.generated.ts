@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/angular-frequency-calculator": () => import("../../acoustics/angular-frequency-calculator/index.js"),
+  "acoustics/cents-to-ratio-converter": () => import("../../acoustics/cents-to-ratio-converter/index.js"),
   "actuarial/deferred-whole-life-epv": () => import("../../actuarial/deferred-whole-life-epv/index.js"),
   "actuarial/expected-loss-ratio": () => import("../../actuarial/expected-loss-ratio/index.js"),
   "biology/oxygenation-index-2": () => import("../../biology/oxygenation-index-2/index.js"),
@@ -16,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "demography/child-woman-ratio-cwr": () => import("../../demography/child-woman-ratio-cwr/index.js"),
   "electronics/comparator-hysteresis-voltage": () => import("../../electronics/comparator-hysteresis-voltage/index.js"),
   "electronics/gain-bandwidth-product": () => import("../../electronics/gain-bandwidth-product/index.js"),
+  "electronics/magnetic-path-length": () => import("../../electronics/magnetic-path-length/index.js"),
   "list/frequency": () => import("../../list/frequency/index.js"),
   "logistics/dock-door-utilization-percent": () => import("../../logistics/dock-door-utilization-percent/index.js"),
   "matrix/transpose": () => import("../../matrix/transpose/index.js"),

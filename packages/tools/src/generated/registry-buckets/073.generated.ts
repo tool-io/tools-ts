@@ -4,11 +4,16 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/area-weighted-absorption-coefficient": () => import("../../acoustics/area-weighted-absorption-coefficient/index.js"),
   "actuarial/total-decrement-rate": () => import("../../actuarial/total-decrement-rate/index.js"),
   "carpentry/beize-verduennung-verhaeltnis": () => import("../../carpentry/beize-verduennung-verhaeltnis/index.js"),
   "chemistry/reaction-quotient": () => import("../../chemistry/reaction-quotient/index.js"),
+  "construction/concrete-weight": () => import("../../construction/concrete-weight/index.js"),
   "electricity/rc-time-constant": () => import("../../electricity/rc-time-constant/index.js"),
+  "electronics/igbt-switching-energy": () => import("../../electronics/igbt-switching-energy/index.js"),
+  "engineering/rebar-area": () => import("../../engineering/rebar-area/index.js"),
   "geology/slope-stability-factor-of-safety-infinite-slope": () => import("../../geology/slope-stability-factor-of-safety-infinite-slope/index.js"),
+  "horology/quartz-frequency-drift": () => import("../../horology/quartz-frequency-drift/index.js"),
   "logistics/dimensional-weight-divisor-calculator": () => import("../../logistics/dimensional-weight-divisor-calculator/index.js"),
   "sailing/anderson-turn-course": () => import("../../sailing/anderson-turn-course/index.js"),
   "sailing/wind-oscillation-amplitude": () => import("../../sailing/wind-oscillation-amplitude/index.js"),

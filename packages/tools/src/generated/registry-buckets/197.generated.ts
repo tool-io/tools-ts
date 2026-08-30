@@ -4,13 +4,21 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/interval-ratio-to-cents": () => import("../../acoustics/interval-ratio-to-cents/index.js"),
+  "acoustics/moving-observer-frequency-shift": () => import("../../acoustics/moving-observer-frequency-shift/index.js"),
   "body-mass-index": () => import("../../body-mass-index/index.js"),
   "carpentry/feder-nut-spiel-02mm": () => import("../../carpentry/feder-nut-spiel-02mm/index.js"),
   "carpentry/fingerzinken-teilung": () => import("../../carpentry/fingerzinken-teilung/index.js"),
   "carpentry/schleifpapier-bedarf-qm": () => import("../../carpentry/schleifpapier-bedarf-qm/index.js"),
   "combinatorics/permutation-count": () => import("../../combinatorics/permutation-count/index.js"),
+  "electronics/gas-sensor-resistance-ratio": () => import("../../electronics/gas-sensor-resistance-ratio/index.js"),
+  "electronics/relay-coil-inductance": () => import("../../electronics/relay-coil-inductance/index.js"),
+  "electronics/sonar-transmission-loss": () => import("../../electronics/sonar-transmission-loss/index.js"),
+  "encode/braille": () => import("../../encode/braille/index.js"),
+  "engineering/retaining-wall-sliding-safety": () => import("../../engineering/retaining-wall-sliding-safety/index.js"),
   "finance/european-option-black-scholes": () => import("../../finance/european-option-black-scholes/index.js"),
   "geography/haversine-distance": () => import("../../geography/haversine-distance/index.js"),
+  "horology/moonphase-gear-ratio": () => import("../../horology/moonphase-gear-ratio/index.js"),
   "laser/laser-er-fiber-1550-eye-safe-retina-transmission-safety-class-note": () => import("../../laser/laser-er-fiber-1550-eye-safe-retina-transmission-safety-class-note/index.js"),
   "logistics/pallet-loaded-weight-total": () => import("../../logistics/pallet-loaded-weight-total/index.js"),
   "mycology/ergot-alkaloid-assay-recorder": () => import("../../mycology/ergot-alkaloid-assay-recorder/index.js"),

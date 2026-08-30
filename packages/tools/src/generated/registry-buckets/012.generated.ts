@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/cash-conversion-cycle-dso-dpo-dio": () => import("../../accounting/cash-conversion-cycle-dso-dpo-dio/index.js"),
+  "acoustics/wave-number-calculator": () => import("../../acoustics/wave-number-calculator/index.js"),
   "biology/dominance-simpson-reciprocal": () => import("../../biology/dominance-simpson-reciprocal/index.js"),
   "biology/lowry-protein-conc": () => import("../../biology/lowry-protein-conc/index.js"),
   "biology/shunt-fraction": () => import("../../biology/shunt-fraction/index.js"),
@@ -12,10 +13,12 @@ export const toolModuleLoaders: Readonly<
   "chemistry/kc-from-concentrations": () => import("../../chemistry/kc-from-concentrations/index.js"),
   "chemistry/scale-height": () => import("../../chemistry/scale-height/index.js"),
   "chemistry/volume-percent": () => import("../../chemistry/volume-percent/index.js"),
+  "construction/nail-count-per-connection": () => import("../../construction/nail-count-per-connection/index.js"),
   "cryptography/rot18": () => import("../../cryptography/rot18/index.js"),
   "electronics/capacitor-leakage-current": () => import("../../electronics/capacitor-leakage-current/index.js"),
   "geology/gas-density": () => import("../../geology/gas-density/index.js"),
   "machine-learning/bayesian-rule-list": () => import("../../machine-learning/bayesian-rule-list/index.js"),
+  "probability/mcmc-sampler": () => import("../../probability/mcmc-sampler/index.js"),
   "sailing/opposite-tack-layline-bearing": () => import("../../sailing/opposite-tack-layline-bearing/index.js"),
   "seismology/normal-incidence-two-way-time-thickness-calculator": () => import("../../seismology/normal-incidence-two-way-time-thickness-calculator/index.js"),
   "size/belt": () => import("../../size/belt/index.js"),

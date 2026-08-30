@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/quarter-wave-resonator-length": () => import("../../acoustics/quarter-wave-resonator-length/index.js"),
   "biology/sequence-length": () => import("../../biology/sequence-length/index.js"),
   "chemistry/combustion-hydrogen-mass": () => import("../../chemistry/combustion-hydrogen-mass/index.js"),
   "chemistry/isoelectric-point": () => import("../../chemistry/isoelectric-point/index.js"),
@@ -12,7 +13,11 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/column-support-ratio-classifier": () => import("../../epigraphy/column-support-ratio-classifier/index.js"),
   "epigraphy/cos-iteration-counter": () => import("../../epigraphy/cos-iteration-counter/index.js"),
   "epigraphy/trismegistos-number-check": () => import("../../epigraphy/trismegistos-number-check/index.js"),
+  "film/bellows-exposure-compensation": () => import("../../film/bellows-exposure-compensation/index.js"),
+  "film/subtitle-reading-speed": () => import("../../film/subtitle-reading-speed/index.js"),
+  "forestry/volume-increment-percentage": () => import("../../forestry/volume-increment-percentage/index.js"),
   "geometry/distance-3d": () => import("../../geometry/distance-3d/index.js"),
+  "horology/bph-to-hertz": () => import("../../horology/bph-to-hertz/index.js"),
   "laser/laser-diode-driver-pulse-width-current-limit-series-resistor-design": () => import("../../laser/laser-diode-driver-pulse-width-current-limit-series-resistor-design/index.js"),
   "mycology/fruiting-humidity-range-compliance-checker": () => import("../../mycology/fruiting-humidity-range-compliance-checker/index.js"),
   "number/trailing-zeros": () => import("../../number/trailing-zeros/index.js"),
@@ -22,4 +27,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/oxidation-thickness": () => import("../../semiconductor/oxidation-thickness/index.js"),
   "semiconductor/quasi-fermi-level": () => import("../../semiconductor/quasi-fermi-level/index.js"),
   "size/doublet-reconstruction": () => import("../../size/doublet-reconstruction/index.js"),
+  "text/justify-lines": () => import("../../text/justify-lines/index.js"),
+  "vr/texture-memory-required": () => import("../../vr/texture-memory-required/index.js"),
 };

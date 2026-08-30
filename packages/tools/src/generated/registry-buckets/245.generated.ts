@@ -4,14 +4,23 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/decay-rate-db-per-second": () => import("../../acoustics/decay-rate-db-per-second/index.js"),
+  "acoustics/difference-tone-frequency": () => import("../../acoustics/difference-tone-frequency/index.js"),
   "aviation/max-endurance-airspeed": () => import("../../aviation/max-endurance-airspeed/index.js"),
   "aviation/takeoff-ground-roll": () => import("../../aviation/takeoff-ground-roll/index.js"),
   "biology/hemoglobin-a1c-estimated-average-glucose": () => import("../../biology/hemoglobin-a1c-estimated-average-glucose/index.js"),
   "biology/species-accumulation-curve": () => import("../../biology/species-accumulation-curve/index.js"),
+  "carpentry/countersink-depth": () => import("../../carpentry/countersink-depth/index.js"),
+  "construction/concrete-curing-water-needed": () => import("../../construction/concrete-curing-water-needed/index.js"),
+  "electronics/magnetoresistive-sensor-output": () => import("../../electronics/magnetoresistive-sensor-output/index.js"),
   "electronics/mixer-1db-compression": () => import("../../electronics/mixer-1db-compression/index.js"),
+  "engineering/reynolds-number": () => import("../../engineering/reynolds-number/index.js"),
   "epigraphy/missio-type-term-classifier": () => import("../../epigraphy/missio-type-term-classifier/index.js"),
+  "forestry/height-growth-annual": () => import("../../forestry/height-growth-annual/index.js"),
   "geology/apparent-dip": () => import("../../geology/apparent-dip/index.js"),
   "parse/date": () => import("../../parse/date/index.js"),
+  "real-estate/effective-gross-income": () => import("../../real-estate/effective-gross-income/index.js"),
+  "real-estate/rent-increase": () => import("../../real-estate/rent-increase/index.js"),
   "sailing/tidal-race-speed": () => import("../../sailing/tidal-race-speed/index.js"),
   "seismology/galvanometer-damping-0707-lookup": () => import("../../seismology/galvanometer-damping-0707-lookup/index.js"),
   "seismology/mb-to-mw-bandwise-conversion-lookup": () => import("../../seismology/mb-to-mw-bandwise-conversion-lookup/index.js"),

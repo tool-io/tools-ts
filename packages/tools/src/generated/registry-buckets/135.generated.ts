@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/helmholtz-resonance-frequency": () => import("../../acoustics/helmholtz-resonance-frequency/index.js"),
   "aviation/v-speed-vfe": () => import("../../aviation/v-speed-vfe/index.js"),
   "biology/alveolar-arterial-gradient": () => import("../../biology/alveolar-arterial-gradient/index.js"),
   "biology/alveolar-ventilation": () => import("../../biology/alveolar-ventilation/index.js"),
@@ -11,14 +12,19 @@ export const toolModuleLoaders: Readonly<
   "biology/seedling-vigor-index": () => import("../../biology/seedling-vigor-index/index.js"),
   "classification/accuracy": () => import("../../classification/accuracy/index.js"),
   "electronics/adc-enob-from-sinad": () => import("../../electronics/adc-enob-from-sinad/index.js"),
+  "electronics/bjt-output-resistance": () => import("../../electronics/bjt-output-resistance/index.js"),
   "electronics/colpitts-oscillator-frequency": () => import("../../electronics/colpitts-oscillator-frequency/index.js"),
   "electronics/motor-electrical-power": () => import("../../electronics/motor-electrical-power/index.js"),
   "electronics/thermal-noise-power": () => import("../../electronics/thermal-noise-power/index.js"),
+  "film/magnification-ratio": () => import("../../film/magnification-ratio/index.js"),
   "game-search/alpha-beta-uct": () => import("../../game-search/alpha-beta-uct/index.js"),
   "geology/hafnium-epsilon": () => import("../../geology/hafnium-epsilon/index.js"),
   "geometry/point-in-polygon": () => import("../../geometry/point-in-polygon/index.js"),
+  "horology/dual-time-difference": () => import("../../horology/dual-time-difference/index.js"),
+  "horology/wrist-coverage-percent": () => import("../../horology/wrist-coverage-percent/index.js"),
   "logistics/continuous-customs-bond-minimum-lookup": () => import("../../logistics/continuous-customs-bond-minimum-lookup/index.js"),
   "mycology/morel-soil-degree-day-accumulator": () => import("../../mycology/morel-soil-degree-day-accumulator/index.js"),
   "number/divisor-count": () => import("../../number/divisor-count/index.js"),
   "seismology/vs30-time-averaged-shear-velocity": () => import("../../seismology/vs30-time-averaged-shear-velocity/index.js"),
+  "vr/foveated-rendering-gain": () => import("../../vr/foveated-rendering-gain/index.js"),
 };

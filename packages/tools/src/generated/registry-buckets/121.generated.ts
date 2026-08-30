@@ -15,6 +15,8 @@ export const toolModuleLoaders: Readonly<
   "chemistry/rate-law": () => import("../../chemistry/rate-law/index.js"),
   "electronics/amp-hours-from-coulombs": () => import("../../electronics/amp-hours-from-coulombs/index.js"),
   "electronics/buck-converter-duty-cycle": () => import("../../electronics/buck-converter-duty-cycle/index.js"),
+  "electronics/load-cell-output-voltage": () => import("../../electronics/load-cell-output-voltage/index.js"),
+  "electronics/video-pixel-bandwidth": () => import("../../electronics/video-pixel-bandwidth/index.js"),
   "epigraphy/cohort-century-token-classifier": () => import("../../epigraphy/cohort-century-token-classifier/index.js"),
   "geology/ree-anomaly-eu": () => import("../../geology/ree-anomaly-eu/index.js"),
   "geology/spider-diagram-normalization": () => import("../../geology/spider-diagram-normalization/index.js"),

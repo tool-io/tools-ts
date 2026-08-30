@@ -4,13 +4,19 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/frequency-from-wavelength": () => import("../../acoustics/frequency-from-wavelength/index.js"),
   "archival-studies/iiif-image-url-formatter-v2": () => import("../../archival-studies/iiif-image-url-formatter-v2/index.js"),
   "aviation/fuel-per-hour-from-burn": () => import("../../aviation/fuel-per-hour-from-burn/index.js"),
   "biology/heterozygosity-observed": () => import("../../biology/heterozygosity-observed/index.js"),
   "carpentry/vakuumpresse-druck": () => import("../../carpentry/vakuumpresse-druck/index.js"),
+  "carpentry/wainscoting-panel-height": () => import("../../carpentry/wainscoting-panel-height/index.js"),
   "check/pointer": () => import("../../check/pointer/index.js"),
   "chemistry/empirical-formula": () => import("../../chemistry/empirical-formula/index.js"),
   "color/contrast-ratio": () => import("../../color/contrast-ratio/index.js"),
+  "electronics/display-backlight-current": () => import("../../electronics/display-backlight-current/index.js"),
+  "electronics/lidar-signal-to-noise": () => import("../../electronics/lidar-signal-to-noise/index.js"),
+  "engineering/bending-stress": () => import("../../engineering/bending-stress/index.js"),
+  "engineering/concrete-water-cement-ratio": () => import("../../engineering/concrete-water-cement-ratio/index.js"),
   "geology/drilling-hydraulics-jet-impact-force": () => import("../../geology/drilling-hydraulics-jet-impact-force/index.js"),
   "geology/isochore-thickness": () => import("../../geology/isochore-thickness/index.js"),
   "geology/seismic-migration-aperture": () => import("../../geology/seismic-migration-aperture/index.js"),
@@ -20,4 +26,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/response-poles-zeros-consistency-checker": () => import("../../seismology/response-poles-zeros-consistency-checker/index.js"),
   "similarity/jaccard": () => import("../../similarity/jaccard/index.js"),
   "text/sort-lines": () => import("../../text/sort-lines/index.js"),
+  "vr/frame-rate-from-refresh": () => import("../../vr/frame-rate-from-refresh/index.js"),
 };

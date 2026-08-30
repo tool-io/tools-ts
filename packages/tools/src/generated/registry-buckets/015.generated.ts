@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/pulse-repetition-range-ambiguity": () => import("../../acoustics/pulse-repetition-range-ambiguity/index.js"),
   "carpentry/furnier-bild-gestuerzt-geschoben-lookup": () => import("../../carpentry/furnier-bild-gestuerzt-geschoben-lookup/index.js"),
   "carpentry/minifix-bohrbild-34mm": () => import("../../carpentry/minifix-bohrbild-34mm/index.js"),
   "carpentry/tuer-blatt-dicke-40-44mm": () => import("../../carpentry/tuer-blatt-dicke-40-44mm/index.js"),
@@ -12,7 +13,12 @@ export const toolModuleLoaders: Readonly<
   "data-analysis/archetypal-analysis": () => import("../../data-analysis/archetypal-analysis/index.js"),
   "demography/lifetime-vs-recent-migrant-ratio-lookup": () => import("../../demography/lifetime-vs-recent-migrant-ratio-lookup/index.js"),
   "electronics/linear-regulator-dropout-voltage": () => import("../../electronics/linear-regulator-dropout-voltage/index.js"),
+  "electronics/motor-torque-speed-curve": () => import("../../electronics/motor-torque-speed-curve/index.js"),
   "electronics/opamp-inverting-gain": () => import("../../electronics/opamp-inverting-gain/index.js"),
+  "electronics/pa-backoff-efficiency": () => import("../../electronics/pa-backoff-efficiency/index.js"),
+  "electronics/transformer-regulation": () => import("../../electronics/transformer-regulation/index.js"),
+  "electronics/triac-trigger-current": () => import("../../electronics/triac-trigger-current/index.js"),
+  "engineering/beam-stress-combined-axial-bending": () => import("../../engineering/beam-stress-combined-axial-bending/index.js"),
   "geodesy/wgs84-semi-major-lookup": () => import("../../geodesy/wgs84-semi-major-lookup/index.js"),
   "interpolation/linear": () => import("../../interpolation/linear/index.js"),
   "mycology/cap-cuticle-texture-mapper": () => import("../../mycology/cap-cuticle-texture-mapper/index.js"),

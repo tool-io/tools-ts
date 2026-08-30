@@ -22,7 +22,9 @@ export const toolModuleLoaders: Readonly<
   "logistics/reefer-fuel-consumption-per-day": () => import("../../logistics/reefer-fuel-consumption-per-day/index.js"),
   "mycology/spore-print-color-mapper": () => import("../../mycology/spore-print-color-mapper/index.js"),
   "oenology/ta-titration-gpl": () => import("../../oenology/ta-titration-gpl/index.js"),
+  "real-estate/cltv": () => import("../../real-estate/cltv/index.js"),
   "seismology/b-value-standard-error-shi-bolt-formula": () => import("../../seismology/b-value-standard-error-shi-bolt-formula/index.js"),
   "seismology/deterministic-vs-probabilistic-split": () => import("../../seismology/deterministic-vs-probabilistic-split/index.js"),
+  "semiconductor/ferroelectric-coercive-field": () => import("../../semiconductor/ferroelectric-coercive-field/index.js"),
   "size/dress": () => import("../../size/dress/index.js"),
 };

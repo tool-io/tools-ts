@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/month-name-calendar-mapper": () => import("../../epigraphy/month-name-calendar-mapper/index.js"),
   "epigraphy/rubrication-trace-flag": () => import("../../epigraphy/rubrication-trace-flag/index.js"),
   "epigraphy/supplied-letter-bracket-counter": () => import("../../epigraphy/supplied-letter-bracket-counter/index.js"),
+  "film/rolling-shutter-readout-time": () => import("../../film/rolling-shutter-readout-time/index.js"),
   "list/cartesian-product": () => import("../../list/cartesian-product/index.js"),
   "paleography/correction-over-erasure-flag": () => import("../../paleography/correction-over-erasure-flag/index.js"),
   "sailing/current-gain-loss": () => import("../../sailing/current-gain-loss/index.js"),
@@ -27,5 +28,6 @@ export const toolModuleLoaders: Readonly<
   "size/climbing-shoe": () => import("../../size/climbing-shoe/index.js"),
   "size/roller-skate": () => import("../../size/roller-skate/index.js"),
   "statistics/frequency-table": () => import("../../statistics/frequency-table/index.js"),
+  "statistics/gini-coefficient": () => import("../../statistics/gini-coefficient/index.js"),
   "take-home-pay-calculator/ch": () => import("../../take-home-pay-calculator/ch/index.js"),
 };

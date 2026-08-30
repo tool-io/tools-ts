@@ -4,12 +4,16 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/noise-metric-sel-from-event-leq": () => import("../../acoustics/noise-metric-sel-from-event-leq/index.js"),
   "arithmetic/floor-to-multiple": () => import("../../arithmetic/floor-to-multiple/index.js"),
   "aviation/v-speed-vno": () => import("../../aviation/v-speed-vno/index.js"),
+  "cartography/paper-a-series-area-mm2": () => import("../../cartography/paper-a-series-area-mm2/index.js"),
   "chemistry/molar-mass-from-effusion": () => import("../../chemistry/molar-mass-from-effusion/index.js"),
+  "electronics/ferrite-core-selection-area-product": () => import("../../electronics/ferrite-core-selection-area-product/index.js"),
   "electronics/psrr-db": () => import("../../electronics/psrr-db/index.js"),
   "electronics/real-power": () => import("../../electronics/real-power/index.js"),
   "electronics/wye-to-delta-resistance": () => import("../../electronics/wye-to-delta-resistance/index.js"),
+  "forestry/biomas-single-tree": () => import("../../forestry/biomas-single-tree/index.js"),
   "geology/modulus-of-volume-compressibility": () => import("../../geology/modulus-of-volume-compressibility/index.js"),
   "health/bmr-mifflin": () => import("../../health/bmr-mifflin/index.js"),
   "mycology/skeletal-hyphae-band-rater": () => import("../../mycology/skeletal-hyphae-band-rater/index.js"),

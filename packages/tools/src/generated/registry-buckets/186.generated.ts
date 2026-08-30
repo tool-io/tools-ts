@@ -4,19 +4,28 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/doppler-approaching-frequency": () => import("../../acoustics/doppler-approaching-frequency/index.js"),
   "aviation/headwind-takeoff-factor": () => import("../../aviation/headwind-takeoff-factor/index.js"),
   "biology/inr-ratio": () => import("../../biology/inr-ratio/index.js"),
   "biology/mutation-rate-per-generation": () => import("../../biology/mutation-rate-per-generation/index.js"),
+  "carpentry/duebelabstand-32mm-system": () => import("../../carpentry/duebelabstand-32mm-system/index.js"),
   "carpentry/falttuer-beschlag-lookup": () => import("../../carpentry/falttuer-beschlag-lookup/index.js"),
   "color/alpha-compositing": () => import("../../color/alpha-compositing/index.js"),
   "electronics/attenuator-power": () => import("../../electronics/attenuator-power/index.js"),
+  "electronics/audio-equalizer-q": () => import("../../electronics/audio-equalizer-q/index.js"),
+  "electronics/nfc-coupling-coefficient": () => import("../../electronics/nfc-coupling-coefficient/index.js"),
   "electronics/parabolic-antenna-gain": () => import("../../electronics/parabolic-antenna-gain/index.js"),
+  "electronics/sic-mosfet-figure-of-merit": () => import("../../electronics/sic-mosfet-figure-of-merit/index.js"),
+  "engineering/awg-diameter": () => import("../../engineering/awg-diameter/index.js"),
   "epigraphy/tabula-ansata-note-generator": () => import("../../epigraphy/tabula-ansata-note-generator/index.js"),
+  "film/guide-number-distance": () => import("../../film/guide-number-distance/index.js"),
+  "forestry/periodic-increment-percentage": () => import("../../forestry/periodic-increment-percentage/index.js"),
   "logistics/abc-analysis-cumulative-value-classifier": () => import("../../logistics/abc-analysis-cumulative-value-classifier/index.js"),
   "matrix/trace": () => import("../../matrix/trace/index.js"),
   "mycology/mycorrhizal-host-pair-validator": () => import("../../mycology/mycorrhizal-host-pair-validator/index.js"),
   "number/next-prime": () => import("../../number/next-prime/index.js"),
   "oenology/sussreserve-so2-uplift": () => import("../../oenology/sussreserve-so2-uplift/index.js"),
+  "optimization/lbfgs-step": () => import("../../optimization/lbfgs-step/index.js"),
   "probability/beta-binomial-sampler": () => import("../../probability/beta-binomial-sampler/index.js"),
   "semiconductor/led-wall-plug-efficiency": () => import("../../semiconductor/led-wall-plug-efficiency/index.js"),
 };

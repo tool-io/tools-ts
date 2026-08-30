@@ -5,13 +5,20 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "archival-studies/timestamp-to-seconds-converter": () => import("../../archival-studies/timestamp-to-seconds-converter/index.js"),
+  "aviation/crosswind-takeoff-check": () => import("../../aviation/crosswind-takeoff-check/index.js"),
   "biology/drought-tolerance-index": () => import("../../biology/drought-tolerance-index/index.js"),
   "biology/melting-temp-gc": () => import("../../biology/melting-temp-gc/index.js"),
   "biology/menhinick-richness": () => import("../../biology/menhinick-richness/index.js"),
   "chemistry/gas-solubility-altitude": () => import("../../chemistry/gas-solubility-altitude/index.js"),
+  "electronics/frequency-synthesizer-step-size": () => import("../../electronics/frequency-synthesizer-step-size/index.js"),
+  "electronics/resistor-thermal-noise-current": () => import("../../electronics/resistor-thermal-noise-current/index.js"),
   "electronics/volts-to-dbmv": () => import("../../electronics/volts-to-dbmv/index.js"),
+  "engineering/beam-reaction-uniform": () => import("../../engineering/beam-reaction-uniform/index.js"),
+  "engineering/motor-slip": () => import("../../engineering/motor-slip/index.js"),
   "epigraphy/apex-accent-counter": () => import("../../epigraphy/apex-accent-counter/index.js"),
   "geology/void-ratio-from-porosity": () => import("../../geology/void-ratio-from-porosity/index.js"),
   "logistics/otif-on-time-in-full-percent": () => import("../../logistics/otif-on-time-in-full-percent/index.js"),
+  "music/just-intonation-ratio-to-cents": () => import("../../music/just-intonation-ratio-to-cents/index.js"),
+  "real-estate/days-on-market": () => import("../../real-estate/days-on-market/index.js"),
   "size/yukata-reconstruction": () => import("../../size/yukata-reconstruction/index.js"),
 };

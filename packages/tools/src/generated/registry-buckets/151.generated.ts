@@ -6,11 +6,15 @@ export const toolModuleLoaders: Readonly<
 > = {
   "arithmetic/sign": () => import("../../arithmetic/sign/index.js"),
   "biology/nitrogen-nii-index": () => import("../../biology/nitrogen-nii-index/index.js"),
+  "carpentry/dovetail-tail-count": () => import("../../carpentry/dovetail-tail-count/index.js"),
   "convert/csv-to-markdown": () => import("../../convert/csv-to-markdown/index.js"),
   "electronics/antenna-effective-aperture": () => import("../../electronics/antenna-effective-aperture/index.js"),
   "electronics/antenna-far-field-distance": () => import("../../electronics/antenna-far-field-distance/index.js"),
+  "electronics/transformer-efficiency-at-load": () => import("../../electronics/transformer-efficiency-at-load/index.js"),
+  "forestry/relative-density": () => import("../../forestry/relative-density/index.js"),
   "geology/bearing-capacity-factor-nq": () => import("../../geology/bearing-capacity-factor-nq/index.js"),
   "geology/relative-permeability-gas-oil": () => import("../../geology/relative-permeability-gas-oil/index.js"),
+  "horology/glide-motion-step-rate": () => import("../../horology/glide-motion-step-rate/index.js"),
   "information/binary-entropy": () => import("../../information/binary-entropy/index.js"),
   "oenology/specific-gravity-to-brix": () => import("../../oenology/specific-gravity-to-brix/index.js"),
   "sailing/man-overboard-return-course-quickstop": () => import("../../sailing/man-overboard-return-course-quickstop/index.js"),
@@ -20,4 +24,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/finfet-fin-height-effect": () => import("../../semiconductor/finfet-fin-height-effect/index.js"),
   "sociology/tempo-adjusted-tfr-bongaarts": () => import("../../sociology/tempo-adjusted-tfr-bongaarts/index.js"),
   "text/starts-with-checker": () => import("../../text/starts-with-checker/index.js"),
+  "vr/display-latency": () => import("../../vr/display-latency/index.js"),
 };

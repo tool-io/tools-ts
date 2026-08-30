@@ -13,6 +13,8 @@ export const toolModuleLoaders: Readonly<
   "chemistry/vapor-density-air": () => import("../../chemistry/vapor-density-air/index.js"),
   "cost/printing": () => import("../../cost/printing/index.js"),
   "demography/remarriage-proportion-percent": () => import("../../demography/remarriage-proportion-percent/index.js"),
+  "electronics/heatsink-case-to-ambient-resistance": () => import("../../electronics/heatsink-case-to-ambient-resistance/index.js"),
+  "electronics/piezoelectric-sensor-sensitivity": () => import("../../electronics/piezoelectric-sensor-sensitivity/index.js"),
   "epigraphy/salt-efflorescence-classifier": () => import("../../epigraphy/salt-efflorescence-classifier/index.js"),
   "geology/casing-tension": () => import("../../geology/casing-tension/index.js"),
   "geology/hazen-grain-size-d10": () => import("../../geology/hazen-grain-size-d10/index.js"),

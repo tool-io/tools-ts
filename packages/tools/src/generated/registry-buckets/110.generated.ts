@@ -6,9 +6,13 @@ export const toolModuleLoaders: Readonly<
 > = {
   "accounting/payable-turnover-days-purchases": () => import("../../accounting/payable-turnover-days-purchases/index.js"),
   "chemistry/kb-from-ka-kw": () => import("../../chemistry/kb-from-ka-kw/index.js"),
+  "cipher/playfair-encoder": () => import("../../cipher/playfair-encoder/index.js"),
+  "construction/concrete-maturity": () => import("../../construction/concrete-maturity/index.js"),
   "cost/electricity": () => import("../../cost/electricity/index.js"),
   "electronics/battery-internal-resistance": () => import("../../electronics/battery-internal-resistance/index.js"),
   "electronics/link-margin": () => import("../../electronics/link-margin/index.js"),
+  "engineering/retaining-wall-overturning-safety": () => import("../../engineering/retaining-wall-overturning-safety/index.js"),
+  "film/intermission-time": () => import("../../film/intermission-time/index.js"),
   "geology/oil-viscosity-beggs-robinson": () => import("../../geology/oil-viscosity-beggs-robinson/index.js"),
   "mycology/ph-range-cardinal-classifier": () => import("../../mycology/ph-range-cardinal-classifier/index.js"),
   "paleography/chain-line-spacing-classifier": () => import("../../paleography/chain-line-spacing-classifier/index.js"),

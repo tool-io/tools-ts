@@ -4,14 +4,20 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/temporal-integration-gain": () => import("../../acoustics/temporal-integration-gain/index.js"),
   "biology/diversity-simpson-index": () => import("../../biology/diversity-simpson-index/index.js"),
   "biology/elisa-concentration": () => import("../../biology/elisa-concentration/index.js"),
   "biology/epistatic-variance": () => import("../../biology/epistatic-variance/index.js"),
   "chemistry/charles-law": () => import("../../chemistry/charles-law/index.js"),
+  "electronics/detector-noise-equivalent-power": () => import("../../electronics/detector-noise-equivalent-power/index.js"),
   "electronics/q-from-bandwidth": () => import("../../electronics/q-from-bandwidth/index.js"),
   "electronics/third-order-intercept-point": () => import("../../electronics/third-order-intercept-point/index.js"),
+  "forestry/trees-per-hectare-from-plot": () => import("../../forestry/trees-per-hectare-from-plot/index.js"),
   "logistics/fuel-price-per-mile-burn": () => import("../../logistics/fuel-price-per-mile-burn/index.js"),
+  "microcontroller/circular-buffer-index": () => import("../../microcontroller/circular-buffer-index/index.js"),
   "oenology/brix-to-specific-gravity": () => import("../../oenology/brix-to-specific-gravity/index.js"),
   "optimization/newton-step": () => import("../../optimization/newton-step/index.js"),
   "paleography/ell-yard-regional-converter": () => import("../../paleography/ell-yard-regional-converter/index.js"),
+  "real-estate/closing-costs": () => import("../../real-estate/closing-costs/index.js"),
+  "web/form-urlencoded-encoder": () => import("../../web/form-urlencoded-encoder/index.js"),
 };

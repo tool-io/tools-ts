@@ -4,13 +4,17 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/gas-sound-speed-gamma-ratio": () => import("../../acoustics/gas-sound-speed-gamma-ratio/index.js"),
   "biology/half-life-biology": () => import("../../biology/half-life-biology/index.js"),
   "biology/mic-mbc-ratio": () => import("../../biology/mic-mbc-ratio/index.js"),
   "carpentry/weissleim-d2-d3-d4-lookup": () => import("../../carpentry/weissleim-d2-d3-d4-lookup/index.js"),
   "chemistry/empirical-formula-combustion": () => import("../../chemistry/empirical-formula-combustion/index.js"),
   "chemistry/lineweaver-burk-slope": () => import("../../chemistry/lineweaver-burk-slope/index.js"),
   "demography/spousal-age-gap-median-difference": () => import("../../demography/spousal-age-gap-median-difference/index.js"),
+  "electronics/audio-compressor-threshold": () => import("../../electronics/audio-compressor-threshold/index.js"),
   "electronics/conductance-from-resistance": () => import("../../electronics/conductance-from-resistance/index.js"),
+  "electronics/uart-bit-time": () => import("../../electronics/uart-bit-time/index.js"),
+  "engineering/critical-damping-coefficient": () => import("../../engineering/critical-damping-coefficient/index.js"),
   "geology/geological-strength-index-gsi": () => import("../../geology/geological-strength-index-gsi/index.js"),
   "laser/laser-nd-yvo4-vs-nd-yag-absorption-cross-section-compare-lookup": () => import("../../laser/laser-nd-yvo4-vs-nd-yag-absorption-cross-section-compare-lookup/index.js"),
   "mycology/annulus-persistence-classifier": () => import("../../mycology/annulus-persistence-classifier/index.js"),

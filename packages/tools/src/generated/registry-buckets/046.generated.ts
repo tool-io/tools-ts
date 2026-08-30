@@ -4,12 +4,16 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/helmholtz-port-length": () => import("../../acoustics/helmholtz-port-length/index.js"),
   "biology/transferrin-saturation": () => import("../../biology/transferrin-saturation/index.js"),
   "bitwise/and": () => import("../../bitwise/and/index.js"),
   "carpentry/treppen-steigung-17-18-ideal": () => import("../../carpentry/treppen-steigung-17-18-ideal/index.js"),
+  "cartography/haversine-distance-cartography": () => import("../../cartography/haversine-distance-cartography/index.js"),
   "chemistry/madelung-constant": () => import("../../chemistry/madelung-constant/index.js"),
   "electronics/inductor-color-code-decode": () => import("../../electronics/inductor-color-code-decode/index.js"),
   "electronics/inductor-saturation-margin-check": () => import("../../electronics/inductor-saturation-margin-check/index.js"),
+  "electronics/jfet-transconductance": () => import("../../electronics/jfet-transconductance/index.js"),
+  "engineering/cable-sizing-current-capacity": () => import("../../engineering/cable-sizing-current-capacity/index.js"),
   "format/feet-and-inches": () => import("../../format/feet-and-inches/index.js"),
   "geology/afm-diagram": () => import("../../geology/afm-diagram/index.js"),
   "geology/shrinkage-ratio": () => import("../../geology/shrinkage-ratio/index.js"),

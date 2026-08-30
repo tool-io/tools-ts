@@ -4,11 +4,15 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "cartography/plan-area-to-real-area": () => import("../../cartography/plan-area-to-real-area/index.js"),
   "chemistry/buffer-range": () => import("../../chemistry/buffer-range/index.js"),
   "chemistry/potentiometry-nernst-slope": () => import("../../chemistry/potentiometry-nernst-slope/index.js"),
   "chemistry/ppm-to-mass-percent": () => import("../../chemistry/ppm-to-mass-percent/index.js"),
   "classification/f1-score": () => import("../../classification/f1-score/index.js"),
+  "electronics/battery-cycle-count-estimate": () => import("../../electronics/battery-cycle-count-estimate/index.js"),
+  "electronics/esd-clamping-voltage": () => import("../../electronics/esd-clamping-voltage/index.js"),
   "electronics/transistor-base-resistor": () => import("../../electronics/transistor-base-resistor/index.js"),
+  "engineering/flow-rate-velocity-area": () => import("../../engineering/flow-rate-velocity-area/index.js"),
   "finance/inflation-adjustment": () => import("../../finance/inflation-adjustment/index.js"),
   "geo/haversine-distance": () => import("../../geo/haversine-distance/index.js"),
   "geometry/trapezoid-area": () => import("../../geometry/trapezoid-area/index.js"),
@@ -19,4 +23,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/joint-hypocentral-grid-search-step": () => import("../../seismology/joint-hypocentral-grid-search-step/index.js"),
   "sports/speed-to-pace": () => import("../../sports/speed-to-pace/index.js"),
   "text/shingling": () => import("../../text/shingling/index.js"),
+  "web/fetchpriority-attribute-validator": () => import("../../web/fetchpriority-attribute-validator/index.js"),
 };

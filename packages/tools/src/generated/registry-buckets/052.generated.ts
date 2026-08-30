@@ -8,6 +8,10 @@ export const toolModuleLoaders: Readonly<
   "biology/chlorophyll-content-spad": () => import("../../biology/chlorophyll-content-spad/index.js"),
   "biology/selectivity-ratio": () => import("../../biology/selectivity-ratio/index.js"),
   "chemistry/electron-affinity-lookup": () => import("../../chemistry/electron-affinity-lookup/index.js"),
+  "clustering/mean-shift": () => import("../../clustering/mean-shift/index.js"),
+  "construction/concrete-order-waste": () => import("../../construction/concrete-order-waste/index.js"),
+  "construction/insulation-compression-factor": () => import("../../construction/insulation-compression-factor/index.js"),
+  "construction/soffit-vent-area": () => import("../../construction/soffit-vent-area/index.js"),
   "convert/hexadecimal-to-decimal": () => import("../../convert/hexadecimal-to-decimal/index.js"),
   "electronics/audio-thd-plus-noise": () => import("../../electronics/audio-thd-plus-noise/index.js"),
   "electronics/output-capacitor-esr-limit": () => import("../../electronics/output-capacitor-esr-limit/index.js"),
@@ -25,4 +29,5 @@ export const toolModuleLoaders: Readonly<
   "text/flesch-reading-ease": () => import("../../text/flesch-reading-ease/index.js"),
   "text/repeat": () => import("../../text/repeat/index.js"),
   "vector/dot-product": () => import("../../vector/dot-product/index.js"),
+  "vr/resolution-from-ppd-fov": () => import("../../vr/resolution-from-ppd-fov/index.js"),
 };

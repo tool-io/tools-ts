@@ -4,13 +4,16 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/vibrating-string-fundamental": () => import("../../acoustics/vibrating-string-fundamental/index.js"),
   "aviation/vapp-speed": () => import("../../aviation/vapp-speed/index.js"),
   "biology/ec50": () => import("../../biology/ec50/index.js"),
   "biology/population-growth-exponential": () => import("../../biology/population-growth-exponential/index.js"),
   "biology/relative-water-content-2": () => import("../../biology/relative-water-content-2/index.js"),
   "carpentry/stueckliste-schubkasten-generator": () => import("../../carpentry/stueckliste-schubkasten-generator/index.js"),
+  "cartography/ground-to-map-distance": () => import("../../cartography/ground-to-map-distance/index.js"),
   "classification/roc-auc": () => import("../../classification/roc-auc/index.js"),
   "compound-interest-calculator": () => import("../../compound-interest-calculator/index.js"),
+  "construction/insulation-blown-bags": () => import("../../construction/insulation-blown-bags/index.js"),
   "convert/oklch-to-hsv": () => import("../../convert/oklch-to-hsv/index.js"),
   "convert/text-to-binary-string": () => import("../../convert/text-to-binary-string/index.js"),
   "demography/u5mr-under-five-rate": () => import("../../demography/u5mr-under-five-rate/index.js"),
@@ -18,6 +21,10 @@ export const toolModuleLoaders: Readonly<
   "electronics/inductor-rms-current": () => import("../../electronics/inductor-rms-current/index.js"),
   "electronics/pi-pad-series-resistor": () => import("../../electronics/pi-pad-series-resistor/index.js"),
   "electronics/saw-filter-center-frequency": () => import("../../electronics/saw-filter-center-frequency/index.js"),
+  "engineering/lighting-power-density": () => import("../../engineering/lighting-power-density/index.js"),
+  "engineering/reaming-time": () => import("../../engineering/reaming-time/index.js"),
+  "engineering/thick-walled-hoop-stress": () => import("../../engineering/thick-walled-hoop-stress/index.js"),
+  "engineering/worm-gear-ratio": () => import("../../engineering/worm-gear-ratio/index.js"),
   "epigraphy/pater-patriae-position-checker": () => import("../../epigraphy/pater-patriae-position-checker/index.js"),
   "proportions/percentage-decrease": () => import("../../proportions/percentage-decrease/index.js"),
   "sailing/tack-distance": () => import("../../sailing/tack-distance/index.js"),

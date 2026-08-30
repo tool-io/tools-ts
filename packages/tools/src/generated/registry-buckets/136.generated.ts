@@ -4,14 +4,19 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/room-mean-free-path": () => import("../../acoustics/room-mean-free-path/index.js"),
   "aviation/groundspeed-required-for-eta": () => import("../../aviation/groundspeed-required-for-eta/index.js"),
   "aviation/range": () => import("../../aviation/range/index.js"),
   "biology/qtc-bazett": () => import("../../biology/qtc-bazett/index.js"),
   "convert/hsv-to-hex": () => import("../../convert/hsv-to-hex/index.js"),
+  "electronics/display-contrast-ratio": () => import("../../electronics/display-contrast-ratio/index.js"),
+  "electronics/hall-sensitivity": () => import("../../electronics/hall-sensitivity/index.js"),
   "electronics/led-luminous-efficacy": () => import("../../electronics/led-luminous-efficacy/index.js"),
+  "engineering/gear-ratio": () => import("../../engineering/gear-ratio/index.js"),
   "geology/rb-sr-isochron": () => import("../../geology/rb-sr-isochron/index.js"),
   "logistics/travel-time-order-picker-batch": () => import("../../logistics/travel-time-order-picker-batch/index.js"),
   "number/harshad-checker": () => import("../../number/harshad-checker/index.js"),
+  "real-estate/rentable-area": () => import("../../real-estate/rentable-area/index.js"),
   "sailing/opposite-tack-course": () => import("../../sailing/opposite-tack-course/index.js"),
   "seismology/okada-dip-slip-surface-displacement": () => import("../../seismology/okada-dip-slip-surface-displacement/index.js"),
   "sociology/migration-effectiveness-index": () => import("../../sociology/migration-effectiveness-index/index.js"),

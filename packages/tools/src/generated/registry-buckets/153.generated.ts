@@ -4,18 +4,28 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/semitone-offset-frequency": () => import("../../acoustics/semitone-offset-frequency/index.js"),
   "biology/red-cell-distribution-width": () => import("../../biology/red-cell-distribution-width/index.js"),
+  "carpentry/workbench-vise-jaw-width": () => import("../../carpentry/workbench-vise-jaw-width/index.js"),
   "check/storage": () => import("../../check/storage/index.js"),
   "chemistry/beer-lambert-absorbance": () => import("../../chemistry/beer-lambert-absorbance/index.js"),
+  "construction/lumber-weight-per-board-foot": () => import("../../construction/lumber-weight-per-board-foot/index.js"),
   "demography/brass-relational-logit-alpha-beta": () => import("../../demography/brass-relational-logit-alpha-beta/index.js"),
   "demography/kitagawa-component-decomposition": () => import("../../demography/kitagawa-component-decomposition/index.js"),
+  "engineering/chiller-cop": () => import("../../engineering/chiller-cop/index.js"),
+  "engineering/dewatering-well-flow": () => import("../../engineering/dewatering-well-flow/index.js"),
+  "engineering/heat-pump-cop-carnot": () => import("../../engineering/heat-pump-cop-carnot/index.js"),
+  "engineering/torsional-shear-stress": () => import("../../engineering/torsional-shear-stress/index.js"),
+  "engineering/wind-pressure": () => import("../../engineering/wind-pressure/index.js"),
   "epigraphy/tria-nomina-analyzer": () => import("../../epigraphy/tria-nomina-analyzer/index.js"),
   "geology/darcy-velocity": () => import("../../geology/darcy-velocity/index.js"),
   "graph/dijkstra-shortest-path": () => import("../../graph/dijkstra-shortest-path/index.js"),
   "list/sort-numbers": () => import("../../list/sort-numbers/index.js"),
+  "microcontroller/adc-code-to-voltage": () => import("../../microcontroller/adc-code-to-voltage/index.js"),
   "mycology/amyloid-spore-wall-classifier": () => import("../../mycology/amyloid-spore-wall-classifier/index.js"),
   "seismology/arias-intensity-duration-proxy": () => import("../../seismology/arias-intensity-duration-proxy/index.js"),
   "seismology/poisson-return-period-probability-exceedance": () => import("../../seismology/poisson-return-period-probability-exceedance/index.js"),
   "semiconductor/dislocation-density-from-etch-pit": () => import("../../semiconductor/dislocation-density-from-etch-pit/index.js"),
   "sociology/net-migration-census-survival-method": () => import("../../sociology/net-migration-census-survival-method/index.js"),
+  "typography/print-dpi-pixels-for-pt-size": () => import("../../typography/print-dpi-pixels-for-pt-size/index.js"),
 };

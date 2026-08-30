@@ -4,12 +4,19 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/intensity-level-from-intensity": () => import("../../acoustics/intensity-level-from-intensity/index.js"),
   "biology/lab-dilution-series": () => import("../../biology/lab-dilution-series/index.js"),
   "biology/primer-length": () => import("../../biology/primer-length/index.js"),
   "bitwise/left-shift": () => import("../../bitwise/left-shift/index.js"),
+  "carpentry/face-frame-rail-length": () => import("../../carpentry/face-frame-rail-length/index.js"),
+  "carpentry/holzschraube-vorbohrung-07d": () => import("../../carpentry/holzschraube-vorbohrung-07d/index.js"),
   "chemistry/diffusion-coefficient": () => import("../../chemistry/diffusion-coefficient/index.js"),
   "chemistry/henderson-hasselbalch": () => import("../../chemistry/henderson-hasselbalch/index.js"),
   "demography/person-years-exposed-risk-computation": () => import("../../demography/person-years-exposed-risk-computation/index.js"),
+  "electronics/battery-state-of-health": () => import("../../electronics/battery-state-of-health/index.js"),
+  "electronics/motor-stall-current": () => import("../../electronics/motor-stall-current/index.js"),
+  "electronics/relay-bounce-time": () => import("../../electronics/relay-bounce-time/index.js"),
+  "engineering/enthalpy-change-sensible": () => import("../../engineering/enthalpy-change-sensible/index.js"),
   "geology/mohr-circle-center": () => import("../../geology/mohr-circle-center/index.js"),
   "oenology/davis-score-card": () => import("../../oenology/davis-score-card/index.js"),
 };

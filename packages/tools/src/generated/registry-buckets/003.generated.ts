@@ -4,8 +4,10 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/tissue-attenuation-frequency-loss": () => import("../../acoustics/tissue-attenuation-frequency-loss/index.js"),
   "biology/gene-length": () => import("../../biology/gene-length/index.js"),
   "biology/western-blot-band-intensity": () => import("../../biology/western-blot-band-intensity/index.js"),
+  "carpentry/board-expansion-gap": () => import("../../carpentry/board-expansion-gap/index.js"),
   "carpentry/fenster-stueckliste-rahmen-fluegel": () => import("../../carpentry/fenster-stueckliste-rahmen-fluegel/index.js"),
   "chemistry/chromatography-capacity-ratio": () => import("../../chemistry/chromatography-capacity-ratio/index.js"),
   "chemistry/chromatography-plate-number": () => import("../../chemistry/chromatography-plate-number/index.js"),
@@ -14,10 +16,12 @@ export const toolModuleLoaders: Readonly<
   "electronics/battery-runtime": () => import("../../electronics/battery-runtime/index.js"),
   "electronics/lvds-differential-voltage": () => import("../../electronics/lvds-differential-voltage/index.js"),
   "electronics/voltage-regulator-power-dissipation": () => import("../../electronics/voltage-regulator-power-dissipation/index.js"),
+  "engineering/critical-shaft-speed": () => import("../../engineering/critical-shaft-speed/index.js"),
   "finance/payback-period": () => import("../../finance/payback-period/index.js"),
   "geology/moment-magnitude": () => import("../../geology/moment-magnitude/index.js"),
   "logistics/reefer-setpoint-temp-mode-lookup": () => import("../../logistics/reefer-setpoint-temp-mode-lookup/index.js"),
   "matrix/nonnegative-matrix-factorization": () => import("../../matrix/nonnegative-matrix-factorization/index.js"),
+  "mortgage/hungary-subsidized-fixed-rate": () => import("../../mortgage/hungary-subsidized-fixed-rate/index.js"),
   "probability/gamma-sampler": () => import("../../probability/gamma-sampler/index.js"),
   "seismology/okada-strike-slip-surface-displacement": () => import("../../seismology/okada-strike-slip-surface-displacement/index.js"),
   "size/frock-coat-reconstruction": () => import("../../size/frock-coat-reconstruction/index.js"),

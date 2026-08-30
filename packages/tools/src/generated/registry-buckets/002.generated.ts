@@ -4,7 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "carpentry/shelf-pin-holes-spacing": () => import("../../carpentry/shelf-pin-holes-spacing/index.js"),
   "electronics/thermal-resistance": () => import("../../electronics/thermal-resistance/index.js"),
+  "forestry/stand-density-index-reineke": () => import("../../forestry/stand-density-index-reineke/index.js"),
   "generate/bin-packing-instance": () => import("../../generate/bin-packing-instance/index.js"),
   "geology/pore-pressure-prediction-eaton-resistivity": () => import("../../geology/pore-pressure-prediction-eaton-resistivity/index.js"),
   "math/expression-evaluator": () => import("../../math/expression-evaluator/index.js"),
@@ -13,6 +15,8 @@ export const toolModuleLoaders: Readonly<
   "oenology/h2o2-so2-reduction": () => import("../../oenology/h2o2-so2-reduction/index.js"),
   "paleography/ascender-descender-ratio-estimator": () => import("../../paleography/ascender-descender-ratio-estimator/index.js"),
   "physics/work": () => import("../../physics/work/index.js"),
+  "real-estate/annual-rent": () => import("../../real-estate/annual-rent/index.js"),
+  "real-estate/storage-income": () => import("../../real-estate/storage-income/index.js"),
   "sailing/polar-target-twa": () => import("../../sailing/polar-target-twa/index.js"),
   "text/change-case": () => import("../../text/change-case/index.js"),
 };

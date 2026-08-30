@@ -5,12 +5,15 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "arithmetic/multiply-two-numbers": () => import("../../arithmetic/multiply-two-numbers/index.js"),
+  "carpentry/picture-frame-rabbet-width": () => import("../../carpentry/picture-frame-rabbet-width/index.js"),
   "chemistry/bond-energy": () => import("../../chemistry/bond-energy/index.js"),
   "chemistry/ion-selective-electrode-potential": () => import("../../chemistry/ion-selective-electrode-potential/index.js"),
   "combinatorics/double-factorial": () => import("../../combinatorics/double-factorial/index.js"),
   "demography/terminal-digit-preference-share": () => import("../../demography/terminal-digit-preference-share/index.js"),
   "electronics/capacitor-color-code-decode": () => import("../../electronics/capacitor-color-code-decode/index.js"),
   "electronics/dynamic-range": () => import("../../electronics/dynamic-range/index.js"),
+  "electronics/fpga-hold-time-slack": () => import("../../electronics/fpga-hold-time-slack/index.js"),
+  "film/credits-scroll-speed": () => import("../../film/credits-scroll-speed/index.js"),
   "finance/return-on-equity": () => import("../../finance/return-on-equity/index.js"),
   "geology/mineral-cleavage-lookup": () => import("../../geology/mineral-cleavage-lookup/index.js"),
   "geology/pore-water-pressure": () => import("../../geology/pore-water-pressure/index.js"),

@@ -4,11 +4,20 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/tangential-mode-frequency": () => import("../../acoustics/tangential-mode-frequency/index.js"),
   "chemistry/osmotic-pressure": () => import("../../chemistry/osmotic-pressure/index.js"),
+  "construction/beam-deflection-uniform-simple": () => import("../../construction/beam-deflection-uniform-simple/index.js"),
   "convert/hex-to-hsv": () => import("../../convert/hex-to-hsv/index.js"),
+  "electronics/bjt-early-voltage-effect": () => import("../../electronics/bjt-early-voltage-effect/index.js"),
+  "electronics/earphone-impedance": () => import("../../electronics/earphone-impedance/index.js"),
+  "electronics/fiber-attenuation-coefficient": () => import("../../electronics/fiber-attenuation-coefficient/index.js"),
+  "electronics/opamp-open-loop-gain": () => import("../../electronics/opamp-open-loop-gain/index.js"),
+  "engineering/superelevation-rate": () => import("../../engineering/superelevation-rate/index.js"),
   "epigraphy/tribu-clause-detector": () => import("../../epigraphy/tribu-clause-detector/index.js"),
   "finance/compound-annual-growth-rate": () => import("../../finance/compound-annual-growth-rate/index.js"),
   "geology/void-ratio": () => import("../../geology/void-ratio/index.js"),
+  "logic/sat-to-cnf": () => import("../../logic/sat-to-cnf/index.js"),
+  "number/prime-factorization": () => import("../../number/prime-factorization/index.js"),
   "paleography/abbrev-density-per-hundred-words": () => import("../../paleography/abbrev-density-per-hundred-words/index.js"),
   "sailing/reefing-wind-speed": () => import("../../sailing/reefing-wind-speed/index.js"),
   "seismology/housner-spectral-intensity": () => import("../../seismology/housner-spectral-intensity/index.js"),

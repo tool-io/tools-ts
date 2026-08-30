@@ -4,17 +4,23 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/schroeder-frequency": () => import("../../acoustics/schroeder-frequency/index.js"),
   "biology/corrected-sodium-hyperglycemia": () => import("../../biology/corrected-sodium-hyperglycemia/index.js"),
   "biology/mastitis-risk-score": () => import("../../biology/mastitis-risk-score/index.js"),
   "biology/seed-vigor-index-2": () => import("../../biology/seed-vigor-index-2/index.js"),
   "carpentry/epoxid-mischungsverhaeltnis-1-1-2-1-lookup": () => import("../../carpentry/epoxid-mischungsverhaeltnis-1-1-2-1-lookup/index.js"),
   "chemistry/boyle-temperature": () => import("../../chemistry/boyle-temperature/index.js"),
   "chemistry/combined-gas-law": () => import("../../chemistry/combined-gas-law/index.js"),
+  "construction/paint-with-coats-waste": () => import("../../construction/paint-with-coats-waste/index.js"),
   "convert/decimal-to-binary": () => import("../../convert/decimal-to-binary/index.js"),
+  "convert/energy-density": () => import("../../convert/energy-density/index.js"),
   "convert/fuel-economy": () => import("../../convert/fuel-economy/index.js"),
+  "date/year-calendar": () => import("../../date/year-calendar/index.js"),
   "demography/yll-years-of-life-lost-standard": () => import("../../demography/yll-years-of-life-lost-standard/index.js"),
+  "electronics/de-emphasis-db": () => import("../../electronics/de-emphasis-db/index.js"),
   "electronics/impedance-magnitude": () => import("../../electronics/impedance-magnitude/index.js"),
   "electronics/signal-to-noise-ratio": () => import("../../electronics/signal-to-noise-ratio/index.js"),
+  "horology/meters-to-atm": () => import("../../horology/meters-to-atm/index.js"),
   "mycology/ectomycorrhiza-mantle-thickness-rater": () => import("../../mycology/ectomycorrhiza-mantle-thickness-rater/index.js"),
   "mycology/substrate-supplementation-planner": () => import("../../mycology/substrate-supplementation-planner/index.js"),
   "oenology/pvpp-dose": () => import("../../oenology/pvpp-dose/index.js"),
@@ -22,5 +28,7 @@ export const toolModuleLoaders: Readonly<
   "sailing/tack-loss-distance": () => import("../../sailing/tack-loss-distance/index.js"),
   "seismology/borehole-ps-logging-average-velocity-calculator": () => import("../../seismology/borehole-ps-logging-average-velocity-calculator/index.js"),
   "seismology/double-difference-pair-mean-offset-summary": () => import("../../seismology/double-difference-pair-mean-offset-summary/index.js"),
+  "semiconductor/vdmos-on-resistance": () => import("../../semiconductor/vdmos-on-resistance/index.js"),
   "similarity/cosine": () => import("../../similarity/cosine/index.js"),
+  "typography/rem-to-pixels-16base": () => import("../../typography/rem-to-pixels-16base/index.js"),
 };

@@ -4,7 +4,14 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "carpentry/veneer-sheets-needed": () => import("../../carpentry/veneer-sheets-needed/index.js"),
+  "cartography/enlargement-new-scale": () => import("../../cartography/enlargement-new-scale/index.js"),
+  "cartography/rf-to-verbal-scale": () => import("../../cartography/rf-to-verbal-scale/index.js"),
+  "construction/concrete-slump-water-adjustment": () => import("../../construction/concrete-slump-water-adjustment/index.js"),
+  "decode/varint": () => import("../../decode/varint/index.js"),
   "epigraphy/kalendes-reverse-date-solver": () => import("../../epigraphy/kalendes-reverse-date-solver/index.js"),
+  "horology/bracelet-link-adjustment": () => import("../../horology/bracelet-link-adjustment/index.js"),
+  "horology/solar-to-sidereal": () => import("../../horology/solar-to-sidereal/index.js"),
   "json/minify": () => import("../../json/minify/index.js"),
   "mycology/brown-white-rot-signature-classifier": () => import("../../mycology/brown-white-rot-signature-classifier/index.js"),
   "number/divisors": () => import("../../number/divisors/index.js"),
@@ -12,5 +19,6 @@ export const toolModuleLoaders: Readonly<
   "paleography/caroline-era-classifier": () => import("../../paleography/caroline-era-classifier/index.js"),
   "paleography/uvi-interchange-era-checker": () => import("../../paleography/uvi-interchange-era-checker/index.js"),
   "semiconductor/effective-density-valence-band": () => import("../../semiconductor/effective-density-valence-band/index.js"),
+  "semiconductor/fe-ram-remnant-polarization": () => import("../../semiconductor/fe-ram-remnant-polarization/index.js"),
   "size/bicycle-frame": () => import("../../size/bicycle-frame/index.js"),
 };

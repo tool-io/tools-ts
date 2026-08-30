@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/mach-angle-shock-wave": () => import("../../acoustics/mach-angle-shock-wave/index.js"),
   "aviation/cabin-altitude-threshold-check": () => import("../../aviation/cabin-altitude-threshold-check/index.js"),
   "aviation/groundspeed-wind-corrected": () => import("../../aviation/groundspeed-wind-corrected/index.js"),
   "aviation/gust-penetration-speed": () => import("../../aviation/gust-penetration-speed/index.js"),
@@ -11,11 +12,21 @@ export const toolModuleLoaders: Readonly<
   "biology/realized-heritability": () => import("../../biology/realized-heritability/index.js"),
   "biology/volume-distribution-apparent": () => import("../../biology/volume-distribution-apparent/index.js"),
   "carpentry/leim-pressdruck-02-08-n-pro-qm": () => import("../../carpentry/leim-pressdruck-02-08-n-pro-qm/index.js"),
+  "cartography/verbal-to-rf-scale": () => import("../../cartography/verbal-to-rf-scale/index.js"),
   "check/display": () => import("../../check/display/index.js"),
   "chemistry/heat-of-solution": () => import("../../chemistry/heat-of-solution/index.js"),
+  "construction/drywall-corner-bead-length": () => import("../../construction/drywall-corner-bead-length/index.js"),
+  "electronics/brushless-motor-kv-to-kt": () => import("../../electronics/brushless-motor-kv-to-kt/index.js"),
+  "electronics/contactor-coil-current": () => import("../../electronics/contactor-coil-current/index.js"),
+  "electronics/fpga-clock-jitter-allowance": () => import("../../electronics/fpga-clock-jitter-allowance/index.js"),
   "electronics/resistor-power-rating-required": () => import("../../electronics/resistor-power-rating-required/index.js"),
+  "engineering/rocket-specific-impulse": () => import("../../engineering/rocket-specific-impulse/index.js"),
   "epigraphy/line-count-estimator": () => import("../../epigraphy/line-count-estimator/index.js"),
+  "film/aspect-ratio-from-resolution": () => import("../../film/aspect-ratio-from-resolution/index.js"),
   "health/bmr-harris-benedict": () => import("../../health/bmr-harris-benedict/index.js"),
+  "horology/amplitude-decline-power-reserve": () => import("../../horology/amplitude-decline-power-reserve/index.js"),
+  "probability/chi-square-sampler": () => import("../../probability/chi-square-sampler/index.js"),
   "sailing/wind-chill-apparent": () => import("../../sailing/wind-chill-apparent/index.js"),
   "seismology/seismic-moment-to-slip-displacement-back-calc": () => import("../../seismology/seismic-moment-to-slip-displacement-back-calc/index.js"),
+  "vr/timewarp-correction-angle": () => import("../../vr/timewarp-correction-angle/index.js"),
 };

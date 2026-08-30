@@ -4,10 +4,17 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/critical-distance": () => import("../../acoustics/critical-distance/index.js"),
+  "acoustics/doppler-ultrasound-shift": () => import("../../acoustics/doppler-ultrasound-shift/index.js"),
   "aviation/runway-slope-factor": () => import("../../aviation/runway-slope-factor/index.js"),
   "biology/restriction-fragment-length": () => import("../../biology/restriction-fragment-length/index.js"),
   "check/mic": () => import("../../check/mic/index.js"),
   "chemistry/chromatography-resolution": () => import("../../chemistry/chromatography-resolution/index.js"),
+  "construction/concrete-bull-float-passes": () => import("../../construction/concrete-bull-float-passes/index.js"),
+  "electronics/microphone-directivity-index": () => import("../../electronics/microphone-directivity-index/index.js"),
+  "electronics/peltier-heat": () => import("../../electronics/peltier-heat/index.js"),
+  "engineering/cam-eccentricity": () => import("../../engineering/cam-eccentricity/index.js"),
+  "engineering/soil-permeability-falling-head": () => import("../../engineering/soil-permeability-falling-head/index.js"),
   "finance/gross-margin": () => import("../../finance/gross-margin/index.js"),
   "geology/bearing-capacity-meyerhof": () => import("../../geology/bearing-capacity-meyerhof/index.js"),
   "graph/node-classification": () => import("../../graph/node-classification/index.js"),
@@ -20,4 +27,5 @@ export const toolModuleLoaders: Readonly<
   "size/bustle-reconstruction": () => import("../../size/bustle-reconstruction/index.js"),
   "size/surfboard": () => import("../../size/surfboard/index.js"),
   "text/join": () => import("../../text/join/index.js"),
+  "web/transfer-encoding-parser": () => import("../../web/transfer-encoding-parser/index.js"),
 };

@@ -4,16 +4,21 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/calibration-level-offset": () => import("../../acoustics/calibration-level-offset/index.js"),
   "archival-studies/format-obsolescence-score-rater": () => import("../../archival-studies/format-obsolescence-score-rater/index.js"),
   "biology/a260-a230-ratio": () => import("../../biology/a260-a230-ratio/index.js"),
+  "construction/decking-waste-factor": () => import("../../construction/decking-waste-factor/index.js"),
   "convert/gray-code-encode": () => import("../../convert/gray-code-encode/index.js"),
   "date/difference": () => import("../../date/difference/index.js"),
+  "electronics/charger-efficiency": () => import("../../electronics/charger-efficiency/index.js"),
   "electronics/coaxial-inductance-per-meter": () => import("../../electronics/coaxial-inductance-per-meter/index.js"),
   "electronics/zener-current": () => import("../../electronics/zener-current/index.js"),
   "format/byte-size": () => import("../../format/byte-size/index.js"),
   "geometry/rectangle-perimeter": () => import("../../geometry/rectangle-perimeter/index.js"),
+  "http/etag-parser": () => import("../../http/etag-parser/index.js"),
   "logistics/cbm-cubic-meters-from-cartons": () => import("../../logistics/cbm-cubic-meters-from-cartons/index.js"),
   "parse/percentage": () => import("../../parse/percentage/index.js"),
+  "real-estate/ltv": () => import("../../real-estate/ltv/index.js"),
   "sailing/layline-distance": () => import("../../sailing/layline-distance/index.js"),
   "sailing/storm-warning-threshold": () => import("../../sailing/storm-warning-threshold/index.js"),
   "seismology/clock-drift-ppm-linear-regression": () => import("../../seismology/clock-drift-ppm-linear-regression/index.js"),

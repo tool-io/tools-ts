@@ -4,15 +4,22 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/localization-itd-max-delay": () => import("../../acoustics/localization-itd-max-delay/index.js"),
+  "carpentry/fence-picket-spacing": () => import("../../carpentry/fence-picket-spacing/index.js"),
   "convert/hex-to-rgb": () => import("../../convert/hex-to-rgb/index.js"),
+  "electronics/adc-quantization-error": () => import("../../electronics/adc-quantization-error/index.js"),
   "electronics/crystal-frequency-tolerance-ppm": () => import("../../electronics/crystal-frequency-tolerance-ppm/index.js"),
+  "electronics/pcb-via-current-capacity": () => import("../../electronics/pcb-via-current-capacity/index.js"),
   "electronics/resonant-frequency": () => import("../../electronics/resonant-frequency/index.js"),
+  "forestry/stand-volume-per-hectare": () => import("../../forestry/stand-volume-per-hectare/index.js"),
   "geology/stable-isotope-delta": () => import("../../geology/stable-isotope-delta/index.js"),
   "geometry/scale-factor-area": () => import("../../geometry/scale-factor-area/index.js"),
   "json/flatten": () => import("../../json/flatten/index.js"),
   "linguistics/superlative-adjective": () => import("../../linguistics/superlative-adjective/index.js"),
+  "music/delay-time-synced-to-note-value": () => import("../../music/delay-time-synced-to-note-value/index.js"),
   "number/emirp-checker": () => import("../../number/emirp-checker/index.js"),
   "oenology/mlf-inoculation-rate": () => import("../../oenology/mlf-inoculation-rate/index.js"),
+  "probability/gumbel-sampler": () => import("../../probability/gumbel-sampler/index.js"),
   "sailing/marina-berth-depth-tide": () => import("../../sailing/marina-berth-depth-tide/index.js"),
   "sailing/righting-moment": () => import("../../sailing/righting-moment/index.js"),
   "vector/projection": () => import("../../vector/projection/index.js"),

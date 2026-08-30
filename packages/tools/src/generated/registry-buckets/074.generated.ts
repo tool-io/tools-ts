@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "biology/chao1-estimator": () => import("../../biology/chao1-estimator/index.js"),
+  "carpentry/nail-length-rule": () => import("../../carpentry/nail-length-rule/index.js"),
   "chemistry/bond-polarity": () => import("../../chemistry/bond-polarity/index.js"),
   "chemistry/chromatography-peak-asymmetry": () => import("../../chemistry/chromatography-peak-asymmetry/index.js"),
   "chemistry/equivalent-concentration": () => import("../../chemistry/equivalent-concentration/index.js"),
@@ -14,7 +15,13 @@ export const toolModuleLoaders: Readonly<
   "convert/hsl-to-oklch": () => import("../../convert/hsl-to-oklch/index.js"),
   "convert/json-to-table": () => import("../../convert/json-to-table/index.js"),
   "convert/rot13": () => import("../../convert/rot13/index.js"),
+  "electronics/phototransistor-collector-current": () => import("../../electronics/phototransistor-collector-current/index.js"),
+  "encode/varint": () => import("../../encode/varint/index.js"),
+  "engineering/flywheel-kinetic-energy": () => import("../../engineering/flywheel-kinetic-energy/index.js"),
+  "engineering/wing-drag-polar": () => import("../../engineering/wing-drag-polar/index.js"),
+  "film/motion-blur-shutter-angle": () => import("../../film/motion-blur-shutter-angle/index.js"),
   "geology/mg-number-vs-silica": () => import("../../geology/mg-number-vs-silica/index.js"),
+  "horology/carrousel-rotation": () => import("../../horology/carrousel-rotation/index.js"),
   "logistics/cycle-count-daily-sample-size": () => import("../../logistics/cycle-count-daily-sample-size/index.js"),
   "network/ipv4-cidr": () => import("../../network/ipv4-cidr/index.js"),
   "number/smith-checker": () => import("../../number/smith-checker/index.js"),

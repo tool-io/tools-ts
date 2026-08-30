@@ -4,8 +4,10 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/barrier-path-difference": () => import("../../acoustics/barrier-path-difference/index.js"),
   "actuarial/excess-loss-layer-cost": () => import("../../actuarial/excess-loss-layer-cost/index.js"),
   "actuarial/n-year-temporary-annuity": () => import("../../actuarial/n-year-temporary-annuity/index.js"),
+  "carpentry/parting-tool-width": () => import("../../carpentry/parting-tool-width/index.js"),
   "chart": () => import("../../chart/index.js"),
   "chemistry/decay-half-life": () => import("../../chemistry/decay-half-life/index.js"),
   "chemistry/lewis-structure-notation": () => import("../../chemistry/lewis-structure-notation/index.js"),
@@ -14,8 +16,10 @@ export const toolModuleLoaders: Readonly<
   "demography/intercensal-exponential-estimator": () => import("../../demography/intercensal-exponential-estimator/index.js"),
   "electronics/inductor-time-to-current": () => import("../../electronics/inductor-time-to-current/index.js"),
   "geology/water-loaded-subsidence": () => import("../../geology/water-loaded-subsidence/index.js"),
+  "horology/quartz-ppm-to-month-seconds": () => import("../../horology/quartz-ppm-to-month-seconds/index.js"),
   "logistics/ltl-rate-per-hundredweight": () => import("../../logistics/ltl-rate-per-hundredweight/index.js"),
   "matrix/flip-vertical": () => import("../../matrix/flip-vertical/index.js"),
+  "real-estate/preferred-return": () => import("../../real-estate/preferred-return/index.js"),
   "sailing/true-wind-speed-from-apparent": () => import("../../sailing/true-wind-speed-from-apparent/index.js"),
   "seismology/tri-station-circle-epicenter-least-squares": () => import("../../seismology/tri-station-circle-epicenter-least-squares/index.js"),
   "sociology/city-primacy-four-city-index": () => import("../../sociology/city-primacy-four-city-index/index.js"),

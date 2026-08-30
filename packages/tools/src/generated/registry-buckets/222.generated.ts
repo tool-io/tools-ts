@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/cmrr-db": () => import("../../electronics/cmrr-db/index.js"),
   "electronics/supercapacitor-self-discharge-time": () => import("../../electronics/supercapacitor-self-discharge-time/index.js"),
   "electronics/uart-baud-rate-error": () => import("../../electronics/uart-baud-rate-error/index.js"),
+  "engineering/effective-moment-inertia": () => import("../../engineering/effective-moment-inertia/index.js"),
   "geology/seismic-moment": () => import("../../geology/seismic-moment/index.js"),
   "geology/subsidence-rate": () => import("../../geology/subsidence-rate/index.js"),
   "information/binary-cross-entropy": () => import("../../information/binary-cross-entropy/index.js"),

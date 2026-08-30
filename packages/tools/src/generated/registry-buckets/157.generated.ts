@@ -4,16 +4,23 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/fresnel-number-barrier": () => import("../../acoustics/fresnel-number-barrier/index.js"),
   "aviation/cabin-pressure-altitude": () => import("../../aviation/cabin-pressure-altitude/index.js"),
   "biology/area-under-curve-trapezoidal": () => import("../../biology/area-under-curve-trapezoidal/index.js"),
   "chemistry/wet-bulb-temperature": () => import("../../chemistry/wet-bulb-temperature/index.js"),
+  "construction/insulation-thickness-from-rvalue": () => import("../../construction/insulation-thickness-from-rvalue/index.js"),
+  "convert/plane-solid-angle": () => import("../../convert/plane-solid-angle/index.js"),
   "demography/migration-effectiveness-index-em": () => import("../../demography/migration-effectiveness-index-em/index.js"),
   "electronics/audio-power-to-spl": () => import("../../electronics/audio-power-to-spl/index.js"),
+  "electronics/crystal-series-resistance": () => import("../../electronics/crystal-series-resistance/index.js"),
+  "film/film-frames-count": () => import("../../film/film-frames-count/index.js"),
   "logistics/zone-based-rate-table-step-lookup": () => import("../../logistics/zone-based-rate-table-step-lookup/index.js"),
   "mycology/mycelial-growth-rate-radial-measurer": () => import("../../mycology/mycelial-growth-rate-radial-measurer/index.js"),
   "paleography/byzantine-annomundi-converter": () => import("../../paleography/byzantine-annomundi-converter/index.js"),
+  "semiconductor/fe-fet-memory-window": () => import("../../semiconductor/fe-fet-memory-window/index.js"),
   "semiconductor/sige-strain": () => import("../../semiconductor/sige-strain/index.js"),
   "set/symmetric-difference": () => import("../../set/symmetric-difference/index.js"),
   "size/chiton-reconstruction": () => import("../../size/chiton-reconstruction/index.js"),
   "statistics/median": () => import("../../statistics/median/index.js"),
+  "typography/pixels-to-points-96dpi": () => import("../../typography/pixels-to-points-96dpi/index.js"),
 };

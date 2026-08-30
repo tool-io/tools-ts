@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "carpentry/topfband-155-grad-weitwinkel": () => import("../../carpentry/topfband-155-grad-weitwinkel/index.js"),
   "chemistry/industrial-contact-process-conversion": () => import("../../chemistry/industrial-contact-process-conversion/index.js"),
+  "construction/lumber-expansion-gap-wood": () => import("../../construction/lumber-expansion-gap-wood/index.js"),
   "convert/angular-velocity": () => import("../../convert/angular-velocity/index.js"),
   "demography/bachi-age-sex-accuracy-index": () => import("../../demography/bachi-age-sex-accuracy-index/index.js"),
   "electronics/crystal-load-capacitance": () => import("../../electronics/crystal-load-capacitance/index.js"),
@@ -16,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "laser/laser-vcsel-versus-edge-emitter-divergence-comparison-table-lookup": () => import("../../laser/laser-vcsel-versus-edge-emitter-divergence-comparison-table-lookup/index.js"),
   "mycology/ethanol-yield-theoretical-fraction-calculator": () => import("../../mycology/ethanol-yield-theoretical-fraction-calculator/index.js"),
   "oenology/metatartaric-dose": () => import("../../oenology/metatartaric-dose/index.js"),
+  "optimization/interior-point-step": () => import("../../optimization/interior-point-step/index.js"),
   "seismology/nehrp-fundamental-period-site-lookup": () => import("../../seismology/nehrp-fundamental-period-site-lookup/index.js"),
   "size/overalls": () => import("../../size/overalls/index.js"),
 };

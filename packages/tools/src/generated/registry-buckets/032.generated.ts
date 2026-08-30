@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/db-mean-of-readings": () => import("../../acoustics/db-mean-of-readings/index.js"),
   "aviation/mach-number": () => import("../../aviation/mach-number/index.js"),
   "biology/germination-rate-index": () => import("../../biology/germination-rate-index/index.js"),
   "calculus/trapezoidal-integration": () => import("../../calculus/trapezoidal-integration/index.js"),
@@ -12,7 +13,11 @@ export const toolModuleLoaders: Readonly<
   "chemistry/specific-activity": () => import("../../chemistry/specific-activity/index.js"),
   "convert/hex-to-oklch": () => import("../../convert/hex-to-oklch/index.js"),
   "demography/lexis-diagram-cell-classifier": () => import("../../demography/lexis-diagram-cell-classifier/index.js"),
+  "electronics/accelerometer-noise-density": () => import("../../electronics/accelerometer-noise-density/index.js"),
   "electronics/apparent-power": () => import("../../electronics/apparent-power/index.js"),
+  "electronics/reflectometer-dynamic-range": () => import("../../electronics/reflectometer-dynamic-range/index.js"),
+  "engineering/creep-steady-rate": () => import("../../engineering/creep-steady-rate/index.js"),
+  "engineering/extrusion-pressure": () => import("../../engineering/extrusion-pressure/index.js"),
   "epigraphy/consular-pair-split-parser": () => import("../../epigraphy/consular-pair-split-parser/index.js"),
   "format/url": () => import("../../format/url/index.js"),
   "geology/nodal-analysis-inflow-performance": () => import("../../geology/nodal-analysis-inflow-performance/index.js"),
@@ -20,9 +25,11 @@ export const toolModuleLoaders: Readonly<
   "nautical/hull-speed": () => import("../../nautical/hull-speed/index.js"),
   "paleography/kurrent-century-classifier": () => import("../../paleography/kurrent-century-classifier/index.js"),
   "parasitology/katokatz-slide-factor-converter": () => import("../../parasitology/katokatz-slide-factor-converter/index.js"),
+  "real-estate/monthly-mortgage-payment": () => import("../../real-estate/monthly-mortgage-payment/index.js"),
   "sailing/backstay-tension": () => import("../../sailing/backstay-tension/index.js"),
   "seismology/reasenberg-space-time-window-lookup": () => import("../../seismology/reasenberg-space-time-window-lookup/index.js"),
   "size/bow-tie": () => import("../../size/bow-tie/index.js"),
   "statistics/bonferroni-correction": () => import("../../statistics/bonferroni-correction/index.js"),
   "statistics/variance": () => import("../../statistics/variance/index.js"),
+  "typography/tracking-em-letter-spacing": () => import("../../typography/tracking-em-letter-spacing/index.js"),
 };

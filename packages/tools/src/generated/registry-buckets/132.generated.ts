@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "aviation/true-altitude": () => import("../../aviation/true-altitude/index.js"),
   "biology/leaf-area-index": () => import("../../biology/leaf-area-index/index.js"),
+  "carpentry/holz-schwindmass": () => import("../../carpentry/holz-schwindmass/index.js"),
   "chemistry/ionization-energy-lookup": () => import("../../chemistry/ionization-energy-lookup/index.js"),
   "convert/hours-minutes-to-decimal": () => import("../../convert/hours-minutes-to-decimal/index.js"),
   "csv/pivot": () => import("../../csv/pivot/index.js"),
@@ -15,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/hartley-oscillator-frequency": () => import("../../electronics/hartley-oscillator-frequency/index.js"),
   "electronics/ne555-astable-duty-cycle": () => import("../../electronics/ne555-astable-duty-cycle/index.js"),
   "electronics/pll-loop-bandwidth": () => import("../../electronics/pll-loop-bandwidth/index.js"),
+  "engineering/traffic-flow-density": () => import("../../engineering/traffic-flow-density/index.js"),
   "finance/loan-to-value-ratio": () => import("../../finance/loan-to-value-ratio/index.js"),
   "finance/return-on-investment": () => import("../../finance/return-on-investment/index.js"),
   "geology/core-permeability-klinkenberg-corrected": () => import("../../geology/core-permeability-klinkenberg-corrected/index.js"),

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/db-subtract-background": () => import("../../acoustics/db-subtract-background/index.js"),
   "archival-studies/crowdsourcing-consensus-percent-calculator": () => import("../../archival-studies/crowdsourcing-consensus-percent-calculator/index.js"),
   "aviation/isa-deviation": () => import("../../aviation/isa-deviation/index.js"),
   "benchmark/ai-models": () => import("../../benchmark/ai-models/index.js"),
@@ -12,9 +13,17 @@ export const toolModuleLoaders: Readonly<
   "biology/turgor-pressure": () => import("../../biology/turgor-pressure/index.js"),
   "chemistry/henrys-law": () => import("../../chemistry/henrys-law/index.js"),
   "chemistry/lattice-energy-born-haber": () => import("../../chemistry/lattice-energy-born-haber/index.js"),
+  "construction/footing-bearing-pressure": () => import("../../construction/footing-bearing-pressure/index.js"),
   "convert/decimal-to-base62": () => import("../../convert/decimal-to-base62/index.js"),
   "convert/hsv-to-oklch": () => import("../../convert/hsv-to-oklch/index.js"),
+  "convert/markdown-format": () => import("../../convert/markdown-format/index.js"),
   "electricity/current": () => import("../../electricity/current/index.js"),
+  "electronics/ethernet-cable-delay": () => import("../../electronics/ethernet-cable-delay/index.js"),
+  "electronics/jitter-budget-allocation": () => import("../../electronics/jitter-budget-allocation/index.js"),
+  "electronics/tvs-clamping-ratio": () => import("../../electronics/tvs-clamping-ratio/index.js"),
+  "engineering/battery-energy-density": () => import("../../engineering/battery-energy-density/index.js"),
+  "engineering/pulley-belt-length-open": () => import("../../engineering/pulley-belt-length-open/index.js"),
+  "engineering/thin-walled-hoop-stress": () => import("../../engineering/thin-walled-hoop-stress/index.js"),
   "finance/real-rate-of-return": () => import("../../finance/real-rate-of-return/index.js"),
   "geology/well-log-permeability-wyllie-rose": () => import("../../geology/well-log-permeability-wyllie-rose/index.js"),
   "geometry/triangle-perimeter": () => import("../../geometry/triangle-perimeter/index.js"),

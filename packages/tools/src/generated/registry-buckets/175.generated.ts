@@ -5,7 +5,12 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "carpentry/stueckliste-korpus-generator": () => import("../../carpentry/stueckliste-korpus-generator/index.js"),
+  "construction/concrete-water-cement-ratio-water": () => import("../../construction/concrete-water-cement-ratio-water/index.js"),
+  "construction/drip-edge-length": () => import("../../construction/drip-edge-length/index.js"),
+  "electronics/led-luminous-intensity": () => import("../../electronics/led-luminous-intensity/index.js"),
   "electronics/mismatch-loss": () => import("../../electronics/mismatch-loss/index.js"),
+  "electronics/spi-max-frequency-from-trace-length": () => import("../../electronics/spi-max-frequency-from-trace-length/index.js"),
+  "engineering/pump-efficiency": () => import("../../engineering/pump-efficiency/index.js"),
   "epigraphy/beneficiarii-term-detector": () => import("../../epigraphy/beneficiarii-term-detector/index.js"),
   "geology/fracture-pressure-gradient-eaton": () => import("../../geology/fracture-pressure-gradient-eaton/index.js"),
   "geology/helium-diffusion-closure-temperature": () => import("../../geology/helium-diffusion-closure-temperature/index.js"),
@@ -13,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "laser/laser-sesam-modulation-depth-fluence-selection-guide-lookup": () => import("../../laser/laser-sesam-modulation-depth-fluence-selection-guide-lookup/index.js"),
   "network/ipv4-network-address": () => import("../../network/ipv4-network-address/index.js"),
   "oenology/anthocyanin-color-density": () => import("../../oenology/anthocyanin-color-density/index.js"),
+  "real-estate/building-efficiency-ratio": () => import("../../real-estate/building-efficiency-ratio/index.js"),
   "seismology/between-event-tau-variance": () => import("../../seismology/between-event-tau-variance/index.js"),
   "size/blazer": () => import("../../size/blazer/index.js"),
   "statistics/quartiles": () => import("../../statistics/quartiles/index.js"),

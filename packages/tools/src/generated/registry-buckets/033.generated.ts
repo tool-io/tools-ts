@@ -5,6 +5,10 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "aviation/bingo-fuel": () => import("../../aviation/bingo-fuel/index.js"),
+  "electronics/ethernet-frame-overhead": () => import("../../electronics/ethernet-frame-overhead/index.js"),
+  "electronics/ntc-thermistor-beta-resistance": () => import("../../electronics/ntc-thermistor-beta-resistance/index.js"),
+  "electronics/thermal-via-resistance": () => import("../../electronics/thermal-via-resistance/index.js"),
+  "engineering/nusselt-number": () => import("../../engineering/nusselt-number/index.js"),
   "fitness/total-daily-energy-expenditure": () => import("../../fitness/total-daily-energy-expenditure/index.js"),
   "music/semitones-between": () => import("../../music/semitones-between/index.js"),
   "oenology/age-worthiness-score": () => import("../../oenology/age-worthiness-score/index.js"),

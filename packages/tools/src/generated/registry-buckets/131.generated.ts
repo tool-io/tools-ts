@@ -11,8 +11,13 @@ export const toolModuleLoaders: Readonly<
   "carpentry/lamello-abstand-100-150mm": () => import("../../carpentry/lamello-abstand-100-150mm/index.js"),
   "chemistry/chromatography-retention-factor": () => import("../../chemistry/chromatography-retention-factor/index.js"),
   "chemistry/pseudo-first-order-rate": () => import("../../chemistry/pseudo-first-order-rate/index.js"),
+  "electronics/pressure-sensor-accuracy": () => import("../../electronics/pressure-sensor-accuracy/index.js"),
   "electronics/ring-oscillator-frequency": () => import("../../electronics/ring-oscillator-frequency/index.js"),
+  "electronics/window-comparator-thresholds": () => import("../../electronics/window-comparator-thresholds/index.js"),
+  "horology/alarm-set-offset": () => import("../../horology/alarm-set-offset/index.js"),
+  "music/midi-clock-us-per-quarter-ppqn": () => import("../../music/midi-clock-us-per-quarter-ppqn/index.js"),
   "number/divisor-sum": () => import("../../number/divisor-sum/index.js"),
   "oenology/seed-tannin-index-checker": () => import("../../oenology/seed-tannin-index-checker/index.js"),
   "sailing/polar-performance-percentage": () => import("../../sailing/polar-performance-percentage/index.js"),
+  "vr/tracking-jitter-rms": () => import("../../vr/tracking-jitter-rms/index.js"),
 };

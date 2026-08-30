@@ -4,13 +4,20 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/half-wave-resonator-length": () => import("../../acoustics/half-wave-resonator-length/index.js"),
+  "construction/concrete-admixture-dose": () => import("../../construction/concrete-admixture-dose/index.js"),
+  "construction/flooring-transition-strip": () => import("../../construction/flooring-transition-strip/index.js"),
   "convert/rgb-to-hex": () => import("../../convert/rgb-to-hex/index.js"),
   "data-mining/association-rules": () => import("../../data-mining/association-rules/index.js"),
   "demography/school-age-population-projection": () => import("../../demography/school-age-population-projection/index.js"),
   "distance/hamming": () => import("../../distance/hamming/index.js"),
+  "electronics/antenna-front-to-back-ratio": () => import("../../electronics/antenna-front-to-back-ratio/index.js"),
   "electronics/opamp-noninverting-gain": () => import("../../electronics/opamp-noninverting-gain/index.js"),
+  "electronics/supercapacitor-balancing-resistor": () => import("../../electronics/supercapacitor-balancing-resistor/index.js"),
+  "engineering/charpy-impact-energy": () => import("../../engineering/charpy-impact-energy/index.js"),
   "geometry/polygon-area": () => import("../../geometry/polygon-area/index.js"),
   "graph/breadth-first-traversal": () => import("../../graph/breadth-first-traversal/index.js"),
   "number/digital-root": () => import("../../number/digital-root/index.js"),
   "nutrition/macronutrient-split": () => import("../../nutrition/macronutrient-split/index.js"),
+  "semiconductor/silicided-source-drain-resistance": () => import("../../semiconductor/silicided-source-drain-resistance/index.js"),
 };

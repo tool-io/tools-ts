@@ -7,7 +7,12 @@ export const toolModuleLoaders: Readonly<
   "accounting/dso-days-sales-outstanding": () => import("../../accounting/dso-days-sales-outstanding/index.js"),
   "biology/horn-overlap-index": () => import("../../biology/horn-overlap-index/index.js"),
   "chemistry/faraday-moles-electrons": () => import("../../chemistry/faraday-moles-electrons/index.js"),
+  "construction/concrete-air-content": () => import("../../construction/concrete-air-content/index.js"),
+  "electronics/comparator-input-offset-voltage": () => import("../../electronics/comparator-input-offset-voltage/index.js"),
+  "electronics/current-shunt-amplifier-gain": () => import("../../electronics/current-shunt-amplifier-gain/index.js"),
   "electronics/damping-factor": () => import("../../electronics/damping-factor/index.js"),
+  "electronics/oscillator-startup-time": () => import("../../electronics/oscillator-startup-time/index.js"),
+  "forestry/canopy-bulk-density-forestry": () => import("../../forestry/canopy-bulk-density-forestry/index.js"),
   "machine-learning/adaboost-classifier": () => import("../../machine-learning/adaboost-classifier/index.js"),
   "mycology/latex-exudate-detector": () => import("../../mycology/latex-exudate-detector/index.js"),
   "oenology/lees-stirring-frequency": () => import("../../oenology/lees-stirring-frequency/index.js"),
@@ -19,4 +24,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/mosfet-subthreshold-slope": () => import("../../semiconductor/mosfet-subthreshold-slope/index.js"),
   "size/sari-reconstruction": () => import("../../size/sari-reconstruction/index.js"),
   "text/detab": () => import("../../text/detab/index.js"),
+  "vr/super-sampling-factor": () => import("../../vr/super-sampling-factor/index.js"),
 };

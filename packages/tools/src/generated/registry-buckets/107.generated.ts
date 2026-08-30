@@ -4,15 +4,19 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/third-octave-band-centers": () => import("../../acoustics/third-octave-band-centers/index.js"),
   "archival-studies/repository-marc-org-code-checker": () => import("../../archival-studies/repository-marc-org-code-checker/index.js"),
   "aviation/rate-of-climb-from-gradient": () => import("../../aviation/rate-of-climb-from-gradient/index.js"),
   "aviation/specific-range": () => import("../../aviation/specific-range/index.js"),
   "biology/breeding-value": () => import("../../biology/breeding-value/index.js"),
   "biology/corrected-calcium": () => import("../../biology/corrected-calcium/index.js"),
+  "construction/rafter-length-theoretical": () => import("../../construction/rafter-length-theoretical/index.js"),
   "electricity/voltage": () => import("../../electricity/voltage/index.js"),
+  "electronics/eye-height-estimate": () => import("../../electronics/eye-height-estimate/index.js"),
   "electronics/flyback-duty-cycle": () => import("../../electronics/flyback-duty-cycle/index.js"),
   "logistics/accessorial-fees-total-itemizer": () => import("../../logistics/accessorial-fees-total-itemizer/index.js"),
   "oenology/shelf-life-do-threshold": () => import("../../oenology/shelf-life-do-threshold/index.js"),
   "oenology/yeast-inoculation-rate": () => import("../../oenology/yeast-inoculation-rate/index.js"),
+  "semiconductor/spin-valve-gmr-ratio": () => import("../../semiconductor/spin-valve-gmr-ratio/index.js"),
   "text/trim": () => import("../../text/trim/index.js"),
 };

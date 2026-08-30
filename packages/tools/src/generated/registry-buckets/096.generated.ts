@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/combination-tone-sum": () => import("../../acoustics/combination-tone-sum/index.js"),
   "aviation/pressure-difference": () => import("../../aviation/pressure-difference/index.js"),
   "biology/haplotype-frequency": () => import("../../biology/haplotype-frequency/index.js"),
   "biology/lincoln-petersen-estimator": () => import("../../biology/lincoln-petersen-estimator/index.js"),
@@ -11,11 +12,19 @@ export const toolModuleLoaders: Readonly<
   "biology/phosphorus-resorption-efficiency": () => import("../../biology/phosphorus-resorption-efficiency/index.js"),
   "carpentry/holzfeuchte-messung-widerstand-korrektur": () => import("../../carpentry/holzfeuchte-messung-widerstand-korrektur/index.js"),
   "chemistry/mean-free-path": () => import("../../chemistry/mean-free-path/index.js"),
+  "construction/tile-grout-volume": () => import("../../construction/tile-grout-volume/index.js"),
   "date/leap-year-checker": () => import("../../date/leap-year-checker/index.js"),
   "electronics/antenna-beamwidth": () => import("../../electronics/antenna-beamwidth/index.js"),
+  "electronics/mixer-noise-figure": () => import("../../electronics/mixer-noise-figure/index.js"),
   "electronics/q-factor": () => import("../../electronics/q-factor/index.js"),
+  "electronics/transformer-iron-loss-estimate": () => import("../../electronics/transformer-iron-loss-estimate/index.js"),
+  "engineering/brake-torque-drum": () => import("../../engineering/brake-torque-drum/index.js"),
+  "engineering/distillation-reflux-ratio": () => import("../../engineering/distillation-reflux-ratio/index.js"),
+  "engineering/transformer-turns-ratio-simple": () => import("../../engineering/transformer-turns-ratio-simple/index.js"),
+  "film/runtime-to-footage": () => import("../../film/runtime-to-footage/index.js"),
   "logistics/container-payload-weight-checker": () => import("../../logistics/container-payload-weight-checker/index.js"),
   "matrix/add": () => import("../../matrix/add/index.js"),
+  "probability/f-sampler": () => import("../../probability/f-sampler/index.js"),
   "sailing/metacentric-height": () => import("../../sailing/metacentric-height/index.js"),
   "sailing/true-wind-angle": () => import("../../sailing/true-wind-angle/index.js"),
   "semiconductor/lattice-constant-vegard": () => import("../../semiconductor/lattice-constant-vegard/index.js"),

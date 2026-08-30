@@ -5,12 +5,16 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/semiannual-premium-conversion": () => import("../../actuarial/semiannual-premium-conversion/index.js"),
+  "aviation/minimum-fuel-required": () => import("../../aviation/minimum-fuel-required/index.js"),
   "biology/species-accumulation-rarefied": () => import("../../biology/species-accumulation-rarefied/index.js"),
+  "carpentry/frame-rabbet-depth": () => import("../../carpentry/frame-rabbet-depth/index.js"),
   "check/media-support": () => import("../../check/media-support/index.js"),
   "chemistry/acid-dissociation-fraction": () => import("../../chemistry/acid-dissociation-fraction/index.js"),
   "chemistry/equilibrium-kp-from-kc": () => import("../../chemistry/equilibrium-kp-from-kc/index.js"),
   "chemistry/ka-from-kb-kw": () => import("../../chemistry/ka-from-kb-kw/index.js"),
   "color/relative-luminance": () => import("../../color/relative-luminance/index.js"),
+  "convert/magnetic-field": () => import("../../convert/magnetic-field/index.js"),
+  "electronics/battery-capacity-at-temperature": () => import("../../electronics/battery-capacity-at-temperature/index.js"),
   "music/frequency-from-midi": () => import("../../music/frequency-from-midi/index.js"),
   "sailing/chain-catenary-sag": () => import("../../sailing/chain-catenary-sag/index.js"),
   "statistics/sample-size-proportion": () => import("../../statistics/sample-size-proportion/index.js"),

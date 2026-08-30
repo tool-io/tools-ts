@@ -18,6 +18,8 @@ export const toolModuleLoaders: Readonly<
   "generate/3sat-instance": () => import("../../generate/3sat-instance/index.js"),
   "geology/well-log-shale-volume": () => import("../../geology/well-log-shale-volume/index.js"),
   "graph/pinsage-aggregation": () => import("../../graph/pinsage-aggregation/index.js"),
+  "horology/repeater-quarter-strikes": () => import("../../horology/repeater-quarter-strikes/index.js"),
+  "microcontroller/spi-transfer-time": () => import("../../microcontroller/spi-transfer-time/index.js"),
   "number/coprime-checker": () => import("../../number/coprime-checker/index.js"),
   "number/digit-sum": () => import("../../number/digit-sum/index.js"),
   "sailing/day-shape-visibility-range": () => import("../../sailing/day-shape-visibility-range/index.js"),
@@ -25,4 +27,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/rupture-velocity-shear-wave-ratio-checker": () => import("../../seismology/rupture-velocity-shear-wave-ratio-checker/index.js"),
   "semiconductor/cvd-deposition-rate": () => import("../../semiconductor/cvd-deposition-rate/index.js"),
   "semiconductor/packaging-thermal-resistance": () => import("../../semiconductor/packaging-thermal-resistance/index.js"),
+  "vr/tracking-loss-percentage": () => import("../../vr/tracking-loss-percentage/index.js"),
 };

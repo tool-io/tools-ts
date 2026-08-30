@@ -15,11 +15,13 @@ export const toolModuleLoaders: Readonly<
   "chemistry/percent-analyte-gravimetry": () => import("../../chemistry/percent-analyte-gravimetry/index.js"),
   "chemistry/quantum-rydberg-wavelength": () => import("../../chemistry/quantum-rydberg-wavelength/index.js"),
   "chemistry/turnover-number": () => import("../../chemistry/turnover-number/index.js"),
+  "construction/flooring-moisture-barrier-coverage": () => import("../../construction/flooring-moisture-barrier-coverage/index.js"),
   "electronics/bjt-base-current": () => import("../../electronics/bjt-base-current/index.js"),
   "json/diff": () => import("../../json/diff/index.js"),
   "logistics/load-factor-weight-utilization-percent": () => import("../../logistics/load-factor-weight-utilization-percent/index.js"),
   "seismology/slip-vs-time-predictable-checker": () => import("../../seismology/slip-vs-time-predictable-checker/index.js"),
   "semiconductor/bandgap-lookup": () => import("../../semiconductor/bandgap-lookup/index.js"),
   "semiconductor/gan-hemt-2deg-mobility": () => import("../../semiconductor/gan-hemt-2deg-mobility/index.js"),
+  "vr/controller-battery-life": () => import("../../vr/controller-battery-life/index.js"),
   "vr/ipd-adjustment": () => import("../../vr/ipd-adjustment/index.js"),
 };

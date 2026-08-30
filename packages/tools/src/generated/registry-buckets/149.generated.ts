@@ -6,8 +6,12 @@ export const toolModuleLoaders: Readonly<
 > = {
   "biology/bleeding-time": () => import("../../biology/bleeding-time/index.js"),
   "biology/dead-space-volume": () => import("../../biology/dead-space-volume/index.js"),
+  "carpentry/poly-coats-needed": () => import("../../carpentry/poly-coats-needed/index.js"),
+  "construction/paint-tint-ratio": () => import("../../construction/paint-tint-ratio/index.js"),
   "convert/electric-charge": () => import("../../convert/electric-charge/index.js"),
+  "data-structure/locality-sensitive-hash": () => import("../../data-structure/locality-sensitive-hash/index.js"),
   "epigraphy/honorific-base-marker-checker": () => import("../../epigraphy/honorific-base-marker-checker/index.js"),
+  "film/shutter-efficiency": () => import("../../film/shutter-efficiency/index.js"),
   "finance/present-value": () => import("../../finance/present-value/index.js"),
   "logistics/hos-70-hour-8-day-remaining-checker": () => import("../../logistics/hos-70-hour-8-day-remaining-checker/index.js"),
   "metrics/residual-sum-of-squares": () => import("../../metrics/residual-sum-of-squares/index.js"),
@@ -21,4 +25,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/quantum-dot-size-from-absorption": () => import("../../semiconductor/quantum-dot-size-from-absorption/index.js"),
   "size/photograph": () => import("../../size/photograph/index.js"),
   "text/isogram-checker": () => import("../../text/isogram-checker/index.js"),
+  "vr/dynamic-resolution-scale-factor": () => import("../../vr/dynamic-resolution-scale-factor/index.js"),
 };

@@ -4,11 +4,14 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/beats-frequency": () => import("../../acoustics/beats-frequency/index.js"),
   "aviation/compass-heading": () => import("../../aviation/compass-heading/index.js"),
   "biology/aptt-ratio": () => import("../../biology/aptt-ratio/index.js"),
   "biology/whittaker-beta-diversity-2": () => import("../../biology/whittaker-beta-diversity-2/index.js"),
+  "cartography/grid-to-magnetic-converter": () => import("../../cartography/grid-to-magnetic-converter/index.js"),
   "chemistry/base-dissociation-fraction": () => import("../../chemistry/base-dissociation-fraction/index.js"),
   "electronics/noise-temperature": () => import("../../electronics/noise-temperature/index.js"),
+  "film/file-size-from-bitrate-runtime": () => import("../../film/file-size-from-bitrate-runtime/index.js"),
   "logistics/container-per-diem-charges-computation": () => import("../../logistics/container-per-diem-charges-computation/index.js"),
   "sailing/man-overboard-distance-drift": () => import("../../sailing/man-overboard-distance-drift/index.js"),
   "seismology/head-wave-critical-angle-appearance": () => import("../../seismology/head-wave-critical-angle-appearance/index.js"),

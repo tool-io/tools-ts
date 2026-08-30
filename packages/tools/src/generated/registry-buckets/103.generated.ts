@@ -4,10 +4,12 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/speed-of-sound-air-temperature": () => import("../../acoustics/speed-of-sound-air-temperature/index.js"),
   "biology/compliance-static": () => import("../../biology/compliance-static/index.js"),
   "chemistry/activity-coefficient": () => import("../../chemistry/activity-coefficient/index.js"),
   "chemistry/initial-rate": () => import("../../chemistry/initial-rate/index.js"),
   "electronics/bandwidth-from-gain-bandwidth": () => import("../../electronics/bandwidth-from-gain-bandwidth/index.js"),
+  "engineering/queue-length": () => import("../../engineering/queue-length/index.js"),
   "epigraphy/squeeze-distortion-corrector": () => import("../../epigraphy/squeeze-distortion-corrector/index.js"),
   "game-theory/best-response-dynamics": () => import("../../game-theory/best-response-dynamics/index.js"),
   "geology/transmissivity": () => import("../../geology/transmissivity/index.js"),
@@ -17,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/chitin-content-assay-recorder": () => import("../../mycology/chitin-content-assay-recorder/index.js"),
   "paleography/contraction-loss-detector": () => import("../../paleography/contraction-loss-detector/index.js"),
   "paleography/laid-line-density-estimator": () => import("../../paleography/laid-line-density-estimator/index.js"),
+  "probability/geometric-sampler": () => import("../../probability/geometric-sampler/index.js"),
   "sailing/course-over-ground": () => import("../../sailing/course-over-ground/index.js"),
   "sailing/great-circle-distance": () => import("../../sailing/great-circle-distance/index.js"),
   "seismology/adc-effective-bits-noise-floor-calculator": () => import("../../seismology/adc-effective-bits-noise-floor-calculator/index.js"),

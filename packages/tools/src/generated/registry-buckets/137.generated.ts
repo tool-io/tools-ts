@@ -4,10 +4,15 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/source-array-db-increase": () => import("../../acoustics/source-array-db-increase/index.js"),
   "actuarial/normal-retirement-benefit": () => import("../../actuarial/normal-retirement-benefit/index.js"),
   "aviation/bank-angle-from-load": () => import("../../aviation/bank-angle-from-load/index.js"),
   "carpentry/furnierpresse-druck-bar": () => import("../../carpentry/furnierpresse-druck-bar/index.js"),
+  "construction/concrete-aggregate-volume": () => import("../../construction/concrete-aggregate-volume/index.js"),
+  "construction/insulation-batts-coverage": () => import("../../construction/insulation-batts-coverage/index.js"),
   "demography/keyfitz-momentum-factor": () => import("../../demography/keyfitz-momentum-factor/index.js"),
+  "electronics/battery-internal-impedance": () => import("../../electronics/battery-internal-impedance/index.js"),
+  "electronics/mems-quality-factor": () => import("../../electronics/mems-quality-factor/index.js"),
   "electronics/nyquist-frequency": () => import("../../electronics/nyquist-frequency/index.js"),
   "electronics/pi-pad-shunt-resistor": () => import("../../electronics/pi-pad-shunt-resistor/index.js"),
   "electronics/resistor-tolerance-min": () => import("../../electronics/resistor-tolerance-min/index.js"),
@@ -15,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "geometry/regular-polygon-area": () => import("../../geometry/regular-polygon-area/index.js"),
   "physics/density": () => import("../../physics/density/index.js"),
   "real-estate/dscr": () => import("../../real-estate/dscr/index.js"),
+  "real-estate/list-to-sale-ratio": () => import("../../real-estate/list-to-sale-ratio/index.js"),
   "sailing/polar-vmg-max-upwind": () => import("../../sailing/polar-vmg-max-upwind/index.js"),
   "sailing/waypoint-eta-current-corrected": () => import("../../sailing/waypoint-eta-current-corrected/index.js"),
   "seismology/repeating-pair-slip-compatibility-checker": () => import("../../seismology/repeating-pair-slip-compatibility-checker/index.js"),

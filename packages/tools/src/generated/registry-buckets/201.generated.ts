@@ -4,17 +4,24 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/doppler-receding-frequency": () => import("../../acoustics/doppler-receding-frequency/index.js"),
   "arithmetic/multiply-numbers": () => import("../../arithmetic/multiply-numbers/index.js"),
   "astronomy/light-travel-time": () => import("../../astronomy/light-travel-time/index.js"),
   "aviation/equivalent-airspeed": () => import("../../aviation/equivalent-airspeed/index.js"),
   "biology/transcription-dna-to-rna": () => import("../../biology/transcription-dna-to-rna/index.js"),
   "chemistry/molality": () => import("../../chemistry/molality/index.js"),
+  "convert/equivalent-dose": () => import("../../convert/equivalent-dose/index.js"),
   "electronics/rise-time-from-bandwidth": () => import("../../electronics/rise-time-from-bandwidth/index.js"),
   "electronics/susceptance-capacitive": () => import("../../electronics/susceptance-capacitive/index.js"),
+  "engineering/anchor-bolt-tensile": () => import("../../engineering/anchor-bolt-tensile/index.js"),
+  "engineering/belt-drive-speed-ratio": () => import("../../engineering/belt-drive-speed-ratio/index.js"),
+  "engineering/wedge-mechanical-advantage": () => import("../../engineering/wedge-mechanical-advantage/index.js"),
   "epigraphy/bustrophedon-direction-detector": () => import("../../epigraphy/bustrophedon-direction-detector/index.js"),
   "epigraphy/underdot-uncertain-validator": () => import("../../epigraphy/underdot-uncertain-validator/index.js"),
   "geology/decline-rate-hyperbolic": () => import("../../geology/decline-rate-hyperbolic/index.js"),
   "geology/preconsolidation-pressure": () => import("../../geology/preconsolidation-pressure/index.js"),
+  "real-estate/lease-escalation": () => import("../../real-estate/lease-escalation/index.js"),
   "seismology/first-break-snr-validity-flagger": () => import("../../seismology/first-break-snr-validity-flagger/index.js"),
   "text/word-length-histogram": () => import("../../text/word-length-histogram/index.js"),
+  "typography/major-third-scale-generator": () => import("../../typography/major-third-scale-generator/index.js"),
 };

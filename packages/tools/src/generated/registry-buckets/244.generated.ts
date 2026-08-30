@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/acoustic-power-from-intensity-area": () => import("../../acoustics/acoustic-power-from-intensity-area/index.js"),
   "aviation/stall-speed-weight": () => import("../../aviation/stall-speed-weight/index.js"),
   "biology/cell-diameter-from-area": () => import("../../biology/cell-diameter-from-area/index.js"),
   "biology/chest-girth-weight": () => import("../../biology/chest-girth-weight/index.js"),
@@ -16,7 +17,12 @@ export const toolModuleLoaders: Readonly<
   "date/week-number": () => import("../../date/week-number/index.js"),
   "demography/direct-standardized-rate-sdr": () => import("../../demography/direct-standardized-rate-sdr/index.js"),
   "electricity/power": () => import("../../electricity/power/index.js"),
+  "electronics/antenna-radiation-efficiency": () => import("../../electronics/antenna-radiation-efficiency/index.js"),
   "electronics/integrator-ramp-voltage": () => import("../../electronics/integrator-ramp-voltage/index.js"),
+  "electronics/lna-input-ip3": () => import("../../electronics/lna-input-ip3/index.js"),
+  "engineering/luminous-efficacy": () => import("../../engineering/luminous-efficacy/index.js"),
+  "engineering/ship-buoyancy": () => import("../../engineering/ship-buoyancy/index.js"),
+  "engineering/thermal-resistance-series": () => import("../../engineering/thermal-resistance-series/index.js"),
   "epigraphy/gentilicium-origin-hint-checker": () => import("../../epigraphy/gentilicium-origin-hint-checker/index.js"),
   "geology/bubble-point-pressure-vasquez-beggs": () => import("../../geology/bubble-point-pressure-vasquez-beggs/index.js"),
   "geology/parasequence-thickness": () => import("../../geology/parasequence-thickness/index.js"),

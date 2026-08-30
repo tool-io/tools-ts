@@ -5,12 +5,14 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/retained-earnings-rollforward-statement": () => import("../../accounting/retained-earnings-rollforward-statement/index.js"),
+  "acoustics/speech-interference-level": () => import("../../acoustics/speech-interference-level/index.js"),
   "actuarial/gross-premium-expense-loading": () => import("../../actuarial/gross-premium-expense-loading/index.js"),
   "aviation/tropopause-check": () => import("../../aviation/tropopause-check/index.js"),
   "biology/harrison-beta-diversity": () => import("../../biology/harrison-beta-diversity/index.js"),
   "carpentry/kanten-anleimer-ueberstand-fraesen": () => import("../../carpentry/kanten-anleimer-ueberstand-fraesen/index.js"),
   "electronics/inductor-energy": () => import("../../electronics/inductor-energy/index.js"),
   "encode/uu": () => import("../../encode/uu/index.js"),
+  "engineering/hydraulic-diameter": () => import("../../engineering/hydraulic-diameter/index.js"),
   "geology/gravity-anomaly-free-air": () => import("../../geology/gravity-anomaly-free-air/index.js"),
   "laser/laser-m-squared-beam-quality-propagation-factor-divergence-product": () => import("../../laser/laser-m-squared-beam-quality-propagation-factor-divergence-product/index.js"),
   "logistics/redelivery-cost-multiplier-factor": () => import("../../logistics/redelivery-cost-multiplier-factor/index.js"),
@@ -19,4 +21,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/strain-induced-band-shift": () => import("../../semiconductor/strain-induced-band-shift/index.js"),
   "statistics/interquartile-range": () => import("../../statistics/interquartile-range/index.js"),
   "statistics/margin-of-error": () => import("../../statistics/margin-of-error/index.js"),
+  "typography/paragraph-spacing-vs-leading-ratio": () => import("../../typography/paragraph-spacing-vs-leading-ratio/index.js"),
+  "web/referrer-policy-parser": () => import("../../web/referrer-policy-parser/index.js"),
 };

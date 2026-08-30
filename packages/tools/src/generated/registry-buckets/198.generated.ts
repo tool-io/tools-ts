@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "biology/linkage-disequilibrium-d": () => import("../../biology/linkage-disequilibrium-d/index.js"),
   "chemistry/standard-state-correction": () => import("../../chemistry/standard-state-correction/index.js"),
   "convert/hex-to-hsl": () => import("../../convert/hex-to-hsl/index.js"),
+  "electronics/magnetometer-heading": () => import("../../electronics/magnetometer-heading/index.js"),
   "electronics/peukert-capacity": () => import("../../electronics/peukert-capacity/index.js"),
   "epigraphy/roman-numeral-inscription-parser": () => import("../../epigraphy/roman-numeral-inscription-parser/index.js"),
   "geology/lu-hf-isochron": () => import("../../geology/lu-hf-isochron/index.js"),
