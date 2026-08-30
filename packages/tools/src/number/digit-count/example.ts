@@ -2,10 +2,10 @@ import type { ToolExample } from "../../core/example.js";
 
 export const example = {
   input: {
-    value: 12345,
+    value: "123456789012345678901234567890",
   },
   output: {
-    digits: 5,
+    digits: 30,
   },
 } as const satisfies ToolExample<
   Readonly<Record<string, unknown>>,
