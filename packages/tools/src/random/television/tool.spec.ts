@@ -1,0 +1,6 @@
+import { describe, expect, it } from "vitest"; import { calculateRandomTelevision, randomTelevisionExample, runRandomTelevision } from "./tool.js";
+describe("Random Television Picker", () => {
+  it("selects exact IDs and preserves provenance", () => { expect(JSON.parse(JSON.stringify(randomTelevisionExample))).toEqual(randomTelevisionExample);expect(runRandomTelevision(randomTelevisionExample.input,{random:()=>0}).ok).toBe(true); expect(calculateRandomTelevision(randomTelevisionExample.input, () => 0)).toEqual({ datasetId: "example/television", datasetVersion: "1", selectedIds: ["candidate-a", "candidate-b"], sourceId: "example" }); });
+  it("is deterministic with injected randomness", () => { expect(calculateRandomTelevision(randomTelevisionExample.input, () => 0.75)).toEqual(calculateRandomTelevision(randomTelevisionExample.input, () => 0.75)); });
+  it("rejects invalid pools and randomness", () => { expect(runRandomTelevision({ ...randomTelevisionExample.input, candidateIds: [] }).ok).toBe(false); expect(runRandomTelevision({ ...randomTelevisionExample.input, selectionCount: 4 }).ok).toBe(false); expect(runRandomTelevision(randomTelevisionExample.input, { random: () => 1 }).ok).toBe(false); });
+});
