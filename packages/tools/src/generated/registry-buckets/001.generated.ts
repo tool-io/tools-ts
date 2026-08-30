@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "astrometry/micrometer-double-star-offsets": () => import("../../astrometry/micrometer-double-star-offsets/index.js"),
   "auditing/audit-team-industry-expertise-specialist-use-checker": () => import("../../auditing/audit-team-industry-expertise-specialist-use-checker/index.js"),
   "auditing/log-retention-evidence-check": () => import("../../auditing/log-retention-evidence-check/index.js"),
   "aviation/eta-from-departure": () => import("../../aviation/eta-from-departure/index.js"),
@@ -21,13 +22,20 @@ export const toolModuleLoaders: Readonly<
   "electronics/radar-received-power": () => import("../../electronics/radar-received-power/index.js"),
   "engineering/propeller-thrust": () => import("../../engineering/propeller-thrust/index.js"),
   "engineering/von-mises-stress": () => import("../../engineering/von-mises-stress/index.js"),
+  "genomics/intron-coverage-boundary": () => import("../../genomics/intron-coverage-boundary/index.js"),
   "geometry/polyline-length": () => import("../../geometry/polyline-length/index.js"),
   "horology/beat-error-milliseconds": () => import("../../horology/beat-error-milliseconds/index.js"),
+  "html/s-del-ins-edited-content-diff": () => import("../../html/s-del-ins-edited-content-diff/index.js"),
+  "math/keith-number-checker": () => import("../../math/keith-number-checker/index.js"),
+  "math/twin-prime-pair-checker": () => import("../../math/twin-prime-pair-checker/index.js"),
   "metabolomics/smiles-delimiter-validator": () => import("../../metabolomics/smiles-delimiter-validator/index.js"),
+  "mining/concentration-ratio": () => import("../../mining/concentration-ratio/index.js"),
   "mycology/armillaria-spread-radius-annual-estimate": () => import("../../mycology/armillaria-spread-radius-annual-estimate/index.js"),
+  "neuroscience/binomial-active-zone-estimate": () => import("../../neuroscience/binomial-active-zone-estimate/index.js"),
   "oenology/potential-alcohol-brix": () => import("../../oenology/potential-alcohol-brix/index.js"),
   "paleography/ductus-complexity-index-rater": () => import("../../paleography/ductus-complexity-index-rater/index.js"),
   "probability/complement": () => import("../../probability/complement/index.js"),
+  "random/czech-alphabet-letter": () => import("../../random/czech-alphabet-letter/index.js"),
   "real-estate/cash-on-cash-return": () => import("../../real-estate/cash-on-cash-return/index.js"),
   "sailing/jib-lead-angle": () => import("../../sailing/jib-lead-angle/index.js"),
   "sailing/sail-aspect-ratio-main": () => import("../../sailing/sail-aspect-ratio-main/index.js"),

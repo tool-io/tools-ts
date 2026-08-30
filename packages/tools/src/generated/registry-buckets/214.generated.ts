@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "arithmetic/subtract-two-numbers": () => import("../../arithmetic/subtract-two-numbers/index.js"),
   "auditing/three-lines-model-roles-assurance-lookup": () => import("../../auditing/three-lines-model-roles-assurance-lookup/index.js"),
+  "bacteriology/culture-bottle-positivity-timeline": () => import("../../bacteriology/culture-bottle-positivity-timeline/index.js"),
   "carpentry/finish-coverage": () => import("../../carpentry/finish-coverage/index.js"),
   "carpentry/ueberblattung-tiefe-half": () => import("../../carpentry/ueberblattung-tiefe-half/index.js"),
   "chemistry/ic50-to-ki": () => import("../../chemistry/ic50-to-ki/index.js"),
@@ -29,7 +30,9 @@ export const toolModuleLoaders: Readonly<
   "horology/co-axial-daniels-history-lookup": () => import("../../horology/co-axial-daniels-history-lookup/index.js"),
   "horology/neo-vintage-year-boundary-screen": () => import("../../horology/neo-vintage-year-boundary-screen/index.js"),
   "laser/supercontinuum-octave-span": () => import("../../laser/supercontinuum-octave-span/index.js"),
+  "math/motzkin-number": () => import("../../math/motzkin-number/index.js"),
   "music/tessitura-center-estimate": () => import("../../music/tessitura-center-estimate/index.js"),
+  "parasitology/skin-scraping-mite-density": () => import("../../parasitology/skin-scraping-mite-density/index.js"),
   "proteomics/trypsin-cleavage-sites": () => import("../../proteomics/trypsin-cleavage-sites/index.js"),
   "seismology/group-vs-phase-velocity-difference": () => import("../../seismology/group-vs-phase-velocity-difference/index.js"),
   "seismology/location-formal-error-scale-factor": () => import("../../seismology/location-formal-error-scale-factor/index.js"),

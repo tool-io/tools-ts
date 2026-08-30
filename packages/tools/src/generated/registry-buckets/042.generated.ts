@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "aquaculture/co2-production": () => import("../../aquaculture/co2-production/index.js"),
   "carpentry/stain-mixing-ratio": () => import("../../carpentry/stain-mixing-ratio/index.js"),
   "chemistry/entropy-fusion": () => import("../../chemistry/entropy-fusion/index.js"),
   "chemistry/van-der-waals-volume-correction": () => import("../../chemistry/van-der-waals-volume-correction/index.js"),
@@ -19,7 +20,9 @@ export const toolModuleLoaders: Readonly<
   "laser/microdissection-pulse-overlap": () => import("../../laser/microdissection-pulse-overlap/index.js"),
   "laser/slt-dose-window-check": () => import("../../laser/slt-dose-window-check/index.js"),
   "logistics/commercial-invoice-consistency-checker": () => import("../../logistics/commercial-invoice-consistency-checker/index.js"),
+  "mining/joint-volume-jv": () => import("../../mining/joint-volume-jv/index.js"),
   "oenology/polymeric-pigment-index": () => import("../../oenology/polymeric-pigment-index/index.js"),
+  "parasitology/coinfection-species-count": () => import("../../parasitology/coinfection-species-count/index.js"),
   "sailing/tide-gate-window": () => import("../../sailing/tide-gate-window/index.js"),
   "semiconductor/ldmos-drift-resistance": () => import("../../semiconductor/ldmos-drift-resistance/index.js"),
   "semiconductor/mosfet-oxide-thickness": () => import("../../semiconductor/mosfet-oxide-thickness/index.js"),

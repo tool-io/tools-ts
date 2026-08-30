@@ -4,7 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "astrometry/iau1976-epoch-precession": () => import("../../astrometry/iau1976-epoch-precession/index.js"),
   "auditing/construction-percent-complete-cost-to-cost-independent-recompute": () => import("../../auditing/construction-percent-complete-cost-to-cost-independent-recompute/index.js"),
+  "bacteriology/gram-mixture-control-audit": () => import("../../bacteriology/gram-mixture-control-audit/index.js"),
   "biology/codon-count": () => import("../../biology/codon-count/index.js"),
   "calculus/simpson-integration": () => import("../../calculus/simpson-integration/index.js"),
   "construction/concrete-yield": () => import("../../construction/concrete-yield/index.js"),
@@ -17,10 +19,15 @@ export const toolModuleLoaders: Readonly<
   "horology/remontoire-constant-force-type-lookup": () => import("../../horology/remontoire-constant-force-type-lookup/index.js"),
   "kinesiology/pelvic-tilt-angle": () => import("../../kinesiology/pelvic-tilt-angle/index.js"),
   "laser/tablet-coating-thickness": () => import("../../laser/tablet-coating-thickness/index.js"),
+  "limnology/lake-evaporation-energy-balance-method": () => import("../../limnology/lake-evaporation-energy-balance-method/index.js"),
+  "logic/illicit-minor-fallacy-detector": () => import("../../logic/illicit-minor-fallacy-detector/index.js"),
+  "math/fuss-catalan-number": () => import("../../math/fuss-catalan-number/index.js"),
   "metabolomics/mplus1-carbon-estimate": () => import("../../metabolomics/mplus1-carbon-estimate/index.js"),
   "metabolomics/process-efficiency": () => import("../../metabolomics/process-efficiency/index.js"),
   "metrics/brier-score": () => import("../../metrics/brier-score/index.js"),
   "metrics/symmetric-mean-absolute-percentage-error": () => import("../../metrics/symmetric-mean-absolute-percentage-error/index.js"),
+  "mri/epi-odd-even-phase-correction": () => import("../../mri/epi-odd-even-phase-correction/index.js"),
+  "mri/voxel-temporal-snr-from-time-series": () => import("../../mri/voxel-temporal-snr-from-time-series/index.js"),
   "mycology/hymenophore-type-classifier": () => import("../../mycology/hymenophore-type-classifier/index.js"),
   "random/signwriting-head-face-symbol": () => import("../../random/signwriting-head-face-symbol/index.js"),
   "real-estate/rehab-cost-per-sqft": () => import("../../real-estate/rehab-cost-per-sqft/index.js"),
@@ -31,5 +38,6 @@ export const toolModuleLoaders: Readonly<
   "sociology/housing-price-to-income-affordability": () => import("../../sociology/housing-price-to-income-affordability/index.js"),
   "statistics/holm-bonferroni": () => import("../../statistics/holm-bonferroni/index.js"),
   "statistics/t-score": () => import("../../statistics/t-score/index.js"),
+  "toxicology/calibrated-skin-permeability-qsar": () => import("../../toxicology/calibrated-skin-permeability-qsar/index.js"),
   "vector/angle": () => import("../../vector/angle/index.js"),
 };

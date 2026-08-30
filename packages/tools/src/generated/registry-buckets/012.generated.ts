@@ -17,6 +17,10 @@ export const toolModuleLoaders: Readonly<
   "chemistry/volume-percent": () => import("../../chemistry/volume-percent/index.js"),
   "construction/nail-count-per-connection": () => import("../../construction/nail-count-per-connection/index.js"),
   "cryptography/rot18": () => import("../../cryptography/rot18/index.js"),
+  "css/grid-template-areas-row-column-counter": () => import("../../css/grid-template-areas-row-column-counter/index.js"),
+  "csv/cell-coordinate-parser-a1": () => import("../../csv/cell-coordinate-parser-a1/index.js"),
+  "csv/duplicate-rows-extractor": () => import("../../csv/duplicate-rows-extractor/index.js"),
+  "csv/iso-date-to-excel-serial-export": () => import("../../csv/iso-date-to-excel-serial-export/index.js"),
   "electronics/capacitor-leakage-current": () => import("../../electronics/capacitor-leakage-current/index.js"),
   "geology/gas-density": () => import("../../geology/gas-density/index.js"),
   "journalism/drone-requirements-check": () => import("../../journalism/drone-requirements-check/index.js"),
@@ -33,4 +37,5 @@ export const toolModuleLoaders: Readonly<
   "size/belt": () => import("../../size/belt/index.js"),
   "typography/ems-to-pixels": () => import("../../typography/ems-to-pixels/index.js"),
   "validate/vin-check-digit": () => import("../../validate/vin-check-digit/index.js"),
+  "virology/poisson-corrected-lentiviral-titer": () => import("../../virology/poisson-corrected-lentiviral-titer/index.js"),
 };

@@ -5,12 +5,17 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/asa-committee-scope-reference": () => import("../../acoustics/asa-committee-scope-reference/index.js"),
+  "aquaculture/net-fouling-loss": () => import("../../aquaculture/net-fouling-loss/index.js"),
   "auditing/ratio-analysis-common-size-fluctuation-prompt-list": () => import("../../auditing/ratio-analysis-common-size-fluctuation-prompt-list/index.js"),
+  "bacteriology/bactericidal-survival-endpoint": () => import("../../bacteriology/bactericidal-survival-endpoint/index.js"),
   "biology/net-photosynthesis-rate": () => import("../../biology/net-photosynthesis-rate/index.js"),
   "carpentry/lathe-speed-rpm": () => import("../../carpentry/lathe-speed-rpm/index.js"),
   "cartography/raster-pixels-print-size-calculator": () => import("../../cartography/raster-pixels-print-size-calculator/index.js"),
+  "celestial-mechanics/ellipse-from-apsis-radii": () => import("../../celestial-mechanics/ellipse-from-apsis-radii/index.js"),
   "construction/sheathing-cut-waste": () => import("../../construction/sheathing-cut-waste/index.js"),
   "convert/text-to-utf8-octal": () => import("../../convert/text-to-utf8-octal/index.js"),
+  "csv/header-offset-record-index": () => import("../../csv/header-offset-record-index/index.js"),
+  "csv/phone-digits-normalize-basic-e164-lite": () => import("../../csv/phone-digits-normalize-basic-e164-lite/index.js"),
   "demography/daly-disability-adjusted-life-years": () => import("../../demography/daly-disability-adjusted-life-years/index.js"),
   "electronics/relay-coil-power": () => import("../../electronics/relay-coil-power/index.js"),
   "finance/cost-plus-price": () => import("../../finance/cost-plus-price/index.js"),
@@ -19,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "geometry/circle": () => import("../../geometry/circle/index.js"),
   "health/bmi-prime": () => import("../../health/bmi-prime/index.js"),
   "horology/tachymeter-base-calibration": () => import("../../horology/tachymeter-base-calibration/index.js"),
+  "html/base-href-single-instance-warning": () => import("../../html/base-href-single-instance-warning/index.js"),
   "html/whitespace-collapser": () => import("../../html/whitespace-collapser/index.js"),
   "kinesiology/timed-up-and-go-screen": () => import("../../kinesiology/timed-up-and-go-screen/index.js"),
   "laser/photoconductive-antenna-field": () => import("../../laser/photoconductive-antenna-field/index.js"),
@@ -28,4 +34,7 @@ export const toolModuleLoaders: Readonly<
   "oenology/native-ferment-risk-score": () => import("../../oenology/native-ferment-risk-score/index.js"),
   "paleography/schwabacher-fraktur-note-generator": () => import("../../paleography/schwabacher-fraktur-note-generator/index.js"),
   "probability/log-odds": () => import("../../probability/log-odds/index.js"),
+  "random/checksum-test-corpus": () => import("../../random/checksum-test-corpus/index.js"),
+  "random/earth-tone-palette": () => import("../../random/earth-tone-palette/index.js"),
+  "random/limbu-digit": () => import("../../random/limbu-digit/index.js"),
 };

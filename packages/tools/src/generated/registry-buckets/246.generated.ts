@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/iso-3382-part-reference": () => import("../../acoustics/iso-3382-part-reference/index.js"),
+  "astrometry/equatorial-horizontal-coordinates": () => import("../../astrometry/equatorial-horizontal-coordinates/index.js"),
   "auditing/attribute-sampling-deviation-rate-size-computation": () => import("../../auditing/attribute-sampling-deviation-rate-size-computation/index.js"),
   "auditing/disagreement-resolution": () => import("../../auditing/disagreement-resolution/index.js"),
   "auditing/evidence-hierarchy-external-confirmation-ranking-table": () => import("../../auditing/evidence-hierarchy-external-confirmation-ranking-table/index.js"),
@@ -23,11 +24,14 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/guide-line-spacing-checker": () => import("../../epigraphy/guide-line-spacing-checker/index.js"),
   "film/footage-to-runtime": () => import("../../film/footage-to-runtime/index.js"),
   "futurology/forecast-calibration": () => import("../../futurology/forecast-calibration/index.js"),
+  "genomics/trio-mendelian-check": () => import("../../genomics/trio-mendelian-check/index.js"),
   "geology/bit-weight-on-bit": () => import("../../geology/bit-weight-on-bit/index.js"),
   "kinesiology/hamstring-quadriceps-ratio": () => import("../../kinesiology/hamstring-quadriceps-ratio/index.js"),
   "kinesiology/mini-bestest-score": () => import("../../kinesiology/mini-bestest-score/index.js"),
   "laser/repeater-link-success": () => import("../../laser/repeater-link-success/index.js"),
   "logistics/fuel-surcharge-percent-add-on": () => import("../../logistics/fuel-surcharge-percent-add-on/index.js"),
+  "math/prime-big-omega": () => import("../../math/prime-big-omega/index.js"),
+  "mining/ventilation-air-quantity": () => import("../../mining/ventilation-air-quantity/index.js"),
   "network/prefix-to-netmask": () => import("../../network/prefix-to-netmask/index.js"),
   "number/perfect-cube-checker": () => import("../../number/perfect-cube-checker/index.js"),
   "numismatics/machine-vs-die-doubling": () => import("../../numismatics/machine-vs-die-doubling/index.js"),
@@ -41,5 +45,8 @@ export const toolModuleLoaders: Readonly<
   "size/socks": () => import("../../size/socks/index.js"),
   "taxation/s-corp-basis-tracker": () => import("../../taxation/s-corp-basis-tracker/index.js"),
   "theatre/wig-ventilation-hours": () => import("../../theatre/wig-ventilation-hours/index.js"),
+  "toxicology/endpoint-grouped-hazard-indices": () => import("../../toxicology/endpoint-grouped-hazard-indices/index.js"),
+  "toxicology/nonexclusive-median-effect-combination-index": () => import("../../toxicology/nonexclusive-median-effect-combination-index/index.js"),
   "transcriptomics/gapmer-layout": () => import("../../transcriptomics/gapmer-layout/index.js"),
+  "virology/icosahedral-lattice-counts": () => import("../../virology/icosahedral-lattice-counts/index.js"),
 };

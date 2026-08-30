@@ -5,9 +5,11 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "biology/leaf-nitrogen-content": () => import("../../biology/leaf-nitrogen-content/index.js"),
+  "celestial-mechanics/entry-ballistic-coefficient": () => import("../../celestial-mechanics/entry-ballistic-coefficient/index.js"),
   "chemistry/mass-fraction-to-mole-fraction": () => import("../../chemistry/mass-fraction-to-mole-fraction/index.js"),
   "construction/concrete-accelerator-dose": () => import("../../construction/concrete-accelerator-dose/index.js"),
   "convert/hex-to-bytes": () => import("../../convert/hex-to-bytes/index.js"),
+  "csv/latin1-export-compatibility-warning": () => import("../../csv/latin1-export-compatibility-warning/index.js"),
   "demography/stationarity-zero-growth-checker": () => import("../../demography/stationarity-zero-growth-checker/index.js"),
   "electronics/cuk-duty-cycle": () => import("../../electronics/cuk-duty-cycle/index.js"),
   "engineering/orifice-flow-rate": () => import("../../engineering/orifice-flow-rate/index.js"),
@@ -18,6 +20,8 @@ export const toolModuleLoaders: Readonly<
   "horology/world-time-zone-offset": () => import("../../horology/world-time-zone-offset/index.js"),
   "laser/diode-bar-coupling-budget": () => import("../../laser/diode-bar-coupling-budget/index.js"),
   "logistics/customs-broker-fee-per-entry-lookup": () => import("../../logistics/customs-broker-fee-per-entry-lookup/index.js"),
+  "mri/archimedean-spiral-gradient-plan": () => import("../../mri/archimedean-spiral-gradient-plan/index.js"),
+  "mri/rigid-framewise-displacement-screen": () => import("../../mri/rigid-framewise-displacement-screen/index.js"),
   "mycology/vesicle-count-segment-tally-calculator": () => import("../../mycology/vesicle-count-segment-tally-calculator/index.js"),
   "oenology/color-hue-angle": () => import("../../oenology/color-hue-angle/index.js"),
   "paleography/medieval-currency-denaro-converter": () => import("../../paleography/medieval-currency-denaro-converter/index.js"),

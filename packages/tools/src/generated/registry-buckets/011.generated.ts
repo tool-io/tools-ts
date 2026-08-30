@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/delta-beta-effect-classifier": () => import("../../epigenetics/delta-beta-effect-classifier/index.js"),
   "epigenetics/phantom-peak-quality": () => import("../../epigenetics/phantom-peak-quality/index.js"),
   "epigraphy/leiden-bracket-pair-validator": () => import("../../epigraphy/leiden-bracket-pair-validator/index.js"),
+  "glaciology/equilibrium-line-altitude-ela": () => import("../../glaciology/equilibrium-line-altitude-ela/index.js"),
   "insurance/nonappearance-loss": () => import("../../insurance/nonappearance-loss/index.js"),
   "laser/laser-dfb-grating-period-bragg-wavelength-calculator": () => import("../../laser/laser-dfb-grating-period-bragg-wavelength-calculator/index.js"),
   "math/logarithmic-mean": () => import("../../math/logarithmic-mean/index.js"),
@@ -34,4 +35,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/brune-displacement-spectrum-peak-frequency-note": () => import("../../seismology/brune-displacement-spectrum-peak-frequency-note/index.js"),
   "semiconductor/photonic-waveguide-loss": () => import("../../semiconductor/photonic-waveguide-loss/index.js"),
   "semiconductor/quantum-dot-charging-energy": () => import("../../semiconductor/quantum-dot-charging-energy/index.js"),
+  "virology/cold-chain-excursion-integral": () => import("../../virology/cold-chain-excursion-integral/index.js"),
 };

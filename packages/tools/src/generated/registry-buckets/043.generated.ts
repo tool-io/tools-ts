@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "archival-studies/oral-history-abstract-limit-finder": () => import("../../archival-studies/oral-history-abstract-limit-finder/index.js"),
   "arithmetic/modular-complement": () => import("../../arithmetic/modular-complement/index.js"),
+  "astrometry/common-motion-covariance-screen": () => import("../../astrometry/common-motion-covariance-screen/index.js"),
   "aviation/crosswind-gust-component": () => import("../../aviation/crosswind-gust-component/index.js"),
   "aviation/v-speed-vlo": () => import("../../aviation/v-speed-vlo/index.js"),
   "biology/dressing-percentage": () => import("../../biology/dressing-percentage/index.js"),
@@ -22,6 +23,8 @@ export const toolModuleLoaders: Readonly<
   "insurance/gig-coverage-gap": () => import("../../insurance/gig-coverage-gap/index.js"),
   "kinesiology/takeoff-impulse-velocity": () => import("../../kinesiology/takeoff-impulse-velocity/index.js"),
   "laser/laser-co2-line-selection-isotope-rotation-vibration-wavelength-table-lookup": () => import("../../laser/laser-co2-line-selection-isotope-rotation-vibration-wavelength-table-lookup/index.js"),
+  "math/legendre-symbol": () => import("../../math/legendre-symbol/index.js"),
+  "mri/acquisition-overhead-effective-acceleration": () => import("../../mri/acquisition-overhead-effective-acceleration/index.js"),
   "oenology/cork-soak-planner": () => import("../../oenology/cork-soak-planner/index.js"),
   "pedagogy/running-record-miscue-tally": () => import("../../pedagogy/running-record-miscue-tally/index.js"),
   "proportions/aspect-ratio": () => import("../../proportions/aspect-ratio/index.js"),

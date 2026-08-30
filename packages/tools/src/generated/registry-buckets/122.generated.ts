@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "aquaculture/water-exchange-rate": () => import("../../aquaculture/water-exchange-rate/index.js"),
+  "bacteriology/biofilm-eradication-endpoint": () => import("../../bacteriology/biofilm-eradication-endpoint/index.js"),
   "biology/carcass-yield-percentage": () => import("../../biology/carcass-yield-percentage/index.js"),
   "chemistry/buffer-effective-checker": () => import("../../chemistry/buffer-effective-checker/index.js"),
   "chemistry/buffer-ratio": () => import("../../chemistry/buffer-ratio/index.js"),
@@ -17,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/metaverse-hype-versus-utility-verdict-lookup": () => import("../../futurology/metaverse-hype-versus-utility-verdict-lookup/index.js"),
   "generate/network-flow-instance": () => import("../../generate/network-flow-instance/index.js"),
   "horology/chrono-elapsed-from-steps": () => import("../../horology/chrono-elapsed-from-steps/index.js"),
+  "html/img-alt-presence-checker": () => import("../../html/img-alt-presence-checker/index.js"),
   "laser/flow-cytometry-line-coverage": () => import("../../laser/flow-cytometry-line-coverage/index.js"),
   "music/staccato-duration-shortening-percent": () => import("../../music/staccato-duration-shortening-percent/index.js"),
   "oenology/cellar-humidity-evaporation-factor": () => import("../../oenology/cellar-humidity-evaporation-factor/index.js"),

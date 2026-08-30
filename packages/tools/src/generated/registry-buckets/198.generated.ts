@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/shepard-tone-reference": () => import("../../acoustics/shepard-tone-reference/index.js"),
+  "bacteriology/tube-design-mpn-estimate": () => import("../../bacteriology/tube-design-mpn-estimate/index.js"),
   "biology/dna-melting-temp-salt-adjusted": () => import("../../biology/dna-melting-temp-salt-adjusted/index.js"),
   "biology/linkage-disequilibrium-d": () => import("../../biology/linkage-disequilibrium-d/index.js"),
   "chemistry/standard-state-correction": () => import("../../chemistry/standard-state-correction/index.js"),
@@ -14,10 +15,14 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/rrbs-fragment-range": () => import("../../epigenetics/rrbs-fragment-range/index.js"),
   "epigraphy/roman-numeral-inscription-parser": () => import("../../epigraphy/roman-numeral-inscription-parser/index.js"),
   "futurology/existential-risk-category-taxonomy-lookup": () => import("../../futurology/existential-risk-category-taxonomy-lookup/index.js"),
+  "genetics/dominant-generation-pedigree-pattern": () => import("../../genetics/dominant-generation-pedigree-pattern/index.js"),
+  "genomics/length-normalized-psi": () => import("../../genomics/length-normalized-psi/index.js"),
+  "genomics/ssr-motif-class": () => import("../../genomics/ssr-motif-class/index.js"),
   "geology/lu-hf-isochron": () => import("../../geology/lu-hf-isochron/index.js"),
   "http/accept-parser": () => import("../../http/accept-parser/index.js"),
   "laser/bb84-sift-error-analysis": () => import("../../laser/bb84-sift-error-analysis/index.js"),
   "laser/botda-strain-temperature": () => import("../../laser/botda-strain-temperature/index.js"),
+  "logic/equivalence-biconditional-match-checker": () => import("../../logic/equivalence-biconditional-match-checker/index.js"),
   "mycology/azole-cyp51-risk-tier-classifier": () => import("../../mycology/azole-cyp51-risk-tier-classifier/index.js"),
   "mycology/fairyring-zone-type-classifier": () => import("../../mycology/fairyring-zone-type-classifier/index.js"),
   "network/ipv4-to-integer": () => import("../../network/ipv4-to-integer/index.js"),
@@ -35,5 +40,7 @@ export const toolModuleLoaders: Readonly<
   "size/hat": () => import("../../size/hat/index.js"),
   "statistics/chi-square-goodness-of-fit": () => import("../../statistics/chi-square-goodness-of-fit/index.js"),
   "text/anagram-checker": () => import("../../text/anagram-checker/index.js"),
+  "toxicology/supplied-effect-test-noec": () => import("../../toxicology/supplied-effect-test-noec/index.js"),
   "transcriptomics/canonical-splice-support": () => import("../../transcriptomics/canonical-splice-support/index.js"),
+  "virology/one-step-rise-onset": () => import("../../virology/one-step-rise-onset/index.js"),
 };

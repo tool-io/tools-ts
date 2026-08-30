@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "geology/pore-pressure-prediction-eaton-resistivity": () => import("../../geology/pore-pressure-prediction-eaton-resistivity/index.js"),
   "journalism/document-entity-date-sorter": () => import("../../journalism/document-entity-date-sorter/index.js"),
   "journalism/tape-sync-drift": () => import("../../journalism/tape-sync-drift/index.js"),
+  "logic/undistributed-middle-fallacy-detector": () => import("../../logic/undistributed-middle-fallacy-detector/index.js"),
   "math/expression-evaluator": () => import("../../math/expression-evaluator/index.js"),
   "microcontroller/intel-hex-parse": () => import("../../microcontroller/intel-hex-parse/index.js"),
   "nautical/rhumb-line-distance": () => import("../../nautical/rhumb-line-distance/index.js"),

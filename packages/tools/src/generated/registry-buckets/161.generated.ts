@@ -24,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "music/equal-temperament-ratio-from-semitones": () => import("../../music/equal-temperament-ratio-from-semitones/index.js"),
   "parse/numeric-dataset": () => import("../../parse/numeric-dataset/index.js"),
   "random/cherokee-character": () => import("../../random/cherokee-character/index.js"),
+  "random/dark-palette": () => import("../../random/dark-palette/index.js"),
   "random/nandinagari-character": () => import("../../random/nandinagari-character/index.js"),
   "seismology/coda-normalization-lapse-time-amplitude-correction": () => import("../../seismology/coda-normalization-lapse-time-amplitude-correction/index.js"),
   "seismology/miniseed-record-header-parser": () => import("../../seismology/miniseed-record-header-parser/index.js"),
@@ -33,6 +34,8 @@ export const toolModuleLoaders: Readonly<
   "statistics/sum-of-squares": () => import("../../statistics/sum-of-squares/index.js"),
   "text/remove-diacritics": () => import("../../text/remove-diacritics/index.js"),
   "theatre/haze-ventilation": () => import("../../theatre/haze-ventilation/index.js"),
+  "toxicology/mixed-reservoir-predicted-concentration": () => import("../../toxicology/mixed-reservoir-predicted-concentration/index.js"),
   "validate/issn": () => import("../../validate/issn/index.js"),
+  "virology/synonymous-family-enc": () => import("../../virology/synonymous-family-enc/index.js"),
   "web/permissions-policy-parser": () => import("../../web/permissions-policy-parser/index.js"),
 };

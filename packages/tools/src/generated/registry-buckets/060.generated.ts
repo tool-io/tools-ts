@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "astrometry/equatorial-ecliptic-axis-rotation": () => import("../../astrometry/equatorial-ecliptic-axis-rotation/index.js"),
   "auditing/cloud-responsibility-coverage": () => import("../../auditing/cloud-responsibility-coverage/index.js"),
   "auditing/preliminary-analytics-percent-change-flagger": () => import("../../auditing/preliminary-analytics-percent-change-flagger/index.js"),
   "auditing/sample-stratification": () => import("../../auditing/sample-stratification/index.js"),
@@ -17,7 +18,9 @@ export const toolModuleLoaders: Readonly<
   "convert/oklch-to-hex": () => import("../../convert/oklch-to-hex/index.js"),
   "date/days-in-month": () => import("../../date/days-in-month/index.js"),
   "electronics/input-offset-voltage-drift": () => import("../../electronics/input-offset-voltage-drift/index.js"),
+  "entrepreneurship/anti-dilution-comparison": () => import("../../entrepreneurship/anti-dilution-comparison/index.js"),
   "finance/annualized-return": () => import("../../finance/annualized-return/index.js"),
+  "genomics/callable-depth-fraction": () => import("../../genomics/callable-depth-fraction/index.js"),
   "geology/fractional-flow-water": () => import("../../geology/fractional-flow-water/index.js"),
   "geometry/ellipsoid-volume": () => import("../../geometry/ellipsoid-volume/index.js"),
   "horology/vintage-service-schedule-budget-planner": () => import("../../horology/vintage-service-schedule-budget-planner/index.js"),
@@ -31,8 +34,10 @@ export const toolModuleLoaders: Readonly<
   "logistics/order-to-door-response-time": () => import("../../logistics/order-to-door-response-time/index.js"),
   "logistics/reefer-fuel-consumption-per-day": () => import("../../logistics/reefer-fuel-consumption-per-day/index.js"),
   "mycology/spore-print-color-mapper": () => import("../../mycology/spore-print-color-mapper/index.js"),
+  "neuroscience/grating-orientation-threshold": () => import("../../neuroscience/grating-orientation-threshold/index.js"),
   "numismatics/wantlist-completion-progress-percent": () => import("../../numismatics/wantlist-completion-progress-percent/index.js"),
   "oenology/ta-titration-gpl": () => import("../../oenology/ta-titration-gpl/index.js"),
+  "random/grayscale-color": () => import("../../random/grayscale-color/index.js"),
   "real-estate/cltv": () => import("../../real-estate/cltv/index.js"),
   "seismology/b-value-standard-error-shi-bolt-formula": () => import("../../seismology/b-value-standard-error-shi-bolt-formula/index.js"),
   "seismology/deterministic-vs-probabilistic-split": () => import("../../seismology/deterministic-vs-probabilistic-split/index.js"),

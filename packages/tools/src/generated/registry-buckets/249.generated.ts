@@ -38,6 +38,9 @@ export const toolModuleLoaders: Readonly<
   "matrix/flip-horizontal": () => import("../../matrix/flip-horizontal/index.js"),
   "metabolomics/nmr-bucket-integrals": () => import("../../metabolomics/nmr-bucket-integrals/index.js"),
   "metrics/mean-squared-error": () => import("../../metrics/mean-squared-error/index.js"),
+  "mining/mining-recovery-percentage": () => import("../../mining/mining-recovery-percentage/index.js"),
+  "neuroscience/measured-nerve-conduction-velocity": () => import("../../neuroscience/measured-nerve-conduction-velocity/index.js"),
+  "neuroscience/six-connected-voxel-cluster-extents": () => import("../../neuroscience/six-connected-voxel-cluster-extents/index.js"),
   "numismatics/planchet-thickness-average": () => import("../../numismatics/planchet-thickness-average/index.js"),
   "paleography/grain-quarter-bushel-converter": () => import("../../paleography/grain-quarter-bushel-converter/index.js"),
   "random/alchemical-symbol": () => import("../../random/alchemical-symbol/index.js"),
@@ -46,5 +49,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/transconductance-efficiency-gm-id": () => import("../../semiconductor/transconductance-efficiency-gm-id/index.js"),
   "text/split": () => import("../../text/split/index.js"),
   "theatre/traverse-sightline": () => import("../../theatre/traverse-sightline/index.js"),
+  "virology/breakpoint-region-overlap": () => import("../../virology/breakpoint-region-overlap/index.js"),
   "web/manifest-icon-size-parser": () => import("../../web/manifest-icon-size-parser/index.js"),
 };

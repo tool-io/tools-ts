@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "arithmetic/power": () => import("../../arithmetic/power/index.js"),
+  "astrometry/moving-cluster-distance": () => import("../../astrometry/moving-cluster-distance/index.js"),
   "biology/cell-cycle-g2-percentage": () => import("../../biology/cell-cycle-g2-percentage/index.js"),
   "biology/ribeye-area": () => import("../../biology/ribeye-area/index.js"),
   "carpentry/dovetail-pin-width": () => import("../../carpentry/dovetail-pin-width/index.js"),
@@ -22,9 +23,12 @@ export const toolModuleLoaders: Readonly<
   "music/melodic-range-span-semitones": () => import("../../music/melodic-range-span-semitones/index.js"),
   "neuroscience/local-variation-lv": () => import("../../neuroscience/local-variation-lv/index.js"),
   "oenology/decanting-time-style": () => import("../../oenology/decanting-time-style/index.js"),
+  "parasitology/excystation-protocol-window-audit": () => import("../../parasitology/excystation-protocol-window-audit/index.js"),
   "random/lsf-fingerspelling-letter": () => import("../../random/lsf-fingerspelling-letter/index.js"),
   "seismology/refraction-layer-crossover-distance": () => import("../../seismology/refraction-layer-crossover-distance/index.js"),
   "taxation/airdrop-income": () => import("../../taxation/airdrop-income/index.js"),
   "theatre/coat-check-reconciliation": () => import("../../theatre/coat-check-reconciliation/index.js"),
+  "toxicology/urinary-biomarker-dilution-adjustment": () => import("../../toxicology/urinary-biomarker-dilution-adjustment/index.js"),
   "transcriptomics/bioanalyzer-concentration": () => import("../../transcriptomics/bioanalyzer-concentration/index.js"),
+  "virology/decimal-reduction-contact-time": () => import("../../virology/decimal-reduction-contact-time/index.js"),
 };

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "aquaculture/incubation-degree-days": () => import("../../aquaculture/incubation-degree-days/index.js"),
   "aviation/center-of-gravity": () => import("../../aviation/center-of-gravity/index.js"),
   "biology/cell-surface-area": () => import("../../biology/cell-surface-area/index.js"),
   "biology/vapor-pressure-deficit-leaf": () => import("../../biology/vapor-pressure-deficit-leaf/index.js"),
@@ -19,12 +20,19 @@ export const toolModuleLoaders: Readonly<
   "engineering/power-torque-rpm": () => import("../../engineering/power-torque-rpm/index.js"),
   "engineering/screw-jack-mechanical-advantage": () => import("../../engineering/screw-jack-mechanical-advantage/index.js"),
   "forestry/co2-equivalent-single-tree": () => import("../../forestry/co2-equivalent-single-tree/index.js"),
+  "genomics/gene-model-junction-support": () => import("../../genomics/gene-model-junction-support/index.js"),
   "horology/four-five-hertz-high-beat-comparison-lookup": () => import("../../horology/four-five-hertz-high-beat-comparison-lookup/index.js"),
   "horology/nato-strap-british-mod-history-lookup": () => import("../../horology/nato-strap-british-mod-history-lookup/index.js"),
+  "html/figure-figcaption-pairing-checker": () => import("../../html/figure-figcaption-pairing-checker/index.js"),
+  "limnology/stage-discharge-power-rating": () => import("../../limnology/stage-discharge-power-rating/index.js"),
   "logistics/oversize-package-threshold-checker": () => import("../../logistics/oversize-package-threshold-checker/index.js"),
+  "mining/pillar-strength-tributary": () => import("../../mining/pillar-strength-tributary/index.js"),
+  "mri/phase-coordinate-wrap-audit": () => import("../../mri/phase-coordinate-wrap-audit/index.js"),
   "paleography/foliation-pagination-detector": () => import("../../paleography/foliation-pagination-detector/index.js"),
   "pedagogy/rubric-format-selector": () => import("../../pedagogy/rubric-format-selector/index.js"),
   "probability/gibbs-sampler": () => import("../../probability/gibbs-sampler/index.js"),
+  "random/chord-voicing": () => import("../../random/chord-voicing/index.js"),
+  "random/esperanto-alphabet-letter": () => import("../../random/esperanto-alphabet-letter/index.js"),
   "sailing/jib-overlap-percentage": () => import("../../sailing/jib-overlap-percentage/index.js"),
   "seismology/reduced-travel-time-plot-converter": () => import("../../seismology/reduced-travel-time-plot-converter/index.js"),
   "set/union": () => import("../../set/union/index.js"),

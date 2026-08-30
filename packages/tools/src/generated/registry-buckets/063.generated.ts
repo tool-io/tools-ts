@@ -4,12 +4,14 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "aquaculture/weaning-time": () => import("../../aquaculture/weaning-time/index.js"),
   "auditing/network-firm-screen": () => import("../../auditing/network-firm-screen/index.js"),
   "biology/elastance": () => import("../../biology/elastance/index.js"),
   "biology/primer-dimer-check": () => import("../../biology/primer-dimer-check/index.js"),
   "cartography/proportional-symbol-radius": () => import("../../cartography/proportional-symbol-radius/index.js"),
   "chemistry/analytical-recovery-percentage": () => import("../../chemistry/analytical-recovery-percentage/index.js"),
   "chemistry/limiting-reagent-excess-amount": () => import("../../chemistry/limiting-reagent-excess-amount/index.js"),
+  "css/background-position-percent-alignment": () => import("../../css/background-position-percent-alignment/index.js"),
   "date/add-days": () => import("../../date/add-days/index.js"),
   "electronics/delta-to-wye-resistance": () => import("../../electronics/delta-to-wye-resistance/index.js"),
   "electronics/motor-back-emf": () => import("../../electronics/motor-back-emf/index.js"),
@@ -21,11 +23,14 @@ export const toolModuleLoaders: Readonly<
   "generate/gtin-14": () => import("../../generate/gtin-14/index.js"),
   "journalism/eas-cut-in-runtime": () => import("../../journalism/eas-cut-in-runtime/index.js"),
   "matrix/inverse": () => import("../../matrix/inverse/index.js"),
+  "mining/cyclone-efficiency": () => import("../../mining/cyclone-efficiency/index.js"),
   "neuroscience/stroop-interference": () => import("../../neuroscience/stroop-interference/index.js"),
   "numismatics/half-dollars-per-ounce-silver-yield": () => import("../../numismatics/half-dollars-per-ounce-silver-yield/index.js"),
   "paleography/italic-slant-degree-rater": () => import("../../paleography/italic-slant-degree-rater/index.js"),
   "random/roman-numeral": () => import("../../random/roman-numeral/index.js"),
+  "random/romanian-alphabet-letter": () => import("../../random/romanian-alphabet-letter/index.js"),
   "taxation/summons-response-window": () => import("../../taxation/summons-response-window/index.js"),
   "text/pangram-checker": () => import("../../text/pangram-checker/index.js"),
+  "virology/prevalence-predictive-values": () => import("../../virology/prevalence-predictive-values/index.js"),
   "web/unicode-to-punycode": () => import("../../web/unicode-to-punycode/index.js"),
 };

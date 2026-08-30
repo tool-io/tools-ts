@@ -5,6 +5,8 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/string-tension-for-target-pitch": () => import("../../acoustics/string-tension-for-target-pitch/index.js"),
+  "astrometry/moving-source-trail-pixels": () => import("../../astrometry/moving-source-trail-pixels/index.js"),
+  "astrometry/rectilinear-astrometric-epoch-propagation": () => import("../../astrometry/rectilinear-astrometric-epoch-propagation/index.js"),
   "biology/cell-cycle-s-phase-fraction": () => import("../../biology/cell-cycle-s-phase-fraction/index.js"),
   "carpentry/holzpreis-pro-cbm": () => import("../../carpentry/holzpreis-pro-cbm/index.js"),
   "carpentry/wood-shrinkage-percentage": () => import("../../carpentry/wood-shrinkage-percentage/index.js"),
@@ -32,14 +34,19 @@ export const toolModuleLoaders: Readonly<
   "laser/fiber-delivery-power-margin": () => import("../../laser/fiber-delivery-power-margin/index.js"),
   "laser/saturation-crossover-frequency": () => import("../../laser/saturation-crossover-frequency/index.js"),
   "laser/shg-phase-match": () => import("../../laser/shg-phase-match/index.js"),
+  "limnology/epilimnion-hypolimnion-volume-split": () => import("../../limnology/epilimnion-hypolimnion-volume-split/index.js"),
   "logistics/orders-per-hour-picker-throughput": () => import("../../logistics/orders-per-hour-picker-throughput/index.js"),
   "microcontroller/sleep-average-current": () => import("../../microcontroller/sleep-average-current/index.js"),
+  "mri/sampled-double-gamma-hrf-peak": () => import("../../mri/sampled-double-gamma-hrf-peak/index.js"),
   "numismatics/quarters-per-ounce-silver-yield": () => import("../../numismatics/quarters-per-ounce-silver-yield/index.js"),
   "oenology/stuck-ferment-flag": () => import("../../oenology/stuck-ferment-flag/index.js"),
+  "parasitology/flea-comb-capture-yield": () => import("../../parasitology/flea-comb-capture-yield/index.js"),
+  "parasitology/hrp2-negative-test-discordance": () => import("../../parasitology/hrp2-negative-test-discordance/index.js"),
   "parse/cache-control": () => import("../../parse/cache-control/index.js"),
   "proteomics/protein-group-parsimony": () => import("../../proteomics/protein-group-parsimony/index.js"),
   "real-estate/months-of-inventory": () => import("../../real-estate/months-of-inventory/index.js"),
   "sailing/beaufort-scale-lookup": () => import("../../sailing/beaufort-scale-lookup/index.js"),
   "seismology/wadati-origin-time-single-station-formula": () => import("../../seismology/wadati-origin-time-single-station-formula/index.js"),
   "taxation/vat-invoice-gap-check": () => import("../../taxation/vat-invoice-gap-check/index.js"),
+  "toxicology/congener-tef-equivalent-concentration": () => import("../../toxicology/congener-tef-equivalent-concentration/index.js"),
 };

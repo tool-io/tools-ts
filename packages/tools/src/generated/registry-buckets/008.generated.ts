@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "aquaculture/biofilter-media-volume": () => import("../../aquaculture/biofilter-media-volume/index.js"),
   "auditing/application-control-report-parameter-integrity-checker": () => import("../../auditing/application-control-report-parameter-integrity-checker/index.js"),
   "auditing/cash-on-hand-count-denomination-sheet-procedure": () => import("../../auditing/cash-on-hand-count-denomination-sheet-procedure/index.js"),
   "auditing/itgc-access-change-operations-domain-split-lookup": () => import("../../auditing/itgc-access-change-operations-domain-split-lookup/index.js"),
@@ -22,7 +23,10 @@ export const toolModuleLoaders: Readonly<
   "laser/b-integral": () => import("../../laser/b-integral/index.js"),
   "laser/beam-tap-ratio": () => import("../../laser/beam-tap-ratio/index.js"),
   "laser/henry-alpha": () => import("../../laser/henry-alpha/index.js"),
+  "limnology/anoxia-risk-checker": () => import("../../limnology/anoxia-risk-checker/index.js"),
+  "logic/darapti-aai3-valid-lookup": () => import("../../logic/darapti-aai3-valid-lookup/index.js"),
   "music/dbfs-to-linear-amplitude": () => import("../../music/dbfs-to-linear-amplitude/index.js"),
+  "neuroscience/watson-orientation-dispersion-index": () => import("../../neuroscience/watson-orientation-dispersion-index/index.js"),
   "paleography/line-count-column-measurer": () => import("../../paleography/line-count-column-measurer/index.js"),
   "random/electrical-symbol": () => import("../../random/electrical-symbol/index.js"),
   "seismology/eurocode-8-ground-type-lookup": () => import("../../seismology/eurocode-8-ground-type-lookup/index.js"),

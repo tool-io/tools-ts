@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "astrometry/laskar-mean-obliquity": () => import("../../astrometry/laskar-mean-obliquity/index.js"),
   "biology/bioequivalence-ratio": () => import("../../biology/bioequivalence-ratio/index.js"),
   "biology/primer-efficiency-from-slope": () => import("../../biology/primer-efficiency-from-slope/index.js"),
   "carpentry/parkett-bedarf-verschnitt": () => import("../../carpentry/parkett-bedarf-verschnitt/index.js"),
@@ -11,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/titration-ph-after-equivalence": () => import("../../chemistry/titration-ph-after-equivalence/index.js"),
   "convert/acceleration": () => import("../../convert/acceleration/index.js"),
   "convert/ascii-hex-encode": () => import("../../convert/ascii-hex-encode/index.js"),
+  "csv/utf8-no-bom-export-standard-checker": () => import("../../csv/utf8-no-bom-export-standard-checker/index.js"),
   "decode/tap-code": () => import("../../decode/tap-code/index.js"),
   "demography/un-model-life-table-pattern-lookup": () => import("../../demography/un-model-life-table-pattern-lookup/index.js"),
   "electronics/gas-sensor-sensitivity": () => import("../../electronics/gas-sensor-sensitivity/index.js"),
@@ -23,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/meadows-twelve-leverage-points-intervention-lookup": () => import("../../futurology/meadows-twelve-leverage-points-intervention-lookup/index.js"),
   "geojson/bounding-box": () => import("../../geojson/bounding-box/index.js"),
   "laser/random-fiber-laser-threshold": () => import("../../laser/random-fiber-laser-threshold/index.js"),
+  "math/carmichael-number-checker": () => import("../../math/carmichael-number-checker/index.js"),
   "numismatics/whizzed-surface-screen": () => import("../../numismatics/whizzed-surface-screen/index.js"),
   "oenology/kmw-to-brix": () => import("../../oenology/kmw-to-brix/index.js"),
   "optimization/trust-region-step": () => import("../../optimization/trust-region-step/index.js"),

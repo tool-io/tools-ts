@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "film/luminance-nits": () => import("../../film/luminance-nits/index.js"),
   "forestry/basal-area-growth-annual": () => import("../../forestry/basal-area-growth-annual/index.js"),
   "futurology/energy-transition-driver-implication-chain": () => import("../../futurology/energy-transition-driver-implication-chain/index.js"),
+  "genomics/soft-clip-breakpoints": () => import("../../genomics/soft-clip-breakpoints/index.js"),
   "geology/rock-quality-designation-rqd": () => import("../../geology/rock-quality-designation-rqd/index.js"),
   "journalism/election-reporting-coverage": () => import("../../journalism/election-reporting-coverage/index.js"),
   "journalism/trademark-usage-scan": () => import("../../journalism/trademark-usage-scan/index.js"),

@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "actuarial/chain-ladder-development-factor": () => import("../../actuarial/chain-ladder-development-factor/index.js"),
   "aquaculture/weight-length-relationship": () => import("../../aquaculture/weight-length-relationship/index.js"),
   "aviation/estimated-fuel-trip": () => import("../../aviation/estimated-fuel-trip/index.js"),
+  "bacteriology/gradient-mic-upper-step": () => import("../../bacteriology/gradient-mic-upper-step/index.js"),
   "biology/feed-conversion-ratio": () => import("../../biology/feed-conversion-ratio/index.js"),
   "carpentry/arbeitsplatte-stossfuge-5mm": () => import("../../carpentry/arbeitsplatte-stossfuge-5mm/index.js"),
   "cartography/great-circle-initial-bearing": () => import("../../cartography/great-circle-initial-bearing/index.js"),
@@ -17,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/unit-cell-density": () => import("../../chemistry/unit-cell-density/index.js"),
   "convert/amount-of-substance": () => import("../../convert/amount-of-substance/index.js"),
   "convert/text-to-hex-ascii": () => import("../../convert/text-to-hex-ascii/index.js"),
+  "csv/low-cardinality-category-lister": () => import("../../csv/low-cardinality-category-lister/index.js"),
   "decode/uu": () => import("../../decode/uu/index.js"),
   "demography/reference-standard-population-lookup": () => import("../../demography/reference-standard-population-lookup/index.js"),
   "electronics/diode-dynamic-resistance": () => import("../../electronics/diode-dynamic-resistance/index.js"),
@@ -42,4 +44,5 @@ export const toolModuleLoaders: Readonly<
   "size/gambeson-reconstruction": () => import("../../size/gambeson-reconstruction/index.js"),
   "text/palindrome-checker": () => import("../../text/palindrome-checker/index.js"),
   "transcriptomics/fragments-per-kilobase-million": () => import("../../transcriptomics/fragments-per-kilobase-million/index.js"),
+  "virology/lineage-format-audit": () => import("../../virology/lineage-format-audit/index.js"),
 };

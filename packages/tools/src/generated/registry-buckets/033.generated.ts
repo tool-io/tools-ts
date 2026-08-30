@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/calibration-drift-screen": () => import("../../acoustics/calibration-drift-screen/index.js"),
+  "astrometry/convergent-point-motion-alignment": () => import("../../astrometry/convergent-point-motion-alignment/index.js"),
   "aviation/bingo-fuel": () => import("../../aviation/bingo-fuel/index.js"),
   "checksum/xor-8": () => import("../../checksum/xor-8/index.js"),
   "electronics/ethernet-frame-overhead": () => import("../../electronics/ethernet-frame-overhead/index.js"),
@@ -16,9 +17,11 @@ export const toolModuleLoaders: Readonly<
   "journalism/tease-length": () => import("../../journalism/tease-length/index.js"),
   "metabolomics/xenobiotic-phase-audit": () => import("../../metabolomics/xenobiotic-phase-audit/index.js"),
   "music/semitones-between": () => import("../../music/semitones-between/index.js"),
+  "neuroscience/twitch-interpolation-voluntary-activation": () => import("../../neuroscience/twitch-interpolation-voluntary-activation/index.js"),
   "oenology/age-worthiness-score": () => import("../../oenology/age-worthiness-score/index.js"),
   "oenology/casein-fining-dose": () => import("../../oenology/casein-fining-dose/index.js"),
   "paleography/trim-loss-edge-recorder": () => import("../../paleography/trim-loss-edge-recorder/index.js"),
+  "parasitology/prepatent-detection-interval": () => import("../../parasitology/prepatent-detection-interval/index.js"),
   "proteomics/western-band-background-correction": () => import("../../proteomics/western-band-background-correction/index.js"),
   "random/buhid-character": () => import("../../random/buhid-character/index.js"),
   "sailing/sail-aspect-ratio-jib": () => import("../../sailing/sail-aspect-ratio-jib/index.js"),

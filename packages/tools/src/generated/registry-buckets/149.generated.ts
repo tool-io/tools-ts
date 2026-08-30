@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "aquaculture/transportation-density": () => import("../../aquaculture/transportation-density/index.js"),
   "biology/bleeding-time": () => import("../../biology/bleeding-time/index.js"),
   "biology/dead-space-volume": () => import("../../biology/dead-space-volume/index.js"),
   "carpentry/poly-coats-needed": () => import("../../carpentry/poly-coats-needed/index.js"),
@@ -17,12 +18,14 @@ export const toolModuleLoaders: Readonly<
   "finance/present-value": () => import("../../finance/present-value/index.js"),
   "futurology/crossing-the-chasm-early-majority-gap-strategy-lookup": () => import("../../futurology/crossing-the-chasm-early-majority-gap-strategy-lookup/index.js"),
   "laser/wavebreaking-artifact-screen": () => import("../../laser/wavebreaking-artifact-screen/index.js"),
+  "limnology/ice-thickness-stefan-law": () => import("../../limnology/ice-thickness-stefan-law/index.js"),
   "logistics/hos-70-hour-8-day-remaining-checker": () => import("../../logistics/hos-70-hour-8-day-remaining-checker/index.js"),
   "metrics/residual-sum-of-squares": () => import("../../metrics/residual-sum-of-squares/index.js"),
   "mycology/taste-coded-entry-checker": () => import("../../mycology/taste-coded-entry-checker/index.js"),
   "oenology/abv-simple-sg-drop": () => import("../../oenology/abv-simple-sg-drop/index.js"),
   "paleography/signum-cross-detector": () => import("../../paleography/signum-cross-detector/index.js"),
   "random/bengali-character": () => import("../../random/bengali-character/index.js"),
+  "random/thai-digit": () => import("../../random/thai-digit/index.js"),
   "sailing/capsize-screening-factor": () => import("../../sailing/capsize-screening-factor/index.js"),
   "seismology/uniform-hazard-spectrum-interpolation": () => import("../../seismology/uniform-hazard-spectrum-interpolation/index.js"),
   "seismology/wadati-residual-histogram-binner": () => import("../../seismology/wadati-residual-histogram-binner/index.js"),
@@ -31,5 +34,6 @@ export const toolModuleLoaders: Readonly<
   "size/photograph": () => import("../../size/photograph/index.js"),
   "text/isogram-checker": () => import("../../text/isogram-checker/index.js"),
   "transcriptomics/pca-outlier-screen": () => import("../../transcriptomics/pca-outlier-screen/index.js"),
+  "virology/segment-reassortment-combinations": () => import("../../virology/segment-reassortment-combinations/index.js"),
   "vr/dynamic-resolution-scale-factor": () => import("../../vr/dynamic-resolution-scale-factor/index.js"),
 };

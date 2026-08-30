@@ -21,7 +21,10 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/cil-citation-parser": () => import("../../epigraphy/cil-citation-parser/index.js"),
   "finance/simple-interest": () => import("../../finance/simple-interest/index.js"),
   "forestry/leaf-area-density": () => import("../../forestry/leaf-area-density/index.js"),
+  "genetics/double-crossover-coincidence": () => import("../../genetics/double-crossover-coincidence/index.js"),
   "journalism/conflict-map-disclosure": () => import("../../journalism/conflict-map-disclosure/index.js"),
+  "math/proth-number-checker": () => import("../../math/proth-number-checker/index.js"),
+  "math/ramanujan-sum": () => import("../../math/ramanujan-sum/index.js"),
   "metabolomics/endocannabinoid-ratio": () => import("../../metabolomics/endocannabinoid-ratio/index.js"),
   "nautical/tide-range": () => import("../../nautical/tide-range/index.js"),
   "numismatics/diameter-measurement-average": () => import("../../numismatics/diameter-measurement-average/index.js"),
@@ -33,5 +36,6 @@ export const toolModuleLoaders: Readonly<
   "sailing/sail-area-mainsail": () => import("../../sailing/sail-area-mainsail/index.js"),
   "seismology/aftershock-zone-length-utsu-scaling": () => import("../../seismology/aftershock-zone-length-utsu-scaling/index.js"),
   "seismology/decimation-factor-aliasing-note-lookup": () => import("../../seismology/decimation-factor-aliasing-note-lookup/index.js"),
+  "virology/spearman-karber-infectious-titer": () => import("../../virology/spearman-karber-infectious-titer/index.js"),
   "vr/lens-distortion-k1": () => import("../../vr/lens-distortion-k1/index.js"),
 };

@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "archival-studies/warc-compression-ratio-percent": () => import("../../archival-studies/warc-compression-ratio-percent/index.js"),
   "aviation/pressure-ratio": () => import("../../aviation/pressure-ratio/index.js"),
+  "bacteriology/od-cfu-calibration-interpolation": () => import("../../bacteriology/od-cfu-calibration-interpolation/index.js"),
   "chemistry/conductivity-from-concentration": () => import("../../chemistry/conductivity-from-concentration/index.js"),
   "chemistry/kb-from-pkb": () => import("../../chemistry/kb-from-pkb/index.js"),
   "chemistry/overpotential": () => import("../../chemistry/overpotential/index.js"),
@@ -19,6 +20,8 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/formula-position-trend-analyzer": () => import("../../epigraphy/formula-position-trend-analyzer/index.js"),
   "epigraphy/relief-depth-band-classifier": () => import("../../epigraphy/relief-depth-band-classifier/index.js"),
   "futurology/premortem-prospective-hindsight-failure-checker": () => import("../../futurology/premortem-prospective-hindsight-failure-checker/index.js"),
+  "genetics/father-son-transmission-evidence": () => import("../../genetics/father-son-transmission-evidence/index.js"),
+  "genomics/terminal-telomere-repeats": () => import("../../genomics/terminal-telomere-repeats/index.js"),
   "geology/gutenberg-richter-b-value": () => import("../../geology/gutenberg-richter-b-value/index.js"),
   "geology/leak-off-test-formation-strength": () => import("../../geology/leak-off-test-formation-strength/index.js"),
   "geology/slope-stability-factor-of-safety-bishop": () => import("../../geology/slope-stability-factor-of-safety-bishop/index.js"),

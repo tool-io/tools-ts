@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "random/mongolian-character": () => import("../../random/mongolian-character/index.js"),
   "random/moon-phase-symbol": () => import("../../random/moon-phase-symbol/index.js"),
   "random/osage-letter": () => import("../../random/osage-letter/index.js"),
+  "random/sinhala-digit": () => import("../../random/sinhala-digit/index.js"),
   "sailing/polar-performance-percentage": () => import("../../sailing/polar-performance-percentage/index.js"),
   "theatre/focus-chart-coverage": () => import("../../theatre/focus-chart-coverage/index.js"),
   "theatre/rigging-signoff-audit": () => import("../../theatre/rigging-signoff-audit/index.js"),

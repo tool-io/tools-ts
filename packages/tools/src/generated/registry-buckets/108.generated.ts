@@ -22,6 +22,9 @@ export const toolModuleLoaders: Readonly<
   "health/ideal-weight-devine": () => import("../../health/ideal-weight-devine/index.js"),
   "insurance/indexed-annuity-credit": () => import("../../insurance/indexed-annuity-credit/index.js"),
   "laser/rare-gas-pump-threshold": () => import("../../laser/rare-gas-pump-threshold/index.js"),
+  "limnology/chlorophyll-a-extraction-concentration": () => import("../../limnology/chlorophyll-a-extraction-concentration/index.js"),
+  "mining/water-balance": () => import("../../mining/water-balance/index.js"),
+  "mri/receiver-bandwidth-per-pixel": () => import("../../mri/receiver-bandwidth-per-pixel/index.js"),
   "mycology/lifestyle-guild-classifier": () => import("../../mycology/lifestyle-guild-classifier/index.js"),
   "oenology/bentonite-fining-dose": () => import("../../oenology/bentonite-fining-dose/index.js"),
   "parse/quantity": () => import("../../parse/quantity/index.js"),
@@ -31,6 +34,8 @@ export const toolModuleLoaders: Readonly<
   "seismology/tsunami-open-ocean-travel-time-shallow-water": () => import("../../seismology/tsunami-open-ocean-travel-time-shallow-water/index.js"),
   "size/corset-reconstruction": () => import("../../size/corset-reconstruction/index.js"),
   "sociology/rank-size-zipf-exponent-checker": () => import("../../sociology/rank-size-zipf-exponent-checker/index.js"),
+  "toxicology/inhalation-reference-concentration-adjustment": () => import("../../toxicology/inhalation-reference-concentration-adjustment/index.js"),
+  "virology/serial-interval-onset-summary": () => import("../../virology/serial-interval-onset-summary/index.js"),
   "web/sitemap-counter": () => import("../../web/sitemap-counter/index.js"),
   "web/url-origin": () => import("../../web/url-origin/index.js"),
 };

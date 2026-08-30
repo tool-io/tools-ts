@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "aviation/demonstrated-crosswind-comparison": () => import("../../aviation/demonstrated-crosswind-comparison/index.js"),
   "aviation/useful-load": () => import("../../aviation/useful-load/index.js"),
+  "bacteriology/chemostat-residual-substrate": () => import("../../bacteriology/chemostat-residual-substrate/index.js"),
   "carpentry/schwalbenschwanz-winkel-1-6-hartholz": () => import("../../carpentry/schwalbenschwanz-winkel-1-6-hartholz/index.js"),
   "carpentry/tuer-falz-13x25mm": () => import("../../carpentry/tuer-falz-13x25mm/index.js"),
   "chemistry/calorimetry-heat-exchange": () => import("../../chemistry/calorimetry-heat-exchange/index.js"),
@@ -27,8 +28,11 @@ export const toolModuleLoaders: Readonly<
   "kinesiology/sayers-vertical-jump-power": () => import("../../kinesiology/sayers-vertical-jump-power/index.js"),
   "laser/decoy-state-intensity-score": () => import("../../laser/decoy-state-intensity-score/index.js"),
   "laser/laser-external-cavity-diode-laser-littrow-littman-config-selector": () => import("../../laser/laser-external-cavity-diode-laser-littrow-littman-config-selector/index.js"),
+  "mining/mine-call-factor": () => import("../../mining/mine-call-factor/index.js"),
   "number/armstrong-checker": () => import("../../number/armstrong-checker/index.js"),
   "paleography/capitalization-randomness-index": () => import("../../paleography/capitalization-randomness-index/index.js"),
+  "random/adlam-digit": () => import("../../random/adlam-digit/index.js"),
+  "random/fraction-worksheet": () => import("../../random/fraction-worksheet/index.js"),
   "random/old-south-arabian-letter": () => import("../../random/old-south-arabian-letter/index.js"),
   "sailing/horizon-dip": () => import("../../sailing/horizon-dip/index.js"),
   "sailing/layline-understand": () => import("../../sailing/layline-understand/index.js"),
@@ -37,5 +41,6 @@ export const toolModuleLoaders: Readonly<
   "seismology/damping-response-spectrum-heuristic-scaling": () => import("../../seismology/damping-response-spectrum-heuristic-scaling/index.js"),
   "size/sweater": () => import("../../size/sweater/index.js"),
   "text/normalize-unicode": () => import("../../text/normalize-unicode/index.js"),
+  "virology/aav-cassette-packaging-budget": () => import("../../virology/aav-cassette-packaging-budget/index.js"),
   "vr/tracking-drift-per-hour": () => import("../../vr/tracking-drift-per-hour/index.js"),
 };

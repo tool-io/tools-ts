@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "auditing/kickback-vendor-bid-splitting-invoice-analytics-checker": () => import("../../auditing/kickback-vendor-bid-splitting-invoice-analytics-checker/index.js"),
+  "bacteriology/combination-fic-index": () => import("../../bacteriology/combination-fic-index/index.js"),
   "biology/leaf-area-ratio": () => import("../../biology/leaf-area-ratio/index.js"),
   "biology/relationship-coefficient": () => import("../../biology/relationship-coefficient/index.js"),
   "carpentry/kuechen-haengeschrank-montagehoehe": () => import("../../carpentry/kuechen-haengeschrank-montagehoehe/index.js"),
@@ -24,11 +25,14 @@ export const toolModuleLoaders: Readonly<
   "horology/moebius-9010-hp1300-purpose-lookup": () => import("../../horology/moebius-9010-hp1300-purpose-lookup/index.js"),
   "horology/pendulum-length-from-period": () => import("../../horology/pendulum-length-from-period/index.js"),
   "horology/regulator-index-rate-change": () => import("../../horology/regulator-index-rate-change/index.js"),
+  "html/crossorigin-anonymous-credentials-table": () => import("../../html/crossorigin-anonymous-credentials-table/index.js"),
   "http/status-category": () => import("../../http/status-category/index.js"),
   "journalism/play-by-play-code-count": () => import("../../journalism/play-by-play-code-count/index.js"),
   "kinesiology/step-stride-length-converter": () => import("../../kinesiology/step-stride-length-converter/index.js"),
   "laser/laser-diode-threshold-current-temperature-characteristic-t0-lookup": () => import("../../laser/laser-diode-threshold-current-temperature-characteristic-t0-lookup/index.js"),
   "laser/raman-dts-temperature": () => import("../../laser/raman-dts-temperature/index.js"),
+  "logic/dimaris-iai4-valid-lookup": () => import("../../logic/dimaris-iai4-valid-lookup/index.js"),
+  "math/rough-number-checker": () => import("../../math/rough-number-checker/index.js"),
   "mycology/rhizomorph-extension-rate-recorder": () => import("../../mycology/rhizomorph-extension-rate-recorder/index.js"),
   "network/private-ip-checker": () => import("../../network/private-ip-checker/index.js"),
   "random/cuneiform-sign": () => import("../../random/cuneiform-sign/index.js"),
