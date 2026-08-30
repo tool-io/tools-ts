@@ -1,0 +1,6 @@
+import { describe, expect, it } from "vitest"; import { calculateRandomDietaryMineral, randomDietaryMineralExample, runRandomDietaryMineral } from "./tool.js";
+describe("Random Dietary Mineral Picker", () => {
+  it("selects exact IDs and preserves provenance", () => { expect(JSON.parse(JSON.stringify(randomDietaryMineralExample))).toEqual(randomDietaryMineralExample);expect(runRandomDietaryMineral(randomDietaryMineralExample.input,{random:()=>0}).ok).toBe(true); expect(calculateRandomDietaryMineral(randomDietaryMineralExample.input, () => 0)).toEqual({ datasetId: "example/dietary-mineral", datasetVersion: "1", selectedIds: ["candidate-a", "candidate-b"], sourceId: "example" }); });
+  it("is deterministic with injected randomness", () => { expect(calculateRandomDietaryMineral(randomDietaryMineralExample.input, () => 0.75)).toEqual(calculateRandomDietaryMineral(randomDietaryMineralExample.input, () => 0.75)); });
+  it("rejects invalid pools and randomness", () => { expect(runRandomDietaryMineral({ ...randomDietaryMineralExample.input, candidateIds: [] }).ok).toBe(false); expect(runRandomDietaryMineral({ ...randomDietaryMineralExample.input, selectionCount: 4 }).ok).toBe(false); expect(runRandomDietaryMineral(randomDietaryMineralExample.input, { random: () => 1 }).ok).toBe(false); });
+});
