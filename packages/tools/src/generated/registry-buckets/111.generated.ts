@@ -30,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "horology/mainspring-turns-power-reserve": () => import("../../horology/mainspring-turns-power-reserve/index.js"),
   "horticulture/seeding-rate-per-tray": () => import("../../horticulture/seeding-rate-per-tray/index.js"),
   "http/cookie-serializer": () => import("../../http/cookie-serializer/index.js"),
+  "insurance/gl-per-occurrence-vs-aggregate-checker": () => import("../../insurance/gl-per-occurrence-vs-aggregate-checker/index.js"),
   "insurance/umbrella-underlying-limit-check": () => import("../../insurance/umbrella-underlying-limit-check/index.js"),
   "interpolation/cubic-hermite": () => import("../../interpolation/cubic-hermite/index.js"),
   "laser/chsh-violation": () => import("../../laser/chsh-violation/index.js"),

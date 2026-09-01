@@ -36,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "real-estate/lease-escalation": () => import("../../real-estate/lease-escalation/index.js"),
   "seismology/first-break-snr-validity-flagger": () => import("../../seismology/first-break-snr-validity-flagger/index.js"),
   "sericulture/bed-spacing-density-checker": () => import("../../sericulture/bed-spacing-density-checker/index.js"),
+  "sports/rugby-goal-kick-percent-success": () => import("../../sports/rugby-goal-kick-percent-success/index.js"),
   "taxation/pillar-two-top-up-tax": () => import("../../taxation/pillar-two-top-up-tax/index.js"),
   "text/word-length-histogram": () => import("../../text/word-length-histogram/index.js"),
   "theatre/front-of-house-staff-ratio-per-100-seats": () => import("../../theatre/front-of-house-staff-ratio-per-100-seats/index.js"),

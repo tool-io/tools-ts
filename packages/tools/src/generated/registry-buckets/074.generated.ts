@@ -46,6 +46,8 @@ export const toolModuleLoaders: Readonly<
   "sailing/lee-bow-effect-current": () => import("../../sailing/lee-bow-effect-current/index.js"),
   "seismology/fault-seismic-moment-deficit-calculator": () => import("../../seismology/fault-seismic-moment-deficit-calculator/index.js"),
   "semiconductor/fermi-dirac-occupancy": () => import("../../semiconductor/fermi-dirac-occupancy/index.js"),
+  "sports/baseball-era-era-calculator": () => import("../../sports/baseball-era-era-calculator/index.js"),
+  "sports/lap-pool-length-count": () => import("../../sports/lap-pool-length-count/index.js"),
   "theatre/led-wash-par-can-replacement-equiv-lookup": () => import("../../theatre/led-wash-par-can-replacement-equiv-lookup/index.js"),
   "typography/xheight-ratio-from-font-file": () => import("../../typography/xheight-ratio-from-font-file/index.js"),
 };

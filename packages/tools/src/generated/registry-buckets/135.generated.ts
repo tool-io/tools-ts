@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "html/prefetch-preload-prerender-diff-lookup": () => import("../../html/prefetch-preload-prerender-diff-lookup/index.js"),
   "html/select-optgroup-nesting-rules-checker": () => import("../../html/select-optgroup-nesting-rules-checker/index.js"),
   "http/basic-auth-parser": () => import("../../http/basic-auth-parser/index.js"),
+  "insurance/benefit-period-to-age-options-lookup": () => import("../../insurance/benefit-period-to-age-options-lookup/index.js"),
   "logistics/continuous-customs-bond-minimum-lookup": () => import("../../logistics/continuous-customs-bond-minimum-lookup/index.js"),
   "mining/tailings-grade": () => import("../../mining/tailings-grade/index.js"),
   "mycology/morel-soil-degree-day-accumulator": () => import("../../mycology/morel-soil-degree-day-accumulator/index.js"),

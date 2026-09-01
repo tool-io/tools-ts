@@ -36,6 +36,8 @@ export const toolModuleLoaders: Readonly<
   "parasitology/multiplex-target-decode": () => import("../../parasitology/multiplex-target-decode/index.js"),
   "pedagogy/lesson-study-cycle": () => import("../../pedagogy/lesson-study-cycle/index.js"),
   "pedagogy/think-aloud-code-tally": () => import("../../pedagogy/think-aloud-code-tally/index.js"),
+  "plumbing/compressed-air-leak-rate": () => import("../../plumbing/compressed-air-leak-rate/index.js"),
+  "plumbing/equivalent-length-fitting": () => import("../../plumbing/equivalent-length-fitting/index.js"),
   "random/letter": () => import("../../random/letter/index.js"),
   "sailing/ferry-glide-course": () => import("../../sailing/ferry-glide-course/index.js"),
   "sailing/phrf-time-on-distance": () => import("../../sailing/phrf-time-on-distance/index.js"),

@@ -30,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "horology/grand-sonnerie-strikes-per-day": () => import("../../horology/grand-sonnerie-strikes-per-day/index.js"),
   "horology/split-seconds-chronograph-mechanism-lookup": () => import("../../horology/split-seconds-chronograph-mechanism-lookup/index.js"),
   "http/bearer-extractor": () => import("../../http/bearer-extractor/index.js"),
+  "insurance/eo-claims-made-retro-date-checker": () => import("../../insurance/eo-claims-made-retro-date-checker/index.js"),
   "limnology/plankton-settling-volume-liter": () => import("../../limnology/plankton-settling-volume-liter/index.js"),
   "logistics/fill-rate-line-item-percent": () => import("../../logistics/fill-rate-line-item-percent/index.js"),
   "math/bessel-j0-approx": () => import("../../math/bessel-j0-approx/index.js"),
@@ -48,6 +49,7 @@ export const toolModuleLoaders: Readonly<
   "sailing/favored-tack-from-shift": () => import("../../sailing/favored-tack-from-shift/index.js"),
   "semiconductor/mosfet-body-effect-coefficient": () => import("../../semiconductor/mosfet-body-effect-coefficient/index.js"),
   "semiconductor/mosfet-output-resistance-channel-length": () => import("../../semiconductor/mosfet-output-resistance-channel-length/index.js"),
+  "sports/hockey-save-percent-sv": () => import("../../sports/hockey-save-percent-sv/index.js"),
   "volcanology/phreatomagmatic-maar-interaction-checker": () => import("../../volcanology/phreatomagmatic-maar-interaction-checker/index.js"),
   "vr/frame-drop-percentage": () => import("../../vr/frame-drop-percentage/index.js"),
 };

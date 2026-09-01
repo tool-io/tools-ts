@@ -31,6 +31,7 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/correct-trial-visual-search-slope": () => import("../../neuroscience/correct-trial-visual-search-slope/index.js"),
   "neuroscience/roi-tensor-mean-diffusivity": () => import("../../neuroscience/roi-tensor-mean-diffusivity/index.js"),
   "oenology/total-package-oxygen": () => import("../../oenology/total-package-oxygen/index.js"),
+  "plumbing/haaland-friction-factor": () => import("../../plumbing/haaland-friction-factor/index.js"),
   "random/inscriptional-parthian-character": () => import("../../random/inscriptional-parthian-character/index.js"),
   "regex/escape": () => import("../../regex/escape/index.js"),
   "sailing/outhaul-tension": () => import("../../sailing/outhaul-tension/index.js"),

@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/grinding-removal-rate": () => import("../../engineering/grinding-removal-rate/index.js"),
   "engineering/sound-pressure-level": () => import("../../engineering/sound-pressure-level/index.js"),
   "horology/depth-static-pressure": () => import("../../horology/depth-static-pressure/index.js"),
+  "insurance/term-life-income-replacement-multiple": () => import("../../insurance/term-life-income-replacement-multiple/index.js"),
   "kinesiology/harman-jump-power-comparison": () => import("../../kinesiology/harman-jump-power-comparison/index.js"),
   "list/cumulative-product": () => import("../../list/cumulative-product/index.js"),
   "math/narayana-number": () => import("../../math/narayana-number/index.js"),

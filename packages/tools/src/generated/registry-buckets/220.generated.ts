@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "game/cooldown-stack-refresh-policy-lookup": () => import("../../game/cooldown-stack-refresh-policy-lookup/index.js"),
   "genetics/restriction-overhang-type": () => import("../../genetics/restriction-overhang-type/index.js"),
   "glaciology/core-bottom-age-extrapolation": () => import("../../glaciology/core-bottom-age-extrapolation/index.js"),
+  "insurance/own-occ-vs-any-occ-definition-lookup": () => import("../../insurance/own-occ-vs-any-occ-definition-lookup/index.js"),
   "laser/free-space-link-margin": () => import("../../laser/free-space-link-margin/index.js"),
   "network/mac-address-normalizer": () => import("../../network/mac-address-normalizer/index.js"),
   "optimization/stochastic-gradient-descent": () => import("../../optimization/stochastic-gradient-descent/index.js"),

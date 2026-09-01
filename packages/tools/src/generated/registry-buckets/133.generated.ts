@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "metabolomics/pathway-overrepresentation": () => import("../../metabolomics/pathway-overrepresentation/index.js"),
   "neuroscience/sampled-neuronal-resonance": () => import("../../neuroscience/sampled-neuronal-resonance/index.js"),
   "number/digit-frequency": () => import("../../number/digit-frequency/index.js"),
+  "plumbing/steam-trap-capacity": () => import("../../plumbing/steam-trap-capacity/index.js"),
   "ponderal-index": () => import("../../ponderal-index/index.js"),
   "proteomics/protein-aliphatic-index": () => import("../../proteomics/protein-aliphatic-index/index.js"),
   "real-estate/usable-area": () => import("../../real-estate/usable-area/index.js"),

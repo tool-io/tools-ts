@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/network-connected-pair-path-length": () => import("../../neuroscience/network-connected-pair-path-length/index.js"),
   "numismatics/clipped-planchet-weight-loss": () => import("../../numismatics/clipped-planchet-weight-loss/index.js"),
   "oenology/dap-nitrogen-contribution": () => import("../../oenology/dap-nitrogen-contribution/index.js"),
+  "plumbing/total-head-loss": () => import("../../plumbing/total-head-loss/index.js"),
   "proteomics/tryptic-peptides": () => import("../../proteomics/tryptic-peptides/index.js"),
   "random/microphone": () => import("../../random/microphone/index.js"),
   "sailing/mast-bend-amount": () => import("../../sailing/mast-bend-amount/index.js"),

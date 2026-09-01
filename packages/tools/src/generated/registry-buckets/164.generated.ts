@@ -25,6 +25,8 @@ export const toolModuleLoaders: Readonly<
   "geology/oxygen-isotope-paleotemperature": () => import("../../geology/oxygen-isotope-paleotemperature/index.js"),
   "geology/rate-of-penetration": () => import("../../geology/rate-of-penetration/index.js"),
   "hydrology/river-discharge": () => import("../../hydrology/river-discharge/index.js"),
+  "insurance/loss-of-use-additional-living-expense-daily": () => import("../../insurance/loss-of-use-additional-living-expense-daily/index.js"),
+  "insurance/ordinance-or-law-upgrade-percent-lookup": () => import("../../insurance/ordinance-or-law-upgrade-percent-lookup/index.js"),
   "interpolation/inverse-linear": () => import("../../interpolation/inverse-linear/index.js"),
   "journalism/photo-caption-exif-shutter-iso-verify-checker": () => import("../../journalism/photo-caption-exif-shutter-iso-verify-checker/index.js"),
   "kinesiology/double-support-gait-percent": () => import("../../kinesiology/double-support-gait-percent/index.js"),

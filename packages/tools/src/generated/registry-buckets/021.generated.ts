@@ -40,6 +40,7 @@ export const toolModuleLoaders: Readonly<
   "music/lfo-rate-hz-from-tempo-division": () => import("../../music/lfo-rate-hz-from-tempo-division/index.js"),
   "numismatics/capsule-size-for-diameter-lookup": () => import("../../numismatics/capsule-size-for-diameter-lookup/index.js"),
   "oenology/cork-fit-checker": () => import("../../oenology/cork-fit-checker/index.js"),
+  "plumbing/pipe-flow-regime-checker": () => import("../../plumbing/pipe-flow-regime-checker/index.js"),
   "random/duployan-character": () => import("../../random/duployan-character/index.js"),
   "random/quadratic-equation-exercise": () => import("../../random/quadratic-equation-exercise/index.js"),
   "seismology/foreshock-mainshock-probable-classifier": () => import("../../seismology/foreshock-mainshock-probable-classifier/index.js"),

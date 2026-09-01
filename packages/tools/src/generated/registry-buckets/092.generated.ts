@@ -29,6 +29,7 @@ export const toolModuleLoaders: Readonly<
   "format/currency": () => import("../../format/currency/index.js"),
   "game/checkers-forced-jump-rule-checker": () => import("../../game/checkers-forced-jump-rule-checker/index.js"),
   "genomics/marked-duplicate-fraction": () => import("../../genomics/marked-duplicate-fraction/index.js"),
+  "insurance/replacement-cost-vs-acv-payout-compare": () => import("../../insurance/replacement-cost-vs-acv-payout-compare/index.js"),
   "journalism/travel-device-checklist": () => import("../../journalism/travel-device-checklist/index.js"),
   "laser/folded-cavity-astigmatism": () => import("../../laser/folded-cavity-astigmatism/index.js"),
   "linguistics/x-sampa-to-ipa-convert": () => import("../../linguistics/x-sampa-to-ipa-convert/index.js"),

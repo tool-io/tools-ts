@@ -38,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "museology/dew-point-stability-checker": () => import("../../museology/dew-point-stability-checker/index.js"),
   "museology/red-flag-date-range-overlap-checker": () => import("../../museology/red-flag-date-range-overlap-checker/index.js"),
   "mycology/truffle-aroma-trace-note-generator": () => import("../../mycology/truffle-aroma-trace-note-generator/index.js"),
+  "plumbing/gas-pipe-btu-capacity": () => import("../../plumbing/gas-pipe-btu-capacity/index.js"),
   "proteomics/sh3-pxxp-motifs": () => import("../../proteomics/sh3-pxxp-motifs/index.js"),
   "random/gunjala-gondi-character": () => import("../../random/gunjala-gondi-character/index.js"),
   "random/ipv6-subnet-exercise": () => import("../../random/ipv6-subnet-exercise/index.js"),

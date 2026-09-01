@@ -37,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "number/coprime-checker": () => import("../../number/coprime-checker/index.js"),
   "number/digit-sum": () => import("../../number/digit-sum/index.js"),
   "paleontology/goods-u-coverage": () => import("../../paleontology/goods-u-coverage/index.js"),
+  "plumbing/gas-appliance-btu-load": () => import("../../plumbing/gas-appliance-btu-load/index.js"),
   "random/kyrgyz-cyrillic-alphabet-letter": () => import("../../random/kyrgyz-cyrillic-alphabet-letter/index.js"),
   "sailing/day-shape-visibility-range": () => import("../../sailing/day-shape-visibility-range/index.js"),
   "sailing/horizon-distance": () => import("../../sailing/horizon-distance/index.js"),

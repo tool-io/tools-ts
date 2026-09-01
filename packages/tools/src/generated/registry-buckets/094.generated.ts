@@ -36,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "mri/causal-hrf-stimulus-convolution": () => import("../../mri/causal-hrf-stimulus-convolution/index.js"),
   "mycology/koh-reaction-note-generator": () => import("../../mycology/koh-reaction-note-generator/index.js"),
   "numismatics/duplicate-swap-value-difference": () => import("../../numismatics/duplicate-swap-value-difference/index.js"),
+  "plumbing/swamee-jain-friction-factor": () => import("../../plumbing/swamee-jain-friction-factor/index.js"),
   "random/odia-digit": () => import("../../random/odia-digit/index.js"),
   "reinforcement-learning/policy-gradient-step": () => import("../../reinforcement-learning/policy-gradient-step/index.js"),
   "seismology/critical-reflection-angle-post-critical-note-checker": () => import("../../seismology/critical-reflection-angle-post-critical-note-checker/index.js"),

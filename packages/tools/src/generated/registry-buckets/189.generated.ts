@@ -37,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "mortgage/pakistan-diminishing-musharakah": () => import("../../mortgage/pakistan-diminishing-musharakah/index.js"),
   "neuroscience/relaxometry-myelin-water-fraction": () => import("../../neuroscience/relaxometry-myelin-water-fraction/index.js"),
   "neuroscience/spherocylindrical-power-vectors": () => import("../../neuroscience/spherocylindrical-power-vectors/index.js"),
+  "plumbing/sprinkler-precipitation-rate": () => import("../../plumbing/sprinkler-precipitation-rate/index.js"),
   "probability/bayesian-network-simulator": () => import("../../probability/bayesian-network-simulator/index.js"),
   "seismology/catalog-complete-timespan-denominator-checker": () => import("../../seismology/catalog-complete-timespan-denominator-checker/index.js"),
   "seismology/directivity-pulse-duration-near-source": () => import("../../seismology/directivity-pulse-duration-near-source/index.js"),

@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "metabolomics/pooled-qc-cv-gate": () => import("../../metabolomics/pooled-qc-cv-gate/index.js"),
   "mri/grappa-acs-line-acceleration": () => import("../../mri/grappa-acs-line-acceleration/index.js"),
   "neuroscience/force-transducer-calibration": () => import("../../neuroscience/force-transducer-calibration/index.js"),
+  "plumbing/colebrook-friction-factor": () => import("../../plumbing/colebrook-friction-factor/index.js"),
   "random/css-radial-gradient": () => import("../../random/css-radial-gradient/index.js"),
   "random/khudawadi-character": () => import("../../random/khudawadi-character/index.js"),
   "sailing/wind-pressure-on-sail": () => import("../../sailing/wind-pressure-on-sail/index.js"),

@@ -37,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/descriptor-logbb-model": () => import("../../neuroscience/descriptor-logbb-model/index.js"),
   "neuroscience/steady-state-train-depression": () => import("../../neuroscience/steady-state-train-depression/index.js"),
   "number/lucas-checker": () => import("../../number/lucas-checker/index.js"),
+  "plumbing/minor-loss-coefficient-k": () => import("../../plumbing/minor-loss-coefficient-k/index.js"),
   "random/kannada-digit": () => import("../../random/kannada-digit/index.js"),
   "random/kirat-rai-character": () => import("../../random/kirat-rai-character/index.js"),
   "random/mandaic-letter": () => import("../../random/mandaic-letter/index.js"),

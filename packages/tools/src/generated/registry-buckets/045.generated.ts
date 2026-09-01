@@ -28,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "music/pitch-bend-semitone-range-14bit": () => import("../../music/pitch-bend-semitone-range-14bit/index.js"),
   "mycology/odor-intensity-scale-rater": () => import("../../mycology/odor-intensity-scale-rater/index.js"),
   "mycology/spore-size-lw-ratio-measurer": () => import("../../mycology/spore-size-lw-ratio-measurer/index.js"),
+  "plumbing/hanger-rod-size": () => import("../../plumbing/hanger-rod-size/index.js"),
   "proteomics/protease-digest": () => import("../../proteomics/protease-digest/index.js"),
   "random/display-p3-color": () => import("../../random/display-p3-color/index.js"),
   "random/grade-one-english-braille-letter": () => import("../../random/grade-one-english-braille-letter/index.js"),

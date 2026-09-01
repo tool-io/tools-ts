@@ -37,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "logic/domination-law-annihilator-checker": () => import("../../logic/domination-law-annihilator-checker/index.js"),
   "oceanography/surf-similarity-iribarren-number": () => import("../../oceanography/surf-similarity-iribarren-number/index.js"),
   "oenology/yeast-rehydration-volume": () => import("../../oenology/yeast-rehydration-volume/index.js"),
+  "plumbing/water-hardness-as-caco3": () => import("../../plumbing/water-hardness-as-caco3/index.js"),
   "random/morse-code-digit": () => import("../../random/morse-code-digit/index.js"),
   "random/nko-character": () => import("../../random/nko-character/index.js"),
   "real-estate/lot-coverage-ratio": () => import("../../real-estate/lot-coverage-ratio/index.js"),

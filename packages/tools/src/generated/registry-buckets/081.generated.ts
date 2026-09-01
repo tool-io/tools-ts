@@ -47,6 +47,7 @@ export const toolModuleLoaders: Readonly<
   "music/subharmonic-frequency": () => import("../../music/subharmonic-frequency/index.js"),
   "neuroscience/two-point-psychometric-threshold": () => import("../../neuroscience/two-point-psychometric-threshold/index.js"),
   "paleography/secretary-e-horn-counter": () => import("../../paleography/secretary-e-horn-counter/index.js"),
+  "plumbing/septic-tank-size": () => import("../../plumbing/septic-tank-size/index.js"),
   "sailing/boom-vang-angle": () => import("../../sailing/boom-vang-angle/index.js"),
   "sailing/mainsail-twist-angle": () => import("../../sailing/mainsail-twist-angle/index.js"),
   "semiconductor/flash-threshold-voltage-shift": () => import("../../semiconductor/flash-threshold-voltage-shift/index.js"),

@@ -32,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "mining/solvent-extraction-stages": () => import("../../mining/solvent-extraction-stages/index.js"),
   "paleography/regnal-english-year-converter": () => import("../../paleography/regnal-english-year-converter/index.js"),
   "pedagogy/rubric-descriptor-matrix": () => import("../../pedagogy/rubric-descriptor-matrix/index.js"),
+  "plumbing/hydronic-heating-flow-rate": () => import("../../plumbing/hydronic-heating-flow-rate/index.js"),
   "random/bamum-character": () => import("../../random/bamum-character/index.js"),
   "random/rectangle-set": () => import("../../random/rectangle-set/index.js"),
   "seismology/tsunamigenic-magnitude-threshold-checker": () => import("../../seismology/tsunamigenic-magnitude-threshold-checker/index.js"),

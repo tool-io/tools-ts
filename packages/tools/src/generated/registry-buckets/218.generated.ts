@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/sporulation-density-mm2-converter": () => import("../../mycology/sporulation-density-mm2-converter/index.js"),
   "neuroscience/shortest-angle-mental-rotation-slope": () => import("../../neuroscience/shortest-angle-mental-rotation-slope/index.js"),
   "oceanography/adcp-bin-depth-transducer-offset": () => import("../../oceanography/adcp-bin-depth-transducer-offset/index.js"),
+  "plumbing/steam-pipe-sizing": () => import("../../plumbing/steam-pipe-sizing/index.js"),
   "seismology/geophone-natural-period-response-corner": () => import("../../seismology/geophone-natural-period-response-corner/index.js"),
   "semiconductor/latchup-holding-current": () => import("../../semiconductor/latchup-holding-current/index.js"),
   "statistics/population-covariance": () => import("../../statistics/population-covariance/index.js"),

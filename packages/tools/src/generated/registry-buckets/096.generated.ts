@@ -48,6 +48,8 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/lattice-constant-vegard": () => import("../../semiconductor/lattice-constant-vegard/index.js"),
   "semiconductor/yield-negative-binomial": () => import("../../semiconductor/yield-negative-binomial/index.js"),
   "sociology/schutz-index": () => import("../../sociology/schutz-index/index.js"),
+  "sports/padel-point-rally-length-average": () => import("../../sports/padel-point-rally-length-average/index.js"),
+  "sports/run-training-zone-heart-rate": () => import("../../sports/run-training-zone-heart-rate/index.js"),
   "statistics/bootstrap-confidence-interval": () => import("../../statistics/bootstrap-confidence-interval/index.js"),
   "statistics/midrange": () => import("../../statistics/midrange/index.js"),
   "text/concatenate-two-strings": () => import("../../text/concatenate-two-strings/index.js"),

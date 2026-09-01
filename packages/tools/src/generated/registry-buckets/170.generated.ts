@@ -36,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "mining/shotcrete-thickness": () => import("../../mining/shotcrete-thickness/index.js"),
   "mining/stripping-schedule": () => import("../../mining/stripping-schedule/index.js"),
   "numismatics/value-multiple-since-purchase": () => import("../../numismatics/value-multiple-since-purchase/index.js"),
+  "plumbing/irrigation-flow-rate": () => import("../../plumbing/irrigation-flow-rate/index.js"),
   "random/cheese": () => import("../../random/cheese/index.js"),
   "random/hsv-color": () => import("../../random/hsv-color/index.js"),
   "random/kazakh-cyrillic-alphabet-letter": () => import("../../random/kazakh-cyrillic-alphabet-letter/index.js"),

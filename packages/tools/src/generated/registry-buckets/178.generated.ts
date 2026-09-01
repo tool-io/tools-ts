@@ -27,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "horology/tachymeter-base-calibration": () => import("../../horology/tachymeter-base-calibration/index.js"),
   "html/base-href-single-instance-warning": () => import("../../html/base-href-single-instance-warning/index.js"),
   "html/whitespace-collapser": () => import("../../html/whitespace-collapser/index.js"),
+  "insurance/elimination-period-benefit-gap-days": () => import("../../insurance/elimination-period-benefit-gap-days/index.js"),
   "journalism/inverted-pyramid-section-proportion-guide": () => import("../../journalism/inverted-pyramid-section-proportion-guide/index.js"),
   "kinesiology/timed-up-and-go-screen": () => import("../../kinesiology/timed-up-and-go-screen/index.js"),
   "laser/photoconductive-antenna-field": () => import("../../laser/photoconductive-antenna-field/index.js"),

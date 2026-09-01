@@ -49,6 +49,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/low-k-interconnect-capacitance": () => import("../../semiconductor/low-k-interconnect-capacitance/index.js"),
   "semiconductor/surface-roughness-mobility": () => import("../../semiconductor/surface-roughness-mobility/index.js"),
   "size/hanbok-reconstruction": () => import("../../size/hanbok-reconstruction/index.js"),
+  "sports/golf-strokes-gained-off-tee": () => import("../../sports/golf-strokes-gained-off-tee/index.js"),
   "theatre/stage-sound-sync-delay": () => import("../../theatre/stage-sound-sync-delay/index.js"),
   "virology/eclipse-latent-period-timeline": () => import("../../virology/eclipse-latent-period-timeline/index.js"),
   "viticulture/node-loading-adjustment-target": () => import("../../viticulture/node-loading-adjustment-target/index.js"),

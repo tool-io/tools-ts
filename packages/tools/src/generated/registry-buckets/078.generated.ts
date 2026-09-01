@@ -40,5 +40,6 @@ export const toolModuleLoaders: Readonly<
   "random/indic-siyaq-number": () => import("../../random/indic-siyaq-number/index.js"),
   "random/persian-alphabet-letter": () => import("../../random/persian-alphabet-letter/index.js"),
   "size/thobe-reconstruction": () => import("../../size/thobe-reconstruction/index.js"),
+  "sports/snooker-frame-margin-points-remaining-checker": () => import("../../sports/snooker-frame-margin-points-remaining-checker/index.js"),
   "taxation/grat-remainder-value": () => import("../../taxation/grat-remainder-value/index.js"),
 };

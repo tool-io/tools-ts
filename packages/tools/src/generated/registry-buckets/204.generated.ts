@@ -43,6 +43,8 @@ export const toolModuleLoaders: Readonly<
   "size/dog-harness": () => import("../../size/dog-harness/index.js"),
   "size/nut": () => import("../../size/nut/index.js"),
   "size/skirt": () => import("../../size/skirt/index.js"),
+  "sports/cricket-strike-rate-batting-sr": () => import("../../sports/cricket-strike-rate-batting-sr/index.js"),
+  "sports/swim-pace-per-100m": () => import("../../sports/swim-pace-per-100m/index.js"),
   "statistics/cohens-d": () => import("../../statistics/cohens-d/index.js"),
   "toxicology/dermal-contact-absorbed-dose": () => import("../../toxicology/dermal-contact-absorbed-dose/index.js"),
 };

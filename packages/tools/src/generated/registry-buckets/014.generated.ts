@@ -35,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "nutrition/macronutrient-split": () => import("../../nutrition/macronutrient-split/index.js"),
   "paleontology/gait-transition-threshold": () => import("../../paleontology/gait-transition-threshold/index.js"),
   "paleontology/tooth-tool-mark-ratio": () => import("../../paleontology/tooth-tool-mark-ratio/index.js"),
+  "plumbing/valve-cavitation-index": () => import("../../plumbing/valve-cavitation-index/index.js"),
   "proteomics/pdz-terminal-motif": () => import("../../proteomics/pdz-terminal-motif/index.js"),
   "proteomics/silac-heavy-light-ratio": () => import("../../proteomics/silac-heavy-light-ratio/index.js"),
   "random/thaana-character": () => import("../../random/thaana-character/index.js"),

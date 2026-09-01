@@ -39,6 +39,7 @@ export const toolModuleLoaders: Readonly<
   "music/ornament-note-sequence-generator": () => import("../../music/ornament-note-sequence-generator/index.js"),
   "numismatics/electrolysis-risk-screen": () => import("../../numismatics/electrolysis-risk-screen/index.js"),
   "sailing/chain-catenary-sag": () => import("../../sailing/chain-catenary-sag/index.js"),
+  "sports/golf-putting-per-round-average": () => import("../../sports/golf-putting-per-round-average/index.js"),
   "statistics/sample-size-proportion": () => import("../../statistics/sample-size-proportion/index.js"),
   "virology/household-secondary-attack": () => import("../../virology/household-secondary-attack/index.js"),
 };

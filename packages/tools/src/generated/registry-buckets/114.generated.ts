@@ -39,6 +39,7 @@ export const toolModuleLoaders: Readonly<
   "paleography/acre-virgate-hide-converter": () => import("../../paleography/acre-virgate-hide-converter/index.js"),
   "paleography/caroline-era-classifier": () => import("../../paleography/caroline-era-classifier/index.js"),
   "paleography/uvi-interchange-era-checker": () => import("../../paleography/uvi-interchange-era-checker/index.js"),
+  "plumbing/dishwasher-water-usage": () => import("../../plumbing/dishwasher-water-usage/index.js"),
   "proteomics/ibaq-abundance": () => import("../../proteomics/ibaq-abundance/index.js"),
   "proteomics/protein-sequence-isoelectric-point": () => import("../../proteomics/protein-sequence-isoelectric-point/index.js"),
   "random/dice-face": () => import("../../random/dice-face/index.js"),
@@ -46,5 +47,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/effective-density-valence-band": () => import("../../semiconductor/effective-density-valence-band/index.js"),
   "semiconductor/fe-ram-remnant-polarization": () => import("../../semiconductor/fe-ram-remnant-polarization/index.js"),
   "size/bicycle-frame": () => import("../../size/bicycle-frame/index.js"),
+  "sports/bowling-handicap-pin-adjustment": () => import("../../sports/bowling-handicap-pin-adjustment/index.js"),
   "transcriptomics/dpcr-poisson-concentration": () => import("../../transcriptomics/dpcr-poisson-concentration/index.js"),
 };

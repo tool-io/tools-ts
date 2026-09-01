@@ -31,6 +31,7 @@ export const toolModuleLoaders: Readonly<
   "game/wordle-feedback-pattern-green-yellow-gray": () => import("../../game/wordle-feedback-pattern-green-yellow-gray/index.js"),
   "geology/oil-formation-volume-factor": () => import("../../geology/oil-formation-volume-factor/index.js"),
   "horology/strike-train-energy": () => import("../../horology/strike-train-energy/index.js"),
+  "insurance/no-claims-bonus-protection-step-lookup": () => import("../../insurance/no-claims-bonus-protection-step-lookup/index.js"),
   "journalism/geography-hierarchy-check": () => import("../../journalism/geography-hierarchy-check/index.js"),
   "journalism/teleprompter-scroll-speed-wpm-fit-calculator": () => import("../../journalism/teleprompter-scroll-speed-wpm-fit-calculator/index.js"),
   "kinesiology/fingertip-floor-distance-screen": () => import("../../kinesiology/fingertip-floor-distance-screen/index.js"),

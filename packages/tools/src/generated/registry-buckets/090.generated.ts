@@ -43,10 +43,12 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/logistic-psychometric-slope": () => import("../../neuroscience/logistic-psychometric-slope/index.js"),
   "oenology/restaurant-markup-price": () => import("../../oenology/restaurant-markup-price/index.js"),
   "pedagogy/breakout-group-planner": () => import("../../pedagogy/breakout-group-planner/index.js"),
+  "plumbing/expansion-tank-precharge-pressure": () => import("../../plumbing/expansion-tank-precharge-pressure/index.js"),
   "random/cham-digit": () => import("../../random/cham-digit/index.js"),
   "random/modi-character": () => import("../../random/modi-character/index.js"),
   "random/nushu-character": () => import("../../random/nushu-character/index.js"),
   "seismology/site-class-nehrp-from-vs30-lookup": () => import("../../seismology/site-class-nehrp-from-vs30-lookup/index.js"),
   "seismology/telemetry-block-gap-detector": () => import("../../seismology/telemetry-block-gap-detector/index.js"),
+  "sports/sinclair-coefficient-weightlifting": () => import("../../sports/sinclair-coefficient-weightlifting/index.js"),
   "taxation/offering-designation-classifier": () => import("../../taxation/offering-designation-classifier/index.js"),
 };

@@ -43,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "paleography/auc-chronicler-converter": () => import("../../paleography/auc-chronicler-converter/index.js"),
   "paleography/collation-formula-builder": () => import("../../paleography/collation-formula-builder/index.js"),
   "paleography/word-spacing-adoption-rater": () => import("../../paleography/word-spacing-adoption-rater/index.js"),
+  "plumbing/pipe-insulation-thickness": () => import("../../plumbing/pipe-insulation-thickness/index.js"),
   "probability/laplace-sampler": () => import("../../probability/laplace-sampler/index.js"),
   "random/pahawh-hmong-character": () => import("../../random/pahawh-hmong-character/index.js"),
   "semiconductor/substrate-warpage": () => import("../../semiconductor/substrate-warpage/index.js"),

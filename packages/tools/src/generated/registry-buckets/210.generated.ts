@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "glaciology/ice-cliff-backwasting-enhancement": () => import("../../glaciology/ice-cliff-backwasting-enhancement/index.js"),
   "horticulture/cold-frame-degree-protection-lookup": () => import("../../horticulture/cold-frame-degree-protection-lookup/index.js"),
   "horticulture/grow-lamp-energy-kwh-monthly": () => import("../../horticulture/grow-lamp-energy-kwh-monthly/index.js"),
+  "insurance/bop-package-included-perils-lookup": () => import("../../insurance/bop-package-included-perils-lookup/index.js"),
   "journalism/media-policy-coverage": () => import("../../journalism/media-policy-coverage/index.js"),
   "journalism/read-completion-rate": () => import("../../journalism/read-completion-rate/index.js"),
   "kinesiology/running-vertical-oscillation-screen": () => import("../../kinesiology/running-vertical-oscillation-screen/index.js"),

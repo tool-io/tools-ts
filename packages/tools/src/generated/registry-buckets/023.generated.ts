@@ -41,5 +41,6 @@ export const toolModuleLoaders: Readonly<
   "random/polynomial-evaluation-exercise": () => import("../../random/polynomial-evaluation-exercise/index.js"),
   "seismology/nehrp-fundamental-period-site-lookup": () => import("../../seismology/nehrp-fundamental-period-site-lookup/index.js"),
   "size/overalls": () => import("../../size/overalls/index.js"),
+  "sports/wilks-coefficient-strength": () => import("../../sports/wilks-coefficient-strength/index.js"),
   "theatre/click-track-drift": () => import("../../theatre/click-track-drift/index.js"),
 };

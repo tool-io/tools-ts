@@ -36,10 +36,12 @@ export const toolModuleLoaders: Readonly<
   "music/slash-chord-bass-validator": () => import("../../music/slash-chord-bass-validator/index.js"),
   "neuroscience/iv-regression-reversal-potential": () => import("../../neuroscience/iv-regression-reversal-potential/index.js"),
   "normalize/min-max": () => import("../../normalize/min-max/index.js"),
+  "plumbing/greywater-system-size": () => import("../../plumbing/greywater-system-size/index.js"),
   "proteomics/western-total-protein-normalization": () => import("../../proteomics/western-total-protein-normalization/index.js"),
   "real-estate/gross-potential-income": () => import("../../real-estate/gross-potential-income/index.js"),
   "seismology/deaggregation-mean-mag-dist-epsilon": () => import("../../seismology/deaggregation-mean-mag-dist-epsilon/index.js"),
   "sociology/migration-age-propensity-schedule": () => import("../../sociology/migration-age-propensity-schedule/index.js"),
+  "sports/cricket-net-run-rate-nrr-team": () => import("../../sports/cricket-net-run-rate-nrr-team/index.js"),
   "statistics/pooled-standard-deviation": () => import("../../statistics/pooled-standard-deviation/index.js"),
   "validate/upc-e": () => import("../../validate/upc-e/index.js"),
 };

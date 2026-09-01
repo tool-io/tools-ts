@@ -44,6 +44,8 @@ export const toolModuleLoaders: Readonly<
   "size/horse-blanket": () => import("../../size/horse-blanket/index.js"),
   "size/qipao-reconstruction": () => import("../../size/qipao-reconstruction/index.js"),
   "sociology/overcrowded-dwelling-rate-eurostat": () => import("../../sociology/overcrowded-dwelling-rate-eurostat/index.js"),
+  "sports/tennis-unforced-error-differential": () => import("../../sports/tennis-unforced-error-differential/index.js"),
+  "sports/training-volume-load-tonnage": () => import("../../sports/training-volume-load-tonnage/index.js"),
   "statistics/fisher-z-transform": () => import("../../statistics/fisher-z-transform/index.js"),
   "text/letter-frequency": () => import("../../text/letter-frequency/index.js"),
   "theatre/keyboard-patch-coverage": () => import("../../theatre/keyboard-patch-coverage/index.js"),

@@ -43,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "random/imperial-aramaic-letter": () => import("../../random/imperial-aramaic-letter/index.js"),
   "random/javanese-digit": () => import("../../random/javanese-digit/index.js"),
   "semiconductor/junction-leakage-current": () => import("../../semiconductor/junction-leakage-current/index.js"),
+  "sports/golf-handicap-index-usga": () => import("../../sports/golf-handicap-index-usga/index.js"),
   "statistics/coefficient-of-variation": () => import("../../statistics/coefficient-of-variation/index.js"),
   "taxation/minimum-franchise-tax": () => import("../../taxation/minimum-franchise-tax/index.js"),
   "toxicology/chemical-route-linear-cancer-risk-sum": () => import("../../toxicology/chemical-route-linear-cancer-risk-sum/index.js"),

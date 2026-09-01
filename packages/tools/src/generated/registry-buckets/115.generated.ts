@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "genetics/x-recessive-son-risk": () => import("../../genetics/x-recessive-son-risk/index.js"),
   "geology/downlap-angle": () => import("../../geology/downlap-angle/index.js"),
   "horology/foudroyante-steps": () => import("../../horology/foudroyante-steps/index.js"),
+  "insurance/epl-practice-claims-trigger-lookup": () => import("../../insurance/epl-practice-claims-trigger-lookup/index.js"),
   "laser/dual-comb-time-magnification": () => import("../../laser/dual-comb-time-magnification/index.js"),
   "laser/flash-lidar-frame-coverage": () => import("../../laser/flash-lidar-frame-coverage/index.js"),
   "laser/mcwhirter-density-threshold": () => import("../../laser/mcwhirter-density-threshold/index.js"),

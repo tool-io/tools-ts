@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "mining/flotation-kinetics-rate": () => import("../../mining/flotation-kinetics-rate/index.js"),
   "mycology/psychrophile-maxtemp-below20-checker": () => import("../../mycology/psychrophile-maxtemp-below20-checker/index.js"),
   "oceanography/radiation-stress-flux-sx": () => import("../../oceanography/radiation-stress-flux-sx/index.js"),
+  "plumbing/gas-regulator-capacity": () => import("../../plumbing/gas-regulator-capacity/index.js"),
   "random/css-named-color": () => import("../../random/css-named-color/index.js"),
   "sailing/visibility-category": () => import("../../sailing/visibility-category/index.js"),
   "seismology/joint-hypocentral-grid-search-step": () => import("../../seismology/joint-hypocentral-grid-search-step/index.js"),

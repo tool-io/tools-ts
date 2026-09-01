@@ -31,6 +31,7 @@ export const toolModuleLoaders: Readonly<
   "glaciology/basal-shear-stress": () => import("../../glaciology/basal-shear-stress/index.js"),
   "horology/asthmometer-breath-rate": () => import("../../horology/asthmometer-breath-rate/index.js"),
   "html/aria-role-valid-names-lookup": () => import("../../html/aria-role-valid-names-lookup/index.js"),
+  "insurance/copay-vs-coinsurance-scenario-compare": () => import("../../insurance/copay-vs-coinsurance-scenario-compare/index.js"),
   "journalism/small-denominator-instability-warning-checker": () => import("../../journalism/small-denominator-instability-warning-checker/index.js"),
   "laser/dbr-tuning-span": () => import("../../laser/dbr-tuning-span/index.js"),
   "limnology/internal-seiche-period-rectangular": () => import("../../limnology/internal-seiche-period-rectangular/index.js"),

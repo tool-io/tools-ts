@@ -31,6 +31,8 @@ export const toolModuleLoaders: Readonly<
   "mri/acquisition-overhead-effective-acceleration": () => import("../../mri/acquisition-overhead-effective-acceleration/index.js"),
   "oenology/cork-soak-planner": () => import("../../oenology/cork-soak-planner/index.js"),
   "pedagogy/running-record-miscue-tally": () => import("../../pedagogy/running-record-miscue-tally/index.js"),
+  "plumbing/solar-thermal-collector-efficiency": () => import("../../plumbing/solar-thermal-collector-efficiency/index.js"),
+  "plumbing/valve-choked-flow-check": () => import("../../plumbing/valve-choked-flow-check/index.js"),
   "proportions/aspect-ratio": () => import("../../proportions/aspect-ratio/index.js"),
   "proteomics/protein-sequence-coverage": () => import("../../proteomics/protein-sequence-coverage/index.js"),
   "seismology/attenuation-quality-factor-q": () => import("../../seismology/attenuation-quality-factor-q/index.js"),
@@ -38,5 +40,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/gate-induced-drain-leakage": () => import("../../semiconductor/gate-induced-drain-leakage/index.js"),
   "semiconductor/interposer-line-resistance": () => import("../../semiconductor/interposer-line-resistance/index.js"),
   "size/fitted-sheet": () => import("../../size/fitted-sheet/index.js"),
+  "sports/rowing-stroke-rate-to-pace-checker": () => import("../../sports/rowing-stroke-rate-to-pace-checker/index.js"),
   "theatre/preview-performance-discount-standard-lookup": () => import("../../theatre/preview-performance-discount-standard-lookup/index.js"),
 };

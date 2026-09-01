@@ -32,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/osmotolerance-nacl-limit-lookup": () => import("../../mycology/osmotolerance-nacl-limit-lookup/index.js"),
   "network/ipv6-compress": () => import("../../network/ipv6-compress/index.js"),
   "neuroscience/pooled-dendritic-spine-density": () => import("../../neuroscience/pooled-dendritic-spine-density/index.js"),
+  "plumbing/geothermal-loop-length": () => import("../../plumbing/geothermal-loop-length/index.js"),
   "random/asl-fingerspelling-letter": () => import("../../random/asl-fingerspelling-letter/index.js"),
   "random/time": () => import("../../random/time/index.js"),
   "seismology/apparent-dip-along-section-line-calculator": () => import("../../seismology/apparent-dip-along-section-line-calculator/index.js"),

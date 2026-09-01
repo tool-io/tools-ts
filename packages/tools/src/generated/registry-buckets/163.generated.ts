@@ -25,6 +25,8 @@ export const toolModuleLoaders: Readonly<
   "graph/node-classification": () => import("../../graph/node-classification/index.js"),
   "insurance/social-engineering-coverage-gap": () => import("../../insurance/social-engineering-coverage-gap/index.js"),
   "mycology/spore-deposit-mass-yield-calculator": () => import("../../mycology/spore-deposit-mass-yield-calculator/index.js"),
+  "plumbing/expansion-loop-length": () => import("../../plumbing/expansion-loop-length/index.js"),
+  "plumbing/seismic-bracing-load": () => import("../../plumbing/seismic-bracing-load/index.js"),
   "probability/pareto-sampler": () => import("../../probability/pareto-sampler/index.js"),
   "proteomics/nsaf-abundance": () => import("../../proteomics/nsaf-abundance/index.js"),
   "proteomics/pts1-terminal-signal": () => import("../../proteomics/pts1-terminal-signal/index.js"),

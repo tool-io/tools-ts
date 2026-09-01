@@ -39,6 +39,7 @@ export const toolModuleLoaders: Readonly<
   "oceanography/haline-contraction-beta-seawater": () => import("../../oceanography/haline-contraction-beta-seawater/index.js"),
   "paleography/ampersand-era-mapper": () => import("../../paleography/ampersand-era-mapper/index.js"),
   "paleography/beneventan-zone-locator": () => import("../../paleography/beneventan-zone-locator/index.js"),
+  "plumbing/steam-condensate-return-pump-head": () => import("../../plumbing/steam-condensate-return-pump-head/index.js"),
   "probability/slice-sampler": () => import("../../probability/slice-sampler/index.js"),
   "random/ahom-character": () => import("../../random/ahom-character/index.js"),
   "random/cool-palette": () => import("../../random/cool-palette/index.js"),

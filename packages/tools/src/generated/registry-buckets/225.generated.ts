@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "genetics/population-pc-outliers": () => import("../../genetics/population-pc-outliers/index.js"),
   "genomics/reference-ng50": () => import("../../genomics/reference-ng50/index.js"),
   "horology/minute-repeater-strike-count": () => import("../../horology/minute-repeater-strike-count/index.js"),
+  "insurance/lapse-grace-period-reinstatement-lookup": () => import("../../insurance/lapse-grace-period-reinstatement-lookup/index.js"),
   "journalism/composition-title-style": () => import("../../journalism/composition-title-style/index.js"),
   "journalism/pitch-accept-rate-percent-freelance-calculator": () => import("../../journalism/pitch-accept-rate-percent-freelance-calculator/index.js"),
   "laser/laser-ytterbium-fiber-single-mode-kilowatt-power-scaling-record-lookup": () => import("../../laser/laser-ytterbium-fiber-single-mode-kilowatt-power-scaling-record-lookup/index.js"),

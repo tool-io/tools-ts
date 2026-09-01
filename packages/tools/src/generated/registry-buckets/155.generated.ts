@@ -39,6 +39,7 @@ export const toolModuleLoaders: Readonly<
   "random/faroese-alphabet-letter": () => import("../../random/faroese-alphabet-letter/index.js"),
   "real-estate/days-on-market": () => import("../../real-estate/days-on-market/index.js"),
   "size/yukata-reconstruction": () => import("../../size/yukata-reconstruction/index.js"),
+  "sports/split-time-per-km-marathon": () => import("../../sports/split-time-per-km-marathon/index.js"),
   "taxation/totalization-contribution-comparison": () => import("../../taxation/totalization-contribution-comparison/index.js"),
   "volcanology/hyperconcentrated-flow-density-checker": () => import("../../volcanology/hyperconcentrated-flow-density-checker/index.js"),
 };

@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "html/fieldset-legend-a11y-pair-checker": () => import("../../html/fieldset-legend-a11y-pair-checker/index.js"),
   "html/spellcheck-tri-state-default-inherit": () => import("../../html/spellcheck-tri-state-default-inherit/index.js"),
   "insurance/filing-expiration": () => import("../../insurance/filing-expiration/index.js"),
+  "insurance/flat-cancellation-zero-earn-checker": () => import("../../insurance/flat-cancellation-zero-earn-checker/index.js"),
   "laser/laser-yb-yag-thin-disk-multipass-pump-absorption-efficiency-calculator": () => import("../../laser/laser-yb-yag-thin-disk-multipass-pump-absorption-efficiency-calculator/index.js"),
   "matrix/determinant-2x2": () => import("../../matrix/determinant-2x2/index.js"),
   "metabolomics/retention-time-drift": () => import("../../metabolomics/retention-time-drift/index.js"),

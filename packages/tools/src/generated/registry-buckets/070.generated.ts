@@ -35,6 +35,8 @@ export const toolModuleLoaders: Readonly<
   "horology/gregorian-leap-year-cycle-calculator": () => import("../../horology/gregorian-leap-year-cycle-calculator/index.js"),
   "horticulture/days-to-germination-vegetable-lookup": () => import("../../horticulture/days-to-germination-vegetable-lookup/index.js"),
   "horticulture/rolling-bench-tray-capacity": () => import("../../horticulture/rolling-bench-tray-capacity/index.js"),
+  "insurance/contents-inventory-scheduled-property-total": () => import("../../insurance/contents-inventory-scheduled-property-total/index.js"),
+  "insurance/proof-of-loss-deadline-days-lookup": () => import("../../insurance/proof-of-loss-deadline-days-lookup/index.js"),
   "journalism/slug-url-length-hyphen-best-practice-checker": () => import("../../journalism/slug-url-length-hyphen-best-practice-checker/index.js"),
   "logic/de-morgan-and-to-or-transformer": () => import("../../logic/de-morgan-and-to-or-transformer/index.js"),
   "math/hermite-polynomial-approx": () => import("../../math/hermite-polynomial-approx/index.js"),

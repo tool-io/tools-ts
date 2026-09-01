@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "geology/cement-slurry-density": () => import("../../geology/cement-slurry-density/index.js"),
   "horology/six-position-orientation-code-lookup": () => import("../../horology/six-position-orientation-code-lookup/index.js"),
   "html/small-fine-print-vs-em-note": () => import("../../html/small-fine-print-vs-em-note/index.js"),
+  "insurance/minimum-earned-premium-cancellation-formula": () => import("../../insurance/minimum-earned-premium-cancellation-formula/index.js"),
   "insurance/mvr-code-match": () => import("../../insurance/mvr-code-match/index.js"),
   "journalism/back-translation-similarity": () => import("../../journalism/back-translation-similarity/index.js"),
   "laser/sagnac-phase-shift": () => import("../../laser/sagnac-phase-shift/index.js"),

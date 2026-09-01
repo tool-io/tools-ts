@@ -42,6 +42,8 @@ export const toolModuleLoaders: Readonly<
   "metabolomics/kegg-orthology-validator": () => import("../../metabolomics/kegg-orthology-validator/index.js"),
   "paleontology/standing-diversity-binner": () => import("../../paleontology/standing-diversity-binner/index.js"),
   "parasitology/survey-positive-count-gate": () => import("../../parasitology/survey-positive-count-gate/index.js"),
+  "plumbing/expansion-tank-size": () => import("../../plumbing/expansion-tank-size/index.js"),
+  "plumbing/pipe-schedule-wall-thickness": () => import("../../plumbing/pipe-schedule-wall-thickness/index.js"),
   "probability/dirichlet-process-sampler": () => import("../../probability/dirichlet-process-sampler/index.js"),
   "probability/weibull-sampler": () => import("../../probability/weibull-sampler/index.js"),
   "random/mahajani-character": () => import("../../random/mahajani-character/index.js"),

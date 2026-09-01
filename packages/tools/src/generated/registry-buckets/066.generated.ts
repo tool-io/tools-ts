@@ -42,6 +42,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/stipe-attachment-classifier": () => import("../../mycology/stipe-attachment-classifier/index.js"),
   "neuroscience/residual-gradient-smoothness-fwhm": () => import("../../neuroscience/residual-gradient-smoothness-fwhm/index.js"),
   "parasitology/sentinel-annual-recheck": () => import("../../parasitology/sentinel-annual-recheck/index.js"),
+  "plumbing/storm-drain-size": () => import("../../plumbing/storm-drain-size/index.js"),
   "random/css-named-color-palette": () => import("../../random/css-named-color-palette/index.js"),
   "random/i-ching-hexagram": () => import("../../random/i-ching-hexagram/index.js"),
   "random/khitan-small-script-character": () => import("../../random/khitan-small-script-character/index.js"),

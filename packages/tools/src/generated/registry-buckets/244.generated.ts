@@ -48,6 +48,7 @@ export const toolModuleLoaders: Readonly<
   "numismatics/sterling-to-fine-silver-convert": () => import("../../numismatics/sterling-to-fine-silver-convert/index.js"),
   "oenology/angels-share-loss": () => import("../../oenology/angels-share-loss/index.js"),
   "paleography/p-loop-brevigraph-expander": () => import("../../paleography/p-loop-brevigraph-expander/index.js"),
+  "plumbing/pipe-support-spacing": () => import("../../plumbing/pipe-support-spacing/index.js"),
   "random/combining-enclosure-mark": () => import("../../random/combining-enclosure-mark/index.js"),
   "random/lab-color": () => import("../../random/lab-color/index.js"),
   "random/meetei-mayek-character": () => import("../../random/meetei-mayek-character/index.js"),

@@ -21,6 +21,8 @@ export const toolModuleLoaders: Readonly<
   "geology/casing-collapse-pressure": () => import("../../geology/casing-collapse-pressure/index.js"),
   "horology/petite-sonnerie-strikes-per-day": () => import("../../horology/petite-sonnerie-strikes-per-day/index.js"),
   "horticulture/daily-light-integral-mol-m2-day": () => import("../../horticulture/daily-light-integral-mol-m2-day/index.js"),
+  "insurance/multi-policy-bundle-discount-percent": () => import("../../insurance/multi-policy-bundle-discount-percent/index.js"),
+  "insurance/telematics-ubi-discount-scorer": () => import("../../insurance/telematics-ubi-discount-scorer/index.js"),
   "journalism/cba-clause-coverage": () => import("../../journalism/cba-clause-coverage/index.js"),
   "laser/bdfa-band-coverage": () => import("../../laser/bdfa-band-coverage/index.js"),
   "linguistics/spanish-inverted-punctuation-placement": () => import("../../linguistics/spanish-inverted-punctuation-placement/index.js"),

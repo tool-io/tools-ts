@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "numismatics/diameter-measurement-average": () => import("../../numismatics/diameter-measurement-average/index.js"),
   "online-algorithm/ski-rental": () => import("../../online-algorithm/ski-rental/index.js"),
   "paleography/rag-woodpulp-era-boundary-checker": () => import("../../paleography/rag-woodpulp-era-boundary-checker/index.js"),
+  "plumbing/uv-disinfection-dose": () => import("../../plumbing/uv-disinfection-dose/index.js"),
   "random/old-sogdian-letter": () => import("../../random/old-sogdian-letter/index.js"),
   "real-estate/bad-debt-allowance": () => import("../../real-estate/bad-debt-allowance/index.js"),
   "sailing/comfort-ratio": () => import("../../sailing/comfort-ratio/index.js"),

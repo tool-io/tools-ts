@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "paleography/longs-ratio-calculator": () => import("../../paleography/longs-ratio-calculator/index.js"),
   "paleography/nib-xheight-consistency-checker": () => import("../../paleography/nib-xheight-consistency-checker/index.js"),
   "paleography/quire-signature-position-finder": () => import("../../paleography/quire-signature-position-finder/index.js"),
+  "plumbing/pipe-corrosion-rate": () => import("../../plumbing/pipe-corrosion-rate/index.js"),
   "proportions/number-as-percentage": () => import("../../proportions/number-as-percentage/index.js"),
   "random/bhaiksuki-character": () => import("../../random/bhaiksuki-character/index.js"),
   "random/turkish-alphabet-letter": () => import("../../random/turkish-alphabet-letter/index.js"),

@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "horology/daily-rate-average-comparison": () => import("../../horology/daily-rate-average-comparison/index.js"),
   "horology/hand-wind-turns-per-day": () => import("../../horology/hand-wind-turns-per-day/index.js"),
   "html/input-types-full-list-lookup": () => import("../../html/input-types-full-list-lookup/index.js"),
+  "insurance/flood-zone-nfip-rate-lookup": () => import("../../insurance/flood-zone-nfip-rate-lookup/index.js"),
   "journalism/paywall-metered-article-count-monthly-tracker": () => import("../../journalism/paywall-metered-article-count-monthly-tracker/index.js"),
   "laser/laser-flashlamp-versus-diode-pumping-wall-plug-efficiency-compare": () => import("../../laser/laser-flashlamp-versus-diode-pumping-wall-plug-efficiency-compare/index.js"),
   "logistics/backorder-rate-percent": () => import("../../logistics/backorder-rate-percent/index.js"),
@@ -31,7 +32,9 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/eeg-microstate-transition-occurrences": () => import("../../neuroscience/eeg-microstate-transition-occurrences/index.js"),
   "numismatics/alexander-drachm-monogram-record-lookup": () => import("../../numismatics/alexander-drachm-monogram-record-lookup/index.js"),
   "paleontology/stratigraphic-range-extent": () => import("../../paleontology/stratigraphic-range-extent/index.js"),
+  "plumbing/drywell-size": () => import("../../plumbing/drywell-size/index.js"),
   "real-estate/tenant-retention-rate": () => import("../../real-estate/tenant-retention-rate/index.js"),
   "size/jacket": () => import("../../size/jacket/index.js"),
+  "sports/golf-scrambling-percent-up-down": () => import("../../sports/golf-scrambling-percent-up-down/index.js"),
   "toxicology/point-of-departure-exposure-margin": () => import("../../toxicology/point-of-departure-exposure-margin/index.js"),
 };

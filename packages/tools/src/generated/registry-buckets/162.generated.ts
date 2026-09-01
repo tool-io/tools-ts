@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "film/focal-length-from-field-of-view": () => import("../../film/focal-length-from-field-of-view/index.js"),
   "forestry/culmination-age-mai-pai": () => import("../../forestry/culmination-age-mai-pai/index.js"),
   "futurology/data-center-power-forecast": () => import("../../futurology/data-center-power-forecast/index.js"),
+  "insurance/ransomware-extortion-sublimit-checker": () => import("../../insurance/ransomware-extortion-sublimit-checker/index.js"),
   "journalism/obituary-section-coverage": () => import("../../journalism/obituary-section-coverage/index.js"),
   "journalism/synthetic-voice-disclosure": () => import("../../journalism/synthetic-voice-disclosure/index.js"),
   "laser/comb-cavity-tooth-match": () => import("../../laser/comb-cavity-tooth-match/index.js"),

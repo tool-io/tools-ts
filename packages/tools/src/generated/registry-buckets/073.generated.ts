@@ -37,5 +37,6 @@ export const toolModuleLoaders: Readonly<
   "sailing/anderson-turn-course": () => import("../../sailing/anderson-turn-course/index.js"),
   "sailing/wind-oscillation-amplitude": () => import("../../sailing/wind-oscillation-amplitude/index.js"),
   "semiconductor/pseudomorphic-critical-thickness-matthews-blakeslee": () => import("../../semiconductor/pseudomorphic-critical-thickness-matthews-blakeslee/index.js"),
+  "sports/basketball-four-factor-fourf-score": () => import("../../sports/basketball-four-factor-fourf-score/index.js"),
   "statistics/jackknife-bias": () => import("../../statistics/jackknife-bias/index.js"),
 };

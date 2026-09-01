@@ -38,4 +38,5 @@ export const toolModuleLoaders: Readonly<
   "paleography/hairline-flesh-note-generator": () => import("../../paleography/hairline-flesh-note-generator/index.js"),
   "seismology/tide-gauge-bottom-pressure-hydrostatic-depth": () => import("../../seismology/tide-gauge-bottom-pressure-hydrostatic-depth/index.js"),
   "sociology/mobility-transition-probability-table": () => import("../../sociology/mobility-transition-probability-table/index.js"),
+  "sports/cycling-cadence-to-speed": () => import("../../sports/cycling-cadence-to-speed/index.js"),
 };

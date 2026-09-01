@@ -39,6 +39,7 @@ export const toolModuleLoaders: Readonly<
   "laser/audience-scan-exposure": () => import("../../laser/audience-scan-exposure/index.js"),
   "linguistics/arabic-three-letter-root-share": () => import("../../linguistics/arabic-three-letter-root-share/index.js"),
   "pedagogy/mastery-retry-tracker": () => import("../../pedagogy/mastery-retry-tracker/index.js"),
+  "plumbing/corrosion-index-langelier": () => import("../../plumbing/corrosion-index-langelier/index.js"),
   "proteomics/kinase-motif-triad": () => import("../../proteomics/kinase-motif-triad/index.js"),
   "random/devanagari-character": () => import("../../random/devanagari-character/index.js"),
   "random/unicode-noncharacter": () => import("../../random/unicode-noncharacter/index.js"),

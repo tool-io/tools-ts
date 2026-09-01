@@ -49,6 +49,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/hot-carrier-degradation-rate": () => import("../../semiconductor/hot-carrier-degradation-rate/index.js"),
   "size/curtain": () => import("../../size/curtain/index.js"),
   "size/suit-jacket": () => import("../../size/suit-jacket/index.js"),
+  "sports/basketball-true-shooting-percent-tsx": () => import("../../sports/basketball-true-shooting-percent-tsx/index.js"),
   "taxation/exit-tax-threshold-screen": () => import("../../taxation/exit-tax-threshold-screen/index.js"),
   "text/dot-case": () => import("../../text/dot-case/index.js"),
   "viticulture/acidity-decline-malic-respiration-rate": () => import("../../viticulture/acidity-decline-malic-respiration-rate/index.js"),

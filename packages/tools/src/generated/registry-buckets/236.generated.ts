@@ -49,6 +49,7 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/spike-sorting-isi": () => import("../../neuroscience/spike-sorting-isi/index.js"),
   "neuroscience/synaptic-conductance-trace": () => import("../../neuroscience/synaptic-conductance-trace/index.js"),
   "paleontology/eggshell-porosity-classifier": () => import("../../paleontology/eggshell-porosity-classifier/index.js"),
+  "plumbing/gas-pipe-pressure-drop": () => import("../../plumbing/gas-pipe-pressure-drop/index.js"),
   "proteomics/protein-dilution-backcalculation": () => import("../../proteomics/protein-dilution-backcalculation/index.js"),
   "random/catalog-product": () => import("../../random/catalog-product/index.js"),
   "random/headphones": () => import("../../random/headphones/index.js"),

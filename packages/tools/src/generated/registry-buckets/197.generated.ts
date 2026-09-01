@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "geography/haversine-distance": () => import("../../geography/haversine-distance/index.js"),
   "horology/moonphase-gear-ratio": () => import("../../horology/moonphase-gear-ratio/index.js"),
   "html/referrerpolicy-values-table-lookup": () => import("../../html/referrerpolicy-values-table-lookup/index.js"),
+  "insurance/short-rate-cancellation-penalty-table-lookup": () => import("../../insurance/short-rate-cancellation-penalty-table-lookup/index.js"),
   "journalism/programmatic-rpm-vs-direct-cpm-compare": () => import("../../journalism/programmatic-rpm-vs-direct-cpm-compare/index.js"),
   "laser/laser-er-fiber-1550-eye-safe-retina-transmission-safety-class-note": () => import("../../laser/laser-er-fiber-1550-eye-safe-retina-transmission-safety-class-note/index.js"),
   "laser/tec-stability": () => import("../../laser/tec-stability/index.js"),

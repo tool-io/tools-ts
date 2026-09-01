@@ -35,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "number/parity-checker": () => import("../../number/parity-checker/index.js"),
   "oceanography/vector-average-current-components": () => import("../../oceanography/vector-average-current-components/index.js"),
   "oceanography/wave-dispersion-relation-root": () => import("../../oceanography/wave-dispersion-relation-root/index.js"),
+  "plumbing/septic-drain-field-area": () => import("../../plumbing/septic-drain-field-area/index.js"),
   "random/baudot-character": () => import("../../random/baudot-character/index.js"),
   "random/catalog-item": () => import("../../random/catalog-item/index.js"),
   "random/regular-expression-token": () => import("../../random/regular-expression-token/index.js"),

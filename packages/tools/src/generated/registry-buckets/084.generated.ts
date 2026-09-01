@@ -51,6 +51,7 @@ export const toolModuleLoaders: Readonly<
   "proteomics/low-complexity-region-fraction": () => import("../../proteomics/low-complexity-region-fraction/index.js"),
   "proteomics/sumoylation-motifs": () => import("../../proteomics/sumoylation-motifs/index.js"),
   "sailing/vmg-to-windward": () => import("../../sailing/vmg-to-windward/index.js"),
+  "sports/cricket-run-rate-required-chase": () => import("../../sports/cricket-run-rate-required-chase/index.js"),
   "statistics/permutation-test": () => import("../../statistics/permutation-test/index.js"),
   "taxation/lodging-tax": () => import("../../taxation/lodging-tax/index.js"),
   "text/extract-mentions": () => import("../../text/extract-mentions/index.js"),

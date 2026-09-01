@@ -30,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "numismatics/crackout-expected-value-checker": () => import("../../numismatics/crackout-expected-value-checker/index.js"),
   "numismatics/tooling-evidence-screen": () => import("../../numismatics/tooling-evidence-screen/index.js"),
   "oenology/gelatin-silica-dose": () => import("../../oenology/gelatin-silica-dose/index.js"),
+  "plumbing/control-valve-authority": () => import("../../plumbing/control-valve-authority/index.js"),
   "proteomics/low-complexity-windows": () => import("../../proteomics/low-complexity-windows/index.js"),
   "seismology/catalog-magnitude-type-histogram-summary": () => import("../../seismology/catalog-magnitude-type-histogram-summary/index.js"),
   "seismology/geophone-spring-max-acceleration-range-checker": () => import("../../seismology/geophone-spring-max-acceleration-range-checker/index.js"),

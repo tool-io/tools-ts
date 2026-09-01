@@ -33,4 +33,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/sige-lattice-mismatch": () => import("../../semiconductor/sige-lattice-mismatch/index.js"),
   "sericulture/automatic-reeling-capacity-kghr": () => import("../../sericulture/automatic-reeling-capacity-kghr/index.js"),
   "size/envelope": () => import("../../size/envelope/index.js"),
+  "sports/one-rep-max-lander": () => import("../../sports/one-rep-max-lander/index.js"),
+  "sports/triathlon-transition-t1t2-time-tracker": () => import("../../sports/triathlon-transition-t1t2-time-tracker/index.js"),
 };

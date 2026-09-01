@@ -47,6 +47,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/segregation-coefficient": () => import("../../semiconductor/segregation-coefficient/index.js"),
   "semiconductor/tsv-capacitance": () => import("../../semiconductor/tsv-capacitance/index.js"),
   "sericulture/cocoon-grade-sorting-classifier": () => import("../../sericulture/cocoon-grade-sorting-classifier/index.js"),
+  "sports/american-football-passer-rating-nfl": () => import("../../sports/american-football-passer-rating-nfl/index.js"),
   "virology/defective-genome-deletion-union": () => import("../../virology/defective-genome-deletion-union/index.js"),
   "viticulture/berries-per-cluster-average-count": () => import("../../viticulture/berries-per-cluster-average-count/index.js"),
   "web/url-port": () => import("../../web/url-port/index.js"),

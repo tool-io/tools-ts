@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "genetics/negative-screen-residual-risk": () => import("../../genetics/negative-screen-residual-risk/index.js"),
   "html/canonical-link-rel-checker": () => import("../../html/canonical-link-rel-checker/index.js"),
   "ideal-body-weight": () => import("../../ideal-body-weight/index.js"),
+  "insurance/fnol-first-notice-required-fields-lookup": () => import("../../insurance/fnol-first-notice-required-fields-lookup/index.js"),
   "laser/frequency-mixing-wavelength": () => import("../../laser/frequency-mixing-wavelength/index.js"),
   "limnology/gran-titration-alkalinity": () => import("../../limnology/gran-titration-alkalinity/index.js"),
   "math/cousin-prime-pair-checker": () => import("../../math/cousin-prime-pair-checker/index.js"),

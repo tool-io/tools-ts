@@ -29,7 +29,9 @@ export const toolModuleLoaders: Readonly<
   "numismatics/grading-detail-code-match": () => import("../../numismatics/grading-detail-code-match/index.js"),
   "numismatics/seleukid-anchor-reference": () => import("../../numismatics/seleukid-anchor-reference/index.js"),
   "pedagogy/spiral-review-intervals": () => import("../../pedagogy/spiral-review-intervals/index.js"),
+  "plumbing/interceptor-oil-separation-efficiency": () => import("../../plumbing/interceptor-oil-separation-efficiency/index.js"),
   "random/ol-chiki-digit": () => import("../../random/ol-chiki-digit/index.js"),
   "random/tempo-synced-delay-preset": () => import("../../random/tempo-synced-delay-preset/index.js"),
   "size/hakama-reconstruction": () => import("../../size/hakama-reconstruction/index.js"),
+  "sports/riegel-race-prediction": () => import("../../sports/riegel-race-prediction/index.js"),
 };

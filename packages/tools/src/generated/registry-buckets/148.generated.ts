@@ -38,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "sailing/froude-number": () => import("../../sailing/froude-number/index.js"),
   "seismology/strong-motion-linear-baseline-correction": () => import("../../seismology/strong-motion-linear-baseline-correction/index.js"),
   "sociology/replacement-level-fertility-checker": () => import("../../sociology/replacement-level-fertility-checker/index.js"),
+  "sports/ftp-functional-threshold-power-test": () => import("../../sports/ftp-functional-threshold-power-test/index.js"),
   "text/sentence-count": () => import("../../text/sentence-count/index.js"),
   "theatre/scenery-package-rental-fee-weekly-lookup": () => import("../../theatre/scenery-package-rental-fee-weekly-lookup/index.js"),
   "web/url-host": () => import("../../web/url-host/index.js"),

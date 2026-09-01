@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "geology/afm-diagram": () => import("../../geology/afm-diagram/index.js"),
   "geology/shrinkage-ratio": () => import("../../geology/shrinkage-ratio/index.js"),
   "horology/accessible-watch-time-output-mode-lookup": () => import("../../horology/accessible-watch-time-output-mode-lookup/index.js"),
+  "insurance/policy-loan-interest-unpaid-accrual": () => import("../../insurance/policy-loan-interest-unpaid-accrual/index.js"),
   "journalism/temperature-style": () => import("../../journalism/temperature-style/index.js"),
   "limnology/internal-rossby-radius-deformation": () => import("../../limnology/internal-rossby-radius-deformation/index.js"),
   "mining/mass-pull": () => import("../../mining/mass-pull/index.js"),

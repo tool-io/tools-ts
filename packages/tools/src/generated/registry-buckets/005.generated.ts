@@ -39,6 +39,8 @@ export const toolModuleLoaders: Readonly<
   "meteorology/ageostrophic-component-magnitude": () => import("../../meteorology/ageostrophic-component-magnitude/index.js"),
   "meteorology/rank-histogram-flatness-check": () => import("../../meteorology/rank-histogram-flatness-check/index.js"),
   "mycology/pore-density-counter": () => import("../../mycology/pore-density-counter/index.js"),
+  "plumbing/air-chamber-size": () => import("../../plumbing/air-chamber-size/index.js"),
+  "plumbing/anchor-force": () => import("../../plumbing/anchor-force/index.js"),
   "proteomics/missed-cleavage-peptide-count": () => import("../../proteomics/missed-cleavage-peptide-count/index.js"),
   "proteomics/rossmann-motifs": () => import("../../proteomics/rossmann-motifs/index.js"),
   "random/hanunoo-character": () => import("../../random/hanunoo-character/index.js"),

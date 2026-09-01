@@ -49,6 +49,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/magnitude-scaling-saturation-check": () => import("../../seismology/magnitude-scaling-saturation-check/index.js"),
   "semiconductor/ballistic-mean-free-path": () => import("../../semiconductor/ballistic-mean-free-path/index.js"),
   "semiconductor/spin-qubit-zeeman-splitting": () => import("../../semiconductor/spin-qubit-zeeman-splitting/index.js"),
+  "sports/golf-course-slope-adjusted-score": () => import("../../sports/golf-course-slope-adjusted-score/index.js"),
   "taxation/tanning-excise-tax": () => import("../../taxation/tanning-excise-tax/index.js"),
   "virology/renewal-window-rt": () => import("../../virology/renewal-window-rt/index.js"),
   "volcanology/stratospheric-sulfate-aerosol-cooling": () => import("../../volcanology/stratospheric-sulfate-aerosol-cooling/index.js"),

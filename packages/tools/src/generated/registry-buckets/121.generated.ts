@@ -40,6 +40,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/fae-cycles-hour-requirement-lookup": () => import("../../mycology/fae-cycles-hour-requirement-lookup/index.js"),
   "paleontology/shareholder-quorum-coverage": () => import("../../paleontology/shareholder-quorum-coverage/index.js"),
   "pedagogy/curriculum-compacting": () => import("../../pedagogy/curriculum-compacting/index.js"),
+  "plumbing/urinal-flush-volume": () => import("../../plumbing/urinal-flush-volume/index.js"),
   "probability/expected-value": () => import("../../probability/expected-value/index.js"),
   "proteomics/phosphorylation-sites": () => import("../../proteomics/phosphorylation-sites/index.js"),
   "size/snowshoe": () => import("../../size/snowshoe/index.js"),

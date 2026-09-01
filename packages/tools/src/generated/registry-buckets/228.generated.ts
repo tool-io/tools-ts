@@ -48,6 +48,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/magnitude-frequency-entropy-shannon": () => import("../../seismology/magnitude-frequency-entropy-shannon/index.js"),
   "semiconductor/etch-rate": () => import("../../semiconductor/etch-rate/index.js"),
   "semiconductor/total-ionizing-dose-threshold-shift": () => import("../../semiconductor/total-ionizing-dose-threshold-shift/index.js"),
+  "sports/max-hr-fox": () => import("../../sports/max-hr-fox/index.js"),
   "statistics/most-common-value-count": () => import("../../statistics/most-common-value-count/index.js"),
   "typography/font-stretch-percentage-width-axis": () => import("../../typography/font-stretch-percentage-width-axis/index.js"),
   "validate/gtin": () => import("../../validate/gtin/index.js"),

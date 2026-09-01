@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/illuminance-from-flux": () => import("../../engineering/illuminance-from-flux/index.js"),
   "geology/ar-ar-age": () => import("../../geology/ar-ar-age/index.js"),
   "geology/earth-pressure-at-rest": () => import("../../geology/earth-pressure-at-rest/index.js"),
+  "insurance/insurable-interest-relationship-checker": () => import("../../insurance/insurable-interest-relationship-checker/index.js"),
   "journalism/newsletter-send-time-open-rate-optimum-lookup": () => import("../../journalism/newsletter-send-time-open-rate-optimum-lookup/index.js"),
   "laser/fwm-idler-frequency": () => import("../../laser/fwm-idler-frequency/index.js"),
   "laser/laser-carrier-envelope-offset-f-to-2f-interferometer-stabilizer-lookup": () => import("../../laser/laser-carrier-envelope-offset-f-to-2f-interferometer-stabilizer-lookup/index.js"),

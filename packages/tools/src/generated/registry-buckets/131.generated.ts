@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/ring-oscillator-frequency": () => import("../../electronics/ring-oscillator-frequency/index.js"),
   "electronics/window-comparator-thresholds": () => import("../../electronics/window-comparator-thresholds/index.js"),
   "horology/alarm-set-offset": () => import("../../horology/alarm-set-offset/index.js"),
+  "insurance/auto-premium-base-class-lookup": () => import("../../insurance/auto-premium-base-class-lookup/index.js"),
   "insurance/waiting-period-credit": () => import("../../insurance/waiting-period-credit/index.js"),
   "journalism/seo-headline-front-load-keyword-position-checker": () => import("../../journalism/seo-headline-front-load-keyword-position-checker/index.js"),
   "laser/hatch-overlap": () => import("../../laser/hatch-overlap/index.js"),

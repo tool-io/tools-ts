@@ -42,6 +42,7 @@ export const toolModuleLoaders: Readonly<
   "museology/tour-condition-check-scheduler": () => import("../../museology/tour-condition-check-scheduler/index.js"),
   "mycology/amyloid-spore-wall-classifier": () => import("../../mycology/amyloid-spore-wall-classifier/index.js"),
   "neuroscience/global-binary-network-efficiency": () => import("../../neuroscience/global-binary-network-efficiency/index.js"),
+  "plumbing/freeze-time": () => import("../../plumbing/freeze-time/index.js"),
   "proteomics/gluc-cleavage": () => import("../../proteomics/gluc-cleavage/index.js"),
   "random/old-turkic-character": () => import("../../random/old-turkic-character/index.js"),
   "random/tulu-tigalari-character": () => import("../../random/tulu-tigalari-character/index.js"),

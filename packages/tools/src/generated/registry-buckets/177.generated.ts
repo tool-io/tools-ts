@@ -37,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "museology/uv-content-per-lumen-checker": () => import("../../museology/uv-content-per-lumen-checker/index.js"),
   "mycology/antifungal-mic-clsi-value-recorder": () => import("../../mycology/antifungal-mic-clsi-value-recorder/index.js"),
   "parasitology/rainfall-incidence-lag": () => import("../../parasitology/rainfall-incidence-lag/index.js"),
+  "plumbing/hydronic-air-separator-size": () => import("../../plumbing/hydronic-air-separator-size/index.js"),
   "proteomics/digest-length-filter": () => import("../../proteomics/digest-length-filter/index.js"),
   "real-estate/price-per-sqft": () => import("../../real-estate/price-per-sqft/index.js"),
   "seismology/iribarren-surf-similarity-runup-regime": () => import("../../seismology/iribarren-surf-similarity-runup-regime/index.js"),

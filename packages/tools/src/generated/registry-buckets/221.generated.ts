@@ -42,6 +42,7 @@ export const toolModuleLoaders: Readonly<
   "sailing/halyard-tension-jib": () => import("../../sailing/halyard-tension-jib/index.js"),
   "seismology/adc-clip-level-full-scale-counts": () => import("../../seismology/adc-clip-level-full-scale-counts/index.js"),
   "semiconductor/carrier-concentration-p-type": () => import("../../semiconductor/carrier-concentration-p-type/index.js"),
+  "sports/power-to-weight-ratio-wkg": () => import("../../sports/power-to-weight-ratio-wkg/index.js"),
   "taxation/lien-status-classifier": () => import("../../taxation/lien-status-classifier/index.js"),
   "transcriptomics/wilcoxon-rank-sum": () => import("../../transcriptomics/wilcoxon-rank-sum/index.js"),
   "typography/column-count-from-text-width": () => import("../../typography/column-count-from-text-width/index.js"),

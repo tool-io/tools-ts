@@ -37,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "parse/feet-and-inches": () => import("../../parse/feet-and-inches/index.js"),
   "pedagogy/completion-problem-transition": () => import("../../pedagogy/completion-problem-transition/index.js"),
   "pedagogy/readiness-tier-assignments": () => import("../../pedagogy/readiness-tier-assignments/index.js"),
+  "plumbing/hanger-load": () => import("../../plumbing/hanger-load/index.js"),
   "proteomics/helix-proline-fraction": () => import("../../proteomics/helix-proline-fraction/index.js"),
   "random/categorical-dataset": () => import("../../random/categorical-dataset/index.js"),
   "random/ethiopic-character": () => import("../../random/ethiopic-character/index.js"),

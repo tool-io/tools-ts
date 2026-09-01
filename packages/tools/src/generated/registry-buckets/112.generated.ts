@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "geometry/sphere-volume": () => import("../../geometry/sphere-volume/index.js"),
   "graph/cycle-checker": () => import("../../graph/cycle-checker/index.js"),
   "horology/case-luglug-ratio": () => import("../../horology/case-luglug-ratio/index.js"),
+  "insurance/subrogation-recovery-success-rate-percent": () => import("../../insurance/subrogation-recovery-success-rate-percent/index.js"),
   "kinesiology/cross-education-gain": () => import("../../kinesiology/cross-education-gain/index.js"),
   "limnology/alum-dosing-phosphorus-inactivation": () => import("../../limnology/alum-dosing-phosphorus-inactivation/index.js"),
   "math/partition-into-kth-powers": () => import("../../math/partition-into-kth-powers/index.js"),

@@ -27,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "glaciology/glof-peak-discharge-envelope": () => import("../../glaciology/glof-peak-discharge-envelope/index.js"),
   "horology/beat-error-symmetry-threshold-screen": () => import("../../horology/beat-error-symmetry-threshold-screen/index.js"),
   "html/inert-attribute-focus-suppression-lookup": () => import("../../html/inert-attribute-focus-suppression-lookup/index.js"),
+  "insurance/reserve-paid-outstanding-reconciliation": () => import("../../insurance/reserve-paid-outstanding-reconciliation/index.js"),
   "journalism/deck-subhead-length-guideline-checker": () => import("../../journalism/deck-subhead-length-guideline-checker/index.js"),
   "limnology/load-reduction-required-percent": () => import("../../limnology/load-reduction-required-percent/index.js"),
   "logistics/demurrage-free-days-port-checker": () => import("../../logistics/demurrage-free-days-port-checker/index.js"),

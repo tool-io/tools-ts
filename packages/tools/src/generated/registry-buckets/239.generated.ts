@@ -32,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "numismatics/specific-gravity-composition-checker": () => import("../../numismatics/specific-gravity-composition-checker/index.js"),
   "oceanography/shoaling-coefficient-h-h0": () => import("../../oceanography/shoaling-coefficient-h-h0/index.js"),
   "oenology/drinking-window-peak": () => import("../../oenology/drinking-window-peak/index.js"),
+  "plumbing/water-supply-pipe-sizing": () => import("../../plumbing/water-supply-pipe-sizing/index.js"),
   "random/lao-character": () => import("../../random/lao-character/index.js"),
   "random/meroitic-cursive-character": () => import("../../random/meroitic-cursive-character/index.js"),
   "random/osmanya-character": () => import("../../random/osmanya-character/index.js"),

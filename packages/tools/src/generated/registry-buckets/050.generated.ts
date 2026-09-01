@@ -41,6 +41,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/network-detection-threshold-coverage": () => import("../../seismology/network-detection-threshold-coverage/index.js"),
   "semiconductor/hole-effective-mass": () => import("../../semiconductor/hole-effective-mass/index.js"),
   "size/wire-gauge": () => import("../../size/wire-gauge/index.js"),
+  "sports/soccer-xg-shot-quality-lookup": () => import("../../sports/soccer-xg-shot-quality-lookup/index.js"),
   "theatre/understudy-cover-matrix": () => import("../../theatre/understudy-cover-matrix/index.js"),
   "transcriptomics/effective-transcript-length": () => import("../../transcriptomics/effective-transcript-length/index.js"),
   "volcanology/lava-front-advance-speed-basaltic": () => import("../../volcanology/lava-front-advance-speed-basaltic/index.js"),

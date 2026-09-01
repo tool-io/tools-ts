@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "museology/fugitometer-fading-years-estimator": () => import("../../museology/fugitometer-fading-years-estimator/index.js"),
   "music/spn-to-helmholtz-converter": () => import("../../music/spn-to-helmholtz-converter/index.js"),
   "neuroscience/direction-encoded-tensor-fa": () => import("../../neuroscience/direction-encoded-tensor-fa/index.js"),
+  "plumbing/insulation-heat-gain-cold-pipe": () => import("../../plumbing/insulation-heat-gain-cold-pipe/index.js"),
   "proteomics/beta-turn-window-score": () => import("../../proteomics/beta-turn-window-score/index.js"),
   "proteomics/kdel-retention-signal": () => import("../../proteomics/kdel-retention-signal/index.js"),
   "random/kayah-li-character": () => import("../../random/kayah-li-character/index.js"),

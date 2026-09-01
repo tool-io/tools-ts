@@ -29,6 +29,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/liftgate-fee-applicability-checker": () => import("../../logistics/liftgate-fee-applicability-checker/index.js"),
   "mri/radial-spoke-kspace-coordinates": () => import("../../mri/radial-spoke-kspace-coordinates/index.js"),
   "numismatics/water-displacement-volume-test": () => import("../../numismatics/water-displacement-volume-test/index.js"),
+  "plumbing/gas-pipe-sizing-low-pressure": () => import("../../plumbing/gas-pipe-sizing-low-pressure/index.js"),
   "random/coptic-letter": () => import("../../random/coptic-letter/index.js"),
   "random/monochromatic-palette": () => import("../../random/monochromatic-palette/index.js"),
   "random/nutrient": () => import("../../random/nutrient/index.js"),

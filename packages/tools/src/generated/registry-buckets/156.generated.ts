@@ -29,6 +29,8 @@ export const toolModuleLoaders: Readonly<
   "futurology/state-of-future-index": () => import("../../futurology/state-of-future-index/index.js"),
   "geology/magnetic-anomaly-total-field": () => import("../../geology/magnetic-anomaly-total-field/index.js"),
   "glaciology/surge-front-advance-rate": () => import("../../glaciology/surge-front-advance-rate/index.js"),
+  "insurance/appeal-deadline-days-from-denial-lookup": () => import("../../insurance/appeal-deadline-days-from-denial-lookup/index.js"),
+  "insurance/ltc-partnership-dollar-protection-lookup": () => import("../../insurance/ltc-partnership-dollar-protection-lookup/index.js"),
   "kinesiology/emg-antagonist-coactivation": () => import("../../kinesiology/emg-antagonist-coactivation/index.js"),
   "kinesiology/ten-meter-gait-speed": () => import("../../kinesiology/ten-meter-gait-speed/index.js"),
   "linguistics/romance-latin-root-percent-estimate": () => import("../../linguistics/romance-latin-root-percent-estimate/index.js"),

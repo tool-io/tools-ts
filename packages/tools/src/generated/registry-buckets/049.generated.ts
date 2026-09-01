@@ -51,6 +51,7 @@ export const toolModuleLoaders: Readonly<
   "oceanography/wave-refraction-snells-coefficient": () => import("../../oceanography/wave-refraction-snells-coefficient/index.js"),
   "oenology/va-threshold-checker": () => import("../../oenology/va-threshold-checker/index.js"),
   "pedagogy/cold-call-equity-roster": () => import("../../pedagogy/cold-call-equity-roster/index.js"),
+  "plumbing/pump-head-required": () => import("../../plumbing/pump-head-required/index.js"),
   "proteomics/unique-peptide-tally": () => import("../../proteomics/unique-peptide-tally/index.js"),
   "random/macedonian-alphabet-letter": () => import("../../random/macedonian-alphabet-letter/index.js"),
   "real-estate/return-on-equity": () => import("../../real-estate/return-on-equity/index.js"),

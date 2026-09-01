@@ -31,6 +31,7 @@ export const toolModuleLoaders: Readonly<
   "geology/porosity-from-void-ratio": () => import("../../geology/porosity-from-void-ratio/index.js"),
   "geology/unconformity-angle": () => import("../../geology/unconformity-angle/index.js"),
   "html/cite-q-blockquote-inline-block-classify": () => import("../../html/cite-q-blockquote-inline-block-classify/index.js"),
+  "insurance/oop-max-out-of-pocket-remaining-tracker": () => import("../../insurance/oop-max-out-of-pocket-remaining-tracker/index.js"),
   "laser/gdd-ripple": () => import("../../laser/gdd-ripple/index.js"),
   "linguistics/syllable-structure-type-lookup-cv-cvc": () => import("../../linguistics/syllable-structure-type-lookup-cv-cvc/index.js"),
   "math/legendre-conjecture": () => import("../../math/legendre-conjecture/index.js"),

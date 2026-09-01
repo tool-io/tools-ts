@@ -47,6 +47,7 @@ export const toolModuleLoaders: Readonly<
   "random/samaritan-letter": () => import("../../random/samaritan-letter/index.js"),
   "random/sunuwar-character": () => import("../../random/sunuwar-character/index.js"),
   "semiconductor/led-wall-plug-efficiency": () => import("../../semiconductor/led-wall-plug-efficiency/index.js"),
+  "sports/baseball-babip-luck-checker": () => import("../../sports/baseball-babip-luck-checker/index.js"),
   "taxation/mileage-depreciation": () => import("../../taxation/mileage-depreciation/index.js"),
   "transcriptomics/drach-motif-density": () => import("../../transcriptomics/drach-motif-density/index.js"),
   "transcriptomics/dye-swap-correlation": () => import("../../transcriptomics/dye-swap-correlation/index.js"),

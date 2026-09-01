@@ -39,6 +39,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/pseudohyphae-transition-discriminator": () => import("../../mycology/pseudohyphae-transition-discriminator/index.js"),
   "neuroscience/direction-coded-antisaccade-errors": () => import("../../neuroscience/direction-coded-antisaccade-errors/index.js"),
   "paleography/illumination-completeness-scorer": () => import("../../paleography/illumination-completeness-scorer/index.js"),
+  "plumbing/grease-interceptor-size": () => import("../../plumbing/grease-interceptor-size/index.js"),
   "real-estate/direct-capitalization-value": () => import("../../real-estate/direct-capitalization-value/index.js"),
   "sailing/time-to-layline-current": () => import("../../sailing/time-to-layline-current/index.js"),
   "seismology/tidal-stress-phase-trigger-checker": () => import("../../seismology/tidal-stress-phase-trigger-checker/index.js"),

@@ -35,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "network/ipv6-subnet": () => import("../../network/ipv6-subnet/index.js"),
   "oceanography/seawater-density-tsp": () => import("../../oceanography/seawater-density-tsp/index.js"),
   "parasitology/surveillance-followup-years": () => import("../../parasitology/surveillance-followup-years/index.js"),
+  "plumbing/washing-machine-water-usage": () => import("../../plumbing/washing-machine-water-usage/index.js"),
   "seismology/response-spectrum-corner-period-band-lookup": () => import("../../seismology/response-spectrum-corner-period-band-lookup/index.js"),
   "semiconductor/diffusion-capacitance": () => import("../../semiconductor/diffusion-capacitance/index.js"),
   "sericulture/denier-from-length-weight": () => import("../../sericulture/denier-from-length-weight/index.js"),

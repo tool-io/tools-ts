@@ -28,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/ph-range-cardinal-classifier": () => import("../../mycology/ph-range-cardinal-classifier/index.js"),
   "oceanography/brunn-rule-shoreline-retreat": () => import("../../oceanography/brunn-rule-shoreline-retreat/index.js"),
   "paleography/chain-line-spacing-classifier": () => import("../../paleography/chain-line-spacing-classifier/index.js"),
+  "plumbing/rainwater-harvesting-tank-size": () => import("../../plumbing/rainwater-harvesting-tank-size/index.js"),
   "random/musical-clef": () => import("../../random/musical-clef/index.js"),
   "sailing/compass-deviation-lookup": () => import("../../sailing/compass-deviation-lookup/index.js"),
   "sailing/helm-balance-ratio": () => import("../../sailing/helm-balance-ratio/index.js"),

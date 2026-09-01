@@ -45,6 +45,7 @@ export const toolModuleLoaders: Readonly<
   "oceanography/ocean-ph-drop-decade-rate": () => import("../../oceanography/ocean-ph-drop-decade-rate/index.js"),
   "parasitology/elisa-cutoff-index": () => import("../../parasitology/elisa-cutoff-index/index.js"),
   "parasitology/net-use-adherence": () => import("../../parasitology/net-use-adherence/index.js"),
+  "plumbing/roof-drain-size": () => import("../../plumbing/roof-drain-size/index.js"),
   "proteomics/chymotrypsin-cleavage": () => import("../../proteomics/chymotrypsin-cleavage/index.js"),
   "random/television": () => import("../../random/television/index.js"),
   "seismology/asperity-area-fraction-scaling": () => import("../../seismology/asperity-area-fraction-scaling/index.js"),

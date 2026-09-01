@@ -21,6 +21,8 @@ export const toolModuleLoaders: Readonly<
   "glaciology/moraine-position-recession-rate": () => import("../../glaciology/moraine-position-recession-rate/index.js"),
   "horology/christiaan-huygens-pendulum-history-lookup": () => import("../../horology/christiaan-huygens-pendulum-history-lookup/index.js"),
   "horology/world-time-zone-offset": () => import("../../horology/world-time-zone-offset/index.js"),
+  "insurance/cyber-first-vs-third-party-cover-lookup": () => import("../../insurance/cyber-first-vs-third-party-cover-lookup/index.js"),
+  "insurance/prior-auth-turnaround-window-lookup": () => import("../../insurance/prior-auth-turnaround-window-lookup/index.js"),
   "laser/diode-bar-coupling-budget": () => import("../../laser/diode-bar-coupling-budget/index.js"),
   "linguistics/letter-frequency-rank-by-language-lookup": () => import("../../linguistics/letter-frequency-rank-by-language-lookup/index.js"),
   "logistics/customs-broker-fee-per-entry-lookup": () => import("../../logistics/customs-broker-fee-per-entry-lookup/index.js"),

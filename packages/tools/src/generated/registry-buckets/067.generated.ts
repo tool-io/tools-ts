@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "limnology/wind-stress-mixing-depth-estimate": () => import("../../limnology/wind-stress-mixing-depth-estimate/index.js"),
   "logistics/load-factor-weight-utilization-percent": () => import("../../logistics/load-factor-weight-utilization-percent/index.js"),
   "metabolomics/lipid-unsaturation": () => import("../../metabolomics/lipid-unsaturation/index.js"),
+  "plumbing/radiant-manifold-flow": () => import("../../plumbing/radiant-manifold-flow/index.js"),
   "random/bsl-fingerspelling-letter": () => import("../../random/bsl-fingerspelling-letter/index.js"),
   "random/hungarian-alphabet-letter": () => import("../../random/hungarian-alphabet-letter/index.js"),
   "random/ipv4-subnet-exercise": () => import("../../random/ipv4-subnet-exercise/index.js"),

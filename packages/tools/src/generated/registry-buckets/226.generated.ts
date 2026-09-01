@@ -42,6 +42,7 @@ export const toolModuleLoaders: Readonly<
   "music/guitar-fret-distance-mm-from-scale": () => import("../../music/guitar-fret-distance-mm-from-scale/index.js"),
   "music/note-value-duration-seconds-at-bpm": () => import("../../music/note-value-duration-seconds-at-bpm/index.js"),
   "physics/force": () => import("../../physics/force/index.js"),
+  "plumbing/drip-irrigation-emitter-flow": () => import("../../plumbing/drip-irrigation-emitter-flow/index.js"),
   "random/ellipse-set": () => import("../../random/ellipse-set/index.js"),
   "random/gurung-khema-character": () => import("../../random/gurung-khema-character/index.js"),
   "sailing/sail-area": () => import("../../sailing/sail-area/index.js"),

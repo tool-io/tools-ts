@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "geology/clinoform-length": () => import("../../geology/clinoform-length/index.js"),
   "glaciology/effective-pressure-nye": () => import("../../glaciology/effective-pressure-nye/index.js"),
   "horticulture/microgreens-seeding-density-gram-tray": () => import("../../horticulture/microgreens-seeding-density-gram-tray/index.js"),
+  "insurance/betterment-parts-wear-deduction-percent-lookup": () => import("../../insurance/betterment-parts-wear-deduction-percent-lookup/index.js"),
   "laser/lidar-geometry-comparison": () => import("../../laser/lidar-geometry-comparison/index.js"),
   "limnology/evaporative-cooling-flux-lake": () => import("../../limnology/evaporative-cooling-flux-lake/index.js"),
   "limnology/tds-from-conductivity": () => import("../../limnology/tds-from-conductivity/index.js"),

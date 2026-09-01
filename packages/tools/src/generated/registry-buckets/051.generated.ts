@@ -44,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "sailing/jib-overlap-percentage": () => import("../../sailing/jib-overlap-percentage/index.js"),
   "seismology/reduced-travel-time-plot-converter": () => import("../../seismology/reduced-travel-time-plot-converter/index.js"),
   "set/union": () => import("../../set/union/index.js"),
+  "sports/cycling-training-zone-lookup": () => import("../../sports/cycling-training-zone-lookup/index.js"),
   "theatre/size-flat-square-footage-lumber-count-calculator": () => import("../../theatre/size-flat-square-footage-lumber-count-calculator/index.js"),
   "theatre/vocal-range-transposition-check": () => import("../../theatre/vocal-range-transposition-check/index.js"),
   "viticulture/harvest-morning-dew-correction-weight": () => import("../../viticulture/harvest-morning-dew-correction-weight/index.js"),

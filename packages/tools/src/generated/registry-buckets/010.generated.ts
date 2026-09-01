@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "genetics/expressivity-grade-distribution": () => import("../../genetics/expressivity-grade-distribution/index.js"),
   "genetics/generation-genetic-gain": () => import("../../genetics/generation-genetic-gain/index.js"),
   "geology/choke-flow-rate-gilbert": () => import("../../geology/choke-flow-rate-gilbert/index.js"),
+  "insurance/binder-to-policy-issue-gap-checker": () => import("../../insurance/binder-to-policy-issue-gap-checker/index.js"),
   "laser/apd-mode-comparison": () => import("../../laser/apd-mode-comparison/index.js"),
   "logic/contradiction-pair-opposed-detector": () => import("../../logic/contradiction-pair-opposed-detector/index.js"),
   "logistics/cost-per-unit-shipped-allocation": () => import("../../logistics/cost-per-unit-shipped-allocation/index.js"),
@@ -41,4 +42,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/igbt-switching-energy-eon": () => import("../../semiconductor/igbt-switching-energy-eon/index.js"),
   "semiconductor/tdbd-time-dependent-dielectric-breakdown": () => import("../../semiconductor/tdbd-time-dependent-dielectric-breakdown/index.js"),
   "size/wetsuit": () => import("../../size/wetsuit/index.js"),
+  "sports/bowling-series-three-game-total": () => import("../../sports/bowling-series-three-game-total/index.js"),
 };
