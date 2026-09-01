@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "entrepreneurship/growth-margin-rule": () => import("../../entrepreneurship/growth-margin-rule/index.js"),
   "forestry/arithmetic-mean-diameter": () => import("../../forestry/arithmetic-mean-diameter/index.js"),
   "geology/gas-formation-volume-factor": () => import("../../geology/gas-formation-volume-factor/index.js"),
+  "horticulture/bottom-heat-mat-wattage-per-tray": () => import("../../horticulture/bottom-heat-mat-wattage-per-tray/index.js"),
   "journalism/military-rank-style": () => import("../../journalism/military-rank-style/index.js"),
   "journalism/palette-contrast": () => import("../../journalism/palette-contrast/index.js"),
   "laser/figure-nine-loop-transmission": () => import("../../laser/figure-nine-loop-transmission/index.js"),
@@ -46,5 +47,6 @@ export const toolModuleLoaders: Readonly<
   "statistics/wilcoxon-signed-rank": () => import("../../statistics/wilcoxon-signed-rank/index.js"),
   "taxation/transcript-requirement-match": () => import("../../taxation/transcript-requirement-match/index.js"),
   "text/lowercase": () => import("../../text/lowercase/index.js"),
+  "theatre/rosin-scenic-floor-mix-ratio": () => import("../../theatre/rosin-scenic-floor-mix-ratio/index.js"),
   "viticulture/tie-tape-roll-vines-covered": () => import("../../viticulture/tie-tape-roll-vines-covered/index.js"),
 };

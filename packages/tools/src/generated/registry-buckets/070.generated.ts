@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/nrv-lower-of-cost-nrv-inventory-test": () => import("../../accounting/nrv-lower-of-cost-nrv-inventory-test/index.js"),
   "acoustics/floor-footfall-frequency-screen": () => import("../../acoustics/floor-footfall-frequency-screen/index.js"),
   "acoustics/mach-angle-shock-wave": () => import("../../acoustics/mach-angle-shock-wave/index.js"),
   "apiculture/package-bees-pounds-to-count": () => import("../../apiculture/package-bees-pounds-to-count/index.js"),
@@ -32,6 +33,9 @@ export const toolModuleLoaders: Readonly<
   "health/bmr-harris-benedict": () => import("../../health/bmr-harris-benedict/index.js"),
   "horology/amplitude-decline-power-reserve": () => import("../../horology/amplitude-decline-power-reserve/index.js"),
   "horology/gregorian-leap-year-cycle-calculator": () => import("../../horology/gregorian-leap-year-cycle-calculator/index.js"),
+  "horticulture/days-to-germination-vegetable-lookup": () => import("../../horticulture/days-to-germination-vegetable-lookup/index.js"),
+  "horticulture/rolling-bench-tray-capacity": () => import("../../horticulture/rolling-bench-tray-capacity/index.js"),
+  "journalism/slug-url-length-hyphen-best-practice-checker": () => import("../../journalism/slug-url-length-hyphen-best-practice-checker/index.js"),
   "logic/de-morgan-and-to-or-transformer": () => import("../../logic/de-morgan-and-to-or-transformer/index.js"),
   "math/hermite-polynomial-approx": () => import("../../math/hermite-polynomial-approx/index.js"),
   "numismatics/premium-over-spot-percent": () => import("../../numismatics/premium-over-spot-percent/index.js"),

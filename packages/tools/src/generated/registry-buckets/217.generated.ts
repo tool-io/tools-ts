@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "auditing/emphasis-of-matter-other-matter-paragraph-selector": () => import("../../auditing/emphasis-of-matter-other-matter-paragraph-selector/index.js"),
   "auditing/peer-review-independence": () => import("../../auditing/peer-review-independence/index.js"),
   "aviation/fuel-per-hour-from-burn": () => import("../../aviation/fuel-per-hour-from-burn/index.js"),
+  "banking/lcr-liquidity-coverage-ratio": () => import("../../banking/lcr-liquidity-coverage-ratio/index.js"),
   "biology/heterozygosity-observed": () => import("../../biology/heterozygosity-observed/index.js"),
   "carpentry/vakuumpresse-druck": () => import("../../carpentry/vakuumpresse-druck/index.js"),
   "carpentry/wainscoting-panel-height": () => import("../../carpentry/wainscoting-panel-height/index.js"),

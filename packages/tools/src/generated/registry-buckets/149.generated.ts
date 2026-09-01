@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "aquaculture/transportation-density": () => import("../../aquaculture/transportation-density/index.js"),
+  "banking/stop-payment-duration-lookup": () => import("../../banking/stop-payment-duration-lookup/index.js"),
   "biology/bleeding-time": () => import("../../biology/bleeding-time/index.js"),
   "biology/dead-space-volume": () => import("../../biology/dead-space-volume/index.js"),
   "carpentry/poly-coats-needed": () => import("../../carpentry/poly-coats-needed/index.js"),
@@ -24,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/hos-70-hour-8-day-remaining-checker": () => import("../../logistics/hos-70-hour-8-day-remaining-checker/index.js"),
   "math/hypocycloid-perimeter": () => import("../../math/hypocycloid-perimeter/index.js"),
   "metrics/residual-sum-of-squares": () => import("../../metrics/residual-sum-of-squares/index.js"),
+  "music/transpose-chord-progression": () => import("../../music/transpose-chord-progression/index.js"),
   "mycology/taste-coded-entry-checker": () => import("../../mycology/taste-coded-entry-checker/index.js"),
   "oenology/abv-simple-sg-drop": () => import("../../oenology/abv-simple-sg-drop/index.js"),
   "paleography/signum-cross-detector": () => import("../../paleography/signum-cross-detector/index.js"),

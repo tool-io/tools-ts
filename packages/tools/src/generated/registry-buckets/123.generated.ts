@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/pto-accrual-liability-hours-rate-update": () => import("../../accounting/pto-accrual-liability-hours-rate-update/index.js"),
   "acoustics/pipe-end-correction": () => import("../../acoustics/pipe-end-correction/index.js"),
   "aquaculture/daily-feed-rate": () => import("../../aquaculture/daily-feed-rate/index.js"),
   "archival-studies/paging-wait-average-calculator": () => import("../../archival-studies/paging-wait-average-calculator/index.js"),
@@ -35,4 +36,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/diode-saturation-current": () => import("../../semiconductor/diode-saturation-current/index.js"),
   "semiconductor/fe-ram-coercive-voltage": () => import("../../semiconductor/fe-ram-coercive-voltage/index.js"),
   "semiconductor/thermoelectric-power-factor": () => import("../../semiconductor/thermoelectric-power-factor/index.js"),
+  "theatre/traveler-track-overlap-center-meet-inch": () => import("../../theatre/traveler-track-overlap-center-meet-inch/index.js"),
 };

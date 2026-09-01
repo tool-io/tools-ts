@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "csv/currency-symbol-strip-to-number": () => import("../../csv/currency-symbol-strip-to-number/index.js"),
   "demography/brass-relational-logit-alpha-beta": () => import("../../demography/brass-relational-logit-alpha-beta/index.js"),
   "demography/kitagawa-component-decomposition": () => import("../../demography/kitagawa-component-decomposition/index.js"),
+  "electronics/optocoupler-isolation-voltage": () => import("../../electronics/optocoupler-isolation-voltage/index.js"),
   "engineering/chiller-cop": () => import("../../engineering/chiller-cop/index.js"),
   "engineering/dewatering-well-flow": () => import("../../engineering/dewatering-well-flow/index.js"),
   "engineering/heat-pump-cop-carnot": () => import("../../engineering/heat-pump-cop-carnot/index.js"),
@@ -49,5 +50,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/dislocation-density-from-etch-pit": () => import("../../semiconductor/dislocation-density-from-etch-pit/index.js"),
   "sociology/net-migration-census-survival-method": () => import("../../sociology/net-migration-census-survival-method/index.js"),
   "taxation/balance-due-penalty-threshold": () => import("../../taxation/balance-due-penalty-threshold/index.js"),
+  "theatre/velour-weight-oz-linear-yard-lookup": () => import("../../theatre/velour-weight-oz-linear-yard-lookup/index.js"),
   "typography/print-dpi-pixels-for-pt-size": () => import("../../typography/print-dpi-pixels-for-pt-size/index.js"),
 };

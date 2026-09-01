@@ -20,7 +20,9 @@ export const toolModuleLoaders: Readonly<
   "electronics/transformer-copper-loss-at-load": () => import("../../electronics/transformer-copper-loss-at-load/index.js"),
   "encode/url-component": () => import("../../encode/url-component/index.js"),
   "geology/specific-gravity": () => import("../../geology/specific-gravity/index.js"),
+  "glaciology/thermal-diffusion-length-scale": () => import("../../glaciology/thermal-diffusion-length-scale/index.js"),
   "horticulture/peat-perlite-bark-blend-ratio": () => import("../../horticulture/peat-perlite-bark-blend-ratio/index.js"),
+  "horticulture/poly-film-roll-needed": () => import("../../horticulture/poly-film-roll-needed/index.js"),
   "insurance/buy-sell-structure-comparison": () => import("../../insurance/buy-sell-structure-comparison/index.js"),
   "insurance/gig-coverage-gap": () => import("../../insurance/gig-coverage-gap/index.js"),
   "kinesiology/takeoff-impulse-velocity": () => import("../../kinesiology/takeoff-impulse-velocity/index.js"),
@@ -36,4 +38,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/gate-induced-drain-leakage": () => import("../../semiconductor/gate-induced-drain-leakage/index.js"),
   "semiconductor/interposer-line-resistance": () => import("../../semiconductor/interposer-line-resistance/index.js"),
   "size/fitted-sheet": () => import("../../size/fitted-sheet/index.js"),
+  "theatre/preview-performance-discount-standard-lookup": () => import("../../theatre/preview-performance-discount-standard-lookup/index.js"),
 };

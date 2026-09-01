@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/bank-reconciliation-outstanding-items-bridge": () => import("../../accounting/bank-reconciliation-outstanding-items-bridge/index.js"),
+  "accounting/out-of-balance-difference-transposition-halver": () => import("../../accounting/out-of-balance-difference-transposition-halver/index.js"),
   "archival-studies/transcription-progress-percent-calculator": () => import("../../archival-studies/transcription-progress-percent-calculator/index.js"),
   "biology/body-length-weight": () => import("../../biology/body-length-weight/index.js"),
   "biology/bradford-protein-conc": () => import("../../biology/bradford-protein-conc/index.js"),
@@ -16,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/window-comparator-thresholds": () => import("../../electronics/window-comparator-thresholds/index.js"),
   "horology/alarm-set-offset": () => import("../../horology/alarm-set-offset/index.js"),
   "insurance/waiting-period-credit": () => import("../../insurance/waiting-period-credit/index.js"),
+  "journalism/seo-headline-front-load-keyword-position-checker": () => import("../../journalism/seo-headline-front-load-keyword-position-checker/index.js"),
   "laser/hatch-overlap": () => import("../../laser/hatch-overlap/index.js"),
   "laser/nopa-bandwidth-overlap": () => import("../../laser/nopa-bandwidth-overlap/index.js"),
   "music/midi-clock-us-per-quarter-ppqn": () => import("../../music/midi-clock-us-per-quarter-ppqn/index.js"),
@@ -30,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "sailing/polar-performance-percentage": () => import("../../sailing/polar-performance-percentage/index.js"),
   "theatre/focus-chart-coverage": () => import("../../theatre/focus-chart-coverage/index.js"),
   "theatre/rigging-signoff-audit": () => import("../../theatre/rigging-signoff-audit/index.js"),
+  "typography/contrast-ratio-text-size-threshold-checker": () => import("../../typography/contrast-ratio-text-size-threshold-checker/index.js"),
   "viticulture/frost-risk-budbreak-date-estimate": () => import("../../viticulture/frost-risk-budbreak-date-estimate/index.js"),
   "vr/tracking-jitter-rms": () => import("../../vr/tracking-jitter-rms/index.js"),
 };

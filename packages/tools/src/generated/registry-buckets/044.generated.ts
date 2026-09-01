@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/subsequent-events-type-i-vs-ii-classifier": () => import("../../accounting/subsequent-events-type-i-vs-ii-classifier/index.js"),
   "acoustics/festival-noise-limit-screen": () => import("../../acoustics/festival-noise-limit-screen/index.js"),
   "actuarial/zillmer-reserve": () => import("../../actuarial/zillmer-reserve/index.js"),
   "aquaculture/drum-filter-sizing": () => import("../../aquaculture/drum-filter-sizing/index.js"),
@@ -27,10 +28,13 @@ export const toolModuleLoaders: Readonly<
   "hash/sha3-512": () => import("../../hash/sha3-512/index.js"),
   "information/log-loss": () => import("../../information/log-loss/index.js"),
   "journalism/ai-image-disclosure": () => import("../../journalism/ai-image-disclosure/index.js"),
+  "journalism/analytics-engaged-time-minute-threshold-lookup": () => import("../../journalism/analytics-engaged-time-minute-threshold-lookup/index.js"),
   "laser/laser-core-numerical-aperture-mode-field-diameter-converter": () => import("../../laser/laser-core-numerical-aperture-mode-field-diameter-converter/index.js"),
   "laser/laser-facet-coating-ar-hr-mirror-power-ratio-lookup": () => import("../../laser/laser-facet-coating-ar-hr-mirror-power-ratio-lookup/index.js"),
   "laser/polymerization-voxel-size": () => import("../../laser/polymerization-voxel-size/index.js"),
   "laser/spatial-filter-pinhole": () => import("../../laser/spatial-filter-pinhole/index.js"),
+  "limnology/photic-zone-percent-depth": () => import("../../limnology/photic-zone-percent-depth/index.js"),
+  "limnology/tsi-composite-average": () => import("../../limnology/tsi-composite-average/index.js"),
   "logic/minterm-index-binary-decoder": () => import("../../logic/minterm-index-binary-decoder/index.js"),
   "logic/modus-ponens-step-validator": () => import("../../logic/modus-ponens-step-validator/index.js"),
   "math/kelvin-function-bei-approx": () => import("../../math/kelvin-function-bei-approx/index.js"),

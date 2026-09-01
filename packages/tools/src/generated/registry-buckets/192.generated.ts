@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "celestial-mechanics/rendezvous-phasing-period": () => import("../../celestial-mechanics/rendezvous-phasing-period/index.js"),
   "classification/roc-auc": () => import("../../classification/roc-auc/index.js"),
   "climatology/heat-index-exceedance-counter": () => import("../../climatology/heat-index-exceedance-counter/index.js"),
+  "color/ws2812-led-byte-order-grb-checker": () => import("../../color/ws2812-led-byte-order-grb-checker/index.js"),
   "compound-interest-calculator": () => import("../../compound-interest-calculator/index.js"),
   "construction/insulation-blown-bags": () => import("../../construction/insulation-blown-bags/index.js"),
   "convert/oklch-to-hsv": () => import("../../convert/oklch-to-hsv/index.js"),
@@ -45,5 +46,6 @@ export const toolModuleLoaders: Readonly<
   "size/jeans": () => import("../../size/jeans/index.js"),
   "statistics/interquartile-mean": () => import("../../statistics/interquartile-mean/index.js"),
   "statistics/percentile-value": () => import("../../statistics/percentile-value/index.js"),
+  "theatre/practical-prop-lamp-wattage-circuit-load-add": () => import("../../theatre/practical-prop-lamp-wattage-circuit-load-add/index.js"),
   "transcriptomics/immune-signature-score": () => import("../../transcriptomics/immune-signature-score/index.js"),
 };

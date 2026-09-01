@@ -23,6 +23,9 @@ export const toolModuleLoaders: Readonly<
   "geology/gravity-anomaly-bouguer": () => import("../../geology/gravity-anomaly-bouguer/index.js"),
   "geology/mohr-coulomb-shear-strength": () => import("../../geology/mohr-coulomb-shear-strength/index.js"),
   "horology/unobtainium-collector-term-lookup": () => import("../../horology/unobtainium-collector-term-lookup/index.js"),
+  "horticulture/glazing-light-transmission-percent": () => import("../../horticulture/glazing-light-transmission-percent/index.js"),
+  "linguistics/hangul-jamo-composition-count": () => import("../../linguistics/hangul-jamo-composition-count/index.js"),
+  "linguistics/kana-romaji-mapping-lookup": () => import("../../linguistics/kana-romaji-mapping-lookup/index.js"),
   "logistics/tare-payload-net-gross-split": () => import("../../logistics/tare-payload-net-gross-split/index.js"),
   "matrix/singular-value-decomposition": () => import("../../matrix/singular-value-decomposition/index.js"),
   "mycology/cystidia-position-note-generator": () => import("../../mycology/cystidia-position-note-generator/index.js"),
@@ -35,4 +38,5 @@ export const toolModuleLoaders: Readonly<
   "seismology/cumulative-absolute-velocity-cai": () => import("../../seismology/cumulative-absolute-velocity-cai/index.js"),
   "text/camel-case": () => import("../../text/camel-case/index.js"),
   "transcriptomics/probe-off-target-filter": () => import("../../transcriptomics/probe-off-target-filter/index.js"),
+  "viticulture/bird-damage-loss-percent-estimate": () => import("../../viticulture/bird-damage-loss-percent-estimate/index.js"),
 };

@@ -38,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "sericulture/bed-spacing-density-checker": () => import("../../sericulture/bed-spacing-density-checker/index.js"),
   "taxation/pillar-two-top-up-tax": () => import("../../taxation/pillar-two-top-up-tax/index.js"),
   "text/word-length-histogram": () => import("../../text/word-length-histogram/index.js"),
+  "theatre/front-of-house-staff-ratio-per-100-seats": () => import("../../theatre/front-of-house-staff-ratio-per-100-seats/index.js"),
   "typography/major-third-scale-generator": () => import("../../typography/major-third-scale-generator/index.js"),
   "viticulture/mildew-infection-period-gdm-checker": () => import("../../viticulture/mildew-infection-period-gdm-checker/index.js"),
 };

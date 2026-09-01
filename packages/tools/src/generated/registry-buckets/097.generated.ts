@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "activation/leaky-relu": () => import("../../activation/leaky-relu/index.js"),
   "astrometry/sip-distortion-evaluation": () => import("../../astrometry/sip-distortion-evaluation/index.js"),
+  "banking/alert-backlog-aging-checker": () => import("../../banking/alert-backlog-aging-checker/index.js"),
   "biology/punnett-square-di": () => import("../../biology/punnett-square-di/index.js"),
   "carpentry/din-68901-kuechen-korpus-hoehe": () => import("../../carpentry/din-68901-kuechen-korpus-hoehe/index.js"),
   "carpentry/laminat-verschnitt": () => import("../../carpentry/laminat-verschnitt/index.js"),
@@ -17,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "csv/mixed-header-case-conflict-checker": () => import("../../csv/mixed-header-case-conflict-checker/index.js"),
   "csv/rfc4180-quoted-field-parser-check": () => import("../../csv/rfc4180-quoted-field-parser-check/index.js"),
   "electronics/transformer-volts-per-turn": () => import("../../electronics/transformer-volts-per-turn/index.js"),
+  "ergonomics/l5s1-moment-calculator": () => import("../../ergonomics/l5s1-moment-calculator/index.js"),
   "futurology/connectivity-everywhere-driver-chain-builder": () => import("../../futurology/connectivity-everywhere-driver-chain-builder/index.js"),
   "geology/active-earth-pressure-coefficient": () => import("../../geology/active-earth-pressure-coefficient/index.js"),
   "horology/long-now-10000-year-clock-status-lookup": () => import("../../horology/long-now-10000-year-clock-status-lookup/index.js"),

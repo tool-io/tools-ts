@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/accrual-vs-cash-basis-net-income-difference": () => import("../../accounting/accrual-vs-cash-basis-net-income-difference/index.js"),
   "carpentry/leim-auftrag-einseitig-beidseitig-lookup": () => import("../../carpentry/leim-auftrag-einseitig-beidseitig-lookup/index.js"),
   "celestial-mechanics/powered-flyby-velocity-budget": () => import("../../celestial-mechanics/powered-flyby-velocity-budget/index.js"),
   "checksum/crc-64-we": () => import("../../checksum/crc-64-we/index.js"),
@@ -25,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "metabolomics/isotope-abundance-correction": () => import("../../metabolomics/isotope-abundance-correction/index.js"),
   "mri/epi-echo-spacing-components": () => import("../../mri/epi-echo-spacing-components/index.js"),
   "nautical/nautical-mile-to-km": () => import("../../nautical/nautical-mile-to-km/index.js"),
+  "numismatics/reign-title-era-name-to-calendar-years-converter": () => import("../../numismatics/reign-title-era-name-to-calendar-years-converter/index.js"),
   "numismatics/silver-fineness-weight-content": () => import("../../numismatics/silver-fineness-weight-content/index.js"),
   "oenology/screwcap-torque-spec": () => import("../../oenology/screwcap-torque-spec/index.js"),
   "probability/lognormal-sampler": () => import("../../probability/lognormal-sampler/index.js"),

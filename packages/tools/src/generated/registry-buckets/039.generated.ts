@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/syd-sum-of-years-digits-depreciation": () => import("../../accounting/syd-sum-of-years-digits-depreciation/index.js"),
+  "accounting/trial-balance-debits-credits-checker": () => import("../../accounting/trial-balance-debits-credits-checker/index.js"),
   "aquaculture/solids-production-rate": () => import("../../aquaculture/solids-production-rate/index.js"),
   "biology/cell-membrane-stability": () => import("../../biology/cell-membrane-stability/index.js"),
   "biology/germination-energy": () => import("../../biology/germination-energy/index.js"),
@@ -24,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "genetics/synonymous-codon-sites": () => import("../../genetics/synonymous-codon-sites/index.js"),
   "geology/secondary-compression-settlement": () => import("../../geology/secondary-compression-settlement/index.js"),
   "laser/laser-thulium-fiber-1908-nm-holmium-cascade-hard-tissue-lookup": () => import("../../laser/laser-thulium-fiber-1908-nm-holmium-cascade-hard-tissue-lookup/index.js"),
+  "linguistics/tone-register-vs-contour-classifier": () => import("../../linguistics/tone-register-vs-contour-classifier/index.js"),
   "matrix/identity": () => import("../../matrix/identity/index.js"),
   "neuroscience/local-binary-network-efficiency": () => import("../../neuroscience/local-binary-network-efficiency/index.js"),
   "numismatics/mixed-lot-average-melt-per-coin": () => import("../../numismatics/mixed-lot-average-melt-per-coin/index.js"),
@@ -35,5 +38,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/subthreshold-swing": () => import("../../semiconductor/subthreshold-swing/index.js"),
   "statistics/number-needed-to-treat": () => import("../../statistics/number-needed-to-treat/index.js"),
   "typography/line-height-ratio": () => import("../../typography/line-height-ratio/index.js"),
+  "viticulture/tucking-in-catch-wire-passes": () => import("../../viticulture/tucking-in-catch-wire-passes/index.js"),
   "web/multipart-boundary-generator": () => import("../../web/multipart-boundary-generator/index.js"),
 };

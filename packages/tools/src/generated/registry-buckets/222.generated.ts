@@ -7,6 +7,7 @@ export const toolModuleLoaders: Readonly<
   "accounting/depletion-units-natural-resource-extraction": () => import("../../accounting/depletion-units-natural-resource-extraction/index.js"),
   "aquaculture/settling-velocity": () => import("../../aquaculture/settling-velocity/index.js"),
   "bacteriology/nitrate-zinc-step-logic": () => import("../../bacteriology/nitrate-zinc-step-logic/index.js"),
+  "banking/net-interest-margin-nim": () => import("../../banking/net-interest-margin-nim/index.js"),
   "biology/colony-forming-units": () => import("../../biology/colony-forming-units/index.js"),
   "biology/relative-expression-fold": () => import("../../biology/relative-expression-fold/index.js"),
   "carpentry/gratleiste-nut-tiefe": () => import("../../carpentry/gratleiste-nut-tiefe/index.js"),
@@ -38,7 +39,9 @@ export const toolModuleLoaders: Readonly<
   "random/turkish-alphabet-letter": () => import("../../random/turkish-alphabet-letter/index.js"),
   "semiconductor/annealing-activation-fraction": () => import("../../semiconductor/annealing-activation-fraction/index.js"),
   "taxation/marketplace-tax-split": () => import("../../taxation/marketplace-tax-split/index.js"),
+  "theatre/quick-change-booth-wingside-minutes-lookup": () => import("../../theatre/quick-change-booth-wingside-minutes-lookup/index.js"),
   "toxicology/continuous-exponential-response-bmd": () => import("../../toxicology/continuous-exponential-response-bmd/index.js"),
   "transcriptomics/expression-zscore": () => import("../../transcriptomics/expression-zscore/index.js"),
+  "typography/type-scale-token-export-naming": () => import("../../typography/type-scale-token-export-naming/index.js"),
   "volcanology/melt-fraction-solidus-liquidus-interpolation": () => import("../../volcanology/melt-fraction-solidus-liquidus-interpolation/index.js"),
 };

@@ -37,5 +37,6 @@ export const toolModuleLoaders: Readonly<
   "typography/pica-to-inches": () => import("../../typography/pica-to-inches/index.js"),
   "virology/seropositivity-waning-fit": () => import("../../virology/seropositivity-waning-fit/index.js"),
   "virology/target-transduction-moi": () => import("../../virology/target-transduction-moi/index.js"),
+  "viticulture/green-harvest-drop-cluster-weight": () => import("../../viticulture/green-harvest-drop-cluster-weight/index.js"),
   "vr/eye-tracking-latency-ms": () => import("../../vr/eye-tracking-latency-ms/index.js"),
 };

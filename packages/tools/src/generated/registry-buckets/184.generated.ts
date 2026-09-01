@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/encumbrance-outstanding-commitment-entry-checker": () => import("../../accounting/encumbrance-outstanding-commitment-entry-checker/index.js"),
   "accounting/lifo-reserve-disclosure-computation": () => import("../../accounting/lifo-reserve-disclosure-computation/index.js"),
   "acoustics/mass-law-transmission-loss": () => import("../../acoustics/mass-law-transmission-loss/index.js"),
   "acoustics/peutz-alcons-estimate": () => import("../../acoustics/peutz-alcons-estimate/index.js"),
@@ -16,10 +17,12 @@ export const toolModuleLoaders: Readonly<
   "csv/control-character-finder-in-fields": () => import("../../csv/control-character-finder-in-fields/index.js"),
   "csv/quoted-multiline-safe-splitter": () => import("../../csv/quoted-multiline-safe-splitter/index.js"),
   "electronics/headphone-impedance": () => import("../../electronics/headphone-impedance/index.js"),
+  "electronics/infrared-distance-from-voltage": () => import("../../electronics/infrared-distance-from-voltage/index.js"),
   "forestry/biomass-expansion-factor": () => import("../../forestry/biomass-expansion-factor/index.js"),
   "forestry/form-factor": () => import("../../forestry/form-factor/index.js"),
   "futurology/evidence-graph-mapper": () => import("../../futurology/evidence-graph-mapper/index.js"),
   "hash/sha-512-224": () => import("../../hash/sha-512-224/index.js"),
+  "journalism/election-too-close-to-call-margin-threshold-lookup": () => import("../../journalism/election-too-close-to-call-margin-threshold-lookup/index.js"),
   "logic/bramantip-aai4-valid-lookup": () => import("../../logic/bramantip-aai4-valid-lookup/index.js"),
   "logic/constructive-dilemma-validator": () => import("../../logic/constructive-dilemma-validator/index.js"),
   "logic/four-term-equivocation-detector": () => import("../../logic/four-term-equivocation-detector/index.js"),

@@ -47,4 +47,5 @@ export const toolModuleLoaders: Readonly<
   "sericulture/degumming-weight-loss-percent": () => import("../../sericulture/degumming-weight-loss-percent/index.js"),
   "sociology/parity-progression-ratio": () => import("../../sociology/parity-progression-ratio/index.js"),
   "theatre/drafting-sheet-coverage": () => import("../../theatre/drafting-sheet-coverage/index.js"),
+  "theatre/gobo-pattern-size-a-size-b-lookup": () => import("../../theatre/gobo-pattern-size-a-size-b-lookup/index.js"),
 };

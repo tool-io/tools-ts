@@ -24,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/clutch-torque-single-plate": () => import("../../engineering/clutch-torque-single-plate/index.js"),
   "engineering/inclined-plane-effort": () => import("../../engineering/inclined-plane-effort/index.js"),
   "engineering/specific-energy-open-channel": () => import("../../engineering/specific-energy-open-channel/index.js"),
+  "ergonomics/grip-diameter-fit-calculator": () => import("../../ergonomics/grip-diameter-fit-calculator/index.js"),
   "finance/monte-carlo-option": () => import("../../finance/monte-carlo-option/index.js"),
   "geology/gas-compressibility-factor-z": () => import("../../geology/gas-compressibility-factor-z/index.js"),
   "geology/overburden-stress": () => import("../../geology/overburden-stress/index.js"),

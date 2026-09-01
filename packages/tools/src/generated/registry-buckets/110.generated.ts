@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "auditing/user-access-review-quarterly-recertification-evidence-tester": () => import("../../auditing/user-access-review-quarterly-recertification-evidence-tester/index.js"),
   "chemistry/kb-from-ka-kw": () => import("../../chemistry/kb-from-ka-kw/index.js"),
   "cipher/playfair-encoder": () => import("../../cipher/playfair-encoder/index.js"),
+  "color/lab-lch-components-from-lab": () => import("../../color/lab-lch-components-from-lab/index.js"),
   "construction/concrete-maturity": () => import("../../construction/concrete-maturity/index.js"),
   "cost/electricity": () => import("../../cost/electricity/index.js"),
   "cryptography/mnemonic-checksum-bits-for-word-count": () => import("../../cryptography/mnemonic-checksum-bits-for-word-count/index.js"),
@@ -31,5 +32,6 @@ export const toolModuleLoaders: Readonly<
   "sailing/compass-deviation-lookup": () => import("../../sailing/compass-deviation-lookup/index.js"),
   "sailing/helm-balance-ratio": () => import("../../sailing/helm-balance-ratio/index.js"),
   "semiconductor/bjt-emitter-efficiency": () => import("../../semiconductor/bjt-emitter-efficiency/index.js"),
+  "theatre/rf-antenna-distribution-splitter-loss-count": () => import("../../theatre/rf-antenna-distribution-splitter-loss-count/index.js"),
   "web/url-username": () => import("../../web/url-username/index.js"),
 };

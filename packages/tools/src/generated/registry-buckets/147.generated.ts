@@ -18,7 +18,9 @@ export const toolModuleLoaders: Readonly<
   "forestry/ndvi-change-annual-defoliation-watch": () => import("../../forestry/ndvi-change-annual-defoliation-watch/index.js"),
   "futurology/longevity-economy-driver-implication-chain": () => import("../../futurology/longevity-economy-driver-implication-chain/index.js"),
   "gemology/pavilion-angle-depth": () => import("../../gemology/pavilion-angle-depth/index.js"),
+  "glaciology/ice-cliff-mass-loss-per-year": () => import("../../glaciology/ice-cliff-mass-loss-per-year/index.js"),
   "glaciology/pressure-melting-point-depth": () => import("../../glaciology/pressure-melting-point-depth/index.js"),
+  "glaciology/subglacial-water-pressure-ratio": () => import("../../glaciology/subglacial-water-pressure-ratio/index.js"),
   "horology/solar-watch-dark-runtime-calculator": () => import("../../horology/solar-watch-dark-runtime-calculator/index.js"),
   "laser/bathymetric-penetration": () => import("../../laser/bathymetric-penetration/index.js"),
   "laser/confocal-lateral-resolution": () => import("../../laser/confocal-lateral-resolution/index.js"),
@@ -33,4 +35,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/led-light-extraction-efficiency": () => import("../../semiconductor/led-light-extraction-efficiency/index.js"),
   "statistics/moving-average": () => import("../../statistics/moving-average/index.js"),
   "taxation/deadline-business-day-shift": () => import("../../taxation/deadline-business-day-shift/index.js"),
+  "theatre/crossover-passage-width-checker": () => import("../../theatre/crossover-passage-width-checker/index.js"),
 };

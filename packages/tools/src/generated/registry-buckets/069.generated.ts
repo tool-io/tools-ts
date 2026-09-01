@@ -27,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "insurance/rescission-screen": () => import("../../insurance/rescission-screen/index.js"),
   "insurance/sap-gaap-surplus-bridge": () => import("../../insurance/sap-gaap-surplus-bridge/index.js"),
   "kinesiology/dolphin-kick-wave-screen": () => import("../../kinesiology/dolphin-kick-wave-screen/index.js"),
+  "linguistics/script-direction-rtl-ltr-classifier": () => import("../../linguistics/script-direction-rtl-ltr-classifier/index.js"),
   "logistics/trailer-dwell-time-hours-checker": () => import("../../logistics/trailer-dwell-time-hours-checker/index.js"),
   "math/linear-congruence-solution": () => import("../../math/linear-congruence-solution/index.js"),
   "mining/comminution-energy": () => import("../../mining/comminution-energy/index.js"),

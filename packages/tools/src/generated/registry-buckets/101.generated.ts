@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "archival-studies/hierarchy-level-counter": () => import("../../archival-studies/hierarchy-level-counter/index.js"),
   "auditing/same-day-duplicate-invoice-exact-match-flagger": () => import("../../auditing/same-day-duplicate-invoice-exact-match-flagger/index.js"),
   "aviation/minimum-sink-speed": () => import("../../aviation/minimum-sink-speed/index.js"),
+  "banking/cross-rate-triangular-computation": () => import("../../banking/cross-rate-triangular-computation/index.js"),
   "biology/anion-gap": () => import("../../biology/anion-gap/index.js"),
   "biology/primer-gc-count": () => import("../../biology/primer-gc-count/index.js"),
   "biology/seedling-length-vigor": () => import("../../biology/seedling-length-vigor/index.js"),

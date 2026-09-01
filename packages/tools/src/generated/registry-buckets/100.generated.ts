@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "date/iso-week-number": () => import("../../date/iso-week-number/index.js"),
   "demography/generation-length-t-intrinsic": () => import("../../demography/generation-length-t-intrinsic/index.js"),
   "electronics/apd-gain": () => import("../../electronics/apd-gain/index.js"),
+  "electronics/battery-impedance-spectroscopy": () => import("../../electronics/battery-impedance-spectroscopy/index.js"),
   "electronics/bus-utilization": () => import("../../electronics/bus-utilization/index.js"),
   "electronics/capacitor-esr-from-df": () => import("../../electronics/capacitor-esr-from-df/index.js"),
   "electronics/max-power-delivered": () => import("../../electronics/max-power-delivered/index.js"),

@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "celestial-mechanics/hohmann-transfer-budget": () => import("../../celestial-mechanics/hohmann-transfer-budget/index.js"),
   "chemistry/combustion-hydrogen-mass": () => import("../../chemistry/combustion-hydrogen-mass/index.js"),
   "chemistry/isoelectric-point": () => import("../../chemistry/isoelectric-point/index.js"),
+  "color/diverging-scheme-midpoint-neutral-checker": () => import("../../color/diverging-scheme-midpoint-neutral-checker/index.js"),
   "electronics/duty-cycle-average-voltage": () => import("../../electronics/duty-cycle-average-voltage/index.js"),
   "electronics/relay-operate-time": () => import("../../electronics/relay-operate-time/index.js"),
   "epigraphy/column-support-ratio-classifier": () => import("../../epigraphy/column-support-ratio-classifier/index.js"),
@@ -23,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/volume-increment-percentage": () => import("../../forestry/volume-increment-percentage/index.js"),
   "gemology/inclusion-position-code": () => import("../../gemology/inclusion-position-code/index.js"),
   "geometry/distance-3d": () => import("../../geometry/distance-3d/index.js"),
+  "glaciology/calving-front-cliff-height-above-water": () => import("../../glaciology/calving-front-cliff-height-above-water/index.js"),
   "horology/bph-to-hertz": () => import("../../horology/bph-to-hertz/index.js"),
   "html/details-summary-native-disclosure-lookup": () => import("../../html/details-summary-native-disclosure-lookup/index.js"),
   "insurance/transfer-fraud-screen": () => import("../../insurance/transfer-fraud-screen/index.js"),
@@ -49,6 +51,7 @@ export const toolModuleLoaders: Readonly<
   "taxation/adoption-credit-expense": () => import("../../taxation/adoption-credit-expense/index.js"),
   "taxation/pfic-distribution-tax": () => import("../../taxation/pfic-distribution-tax/index.js"),
   "text/justify-lines": () => import("../../text/justify-lines/index.js"),
+  "theatre/border-mask-height-sightline-calculator": () => import("../../theatre/border-mask-height-sightline-calculator/index.js"),
   "viticulture/end-post-anchor-angle-leaning": () => import("../../viticulture/end-post-anchor-angle-leaning/index.js"),
   "vr/texture-memory-required": () => import("../../vr/texture-memory-required/index.js"),
 };

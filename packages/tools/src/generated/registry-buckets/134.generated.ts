@@ -26,7 +26,9 @@ export const toolModuleLoaders: Readonly<
   "genetics/tetrad-segregation-tally": () => import("../../genetics/tetrad-segregation-tally/index.js"),
   "geology/hoek-brown-criterion": () => import("../../geology/hoek-brown-criterion/index.js"),
   "geology/shrinkage-limit": () => import("../../geology/shrinkage-limit/index.js"),
+  "horticulture/mist-propagation-interval-seconds": () => import("../../horticulture/mist-propagation-interval-seconds/index.js"),
   "html/meta-refresh-seconds-url-format": () => import("../../html/meta-refresh-seconds-url-format/index.js"),
+  "journalism/poll-horse-race-rounding-sum-100-checker": () => import("../../journalism/poll-horse-race-rounding-sum-100-checker/index.js"),
   "logic/i-proposition-classifier": () => import("../../logic/i-proposition-classifier/index.js"),
   "math/factorial-trailing-zeros-count": () => import("../../math/factorial-trailing-zeros-count/index.js"),
   "matrix/diagonal": () => import("../../matrix/diagonal/index.js"),
@@ -43,4 +45,5 @@ export const toolModuleLoaders: Readonly<
   "taxation/efile-rejection-triage": () => import("../../taxation/efile-rejection-triage/index.js"),
   "transcriptomics/reads-per-kilobase-million": () => import("../../transcriptomics/reads-per-kilobase-million/index.js"),
   "transcriptomics/rna-velocity-ratio": () => import("../../transcriptomics/rna-velocity-ratio/index.js"),
+  "viticulture/harvester-throughput-hectares-hour": () => import("../../viticulture/harvester-throughput-hectares-hour/index.js"),
 };

@@ -27,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/h-g-wells-founding-futurism-open-conspiracy-history-lookup": () => import("../../futurology/h-g-wells-founding-futurism-open-conspiracy-history-lookup/index.js"),
   "horology/amplitude-explicit-threshold-screen": () => import("../../horology/amplitude-explicit-threshold-screen/index.js"),
   "horology/dynamic-pressure-factor": () => import("../../horology/dynamic-pressure-factor/index.js"),
+  "limnology/seasonal-heat-budget-change": () => import("../../limnology/seasonal-heat-budget-change/index.js"),
   "logistics/vgm-verified-gross-mass-solas-total": () => import("../../logistics/vgm-verified-gross-mass-solas-total/index.js"),
   "mri/readout-window-sample-count": () => import("../../mri/readout-window-sample-count/index.js"),
   "museology/exhibition-duration-lux-budget": () => import("../../museology/exhibition-duration-lux-budget/index.js"),

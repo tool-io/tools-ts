@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/customer-deposit-deferred-revenue-journal-checker": () => import("../../accounting/customer-deposit-deferred-revenue-journal-checker/index.js"),
   "acoustics/leaf-blower-tonality-reference": () => import("../../acoustics/leaf-blower-tonality-reference/index.js"),
   "acoustics/tissue-attenuation-frequency-loss": () => import("../../acoustics/tissue-attenuation-frequency-loss/index.js"),
   "agriculture/compost-c-n-ratio": () => import("../../agriculture/compost-c-n-ratio/index.js"),
@@ -24,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "finance/payback-period": () => import("../../finance/payback-period/index.js"),
   "geology/moment-magnitude": () => import("../../geology/moment-magnitude/index.js"),
   "insurance/hsa-deductible-screen": () => import("../../insurance/hsa-deductible-screen/index.js"),
+  "journalism/newsworthiness-proximity-prominence-scoring-grid": () => import("../../journalism/newsworthiness-proximity-prominence-scoring-grid/index.js"),
   "kinesiology/emg-median-frequency-shift": () => import("../../kinesiology/emg-median-frequency-shift/index.js"),
   "laser/figure-eight-loop-transmission": () => import("../../laser/figure-eight-loop-transmission/index.js"),
   "laser/fmcw-lidar-range-velocity": () => import("../../laser/fmcw-lidar-range-velocity/index.js"),

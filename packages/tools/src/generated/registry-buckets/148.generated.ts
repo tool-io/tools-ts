@@ -21,6 +21,8 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/dis-manibus-presence-tag-generator": () => import("../../epigraphy/dis-manibus-presence-tag-generator/index.js"),
   "epigraphy/latin-abbreviation-expander": () => import("../../epigraphy/latin-abbreviation-expander/index.js"),
   "forestry/site-preparation-scarification-soil-disturbance-percent": () => import("../../forestry/site-preparation-scarification-soil-disturbance-percent/index.js"),
+  "game/chess-insufficient-material-checker": () => import("../../game/chess-insufficient-material-checker/index.js"),
+  "game/enemy-fov-cone-detection-angle-checker": () => import("../../game/enemy-fov-cone-detection-angle-checker/index.js"),
   "geology/passive-earth-pressure": () => import("../../geology/passive-earth-pressure/index.js"),
   "math/powerful-number-checker": () => import("../../math/powerful-number-checker/index.js"),
   "math/stirling-second-kind": () => import("../../math/stirling-second-kind/index.js"),
@@ -37,5 +39,6 @@ export const toolModuleLoaders: Readonly<
   "seismology/strong-motion-linear-baseline-correction": () => import("../../seismology/strong-motion-linear-baseline-correction/index.js"),
   "sociology/replacement-level-fertility-checker": () => import("../../sociology/replacement-level-fertility-checker/index.js"),
   "text/sentence-count": () => import("../../text/sentence-count/index.js"),
+  "theatre/scenery-package-rental-fee-weekly-lookup": () => import("../../theatre/scenery-package-rental-fee-weekly-lookup/index.js"),
   "web/url-host": () => import("../../web/url-host/index.js"),
 };

@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/box-joint-finger-width": () => import("../../carpentry/box-joint-finger-width/index.js"),
   "carpentry/doweling-jig-setting": () => import("../../carpentry/doweling-jig-setting/index.js"),
   "carpentry/leim-fugendicke-01-03mm": () => import("../../carpentry/leim-fugendicke-01-03mm/index.js"),
+  "color/brand-color-distance-perceptual-rank": () => import("../../color/brand-color-distance-perceptual-rank/index.js"),
   "construction/flooring-transition-height-difference": () => import("../../construction/flooring-transition-height-difference/index.js"),
   "construction/rebar-weight-per-foot": () => import("../../construction/rebar-weight-per-foot/index.js"),
   "convert/frequency": () => import("../../convert/frequency/index.js"),
@@ -47,4 +48,6 @@ export const toolModuleLoaders: Readonly<
   "taxation/housing-allowance-exclusion": () => import("../../taxation/housing-allowance-exclusion/index.js"),
   "taxation/small-business-health-credit": () => import("../../taxation/small-business-health-credit/index.js"),
   "transcriptomics/fusion-breakpoint-support": () => import("../../transcriptomics/fusion-breakpoint-support/index.js"),
+  "viticulture/bench-graft-callusing-degree-days": () => import("../../viticulture/bench-graft-callusing-degree-days/index.js"),
+  "viticulture/rootstock-cutting-length-standard-lookup": () => import("../../viticulture/rootstock-cutting-length-standard-lookup/index.js"),
 };

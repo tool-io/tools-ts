@@ -38,5 +38,7 @@ export const toolModuleLoaders: Readonly<
   "sociology/class-reproduction-odds-ratio": () => import("../../sociology/class-reproduction-odds-ratio/index.js"),
   "sociology/robin-hood-index-pietra": () => import("../../sociology/robin-hood-index-pietra/index.js"),
   "transcriptomics/gene-body-coverage-bias": () => import("../../transcriptomics/gene-body-coverage-bias/index.js"),
+  "viticulture/foliage-wire-raise-height-per-pass": () => import("../../viticulture/foliage-wire-raise-height-per-pass/index.js"),
+  "viticulture/planting-hole-backfill-volume": () => import("../../viticulture/planting-hole-backfill-volume/index.js"),
   "web/meta-tag-parser": () => import("../../web/meta-tag-parser/index.js"),
 };

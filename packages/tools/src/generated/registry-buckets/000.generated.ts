@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "biology/tidal-volume": () => import("../../biology/tidal-volume/index.js"),
   "biology/water-potential-total": () => import("../../biology/water-potential-total/index.js"),
   "carpentry/spanplattenschraube-4x30-vorbohrung-25mm": () => import("../../carpentry/spanplattenschraube-4x30-vorbohrung-25mm/index.js"),
+  "color/text-on-background-auto-black-white-picker": () => import("../../color/text-on-background-auto-black-white-picker/index.js"),
   "cost/water": () => import("../../cost/water/index.js"),
   "electricity/series-resistance": () => import("../../electricity/series-resistance/index.js"),
   "electronics/charge-on-capacitor": () => import("../../electronics/charge-on-capacitor/index.js"),
@@ -37,5 +38,6 @@ export const toolModuleLoaders: Readonly<
   "proteomics/tmt-channel-normalization": () => import("../../proteomics/tmt-channel-normalization/index.js"),
   "real-estate/mill-rate-tax": () => import("../../real-estate/mill-rate-tax/index.js"),
   "sailing/cunningham-tension": () => import("../../sailing/cunningham-tension/index.js"),
+  "theatre/pin-rail-position-distance-lookup": () => import("../../theatre/pin-rail-position-distance-lookup/index.js"),
   "validate/upc-a": () => import("../../validate/upc-a/index.js"),
 };

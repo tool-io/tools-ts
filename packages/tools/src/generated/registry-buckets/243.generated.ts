@@ -4,12 +4,14 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/balance-sheet-equation-balancer": () => import("../../accounting/balance-sheet-equation-balancer/index.js"),
   "actuarial/crvm-modified-reserve": () => import("../../actuarial/crvm-modified-reserve/index.js"),
   "arithmetic/increment": () => import("../../arithmetic/increment/index.js"),
   "auditing/disparate-impact": () => import("../../auditing/disparate-impact/index.js"),
   "auditing/fraud-brainstorming-session-required-elements-checklist": () => import("../../auditing/fraud-brainstorming-session-required-elements-checklist/index.js"),
   "auditing/software-cost-allocation": () => import("../../auditing/software-cost-allocation/index.js"),
   "bacteriology/probiotic-serving-label-audit": () => import("../../bacteriology/probiotic-serving-label-audit/index.js"),
+  "banking/open-banking-consent-expiry-days-lookup": () => import("../../banking/open-banking-consent-expiry-days-lookup/index.js"),
   "biology/ace-estimator": () => import("../../biology/ace-estimator/index.js"),
   "biology/mean-corpuscular-hemoglobin": () => import("../../biology/mean-corpuscular-hemoglobin/index.js"),
   "cartography/sheet-area-at-scale-km2": () => import("../../cartography/sheet-area-at-scale-km2/index.js"),
@@ -19,9 +21,11 @@ export const toolModuleLoaders: Readonly<
   "electronics/transformer-winding-resistance-dc": () => import("../../electronics/transformer-winding-resistance-dc/index.js"),
   "engineering/stopping-sight-distance": () => import("../../engineering/stopping-sight-distance/index.js"),
   "futurology/afrofuturism-cultural-tech-imagination-lookup": () => import("../../futurology/afrofuturism-cultural-tech-imagination-lookup/index.js"),
+  "game/battleship-parity-placement-strategy-lookup": () => import("../../game/battleship-parity-placement-strategy-lookup/index.js"),
   "genomics/at-skew": () => import("../../genomics/at-skew/index.js"),
   "geology/seismic-nmo-correction": () => import("../../geology/seismic-nmo-correction/index.js"),
   "geometry/circular-segment-area": () => import("../../geometry/circular-segment-area/index.js"),
+  "horticulture/mist-nozzle-radius-spacing": () => import("../../horticulture/mist-nozzle-radius-spacing/index.js"),
   "html/noscript-js-disabled-fallback": () => import("../../html/noscript-js-disabled-fallback/index.js"),
   "http/header-name-normalizer": () => import("../../http/header-name-normalizer/index.js"),
   "journalism/per-capita-rate": () => import("../../journalism/per-capita-rate/index.js"),

@@ -36,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "logic/square-subaltern-mapper": () => import("../../logic/square-subaltern-mapper/index.js"),
   "mining/core-recovery-percentage": () => import("../../mining/core-recovery-percentage/index.js"),
   "museology/loan-renewal-lead-weeks": () => import("../../museology/loan-renewal-lead-weeks/index.js"),
+  "music/seventh-chord-type-classifier": () => import("../../music/seventh-chord-type-classifier/index.js"),
   "number/pentagonal-checker": () => import("../../number/pentagonal-checker/index.js"),
   "random/morse-code-punctuation": () => import("../../random/morse-code-punctuation/index.js"),
   "random/yezidi-letter": () => import("../../random/yezidi-letter/index.js"),
@@ -45,5 +46,7 @@ export const toolModuleLoaders: Readonly<
   "taxation/new-markets-credit-schedule": () => import("../../taxation/new-markets-credit-schedule/index.js"),
   "taxation/refund-offset": () => import("../../taxation/refund-offset/index.js"),
   "text/pascal-case": () => import("../../text/pascal-case/index.js"),
+  "theatre/delay-tower-time-alignment-ms-distance-calculator": () => import("../../theatre/delay-tower-time-alignment-ms-distance-calculator/index.js"),
+  "theatre/stage-manager-promptbook-cue-number-format-lookup": () => import("../../theatre/stage-manager-promptbook-cue-number-format-lookup/index.js"),
   "transcriptomics/branch-divergence": () => import("../../transcriptomics/branch-divergence/index.js"),
 };

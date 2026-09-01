@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/capex-opex-capitalization-threshold-checker": () => import("../../accounting/capex-opex-capitalization-threshold-checker/index.js"),
   "acoustics/flanking-junction-record-lookup": () => import("../../acoustics/flanking-junction-record-lookup/index.js"),
   "acoustics/orchestra-reflector-reference": () => import("../../acoustics/orchestra-reflector-reference/index.js"),
   "acoustics/vc-vibration-curve-reference": () => import("../../acoustics/vc-vibration-curve-reference/index.js"),
@@ -26,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "gemology/spread-ratio-diameter-carat": () => import("../../gemology/spread-ratio-diameter-carat/index.js"),
   "horology/cosc-mechanical-test-program-lookup": () => import("../../horology/cosc-mechanical-test-program-lookup/index.js"),
   "http/content-type-parser": () => import("../../http/content-type-parser/index.js"),
+  "journalism/plagiarism-self-plagiarism-overlap-threshold-checker": () => import("../../journalism/plagiarism-self-plagiarism-overlap-threshold-checker/index.js"),
   "laser/f-theta-field-error": () => import("../../laser/f-theta-field-error/index.js"),
   "laser/isoplanatic-field-margin": () => import("../../laser/isoplanatic-field-margin/index.js"),
   "logic/darii-aii1-valid-lookup": () => import("../../logic/darii-aii1-valid-lookup/index.js"),
@@ -33,6 +35,8 @@ export const toolModuleLoaders: Readonly<
   "math/resultant-sylvester": () => import("../../math/resultant-sylvester/index.js"),
   "mining/ground-support-interaction": () => import("../../mining/ground-support-interaction/index.js"),
   "music/frequency-from-midi": () => import("../../music/frequency-from-midi/index.js"),
+  "music/ledger-line-count-for-pitch": () => import("../../music/ledger-line-count-for-pitch/index.js"),
+  "music/ornament-note-sequence-generator": () => import("../../music/ornament-note-sequence-generator/index.js"),
   "numismatics/electrolysis-risk-screen": () => import("../../numismatics/electrolysis-risk-screen/index.js"),
   "sailing/chain-catenary-sag": () => import("../../sailing/chain-catenary-sag/index.js"),
   "statistics/sample-size-proportion": () => import("../../statistics/sample-size-proportion/index.js"),

@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "encode/run-length": () => import("../../encode/run-length/index.js"),
   "film/reproduction-ratio": () => import("../../film/reproduction-ratio/index.js"),
   "finance/required-contribution": () => import("../../finance/required-contribution/index.js"),
+  "game/cooldown-stack-refresh-policy-lookup": () => import("../../game/cooldown-stack-refresh-policy-lookup/index.js"),
   "genetics/restriction-overhang-type": () => import("../../genetics/restriction-overhang-type/index.js"),
   "glaciology/core-bottom-age-extrapolation": () => import("../../glaciology/core-bottom-age-extrapolation/index.js"),
   "laser/free-space-link-margin": () => import("../../laser/free-space-link-margin/index.js"),

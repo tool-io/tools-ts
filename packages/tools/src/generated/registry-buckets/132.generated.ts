@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "biology/leaf-area-index": () => import("../../biology/leaf-area-index/index.js"),
   "carpentry/holz-schwindmass": () => import("../../carpentry/holz-schwindmass/index.js"),
   "chemistry/ionization-energy-lookup": () => import("../../chemistry/ionization-energy-lookup/index.js"),
+  "color/deuteranopia-simulation-matrix": () => import("../../color/deuteranopia-simulation-matrix/index.js"),
   "convert/hours-minutes-to-decimal": () => import("../../convert/hours-minutes-to-decimal/index.js"),
   "csv/pivot": () => import("../../csv/pivot/index.js"),
   "demography/cpr-contraceptive-prevalence-rate": () => import("../../demography/cpr-contraceptive-prevalence-rate/index.js"),

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/accrued-expense-reversal-next-period-checker": () => import("../../accounting/accrued-expense-reversal-next-period-checker/index.js"),
   "acoustics/doppler-approaching-frequency": () => import("../../acoustics/doppler-approaching-frequency/index.js"),
   "archaeology/ceramic-petrographic-point-count": () => import("../../archaeology/ceramic-petrographic-point-count/index.js"),
   "aviation/headwind-takeoff-factor": () => import("../../aviation/headwind-takeoff-factor/index.js"),
@@ -31,6 +32,8 @@ export const toolModuleLoaders: Readonly<
   "gemology/strand-bead-count": () => import("../../gemology/strand-bead-count/index.js"),
   "horology/sapphire-ar-coating-side-lookup": () => import("../../horology/sapphire-ar-coating-side-lookup/index.js"),
   "horology/seiko-astron-1969-launch-history-lookup": () => import("../../horology/seiko-astron-1969-launch-history-lookup/index.js"),
+  "limnology/anoxic-phosphorus-release-checker": () => import("../../limnology/anoxic-phosphorus-release-checker/index.js"),
+  "limnology/inverse-stratification-under-ice-checker": () => import("../../limnology/inverse-stratification-under-ice-checker/index.js"),
   "logistics/abc-analysis-cumulative-value-classifier": () => import("../../logistics/abc-analysis-cumulative-value-classifier/index.js"),
   "math/sphenic-number-checker": () => import("../../math/sphenic-number-checker/index.js"),
   "matrix/trace": () => import("../../matrix/trace/index.js"),

@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/critical-pressure-lookup": () => import("../../chemistry/critical-pressure-lookup/index.js"),
   "chemistry/root-mean-square-speed": () => import("../../chemistry/root-mean-square-speed/index.js"),
   "climatology/dry-adiabatic-height": () => import("../../climatology/dry-adiabatic-height/index.js"),
+  "dance/viennese-waltz-rotations-per-bar-estimate": () => import("../../dance/viennese-waltz-rotations-per-bar-estimate/index.js"),
   "decode/base85": () => import("../../decode/base85/index.js"),
   "finance/time-money": () => import("../../finance/time-money/index.js"),
   "forestry/frequency-plot-occurrence": () => import("../../forestry/frequency-plot-occurrence/index.js"),

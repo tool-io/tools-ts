@@ -25,6 +25,8 @@ export const toolModuleLoaders: Readonly<
   "engineering/lift-force": () => import("../../engineering/lift-force/index.js"),
   "engineering/traffic-growth-factor": () => import("../../engineering/traffic-growth-factor/index.js"),
   "filter/hacker-news": () => import("../../filter/hacker-news/index.js"),
+  "game/monopoly-jail-three-doubles-exit-rule": () => import("../../game/monopoly-jail-three-doubles-exit-rule/index.js"),
+  "game/xp-quadratic-next-level-curve": () => import("../../game/xp-quadratic-next-level-curve/index.js"),
   "geometry/circle-circumference": () => import("../../geometry/circle-circumference/index.js"),
   "graph/normalize-edge-list": () => import("../../graph/normalize-edge-list/index.js"),
   "horology/black-polish-labor-budget-calculator": () => import("../../horology/black-polish-labor-budget-calculator/index.js"),

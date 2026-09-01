@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/signal-to-noise-and-distortion": () => import("../../electronics/signal-to-noise-and-distortion/index.js"),
   "electronics/spark-gap-breakdown-voltage": () => import("../../electronics/spark-gap-breakdown-voltage/index.js"),
   "engineering/fuel-cell-efficiency": () => import("../../engineering/fuel-cell-efficiency/index.js"),
+  "ergonomics/grip-span-optimal-checker": () => import("../../ergonomics/grip-span-optimal-checker/index.js"),
   "futurology/cross-impact-analysis-event-pair-matrix": () => import("../../futurology/cross-impact-analysis-event-pair-matrix/index.js"),
   "genetics/str-microvariant-formatter": () => import("../../genetics/str-microvariant-formatter/index.js"),
   "geology/hydraulic-conductivity-from-permeability": () => import("../../geology/hydraulic-conductivity-from-permeability/index.js"),

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/classified-balance-sheet-section-sorter": () => import("../../accounting/classified-balance-sheet-section-sorter/index.js"),
   "acoustics/calibration-drift-screen": () => import("../../acoustics/calibration-drift-screen/index.js"),
   "astrometry/convergent-point-motion-alignment": () => import("../../astrometry/convergent-point-motion-alignment/index.js"),
   "aviation/bingo-fuel": () => import("../../aviation/bingo-fuel/index.js"),
@@ -16,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "horology/mil-prf-46374-field-watch-specification-lookup": () => import("../../horology/mil-prf-46374-field-watch-specification-lookup/index.js"),
   "journalism/tease-length": () => import("../../journalism/tease-length/index.js"),
   "metabolomics/xenobiotic-phase-audit": () => import("../../metabolomics/xenobiotic-phase-audit/index.js"),
+  "music/extended-chord-tension-counter": () => import("../../music/extended-chord-tension-counter/index.js"),
   "music/semitones-between": () => import("../../music/semitones-between/index.js"),
   "neuroscience/twitch-interpolation-voluntary-activation": () => import("../../neuroscience/twitch-interpolation-voluntary-activation/index.js"),
   "oenology/age-worthiness-score": () => import("../../oenology/age-worthiness-score/index.js"),

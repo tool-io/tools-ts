@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "aquaculture/stocking-density": () => import("../../aquaculture/stocking-density/index.js"),
   "aviation/service-ceiling-check": () => import("../../aviation/service-ceiling-check/index.js"),
+  "banking/payment-fraud-velocity-rules-card-hour": () => import("../../banking/payment-fraud-velocity-rules-card-hour/index.js"),
   "biology/cell-confluence-percentage": () => import("../../biology/cell-confluence-percentage/index.js"),
   "biology/donnan-equilibrium-potential": () => import("../../biology/donnan-equilibrium-potential/index.js"),
   "biology/oligo-extinction-coefficient": () => import("../../biology/oligo-extinction-coefficient/index.js"),
@@ -14,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/empirical-formula-from-moles": () => import("../../chemistry/empirical-formula-from-moles/index.js"),
   "chemistry/nmr-chemical-shift-ppm": () => import("../../chemistry/nmr-chemical-shift-ppm/index.js"),
   "convert/magnetic-flux": () => import("../../convert/magnetic-flux/index.js"),
+  "dance/motor-learning-blocked-vs-random-practice-lookup": () => import("../../dance/motor-learning-blocked-vs-random-practice-lookup/index.js"),
   "date/fiscal-quarter": () => import("../../date/fiscal-quarter/index.js"),
   "demography/radix-l0-perinatal-a0-lookup": () => import("../../demography/radix-l0-perinatal-a0-lookup/index.js"),
   "electronics/audio-expander-ratio": () => import("../../electronics/audio-expander-ratio/index.js"),
@@ -25,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "finance/debt-to-equity": () => import("../../finance/debt-to-equity/index.js"),
   "fitness/basal-metabolic-rate": () => import("../../fitness/basal-metabolic-rate/index.js"),
   "futurology/wild-cards-low-probability-high-impact-register": () => import("../../futurology/wild-cards-low-probability-high-impact-register/index.js"),
+  "game/yahtzee-upper-bonus-63-checker": () => import("../../game/yahtzee-upper-bonus-63-checker/index.js"),
   "gemology/cleavage-risk-checker": () => import("../../gemology/cleavage-risk-checker/index.js"),
   "geology/degree-of-saturation": () => import("../../geology/degree-of-saturation/index.js"),
   "geology/flexural-rigidity": () => import("../../geology/flexural-rigidity/index.js"),
@@ -46,6 +49,7 @@ export const toolModuleLoaders: Readonly<
   "take-home-pay-calculator/uk": () => import("../../take-home-pay-calculator/uk/index.js"),
   "taxation/rehabilitation-credit": () => import("../../taxation/rehabilitation-credit/index.js"),
   "text/edit-distance": () => import("../../text/edit-distance/index.js"),
+  "theatre/cyc-cyclorama-curve-radius-width-calculator": () => import("../../theatre/cyc-cyclorama-curve-radius-width-calculator/index.js"),
   "transcriptomics/mutually-exclusive-exon-switch": () => import("../../transcriptomics/mutually-exclusive-exon-switch/index.js"),
   "vr/field-of-view-horizontal": () => import("../../vr/field-of-view-horizontal/index.js"),
 };

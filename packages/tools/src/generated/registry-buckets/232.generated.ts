@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "auditing/log-analysis-user-role-itgc-sample-extraction-steps": () => import("../../auditing/log-analysis-user-role-itgc-sample-extraction-steps/index.js"),
   "auditing/three-way-match-po-grn-invoice-field-by-field-test-procedure": () => import("../../auditing/three-way-match-po-grn-invoice-field-by-field-test-procedure/index.js"),
   "aviation/true-heading": () => import("../../aviation/true-heading/index.js"),
+  "banking/nigeria-nuban-check-digit-validator": () => import("../../banking/nigeria-nuban-check-digit-validator/index.js"),
   "biology/body-condition-score-dairy": () => import("../../biology/body-condition-score-dairy/index.js"),
   "biology/withers-height-weight": () => import("../../biology/withers-height-weight/index.js"),
   "cartography/slope-percent-contour-spacing": () => import("../../cartography/slope-percent-contour-spacing/index.js"),
@@ -24,6 +25,8 @@ export const toolModuleLoaders: Readonly<
   "electronics/system-noise-temperature": () => import("../../electronics/system-noise-temperature/index.js"),
   "engineering/section-modulus-rectangle": () => import("../../engineering/section-modulus-rectangle/index.js"),
   "engineering/short-circuit-mva": () => import("../../engineering/short-circuit-mva/index.js"),
+  "ergonomics/chair-height-popliteal-fit-checker": () => import("../../ergonomics/chair-height-popliteal-fit-checker/index.js"),
+  "ergonomics/screen-glare-angle-risk": () => import("../../ergonomics/screen-glare-angle-risk/index.js"),
   "finance/discount-amount": () => import("../../finance/discount-amount/index.js"),
   "geology/bearing-capacity-terzaghi": () => import("../../geology/bearing-capacity-terzaghi/index.js"),
   "insurance/out-of-network-balance": () => import("../../insurance/out-of-network-balance/index.js"),
@@ -42,4 +45,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/velocity-saturation-field": () => import("../../semiconductor/velocity-saturation-field/index.js"),
   "taxation/local-income-tax-split": () => import("../../taxation/local-income-tax-split/index.js"),
   "text/shortest-word": () => import("../../text/shortest-word/index.js"),
+  "theatre/house-left-right-center-seat-split-calculator": () => import("../../theatre/house-left-right-center-seat-split-calculator/index.js"),
+  "typography/numeral-proportional-tabular-width-checker": () => import("../../typography/numeral-proportional-tabular-width-checker/index.js"),
 };

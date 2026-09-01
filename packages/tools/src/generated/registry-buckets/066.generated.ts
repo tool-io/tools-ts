@@ -5,10 +5,12 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/disposal-gain-loss-book-value-netting": () => import("../../accounting/disposal-gain-loss-book-value-netting/index.js"),
+  "accounting/sales-tax-collected-vs-remitted-reconciliation": () => import("../../accounting/sales-tax-collected-vs-remitted-reconciliation/index.js"),
   "archival-studies/deed-gift-restriction-countdown": () => import("../../archival-studies/deed-gift-restriction-countdown/index.js"),
   "arithmetic/reciprocal": () => import("../../arithmetic/reciprocal/index.js"),
   "astrometry/positive-parallax-distance-uncertainty": () => import("../../astrometry/positive-parallax-distance-uncertainty/index.js"),
   "aviation/cloud-base": () => import("../../aviation/cloud-base/index.js"),
+  "banking/night-drop-envelope-reconcile-count": () => import("../../banking/night-drop-envelope-reconcile-count/index.js"),
   "biology/cell-seeding-density": () => import("../../biology/cell-seeding-density/index.js"),
   "biology/pcr-yield": () => import("../../biology/pcr-yield/index.js"),
   "carpentry/domino-groesse-lookup": () => import("../../carpentry/domino-groesse-lookup/index.js"),
@@ -29,7 +31,9 @@ export const toolModuleLoaders: Readonly<
   "entrepreneurship/convertible-note-conversion": () => import("../../entrepreneurship/convertible-note-conversion/index.js"),
   "entrepreneurship/subscription-mrr": () => import("../../entrepreneurship/subscription-mrr/index.js"),
   "epigenetics/linker-dna-length": () => import("../../epigenetics/linker-dna-length/index.js"),
+  "game/set-card-all-same-or-all-different-checker": () => import("../../game/set-card-all-same-or-all-different-checker/index.js"),
   "genomics/target-coverage-read-pairs": () => import("../../genomics/target-coverage-read-pairs/index.js"),
+  "horticulture/round-pot-volume-liter": () => import("../../horticulture/round-pot-volume-liter/index.js"),
   "jackson-pollock-3-site-body-fat": () => import("../../jackson-pollock-3-site-body-fat/index.js"),
   "json/pretty-print": () => import("../../json/pretty-print/index.js"),
   "laser/thz-complex-conductivity": () => import("../../laser/thz-complex-conductivity/index.js"),

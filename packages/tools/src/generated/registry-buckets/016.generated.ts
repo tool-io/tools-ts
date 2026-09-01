@@ -49,7 +49,9 @@ export const toolModuleLoaders: Readonly<
   "sociology/mean-age-at-childbearing": () => import("../../sociology/mean-age-at-childbearing/index.js"),
   "toxicology/hill-concentration-addition-mixture": () => import("../../toxicology/hill-concentration-addition-mixture/index.js"),
   "transcriptomics/ambient-rna-correction": () => import("../../transcriptomics/ambient-rna-correction/index.js"),
+  "typography/font-display-swap-block-fallback-metric-shift": () => import("../../typography/font-display-swap-block-fallback-metric-shift/index.js"),
   "validate/ip-address": () => import("../../validate/ip-address/index.js"),
   "virology/trial-vaccine-efficacy": () => import("../../virology/trial-vaccine-efficacy/index.js"),
+  "viticulture/gdc-curtain-spacing-lookup": () => import("../../viticulture/gdc-curtain-spacing-lookup/index.js"),
   "web/modulepreload-detector": () => import("../../web/modulepreload-detector/index.js"),
 };

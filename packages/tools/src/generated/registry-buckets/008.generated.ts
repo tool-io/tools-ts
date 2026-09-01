@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/crystallography-void-fraction": () => import("../../chemistry/crystallography-void-fraction/index.js"),
   "climatology/bedd-calculator": () => import("../../climatology/bedd-calculator/index.js"),
   "color/blend": () => import("../../color/blend/index.js"),
+  "color/perceived-brightness-hsp": () => import("../../color/perceived-brightness-hsp/index.js"),
   "date/end-of-month": () => import("../../date/end-of-month/index.js"),
   "electronics/battery-discharge-rate-c": () => import("../../electronics/battery-discharge-rate-c/index.js"),
   "electronics/mosfet-switching-loss": () => import("../../electronics/mosfet-switching-loss/index.js"),

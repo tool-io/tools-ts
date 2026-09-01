@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/impairment-loss-recoverability-one-step-test": () => import("../../accounting/impairment-loss-recoverability-one-step-test/index.js"),
   "agriculture/farm-budget-gross-margin": () => import("../../agriculture/farm-budget-gross-margin/index.js"),
   "aquaculture/weaning-time": () => import("../../aquaculture/weaning-time/index.js"),
   "archaeology/orifice-index-vessel": () => import("../../archaeology/orifice-index-vessel/index.js"),
@@ -25,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "gemology/dispersion-value": () => import("../../gemology/dispersion-value/index.js"),
   "generate/gtin-14": () => import("../../generate/gtin-14/index.js"),
   "journalism/eas-cut-in-runtime": () => import("../../journalism/eas-cut-in-runtime/index.js"),
+  "linguistics/date-format-locale-order-lookup": () => import("../../linguistics/date-format-locale-order-lookup/index.js"),
   "matrix/inverse": () => import("../../matrix/inverse/index.js"),
   "mining/cyclone-efficiency": () => import("../../mining/cyclone-efficiency/index.js"),
   "neuroscience/stroop-interference": () => import("../../neuroscience/stroop-interference/index.js"),

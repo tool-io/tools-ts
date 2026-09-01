@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/cash-flow-indirect-net-income-bridge": () => import("../../accounting/cash-flow-indirect-net-income-bridge/index.js"),
   "acoustics/amplitude-modulation-depth": () => import("../../acoustics/amplitude-modulation-depth/index.js"),
   "acoustics/wenz-curve-reference": () => import("../../acoustics/wenz-curve-reference/index.js"),
   "actuarial/deferred-term-epv": () => import("../../actuarial/deferred-term-epv/index.js"),
@@ -28,6 +29,7 @@ export const toolModuleLoaders: Readonly<
   "film/reel-length-2000ft": () => import("../../film/reel-length-2000ft/index.js"),
   "futurology/six-pillars-futures-thinking-methods-map": () => import("../../futurology/six-pillars-futures-thinking-methods-map/index.js"),
   "geology/seismic-resolution-horizontal-fresnel-zone": () => import("../../geology/seismic-resolution-horizontal-fresnel-zone/index.js"),
+  "horticulture/grading-size-class-lookup": () => import("../../horticulture/grading-size-class-lookup/index.js"),
   "html/open-graph-required-tags-checker": () => import("../../html/open-graph-required-tags-checker/index.js"),
   "laser/oct-axial-resolution": () => import("../../laser/oct-axial-resolution/index.js"),
   "logic/material-implication-rewriter": () => import("../../logic/material-implication-rewriter/index.js"),
@@ -35,11 +37,13 @@ export const toolModuleLoaders: Readonly<
   "math/gauss-sum-approx": () => import("../../math/gauss-sum-approx/index.js"),
   "math/polygamma-approx": () => import("../../math/polygamma-approx/index.js"),
   "mycology/phialide-collarette-detector": () => import("../../mycology/phialide-collarette-detector/index.js"),
+  "numismatics/rebalancing-trade-amount-gsr": () => import("../../numismatics/rebalancing-trade-amount-gsr/index.js"),
   "oceanography/ts-diagram-water-mass-classifier": () => import("../../oceanography/ts-diagram-water-mass-classifier/index.js"),
   "random/balinese-character": () => import("../../random/balinese-character/index.js"),
   "random/german-alphabet-letter": () => import("../../random/german-alphabet-letter/index.js"),
   "random/recycling-symbol": () => import("../../random/recycling-symbol/index.js"),
   "semiconductor/heterojunction-2deg-density": () => import("../../semiconductor/heterojunction-2deg-density/index.js"),
   "taxation/duty-day-income-allocation": () => import("../../taxation/duty-day-income-allocation/index.js"),
+  "typography/widow-orphan-minimum-lines-rule": () => import("../../typography/widow-orphan-minimum-lines-rule/index.js"),
   "virology/hemagglutination-dilution-endpoint": () => import("../../virology/hemagglutination-dilution-endpoint/index.js"),
 };

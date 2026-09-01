@@ -4,10 +4,14 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/lower-of-cost-or-market-write-down-checker": () => import("../../accounting/lower-of-cost-or-market-write-down-checker/index.js"),
+  "accounting/revenue-cutoff-shipping-terms-fob-checker": () => import("../../accounting/revenue-cutoff-shipping-terms-fob-checker/index.js"),
   "aquaculture/co2-production": () => import("../../aquaculture/co2-production/index.js"),
   "carpentry/stain-mixing-ratio": () => import("../../carpentry/stain-mixing-ratio/index.js"),
   "chemistry/entropy-fusion": () => import("../../chemistry/entropy-fusion/index.js"),
   "chemistry/van-der-waals-volume-correction": () => import("../../chemistry/van-der-waals-volume-correction/index.js"),
+  "dance/line-spacing-even-interval-checker": () => import("../../dance/line-spacing-even-interval-checker/index.js"),
+  "electronics/eye-closure-penalty": () => import("../../electronics/eye-closure-penalty/index.js"),
   "electronics/heatsink-thermal-resistance-required": () => import("../../electronics/heatsink-thermal-resistance-required/index.js"),
   "electronics/led-wavelength-to-photon-energy": () => import("../../electronics/led-wavelength-to-photon-energy/index.js"),
   "encode/roman-numeral": () => import("../../encode/roman-numeral/index.js"),
@@ -15,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "gemology/critical-angle": () => import("../../gemology/critical-angle/index.js"),
   "geology/time-factor-consolidation": () => import("../../geology/time-factor-consolidation/index.js"),
   "hash/sha-1": () => import("../../hash/sha-1/index.js"),
+  "journalism/source-diversity-gender-outlet-percent-tracker": () => import("../../journalism/source-diversity-gender-outlet-percent-tracker/index.js"),
   "kinesiology/flight-time-jump-height": () => import("../../kinesiology/flight-time-jump-height/index.js"),
   "kinesiology/rpe-reps-in-reserve": () => import("../../kinesiology/rpe-reps-in-reserve/index.js"),
   "kinesiology/thomas-hip-flexion-screen": () => import("../../kinesiology/thomas-hip-flexion-screen/index.js"),

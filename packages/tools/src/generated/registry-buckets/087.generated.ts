@@ -12,6 +12,8 @@ export const toolModuleLoaders: Readonly<
   "carpentry/weissleim-d2-d3-d4-lookup": () => import("../../carpentry/weissleim-d2-d3-d4-lookup/index.js"),
   "chemistry/empirical-formula-combustion": () => import("../../chemistry/empirical-formula-combustion/index.js"),
   "chemistry/lineweaver-burk-slope": () => import("../../chemistry/lineweaver-burk-slope/index.js"),
+  "dance/mirror-dependency-facing-away-transfer-drill-lookup": () => import("../../dance/mirror-dependency-facing-away-transfer-drill-lookup/index.js"),
+  "dance/shoe-ribbon-elastic-sewing-placement-inch-lookup": () => import("../../dance/shoe-ribbon-elastic-sewing-placement-inch-lookup/index.js"),
   "demography/spousal-age-gap-median-difference": () => import("../../demography/spousal-age-gap-median-difference/index.js"),
   "electronics/audio-compressor-threshold": () => import("../../electronics/audio-compressor-threshold/index.js"),
   "electronics/conductance-from-resistance": () => import("../../electronics/conductance-from-resistance/index.js"),

@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/cell-potential": () => import("../../chemistry/cell-potential/index.js"),
   "chemistry/faraday-mass-deposited": () => import("../../chemistry/faraday-mass-deposited/index.js"),
   "cryptography/brute-force-time-estimate-at-hashes-per-second": () => import("../../cryptography/brute-force-time-estimate-at-hashes-per-second/index.js"),
+  "dance/jive-triple-chasse-beat-values-lookup": () => import("../../dance/jive-triple-chasse-beat-values-lookup/index.js"),
   "electronics/coaxial-capacitance-per-meter": () => import("../../electronics/coaxial-capacitance-per-meter/index.js"),
   "electronics/phase-noise-integrated-jitter-simple": () => import("../../electronics/phase-noise-integrated-jitter-simple/index.js"),
   "engineering/bernoulli-total-head": () => import("../../engineering/bernoulli-total-head/index.js"),

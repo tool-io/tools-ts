@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/leiden-halfbracket-checker": () => import("../../epigraphy/leiden-halfbracket-checker/index.js"),
   "film/chroma-subsampling-bandwidth": () => import("../../film/chroma-subsampling-bandwidth/index.js"),
   "futurology/three-horizons-framework-transition-map-lookup": () => import("../../futurology/three-horizons-framework-transition-map-lookup/index.js"),
+  "game/blackjack-hi-lo-running-count-update": () => import("../../game/blackjack-hi-lo-running-count-update/index.js"),
   "gemology/pearl-luster-rater": () => import("../../gemology/pearl-luster-rater/index.js"),
   "geology/magma-density": () => import("../../geology/magma-density/index.js"),
   "horology/caseback-turns-close": () => import("../../horology/caseback-turns-close/index.js"),
@@ -44,6 +45,8 @@ export const toolModuleLoaders: Readonly<
   "sericulture/eggs-per-gram-silkworm-seed": () => import("../../sericulture/eggs-per-gram-silkworm-seed/index.js"),
   "size/sweater": () => import("../../size/sweater/index.js"),
   "text/normalize-unicode": () => import("../../text/normalize-unicode/index.js"),
+  "theatre/group-sales-minimum-discount-tier-lookup": () => import("../../theatre/group-sales-minimum-discount-tier-lookup/index.js"),
   "virology/aav-cassette-packaging-budget": () => import("../../virology/aav-cassette-packaging-budget/index.js"),
+  "viticulture/vine-spacing-density-per-hectare": () => import("../../viticulture/vine-spacing-density-per-hectare/index.js"),
   "vr/tracking-drift-per-hour": () => import("../../vr/tracking-drift-per-hour/index.js"),
 };

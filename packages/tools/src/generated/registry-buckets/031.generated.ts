@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "list/permutations": () => import("../../list/permutations/index.js"),
   "math/apery-constant-approx": () => import("../../math/apery-constant-approx/index.js"),
   "math/limacon-area": () => import("../../math/limacon-area/index.js"),
+  "music/chord-quality-from-intervals-classifier": () => import("../../music/chord-quality-from-intervals-classifier/index.js"),
   "neuroscience/subthreshold-upcrossing-frequency": () => import("../../neuroscience/subthreshold-upcrossing-frequency/index.js"),
   "numismatics/profit-loss-on-sale-percent": () => import("../../numismatics/profit-loss-on-sale-percent/index.js"),
   "optimization/nadam-step": () => import("../../optimization/nadam-step/index.js"),
@@ -38,5 +39,6 @@ export const toolModuleLoaders: Readonly<
   "statistics/kaplan-meier": () => import("../../statistics/kaplan-meier/index.js"),
   "theatre/producer-recoup-waterfall": () => import("../../theatre/producer-recoup-waterfall/index.js"),
   "transcriptomics/gene-body-coverage-uniformity": () => import("../../transcriptomics/gene-body-coverage-uniformity/index.js"),
+  "typography/baseline-grid-align-checker": () => import("../../typography/baseline-grid-align-checker/index.js"),
   "volcanology/isomass-loading-gm2-contour": () => import("../../volcanology/isomass-loading-gm2-contour/index.js"),
 };

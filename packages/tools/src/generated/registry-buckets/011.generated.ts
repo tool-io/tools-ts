@@ -29,6 +29,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/leiden-bracket-pair-validator": () => import("../../epigraphy/leiden-bracket-pair-validator/index.js"),
   "glaciology/equilibrium-line-altitude-ela": () => import("../../glaciology/equilibrium-line-altitude-ela/index.js"),
   "insurance/nonappearance-loss": () => import("../../insurance/nonappearance-loss/index.js"),
+  "journalism/ifb-earpiece-latency-ms-budget-calculator": () => import("../../journalism/ifb-earpiece-latency-ms-budget-calculator/index.js"),
   "laser/laser-dfb-grating-period-bragg-wavelength-calculator": () => import("../../laser/laser-dfb-grating-period-bragg-wavelength-calculator/index.js"),
   "math/hypocycloid-area": () => import("../../math/hypocycloid-area/index.js"),
   "math/logarithmic-mean": () => import("../../math/logarithmic-mean/index.js"),

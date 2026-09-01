@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/materiality-planning-percent-benchmark-lookup": () => import("../../accounting/materiality-planning-percent-benchmark-lookup/index.js"),
   "archaeology/artifact-conservation-desalination-cycle": () => import("../../archaeology/artifact-conservation-desalination-cycle/index.js"),
   "archaeology/fission-track-age": () => import("../../archaeology/fission-track-age/index.js"),
   "astrometry/micrometer-double-star-offsets": () => import("../../astrometry/micrometer-double-star-offsets/index.js"),
@@ -24,7 +25,9 @@ export const toolModuleLoaders: Readonly<
   "electronics/radar-received-power": () => import("../../electronics/radar-received-power/index.js"),
   "engineering/propeller-thrust": () => import("../../engineering/propeller-thrust/index.js"),
   "engineering/von-mises-stress": () => import("../../engineering/von-mises-stress/index.js"),
+  "ergonomics/rula-group-a-score": () => import("../../ergonomics/rula-group-a-score/index.js"),
   "forestry/diameter-distribution-weibull": () => import("../../forestry/diameter-distribution-weibull/index.js"),
+  "game/d20-probability-meet-or-beat-dc": () => import("../../game/d20-probability-meet-or-beat-dc/index.js"),
   "genomics/intron-coverage-boundary": () => import("../../genomics/intron-coverage-boundary/index.js"),
   "geometry/polyline-length": () => import("../../geometry/polyline-length/index.js"),
   "horology/beat-error-milliseconds": () => import("../../horology/beat-error-milliseconds/index.js"),

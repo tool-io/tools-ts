@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/budget-vs-actual-variance-report-lines": () => import("../../accounting/budget-vs-actual-variance-report-lines/index.js"),
   "actuarial/buhlmann-straub-credibility": () => import("../../actuarial/buhlmann-straub-credibility/index.js"),
   "actuarial/decreasing-term-epv": () => import("../../actuarial/decreasing-term-epv/index.js"),
   "aquaculture/fry-stocking": () => import("../../aquaculture/fry-stocking/index.js"),
@@ -20,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/motor-torque-constant": () => import("../../electronics/motor-torque-constant/index.js"),
   "engineering/concrete-creep-coefficient": () => import("../../engineering/concrete-creep-coefficient/index.js"),
   "epigraphy/script-module-ratio-rater": () => import("../../epigraphy/script-module-ratio-rater/index.js"),
+  "game/backgammon-pip-count-race-checker": () => import("../../game/backgammon-pip-count-race-checker/index.js"),
   "genomics/cigar-operation-summary": () => import("../../genomics/cigar-operation-summary/index.js"),
   "geology/saturated-density": () => import("../../geology/saturated-density/index.js"),
   "horology/spring-drive-glide-motion-principle-lookup": () => import("../../horology/spring-drive-glide-motion-principle-lookup/index.js"),

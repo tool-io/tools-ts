@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "agriculture/growing-degree-days": () => import("../../agriculture/growing-degree-days/index.js"),
   "aviation/magnetic-course": () => import("../../aviation/magnetic-course/index.js"),
+  "banking/australia-bsb-format-validator": () => import("../../banking/australia-bsb-format-validator/index.js"),
   "celestial-mechanics/hierarchical-triple-stability-screen": () => import("../../celestial-mechanics/hierarchical-triple-stability-screen/index.js"),
   "checksum/crc-64-xz": () => import("../../checksum/crc-64-xz/index.js"),
   "chemistry/bomb-calorimeter-energy": () => import("../../chemistry/bomb-calorimeter-energy/index.js"),
@@ -21,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "gemology/cut-grade-aggregator": () => import("../../gemology/cut-grade-aggregator/index.js"),
   "geology/bearing-capacity-factor-ngamma": () => import("../../geology/bearing-capacity-factor-ngamma/index.js"),
   "glaciology/glen-flow-law-strain-rate": () => import("../../glaciology/glen-flow-law-strain-rate/index.js"),
+  "horticulture/plug-cell-volume-calculator": () => import("../../horticulture/plug-cell-volume-calculator/index.js"),
   "kinesiology/sprint-shin-angle-screen": () => import("../../kinesiology/sprint-shin-angle-screen/index.js"),
   "laser/embedded-service-class-check": () => import("../../laser/embedded-service-class-check/index.js"),
   "laser/marechal-strehl": () => import("../../laser/marechal-strehl/index.js"),

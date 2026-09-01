@@ -19,9 +19,12 @@ export const toolModuleLoaders: Readonly<
   "electronics/servo-pulse-width-from-angle": () => import("../../electronics/servo-pulse-width-from-angle/index.js"),
   "engineering/column-slenderness-ratio": () => import("../../engineering/column-slenderness-ratio/index.js"),
   "engineering/drag-coefficient-flat-plate": () => import("../../engineering/drag-coefficient-flat-plate/index.js"),
+  "game/yahtzee-full-house-validity-checker": () => import("../../game/yahtzee-full-house-validity-checker/index.js"),
   "genetics/trihybrid-gamete-grid": () => import("../../genetics/trihybrid-gamete-grid/index.js"),
+  "glaciology/ice-avalanche-volume-release": () => import("../../glaciology/ice-avalanche-volume-release/index.js"),
   "horology/week-disc-advance": () => import("../../horology/week-disc-advance/index.js"),
   "html/anchor-target-values-lookup": () => import("../../html/anchor-target-values-lookup/index.js"),
+  "journalism/expenses-per-story-cap-policy-lookup": () => import("../../journalism/expenses-per-story-cap-policy-lookup/index.js"),
   "laser/wakefield-gradient-comparison": () => import("../../laser/wakefield-gradient-comparison/index.js"),
   "metabolomics/calibration-backcalculation": () => import("../../metabolomics/calibration-backcalculation/index.js"),
   "metabolomics/stoichiometric-flux-balance": () => import("../../metabolomics/stoichiometric-flux-balance/index.js"),
@@ -38,4 +41,5 @@ export const toolModuleLoaders: Readonly<
   "sailing/vmg-to-leeward": () => import("../../sailing/vmg-to-leeward/index.js"),
   "seismology/ray-parameter-slowness-apparent-velocity": () => import("../../seismology/ray-parameter-slowness-apparent-velocity/index.js"),
   "taxation/pilot-savings": () => import("../../taxation/pilot-savings/index.js"),
+  "theatre/dimmer-curve-profile-linear-s-curve-lookup": () => import("../../theatre/dimmer-curve-profile-linear-s-curve-lookup/index.js"),
 };

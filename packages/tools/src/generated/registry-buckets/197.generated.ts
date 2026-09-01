@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/operating-lease-single-lease-cost-straight-line-checker": () => import("../../accounting/operating-lease-single-lease-cost-straight-line-checker/index.js"),
+  "accounting/partnership-capital-account-rollforward": () => import("../../accounting/partnership-capital-account-rollforward/index.js"),
   "acoustics/interval-ratio-to-cents": () => import("../../acoustics/interval-ratio-to-cents/index.js"),
   "acoustics/moving-observer-frequency-shift": () => import("../../acoustics/moving-observer-frequency-shift/index.js"),
   "astrometry/shift-stack-rate-offset-grid": () => import("../../astrometry/shift-stack-rate-offset-grid/index.js"),
@@ -23,9 +25,11 @@ export const toolModuleLoaders: Readonly<
   "geography/haversine-distance": () => import("../../geography/haversine-distance/index.js"),
   "horology/moonphase-gear-ratio": () => import("../../horology/moonphase-gear-ratio/index.js"),
   "html/referrerpolicy-values-table-lookup": () => import("../../html/referrerpolicy-values-table-lookup/index.js"),
+  "journalism/programmatic-rpm-vs-direct-cpm-compare": () => import("../../journalism/programmatic-rpm-vs-direct-cpm-compare/index.js"),
   "laser/laser-er-fiber-1550-eye-safe-retina-transmission-safety-class-note": () => import("../../laser/laser-er-fiber-1550-eye-safe-retina-transmission-safety-class-note/index.js"),
   "laser/tec-stability": () => import("../../laser/tec-stability/index.js"),
   "laser/thz-waveform-spectrum": () => import("../../laser/thz-waveform-spectrum/index.js"),
+  "linguistics/german-compound-noun-length-estimate": () => import("../../linguistics/german-compound-noun-length-estimate/index.js"),
   "logistics/pallet-loaded-weight-total": () => import("../../logistics/pallet-loaded-weight-total/index.js"),
   "math/stirling-transform": () => import("../../math/stirling-transform/index.js"),
   "microcontroller/register-field-encode": () => import("../../microcontroller/register-field-encode/index.js"),

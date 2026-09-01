@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/critical-temperature-lookup": () => import("../../chemistry/critical-temperature-lookup/index.js"),
   "chemistry/ph-strong-acid-dilution": () => import("../../chemistry/ph-strong-acid-dilution/index.js"),
   "chemistry/ppm": () => import("../../chemistry/ppm/index.js"),
+  "color/css-relative-color-syntax-builder": () => import("../../color/css-relative-color-syntax-builder/index.js"),
   "electronics/bathtub-failure-rate": () => import("../../electronics/bathtub-failure-rate/index.js"),
   "electronics/capacitive-reactance": () => import("../../electronics/capacitive-reactance/index.js"),
   "electronics/pll-reference-spur-level": () => import("../../electronics/pll-reference-spur-level/index.js"),

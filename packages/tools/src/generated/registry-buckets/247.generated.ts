@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/suspense-account-clearance-aging-checker": () => import("../../accounting/suspense-account-clearance-aging-checker/index.js"),
   "auditing/single-audit-expenditure-threshold-checker": () => import("../../auditing/single-audit-expenditure-threshold-checker/index.js"),
   "aviation/cg-shift-fuel": () => import("../../aviation/cg-shift-fuel/index.js"),
   "aviation/final-reserve-fuel": () => import("../../aviation/final-reserve-fuel/index.js"),
@@ -22,12 +23,15 @@ export const toolModuleLoaders: Readonly<
   "electronics/schmitt-oscillator-frequency": () => import("../../electronics/schmitt-oscillator-frequency/index.js"),
   "electronics/voltage-gain-linear": () => import("../../electronics/voltage-gain-linear/index.js"),
   "futurology/hallmarks-of-aging-nine-list-lookup": () => import("../../futurology/hallmarks-of-aging-nine-list-lookup/index.js"),
+  "game/chess-en-passant-legality-checker": () => import("../../game/chess-en-passant-legality-checker/index.js"),
   "gemology/rap-discount-application": () => import("../../gemology/rap-discount-application/index.js"),
   "genetics/first-stage-instrument-strength": () => import("../../genetics/first-stage-instrument-strength/index.js"),
+  "horology/escape-wheel-tooth-count": () => import("../../horology/escape-wheel-tooth-count/index.js"),
   "horticulture/stock-solution-nitrogen-ppm-target": () => import("../../horticulture/stock-solution-nitrogen-ppm-target/index.js"),
   "insurance/annuity-start-classifier": () => import("../../insurance/annuity-start-classifier/index.js"),
   "insurance/coverage-affordability": () => import("../../insurance/coverage-affordability/index.js"),
   "limnology/snow-load-on-ice-bearing-checker": () => import("../../limnology/snow-load-on-ice-bearing-checker/index.js"),
+  "limnology/spring-turnover-trigger-temperature": () => import("../../limnology/spring-turnover-trigger-temperature/index.js"),
   "math/partition-transform": () => import("../../math/partition-transform/index.js"),
   "math/schroeder-number": () => import("../../math/schroeder-number/index.js"),
   "math/trimorphic-number-checker": () => import("../../math/trimorphic-number-checker/index.js"),

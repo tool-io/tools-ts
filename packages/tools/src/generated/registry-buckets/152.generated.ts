@@ -40,5 +40,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/sic-mosfet-on-resistance-tempco": () => import("../../semiconductor/sic-mosfet-on-resistance-tempco/index.js"),
   "size/stays-reconstruction": () => import("../../size/stays-reconstruction/index.js"),
   "taxation/transfer-pricing-method-selector": () => import("../../taxation/transfer-pricing-method-selector/index.js"),
+  "theatre/wing-space-clearance-minimum-lookup": () => import("../../theatre/wing-space-clearance-minimum-lookup/index.js"),
   "web/url-is-absolute": () => import("../../web/url-is-absolute/index.js"),
 };

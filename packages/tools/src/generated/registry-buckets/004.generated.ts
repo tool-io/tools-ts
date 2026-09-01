@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/depreciation-journal-entry-generator-from-schedule": () => import("../../accounting/depreciation-journal-entry-generator-from-schedule/index.js"),
   "activation/softmax": () => import("../../activation/softmax/index.js"),
   "apiculture/site-forage-capacity-colonies": () => import("../../apiculture/site-forage-capacity-colonies/index.js"),
   "approximation/vertex-cover-2-approximation": () => import("../../approximation/vertex-cover-2-approximation/index.js"),
@@ -25,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "geology/well-log-shale-volume": () => import("../../geology/well-log-shale-volume/index.js"),
   "graph/pinsage-aggregation": () => import("../../graph/pinsage-aggregation/index.js"),
   "horology/repeater-quarter-strikes": () => import("../../horology/repeater-quarter-strikes/index.js"),
+  "horticulture/pot-size-upshift-sequence-lookup": () => import("../../horticulture/pot-size-upshift-sequence-lookup/index.js"),
   "html/void-elements-list-checker": () => import("../../html/void-elements-list-checker/index.js"),
   "insurance/demand-response-window": () => import("../../insurance/demand-response-window/index.js"),
   "laser/brillouin-stokes-cascade": () => import("../../laser/brillouin-stokes-cascade/index.js"),

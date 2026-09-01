@@ -24,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "glaciology/emergence-submergence-velocity-checker": () => import("../../glaciology/emergence-submergence-velocity-checker/index.js"),
   "horology/sidereal-to-solar": () => import("../../horology/sidereal-to-solar/index.js"),
   "journalism/table-total-check": () => import("../../journalism/table-total-check/index.js"),
+  "linguistics/decimal-comma-vs-point-region-lookup": () => import("../../linguistics/decimal-comma-vs-point-region-lookup/index.js"),
   "logic/venn-two-set-region-mapper": () => import("../../logic/venn-two-set-region-mapper/index.js"),
   "logistics/hazmat-class-segregation-storage-checker": () => import("../../logistics/hazmat-class-segregation-storage-checker/index.js"),
   "math/mangoldt-lambda": () => import("../../math/mangoldt-lambda/index.js"),

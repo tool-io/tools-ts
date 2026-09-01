@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/double-declining-balance-year-charge": () => import("../../accounting/double-declining-balance-year-charge/index.js"),
   "acoustics/clarity-c80": () => import("../../acoustics/clarity-c80/index.js"),
   "auditing/token-rotation-due": () => import("../../auditing/token-rotation-due/index.js"),
   "aviation/required-descent-gradient": () => import("../../aviation/required-descent-gradient/index.js"),
@@ -25,9 +26,13 @@ export const toolModuleLoaders: Readonly<
   "engineering/bolt-group-shear": () => import("../../engineering/bolt-group-shear/index.js"),
   "film/depth-of-field": () => import("../../film/depth-of-field/index.js"),
   "futurology/slaughter-waves-of-futures-studies-evolution-lookup": () => import("../../futurology/slaughter-waves-of-futures-studies-evolution-lookup/index.js"),
+  "game/scrabble-letter-tile-values-lookup": () => import("../../game/scrabble-letter-tile-values-lookup/index.js"),
   "geology/casing-burst-pressure": () => import("../../geology/casing-burst-pressure/index.js"),
   "hash/shake-128": () => import("../../hash/shake-128/index.js"),
+  "horology/minute-repeater-sequence": () => import("../../horology/minute-repeater-sequence/index.js"),
   "journalism/beat-holdings-conflict": () => import("../../journalism/beat-holdings-conflict/index.js"),
+  "journalism/interview-minutes-per-transcribed-page-estimate": () => import("../../journalism/interview-minutes-per-transcribed-page-estimate/index.js"),
+  "limnology/mean-depth-calculator": () => import("../../limnology/mean-depth-calculator/index.js"),
   "math/prime-triplet-checker": () => import("../../math/prime-triplet-checker/index.js"),
   "metabolomics/chromatography-mode-screen": () => import("../../metabolomics/chromatography-mode-screen/index.js"),
   "mortgage/egypt-subsidized-comparison": () => import("../../mortgage/egypt-subsidized-comparison/index.js"),
@@ -39,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "statistics/f-statistic": () => import("../../statistics/f-statistic/index.js"),
   "statistics/range": () => import("../../statistics/range/index.js"),
   "text/acronym": () => import("../../text/acronym/index.js"),
+  "theatre/blackout-duvetyne-light-leak-layer-checker": () => import("../../theatre/blackout-duvetyne-light-leak-layer-checker/index.js"),
   "volcanology/lahar-inundation-distance-volume-scaling": () => import("../../volcanology/lahar-inundation-distance-volume-scaling/index.js"),
   "volcanology/tephra-volume-weibull-integration": () => import("../../volcanology/tephra-volume-weibull-integration/index.js"),
   "vr/lens-distortion-k2": () => import("../../vr/lens-distortion-k2/index.js"),

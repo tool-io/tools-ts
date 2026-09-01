@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/income-statement-single-step-builder": () => import("../../accounting/income-statement-single-step-builder/index.js"),
   "actuarial/probability-first-cause": () => import("../../actuarial/probability-first-cause/index.js"),
   "aquaculture/length-weight-conversion": () => import("../../aquaculture/length-weight-conversion/index.js"),
   "archival-studies/cold-storage-staging-hours": () => import("../../archival-studies/cold-storage-staging-hours/index.js"),
@@ -32,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "genetics/phenotype-class-aggregation": () => import("../../genetics/phenotype-class-aggregation/index.js"),
   "genomics/sliding-gc-content": () => import("../../genomics/sliding-gc-content/index.js"),
   "genomics/tandem-repeat-copy-number": () => import("../../genomics/tandem-repeat-copy-number/index.js"),
+  "glaciology/surface-lowering-mass-loss": () => import("../../glaciology/surface-lowering-mass-loss/index.js"),
   "horology/power-reserve-depletion": () => import("../../horology/power-reserve-depletion/index.js"),
   "journalism/age-numeral-style": () => import("../../journalism/age-numeral-style/index.js"),
   "metrics/root-mean-squared-error": () => import("../../metrics/root-mean-squared-error/index.js"),

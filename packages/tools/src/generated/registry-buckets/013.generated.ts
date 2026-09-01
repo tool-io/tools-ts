@@ -4,12 +4,14 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/half-year-convention-partial-year-proration": () => import("../../accounting/half-year-convention-partial-year-proration/index.js"),
   "astrometry/laskar-mean-obliquity": () => import("../../astrometry/laskar-mean-obliquity/index.js"),
   "biology/bioequivalence-ratio": () => import("../../biology/bioequivalence-ratio/index.js"),
   "biology/primer-efficiency-from-slope": () => import("../../biology/primer-efficiency-from-slope/index.js"),
   "carpentry/parkett-bedarf-verschnitt": () => import("../../carpentry/parkett-bedarf-verschnitt/index.js"),
   "carpentry/sprossen-teilung-gleichmassig": () => import("../../carpentry/sprossen-teilung-gleichmassig/index.js"),
   "chemistry/titration-ph-after-equivalence": () => import("../../chemistry/titration-ph-after-equivalence/index.js"),
+  "color/theme-dark-mode-invert-lightness-heuristic": () => import("../../color/theme-dark-mode-invert-lightness-heuristic/index.js"),
   "convert/acceleration": () => import("../../convert/acceleration/index.js"),
   "convert/ascii-hex-encode": () => import("../../convert/ascii-hex-encode/index.js"),
   "csv/utf8-no-bom-export-standard-checker": () => import("../../csv/utf8-no-bom-export-standard-checker/index.js"),
@@ -24,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "finance/current-ratio": () => import("../../finance/current-ratio/index.js"),
   "futurology/meadows-twelve-leverage-points-intervention-lookup": () => import("../../futurology/meadows-twelve-leverage-points-intervention-lookup/index.js"),
   "geojson/bounding-box": () => import("../../geojson/bounding-box/index.js"),
+  "glaciology/gigatonne-to-km3-ice-converter": () => import("../../glaciology/gigatonne-to-km3-ice-converter/index.js"),
   "laser/random-fiber-laser-threshold": () => import("../../laser/random-fiber-laser-threshold/index.js"),
   "math/carmichael-number-checker": () => import("../../math/carmichael-number-checker/index.js"),
   "math/factorial-digit-count": () => import("../../math/factorial-digit-count/index.js"),

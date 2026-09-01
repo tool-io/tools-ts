@@ -4,11 +4,13 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/goodwill-purchase-price-allocation-acquisition": () => import("../../accounting/goodwill-purchase-price-allocation-acquisition/index.js"),
   "arithmetic/power": () => import("../../arithmetic/power/index.js"),
   "astrometry/moving-cluster-distance": () => import("../../astrometry/moving-cluster-distance/index.js"),
   "biology/cell-cycle-g2-percentage": () => import("../../biology/cell-cycle-g2-percentage/index.js"),
   "biology/ribeye-area": () => import("../../biology/ribeye-area/index.js"),
   "carpentry/dovetail-pin-width": () => import("../../carpentry/dovetail-pin-width/index.js"),
+  "color/registration-mark-cmyk-100-all-checker": () => import("../../color/registration-mark-cmyk-100-all-checker/index.js"),
   "demography/working-age-share-15-64": () => import("../../demography/working-age-share-15-64/index.js"),
   "electronics/i2c-pullup-resistor-max": () => import("../../electronics/i2c-pullup-resistor-max/index.js"),
   "electronics/speaker-box-volume": () => import("../../electronics/speaker-box-volume/index.js"),
@@ -17,10 +19,13 @@ export const toolModuleLoaders: Readonly<
   "futurology/gartner-hype-cycle-phase-position-classifier": () => import("../../futurology/gartner-hype-cycle-phase-position-classifier/index.js"),
   "futurology/signal-insight-action-pipeline-stage-tracker": () => import("../../futurology/signal-insight-action-pipeline-stage-tracker/index.js"),
   "geology/casing-collapse-pressure": () => import("../../geology/casing-collapse-pressure/index.js"),
+  "horology/petite-sonnerie-strikes-per-day": () => import("../../horology/petite-sonnerie-strikes-per-day/index.js"),
   "horticulture/daily-light-integral-mol-m2-day": () => import("../../horticulture/daily-light-integral-mol-m2-day/index.js"),
   "journalism/cba-clause-coverage": () => import("../../journalism/cba-clause-coverage/index.js"),
   "laser/bdfa-band-coverage": () => import("../../laser/bdfa-band-coverage/index.js"),
+  "linguistics/spanish-inverted-punctuation-placement": () => import("../../linguistics/spanish-inverted-punctuation-placement/index.js"),
   "microcontroller/uart-baud-divider": () => import("../../microcontroller/uart-baud-divider/index.js"),
+  "music/augmented-sixth-type-classifier": () => import("../../music/augmented-sixth-type-classifier/index.js"),
   "music/melodic-range-span-semitones": () => import("../../music/melodic-range-span-semitones/index.js"),
   "neuroscience/local-variation-lv": () => import("../../neuroscience/local-variation-lv/index.js"),
   "oceanography/subsurface-float-parking-pressure": () => import("../../oceanography/subsurface-float-parking-pressure/index.js"),

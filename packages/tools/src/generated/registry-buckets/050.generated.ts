@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "journalism/protest-support-conflict": () => import("../../journalism/protest-support-conflict/index.js"),
   "laser/annealing-thermal-budget": () => import("../../laser/annealing-thermal-budget/index.js"),
   "laser/fresnel-regime-classifier": () => import("../../laser/fresnel-regime-classifier/index.js"),
+  "linguistics/stopword-based-language-guess-score": () => import("../../linguistics/stopword-based-language-guess-score/index.js"),
   "logic/barbara-aaa1-valid-lookup": () => import("../../logic/barbara-aaa1-valid-lookup/index.js"),
   "logic/dnf-minterm-list-builder": () => import("../../logic/dnf-minterm-list-builder/index.js"),
   "metabolomics/blank-fold-filter": () => import("../../metabolomics/blank-fold-filter/index.js"),

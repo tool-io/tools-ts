@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/kirchhoff-law": () => import("../../chemistry/kirchhoff-law/index.js"),
   "chemistry/quantum-ionization-energy-rydberg": () => import("../../chemistry/quantum-ionization-energy-rydberg/index.js"),
   "climatology/sen-slope-estimator": () => import("../../climatology/sen-slope-estimator/index.js"),
+  "color/invert-hue-rotate-css-equivalent": () => import("../../color/invert-hue-rotate-css-equivalent/index.js"),
   "construction/excavation-rectangular-volume": () => import("../../construction/excavation-rectangular-volume/index.js"),
   "csv/percent-string-to-numeric-value": () => import("../../csv/percent-string-to-numeric-value/index.js"),
   "electronics/inter-symbol-interference-penalty": () => import("../../electronics/inter-symbol-interference-penalty/index.js"),

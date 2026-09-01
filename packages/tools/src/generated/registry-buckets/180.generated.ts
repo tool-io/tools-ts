@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/unbilled-receivables-accrued-revenue-entry": () => import("../../accounting/unbilled-receivables-accrued-revenue-entry/index.js"),
   "acoustics/absorption-standard-cross-reference": () => import("../../acoustics/absorption-standard-cross-reference/index.js"),
   "auditing/lease-liability-recompute": () => import("../../auditing/lease-liability-recompute/index.js"),
   "auditing/rollover-forward-workpaper-prior-year-balance-procedure": () => import("../../auditing/rollover-forward-workpaper-prior-year-balance-procedure/index.js"),
@@ -25,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/reactor-conversion": () => import("../../engineering/reactor-conversion/index.js"),
   "forestry/site-index-height-age-chapman-richards": () => import("../../forestry/site-index-height-age-chapman-richards/index.js"),
   "geology/rock-porosity-calculator": () => import("../../geology/rock-porosity-calculator/index.js"),
+  "horticulture/nursery-gallon-trade-size-map": () => import("../../horticulture/nursery-gallon-trade-size-map/index.js"),
   "html/u-unarticulated-annotation-usage": () => import("../../html/u-unarticulated-annotation-usage/index.js"),
   "http/cookie-parser": () => import("../../http/cookie-parser/index.js"),
   "http/link-header-parser": () => import("../../http/link-header-parser/index.js"),
@@ -48,6 +50,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/s-wave-nodal-and-maximum-azimuth-lookup": () => import("../../seismology/s-wave-nodal-and-maximum-azimuth-lookup/index.js"),
   "semiconductor/thermoelectric-seebeck-coefficient": () => import("../../semiconductor/thermoelectric-seebeck-coefficient/index.js"),
   "sericulture/instar-molt-wake-hours": () => import("../../sericulture/instar-molt-wake-hours/index.js"),
+  "theatre/cue-light-system-stations-wiring-loop-lookup": () => import("../../theatre/cue-light-system-stations-wiring-loop-lookup/index.js"),
   "typography/pixels-to-rem-16base": () => import("../../typography/pixels-to-rem-16base/index.js"),
   "vr/tracking-latency": () => import("../../vr/tracking-latency/index.js"),
 };

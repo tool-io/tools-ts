@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/integral-futures-four-quadrant-approach-lookup": () => import("../../futurology/integral-futures-four-quadrant-approach-lookup/index.js"),
   "genetics/population-fst": () => import("../../genetics/population-fst/index.js"),
   "horology/breguet-invention-timeline-lookup": () => import("../../horology/breguet-invention-timeline-lookup/index.js"),
+  "journalism/subscription-churn-after-price-rise-percent": () => import("../../journalism/subscription-churn-after-price-rise-percent/index.js"),
   "math/dirichlet-convolution": () => import("../../math/dirichlet-convolution/index.js"),
   "mri/rectangular-pgse-diffusion-b-value": () => import("../../mri/rectangular-pgse-diffusion-b-value/index.js"),
   "oceanography/baroclinic-rossby-wave-speed": () => import("../../oceanography/baroclinic-rossby-wave-speed/index.js"),
@@ -29,4 +30,5 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/gaas-alas-band-offset": () => import("../../semiconductor/gaas-alas-band-offset/index.js"),
   "semiconductor/junction-capacitance-total": () => import("../../semiconductor/junction-capacitance-total/index.js"),
   "semiconductor/underfill-curing-time": () => import("../../semiconductor/underfill-curing-time/index.js"),
+  "theatre/confetti-blower-coverage-kg-minute-lookup": () => import("../../theatre/confetti-blower-coverage-kg-minute-lookup/index.js"),
 };

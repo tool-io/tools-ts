@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "astrometry/ruwe-from-fit-normalization": () => import("../../astrometry/ruwe-from-fit-normalization/index.js"),
   "auditing/audit-strategy-vs-audit-plan-scope-timing-distinction-lookup": () => import("../../auditing/audit-strategy-vs-audit-plan-scope-timing-distinction-lookup/index.js"),
   "carpentry/fence-picket-spacing": () => import("../../carpentry/fence-picket-spacing/index.js"),
+  "color/white-point-d65-calibration-checker": () => import("../../color/white-point-d65-calibration-checker/index.js"),
   "convert/hex-to-rgb": () => import("../../convert/hex-to-rgb/index.js"),
   "csv/thousands-separator-detector": () => import("../../csv/thousands-separator-detector/index.js"),
   "electronics/adc-quantization-error": () => import("../../electronics/adc-quantization-error/index.js"),
@@ -40,6 +41,8 @@ export const toolModuleLoaders: Readonly<
   "sailing/marina-berth-depth-tide": () => import("../../sailing/marina-berth-depth-tide/index.js"),
   "sailing/righting-moment": () => import("../../sailing/righting-moment/index.js"),
   "taxation/royalty-withholding": () => import("../../taxation/royalty-withholding/index.js"),
+  "typography/ascender-descender-extents-checker": () => import("../../typography/ascender-descender-extents-checker/index.js"),
+  "typography/figure-space-width-monospace-equal-checker": () => import("../../typography/figure-space-width-monospace-equal-checker/index.js"),
   "vector/projection": () => import("../../vector/projection/index.js"),
   "vector/rejection": () => import("../../vector/rejection/index.js"),
 };

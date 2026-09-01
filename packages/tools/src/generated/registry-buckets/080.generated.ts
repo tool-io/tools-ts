@@ -32,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "glaciology/debris-cover-melt-suppression-factor": () => import("../../glaciology/debris-cover-melt-suppression-factor/index.js"),
   "html/role-presentation-vs-none-equivalence": () => import("../../html/role-presentation-vs-none-equivalence/index.js"),
   "insurance/family-deductible-progress": () => import("../../insurance/family-deductible-progress/index.js"),
+  "journalism/white-space-open-layout-percent-checker": () => import("../../journalism/white-space-open-layout-percent-checker/index.js"),
   "laser/hdfa-window-margin": () => import("../../laser/hdfa-window-margin/index.js"),
   "laser/laser-bar-array-smile-effect-beam-pointing-microradian-budget-checker": () => import("../../laser/laser-bar-array-smile-effect-beam-pointing-microradian-budget-checker/index.js"),
   "mining/cyclone-cut-size-d50": () => import("../../mining/cyclone-cut-size-d50/index.js"),
@@ -45,5 +46,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/mosfet-inversion-charge": () => import("../../semiconductor/mosfet-inversion-charge/index.js"),
   "taxation/gambling-session-net": () => import("../../taxation/gambling-session-net/index.js"),
   "transcriptomics/umi-matrix-sparsity": () => import("../../transcriptomics/umi-matrix-sparsity/index.js"),
+  "viticulture/petiole-potassium-sufficiency-lookup": () => import("../../viticulture/petiole-potassium-sufficiency-lookup/index.js"),
   "volcanology/bubble-nucleation-supersaturation-drop": () => import("../../volcanology/bubble-nucleation-supersaturation-drop/index.js"),
 };

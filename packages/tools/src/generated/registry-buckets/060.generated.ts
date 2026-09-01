@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "geology/fractional-flow-water": () => import("../../geology/fractional-flow-water/index.js"),
   "geometry/ellipsoid-volume": () => import("../../geometry/ellipsoid-volume/index.js"),
   "horology/vintage-service-schedule-budget-planner": () => import("../../horology/vintage-service-schedule-budget-planner/index.js"),
+  "horticulture/aluminet-vs-woven-lookup": () => import("../../horticulture/aluminet-vs-woven-lookup/index.js"),
   "journalism/digital-security-checklist": () => import("../../journalism/digital-security-checklist/index.js"),
   "laser/cutting-lead-distance": () => import("../../laser/cutting-lead-distance/index.js"),
   "laser/lwfa-dephasing-length": () => import("../../laser/lwfa-dephasing-length/index.js"),

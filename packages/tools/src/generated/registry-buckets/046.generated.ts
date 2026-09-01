@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/cable-sizing-current-capacity": () => import("../../engineering/cable-sizing-current-capacity/index.js"),
   "format/feet-and-inches": () => import("../../format/feet-and-inches/index.js"),
   "futurology/morphological-analysis-box-grid-combination-explorer": () => import("../../futurology/morphological-analysis-box-grid-combination-explorer/index.js"),
+  "game/stratego-rank-resolve-lookup": () => import("../../game/stratego-rank-resolve-lookup/index.js"),
   "geology/afm-diagram": () => import("../../geology/afm-diagram/index.js"),
   "geology/shrinkage-ratio": () => import("../../geology/shrinkage-ratio/index.js"),
   "horology/accessible-watch-time-output-mode-lookup": () => import("../../horology/accessible-watch-time-output-mode-lookup/index.js"),

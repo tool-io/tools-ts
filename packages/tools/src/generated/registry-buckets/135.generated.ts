@@ -26,6 +26,8 @@ export const toolModuleLoaders: Readonly<
   "horology/dual-time-difference": () => import("../../horology/dual-time-difference/index.js"),
   "horology/kickstarter-funding-progress-calculator": () => import("../../horology/kickstarter-funding-progress-calculator/index.js"),
   "horology/wrist-coverage-percent": () => import("../../horology/wrist-coverage-percent/index.js"),
+  "horticulture/caliper-to-ball-size-lookup": () => import("../../horticulture/caliper-to-ball-size-lookup/index.js"),
+  "horticulture/transplant-weeks-from-seed-lookup": () => import("../../horticulture/transplant-weeks-from-seed-lookup/index.js"),
   "html/br-vs-wbr-break-opportunity-diff": () => import("../../html/br-vs-wbr-break-opportunity-diff/index.js"),
   "html/img-decoding-async-sync-auto-hint": () => import("../../html/img-decoding-async-sync-auto-hint/index.js"),
   "html/prefetch-preload-prerender-diff-lookup": () => import("../../html/prefetch-preload-prerender-diff-lookup/index.js"),

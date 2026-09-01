@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "geometry/circle-arc-length": () => import("../../geometry/circle-arc-length/index.js"),
   "horology/fixodrop-epilame-surface-treatment-lookup": () => import("../../horology/fixodrop-epilame-surface-treatment-lookup/index.js"),
   "horology/remontoire-constant-force-type-lookup": () => import("../../horology/remontoire-constant-force-type-lookup/index.js"),
+  "horticulture/capillary-mat-reservoir-days": () => import("../../horticulture/capillary-mat-reservoir-days/index.js"),
   "kinesiology/pelvic-tilt-angle": () => import("../../kinesiology/pelvic-tilt-angle/index.js"),
   "laser/tablet-coating-thickness": () => import("../../laser/tablet-coating-thickness/index.js"),
   "limnology/lake-evaporation-energy-balance-method": () => import("../../limnology/lake-evaporation-energy-balance-method/index.js"),

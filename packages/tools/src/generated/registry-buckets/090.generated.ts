@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/proconsul-province-extractor": () => import("../../epigraphy/proconsul-province-extractor/index.js"),
   "futurology/five-whys-chain": () => import("../../futurology/five-whys-chain/index.js"),
   "futurology/scenario-planning-two-axis-quadrant-builder": () => import("../../futurology/scenario-planning-two-axis-quadrant-builder/index.js"),
+  "game/blackjack-true-count-divide-decks": () => import("../../game/blackjack-true-count-divide-decks/index.js"),
   "geology/porosity-from-bulk-density": () => import("../../geology/porosity-from-bulk-density/index.js"),
   "geology/systems-tract-lookup": () => import("../../geology/systems-tract-lookup/index.js"),
   "horology/center-to-escape-ratio": () => import("../../horology/center-to-escape-ratio/index.js"),

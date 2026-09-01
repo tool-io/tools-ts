@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/month-end-close-countdown-days-checklist": () => import("../../accounting/month-end-close-countdown-days-checklist/index.js"),
   "actuarial/bornhuetter-ferguson-reserve": () => import("../../actuarial/bornhuetter-ferguson-reserve/index.js"),
   "archaeology/context-number-sequence-checker": () => import("../../archaeology/context-number-sequence-checker/index.js"),
   "auditing/evidence-relevance-reliability-two-axis-lookup": () => import("../../auditing/evidence-relevance-reliability-two-axis-lookup/index.js"),
@@ -21,9 +22,12 @@ export const toolModuleLoaders: Readonly<
   "film/depth-of-field-near-limit": () => import("../../film/depth-of-field-near-limit/index.js"),
   "forestry/dbh-from-circumference": () => import("../../forestry/dbh-from-circumference/index.js"),
   "futurology/red-team-devils-advocate-assumption-attack-protocol": () => import("../../futurology/red-team-devils-advocate-assumption-attack-protocol/index.js"),
+  "game/blackjack-insurance-count-threshold-checker": () => import("../../game/blackjack-insurance-count-threshold-checker/index.js"),
+  "game/bridge-high-card-points-hcp-count": () => import("../../game/bridge-high-card-points-hcp-count/index.js"),
   "genomics/splice-delta-effect-rank": () => import("../../genomics/splice-delta-effect-rank/index.js"),
   "geology/cement-compressive-strength": () => import("../../geology/cement-compressive-strength/index.js"),
   "glaciology/annual-mass-balance": () => import("../../glaciology/annual-mass-balance/index.js"),
+  "horticulture/plug-tray-cell-count-lookup": () => import("../../horticulture/plug-tray-cell-count-lookup/index.js"),
   "journalism/lower-third-fit": () => import("../../journalism/lower-third-fit/index.js"),
   "laser/swept-frequency-distance": () => import("../../laser/swept-frequency-distance/index.js"),
   "metabolomics/xic-mass-window": () => import("../../metabolomics/xic-mass-window/index.js"),

@@ -24,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/consular-pair-split-parser": () => import("../../epigraphy/consular-pair-split-parser/index.js"),
   "format/url": () => import("../../format/url/index.js"),
   "futurology/stock-flow-bathtub-intuition-diagram-builder": () => import("../../futurology/stock-flow-bathtub-intuition-diagram-builder/index.js"),
+  "game/procgen-random-walk-carve-percent-target": () => import("../../game/procgen-random-walk-carve-percent-target/index.js"),
   "geology/nodal-analysis-inflow-performance": () => import("../../geology/nodal-analysis-inflow-performance/index.js"),
   "html/iframe-loading-lazy-support-lookup": () => import("../../html/iframe-loading-lazy-support-lookup/index.js"),
   "laser/interferometer-displacement": () => import("../../laser/interferometer-displacement/index.js"),

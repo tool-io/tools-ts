@@ -38,4 +38,5 @@ export const toolModuleLoaders: Readonly<
   "transcriptomics/mirna-seed-matcher": () => import("../../transcriptomics/mirna-seed-matcher/index.js"),
   "validate/ismn": () => import("../../validate/ismn/index.js"),
   "virology/superspreading-moment-dispersion": () => import("../../virology/superspreading-moment-dispersion/index.js"),
+  "viticulture/petiole-nitrate-nitrogen-sufficiency-lookup": () => import("../../viticulture/petiole-nitrate-nitrogen-sufficiency-lookup/index.js"),
 };

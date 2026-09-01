@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/small-stock-dividend-retained-earnings-cap": () => import("../../accounting/small-stock-dividend-retained-earnings-cap/index.js"),
   "acoustics/day-night-level-dnl": () => import("../../acoustics/day-night-level-dnl/index.js"),
   "biology/restriction-site-count": () => import("../../biology/restriction-site-count/index.js"),
   "carpentry/holzfehler-kappung-laenge": () => import("../../carpentry/holzfehler-kappung-laenge/index.js"),
@@ -34,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "insurance/rbc-action-level": () => import("../../insurance/rbc-action-level/index.js"),
   "journalism/loudness-gain": () => import("../../journalism/loudness-gain/index.js"),
   "laser/laser-autocorrelator-intensity-field-deconvolution-factor-converter": () => import("../../laser/laser-autocorrelator-intensity-field-deconvolution-factor-converter/index.js"),
+  "linguistics/number-grouping-locale-format-lookup": () => import("../../linguistics/number-grouping-locale-format-lookup/index.js"),
   "oenology/tca-incidence-probability": () => import("../../oenology/tca-incidence-probability/index.js"),
   "pedagogy/peer-instruction-vote-shift": () => import("../../pedagogy/peer-instruction-vote-shift/index.js"),
   "proteomics/fragment-tolerance-ppm": () => import("../../proteomics/fragment-tolerance-ppm/index.js"),
@@ -42,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/high-k-dielectric-eot": () => import("../../semiconductor/high-k-dielectric-eot/index.js"),
   "size/tablecloth": () => import("../../size/tablecloth/index.js"),
   "text/prefix-lines": () => import("../../text/prefix-lines/index.js"),
+  "theatre/gel-lee-vs-rosco-equivalent-crossref-lookup": () => import("../../theatre/gel-lee-vs-rosco-equivalent-crossref-lookup/index.js"),
   "transcriptomics/lncrna-coding-potential-gate": () => import("../../transcriptomics/lncrna-coding-potential-gate/index.js"),
   "volcanology/plume-mass-flux-buoyancy-estimate": () => import("../../volcanology/plume-mass-flux-buoyancy-estimate/index.js"),
   "volcanology/roof-load-ash-collapse-risk-checker": () => import("../../volcanology/roof-load-ash-collapse-risk-checker/index.js"),

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/period-end-prepaid-transfer-journal-generator": () => import("../../accounting/period-end-prepaid-transfer-journal-generator/index.js"),
   "acoustics/schroeder-frequency": () => import("../../acoustics/schroeder-frequency/index.js"),
   "aquaculture/unionized-ammonia": () => import("../../aquaculture/unionized-ammonia/index.js"),
   "biology/corrected-sodium-hyperglycemia": () => import("../../biology/corrected-sodium-hyperglycemia/index.js"),
@@ -12,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/epoxid-mischungsverhaeltnis-1-1-2-1-lookup": () => import("../../carpentry/epoxid-mischungsverhaeltnis-1-1-2-1-lookup/index.js"),
   "chemistry/boyle-temperature": () => import("../../chemistry/boyle-temperature/index.js"),
   "chemistry/combined-gas-law": () => import("../../chemistry/combined-gas-law/index.js"),
+  "color/blackbody-kelvin-to-xy-chromaticity-approx": () => import("../../color/blackbody-kelvin-to-xy-chromaticity-approx/index.js"),
   "construction/paint-with-coats-waste": () => import("../../construction/paint-with-coats-waste/index.js"),
   "convert/decimal-to-binary": () => import("../../convert/decimal-to-binary/index.js"),
   "convert/energy-density": () => import("../../convert/energy-density/index.js"),
@@ -28,6 +30,8 @@ export const toolModuleLoaders: Readonly<
   "genetics/multisystem-phenotype-tally": () => import("../../genetics/multisystem-phenotype-tally/index.js"),
   "genomics/novel-variant-fraction": () => import("../../genomics/novel-variant-fraction/index.js"),
   "horology/meters-to-atm": () => import("../../horology/meters-to-atm/index.js"),
+  "horticulture/cutting-stick-spacing-per-tray": () => import("../../horticulture/cutting-stick-spacing-per-tray/index.js"),
+  "horticulture/hanging-height-ppfd-decay": () => import("../../horticulture/hanging-height-ppfd-decay/index.js"),
   "mining/recovery-percentage": () => import("../../mining/recovery-percentage/index.js"),
   "mycology/ectomycorrhiza-mantle-thickness-rater": () => import("../../mycology/ectomycorrhiza-mantle-thickness-rater/index.js"),
   "mycology/substrate-supplementation-planner": () => import("../../mycology/substrate-supplementation-planner/index.js"),

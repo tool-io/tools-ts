@@ -11,6 +11,8 @@ export const toolModuleLoaders: Readonly<
   "check/mic": () => import("../../check/mic/index.js"),
   "chemistry/chromatography-resolution": () => import("../../chemistry/chromatography-resolution/index.js"),
   "climatology/lapse-rate-environmental": () => import("../../climatology/lapse-rate-environmental/index.js"),
+  "color/delta-e-cmc": () => import("../../color/delta-e-cmc/index.js"),
+  "color/gamut-display-p3-out-of-gamut-flagger": () => import("../../color/gamut-display-p3-out-of-gamut-flagger/index.js"),
   "construction/concrete-bull-float-passes": () => import("../../construction/concrete-bull-float-passes/index.js"),
   "csv/multiline-quoted-cell-line-counter": () => import("../../csv/multiline-quoted-cell-line-counter/index.js"),
   "electronics/microphone-directivity-index": () => import("../../electronics/microphone-directivity-index/index.js"),

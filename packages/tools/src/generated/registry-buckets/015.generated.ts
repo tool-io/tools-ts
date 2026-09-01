@@ -25,6 +25,8 @@ export const toolModuleLoaders: Readonly<
   "engineering/beam-stress-combined-axial-bending": () => import("../../engineering/beam-stress-combined-axial-bending/index.js"),
   "forestry/crown-fire-initiation-torching-foliar-moisture": () => import("../../forestry/crown-fire-initiation-torching-foliar-moisture/index.js"),
   "futurology/ubi-trials-outcomes-catalog-lookup": () => import("../../futurology/ubi-trials-outcomes-catalog-lookup/index.js"),
+  "game/gacha-pity-counter-expected-cost": () => import("../../game/gacha-pity-counter-expected-cost/index.js"),
+  "game/twenty48-merge-value-sum-per-swipe": () => import("../../game/twenty48-merge-value-sum-per-swipe/index.js"),
   "gemology/birefringence-delta-ri": () => import("../../gemology/birefringence-delta-ri/index.js"),
   "geodesy/wgs84-semi-major-lookup": () => import("../../geodesy/wgs84-semi-major-lookup/index.js"),
   "insurance/fsa-election-split": () => import("../../insurance/fsa-election-split/index.js"),

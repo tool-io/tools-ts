@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "archival-studies/collection-code-prefix-uniqueness-checker": () => import("../../archival-studies/collection-code-prefix-uniqueness-checker/index.js"),
   "astrometry/angular-projected-binary-separation": () => import("../../astrometry/angular-projected-binary-separation/index.js"),
   "aviation/glide-ratio": () => import("../../aviation/glide-ratio/index.js"),
+  "banking/rewards-effective-value-percent": () => import("../../banking/rewards-effective-value-percent/index.js"),
   "biology/cell-passage-number": () => import("../../biology/cell-passage-number/index.js"),
   "biology/ic50-cheng-prusoff": () => import("../../biology/ic50-cheng-prusoff/index.js"),
   "biology/transcript-length": () => import("../../biology/transcript-length/index.js"),

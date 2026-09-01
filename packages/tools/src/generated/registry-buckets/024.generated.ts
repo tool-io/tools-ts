@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/nci-noncontrolling-interest-share-allocation": () => import("../../accounting/nci-noncontrolling-interest-share-allocation/index.js"),
   "accounting/times-interest-earned-ebit-interest": () => import("../../accounting/times-interest-earned-ebit-interest/index.js"),
   "archival-studies/language-code-6392-validator": () => import("../../archival-studies/language-code-6392-validator/index.js"),
   "auditing/ar-credit-balance-negative-account-review-procedure": () => import("../../auditing/ar-credit-balance-negative-account-review-procedure/index.js"),
@@ -20,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "entrepreneurship/funds-allocation": () => import("../../entrepreneurship/funds-allocation/index.js"),
   "film/scan-resolution-dpi": () => import("../../film/scan-resolution-dpi/index.js"),
   "forestry/basal-area-increment-percentage": () => import("../../forestry/basal-area-increment-percentage/index.js"),
+  "game/drop-rate-attempts-until-success-geometric": () => import("../../game/drop-rate-attempts-until-success-geometric/index.js"),
   "geology/atterberg-plasticity-index": () => import("../../geology/atterberg-plasticity-index/index.js"),
   "laser/laser-ti-sapphire-tuning-range-kerr-lens-mode-locking-prerequisite-checker": () => import("../../laser/laser-ti-sapphire-tuning-range-kerr-lens-mode-locking-prerequisite-checker/index.js"),
   "laser/optogalvanic-modulation-contrast": () => import("../../laser/optogalvanic-modulation-contrast/index.js"),
@@ -38,4 +40,5 @@ export const toolModuleLoaders: Readonly<
   "taxation/lob-criteria-check": () => import("../../taxation/lob-criteria-check/index.js"),
   "text/snake-case": () => import("../../text/snake-case/index.js"),
   "text/word-frequency": () => import("../../text/word-frequency/index.js"),
+  "theatre/leg-border-set-number-by-stage-width-lookup": () => import("../../theatre/leg-border-set-number-by-stage-width-lookup/index.js"),
 };

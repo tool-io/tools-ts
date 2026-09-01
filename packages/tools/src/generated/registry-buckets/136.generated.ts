@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/led-luminous-efficacy": () => import("../../electronics/led-luminous-efficacy/index.js"),
   "engineering/gear-ratio": () => import("../../engineering/gear-ratio/index.js"),
   "epigenetics/nucleosome-band-classifier": () => import("../../epigenetics/nucleosome-band-classifier/index.js"),
+  "game/risk-attack-odds-3v2-lookup": () => import("../../game/risk-attack-odds-3v2-lookup/index.js"),
   "geology/rb-sr-isochron": () => import("../../geology/rb-sr-isochron/index.js"),
   "glaciology/gate-velocity-balance-flux": () => import("../../glaciology/gate-velocity-balance-flux/index.js"),
   "insurance/parametric-index-payout": () => import("../../insurance/parametric-index-payout/index.js"),
@@ -37,6 +38,8 @@ export const toolModuleLoaders: Readonly<
   "seismology/okada-dip-slip-surface-displacement": () => import("../../seismology/okada-dip-slip-surface-displacement/index.js"),
   "sericulture/momme-weight-conversion-fabric": () => import("../../sericulture/momme-weight-conversion-fabric/index.js"),
   "sociology/migration-effectiveness-index": () => import("../../sociology/migration-effectiveness-index/index.js"),
+  "theatre/cue-to-cue-runtime-pages-per-hour-estimator": () => import("../../theatre/cue-to-cue-runtime-pages-per-hour-estimator/index.js"),
   "transcriptomics/quantile-normalization": () => import("../../transcriptomics/quantile-normalization/index.js"),
+  "typography/code-inline-monospace-size-match-xheight": () => import("../../typography/code-inline-monospace-size-match-xheight/index.js"),
   "web/manifest-theme-color-extractor": () => import("../../web/manifest-theme-color-extractor/index.js"),
 };

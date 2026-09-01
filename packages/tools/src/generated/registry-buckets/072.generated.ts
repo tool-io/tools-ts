@@ -24,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "film/screen-gain": () => import("../../film/screen-gain/index.js"),
   "geology/elastic-thickness": () => import("../../geology/elastic-thickness/index.js"),
   "geology/storativity-unconfined": () => import("../../geology/storativity-unconfined/index.js"),
+  "horticulture/nitrogen-ammonium-share-percent": () => import("../../horticulture/nitrogen-ammonium-share-percent/index.js"),
   "html/hr-thematic-break-semantics-lookup": () => import("../../html/hr-thematic-break-semantics-lookup/index.js"),
   "html/robots-meta-content-values-lookup": () => import("../../html/robots-meta-content-values-lookup/index.js"),
   "html/table-th-scope-a11y-checker": () => import("../../html/table-th-scope-a11y-checker/index.js"),

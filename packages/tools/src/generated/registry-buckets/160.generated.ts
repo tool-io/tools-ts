@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/employer-payroll-tax-expense-split": () => import("../../accounting/employer-payroll-tax-expense-split/index.js"),
   "actuarial/contingent-insurance-probability": () => import("../../actuarial/contingent-insurance-probability/index.js"),
   "actuarial/withdrawal-probability-service-table": () => import("../../actuarial/withdrawal-probability-service-table/index.js"),
   "agriculture/crop-yield-per-hectare": () => import("../../agriculture/crop-yield-per-hectare/index.js"),
@@ -35,7 +36,9 @@ export const toolModuleLoaders: Readonly<
   "seismology/swarm-vs-mainshock-aftershock-sequence-classifier": () => import("../../seismology/swarm-vs-mainshock-aftershock-sequence-classifier/index.js"),
   "semiconductor/antiphase-boundary-energy": () => import("../../semiconductor/antiphase-boundary-energy/index.js"),
   "size/child-car-seat": () => import("../../size/child-car-seat/index.js"),
+  "theatre/blacklight-reactive-pigment-mix-ratio": () => import("../../theatre/blacklight-reactive-pigment-mix-ratio/index.js"),
   "virology/replicate-plaque-assay-titer": () => import("../../virology/replicate-plaque-assay-titer/index.js"),
+  "viticulture/bud-fruitfulness-cluster-per-shoot-lookup": () => import("../../viticulture/bud-fruitfulness-cluster-per-shoot-lookup/index.js"),
   "viticulture/heat-wave-shriveling-risk-days": () => import("../../viticulture/heat-wave-shriveling-risk-days/index.js"),
   "web/csp-parser": () => import("../../web/csp-parser/index.js"),
 };

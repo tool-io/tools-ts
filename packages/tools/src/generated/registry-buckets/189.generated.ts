@@ -7,6 +7,7 @@ export const toolModuleLoaders: Readonly<
   "accounting/inventory-turnover-cogs-average-inventory": () => import("../../accounting/inventory-turnover-cogs-average-inventory/index.js"),
   "auditing/legal-letter-attorney-litigation-response-scope-lookup": () => import("../../auditing/legal-letter-attorney-litigation-response-scope-lookup/index.js"),
   "aviation/weight-balance-moment": () => import("../../aviation/weight-balance-moment/index.js"),
+  "banking/sepa-cutoff-deadline-lookup": () => import("../../banking/sepa-cutoff-deadline-lookup/index.js"),
   "biology/canopy-bulk-density": () => import("../../biology/canopy-bulk-density/index.js"),
   "biology/ld50-probit": () => import("../../biology/ld50-probit/index.js"),
   "biology/nucleus-cytoplasm-ratio": () => import("../../biology/nucleus-cytoplasm-ratio/index.js"),
@@ -22,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/ampacity-derated": () => import("../../engineering/ampacity-derated/index.js"),
   "engineering/fracture-toughness-stress-intensity": () => import("../../engineering/fracture-toughness-stress-intensity/index.js"),
   "epigraphy/auc-to-bc-ad-converter": () => import("../../epigraphy/auc-to-bc-ad-converter/index.js"),
+  "ergonomics/wbv-vdv-estimate": () => import("../../ergonomics/wbv-vdv-estimate/index.js"),
   "forestry/light-transmission-beer-lambert-forestry": () => import("../../forestry/light-transmission-beer-lambert-forestry/index.js"),
   "futurology/bostrom-superintelligence-paths-taxonomy-lookup": () => import("../../futurology/bostrom-superintelligence-paths-taxonomy-lookup/index.js"),
   "gemology/light-return-tilt-check": () => import("../../gemology/light-return-tilt-check/index.js"),
@@ -41,4 +43,5 @@ export const toolModuleLoaders: Readonly<
   "size/pants": () => import("../../size/pants/index.js"),
   "statistics/sample-size-mean": () => import("../../statistics/sample-size-mean/index.js"),
   "taxation/crut-clat-comparison": () => import("../../taxation/crut-clat-comparison/index.js"),
+  "viticulture/crush-pad-throughput-tonnes-day": () => import("../../viticulture/crush-pad-throughput-tonnes-day/index.js"),
 };

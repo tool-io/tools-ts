@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/aging-method-allowance-matrix-estimate": () => import("../../accounting/aging-method-allowance-matrix-estimate/index.js"),
   "acoustics/mlv-product-stc-lookup": () => import("../../acoustics/mlv-product-stc-lookup/index.js"),
   "activation/tanh": () => import("../../activation/tanh/index.js"),
   "auditing/credit-memo-vouching": () => import("../../auditing/credit-memo-vouching/index.js"),
@@ -17,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/percent-yield": () => import("../../chemistry/percent-yield/index.js"),
   "construction/dewatering-pump-capacity": () => import("../../construction/dewatering-pump-capacity/index.js"),
   "csv/delimiter-sniffer-comma-semicolon-tab": () => import("../../csv/delimiter-sniffer-comma-semicolon-tab/index.js"),
+  "dance/eight-count-phrase-beat-mapper": () => import("../../dance/eight-count-phrase-beat-mapper/index.js"),
   "electronics/bulk-capacitor-holdup-time": () => import("../../electronics/bulk-capacitor-holdup-time/index.js"),
   "electronics/i2c-bus-capacitance": () => import("../../electronics/i2c-bus-capacitance/index.js"),
   "forestry/thinning-rule-q-factor-diameter-step": () => import("../../forestry/thinning-rule-q-factor-diameter-step/index.js"),
@@ -39,4 +41,5 @@ export const toolModuleLoaders: Readonly<
   "text/byte-count": () => import("../../text/byte-count/index.js"),
   "theatre/weekly-recoupment": () => import("../../theatre/weekly-recoupment/index.js"),
   "toxicology/fluorescence-profile-comet-tail-moments": () => import("../../toxicology/fluorescence-profile-comet-tail-moments/index.js"),
+  "typography/hanging-punctuation-offset-em": () => import("../../typography/hanging-punctuation-offset-em/index.js"),
 };

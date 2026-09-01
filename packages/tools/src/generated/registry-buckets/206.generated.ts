@@ -31,6 +31,9 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/stipendiorum-years-extractor": () => import("../../epigraphy/stipendiorum-years-extractor/index.js"),
   "futurology/superforecasting-traits-tetlock-team-traits-lookup": () => import("../../futurology/superforecasting-traits-tetlock-team-traits-lookup/index.js"),
   "graph/bipartite-checker": () => import("../../graph/bipartite-checker/index.js"),
+  "horticulture/hydroponic-reservoir-size-plants": () => import("../../horticulture/hydroponic-reservoir-size-plants/index.js"),
+  "horticulture/potting-line-pots-hour": () => import("../../horticulture/potting-line-pots-hour/index.js"),
+  "journalism/cherry-picked-start-date-trend-splice-warning-checker": () => import("../../journalism/cherry-picked-start-date-trend-splice-warning-checker/index.js"),
   "kinesiology/fitness-fatigue-balance": () => import("../../kinesiology/fitness-fatigue-balance/index.js"),
   "laser/synthetic-wavelength": () => import("../../laser/synthetic-wavelength/index.js"),
   "logistics/parcel-locker-saving-percent-compare": () => import("../../logistics/parcel-locker-saving-percent-compare/index.js"),
@@ -46,6 +49,8 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/plasmon-frequency": () => import("../../semiconductor/plasmon-frequency/index.js"),
   "size/gambeson-reconstruction": () => import("../../size/gambeson-reconstruction/index.js"),
   "text/palindrome-checker": () => import("../../text/palindrome-checker/index.js"),
+  "theatre/rehearsal-room-hourly-block-divider": () => import("../../theatre/rehearsal-room-hourly-block-divider/index.js"),
   "transcriptomics/fragments-per-kilobase-million": () => import("../../transcriptomics/fragments-per-kilobase-million/index.js"),
   "virology/lineage-format-audit": () => import("../../virology/lineage-format-audit/index.js"),
+  "viticulture/pruning-delay-late-winter-days": () => import("../../viticulture/pruning-delay-late-winter-days/index.js"),
 };

@@ -38,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "meteorology/cap-strength-cin-checker": () => import("../../meteorology/cap-strength-cin-checker/index.js"),
   "mining/berm-width": () => import("../../mining/berm-width/index.js"),
   "mining/lerchs-grossmann-weight": () => import("../../mining/lerchs-grossmann-weight/index.js"),
+  "music/tritone-substitution-pair-generator": () => import("../../music/tritone-substitution-pair-generator/index.js"),
   "oenology/free-so2-target-dose": () => import("../../oenology/free-so2-target-dose/index.js"),
   "oenology/molecular-so2": () => import("../../oenology/molecular-so2/index.js"),
   "oenology/oechsle-to-brix": () => import("../../oenology/oechsle-to-brix/index.js"),

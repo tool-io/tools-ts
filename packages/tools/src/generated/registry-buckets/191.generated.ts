@@ -5,7 +5,9 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/dso-days-sales-outstanding": () => import("../../accounting/dso-days-sales-outstanding/index.js"),
+  "accounting/right-of-use-asset-initial-recognition-component": () => import("../../accounting/right-of-use-asset-initial-recognition-component/index.js"),
   "bacteriology/countable-plate-selection": () => import("../../bacteriology/countable-plate-selection/index.js"),
+  "banking/dormant-escheatment-years-lookup": () => import("../../banking/dormant-escheatment-years-lookup/index.js"),
   "biology/horn-overlap-index": () => import("../../biology/horn-overlap-index/index.js"),
   "celestial-mechanics/interior-resonance-location": () => import("../../celestial-mechanics/interior-resonance-location/index.js"),
   "chemistry/faraday-moles-electrons": () => import("../../chemistry/faraday-moles-electrons/index.js"),
@@ -18,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/oscillator-startup-time": () => import("../../electronics/oscillator-startup-time/index.js"),
   "forestry/canopy-bulk-density-forestry": () => import("../../forestry/canopy-bulk-density-forestry/index.js"),
   "futurology/wright-law-learning-curve-cost-doubling-lookup": () => import("../../futurology/wright-law-learning-curve-cost-doubling-lookup/index.js"),
+  "game/swiss-round-count-log2": () => import("../../game/swiss-round-count-log2/index.js"),
   "gemology/pearl-size-classifier": () => import("../../gemology/pearl-size-classifier/index.js"),
   "generate/isbn-10": () => import("../../generate/isbn-10/index.js"),
   "genomics/cigar-junction-positions": () => import("../../genomics/cigar-junction-positions/index.js"),

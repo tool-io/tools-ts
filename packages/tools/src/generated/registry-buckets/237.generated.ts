@@ -46,6 +46,8 @@ export const toolModuleLoaders: Readonly<
   "statistics/benjamini-hochberg": () => import("../../statistics/benjamini-hochberg/index.js"),
   "taxation/mining-activity-screen": () => import("../../taxation/mining-activity-screen/index.js"),
   "text/emoji-count": () => import("../../text/emoji-count/index.js"),
+  "theatre/dbfs-headroom-live-mix-peaks-margin-calculator": () => import("../../theatre/dbfs-headroom-live-mix-peaks-margin-calculator/index.js"),
   "transcriptomics/transcriptome-completeness": () => import("../../transcriptomics/transcriptome-completeness/index.js"),
+  "typography/heading-step-consistency-checker": () => import("../../typography/heading-step-consistency-checker/index.js"),
   "viticulture/trellis-post-spacing-load": () => import("../../viticulture/trellis-post-spacing-load/index.js"),
 };

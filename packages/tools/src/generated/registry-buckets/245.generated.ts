@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/height-growth-annual": () => import("../../forestry/height-growth-annual/index.js"),
   "futurology/voros-futures-cone-expansion-rings-lookup": () => import("../../futurology/voros-futures-cone-expansion-rings-lookup/index.js"),
   "geology/apparent-dip": () => import("../../geology/apparent-dip/index.js"),
+  "glaciology/snout-recession-length-per-decade": () => import("../../glaciology/snout-recession-length-per-decade/index.js"),
   "horology/guilloche-perlage-pattern-family-lookup": () => import("../../horology/guilloche-perlage-pattern-family-lookup/index.js"),
   "insurance/umbrella-drop-down": () => import("../../insurance/umbrella-drop-down/index.js"),
   "kinesiology/talk-test-intensity-screen": () => import("../../kinesiology/talk-test-intensity-screen/index.js"),
@@ -50,4 +51,5 @@ export const toolModuleLoaders: Readonly<
   "toxicology/kinetic-bioconcentration-from-rates": () => import("../../toxicology/kinetic-bioconcentration-from-rates/index.js"),
   "toxicology/lognormal-ssd-hazardous-quantile": () => import("../../toxicology/lognormal-ssd-hazardous-quantile/index.js"),
   "transcriptomics/gsea-running-sum": () => import("../../transcriptomics/gsea-running-sum/index.js"),
+  "viticulture/cool-night-index-freshness": () => import("../../viticulture/cool-night-index-freshness/index.js"),
 };

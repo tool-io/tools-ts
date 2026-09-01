@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/segregation-of-duties-conflict-matrix-checker": () => import("../../accounting/segregation-of-duties-conflict-matrix-checker/index.js"),
   "carpentry/clamp-count": () => import("../../carpentry/clamp-count/index.js"),
   "carpentry/fraeser-drehzahl-vc-formel": () => import("../../carpentry/fraeser-drehzahl-vc-formel/index.js"),
   "carpentry/handlauf-durchmesser-42-48mm": () => import("../../carpentry/handlauf-durchmesser-42-48mm/index.js"),
@@ -21,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "horology/daily-rate-average-comparison": () => import("../../horology/daily-rate-average-comparison/index.js"),
   "horology/hand-wind-turns-per-day": () => import("../../horology/hand-wind-turns-per-day/index.js"),
   "html/input-types-full-list-lookup": () => import("../../html/input-types-full-list-lookup/index.js"),
+  "journalism/paywall-metered-article-count-monthly-tracker": () => import("../../journalism/paywall-metered-article-count-monthly-tracker/index.js"),
   "laser/laser-flashlamp-versus-diode-pumping-wall-plug-efficiency-compare": () => import("../../laser/laser-flashlamp-versus-diode-pumping-wall-plug-efficiency-compare/index.js"),
   "logistics/backorder-rate-percent": () => import("../../logistics/backorder-rate-percent/index.js"),
   "meteorology/green-flash-refraction-duration-seconds": () => import("../../meteorology/green-flash-refraction-duration-seconds/index.js"),

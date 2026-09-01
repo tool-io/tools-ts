@@ -22,6 +22,8 @@ export const toolModuleLoaders: Readonly<
   "geology/mineral-cleavage-lookup": () => import("../../geology/mineral-cleavage-lookup/index.js"),
   "geology/pore-water-pressure": () => import("../../geology/pore-water-pressure/index.js"),
   "glaciology/glacier-response-time-johannesson": () => import("../../glaciology/glacier-response-time-johannesson/index.js"),
+  "journalism/comment-moderation-toxicity-threshold-checker": () => import("../../journalism/comment-moderation-toxicity-threshold-checker/index.js"),
+  "journalism/kill-fee-percent-unaccepted-pitch-lookup": () => import("../../journalism/kill-fee-percent-unaccepted-pitch-lookup/index.js"),
   "laser/laser-quantum-cascade-laser-mid-ir-fingerprint-selection-table-lookup": () => import("../../laser/laser-quantum-cascade-laser-mid-ir-fingerprint-selection-table-lookup/index.js"),
   "logic/full-adder-majority-carry-checker": () => import("../../logic/full-adder-majority-carry-checker/index.js"),
   "mycology/pinning-co2-threshold-trigger-checker": () => import("../../mycology/pinning-co2-threshold-trigger-checker/index.js"),
@@ -33,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "sailing/tidal-stream-at-time": () => import("../../sailing/tidal-stream-at-time/index.js"),
   "seismology/seismic-efficiency-energy-partition": () => import("../../seismology/seismic-efficiency-energy-partition/index.js"),
   "semiconductor/electron-effective-mass": () => import("../../semiconductor/electron-effective-mass/index.js"),
+  "theatre/trap-room-headroom-checker": () => import("../../theatre/trap-room-headroom-checker/index.js"),
   "transcriptomics/counts-per-million": () => import("../../transcriptomics/counts-per-million/index.js"),
   "viticulture/hedging-top-height-trimming": () => import("../../viticulture/hedging-top-height-trimming/index.js"),
 };

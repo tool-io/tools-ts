@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "geology/swell-index": () => import("../../geology/swell-index/index.js"),
   "horology/amplitude-lift-ratio": () => import("../../horology/amplitude-lift-ratio/index.js"),
   "horology/telemeter-distance": () => import("../../horology/telemeter-distance/index.js"),
+  "horticulture/fungus-gnat-potato-monitor-count": () => import("../../horticulture/fungus-gnat-potato-monitor-count/index.js"),
   "kinesiology/triple-extension-sequence-check": () => import("../../kinesiology/triple-extension-sequence-check/index.js"),
   "logistics/restocking-fee-net-refund-computation": () => import("../../logistics/restocking-fee-net-refund-computation/index.js"),
   "math/beta-function-approx": () => import("../../math/beta-function-approx/index.js"),

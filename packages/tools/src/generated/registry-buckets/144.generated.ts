@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "auditing/shell-company-registration-age-nominee-indicator-lookup": () => import("../../auditing/shell-company-registration-age-nominee-indicator-lookup/index.js"),
   "aviation/endurance": () => import("../../aviation/endurance/index.js"),
   "aviation/vne-corrected": () => import("../../aviation/vne-corrected/index.js"),
+  "banking/bonus-rate-direct-deposit-qualifier-checker": () => import("../../banking/bonus-rate-direct-deposit-qualifier-checker/index.js"),
   "biology/cardiac-power-output": () => import("../../biology/cardiac-power-output/index.js"),
   "biology/margalef-richness": () => import("../../biology/margalef-richness/index.js"),
   "checksum/crc-32-mpeg-2": () => import("../../checksum/crc-32-mpeg-2/index.js"),
@@ -46,4 +47,5 @@ export const toolModuleLoaders: Readonly<
   "sociology/severe-material-deprivation-rate-eu": () => import("../../sociology/severe-material-deprivation-rate-eu/index.js"),
   "sociology/treiman-prestige-score-lookup": () => import("../../sociology/treiman-prestige-score-lookup/index.js"),
   "toxicology/allometric-total-dose-transfer": () => import("../../toxicology/allometric-total-dose-transfer/index.js"),
+  "viticulture/young-vine-establishment-water-volume": () => import("../../viticulture/young-vine-establishment-water-volume/index.js"),
 };

@@ -27,6 +27,8 @@ export const toolModuleLoaders: Readonly<
   "html/attribute-parser": () => import("../../html/attribute-parser/index.js"),
   "html/label-for-id-binding-checker": () => import("../../html/label-for-id-binding-checker/index.js"),
   "journalism/donor-concentration-analysis": () => import("../../journalism/donor-concentration-analysis/index.js"),
+  "journalism/two-independent-sources-verification-rule-checker": () => import("../../journalism/two-independent-sources-verification-rule-checker/index.js"),
+  "journalism/update-stamp-correction-changelog-append-format-lookup": () => import("../../journalism/update-stamp-correction-changelog-append-format-lookup/index.js"),
   "kinesiology/weekly-met-minutes": () => import("../../kinesiology/weekly-met-minutes/index.js"),
   "laser/mcao-field-coverage": () => import("../../laser/mcao-field-coverage/index.js"),
   "laser/stripe-waveguide-v-number": () => import("../../laser/stripe-waveguide-v-number/index.js"),
@@ -46,4 +48,5 @@ export const toolModuleLoaders: Readonly<
   "sericulture/late-laying-discards-percent-rule": () => import("../../sericulture/late-laying-discards-percent-rule/index.js"),
   "sericulture/tray-stack-gap-height": () => import("../../sericulture/tray-stack-gap-height/index.js"),
   "viticulture/berry-average-weight-from-sample": () => import("../../viticulture/berry-average-weight-from-sample/index.js"),
+  "viticulture/pre-pruning-machine-pass-speed": () => import("../../viticulture/pre-pruning-machine-pass-speed/index.js"),
 };

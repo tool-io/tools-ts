@@ -37,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "ponderal-index": () => import("../../ponderal-index/index.js"),
   "proteomics/protein-aliphatic-index": () => import("../../proteomics/protein-aliphatic-index/index.js"),
   "real-estate/usable-area": () => import("../../real-estate/usable-area/index.js"),
+  "theatre/ifb-comms-beltpack-channel-tree-lookup": () => import("../../theatre/ifb-comms-beltpack-channel-tree-lookup/index.js"),
   "transcriptomics/loess-intensity-normalization": () => import("../../transcriptomics/loess-intensity-normalization/index.js"),
   "validate/jan": () => import("../../validate/jan/index.js"),
   "vector/hadamard-product": () => import("../../vector/hadamard-product/index.js"),

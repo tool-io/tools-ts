@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/ar-aging-bucket-classifier": () => import("../../accounting/ar-aging-bucket-classifier/index.js"),
   "auditing/ratio-narrative-check": () => import("../../auditing/ratio-narrative-check/index.js"),
   "aviation/groundspeed-from-wind-triangle": () => import("../../aviation/groundspeed-from-wind-triangle/index.js"),
   "biology/ic50-biology": () => import("../../biology/ic50-biology/index.js"),
@@ -26,12 +27,15 @@ export const toolModuleLoaders: Readonly<
   "logic/a-proposition-classifier": () => import("../../logic/a-proposition-classifier/index.js"),
   "logistics/billable-weight-max-actual-dim": () => import("../../logistics/billable-weight-max-actual-dim/index.js"),
   "math/sexy-prime-pair-checker": () => import("../../math/sexy-prime-pair-checker/index.js"),
+  "music/meter-pulse-grouping-classifier": () => import("../../music/meter-pulse-grouping-classifier/index.js"),
   "music/quarter-tone-microtonal-frequency": () => import("../../music/quarter-tone-microtonal-frequency/index.js"),
   "random/malayalam-digit": () => import("../../random/malayalam-digit/index.js"),
   "random/oklab-color": () => import("../../random/oklab-color/index.js"),
   "random/old-north-arabian-letter": () => import("../../random/old-north-arabian-letter/index.js"),
   "sailing/persistent-shift-rate": () => import("../../sailing/persistent-shift-rate/index.js"),
   "taxation/cdp-appeal-window": () => import("../../taxation/cdp-appeal-window/index.js"),
+  "theatre/stagehand-call-hours-load-in-out-estimator": () => import("../../theatre/stagehand-call-hours-load-in-out-estimator/index.js"),
+  "viticulture/divided-canopy-scott-henry-buds": () => import("../../viticulture/divided-canopy-scott-henry-buds/index.js"),
   "volcanology/crystal-content-viscosity-correction": () => import("../../volcanology/crystal-content-viscosity-correction/index.js"),
   "vr/field-of-view-diagonal": () => import("../../vr/field-of-view-diagonal/index.js"),
 };

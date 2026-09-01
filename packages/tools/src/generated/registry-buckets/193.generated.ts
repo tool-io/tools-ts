@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/treasury-stock-cost-method-no-gain-checker": () => import("../../accounting/treasury-stock-cost-method-no-gain-checker/index.js"),
   "actuarial/last-survivor-expectation-identity": () => import("../../actuarial/last-survivor-expectation-identity/index.js"),
   "aquaculture/condition-factor": () => import("../../aquaculture/condition-factor/index.js"),
   "arithmetic/absolute-difference": () => import("../../arithmetic/absolute-difference/index.js"),
@@ -17,8 +18,11 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/replicate-concordance": () => import("../../epigenetics/replicate-concordance/index.js"),
   "film/guide-number-aperture": () => import("../../film/guide-number-aperture/index.js"),
   "forestry/ground-based-skid-trail-density-percent-area": () => import("../../forestry/ground-based-skid-trail-density-percent-area/index.js"),
+  "game/lottery-649-jackpot-odds-combination": () => import("../../game/lottery-649-jackpot-odds-combination/index.js"),
   "geometry/distance": () => import("../../geometry/distance/index.js"),
+  "glaciology/glacier-lake-outburst-volume": () => import("../../glaciology/glacier-lake-outburst-volume/index.js"),
   "horology/fourth-wheel-rpm": () => import("../../horology/fourth-wheel-rpm/index.js"),
+  "horticulture/transplant-line-workers-hour": () => import("../../horticulture/transplant-line-workers-hour/index.js"),
   "journalism/midroll-spacing": () => import("../../journalism/midroll-spacing/index.js"),
   "laser/beat-note-phase-noise": () => import("../../laser/beat-note-phase-noise/index.js"),
   "laser/laser-chemical-oxygen-iodine-energy-transfer-efficiency-lookup": () => import("../../laser/laser-chemical-oxygen-iodine-energy-transfer-efficiency-lookup/index.js"),
@@ -28,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "metabolomics/flux-objective-score": () => import("../../metabolomics/flux-objective-score/index.js"),
   "mining/metal-content": () => import("../../mining/metal-content/index.js"),
   "museology/provenance-gap-year-span": () => import("../../museology/provenance-gap-year-span/index.js"),
+  "music/parallel-key-lookup": () => import("../../music/parallel-key-lookup/index.js"),
   "neuroscience/burst-spike-fraction": () => import("../../neuroscience/burst-spike-fraction/index.js"),
   "neuroscience/descriptor-logbb-model": () => import("../../neuroscience/descriptor-logbb-model/index.js"),
   "neuroscience/steady-state-train-depression": () => import("../../neuroscience/steady-state-train-depression/index.js"),
@@ -44,6 +49,8 @@ export const toolModuleLoaders: Readonly<
   "size/rug": () => import("../../size/rug/index.js"),
   "sociology/wealth-quintile-ratio": () => import("../../sociology/wealth-quintile-ratio/index.js"),
   "theatre/distributed-speaker-load": () => import("../../theatre/distributed-speaker-load/index.js"),
+  "typography/gutter-width-column-grid-share": () => import("../../typography/gutter-width-column-grid-share/index.js"),
+  "typography/webfont-subset-savings-percent-glyphs": () => import("../../typography/webfont-subset-savings-percent-glyphs/index.js"),
   "virology/cells-for-inoculum-moi": () => import("../../virology/cells-for-inoculum-moi/index.js"),
   "viticulture/picking-lugs-per-ton": () => import("../../viticulture/picking-lugs-per-ton/index.js"),
   "vr/total-system-latency": () => import("../../vr/total-system-latency/index.js"),

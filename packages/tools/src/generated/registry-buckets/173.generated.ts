@@ -34,5 +34,6 @@ export const toolModuleLoaders: Readonly<
   "size/necklace": () => import("../../size/necklace/index.js"),
   "sociology/cause-deleted-life-expectancy-gain": () => import("../../sociology/cause-deleted-life-expectancy-gain/index.js"),
   "text/line-ending-normalize": () => import("../../text/line-ending-normalize/index.js"),
+  "theatre/house-open-to-curtain-minute-sequence-lookup": () => import("../../theatre/house-open-to-curtain-minute-sequence-lookup/index.js"),
   "web/canonical-extractor": () => import("../../web/canonical-extractor/index.js"),
 };

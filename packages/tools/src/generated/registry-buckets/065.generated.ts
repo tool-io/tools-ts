@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "gemology/magic-size-price-jump": () => import("../../gemology/magic-size-price-jump/index.js"),
   "geology/vei-lookup": () => import("../../geology/vei-lookup/index.js"),
   "geometry/pythagorean-theorem": () => import("../../geometry/pythagorean-theorem/index.js"),
+  "glaciology/runoff-diurnal-peak-lag": () => import("../../glaciology/runoff-diurnal-peak-lag/index.js"),
   "horology/power-reserve-torque-decay-curve-reader": () => import("../../horology/power-reserve-torque-decay-curve-reader/index.js"),
   "horticulture/ec-ms-cm-correction-factor": () => import("../../horticulture/ec-ms-cm-correction-factor/index.js"),
   "horticulture/supplemental-light-shortfall-hours": () => import("../../horticulture/supplemental-light-shortfall-hours/index.js"),
@@ -44,4 +45,5 @@ export const toolModuleLoaders: Readonly<
   "size/duvet": () => import("../../size/duvet/index.js"),
   "sociology/income-share-top-10-percent": () => import("../../sociology/income-share-top-10-percent/index.js"),
   "text/longest-common-subsequence": () => import("../../text/longest-common-subsequence/index.js"),
+  "theatre/equity-hour-break-rehearsal-rule-lookup": () => import("../../theatre/equity-hour-break-rehearsal-rule-lookup/index.js"),
 };

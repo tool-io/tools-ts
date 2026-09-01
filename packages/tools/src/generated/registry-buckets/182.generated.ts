@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/stump-height-and-stump-volume-loss-percent": () => import("../../forestry/stump-height-and-stump-volume-loss-percent/index.js"),
   "geology/darcy-discharge": () => import("../../geology/darcy-discharge/index.js"),
   "horology/incabloc-shock-absorber-principle-lookup": () => import("../../horology/incabloc-shock-absorber-principle-lookup/index.js"),
+  "horticulture/yellow-sticky-card-count-per-100m2": () => import("../../horticulture/yellow-sticky-card-count-per-100m2/index.js"),
   "html/manifest-link-rel-lookup": () => import("../../html/manifest-link-rel-lookup/index.js"),
   "http/status-message": () => import("../../http/status-message/index.js"),
   "journalism/email-auth-coverage": () => import("../../journalism/email-auth-coverage/index.js"),
@@ -32,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/shrinkage-percent-inventory-loss": () => import("../../logistics/shrinkage-percent-inventory-loss/index.js"),
   "math/dirichlet-eta-approx": () => import("../../math/dirichlet-eta-approx/index.js"),
   "mining/bond-work-index": () => import("../../mining/bond-work-index/index.js"),
+  "music/accidental-double-sharp-flat-checker": () => import("../../music/accidental-double-sharp-flat-checker/index.js"),
   "music/adsr-envelope-total-duration": () => import("../../music/adsr-envelope-total-duration/index.js"),
   "network/eui64-link-local": () => import("../../network/eui64-link-local/index.js"),
   "number/kaprekar-checker": () => import("../../number/kaprekar-checker/index.js"),
@@ -43,6 +45,7 @@ export const toolModuleLoaders: Readonly<
   "size/compression-garment": () => import("../../size/compression-garment/index.js"),
   "size/snowboard": () => import("../../size/snowboard/index.js"),
   "statistics/benford-law-checker": () => import("../../statistics/benford-law-checker/index.js"),
+  "typography/variable-font-wght-axis-value-checker": () => import("../../typography/variable-font-wght-axis-value-checker/index.js"),
   "virology/growth-r0-gamma-generation": () => import("../../virology/growth-r0-gamma-generation/index.js"),
   "virology/viral-genome-notation-parser": () => import("../../virology/viral-genome-notation-parser/index.js"),
 };

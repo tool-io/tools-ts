@@ -36,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "geometry/triangle-perimeter": () => import("../../geometry/triangle-perimeter/index.js"),
   "glaciology/thermal-regime-temperate-polar-checker": () => import("../../glaciology/thermal-regime-temperate-polar-checker/index.js"),
   "hash/sha3-224": () => import("../../hash/sha3-224/index.js"),
+  "horticulture/germination-mat-temp-range-lookup": () => import("../../horticulture/germination-mat-temp-range-lookup/index.js"),
   "insurance/fronting-fee": () => import("../../insurance/fronting-fee/index.js"),
   "insurance/governing-payroll-class": () => import("../../insurance/governing-payroll-class/index.js"),
   "journalism/choropleth-bin-classifier": () => import("../../journalism/choropleth-bin-classifier/index.js"),
@@ -58,6 +59,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/inp-lattice-constant": () => import("../../semiconductor/inp-lattice-constant/index.js"),
   "text/substring-count": () => import("../../text/substring-count/index.js"),
   "text/whitespace-count": () => import("../../text/whitespace-count/index.js"),
+  "theatre/iris-diaphragm-aperture-range-lookup": () => import("../../theatre/iris-diaphragm-aperture-range-lookup/index.js"),
   "toxicology/route-absorption-aggregate-dose": () => import("../../toxicology/route-absorption-aggregate-dose/index.js"),
   "viticulture/row-length-vine-count": () => import("../../viticulture/row-length-vine-count/index.js"),
 };

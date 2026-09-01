@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "convert/binary-to-decimal": () => import("../../convert/binary-to-decimal/index.js"),
   "convert/octal-to-decimal": () => import("../../convert/octal-to-decimal/index.js"),
   "csv/mean-aggregate-per-numeric-column": () => import("../../csv/mean-aggregate-per-numeric-column/index.js"),
+  "dance/combo-learning-speed-8counts-per-run-lookup": () => import("../../dance/combo-learning-speed-8counts-per-run-lookup/index.js"),
   "electronics/capacitor-dissipation-factor-vs-frequency": () => import("../../electronics/capacitor-dissipation-factor-vs-frequency/index.js"),
   "electronics/fiber-attenuation": () => import("../../electronics/fiber-attenuation/index.js"),
   "genomics/sam-flag-decode": () => import("../../genomics/sam-flag-decode/index.js"),

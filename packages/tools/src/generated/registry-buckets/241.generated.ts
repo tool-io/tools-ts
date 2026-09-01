@@ -5,11 +5,13 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "aviation/required-approach-speed-gust": () => import("../../aviation/required-approach-speed-gust/index.js"),
+  "banking/roundup-savings-accrual-monthly": () => import("../../banking/roundup-savings-accrual-monthly/index.js"),
   "biology/crop-water-stress-index": () => import("../../biology/crop-water-stress-index/index.js"),
   "biology/primer-self-dimer-tm": () => import("../../biology/primer-self-dimer-tm/index.js"),
   "carpentry/deckenpaneele-nut-feder-dehnungsfuge": () => import("../../carpentry/deckenpaneele-nut-feder-dehnungsfuge/index.js"),
   "decode/bacon-cipher": () => import("../../decode/bacon-cipher/index.js"),
   "electronics/antenna-polarization-loss": () => import("../../electronics/antenna-polarization-loss/index.js"),
+  "electronics/ctle-peaking": () => import("../../electronics/ctle-peaking/index.js"),
   "electronics/detector-responsivity-vs-wavelength": () => import("../../electronics/detector-responsivity-vs-wavelength/index.js"),
   "electronics/eia-96-code-decode": () => import("../../electronics/eia-96-code-decode/index.js"),
   "electronics/t-pad-series-resistor": () => import("../../electronics/t-pad-series-resistor/index.js"),
@@ -25,5 +27,6 @@ export const toolModuleLoaders: Readonly<
   "random/khudawadi-character": () => import("../../random/khudawadi-character/index.js"),
   "sailing/wind-pressure-on-sail": () => import("../../sailing/wind-pressure-on-sail/index.js"),
   "semiconductor/bjt-output-conductance": () => import("../../semiconductor/bjt-output-conductance/index.js"),
+  "theatre/house-comp-seats-percent-cap-checker": () => import("../../theatre/house-comp-seats-percent-cap-checker/index.js"),
   "transcriptomics/library-mito-fraction": () => import("../../transcriptomics/library-mito-fraction/index.js"),
 };

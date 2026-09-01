@@ -51,5 +51,6 @@ export const toolModuleLoaders: Readonly<
   "statistics/bootstrap-confidence-interval": () => import("../../statistics/bootstrap-confidence-interval/index.js"),
   "statistics/midrange": () => import("../../statistics/midrange/index.js"),
   "text/concatenate-two-strings": () => import("../../text/concatenate-two-strings/index.js"),
+  "typography/oldstyle-figure-alignment-checker": () => import("../../typography/oldstyle-figure-alignment-checker/index.js"),
   "viticulture/cluster-zone-height-percent-canopy": () => import("../../viticulture/cluster-zone-height-percent-canopy/index.js"),
 };

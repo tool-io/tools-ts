@@ -4,8 +4,10 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/obsolete-inventory-reserve-percent-lookup": () => import("../../accounting/obsolete-inventory-reserve-percent-lookup/index.js"),
   "acoustics/temporal-integration-gain": () => import("../../acoustics/temporal-integration-gain/index.js"),
   "aquaculture/biofilter-sizing": () => import("../../aquaculture/biofilter-sizing/index.js"),
+  "banking/bic-swift-code-structure-validator": () => import("../../banking/bic-swift-code-structure-validator/index.js"),
   "biology/diversity-simpson-index": () => import("../../biology/diversity-simpson-index/index.js"),
   "biology/elisa-concentration": () => import("../../biology/elisa-concentration/index.js"),
   "biology/epistatic-variance": () => import("../../biology/epistatic-variance/index.js"),
@@ -19,7 +21,9 @@ export const toolModuleLoaders: Readonly<
   "futurology/causal-layered-analysis-litany-to-metaphor-depths": () => import("../../futurology/causal-layered-analysis-litany-to-metaphor-depths/index.js"),
   "futurology/probable-plausible-preferable-scenario-sorter": () => import("../../futurology/probable-plausible-preferable-scenario-sorter/index.js"),
   "genomics/localized-snp-density": () => import("../../genomics/localized-snp-density/index.js"),
+  "journalism/quote-context-truncation-full-clip-checker": () => import("../../journalism/quote-context-truncation-full-clip-checker/index.js"),
   "journalism/records-request-deadline-sorter": () => import("../../journalism/records-request-deadline-sorter/index.js"),
+  "limnology/tsi-carlson-secchi": () => import("../../limnology/tsi-carlson-secchi/index.js"),
   "logistics/fuel-price-per-mile-burn": () => import("../../logistics/fuel-price-per-mile-burn/index.js"),
   "math/euler-mascheroni-constant-approx": () => import("../../math/euler-mascheroni-constant-approx/index.js"),
   "microcontroller/circular-buffer-index": () => import("../../microcontroller/circular-buffer-index/index.js"),

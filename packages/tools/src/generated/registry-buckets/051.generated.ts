@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/commission-accrual-period-allocation": () => import("../../accounting/commission-accrual-period-allocation/index.js"),
   "aquaculture/incubation-degree-days": () => import("../../aquaculture/incubation-degree-days/index.js"),
   "aviation/center-of-gravity": () => import("../../aviation/center-of-gravity/index.js"),
   "biology/cell-surface-area": () => import("../../biology/cell-surface-area/index.js"),
@@ -14,9 +15,11 @@ export const toolModuleLoaders: Readonly<
   "chemistry/phenolphthalein-range-checker": () => import("../../chemistry/phenolphthalein-range-checker/index.js"),
   "climatology/climate-normal-averager": () => import("../../climatology/climate-normal-averager/index.js"),
   "construction/rebar-stirrup-spacing": () => import("../../construction/rebar-stirrup-spacing/index.js"),
+  "dance/sprung-floor-deflection-mm-spec-lookup": () => import("../../dance/sprung-floor-deflection-mm-spec-lookup/index.js"),
   "electronics/audio-signal-to-noise-a-weighted": () => import("../../electronics/audio-signal-to-noise-a-weighted/index.js"),
   "electronics/energy-in-battery": () => import("../../electronics/energy-in-battery/index.js"),
   "electronics/ethernet-magnetics-turns-ratio": () => import("../../electronics/ethernet-magnetics-turns-ratio/index.js"),
+  "electronics/proximity-sensor-range": () => import("../../electronics/proximity-sensor-range/index.js"),
   "engineering/pavement-esal": () => import("../../engineering/pavement-esal/index.js"),
   "engineering/power-torque-rpm": () => import("../../engineering/power-torque-rpm/index.js"),
   "engineering/screw-jack-mechanical-advantage": () => import("../../engineering/screw-jack-mechanical-advantage/index.js"),
@@ -27,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "horology/nato-strap-british-mod-history-lookup": () => import("../../horology/nato-strap-british-mod-history-lookup/index.js"),
   "html/figure-figcaption-pairing-checker": () => import("../../html/figure-figcaption-pairing-checker/index.js"),
   "limnology/stage-discharge-power-rating": () => import("../../limnology/stage-discharge-power-rating/index.js"),
+  "limnology/zooplankton-length-weight-regression": () => import("../../limnology/zooplankton-length-weight-regression/index.js"),
   "logistics/oversize-package-threshold-checker": () => import("../../logistics/oversize-package-threshold-checker/index.js"),
   "math/montgomery-pair-correlation": () => import("../../math/montgomery-pair-correlation/index.js"),
   "meteorology/el-equilibrium-level": () => import("../../meteorology/el-equilibrium-level/index.js"),
@@ -40,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "sailing/jib-overlap-percentage": () => import("../../sailing/jib-overlap-percentage/index.js"),
   "seismology/reduced-travel-time-plot-converter": () => import("../../seismology/reduced-travel-time-plot-converter/index.js"),
   "set/union": () => import("../../set/union/index.js"),
+  "theatre/size-flat-square-footage-lumber-count-calculator": () => import("../../theatre/size-flat-square-footage-lumber-count-calculator/index.js"),
   "theatre/vocal-range-transposition-check": () => import("../../theatre/vocal-range-transposition-check/index.js"),
   "viticulture/harvest-morning-dew-correction-weight": () => import("../../viticulture/harvest-morning-dew-correction-weight/index.js"),
   "web/link-preload-detector": () => import("../../web/link-preload-detector/index.js"),

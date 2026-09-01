@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/ai-alignment-timeline-debate-position-map": () => import("../../futurology/ai-alignment-timeline-debate-position-map/index.js"),
   "genetics/lead-snp-region-windows": () => import("../../genetics/lead-snp-region-windows/index.js"),
   "geology/seismic-resolution-vertical": () => import("../../geology/seismic-resolution-vertical/index.js"),
+  "journalism/sign-off-hard-out-countdown-seconds-calculator": () => import("../../journalism/sign-off-hard-out-countdown-seconds-calculator/index.js"),
   "kinesiology/snatch-catch-stability-screen": () => import("../../kinesiology/snatch-catch-stability-screen/index.js"),
   "laser/longitudinal-mode-count": () => import("../../laser/longitudinal-mode-count/index.js"),
   "logic/identity-law-neutral-checker": () => import("../../logic/identity-law-neutral-checker/index.js"),

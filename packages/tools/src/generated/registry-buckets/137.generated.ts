@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/compound-journal-entry-debits-credits-validator": () => import("../../accounting/compound-journal-entry-debits-credits-validator/index.js"),
   "acoustics/iso-tc43-scope-reference": () => import("../../acoustics/iso-tc43-scope-reference/index.js"),
   "acoustics/source-array-db-increase": () => import("../../acoustics/source-array-db-increase/index.js"),
   "actuarial/normal-retirement-benefit": () => import("../../actuarial/normal-retirement-benefit/index.js"),
@@ -23,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "format/query-string": () => import("../../format/query-string/index.js"),
   "futurology/after-action-review-expected-actual-template": () => import("../../futurology/after-action-review-expected-actual-template/index.js"),
   "geometry/regular-polygon-area": () => import("../../geometry/regular-polygon-area/index.js"),
+  "horology/bracelet-micro-adjust-clasp-link-removal-counter": () => import("../../horology/bracelet-micro-adjust-clasp-link-removal-counter/index.js"),
   "horology/carrousel-tourbillon-architecture-screen": () => import("../../horology/carrousel-tourbillon-architecture-screen/index.js"),
   "journalism/records-request-sla": () => import("../../journalism/records-request-sla/index.js"),
   "kinesiology/epley-brzycki-comparison": () => import("../../kinesiology/epley-brzycki-comparison/index.js"),

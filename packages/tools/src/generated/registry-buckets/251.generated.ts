@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/fifo-ending-inventory-and-cogs": () => import("../../accounting/fifo-ending-inventory-and-cogs/index.js"),
+  "accounting/prepaid-expense-monthly-amortization-schedule": () => import("../../accounting/prepaid-expense-monthly-amortization-schedule/index.js"),
   "acoustics/day-evening-night-level": () => import("../../acoustics/day-evening-night-level/index.js"),
   "acoustics/distance-doubling-decibel-drop": () => import("../../acoustics/distance-doubling-decibel-drop/index.js"),
   "apiculture/wax-rendering-loss-percent": () => import("../../apiculture/wax-rendering-loss-percent/index.js"),
@@ -11,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "aquaculture/tan-production": () => import("../../aquaculture/tan-production/index.js"),
   "biology/bun-creatinine-ratio": () => import("../../biology/bun-creatinine-ratio/index.js"),
   "carpentry/dickenhobel-mass-endmass": () => import("../../carpentry/dickenhobel-mass-endmass/index.js"),
+  "color/brand-hue-variance-degrees-across-assets": () => import("../../color/brand-hue-variance-degrees-across-assets/index.js"),
   "convert/centimeters-to-meters": () => import("../../convert/centimeters-to-meters/index.js"),
   "convert/luminous-intensity": () => import("../../convert/luminous-intensity/index.js"),
   "date/start-of-month": () => import("../../date/start-of-month/index.js"),
@@ -41,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/punch-through-current": () => import("../../semiconductor/punch-through-current/index.js"),
   "semiconductor/solar-cell-fill-factor": () => import("../../semiconductor/solar-cell-fill-factor/index.js"),
   "sericulture/reeling-ends-per-operator": () => import("../../sericulture/reeling-ends-per-operator/index.js"),
+  "theatre/muslin-vs-canvas-covering-yardage-calculator": () => import("../../theatre/muslin-vs-canvas-covering-yardage-calculator/index.js"),
   "theatre/running-sheet-coverage": () => import("../../theatre/running-sheet-coverage/index.js"),
   "virology/sir-final-size-root": () => import("../../virology/sir-final-size-root/index.js"),
 };

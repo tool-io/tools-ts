@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/xbrl-tag-context-period-type-selector-lookup": () => import("../../accounting/xbrl-tag-context-period-type-selector-lookup/index.js"),
   "acoustics/angular-frequency-calculator": () => import("../../acoustics/angular-frequency-calculator/index.js"),
   "acoustics/cents-to-ratio-converter": () => import("../../acoustics/cents-to-ratio-converter/index.js"),
   "acoustics/stc-nic-metric-classifier": () => import("../../acoustics/stc-nic-metric-classifier/index.js"),
@@ -16,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/fugacity": () => import("../../chemistry/fugacity/index.js"),
   "chemistry/gay-lussac-law": () => import("../../chemistry/gay-lussac-law/index.js"),
   "chemistry/ppb-to-molarity": () => import("../../chemistry/ppb-to-molarity/index.js"),
+  "color/color-blind-safe-palette-band-checker": () => import("../../color/color-blind-safe-palette-band-checker/index.js"),
   "convert/hex-to-base64": () => import("../../convert/hex-to-base64/index.js"),
   "csv/cell-length-min-max-per-column": () => import("../../csv/cell-length-min-max-per-column/index.js"),
   "csv/decimal-separator-dot-vs-comma-detector": () => import("../../csv/decimal-separator-dot-vs-comma-detector/index.js"),
@@ -33,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "matrix/transpose": () => import("../../matrix/transpose/index.js"),
   "metabolomics/tic-signal-normalization": () => import("../../metabolomics/tic-signal-normalization/index.js"),
   "mining/solvent-extraction-distribution": () => import("../../mining/solvent-extraction-distribution/index.js"),
+  "music/swing-ratio-percentage-classifier": () => import("../../music/swing-ratio-percentage-classifier/index.js"),
   "neuroscience/all-pairs-exponential-stdp": () => import("../../neuroscience/all-pairs-exponential-stdp/index.js"),
   "paleontology/signor-lipps-extension": () => import("../../paleontology/signor-lipps-extension/index.js"),
   "parasitology/nit-distance-age-estimate": () => import("../../parasitology/nit-distance-age-estimate/index.js"),
