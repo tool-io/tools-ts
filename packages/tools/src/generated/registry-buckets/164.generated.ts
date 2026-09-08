@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "apiculture/winter-bee-lifespan-months-lookup": () => import("../../apiculture/winter-bee-lifespan-months-lookup/index.js"),
   "archival-studies/folders-per-box-capacity-checker": () => import("../../archival-studies/folders-per-box-capacity-checker/index.js"),
   "auditing/data-reliability-completeness-accuracy-source-testing-steps": () => import("../../auditing/data-reliability-completeness-accuracy-source-testing-steps/index.js"),
   "aviation/landing-distance-wind-scenario": () => import("../../aviation/landing-distance-wind-scenario/index.js"),
@@ -13,12 +14,16 @@ export const toolModuleLoaders: Readonly<
   "cartography/slope-degree-rise-run": () => import("../../cartography/slope-degree-rise-run/index.js"),
   "chemistry/ampholyte-ph": () => import("../../chemistry/ampholyte-ph/index.js"),
   "chemistry/dilution-m1v1": () => import("../../chemistry/dilution-m1v1/index.js"),
+  "classics/cursus-honorum-magistracy-sequence-order-lookup": () => import("../../classics/cursus-honorum-magistracy-sequence-order-lookup/index.js"),
   "construction/blocks-per-wall": () => import("../../construction/blocks-per-wall/index.js"),
   "convert/text-to-younger-futhark": () => import("../../convert/text-to-younger-futhark/index.js"),
+  "cooking/pork-roast-time": () => import("../../cooking/pork-roast-time/index.js"),
+  "css/font-display-block-swap-timeline-lookup": () => import("../../css/font-display-block-swap-timeline-lookup/index.js"),
   "demography/marital-status-distribution-percent": () => import("../../demography/marital-status-distribution-percent/index.js"),
   "electronics/decibel-voltage-ratio": () => import("../../electronics/decibel-voltage-ratio/index.js"),
   "electronics/laser-slope-efficiency": () => import("../../electronics/laser-slope-efficiency/index.js"),
   "engineering/gear-module-finder": () => import("../../engineering/gear-module-finder/index.js"),
+  "engineering/rc-beam-moment-capacity": () => import("../../engineering/rc-beam-moment-capacity/index.js"),
   "film/iso-gain-db": () => import("../../film/iso-gain-db/index.js"),
   "film/print-cost-total": () => import("../../film/print-cost-total/index.js"),
   "geology/hydraulic-gradient": () => import("../../geology/hydraulic-gradient/index.js"),
@@ -41,6 +46,7 @@ export const toolModuleLoaders: Readonly<
   "numismatics/grade-gap-price-jump-percent": () => import("../../numismatics/grade-gap-price-jump-percent/index.js"),
   "numismatics/war-nickel-silver-content-value": () => import("../../numismatics/war-nickel-silver-content-value/index.js"),
   "parse/number": () => import("../../parse/number/index.js"),
+  "philately/crease-fold-depth-rater": () => import("../../philately/crease-fold-depth-rater/index.js"),
   "random/gothic-letter": () => import("../../random/gothic-letter/index.js"),
   "random/old-permic-letter": () => import("../../random/old-permic-letter/index.js"),
   "seismology/fracturing-monitor-magnitude-reporting-lookup": () => import("../../seismology/fracturing-monitor-magnitude-reporting-lookup/index.js"),

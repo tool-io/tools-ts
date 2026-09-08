@@ -5,12 +5,15 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/acoustic-impedance-medium": () => import("../../acoustics/acoustic-impedance-medium/index.js"),
+  "aesthetics/moral-rights-attribution-integrity-berne-lookup": () => import("../../aesthetics/moral-rights-attribution-integrity-berne-lookup/index.js"),
+  "apiculture/flow-frame-slot-count-lookup": () => import("../../apiculture/flow-frame-slot-count-lookup/index.js"),
   "aviation/density-altitude": () => import("../../aviation/density-altitude/index.js"),
   "biology/necrosis-percentage": () => import("../../biology/necrosis-percentage/index.js"),
   "carpentry/clamex-p-system-bohrbild": () => import("../../carpentry/clamex-p-system-bohrbild/index.js"),
   "carpentry/dovetail-angle": () => import("../../carpentry/dovetail-angle/index.js"),
   "check/clock-offset": () => import("../../check/clock-offset/index.js"),
   "chemistry/surface-tension-capillary-rise": () => import("../../chemistry/surface-tension-capillary-rise/index.js"),
+  "classics/cloaca-maxima-oldest-sewer-still-functioning-marvel-lookup": () => import("../../classics/cloaca-maxima-oldest-sewer-still-functioning-marvel-lookup/index.js"),
   "convert/atbash": () => import("../../convert/atbash/index.js"),
   "convert/hsv-to-rgb": () => import("../../convert/hsv-to-rgb/index.js"),
   "convert/text-to-utf8-decimal": () => import("../../convert/text-to-utf8-decimal/index.js"),
@@ -20,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/chopper-amplifier-offset": () => import("../../electronics/chopper-amplifier-offset/index.js"),
   "electronics/speaker-impedance-at-resonance": () => import("../../electronics/speaker-impedance-at-resonance/index.js"),
   "film/resolution-from-aspect-ratio": () => import("../../film/resolution-from-aspect-ratio/index.js"),
+  "folklore/hex-sign-pennsylvania-dutch-meaning-lookup": () => import("../../folklore/hex-sign-pennsylvania-dutch-meaning-lookup/index.js"),
   "futurology/known-knowns-rumsfeld-certainty-quadrant": () => import("../../futurology/known-knowns-rumsfeld-certainty-quadrant/index.js"),
   "futurology/scenario-narrative-persona-character-builder": () => import("../../futurology/scenario-narrative-persona-character-builder/index.js"),
   "futurology/singularity-kurzweil-date-claim-verdict-lookup": () => import("../../futurology/singularity-kurzweil-date-claim-verdict-lookup/index.js"),
@@ -37,6 +41,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/lichen-growth-rate-form-classifier": () => import("../../mycology/lichen-growth-rate-form-classifier/index.js"),
   "neuroscience/contrast-sensitivity-function": () => import("../../neuroscience/contrast-sensitivity-function/index.js"),
   "number/perfect-number-checker": () => import("../../number/perfect-number-checker/index.js"),
+  "oceanography/equilibrium-tide-theoretical-amplitude": () => import("../../oceanography/equilibrium-tide-theoretical-amplitude/index.js"),
   "optimization/robust-minimax": () => import("../../optimization/robust-minimax/index.js"),
   "plumbing/compressed-air-receiver-size": () => import("../../plumbing/compressed-air-receiver-size/index.js"),
   "plumbing/corrosion-index-ryznar": () => import("../../plumbing/corrosion-index-ryznar/index.js"),
@@ -48,5 +53,6 @@ export const toolModuleLoaders: Readonly<
   "taxation/efile-rejection-triage": () => import("../../taxation/efile-rejection-triage/index.js"),
   "transcriptomics/reads-per-kilobase-million": () => import("../../transcriptomics/reads-per-kilobase-million/index.js"),
   "transcriptomics/rna-velocity-ratio": () => import("../../transcriptomics/rna-velocity-ratio/index.js"),
+  "vexillology/color-count-penalty-scorer": () => import("../../vexillology/color-count-penalty-scorer/index.js"),
   "viticulture/harvester-throughput-hectares-hour": () => import("../../viticulture/harvester-throughput-hectares-hour/index.js"),
 };

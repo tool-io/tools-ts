@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "aesthetics/judd-specific-objects-minimalism-three-dimensional-lookup": () => import("../../aesthetics/judd-specific-objects-minimalism-three-dimensional-lookup/index.js"),
   "agriculture/growing-degree-days": () => import("../../agriculture/growing-degree-days/index.js"),
   "aviation/magnetic-course": () => import("../../aviation/magnetic-course/index.js"),
   "banking/australia-bsb-format-validator": () => import("../../banking/australia-bsb-format-validator/index.js"),
@@ -19,6 +20,8 @@ export const toolModuleLoaders: Readonly<
   "electronics/soft-start-capacitor": () => import("../../electronics/soft-start-capacitor/index.js"),
   "engineering/solar-energy-yield": () => import("../../engineering/solar-energy-yield/index.js"),
   "entrepreneurship/default-alive-runway": () => import("../../entrepreneurship/default-alive-runway/index.js"),
+  "folklore/cows-lying-down-rain-prediction-myth-verdict-context": () => import("../../folklore/cows-lying-down-rain-prediction-myth-verdict-context/index.js"),
+  "folklore/new-shoes-on-table-death-origin-theory-uk-prison-guard": () => import("../../folklore/new-shoes-on-table-death-origin-theory-uk-prison-guard/index.js"),
   "gemology/cut-grade-aggregator": () => import("../../gemology/cut-grade-aggregator/index.js"),
   "geology/bearing-capacity-factor-ngamma": () => import("../../geology/bearing-capacity-factor-ngamma/index.js"),
   "glaciology/glen-flow-law-strain-rate": () => import("../../glaciology/glen-flow-law-strain-rate/index.js"),
@@ -26,13 +29,18 @@ export const toolModuleLoaders: Readonly<
   "kinesiology/sprint-shin-angle-screen": () => import("../../kinesiology/sprint-shin-angle-screen/index.js"),
   "laser/embedded-service-class-check": () => import("../../laser/embedded-service-class-check/index.js"),
   "laser/marechal-strehl": () => import("../../laser/marechal-strehl/index.js"),
+  "linguistics/phoneme-total-count-estimate-by-language": () => import("../../linguistics/phoneme-total-count-estimate-by-language/index.js"),
   "logistics/cartons-per-pallet-ti-hi-calculator": () => import("../../logistics/cartons-per-pallet-ti-hi-calculator/index.js"),
+  "meteorology/occlusion-stage-life-cycle-lookup": () => import("../../meteorology/occlusion-stage-life-cycle-lookup/index.js"),
+  "mining/loader-bucket-capacity": () => import("../../mining/loader-bucket-capacity/index.js"),
   "mri/binary-mask-compressed-sensing-coverage": () => import("../../mri/binary-mask-compressed-sensing-coverage/index.js"),
   "music/bit-depth-dynamic-range-db": () => import("../../music/bit-depth-dynamic-range-db/index.js"),
   "neuroscience/olfactory-staircase-reversal-threshold": () => import("../../neuroscience/olfactory-staircase-reversal-threshold/index.js"),
   "numismatics/pre-1982-cent-copper-melt-value": () => import("../../numismatics/pre-1982-cent-copper-melt-value/index.js"),
+  "oceanography/local-vs-global-sea-level-split": () => import("../../oceanography/local-vs-global-sea-level-split/index.js"),
   "oceanography/tsunami-travel-time-constant-depth": () => import("../../oceanography/tsunami-travel-time-constant-depth/index.js"),
   "paleography/epact-day-moon-lookup": () => import("../../paleography/epact-day-moon-lookup/index.js"),
+  "philately/surface-rate-step-table-lookup": () => import("../../philately/surface-rate-step-table-lookup/index.js"),
   "plumbing/shower-head-flow-rate": () => import("../../plumbing/shower-head-flow-rate/index.js"),
   "random/ol-onal-character": () => import("../../random/ol-onal-character/index.js"),
   "seismology/event-count-poisson-confidence-interval-gehrels": () => import("../../seismology/event-count-poisson-confidence-interval-gehrels/index.js"),
@@ -42,4 +50,5 @@ export const toolModuleLoaders: Readonly<
   "taxation/crypto-swap-gain": () => import("../../taxation/crypto-swap-gain/index.js"),
   "toxicology/lognormal-species-sensitivity-fit": () => import("../../toxicology/lognormal-species-sensitivity-fit/index.js"),
   "viticulture/graft-success-rate-percent": () => import("../../viticulture/graft-success-rate-percent/index.js"),
+  "volcanology/volcanic-debris-avalanche-volume": () => import("../../volcanology/volcanic-debris-avalanche-volume/index.js"),
 };

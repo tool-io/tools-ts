@@ -4,12 +4,14 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "aesthetics/printmaking-states-original-copy-numbering-lookup": () => import("../../aesthetics/printmaking-states-original-copy-numbering-lookup/index.js"),
   "agriculture/plant-population-per-hectare": () => import("../../agriculture/plant-population-per-hectare/index.js"),
   "auditing/dormant-vendor-masterfile-no-activity-period-flag-tester": () => import("../../auditing/dormant-vendor-masterfile-no-activity-period-flag-tester/index.js"),
   "biology/diversity-shannon-wiener": () => import("../../biology/diversity-shannon-wiener/index.js"),
   "carpentry/wood-filler-volume": () => import("../../carpentry/wood-filler-volume/index.js"),
   "chemistry/cell-potential": () => import("../../chemistry/cell-potential/index.js"),
   "chemistry/faraday-mass-deposited": () => import("../../chemistry/faraday-mass-deposited/index.js"),
+  "classics/roman-calendar-kalends-nones-ides-converter": () => import("../../classics/roman-calendar-kalends-nones-ides-converter/index.js"),
   "cryptography/brute-force-time-estimate-at-hashes-per-second": () => import("../../cryptography/brute-force-time-estimate-at-hashes-per-second/index.js"),
   "dance/jive-triple-chasse-beat-values-lookup": () => import("../../dance/jive-triple-chasse-beat-values-lookup/index.js"),
   "electronics/coaxial-capacitance-per-meter": () => import("../../electronics/coaxial-capacitance-per-meter/index.js"),
@@ -19,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/crispr-off-target-count": () => import("../../epigenetics/crispr-off-target-count/index.js"),
   "epigraphy/seg-entry-parser": () => import("../../epigraphy/seg-entry-parser/index.js"),
   "forestry/mean-annual-increment": () => import("../../forestry/mean-annual-increment/index.js"),
+  "gemology/carats-asscher": () => import("../../gemology/carats-asscher/index.js"),
   "genomics/private-singleton-tally": () => import("../../genomics/private-singleton-tally/index.js"),
   "insurance/glwb-withdrawal-amount": () => import("../../insurance/glwb-withdrawal-amount/index.js"),
   "insurance/water-backup-endorsement-limit-checker": () => import("../../insurance/water-backup-endorsement-limit-checker/index.js"),
@@ -38,7 +41,9 @@ export const toolModuleLoaders: Readonly<
   "plumbing/toilet-flush-volume": () => import("../../plumbing/toilet-flush-volume/index.js"),
   "random/complementary-palette": () => import("../../random/complementary-palette/index.js"),
   "random/cyrillic-letter": () => import("../../random/cyrillic-letter/index.js"),
+  "random/fiscal-quarter-exercise": () => import("../../random/fiscal-quarter-exercise/index.js"),
   "random/latvian-alphabet-letter": () => import("../../random/latvian-alphabet-letter/index.js"),
+  "random/mixed-script-typography-specimen": () => import("../../random/mixed-script-typography-specimen/index.js"),
   "random/new-tai-lue-character": () => import("../../random/new-tai-lue-character/index.js"),
   "sailing/keel-aspect-ratio": () => import("../../sailing/keel-aspect-ratio/index.js"),
   "semiconductor/negative-bias-temperature-instability-shift": () => import("../../semiconductor/negative-bias-temperature-instability-shift/index.js"),
