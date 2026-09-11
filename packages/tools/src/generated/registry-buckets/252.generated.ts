@@ -39,6 +39,7 @@ export const toolModuleLoaders: Readonly<
   "journalism/palette-contrast": () => import("../../journalism/palette-contrast/index.js"),
   "laser/figure-nine-loop-transmission": () => import("../../laser/figure-nine-loop-transmission/index.js"),
   "linguistics/tense-aspect-system-lookup-by-language": () => import("../../linguistics/tense-aspect-system-lookup-by-language/index.js"),
+  "marriage/fondness-admiration-scale": () => import("../../marriage/fondness-admiration-scale/index.js"),
   "matrix/determinant": () => import("../../matrix/determinant/index.js"),
   "mining/solid-percentage-pulp": () => import("../../mining/solid-percentage-pulp/index.js"),
   "mortgage/kenya-variable-rate": () => import("../../mortgage/kenya-variable-rate/index.js"),
@@ -65,7 +66,10 @@ export const toolModuleLoaders: Readonly<
   "statistics/wilcoxon-signed-rank": () => import("../../statistics/wilcoxon-signed-rank/index.js"),
   "taxation/transcript-requirement-match": () => import("../../taxation/transcript-requirement-match/index.js"),
   "text/lowercase": () => import("../../text/lowercase/index.js"),
+  "theatre/marionette-airplane-control-bar-string-count-config-lookup": () => import("../../theatre/marionette-airplane-control-bar-string-count-config-lookup/index.js"),
   "theatre/rosin-scenic-floor-mix-ratio": () => import("../../theatre/rosin-scenic-floor-mix-ratio/index.js"),
+  "theatre/span-set-basket-truss-spacing-lookup": () => import("../../theatre/span-set-basket-truss-spacing-lookup/index.js"),
+  "veterinary/ultrasound-gestation-age-cat": () => import("../../veterinary/ultrasound-gestation-age-cat/index.js"),
   "viticulture/tie-tape-roll-vines-covered": () => import("../../viticulture/tie-tape-roll-vines-covered/index.js"),
   "volcanology/scoria-vs-pumice-vesicularity-split": () => import("../../volcanology/scoria-vs-pumice-vesicularity-split/index.js"),
 };

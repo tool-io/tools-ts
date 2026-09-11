@@ -44,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "insurance/proof-of-loss-deadline-days-lookup": () => import("../../insurance/proof-of-loss-deadline-days-lookup/index.js"),
   "journalism/slug-url-length-hyphen-best-practice-checker": () => import("../../journalism/slug-url-length-hyphen-best-practice-checker/index.js"),
   "logic/de-morgan-and-to-or-transformer": () => import("../../logic/de-morgan-and-to-or-transformer/index.js"),
+  "marriage/conflict-resolution-style-lookup": () => import("../../marriage/conflict-resolution-style-lookup/index.js"),
   "math/hermite-polynomial-approx": () => import("../../math/hermite-polynomial-approx/index.js"),
   "numismatics/philharmonic-euro-face-value-versus-spot-note": () => import("../../numismatics/philharmonic-euro-face-value-versus-spot-note/index.js"),
   "numismatics/premium-over-spot-percent": () => import("../../numismatics/premium-over-spot-percent/index.js"),

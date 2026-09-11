@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "astrobiology/phosphine-significance-sigma-classifier": () => import("../../astrobiology/phosphine-significance-sigma-classifier/index.js"),
   "auditing/ghost-employee-payroll-masterfile-match-tester": () => import("../../auditing/ghost-employee-payroll-masterfile-match-tester/index.js"),
   "auditing/kam-determination": () => import("../../auditing/kam-determination/index.js"),
   "auditing/methodology-training-coverage": () => import("../../auditing/methodology-training-coverage/index.js"),
@@ -20,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "convert/currency": () => import("../../convert/currency/index.js"),
   "convert/illuminance": () => import("../../convert/illuminance/index.js"),
   "cooking/vinaigrette-ratio": () => import("../../cooking/vinaigrette-ratio/index.js"),
+  "criminology/policing-cost-per-capita-budget-benchmark": () => import("../../criminology/policing-cost-per-capita-budget-benchmark/index.js"),
   "dance/count-calling-script-5-6-7-8-format-lookup": () => import("../../dance/count-calling-script-5-6-7-8-format-lookup/index.js"),
   "electronics/equalizer-boost-db": () => import("../../electronics/equalizer-boost-db/index.js"),
   "engineering/arch-thrust": () => import("../../engineering/arch-thrust/index.js"),
@@ -29,12 +31,14 @@ export const toolModuleLoaders: Readonly<
   "ergonomics/reba-arm-wrist-score": () => import("../../ergonomics/reba-arm-wrist-score/index.js"),
   "film/field-of-view-angle": () => import("../../film/field-of-view-angle/index.js"),
   "folklore/scarecrow-effigy-global-variants-lookup": () => import("../../folklore/scarecrow-effigy-global-variants-lookup/index.js"),
+  "futurology/cultivated-meat-approval-singapore-usda-first-countries": () => import("../../futurology/cultivated-meat-approval-singapore-usda-first-countries/index.js"),
   "geology/bearing-capacity-vesic": () => import("../../geology/bearing-capacity-vesic/index.js"),
   "glaciology/hydraulic-potential-shreve": () => import("../../glaciology/hydraulic-potential-shreve/index.js"),
   "horology/atm-to-meters": () => import("../../horology/atm-to-meters/index.js"),
   "horology/balance-spring-temperature-rate-change": () => import("../../horology/balance-spring-temperature-rate-change/index.js"),
   "horology/demagnetization-process-stage-lookup": () => import("../../horology/demagnetization-process-stage-lookup/index.js"),
   "horticulture/light-uniformity-grid-checker": () => import("../../horticulture/light-uniformity-grid-checker/index.js"),
+  "kinesiology/toe-out-foot-progression-angle-lookup": () => import("../../kinesiology/toe-out-foot-progression-angle-lookup/index.js"),
   "laser/beam-expander-magnification": () => import("../../laser/beam-expander-magnification/index.js"),
   "laser/laser-rayleigh-range-confocal-parameter-waist-distance-formula": () => import("../../laser/laser-rayleigh-range-confocal-parameter-waist-distance-formula/index.js"),
   "linguistics/ejective-consonants-language-lookup": () => import("../../linguistics/ejective-consonants-language-lookup/index.js"),
@@ -52,6 +56,7 @@ export const toolModuleLoaders: Readonly<
   "random/newton-step-exercise": () => import("../../random/newton-step-exercise/index.js"),
   "random/traffic-sign": () => import("../../random/traffic-sign/index.js"),
   "rhetoric/kairos-timing-opportunity-window-lookup": () => import("../../rhetoric/kairos-timing-opportunity-window-lookup/index.js"),
+  "speleology/grid-ref-converter": () => import("../../speleology/grid-ref-converter/index.js"),
   "statistics/midhinge": () => import("../../statistics/midhinge/index.js"),
   "take-home-pay-calculator/de": () => import("../../take-home-pay-calculator/de/index.js"),
   "transcriptomics/cell-fraction-constraint": () => import("../../transcriptomics/cell-fraction-constraint/index.js"),

@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "air-displacement-body-composition": () => import("../../air-displacement-body-composition/index.js"),
   "aquaculture/economic-feed-rate": () => import("../../aquaculture/economic-feed-rate/index.js"),
+  "archival-studies/foi-exemption-category-mapper": () => import("../../archival-studies/foi-exemption-category-mapper/index.js"),
   "astronomy/luminosity-class-mkk-lookup": () => import("../../astronomy/luminosity-class-mkk-lookup/index.js"),
   "auditing/interim-review-quarterly-analytics-checkpoint-lookup": () => import("../../auditing/interim-review-quarterly-analytics-checkpoint-lookup/index.js"),
   "aviation/corrected-altitude": () => import("../../aviation/corrected-altitude/index.js"),
@@ -33,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "linguistics/australian-english-vowel-shift-lookup": () => import("../../linguistics/australian-english-vowel-shift-lookup/index.js"),
   "logic/ferison-eio3-valid-lookup": () => import("../../logic/ferison-eio3-valid-lookup/index.js"),
   "logistics/pallets-per-container-size-lookup": () => import("../../logistics/pallets-per-container-size-lookup/index.js"),
+  "marriage/divorce-custody-time-percentage": () => import("../../marriage/divorce-custody-time-percentage/index.js"),
   "math/digamma-approx": () => import("../../math/digamma-approx/index.js"),
   "math/gcd-polynomial": () => import("../../math/gcd-polynomial/index.js"),
   "math/logarithm": () => import("../../math/logarithm/index.js"),
@@ -56,8 +58,11 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/low-k-interconnect-capacitance": () => import("../../semiconductor/low-k-interconnect-capacitance/index.js"),
   "semiconductor/surface-roughness-mobility": () => import("../../semiconductor/surface-roughness-mobility/index.js"),
   "size/hanbok-reconstruction": () => import("../../size/hanbok-reconstruction/index.js"),
+  "sociology/beveridge-curve-position-checker": () => import("../../sociology/beveridge-curve-position-checker/index.js"),
   "sports/golf-strokes-gained-off-tee": () => import("../../sports/golf-strokes-gained-off-tee/index.js"),
   "theatre/stage-sound-sync-delay": () => import("../../theatre/stage-sound-sync-delay/index.js"),
+  "toxicology/ec10-calculator": () => import("../../toxicology/ec10-calculator/index.js"),
+  "veterinary/fructosamine-diabetes-checker": () => import("../../veterinary/fructosamine-diabetes-checker/index.js"),
   "virology/eclipse-latent-period-timeline": () => import("../../virology/eclipse-latent-period-timeline/index.js"),
   "viticulture/node-loading-adjustment-target": () => import("../../viticulture/node-loading-adjustment-target/index.js"),
 };

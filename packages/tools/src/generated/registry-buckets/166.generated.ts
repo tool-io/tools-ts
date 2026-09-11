@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "classics/greek-fire-byzantine-secret-weapon-lost-formula-lookup": () => import("../../classics/greek-fire-byzantine-secret-weapon-lost-formula-lookup/index.js"),
   "climatology/oceanity-conrad": () => import("../../climatology/oceanity-conrad/index.js"),
   "color/planckian-track-duv-approximation": () => import("../../color/planckian-track-duv-approximation/index.js"),
+  "criminology/unemployment-crime-correlation-calculator": () => import("../../criminology/unemployment-crime-correlation-calculator/index.js"),
   "cryptography/bip32-derivation-path-depth-parser-checker": () => import("../../cryptography/bip32-derivation-path-depth-parser-checker/index.js"),
   "dance/pathway-straight-curved-zigzag-pattern-classifier": () => import("../../dance/pathway-straight-curved-zigzag-pattern-classifier/index.js"),
   "electronics/inductor-energy": () => import("../../electronics/inductor-energy/index.js"),
@@ -51,6 +52,7 @@ export const toolModuleLoaders: Readonly<
   "statistics/interquartile-range": () => import("../../statistics/interquartile-range/index.js"),
   "statistics/margin-of-error": () => import("../../statistics/margin-of-error/index.js"),
   "taxation/401k-deferral-limit-match-vesting-lookup": () => import("../../taxation/401k-deferral-limit-match-vesting-lookup/index.js"),
+  "toxicology/aegl-1": () => import("../../toxicology/aegl-1/index.js"),
   "typography/paragraph-spacing-vs-leading-ratio": () => import("../../typography/paragraph-spacing-vs-leading-ratio/index.js"),
   "web/referrer-policy-parser": () => import("../../web/referrer-policy-parser/index.js"),
 };

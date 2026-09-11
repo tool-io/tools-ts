@@ -44,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "meteorology/mercurial-barometer-temperature-correction": () => import("../../meteorology/mercurial-barometer-temperature-correction/index.js"),
   "meteorology/sprite-blue-jet-altitude-range-lookup": () => import("../../meteorology/sprite-blue-jet-altitude-range-lookup/index.js"),
   "microcontroller/spi-transfer-time": () => import("../../microcontroller/spi-transfer-time/index.js"),
+  "neuroscience/iq-from-raw-score": () => import("../../neuroscience/iq-from-raw-score/index.js"),
   "number/coprime-checker": () => import("../../number/coprime-checker/index.js"),
   "number/digit-sum": () => import("../../number/digit-sum/index.js"),
   "paleontology/goods-u-coverage": () => import("../../paleontology/goods-u-coverage/index.js"),
@@ -57,6 +58,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/cvd-deposition-rate": () => import("../../semiconductor/cvd-deposition-rate/index.js"),
   "semiconductor/packaging-thermal-resistance": () => import("../../semiconductor/packaging-thermal-resistance/index.js"),
   "taxation/refund-delay": () => import("../../taxation/refund-delay/index.js"),
+  "toxicology/hershberger-assay": () => import("../../toxicology/hershberger-assay/index.js"),
   "typography/viewing-distance-signage-letter-height": () => import("../../typography/viewing-distance-signage-letter-height/index.js"),
   "vr/tracking-loss-percentage": () => import("../../vr/tracking-loss-percentage/index.js"),
 };

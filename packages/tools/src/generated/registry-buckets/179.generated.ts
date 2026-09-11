@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "aesthetics/visual-rhythm-motif-repetition-interval-counter": () => import("../../aesthetics/visual-rhythm-motif-repetition-interval-counter/index.js"),
   "archaeology/archaeomagnetic-date-lookup": () => import("../../archaeology/archaeomagnetic-date-lookup/index.js"),
+  "archival-studies/macrovaluation-score-calculator": () => import("../../archival-studies/macrovaluation-score-calculator/index.js"),
   "arithmetic/absolute-value": () => import("../../arithmetic/absolute-value/index.js"),
   "astrometry/duplicate-source-priority-selection": () => import("../../astrometry/duplicate-source-priority-selection/index.js"),
   "astronomy/hubble-time-age-estimate": () => import("../../astronomy/hubble-time-age-estimate/index.js"),
@@ -47,6 +48,7 @@ export const toolModuleLoaders: Readonly<
   "numismatics/maria-theresa-thaler-specs-lookup": () => import("../../numismatics/maria-theresa-thaler-specs-lookup/index.js"),
   "oceanography/atlantic-multidecadal-window-average": () => import("../../oceanography/atlantic-multidecadal-window-average/index.js"),
   "oceanography/bucket-vs-engine-intake-sst-correction-lookup": () => import("../../oceanography/bucket-vs-engine-intake-sst-correction-lookup/index.js"),
+  "pregnancy/estimated-fetal-weight-hadlock-3param": () => import("../../pregnancy/estimated-fetal-weight-hadlock-3param/index.js"),
   "random/lithuanian-alphabet-letter": () => import("../../random/lithuanian-alphabet-letter/index.js"),
   "random/tajik-cyrillic-alphabet-letter": () => import("../../random/tajik-cyrillic-alphabet-letter/index.js"),
   "rhetoric/alliteration-initial-sound-density-calculator": () => import("../../rhetoric/alliteration-initial-sound-density-calculator/index.js"),

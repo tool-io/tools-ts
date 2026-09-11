@@ -43,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "html/caption-vs-summary-deprecated-lookup": () => import("../../html/caption-vs-summary-deprecated-lookup/index.js"),
   "journalism/folio-deadline-section-pagination-order-lookup": () => import("../../journalism/folio-deadline-section-pagination-order-lookup/index.js"),
   "journalism/photo-credit-attribution-format-ap-style-lookup": () => import("../../journalism/photo-credit-attribution-format-ap-style-lookup/index.js"),
+  "marriage/wedding-no-show-rate": () => import("../../marriage/wedding-no-show-rate/index.js"),
   "math/abundance-ratio": () => import("../../math/abundance-ratio/index.js"),
   "math/jacobi-symbol": () => import("../../math/jacobi-symbol/index.js"),
   "math/safe-prime-checker": () => import("../../math/safe-prime-checker/index.js"),
@@ -60,7 +61,10 @@ export const toolModuleLoaders: Readonly<
   "random/vulgar-fraction": () => import("../../random/vulgar-fraction/index.js"),
   "sailing/boom-vang-angle": () => import("../../sailing/boom-vang-angle/index.js"),
   "sailing/mainsail-twist-angle": () => import("../../sailing/mainsail-twist-angle/index.js"),
+  "semiconductor/bandgap-renormalization-redshift": () => import("../../semiconductor/bandgap-renormalization-redshift/index.js"),
   "semiconductor/flash-threshold-voltage-shift": () => import("../../semiconductor/flash-threshold-voltage-shift/index.js"),
   "size/children-clothing": () => import("../../size/children-clothing/index.js"),
+  "toxicology/exposure-assessment": () => import("../../toxicology/exposure-assessment/index.js"),
   "transcriptomics/housekeeping-cv-rank": () => import("../../transcriptomics/housekeeping-cv-rank/index.js"),
+  "veterinary/lactate-perfusion-checker": () => import("../../veterinary/lactate-perfusion-checker/index.js"),
 };

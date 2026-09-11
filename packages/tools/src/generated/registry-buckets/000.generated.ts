@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archival-studies/dacs-minimum-elements-checker": () => import("../../archival-studies/dacs-minimum-elements-checker/index.js"),
   "auditing/audit-committee-financial-expert-designation-criteria-lookup": () => import("../../auditing/audit-committee-financial-expert-designation-criteria-lookup/index.js"),
   "biology/codon-usage-bias": () => import("../../biology/codon-usage-bias/index.js"),
   "biology/oxygen-content-blood": () => import("../../biology/oxygen-content-blood/index.js"),
@@ -49,6 +50,8 @@ export const toolModuleLoaders: Readonly<
   "real-estate/mill-rate-tax": () => import("../../real-estate/mill-rate-tax/index.js"),
   "sailing/cunningham-tension": () => import("../../sailing/cunningham-tension/index.js"),
   "semiconductor/perovskite-bandgap-vs-composition": () => import("../../semiconductor/perovskite-bandgap-vs-composition/index.js"),
+  "sociology/labor-underutilization-composite-rate": () => import("../../sociology/labor-underutilization-composite-rate/index.js"),
+  "speleology/srt-kit-weight-budget": () => import("../../speleology/srt-kit-weight-budget/index.js"),
   "taxation/vehicle-personal-property-declining-value-lookup": () => import("../../taxation/vehicle-personal-property-declining-value-lookup/index.js"),
   "theatre/pin-rail-position-distance-lookup": () => import("../../theatre/pin-rail-position-distance-lookup/index.js"),
   "validate/upc-a": () => import("../../validate/upc-a/index.js"),

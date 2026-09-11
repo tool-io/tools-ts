@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/activity-from-fugacity": () => import("../../chemistry/activity-from-fugacity/index.js"),
   "color/led-pwm-duty-cycle-gamma-2-2-brightness": () => import("../../color/led-pwm-duty-cycle-gamma-2-2-brightness/index.js"),
   "color/ral-classic-nearest-match-lookup": () => import("../../color/ral-classic-nearest-match-lookup/index.js"),
+  "criminology/lead-exposure-crime-lag-decades-lookup": () => import("../../criminology/lead-exposure-crime-lag-decades-lookup/index.js"),
   "csv/minimal-quoting-only-when-needed-writer-style": () => import("../../csv/minimal-quoting-only-when-needed-writer-style/index.js"),
   "electronics/input-ripple-voltage": () => import("../../electronics/input-ripple-voltage/index.js"),
   "engineering/compaction-degree": () => import("../../engineering/compaction-degree/index.js"),
@@ -46,6 +47,7 @@ export const toolModuleLoaders: Readonly<
   "music/note-name-to-midi": () => import("../../music/note-name-to-midi/index.js"),
   "mycology/cap-shape-profile-classifier": () => import("../../mycology/cap-shape-profile-classifier/index.js"),
   "mycology/clone-area-hectares-note-generator": () => import("../../mycology/clone-area-hectares-note-generator/index.js"),
+  "neuroscience/f-wave-chronodispersion": () => import("../../neuroscience/f-wave-chronodispersion/index.js"),
   "numismatics/auction-buyer-premium-total": () => import("../../numismatics/auction-buyer-premium-total/index.js"),
   "numismatics/platinum-gold-ratio-calculator": () => import("../../numismatics/platinum-gold-ratio-calculator/index.js"),
   "oenology/caco3-dose": () => import("../../oenology/caco3-dose/index.js"),
@@ -60,4 +62,6 @@ export const toolModuleLoaders: Readonly<
   "statistics/fisher-exact-test": () => import("../../statistics/fisher-exact-test/index.js"),
   "take-home-pay-calculator/jp": () => import("../../take-home-pay-calculator/jp/index.js"),
   "taxation/de-minimis-meal-screen": () => import("../../taxation/de-minimis-meal-screen/index.js"),
+  "toxicology/micronucleus-frequency": () => import("../../toxicology/micronucleus-frequency/index.js"),
+  "veterinary/anesthesia-induction-dose-propofol-cat": () => import("../../veterinary/anesthesia-induction-dose-propofol-cat/index.js"),
 };

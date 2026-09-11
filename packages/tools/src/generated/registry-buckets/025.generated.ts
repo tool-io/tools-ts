@@ -55,6 +55,7 @@ export const toolModuleLoaders: Readonly<
   "real-estate/piti": () => import("../../real-estate/piti/index.js"),
   "semiconductor/ion-implantation-projected-range": () => import("../../semiconductor/ion-implantation-projected-range/index.js"),
   "size/electrical-connector": () => import("../../size/electrical-connector/index.js"),
+  "theatre/dramaturg-production-research-program-notes-lobby-role": () => import("../../theatre/dramaturg-production-research-program-notes-lobby-role/index.js"),
   "theatre/kabuki-drop-solenoid-release-line-count": () => import("../../theatre/kabuki-drop-solenoid-release-line-count/index.js"),
   "typography/didot-point-to-point-convert": () => import("../../typography/didot-point-to-point-convert/index.js"),
   "vexillology/two-sided-difference-recorder": () => import("../../vexillology/two-sided-difference-recorder/index.js"),

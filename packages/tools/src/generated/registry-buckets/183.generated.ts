@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/isolator-static-deflection-screen": () => import("../../acoustics/isolator-static-deflection-screen/index.js"),
   "actuarial/experience-modification-factor": () => import("../../actuarial/experience-modification-factor/index.js"),
+  "archival-studies/negative-number-sequencer": () => import("../../archival-studies/negative-number-sequencer/index.js"),
   "auditing/component-auditor-work-reference-usage-decision-lookup": () => import("../../auditing/component-auditor-work-reference-usage-decision-lookup/index.js"),
   "aviation/runway-wind-total": () => import("../../aviation/runway-wind-total/index.js"),
   "biology/anthocyanin-content": () => import("../../biology/anthocyanin-content/index.js"),
@@ -31,8 +32,10 @@ export const toolModuleLoaders: Readonly<
   "laser/thermal-lens-coefficient": () => import("../../laser/thermal-lens-coefficient/index.js"),
   "linguistics/language-family-tree-depth-lookup": () => import("../../linguistics/language-family-tree-depth-lookup/index.js"),
   "logistics/reorder-point-safety-stock": () => import("../../logistics/reorder-point-safety-stock/index.js"),
+  "marriage/turning-toward-ratio": () => import("../../marriage/turning-toward-ratio/index.js"),
   "matrix/cholesky-decomposition": () => import("../../matrix/cholesky-decomposition/index.js"),
   "mining/truck-queue-time": () => import("../../mining/truck-queue-time/index.js"),
+  "museology/anoxic-treatment-duration-lookup": () => import("../../museology/anoxic-treatment-duration-lookup/index.js"),
   "music/transpose-note-by-interval": () => import("../../music/transpose-note-by-interval/index.js"),
   "neuroscience/midline-plane-displacements": () => import("../../neuroscience/midline-plane-displacements/index.js"),
   "numismatics/measurement-scale-calibration-checker": () => import("../../numismatics/measurement-scale-calibration-checker/index.js"),
@@ -55,6 +58,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/injection-pressure-trigger-threshold-checker": () => import("../../seismology/injection-pressure-trigger-threshold-checker/index.js"),
   "seismology/offset-feature-cumulative-slip-per-event": () => import("../../seismology/offset-feature-cumulative-slip-per-event/index.js"),
   "semiconductor/piezoelectric-coupling-coefficient": () => import("../../semiconductor/piezoelectric-coupling-coefficient/index.js"),
+  "semiconductor/srh-recombination-lifetime": () => import("../../semiconductor/srh-recombination-lifetime/index.js"),
   "taxation/special-assessment-lid-cap-checker": () => import("../../taxation/special-assessment-lid-cap-checker/index.js"),
   "volcanology/caldera-vs-summit-crater-classifier": () => import("../../volcanology/caldera-vs-summit-crater-classifier/index.js"),
 };

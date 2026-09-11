@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "astrobiology/protocell-osmotic-rupture-radius-bound": () => import("../../astrobiology/protocell-osmotic-rupture-radius-bound/index.js"),
   "astrometry/optical-pair-contamination-flag-checker": () => import("../../astrometry/optical-pair-contamination-flag-checker/index.js"),
   "auditing/alert-threshold-tuning": () => import("../../auditing/alert-threshold-tuning/index.js"),
   "aviation/oxygen-required": () => import("../../aviation/oxygen-required/index.js"),
@@ -25,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "construction/roof-underlayment-rolls": () => import("../../construction/roof-underlayment-rolls/index.js"),
   "cooking/bread-proofing-time": () => import("../../cooking/bread-proofing-time/index.js"),
   "cooking/cold-brew-ratio": () => import("../../cooking/cold-brew-ratio/index.js"),
+  "criminology/entomology-postmortem-interval-degree-days": () => import("../../criminology/entomology-postmortem-interval-degree-days/index.js"),
   "cryptography/wpa-passphrase-length-charset-checker": () => import("../../cryptography/wpa-passphrase-length-charset-checker/index.js"),
   "dance/audition-cut-16-or-32-bar-selection-guide": () => import("../../dance/audition-cut-16-or-32-bar-selection-guide/index.js"),
   "demography/demographic-dividend-phase-classifier": () => import("../../demography/demographic-dividend-phase-classifier/index.js"),
@@ -36,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/pump-hydraulic-power": () => import("../../engineering/pump-hydraulic-power/index.js"),
   "genetics/centromere-second-division-distance": () => import("../../genetics/centromere-second-division-distance/index.js"),
   "genomics/synonymous-clock-divergence": () => import("../../genomics/synonymous-clock-divergence/index.js"),
+  "geology/niggli-value-alk": () => import("../../geology/niggli-value-alk/index.js"),
   "geology/permeability-kozeny-carman": () => import("../../geology/permeability-kozeny-carman/index.js"),
   "geology/sequence-boundary-lookup": () => import("../../geology/sequence-boundary-lookup/index.js"),
   "glaciology/ice-volume-to-sea-level-rise": () => import("../../glaciology/ice-volume-to-sea-level-rise/index.js"),
@@ -50,12 +53,14 @@ export const toolModuleLoaders: Readonly<
   "laser/audience-scan-exposure": () => import("../../laser/audience-scan-exposure/index.js"),
   "linguistics/arabic-three-letter-root-share": () => import("../../linguistics/arabic-three-letter-root-share/index.js"),
   "linguistics/name-order-family-first-culture-classifier": () => import("../../linguistics/name-order-family-first-culture-classifier/index.js"),
+  "marriage/marriage-license-cost-lookup": () => import("../../marriage/marriage-license-cost-lookup/index.js"),
   "mining/haul-road-grade": () => import("../../mining/haul-road-grade/index.js"),
   "numismatics/roman-denarius-fineweight-era-lookup": () => import("../../numismatics/roman-denarius-fineweight-era-lookup/index.js"),
   "pedagogy/mastery-retry-tracker": () => import("../../pedagogy/mastery-retry-tracker/index.js"),
   "philately/album-pages-needed-calculator": () => import("../../philately/album-pages-needed-calculator/index.js"),
   "philately/transit-postmark-interval-days": () => import("../../philately/transit-postmark-interval-days/index.js"),
   "plumbing/corrosion-index-langelier": () => import("../../plumbing/corrosion-index-langelier/index.js"),
+  "pregnancy/ovulation-return-postpartum": () => import("../../pregnancy/ovulation-return-postpartum/index.js"),
   "proteomics/kinase-motif-triad": () => import("../../proteomics/kinase-motif-triad/index.js"),
   "random/devanagari-character": () => import("../../random/devanagari-character/index.js"),
   "random/unicode-noncharacter": () => import("../../random/unicode-noncharacter/index.js"),
@@ -66,5 +71,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/mesfet-transconductance": () => import("../../semiconductor/mesfet-transconductance/index.js"),
   "semiconductor/wafer-bow": () => import("../../semiconductor/wafer-bow/index.js"),
   "size/dog-shoe": () => import("../../size/dog-shoe/index.js"),
+  "speleology/extended-elevation-length": () => import("../../speleology/extended-elevation-length/index.js"),
+  "theatre/cardboard-study-sketch-model-fast-iteration-process": () => import("../../theatre/cardboard-study-sketch-model-fast-iteration-process/index.js"),
   "viticulture/canopy-width-vigour-classification": () => import("../../viticulture/canopy-width-vigour-classification/index.js"),
 };

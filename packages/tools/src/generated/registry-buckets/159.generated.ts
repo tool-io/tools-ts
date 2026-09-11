@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "apiculture/queen-cage-candy-release-days": () => import("../../apiculture/queen-cage-candy-release-days/index.js"),
   "aquaculture/ras-water-balance": () => import("../../aquaculture/ras-water-balance/index.js"),
+  "astrobiology/chlorophyll-analog-peak-shift-estimator": () => import("../../astrobiology/chlorophyll-analog-peak-shift-estimator/index.js"),
   "aviation/wind-direction-from-components": () => import("../../aviation/wind-direction-from-components/index.js"),
   "celestial-mechanics/j2-periapsis-precession": () => import("../../celestial-mechanics/j2-periapsis-precession/index.js"),
   "celestial-mechanics/normalized-l2-equilibrium": () => import("../../celestial-mechanics/normalized-l2-equilibrium/index.js"),
@@ -26,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "html/boolean-attributes-list-lookup": () => import("../../html/boolean-attributes-list-lookup/index.js"),
   "html/slot-name-fallback-shadow-dom-lookup": () => import("../../html/slot-name-fallback-shadow-dom-lookup/index.js"),
   "journalism/source-security-coverage": () => import("../../journalism/source-security-coverage/index.js"),
+  "kinesiology/kyphosis-ruler-method-angle-estimation-lookup": () => import("../../kinesiology/kyphosis-ruler-method-angle-estimation-lookup/index.js"),
   "laser/rotary-axis-calibration": () => import("../../laser/rotary-axis-calibration/index.js"),
   "logic/disamis-iai3-valid-lookup": () => import("../../logic/disamis-iai3-valid-lookup/index.js"),
   "logistics/eld-drive-clock-remaining-today": () => import("../../logistics/eld-drive-clock-remaining-today/index.js"),
@@ -46,5 +48,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/bandgap-temperature-varshni": () => import("../../semiconductor/bandgap-temperature-varshni/index.js"),
   "semiconductor/oxidation-enhanced-diffusion": () => import("../../semiconductor/oxidation-enhanced-diffusion/index.js"),
   "size/waistcoat-reconstruction": () => import("../../size/waistcoat-reconstruction/index.js"),
+  "sociology/poverty-gap-index": () => import("../../sociology/poverty-gap-index/index.js"),
+  "sociology/structural-hole-redundancy-measure": () => import("../../sociology/structural-hole-redundancy-measure/index.js"),
   "vexillology/us-canton-fraction": () => import("../../vexillology/us-canton-fraction/index.js"),
 };

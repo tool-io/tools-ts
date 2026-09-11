@@ -26,6 +26,8 @@ export const toolModuleLoaders: Readonly<
   "insurance/bricking-attack-smart-device-property-damage-trigger-debate": () => import("../../insurance/bricking-attack-smart-device-property-damage-trigger-debate/index.js"),
   "linguistics/semantic-shift-type-classifier": () => import("../../linguistics/semantic-shift-type-classifier/index.js"),
   "logic/venn-three-set-region-mapper": () => import("../../logic/venn-three-set-region-mapper/index.js"),
+  "marriage/engagement-ring-cut-lookup": () => import("../../marriage/engagement-ring-cut-lookup/index.js"),
+  "marriage/wedding-flower-budget": () => import("../../marriage/wedding-flower-budget/index.js"),
   "math/pell-nth": () => import("../../math/pell-nth/index.js"),
   "neuroscience/roi-tensor-fractional-anisotropy": () => import("../../neuroscience/roi-tensor-fractional-anisotropy/index.js"),
   "number/betrothed-checker": () => import("../../number/betrothed-checker/index.js"),
@@ -42,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/yield-poisson-model": () => import("../../semiconductor/yield-poisson-model/index.js"),
   "size/blanket": () => import("../../size/blanket/index.js"),
   "theatre/scrim-front-versus-rear-reveal-ratio-lookup": () => import("../../theatre/scrim-front-versus-rear-reveal-ratio-lookup/index.js"),
+  "toxicology/enterohepatic-circulation": () => import("../../toxicology/enterohepatic-circulation/index.js"),
   "typography/inches-to-picas": () => import("../../typography/inches-to-picas/index.js"),
   "vexillology/quartered-quadrant-area": () => import("../../vexillology/quartered-quadrant-area/index.js"),
 };

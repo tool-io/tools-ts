@@ -39,8 +39,11 @@ export const toolModuleLoaders: Readonly<
   "rhetoric/prolepsis-anticipate-objection-preemptive-lookup": () => import("../../rhetoric/prolepsis-anticipate-objection-preemptive-lookup/index.js"),
   "semiconductor/pcm-crystallization-temperature": () => import("../../semiconductor/pcm-crystallization-temperature/index.js"),
   "semiconductor/spin-valve-gmr-ratio": () => import("../../semiconductor/spin-valve-gmr-ratio/index.js"),
+  "speleology/recharge-area-extent": () => import("../../speleology/recharge-area-extent/index.js"),
   "text/trim": () => import("../../text/trim/index.js"),
   "transcriptomics/bestkeeper-stability": () => import("../../transcriptomics/bestkeeper-stability/index.js"),
+  "veterinary/dental-grading-small-animal": () => import("../../veterinary/dental-grading-small-animal/index.js"),
+  "veterinary/mcs-muscle-condition-score": () => import("../../veterinary/mcs-muscle-condition-score/index.js"),
   "virology/vaf-uncertainty-threshold": () => import("../../virology/vaf-uncertainty-threshold/index.js"),
   "viticulture/canopy-height-shoot-length-checker": () => import("../../viticulture/canopy-height-shoot-length-checker/index.js"),
 };

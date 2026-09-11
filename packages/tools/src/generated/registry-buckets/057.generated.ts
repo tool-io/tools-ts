@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/treppen-sicherheitsregel": () => import("../../carpentry/treppen-sicherheitsregel/index.js"),
   "color/trapping-overprint-requirement-checker-basic": () => import("../../color/trapping-overprint-requirement-checker-basic/index.js"),
   "convert/decimal-to-base36": () => import("../../convert/decimal-to-base36/index.js"),
+  "criminology/gps-monitoring-tamper-inclusion-flag-checker": () => import("../../criminology/gps-monitoring-tamper-inclusion-flag-checker/index.js"),
   "cryptography/scytale-transposition": () => import("../../cryptography/scytale-transposition/index.js"),
   "electronics/gyroscope-voltage-output": () => import("../../electronics/gyroscope-voltage-output/index.js"),
   "electronics/sepic-duty-cycle": () => import("../../electronics/sepic-duty-cycle/index.js"),
@@ -22,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/thermal-diffusivity": () => import("../../engineering/thermal-diffusivity/index.js"),
   "futurology/integral-futures-four-quadrant-approach-lookup": () => import("../../futurology/integral-futures-four-quadrant-approach-lookup/index.js"),
   "genetics/population-fst": () => import("../../genetics/population-fst/index.js"),
+  "geology/ree-pattern-slope-la-yb": () => import("../../geology/ree-pattern-slope-la-yb/index.js"),
   "geology/vitrinite-reflectance-ro": () => import("../../geology/vitrinite-reflectance-ro/index.js"),
   "horology/breguet-invention-timeline-lookup": () => import("../../horology/breguet-invention-timeline-lookup/index.js"),
   "journalism/subscription-churn-after-price-rise-percent": () => import("../../journalism/subscription-churn-after-price-rise-percent/index.js"),
@@ -41,5 +43,6 @@ export const toolModuleLoaders: Readonly<
   "taxation/airline-ticket-excise-segment-fee-lookup": () => import("../../taxation/airline-ticket-excise-segment-fee-lookup/index.js"),
   "taxation/capital-gains-stacking-order-bracket-tool": () => import("../../taxation/capital-gains-stacking-order-bracket-tool/index.js"),
   "theatre/confetti-blower-coverage-kg-minute-lookup": () => import("../../theatre/confetti-blower-coverage-kg-minute-lookup/index.js"),
+  "toxicology/tubular-secretion": () => import("../../toxicology/tubular-secretion/index.js"),
   "vexillology/tricolor-stripe-split": () => import("../../vexillology/tricolor-stripe-split/index.js"),
 };

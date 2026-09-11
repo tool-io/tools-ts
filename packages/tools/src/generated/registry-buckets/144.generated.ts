@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "astrobiology/photosynthesis-photon-flux-rededge-checker": () => import("../../astrobiology/photosynthesis-photon-flux-rededge-checker/index.js"),
   "auditing/sample-evaluation-upper-misstatement-limit-computation": () => import("../../auditing/sample-evaluation-upper-misstatement-limit-computation/index.js"),
   "auditing/shell-company-registration-age-nominee-indicator-lookup": () => import("../../auditing/shell-company-registration-age-nominee-indicator-lookup/index.js"),
   "aviation/endurance": () => import("../../aviation/endurance/index.js"),
@@ -19,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "convert/text-to-css-unicode-escape": () => import("../../convert/text-to-css-unicode-escape/index.js"),
   "cost/printing": () => import("../../cost/printing/index.js"),
   "demography/remarriage-proportion-percent": () => import("../../demography/remarriage-proportion-percent/index.js"),
+  "dentistry/calcium-hydroxide-dressing-renewal-interval": () => import("../../dentistry/calcium-hydroxide-dressing-renewal-interval/index.js"),
   "electronics/heatsink-case-to-ambient-resistance": () => import("../../electronics/heatsink-case-to-ambient-resistance/index.js"),
   "electronics/piezoelectric-sensor-sensitivity": () => import("../../electronics/piezoelectric-sensor-sensitivity/index.js"),
   "epigraphy/salt-efflorescence-classifier": () => import("../../epigraphy/salt-efflorescence-classifier/index.js"),
@@ -27,12 +29,14 @@ export const toolModuleLoaders: Readonly<
   "gemology/volume-round-brilliant": () => import("../../gemology/volume-round-brilliant/index.js"),
   "geology/casing-tension": () => import("../../geology/casing-tension/index.js"),
   "geology/fracture-transmissivity-cubic-law": () => import("../../geology/fracture-transmissivity-cubic-law/index.js"),
+  "geology/geomechanics-salt-creep-rate": () => import("../../geology/geomechanics-salt-creep-rate/index.js"),
   "geology/hazen-grain-size-d10": () => import("../../geology/hazen-grain-size-d10/index.js"),
   "geology/onlap-angle": () => import("../../geology/onlap-angle/index.js"),
   "geology/seismic-acoustic-impedance": () => import("../../geology/seismic-acoustic-impedance/index.js"),
   "hash/sha-256": () => import("../../hash/sha-256/index.js"),
   "journalism/lower-third-name-title-duration-seconds-lookup": () => import("../../journalism/lower-third-name-title-duration-seconds-lookup/index.js"),
   "journalism/transcription-name-match": () => import("../../journalism/transcription-name-match/index.js"),
+  "kinesiology/rate-of-force-development-early-late-phase-windows": () => import("../../kinesiology/rate-of-force-development-early-late-phase-windows/index.js"),
   "laser/scowa-amplifier-output": () => import("../../laser/scowa-amplifier-output/index.js"),
   "logic/distributivity-and-over-or-applier": () => import("../../logic/distributivity-and-over-or-applier/index.js"),
   "math/gamma-incomplete-upper-approx": () => import("../../math/gamma-incomplete-upper-approx/index.js"),
@@ -52,7 +56,10 @@ export const toolModuleLoaders: Readonly<
   "size/life-jacket": () => import("../../size/life-jacket/index.js"),
   "sociology/severe-material-deprivation-rate-eu": () => import("../../sociology/severe-material-deprivation-rate-eu/index.js"),
   "sociology/treiman-prestige-score-lookup": () => import("../../sociology/treiman-prestige-score-lookup/index.js"),
+  "speleology/blunder-residual-flag": () => import("../../speleology/blunder-residual-flag/index.js"),
+  "speleology/hypothermia-wet-threshold": () => import("../../speleology/hypothermia-wet-threshold/index.js"),
   "taxation/backdoor-roth-pro-rata-basis-warning-checker": () => import("../../taxation/backdoor-roth-pro-rata-basis-warning-checker/index.js"),
   "toxicology/allometric-total-dose-transfer": () => import("../../toxicology/allometric-total-dose-transfer/index.js"),
+  "toxicology/bei-lookup": () => import("../../toxicology/bei-lookup/index.js"),
   "viticulture/young-vine-establishment-water-volume": () => import("../../viticulture/young-vine-establishment-water-volume/index.js"),
 };

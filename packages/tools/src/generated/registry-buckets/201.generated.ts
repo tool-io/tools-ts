@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "geology/preconsolidation-pressure": () => import("../../geology/preconsolidation-pressure/index.js"),
   "html/progress-value-max-percent": () => import("../../html/progress-value-max-percent/index.js"),
   "kinesiology/berg-balance-score": () => import("../../kinesiology/berg-balance-score/index.js"),
+  "marriage/wedding-catering-cost-per-head": () => import("../../marriage/wedding-catering-cost-per-head/index.js"),
   "math/bell-triangle-entry": () => import("../../math/bell-triangle-entry/index.js"),
   "math/kronecker-product-2x2": () => import("../../math/kronecker-product-2x2/index.js"),
   "meteorology/pressure-tendency-3hr-change": () => import("../../meteorology/pressure-tendency-3hr-change/index.js"),
@@ -51,6 +52,7 @@ export const toolModuleLoaders: Readonly<
   "taxation/pillar-two-top-up-tax": () => import("../../taxation/pillar-two-top-up-tax/index.js"),
   "text/word-length-histogram": () => import("../../text/word-length-histogram/index.js"),
   "theatre/front-of-house-staff-ratio-per-100-seats": () => import("../../theatre/front-of-house-staff-ratio-per-100-seats/index.js"),
+  "toxicology/adme-absorption-fraction": () => import("../../toxicology/adme-absorption-fraction/index.js"),
   "typography/major-third-scale-generator": () => import("../../typography/major-third-scale-generator/index.js"),
   "viticulture/mildew-infection-period-gdm-checker": () => import("../../viticulture/mildew-infection-period-gdm-checker/index.js"),
 };

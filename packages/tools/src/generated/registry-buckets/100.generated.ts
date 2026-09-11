@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/proportional-retained-variance": () => import("../../actuarial/proportional-retained-variance/index.js"),
+  "astrobiology/deinococcus-dose-survivability-lookup": () => import("../../astrobiology/deinococcus-dose-survivability-lookup/index.js"),
   "astrometry/icrs-to-galactic-coordinates": () => import("../../astrometry/icrs-to-galactic-coordinates/index.js"),
   "auditing/subservice-method-selector": () => import("../../auditing/subservice-method-selector/index.js"),
   "banking/fedwire-cutoff-time-tiers-beneficiary-deadline-lookup": () => import("../../banking/fedwire-cutoff-time-tiers-beneficiary-deadline-lookup/index.js"),
@@ -39,6 +40,7 @@ export const toolModuleLoaders: Readonly<
   "gemology/opal-doublet-check": () => import("../../gemology/opal-doublet-check/index.js"),
   "generate/ean-8": () => import("../../generate/ean-8/index.js"),
   "geology/brine-salinity-ppm-to-ppg": () => import("../../geology/brine-salinity-ppm-to-ppg/index.js"),
+  "geology/normative-color-index": () => import("../../geology/normative-color-index/index.js"),
   "geology/solution-gas-oil-ratio": () => import("../../geology/solution-gas-oil-ratio/index.js"),
   "geology/stratal-termination-type-lookup": () => import("../../geology/stratal-termination-type-lookup/index.js"),
   "horology/seconds-pendulum-length": () => import("../../horology/seconds-pendulum-length/index.js"),
@@ -52,6 +54,8 @@ export const toolModuleLoaders: Readonly<
   "oceanography/potential-temperature-unesco-adiabatic": () => import("../../oceanography/potential-temperature-unesco-adiabatic/index.js"),
   "philately/bogus-crossmatch-warning-flag": () => import("../../philately/bogus-crossmatch-warning-flag/index.js"),
   "plumbing/hydronic-circulator-head": () => import("../../plumbing/hydronic-circulator-head/index.js"),
+  "pregnancy/contraction-frequency": () => import("../../pregnancy/contraction-frequency/index.js"),
+  "pregnancy/maternal-weight-gain-weekly": () => import("../../pregnancy/maternal-weight-gain-weekly/index.js"),
   "random/georgian-letter": () => import("../../random/georgian-letter/index.js"),
   "random/reorder-point-scenario-cards": () => import("../../random/reorder-point-scenario-cards/index.js"),
   "random/smartphone": () => import("../../random/smartphone/index.js"),
@@ -63,6 +67,8 @@ export const toolModuleLoaders: Readonly<
   "sericulture/nonhibernating-acid-incubation-delay-days": () => import("../../sericulture/nonhibernating-acid-incubation-delay-days/index.js"),
   "sports/baseball-on-base-plus-slugging-ops": () => import("../../sports/baseball-on-base-plus-slugging-ops/index.js"),
   "statistics/bootstrap-standard-error": () => import("../../statistics/bootstrap-standard-error/index.js"),
+  "theatre/bridle-leg-length-load-split-calculator": () => import("../../theatre/bridle-leg-length-load-split-calculator/index.js"),
+  "veterinary/flea-preventative-dose-by-weight": () => import("../../veterinary/flea-preventative-dose-by-weight/index.js"),
   "volcanology/lahar-volume-crater-lake-breach": () => import("../../volcanology/lahar-volume-crater-lake-breach/index.js"),
   "vr/prediction-latency": () => import("../../vr/prediction-latency/index.js"),
 };

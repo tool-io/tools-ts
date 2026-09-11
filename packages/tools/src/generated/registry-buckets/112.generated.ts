@@ -5,6 +5,8 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/concert-hall-geometry-screen": () => import("../../acoustics/concert-hall-geometry-screen/index.js"),
+  "astrobiology/stromatolite-biogenicity-point-scorer": () => import("../../astrobiology/stromatolite-biogenicity-point-scorer/index.js"),
+  "astrobiology/subglacial-residence-hydraulic-head-calculator": () => import("../../astrobiology/subglacial-residence-hydraulic-head-calculator/index.js"),
   "astronomy/apparent-to-absolute-magnitude": () => import("../../astronomy/apparent-to-absolute-magnitude/index.js"),
   "biology/airway-resistance": () => import("../../biology/airway-resistance/index.js"),
   "biology/blood-pressure-category": () => import("../../biology/blood-pressure-category/index.js"),
@@ -12,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "classics/latin-inscription-abbreviations-dis-manibus-sp-lookup": () => import("../../classics/latin-inscription-abbreviations-dis-manibus-sp-lookup/index.js"),
   "classification/balanced-accuracy": () => import("../../classification/balanced-accuracy/index.js"),
   "cooking/bread-loaf-volume": () => import("../../cooking/bread-loaf-volume/index.js"),
+  "criminology/crime-clock-one-offense-interval-lookup": () => import("../../criminology/crime-clock-one-offense-interval-lookup/index.js"),
   "dance/samba-bounce-action-per-bar-lookup": () => import("../../dance/samba-bounce-action-per-bar-lookup/index.js"),
   "electronics/crystal-ppm-error": () => import("../../electronics/crystal-ppm-error/index.js"),
   "electronics/dbm-to-watts": () => import("../../electronics/dbm-to-watts/index.js"),
@@ -52,6 +55,10 @@ export const toolModuleLoaders: Readonly<
   "rhetoric/apologia-defense-self-justification-structure-lookup": () => import("../../rhetoric/apologia-defense-self-justification-structure-lookup/index.js"),
   "rhetoric/onomatopoeia-sound-imitation-inventory-lookup": () => import("../../rhetoric/onomatopoeia-sound-imitation-inventory-lookup/index.js"),
   "semiconductor/andreev-reflection-probability": () => import("../../semiconductor/andreev-reflection-probability/index.js"),
+  "speleology/anchor-redundancy-checker": () => import("../../speleology/anchor-redundancy-checker/index.js"),
+  "theatre/diaphragmatic-projection-versus-throat-strain-technique": () => import("../../theatre/diaphragmatic-projection-versus-throat-strain-technique/index.js"),
+  "toxicology/plant-ec50": () => import("../../toxicology/plant-ec50/index.js"),
+  "veterinary/pain-scale-glasgow-composite-measure": () => import("../../veterinary/pain-scale-glasgow-composite-measure/index.js"),
   "vexillology/adoption-year-sorter": () => import("../../vexillology/adoption-year-sorter/index.js"),
   "vexillology/bicolor-vertical-family-checker": () => import("../../vexillology/bicolor-vertical-family-checker/index.js"),
   "virology/sir-infectious-peak-screen": () => import("../../virology/sir-infectious-peak-screen/index.js"),

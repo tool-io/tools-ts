@@ -27,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "film/bellows-extension-factor": () => import("../../film/bellows-extension-factor/index.js"),
   "forestry/cubic-to-board-foot-conversion-region-factor": () => import("../../forestry/cubic-to-board-foot-conversion-region-factor/index.js"),
   "futurology/delphi-consensus": () => import("../../futurology/delphi-consensus/index.js"),
+  "futurology/scenario-planning-software-tools-platforms-landscape-lookup": () => import("../../futurology/scenario-planning-software-tools-platforms-landscape-lookup/index.js"),
   "geology/consolidation-settlement": () => import("../../geology/consolidation-settlement/index.js"),
   "geology/s-p-interval-to-distance": () => import("../../geology/s-p-interval-to-distance/index.js"),
   "geology/strike-dip-to-dip-direction": () => import("../../geology/strike-dip-to-dip-direction/index.js"),
@@ -36,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "horology/crystal-replacement-fit-dimension-calculator": () => import("../../horology/crystal-replacement-fit-dimension-calculator/index.js"),
   "horology/motion-works-ratio": () => import("../../horology/motion-works-ratio/index.js"),
   "html/picture-source-art-direction-order": () => import("../../html/picture-source-art-direction-order/index.js"),
+  "kinesiology/inverse-dynamics-net-joint-moment-pipeline-lookup": () => import("../../kinesiology/inverse-dynamics-net-joint-moment-pipeline-lookup/index.js"),
   "logistics/total-cost-per-mile-owner-operator": () => import("../../logistics/total-cost-per-mile-owner-operator/index.js"),
   "math/sieve-of-eratosthenes-pi": () => import("../../math/sieve-of-eratosthenes-pi/index.js"),
   "meteorology/snow-to-liquid-ratio-climatological-lookup": () => import("../../meteorology/snow-to-liquid-ratio-climatological-lookup/index.js"),
@@ -59,5 +61,6 @@ export const toolModuleLoaders: Readonly<
   "size/pillowcase": () => import("../../size/pillowcase/index.js"),
   "taxation/carryforward-loss-expiry-years-lookup": () => import("../../taxation/carryforward-loss-expiry-years-lookup/index.js"),
   "taxation/innocent-spouse-relief-type-selector-lookup": () => import("../../taxation/innocent-spouse-relief-type-selector-lookup/index.js"),
+  "theatre/sitzprobe-versus-wandelprobe-orchestra-integration-lookup": () => import("../../theatre/sitzprobe-versus-wandelprobe-orchestra-integration-lookup/index.js"),
   "vexillology/no-seal-rule-checker": () => import("../../vexillology/no-seal-rule-checker/index.js"),
 };

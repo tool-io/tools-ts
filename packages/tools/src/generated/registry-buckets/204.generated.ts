@@ -59,5 +59,7 @@ export const toolModuleLoaders: Readonly<
   "sports/swim-pace-per-100m": () => import("../../sports/swim-pace-per-100m/index.js"),
   "statistics/cohens-d": () => import("../../statistics/cohens-d/index.js"),
   "toxicology/dermal-contact-absorbed-dose": () => import("../../toxicology/dermal-contact-absorbed-dose/index.js"),
+  "toxicology/respiratory-sensitization": () => import("../../toxicology/respiratory-sensitization/index.js"),
   "typography/kerning-pairs-per-font-average-lookup": () => import("../../typography/kerning-pairs-per-font-average-lookup/index.js"),
+  "veterinary/queening-date-from-mating": () => import("../../veterinary/queening-date-from-mating/index.js"),
 };

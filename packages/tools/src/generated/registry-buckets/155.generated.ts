@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "css/forced-colors-adjustments-lookup": () => import("../../css/forced-colors-adjustments-lookup/index.js"),
   "csv/foreign-key-column-pair-match-rate": () => import("../../csv/foreign-key-column-pair-match-rate/index.js"),
   "dance/rumba-cuban-motion-weight-change-count": () => import("../../dance/rumba-cuban-motion-weight-change-count/index.js"),
+  "dentistry/radiation-dose-panoramic-usv": () => import("../../dentistry/radiation-dose-panoramic-usv/index.js"),
   "electronics/frequency-synthesizer-step-size": () => import("../../electronics/frequency-synthesizer-step-size/index.js"),
   "electronics/resistor-thermal-noise-current": () => import("../../electronics/resistor-thermal-noise-current/index.js"),
   "electronics/volts-to-dbmv": () => import("../../electronics/volts-to-dbmv/index.js"),
@@ -47,6 +48,7 @@ export const toolModuleLoaders: Readonly<
   "paleontology/raup-coil-wd-solver": () => import("../../paleontology/raup-coil-wd-solver/index.js"),
   "philately/estate-probate-discount-estimator": () => import("../../philately/estate-probate-discount-estimator/index.js"),
   "philately/offcenter-shift-grade-mapper": () => import("../../philately/offcenter-shift-grade-mapper/index.js"),
+  "pregnancy/fundal-height-from-ga": () => import("../../pregnancy/fundal-height-from-ga/index.js"),
   "random/faroese-alphabet-letter": () => import("../../random/faroese-alphabet-letter/index.js"),
   "real-estate/days-on-market": () => import("../../real-estate/days-on-market/index.js"),
   "rhetoric/assonance-vowel-repeat-density-calculator": () => import("../../rhetoric/assonance-vowel-repeat-density-calculator/index.js"),
@@ -55,5 +57,6 @@ export const toolModuleLoaders: Readonly<
   "size/yukata-reconstruction": () => import("../../size/yukata-reconstruction/index.js"),
   "sports/split-time-per-km-marathon": () => import("../../sports/split-time-per-km-marathon/index.js"),
   "taxation/totalization-contribution-comparison": () => import("../../taxation/totalization-contribution-comparison/index.js"),
+  "veterinary/sheep-goat-dose-per-kg": () => import("../../veterinary/sheep-goat-dose-per-kg/index.js"),
   "volcanology/hyperconcentrated-flow-density-checker": () => import("../../volcanology/hyperconcentrated-flow-density-checker/index.js"),
 };

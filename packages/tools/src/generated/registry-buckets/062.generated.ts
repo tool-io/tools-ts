@@ -42,6 +42,7 @@ export const toolModuleLoaders: Readonly<
   "laser/optical-chopper-timing": () => import("../../laser/optical-chopper-timing/index.js"),
   "math/discriminant-resultant": () => import("../../math/discriminant-resultant/index.js"),
   "meteorology/showalter-index": () => import("../../meteorology/showalter-index/index.js"),
+  "neuroscience/ashworth-spasticity-scale": () => import("../../neuroscience/ashworth-spasticity-scale/index.js"),
   "numismatics/bodybag-no-grade-common-rejection-reasons-list": () => import("../../numismatics/bodybag-no-grade-common-rejection-reasons-list/index.js"),
   "numismatics/farthing-to-pound-converter": () => import("../../numismatics/farthing-to-pound-converter/index.js"),
   "numismatics/saint-gaudens-double-eagle-high-relief-history-lookup": () => import("../../numismatics/saint-gaudens-double-eagle-high-relief-history-lookup/index.js"),
@@ -54,4 +55,6 @@ export const toolModuleLoaders: Readonly<
   "sericulture/cocoon-fcr-leaf-conversion": () => import("../../sericulture/cocoon-fcr-leaf-conversion/index.js"),
   "size/protective-pad": () => import("../../size/protective-pad/index.js"),
   "transcriptomics/tom-symmetry-audit": () => import("../../transcriptomics/tom-symmetry-audit/index.js"),
+  "veterinary/anesthesia-induction-dose-ketamine-dog": () => import("../../veterinary/anesthesia-induction-dose-ketamine-dog/index.js"),
+  "veterinary/heart-rate-horse": () => import("../../veterinary/heart-rate-horse/index.js"),
 };

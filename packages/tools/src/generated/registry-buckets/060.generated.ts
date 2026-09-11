@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "astrobiology/millerurey-product-yield-table-lookup": () => import("../../astrobiology/millerurey-product-yield-table-lookup/index.js"),
   "astrometry/equatorial-ecliptic-axis-rotation": () => import("../../astrometry/equatorial-ecliptic-axis-rotation/index.js"),
   "auditing/cloud-responsibility-coverage": () => import("../../auditing/cloud-responsibility-coverage/index.js"),
   "auditing/preliminary-analytics-percent-change-flagger": () => import("../../auditing/preliminary-analytics-percent-change-flagger/index.js"),
@@ -19,8 +20,11 @@ export const toolModuleLoaders: Readonly<
   "convert/oklch-to-hex": () => import("../../convert/oklch-to-hex/index.js"),
   "dance/port-de-bras-arm-positions-codified-lookup": () => import("../../dance/port-de-bras-arm-positions-codified-lookup/index.js"),
   "date/days-in-month": () => import("../../date/days-in-month/index.js"),
+  "dentistry/tooth-numbering-universal-to-fdi": () => import("../../dentistry/tooth-numbering-universal-to-fdi/index.js"),
+  "dentistry/xerostomia-severity-index": () => import("../../dentistry/xerostomia-severity-index/index.js"),
   "electronics/input-offset-voltage-drift": () => import("../../electronics/input-offset-voltage-drift/index.js"),
   "engineering/noise-attenuation-distance": () => import("../../engineering/noise-attenuation-distance/index.js"),
+  "engineering/transmission-length": () => import("../../engineering/transmission-length/index.js"),
   "entrepreneurship/anti-dilution-comparison": () => import("../../entrepreneurship/anti-dilution-comparison/index.js"),
   "finance/annualized-return": () => import("../../finance/annualized-return/index.js"),
   "folklore/bogeyman-global-equivalents-name-table-lookup": () => import("../../folklore/bogeyman-global-equivalents-name-table-lookup/index.js"),
@@ -59,4 +63,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/ferroelectric-coercive-field": () => import("../../semiconductor/ferroelectric-coercive-field/index.js"),
   "semiconductor/nems-resonant-frequency": () => import("../../semiconductor/nems-resonant-frequency/index.js"),
   "size/dress": () => import("../../size/dress/index.js"),
+  "sociology/reynolds-smolensky-redistribution-effect": () => import("../../sociology/reynolds-smolensky-redistribution-effect/index.js"),
+  "speleology/mapped-length-per-session": () => import("../../speleology/mapped-length-per-session/index.js"),
+  "speleology/pitch-headroom-clearance": () => import("../../speleology/pitch-headroom-clearance/index.js"),
 };

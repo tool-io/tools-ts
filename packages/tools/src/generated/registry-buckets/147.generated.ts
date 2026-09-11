@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "aviation/weight-shift-cg": () => import("../../aviation/weight-shift-cg/index.js"),
   "banking/kyc-risk-rating-points-model": () => import("../../banking/kyc-risk-rating-points-model/index.js"),
   "checksum/lrc-8": () => import("../../checksum/lrc-8/index.js"),
+  "criminology/gunshot-residue-distance-range-lookup": () => import("../../criminology/gunshot-residue-distance-range-lookup/index.js"),
   "cryptography/null-cipher-nth-letter-extract": () => import("../../cryptography/null-cipher-nth-letter-extract/index.js"),
   "css/backdrop-filter-behind-blur": () => import("../../css/backdrop-filter-behind-blur/index.js"),
   "css/box-shadow-parser": () => import("../../css/box-shadow-parser/index.js"),
@@ -33,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "laser/relaxation-oscillation-frequency": () => import("../../laser/relaxation-oscillation-frequency/index.js"),
   "logistics/large-package-cubic-capacity-checker": () => import("../../logistics/large-package-cubic-capacity-checker/index.js"),
   "mining/ventilation-heat-removal": () => import("../../mining/ventilation-heat-removal/index.js"),
+  "neuroscience/intracortical-facilitation-icf": () => import("../../neuroscience/intracortical-facilitation-icf/index.js"),
   "oceanography/ekman-pumping-wind-curl": () => import("../../oceanography/ekman-pumping-wind-curl/index.js"),
   "oenology/heat-spike-risk": () => import("../../oenology/heat-spike-risk/index.js"),
   "optimization/adam-step": () => import("../../optimization/adam-step/index.js"),
@@ -43,4 +45,5 @@ export const toolModuleLoaders: Readonly<
   "statistics/moving-average": () => import("../../statistics/moving-average/index.js"),
   "taxation/deadline-business-day-shift": () => import("../../taxation/deadline-business-day-shift/index.js"),
   "theatre/crossover-passage-width-checker": () => import("../../theatre/crossover-passage-width-checker/index.js"),
+  "toxicology/minimal-risk-level": () => import("../../toxicology/minimal-risk-level/index.js"),
 };

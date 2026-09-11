@@ -54,5 +54,7 @@ export const toolModuleLoaders: Readonly<
   "sports/baseball-era-era-calculator": () => import("../../sports/baseball-era-era-calculator/index.js"),
   "sports/lap-pool-length-count": () => import("../../sports/lap-pool-length-count/index.js"),
   "theatre/led-wash-par-can-replacement-equiv-lookup": () => import("../../theatre/led-wash-par-can-replacement-equiv-lookup/index.js"),
+  "toxicology/baf": () => import("../../toxicology/baf/index.js"),
+  "toxicology/intake-rate-adjustment": () => import("../../toxicology/intake-rate-adjustment/index.js"),
   "typography/xheight-ratio-from-font-file": () => import("../../typography/xheight-ratio-from-font-file/index.js"),
 };

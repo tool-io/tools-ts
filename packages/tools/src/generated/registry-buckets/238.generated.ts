@@ -5,6 +5,8 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "archaeology/gpr-reflection-amplitude-feature": () => import("../../archaeology/gpr-reflection-amplitude-feature/index.js"),
+  "astrobiology/drake-equation-full-product": () => import("../../astrobiology/drake-equation-full-product/index.js"),
+  "astrobiology/enceladus-plume-escape-speed-fraction-check": () => import("../../astrobiology/enceladus-plume-escape-speed-fraction-check/index.js"),
   "astronomy/planet-moons-count-lookup": () => import("../../astronomy/planet-moons-count-lookup/index.js"),
   "auditing/lead-schedule-supporting-detail-tie-out-method-lookup": () => import("../../auditing/lead-schedule-supporting-detail-tie-out-method-lookup/index.js"),
   "auditing/management-letter-coverage": () => import("../../auditing/management-letter-coverage/index.js"),
@@ -27,6 +29,8 @@ export const toolModuleLoaders: Readonly<
   "folklore/rule-of-three-triad-repetition-checker": () => import("../../folklore/rule-of-three-triad-repetition-checker/index.js"),
   "forestry/log-sort-volume-recovery-scribner-doyle-lookup": () => import("../../forestry/log-sort-volume-recovery-scribner-doyle-lookup/index.js"),
   "futurology/long-now-decade-century-timeframe-scale-lookup": () => import("../../futurology/long-now-decade-century-timeframe-scale-lookup/index.js"),
+  "futurology/mars-colony-starship-timeline-slippage-claims-history": () => import("../../futurology/mars-colony-starship-timeline-slippage-claims-history/index.js"),
+  "futurology/wego-wellbeing-economy-governments-membership-lookup": () => import("../../futurology/wego-wellbeing-economy-governments-membership-lookup/index.js"),
   "game/chess-castling-rights-checker": () => import("../../game/chess-castling-rights-checker/index.js"),
   "generate/uuid-v5": () => import("../../generate/uuid-v5/index.js"),
   "horology/bronze-patina-development-factor-lookup": () => import("../../horology/bronze-patina-development-factor-lookup/index.js"),
@@ -34,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "insurance/adjuster-assignment-turnaround-days-lookup": () => import("../../insurance/adjuster-assignment-turnaround-days-lookup/index.js"),
   "journalism/internship-conversion-rate": () => import("../../journalism/internship-conversion-rate/index.js"),
   "limnology/freshwater-density-from-temperature": () => import("../../limnology/freshwater-density-from-temperature/index.js"),
+  "neuroscience/apathy-evaluation-scale": () => import("../../neuroscience/apathy-evaluation-scale/index.js"),
   "numismatics/weinman-designed-walking-liberty-mercury-dime-crossref": () => import("../../numismatics/weinman-designed-walking-liberty-mercury-dime-crossref/index.js"),
   "paleography/batarde-mix-proportion-calculator": () => import("../../paleography/batarde-mix-proportion-calculator/index.js"),
   "parasitology/flotac-two-chamber-epg": () => import("../../parasitology/flotac-two-chamber-epg/index.js"),
@@ -47,6 +52,7 @@ export const toolModuleLoaders: Readonly<
   "real-estate/transfer-tax": () => import("../../real-estate/transfer-tax/index.js"),
   "sailing/righting-arm-gz": () => import("../../sailing/righting-arm-gz/index.js"),
   "semiconductor/qfn-ground-pad-size": () => import("../../semiconductor/qfn-ground-pad-size/index.js"),
+  "sociology/care-minutes-per-household-member": () => import("../../sociology/care-minutes-per-household-member/index.js"),
   "theatre/show-report-coverage": () => import("../../theatre/show-report-coverage/index.js"),
   "transcriptomics/polya-signal-scanner": () => import("../../transcriptomics/polya-signal-scanner/index.js"),
 };

@@ -65,6 +65,8 @@ export const toolModuleLoaders: Readonly<
   "statistics/holm-bonferroni": () => import("../../statistics/holm-bonferroni/index.js"),
   "statistics/t-score": () => import("../../statistics/t-score/index.js"),
   "toxicology/calibrated-skin-permeability-qsar": () => import("../../toxicology/calibrated-skin-permeability-qsar/index.js"),
+  "toxicology/mercury-hair-blood-ratio": () => import("../../toxicology/mercury-hair-blood-ratio/index.js"),
   "vector/angle": () => import("../../vector/angle/index.js"),
+  "veterinary/packed-cell-volume-transfusion-target": () => import("../../veterinary/packed-cell-volume-transfusion-target/index.js"),
   "volcanology/tephrochronology-marker-shard-lookup": () => import("../../volcanology/tephrochronology-marker-shard-lookup/index.js"),
 };

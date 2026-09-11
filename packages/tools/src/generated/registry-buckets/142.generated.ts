@@ -56,6 +56,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/quantum-confinement-energy-fin": () => import("../../semiconductor/quantum-confinement-energy-fin/index.js"),
   "semiconductor/sheet-resistance": () => import("../../semiconductor/sheet-resistance/index.js"),
   "semiconductor/specific-contact-resistivity": () => import("../../semiconductor/specific-contact-resistivity/index.js"),
+  "sociology/homogamy-rate": () => import("../../sociology/homogamy-rate/index.js"),
   "taxation/listed-property-use-test": () => import("../../taxation/listed-property-use-test/index.js"),
   "transcriptomics/batch-effect-screen": () => import("../../transcriptomics/batch-effect-screen/index.js"),
   "transcriptomics/empty-droplet-filter": () => import("../../transcriptomics/empty-droplet-filter/index.js"),

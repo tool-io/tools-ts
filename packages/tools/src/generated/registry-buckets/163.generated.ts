@@ -45,9 +45,12 @@ export const toolModuleLoaders: Readonly<
   "sailing/tidal-stream-rate": () => import("../../sailing/tidal-stream-rate/index.js"),
   "sailing/vmg-to-waypoint": () => import("../../sailing/vmg-to-waypoint/index.js"),
   "seismology/peterson-noise-model-low-high-lookup": () => import("../../seismology/peterson-noise-model-low-high-lookup/index.js"),
+  "semiconductor/laser-wavelength-drift-vs-temperature": () => import("../../semiconductor/laser-wavelength-drift-vs-temperature/index.js"),
   "semiconductor/output-resistance-cascode": () => import("../../semiconductor/output-resistance-cascode/index.js"),
   "size/bustle-reconstruction": () => import("../../size/bustle-reconstruction/index.js"),
   "size/surfboard": () => import("../../size/surfboard/index.js"),
+  "speleology/calorie-requirement-cold-trip": () => import("../../speleology/calorie-requirement-cold-trip/index.js"),
   "text/join": () => import("../../text/join/index.js"),
+  "toxicology/acute-reference-dose": () => import("../../toxicology/acute-reference-dose/index.js"),
   "web/transfer-encoding-parser": () => import("../../web/transfer-encoding-parser/index.js"),
 };

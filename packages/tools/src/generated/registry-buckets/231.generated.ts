@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "archaeology/mni-minimum-individuals-from-elements": () => import("../../archaeology/mni-minimum-individuals-from-elements/index.js"),
   "archaeology/prismatic-blade-length-width-ratio": () => import("../../archaeology/prismatic-blade-length-width-ratio/index.js"),
   "arithmetic/round-to-multiple": () => import("../../arithmetic/round-to-multiple/index.js"),
+  "astrobiology/chemolithotrophy-maintenance-energy-threshold": () => import("../../astrobiology/chemolithotrophy-maintenance-energy-threshold/index.js"),
   "auditing/brokerage-confirmation-reconciliation": () => import("../../auditing/brokerage-confirmation-reconciliation/index.js"),
   "auditing/isa-vs-clarity-au-c-numbering-crossref-lookup": () => import("../../auditing/isa-vs-clarity-au-c-numbering-crossref-lookup/index.js"),
   "carpentry/inlay-strip-width": () => import("../../carpentry/inlay-strip-width/index.js"),

@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "aesthetics/greenberg-medium-specificity-formalism-lookup": () => import("../../aesthetics/greenberg-medium-specificity-formalism-lookup/index.js"),
   "agriculture/storage-loss-percentage": () => import("../../agriculture/storage-loss-percentage/index.js"),
+  "astrobiology/mars-co2-frost-sublimation-rate-calculator": () => import("../../astrobiology/mars-co2-frost-sublimation-rate-calculator/index.js"),
   "auditing/rpa-bot-audit-trail-versioning-evidence-lookup": () => import("../../auditing/rpa-bot-audit-trail-versioning-evidence-lookup/index.js"),
   "aviation/field-elevation-qnh": () => import("../../aviation/field-elevation-qnh/index.js"),
   "aviation/time-to-descent": () => import("../../aviation/time-to-descent/index.js"),
@@ -29,8 +30,10 @@ export const toolModuleLoaders: Readonly<
   "genetics/independent-inbreeding-paths": () => import("../../genetics/independent-inbreeding-paths/index.js"),
   "genetics/x-recessive-son-risk": () => import("../../genetics/x-recessive-son-risk/index.js"),
   "geology/downlap-angle": () => import("../../geology/downlap-angle/index.js"),
+  "geology/ti-in-quartz-thermometer-titaniq": () => import("../../geology/ti-in-quartz-thermometer-titaniq/index.js"),
   "horology/foudroyante-steps": () => import("../../horology/foudroyante-steps/index.js"),
   "insurance/epl-practice-claims-trigger-lookup": () => import("../../insurance/epl-practice-claims-trigger-lookup/index.js"),
+  "kinesiology/mcid-anchor-based-clinically-important-lookup": () => import("../../kinesiology/mcid-anchor-based-clinically-important-lookup/index.js"),
   "laser/dual-comb-time-magnification": () => import("../../laser/dual-comb-time-magnification/index.js"),
   "laser/flash-lidar-frame-coverage": () => import("../../laser/flash-lidar-frame-coverage/index.js"),
   "laser/mcwhirter-density-threshold": () => import("../../laser/mcwhirter-density-threshold/index.js"),
@@ -61,5 +64,6 @@ export const toolModuleLoaders: Readonly<
   "taxation/gift-tax-annual-exclusion-count-checker": () => import("../../taxation/gift-tax-annual-exclusion-count-checker/index.js"),
   "theatre/drafting-sheet-coverage": () => import("../../theatre/drafting-sheet-coverage/index.js"),
   "theatre/gobo-pattern-size-a-size-b-lookup": () => import("../../theatre/gobo-pattern-size-a-size-b-lookup/index.js"),
+  "toxicology/threshold-toxicological-concern": () => import("../../toxicology/threshold-toxicological-concern/index.js"),
   "typography/cicero-to-pica-french": () => import("../../typography/cicero-to-pica-french/index.js"),
 };

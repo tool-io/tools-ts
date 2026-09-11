@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/thermal-resistance-series": () => import("../../engineering/thermal-resistance-series/index.js"),
   "epigraphy/gentilicium-origin-hint-checker": () => import("../../epigraphy/gentilicium-origin-hint-checker/index.js"),
   "folklore/backstage-whistling-ghost-summoning-riggers-call-taboo": () => import("../../folklore/backstage-whistling-ghost-summoning-riggers-call-taboo/index.js"),
+  "futurology/donut-economics-social-planetary-boundaries-ring-model": () => import("../../futurology/donut-economics-social-planetary-boundaries-ring-model/index.js"),
   "futurology/shell-oil-scenario-origin-case-history-lookup": () => import("../../futurology/shell-oil-scenario-origin-case-history-lookup/index.js"),
   "genetics/grantham-property-distance": () => import("../../genetics/grantham-property-distance/index.js"),
   "geology/bubble-point-pressure-vasquez-beggs": () => import("../../geology/bubble-point-pressure-vasquez-beggs/index.js"),
@@ -62,5 +63,9 @@ export const toolModuleLoaders: Readonly<
   "size/golf-club": () => import("../../size/golf-club/index.js"),
   "size/pillow": () => import("../../size/pillow/index.js"),
   "taxation/bona-fide-residence-vs-physical-presence-checker": () => import("../../taxation/bona-fide-residence-vs-physical-presence-checker/index.js"),
+  "toxicology/developmental-toxicity-teratogenic-index": () => import("../../toxicology/developmental-toxicity-teratogenic-index/index.js"),
+  "veterinary/cattle-dosing-by-weight": () => import("../../veterinary/cattle-dosing-by-weight/index.js"),
+  "veterinary/epinephrine-emergency-dose-vet": () => import("../../veterinary/epinephrine-emergency-dose-vet/index.js"),
+  "veterinary/water-requirement-daily-pet": () => import("../../veterinary/water-requirement-daily-pet/index.js"),
   "volcanology/repose-interval-recurrence-mean": () => import("../../volcanology/repose-interval-recurrence-mean/index.js"),
 };

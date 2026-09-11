@@ -59,6 +59,8 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/through-silicon-via-aspect-ratio": () => import("../../semiconductor/through-silicon-via-aspect-ratio/index.js"),
   "size/kilt-reconstruction": () => import("../../size/kilt-reconstruction/index.js"),
   "sociology/bongaarts-proximate-determinant-index": () => import("../../sociology/bongaarts-proximate-determinant-index/index.js"),
+  "speleology/depth-record-ranking-comparator": () => import("../../speleology/depth-record-ranking-comparator/index.js"),
+  "speleology/passage-cross-section-area": () => import("../../speleology/passage-cross-section-area/index.js"),
   "statistics/standard-deviation": () => import("../../statistics/standard-deviation/index.js"),
   "theatre/royalty-percent-gross-box-office-tiered-calculator": () => import("../../theatre/royalty-percent-gross-box-office-tiered-calculator/index.js"),
   "typography/pica-to-points": () => import("../../typography/pica-to-points/index.js"),

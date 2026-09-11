@@ -17,6 +17,8 @@ export const toolModuleLoaders: Readonly<
   "construction/concrete-set-time": () => import("../../construction/concrete-set-time/index.js"),
   "cooking/sourdough-hydration": () => import("../../cooking/sourdough-hydration/index.js"),
   "csv/header-row-detection-heuristic": () => import("../../csv/header-row-detection-heuristic/index.js"),
+  "dentistry/community-periodontal-index-treatment-needs": () => import("../../dentistry/community-periodontal-index-treatment-needs/index.js"),
+  "dentistry/little-irregularity-index": () => import("../../dentistry/little-irregularity-index/index.js"),
   "electronics/detector-noise-equivalent-power": () => import("../../electronics/detector-noise-equivalent-power/index.js"),
   "electronics/q-from-bandwidth": () => import("../../electronics/q-from-bandwidth/index.js"),
   "electronics/third-order-intercept-point": () => import("../../electronics/third-order-intercept-point/index.js"),
@@ -48,7 +50,9 @@ export const toolModuleLoaders: Readonly<
   "random/latin-vowel": () => import("../../random/latin-vowel/index.js"),
   "real-estate/closing-costs": () => import("../../real-estate/closing-costs/index.js"),
   "semiconductor/spintronic-spin-lifetime": () => import("../../semiconductor/spintronic-spin-lifetime/index.js"),
+  "semiconductor/surface-recombination-velocity": () => import("../../semiconductor/surface-recombination-velocity/index.js"),
   "toxicology/biexponential-disposition-curve": () => import("../../toxicology/biexponential-disposition-curve/index.js"),
+  "toxicology/toxic-units-mixture": () => import("../../toxicology/toxic-units-mixture/index.js"),
   "web/form-urlencoded-encoder": () => import("../../web/form-urlencoded-encoder/index.js"),
   "web/punycode-to-unicode": () => import("../../web/punycode-to-unicode/index.js"),
 };

@@ -55,6 +55,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/wafer-warp": () => import("../../semiconductor/wafer-warp/index.js"),
   "size/kaftan-reconstruction": () => import("../../size/kaftan-reconstruction/index.js"),
   "sociology/s80-s20-ratio": () => import("../../sociology/s80-s20-ratio/index.js"),
+  "speleology/tape-temperature-correction": () => import("../../speleology/tape-temperature-correction/index.js"),
   "taxation/standard-vs-itemized-breakeven-compare": () => import("../../taxation/standard-vs-itemized-breakeven-compare/index.js"),
   "toxicology/segment-weighted-ingestion-exposure-dose": () => import("../../toxicology/segment-weighted-ingestion-exposure-dose/index.js"),
   "typography/superscript-subscript-size-percent-default": () => import("../../typography/superscript-subscript-size-percent-default/index.js"),
