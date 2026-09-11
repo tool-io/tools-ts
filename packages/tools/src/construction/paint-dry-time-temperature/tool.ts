@@ -1,0 +1,107 @@
+import type { ToolExample } from "../../core/example.js";
+import { createSimpleTool, type SimpleField } from "../../core/simple.js";
+import {
+  validateInput,
+  finish,
+  ownReference,
+  referenceInterpolation,
+} from "../batch50-shared.js";
+export type Input = Readonly<{
+  readonly callerVerifiedSource: string;
+  readonly callerVerifiedContext: string;
+  readonly callerVerifiedAsOfDate: string;
+  readonly verifiedTemperatureKnots: readonly number[];
+  readonly verifiedDryTimeKnots: readonly number[];
+  readonly actualQueryCoordinate: number;
+}>;
+export type Output = { readonly result: Readonly<Record<string, unknown>> };
+const fields = [
+  {
+    id: "callerVerifiedSource",
+    label: "Caller verified source",
+    kind: "string",
+  },
+  {
+    id: "callerVerifiedContext",
+    label: "Caller verified context",
+    kind: "string",
+  },
+  {
+    id: "callerVerifiedAsOfDate",
+    label: "Caller verified as of date",
+    kind: "string",
+  },
+  {
+    id: "verifiedTemperatureKnots",
+    label: "Verified temperature knots",
+    kind: "numberList",
+  },
+  {
+    id: "verifiedDryTimeKnots",
+    label: "Verified dry time knots",
+    kind: "numberList",
+  },
+  {
+    id: "actualQueryCoordinate",
+    label: "Actual query coordinate",
+    kind: "number",
+  },
+] as const satisfies readonly SimpleField[];
+const compute = (input: Input): Readonly<Record<string, unknown>> => {
+  ownReference(
+    input.callerVerifiedSource,
+    input.callerVerifiedContext,
+    input.callerVerifiedAsOfDate,
+  );
+  return {
+    conditionalInterpolatedValue: referenceInterpolation(
+      input.verifiedTemperatureKnots,
+      input.verifiedDryTimeKnots,
+      input.actualQueryCoordinate,
+    ),
+    source: input.callerVerifiedSource,
+    context: input.callerVerifiedContext,
+    asOfDate: input.callerVerifiedAsOfDate,
+  };
+};
+export const calculate = (input: Input): Output => {
+  validateInput(input, fields);
+  return finish({ result: compute(input) });
+};
+export const example = {
+  input: {
+    callerVerifiedSource: "independently-reviewed-calibration/edition",
+    callerVerifiedContext:
+      "Actual paint product/film thickness/humidity/ventilation matched dry time data versus temperature, no universal Arrhenius time law",
+    callerVerifiedAsOfDate: "2026-01-01",
+    verifiedTemperatureKnots: [1, 2],
+    verifiedDryTimeKnots: [10, 20],
+    actualQueryCoordinate: 1.5,
+  },
+  output: {
+    result: {
+      conditionalInterpolatedValue: 15,
+      source: "independently-reviewed-calibration/edition",
+      context:
+        "Actual paint product/film thickness/humidity/ventilation matched dry time data versus temperature, no universal Arrhenius time law",
+      asOfDate: "2026-01-01",
+    },
+  },
+} satisfies ToolExample<Input, Output>;
+export const tool = createSimpleTool({
+  id: "construction/paint-dry-time-temperature",
+  title: "Paint Dry Time Temperature Calculator",
+  description:
+    "Actual qualified piecewise-linear calibration for Paint Dry Time Temperature Calculator. Actual paint product/film thickness/humidity/ventilation matched dry time data versus temperature, no universal Arrhenius time law. Strictly increasing matched knots, no extrapolation; illustrative example not real calibration. Source/context/date independently verified, no scientific universal curve, safe-use approval or guaranteed prediction.",
+  inputs: fields,
+  outputs: [
+    {
+      id: "result",
+      label: "Actual calculation or qualified reference",
+      kind: "object",
+    },
+  ],
+  calculate: (value) => calculate(value as unknown as Input),
+});
+export const run = tool.execute;
+export default tool;
