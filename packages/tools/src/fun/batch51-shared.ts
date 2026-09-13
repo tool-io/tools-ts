@@ -149,7 +149,10 @@ export const survival = (
   q.forEach((v) => fraction(v, "qx"));
   bounded(start, "start", 0, q.length);
   bounded(end, "end", start, q.length);
-  return Math.exp(sum(q.slice(start, end).map((v) => Math.log1p(-v))));
+  const slice = q.slice(start, end);
+  return slice.includes(1)
+    ? 0
+    : Math.exp(sum(slice.map((v) => Math.log1p(-v))));
 };
 export const lifeTable = (q: readonly number[], radix: number): number[] => {
   positive(radix, "radix");
