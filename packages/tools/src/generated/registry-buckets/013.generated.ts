@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/half-year-convention-partial-year-proration": () => import("../../accounting/half-year-convention-partial-year-proration/index.js"),
+  "aquaculture/spawning-induction-dose": () => import("../../aquaculture/spawning-induction-dose/index.js"),
   "astrometry/laskar-mean-obliquity": () => import("../../astrometry/laskar-mean-obliquity/index.js"),
   "banking/credit-union-not-for-profit-surplus-member-return-structure": () => import("../../banking/credit-union-not-for-profit-surplus-member-return-structure/index.js"),
   "biology/bioequivalence-ratio": () => import("../../biology/bioequivalence-ratio/index.js"),
@@ -23,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/quantization-step": () => import("../../electronics/quantization-step/index.js"),
   "electronics/toroid-inductance": () => import("../../electronics/toroid-inductance/index.js"),
   "engineering/lightning-risk-factor": () => import("../../engineering/lightning-risk-factor/index.js"),
+  "engineering/retaining-wall-bearing-safety": () => import("../../engineering/retaining-wall-bearing-safety/index.js"),
   "entrepreneurship/channel-customer-acquisition-cost": () => import("../../entrepreneurship/channel-customer-acquisition-cost/index.js"),
   "film/hyperfocal-distance": () => import("../../film/hyperfocal-distance/index.js"),
   "finance/current-ratio": () => import("../../finance/current-ratio/index.js"),
@@ -35,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "laser/random-fiber-laser-threshold": () => import("../../laser/random-fiber-laser-threshold/index.js"),
   "math/carmichael-number-checker": () => import("../../math/carmichael-number-checker/index.js"),
   "math/factorial-digit-count": () => import("../../math/factorial-digit-count/index.js"),
+  "math/lieb-thirring-constant": () => import("../../math/lieb-thirring-constant/index.js"),
   "meteorology/cut-off-low-cold-pool-detachment-checker": () => import("../../meteorology/cut-off-low-cold-pool-detachment-checker/index.js"),
   "numismatics/scyphate-hyperpyron-cup-curve-handling-grade-note": () => import("../../numismatics/scyphate-hyperpyron-cup-curve-handling-grade-note/index.js"),
   "numismatics/whizzed-surface-screen": () => import("../../numismatics/whizzed-surface-screen/index.js"),
@@ -43,6 +46,8 @@ export const toolModuleLoaders: Readonly<
   "optimization/trust-region-step": () => import("../../optimization/trust-region-step/index.js"),
   "pregnancy/rh-immunoglobulin-dose": () => import("../../pregnancy/rh-immunoglobulin-dose/index.js"),
   "proteomics/deamidation-motifs": () => import("../../proteomics/deamidation-motifs/index.js"),
+  "psychology/perceived-stress-scale-pps-score": () => import("../../psychology/perceived-stress-scale-pps-score/index.js"),
+  "psychology/prelec-probability-weighting-gamma": () => import("../../psychology/prelec-probability-weighting-gamma/index.js"),
   "random/graph-degree-density-quiz": () => import("../../random/graph-degree-density-quiz/index.js"),
   "random/shutter-angle-conversion-quiz": () => import("../../random/shutter-angle-conversion-quiz/index.js"),
   "sailing/polar-target-speed": () => import("../../sailing/polar-target-speed/index.js"),

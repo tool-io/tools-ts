@@ -45,6 +45,7 @@ export const toolModuleLoaders: Readonly<
   "oenology/bottle-fill-height-check": () => import("../../oenology/bottle-fill-height-check/index.js"),
   "pedagogy/anticipatory-set-hook-strategy-catalog-lookup": () => import("../../pedagogy/anticipatory-set-hook-strategy-catalog-lookup/index.js"),
   "proteomics/transmembrane-window-scan": () => import("../../proteomics/transmembrane-window-scan/index.js"),
+  "psychology/split-half-reliability-spearman-brown": () => import("../../psychology/split-half-reliability-spearman-brown/index.js"),
   "random/http-forwarded-header-corpus": () => import("../../random/http-forwarded-header-corpus/index.js"),
   "random/http-status-classification-quiz": () => import("../../random/http-status-classification-quiz/index.js"),
   "random/multani-character": () => import("../../random/multani-character/index.js"),

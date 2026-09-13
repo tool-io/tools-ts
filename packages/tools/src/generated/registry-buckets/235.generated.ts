@@ -47,6 +47,7 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/speech-reception-threshold": () => import("../../neuroscience/speech-reception-threshold/index.js"),
   "neuroscience/trial-baseline-subtracted-evoked-rate": () => import("../../neuroscience/trial-baseline-subtracted-evoked-rate/index.js"),
   "numismatics/kanei-tsuho-mother-coin-rarity-note-lookup": () => import("../../numismatics/kanei-tsuho-mother-coin-rarity-note-lookup/index.js"),
+  "pharmacy/cmax-from-dose": () => import("../../pharmacy/cmax-from-dose/index.js"),
   "random/astrological-aspect-symbol": () => import("../../random/astrological-aspect-symbol/index.js"),
   "random/electric-car": () => import("../../random/electric-car/index.js"),
   "sailing/sheet-load-main": () => import("../../sailing/sheet-load-main/index.js"),
@@ -59,6 +60,8 @@ export const toolModuleLoaders: Readonly<
   "text/punctuation-count": () => import("../../text/punctuation-count/index.js"),
   "typography/css-font-shorthand-order-builder": () => import("../../typography/css-font-shorthand-order-builder/index.js"),
   "volcanology/so2-mass-flux-tonnes-day": () => import("../../volcanology/so2-mass-flux-tonnes-day/index.js"),
+  "vr/eye-tracking-accuracy-degrees": () => import("../../vr/eye-tracking-accuracy-degrees/index.js"),
+  "vr/lens-flare-intensity": () => import("../../vr/lens-flare-intensity/index.js"),
   "waist-to-hip": () => import("../../waist-to-hip/index.js"),
   "web/crossorigin-attribute-parser": () => import("../../web/crossorigin-attribute-parser/index.js"),
 };

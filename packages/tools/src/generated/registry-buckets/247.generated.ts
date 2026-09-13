@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/suspense-account-clearance-aging-checker": () => import("../../accounting/suspense-account-clearance-aging-checker/index.js"),
+  "agriculture/fertilizer-requirement-potassium": () => import("../../agriculture/fertilizer-requirement-potassium/index.js"),
   "agriculture/hay-bale-weight": () => import("../../agriculture/hay-bale-weight/index.js"),
   "auditing/single-audit-expenditure-threshold-checker": () => import("../../auditing/single-audit-expenditure-threshold-checker/index.js"),
   "aviation/cg-shift-fuel": () => import("../../aviation/cg-shift-fuel/index.js"),
@@ -42,11 +43,13 @@ export const toolModuleLoaders: Readonly<
   "math/trimorphic-number-checker": () => import("../../math/trimorphic-number-checker/index.js"),
   "meteorology/total-totals-index": () => import("../../meteorology/total-totals-index/index.js"),
   "neuroscience/eeg-band-power-theta": () => import("../../neuroscience/eeg-band-power-theta/index.js"),
+  "neuroscience/symmetry-span-score": () => import("../../neuroscience/symmetry-span-score/index.js"),
   "number/catalan-checker": () => import("../../number/catalan-checker/index.js"),
   "number/modular-exponentiation": () => import("../../number/modular-exponentiation/index.js"),
   "parasitology/parasite-ct-copy-number": () => import("../../parasitology/parasite-ct-copy-number/index.js"),
   "parse/query-string": () => import("../../parse/query-string/index.js"),
   "petroleum/buildup-pressure-horner": () => import("../../petroleum/buildup-pressure-horner/index.js"),
+  "psychology/selection-ratio-taylor-russell-lookup": () => import("../../psychology/selection-ratio-taylor-russell-lookup/index.js"),
   "random/arabic-basic-alphabet-letter": () => import("../../random/arabic-basic-alphabet-letter/index.js"),
   "random/emoji-keycap": () => import("../../random/emoji-keycap/index.js"),
   "random/russian-alphabet-letter": () => import("../../random/russian-alphabet-letter/index.js"),

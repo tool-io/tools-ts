@@ -57,6 +57,8 @@ export const toolModuleLoaders: Readonly<
   "mycology/ascus-eight-spored-checker": () => import("../../mycology/ascus-eight-spored-checker/index.js"),
   "numismatics/numeric-to-adjectival-grade": () => import("../../numismatics/numeric-to-adjectival-grade/index.js"),
   "paleontology/efs-maturity-flag": () => import("../../paleontology/efs-maturity-flag/index.js"),
+  "pharmacy/phosphate-replacement-dose": () => import("../../pharmacy/phosphate-replacement-dose/index.js"),
+  "pharmacy/refills-until-next-fill-date": () => import("../../pharmacy/refills-until-next-fill-date/index.js"),
   "philately/perf-tip-condition-rater": () => import("../../philately/perf-tip-condition-rater/index.js"),
   "random/binary": () => import("../../random/binary/index.js"),
   "random/draughts-piece": () => import("../../random/draughts-piece/index.js"),

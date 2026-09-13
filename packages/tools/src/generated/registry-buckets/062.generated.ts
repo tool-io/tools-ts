@@ -42,6 +42,7 @@ export const toolModuleLoaders: Readonly<
   "laser/optical-chopper-timing": () => import("../../laser/optical-chopper-timing/index.js"),
   "math/discriminant-resultant": () => import("../../math/discriminant-resultant/index.js"),
   "meteorology/showalter-index": () => import("../../meteorology/showalter-index/index.js"),
+  "neuroscience/action-potential-fall-time": () => import("../../neuroscience/action-potential-fall-time/index.js"),
   "neuroscience/ashworth-spasticity-scale": () => import("../../neuroscience/ashworth-spasticity-scale/index.js"),
   "numismatics/bodybag-no-grade-common-rejection-reasons-list": () => import("../../numismatics/bodybag-no-grade-common-rejection-reasons-list/index.js"),
   "numismatics/farthing-to-pound-converter": () => import("../../numismatics/farthing-to-pound-converter/index.js"),

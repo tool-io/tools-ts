@@ -52,6 +52,7 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/white-matter-hyperintensity-volume": () => import("../../neuroscience/white-matter-hyperintensity-volume/index.js"),
   "oenology/citric-acid-cap-checker": () => import("../../oenology/citric-acid-cap-checker/index.js"),
   "oenology/cmc-stability-dose": () => import("../../oenology/cmc-stability-dose/index.js"),
+  "plumbing/wet-vent-sizing": () => import("../../plumbing/wet-vent-sizing/index.js"),
   "probability/multinomial-sampler": () => import("../../probability/multinomial-sampler/index.js"),
   "random/dives-akuru-character": () => import("../../random/dives-akuru-character/index.js"),
   "rhetoric/epizeuxis-triple-immediate-repetition-checker": () => import("../../rhetoric/epizeuxis-triple-immediate-repetition-checker/index.js"),

@@ -50,6 +50,7 @@ export const toolModuleLoaders: Readonly<
   "physics/kinetic-energy": () => import("../../physics/kinetic-energy/index.js"),
   "random/ismn-check-digit-quiz": () => import("../../random/ismn-check-digit-quiz/index.js"),
   "real-estate/maintenance-reserve": () => import("../../real-estate/maintenance-reserve/index.js"),
+  "real-estate/yield-capitalization-value": () => import("../../real-estate/yield-capitalization-value/index.js"),
   "sailing/polar-target-awa": () => import("../../sailing/polar-target-awa/index.js"),
   "semiconductor/fermi-level-intrinsic": () => import("../../semiconductor/fermi-level-intrinsic/index.js"),
   "semiconductor/flip-chip-bump-pitch": () => import("../../semiconductor/flip-chip-bump-pitch/index.js"),
@@ -59,4 +60,5 @@ export const toolModuleLoaders: Readonly<
   "speleology/ceiling-height-reach-adder": () => import("../../speleology/ceiling-height-reach-adder/index.js"),
   "theatre/arena-blocking-balance": () => import("../../theatre/arena-blocking-balance/index.js"),
   "volcanology/vesicularity-porosity-calculation": () => import("../../volcanology/vesicularity-porosity-calculation/index.js"),
+  "vr/god-ray-intensity": () => import("../../vr/god-ray-intensity/index.js"),
 };

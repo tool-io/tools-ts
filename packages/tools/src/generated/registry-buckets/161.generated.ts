@@ -29,6 +29,7 @@ export const toolModuleLoaders: Readonly<
   "laser/wms-2f-error-signal": () => import("../../laser/wms-2f-error-signal/index.js"),
   "limnology/conductivity-salinity-freshwater-approximation": () => import("../../limnology/conductivity-salinity-freshwater-approximation/index.js"),
   "logistics/multi-day-trip-plan-hours-days": () => import("../../logistics/multi-day-trip-plan-hours-days/index.js"),
+  "math/strive-number-checker": () => import("../../math/strive-number-checker/index.js"),
   "music/equal-temperament-ratio-from-semitones": () => import("../../music/equal-temperament-ratio-from-semitones/index.js"),
   "neuroscience/sensory-nerve-action-potential": () => import("../../neuroscience/sensory-nerve-action-potential/index.js"),
   "oceanography/estuarine-circulation-ratio-ue": () => import("../../oceanography/estuarine-circulation-ratio-ue/index.js"),
@@ -55,5 +56,6 @@ export const toolModuleLoaders: Readonly<
   "veterinary/hay-intake-percent-bodyweight": () => import("../../veterinary/hay-intake-percent-bodyweight/index.js"),
   "virology/synonymous-family-enc": () => import("../../virology/synonymous-family-enc/index.js"),
   "viticulture/sugar-accumulation-brix-per-week": () => import("../../viticulture/sugar-accumulation-brix-per-week/index.js"),
+  "vr/display-color-gamut-coverage-vr": () => import("../../vr/display-color-gamut-coverage-vr/index.js"),
   "web/permissions-policy-parser": () => import("../../web/permissions-policy-parser/index.js"),
 };

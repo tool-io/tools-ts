@@ -47,6 +47,7 @@ export const toolModuleLoaders: Readonly<
   "museology/conservator-hours-multiplier-lookup": () => import("../../museology/conservator-hours-multiplier-lookup/index.js"),
   "mycology/hartignet-depth-grade-classifier": () => import("../../mycology/hartignet-depth-grade-classifier/index.js"),
   "neuroscience/long-interval-intracortical-inhibition-lici": () => import("../../neuroscience/long-interval-intracortical-inhibition-lici/index.js"),
+  "neuroscience/mini-frequency-neuro": () => import("../../neuroscience/mini-frequency-neuro/index.js"),
   "neuroscience/windowed-spike-trial-reliability": () => import("../../neuroscience/windowed-spike-trial-reliability/index.js"),
   "numismatics/bullion-security-feature-check": () => import("../../numismatics/bullion-security-feature-check/index.js"),
   "numismatics/peace-dollar-high-relief-1921-versus-1922-story": () => import("../../numismatics/peace-dollar-high-relief-1921-versus-1922-story/index.js"),

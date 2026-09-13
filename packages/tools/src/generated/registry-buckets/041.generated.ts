@@ -43,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "paleontology/range-confidence-strauss-sadler": () => import("../../paleontology/range-confidence-strauss-sadler/index.js"),
   "petroleum/formation-volume-factor-water": () => import("../../petroleum/formation-volume-factor-water/index.js"),
   "philately/printing-method-decision-tree": () => import("../../philately/printing-method-decision-tree/index.js"),
+  "plumbing/cistern-overflow-size": () => import("../../plumbing/cistern-overflow-size/index.js"),
   "random/arpeggio": () => import("../../random/arpeggio/index.js"),
   "random/counting-rod-numeral": () => import("../../random/counting-rod-numeral/index.js"),
   "random/gurmukhi-digit": () => import("../../random/gurmukhi-digit/index.js"),

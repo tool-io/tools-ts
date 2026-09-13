@@ -46,6 +46,7 @@ export const toolModuleLoaders: Readonly<
   "numismatics/plating-weight-delta-estimate": () => import("../../numismatics/plating-weight-delta-estimate/index.js"),
   "parasitology/infection-averted-cost": () => import("../../parasitology/infection-averted-cost/index.js"),
   "parse/integer": () => import("../../parse/integer/index.js"),
+  "pharmacy/electrolyte-replacement-kcl-rate-max": () => import("../../pharmacy/electrolyte-replacement-kcl-rate-max/index.js"),
   "plumbing/water-hammer-arrestor-size": () => import("../../plumbing/water-hammer-arrestor-size/index.js"),
   "random/dice-pool": () => import("../../random/dice-pool/index.js"),
   "random/digital-root-exercise": () => import("../../random/digital-root-exercise/index.js"),

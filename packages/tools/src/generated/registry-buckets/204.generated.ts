@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "agriculture/pesticide-dosage-per-hectare": () => import("../../agriculture/pesticide-dosage-per-hectare/index.js"),
   "aquaculture/biomass": () => import("../../aquaculture/biomass/index.js"),
   "aquaculture/broodstock-requirement": () => import("../../aquaculture/broodstock-requirement/index.js"),
   "archaeology/storage-capacity-vessel-volume": () => import("../../archaeology/storage-capacity-vessel-volume/index.js"),
@@ -30,6 +31,7 @@ export const toolModuleLoaders: Readonly<
   "entrepreneurship/growth-loops-versus-funnels-reframe-classifier": () => import("../../entrepreneurship/growth-loops-versus-funnels-reframe-classifier/index.js"),
   "epigraphy/censorial-iteration-decoder": () => import("../../epigraphy/censorial-iteration-decoder/index.js"),
   "ergonomics/kneeling-pad-minimum-checker": () => import("../../ergonomics/kneeling-pad-minimum-checker/index.js"),
+  "film/subtitle-line-length": () => import("../../film/subtitle-line-length/index.js"),
   "finance/rule-of-72": () => import("../../finance/rule-of-72/index.js"),
   "forestry/snow-load-breakage-critical-stem-bending-stress": () => import("../../forestry/snow-load-breakage-critical-stem-bending-stress/index.js"),
   "geology/mineral-density-lookup": () => import("../../geology/mineral-density-lookup/index.js"),
@@ -40,10 +42,13 @@ export const toolModuleLoaders: Readonly<
   "html/ruby-rt-rp-structure-lookup": () => import("../../html/ruby-rt-rp-structure-lookup/index.js"),
   "insurance/climate-materiality-screen": () => import("../../insurance/climate-materiality-screen/index.js"),
   "journalism/statistic-staleness-years-old-data-flag-checker": () => import("../../journalism/statistic-staleness-years-old-data-flag-checker/index.js"),
+  "math/astroid-area": () => import("../../math/astroid-area/index.js"),
   "math/woodall-number-checker": () => import("../../math/woodall-number-checker/index.js"),
   "metabolomics/acyl-fragment-ladder": () => import("../../metabolomics/acyl-fragment-ladder/index.js"),
+  "neuroscience/brain-plasma-ratio": () => import("../../neuroscience/brain-plasma-ratio/index.js"),
   "numismatics/pound-sterling-coin-specs-lookup": () => import("../../numismatics/pound-sterling-coin-specs-lookup/index.js"),
   "proportions/percentage-change": () => import("../../proportions/percentage-change/index.js"),
+  "psychology/response-rate-follow-up-mailing-estimate": () => import("../../psychology/response-rate-follow-up-mailing-estimate/index.js"),
   "random/egyptian-hieroglyph": () => import("../../random/egyptian-hieroglyph/index.js"),
   "random/fullwidth-character": () => import("../../random/fullwidth-character/index.js"),
   "random/hatran-letter": () => import("../../random/hatran-letter/index.js"),

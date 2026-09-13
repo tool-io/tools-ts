@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/octave-illusion-reference": () => import("../../acoustics/octave-illusion-reference/index.js"),
   "agriculture/center-pivot-application-depth": () => import("../../agriculture/center-pivot-application-depth/index.js"),
+  "agriculture/thermal-time": () => import("../../agriculture/thermal-time/index.js"),
   "archaeology/trophic-level-delta15n-scale": () => import("../../archaeology/trophic-level-delta15n-scale/index.js"),
   "archival-studies/disaster-kit-restock-checker": () => import("../../archival-studies/disaster-kit-restock-checker/index.js"),
   "astrobiology/vent-ph-gradient-pmf-estimate": () => import("../../astrobiology/vent-ph-gradient-pmf-estimate/index.js"),
@@ -55,6 +56,7 @@ export const toolModuleLoaders: Readonly<
   "random/tai-viet-character": () => import("../../random/tai-viet-character/index.js"),
   "rhetoric/catachresis-mixed-metaphor-strain-detector": () => import("../../rhetoric/catachresis-mixed-metaphor-strain-detector/index.js"),
   "seismology/depth-conversion-average-velocity-method-calculator": () => import("../../seismology/depth-conversion-average-velocity-method-calculator/index.js"),
+  "sociology/religious-fractionalization-index": () => import("../../sociology/religious-fractionalization-index/index.js"),
   "sociology/social-media-daily-hours-self-report": () => import("../../sociology/social-media-daily-hours-self-report/index.js"),
   "statistics/weighted-mean": () => import("../../statistics/weighted-mean/index.js"),
   "taxation/niit-net-investment-income-threshold-checker": () => import("../../taxation/niit-net-investment-income-threshold-checker/index.js"),
@@ -62,4 +64,6 @@ export const toolModuleLoaders: Readonly<
   "vexillology/subdivision-emoji-tag-decoder": () => import("../../vexillology/subdivision-emoji-tag-decoder/index.js"),
   "viticulture/internode-length-vigour-indicator": () => import("../../viticulture/internode-length-vigour-indicator/index.js"),
   "volcanology/bingham-yield-strength-lava": () => import("../../volcanology/bingham-yield-strength-lava/index.js"),
+  "vr/battery-life-controllers-combined": () => import("../../vr/battery-life-controllers-combined/index.js"),
+  "vr/pupil-swim-correction": () => import("../../vr/pupil-swim-correction/index.js"),
 };

@@ -42,6 +42,7 @@ export const toolModuleLoaders: Readonly<
   "mining/mining-dilution-percentage": () => import("../../mining/mining-dilution-percentage/index.js"),
   "museology/compact-shelving-space-saving-percent": () => import("../../museology/compact-shelving-space-saving-percent/index.js"),
   "music/relative-minor-key-finder": () => import("../../music/relative-minor-key-finder/index.js"),
+  "neuroscience/brain-atrophy-rate-siiena": () => import("../../neuroscience/brain-atrophy-rate-siiena/index.js"),
   "neuroscience/ventricle-brain-ratio": () => import("../../neuroscience/ventricle-brain-ratio/index.js"),
   "number/chinese-remainder": () => import("../../number/chinese-remainder/index.js"),
   "numismatics/die-break-stage-classifier": () => import("../../numismatics/die-break-stage-classifier/index.js"),

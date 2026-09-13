@@ -50,6 +50,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/delivery-time-slot-promise-percentile": () => import("../../logistics/delivery-time-slot-promise-percentile/index.js"),
   "math/bell-transform": () => import("../../math/bell-transform/index.js"),
   "mining/mineral-resource-total": () => import("../../mining/mineral-resource-total/index.js"),
+  "neuroscience/heritability-iq": () => import("../../neuroscience/heritability-iq/index.js"),
   "neuroscience/operation-span-score": () => import("../../neuroscience/operation-span-score/index.js"),
   "number/mobius": () => import("../../number/mobius/index.js"),
   "parasitology/incidence-getis-ord-hotspots": () => import("../../parasitology/incidence-getis-ord-hotspots/index.js"),
@@ -68,4 +69,5 @@ export const toolModuleLoaders: Readonly<
   "text/shortest-word": () => import("../../text/shortest-word/index.js"),
   "theatre/house-left-right-center-seat-split-calculator": () => import("../../theatre/house-left-right-center-seat-split-calculator/index.js"),
   "typography/numeral-proportional-tabular-width-checker": () => import("../../typography/numeral-proportional-tabular-width-checker/index.js"),
+  "vr/screen-door-effect-visibility": () => import("../../vr/screen-door-effect-visibility/index.js"),
 };

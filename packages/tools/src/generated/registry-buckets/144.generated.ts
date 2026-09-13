@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "aquaculture/turnover-rate": () => import("../../aquaculture/turnover-rate/index.js"),
   "astrobiology/photosynthesis-photon-flux-rededge-checker": () => import("../../astrobiology/photosynthesis-photon-flux-rededge-checker/index.js"),
   "auditing/sample-evaluation-upper-misstatement-limit-computation": () => import("../../auditing/sample-evaluation-upper-misstatement-limit-computation/index.js"),
   "auditing/shell-company-registration-age-nominee-indicator-lookup": () => import("../../auditing/shell-company-registration-age-nominee-indicator-lookup/index.js"),
@@ -21,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "cost/printing": () => import("../../cost/printing/index.js"),
   "demography/remarriage-proportion-percent": () => import("../../demography/remarriage-proportion-percent/index.js"),
   "dentistry/calcium-hydroxide-dressing-renewal-interval": () => import("../../dentistry/calcium-hydroxide-dressing-renewal-interval/index.js"),
+  "electronics/audio-crossover-phase": () => import("../../electronics/audio-crossover-phase/index.js"),
   "electronics/heatsink-case-to-ambient-resistance": () => import("../../electronics/heatsink-case-to-ambient-resistance/index.js"),
   "electronics/piezoelectric-sensor-sensitivity": () => import("../../electronics/piezoelectric-sensor-sensitivity/index.js"),
   "epigraphy/salt-efflorescence-classifier": () => import("../../epigraphy/salt-efflorescence-classifier/index.js"),
@@ -42,12 +44,16 @@ export const toolModuleLoaders: Readonly<
   "math/gamma-incomplete-upper-approx": () => import("../../math/gamma-incomplete-upper-approx/index.js"),
   "math/kloosterman-sum-approx": () => import("../../math/kloosterman-sum-approx/index.js"),
   "math/prime-omega-function": () => import("../../math/prime-omega-function/index.js"),
+  "math/regular-n-gon-perimeter": () => import("../../math/regular-n-gon-perimeter/index.js"),
   "math/stirling-first-kind": () => import("../../math/stirling-first-kind/index.js"),
   "mri/radial-angular-nyquist-sampling": () => import("../../mri/radial-angular-nyquist-sampling/index.js"),
   "mycology/clamp-connection-presence-detector": () => import("../../mycology/clamp-connection-presence-detector/index.js"),
+  "neuroscience/free-water-fraction": () => import("../../neuroscience/free-water-fraction/index.js"),
   "nutrition/daily-intake": () => import("../../nutrition/daily-intake/index.js"),
   "paleontology/trampling-mark-flag": () => import("../../paleontology/trampling-mark-flag/index.js"),
   "petroleum/original-gas-in-place-ogip": () => import("../../petroleum/original-gas-in-place-ogip/index.js"),
+  "pharmacy/capsule-count-by-factor": () => import("../../pharmacy/capsule-count-by-factor/index.js"),
+  "psychology/guttman-lambda-reliability": () => import("../../psychology/guttman-lambda-reliability/index.js"),
   "random/belarusian-alphabet-letter": () => import("../../random/belarusian-alphabet-letter/index.js"),
   "random/guitar-fretboard-exercise": () => import("../../random/guitar-fretboard-exercise/index.js"),
   "random/hsl-color": () => import("../../random/hsl-color/index.js"),

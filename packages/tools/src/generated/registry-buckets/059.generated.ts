@@ -24,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/third-order-intercept-point": () => import("../../electronics/third-order-intercept-point/index.js"),
   "engineering/prestress-loss-shrinkage": () => import("../../engineering/prestress-loss-shrinkage/index.js"),
   "engineering/sewer-self-cleansing-velocity": () => import("../../engineering/sewer-self-cleansing-velocity/index.js"),
+  "engineering/steel-beam-ltb": () => import("../../engineering/steel-beam-ltb/index.js"),
   "folklore/casey-jones-cannonball-real-engineer-ballad-history": () => import("../../folklore/casey-jones-cannonball-real-engineer-ballad-history/index.js"),
   "folklore/shiver-walked-over-your-grave-phrase-origin-lookup": () => import("../../folklore/shiver-walked-over-your-grave-phrase-origin-lookup/index.js"),
   "forestry/trees-per-hectare-from-plot": () => import("../../forestry/trees-per-hectare-from-plot/index.js"),

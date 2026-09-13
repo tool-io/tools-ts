@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "classics/cicero-periodic-sentence-rhythm-climax-history-lookup": () => import("../../classics/cicero-periodic-sentence-rhythm-climax-history-lookup/index.js"),
   "classics/social-war-italian-allies-citizenship-90-88-bc-lookup": () => import("../../classics/social-war-italian-allies-citizenship-90-88-bc-lookup/index.js"),
   "color/flag-dominant-hue-average-extractor": () => import("../../color/flag-dominant-hue-average-extractor/index.js"),
+  "construction/drywall-fire-rating-lookup": () => import("../../construction/drywall-fire-rating-lookup/index.js"),
   "cryptography/iban-mod97-validator": () => import("../../cryptography/iban-mod97-validator/index.js"),
   "csv/row-head-tail-slice-n": () => import("../../csv/row-head-tail-slice-n/index.js"),
   "csv/two-digit-year-century-window-rule-lookup": () => import("../../csv/two-digit-year-century-window-rule-lookup/index.js"),

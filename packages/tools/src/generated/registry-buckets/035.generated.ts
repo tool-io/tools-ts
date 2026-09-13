@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "biology/qpcr-delta-delta-ct": () => import("../../biology/qpcr-delta-delta-ct/index.js"),
   "biology/selection-intensity-i": () => import("../../biology/selection-intensity-i/index.js"),
   "color/delta-e-76": () => import("../../color/delta-e-76/index.js"),
+  "construction/electrical-outlet-spacing-code": () => import("../../construction/electrical-outlet-spacing-code/index.js"),
   "cooking/bechamel-ratio": () => import("../../cooking/bechamel-ratio/index.js"),
   "cooking/butter-sticks-to-grams": () => import("../../cooking/butter-sticks-to-grams/index.js"),
   "criminology/restorative-justice-dialogue-eligibility-checker": () => import("../../criminology/restorative-justice-dialogue-eligibility-checker/index.js"),
@@ -72,5 +73,6 @@ export const toolModuleLoaders: Readonly<
   "text/bigram-count": () => import("../../text/bigram-count/index.js"),
   "volcanology/pozzolan-clinker-substitution-percent": () => import("../../volcanology/pozzolan-clinker-substitution-percent/index.js"),
   "vr/chromatic-aberration-correction": () => import("../../vr/chromatic-aberration-correction/index.js"),
+  "vr/judder-percentage": () => import("../../vr/judder-percentage/index.js"),
   "web/form-urlencoded-decoder": () => import("../../web/form-urlencoded-decoder/index.js"),
 };

@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/strain-gauge-factor": () => import("../../electronics/strain-gauge-factor/index.js"),
   "electronics/transformer-magnetizing-current": () => import("../../electronics/transformer-magnetizing-current/index.js"),
   "engineering/lift-force": () => import("../../engineering/lift-force/index.js"),
+  "engineering/pid-tuning-ziegler-nichols": () => import("../../engineering/pid-tuning-ziegler-nichols/index.js"),
   "engineering/traffic-growth-factor": () => import("../../engineering/traffic-growth-factor/index.js"),
   "filter/hacker-news": () => import("../../filter/hacker-news/index.js"),
   "folklore/hagiography-saint-legend-topos-checklist": () => import("../../folklore/hagiography-saint-legend-topos-checklist/index.js"),
@@ -42,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "journalism/trademark-nominative-use-headline-reference-lookup": () => import("../../journalism/trademark-nominative-use-headline-reference-lookup/index.js"),
   "kinesiology/crossfit-injury-rate-claims-study-verdict-context-lookup": () => import("../../kinesiology/crossfit-injury-rate-claims-study-verdict-context-lookup/index.js"),
   "laser/supercontinuum-octave-span": () => import("../../laser/supercontinuum-octave-span/index.js"),
+  "math/divisor-summatory": () => import("../../math/divisor-summatory/index.js"),
   "math/motzkin-number": () => import("../../math/motzkin-number/index.js"),
   "meteorology/k-index-severe-weather": () => import("../../meteorology/k-index-severe-weather/index.js"),
   "music/tessitura-center-estimate": () => import("../../music/tessitura-center-estimate/index.js"),
@@ -65,4 +67,5 @@ export const toolModuleLoaders: Readonly<
   "toxicology/ces-ces": () => import("../../toxicology/ces-ces/index.js"),
   "typography/baseline-shift-superscript-percent": () => import("../../typography/baseline-shift-superscript-percent/index.js"),
   "typography/q-unit-millimeter-japanese": () => import("../../typography/q-unit-millimeter-japanese/index.js"),
+  "vr/ray-marching-steps": () => import("../../vr/ray-marching-steps/index.js"),
 };

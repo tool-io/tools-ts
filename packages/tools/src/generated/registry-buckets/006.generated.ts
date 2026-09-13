@@ -43,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "logic/involution-cancel-checker": () => import("../../logic/involution-cancel-checker/index.js"),
   "math/catenary-length": () => import("../../math/catenary-length/index.js"),
   "math/jacobi-polynomial-approx": () => import("../../math/jacobi-polynomial-approx/index.js"),
+  "math/plastic-number-value": () => import("../../math/plastic-number-value/index.js"),
   "mining/shotcrete-rebound-percentage": () => import("../../mining/shotcrete-rebound-percentage/index.js"),
   "mri/pgse-duration-from-target-b": () => import("../../mri/pgse-duration-from-target-b/index.js"),
   "mycology/chlamydospore-position-detector": () => import("../../mycology/chlamydospore-position-detector/index.js"),

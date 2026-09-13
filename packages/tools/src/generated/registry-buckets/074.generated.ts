@@ -35,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "laser/surface-roughness-improvement": () => import("../../laser/surface-roughness-improvement/index.js"),
   "logic/de-morgan-or-to-and-transformer": () => import("../../logic/de-morgan-or-to-and-transformer/index.js"),
   "logistics/cycle-count-daily-sample-size": () => import("../../logistics/cycle-count-daily-sample-size/index.js"),
+  "math/solid-partition-count": () => import("../../math/solid-partition-count/index.js"),
   "metabolomics/adduct-mz": () => import("../../metabolomics/adduct-mz/index.js"),
   "mining/stope-volume": () => import("../../mining/stope-volume/index.js"),
   "mri/two-roi-difference-noise-cnr": () => import("../../mri/two-roi-difference-noise-cnr/index.js"),

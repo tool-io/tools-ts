@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "agriculture/herbicide-rate": () => import("../../agriculture/herbicide-rate/index.js"),
   "archival-studies/boxes-from-linear-feet": () => import("../../archival-studies/boxes-from-linear-feet/index.js"),
   "aviation/cabin-rate-of-climb": () => import("../../aviation/cabin-rate-of-climb/index.js"),
   "aviation/headwind-component": () => import("../../aviation/headwind-component/index.js"),
@@ -47,6 +48,7 @@ export const toolModuleLoaders: Readonly<
   "laser/stripe-waveguide-v-number": () => import("../../laser/stripe-waveguide-v-number/index.js"),
   "limnology/areal-hypolimnetic-oxygen-depletion": () => import("../../limnology/areal-hypolimnetic-oxygen-depletion/index.js"),
   "logistics/stretch-wrap-film-length-needed": () => import("../../logistics/stretch-wrap-film-length-needed/index.js"),
+  "math/bernstein-constant": () => import("../../math/bernstein-constant/index.js"),
   "metabolomics/sterol-conversion-progress": () => import("../../metabolomics/sterol-conversion-progress/index.js"),
   "mining/pit-diameter": () => import("../../mining/pit-diameter/index.js"),
   "neuroscience/h-reflex-latency": () => import("../../neuroscience/h-reflex-latency/index.js"),
@@ -55,6 +57,7 @@ export const toolModuleLoaders: Readonly<
   "oenology/do-at-bottling-checker": () => import("../../oenology/do-at-bottling-checker/index.js"),
   "pedagogy/assessment-blueprint-coverage": () => import("../../pedagogy/assessment-blueprint-coverage/index.js"),
   "petroleum/fracture-pressure": () => import("../../petroleum/fracture-pressure/index.js"),
+  "pharmacy/enoxaparin-mg-kg-dosing": () => import("../../pharmacy/enoxaparin-mg-kg-dosing/index.js"),
   "pregnancy/femur-length-from-ga": () => import("../../pregnancy/femur-length-from-ga/index.js"),
   "random/linear-b-sign": () => import("../../random/linear-b-sign/index.js"),
   "random/toto-character": () => import("../../random/toto-character/index.js"),

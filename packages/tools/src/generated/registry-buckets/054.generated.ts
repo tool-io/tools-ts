@@ -41,6 +41,8 @@ export const toolModuleLoaders: Readonly<
   "math/convergents-from-continued-fraction": () => import("../../math/convergents-from-continued-fraction/index.js"),
   "math/euler-line": () => import("../../math/euler-line/index.js"),
   "math/goldbach-weak-conjecture": () => import("../../math/goldbach-weak-conjecture/index.js"),
+  "math/hasse-weil-l-function-approx-math": () => import("../../math/hasse-weil-l-function-approx-math/index.js"),
+  "math/infinite-product-cosine": () => import("../../math/infinite-product-cosine/index.js"),
   "math/overpartition-count": () => import("../../math/overpartition-count/index.js"),
   "meteorology/lightning-flash-density-per-km2-year-lookup": () => import("../../meteorology/lightning-flash-density-per-km2-year-lookup/index.js"),
   "music/rms-to-peak-factor-audio": () => import("../../music/rms-to-peak-factor-audio/index.js"),

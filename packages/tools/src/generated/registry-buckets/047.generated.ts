@@ -56,4 +56,5 @@ export const toolModuleLoaders: Readonly<
   "sociology/zahavi-commute-time-budget-constant": () => import("../../sociology/zahavi-commute-time-budget-constant/index.js"),
   "speleology/guano-volume-estimate": () => import("../../speleology/guano-volume-estimate/index.js"),
   "taxation/foreign-housing-exclusion": () => import("../../taxation/foreign-housing-exclusion/index.js"),
+  "vr/comfort-rating-vr": () => import("../../vr/comfort-rating-vr/index.js"),
 };

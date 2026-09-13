@@ -59,6 +59,8 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/si-diffusion-coefficient-boron": () => import("../../semiconductor/si-diffusion-coefficient-boron/index.js"),
   "sericulture/filament-length-single-cocoon-meters": () => import("../../sericulture/filament-length-single-cocoon-meters/index.js"),
   "size/pillowcase": () => import("../../size/pillowcase/index.js"),
+  "sociology/crowding-index": () => import("../../sociology/crowding-index/index.js"),
+  "sociology/informal-employment-rate": () => import("../../sociology/informal-employment-rate/index.js"),
   "taxation/carryforward-loss-expiry-years-lookup": () => import("../../taxation/carryforward-loss-expiry-years-lookup/index.js"),
   "taxation/innocent-spouse-relief-type-selector-lookup": () => import("../../taxation/innocent-spouse-relief-type-selector-lookup/index.js"),
   "theatre/sitzprobe-versus-wandelprobe-orchestra-integration-lookup": () => import("../../theatre/sitzprobe-versus-wandelprobe-orchestra-integration-lookup/index.js"),

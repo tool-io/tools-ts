@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/ar-aging-bucket-classifier": () => import("../../accounting/ar-aging-bucket-classifier/index.js"),
+  "aquaculture/pond-volume": () => import("../../aquaculture/pond-volume/index.js"),
   "astrobiology/minimal-genome-gene-count-lookup": () => import("../../astrobiology/minimal-genome-gene-count-lookup/index.js"),
   "auditing/ratio-narrative-check": () => import("../../auditing/ratio-narrative-check/index.js"),
   "aviation/groundspeed-from-wind-triangle": () => import("../../aviation/groundspeed-from-wind-triangle/index.js"),
@@ -20,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "css/overscroll-behavior-chain-stop": () => import("../../css/overscroll-behavior-chain-stop/index.js"),
   "csv/mixed-type-column-detector-samples": () => import("../../csv/mixed-type-column-detector-samples/index.js"),
   "demography/ever-married-by-age-interpolation": () => import("../../demography/ever-married-by-age-interpolation/index.js"),
+  "film/global-shutter-readout": () => import("../../film/global-shutter-readout/index.js"),
   "folklore/sexagenary-stem-branch-year-computation": () => import("../../folklore/sexagenary-stem-branch-year-computation/index.js"),
   "forestry/fire-risk-index-nesterov": () => import("../../forestry/fire-risk-index-nesterov/index.js"),
   "futurology/nbic-convergence-nano-bio-info-cogno-driver-tree": () => import("../../futurology/nbic-convergence-nano-bio-info-cogno-driver-tree/index.js"),

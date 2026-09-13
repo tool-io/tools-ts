@@ -14,6 +14,8 @@ export const toolModuleLoaders: Readonly<
   "aviation/vref-speed": () => import("../../aviation/vref-speed/index.js"),
   "biology/potassium-nii-index": () => import("../../biology/potassium-nii-index/index.js"),
   "biology/qpcr-delta-ct": () => import("../../biology/qpcr-delta-ct/index.js"),
+  "carpentry/chair-rail-height": () => import("../../carpentry/chair-rail-height/index.js"),
+  "carpentry/kuechen-arbeitsplatten-hoehe": () => import("../../carpentry/kuechen-arbeitsplatten-hoehe/index.js"),
   "carpentry/lichtausschnitt-tuer-glas-groesse": () => import("../../carpentry/lichtausschnitt-tuer-glas-groesse/index.js"),
   "chemistry/percent-dissociation-weak-acid": () => import("../../chemistry/percent-dissociation-weak-acid/index.js"),
   "cipher/playfair-decoder": () => import("../../cipher/playfair-decoder/index.js"),
@@ -54,6 +56,7 @@ export const toolModuleLoaders: Readonly<
   "numismatics/rebalancing-trade-amount-gsr": () => import("../../numismatics/rebalancing-trade-amount-gsr/index.js"),
   "oceanography/ts-diagram-water-mass-classifier": () => import("../../oceanography/ts-diagram-water-mass-classifier/index.js"),
   "pedagogy/problem-based-learning-maastricht-seven-step-process": () => import("../../pedagogy/problem-based-learning-maastricht-seven-step-process/index.js"),
+  "psychology/kessler-k10-band-lookup": () => import("../../psychology/kessler-k10-band-lookup/index.js"),
   "random/balinese-character": () => import("../../random/balinese-character/index.js"),
   "random/fire-safety-sign": () => import("../../random/fire-safety-sign/index.js"),
   "random/german-alphabet-letter": () => import("../../random/german-alphabet-letter/index.js"),
@@ -65,4 +68,5 @@ export const toolModuleLoaders: Readonly<
   "veterinary/bcs-body-condition-score-canine": () => import("../../veterinary/bcs-body-condition-score-canine/index.js"),
   "virology/hemagglutination-dilution-endpoint": () => import("../../virology/hemagglutination-dilution-endpoint/index.js"),
   "volcanology/hydrothermal-boiling-point-depth-curve": () => import("../../volcanology/hydrothermal-boiling-point-depth-curve/index.js"),
+  "web/url-tld": () => import("../../web/url-tld/index.js"),
 };

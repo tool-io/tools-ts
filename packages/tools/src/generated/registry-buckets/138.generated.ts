@@ -24,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/capacitor-color-code-decode": () => import("../../electronics/capacitor-color-code-decode/index.js"),
   "electronics/dynamic-range": () => import("../../electronics/dynamic-range/index.js"),
   "electronics/fpga-hold-time-slack": () => import("../../electronics/fpga-hold-time-slack/index.js"),
+  "engineering/timber-column-capacity": () => import("../../engineering/timber-column-capacity/index.js"),
   "entrepreneurship/ein-dba-bank-account-setup-order-checklist": () => import("../../entrepreneurship/ein-dba-bank-account-setup-order-checklist/index.js"),
   "epigenetics/salt-extraction-profile": () => import("../../epigenetics/salt-extraction-profile/index.js"),
   "film/credits-scroll-speed": () => import("../../film/credits-scroll-speed/index.js"),

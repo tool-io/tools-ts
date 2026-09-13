@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "aesthetics/paradox-of-fiction-emotions-nonexistent-characters-checker": () => import("../../aesthetics/paradox-of-fiction-emotions-nonexistent-characters-checker/index.js"),
+  "aquaculture/insurance-biomass-valuation": () => import("../../aquaculture/insurance-biomass-valuation/index.js"),
   "astrobiology/s33-mif-anomaly-detector": () => import("../../astrobiology/s33-mif-anomaly-detector/index.js"),
   "auditing/kickback-vendor-bid-splitting-invoice-analytics-checker": () => import("../../auditing/kickback-vendor-bid-splitting-invoice-analytics-checker/index.js"),
   "bacteriology/combination-fic-index": () => import("../../bacteriology/combination-fic-index/index.js"),
@@ -56,7 +57,10 @@ export const toolModuleLoaders: Readonly<
   "mycology/rhizomorph-extension-rate-recorder": () => import("../../mycology/rhizomorph-extension-rate-recorder/index.js"),
   "network/private-ip-checker": () => import("../../network/private-ip-checker/index.js"),
   "numismatics/shipwreck-electrolysis-conservation-recovery-process-note": () => import("../../numismatics/shipwreck-electrolysis-conservation-recovery-process-note/index.js"),
+  "pharmacy/ns-fluid-bolus-standard": () => import("../../pharmacy/ns-fluid-bolus-standard/index.js"),
+  "pharmacy/pediatric-clark-rule": () => import("../../pharmacy/pediatric-clark-rule/index.js"),
   "plumbing/reverse-osmosis-recovery-rate": () => import("../../plumbing/reverse-osmosis-recovery-rate/index.js"),
+  "psychology/sociometric-status-z-from-nominations": () => import("../../psychology/sociometric-status-z-from-nominations/index.js"),
   "random/ac-power-triangle-exercise": () => import("../../random/ac-power-triangle-exercise/index.js"),
   "random/cuneiform-sign": () => import("../../random/cuneiform-sign/index.js"),
   "random/ideographic-description-character": () => import("../../random/ideographic-description-character/index.js"),

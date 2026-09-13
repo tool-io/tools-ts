@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/percent-yield": () => import("../../chemistry/percent-yield/index.js"),
   "classics/antikythera-mechanism-oldest-analog-computer-gears-dating": () => import("../../classics/antikythera-mechanism-oldest-analog-computer-gears-dating/index.js"),
   "construction/dewatering-pump-capacity": () => import("../../construction/dewatering-pump-capacity/index.js"),
+  "construction/structural-beam-shear-uniform": () => import("../../construction/structural-beam-shear-uniform/index.js"),
   "cryptography/transposition-column-count-bruteforce-list": () => import("../../cryptography/transposition-column-count-bruteforce-list/index.js"),
   "csv/delimiter-sniffer-comma-semicolon-tab": () => import("../../csv/delimiter-sniffer-comma-semicolon-tab/index.js"),
   "dance/eight-count-phrase-beat-mapper": () => import("../../dance/eight-count-phrase-beat-mapper/index.js"),
@@ -44,6 +45,7 @@ export const toolModuleLoaders: Readonly<
   "oenology/diacetyl-threshold-checker": () => import("../../oenology/diacetyl-threshold-checker/index.js"),
   "paleontology/hypsodonty-index": () => import("../../paleontology/hypsodonty-index/index.js"),
   "petroleum/leak-off-test-pressure": () => import("../../petroleum/leak-off-test-pressure/index.js"),
+  "pharmacy/glucagon-emergency-dose": () => import("../../pharmacy/glucagon-emergency-dose/index.js"),
   "plumbing/radiant-floor-heat-output": () => import("../../plumbing/radiant-floor-heat-output/index.js"),
   "proteomics/y-ion-series": () => import("../../proteomics/y-ion-series/index.js"),
   "semiconductor/fermi-level-n-type": () => import("../../semiconductor/fermi-level-n-type/index.js"),
@@ -60,4 +62,5 @@ export const toolModuleLoaders: Readonly<
   "typography/hanging-punctuation-offset-em": () => import("../../typography/hanging-punctuation-offset-em/index.js"),
   "volcanology/ashfall-advisory-thickness-action-lookup": () => import("../../volcanology/ashfall-advisory-thickness-action-lookup/index.js"),
   "volcanology/dormancy-reactivation-risk-score": () => import("../../volcanology/dormancy-reactivation-risk-score/index.js"),
+  "vr/vergence-accommodation-conflict": () => import("../../vr/vergence-accommodation-conflict/index.js"),
 };

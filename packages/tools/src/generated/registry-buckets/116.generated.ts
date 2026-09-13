@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/potentiometry-nernst-slope": () => import("../../chemistry/potentiometry-nernst-slope/index.js"),
   "chemistry/ppm-to-mass-percent": () => import("../../chemistry/ppm-to-mass-percent/index.js"),
   "classification/f1-score": () => import("../../classification/f1-score/index.js"),
+  "construction/lumber-density-lookup": () => import("../../construction/lumber-density-lookup/index.js"),
   "electronics/battery-cycle-count-estimate": () => import("../../electronics/battery-cycle-count-estimate/index.js"),
   "electronics/esd-clamping-voltage": () => import("../../electronics/esd-clamping-voltage/index.js"),
   "electronics/transistor-base-resistor": () => import("../../electronics/transistor-base-resistor/index.js"),
@@ -34,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "kinesiology/growth-plate-physis-heavy-lifting-context-note-lookup": () => import("../../kinesiology/growth-plate-physis-heavy-lifting-context-note-lookup/index.js"),
   "logic/square-subcontrary-mapper": () => import("../../logic/square-subcontrary-mapper/index.js"),
   "logistics/concealed-damage-window-checker": () => import("../../logistics/concealed-damage-window-checker/index.js"),
+  "math/minor-2x2": () => import("../../math/minor-2x2/index.js"),
   "math/natural-density": () => import("../../math/natural-density/index.js"),
   "matrix/lu-decomposition": () => import("../../matrix/lu-decomposition/index.js"),
   "mining/flotation-kinetics-rate": () => import("../../mining/flotation-kinetics-rate/index.js"),
@@ -56,5 +58,6 @@ export const toolModuleLoaders: Readonly<
   "theatre/sold-out-standby-admission-policy-lookup": () => import("../../theatre/sold-out-standby-admission-policy-lookup/index.js"),
   "toxicology/one-compartment-auc": () => import("../../toxicology/one-compartment-auc/index.js"),
   "validate/isbn": () => import("../../validate/isbn/index.js"),
+  "vr/foveated-rendering-outer-radius": () => import("../../vr/foveated-rendering-outer-radius/index.js"),
   "web/fetchpriority-attribute-validator": () => import("../../web/fetchpriority-attribute-validator/index.js"),
 };

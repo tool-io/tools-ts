@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "geology/fold-interlimb-angle": () => import("../../geology/fold-interlimb-angle/index.js"),
   "horticulture/ridge-vent-opening-ratio-checker": () => import("../../horticulture/ridge-vent-opening-ratio-checker/index.js"),
   "logic/cnf-clause-set-from-truth-table-builder": () => import("../../logic/cnf-clause-set-from-truth-table-builder/index.js"),
+  "math/gram-law": () => import("../../math/gram-law/index.js"),
   "meteorology/frontogenesis-function-2d": () => import("../../meteorology/frontogenesis-function-2d/index.js"),
   "mining/flotation-recovery-vs-time": () => import("../../mining/flotation-recovery-vs-time/index.js"),
   "mycology/germ-pore-position-detector": () => import("../../mycology/germ-pore-position-detector/index.js"),

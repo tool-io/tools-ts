@@ -43,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "laser/laser-rayleigh-range-confocal-parameter-waist-distance-formula": () => import("../../laser/laser-rayleigh-range-confocal-parameter-waist-distance-formula/index.js"),
   "linguistics/ejective-consonants-language-lookup": () => import("../../linguistics/ejective-consonants-language-lookup/index.js"),
   "logistics/claims-frequency-per-shipment-percent": () => import("../../logistics/claims-frequency-per-shipment-percent/index.js"),
+  "math/bessel-zero-derivative-approx": () => import("../../math/bessel-zero-derivative-approx/index.js"),
   "metabolomics/nmr-relaxation-delay": () => import("../../metabolomics/nmr-relaxation-delay/index.js"),
   "mining/pulp-percent-solids-from-density": () => import("../../mining/pulp-percent-solids-from-density/index.js"),
   "mining/ventilation-oxygen-requirement": () => import("../../mining/ventilation-oxygen-requirement/index.js"),
@@ -51,6 +52,8 @@ export const toolModuleLoaders: Readonly<
   "oenology/alcohol-adjust-water-blend": () => import("../../oenology/alcohol-adjust-water-blend/index.js"),
   "oenology/cases-per-tank": () => import("../../oenology/cases-per-tank/index.js"),
   "pedagogy/gamification-risk-screen": () => import("../../pedagogy/gamification-risk-screen/index.js"),
+  "pharmacy/steroid-prednisone-equivalent": () => import("../../pharmacy/steroid-prednisone-equivalent/index.js"),
+  "psychology/rmsea-cutoff-band-lookup": () => import("../../psychology/rmsea-cutoff-band-lookup/index.js"),
   "random/auslan-fingerspelling-letter": () => import("../../random/auslan-fingerspelling-letter/index.js"),
   "random/nag-mundari-character": () => import("../../random/nag-mundari-character/index.js"),
   "random/newton-step-exercise": () => import("../../random/newton-step-exercise/index.js"),
@@ -62,4 +65,5 @@ export const toolModuleLoaders: Readonly<
   "transcriptomics/cell-fraction-constraint": () => import("../../transcriptomics/cell-fraction-constraint/index.js"),
   "volcanology/submarine-eruption-depth-suppression-checker": () => import("../../volcanology/submarine-eruption-depth-suppression-checker/index.js"),
   "volcanology/time-predictable-next-eruption-estimate": () => import("../../volcanology/time-predictable-next-eruption-estimate/index.js"),
+  "web/mime-type-lookup": () => import("../../web/mime-type-lookup/index.js"),
 };

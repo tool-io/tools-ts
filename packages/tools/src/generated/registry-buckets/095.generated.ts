@@ -40,6 +40,7 @@ export const toolModuleLoaders: Readonly<
   "numismatics/alexander-drachm-monogram-record-lookup": () => import("../../numismatics/alexander-drachm-monogram-record-lookup/index.js"),
   "paleontology/stratigraphic-range-extent": () => import("../../paleontology/stratigraphic-range-extent/index.js"),
   "pedagogy/audio-video-feedback-rich-media-efficiency-lookup": () => import("../../pedagogy/audio-video-feedback-rich-media-efficiency-lookup/index.js"),
+  "pharmacy/beers-criteria-flagger": () => import("../../pharmacy/beers-criteria-flagger/index.js"),
   "philately/compound-perf-notation-formatter": () => import("../../philately/compound-perf-notation-formatter/index.js"),
   "plumbing/drywell-size": () => import("../../plumbing/drywell-size/index.js"),
   "real-estate/tenant-retention-rate": () => import("../../real-estate/tenant-retention-rate/index.js"),

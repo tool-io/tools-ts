@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "apiculture/split-ratio-colony-divider": () => import("../../apiculture/split-ratio-colony-divider/index.js"),
+  "aquaculture/profit-per-kg": () => import("../../aquaculture/profit-per-kg/index.js"),
   "archival-studies/oral-history-abstract-limit-finder": () => import("../../archival-studies/oral-history-abstract-limit-finder/index.js"),
   "arithmetic/modular-complement": () => import("../../arithmetic/modular-complement/index.js"),
   "astrometry/common-motion-covariance-screen": () => import("../../astrometry/common-motion-covariance-screen/index.js"),
@@ -23,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/decibel-power-ratio": () => import("../../electronics/decibel-power-ratio/index.js"),
   "electronics/transformer-copper-loss-at-load": () => import("../../electronics/transformer-copper-loss-at-load/index.js"),
   "encode/url-component": () => import("../../encode/url-component/index.js"),
+  "engineering/optical-magnification": () => import("../../engineering/optical-magnification/index.js"),
   "folklore/black-cat-crossing-direction-good-bad-split-history": () => import("../../folklore/black-cat-crossing-direction-good-bad-split-history/index.js"),
   "futurology/ai-safety-institutes-global-network-uk-us-japan-map": () => import("../../futurology/ai-safety-institutes-global-network-uk-us-japan-map/index.js"),
   "geology/specific-gravity": () => import("../../geology/specific-gravity/index.js"),
@@ -47,6 +49,7 @@ export const toolModuleLoaders: Readonly<
   "philately/collection-total-aggregator": () => import("../../philately/collection-total-aggregator/index.js"),
   "philately/gum-condition-descriptor-selector": () => import("../../philately/gum-condition-descriptor-selector/index.js"),
   "plumbing/solar-thermal-collector-efficiency": () => import("../../plumbing/solar-thermal-collector-efficiency/index.js"),
+  "plumbing/torricelli-velocity": () => import("../../plumbing/torricelli-velocity/index.js"),
   "plumbing/valve-choked-flow-check": () => import("../../plumbing/valve-choked-flow-check/index.js"),
   "proportions/aspect-ratio": () => import("../../proportions/aspect-ratio/index.js"),
   "proteomics/protein-sequence-coverage": () => import("../../proteomics/protein-sequence-coverage/index.js"),
@@ -57,10 +60,12 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/gate-induced-drain-leakage": () => import("../../semiconductor/gate-induced-drain-leakage/index.js"),
   "semiconductor/interposer-line-resistance": () => import("../../semiconductor/interposer-line-resistance/index.js"),
   "size/fitted-sheet": () => import("../../size/fitted-sheet/index.js"),
+  "sociology/income-quintile-share": () => import("../../sociology/income-quintile-share/index.js"),
   "sociology/natural-increase-rate": () => import("../../sociology/natural-increase-rate/index.js"),
   "sociology/paid-unpaid-work-time-split": () => import("../../sociology/paid-unpaid-work-time-split/index.js"),
   "sports/rowing-stroke-rate-to-pace-checker": () => import("../../sports/rowing-stroke-rate-to-pace-checker/index.js"),
   "taxation/bonus-depreciation-phase-down-year-lookup": () => import("../../taxation/bonus-depreciation-phase-down-year-lookup/index.js"),
   "theatre/preview-performance-discount-standard-lookup": () => import("../../theatre/preview-performance-discount-standard-lookup/index.js"),
   "veterinary/colorado-state-pain-scale-canine": () => import("../../veterinary/colorado-state-pain-scale-canine/index.js"),
+  "vr/heat-dissipation-headset": () => import("../../vr/heat-dissipation-headset/index.js"),
 };

@@ -45,6 +45,7 @@ export const toolModuleLoaders: Readonly<
   "logic/complement-law-pair-checker": () => import("../../logic/complement-law-pair-checker/index.js"),
   "logic/xnor-equality-definition-checker": () => import("../../logic/xnor-equality-definition-checker/index.js"),
   "marriage/wedding-music-playlist-duration": () => import("../../marriage/wedding-music-playlist-duration/index.js"),
+  "math/cubic-discriminant": () => import("../../math/cubic-discriminant/index.js"),
   "math/wieferich-prime-checker": () => import("../../math/wieferich-prime-checker/index.js"),
   "meteorology/lfc-level-free-convection": () => import("../../meteorology/lfc-level-free-convection/index.js"),
   "mycology/durham-tube-gas-detector": () => import("../../mycology/durham-tube-gas-detector/index.js"),
@@ -69,4 +70,5 @@ export const toolModuleLoaders: Readonly<
   "taxation/amended-return-statute-limitations-3yr-lookup": () => import("../../taxation/amended-return-statute-limitations-3yr-lookup/index.js"),
   "taxation/fiscal-year-calendar-quarter-mapping-lookup": () => import("../../taxation/fiscal-year-calendar-quarter-mapping-lookup/index.js"),
   "taxation/tcja-2017-major-changes-summary-map-lookup": () => import("../../taxation/tcja-2017-major-changes-summary-map-lookup/index.js"),
+  "vr/blink-rate-vr": () => import("../../vr/blink-rate-vr/index.js"),
 };

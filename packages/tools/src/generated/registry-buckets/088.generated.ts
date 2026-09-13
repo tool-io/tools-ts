@@ -57,9 +57,11 @@ export const toolModuleLoaders: Readonly<
   "paleography/auc-chronicler-converter": () => import("../../paleography/auc-chronicler-converter/index.js"),
   "paleography/collation-formula-builder": () => import("../../paleography/collation-formula-builder/index.js"),
   "paleography/word-spacing-adoption-rater": () => import("../../paleography/word-spacing-adoption-rater/index.js"),
+  "plumbing/fire-pump-churn-pressure": () => import("../../plumbing/fire-pump-churn-pressure/index.js"),
   "plumbing/pipe-insulation-thickness": () => import("../../plumbing/pipe-insulation-thickness/index.js"),
   "pregnancy/protein-requirement-pregnancy": () => import("../../pregnancy/protein-requirement-pregnancy/index.js"),
   "probability/laplace-sampler": () => import("../../probability/laplace-sampler/index.js"),
+  "psychology/item-information-function-peak": () => import("../../psychology/item-information-function-peak/index.js"),
   "random/pahawh-hmong-character": () => import("../../random/pahawh-hmong-character/index.js"),
   "semiconductor/dye-sensitized-cell-electron-lifetime": () => import("../../semiconductor/dye-sensitized-cell-electron-lifetime/index.js"),
   "semiconductor/substrate-warpage": () => import("../../semiconductor/substrate-warpage/index.js"),
@@ -70,4 +72,5 @@ export const toolModuleLoaders: Readonly<
   "transcriptomics/miqe-coverage-audit": () => import("../../transcriptomics/miqe-coverage-audit/index.js"),
   "vexillology/fimbriation-width-rule": () => import("../../vexillology/fimbriation-width-rule/index.js"),
   "volcanology/umbrella-cloud-spread-radius": () => import("../../volcanology/umbrella-cloud-spread-radius/index.js"),
+  "vr/tracking-accuracy-mm": () => import("../../vr/tracking-accuracy-mm/index.js"),
 };

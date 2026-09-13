@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "aquaculture/benefit-cost-ratio": () => import("../../aquaculture/benefit-cost-ratio/index.js"),
   "archaeology/sherd-refit-conjoin-pair-count": () => import("../../archaeology/sherd-refit-conjoin-pair-count/index.js"),
   "archival-studies/box-folder-format-validator": () => import("../../archival-studies/box-folder-format-validator/index.js"),
   "auditing/lapping-receipt-delay-pattern-detector": () => import("../../auditing/lapping-receipt-delay-pattern-detector/index.js"),
@@ -13,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "color/gamut-rec2020-coverage-note-lookup": () => import("../../color/gamut-rec2020-coverage-note-lookup/index.js"),
   "construction/concrete-water-cement-ratio-water": () => import("../../construction/concrete-water-cement-ratio-water/index.js"),
   "construction/drip-edge-length": () => import("../../construction/drip-edge-length/index.js"),
+  "construction/water-demand-gpm": () => import("../../construction/water-demand-gpm/index.js"),
   "cooking/gravy-cornstarch-ratio": () => import("../../cooking/gravy-cornstarch-ratio/index.js"),
   "electronics/led-luminous-intensity": () => import("../../electronics/led-luminous-intensity/index.js"),
   "electronics/mismatch-loss": () => import("../../electronics/mismatch-loss/index.js"),
@@ -44,6 +46,8 @@ export const toolModuleLoaders: Readonly<
   "oenology/anthocyanin-color-density": () => import("../../oenology/anthocyanin-color-density/index.js"),
   "paleontology/sampled-bin-normalizer": () => import("../../paleontology/sampled-bin-normalizer/index.js"),
   "pregnancy/labor-duration-total": () => import("../../pregnancy/labor-duration-total/index.js"),
+  "psychology/fail-safe-n-file-drawer": () => import("../../psychology/fail-safe-n-file-drawer/index.js"),
+  "psychology/trail-making-b-minus-a": () => import("../../psychology/trail-making-b-minus-a/index.js"),
   "random/gpu": () => import("../../random/gpu/index.js"),
   "random/hamming-distance-exercise": () => import("../../random/hamming-distance-exercise/index.js"),
   "random/lydian-letter": () => import("../../random/lydian-letter/index.js"),

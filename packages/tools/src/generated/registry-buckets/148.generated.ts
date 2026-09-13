@@ -31,6 +31,7 @@ export const toolModuleLoaders: Readonly<
   "geology/passive-earth-pressure": () => import("../../geology/passive-earth-pressure/index.js"),
   "kinesiology/roundhouse-kick-elite-foot-velocity-taekwondo-reference": () => import("../../kinesiology/roundhouse-kick-elite-foot-velocity-taekwondo-reference/index.js"),
   "marriage/relationship-duration-years-months": () => import("../../marriage/relationship-duration-years-months/index.js"),
+  "math/lemniscate-arc-length-approx": () => import("../../math/lemniscate-arc-length-approx/index.js"),
   "math/powerful-number-checker": () => import("../../math/powerful-number-checker/index.js"),
   "math/stirling-second-kind": () => import("../../math/stirling-second-kind/index.js"),
   "matrix/dimensions": () => import("../../matrix/dimensions/index.js"),
@@ -55,5 +56,7 @@ export const toolModuleLoaders: Readonly<
   "theatre/scenery-package-rental-fee-weekly-lookup": () => import("../../theatre/scenery-package-rental-fee-weekly-lookup/index.js"),
   "toxicology/bioaccumulation-kinetic": () => import("../../toxicology/bioaccumulation-kinetic/index.js"),
   "veterinary/drug-dose-mg-kg-calculator": () => import("../../veterinary/drug-dose-mg-kg-calculator/index.js"),
+  "vr/anti-aliasing-sample-count": () => import("../../vr/anti-aliasing-sample-count/index.js"),
+  "web/extension-lookup": () => import("../../web/extension-lookup/index.js"),
   "web/url-host": () => import("../../web/url-host/index.js"),
 };

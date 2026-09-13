@@ -53,6 +53,8 @@ export const toolModuleLoaders: Readonly<
   "oenology/tartaric-acid-addition": () => import("../../oenology/tartaric-acid-addition/index.js"),
   "paleography/charter-witness-ranker": () => import("../../paleography/charter-witness-ranker/index.js"),
   "pregnancy/involution-uterine-height": () => import("../../pregnancy/involution-uterine-height/index.js"),
+  "psychology/dass21-to-dass42-subscale-converter": () => import("../../psychology/dass21-to-dass42-subscale-converter/index.js"),
+  "psychology/mspss-social-support-band": () => import("../../psychology/mspss-social-support-band/index.js"),
   "random/ancient-greek-numeral": () => import("../../random/ancient-greek-numeral/index.js"),
   "random/bread": () => import("../../random/bread/index.js"),
   "random/smartwatch": () => import("../../random/smartwatch/index.js"),
@@ -68,6 +70,7 @@ export const toolModuleLoaders: Readonly<
   "toxicology/loading-dose": () => import("../../toxicology/loading-dose/index.js"),
   "veterinary/urine-specific-gravity-interpretation": () => import("../../veterinary/urine-specific-gravity-interpretation/index.js"),
   "vexillology/symmetry-type-classifier": () => import("../../vexillology/symmetry-type-classifier/index.js"),
+  "vr/sweet-spot-diameter": () => import("../../vr/sweet-spot-diameter/index.js"),
   "web/email-obfuscator": () => import("../../web/email-obfuscator/index.js"),
   "web/manifest-display-validator": () => import("../../web/manifest-display-validator/index.js"),
 };

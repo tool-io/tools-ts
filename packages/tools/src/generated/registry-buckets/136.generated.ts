@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "math/jumping-champion": () => import("../../math/jumping-champion/index.js"),
   "math/lucky-number-checker": () => import("../../math/lucky-number-checker/index.js"),
   "meteorology/lifted-index-calculator": () => import("../../meteorology/lifted-index-calculator/index.js"),
+  "mri/brain-extraction-fractional-intensity": () => import("../../mri/brain-extraction-fractional-intensity/index.js"),
   "mri/voxel-world-affine-transform": () => import("../../mri/voxel-world-affine-transform/index.js"),
   "neuroscience/compound-muscle-action-potential-amplitude": () => import("../../neuroscience/compound-muscle-action-potential-amplitude/index.js"),
   "number/harshad-checker": () => import("../../number/harshad-checker/index.js"),

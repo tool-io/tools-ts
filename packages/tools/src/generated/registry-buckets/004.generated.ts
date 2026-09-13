@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "biology/primer-hairpin-tm": () => import("../../biology/primer-hairpin-tm/index.js"),
   "biology/wood-specific-gravity": () => import("../../biology/wood-specific-gravity/index.js"),
   "carpentry/gratleiste-breite": () => import("../../carpentry/gratleiste-breite/index.js"),
+  "carpentry/schraubenlaenge-din-3x-dicke": () => import("../../carpentry/schraubenlaenge-din-3x-dicke/index.js"),
   "chemistry/partition-coefficient": () => import("../../chemistry/partition-coefficient/index.js"),
   "chemistry/quantum-bohr-radius": () => import("../../chemistry/quantum-bohr-radius/index.js"),
   "chemistry/strong-acid-ph": () => import("../../chemistry/strong-acid-ph/index.js"),
@@ -40,6 +41,7 @@ export const toolModuleLoaders: Readonly<
   "linguistics/un-official-six-languages-checker": () => import("../../linguistics/un-official-six-languages-checker/index.js"),
   "logic/conversion-swapper-validity-checker": () => import("../../logic/conversion-swapper-validity-checker/index.js"),
   "math/catalan-triangle-entry": () => import("../../math/catalan-triangle-entry/index.js"),
+  "math/khinchin-levy-constant": () => import("../../math/khinchin-levy-constant/index.js"),
   "metabolomics/signal-drift-correction": () => import("../../metabolomics/signal-drift-correction/index.js"),
   "meteorology/mercurial-barometer-temperature-correction": () => import("../../meteorology/mercurial-barometer-temperature-correction/index.js"),
   "meteorology/sprite-blue-jet-altitude-range-lookup": () => import("../../meteorology/sprite-blue-jet-altitude-range-lookup/index.js"),
@@ -60,5 +62,7 @@ export const toolModuleLoaders: Readonly<
   "taxation/refund-delay": () => import("../../taxation/refund-delay/index.js"),
   "toxicology/hershberger-assay": () => import("../../toxicology/hershberger-assay/index.js"),
   "typography/viewing-distance-signage-letter-height": () => import("../../typography/viewing-distance-signage-letter-height/index.js"),
+  "vr/eye-openness-percentage": () => import("../../vr/eye-openness-percentage/index.js"),
   "vr/tracking-loss-percentage": () => import("../../vr/tracking-loss-percentage/index.js"),
+  "web/url-subdomain": () => import("../../web/url-subdomain/index.js"),
 };

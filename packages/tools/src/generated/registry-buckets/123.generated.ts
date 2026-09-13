@@ -42,6 +42,7 @@ export const toolModuleLoaders: Readonly<
   "kinesiology/skate-push-side-velocity-vector-contribution-breakdown": () => import("../../kinesiology/skate-push-side-velocity-vector-contribution-breakdown/index.js"),
   "laser/harmonic-mode-locking-rate": () => import("../../laser/harmonic-mode-locking-rate/index.js"),
   "list/cumulative-sum": () => import("../../list/cumulative-sum/index.js"),
+  "math/bessel-zero-j0-approx": () => import("../../math/bessel-zero-j0-approx/index.js"),
   "math/partition-generating-function-approx": () => import("../../math/partition-generating-function-approx/index.js"),
   "metabolomics/collision-energy-ramp": () => import("../../metabolomics/collision-energy-ramp/index.js"),
   "meteorology/eyewall-replacement-cycle-duration-lookup": () => import("../../meteorology/eyewall-replacement-cycle-duration-lookup/index.js"),

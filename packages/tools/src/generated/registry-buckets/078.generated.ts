@@ -59,6 +59,7 @@ export const toolModuleLoaders: Readonly<
   "random/persian-alphabet-letter": () => import("../../random/persian-alphabet-letter/index.js"),
   "semiconductor/beta-ga2o3-bandgap": () => import("../../semiconductor/beta-ga2o3-bandgap/index.js"),
   "size/thobe-reconstruction": () => import("../../size/thobe-reconstruction/index.js"),
+  "sociology/recidivism-rate": () => import("../../sociology/recidivism-rate/index.js"),
   "sociology/six-degrees-hop-estimate-small-world": () => import("../../sociology/six-degrees-hop-estimate-small-world/index.js"),
   "sociology/status-anxiety-local-income-rank": () => import("../../sociology/status-anxiety-local-income-rank/index.js"),
   "sports/snooker-frame-margin-points-remaining-checker": () => import("../../sports/snooker-frame-margin-points-remaining-checker/index.js"),

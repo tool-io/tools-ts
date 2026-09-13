@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "apiculture/chalkbrood-mummy-count-severity": () => import("../../apiculture/chalkbrood-mummy-count-severity/index.js"),
+  "aquaculture/first-feeding-time": () => import("../../aquaculture/first-feeding-time/index.js"),
   "archival-studies/deed-gift-copyright-clause-checker": () => import("../../archival-studies/deed-gift-copyright-clause-checker/index.js"),
   "arithmetic/per-mille": () => import("../../arithmetic/per-mille/index.js"),
   "aviation/crosswind-component": () => import("../../aviation/crosswind-component/index.js"),
@@ -54,6 +55,7 @@ export const toolModuleLoaders: Readonly<
   "parasitology/rainfall-incidence-lag": () => import("../../parasitology/rainfall-incidence-lag/index.js"),
   "plumbing/hydronic-air-separator-size": () => import("../../plumbing/hydronic-air-separator-size/index.js"),
   "proteomics/digest-length-filter": () => import("../../proteomics/digest-length-filter/index.js"),
+  "psychology/logit-method-or-to-standard-d": () => import("../../psychology/logit-method-or-to-standard-d/index.js"),
   "real-estate/price-per-sqft": () => import("../../real-estate/price-per-sqft/index.js"),
   "rhetoric/praeteritio-saying-by-not-saying-detector": () => import("../../rhetoric/praeteritio-saying-by-not-saying-detector/index.js"),
   "seismology/iribarren-surf-similarity-runup-regime": () => import("../../seismology/iribarren-surf-similarity-runup-regime/index.js"),

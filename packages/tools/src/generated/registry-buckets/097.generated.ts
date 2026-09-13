@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "dance/postmodern-judson-contact-improvisation-lookup": () => import("../../dance/postmodern-judson-contact-improvisation-lookup/index.js"),
   "electronics/transformer-volts-per-turn": () => import("../../electronics/transformer-volts-per-turn/index.js"),
   "engineering/interference-fit-pressure": () => import("../../engineering/interference-fit-pressure/index.js"),
+  "engineering/settling-time": () => import("../../engineering/settling-time/index.js"),
   "ergonomics/l5s1-moment-calculator": () => import("../../ergonomics/l5s1-moment-calculator/index.js"),
   "ergonomics/niosh-distance-multiplier": () => import("../../ergonomics/niosh-distance-multiplier/index.js"),
   "ergonomics/niosh-rwl-base": () => import("../../ergonomics/niosh-rwl-base/index.js"),
@@ -34,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "laser/audience-safe-distance": () => import("../../laser/audience-safe-distance/index.js"),
   "laser/optical-phased-array-steering": () => import("../../laser/optical-phased-array-steering/index.js"),
   "logistics/negotiated-discount-off-invoice-percent": () => import("../../logistics/negotiated-discount-off-invoice-percent/index.js"),
+  "math/composite-density-approx": () => import("../../math/composite-density-approx/index.js"),
   "metabolomics/neutral-loss-matcher": () => import("../../metabolomics/neutral-loss-matcher/index.js"),
   "metrics/matthews-correlation": () => import("../../metrics/matthews-correlation/index.js"),
   "mining/waste-tonnage": () => import("../../mining/waste-tonnage/index.js"),
@@ -53,6 +55,7 @@ export const toolModuleLoaders: Readonly<
   "size/boot": () => import("../../size/boot/index.js"),
   "size/bracelet": () => import("../../size/bracelet/index.js"),
   "size/crinoline-reconstruction": () => import("../../size/crinoline-reconstruction/index.js"),
+  "sociology/network-closeness-sociology": () => import("../../sociology/network-closeness-sociology/index.js"),
   "toxicology/independent-action-mixture-response": () => import("../../toxicology/independent-action-mixture-response/index.js"),
   "vexillology/stripes-canton-family-checker": () => import("../../vexillology/stripes-canton-family-checker/index.js"),
 };

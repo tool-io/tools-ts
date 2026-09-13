@@ -49,6 +49,7 @@ export const toolModuleLoaders: Readonly<
   "numismatics/off-metal-wrong-planchet-transitional-error-lookup": () => import("../../numismatics/off-metal-wrong-planchet-transitional-error-lookup/index.js"),
   "petroleum/decline-curve-hyperbolic": () => import("../../petroleum/decline-curve-hyperbolic/index.js"),
   "philately/insurance-uplift-applier": () => import("../../philately/insurance-uplift-applier/index.js"),
+  "plumbing/hazen-williams-velocity": () => import("../../plumbing/hazen-williams-velocity/index.js"),
   "plumbing/minor-loss-coefficient-k": () => import("../../plumbing/minor-loss-coefficient-k/index.js"),
   "pregnancy/free-beta-hcg-mom": () => import("../../pregnancy/free-beta-hcg-mom/index.js"),
   "random/kannada-digit": () => import("../../random/kannada-digit/index.js"),
@@ -75,4 +76,5 @@ export const toolModuleLoaders: Readonly<
   "virology/cells-for-inoculum-moi": () => import("../../virology/cells-for-inoculum-moi/index.js"),
   "viticulture/picking-lugs-per-ton": () => import("../../viticulture/picking-lugs-per-ton/index.js"),
   "vr/total-system-latency": () => import("../../vr/total-system-latency/index.js"),
+  "vr/volumetric-rendering-samples": () => import("../../vr/volumetric-rendering-samples/index.js"),
 };

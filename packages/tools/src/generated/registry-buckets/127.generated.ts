@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "kinesiology/leg-stiffness": () => import("../../kinesiology/leg-stiffness/index.js"),
   "limnology/methane-bubbling-emission-estimate": () => import("../../limnology/methane-bubbling-emission-estimate/index.js"),
   "math/cramer-conjecture": () => import("../../math/cramer-conjecture/index.js"),
+  "math/hankel-function-approx": () => import("../../math/hankel-function-approx/index.js"),
   "mining/plant-recovery-factor": () => import("../../mining/plant-recovery-factor/index.js"),
   "mining/support-pressure-rock": () => import("../../mining/support-pressure-rock/index.js"),
   "music/chord-inversion-from-bass-note": () => import("../../music/chord-inversion-from-bass-note/index.js"),

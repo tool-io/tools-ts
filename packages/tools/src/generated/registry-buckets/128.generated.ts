@@ -55,6 +55,7 @@ export const toolModuleLoaders: Readonly<
   "oceanography/steric-sea-level-expansion-contribution": () => import("../../oceanography/steric-sea-level-expansion-contribution/index.js"),
   "paleontology/coiling-ratio-percent": () => import("../../paleontology/coiling-ratio-percent/index.js"),
   "pedagogy/phonics-scope-sequence-phoneme-grapheme-order-lookup": () => import("../../pedagogy/phonics-scope-sequence-phoneme-grapheme-order-lookup/index.js"),
+  "plumbing/sand-interceptor-size": () => import("../../plumbing/sand-interceptor-size/index.js"),
   "pregnancy/middle-cerebral-artery-peak-systolic": () => import("../../pregnancy/middle-cerebral-artery-peak-systolic/index.js"),
   "random/greek-letter": () => import("../../random/greek-letter/index.js"),
   "random/linear-equation-exercise": () => import("../../random/linear-equation-exercise/index.js"),

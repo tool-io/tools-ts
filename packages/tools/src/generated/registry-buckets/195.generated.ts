@@ -50,6 +50,7 @@ export const toolModuleLoaders: Readonly<
   "journalism/rundown-backtime-from-air-calculator": () => import("../../journalism/rundown-backtime-from-air-calculator/index.js"),
   "laser/double-clad-area-ratio": () => import("../../laser/double-clad-area-ratio/index.js"),
   "math/kelvin-function-ber-approx": () => import("../../math/kelvin-function-ber-approx/index.js"),
+  "math/ramanujan-prime-checker": () => import("../../math/ramanujan-prime-checker/index.js"),
   "meteorology/upslope-fog-lcl-height-checker": () => import("../../meteorology/upslope-fog-lcl-height-checker/index.js"),
   "mining/electrowinning-energy-consumption": () => import("../../mining/electrowinning-energy-consumption/index.js"),
   "music/tuplet-ratio-duration-calculator": () => import("../../music/tuplet-ratio-duration-calculator/index.js"),

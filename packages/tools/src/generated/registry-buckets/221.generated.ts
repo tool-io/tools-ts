@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "biology/hematocrit-from-hemoglobin": () => import("../../biology/hematocrit-from-hemoglobin/index.js"),
   "biology/leaf-dry-matter-content": () => import("../../biology/leaf-dry-matter-content/index.js"),
   "color/sepia-matrix-css-filter-values": () => import("../../color/sepia-matrix-css-filter-values/index.js"),
+  "construction/site-batter-boards-offset": () => import("../../construction/site-batter-boards-offset/index.js"),
   "cooking/milk-volume-to-weight": () => import("../../cooking/milk-volume-to-weight/index.js"),
   "cooking/pizza-cheese-per-pizza": () => import("../../cooking/pizza-cheese-per-pizza/index.js"),
   "decode/vigenere": () => import("../../decode/vigenere/index.js"),
@@ -36,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "list/consecutive-differences": () => import("../../list/consecutive-differences/index.js"),
   "logic/converse-generator-validity-warning": () => import("../../logic/converse-generator-validity-warning/index.js"),
   "math/mobius-inversion": () => import("../../math/mobius-inversion/index.js"),
+  "math/wieferich-pair-checker": () => import("../../math/wieferich-pair-checker/index.js"),
   "metabolomics/isotopologue-distribution": () => import("../../metabolomics/isotopologue-distribution/index.js"),
   "metabolomics/kendrick-mass-defect": () => import("../../metabolomics/kendrick-mass-defect/index.js"),
   "metabolomics/opls-component-variance": () => import("../../metabolomics/opls-component-variance/index.js"),
@@ -64,4 +66,5 @@ export const toolModuleLoaders: Readonly<
   "typography/column-count-from-text-width": () => import("../../typography/column-count-from-text-width/index.js"),
   "veterinary/anesthesia-induction-dose-propofol-dog": () => import("../../veterinary/anesthesia-induction-dose-propofol-dog/index.js"),
   "vexillology/star-grid-spacing": () => import("../../vexillology/star-grid-spacing/index.js"),
+  "vr/pupil-diameter-vr": () => import("../../vr/pupil-diameter-vr/index.js"),
 };

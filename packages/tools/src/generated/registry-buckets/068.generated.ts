@@ -14,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/normality-from-molarity": () => import("../../chemistry/normality-from-molarity/index.js"),
   "climatology/pressure-gradient-force": () => import("../../climatology/pressure-gradient-force/index.js"),
   "color/protanomaly-severity-interpolation": () => import("../../color/protanomaly-severity-interpolation/index.js"),
+  "construction/excavation-rock-ripper-production": () => import("../../construction/excavation-rock-ripper-production/index.js"),
   "construction/trench-shoring-boards-area": () => import("../../construction/trench-shoring-boards-area/index.js"),
   "demography/bennett-horiuchi-death-distribution-method": () => import("../../demography/bennett-horiuchi-death-distribution-method/index.js"),
   "electronics/diacs-breakover-voltage": () => import("../../electronics/diacs-breakover-voltage/index.js"),
@@ -28,6 +29,7 @@ export const toolModuleLoaders: Readonly<
   "logic/venn-three-set-region-mapper": () => import("../../logic/venn-three-set-region-mapper/index.js"),
   "marriage/engagement-ring-cut-lookup": () => import("../../marriage/engagement-ring-cut-lookup/index.js"),
   "marriage/wedding-flower-budget": () => import("../../marriage/wedding-flower-budget/index.js"),
+  "math/lemniscate-perimeter-approx": () => import("../../math/lemniscate-perimeter-approx/index.js"),
   "math/pell-nth": () => import("../../math/pell-nth/index.js"),
   "neuroscience/roi-tensor-fractional-anisotropy": () => import("../../neuroscience/roi-tensor-fractional-anisotropy/index.js"),
   "number/betrothed-checker": () => import("../../number/betrothed-checker/index.js"),
@@ -47,4 +49,5 @@ export const toolModuleLoaders: Readonly<
   "toxicology/enterohepatic-circulation": () => import("../../toxicology/enterohepatic-circulation/index.js"),
   "typography/inches-to-picas": () => import("../../typography/inches-to-picas/index.js"),
   "vexillology/quartered-quadrant-area": () => import("../../vexillology/quartered-quadrant-area/index.js"),
+  "vr/judder-threshold-fps": () => import("../../vr/judder-threshold-fps/index.js"),
 };

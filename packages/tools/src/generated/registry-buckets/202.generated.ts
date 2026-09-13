@@ -41,6 +41,7 @@ export const toolModuleLoaders: Readonly<
   "insurance/hsa-tax-savings": () => import("../../insurance/hsa-tax-savings/index.js"),
   "logistics/net-freight-after-discount-fsc": () => import("../../logistics/net-freight-after-discount-fsc/index.js"),
   "math/bertrand-postulate-checker": () => import("../../math/bertrand-postulate-checker/index.js"),
+  "math/conway-constant": () => import("../../math/conway-constant/index.js"),
   "meteorology/net-radiation-budget-surface-balance": () => import("../../meteorology/net-radiation-budget-surface-balance/index.js"),
   "museology/insect-trap-density-planner": () => import("../../museology/insect-trap-density-planner/index.js"),
   "music/chromatic-scale-generator": () => import("../../music/chromatic-scale-generator/index.js"),

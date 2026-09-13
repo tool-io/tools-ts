@@ -41,6 +41,7 @@ export const toolModuleLoaders: Readonly<
   "logic/celarent-eae1-valid-lookup": () => import("../../logic/celarent-eae1-valid-lookup/index.js"),
   "math/rose-area": () => import("../../math/rose-area/index.js"),
   "math/vandermonde-determinant-3": () => import("../../math/vandermonde-determinant-3/index.js"),
+  "math/whittaker-function-approx": () => import("../../math/whittaker-function-approx/index.js"),
   "metabolomics/anaplerosis-flux-split": () => import("../../metabolomics/anaplerosis-flux-split/index.js"),
   "meteorology/bora-katabatic-drainage-speed": () => import("../../meteorology/bora-katabatic-drainage-speed/index.js"),
   "music/bpm-to-ms": () => import("../../music/bpm-to-ms/index.js"),
@@ -64,4 +65,5 @@ export const toolModuleLoaders: Readonly<
   "taxation/de-minimis-meal-screen": () => import("../../taxation/de-minimis-meal-screen/index.js"),
   "toxicology/micronucleus-frequency": () => import("../../toxicology/micronucleus-frequency/index.js"),
   "veterinary/anesthesia-induction-dose-propofol-cat": () => import("../../veterinary/anesthesia-induction-dose-propofol-cat/index.js"),
+  "vr/battery-life-headset": () => import("../../vr/battery-life-headset/index.js"),
 };

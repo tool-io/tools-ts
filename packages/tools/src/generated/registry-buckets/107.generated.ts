@@ -27,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "laser/comb-traceability-uncertainty": () => import("../../laser/comb-traceability-uncertainty/index.js"),
   "laser/pcsel-aperture-intensity": () => import("../../laser/pcsel-aperture-intensity/index.js"),
   "logistics/accessorial-fees-total-itemizer": () => import("../../logistics/accessorial-fees-total-itemizer/index.js"),
+  "math/ramanujan-tau-approx": () => import("../../math/ramanujan-tau-approx/index.js"),
   "mri/sampled-gradient-slew-rates": () => import("../../mri/sampled-gradient-slew-rates/index.js"),
   "numismatics/libertad-onza-key-dates-mintage-history-lookup": () => import("../../numismatics/libertad-onza-key-dates-mintage-history-lookup/index.js"),
   "oenology/shelf-life-do-threshold": () => import("../../oenology/shelf-life-do-threshold/index.js"),
@@ -46,4 +47,5 @@ export const toolModuleLoaders: Readonly<
   "veterinary/mcs-muscle-condition-score": () => import("../../veterinary/mcs-muscle-condition-score/index.js"),
   "virology/vaf-uncertainty-threshold": () => import("../../virology/vaf-uncertainty-threshold/index.js"),
   "viticulture/canopy-height-shoot-length-checker": () => import("../../viticulture/canopy-height-shoot-length-checker/index.js"),
+  "vr/mura-uniformity-percentage": () => import("../../vr/mura-uniformity-percentage/index.js"),
 };

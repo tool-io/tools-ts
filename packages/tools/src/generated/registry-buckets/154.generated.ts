@@ -31,6 +31,7 @@ export const toolModuleLoaders: Readonly<
   "logic/venn-two-set-region-mapper": () => import("../../logic/venn-two-set-region-mapper/index.js"),
   "logistics/hazmat-class-segregation-storage-checker": () => import("../../logistics/hazmat-class-segregation-storage-checker/index.js"),
   "math/mangoldt-lambda": () => import("../../math/mangoldt-lambda/index.js"),
+  "math/selberg-class-approx": () => import("../../math/selberg-class-approx/index.js"),
   "mining/mining-height": () => import("../../mining/mining-height/index.js"),
   "mycology/yeast-budding-pattern-classifier": () => import("../../mycology/yeast-budding-pattern-classifier/index.js"),
   "number/abundant-checker": () => import("../../number/abundant-checker/index.js"),
