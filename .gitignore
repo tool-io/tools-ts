@@ -1,8 +1,9 @@
 node_modules/
+.log/
 .env
 .env.*
 !.env.example
 dist/
 coverage/
 *.tsbuildinfo
-
+/DEVELOPER.md
