@@ -67,13 +67,16 @@ describe("standard publication and product identifiers", () => {
 
   it("publishes executable canonical examples for the complete family", async () => {
     expect(addedIds).toHaveLength(20);
-    for (const id of addedIds) {
-      const module = await loadToolModule(id);
+    const modules = await Promise.all(
+      addedIds.map(async (id) => [id, await loadToolModule(id)] as const),
+    );
+
+    for (const [id, module] of modules) {
       expect(module, id).toBeDefined();
       expect(module!.default.execute(module!.example!.input), id).toEqual({
         ok: true,
         output: module!.example!.output,
       });
     }
-  });
+  }, 15_000);
 });

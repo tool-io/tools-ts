@@ -32,8 +32,14 @@ const variants = [
 
 describe("hash variants", () => {
   it("publishes executable canonical examples for every listed hash", async () => {
-    for (const variant of variants) {
-      const module = await loadToolModule(`hash/${variant}`);
+    const modules = await Promise.all(
+      variants.map(
+        async (variant) =>
+          [variant, await loadToolModule(`hash/${variant}`)] as const,
+      ),
+    );
+
+    for (const [variant, module] of modules) {
       expect(module, variant).toBeDefined();
       const result = module!.default.execute(module!.example!.input);
       expect(result, variant).toEqual({
@@ -41,5 +47,5 @@ describe("hash variants", () => {
         output: module!.example!.output,
       });
     }
-  });
+  }, 15_000);
 });

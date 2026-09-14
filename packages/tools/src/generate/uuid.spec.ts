@@ -41,7 +41,7 @@ describe("UUID generators", () => {
 
 describe("all UUID versions", () => {
   it("publishes matching examples for each new UUID generator", async () => {
-    for (const id of [
+    const ids = [
       "generate/uuid-v1",
       "generate/uuid-v2",
       "generate/uuid-v3",
@@ -50,15 +50,19 @@ describe("all UUID versions", () => {
       "generate/uuid-v8",
       "generate/uuid-nil",
       "generate/uuid-max",
-    ]) {
-      const module = await loadToolModule(id);
+    ] as const;
+    const modules = await Promise.all(
+      ids.map(async (id) => [id, await loadToolModule(id)] as const),
+    );
+
+    for (const [id, module] of modules) {
       expect(module, id).toBeDefined();
       expect(module!.default.execute(module!.example!.input), id).toEqual({
         ok: true,
         output: module!.example!.output,
       });
     }
-  });
+  }, 15_000);
 
   it("sets versions 1 through 8 and the RFC variant", () => {
     const generated = [

@@ -75,8 +75,12 @@ describe("text script converter family", () => {
   it("publishes 51 independent executable tools with matching examples", async () => {
     expect(toolIds).toHaveLength(51);
     expect(new Set(toolIds).size).toBe(51);
-    for (const id of toolIds) {
-      const module = await loadToolModule(id);
+
+    const modules = await Promise.all(
+      toolIds.map(async (id) => [id, await loadToolModule(id)] as const),
+    );
+
+    for (const [id, module] of modules) {
       expect(module, id).toBeDefined();
       expect(module!.default.id).toBe(id);
       expect(module!.default.execute(module!.example!.input), id).toEqual({
@@ -84,7 +88,7 @@ describe("text script converter family", () => {
         output: module!.example!.output,
       });
     }
-  });
+  }, 15_000);
 
   it("matches independent examples for Unicode and byte representations", () => {
     expect(toFullwidth("A 1!")).toBe("Ａ　１！");

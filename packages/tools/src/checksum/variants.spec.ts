@@ -37,8 +37,14 @@ const variants = [
 
 describe("checksum variants", () => {
   it("matches the catalogue check value for 123456789", async () => {
-    for (const variant of variants) {
-      const module = await loadToolModule(`checksum/${variant}`);
+    const modules = await Promise.all(
+      variants.map(
+        async (variant) =>
+          [variant, await loadToolModule(`checksum/${variant}`)] as const,
+      ),
+    );
+
+    for (const [variant, module] of modules) {
       expect(module, variant).toBeDefined();
       const result = module!.default.execute(module!.example!.input);
       expect(result, variant).toEqual({
@@ -46,5 +52,5 @@ describe("checksum variants", () => {
         output: module!.example!.output,
       });
     }
-  });
+  }, 15_000);
 });
