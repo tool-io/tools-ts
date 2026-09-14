@@ -3,6 +3,17 @@
   "version": "0.1.0",
   "private": false,
   "description": "Framework-independent TypeScript tools for tool.io",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "keywords": [
+    "tool.io",
+    "calculators",
+    "converters",
+    "tools",
+    "typescript",
+    "validation"
+  ],
   "license": "MIT",
   "type": "module",
   "publishConfig": {

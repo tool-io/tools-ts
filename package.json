@@ -1,6 +1,9 @@
 {
-  "name": "toolio-tools-ts",
+  "name": "tools-ts-workspace",
   "private": true,
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "packageManager": "pnpm@10.28.2",
   "scripts": {
     "build": "pnpm --filter @tool.io/tools build",
