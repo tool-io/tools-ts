@@ -1,5 +1,5 @@
-import { execFileSync } from "node:child_process";
-import { access, readFile } from "node:fs/promises";
+import { spawn } from "node:child_process";
+import { access, mkdtemp, readFile, readdir, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
@@ -12,6 +12,54 @@ const publicTools = JSON.parse(
   await readFile(path.join(packageRoot, "public-tools.generated.json"), "utf8"),
 ).tools;
 const failures = [];
+
+const capture = (command, arguments_, options = {}, requireOutput = true) =>
+  new Promise((resolve, reject) => {
+    const child = spawn(command, arguments_, {
+      ...options,
+      stdio: ["ignore", "pipe", "pipe"],
+    });
+    const stdout = [];
+    const stderr = [];
+    let stdoutBytes = 0;
+    const maximumOutputBytes = 64 * 1024 * 1024;
+    child.stdout.on("data", (chunk) => {
+      stdoutBytes += chunk.length;
+      if (stdoutBytes > maximumOutputBytes) {
+        child.kill();
+        reject(
+          new Error(
+            `${command} output exceeded ${maximumOutputBytes} bytes.`,
+          ),
+        );
+        return;
+      }
+      stdout.push(chunk);
+    });
+    child.stderr.on("data", (chunk) => stderr.push(chunk));
+    child.once("error", reject);
+    child.once("close", (code, signal) => {
+      const diagnostics = Buffer.concat(stderr).toString("utf8").trim();
+      if (code !== 0) {
+        reject(
+          new Error(
+            `${command} failed${signal ? ` with signal ${signal}` : ` with exit code ${code}`}${diagnostics ? `:\n${diagnostics}` : ""}`,
+          ),
+        );
+        return;
+      }
+      const output = Buffer.concat(stdout).toString("utf8");
+      if (requireOutput && !output.trim()) {
+        reject(
+          new Error(
+            `${command} returned no package metadata${diagnostics ? `:\n${diagnostics}` : ""}`,
+          ),
+        );
+        return;
+      }
+      resolve(output);
+    });
+  });
 
 if (manifest.name !== "@tool.io/tools")
   failures.push("Package name must remain @tool.io/tools.");
@@ -45,27 +93,42 @@ for (const target of exportTargets.filter((entry) => !entry.includes("*"))) {
   }
 }
 
-const packOutput = execFileSync(
-  "npm",
-  [
-    "pack",
-    "--dry-run",
-    "--json",
-    "--ignore-scripts",
-    "--cache",
-    path.join(tmpdir(), "tool-io-npm-cache"),
-  ],
-  {
-    cwd: packageRoot,
-    encoding: "utf8",
-    maxBuffer: 64 * 1024 * 1024,
-    stdio: ["ignore", "pipe", "pipe"],
-  },
-);
-const packResult = JSON.parse(packOutput)[0];
-const packedFiles = new Set(
-  (packResult?.files ?? []).map((entry) => entry.path),
-);
+const packDirectory = await mkdtemp(path.join(tmpdir(), "tool-io-pack-"));
+let packedFiles;
+try {
+  await capture(
+    "npm",
+    [
+      "pack",
+      "--ignore-scripts",
+      "--pack-destination",
+      packDirectory,
+      "--cache",
+      path.join(tmpdir(), "tool-io-npm-cache"),
+    ],
+    { cwd: packageRoot },
+    false,
+  );
+  const archives = (await readdir(packDirectory)).filter((name) =>
+    name.endsWith(".tgz"),
+  );
+  if (archives.length !== 1)
+    throw new Error(
+      `npm pack created ${archives.length} archives instead of exactly one.`,
+    );
+  const listing = await capture("tar", [
+    "-tzf",
+    path.join(packDirectory, archives[0]),
+  ]);
+  packedFiles = new Set(
+    listing
+      .split("\n")
+      .filter(Boolean)
+      .map((entry) => entry.replace(/^package\//, "")),
+  );
+} finally {
+  await rm(packDirectory, { force: true, recursive: true });
+}
 
 for (const required of [
   "LICENSE",
@@ -96,6 +159,6 @@ if (failures.length > 0) {
   process.exitCode = 1;
 } else {
   process.stdout.write(
-    `Validated ${publicTools.length} packed tool subpaths across ${packedFiles.size} files; no package was created or published.\n`,
+    `Validated ${publicTools.length} packed tool subpaths across ${packedFiles.size} files; no package was retained or published.\n`,
   );
 }
