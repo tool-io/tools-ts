@@ -75,6 +75,7 @@ export const toolModuleLoaders: Readonly<
   "size/curtain": () => import("../../size/curtain/index.js"),
   "size/suit-jacket": () => import("../../size/suit-jacket/index.js"),
   "sports/basketball-true-shooting-percent-tsx": () => import("../../sports/basketball-true-shooting-percent-tsx/index.js"),
+  "sports/bouldering-send-rate-flash-percent": () => import("../../sports/bouldering-send-rate-flash-percent/index.js"),
   "taxation/exit-tax-threshold-screen": () => import("../../taxation/exit-tax-threshold-screen/index.js"),
   "taxation/suta-experience-rating-lookup": () => import("../../taxation/suta-experience-rating-lookup/index.js"),
   "text/dot-case": () => import("../../text/dot-case/index.js"),

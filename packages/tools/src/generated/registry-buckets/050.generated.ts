@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/environmental-bod": () => import("../../chemistry/environmental-bod/index.js"),
   "classification/specificity": () => import("../../classification/specificity/index.js"),
   "construction/backfill-volume-compaction": () => import("../../construction/backfill-volume-compaction/index.js"),
+  "convert/number-to-words": () => import("../../convert/number-to-words/index.js"),
   "criminology/evidence-room-audit-retention-cycle-lookup": () => import("../../criminology/evidence-room-audit-retention-cycle-lookup/index.js"),
   "criminology/fraud-triangle-pressure-opportunity-rationalization-checker": () => import("../../criminology/fraud-triangle-pressure-opportunity-rationalization-checker/index.js"),
   "engineering/bearing-life-l10": () => import("../../engineering/bearing-life-l10/index.js"),
@@ -32,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "geology/trace-element-ratio": () => import("../../geology/trace-element-ratio/index.js"),
   "hash/blake-512": () => import("../../hash/blake-512/index.js"),
   "heraldry/diminutives-size-hierarchy": () => import("../../heraldry/diminutives-size-hierarchy/index.js"),
+  "horology/radium-activity-remaining": () => import("../../horology/radium-activity-remaining/index.js"),
   "html/time-datetime-machine-format": () => import("../../html/time-datetime-machine-format/index.js"),
   "insurance/prescription-database-paramed-mortality-lens-data-lookup": () => import("../../insurance/prescription-database-paramed-mortality-lens-data-lookup/index.js"),
   "journalism/protest-support-conflict": () => import("../../journalism/protest-support-conflict/index.js"),
@@ -71,5 +73,6 @@ export const toolModuleLoaders: Readonly<
   "taxation/sixteenth-amendment-1913-income-tax-ratification-origin": () => import("../../taxation/sixteenth-amendment-1913-income-tax-ratification-origin/index.js"),
   "theatre/understudy-cover-matrix": () => import("../../theatre/understudy-cover-matrix/index.js"),
   "transcriptomics/effective-transcript-length": () => import("../../transcriptomics/effective-transcript-length/index.js"),
+  "vexillology/wind-load-flag-area": () => import("../../vexillology/wind-load-flag-area/index.js"),
   "volcanology/lava-front-advance-speed-basaltic": () => import("../../volcanology/lava-front-advance-speed-basaltic/index.js"),
 };

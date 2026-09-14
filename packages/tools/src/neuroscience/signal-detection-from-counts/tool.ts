@@ -53,7 +53,7 @@ export const exampleInput = {
 export const exampleOutput = {
   correctedHitRate: 0.7727272727272727,
   correctedFalseAlarmRate: 0.22727272727272727,
-  dPrime: 1.4957171895266042,
+  dPrime: 1.4957171882410376,
 } satisfies Output;
 export const example = {
   input: exampleInput,

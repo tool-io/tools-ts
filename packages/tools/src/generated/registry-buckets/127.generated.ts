@@ -4,7 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/bark-band-converter": () => import("../../acoustics/bark-band-converter/index.js"),
   "acoustics/vern-knudsen-history": () => import("../../acoustics/vern-knudsen-history/index.js"),
+  "actuarial/effective-interest-to-discount-rate": () => import("../../actuarial/effective-interest-to-discount-rate/index.js"),
   "aesthetics/camp-sontag-notes-taxonomy-classifier": () => import("../../aesthetics/camp-sontag-notes-taxonomy-classifier/index.js"),
   "astrometry/spherical-pair-separation-angle": () => import("../../astrometry/spherical-pair-separation-angle/index.js"),
   "auditing/allowance-migration-recompute": () => import("../../auditing/allowance-migration-recompute/index.js"),

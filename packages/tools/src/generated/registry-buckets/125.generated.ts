@@ -44,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "oceanography/local-vs-global-sea-level-split": () => import("../../oceanography/local-vs-global-sea-level-split/index.js"),
   "oceanography/tsunami-travel-time-constant-depth": () => import("../../oceanography/tsunami-travel-time-constant-depth/index.js"),
   "paleography/epact-day-moon-lookup": () => import("../../paleography/epact-day-moon-lookup/index.js"),
+  "petroleum/gravity-number": () => import("../../petroleum/gravity-number/index.js"),
   "pharmacy/anticholinergic-burden-scale-score": () => import("../../pharmacy/anticholinergic-burden-scale-score/index.js"),
   "pharmacy/bsa-mosteller-dose": () => import("../../pharmacy/bsa-mosteller-dose/index.js"),
   "philately/surface-rate-step-table-lookup": () => import("../../philately/surface-rate-step-table-lookup/index.js"),
@@ -56,5 +57,6 @@ export const toolModuleLoaders: Readonly<
   "taxation/crypto-swap-gain": () => import("../../taxation/crypto-swap-gain/index.js"),
   "toxicology/lognormal-species-sensitivity-fit": () => import("../../toxicology/lognormal-species-sensitivity-fit/index.js"),
   "viticulture/graft-success-rate-percent": () => import("../../viticulture/graft-success-rate-percent/index.js"),
+  "viticulture/vineyard-block-area-conversion": () => import("../../viticulture/vineyard-block-area-conversion/index.js"),
   "volcanology/volcanic-debris-avalanche-volume": () => import("../../volcanology/volcanic-debris-avalanche-volume/index.js"),
 };

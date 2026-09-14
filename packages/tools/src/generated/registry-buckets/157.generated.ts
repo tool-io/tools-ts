@@ -28,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "film/film-frames-count": () => import("../../film/film-frames-count/index.js"),
   "folklore/etiological-origin-myth-type-classifier": () => import("../../folklore/etiological-origin-myth-type-classifier/index.js"),
   "folklore/proverb-parity-meaning-pairs-crossref-lookup": () => import("../../folklore/proverb-parity-meaning-pairs-crossref-lookup/index.js"),
+  "fun/never-have-i-ever": () => import("../../fun/never-have-i-ever/index.js"),
   "futurology/triz-contradiction-matrix-40-principles-lookup": () => import("../../futurology/triz-contradiction-matrix-40-principles-lookup/index.js"),
   "game/tetris-line-clear-score-table-lookup": () => import("../../game/tetris-line-clear-score-table-lookup/index.js"),
   "hash/ripemd-160": () => import("../../hash/ripemd-160/index.js"),
@@ -65,5 +66,6 @@ export const toolModuleLoaders: Readonly<
   "size/chiton-reconstruction": () => import("../../size/chiton-reconstruction/index.js"),
   "statistics/median": () => import("../../statistics/median/index.js"),
   "typography/pixels-to-points-96dpi": () => import("../../typography/pixels-to-points-96dpi/index.js"),
+  "vexillology/grommet-spacing-recommendation": () => import("../../vexillology/grommet-spacing-recommendation/index.js"),
   "viticulture/gdd-stage-threshold-lookup": () => import("../../viticulture/gdd-stage-threshold-lookup/index.js"),
 };

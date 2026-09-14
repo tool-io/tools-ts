@@ -48,6 +48,7 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/ltd-magnitude": () => import("../../neuroscience/ltd-magnitude/index.js"),
   "neuroscience/medial-temporal-atrophy-scheltens": () => import("../../neuroscience/medial-temporal-atrophy-scheltens/index.js"),
   "number/kaprekar-steps": () => import("../../number/kaprekar-steps/index.js"),
+  "paleontology/shearing-crest-ratio": () => import("../../paleontology/shearing-crest-ratio/index.js"),
   "philately/exhibit-knowledge-point-rater": () => import("../../philately/exhibit-knowledge-point-rater/index.js"),
   "physics/centripetal-force": () => import("../../physics/centripetal-force/index.js"),
   "random/elbasan-letter": () => import("../../random/elbasan-letter/index.js"),

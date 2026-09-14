@@ -39,6 +39,7 @@ export const toolModuleLoaders: Readonly<
   "gemology/thermal-shock-checker": () => import("../../gemology/thermal-shock-checker/index.js"),
   "genetics/three-point-middle-gene": () => import("../../genetics/three-point-middle-gene/index.js"),
   "geology/effective-porosity": () => import("../../geology/effective-porosity/index.js"),
+  "horology/equation-of-time-extremes": () => import("../../horology/equation-of-time-extremes/index.js"),
   "laser/gerchberg-saxton-phase-retrieval": () => import("../../laser/gerchberg-saxton-phase-retrieval/index.js"),
   "laser/mode-sorter-crosstalk": () => import("../../laser/mode-sorter-crosstalk/index.js"),
   "linguistics/past-tense-regular": () => import("../../linguistics/past-tense-regular/index.js"),
@@ -70,5 +71,6 @@ export const toolModuleLoaders: Readonly<
   "taxation/crut-clat-comparison": () => import("../../taxation/crut-clat-comparison/index.js"),
   "veterinary/litter-size-average-lookup-species": () => import("../../veterinary/litter-size-average-lookup-species/index.js"),
   "vexillology/emblem-canton-pattern-checker": () => import("../../vexillology/emblem-canton-pattern-checker/index.js"),
+  "vexillology/ground-signal-decoder": () => import("../../vexillology/ground-signal-decoder/index.js"),
   "viticulture/crush-pad-throughput-tonnes-day": () => import("../../viticulture/crush-pad-throughput-tonnes-day/index.js"),
 };

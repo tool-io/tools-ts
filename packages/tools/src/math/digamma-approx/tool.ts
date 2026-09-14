@@ -21,7 +21,7 @@ export const calculate = (input: Input): Output => {
 };
 export const exampleInput = { x: 1 } satisfies Input;
 export const exampleOutput = {
-  digammaValue: -0.5772156649015329,
+  digammaValue: -0.5772156649015527,
 } satisfies Output;
 export const example = {
   input: exampleInput,

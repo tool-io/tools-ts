@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "actuarial/annuity-immediate-pv": () => import("../../actuarial/annuity-immediate-pv/index.js"),
+  "actuarial/complete-expectation-of-life": () => import("../../actuarial/complete-expectation-of-life/index.js"),
   "aesthetics/vitruvius-human-body-proportions-origin-lookup": () => import("../../aesthetics/vitruvius-human-body-proportions-origin-lookup/index.js"),
   "apiculture/queen-excluder-slats-spacing-checker": () => import("../../apiculture/queen-excluder-slats-spacing-checker/index.js"),
   "aquaculture/uv-dose": () => import("../../aquaculture/uv-dose/index.js"),

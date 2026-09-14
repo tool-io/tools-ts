@@ -24,10 +24,12 @@ export const toolModuleLoaders: Readonly<
   "engineering/illuminance-uniformity": () => import("../../engineering/illuminance-uniformity/index.js"),
   "engineering/steam-pipe-heat-loss": () => import("../../engineering/steam-pipe-heat-loss/index.js"),
   "engineering/thermal-diffusivity": () => import("../../engineering/thermal-diffusivity/index.js"),
+  "forestry/windthrow-risk-ht-dbh-ratio-after-thinning": () => import("../../forestry/windthrow-risk-ht-dbh-ratio-after-thinning/index.js"),
   "futurology/integral-futures-four-quadrant-approach-lookup": () => import("../../futurology/integral-futures-four-quadrant-approach-lookup/index.js"),
   "genetics/population-fst": () => import("../../genetics/population-fst/index.js"),
   "geology/ree-pattern-slope-la-yb": () => import("../../geology/ree-pattern-slope-la-yb/index.js"),
   "geology/vitrinite-reflectance-ro": () => import("../../geology/vitrinite-reflectance-ro/index.js"),
+  "glaciology/swe-from-snow-density": () => import("../../glaciology/swe-from-snow-density/index.js"),
   "horology/breguet-invention-timeline-lookup": () => import("../../horology/breguet-invention-timeline-lookup/index.js"),
   "journalism/subscription-churn-after-price-rise-percent": () => import("../../journalism/subscription-churn-after-price-rise-percent/index.js"),
   "linguistics/english-loanword-source-era-lookup": () => import("../../linguistics/english-loanword-source-era-lookup/index.js"),
@@ -49,4 +51,5 @@ export const toolModuleLoaders: Readonly<
   "theatre/confetti-blower-coverage-kg-minute-lookup": () => import("../../theatre/confetti-blower-coverage-kg-minute-lookup/index.js"),
   "toxicology/tubular-secretion": () => import("../../toxicology/tubular-secretion/index.js"),
   "vexillology/tricolor-stripe-split": () => import("../../vexillology/tricolor-stripe-split/index.js"),
+  "viticulture/winkler-region-classification-lookup": () => import("../../viticulture/winkler-region-classification-lookup/index.js"),
 };

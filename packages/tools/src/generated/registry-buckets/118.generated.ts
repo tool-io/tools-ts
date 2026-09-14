@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/area-weighted-composite-stc": () => import("../../acoustics/area-weighted-composite-stc/index.js"),
   "actuarial/entry-age-normal-liability": () => import("../../actuarial/entry-age-normal-liability/index.js"),
   "actuarial/net-level-annual-premium": () => import("../../actuarial/net-level-annual-premium/index.js"),
   "aesthetics/bhava-rasa-determinants-consequents-structure-lookup": () => import("../../aesthetics/bhava-rasa-determinants-consequents-structure-lookup/index.js"),
@@ -29,11 +30,14 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/wgbs-depth-filter": () => import("../../epigenetics/wgbs-depth-filter/index.js"),
   "film/exposure-compensation": () => import("../../film/exposure-compensation/index.js"),
   "folklore/murder-ballads-dark-plot-common-themes-lookup": () => import("../../folklore/murder-ballads-dark-plot-common-themes-lookup/index.js"),
+  "fun/kings-cup-rules": () => import("../../fun/kings-cup-rules/index.js"),
+  "fun/word-search-generator": () => import("../../fun/word-search-generator/index.js"),
   "futurology/longevity-dividend-health-extension-economic-case-lookup": () => import("../../futurology/longevity-dividend-health-extension-economic-case-lookup/index.js"),
   "geology/fault-heave": () => import("../../geology/fault-heave/index.js"),
   "horticulture/poinsettia-short-day-trigger-date": () => import("../../horticulture/poinsettia-short-day-trigger-date/index.js"),
   "journalism/foia-fee-category-media-waiver-lookup": () => import("../../journalism/foia-fee-category-media-waiver-lookup/index.js"),
   "laser/impedance-swr": () => import("../../laser/impedance-swr/index.js"),
+  "limnology/white-ice-black-ice-layer-split": () => import("../../limnology/white-ice-black-ice-layer-split/index.js"),
   "linguistics/general-american-features-lookup": () => import("../../linguistics/general-american-features-lookup/index.js"),
   "marriage/long-distance-cost-per-visit": () => import("../../marriage/long-distance-cost-per-visit/index.js"),
   "math/pi-approx-leibniz": () => import("../../math/pi-approx-leibniz/index.js"),

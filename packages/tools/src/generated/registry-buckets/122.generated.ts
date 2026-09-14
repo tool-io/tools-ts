@@ -27,6 +27,8 @@ export const toolModuleLoaders: Readonly<
   "engineering/creep-deflection-multiplier": () => import("../../engineering/creep-deflection-multiplier/index.js"),
   "engineering/fdm-printing-time": () => import("../../engineering/fdm-printing-time/index.js"),
   "folklore/jersey-devil-leeds-point-pine-barrens-origin-story": () => import("../../folklore/jersey-devil-leeds-point-pine-barrens-origin-story/index.js"),
+  "fun/pokemon-stat-total": () => import("../../fun/pokemon-stat-total/index.js"),
+  "fun/pokemon-type-matchup": () => import("../../fun/pokemon-type-matchup/index.js"),
   "futurology/metaverse-hype-versus-utility-verdict-lookup": () => import("../../futurology/metaverse-hype-versus-utility-verdict-lookup/index.js"),
   "game/mastermind-black-white-peg-feedback-calculator": () => import("../../game/mastermind-black-white-peg-feedback-calculator/index.js"),
   "game/projectile-lead-intercept-angle-estimate": () => import("../../game/projectile-lead-intercept-angle-estimate/index.js"),

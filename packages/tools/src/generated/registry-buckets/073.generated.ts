@@ -5,10 +5,12 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/area-weighted-absorption-coefficient": () => import("../../acoustics/area-weighted-absorption-coefficient/index.js"),
+  "acoustics/percentile-statistical-ln-level": () => import("../../acoustics/percentile-statistical-ln-level/index.js"),
   "actuarial/total-decrement-rate": () => import("../../actuarial/total-decrement-rate/index.js"),
   "aesthetics/benjamin-aura-mechanical-reproduction-work-of-art-lookup": () => import("../../aesthetics/benjamin-aura-mechanical-reproduction-work-of-art-lookup/index.js"),
   "apiculture/colony-population-per-box-depth-lookup": () => import("../../apiculture/colony-population-per-box-depth-lookup/index.js"),
   "archaeology/enamel-hypoplasia-band-count": () => import("../../archaeology/enamel-hypoplasia-band-count/index.js"),
+  "archaeology/stature-femur-european-formula": () => import("../../archaeology/stature-femur-european-formula/index.js"),
   "archival-studies/av-runtime-hours-summator": () => import("../../archival-studies/av-runtime-hours-summator/index.js"),
   "astronomy/main-sequence-lifetime": () => import("../../astronomy/main-sequence-lifetime/index.js"),
   "auditing/prohibited-transaction-screen": () => import("../../auditing/prohibited-transaction-screen/index.js"),
@@ -26,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "entrepreneurship/franchise-vs-owned-unit-economics-compare-lookup": () => import("../../entrepreneurship/franchise-vs-owned-unit-economics-compare-lookup/index.js"),
   "epigenetics/tet-cascade-stage": () => import("../../epigenetics/tet-cascade-stage/index.js"),
   "folklore/burning-man-ten-principles-temporary-city-ethos-lookup": () => import("../../folklore/burning-man-ten-principles-temporary-city-ethos-lookup/index.js"),
+  "fun/lucky-number": () => import("../../fun/lucky-number/index.js"),
   "game/loot-box-expected-cost-per-item": () => import("../../game/loot-box-expected-cost-per-item/index.js"),
   "genetics/bottleneck-heterozygosity-loss": () => import("../../genetics/bottleneck-heterozygosity-loss/index.js"),
   "genetics/expected-cell-count-audit": () => import("../../genetics/expected-cell-count-audit/index.js"),

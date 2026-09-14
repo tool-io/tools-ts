@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "accounting/bank-reconciliation-outstanding-items-bridge": () => import("../../accounting/bank-reconciliation-outstanding-items-bridge/index.js"),
   "accounting/out-of-balance-difference-transposition-halver": () => import("../../accounting/out-of-balance-difference-transposition-halver/index.js"),
+  "actuarial/deferred-annuity-pv": () => import("../../actuarial/deferred-annuity-pv/index.js"),
   "archival-studies/transcription-progress-percent-calculator": () => import("../../archival-studies/transcription-progress-percent-calculator/index.js"),
   "astrobiology/uv-edge-spectrum-shift-note-generator": () => import("../../astrobiology/uv-edge-spectrum-shift-note-generator/index.js"),
   "banking/greenbacks-civil-war-legal-tender-acts-history-lookup": () => import("../../banking/greenbacks-civil-war-legal-tender-acts-history-lookup/index.js"),

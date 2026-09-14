@@ -28,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/mitochondrial-read-filter": () => import("../../epigenetics/mitochondrial-read-filter/index.js"),
   "epigraphy/cognomen-element-tally": () => import("../../epigraphy/cognomen-element-tally/index.js"),
   "forestry/fuel-moisture-content": () => import("../../forestry/fuel-moisture-content/index.js"),
+  "fun/magic-8-ball": () => import("../../fun/magic-8-ball/index.js"),
   "futurology/trend-impact-analysis-event-strength-adjuster": () => import("../../futurology/trend-impact-analysis-event-strength-adjuster/index.js"),
   "gemology/color-grade-boundary": () => import("../../gemology/color-grade-boundary/index.js"),
   "genomics/assembly-l50": () => import("../../genomics/assembly-l50/index.js"),

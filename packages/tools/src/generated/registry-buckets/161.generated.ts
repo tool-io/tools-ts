@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "encode/geohash": () => import("../../encode/geohash/index.js"),
   "engineering/euler-buckling-load": () => import("../../engineering/euler-buckling-load/index.js"),
   "epigraphy/consular-dating-year-extractor": () => import("../../epigraphy/consular-dating-year-extractor/index.js"),
+  "fun/spirit-animal": () => import("../../fun/spirit-animal/index.js"),
   "futurology/punk-genre-futures-steampunk-cyberpunk-solarpunk-lookup": () => import("../../futurology/punk-genre-futures-steampunk-cyberpunk-solarpunk-lookup/index.js"),
   "geology/zircon-saturation-temperature-watson-harrison": () => import("../../geology/zircon-saturation-temperature-watson-harrison/index.js"),
   "horology/daily-rate-to-annual-drift": () => import("../../horology/daily-rate-to-annual-drift/index.js"),

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/band-edge-frequencies": () => import("../../acoustics/band-edge-frequencies/index.js"),
   "apiculture/afb-ropey-matchstick-test-checker": () => import("../../apiculture/afb-ropey-matchstick-test-checker/index.js"),
   "aquaculture/mortality-rate": () => import("../../aquaculture/mortality-rate/index.js"),
   "archaeology/optically-stimulated-luminescence-age": () => import("../../archaeology/optically-stimulated-luminescence-age/index.js"),
@@ -26,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/drill-time": () => import("../../engineering/drill-time/index.js"),
   "entrepreneurship/cliff-vesting-schedule": () => import("../../entrepreneurship/cliff-vesting-schedule/index.js"),
   "forestry/shrinkage-tangential": () => import("../../forestry/shrinkage-tangential/index.js"),
+  "fun/knock-knock-joke": () => import("../../fun/knock-knock-joke/index.js"),
   "gemology/momme-weight-converter": () => import("../../gemology/momme-weight-converter/index.js"),
   "generate/uuid-v7": () => import("../../generate/uuid-v7/index.js"),
   "geology/apatite-saturation-temperature": () => import("../../geology/apatite-saturation-temperature/index.js"),
@@ -43,6 +45,7 @@ export const toolModuleLoaders: Readonly<
   "optimization/non-convex-multistart": () => import("../../optimization/non-convex-multistart/index.js"),
   "paleography/indiction-cycle-year-solver": () => import("../../paleography/indiction-cycle-year-solver/index.js"),
   "paleography/irongall-corrosion-grade-rater": () => import("../../paleography/irongall-corrosion-grade-rater/index.js"),
+  "paleontology/sr87sr86-locality-match": () => import("../../paleontology/sr87sr86-locality-match/index.js"),
   "random/aegean-number": () => import("../../random/aegean-number/index.js"),
   "random/carian-letter": () => import("../../random/carian-letter/index.js"),
   "random/mayan-numeral": () => import("../../random/mayan-numeral/index.js"),

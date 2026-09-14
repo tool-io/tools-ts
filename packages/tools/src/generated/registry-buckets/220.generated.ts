@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "film/reproduction-ratio": () => import("../../film/reproduction-ratio/index.js"),
   "finance/required-contribution": () => import("../../finance/required-contribution/index.js"),
   "forestry/bark-factor": () => import("../../forestry/bark-factor/index.js"),
+  "fun/semaphore-message-encoder": () => import("../../fun/semaphore-message-encoder/index.js"),
   "futurology/chief-futures-officer-foresight-analyst-role-emergence-lookup": () => import("../../futurology/chief-futures-officer-foresight-analyst-role-emergence-lookup/index.js"),
   "futurology/kessler-syndrome-orbital-debris-cascade-threshold-debate": () => import("../../futurology/kessler-syndrome-orbital-debris-cascade-threshold-debate/index.js"),
   "game/cooldown-stack-refresh-policy-lookup": () => import("../../game/cooldown-stack-refresh-policy-lookup/index.js"),
@@ -68,4 +69,5 @@ export const toolModuleLoaders: Readonly<
   "statistics/z-confidence-interval": () => import("../../statistics/z-confidence-interval/index.js"),
   "text/character-count": () => import("../../text/character-count/index.js"),
   "theatre/quick-change-handoff": () => import("../../theatre/quick-change-handoff/index.js"),
+  "viticulture/lateral-shoot-removal-percent": () => import("../../viticulture/lateral-shoot-removal-percent/index.js"),
 };

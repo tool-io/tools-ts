@@ -53,6 +53,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/pore-density-counter": () => import("../../mycology/pore-density-counter/index.js"),
   "numismatics/classic-commemorative-half-1892-1954-era-lookup": () => import("../../numismatics/classic-commemorative-half-1892-1954-era-lookup/index.js"),
   "petroleum/original-oil-in-place-ooip": () => import("../../petroleum/original-oil-in-place-ooip/index.js"),
+  "petroleum/water-density": () => import("../../petroleum/water-density/index.js"),
   "philately/stock-sheet-pocket-capacity-planner": () => import("../../philately/stock-sheet-pocket-capacity-planner/index.js"),
   "plumbing/air-chamber-size": () => import("../../plumbing/air-chamber-size/index.js"),
   "plumbing/anchor-force": () => import("../../plumbing/anchor-force/index.js"),

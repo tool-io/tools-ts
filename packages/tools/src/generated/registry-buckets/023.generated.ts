@@ -30,6 +30,8 @@ export const toolModuleLoaders: Readonly<
   "folklore/mirror-divination-ritual-variants-lookup": () => import("../../folklore/mirror-divination-ritual-variants-lookup/index.js"),
   "folklore/rapunzel-pregnancy-weight-tell-original-grimm-detail": () => import("../../folklore/rapunzel-pregnancy-weight-tell-original-grimm-detail/index.js"),
   "forestry/riparian-buffer-width-by-stream-class-lookup": () => import("../../forestry/riparian-buffer-width-by-stream-class-lookup/index.js"),
+  "fun/hieroglyph-name-translator": () => import("../../fun/hieroglyph-name-translator/index.js"),
+  "fun/zombie-survival-odds": () => import("../../fun/zombie-survival-odds/index.js"),
   "futurology/extrapolation-horizon-limit-warning-checker": () => import("../../futurology/extrapolation-horizon-limit-warning-checker/index.js"),
   "futurology/tabletop-exercise-coverage": () => import("../../futurology/tabletop-exercise-coverage/index.js"),
   "game/hearts-shoot-the-moon-feasibility-checker": () => import("../../game/hearts-shoot-the-moon-feasibility-checker/index.js"),

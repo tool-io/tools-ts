@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/wall-coincidence-frequency": () => import("../../acoustics/wall-coincidence-frequency/index.js"),
   "activation/sigmoid": () => import("../../activation/sigmoid/index.js"),
   "activation/softplus": () => import("../../activation/softplus/index.js"),
   "archival-studies/tiff-size-estimate-bit-depth": () => import("../../archival-studies/tiff-size-estimate-bit-depth/index.js"),
@@ -31,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/mipi-lane-rate": () => import("../../electronics/mipi-lane-rate/index.js"),
   "film/projector-screen-width": () => import("../../film/projector-screen-width/index.js"),
   "folklore/whistling-woman-crowing-hen-antiproverb-meaning-lookup": () => import("../../folklore/whistling-woman-crowing-hen-antiproverb-meaning-lookup/index.js"),
+  "fun/trivia-category-roulette": () => import("../../fun/trivia-category-roulette/index.js"),
   "game/dice-sum-mean-variance-nd6": () => import("../../game/dice-sum-mean-variance-nd6/index.js"),
   "gemology/depth-percentage-total": () => import("../../gemology/depth-percentage-total/index.js"),
   "geology/lead-isotope-ratio": () => import("../../geology/lead-isotope-ratio/index.js"),

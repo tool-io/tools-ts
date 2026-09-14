@@ -35,6 +35,8 @@ export const toolModuleLoaders: Readonly<
   "entrepreneurship/razor-blade-model-recurring-consumable-split-lookup": () => import("../../entrepreneurship/razor-blade-model-recurring-consumable-split-lookup/index.js"),
   "ergonomics/standing-reach-anthropometric": () => import("../../ergonomics/standing-reach-anthropometric/index.js"),
   "forestry/herbicide-active-ingredient-kg-per-hectare": () => import("../../forestry/herbicide-active-ingredient-kg-per-hectare/index.js"),
+  "fun/poker-chip-split": () => import("../../fun/poker-chip-split/index.js"),
+  "fun/tongue-twister-builder": () => import("../../fun/tongue-twister-builder/index.js"),
   "genomics/kmer-genome-size": () => import("../../genomics/kmer-genome-size/index.js"),
   "geology/overconsolidation-ratio": () => import("../../geology/overconsolidation-ratio/index.js"),
   "geology/seismic-two-way-time": () => import("../../geology/seismic-two-way-time/index.js"),

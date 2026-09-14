@@ -31,6 +31,7 @@ export const toolModuleLoaders: Readonly<
   "film/screen-gain": () => import("../../film/screen-gain/index.js"),
   "folklore/spilled-sugar-stir-the-tea-accident-logic-lookup": () => import("../../folklore/spilled-sugar-stir-the-tea-accident-logic-lookup/index.js"),
   "forestry/crown-fire-active-spotting-distance": () => import("../../forestry/crown-fire-active-spotting-distance/index.js"),
+  "fun/boggle-grid": () => import("../../fun/boggle-grid/index.js"),
   "futurology/inglehart-welzel-cultural-map-clash-of-values-input": () => import("../../futurology/inglehart-welzel-cultural-map-clash-of-values-input/index.js"),
   "geology/elastic-thickness": () => import("../../geology/elastic-thickness/index.js"),
   "geology/storativity-unconfined": () => import("../../geology/storativity-unconfined/index.js"),

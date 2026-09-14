@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "aesthetics/divine-proportion-artwork-claims-verdict-lookup": () => import("../../aesthetics/divine-proportion-artwork-claims-verdict-lookup/index.js"),
   "aquaculture/ice-requirement": () => import("../../aquaculture/ice-requirement/index.js"),
   "archival-studies/public-domain-boundary-checker": () => import("../../archival-studies/public-domain-boundary-checker/index.js"),
+  "astronomy/physical-size-from-angular-distance": () => import("../../astronomy/physical-size-from-angular-distance/index.js"),
   "banking/app-fraud-authorised-push-payment-uk-crm-reimbursement-code-lookup": () => import("../../banking/app-fraud-authorised-push-payment-uk-crm-reimbursement-code-lookup/index.js"),
   "banking/mudarabah-musharakah-profit-sharing-structures-lookup": () => import("../../banking/mudarabah-musharakah-profit-sharing-structures-lookup/index.js"),
   "banking/swift-mt103-required-fields-parser": () => import("../../banking/swift-mt103-required-fields-parser/index.js"),
@@ -77,5 +78,6 @@ export const toolModuleLoaders: Readonly<
   "toxicology/acute-to-chronic-extrapolation": () => import("../../toxicology/acute-to-chronic-extrapolation/index.js"),
   "toxicology/reference-dose-hazard-quotient": () => import("../../toxicology/reference-dose-hazard-quotient/index.js"),
   "transcriptomics/tumor-purity-proxy": () => import("../../transcriptomics/tumor-purity-proxy/index.js"),
+  "vexillology/pile-depth-proportion": () => import("../../vexillology/pile-depth-proportion/index.js"),
   "volcanology/fragmentation-index-percent": () => import("../../volcanology/fragmentation-index-percent/index.js"),
 };

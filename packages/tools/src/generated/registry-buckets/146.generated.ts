@@ -24,6 +24,9 @@ export const toolModuleLoaders: Readonly<
   "engineering/weld-group-eccentric-shear": () => import("../../engineering/weld-group-eccentric-shear/index.js"),
   "entrepreneurship/tos-limitation-liability-arbitration-presence-checker": () => import("../../entrepreneurship/tos-limitation-liability-arbitration-presence-checker/index.js"),
   "film/kdm-validity-window": () => import("../../film/kdm-validity-window/index.js"),
+  "fun/birthday-paradox": () => import("../../fun/birthday-paradox/index.js"),
+  "fun/cube-scramble": () => import("../../fun/cube-scramble/index.js"),
+  "fun/murder-mystery-cards": () => import("../../fun/murder-mystery-cards/index.js"),
   "futurology/delphi-method-round-consensus-convergence-tracker": () => import("../../futurology/delphi-method-round-consensus-convergence-tracker/index.js"),
   "genomics/vcf-header-audit": () => import("../../genomics/vcf-header-audit/index.js"),
   "glaciology/shear-strain-rate-depth": () => import("../../glaciology/shear-strain-rate-depth/index.js"),
@@ -65,6 +68,7 @@ export const toolModuleLoaders: Readonly<
   "typography/font-file-size-estimate-glyphs": () => import("../../typography/font-file-size-estimate-glyphs/index.js"),
   "vector/normalize": () => import("../../vector/normalize/index.js"),
   "vector/scalar-multiply": () => import("../../vector/scalar-multiply/index.js"),
+  "vexillology/fly-from-hoist-ratio": () => import("../../vexillology/fly-from-hoist-ratio/index.js"),
   "vexillology/nordic-cross-offset": () => import("../../vexillology/nordic-cross-offset/index.js"),
   "volcanology/hydrothermal-alteration-weakening-factor": () => import("../../volcanology/hydrothermal-alteration-weakening-factor/index.js"),
 };

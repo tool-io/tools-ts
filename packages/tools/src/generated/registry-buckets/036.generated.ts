@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "actuarial/probability-of-death-qx": () => import("../../actuarial/probability-of-death-qx/index.js"),
   "astronomy/eddington-luminosity-limit": () => import("../../astronomy/eddington-luminosity-limit/index.js"),
   "aviation/demonstrated-crosswind-comparison": () => import("../../aviation/demonstrated-crosswind-comparison/index.js"),
   "aviation/useful-load": () => import("../../aviation/useful-load/index.js"),
@@ -77,6 +78,7 @@ export const toolModuleLoaders: Readonly<
   "toxicology/qsar-descriptor": () => import("../../toxicology/qsar-descriptor/index.js"),
   "toxicology/ten-berge": () => import("../../toxicology/ten-berge/index.js"),
   "vexillology/blue-ensign-family-checker": () => import("../../vexillology/blue-ensign-family-checker/index.js"),
+  "vexillology/fabric-area-cm2": () => import("../../vexillology/fabric-area-cm2/index.js"),
   "virology/aav-cassette-packaging-budget": () => import("../../virology/aav-cassette-packaging-budget/index.js"),
   "viticulture/vine-spacing-density-per-hectare": () => import("../../viticulture/vine-spacing-density-per-hectare/index.js"),
   "vr/tracking-drift-per-hour": () => import("../../vr/tracking-drift-per-hour/index.js"),

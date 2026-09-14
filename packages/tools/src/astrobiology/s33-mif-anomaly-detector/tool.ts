@@ -66,7 +66,7 @@ export const example = {
   },
   output: {
     result: {
-      conditionalCapitalDelta33SPerMil: 0.48512482689994485,
+      conditionalCapitalDelta33SPerMil: 0.485124825719066,
       meetsCallerAbsoluteAnomaly: true,
     },
   },

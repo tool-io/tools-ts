@@ -32,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "folklore/limerick-aabba-rhyme-scheme-validator": () => import("../../folklore/limerick-aabba-rhyme-scheme-validator/index.js"),
   "folklore/migratory-legend-vs-fairy-tale-classifier": () => import("../../folklore/migratory-legend-vs-fairy-tale-classifier/index.js"),
   "folklore/new-home-first-items-bread-salt-custom-lookup": () => import("../../folklore/new-home-first-items-bread-salt-custom-lookup/index.js"),
+  "fun/lottery-numbers": () => import("../../fun/lottery-numbers/index.js"),
   "geology/fault-gouge-thickness": () => import("../../geology/fault-gouge-thickness/index.js"),
   "geology/geomechanics-unconfined-compressive-strength-ucs": () => import("../../geology/geomechanics-unconfined-compressive-strength-ucs/index.js"),
   "glaciology/firn-air-content-percentage": () => import("../../glaciology/firn-air-content-percentage/index.js"),

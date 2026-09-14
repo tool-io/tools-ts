@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "archival-studies/oral-history-abstract-limit-finder": () => import("../../archival-studies/oral-history-abstract-limit-finder/index.js"),
   "arithmetic/modular-complement": () => import("../../arithmetic/modular-complement/index.js"),
   "astrometry/common-motion-covariance-screen": () => import("../../astrometry/common-motion-covariance-screen/index.js"),
+  "astronomy/golden-hour-duration-latitude-lookup": () => import("../../astronomy/golden-hour-duration-latitude-lookup/index.js"),
   "astronomy/star-radius-from-luminosity-temperature": () => import("../../astronomy/star-radius-from-luminosity-temperature/index.js"),
   "aviation/crosswind-gust-component": () => import("../../aviation/crosswind-gust-component/index.js"),
   "aviation/v-speed-vlo": () => import("../../aviation/v-speed-vlo/index.js"),

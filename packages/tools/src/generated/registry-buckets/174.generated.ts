@@ -32,6 +32,8 @@ export const toolModuleLoaders: Readonly<
   "engineering/smoke-ventilation-area": () => import("../../engineering/smoke-ventilation-area/index.js"),
   "epigraphy/rubbing-legibility-grade-rater": () => import("../../epigraphy/rubbing-legibility-grade-rater/index.js"),
   "folklore/birds-on-a-wire-storm-pressure-sense-claim-checker": () => import("../../folklore/birds-on-a-wire-storm-pressure-sense-claim-checker/index.js"),
+  "fun/mash-game-predictor": () => import("../../fun/mash-game-predictor/index.js"),
+  "fun/signature-style-rater": () => import("../../fun/signature-style-rater/index.js"),
   "genetics/signed-dprime": () => import("../../genetics/signed-dprime/index.js"),
   "genetics/weighted-gamete-grid": () => import("../../genetics/weighted-gamete-grid/index.js"),
   "genomics/fasta-line-width-audit": () => import("../../genomics/fasta-line-width-audit/index.js"),

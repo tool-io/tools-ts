@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "finance/compound-annual-growth-rate": () => import("../../finance/compound-annual-growth-rate/index.js"),
   "folklore/songkran-water-splashing-thai-new-year-meaning-lookup": () => import("../../folklore/songkran-water-splashing-thai-new-year-meaning-lookup/index.js"),
   "forestry/deer-browse-impact-seedling-leader-percent": () => import("../../forestry/deer-browse-impact-seedling-leader-percent/index.js"),
+  "fun/cocktail-personality-match": () => import("../../fun/cocktail-personality-match/index.js"),
   "futurology/digital-legacy-posthumous-data-sovereignty-checklist": () => import("../../futurology/digital-legacy-posthumous-data-sovereignty-checklist/index.js"),
   "gemology/carats-heart-shape": () => import("../../gemology/carats-heart-shape/index.js"),
   "geology/geomechanics-brazilian-tensile-strength": () => import("../../geology/geomechanics-brazilian-tensile-strength/index.js"),
@@ -50,6 +51,7 @@ export const toolModuleLoaders: Readonly<
   "numismatics/alloy-percentage-mass-share": () => import("../../numismatics/alloy-percentage-mass-share/index.js"),
   "numismatics/gold-fineness-weight-content": () => import("../../numismatics/gold-fineness-weight-content/index.js"),
   "paleography/abbrev-density-per-hundred-words": () => import("../../paleography/abbrev-density-per-hundred-words/index.js"),
+  "paleontology/osteohistology-growth-class": () => import("../../paleontology/osteohistology-growth-class/index.js"),
   "philately/rarity-acquisition-scorer": () => import("../../philately/rarity-acquisition-scorer/index.js"),
   "philately/surviving-population-estimate": () => import("../../philately/surviving-population-estimate/index.js"),
   "plumbing/pipe-diameter-from-flow-velocity": () => import("../../plumbing/pipe-diameter-from-flow-velocity/index.js"),
@@ -66,5 +68,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/strain-balanced-critical-thickness": () => import("../../semiconductor/strain-balanced-critical-thickness/index.js"),
   "sociology/burt-network-constraint-efficiency": () => import("../../sociology/burt-network-constraint-efficiency/index.js"),
   "taxation/1031-boot-taxable-recognition-checker": () => import("../../taxation/1031-boot-taxable-recognition-checker/index.js"),
+  "vexillology/multi-flag-row-planner": () => import("../../vexillology/multi-flag-row-planner/index.js"),
   "viticulture/bird-netting-area-per-hectare": () => import("../../viticulture/bird-netting-area-per-hectare/index.js"),
 };

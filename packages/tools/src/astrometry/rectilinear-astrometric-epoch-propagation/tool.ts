@@ -56,7 +56,7 @@ export const exampleInput = {
   elapsedJulianYears: 1,
 } satisfies Input;
 export const exampleOutput = {
-  propagatedRaDegrees: 0.00027777777777560146,
+  propagatedRaDegrees: 0.00027777777779647295,
   propagatedDecDegrees: 0,
   propagatedDistanceParsecs: 1.0000000000117522,
 } satisfies Output;

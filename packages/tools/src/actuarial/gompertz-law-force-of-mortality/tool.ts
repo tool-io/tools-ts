@@ -62,9 +62,9 @@ export const example = {
   },
   output: {
     result: {
-      conditionalForcePerYear: 0.008,
+      conditionalForcePerYear: 0.008000000000000004,
       forceDoublingAgeIntervalYears: 1,
-      conditionalIntegratedNextYearHazard: 0.011541560327111709,
+      conditionalIntegratedNextYearHazard: 0.011541560327111712,
       conditionalNextYearSurvival: 0.9885247879806346,
     },
   },

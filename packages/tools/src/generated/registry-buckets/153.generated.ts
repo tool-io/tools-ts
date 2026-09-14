@@ -35,6 +35,8 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/tria-nomina-analyzer": () => import("../../epigraphy/tria-nomina-analyzer/index.js"),
   "folklore/knock-knock-two-runs-it-for-luck-theater-entry-lookup": () => import("../../folklore/knock-knock-two-runs-it-for-luck-theater-entry-lookup/index.js"),
   "forestry/willow-chip-moisture-percent-field-wilted-days": () => import("../../forestry/willow-chip-moisture-percent-field-wilted-days/index.js"),
+  "fun/barcode-art-generator": () => import("../../fun/barcode-art-generator/index.js"),
+  "fun/fortune-cookie": () => import("../../fun/fortune-cookie/index.js"),
   "genetics/mitochondrial-region-coverage": () => import("../../genetics/mitochondrial-region-coverage/index.js"),
   "geology/darcy-velocity": () => import("../../geology/darcy-velocity/index.js"),
   "glaciology/steady-state-thickness-profile-vialov": () => import("../../glaciology/steady-state-thickness-profile-vialov/index.js"),

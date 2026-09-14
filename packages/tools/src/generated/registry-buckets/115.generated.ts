@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "actuarial/nominal-to-effective-interest-pthly": () => import("../../actuarial/nominal-to-effective-interest-pthly/index.js"),
   "aesthetics/greenberg-medium-specificity-formalism-lookup": () => import("../../aesthetics/greenberg-medium-specificity-formalism-lookup/index.js"),
   "agriculture/storage-loss-percentage": () => import("../../agriculture/storage-loss-percentage/index.js"),
   "astrobiology/mars-co2-frost-sublimation-rate-calculator": () => import("../../astrobiology/mars-co2-frost-sublimation-rate-calculator/index.js"),
@@ -29,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "ergonomics/strain-index-effort-duration-score": () => import("../../ergonomics/strain-index-effort-duration-score/index.js"),
   "folklore/alligators-in-nyc-sewers-legend-status-lookup": () => import("../../folklore/alligators-in-nyc-sewers-legend-status-lookup/index.js"),
   "forestry/bamboo-culm-harvest-age-three-year-maturity": () => import("../../forestry/bamboo-culm-harvest-age-three-year-maturity/index.js"),
+  "fun/dnd-encounter": () => import("../../fun/dnd-encounter/index.js"),
   "genetics/independent-inbreeding-paths": () => import("../../genetics/independent-inbreeding-paths/index.js"),
   "genetics/x-recessive-son-risk": () => import("../../genetics/x-recessive-son-risk/index.js"),
   "geology/downlap-angle": () => import("../../geology/downlap-angle/index.js"),
@@ -65,6 +67,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/cmp-removal-rate": () => import("../../semiconductor/cmp-removal-rate/index.js"),
   "sericulture/degumming-weight-loss-percent": () => import("../../sericulture/degumming-weight-loss-percent/index.js"),
   "sociology/parity-progression-ratio": () => import("../../sociology/parity-progression-ratio/index.js"),
+  "sports/climbing-grade-font-to-v-scale-converter": () => import("../../sports/climbing-grade-font-to-v-scale-converter/index.js"),
   "taxation/gift-tax-annual-exclusion-count-checker": () => import("../../taxation/gift-tax-annual-exclusion-count-checker/index.js"),
   "theatre/drafting-sheet-coverage": () => import("../../theatre/drafting-sheet-coverage/index.js"),
   "theatre/gobo-pattern-size-a-size-b-lookup": () => import("../../theatre/gobo-pattern-size-a-size-b-lookup/index.js"),

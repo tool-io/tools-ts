@@ -30,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "geology/geological-strength-index-gsi": () => import("../../geology/geological-strength-index-gsi/index.js"),
   "glaciology/freeboard-flotation-requirement": () => import("../../glaciology/freeboard-flotation-requirement/index.js"),
   "hash/blake-384": () => import("../../hash/blake-384/index.js"),
+  "horology/crown-thread-pitch-lookup": () => import("../../horology/crown-thread-pitch-lookup/index.js"),
   "kinesiology/one-rep-max-training-loads": () => import("../../kinesiology/one-rep-max-training-loads/index.js"),
   "laser/fluorescence-upconversion": () => import("../../laser/fluorescence-upconversion/index.js"),
   "laser/laser-nd-yvo4-vs-nd-yag-absorption-cross-section-compare-lookup": () => import("../../laser/laser-nd-yvo4-vs-nd-yag-absorption-cross-section-compare-lookup/index.js"),

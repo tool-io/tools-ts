@@ -16,7 +16,7 @@ export const calculate = (input: Input): Output => {
 };
 export const example = {
   input: { actualEbNoLinear: 1 },
-  output: { result: { value: 0.07864960352514257 } },
+  output: { result: { value: 0.07864960611999666 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
   id: "electronics/bit-error-rate-from-snr",

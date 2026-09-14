@@ -31,6 +31,8 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/margin-symmetry-deviation-rater": () => import("../../epigraphy/margin-symmetry-deviation-rater/index.js"),
   "ergonomics/strain-index-wrist-posture": () => import("../../ergonomics/strain-index-wrist-posture/index.js"),
   "film/dcp-bitrate": () => import("../../film/dcp-bitrate/index.js"),
+  "fun/secret-santa": () => import("../../fun/secret-santa/index.js"),
+  "fun/would-you-rather": () => import("../../fun/would-you-rather/index.js"),
   "futurology/degrowth-postgrowth-economy-proponents-taxonomy-lookup": () => import("../../futurology/degrowth-postgrowth-economy-proponents-taxonomy-lookup/index.js"),
   "genetics/imputation-info-gate": () => import("../../genetics/imputation-info-gate/index.js"),
   "genetics/synonymous-codon-sites": () => import("../../genetics/synonymous-codon-sites/index.js"),

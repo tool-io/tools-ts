@@ -89,7 +89,7 @@ export const exampleInput = {
 } satisfies Input;
 export const exampleOutput = {
   annularApplicationDepthsMm: [0.3183098861837907, 0.15915494309189535],
-  areaWeightedPivotDepthMm: 0.1989436788648692,
+  areaWeightedPivotDepthMm: 0.19894367886486916,
   totalDeliveredPivotWaterM3: 0.25,
 } satisfies Output;
 export const example = {

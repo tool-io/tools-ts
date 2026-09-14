@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/audience-absorption-reference": () => import("../../acoustics/audience-absorption-reference/index.js"),
+  "actuarial/life-table-lx-scaling": () => import("../../actuarial/life-table-lx-scaling/index.js"),
   "agriculture/aeration-airflow-rate": () => import("../../agriculture/aeration-airflow-rate/index.js"),
   "aquaculture/hepatosomatic-index": () => import("../../aquaculture/hepatosomatic-index/index.js"),
   "archaeology/meat-weight-utility-index": () => import("../../archaeology/meat-weight-utility-index/index.js"),
@@ -17,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "biology/respiratory-rate": () => import("../../biology/respiratory-rate/index.js"),
   "biology/x-linked-hardy-weinberg": () => import("../../biology/x-linked-hardy-weinberg/index.js"),
   "carpentry/schubkasten-boden-dicke-nach-breite": () => import("../../carpentry/schubkasten-boden-dicke-nach-breite/index.js"),
+  "climatology/isothermality-percent": () => import("../../climatology/isothermality-percent/index.js"),
   "climatology/spei-index": () => import("../../climatology/spei-index/index.js"),
   "color/delta-e-cie76": () => import("../../color/delta-e-cie76/index.js"),
   "construction/dumpster-weight-limit": () => import("../../construction/dumpster-weight-limit/index.js"),
@@ -34,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/hydroxymethylation-subtraction": () => import("../../epigenetics/hydroxymethylation-subtraction/index.js"),
   "forestry/leaf-area-index-forestry": () => import("../../forestry/leaf-area-index-forestry/index.js"),
   "forestry/probability-of-ignition-from-fine-fuel": () => import("../../forestry/probability-of-ignition-from-fine-fuel/index.js"),
+  "fun/tetris-sequence": () => import("../../fun/tetris-sequence/index.js"),
   "futurology/minimal-genome-jcvi-syn3-0-synthetic-biology-milestone": () => import("../../futurology/minimal-genome-jcvi-syn3-0-synthetic-biology-milestone/index.js"),
   "generate/uuid-v3": () => import("../../generate/uuid-v3/index.js"),
   "horology/case-refinishing-removal-budget-calculator": () => import("../../horology/case-refinishing-removal-budget-calculator/index.js"),

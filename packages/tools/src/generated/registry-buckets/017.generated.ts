@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/box-joint-finger-width": () => import("../../carpentry/box-joint-finger-width/index.js"),
   "carpentry/doweling-jig-setting": () => import("../../carpentry/doweling-jig-setting/index.js"),
   "carpentry/leim-fugendicke-01-03mm": () => import("../../carpentry/leim-fugendicke-01-03mm/index.js"),
+  "climatology/freezing-degree-days": () => import("../../climatology/freezing-degree-days/index.js"),
   "color/brand-color-distance-perceptual-rank": () => import("../../color/brand-color-distance-perceptual-rank/index.js"),
   "construction/flooring-transition-height-difference": () => import("../../construction/flooring-transition-height-difference/index.js"),
   "construction/rebar-weight-per-foot": () => import("../../construction/rebar-weight-per-foot/index.js"),

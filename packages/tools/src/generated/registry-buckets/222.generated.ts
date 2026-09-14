@@ -5,8 +5,10 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/depletion-units-natural-resource-extraction": () => import("../../accounting/depletion-units-natural-resource-extraction/index.js"),
+  "acoustics/apparent-sound-reduction-index": () => import("../../acoustics/apparent-sound-reduction-index/index.js"),
   "apiculture/fondant-patty-count-per-colony": () => import("../../apiculture/fondant-patty-count-per-colony/index.js"),
   "aquaculture/settling-velocity": () => import("../../aquaculture/settling-velocity/index.js"),
+  "archaeology/sex-determination-pelvis-phenice-score": () => import("../../archaeology/sex-determination-pelvis-phenice-score/index.js"),
   "astronomy/barlow-effective-focal-length": () => import("../../astronomy/barlow-effective-focal-length/index.js"),
   "bacteriology/nitrate-zinc-step-logic": () => import("../../bacteriology/nitrate-zinc-step-logic/index.js"),
   "banking/five-cs-of-credit-capacity-capital-collateral-character-conditions": () => import("../../banking/five-cs-of-credit-capacity-capital-collateral-character-conditions/index.js"),
@@ -31,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/diesel-cycle-efficiency": () => import("../../engineering/diesel-cycle-efficiency/index.js"),
   "engineering/effective-moment-inertia": () => import("../../engineering/effective-moment-inertia/index.js"),
   "epigenetics/methylation-context": () => import("../../epigenetics/methylation-context/index.js"),
+  "fun/excuse-generator": () => import("../../fun/excuse-generator/index.js"),
   "futurology/liquid-democracy-delegative-voting-platform-experiments": () => import("../../futurology/liquid-democracy-delegative-voting-platform-experiments/index.js"),
   "genomics/trailing-adapter-contamination": () => import("../../genomics/trailing-adapter-contamination/index.js"),
   "geology/mid-ocean-ridge-spreading-rate-half": () => import("../../geology/mid-ocean-ridge-spreading-rate-half/index.js"),

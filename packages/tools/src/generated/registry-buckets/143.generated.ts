@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/lna-noise-figure-cascade": () => import("../../electronics/lna-noise-figure-cascade/index.js"),
   "electronics/quantization-noise-snr": () => import("../../electronics/quantization-noise-snr/index.js"),
   "engineering/hvac-heating-load": () => import("../../engineering/hvac-heating-load/index.js"),
+  "fun/sleep-position-personality": () => import("../../fun/sleep-position-personality/index.js"),
   "futurology/augmentation-automation-strategy-grid": () => import("../../futurology/augmentation-automation-strategy-grid/index.js"),
   "geology/wentworth-phi-to-mm": () => import("../../geology/wentworth-phi-to-mm/index.js"),
   "glaciology/accumulation-gradient-altitude": () => import("../../glaciology/accumulation-gradient-altitude/index.js"),

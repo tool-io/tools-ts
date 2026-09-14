@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/classroom-background-noise-screen": () => import("../../acoustics/classroom-background-noise-screen/index.js"),
+  "actuarial/perpetuity-immediate-pv": () => import("../../actuarial/perpetuity-immediate-pv/index.js"),
   "agriculture/fertilizer-requirement-nitrogen": () => import("../../agriculture/fertilizer-requirement-nitrogen/index.js"),
   "astronomy/eyepiece-exit-pupil-mm": () => import("../../astronomy/eyepiece-exit-pupil-mm/index.js"),
   "aviation/bank-angle-standard-rate": () => import("../../aviation/bank-angle-standard-rate/index.js"),
@@ -52,6 +53,8 @@ export const toolModuleLoaders: Readonly<
   "music/diminished-augmented-interval-classifier": () => import("../../music/diminished-augmented-interval-classifier/index.js"),
   "music/sus-chord-vs-triad-classifier": () => import("../../music/sus-chord-vs-triad-classifier/index.js"),
   "number/amicable-pair-checker": () => import("../../number/amicable-pair-checker/index.js"),
+  "paleontology/decay-constant-from-half-life": () => import("../../paleontology/decay-constant-from-half-life/index.js"),
+  "paleontology/encephalization-quotient-fossil": () => import("../../paleontology/encephalization-quotient-fossil/index.js"),
   "plumbing/chlorine-decay-rate": () => import("../../plumbing/chlorine-decay-rate/index.js"),
   "random/anatolian-hieroglyph": () => import("../../random/anatolian-hieroglyph/index.js"),
   "random/bit-shift-exercise": () => import("../../random/bit-shift-exercise/index.js"),

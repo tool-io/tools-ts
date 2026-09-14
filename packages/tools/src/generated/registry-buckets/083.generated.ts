@@ -36,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/laser-divergence-angle": () => import("../../electronics/laser-divergence-angle/index.js"),
   "electronics/radar-doppler-shift": () => import("../../electronics/radar-doppler-shift/index.js"),
   "engineering/pump-hydraulic-power": () => import("../../engineering/pump-hydraulic-power/index.js"),
+  "fun/paranoia-question": () => import("../../fun/paranoia-question/index.js"),
   "genetics/centromere-second-division-distance": () => import("../../genetics/centromere-second-division-distance/index.js"),
   "genomics/synonymous-clock-divergence": () => import("../../genomics/synonymous-clock-divergence/index.js"),
   "geology/niggli-value-alk": () => import("../../geology/niggli-value-alk/index.js"),

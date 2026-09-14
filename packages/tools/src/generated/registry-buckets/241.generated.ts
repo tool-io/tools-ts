@@ -49,6 +49,7 @@ export const toolModuleLoaders: Readonly<
   "random/khudawadi-character": () => import("../../random/khudawadi-character/index.js"),
   "sailing/wind-pressure-on-sail": () => import("../../sailing/wind-pressure-on-sail/index.js"),
   "semiconductor/bjt-output-conductance": () => import("../../semiconductor/bjt-output-conductance/index.js"),
+  "text/truncate": () => import("../../text/truncate/index.js"),
   "theatre/house-comp-seats-percent-cap-checker": () => import("../../theatre/house-comp-seats-percent-cap-checker/index.js"),
   "transcriptomics/library-mito-fraction": () => import("../../transcriptomics/library-mito-fraction/index.js"),
   "veterinary/heart-rate-dog": () => import("../../veterinary/heart-rate-dog/index.js"),

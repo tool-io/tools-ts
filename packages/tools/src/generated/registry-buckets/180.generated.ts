@@ -48,6 +48,7 @@ export const toolModuleLoaders: Readonly<
   "html/u-unarticulated-annotation-usage": () => import("../../html/u-unarticulated-annotation-usage/index.js"),
   "http/cookie-parser": () => import("../../http/cookie-parser/index.js"),
   "http/link-header-parser": () => import("../../http/link-header-parser/index.js"),
+  "limnology/volume-from-bathymetric-contours": () => import("../../limnology/volume-from-bathymetric-contours/index.js"),
   "math/frobenius-symbol": () => import("../../math/frobenius-symbol/index.js"),
   "math/tractrix-length": () => import("../../math/tractrix-length/index.js"),
   "math/viete-product-approx": () => import("../../math/viete-product-approx/index.js"),

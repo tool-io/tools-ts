@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/asa-committee-scope-reference": () => import("../../acoustics/asa-committee-scope-reference/index.js"),
   "aquaculture/net-fouling-loss": () => import("../../aquaculture/net-fouling-loss/index.js"),
+  "astronomy/refraction-near-horizon-arcmin-approx": () => import("../../astronomy/refraction-near-horizon-arcmin-approx/index.js"),
   "auditing/ratio-analysis-common-size-fluctuation-prompt-list": () => import("../../auditing/ratio-analysis-common-size-fluctuation-prompt-list/index.js"),
   "bacteriology/bactericidal-survival-endpoint": () => import("../../bacteriology/bactericidal-survival-endpoint/index.js"),
   "banking/dual-authorization-wire-threshold-checker": () => import("../../banking/dual-authorization-wire-threshold-checker/index.js"),
@@ -23,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/relay-coil-power": () => import("../../electronics/relay-coil-power/index.js"),
   "ergonomics/niosh-vertical-multiplier": () => import("../../ergonomics/niosh-vertical-multiplier/index.js"),
   "finance/cost-plus-price": () => import("../../finance/cost-plus-price/index.js"),
+  "gemology/ultrasonic-safety-checker": () => import("../../gemology/ultrasonic-safety-checker/index.js"),
   "geology/garnet-biotite-geothermometer": () => import("../../geology/garnet-biotite-geothermometer/index.js"),
   "geology/geomechanics-hydrate-stability-zone-thickness": () => import("../../geology/geomechanics-hydrate-stability-zone-thickness/index.js"),
   "geology/provenance-index": () => import("../../geology/provenance-index/index.js"),

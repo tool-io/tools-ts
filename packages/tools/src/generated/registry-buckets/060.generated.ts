@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "archaeology/relative-humidity-safe-display-metal-corrosion": () => import("../../archaeology/relative-humidity-safe-display-metal-corrosion/index.js"),
   "astrobiology/millerurey-product-yield-table-lookup": () => import("../../astrobiology/millerurey-product-yield-table-lookup/index.js"),
   "astrometry/equatorial-ecliptic-axis-rotation": () => import("../../astrometry/equatorial-ecliptic-axis-rotation/index.js"),
   "auditing/cloud-responsibility-coverage": () => import("../../auditing/cloud-responsibility-coverage/index.js"),
@@ -33,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "entrepreneurship/anti-dilution-comparison": () => import("../../entrepreneurship/anti-dilution-comparison/index.js"),
   "finance/annualized-return": () => import("../../finance/annualized-return/index.js"),
   "folklore/bogeyman-global-equivalents-name-table-lookup": () => import("../../folklore/bogeyman-global-equivalents-name-table-lookup/index.js"),
+  "fun/handwriting-slant-analyzer": () => import("../../fun/handwriting-slant-analyzer/index.js"),
   "gemology/hearts-arrows-check": () => import("../../gemology/hearts-arrows-check/index.js"),
   "gemology/polish-line-visibility": () => import("../../gemology/polish-line-visibility/index.js"),
   "genomics/callable-depth-fraction": () => import("../../genomics/callable-depth-fraction/index.js"),

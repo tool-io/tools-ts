@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "astronomy/planetary-conjunction-separation-degrees-checker": () => import("../../astronomy/planetary-conjunction-separation-degrees-checker/index.js"),
   "auditing/preparation-engagement-no-assurance-report-elements-lookup": () => import("../../auditing/preparation-engagement-no-assurance-report-elements-lookup/index.js"),
   "aviation/dynamic-pressure": () => import("../../aviation/dynamic-pressure/index.js"),
   "banking/neobank-baas-partner-bank-sponsorship-model-explainer": () => import("../../banking/neobank-baas-partner-bank-sponsorship-model-explainer/index.js"),
@@ -17,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "classics/aeneid-homeric-echo-allusion-crossref-lookup": () => import("../../classics/aeneid-homeric-echo-allusion-crossref-lookup/index.js"),
   "classics/iambic-trimeter-porson-law-checker": () => import("../../classics/iambic-trimeter-porson-law-checker/index.js"),
   "classics/knossos-evans-reconstruction-concrete-frescoes-controversy": () => import("../../classics/knossos-evans-reconstruction-concrete-frescoes-controversy/index.js"),
+  "climatology/anomaly-zscore": () => import("../../climatology/anomaly-zscore/index.js"),
   "climatology/last-spring-frost-date": () => import("../../climatology/last-spring-frost-date/index.js"),
   "construction/structural-shear-wall-length": () => import("../../construction/structural-shear-wall-length/index.js"),
   "cooking/butter-tablespoons-to-grams": () => import("../../cooking/butter-tablespoons-to-grams/index.js"),
@@ -31,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/earthing-resistance-single-rod": () => import("../../engineering/earthing-resistance-single-rod/index.js"),
   "engineering/fiber-attenuation": () => import("../../engineering/fiber-attenuation/index.js"),
   "engineering/rolling-reduction-ratio": () => import("../../engineering/rolling-reduction-ratio/index.js"),
+  "fun/drinking-game-rules": () => import("../../fun/drinking-game-rules/index.js"),
   "futurology/gross-national-happiness-bhutan-four-pillars-nine-domains": () => import("../../futurology/gross-national-happiness-bhutan-four-pillars-nine-domains/index.js"),
   "health/ideal-weight-devine": () => import("../../health/ideal-weight-devine/index.js"),
   "heraldry/difference-subtlety-rater": () => import("../../heraldry/difference-subtlety-rater/index.js"),

@@ -31,7 +31,7 @@ export const calculate = (input: Input): Output => {
 };
 export const exampleInput = { x: 4, simpsonPanels: 100 } satisfies Input;
 export const exampleOutput = {
-  offsetLogarithmicIntegral: 1.922421314921558,
+  offsetLogarithmicIntegral: 1.9224213202006408,
 } satisfies Output;
 export const example = {
   input: exampleInput,

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "arithmetic/round-significant-figures": () => import("../../arithmetic/round-significant-figures/index.js"),
   "astrometry/iterative-astrometric-sigma-clip": () => import("../../astrometry/iterative-astrometric-sigma-clip/index.js"),
   "aviation/crosswind-limit-check": () => import("../../aviation/crosswind-limit-check/index.js"),
   "banking/minimum-balance-waiver-checker": () => import("../../banking/minimum-balance-waiver-checker/index.js"),
@@ -32,7 +33,10 @@ export const toolModuleLoaders: Readonly<
   "folklore/opposing-proverbs-counter-duel-lookup": () => import("../../folklore/opposing-proverbs-counter-duel-lookup/index.js"),
   "forestry/canopy-base-height": () => import("../../forestry/canopy-base-height/index.js"),
   "format/currency": () => import("../../format/currency/index.js"),
+  "fun/coffee-horoscope": () => import("../../fun/coffee-horoscope/index.js"),
+  "fun/emoji-translator-fun": () => import("../../fun/emoji-translator-fun/index.js"),
   "game/checkers-forced-jump-rule-checker": () => import("../../game/checkers-forced-jump-rule-checker/index.js"),
+  "gemology/heat-treatment-temp-lookup": () => import("../../gemology/heat-treatment-temp-lookup/index.js"),
   "genomics/marked-duplicate-fraction": () => import("../../genomics/marked-duplicate-fraction/index.js"),
   "geology/acid-fracture-conductivity": () => import("../../geology/acid-fracture-conductivity/index.js"),
   "geology/geothermal-heat-flow": () => import("../../geology/geothermal-heat-flow/index.js"),
@@ -70,5 +74,6 @@ export const toolModuleLoaders: Readonly<
   "toxicology/ttc-exposure": () => import("../../toxicology/ttc-exposure/index.js"),
   "transcriptomics/multimapper-fraction": () => import("../../transcriptomics/multimapper-fraction/index.js"),
   "veterinary/inhalant-mac-value-sevoflurane-cat": () => import("../../veterinary/inhalant-mac-value-sevoflurane-cat/index.js"),
+  "vexillology/code-citation-formatter": () => import("../../vexillology/code-citation-formatter/index.js"),
   "vr/reprojection-ratio": () => import("../../vr/reprojection-ratio/index.js"),
 };

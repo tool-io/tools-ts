@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/latin-abbreviation-expander": () => import("../../epigraphy/latin-abbreviation-expander/index.js"),
   "folklore/sleeping-facing-north-dead-person-position-taboo-lookup": () => import("../../folklore/sleeping-facing-north-dead-person-position-taboo-lookup/index.js"),
   "forestry/site-preparation-scarification-soil-disturbance-percent": () => import("../../forestry/site-preparation-scarification-soil-disturbance-percent/index.js"),
+  "fun/roulette-payout": () => import("../../fun/roulette-payout/index.js"),
   "game/chess-insufficient-material-checker": () => import("../../game/chess-insufficient-material-checker/index.js"),
   "game/enemy-fov-cone-detection-angle-checker": () => import("../../game/enemy-fov-cone-detection-angle-checker/index.js"),
   "gemology/carats-emerald": () => import("../../gemology/carats-emerald/index.js"),

@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "accounting/employer-payroll-tax-expense-split": () => import("../../accounting/employer-payroll-tax-expense-split/index.js"),
   "actuarial/contingent-insurance-probability": () => import("../../actuarial/contingent-insurance-probability/index.js"),
+  "actuarial/weibull-hazard-survival": () => import("../../actuarial/weibull-hazard-survival/index.js"),
   "actuarial/withdrawal-probability-service-table": () => import("../../actuarial/withdrawal-probability-service-table/index.js"),
   "aesthetics/nine-rasas-natya-shastra-catalog-lookup": () => import("../../aesthetics/nine-rasas-natya-shastra-catalog-lookup/index.js"),
   "agriculture/crop-yield-per-hectare": () => import("../../agriculture/crop-yield-per-hectare/index.js"),
@@ -44,6 +45,7 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/hamilton-depression-rating": () => import("../../neuroscience/hamilton-depression-rating/index.js"),
   "neuroscience/somatosensory-evoked-potential-n20": () => import("../../neuroscience/somatosensory-evoked-potential-n20/index.js"),
   "numismatics/water-displacement-volume-test": () => import("../../numismatics/water-displacement-volume-test/index.js"),
+  "paleontology/extinction-rate-per-lmyr": () => import("../../paleontology/extinction-rate-per-lmyr/index.js"),
   "pharmacy/dopamine-drip-mcg-kg-min": () => import("../../pharmacy/dopamine-drip-mcg-kg-min/index.js"),
   "plumbing/fire-sprinkler-obstruction-distance": () => import("../../plumbing/fire-sprinkler-obstruction-distance/index.js"),
   "plumbing/gas-pipe-sizing-low-pressure": () => import("../../plumbing/gas-pipe-sizing-low-pressure/index.js"),

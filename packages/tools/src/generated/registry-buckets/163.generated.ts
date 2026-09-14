@@ -54,5 +54,6 @@ export const toolModuleLoaders: Readonly<
   "speleology/calorie-requirement-cold-trip": () => import("../../speleology/calorie-requirement-cold-trip/index.js"),
   "text/join": () => import("../../text/join/index.js"),
   "toxicology/acute-reference-dose": () => import("../../toxicology/acute-reference-dose/index.js"),
+  "vexillology/precedence-two-flag-resolver": () => import("../../vexillology/precedence-two-flag-resolver/index.js"),
   "web/transfer-encoding-parser": () => import("../../web/transfer-encoding-parser/index.js"),
 };

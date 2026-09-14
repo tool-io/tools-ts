@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "apiculture/honey-frame-weight-full-estimate": () => import("../../apiculture/honey-frame-weight-full-estimate/index.js"),
   "aquaculture/feed-cost-per-kg-gain": () => import("../../aquaculture/feed-cost-per-kg-gain/index.js"),
   "astrometry/anisotropic-psf-sampling": () => import("../../astrometry/anisotropic-psf-sampling/index.js"),
+  "astronomy/star-trail-length-pixels-per-minute": () => import("../../astronomy/star-trail-length-pixels-per-minute/index.js"),
   "auditing/tick-mark-legend-standard-symbols-meaning-table": () => import("../../auditing/tick-mark-legend-standard-symbols-meaning-table/index.js"),
   "banking/balance-transfer-break-even-months": () => import("../../banking/balance-transfer-break-even-months/index.js"),
   "biology/lab-dilution-series": () => import("../../biology/lab-dilution-series/index.js"),

@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/nernst-equation": () => import("../../chemistry/nernst-equation/index.js"),
   "chemistry/vsepr-geometry": () => import("../../chemistry/vsepr-geometry/index.js"),
   "climatology/planck-response-parameter": () => import("../../climatology/planck-response-parameter/index.js"),
+  "climatology/tropical-nights-counter": () => import("../../climatology/tropical-nights-counter/index.js"),
   "construction/repointing-mortar-volume": () => import("../../construction/repointing-mortar-volume/index.js"),
   "cooking/muffin-batter-per-cup": () => import("../../cooking/muffin-batter-per-cup/index.js"),
   "cooking/pasta-cooking-time-altitude": () => import("../../cooking/pasta-cooking-time-altitude/index.js"),

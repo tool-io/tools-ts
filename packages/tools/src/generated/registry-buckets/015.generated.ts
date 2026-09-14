@@ -37,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "game/twenty48-merge-value-sum-per-swipe": () => import("../../game/twenty48-merge-value-sum-per-swipe/index.js"),
   "gemology/birefringence-delta-ri": () => import("../../gemology/birefringence-delta-ri/index.js"),
   "geodesy/wgs84-semi-major-lookup": () => import("../../geodesy/wgs84-semi-major-lookup/index.js"),
+  "glaciology/degree-day-factor-melt-water-equivalent": () => import("../../glaciology/degree-day-factor-melt-water-equivalent/index.js"),
   "heraldry/dimidiation-half-merge-solver": () => import("../../heraldry/dimidiation-half-merge-solver/index.js"),
   "insurance/fsa-election-split": () => import("../../insurance/fsa-election-split/index.js"),
   "interpolation/linear": () => import("../../interpolation/linear/index.js"),

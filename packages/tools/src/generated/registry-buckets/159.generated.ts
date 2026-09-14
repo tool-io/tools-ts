@@ -24,6 +24,8 @@ export const toolModuleLoaders: Readonly<
   "forestry/sap-to-syrup-conversion-ratio-liter-liter": () => import("../../forestry/sap-to-syrup-conversion-ratio-liter-liter/index.js"),
   "forestry/under-bark-diameter": () => import("../../forestry/under-bark-diameter/index.js"),
   "format/file-mode": () => import("../../format/file-mode/index.js"),
+  "fun/leet-speak-converter": () => import("../../fun/leet-speak-converter/index.js"),
+  "fun/this-or-that": () => import("../../fun/this-or-that/index.js"),
   "genomics/transition-transversion-ratio": () => import("../../genomics/transition-transversion-ratio/index.js"),
   "geometry/chebyshev-distance": () => import("../../geometry/chebyshev-distance/index.js"),
   "glaciology/enhancement-factor-soft-ice": () => import("../../glaciology/enhancement-factor-soft-ice/index.js"),
@@ -57,5 +59,6 @@ export const toolModuleLoaders: Readonly<
   "sociology/network-centralization-degree": () => import("../../sociology/network-centralization-degree/index.js"),
   "sociology/poverty-gap-index": () => import("../../sociology/poverty-gap-index/index.js"),
   "sociology/structural-hole-redundancy-measure": () => import("../../sociology/structural-hole-redundancy-measure/index.js"),
+  "vexillology/pole-height-by-flag-size": () => import("../../vexillology/pole-height-by-flag-size/index.js"),
   "vexillology/us-canton-fraction": () => import("../../vexillology/us-canton-fraction/index.js"),
 };

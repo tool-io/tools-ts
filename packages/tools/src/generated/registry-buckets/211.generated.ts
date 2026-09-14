@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "folklore/red-string-of-fate-east-asian-lore-lookup": () => import("../../folklore/red-string-of-fate-east-asian-lore-lookup/index.js"),
   "forestry/heart-rot-column-height-estimate-from-conk-position": () => import("../../forestry/heart-rot-column-height-estimate-from-conk-position/index.js"),
   "futurology/horizon-scanning-team-cadence-report-template": () => import("../../futurology/horizon-scanning-team-cadence-report-template/index.js"),
+  "gemology/annealing-range-lookup": () => import("../../gemology/annealing-range-lookup/index.js"),
   "genetics/per-base-generation-mutation-rate": () => import("../../genetics/per-base-generation-mutation-rate/index.js"),
   "geology/nodal-analysis-outflow-performance": () => import("../../geology/nodal-analysis-outflow-performance/index.js"),
   "horology/pocket-watch-up-down-power-indicator-lookup": () => import("../../horology/pocket-watch-up-down-power-indicator-lookup/index.js"),

@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/helmholtz-resonance-frequency": () => import("../../acoustics/helmholtz-resonance-frequency/index.js"),
+  "actuarial/force-of-mortality-from-lx": () => import("../../actuarial/force-of-mortality-from-lx/index.js"),
   "aesthetics/data-sublime-information-overload-visualization-lookup": () => import("../../aesthetics/data-sublime-information-overload-visualization-lookup/index.js"),
   "aesthetics/institutional-critique-meta-frame-level-lookup": () => import("../../aesthetics/institutional-critique-meta-frame-level-lookup/index.js"),
   "agriculture/soil-texture-clay-percentage": () => import("../../agriculture/soil-texture-clay-percentage/index.js"),
@@ -33,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "folklore/nose-itching-quarrel-coming-left-right-meaning-lookup": () => import("../../folklore/nose-itching-quarrel-coming-left-right-meaning-lookup/index.js"),
   "futurology/bostrom-posthuman-superintelligence-class-letter-taxonomy": () => import("../../futurology/bostrom-posthuman-superintelligence-class-letter-taxonomy/index.js"),
   "game-search/alpha-beta-uct": () => import("../../game-search/alpha-beta-uct/index.js"),
+  "gemology/ideal-diameter-from-carat": () => import("../../gemology/ideal-diameter-from-carat/index.js"),
   "geology/hafnium-epsilon": () => import("../../geology/hafnium-epsilon/index.js"),
   "geometry/point-in-polygon": () => import("../../geometry/point-in-polygon/index.js"),
   "glaciology/meltwater-storage-delay-glacier": () => import("../../glaciology/meltwater-storage-delay-glacier/index.js"),
@@ -59,6 +61,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/morel-soil-degree-day-accumulator": () => import("../../mycology/morel-soil-degree-day-accumulator/index.js"),
   "neuroscience/reading-span-score": () => import("../../neuroscience/reading-span-score/index.js"),
   "number/divisor-count": () => import("../../number/divisor-count/index.js"),
+  "paleontology/femur-circumference-mass": () => import("../../paleontology/femur-circumference-mass/index.js"),
   "petroleum/fractional-flow-fw": () => import("../../petroleum/fractional-flow-fw/index.js"),
   "pregnancy/quad-screen-risk": () => import("../../pregnancy/quad-screen-risk/index.js"),
   "psychology/block-design-scaled-score": () => import("../../psychology/block-design-scaled-score/index.js"),

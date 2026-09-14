@@ -4,7 +4,9 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/c-weighting-correction-lookup": () => import("../../acoustics/c-weighting-correction-lookup/index.js"),
   "acoustics/concert-hall-geometry-screen": () => import("../../acoustics/concert-hall-geometry-screen/index.js"),
+  "acoustics/pythagorean-comma-value": () => import("../../acoustics/pythagorean-comma-value/index.js"),
   "astrobiology/stromatolite-biogenicity-point-scorer": () => import("../../astrobiology/stromatolite-biogenicity-point-scorer/index.js"),
   "astrobiology/subglacial-residence-hydraulic-head-calculator": () => import("../../astrobiology/subglacial-residence-hydraulic-head-calculator/index.js"),
   "astronomy/apparent-to-absolute-magnitude": () => import("../../astronomy/apparent-to-absolute-magnitude/index.js"),
@@ -30,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/msp-product-size": () => import("../../epigenetics/msp-product-size/index.js"),
   "ergonomics/niosh-composite-lifting-index": () => import("../../ergonomics/niosh-composite-lifting-index/index.js"),
   "finance/geometric-asian-option": () => import("../../finance/geometric-asian-option/index.js"),
+  "forestry/planting-spacing-to-trees-per-hectare": () => import("../../forestry/planting-spacing-to-trees-per-hectare/index.js"),
   "game/kenken-cage-target-product-sum-validator": () => import("../../game/kenken-cage-target-product-sum-validator/index.js"),
   "geology/core-porosity-helium": () => import("../../geology/core-porosity-helium/index.js"),
   "geometry/sphere-volume": () => import("../../geometry/sphere-volume/index.js"),
@@ -53,6 +56,7 @@ export const toolModuleLoaders: Readonly<
   "oceanography/ekman-spiral-surface-deflection-angle": () => import("../../oceanography/ekman-spiral-surface-deflection-angle/index.js"),
   "oceanography/xbt-fall-rate-equation-depth": () => import("../../oceanography/xbt-fall-rate-equation-depth/index.js"),
   "paleography/golden-number-cycle-position": () => import("../../paleography/golden-number-cycle-position/index.js"),
+  "paleontology/dimorphism-canine-ratio": () => import("../../paleontology/dimorphism-canine-ratio/index.js"),
   "pedagogy/curriculum-visibility-audit": () => import("../../pedagogy/curriculum-visibility-audit/index.js"),
   "philately/album-grid-slots-per-page": () => import("../../philately/album-grid-slots-per-page/index.js"),
   "plumbing/fire-sprinkler-k-factor-flow": () => import("../../plumbing/fire-sprinkler-k-factor-flow/index.js"),

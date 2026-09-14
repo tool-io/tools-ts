@@ -68,6 +68,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/sige-bandgap": () => import("../../semiconductor/sige-bandgap/index.js"),
   "semiconductor/transconductance-efficiency-gm-id": () => import("../../semiconductor/transconductance-efficiency-gm-id/index.js"),
   "sociology/bass-adoption-diffusion-p-q": () => import("../../sociology/bass-adoption-diffusion-p-q/index.js"),
+  "sports/monotony-strain-index-foster": () => import("../../sports/monotony-strain-index-foster/index.js"),
   "text/split": () => import("../../text/split/index.js"),
   "theatre/traverse-sightline": () => import("../../theatre/traverse-sightline/index.js"),
   "virology/breakpoint-region-overlap": () => import("../../virology/breakpoint-region-overlap/index.js"),

@@ -27,6 +27,8 @@ export const toolModuleLoaders: Readonly<
   "engineering/rc-beam-moment-capacity": () => import("../../engineering/rc-beam-moment-capacity/index.js"),
   "film/iso-gain-db": () => import("../../film/iso-gain-db/index.js"),
   "film/print-cost-total": () => import("../../film/print-cost-total/index.js"),
+  "forestry/lightning-strike-fatality-scatter-group-size-estimate": () => import("../../forestry/lightning-strike-fatality-scatter-group-size-estimate/index.js"),
+  "fun/fortune-teller-origami": () => import("../../fun/fortune-teller-origami/index.js"),
   "geology/hydraulic-gradient": () => import("../../geology/hydraulic-gradient/index.js"),
   "geology/oxygen-isotope-paleotemperature": () => import("../../geology/oxygen-isotope-paleotemperature/index.js"),
   "geology/rate-of-penetration": () => import("../../geology/rate-of-penetration/index.js"),
@@ -66,5 +68,7 @@ export const toolModuleLoaders: Readonly<
   "transcriptomics/backsplice-support": () => import("../../transcriptomics/backsplice-support/index.js"),
   "transcriptomics/cell-mito-percent-filter": () => import("../../transcriptomics/cell-mito-percent-filter/index.js"),
   "typography/fallback-font-metrics-override-ascent-descent": () => import("../../typography/fallback-font-metrics-override-ascent-descent/index.js"),
+  "vexillology/folding-sequence-validator": () => import("../../vexillology/folding-sequence-validator/index.js"),
+  "vexillology/retirement-condition-rater": () => import("../../vexillology/retirement-condition-rater/index.js"),
   "viticulture/midday-stem-water-potential-stress-classifier": () => import("../../viticulture/midday-stem-water-potential-stress-classifier/index.js"),
 };

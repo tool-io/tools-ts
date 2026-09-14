@@ -5,9 +5,11 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/hazard-consistency-checker": () => import("../../actuarial/hazard-consistency-checker/index.js"),
+  "actuarial/perpetuity-due-pv": () => import("../../actuarial/perpetuity-due-pv/index.js"),
   "actuarial/projected-salary-accrual-present-value": () => import("../../actuarial/projected-salary-accrual-present-value/index.js"),
   "aquaculture/lime-requirement": () => import("../../aquaculture/lime-requirement/index.js"),
   "astrometry/astrometric-reduced-chi-square": () => import("../../astrometry/astrometric-reduced-chi-square/index.js"),
+  "astronomy/exoplanet-density-gcc": () => import("../../astronomy/exoplanet-density-gcc/index.js"),
   "bacteriology/fluctuation-culture-zero-class": () => import("../../bacteriology/fluctuation-culture-zero-class/index.js"),
   "biology/wood-density": () => import("../../biology/wood-density/index.js"),
   "chemistry/analytical-relative-standard-deviation": () => import("../../chemistry/analytical-relative-standard-deviation/index.js"),
@@ -44,6 +46,7 @@ export const toolModuleLoaders: Readonly<
   "horology/tachymeter-speed": () => import("../../horology/tachymeter-speed/index.js"),
   "information/shannon-entropy": () => import("../../information/shannon-entropy/index.js"),
   "laser/net-dispersion": () => import("../../laser/net-dispersion/index.js"),
+  "limnology/freezing-degree-days-ice-growth": () => import("../../limnology/freezing-degree-days-ice-growth/index.js"),
   "linguistics/r-dropping-dialect-classifier": () => import("../../linguistics/r-dropping-dialect-classifier/index.js"),
   "marriage/divorce-parenting-plan-days": () => import("../../marriage/divorce-parenting-plan-days/index.js"),
   "marriage/proposal-idea-lookup": () => import("../../marriage/proposal-idea-lookup/index.js"),

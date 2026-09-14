@@ -65,6 +65,7 @@ export const toolModuleLoaders: Readonly<
   "transcriptomics/wilcoxon-rank-sum": () => import("../../transcriptomics/wilcoxon-rank-sum/index.js"),
   "typography/column-count-from-text-width": () => import("../../typography/column-count-from-text-width/index.js"),
   "veterinary/anesthesia-induction-dose-propofol-dog": () => import("../../veterinary/anesthesia-induction-dose-propofol-dog/index.js"),
+  "vexillology/iso-alpha2-to-emoji": () => import("../../vexillology/iso-alpha2-to-emoji/index.js"),
   "vexillology/star-grid-spacing": () => import("../../vexillology/star-grid-spacing/index.js"),
   "vr/pupil-diameter-vr": () => import("../../vr/pupil-diameter-vr/index.js"),
 };

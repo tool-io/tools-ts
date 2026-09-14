@@ -46,6 +46,7 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/local-variation-lv": () => import("../../neuroscience/local-variation-lv/index.js"),
   "oceanography/subsurface-float-parking-pressure": () => import("../../oceanography/subsurface-float-parking-pressure/index.js"),
   "oenology/decanting-time-style": () => import("../../oenology/decanting-time-style/index.js"),
+  "paleontology/c14-decay-years": () => import("../../paleontology/c14-decay-years/index.js"),
   "parasitology/excystation-protocol-window-audit": () => import("../../parasitology/excystation-protocol-window-audit/index.js"),
   "random/baking-pan-capacity-exercise": () => import("../../random/baking-pan-capacity-exercise/index.js"),
   "random/lsf-fingerspelling-letter": () => import("../../random/lsf-fingerspelling-letter/index.js"),

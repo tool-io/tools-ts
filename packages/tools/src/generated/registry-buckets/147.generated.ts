@@ -4,6 +4,8 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/hearing-protection-nrr-to-dba": () => import("../../acoustics/hearing-protection-nrr-to-dba/index.js"),
+  "actuarial/discount-factor-v-power-n": () => import("../../actuarial/discount-factor-v-power-n/index.js"),
   "agriculture/soil-water-holding-capacity": () => import("../../agriculture/soil-water-holding-capacity/index.js"),
   "astronomy/opposition-enhanced-brightness-factor": () => import("../../astronomy/opposition-enhanced-brightness-factor/index.js"),
   "auditing/fraud-severity": () => import("../../auditing/fraud-severity/index.js"),
@@ -22,7 +24,9 @@ export const toolModuleLoaders: Readonly<
   "engineering/manning-velocity": () => import("../../engineering/manning-velocity/index.js"),
   "folklore/kidney-heist-organ-theft-legend-verdict-lookup": () => import("../../folklore/kidney-heist-organ-theft-legend-verdict-lookup/index.js"),
   "forestry/ndvi-change-annual-defoliation-watch": () => import("../../forestry/ndvi-change-annual-defoliation-watch/index.js"),
+  "fun/truth-or-dare": () => import("../../fun/truth-or-dare/index.js"),
   "futurology/longevity-economy-driver-implication-chain": () => import("../../futurology/longevity-economy-driver-implication-chain/index.js"),
+  "gemology/acid-sensitivity-flag": () => import("../../gemology/acid-sensitivity-flag/index.js"),
   "gemology/pavilion-angle-depth": () => import("../../gemology/pavilion-angle-depth/index.js"),
   "glaciology/ice-cliff-mass-loss-per-year": () => import("../../glaciology/ice-cliff-mass-loss-per-year/index.js"),
   "glaciology/pressure-melting-point-depth": () => import("../../glaciology/pressure-melting-point-depth/index.js"),

@@ -36,6 +36,8 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/upd-segment-screen": () => import("../../epigenetics/upd-segment-screen/index.js"),
   "folklore/mandela-effect-collective-memory-examples-lookup": () => import("../../folklore/mandela-effect-collective-memory-examples-lookup/index.js"),
   "forestry/epicormic-shoot-count-per-meter-bole": () => import("../../forestry/epicormic-shoot-count-per-meter-bole/index.js"),
+  "fun/beer-pong-rack": () => import("../../fun/beer-pong-rack/index.js"),
+  "fun/dixit-story-prompt": () => import("../../fun/dixit-story-prompt/index.js"),
   "futurology/arup-drivers-of-change-card-deck-origin-history": () => import("../../futurology/arup-drivers-of-change-card-deck-origin-history/index.js"),
   "futurology/scanning-hit-score": () => import("../../futurology/scanning-hit-score/index.js"),
   "futurology/shell-scenarios-energy-transition-sketches-series-detail": () => import("../../futurology/shell-scenarios-energy-transition-sketches-series-detail/index.js"),

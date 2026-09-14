@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "actuarial/discount-rate-to-effective-interest": () => import("../../actuarial/discount-rate-to-effective-interest/index.js"),
   "aesthetics/printmaking-states-original-copy-numbering-lookup": () => import("../../aesthetics/printmaking-states-original-copy-numbering-lookup/index.js"),
   "agriculture/plant-population-per-hectare": () => import("../../agriculture/plant-population-per-hectare/index.js"),
   "auditing/dormant-vendor-masterfile-no-activity-period-flag-tester": () => import("../../auditing/dormant-vendor-masterfile-no-activity-period-flag-tester/index.js"),
@@ -22,8 +23,12 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/crispr-off-target-count": () => import("../../epigenetics/crispr-off-target-count/index.js"),
   "epigraphy/seg-entry-parser": () => import("../../epigraphy/seg-entry-parser/index.js"),
   "forestry/mean-annual-increment": () => import("../../forestry/mean-annual-increment/index.js"),
+  "fun/birth-flower-lookup": () => import("../../fun/birth-flower-lookup/index.js"),
+  "fun/dog-name": () => import("../../fun/dog-name/index.js"),
   "futurology/stakeholder-capitalism-davos-manifesto-vs-friedman-doctrine": () => import("../../futurology/stakeholder-capitalism-davos-manifesto-vs-friedman-doctrine/index.js"),
   "gemology/carats-asscher": () => import("../../gemology/carats-asscher/index.js"),
+  "gemology/elongation-factor-fancy": () => import("../../gemology/elongation-factor-fancy/index.js"),
+  "gemology/total-price-from-rate": () => import("../../gemology/total-price-from-rate/index.js"),
   "genomics/private-singleton-tally": () => import("../../genomics/private-singleton-tally/index.js"),
   "geology/hydraulic-fracture-half-length-pkins": () => import("../../geology/hydraulic-fracture-half-length-pkins/index.js"),
   "insurance/glwb-withdrawal-amount": () => import("../../insurance/glwb-withdrawal-amount/index.js"),
@@ -57,6 +62,7 @@ export const toolModuleLoaders: Readonly<
   "toxicology/first-pass-metabolism": () => import("../../toxicology/first-pass-metabolism/index.js"),
   "toxicology/unit-risk": () => import("../../toxicology/unit-risk/index.js"),
   "transcriptomics/hvg-dispersion-selector": () => import("../../transcriptomics/hvg-dispersion-selector/index.js"),
+  "vexillology/numeric-pennant-decoder": () => import("../../vexillology/numeric-pennant-decoder/index.js"),
   "viticulture/veraison-to-harvest-day-span": () => import("../../viticulture/veraison-to-harvest-day-span/index.js"),
   "web/importmap-parser": () => import("../../web/importmap-parser/index.js"),
 };

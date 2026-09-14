@@ -28,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "folklore/portrait-falling-wall-death-omen-family-belief-lookup": () => import("../../folklore/portrait-falling-wall-death-omen-family-belief-lookup/index.js"),
   "futurology/hallmarks-of-aging-nine-list-lookup": () => import("../../futurology/hallmarks-of-aging-nine-list-lookup/index.js"),
   "game/chess-en-passant-legality-checker": () => import("../../game/chess-en-passant-legality-checker/index.js"),
+  "gemology/culet-size-percentage": () => import("../../gemology/culet-size-percentage/index.js"),
   "gemology/rap-discount-application": () => import("../../gemology/rap-discount-application/index.js"),
   "genetics/first-stage-instrument-strength": () => import("../../genetics/first-stage-instrument-strength/index.js"),
   "geology/balanced-cross-section-line-length": () => import("../../geology/balanced-cross-section-line-length/index.js"),

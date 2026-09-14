@@ -28,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "entrepreneurship/first-value-time-benchmark": () => import("../../entrepreneurship/first-value-time-benchmark/index.js"),
   "entrepreneurship/north-star-guardrail-metrics-counterbalance-pairing": () => import("../../entrepreneurship/north-star-guardrail-metrics-counterbalance-pairing/index.js"),
   "folklore/atu-tale-type-lookup": () => import("../../folklore/atu-tale-type-lookup/index.js"),
+  "fun/two-truths-lie": () => import("../../fun/two-truths-lie/index.js"),
   "futurology/jules-verne-from-earth-to-moon-florida-launch-coincidence": () => import("../../futurology/jules-verne-from-earth-to-moon-florida-launch-coincidence/index.js"),
   "genetics/exclusion-mismatch-tolerance": () => import("../../genetics/exclusion-mismatch-tolerance/index.js"),
   "geology/cement-slurry-density": () => import("../../geology/cement-slurry-density/index.js"),

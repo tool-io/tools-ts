@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "ergonomics/noise-twa-percent-checker": () => import("../../ergonomics/noise-twa-percent-checker/index.js"),
   "folklore/bless-you-sneezes-plague-soul-escape-theories-list": () => import("../../folklore/bless-you-sneezes-plague-soul-escape-theories-list/index.js"),
   "folklore/child-ballads-francis-child-numbering-catalog-lookup": () => import("../../folklore/child-ballads-francis-child-numbering-catalog-lookup/index.js"),
+  "fun/gibberish-converter": () => import("../../fun/gibberish-converter/index.js"),
   "gemology/heavy-liquid-sg-estimate": () => import("../../gemology/heavy-liquid-sg-estimate/index.js"),
   "gemology/refractor-single-reading": () => import("../../gemology/refractor-single-reading/index.js"),
   "geology/fault-throw": () => import("../../geology/fault-throw/index.js"),

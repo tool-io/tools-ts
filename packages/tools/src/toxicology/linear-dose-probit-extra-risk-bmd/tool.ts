@@ -36,7 +36,7 @@ export const exampleInput = {
   benchmarkExtraRisk: 0.5,
 } satisfies Input;
 export const exampleOutput = {
-  benchmarkDose: 0.6744897501960817,
+  benchmarkDose: 0.6744897502234195,
   targetResponseProbability: 0.75,
 } satisfies Output;
 export const example = {

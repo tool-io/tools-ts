@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "accounting/period-end-prepaid-transfer-journal-generator": () => import("../../accounting/period-end-prepaid-transfer-journal-generator/index.js"),
   "acoustics/schroeder-frequency": () => import("../../acoustics/schroeder-frequency/index.js"),
+  "actuarial/temporary-complete-expectation": () => import("../../actuarial/temporary-complete-expectation/index.js"),
   "agriculture/straw-to-grain-ratio": () => import("../../agriculture/straw-to-grain-ratio/index.js"),
   "apiculture/national-hive-frame-size-lookup": () => import("../../apiculture/national-hive-frame-size-lookup/index.js"),
   "aquaculture/unionized-ammonia": () => import("../../aquaculture/unionized-ammonia/index.js"),
@@ -36,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/clearcut-size-opening-width-windthrow-checker": () => import("../../forestry/clearcut-size-opening-width-windthrow-checker/index.js"),
   "futurology/citizens-assembly-ireland-success-model-export-lookup": () => import("../../futurology/citizens-assembly-ireland-success-model-export-lookup/index.js"),
   "futurology/return-to-office-trajectory-scenarios-lookup": () => import("../../futurology/return-to-office-trajectory-scenarios-lookup/index.js"),
+  "gemology/steam-cleaning-safety-checker": () => import("../../gemology/steam-cleaning-safety-checker/index.js"),
   "genetics/multisystem-phenotype-tally": () => import("../../genetics/multisystem-phenotype-tally/index.js"),
   "genomics/novel-variant-fraction": () => import("../../genomics/novel-variant-fraction/index.js"),
   "heraldry/torse-color-evenness-checker": () => import("../../heraldry/torse-color-evenness-checker/index.js"),
@@ -66,6 +68,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/double-difference-pair-mean-offset-summary": () => import("../../seismology/double-difference-pair-mean-offset-summary/index.js"),
   "semiconductor/quantum-confined-stark-shift": () => import("../../semiconductor/quantum-confined-stark-shift/index.js"),
   "semiconductor/vdmos-on-resistance": () => import("../../semiconductor/vdmos-on-resistance/index.js"),
+  "set/subset-checker": () => import("../../set/subset-checker/index.js"),
   "similarity/cosine": () => import("../../similarity/cosine/index.js"),
   "sociology/union-density-membership-rate": () => import("../../sociology/union-density-membership-rate/index.js"),
   "theatre/white-model-scale-miniature-design-presentation-process": () => import("../../theatre/white-model-scale-miniature-design-presentation-process/index.js"),

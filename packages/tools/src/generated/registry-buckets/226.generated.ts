@@ -35,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "ergonomics/monitor-top-eye-alignment-checker": () => import("../../ergonomics/monitor-top-eye-alignment-checker/index.js"),
   "finance/ad-revenue": () => import("../../finance/ad-revenue/index.js"),
   "forestry/silvopasture-shade-percent-livestock-heat-stress-relief": () => import("../../forestry/silvopasture-shade-percent-livestock-heat-stress-relief/index.js"),
+  "fun/mind-reading-number-trick": () => import("../../fun/mind-reading-number-trick/index.js"),
   "geology/isopach-thickness": () => import("../../geology/isopach-thickness/index.js"),
   "geology/seismic-stack-velocity": () => import("../../geology/seismic-stack-velocity/index.js"),
   "hash/blake2b-512": () => import("../../hash/blake2b-512/index.js"),

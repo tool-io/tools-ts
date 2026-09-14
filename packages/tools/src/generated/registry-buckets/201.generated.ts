@@ -29,6 +29,7 @@ export const toolModuleLoaders: Readonly<
   "entrepreneurship/tuck-in-acquisition-revenue-multiple-benchmark-lookup": () => import("../../entrepreneurship/tuck-in-acquisition-revenue-multiple-benchmark-lookup/index.js"),
   "epigraphy/bustrophedon-direction-detector": () => import("../../epigraphy/bustrophedon-direction-detector/index.js"),
   "epigraphy/underdot-uncertain-validator": () => import("../../epigraphy/underdot-uncertain-validator/index.js"),
+  "fun/zalgo-text-corruptor": () => import("../../fun/zalgo-text-corruptor/index.js"),
   "genetics/kozak-start-context": () => import("../../genetics/kozak-start-context/index.js"),
   "genomics/zero-coverage-targets": () => import("../../genomics/zero-coverage-targets/index.js"),
   "geology/decline-rate-hyperbolic": () => import("../../geology/decline-rate-hyperbolic/index.js"),

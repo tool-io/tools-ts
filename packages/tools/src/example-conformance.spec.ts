@@ -6,6 +6,7 @@ import {
 } from "./core/contract.js";
 import type { ToolJsonSchema } from "./core/definition.js";
 import type { ToolResult } from "./core/result.js";
+import { exampleOutputsMatch } from "./core/example.js";
 
 type ToolModule = {
   readonly default: {
@@ -38,35 +39,6 @@ const toolBatches = Array.from(
     };
   },
 );
-
-const deepEqual = (left: unknown, right: unknown): boolean => {
-  if (Object.is(left, right)) return true;
-  if (Array.isArray(left) || Array.isArray(right))
-    return (
-      Array.isArray(left) &&
-      Array.isArray(right) &&
-      left.length === right.length &&
-      left.every((value, index) => deepEqual(value, right[index]))
-    );
-  if (
-    typeof left !== "object" ||
-    left === null ||
-    typeof right !== "object" ||
-    right === null
-  )
-    return false;
-  const leftRecord = left as Record<string, unknown>;
-  const rightRecord = right as Record<string, unknown>;
-  const keys = Object.keys(leftRecord);
-  return (
-    keys.length === Object.keys(rightRecord).length &&
-    keys.every(
-      (key) =>
-        Object.hasOwn(rightRecord, key) &&
-        deepEqual(leftRecord[key], rightRecord[key]),
-    )
-  );
-};
 
 describe("authored examples", () => {
   it.each(toolBatches)(
@@ -105,7 +77,7 @@ describe("authored examples", () => {
         }
         if (
           Object.hasOwn(module.example, "output") &&
-          !deepEqual(result.output, module.example.output)
+          !exampleOutputsMatch(result.output, module.example.output)
         )
           errors.push(`${directory}: example output differs from execution`);
         if (!matchesToolJsonSchema(result.output, module.default.outputSchema))

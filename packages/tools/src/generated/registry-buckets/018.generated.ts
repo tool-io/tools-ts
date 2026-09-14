@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "acoustics/amplitude-modulation-depth": () => import("../../acoustics/amplitude-modulation-depth/index.js"),
   "acoustics/wenz-curve-reference": () => import("../../acoustics/wenz-curve-reference/index.js"),
   "actuarial/deferred-term-epv": () => import("../../actuarial/deferred-term-epv/index.js"),
+  "actuarial/geometric-increasing-annuity": () => import("../../actuarial/geometric-increasing-annuity/index.js"),
   "archival-studies/reference-trend-percent-calculator": () => import("../../archival-studies/reference-trend-percent-calculator/index.js"),
   "astrometry/cd-matrix-image-axis-angles": () => import("../../astrometry/cd-matrix-image-axis-angles/index.js"),
   "aviation/speed-of-sound": () => import("../../aviation/speed-of-sound/index.js"),

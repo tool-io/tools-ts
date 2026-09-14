@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "film/reel-runtime-2000ft": () => import("../../film/reel-runtime-2000ft/index.js"),
   "folklore/bigfoot-sasquatch-indigenous-names-behavior-lore-lookup": () => import("../../folklore/bigfoot-sasquatch-indigenous-names-behavior-lore-lookup/index.js"),
   "forestry/international-quarter-inch-rule-yield-lookup": () => import("../../forestry/international-quarter-inch-rule-yield-lookup/index.js"),
+  "fun/wizard-name": () => import("../../fun/wizard-name/index.js"),
   "futurology/parabiosis-young-blood-mouse-studies-verdict-context-lookup": () => import("../../futurology/parabiosis-young-blood-mouse-studies-verdict-context-lookup/index.js"),
   "futurology/william-gibson-neuromancer-coined-cyberspace-origin": () => import("../../futurology/william-gibson-neuromancer-coined-cyberspace-origin/index.js"),
   "genetics/intermediate-heterozygote-screen": () => import("../../genetics/intermediate-heterozygote-screen/index.js"),

@@ -5,8 +5,10 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/mcgurk-effect-reference": () => import("../../acoustics/mcgurk-effect-reference/index.js"),
+  "actuarial/accumulation-factor": () => import("../../actuarial/accumulation-factor/index.js"),
   "agriculture/crop-evapotranspiration": () => import("../../agriculture/crop-evapotranspiration/index.js"),
   "astrobiology/brine-water-activity-06-threshold-checker": () => import("../../astrobiology/brine-water-activity-06-threshold-checker/index.js"),
+  "astronomy/orbital-semi-major-from-period": () => import("../../astronomy/orbital-semi-major-from-period/index.js"),
   "auditing/mus-tainting-factor-projected-misstatement": () => import("../../auditing/mus-tainting-factor-projected-misstatement/index.js"),
   "auditing/payroll-agree-to-tax-return-gross-tie-out-procedure": () => import("../../auditing/payroll-agree-to-tax-return-gross-tie-out-procedure/index.js"),
   "aviation/fuel-burn": () => import("../../aviation/fuel-burn/index.js"),
@@ -29,6 +31,7 @@ export const toolModuleLoaders: Readonly<
   "folklore/sailor-superstitions-whistling-wind-women-board-taboos": () => import("../../folklore/sailor-superstitions-whistling-wind-women-board-taboos/index.js"),
   "forestry/crown-ratio": () => import("../../forestry/crown-ratio/index.js"),
   "forestry/relaskop-critical-distance": () => import("../../forestry/relaskop-critical-distance/index.js"),
+  "fun/sandwich-personality-quiz": () => import("../../fun/sandwich-personality-quiz/index.js"),
   "futurology/ai-2027-scenario-document-controversy-analysis": () => import("../../futurology/ai-2027-scenario-document-controversy-analysis/index.js"),
   "generate/ismn-13": () => import("../../generate/ismn-13/index.js"),
   "geology/landslide-volume": () => import("../../geology/landslide-volume/index.js"),

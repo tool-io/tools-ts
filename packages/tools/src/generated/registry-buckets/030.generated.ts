@@ -24,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "film/global-shutter-readout": () => import("../../film/global-shutter-readout/index.js"),
   "folklore/sexagenary-stem-branch-year-computation": () => import("../../folklore/sexagenary-stem-branch-year-computation/index.js"),
   "forestry/fire-risk-index-nesterov": () => import("../../forestry/fire-risk-index-nesterov/index.js"),
+  "fun/escape-room-seed": () => import("../../fun/escape-room-seed/index.js"),
   "futurology/nbic-convergence-nano-bio-info-cogno-driver-tree": () => import("../../futurology/nbic-convergence-nano-bio-info-cogno-driver-tree/index.js"),
   "gemology/fish-eye-depth-check": () => import("../../gemology/fish-eye-depth-check/index.js"),
   "geology/seismic-recurrence-interval": () => import("../../geology/seismic-recurrence-interval/index.js"),

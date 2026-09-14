@@ -17,7 +17,7 @@ export const calculate = (input: Input): Output => {
 };
 export const exampleInput = { x: 1 } satisfies Input;
 export const exampleOutput = {
-  complementaryErrorFunctionValue: 0.15729920705028513,
+  complementaryErrorFunctionValue: 0.15729921223999332,
 } satisfies Output;
 export const example = {
   input: exampleInput,

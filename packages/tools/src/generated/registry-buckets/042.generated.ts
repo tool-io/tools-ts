@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "accounting/lower-of-cost-or-market-write-down-checker": () => import("../../accounting/lower-of-cost-or-market-write-down-checker/index.js"),
   "accounting/revenue-cutoff-shipping-terms-fob-checker": () => import("../../accounting/revenue-cutoff-shipping-terms-fob-checker/index.js"),
+  "acoustics/cnel-community-noise-equivalent": () => import("../../acoustics/cnel-community-noise-equivalent/index.js"),
   "agriculture/furrow-irrigation-advance-time": () => import("../../agriculture/furrow-irrigation-advance-time/index.js"),
   "aquaculture/co2-production": () => import("../../aquaculture/co2-production/index.js"),
   "archival-studies/tape-hydrolysis-age-flag-checker": () => import("../../archival-studies/tape-hydrolysis-age-flag-checker/index.js"),

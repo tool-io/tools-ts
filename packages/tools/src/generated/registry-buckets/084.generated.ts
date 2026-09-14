@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "aquaculture/von-bertalanffy-growth": () => import("../../aquaculture/von-bertalanffy-growth/index.js"),
   "archaeology/oxygen-isotope-migration-proxy": () => import("../../archaeology/oxygen-isotope-migration-proxy/index.js"),
   "arithmetic/fraction-to-decimal": () => import("../../arithmetic/fraction-to-decimal/index.js"),
+  "astronomy/altitude-of-celestial-equator-by-latitude": () => import("../../astronomy/altitude-of-celestial-equator-by-latitude/index.js"),
   "auditing/coso-five-components-element-mapping-grid": () => import("../../auditing/coso-five-components-element-mapping-grid/index.js"),
   "auditing/final-analytics-reconciliation": () => import("../../auditing/final-analytics-reconciliation/index.js"),
   "auditing/tolerable-deviation-rate-expected-deviation-inputs-lookup": () => import("../../auditing/tolerable-deviation-rate-expected-deviation-inputs-lookup/index.js"),
@@ -82,6 +83,8 @@ export const toolModuleLoaders: Readonly<
   "theatre/dmx-universe-channel-address-planner": () => import("../../theatre/dmx-universe-channel-address-planner/index.js"),
   "theatre/edge-blend-overlap": () => import("../../theatre/edge-blend-overlap/index.js"),
   "typography/millimeters-to-points-print": () => import("../../typography/millimeters-to-points-print/index.js"),
+  "vexillology/code-word-spanner-builder": () => import("../../vexillology/code-word-spanner-builder/index.js"),
+  "viticulture/phomopsis-early-shoot-sprays-count-lookup": () => import("../../viticulture/phomopsis-early-shoot-sprays-count-lookup/index.js"),
   "volcanology/reduced-displacement-tremor-radius": () => import("../../volcanology/reduced-displacement-tremor-radius/index.js"),
   "world-clock": () => import("../../world-clock/index.js"),
 };

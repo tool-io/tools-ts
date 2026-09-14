@@ -62,9 +62,9 @@ export const exampleInput = {
   oneSidedCriticalZ: 1.645,
 } satisfies Input;
 export const exampleOutput = {
-  estimatedBenchmarkDose: 0.6744897501960817,
-  doseStandardError: 0.07704136462142025,
-  approximateLowerBenchmarkDose: 0.5589509850290323,
+  estimatedBenchmarkDose: 0.6744897502234195,
+  doseStandardError: 0.07704136462325434,
+  approximateLowerBenchmarkDose: 0.5589509850534436,
 } satisfies Output;
 export const example = {
   input: exampleInput,

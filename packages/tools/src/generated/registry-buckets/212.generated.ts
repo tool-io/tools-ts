@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "accounting/double-declining-balance-year-charge": () => import("../../accounting/double-declining-balance-year-charge/index.js"),
   "acoustics/clarity-c80": () => import("../../acoustics/clarity-c80/index.js"),
+  "acoustics/measurement-time-weighting-lookup": () => import("../../acoustics/measurement-time-weighting-lookup/index.js"),
   "auditing/token-rotation-due": () => import("../../auditing/token-rotation-due/index.js"),
   "aviation/required-descent-gradient": () => import("../../aviation/required-descent-gradient/index.js"),
   "banking/auto-enrollment-save-more-tomorrow-nudge-participation-boost": () => import("../../banking/auto-enrollment-save-more-tomorrow-nudge-participation-boost/index.js"),
@@ -13,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/decking-gap-spacing": () => import("../../carpentry/decking-gap-spacing/index.js"),
   "cartography/flow-line-width-scaling": () => import("../../cartography/flow-line-width-scaling/index.js"),
   "celestial-mechanics/elliptic-true-to-eccentric-anomaly": () => import("../../celestial-mechanics/elliptic-true-to-eccentric-anomaly/index.js"),
+  "climatology/annual-temp-range": () => import("../../climatology/annual-temp-range/index.js"),
   "convert/area": () => import("../../convert/area/index.js"),
   "convert/serbian-latin-to-cyrillic": () => import("../../convert/serbian-latin-to-cyrillic/index.js"),
   "convert/text-to-negative-squared": () => import("../../convert/text-to-negative-squared/index.js"),

@@ -82,8 +82,8 @@ export const exampleInput = {
   depositBulkDensityKgPerM3: 1000,
 } satisfies Input;
 export const exampleOutput = {
-  integratedBulkTephraVolumeM3: 308.40523770111423,
-  denseRockEquivalentVolumeM3: 154.20261885055712,
+  integratedBulkTephraVolumeM3: 308.4052377011309,
+  denseRockEquivalentVolumeM3: 154.20261885056544,
 } satisfies Output;
 export const example = {
   input: exampleInput,

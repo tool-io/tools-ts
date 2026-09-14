@@ -66,6 +66,7 @@ export const toolModuleLoaders: Readonly<
   "random/vigenere-cipher-puzzle": () => import("../../random/vigenere-cipher-puzzle/index.js"),
   "random/wabun-morse-character": () => import("../../random/wabun-morse-character/index.js"),
   "sailing/rudder-angle-required": () => import("../../sailing/rudder-angle-required/index.js"),
+  "sports/triathlon-brick-leg-pace-blend": () => import("../../sports/triathlon-brick-leg-pace-blend/index.js"),
   "toxicology/lipid-normalized-biomagnification": () => import("../../toxicology/lipid-normalized-biomagnification/index.js"),
   "toxicology/mixture-ghs-classification": () => import("../../toxicology/mixture-ghs-classification/index.js"),
   "virology/number-needed-vaccinate": () => import("../../virology/number-needed-vaccinate/index.js"),

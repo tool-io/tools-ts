@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "astrobiology/phosphine-significance-sigma-classifier": () => import("../../astrobiology/phosphine-significance-sigma-classifier/index.js"),
+  "astronomy/rise-set-hour-angle-formula": () => import("../../astronomy/rise-set-hour-angle-formula/index.js"),
   "auditing/ghost-employee-payroll-masterfile-match-tester": () => import("../../auditing/ghost-employee-payroll-masterfile-match-tester/index.js"),
   "auditing/kam-determination": () => import("../../auditing/kam-determination/index.js"),
   "auditing/methodology-training-coverage": () => import("../../auditing/methodology-training-coverage/index.js"),
@@ -31,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "ergonomics/reba-arm-wrist-score": () => import("../../ergonomics/reba-arm-wrist-score/index.js"),
   "film/field-of-view-angle": () => import("../../film/field-of-view-angle/index.js"),
   "folklore/scarecrow-effigy-global-variants-lookup": () => import("../../folklore/scarecrow-effigy-global-variants-lookup/index.js"),
+  "fun/team-name": () => import("../../fun/team-name/index.js"),
   "futurology/cultivated-meat-approval-singapore-usda-first-countries": () => import("../../futurology/cultivated-meat-approval-singapore-usda-first-countries/index.js"),
   "geology/bearing-capacity-vesic": () => import("../../geology/bearing-capacity-vesic/index.js"),
   "glaciology/hydraulic-potential-shreve": () => import("../../glaciology/hydraulic-potential-shreve/index.js"),

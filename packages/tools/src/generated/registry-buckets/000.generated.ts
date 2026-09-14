@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/clamped-bar-fundamental": () => import("../../acoustics/clamped-bar-fundamental/index.js"),
   "archival-studies/dacs-minimum-elements-checker": () => import("../../archival-studies/dacs-minimum-elements-checker/index.js"),
   "auditing/audit-committee-financial-expert-designation-criteria-lookup": () => import("../../auditing/audit-committee-financial-expert-designation-criteria-lookup/index.js"),
   "biology/codon-usage-bias": () => import("../../biology/codon-usage-bias/index.js"),
@@ -13,6 +14,7 @@ export const toolModuleLoaders: Readonly<
   "biology/water-potential-total": () => import("../../biology/water-potential-total/index.js"),
   "carpentry/spanplattenschraube-4x30-vorbohrung-25mm": () => import("../../carpentry/spanplattenschraube-4x30-vorbohrung-25mm/index.js"),
   "classics/mithraeum-tauroctony-iconography-seven-initiation-grades": () => import("../../classics/mithraeum-tauroctony-iconography-seven-initiation-grades/index.js"),
+  "climatology/discomfort-index-thom": () => import("../../climatology/discomfort-index-thom/index.js"),
   "color/text-on-background-auto-black-white-picker": () => import("../../color/text-on-background-auto-black-white-picker/index.js"),
   "cooking/sous-vide-temperature-for-protein": () => import("../../cooking/sous-vide-temperature-for-protein/index.js"),
   "cost/water": () => import("../../cost/water/index.js"),
@@ -28,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "ergonomics/mouse-anchor-risk-flag-checker": () => import("../../ergonomics/mouse-anchor-risk-flag-checker/index.js"),
   "film/contrast-ratio": () => import("../../film/contrast-ratio/index.js"),
   "film/lens-shift-percentage": () => import("../../film/lens-shift-percentage/index.js"),
+  "fun/elvish-script-name": () => import("../../fun/elvish-script-name/index.js"),
   "genetics/negative-screen-residual-risk": () => import("../../genetics/negative-screen-residual-risk/index.js"),
   "geology/wentworth-grain-size-phi": () => import("../../geology/wentworth-grain-size-phi/index.js"),
   "html/canonical-link-rel-checker": () => import("../../html/canonical-link-rel-checker/index.js"),
@@ -59,4 +62,5 @@ export const toolModuleLoaders: Readonly<
   "theatre/pin-rail-position-distance-lookup": () => import("../../theatre/pin-rail-position-distance-lookup/index.js"),
   "validate/upc-a": () => import("../../validate/upc-a/index.js"),
   "vexillology/change-frequency-century": () => import("../../vexillology/change-frequency-century/index.js"),
+  "vexillology/half-staff-position": () => import("../../vexillology/half-staff-position/index.js"),
 };

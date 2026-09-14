@@ -18,6 +18,8 @@ export const toolModuleLoaders: Readonly<
   "engineering/cable-sizing-current-capacity": () => import("../../engineering/cable-sizing-current-capacity/index.js"),
   "engineering/power-factor-penalty": () => import("../../engineering/power-factor-penalty/index.js"),
   "format/feet-and-inches": () => import("../../format/feet-and-inches/index.js"),
+  "fun/crossword-symmetry": () => import("../../fun/crossword-symmetry/index.js"),
+  "fun/tarot-daily-card": () => import("../../fun/tarot-daily-card/index.js"),
   "futurology/morphological-analysis-box-grid-combination-explorer": () => import("../../futurology/morphological-analysis-box-grid-combination-explorer/index.js"),
   "game/stratego-rank-resolve-lookup": () => import("../../game/stratego-rank-resolve-lookup/index.js"),
   "geology/afm-diagram": () => import("../../geology/afm-diagram/index.js"),

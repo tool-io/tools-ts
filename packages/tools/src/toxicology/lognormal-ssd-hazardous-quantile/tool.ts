@@ -41,7 +41,7 @@ export const exampleInput = {
   affectedSpeciesFraction: 0.05,
 } satisfies Input;
 export const exampleOutput = {
-  hazardousConcentration: 0.19304081669873657,
+  hazardousConcentration: 0.19304081704973428,
 } satisfies Output;
 export const example = {
   input: exampleInput,

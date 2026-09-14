@@ -30,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/super-enhancer-stitching": () => import("../../epigenetics/super-enhancer-stitching/index.js"),
   "film/rolling-shutter-skew-pixels": () => import("../../film/rolling-shutter-skew-pixels/index.js"),
   "forestry/density-stems-per-hectare": () => import("../../forestry/density-stems-per-hectare/index.js"),
+  "fun/figlet-style-text": () => import("../../fun/figlet-style-text/index.js"),
   "gemology/nacre-thickness-estimate": () => import("../../gemology/nacre-thickness-estimate/index.js"),
   "genomics/busco-completeness": () => import("../../genomics/busco-completeness/index.js"),
   "genomics/indel-density": () => import("../../genomics/indel-density/index.js"),

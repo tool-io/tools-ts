@@ -78,4 +78,5 @@ export const toolModuleLoaders: Readonly<
   "speleology/rock-bottom-gas-pressure": () => import("../../speleology/rock-bottom-gas-pressure/index.js"),
   "sports/sinclair-coefficient-weightlifting": () => import("../../sports/sinclair-coefficient-weightlifting/index.js"),
   "taxation/offering-designation-classifier": () => import("../../taxation/offering-designation-classifier/index.js"),
+  "viticulture/phylloxera-sandy-soil-resistance-checker": () => import("../../viticulture/phylloxera-sandy-soil-resistance-checker/index.js"),
 };

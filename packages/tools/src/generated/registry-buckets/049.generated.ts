@@ -38,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/ics-ref-format-validator": () => import("../../epigraphy/ics-ref-format-validator/index.js"),
   "finance/discount-price": () => import("../../finance/discount-price/index.js"),
   "folklore/collective-noun-animal-terms-lookup": () => import("../../folklore/collective-noun-animal-terms-lookup/index.js"),
+  "fun/who-is-more-likely": () => import("../../fun/who-is-more-likely/index.js"),
   "genomics/genomic-scar-composite": () => import("../../genomics/genomic-scar-composite/index.js"),
   "geometry/cuboid-volume": () => import("../../geometry/cuboid-volume/index.js"),
   "glaciology/rate-factor-arrhenius-temperature": () => import("../../glaciology/rate-factor-arrhenius-temperature/index.js"),

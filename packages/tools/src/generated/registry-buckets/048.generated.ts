@@ -66,4 +66,5 @@ export const toolModuleLoaders: Readonly<
   "theatre/counterweight-arbor-balance-calculator": () => import("../../theatre/counterweight-arbor-balance-calculator/index.js"),
   "theatre/dimmer-curve-profile-linear-s-curve-lookup": () => import("../../theatre/dimmer-curve-profile-linear-s-curve-lookup/index.js"),
   "toxicology/relative-potency-factor": () => import("../../toxicology/relative-potency-factor/index.js"),
+  "vexillology/signal-letter-meaning-lookup": () => import("../../vexillology/signal-letter-meaning-lookup/index.js"),
 };

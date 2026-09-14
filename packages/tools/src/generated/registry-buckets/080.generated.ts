@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/allele-methylation-coupling": () => import("../../epigenetics/allele-methylation-coupling/index.js"),
   "film/exposure-triangle-ev": () => import("../../film/exposure-triangle-ev/index.js"),
   "forestry/bark-volume-percentage": () => import("../../forestry/bark-volume-percentage/index.js"),
+  "gemology/estate-wholesale-value": () => import("../../gemology/estate-wholesale-value/index.js"),
   "genetics/indel-frame-phase": () => import("../../genetics/indel-frame-phase/index.js"),
   "genomics/bed-intersection": () => import("../../genomics/bed-intersection/index.js"),
   "genomics/reciprocal-best-hit-pairs": () => import("../../genomics/reciprocal-best-hit-pairs/index.js"),

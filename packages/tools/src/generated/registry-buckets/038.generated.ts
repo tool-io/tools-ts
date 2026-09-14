@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "actuarial/increasing-annuity-immediate": () => import("../../actuarial/increasing-annuity-immediate/index.js"),
   "aesthetics/psychical-distance-bullough-scale-lookup": () => import("../../aesthetics/psychical-distance-bullough-scale-lookup/index.js"),
   "agriculture/drying-time": () => import("../../agriculture/drying-time/index.js"),
   "agriculture/soil-bulk-density": () => import("../../agriculture/soil-bulk-density/index.js"),
@@ -27,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/aircraft-takeoff-distance": () => import("../../engineering/aircraft-takeoff-distance/index.js"),
   "engineering/slenderness-critical-stress": () => import("../../engineering/slenderness-critical-stress/index.js"),
   "folklore/william-tell-apple-shot-authenticity-debate-lookup": () => import("../../folklore/william-tell-apple-shot-authenticity-debate-lookup/index.js"),
+  "fun/kaomoji-picker": () => import("../../fun/kaomoji-picker/index.js"),
   "generate/qr-code": () => import("../../generate/qr-code/index.js"),
   "genetics/island-model-gene-flow": () => import("../../genetics/island-model-gene-flow/index.js"),
   "genetics/linkage-interval-map": () => import("../../genetics/linkage-interval-map/index.js"),

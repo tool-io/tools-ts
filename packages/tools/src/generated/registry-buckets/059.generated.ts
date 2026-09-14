@@ -28,6 +28,10 @@ export const toolModuleLoaders: Readonly<
   "folklore/casey-jones-cannonball-real-engineer-ballad-history": () => import("../../folklore/casey-jones-cannonball-real-engineer-ballad-history/index.js"),
   "folklore/shiver-walked-over-your-grave-phrase-origin-lookup": () => import("../../folklore/shiver-walked-over-your-grave-phrase-origin-lookup/index.js"),
   "forestry/trees-per-hectare-from-plot": () => import("../../forestry/trees-per-hectare-from-plot/index.js"),
+  "fun/book-cipher-encoder": () => import("../../fun/book-cipher-encoder/index.js"),
+  "fun/fen-validator": () => import("../../fun/fen-validator/index.js"),
+  "fun/taboo-word": () => import("../../fun/taboo-word/index.js"),
+  "fun/white-elephant-order": () => import("../../fun/white-elephant-order/index.js"),
   "futurology/causal-layered-analysis-litany-to-metaphor-depths": () => import("../../futurology/causal-layered-analysis-litany-to-metaphor-depths/index.js"),
   "futurology/probable-plausible-preferable-scenario-sorter": () => import("../../futurology/probable-plausible-preferable-scenario-sorter/index.js"),
   "gemology/carats-radiant": () => import("../../gemology/carats-radiant/index.js"),
@@ -54,6 +58,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/surface-recombination-velocity": () => import("../../semiconductor/surface-recombination-velocity/index.js"),
   "toxicology/biexponential-disposition-curve": () => import("../../toxicology/biexponential-disposition-curve/index.js"),
   "toxicology/toxic-units-mixture": () => import("../../toxicology/toxic-units-mixture/index.js"),
+  "viticulture/huglin-heliothermal-index": () => import("../../viticulture/huglin-heliothermal-index/index.js"),
   "web/form-urlencoded-encoder": () => import("../../web/form-urlencoded-encoder/index.js"),
   "web/punycode-to-unicode": () => import("../../web/punycode-to-unicode/index.js"),
 };

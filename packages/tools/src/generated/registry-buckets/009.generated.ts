@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/serif-era-classifier": () => import("../../epigraphy/serif-era-classifier/index.js"),
   "ergonomics/task-lighting-lux-lookup": () => import("../../ergonomics/task-lighting-lux-lookup/index.js"),
   "folklore/japanese-yokai-hyakki-yagyo-night-parade-taxonomy-lookup": () => import("../../folklore/japanese-yokai-hyakki-yagyo-night-parade-taxonomy-lookup/index.js"),
+  "fun/coin-streak-probability": () => import("../../fun/coin-streak-probability/index.js"),
   "futurology/weak-signal-scanning-horizon-classifier": () => import("../../futurology/weak-signal-scanning-horizon-classifier/index.js"),
   "geometry/sphere-surface-area": () => import("../../geometry/sphere-surface-area/index.js"),
   "html/fieldset-legend-a11y-pair-checker": () => import("../../html/fieldset-legend-a11y-pair-checker/index.js"),

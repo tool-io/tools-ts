@@ -29,6 +29,8 @@ export const toolModuleLoaders: Readonly<
   "folklore/new-broom-old-broom-sweeping-luck-customs-lookup": () => import("../../folklore/new-broom-old-broom-sweeping-luck-customs-lookup/index.js"),
   "folklore/tongue-twister-percussive-density-estimate": () => import("../../folklore/tongue-twister-percussive-density-estimate/index.js"),
   "format/byte-size": () => import("../../format/byte-size/index.js"),
+  "fun/chinese-zodiac": () => import("../../fun/chinese-zodiac/index.js"),
+  "fun/tournament-bracket": () => import("../../fun/tournament-bracket/index.js"),
   "gemology/appraisal-retail-replacement": () => import("../../gemology/appraisal-retail-replacement/index.js"),
   "genomics/kaks-selection-screen": () => import("../../genomics/kaks-selection-screen/index.js"),
   "geology/critical-taper-wedge-angle": () => import("../../geology/critical-taper-wedge-angle/index.js"),

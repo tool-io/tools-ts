@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "aquaculture/viscerosomatic-index": () => import("../../aquaculture/viscerosomatic-index/index.js"),
   "astrobiology/ribozyme-rate-enhancement-magnitude-classifier": () => import("../../astrobiology/ribozyme-rate-enhancement-magnitude-classifier/index.js"),
+  "astronomy/transit-altitude-maximum-star": () => import("../../astronomy/transit-altitude-maximum-star/index.js"),
   "auditing/contingent-fee-screen": () => import("../../auditing/contingent-fee-screen/index.js"),
   "banking/tlac-minimum-lookup": () => import("../../banking/tlac-minimum-lookup/index.js"),
   "cartography/plan-area-to-real-area": () => import("../../cartography/plan-area-to-real-area/index.js"),
@@ -23,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/mofa-factor-rank": () => import("../../epigenetics/mofa-factor-rank/index.js"),
   "finance/inflation-adjustment": () => import("../../finance/inflation-adjustment/index.js"),
   "forestry/site-index": () => import("../../forestry/site-index/index.js"),
+  "fun/crush-probability": () => import("../../fun/crush-probability/index.js"),
   "game/poker-hand-rank-classifier": () => import("../../game/poker-hand-rank-classifier/index.js"),
   "gemology/crown-facet-area": () => import("../../gemology/crown-facet-area/index.js"),
   "genetics/ribosome-binding-spacing": () => import("../../genetics/ribosome-binding-spacing/index.js"),

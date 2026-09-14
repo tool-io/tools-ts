@@ -27,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "folklore/john-henry-steel-driver-machine-contest-ballad-history": () => import("../../folklore/john-henry-steel-driver-machine-contest-ballad-history/index.js"),
   "forestry/culmination-age-mai-pai": () => import("../../forestry/culmination-age-mai-pai/index.js"),
   "futurology/data-center-power-forecast": () => import("../../futurology/data-center-power-forecast/index.js"),
+  "glaciology/stake-interpolation-velocity-field": () => import("../../glaciology/stake-interpolation-velocity-field/index.js"),
   "heraldry/fess-center-offset": () => import("../../heraldry/fess-center-offset/index.js"),
   "insurance/producer-license-line-authority-lookup": () => import("../../insurance/producer-license-line-authority-lookup/index.js"),
   "insurance/ransomware-extortion-sublimit-checker": () => import("../../insurance/ransomware-extortion-sublimit-checker/index.js"),

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "actuarial/commutation-function-dx": () => import("../../actuarial/commutation-function-dx/index.js"),
   "archaeology/gpr-reflection-amplitude-feature": () => import("../../archaeology/gpr-reflection-amplitude-feature/index.js"),
   "astrobiology/drake-equation-full-product": () => import("../../astrobiology/drake-equation-full-product/index.js"),
   "astrobiology/enceladus-plume-escape-speed-fraction-check": () => import("../../astrobiology/enceladus-plume-escape-speed-fraction-check/index.js"),
@@ -29,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "ergonomics/stature-percentile-from-sitting": () => import("../../ergonomics/stature-percentile-from-sitting/index.js"),
   "folklore/rule-of-three-triad-repetition-checker": () => import("../../folklore/rule-of-three-triad-repetition-checker/index.js"),
   "forestry/log-sort-volume-recovery-scribner-doyle-lookup": () => import("../../forestry/log-sort-volume-recovery-scribner-doyle-lookup/index.js"),
+  "fun/minesweeper-board": () => import("../../fun/minesweeper-board/index.js"),
   "futurology/long-now-decade-century-timeframe-scale-lookup": () => import("../../futurology/long-now-decade-century-timeframe-scale-lookup/index.js"),
   "futurology/mars-colony-starship-timeline-slippage-claims-history": () => import("../../futurology/mars-colony-starship-timeline-slippage-claims-history/index.js"),
   "futurology/wego-wellbeing-economy-governments-membership-lookup": () => import("../../futurology/wego-wellbeing-economy-governments-membership-lookup/index.js"),

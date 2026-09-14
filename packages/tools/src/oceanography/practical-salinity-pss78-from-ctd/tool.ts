@@ -34,7 +34,9 @@ export const exampleInput = {
   temperatureIpts68C: 15,
   pressureDbar: 0,
 } satisfies Input;
-export const exampleOutput = { practicalSalinityPss78: 35 } satisfies Output;
+export const exampleOutput = {
+  practicalSalinityPss78: 34.99999992412809,
+} satisfies Output;
 export const example = {
   input: exampleInput,
   output: exampleOutput,

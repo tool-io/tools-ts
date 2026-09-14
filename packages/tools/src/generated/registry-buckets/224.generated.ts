@@ -27,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/daylight-autonomy": () => import("../../engineering/daylight-autonomy/index.js"),
   "entrepreneurship/gdpr-privacy-cookie-banner-mvp-minimum-checker": () => import("../../entrepreneurship/gdpr-privacy-cookie-banner-mvp-minimum-checker/index.js"),
   "epigenetics/noob-background-correction": () => import("../../epigenetics/noob-background-correction/index.js"),
+  "fun/elf-name": () => import("../../fun/elf-name/index.js"),
   "futurology/back-to-the-future-two-2015-predictions-hit-miss-scorecard": () => import("../../futurology/back-to-the-future-two-2015-predictions-hit-miss-scorecard/index.js"),
   "futurology/early-warning-signposts-per-scenario-generator": () => import("../../futurology/early-warning-signposts-per-scenario-generator/index.js"),
   "futurology/indigenous-futurisms-grace-dillon-sovereign-imagination": () => import("../../futurology/indigenous-futurisms-grace-dillon-sovereign-imagination/index.js"),

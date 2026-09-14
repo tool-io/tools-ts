@@ -37,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "film/subtitle-characters-per-second": () => import("../../film/subtitle-characters-per-second/index.js"),
   "forestry/agroforestry-alley-crop-row-spacing-light-share": () => import("../../forestry/agroforestry-alley-crop-row-spacing-light-share/index.js"),
   "forestry/top-break-diameter-merchantable-spec-4-inch": () => import("../../forestry/top-break-diameter-merchantable-spec-4-inch/index.js"),
+  "fun/dad-joke-match": () => import("../../fun/dad-joke-match/index.js"),
   "futurology/futures-triangle-push-weight-pull-anchor-triangle": () => import("../../futurology/futures-triangle-push-weight-pull-anchor-triangle/index.js"),
   "gemology/opal-doublet-check": () => import("../../gemology/opal-doublet-check/index.js"),
   "generate/ean-8": () => import("../../generate/ean-8/index.js"),

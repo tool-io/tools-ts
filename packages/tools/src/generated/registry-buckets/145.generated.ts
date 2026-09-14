@@ -32,6 +32,8 @@ export const toolModuleLoaders: Readonly<
   "film/shutter-speed-to-shutter-angle": () => import("../../film/shutter-speed-to-shutter-angle/index.js"),
   "folklore/open-umbrella-indoors-origin-british-courtship-story": () => import("../../folklore/open-umbrella-indoors-origin-british-courtship-story/index.js"),
   "forestry/vertical-diversity-foliage-height-profile-index": () => import("../../forestry/vertical-diversity-foliage-height-profile-index/index.js"),
+  "fun/charades-word": () => import("../../fun/charades-word/index.js"),
+  "fun/chess-opening-lookup": () => import("../../fun/chess-opening-lookup/index.js"),
   "futurology/global-catastrophic-risk-scenario-register-lookup": () => import("../../futurology/global-catastrophic-risk-scenario-register-lookup/index.js"),
   "futurology/ipcc-ar6-ssp-pathway-scenario-taxonomy-lookup": () => import("../../futurology/ipcc-ar6-ssp-pathway-scenario-taxonomy-lookup/index.js"),
   "gemology/brilliance-index": () => import("../../gemology/brilliance-index/index.js"),

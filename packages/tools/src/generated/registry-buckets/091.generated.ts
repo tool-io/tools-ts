@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/aging-method-allowance-matrix-estimate": () => import("../../accounting/aging-method-allowance-matrix-estimate/index.js"),
+  "acoustics/critical-band-width-lookup": () => import("../../acoustics/critical-band-width-lookup/index.js"),
   "acoustics/mlv-product-stc-lookup": () => import("../../acoustics/mlv-product-stc-lookup/index.js"),
   "activation/tanh": () => import("../../activation/tanh/index.js"),
   "auditing/credit-memo-vouching": () => import("../../auditing/credit-memo-vouching/index.js"),
@@ -27,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/bolt-preload-torque": () => import("../../engineering/bolt-preload-torque/index.js"),
   "engineering/gear-bending-lewis-strength": () => import("../../engineering/gear-bending-lewis-strength/index.js"),
   "forestry/thinning-rule-q-factor-diameter-step": () => import("../../forestry/thinning-rule-q-factor-diameter-step/index.js"),
+  "fun/hot-seat-question": () => import("../../fun/hot-seat-question/index.js"),
   "gemology/nail-head-flag": () => import("../../gemology/nail-head-flag/index.js"),
   "generate/uuid-v6": () => import("../../generate/uuid-v6/index.js"),
   "genomics/on-target-read-efficiency": () => import("../../genomics/on-target-read-efficiency/index.js"),

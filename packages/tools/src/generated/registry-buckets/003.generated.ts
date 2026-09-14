@@ -18,9 +18,11 @@ export const toolModuleLoaders: Readonly<
   "chemistry/chromatography-plate-number": () => import("../../chemistry/chromatography-plate-number/index.js"),
   "chemistry/electron-configuration": () => import("../../chemistry/electron-configuration/index.js"),
   "classics/crisis-third-century-barrack-emperors-count-lookup": () => import("../../classics/crisis-third-century-barrack-emperors-count-lookup/index.js"),
+  "climatology/recharge-fraction-estimate": () => import("../../climatology/recharge-fraction-estimate/index.js"),
   "convert/date-to-unix-timestamp": () => import("../../convert/date-to-unix-timestamp/index.js"),
   "cooking/egg-boil-time-soft": () => import("../../cooking/egg-boil-time-soft/index.js"),
   "criminology/clearance-rate-percent-by-type-lookup": () => import("../../criminology/clearance-rate-percent-by-type-lookup/index.js"),
+  "development/version-parse": () => import("../../development/version-parse/index.js"),
   "electronics/battery-runtime": () => import("../../electronics/battery-runtime/index.js"),
   "electronics/lvds-differential-voltage": () => import("../../electronics/lvds-differential-voltage/index.js"),
   "electronics/voltage-regulator-power-dissipation": () => import("../../electronics/voltage-regulator-power-dissipation/index.js"),
@@ -72,4 +74,5 @@ export const toolModuleLoaders: Readonly<
   "transcriptomics/community-resolution-selector": () => import("../../transcriptomics/community-resolution-selector/index.js"),
   "transcriptomics/ma-plot-coordinates": () => import("../../transcriptomics/ma-plot-coordinates/index.js"),
   "typography/words-per-page-trade-paperback": () => import("../../typography/words-per-page-trade-paperback/index.js"),
+  "vexillology/design-era-classifier": () => import("../../vexillology/design-era-classifier/index.js"),
 };

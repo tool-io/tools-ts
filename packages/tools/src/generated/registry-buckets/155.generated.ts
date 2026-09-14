@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/circular-membrane-fundamental": () => import("../../acoustics/circular-membrane-fundamental/index.js"),
   "acoustics/double-slope-decay-screen": () => import("../../acoustics/double-slope-decay-screen/index.js"),
   "agriculture/irrigation-efficiency": () => import("../../agriculture/irrigation-efficiency/index.js"),
   "aquaculture/grading-throughput": () => import("../../aquaculture/grading-throughput/index.js"),
@@ -33,6 +34,8 @@ export const toolModuleLoaders: Readonly<
   "entrepreneurship/pivot-or-persevere-decision-checklist": () => import("../../entrepreneurship/pivot-or-persevere-decision-checklist/index.js"),
   "epigraphy/apex-accent-counter": () => import("../../epigraphy/apex-accent-counter/index.js"),
   "folklore/egyptian-book-of-the-dead-42-negative-confessions-lookup": () => import("../../folklore/egyptian-book-of-the-dead-42-negative-confessions-lookup/index.js"),
+  "fun/cat-name": () => import("../../fun/cat-name/index.js"),
+  "fun/rebus-puzzle": () => import("../../fun/rebus-puzzle/index.js"),
   "genetics/abo-genotype-cross": () => import("../../genetics/abo-genotype-cross/index.js"),
   "geology/void-ratio-from-porosity": () => import("../../geology/void-ratio-from-porosity/index.js"),
   "heraldry/in-chief-arrangement-checker": () => import("../../heraldry/in-chief-arrangement-checker/index.js"),

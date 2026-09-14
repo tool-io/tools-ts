@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "finance/loan-payment": () => import("../../finance/loan-payment/index.js"),
   "forestry/coarse-fragile-soil-trafficability-moisture-checker": () => import("../../forestry/coarse-fragile-soil-trafficability-moisture-checker/index.js"),
   "forestry/stand-volume-table-lookup": () => import("../../forestry/stand-volume-table-lookup/index.js"),
+  "fun/dnd-stat-roller": () => import("../../fun/dnd-stat-roller/index.js"),
   "geology/crustal-residence-time": () => import("../../geology/crustal-residence-time/index.js"),
   "geology/degree-of-consolidation": () => import("../../geology/degree-of-consolidation/index.js"),
   "geology/flexural-slip-restoration": () => import("../../geology/flexural-slip-restoration/index.js"),

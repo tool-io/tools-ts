@@ -49,6 +49,7 @@ export const toolModuleLoaders: Readonly<
   "parasitology/climate-envelope-screen": () => import("../../parasitology/climate-envelope-screen/index.js"),
   "parasitology/western-band-pattern-match": () => import("../../parasitology/western-band-pattern-match/index.js"),
   "pedagogy/trauma-informed-six-principles-samhsa-checklist": () => import("../../pedagogy/trauma-informed-six-principles-samhsa-checklist/index.js"),
+  "petroleum/flow-efficiency": () => import("../../petroleum/flow-efficiency/index.js"),
   "petroleum/oil-viscosity": () => import("../../petroleum/oil-viscosity/index.js"),
   "pharmacy/opioid-equipotent-dose-table": () => import("../../pharmacy/opioid-equipotent-dose-table/index.js"),
   "plumbing/fire-department-connection-flow": () => import("../../plumbing/fire-department-connection-flow/index.js"),

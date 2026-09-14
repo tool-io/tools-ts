@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/network-state-balaji-manifesto-crypto-governance-lookup": () => import("../../futurology/network-state-balaji-manifesto-crypto-governance-lookup/index.js"),
   "futurology/urbanization-driver-implication-chain-builder": () => import("../../futurology/urbanization-driver-implication-chain-builder/index.js"),
   "futurology/wildcard-triage": () => import("../../futurology/wildcard-triage/index.js"),
+  "gemology/colored-stone-premium-multiplier": () => import("../../gemology/colored-stone-premium-multiplier/index.js"),
   "gemology/synthetic-indicator-scorer": () => import("../../gemology/synthetic-indicator-scorer/index.js"),
   "geology/travel-time-p-wave": () => import("../../geology/travel-time-p-wave/index.js"),
   "geology/well-log-porosity-sonic-wyllie": () => import("../../geology/well-log-porosity-sonic-wyllie/index.js"),

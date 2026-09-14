@@ -29,6 +29,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/wire-cross-section": () => import("../../engineering/wire-cross-section/index.js"),
   "epigenetics/fragment-shift-distance": () => import("../../epigenetics/fragment-shift-distance/index.js"),
   "film/flicker-frequency": () => import("../../film/flicker-frequency/index.js"),
+  "fun/most-likely-to": () => import("../../fun/most-likely-to/index.js"),
   "futurology/technology-readiness-level-trl-scale-lookup": () => import("../../futurology/technology-readiness-level-trl-scale-lookup/index.js"),
   "game/tetris-t-spin-three-corner-rule-checker": () => import("../../game/tetris-t-spin-three-corner-rule-checker/index.js"),
   "geology/geomechanics-landslide-factor-of-safety-janbu": () => import("../../geology/geomechanics-landslide-factor-of-safety-janbu/index.js"),

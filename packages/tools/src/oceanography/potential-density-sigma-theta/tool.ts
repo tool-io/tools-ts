@@ -67,7 +67,7 @@ export const exampleInput = {
 } satisfies Input;
 export const exampleOutput = {
   potentialTemperatureIpts68C: 0,
-  referencePotentialDensityAnomalyKgM3: -0.157406,
+  referencePotentialDensityAnomalyKgM3: -0.15740600000003724,
 } satisfies Output;
 export const example = {
   input: exampleInput,

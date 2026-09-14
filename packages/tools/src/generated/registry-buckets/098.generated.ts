@@ -56,6 +56,7 @@ export const toolModuleLoaders: Readonly<
   "paleography/grain-hair-folio-mapper": () => import("../../paleography/grain-hair-folio-mapper/index.js"),
   "paleography/hand-count-cluster-variance": () => import("../../paleography/hand-count-cluster-variance/index.js"),
   "paleontology/hydraulic-equivalence-settling": () => import("../../paleontology/hydraulic-equivalence-settling/index.js"),
+  "paleontology/isochron-slope-to-age": () => import("../../paleontology/isochron-slope-to-age/index.js"),
   "philately/letterpress-squash-rater": () => import("../../philately/letterpress-squash-rater/index.js"),
   "plumbing/pipe-weight-per-foot": () => import("../../plumbing/pipe-weight-per-foot/index.js"),
   "random/mongolian-cyrillic-alphabet-letter": () => import("../../random/mongolian-cyrillic-alphabet-letter/index.js"),

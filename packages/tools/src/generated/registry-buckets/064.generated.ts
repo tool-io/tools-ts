@@ -52,6 +52,7 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/saccade-speed-threshold-latency": () => import("../../neuroscience/saccade-speed-threshold-latency/index.js"),
   "neuroscience/stai-trait-score": () => import("../../neuroscience/stai-trait-score/index.js"),
   "numismatics/denarius-to-sestertius-conversion-lookup": () => import("../../numismatics/denarius-to-sestertius-conversion-lookup/index.js"),
+  "paleontology/abrasion-stage-rater": () => import("../../paleontology/abrasion-stage-rater/index.js"),
   "password/strength": () => import("../../password/strength/index.js"),
   "probability/dirichlet-sampler": () => import("../../probability/dirichlet-sampler/index.js"),
   "random/bracket-pair": () => import("../../random/bracket-pair/index.js"),

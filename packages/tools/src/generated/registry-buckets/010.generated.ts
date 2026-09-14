@@ -5,7 +5,9 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/apportionable-premium-factor": () => import("../../actuarial/apportionable-premium-factor/index.js"),
+  "actuarial/tqx-multi-year-death-probability": () => import("../../actuarial/tqx-multi-year-death-probability/index.js"),
   "agriculture/crop-coefficient-kc": () => import("../../agriculture/crop-coefficient-kc/index.js"),
+  "archaeology/suchey-brooks-phase-age": () => import("../../archaeology/suchey-brooks-phase-age/index.js"),
   "biology/specific-leaf-area": () => import("../../biology/specific-leaf-area/index.js"),
   "carpentry/polygon-frame-miter-angle": () => import("../../carpentry/polygon-frame-miter-angle/index.js"),
   "cartography/tobler-hiking-speed-estimate": () => import("../../cartography/tobler-hiking-speed-estimate/index.js"),

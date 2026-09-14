@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/treasury-stock-cost-method-no-gain-checker": () => import("../../accounting/treasury-stock-cost-method-no-gain-checker/index.js"),
+  "actuarial/central-death-rate-mx": () => import("../../actuarial/central-death-rate-mx/index.js"),
   "actuarial/last-survivor-expectation-identity": () => import("../../actuarial/last-survivor-expectation-identity/index.js"),
   "aquaculture/condition-factor": () => import("../../aquaculture/condition-factor/index.js"),
   "arithmetic/absolute-difference": () => import("../../arithmetic/absolute-difference/index.js"),
@@ -23,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "film/guide-number-aperture": () => import("../../film/guide-number-aperture/index.js"),
   "folklore/holi-colors-holika-dahan-story-behind-lookup": () => import("../../folklore/holi-colors-holika-dahan-story-behind-lookup/index.js"),
   "forestry/ground-based-skid-trail-density-percent-area": () => import("../../forestry/ground-based-skid-trail-density-percent-area/index.js"),
+  "fun/inkblot-prompt": () => import("../../fun/inkblot-prompt/index.js"),
   "game/lottery-649-jackpot-odds-combination": () => import("../../game/lottery-649-jackpot-odds-combination/index.js"),
   "gemology/carat-to-point": () => import("../../gemology/carat-to-point/index.js"),
   "geometry/distance": () => import("../../geometry/distance/index.js"),
@@ -48,6 +50,7 @@ export const toolModuleLoaders: Readonly<
   "number/lucas-checker": () => import("../../number/lucas-checker/index.js"),
   "numismatics/off-metal-wrong-planchet-transitional-error-lookup": () => import("../../numismatics/off-metal-wrong-planchet-transitional-error-lookup/index.js"),
   "petroleum/decline-curve-hyperbolic": () => import("../../petroleum/decline-curve-hyperbolic/index.js"),
+  "petroleum/drainage-radius": () => import("../../petroleum/drainage-radius/index.js"),
   "philately/insurance-uplift-applier": () => import("../../philately/insurance-uplift-applier/index.js"),
   "plumbing/hazen-williams-velocity": () => import("../../plumbing/hazen-williams-velocity/index.js"),
   "plumbing/minor-loss-coefficient-k": () => import("../../plumbing/minor-loss-coefficient-k/index.js"),
@@ -74,6 +77,7 @@ export const toolModuleLoaders: Readonly<
   "typography/webfont-subset-savings-percent-glyphs": () => import("../../typography/webfont-subset-savings-percent-glyphs/index.js"),
   "vexillology/rising-sun-offset": () => import("../../vexillology/rising-sun-offset/index.js"),
   "virology/cells-for-inoculum-moi": () => import("../../virology/cells-for-inoculum-moi/index.js"),
+  "viticulture/chill-portions-endodormancy-release": () => import("../../viticulture/chill-portions-endodormancy-release/index.js"),
   "viticulture/picking-lugs-per-ton": () => import("../../viticulture/picking-lugs-per-ton/index.js"),
   "vr/total-system-latency": () => import("../../vr/total-system-latency/index.js"),
   "vr/volumetric-rendering-samples": () => import("../../vr/volumetric-rendering-samples/index.js"),

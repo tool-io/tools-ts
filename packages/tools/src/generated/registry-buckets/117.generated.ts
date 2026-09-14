@@ -7,6 +7,7 @@ export const toolModuleLoaders: Readonly<
   "acoustics/open-pipe-fundamental": () => import("../../acoustics/open-pipe-fundamental/index.js"),
   "agriculture/break-even-yield": () => import("../../agriculture/break-even-yield/index.js"),
   "archaeology/reduction-stage-classify-flake": () => import("../../archaeology/reduction-stage-classify-flake/index.js"),
+  "archaeology/suture-closure-degree-age": () => import("../../archaeology/suture-closure-degree-age/index.js"),
   "auditing/nonattest-hours-threshold": () => import("../../auditing/nonattest-hours-threshold/index.js"),
   "aviation/v-speed-vs0": () => import("../../aviation/v-speed-vs0/index.js"),
   "aviation/wind-speed-from-components": () => import("../../aviation/wind-speed-from-components/index.js"),
@@ -37,7 +38,9 @@ export const toolModuleLoaders: Readonly<
   "generate/open-shop-scheduling-instance": () => import("../../generate/open-shop-scheduling-instance/index.js"),
   "geology/cosmogenic-exposure-age": () => import("../../geology/cosmogenic-exposure-age/index.js"),
   "geology/crater-diameter-scaling": () => import("../../geology/crater-diameter-scaling/index.js"),
+  "glaciology/feature-tracking-displacement-rate": () => import("../../glaciology/feature-tracking-displacement-rate/index.js"),
   "glaciology/surge-cycle-period-reservoir": () => import("../../glaciology/surge-cycle-period-reservoir/index.js"),
+  "horology/tuning-fork-beats": () => import("../../horology/tuning-fork-beats/index.js"),
   "horticulture/lux-to-ppfd-converter": () => import("../../horticulture/lux-to-ppfd-converter/index.js"),
   "insurance/build-pressure-class": () => import("../../insurance/build-pressure-class/index.js"),
   "kinesiology/reactive-strength-index": () => import("../../kinesiology/reactive-strength-index/index.js"),
@@ -71,4 +74,5 @@ export const toolModuleLoaders: Readonly<
   "typography/ch-unit-line-length-checker": () => import("../../typography/ch-unit-line-length-checker/index.js"),
   "validate/gtin-check-digit": () => import("../../validate/gtin-check-digit/index.js"),
   "veterinary/drug-dose-volume-from-concentration": () => import("../../veterinary/drug-dose-volume-from-concentration/index.js"),
+  "vexillology/stripe-parity-checker": () => import("../../vexillology/stripe-parity-checker/index.js"),
 };

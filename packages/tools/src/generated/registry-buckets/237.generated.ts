@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "ergonomics/bed-height-transfer-checker": () => import("../../ergonomics/bed-height-transfer-checker/index.js"),
   "forestry/bark-thickness-breast-height": () => import("../../forestry/bark-thickness-breast-height/index.js"),
   "forestry/plot-area-circular": () => import("../../forestry/plot-area-circular/index.js"),
+  "fun/hangman-difficulty": () => import("../../fun/hangman-difficulty/index.js"),
   "generate/seeded-uuid": () => import("../../generate/seeded-uuid/index.js"),
   "genetics/rh-incompatibility-cross": () => import("../../genetics/rh-incompatibility-cross/index.js"),
   "geology/bearing-capacity-factor-nc": () => import("../../geology/bearing-capacity-factor-nc/index.js"),

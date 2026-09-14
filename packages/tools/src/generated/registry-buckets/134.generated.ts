@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/acoustic-impedance-medium": () => import("../../acoustics/acoustic-impedance-medium/index.js"),
+  "acoustics/derated-nrr-osha": () => import("../../acoustics/derated-nrr-osha/index.js"),
   "aesthetics/moral-rights-attribution-integrity-berne-lookup": () => import("../../aesthetics/moral-rights-attribution-integrity-berne-lookup/index.js"),
   "apiculture/flow-frame-slot-count-lookup": () => import("../../apiculture/flow-frame-slot-count-lookup/index.js"),
   "archival-studies/lignin-free-label-validator": () => import("../../archival-studies/lignin-free-label-validator/index.js"),
@@ -28,6 +29,10 @@ export const toolModuleLoaders: Readonly<
   "engineering/reverberation-time-sabine": () => import("../../engineering/reverberation-time-sabine/index.js"),
   "film/resolution-from-aspect-ratio": () => import("../../film/resolution-from-aspect-ratio/index.js"),
   "folklore/hex-sign-pennsylvania-dutch-meaning-lookup": () => import("../../folklore/hex-sign-pennsylvania-dutch-meaning-lookup/index.js"),
+  "fun/mocking-case": () => import("../../fun/mocking-case/index.js"),
+  "fun/scavenger-hunt-clues": () => import("../../fun/scavenger-hunt-clues/index.js"),
+  "fun/superpower-compatibility": () => import("../../fun/superpower-compatibility/index.js"),
+  "fun/treasure-hunt-coordinates": () => import("../../fun/treasure-hunt-coordinates/index.js"),
   "futurology/known-knowns-rumsfeld-certainty-quadrant": () => import("../../futurology/known-knowns-rumsfeld-certainty-quadrant/index.js"),
   "futurology/scenario-narrative-persona-character-builder": () => import("../../futurology/scenario-narrative-persona-character-builder/index.js"),
   "futurology/singularity-kurzweil-date-claim-verdict-lookup": () => import("../../futurology/singularity-kurzweil-date-claim-verdict-lookup/index.js"),

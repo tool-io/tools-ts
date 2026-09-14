@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/speed-of-sound-in-seawater": () => import("../../acoustics/speed-of-sound-in-seawater/index.js"),
   "actuarial/net-single-premium": () => import("../../actuarial/net-single-premium/index.js"),
   "apiculture/honey-yield-per-super-estimate": () => import("../../apiculture/honey-yield-per-super-estimate/index.js"),
   "aquaculture/ammonia-excretion": () => import("../../aquaculture/ammonia-excretion/index.js"),
@@ -26,7 +27,9 @@ export const toolModuleLoaders: Readonly<
   "engineering/heat-exchanger-ntu-effectiveness": () => import("../../engineering/heat-exchanger-ntu-effectiveness/index.js"),
   "ergonomics/trackball-suitability-checker": () => import("../../ergonomics/trackball-suitability-checker/index.js"),
   "folklore/dog-howling-death-omen-belief-distinction-lookup": () => import("../../folklore/dog-howling-death-omen-belief-distinction-lookup/index.js"),
+  "fun/cryptogram-maker": () => import("../../fun/cryptogram-maker/index.js"),
   "futurology/futures-literacy-capability-checklist": () => import("../../futurology/futures-literacy-capability-checklist/index.js"),
+  "gemology/pavilion-depth-percentage": () => import("../../gemology/pavilion-depth-percentage/index.js"),
   "geology/cipw-norm-calculation-full": () => import("../../geology/cipw-norm-calculation-full/index.js"),
   "geology/proppant-pack-permeability": () => import("../../geology/proppant-pack-permeability/index.js"),
   "geology/swell-index": () => import("../../geology/swell-index/index.js"),

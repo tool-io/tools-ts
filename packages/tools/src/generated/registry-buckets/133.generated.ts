@@ -34,6 +34,8 @@ export const toolModuleLoaders: Readonly<
   "film/shutter-angle-to-shutter-speed": () => import("../../film/shutter-angle-to-shutter-speed/index.js"),
   "forestry/ice-storm-damage-severity-canopy-retained-percent": () => import("../../forestry/ice-storm-damage-severity-canopy-retained-percent/index.js"),
   "forestry/mountain-pine-beetle-outbreak-risk-score": () => import("../../forestry/mountain-pine-beetle-outbreak-risk-score/index.js"),
+  "fun/quest-hook": () => import("../../fun/quest-hook/index.js"),
+  "fun/sarcasm-strikethrough": () => import("../../fun/sarcasm-strikethrough/index.js"),
   "genomics/read-pair-orientation": () => import("../../genomics/read-pair-orientation/index.js"),
   "geology/k-ar-age": () => import("../../geology/k-ar-age/index.js"),
   "heraldry/divided-field-pairing-validator": () => import("../../heraldry/divided-field-pairing-validator/index.js"),

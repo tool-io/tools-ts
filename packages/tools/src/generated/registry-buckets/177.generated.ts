@@ -64,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/quantum-well-laser-threshold-current": () => import("../../semiconductor/quantum-well-laser-threshold-current/index.js"),
   "sericulture/value-chain-margin-cocoon-to-silk": () => import("../../sericulture/value-chain-margin-cocoon-to-silk/index.js"),
   "size/dog-collar": () => import("../../size/dog-collar/index.js"),
+  "sports/darts-checkout-combination-lookup": () => import("../../sports/darts-checkout-combination-lookup/index.js"),
   "text/word-order-reverse": () => import("../../text/word-order-reverse/index.js"),
   "virology/primer-terminal-mismatch-screen": () => import("../../virology/primer-terminal-mismatch-screen/index.js"),
 };

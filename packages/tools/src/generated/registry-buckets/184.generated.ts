@@ -30,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "folklore/lucky-rabbit-foot-graveyard-full-moon-requirements-lore": () => import("../../folklore/lucky-rabbit-foot-graveyard-full-moon-requirements-lore/index.js"),
   "forestry/biomass-expansion-factor": () => import("../../forestry/biomass-expansion-factor/index.js"),
   "forestry/form-factor": () => import("../../forestry/form-factor/index.js"),
+  "fun/chuck-norris-fact": () => import("../../fun/chuck-norris-fact/index.js"),
   "futurology/evidence-graph-mapper": () => import("../../futurology/evidence-graph-mapper/index.js"),
   "hash/sha-512-224": () => import("../../hash/sha-512-224/index.js"),
   "insurance/diminished-value-claim-percent-estimate": () => import("../../insurance/diminished-value-claim-percent-estimate/index.js"),
@@ -65,4 +66,5 @@ export const toolModuleLoaders: Readonly<
   "theatre/qlab-cue-cart-network-midi-trigger-integration-lookup": () => import("../../theatre/qlab-cue-cart-network-midi-trigger-integration-lookup/index.js"),
   "theatre/wireless-mic-frequency-coordination-plan-generator": () => import("../../theatre/wireless-mic-frequency-coordination-plan-generator/index.js"),
   "transcriptomics/sirna-gc-screen": () => import("../../transcriptomics/sirna-gc-screen/index.js"),
+  "vexillology/stripe-panel-cut-list": () => import("../../vexillology/stripe-panel-cut-list/index.js"),
 };

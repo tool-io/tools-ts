@@ -43,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/paired-pulse-trial-ratios": () => import("../../neuroscience/paired-pulse-trial-ratios/index.js"),
   "number/smith-checker": () => import("../../number/smith-checker/index.js"),
   "paleography/insular-family-flag-checker": () => import("../../paleography/insular-family-flag-checker/index.js"),
+  "paleontology/foot-length-body-mass": () => import("../../paleontology/foot-length-body-mass/index.js"),
   "parse/url": () => import("../../parse/url/index.js"),
   "physics/power-work": () => import("../../physics/power-work/index.js"),
   "random/non-bmp-character": () => import("../../random/non-bmp-character/index.js"),

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "actuarial/life-table-dx-deaths": () => import("../../actuarial/life-table-dx-deaths/index.js"),
   "agriculture/lime-requirement": () => import("../../agriculture/lime-requirement/index.js"),
   "agriculture/soil-texture-silt-percentage": () => import("../../agriculture/soil-texture-silt-percentage/index.js"),
   "banking/savings-bucket-sub-account-goals-behavioral-design-lookup": () => import("../../banking/savings-bucket-sub-account-goals-behavioral-design-lookup/index.js"),

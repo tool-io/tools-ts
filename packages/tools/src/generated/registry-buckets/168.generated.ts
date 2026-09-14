@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/consignment-goods-not-owned-exclude-checker": () => import("../../accounting/consignment-goods-not-owned-exclude-checker/index.js"),
+  "actuarial/commutation-function-rx": () => import("../../actuarial/commutation-function-rx/index.js"),
   "aesthetics/horizon-of-expectations-jauss-reception-lookup": () => import("../../aesthetics/horizon-of-expectations-jauss-reception-lookup/index.js"),
   "aquaculture/oxygen-consumption": () => import("../../aquaculture/oxygen-consumption/index.js"),
   "astrometry/bennett-observed-altitude-refraction": () => import("../../astrometry/bennett-observed-altitude-refraction/index.js"),
@@ -26,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/nucleosome-free-fraction": () => import("../../epigenetics/nucleosome-free-fraction/index.js"),
   "film/bellows-extension-factor": () => import("../../film/bellows-extension-factor/index.js"),
   "forestry/cubic-to-board-foot-conversion-region-factor": () => import("../../forestry/cubic-to-board-foot-conversion-region-factor/index.js"),
+  "fun/mafia-role-dealer": () => import("../../fun/mafia-role-dealer/index.js"),
   "futurology/delphi-consensus": () => import("../../futurology/delphi-consensus/index.js"),
   "futurology/scenario-planning-software-tools-platforms-landscape-lookup": () => import("../../futurology/scenario-planning-software-tools-platforms-landscape-lookup/index.js"),
   "geology/consolidation-settlement": () => import("../../geology/consolidation-settlement/index.js"),

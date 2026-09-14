@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/cell-mixture-deconvolution": () => import("../../epigenetics/cell-mixture-deconvolution/index.js"),
   "epigraphy/vslm-formula-detector": () => import("../../epigraphy/vslm-formula-detector/index.js"),
   "film/scope-crop-factor": () => import("../../film/scope-crop-factor/index.js"),
+  "fun/wedding-lucky-day": () => import("../../fun/wedding-lucky-day/index.js"),
   "futurology/synthetic-data-flywheel-model-collapse-risk-debate": () => import("../../futurology/synthetic-data-flywheel-model-collapse-risk-debate/index.js"),
   "game/boss-leash-range-reset-distance-checker": () => import("../../game/boss-leash-range-reset-distance-checker/index.js"),
   "horticulture/air-changes-per-hour-cooling": () => import("../../horticulture/air-changes-per-hour-cooling/index.js"),
@@ -61,8 +62,10 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/resistivity-from-doping": () => import("../../semiconductor/resistivity-from-doping/index.js"),
   "semiconductor/stacking-fault-energy": () => import("../../semiconductor/stacking-fault-energy/index.js"),
   "speleology/designation-number-validator": () => import("../../speleology/designation-number-validator/index.js"),
+  "sports/climbing-hangboard-load-bodyweight-percent": () => import("../../sports/climbing-hangboard-load-bodyweight-percent/index.js"),
   "theatre/keystone-clamp-spacing-flats-lookup": () => import("../../theatre/keystone-clamp-spacing-flats-lookup/index.js"),
   "typography/column-width-from-font-size-ch": () => import("../../typography/column-width-from-font-size-ch/index.js"),
   "veterinary/equine-pregnancy-days-from-ovulation": () => import("../../veterinary/equine-pregnancy-days-from-ovulation/index.js"),
+  "vexillology/fringe-suitability-checker": () => import("../../vexillology/fringe-suitability-checker/index.js"),
   "volcanology/crater-lake-temperature-anomaly-checker": () => import("../../volcanology/crater-lake-temperature-anomaly-checker/index.js"),
 };

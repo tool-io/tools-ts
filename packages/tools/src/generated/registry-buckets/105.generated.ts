@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "actuarial/de-moivre-uniform-death-survival": () => import("../../actuarial/de-moivre-uniform-death-survival/index.js"),
   "archaeology/stratum-depth-interpolation": () => import("../../archaeology/stratum-depth-interpolation/index.js"),
   "astrometry/proper-motion-from-tangential-inverse": () => import("../../astrometry/proper-motion-from-tangential-inverse/index.js"),
   "aviation/cabin-altitude": () => import("../../aviation/cabin-altitude/index.js"),
@@ -58,6 +59,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/wire-bond-loop-height": () => import("../../semiconductor/wire-bond-loop-height/index.js"),
   "speleology/callout-overdue-trigger": () => import("../../speleology/callout-overdue-trigger/index.js"),
   "speleology/ceiling-height-reach-adder": () => import("../../speleology/ceiling-height-reach-adder/index.js"),
+  "sports/glossbrenner-coefficient": () => import("../../sports/glossbrenner-coefficient/index.js"),
   "theatre/arena-blocking-balance": () => import("../../theatre/arena-blocking-balance/index.js"),
   "volcanology/vesicularity-porosity-calculation": () => import("../../volcanology/vesicularity-porosity-calculation/index.js"),
   "vr/god-ray-intensity": () => import("../../vr/god-ray-intensity/index.js"),

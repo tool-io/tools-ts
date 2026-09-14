@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/marine-mammal-hearing-group-reference": () => import("../../acoustics/marine-mammal-hearing-group-reference/index.js"),
+  "actuarial/deferred-mortality-probability": () => import("../../actuarial/deferred-mortality-probability/index.js"),
   "archaeology/carbon-nitrogen-ratio-diet": () => import("../../archaeology/carbon-nitrogen-ratio-diet/index.js"),
   "archaeology/thermoluminescence-dose-rate": () => import("../../archaeology/thermoluminescence-dose-rate/index.js"),
   "arithmetic/sign": () => import("../../arithmetic/sign/index.js"),
@@ -29,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "ergonomics/handle-length-palm-rule-checker": () => import("../../ergonomics/handle-length-palm-rule-checker/index.js"),
   "folklore/faust-pact-historical-georg-faust-figure-to-legend": () => import("../../folklore/faust-pact-historical-georg-faust-figure-to-legend/index.js"),
   "forestry/relative-density": () => import("../../forestry/relative-density/index.js"),
+  "fun/rock-paper-scissors": () => import("../../fun/rock-paper-scissors/index.js"),
   "futurology/nato-futures-command-strategic-concept-horizon-scan": () => import("../../futurology/nato-futures-command-strategic-concept-horizon-scan/index.js"),
   "game/rubiks-cube-facelet-count-54-checker": () => import("../../game/rubiks-cube-facelet-count-54-checker/index.js"),
   "geology/bearing-capacity-factor-nq": () => import("../../geology/bearing-capacity-factor-nq/index.js"),
@@ -41,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "journalism/property-flip-pattern-screen": () => import("../../journalism/property-flip-pattern-screen/index.js"),
   "kinesiology/single-leg-stance-eyes-closed-age-norm-lookup": () => import("../../kinesiology/single-leg-stance-eyes-closed-age-norm-lookup/index.js"),
   "laser/gm-cross-section-converter": () => import("../../laser/gm-cross-section-converter/index.js"),
+  "limnology/brunt-vaisala-frequency-thermocline": () => import("../../limnology/brunt-vaisala-frequency-thermocline/index.js"),
   "limnology/net-surface-heat-flux-balance": () => import("../../limnology/net-surface-heat-flux-balance/index.js"),
   "meteorology/dryline-mixing-ratio-gradient-checker": () => import("../../meteorology/dryline-mixing-ratio-gradient-checker/index.js"),
   "microcontroller/srec-parse": () => import("../../microcontroller/srec-parse/index.js"),
@@ -58,6 +61,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/finfet-fin-height-effect": () => import("../../semiconductor/finfet-fin-height-effect/index.js"),
   "sociology/tempo-adjusted-tfr-bongaarts": () => import("../../sociology/tempo-adjusted-tfr-bongaarts/index.js"),
   "speleology/turnaround-gas-pressure": () => import("../../speleology/turnaround-gas-pressure/index.js"),
+  "sports/javelin-throw-release-velocity-height": () => import("../../sports/javelin-throw-release-velocity-height/index.js"),
   "sports/resting-hr-fitness-trend": () => import("../../sports/resting-hr-fitness-trend/index.js"),
   "taxation/reverse-charge-vat-liability-checker": () => import("../../taxation/reverse-charge-vat-liability-checker/index.js"),
   "text/starts-with-checker": () => import("../../text/starts-with-checker/index.js"),

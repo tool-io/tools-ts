@@ -18,6 +18,9 @@ const { matchesToolJsonSchema, validateToolContract } = await import(
 const { portableToolContract } = await import(
   path.join(packageRoot, "dist/core/portable-contract.js")
 );
+const { exampleOutputsMatch } = await import(
+  path.join(packageRoot, "dist/core/example.js")
+);
 const generatedContracts = JSON.parse(
   await readFile(path.join(packageRoot, "contracts.generated.json"), "utf8"),
 );
@@ -108,7 +111,7 @@ for (const directory of manifest.tools) {
     );
   if (Object.prototype.hasOwnProperty.call(example, "output")) {
     assertJsonSerializable(example.output, `${directory} example output`);
-    if (!isDeepStrictEqual(result.output, example.output))
+    if (!exampleOutputsMatch(result.output, example.output))
       throw new Error(
         `${directory} example output does not match its execution result.`,
       );

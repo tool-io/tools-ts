@@ -29,6 +29,8 @@ export const toolModuleLoaders: Readonly<
   "folklore/trickster-figure-culture-crossref-lookup": () => import("../../folklore/trickster-figure-culture-crossref-lookup/index.js"),
   "forestry/prescribed-burn-unit-area-consumption-tonnes": () => import("../../forestry/prescribed-burn-unit-area-consumption-tonnes/index.js"),
   "forestry/stream-crossing-density-per-km-road": () => import("../../forestry/stream-crossing-density-per-km-road/index.js"),
+  "fun/rap-name": () => import("../../fun/rap-name/index.js"),
+  "gemology/star-facet-percentage": () => import("../../gemology/star-facet-percentage/index.js"),
   "geometry/circle-arc-length": () => import("../../geometry/circle-arc-length/index.js"),
   "horology/fixodrop-epilame-surface-treatment-lookup": () => import("../../horology/fixodrop-epilame-surface-treatment-lookup/index.js"),
   "horology/remontoire-constant-force-type-lookup": () => import("../../horology/remontoire-constant-force-type-lookup/index.js"),
@@ -72,5 +74,6 @@ export const toolModuleLoaders: Readonly<
   "toxicology/mercury-hair-blood-ratio": () => import("../../toxicology/mercury-hair-blood-ratio/index.js"),
   "vector/angle": () => import("../../vector/angle/index.js"),
   "veterinary/packed-cell-volume-transfusion-target": () => import("../../veterinary/packed-cell-volume-transfusion-target/index.js"),
+  "vexillology/heading-tape-length": () => import("../../vexillology/heading-tape-length/index.js"),
   "volcanology/tephrochronology-marker-shard-lookup": () => import("../../volcanology/tephrochronology-marker-shard-lookup/index.js"),
 };

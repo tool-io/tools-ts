@@ -56,6 +56,7 @@ export const toolModuleLoaders: Readonly<
   "typography/pica-to-inches": () => import("../../typography/pica-to-inches/index.js"),
   "veterinary/bcs-body-condition-score-equine": () => import("../../veterinary/bcs-body-condition-score-equine/index.js"),
   "veterinary/sdma-reference-checker-canine": () => import("../../veterinary/sdma-reference-checker-canine/index.js"),
+  "vexillology/charge-diameter-rule": () => import("../../vexillology/charge-diameter-rule/index.js"),
   "virology/seropositivity-waning-fit": () => import("../../virology/seropositivity-waning-fit/index.js"),
   "virology/target-transduction-moi": () => import("../../virology/target-transduction-moi/index.js"),
   "viticulture/green-harvest-drop-cluster-weight": () => import("../../viticulture/green-harvest-drop-cluster-weight/index.js"),

@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "apiculture/queen-marking-year-color-code-lookup": () => import("../../apiculture/queen-marking-year-color-code-lookup/index.js"),
   "aquaculture/weaning-time": () => import("../../aquaculture/weaning-time/index.js"),
   "archaeology/c14-age-from-activity": () => import("../../archaeology/c14-age-from-activity/index.js"),
+  "archaeology/cranial-index-cephalic": () => import("../../archaeology/cranial-index-cephalic/index.js"),
   "archaeology/orifice-index-vessel": () => import("../../archaeology/orifice-index-vessel/index.js"),
   "auditing/network-firm-screen": () => import("../../auditing/network-firm-screen/index.js"),
   "banking/gsib-too-big-to-fail-designations-post-2008-list-lookup": () => import("../../banking/gsib-too-big-to-fail-designations-post-2008-list-lookup/index.js"),

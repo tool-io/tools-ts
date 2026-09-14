@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "actuarial/commutation-function-mx": () => import("../../actuarial/commutation-function-mx/index.js"),
   "aquaculture/benefit-cost-ratio": () => import("../../aquaculture/benefit-cost-ratio/index.js"),
   "archaeology/sherd-refit-conjoin-pair-count": () => import("../../archaeology/sherd-refit-conjoin-pair-count/index.js"),
   "archival-studies/box-folder-format-validator": () => import("../../archival-studies/box-folder-format-validator/index.js"),
@@ -26,11 +27,14 @@ export const toolModuleLoaders: Readonly<
   "folklore/hansel-gretel-duck-crossing-oven-push-variant-details": () => import("../../folklore/hansel-gretel-duck-crossing-oven-push-variant-details/index.js"),
   "forestry/harvest-machine-productivity-m3-per-pmh-system": () => import("../../forestry/harvest-machine-productivity-m3-per-pmh-system/index.js"),
   "forestry/insect-hazard-rating-bark-beetle-basal-area-host": () => import("../../forestry/insect-hazard-rating-bark-beetle-basal-area-host/index.js"),
+  "fun/rpsls": () => import("../../fun/rpsls/index.js"),
   "futurology/futures-radar-signal-database-tag-schema-designer": () => import("../../futurology/futures-radar-signal-database-tag-schema-designer/index.js"),
   "futurology/singapore-csf-centre-strategic-futures-signals-newsletter": () => import("../../futurology/singapore-csf-centre-strategic-futures-signals-newsletter/index.js"),
   "geology/foreland-basin-flexural-subsidence": () => import("../../geology/foreland-basin-flexural-subsidence/index.js"),
   "geology/fracture-pressure-gradient-eaton": () => import("../../geology/fracture-pressure-gradient-eaton/index.js"),
   "geology/helium-diffusion-closure-temperature": () => import("../../geology/helium-diffusion-closure-temperature/index.js"),
+  "glaciology/flotation-thickness-draft": () => import("../../glaciology/flotation-thickness-draft/index.js"),
+  "glaciology/los-to-horizontal-velocity-decomposition": () => import("../../glaciology/los-to-horizontal-velocity-decomposition/index.js"),
   "glaciology/vertical-velocity-from-accumulation": () => import("../../glaciology/vertical-velocity-from-accumulation/index.js"),
   "insurance/follow-form-versus-self-contained-excess-language-difference": () => import("../../insurance/follow-form-versus-self-contained-excess-language-difference/index.js"),
   "journalism/beat-source-coverage": () => import("../../journalism/beat-source-coverage/index.js"),
@@ -58,6 +62,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/photonic-crystal-defect-mode-volume": () => import("../../semiconductor/photonic-crystal-defect-mode-volume/index.js"),
   "size/blazer": () => import("../../size/blazer/index.js"),
   "sociology/crude-death-rate": () => import("../../sociology/crude-death-rate/index.js"),
+  "sports/freshness-form-tsb-fitness-minus-fatigue": () => import("../../sports/freshness-form-tsb-fitness-minus-fatigue/index.js"),
   "statistics/quartiles": () => import("../../statistics/quartiles/index.js"),
   "taxation/capital-gains-holding-period-short-long-checker": () => import("../../taxation/capital-gains-holding-period-short-long-checker/index.js"),
   "toxicology/added-risk": () => import("../../toxicology/added-risk/index.js"),

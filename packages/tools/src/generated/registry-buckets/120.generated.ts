@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/parkett-dehnungsfuge-10-15mm": () => import("../../carpentry/parkett-dehnungsfuge-10-15mm/index.js"),
   "chemistry/heat-of-neutralization": () => import("../../chemistry/heat-of-neutralization/index.js"),
   "chemistry/nuclear-neutron-separation-energy": () => import("../../chemistry/nuclear-neutron-separation-energy/index.js"),
+  "climatology/daylight-duration-latitude": () => import("../../climatology/daylight-duration-latitude/index.js"),
   "convert/binary-to-decimal": () => import("../../convert/binary-to-decimal/index.js"),
   "convert/octal-to-decimal": () => import("../../convert/octal-to-decimal/index.js"),
   "criminology/double-jeopardy-elements-block-tester": () => import("../../criminology/double-jeopardy-elements-block-tester/index.js"),
@@ -24,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/biomass-energy-yield": () => import("../../engineering/biomass-energy-yield/index.js"),
   "engineering/heat-exchanger-ntu-sizing": () => import("../../engineering/heat-exchanger-ntu-sizing/index.js"),
   "forestry/stand-table-lookup": () => import("../../forestry/stand-table-lookup/index.js"),
+  "fun/sudoku-difficulty": () => import("../../fun/sudoku-difficulty/index.js"),
   "genomics/sam-flag-decode": () => import("../../genomics/sam-flag-decode/index.js"),
   "geology/ree-normalization": () => import("../../geology/ree-normalization/index.js"),
   "geology/vitrinite-reflectance-to-temperature": () => import("../../geology/vitrinite-reflectance-to-temperature/index.js"),
@@ -68,4 +70,5 @@ export const toolModuleLoaders: Readonly<
   "toxicology/genotoxicity-ames": () => import("../../toxicology/genotoxicity-ames/index.js"),
   "toxicology/precautionary-statement-lookup": () => import("../../toxicology/precautionary-statement-lookup/index.js"),
   "toxicology/tolerable-weekly-intake": () => import("../../toxicology/tolerable-weekly-intake/index.js"),
+  "vexillology/pantone-to-rgb-flag": () => import("../../vexillology/pantone-to-rgb-flag/index.js"),
 };

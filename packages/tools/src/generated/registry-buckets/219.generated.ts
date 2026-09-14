@@ -28,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/titulature-order-checker": () => import("../../epigraphy/titulature-order-checker/index.js"),
   "ergonomics/hav-a8-daily-exposure": () => import("../../ergonomics/hav-a8-daily-exposure/index.js"),
   "film/pixel-density-ppi": () => import("../../film/pixel-density-ppi/index.js"),
+  "fun/baby-name-popularity": () => import("../../fun/baby-name-popularity/index.js"),
   "genetics/cpg-island-window-scan": () => import("../../genetics/cpg-island-window-scan/index.js"),
   "geology/api-gravity": () => import("../../geology/api-gravity/index.js"),
   "horology/gasket-compression-percent": () => import("../../horology/gasket-compression-percent/index.js"),

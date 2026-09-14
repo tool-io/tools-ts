@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "accounting/small-stock-dividend-retained-earnings-cap": () => import("../../accounting/small-stock-dividend-retained-earnings-cap/index.js"),
   "acoustics/day-night-level-dnl": () => import("../../acoustics/day-night-level-dnl/index.js"),
+  "acoustics/syntonic-comma-value": () => import("../../acoustics/syntonic-comma-value/index.js"),
   "biology/restriction-site-count": () => import("../../biology/restriction-site-count/index.js"),
   "carpentry/holzfehler-kappung-laenge": () => import("../../carpentry/holzfehler-kappung-laenge/index.js"),
   "carpentry/verschnittberechnung-platte-2d": () => import("../../carpentry/verschnittberechnung-platte-2d/index.js"),
@@ -35,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/vacat-dot-series-counter": () => import("../../epigraphy/vacat-dot-series-counter/index.js"),
   "ergonomics/carry-load-bodyweight-limit-checker": () => import("../../ergonomics/carry-load-bodyweight-limit-checker/index.js"),
   "film/anarmorphic-squeeze-factor": () => import("../../film/anarmorphic-squeeze-factor/index.js"),
+  "fun/card-trick-force": () => import("../../fun/card-trick-force/index.js"),
   "generate/uuid-v8": () => import("../../generate/uuid-v8/index.js"),
   "geology/coefficient-of-volume-compressibility": () => import("../../geology/coefficient-of-volume-compressibility/index.js"),
   "html/viewport-meta-width-device-checker": () => import("../../html/viewport-meta-width-device-checker/index.js"),

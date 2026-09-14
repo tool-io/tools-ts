@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "actuarial/decreasing-annuity-immediate": () => import("../../actuarial/decreasing-annuity-immediate/index.js"),
   "archaeology/spit-volume-excavation": () => import("../../archaeology/spit-volume-excavation/index.js"),
   "arithmetic/subtract-two-numbers": () => import("../../arithmetic/subtract-two-numbers/index.js"),
   "auditing/three-lines-model-roles-assurance-lookup": () => import("../../auditing/three-lines-model-roles-assurance-lookup/index.js"),
@@ -47,6 +48,7 @@ export const toolModuleLoaders: Readonly<
   "math/motzkin-number": () => import("../../math/motzkin-number/index.js"),
   "meteorology/k-index-severe-weather": () => import("../../meteorology/k-index-severe-weather/index.js"),
   "music/tessitura-center-estimate": () => import("../../music/tessitura-center-estimate/index.js"),
+  "paleontology/lagerstatten-quality-score": () => import("../../paleontology/lagerstatten-quality-score/index.js"),
   "paleontology/origination-rate-per-lmyr": () => import("../../paleontology/origination-rate-per-lmyr/index.js"),
   "parasitology/skin-scraping-mite-density": () => import("../../parasitology/skin-scraping-mite-density/index.js"),
   "plumbing/ejector-pump-capacity": () => import("../../plumbing/ejector-pump-capacity/index.js"),

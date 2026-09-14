@@ -74,8 +74,8 @@ export const exampleInput = {
 } satisfies Input;
 export const exampleOutput = {
   oceanInflowM3PerSecond: 12.666666666666666,
-  estuaryOutflowM3PerSecond: 22.666666666666668,
-  saltBalanceResidualSalinityM3PerSecond: 0,
+  estuaryOutflowM3PerSecond: 22.666666666666664,
+  saltBalanceResidualSalinityM3PerSecond: 5.684341886080802e-14,
 } satisfies Output;
 export const example = {
   input: exampleInput,

@@ -30,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "folklore/celtic-tir-na-nog-otherworld-thin-places-concept-lookup": () => import("../../folklore/celtic-tir-na-nog-otherworld-thin-places-concept-lookup/index.js"),
   "folklore/sin-eater-funeral-bread-custom-history-lookup": () => import("../../folklore/sin-eater-funeral-bread-custom-history-lookup/index.js"),
   "format/query-string": () => import("../../format/query-string/index.js"),
+  "fun/werewolf-role-dealer": () => import("../../fun/werewolf-role-dealer/index.js"),
   "futurology/after-action-review-expected-actual-template": () => import("../../futurology/after-action-review-expected-actual-template/index.js"),
   "geology/zircon-age": () => import("../../geology/zircon-age/index.js"),
   "geometry/regular-polygon-area": () => import("../../geometry/regular-polygon-area/index.js"),

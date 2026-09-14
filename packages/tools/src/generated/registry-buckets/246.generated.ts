@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/iso-3382-part-reference": () => import("../../acoustics/iso-3382-part-reference/index.js"),
+  "acoustics/localization-ild-threshold-lookup": () => import("../../acoustics/localization-ild-threshold-lookup/index.js"),
   "aesthetics/panofsky-three-levels-iconography-iconology-lookup": () => import("../../aesthetics/panofsky-three-levels-iconography-iconology-lookup/index.js"),
   "archaeology/knapping-floor-refit-cluster-density": () => import("../../archaeology/knapping-floor-refit-cluster-density/index.js"),
   "astrobiology/c13-fractionation-flag-checker": () => import("../../astrobiology/c13-fractionation-flag-checker/index.js"),
@@ -42,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/forecast-calibration": () => import("../../futurology/forecast-calibration/index.js"),
   "genomics/trio-mendelian-check": () => import("../../genomics/trio-mendelian-check/index.js"),
   "geology/bit-weight-on-bit": () => import("../../geology/bit-weight-on-bit/index.js"),
+  "glaciology/sea-level-equivalent-gt-mm": () => import("../../glaciology/sea-level-equivalent-gt-mm/index.js"),
   "insurance/binding-temporary-card-validity-lookup": () => import("../../insurance/binding-temporary-card-validity-lookup/index.js"),
   "insurance/quota-share-ceding-commission-net-retained": () => import("../../insurance/quota-share-ceding-commission-net-retained/index.js"),
   "journalism/jump-page-continued-line-placement-lookup": () => import("../../journalism/jump-page-continued-line-placement-lookup/index.js"),
@@ -51,6 +53,7 @@ export const toolModuleLoaders: Readonly<
   "kinesiology/seam-shifted-spin-laminar-effect-pitch-design-note": () => import("../../kinesiology/seam-shifted-spin-laminar-effect-pitch-design-note/index.js"),
   "laser/repeater-link-success": () => import("../../laser/repeater-link-success/index.js"),
   "limnology/light-extinction-coefficient-secchi": () => import("../../limnology/light-extinction-coefficient-secchi/index.js"),
+  "limnology/oxygen-solubility-salinity-correction": () => import("../../limnology/oxygen-solubility-salinity-correction/index.js"),
   "linguistics/great-vowel-shift-date-range-lookup": () => import("../../linguistics/great-vowel-shift-date-range-lookup/index.js"),
   "logistics/fuel-surcharge-percent-add-on": () => import("../../logistics/fuel-surcharge-percent-add-on/index.js"),
   "math/prime-big-omega": () => import("../../math/prime-big-omega/index.js"),
@@ -79,6 +82,8 @@ export const toolModuleLoaders: Readonly<
   "size/shorts": () => import("../../size/shorts/index.js"),
   "size/socks": () => import("../../size/socks/index.js"),
   "sociology/gender-development-index": () => import("../../sociology/gender-development-index/index.js"),
+  "sports/alpine-ski-slope-degree-descent-speed-checker": () => import("../../sports/alpine-ski-slope-degree-descent-speed-checker/index.js"),
+  "sports/ski-vertical-meters-per-hour-climb-rate": () => import("../../sports/ski-vertical-meters-per-hour-climb-rate/index.js"),
   "taxation/macrs-property-class-recovery-period-lookup": () => import("../../taxation/macrs-property-class-recovery-period-lookup/index.js"),
   "taxation/s-corp-basis-tracker": () => import("../../taxation/s-corp-basis-tracker/index.js"),
   "theatre/wig-ventilation-hours": () => import("../../theatre/wig-ventilation-hours/index.js"),

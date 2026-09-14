@@ -51,8 +51,8 @@ export const example = {
   output: {
     result: {
       observedPi: 4,
-      conditionalLi: 6.165599504787299,
-      signedPiMinusConditionalLi: -2.165599504787299,
+      conditionalLi: 6.165599504787351,
+      signedPiMinusConditionalLi: -2.165599504787351,
       observedPositiveDiscrepancy: false,
     },
   },

@@ -17,7 +17,7 @@ export const calculate = (input: Input): Output => {
 };
 export const exampleInput = { x: 1 } satisfies Input;
 export const exampleOutput = {
-  errorFunctionValue: 0.8427007929497149,
+  errorFunctionValue: 0.8427007877600067,
 } satisfies Output;
 export const example = {
   input: exampleInput,

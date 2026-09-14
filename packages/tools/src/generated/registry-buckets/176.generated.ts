@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "journalism/story-turnaround-hours-beat-average-calculator": () => import("../../journalism/story-turnaround-hours-beat-average-calculator/index.js"),
   "journalism/subpoena-quash-move-deadline-days-lookup": () => import("../../journalism/subpoena-quash-move-deadline-days-lookup/index.js"),
   "linguistics/cot-caught-merger-region-lookup": () => import("../../linguistics/cot-caught-merger-region-lookup/index.js"),
+  "list/slice": () => import("../../list/slice/index.js"),
   "logic/syllogism-mood-figure-parser": () => import("../../logic/syllogism-mood-figure-parser/index.js"),
   "math/beta-dirichlet-approx": () => import("../../math/beta-dirichlet-approx/index.js"),
   "math/elliptic-integral-second-kind-approx": () => import("../../math/elliptic-integral-second-kind-approx/index.js"),

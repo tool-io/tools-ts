@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "entrepreneurship/drag-along-tag-along-rights-meaning-lookup": () => import("../../entrepreneurship/drag-along-tag-along-rights-meaning-lookup/index.js"),
   "folklore/legend-tripping-site-etiquette-checklist": () => import("../../folklore/legend-tripping-site-etiquette-checklist/index.js"),
   "forestry/diameter-growth-annual": () => import("../../forestry/diameter-growth-annual/index.js"),
+  "fun/gamblers-ruin": () => import("../../fun/gamblers-ruin/index.js"),
   "futurology/amara-law-short-run-overestimate-rule-lookup": () => import("../../futurology/amara-law-short-run-overestimate-rule-lookup/index.js"),
   "geology/alumina-saturation-index-asi": () => import("../../geology/alumina-saturation-index-asi/index.js"),
   "geology/transmissivity-pumping-test-jacob": () => import("../../geology/transmissivity-pumping-test-jacob/index.js"),
@@ -44,6 +45,7 @@ export const toolModuleLoaders: Readonly<
   "metabolomics/mplus2-isotope-signature": () => import("../../metabolomics/mplus2-isotope-signature/index.js"),
   "mining/mine-recovery-factor": () => import("../../mining/mine-recovery-factor/index.js"),
   "numismatics/junk-silver-face-value-multiplier": () => import("../../numismatics/junk-silver-face-value-multiplier/index.js"),
+  "paleontology/bergmann-latitude-correlation": () => import("../../paleontology/bergmann-latitude-correlation/index.js"),
   "paleontology/extinction-magnitude-percent": () => import("../../paleontology/extinction-magnitude-percent/index.js"),
   "paleontology/lognormal-fit-check": () => import("../../paleontology/lognormal-fit-check/index.js"),
   "parasitology/day-three-positivity-screen": () => import("../../parasitology/day-three-positivity-screen/index.js"),
@@ -66,5 +68,6 @@ export const toolModuleLoaders: Readonly<
   "toxicology/population-risk-expected-cases": () => import("../../toxicology/population-risk-expected-cases/index.js"),
   "veterinary/deworming-interval-fecal-egg-count": () => import("../../veterinary/deworming-interval-fecal-egg-count/index.js"),
   "veterinary/insulin-starting-dose-cat": () => import("../../veterinary/insulin-starting-dose-cat/index.js"),
+  "vexillology/flag-age-years": () => import("../../vexillology/flag-age-years/index.js"),
   "vexillology/per-fly-segment-divider": () => import("../../vexillology/per-fly-segment-divider/index.js"),
 };

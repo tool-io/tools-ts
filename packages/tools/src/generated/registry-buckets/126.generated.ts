@@ -32,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "folklore/pecos-bill-cyclone-riding-frontier-exaggeration-lookup": () => import("../../folklore/pecos-bill-cyclone-riding-frontier-exaggeration-lookup/index.js"),
   "forestry/grazing-forest-pasture-head-per-hectare-woodland": () => import("../../forestry/grazing-forest-pasture-head-per-hectare-woodland/index.js"),
   "forestry/snag-density": () => import("../../forestry/snag-density/index.js"),
+  "fun/username-rater": () => import("../../fun/username-rater/index.js"),
   "game/clue-suspect-weapon-room-elimination-count": () => import("../../game/clue-suspect-weapon-room-elimination-count/index.js"),
   "gemology/carats-round-brilliant": () => import("../../gemology/carats-round-brilliant/index.js"),
   "gemology/fluorescence-grade-map": () => import("../../gemology/fluorescence-grade-map/index.js"),
@@ -71,5 +72,7 @@ export const toolModuleLoaders: Readonly<
   "typography/perfect-fourth-scale-generator": () => import("../../typography/perfect-fourth-scale-generator/index.js"),
   "veterinary/chicken-water-consumption-daily": () => import("../../veterinary/chicken-water-consumption-daily/index.js"),
   "veterinary/cow-weight-heart-girth-tape": () => import("../../veterinary/cow-weight-heart-girth-tape/index.js"),
+  "vexillology/display-duration-etiquette-timer": () => import("../../vexillology/display-duration-etiquette-timer/index.js"),
+  "vexillology/text-legibility-distance": () => import("../../vexillology/text-legibility-distance/index.js"),
   "web/url-hash": () => import("../../web/url-hash/index.js"),
 };

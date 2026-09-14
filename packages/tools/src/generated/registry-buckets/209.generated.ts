@@ -29,6 +29,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/mach-number-compressible": () => import("../../engineering/mach-number-compressible/index.js"),
   "entrepreneurship/arr-burn-multiple": () => import("../../entrepreneurship/arr-burn-multiple/index.js"),
   "film/angle-of-view-diagonal": () => import("../../film/angle-of-view-diagonal/index.js"),
+  "fun/icebreaker-question": () => import("../../fun/icebreaker-question/index.js"),
   "glaciology/snow-to-ice-thickness-conversion": () => import("../../glaciology/snow-to-ice-thickness-conversion/index.js"),
   "hash/sha-224": () => import("../../hash/sha-224/index.js"),
   "heraldry/cadency-mark-birth-rank": () => import("../../heraldry/cadency-mark-birth-rank/index.js"),

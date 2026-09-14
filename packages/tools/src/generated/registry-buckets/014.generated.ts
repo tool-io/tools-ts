@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/half-wave-resonator-length": () => import("../../acoustics/half-wave-resonator-length/index.js"),
   "acoustics/resilient-channel-stc-comparison": () => import("../../acoustics/resilient-channel-stc-comparison/index.js"),
+  "actuarial/qx-to-mx-converter": () => import("../../actuarial/qx-to-mx-converter/index.js"),
   "aesthetics/art-fair-booth-tier-blue-chip-emerging-classifier": () => import("../../aesthetics/art-fair-booth-tier-blue-chip-emerging-classifier/index.js"),
   "aquaculture/fulton-condition-factor": () => import("../../aquaculture/fulton-condition-factor/index.js"),
   "aquaculture/pco2": () => import("../../aquaculture/pco2/index.js"),

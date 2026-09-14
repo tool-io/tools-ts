@@ -45,6 +45,7 @@ export const toolModuleLoaders: Readonly<
   "numismatics/panda-yearly-design-change-mintage-variance-lookup": () => import("../../numismatics/panda-yearly-design-change-mintage-variance-lookup/index.js"),
   "oenology/barrel-extraction-equivalent-days": () => import("../../oenology/barrel-extraction-equivalent-days/index.js"),
   "oenology/malic-acid-addition": () => import("../../oenology/malic-acid-addition/index.js"),
+  "paleontology/dimensionless-speed-calculator": () => import("../../paleontology/dimensionless-speed-calculator/index.js"),
   "pedagogy/socratic-seminar-inner-outer-circle-facilitation-guide": () => import("../../pedagogy/socratic-seminar-inner-outer-circle-facilitation-guide/index.js"),
   "plumbing/pump-affinity-power": () => import("../../plumbing/pump-affinity-power/index.js"),
   "plumbing/water-softener-capacity": () => import("../../plumbing/water-softener-capacity/index.js"),
@@ -64,5 +65,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/piezoelectric-coupling-coefficient": () => import("../../semiconductor/piezoelectric-coupling-coefficient/index.js"),
   "semiconductor/srh-recombination-lifetime": () => import("../../semiconductor/srh-recombination-lifetime/index.js"),
   "taxation/special-assessment-lid-cap-checker": () => import("../../taxation/special-assessment-lid-cap-checker/index.js"),
+  "vexillology/meaning-to-signal-letter": () => import("../../vexillology/meaning-to-signal-letter/index.js"),
   "volcanology/caldera-vs-summit-crater-classifier": () => import("../../volcanology/caldera-vs-summit-crater-classifier/index.js"),
 };

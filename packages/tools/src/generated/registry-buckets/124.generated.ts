@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/cremer-room-acoustics-history": () => import("../../acoustics/cremer-room-acoustics-history/index.js"),
+  "acoustics/modal-density-high-frequency": () => import("../../acoustics/modal-density-high-frequency/index.js"),
   "agriculture/cover-crop-biomass": () => import("../../agriculture/cover-crop-biomass/index.js"),
   "archaeology/uranium-series-age-speleothem": () => import("../../archaeology/uranium-series-age-speleothem/index.js"),
   "astronomy/daylight": () => import("../../astronomy/daylight/index.js"),

@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "air-displacement-body-composition": () => import("../../air-displacement-body-composition/index.js"),
   "aquaculture/economic-feed-rate": () => import("../../aquaculture/economic-feed-rate/index.js"),
+  "archaeology/tempers-percentage-thin-section": () => import("../../archaeology/tempers-percentage-thin-section/index.js"),
   "archival-studies/foi-exemption-category-mapper": () => import("../../archival-studies/foi-exemption-category-mapper/index.js"),
   "astronomy/luminosity-class-mkk-lookup": () => import("../../astronomy/luminosity-class-mkk-lookup/index.js"),
   "auditing/interim-review-quarterly-analytics-checkpoint-lookup": () => import("../../auditing/interim-review-quarterly-analytics-checkpoint-lookup/index.js"),
@@ -30,6 +31,7 @@ export const toolModuleLoaders: Readonly<
   "geology/storativity-confined": () => import("../../geology/storativity-confined/index.js"),
   "geometry/chord-length": () => import("../../geometry/chord-length/index.js"),
   "horology/rotor-wind-rate": () => import("../../horology/rotor-wind-rate/index.js"),
+  "horology/spring-bar-diameter-lookup": () => import("../../horology/spring-bar-diameter-lookup/index.js"),
   "laser/rytov-variance": () => import("../../laser/rytov-variance/index.js"),
   "linguistics/australian-english-vowel-shift-lookup": () => import("../../linguistics/australian-english-vowel-shift-lookup/index.js"),
   "logic/ferison-eio3-valid-lookup": () => import("../../logic/ferison-eio3-valid-lookup/index.js"),
@@ -48,6 +50,7 @@ export const toolModuleLoaders: Readonly<
   "music/tritone-substitution-pair-generator": () => import("../../music/tritone-substitution-pair-generator/index.js"),
   "neuroscience/mean-firing-rate": () => import("../../neuroscience/mean-firing-rate/index.js"),
   "numismatics/flying-eagle-three-year-run-1857-58-rarity-note": () => import("../../numismatics/flying-eagle-three-year-run-1857-58-rarity-note/index.js"),
+  "numismatics/medallion-vs-coin-rotation-checker": () => import("../../numismatics/medallion-vs-coin-rotation-checker/index.js"),
   "oceanography/spice-parameter-water-mass": () => import("../../oceanography/spice-parameter-water-mass/index.js"),
   "oenology/free-so2-target-dose": () => import("../../oenology/free-so2-target-dose/index.js"),
   "oenology/molecular-so2": () => import("../../oenology/molecular-so2/index.js"),
@@ -67,6 +70,7 @@ export const toolModuleLoaders: Readonly<
   "theatre/stage-sound-sync-delay": () => import("../../theatre/stage-sound-sync-delay/index.js"),
   "toxicology/ec10-calculator": () => import("../../toxicology/ec10-calculator/index.js"),
   "veterinary/fructosamine-diabetes-checker": () => import("../../veterinary/fructosamine-diabetes-checker/index.js"),
+  "vexillology/ceremonial-fold-steps": () => import("../../vexillology/ceremonial-fold-steps/index.js"),
   "virology/eclipse-latent-period-timeline": () => import("../../virology/eclipse-latent-period-timeline/index.js"),
   "viticulture/node-loading-adjustment-target": () => import("../../viticulture/node-loading-adjustment-target/index.js"),
 };

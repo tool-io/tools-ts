@@ -28,6 +28,8 @@ export const toolModuleLoaders: Readonly<
   "folklore/itchy-palm-money-left-versus-right-meaning-lookup": () => import("../../folklore/itchy-palm-money-left-versus-right-meaning-lookup/index.js"),
   "folklore/quilt-code-underground-railroad-claim-verdict-lookup": () => import("../../folklore/quilt-code-underground-railroad-claim-verdict-lookup/index.js"),
   "forestry/annosum-root-rot-stump-infection-probability": () => import("../../forestry/annosum-root-rot-stump-infection-probability/index.js"),
+  "fun/band-name": () => import("../../fun/band-name/index.js"),
+  "fun/dnd-loot": () => import("../../fun/dnd-loot/index.js"),
   "gemology/amber-buoyancy-test": () => import("../../gemology/amber-buoyancy-test/index.js"),
   "gemology/eye-clean-threshold": () => import("../../gemology/eye-clean-threshold/index.js"),
   "genomics/overrepresented-read-screen": () => import("../../genomics/overrepresented-read-screen/index.js"),

@@ -30,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/transformer-core-area-product": () => import("../../electronics/transformer-core-area-product/index.js"),
   "epigraphy/crucis-dagger-marker-checker": () => import("../../epigraphy/crucis-dagger-marker-checker/index.js"),
   "ergonomics/hip-breadth-seat-fit-checker": () => import("../../ergonomics/hip-breadth-seat-fit-checker/index.js"),
+  "fun/emoji-riddle": () => import("../../fun/emoji-riddle/index.js"),
   "futurology/state-of-future-index": () => import("../../futurology/state-of-future-index/index.js"),
   "geology/magnetic-anomaly-total-field": () => import("../../geology/magnetic-anomaly-total-field/index.js"),
   "glaciology/surge-front-advance-rate": () => import("../../glaciology/surge-front-advance-rate/index.js"),

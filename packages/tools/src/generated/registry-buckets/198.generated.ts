@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/shepard-tone-reference": () => import("../../acoustics/shepard-tone-reference/index.js"),
+  "actuarial/mx-to-qx-converter": () => import("../../actuarial/mx-to-qx-converter/index.js"),
   "aesthetics/barthes-punctum-versus-studium-camera-lucida-distinction": () => import("../../aesthetics/barthes-punctum-versus-studium-camera-lucida-distinction/index.js"),
   "aquaculture/pellet-size": () => import("../../aquaculture/pellet-size/index.js"),
   "astronomy/lunar-distance-km-mean-lookup": () => import("../../astronomy/lunar-distance-km-mean-lookup/index.js"),
@@ -65,8 +66,10 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/resonant-tunneling-current": () => import("../../semiconductor/resonant-tunneling-current/index.js"),
   "sericulture/oviposition-first-24h-percent": () => import("../../sericulture/oviposition-first-24h-percent/index.js"),
   "size/hat": () => import("../../size/hat/index.js"),
+  "sports/pole-vault-energy-approx-height": () => import("../../sports/pole-vault-energy-approx-height/index.js"),
   "statistics/chi-square-goodness-of-fit": () => import("../../statistics/chi-square-goodness-of-fit/index.js"),
   "text/anagram-checker": () => import("../../text/anagram-checker/index.js"),
+  "text/title-case": () => import("../../text/title-case/index.js"),
   "theatre/afm-local-musician-union-pit-minimums-hiring-lookup": () => import("../../theatre/afm-local-musician-union-pit-minimums-hiring-lookup/index.js"),
   "theatre/rush-ticket-under-30-discount-lookup": () => import("../../theatre/rush-ticket-under-30-discount-lookup/index.js"),
   "toxicology/risk-characterization-ratio": () => import("../../toxicology/risk-characterization-ratio/index.js"),

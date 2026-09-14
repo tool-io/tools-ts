@@ -26,6 +26,7 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/xy-intensity-classifier": () => import("../../epigenetics/xy-intensity-classifier/index.js"),
   "folklore/bluebeard-forbidden-chamber-key-blood-taboo-analysis": () => import("../../folklore/bluebeard-forbidden-chamber-key-blood-taboo-analysis/index.js"),
   "forestry/basal-area-single-tree": () => import("../../forestry/basal-area-single-tree/index.js"),
+  "fun/ninja-name": () => import("../../fun/ninja-name/index.js"),
   "geology/petrophysical-cementation-exponent-m": () => import("../../geology/petrophysical-cementation-exponent-m/index.js"),
   "geology/u-pb-concordia": () => import("../../geology/u-pb-concordia/index.js"),
   "geology/well-log-gamma-ray-index": () => import("../../geology/well-log-gamma-ray-index/index.js"),

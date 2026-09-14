@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "agriculture/greenhouse-gas-emission-per-hectare": () => import("../../agriculture/greenhouse-gas-emission-per-hectare/index.js"),
   "apiculture/forage-radius-km-range-estimate": () => import("../../apiculture/forage-radius-km-range-estimate/index.js"),
   "archaeology/dendro-ring-count": () => import("../../archaeology/dendro-ring-count/index.js"),
   "archival-studies/accession-number-year-validator": () => import("../../archival-studies/accession-number-year-validator/index.js"),
@@ -29,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/delta-beta-effect-classifier": () => import("../../epigenetics/delta-beta-effect-classifier/index.js"),
   "epigenetics/phantom-peak-quality": () => import("../../epigenetics/phantom-peak-quality/index.js"),
   "epigraphy/leiden-bracket-pair-validator": () => import("../../epigraphy/leiden-bracket-pair-validator/index.js"),
+  "gemology/crown-height-percentage": () => import("../../gemology/crown-height-percentage/index.js"),
   "geology/subduction-slab-dip": () => import("../../geology/subduction-slab-dip/index.js"),
   "geology/tailings-dam-factor-of-safety": () => import("../../geology/tailings-dam-factor-of-safety/index.js"),
   "glaciology/equilibrium-line-altitude-ela": () => import("../../glaciology/equilibrium-line-altitude-ela/index.js"),
@@ -43,6 +45,7 @@ export const toolModuleLoaders: Readonly<
   "mining/ore-loss-skin-thickness": () => import("../../mining/ore-loss-skin-thickness/index.js"),
   "museology/treatment-backlog-aging-days": () => import("../../museology/treatment-backlog-aging-days/index.js"),
   "oenology/bottle-fill-height-check": () => import("../../oenology/bottle-fill-height-check/index.js"),
+  "paleontology/trophic-enrichment-step": () => import("../../paleontology/trophic-enrichment-step/index.js"),
   "pedagogy/anticipatory-set-hook-strategy-catalog-lookup": () => import("../../pedagogy/anticipatory-set-hook-strategy-catalog-lookup/index.js"),
   "proteomics/transmembrane-window-scan": () => import("../../proteomics/transmembrane-window-scan/index.js"),
   "psychology/split-half-reliability-spearman-brown": () => import("../../psychology/split-half-reliability-spearman-brown/index.js"),
@@ -59,5 +62,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/schottky-diode-ideality-factor-vs-temperature": () => import("../../semiconductor/schottky-diode-ideality-factor-vs-temperature/index.js"),
   "vexillology/pan-african-set-checker": () => import("../../vexillology/pan-african-set-checker/index.js"),
   "virology/cold-chain-excursion-integral": () => import("../../virology/cold-chain-excursion-integral/index.js"),
+  "viticulture/powdery-mildew-spray-interval-by-temp-lookup": () => import("../../viticulture/powdery-mildew-spray-interval-by-temp-lookup/index.js"),
   "volcanology/aa-vs-pahoehoe-transition-checker": () => import("../../volcanology/aa-vs-pahoehoe-transition-checker/index.js"),
 };

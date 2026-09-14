@@ -6,6 +6,10 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/acoustic-power-from-intensity-area": () => import("../../acoustics/acoustic-power-from-intensity-area/index.js"),
   "acoustics/coupled-room-volume-screen": () => import("../../acoustics/coupled-room-volume-screen/index.js"),
+  "actuarial/curtate-expectation-of-life": () => import("../../actuarial/curtate-expectation-of-life/index.js"),
+  "agriculture/spray-boom-pressure": () => import("../../agriculture/spray-boom-pressure/index.js"),
+  "archaeology/pubis-symphysis-face-topology-score": () => import("../../archaeology/pubis-symphysis-face-topology-score/index.js"),
+  "astronomy/solar-noon-equation-of-time-correction": () => import("../../astronomy/solar-noon-equation-of-time-correction/index.js"),
   "auditing/failover-evidence-coverage": () => import("../../auditing/failover-evidence-coverage/index.js"),
   "auditing/franchise-sales-crosscheck": () => import("../../auditing/franchise-sales-crosscheck/index.js"),
   "aviation/stall-speed-weight": () => import("../../aviation/stall-speed-weight/index.js"),
@@ -34,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/gentilicium-origin-hint-checker": () => import("../../epigraphy/gentilicium-origin-hint-checker/index.js"),
   "film/flash-exposure": () => import("../../film/flash-exposure/index.js"),
   "folklore/backstage-whistling-ghost-summoning-riggers-call-taboo": () => import("../../folklore/backstage-whistling-ghost-summoning-riggers-call-taboo/index.js"),
+  "fun/nickname-shortener": () => import("../../fun/nickname-shortener/index.js"),
   "futurology/donut-economics-social-planetary-boundaries-ring-model": () => import("../../futurology/donut-economics-social-planetary-boundaries-ring-model/index.js"),
   "futurology/shell-oil-scenario-origin-case-history-lookup": () => import("../../futurology/shell-oil-scenario-origin-case-history-lookup/index.js"),
   "genetics/grantham-property-distance": () => import("../../genetics/grantham-property-distance/index.js"),

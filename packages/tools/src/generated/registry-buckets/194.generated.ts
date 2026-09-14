@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "film/dcp-file-size": () => import("../../film/dcp-file-size/index.js"),
   "forestry/carbon-stock-single-tree": () => import("../../forestry/carbon-stock-single-tree/index.js"),
   "forestry/shade-removal-stream-temperature-increase-estimate": () => import("../../forestry/shade-removal-stream-temperature-increase-estimate/index.js"),
+  "fun/superhero-name": () => import("../../fun/superhero-name/index.js"),
   "gemology/refractive-index-snell": () => import("../../gemology/refractive-index-snell/index.js"),
   "glaciology/water-equivalent-snow-depth": () => import("../../glaciology/water-equivalent-snow-depth/index.js"),
   "insurance/claims-satisfaction-nps-percent": () => import("../../insurance/claims-satisfaction-nps-percent/index.js"),
@@ -58,4 +59,6 @@ export const toolModuleLoaders: Readonly<
   "toxicology/llna-ec3-bracket-interpolation": () => import("../../toxicology/llna-ec3-bracket-interpolation/index.js"),
   "toxicology/perfusion-limited-tissue-step-model": () => import("../../toxicology/perfusion-limited-tissue-step-model/index.js"),
   "vector/add": () => import("../../vector/add/index.js"),
+  "vexillology/decimal-to-hw-fraction": () => import("../../vexillology/decimal-to-hw-fraction/index.js"),
+  "vexillology/substitute-pennant-decoder": () => import("../../vexillology/substitute-pennant-decoder/index.js"),
 };

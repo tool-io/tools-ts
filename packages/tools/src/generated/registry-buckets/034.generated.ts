@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/a-weighting-correction-lookup": () => import("../../acoustics/a-weighting-correction-lookup/index.js"),
   "agriculture/radiation-use-efficiency": () => import("../../agriculture/radiation-use-efficiency/index.js"),
   "archaeology/seriation-frequency-ordering": () => import("../../archaeology/seriation-frequency-ordering/index.js"),
   "archaeology/sherd-weight-total-per-lot": () => import("../../archaeology/sherd-weight-total-per-lot/index.js"),
@@ -27,6 +28,8 @@ export const toolModuleLoaders: Readonly<
   "folklore/amber-teething-necklace-claims-safety-verdict-checker": () => import("../../folklore/amber-teething-necklace-claims-safety-verdict-checker/index.js"),
   "folklore/jacks-knucklebones-five-stones-global-lookup": () => import("../../folklore/jacks-knucklebones-five-stones-global-lookup/index.js"),
   "forestry/merchantable-volume-percentage": () => import("../../forestry/merchantable-volume-percentage/index.js"),
+  "fun/emoji-nickname": () => import("../../fun/emoji-nickname/index.js"),
+  "fun/yo-mama-joke": () => import("../../fun/yo-mama-joke/index.js"),
   "game/elo-rating-update-k-factor": () => import("../../game/elo-rating-update-k-factor/index.js"),
   "genomics/het-hom-ratio-screen": () => import("../../genomics/het-hom-ratio-screen/index.js"),
   "geology/rock-mass-rating-rmr": () => import("../../geology/rock-mass-rating-rmr/index.js"),
@@ -43,6 +46,7 @@ export const toolModuleLoaders: Readonly<
   "oenology/glycerol-estimate-abv": () => import("../../oenology/glycerol-estimate-abv/index.js"),
   "oenology/pearson-square-blend": () => import("../../oenology/pearson-square-blend/index.js"),
   "paleography/chirograph-wavy-cut-checker": () => import("../../paleography/chirograph-wavy-cut-checker/index.js"),
+  "paleontology/soft-tissue-probability-score": () => import("../../paleontology/soft-tissue-probability-score/index.js"),
   "pathfinding/a-star": () => import("../../pathfinding/a-star/index.js"),
   "pedagogy/retrieval-practice-gate": () => import("../../pedagogy/retrieval-practice-gate/index.js"),
   "petroleum/water-viscosity": () => import("../../petroleum/water-viscosity/index.js"),

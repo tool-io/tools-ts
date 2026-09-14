@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "acoustics/nrc-from-band-coefficients": () => import("../../acoustics/nrc-from-band-coefficients/index.js"),
   "aesthetics/death-of-the-author-barthes-scriptor-lookup": () => import("../../aesthetics/death-of-the-author-barthes-scriptor-lookup/index.js"),
   "arithmetic/clamp": () => import("../../arithmetic/clamp/index.js"),
   "astronomy/schwarzschild-radius-mass": () => import("../../astronomy/schwarzschild-radius-mass/index.js"),

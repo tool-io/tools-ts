@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/ordinance-hours-screen": () => import("../../acoustics/ordinance-hours-screen/index.js"),
+  "actuarial/commutation-function-nx": () => import("../../actuarial/commutation-function-nx/index.js"),
   "aquaculture/grading-size-variation": () => import("../../aquaculture/grading-size-variation/index.js"),
   "arithmetic/basis-points": () => import("../../arithmetic/basis-points/index.js"),
   "astronomy/deep-sky-exposure-sub-length-light-pollution-checker": () => import("../../astronomy/deep-sky-exposure-sub-length-light-pollution-checker/index.js"),
@@ -27,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/chromosome-name-normalizer": () => import("../../epigenetics/chromosome-name-normalizer/index.js"),
   "epigenetics/dunedinpace-ratio": () => import("../../epigenetics/dunedinpace-ratio/index.js"),
   "forestry/self-thinning-slope": () => import("../../forestry/self-thinning-slope/index.js"),
+  "fun/scrabble-score": () => import("../../fun/scrabble-score/index.js"),
   "futurology/personal-futures-life-planning-backcast-worksheet": () => import("../../futurology/personal-futures-life-planning-backcast-worksheet/index.js"),
   "generate/jan": () => import("../../generate/jan/index.js"),
   "geology/drilling-hydraulics-pressure-loss": () => import("../../geology/drilling-hydraulics-pressure-loss/index.js"),
@@ -45,6 +47,7 @@ export const toolModuleLoaders: Readonly<
   "mri/db-dt-lookup": () => import("../../mri/db-dt-lookup/index.js"),
   "neuroscience/exponential-forgetting-with-floor": () => import("../../neuroscience/exponential-forgetting-with-floor/index.js"),
   "neuroscience/f-wave-latency": () => import("../../neuroscience/f-wave-latency/index.js"),
+  "paleontology/spore-color-scale-lookup": () => import("../../paleontology/spore-color-scale-lookup/index.js"),
   "plumbing/jockey-pump-size": () => import("../../plumbing/jockey-pump-size/index.js"),
   "psychology/igt-net-score-by-block": () => import("../../psychology/igt-net-score-by-block/index.js"),
   "random/halfwidth-character": () => import("../../random/halfwidth-character/index.js"),
@@ -66,5 +69,6 @@ export const toolModuleLoaders: Readonly<
   "text/character-n-grams": () => import("../../text/character-n-grams/index.js"),
   "text/normalize-whitespace": () => import("../../text/normalize-whitespace/index.js"),
   "typography/pixels-to-ems": () => import("../../typography/pixels-to-ems/index.js"),
+  "vexillology/fabric-yardage-calculator": () => import("../../vexillology/fabric-yardage-calculator/index.js"),
   "volcanology/surtseyan-shallow-water-classifier": () => import("../../volcanology/surtseyan-shallow-water-classifier/index.js"),
 };

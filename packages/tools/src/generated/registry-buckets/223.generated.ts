@@ -35,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/scaffold-bracing-check": () => import("../../engineering/scaffold-bracing-check/index.js"),
   "epigraphy/bissextile-vi-kal-detector": () => import("../../epigraphy/bissextile-vi-kal-detector/index.js"),
   "folklore/selkie-sealskin-theft-marriage-taboo-tale-elements-lookup": () => import("../../folklore/selkie-sealskin-theft-marriage-taboo-tale-elements-lookup/index.js"),
+  "fun/boat-name": () => import("../../fun/boat-name/index.js"),
   "gemology/melee-parcel-price": () => import("../../gemology/melee-parcel-price/index.js"),
   "glaciology/ela-depression-climate-warming": () => import("../../glaciology/ela-depression-climate-warming/index.js"),
   "heraldry/tree-species-symbol-mapper": () => import("../../heraldry/tree-species-symbol-mapper/index.js"),

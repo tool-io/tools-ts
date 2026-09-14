@@ -32,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "folklore/hopscotch-court-design-regional-grid-lookup": () => import("../../folklore/hopscotch-court-design-regional-grid-lookup/index.js"),
   "folklore/knocking-on-wood-origin-lookup": () => import("../../folklore/knocking-on-wood-origin-lookup/index.js"),
   "forestry/cull-percent-rot-length-ratio-sawlog-sections": () => import("../../forestry/cull-percent-rot-length-ratio-sawlog-sections/index.js"),
+  "fun/plot-twist": () => import("../../fun/plot-twist/index.js"),
   "geology/mineral-cleavage-lookup": () => import("../../geology/mineral-cleavage-lookup/index.js"),
   "geology/pore-water-pressure": () => import("../../geology/pore-water-pressure/index.js"),
   "geology/sand-control-gravel-pack-permeability": () => import("../../geology/sand-control-gravel-pack-permeability/index.js"),

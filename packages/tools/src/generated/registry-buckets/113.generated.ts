@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/string-tension-for-target-pitch": () => import("../../acoustics/string-tension-for-target-pitch/index.js"),
+  "actuarial/probability-of-survival-px": () => import("../../actuarial/probability-of-survival-px/index.js"),
   "apiculture/beeswax-yield-cappings-ratio": () => import("../../apiculture/beeswax-yield-cappings-ratio/index.js"),
   "apiculture/tracheal-mite-dissection-threshold-lookup": () => import("../../apiculture/tracheal-mite-dissection-threshold-lookup/index.js"),
   "archaeology/radiocarbon-calibration-intcal-curve": () => import("../../archaeology/radiocarbon-calibration-intcal-curve/index.js"),
@@ -39,6 +40,7 @@ export const toolModuleLoaders: Readonly<
   "game/wordle-feedback-pattern-green-yellow-gray": () => import("../../game/wordle-feedback-pattern-green-yellow-gray/index.js"),
   "geology/cosmogenic-nuclide-production-rate": () => import("../../geology/cosmogenic-nuclide-production-rate/index.js"),
   "geology/oil-formation-volume-factor": () => import("../../geology/oil-formation-volume-factor/index.js"),
+  "horology/perpetual-calendar-cycle-days": () => import("../../horology/perpetual-calendar-cycle-days/index.js"),
   "horology/strike-train-energy": () => import("../../horology/strike-train-energy/index.js"),
   "http/user-agent-is-mobile": () => import("../../http/user-agent-is-mobile/index.js"),
   "insurance/no-claims-bonus-protection-step-lookup": () => import("../../insurance/no-claims-bonus-protection-step-lookup/index.js"),

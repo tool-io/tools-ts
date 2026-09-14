@@ -50,6 +50,7 @@ export const toolModuleLoaders: Readonly<
   "music/solfege-syllable-from-degree": () => import("../../music/solfege-syllable-from-degree/index.js"),
   "neuroscience/lesion-load-t2": () => import("../../neuroscience/lesion-load-t2/index.js"),
   "numismatics/ring-test-frequency-silver": () => import("../../numismatics/ring-test-frequency-silver/index.js"),
+  "paleontology/fluvial-roundness-rater": () => import("../../paleontology/fluvial-roundness-rater/index.js"),
   "petroleum/sweep-efficiency-areal": () => import("../../petroleum/sweep-efficiency-areal/index.js"),
   "physics/weight-force": () => import("../../physics/weight-force/index.js"),
   "pregnancy/uterine-artery-pi": () => import("../../pregnancy/uterine-artery-pi/index.js"),

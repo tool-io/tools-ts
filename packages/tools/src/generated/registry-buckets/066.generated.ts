@@ -73,6 +73,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/vcsel-mode-spacing": () => import("../../semiconductor/vcsel-mode-spacing/index.js"),
   "size/chemise-reconstruction": () => import("../../size/chemise-reconstruction/index.js"),
   "size/saddle": () => import("../../size/saddle/index.js"),
+  "sports/snowboard-airtime-jump-duration": () => import("../../sports/snowboard-airtime-jump-duration/index.js"),
   "statistics/harmonic-mean": () => import("../../statistics/harmonic-mean/index.js"),
   "statistics/skewness": () => import("../../statistics/skewness/index.js"),
   "taxation/remote-work-tax-overlap": () => import("../../taxation/remote-work-tax-overlap/index.js"),
