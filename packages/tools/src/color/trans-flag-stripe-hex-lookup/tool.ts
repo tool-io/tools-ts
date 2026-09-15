@@ -1,0 +1,54 @@
+import type { ToolExample } from "../../core/example.js";
+import { createSimpleTool, type SimpleField } from "../../core/simple.js";
+import { validateInput, finish, pick } from "../batch52-shared.js";
+export type Input = Readonly<{ readonly variant: string }>;
+export type Output = { readonly result: Readonly<Record<string, unknown>> };
+const fields = [
+  { id: "variant", label: "Variant", kind: "string" },
+] as const satisfies readonly SimpleField[];
+const compute = (i: Input): Readonly<Record<string, unknown>> => {
+  return {
+    reference: pick(
+      i.variant,
+      {
+        "common-five-stripe-srgb": [
+          "#5BCEFA",
+          "#F5A9B8",
+          "#FFFFFF",
+          "#F5A9B8",
+          "#5BCEFA",
+        ],
+      },
+      "variant",
+    ),
+  };
+};
+export const calculate = (i: Input): Output => {
+  validateInput(i, fields);
+  return finish({ result: compute(i) });
+};
+export const example = {
+  input: { variant: "common-five-stripe-srgb" },
+  output: {
+    result: {
+      reference: ["#5BCEFA", "#F5A9B8", "#FFFFFF", "#F5A9B8", "#5BCEFA"],
+    },
+  },
+} satisfies ToolExample<Input, Output>;
+export const tool = createSimpleTool({
+  id: "color/trans-flag-stripe-hex-lookup",
+  title: "Trans Flag Stripe HEX Lookup",
+  description:
+    "Common digital sRGB transcription of the five-stripe transgender pride flag; textile/print values may vary, not identity classification.",
+  inputs: fields,
+  outputs: [
+    {
+      id: "result",
+      label: "Calculation or explicitly qualified result",
+      kind: "object",
+    },
+  ],
+  calculate: (value) => calculate(value as unknown as Input),
+});
+export const run = tool.execute;
+export default tool;
