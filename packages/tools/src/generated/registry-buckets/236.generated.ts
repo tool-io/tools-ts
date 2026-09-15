@@ -40,6 +40,7 @@ export const toolModuleLoaders: Readonly<
   "finance/real-rate-of-return": () => import("../../finance/real-rate-of-return/index.js"),
   "folklore/crossed-fingers-behind-back-permissive-lying-gesture-origin": () => import("../../folklore/crossed-fingers-behind-back-permissive-lying-gesture-origin/index.js"),
   "futurology/huxley-brave-new-world-soma-prediction-scorecard": () => import("../../futurology/huxley-brave-new-world-soma-prediction-scorecard/index.js"),
+  "game/mahjong-japanese-fan-minimum-lookup": () => import("../../game/mahjong-japanese-fan-minimum-lookup/index.js"),
   "genetics/forked-branch-probability": () => import("../../genetics/forked-branch-probability/index.js"),
   "genetics/operon-coding-interval-audit": () => import("../../genetics/operon-coding-interval-audit/index.js"),
   "geology/well-log-permeability-wyllie-rose": () => import("../../geology/well-log-permeability-wyllie-rose/index.js"),

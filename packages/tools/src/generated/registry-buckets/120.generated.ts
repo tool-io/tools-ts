@@ -4,11 +4,14 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/modified-accrual-vs-full-accrual-fund-type-lookup": () => import("../../accounting/modified-accrual-vs-full-accrual-fund-type-lookup/index.js"),
+  "accounting/short-term-lease-12-month-exemption-checker": () => import("../../accounting/short-term-lease-12-month-exemption-checker/index.js"),
   "acoustics/iic-floor-assembly-lookup": () => import("../../acoustics/iic-floor-assembly-lookup/index.js"),
   "agriculture/water-footprint": () => import("../../agriculture/water-footprint/index.js"),
   "aquaculture/oxygen-supersaturation": () => import("../../aquaculture/oxygen-supersaturation/index.js"),
   "archival-studies/bagit-required-tag-checker": () => import("../../archival-studies/bagit-required-tag-checker/index.js"),
   "biology/pedigree-inbreeding-coefficient": () => import("../../biology/pedigree-inbreeding-coefficient/index.js"),
+  "calculus/indefinite-integral": () => import("../../calculus/indefinite-integral/index.js"),
   "carpentry/hinge-cup-depth": () => import("../../carpentry/hinge-cup-depth/index.js"),
   "carpentry/parkett-dehnungsfuge-10-15mm": () => import("../../carpentry/parkett-dehnungsfuge-10-15mm/index.js"),
   "chemistry/heat-of-neutralization": () => import("../../chemistry/heat-of-neutralization/index.js"),

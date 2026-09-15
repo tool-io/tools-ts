@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "convert/decimal-to-bcd": () => import("../../convert/decimal-to-bcd/index.js"),
   "convert/hex-to-octal": () => import("../../convert/hex-to-octal/index.js"),
   "cryptography/adfgx-cipher": () => import("../../cryptography/adfgx-cipher/index.js"),
+  "dance/vo2-max-dancers-vs-athletes-reference-lookup": () => import("../../dance/vo2-max-dancers-vs-athletes-reference-lookup/index.js"),
   "decode/delta": () => import("../../decode/delta/index.js"),
   "dentistry/tooth-formation-stage-lookup": () => import("../../dentistry/tooth-formation-stage-lookup/index.js"),
   "electronics/enob-from-snr": () => import("../../electronics/enob-from-snr/index.js"),

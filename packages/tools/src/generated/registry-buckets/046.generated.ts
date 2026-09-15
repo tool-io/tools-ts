@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/helmholtz-port-length": () => import("../../acoustics/helmholtz-port-length/index.js"),
   "apiculture/nuc-frames-transfer-plan-5frame": () => import("../../apiculture/nuc-frames-transfer-plan-5frame/index.js"),
+  "astrometry/parsecs-to-parallax-converter": () => import("../../astrometry/parsecs-to-parallax-converter/index.js"),
   "biology/transferrin-saturation": () => import("../../biology/transferrin-saturation/index.js"),
   "bitwise/and": () => import("../../bitwise/and/index.js"),
   "carpentry/treppen-steigung-17-18-ideal": () => import("../../carpentry/treppen-steigung-17-18-ideal/index.js"),
@@ -21,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "fun/crossword-symmetry": () => import("../../fun/crossword-symmetry/index.js"),
   "fun/tarot-daily-card": () => import("../../fun/tarot-daily-card/index.js"),
   "futurology/morphological-analysis-box-grid-combination-explorer": () => import("../../futurology/morphological-analysis-box-grid-combination-explorer/index.js"),
+  "game/hitbox-hurtbox-aabb-overlap-checker": () => import("../../game/hitbox-hurtbox-aabb-overlap-checker/index.js"),
   "game/stratego-rank-resolve-lookup": () => import("../../game/stratego-rank-resolve-lookup/index.js"),
   "geology/afm-diagram": () => import("../../geology/afm-diagram/index.js"),
   "geology/shrinkage-ratio": () => import("../../geology/shrinkage-ratio/index.js"),
@@ -54,4 +56,5 @@ export const toolModuleLoaders: Readonly<
   "theatre/fog-chiller-ice-low-lying-duration-lookup": () => import("../../theatre/fog-chiller-ice-low-lying-duration-lookup/index.js"),
   "toxicology/tlv-stel": () => import("../../toxicology/tlv-stel/index.js"),
   "viticulture/buds-per-hectare-total": () => import("../../viticulture/buds-per-hectare-total/index.js"),
+  "volcanology/flow-discharge-rate-channel-width": () => import("../../volcanology/flow-discharge-rate-channel-width/index.js"),
 };

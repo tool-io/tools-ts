@@ -61,4 +61,5 @@ export const toolModuleLoaders: Readonly<
   "transcriptomics/melting-peak-specificity": () => import("../../transcriptomics/melting-peak-specificity/index.js"),
   "typography/optical-margin-alignment-checker": () => import("../../typography/optical-margin-alignment-checker/index.js"),
   "typography/word-spacing-em-adjustment": () => import("../../typography/word-spacing-em-adjustment/index.js"),
+  "volcanology/hcl-hf-emission-ratio-lookup": () => import("../../volcanology/hcl-hf-emission-ratio-lookup/index.js"),
 };

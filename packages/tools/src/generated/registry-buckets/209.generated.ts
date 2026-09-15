@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/error-correction-restatement-vs-current-classifier": () => import("../../accounting/error-correction-restatement-vs-current-classifier/index.js"),
   "acoustics/room-type-rt60-reference": () => import("../../acoustics/room-type-rt60-reference/index.js"),
   "apiculture/bee-space-9mm-checker": () => import("../../apiculture/bee-space-9mm-checker/index.js"),
   "auditing/rto-rpo-tier-classifier": () => import("../../auditing/rto-rpo-tier-classifier/index.js"),
@@ -13,6 +14,8 @@ export const toolModuleLoaders: Readonly<
   "biology/red-cell-count": () => import("../../biology/red-cell-count/index.js"),
   "bitwise/bit-reversal": () => import("../../bitwise/bit-reversal/index.js"),
   "carpentry/kreissaege-blatt-ueberstand-5mm": () => import("../../carpentry/kreissaege-blatt-ueberstand-5mm/index.js"),
+  "cartography/isarithm-interval-round-picker": () => import("../../cartography/isarithm-interval-round-picker/index.js"),
+  "celestial-mechanics/lyapunov-planar-family-note-generator": () => import("../../celestial-mechanics/lyapunov-planar-family-note-generator/index.js"),
   "classics/stoic-three-disciplines-logic-physics-ethics-map": () => import("../../classics/stoic-three-disciplines-logic-physics-ethics-map/index.js"),
   "convert/electric-potential": () => import("../../convert/electric-potential/index.js"),
   "convert/luminance": () => import("../../convert/luminance/index.js"),
@@ -61,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "text/sentence-case": () => import("../../text/sentence-case/index.js"),
   "theatre/scrim-sharkstooth-vs-leno-weave-lookup": () => import("../../theatre/scrim-sharkstooth-vs-leno-weave-lookup/index.js"),
   "transcriptomics/polya-usage-shift": () => import("../../transcriptomics/polya-usage-shift/index.js"),
+  "typography/vertical-rhythm-multiplier-base-unit": () => import("../../typography/vertical-rhythm-multiplier-base-unit/index.js"),
   "viticulture/lyre-system-row-width-opening": () => import("../../viticulture/lyre-system-row-width-opening/index.js"),
   "volcanology/sector-collapse-scarp-volume-estimate": () => import("../../volcanology/sector-collapse-scarp-volume-estimate/index.js"),
   "vr/spacewarp-frame-interpolation": () => import("../../vr/spacewarp-frame-interpolation/index.js"),

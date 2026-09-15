@@ -54,6 +54,7 @@ export const toolModuleLoaders: Readonly<
   "math/nine-point-circle": () => import("../../math/nine-point-circle/index.js"),
   "math/resultant-sylvester": () => import("../../math/resultant-sylvester/index.js"),
   "mining/ground-support-interaction": () => import("../../mining/ground-support-interaction/index.js"),
+  "music/ambitus-width-band-lookup": () => import("../../music/ambitus-width-band-lookup/index.js"),
   "music/frequency-from-midi": () => import("../../music/frequency-from-midi/index.js"),
   "music/ledger-line-count-for-pitch": () => import("../../music/ledger-line-count-for-pitch/index.js"),
   "music/ornament-note-sequence-generator": () => import("../../music/ornament-note-sequence-generator/index.js"),

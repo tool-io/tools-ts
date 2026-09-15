@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "classics/paterfamilias-patria-potestas-authority-scope-lookup": () => import("../../classics/paterfamilias-patria-potestas-authority-scope-lookup/index.js"),
   "construction/excavation-slope-ratio": () => import("../../construction/excavation-slope-ratio/index.js"),
   "css/resize-axes-both-horizontal-vertical": () => import("../../css/resize-axes-both-horizontal-vertical/index.js"),
+  "dance/sprung-floor-injury-stat-reference-lookup": () => import("../../dance/sprung-floor-injury-stat-reference-lookup/index.js"),
   "dentistry/furcation-involvement-grade": () => import("../../dentistry/furcation-involvement-grade/index.js"),
   "electronics/mixer-conversion-gain": () => import("../../electronics/mixer-conversion-gain/index.js"),
   "electronics/touch-screen-resistance": () => import("../../electronics/touch-screen-resistance/index.js"),

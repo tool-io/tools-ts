@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "acoustics/floor-footfall-frequency-screen": () => import("../../acoustics/floor-footfall-frequency-screen/index.js"),
   "acoustics/mach-angle-shock-wave": () => import("../../acoustics/mach-angle-shock-wave/index.js"),
   "apiculture/package-bees-pounds-to-count": () => import("../../apiculture/package-bees-pounds-to-count/index.js"),
+  "astrobiology/radiogenic-heat-rock-fraction-calculator": () => import("../../astrobiology/radiogenic-heat-rock-fraction-calculator/index.js"),
   "astronomy/small-angle-formula-arcseconds": () => import("../../astronomy/small-angle-formula-arcseconds/index.js"),
   "auditing/cuec-coverage": () => import("../../auditing/cuec-coverage/index.js"),
   "aviation/cabin-altitude-threshold-check": () => import("../../aviation/cabin-altitude-threshold-check/index.js"),

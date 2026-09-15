@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/goodwill-impairment-annual-trigger-checker": () => import("../../accounting/goodwill-impairment-annual-trigger-checker/index.js"),
   "acoustics/cremer-room-acoustics-history": () => import("../../acoustics/cremer-room-acoustics-history/index.js"),
   "acoustics/modal-density-high-frequency": () => import("../../acoustics/modal-density-high-frequency/index.js"),
   "agriculture/cover-crop-biomass": () => import("../../agriculture/cover-crop-biomass/index.js"),
@@ -32,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/taylor-tool-life": () => import("../../engineering/taylor-tool-life/index.js"),
   "entrepreneurship/do-things-that-dont-scale-playbook-examples-lookup": () => import("../../entrepreneurship/do-things-that-dont-scale-playbook-examples-lookup/index.js"),
   "entrepreneurship/north-star-metric-selection-tree": () => import("../../entrepreneurship/north-star-metric-selection-tree/index.js"),
+  "ergonomics/liberty-pull-acceptability-checker": () => import("../../ergonomics/liberty-pull-acceptability-checker/index.js"),
   "folklore/propp-sphere-of-action-role-lookup": () => import("../../folklore/propp-sphere-of-action-role-lookup/index.js"),
   "folklore/red-sky-at-night-sailor-delight-validity-percent": () => import("../../folklore/red-sky-at-night-sailor-delight-validity-percent/index.js"),
   "forestry/volume-newton": () => import("../../forestry/volume-newton/index.js"),
@@ -42,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "glaciology/newtonian-slab-flow-rate": () => import("../../glaciology/newtonian-slab-flow-rate/index.js"),
   "heraldry/common-ordinary-roll-finder": () => import("../../heraldry/common-ordinary-roll-finder/index.js"),
   "heraldry/cross-type-variant-identifier": () => import("../../heraldry/cross-type-variant-identifier/index.js"),
+  "html/input-type-mobile-keyboard-map": () => import("../../html/input-type-mobile-keyboard-map/index.js"),
   "insurance/wildfire-smoke-is-not-fire-coverage-verdict-lookup": () => import("../../insurance/wildfire-smoke-is-not-fire-coverage-verdict-lookup/index.js"),
   "kinesiology/cadence-stride-speed-solver": () => import("../../kinesiology/cadence-stride-speed-solver/index.js"),
   "kinesiology/leg-length-discrepancy": () => import("../../kinesiology/leg-length-discrepancy/index.js"),
@@ -72,6 +75,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/igbt-switching-energy-eoff": () => import("../../semiconductor/igbt-switching-energy-eoff/index.js"),
   "semiconductor/topological-insulator-surface-state-conductance": () => import("../../semiconductor/topological-insulator-surface-state-conductance/index.js"),
   "sericulture/leaf-storage-wilt-percent-limit": () => import("../../sericulture/leaf-storage-wilt-percent-limit/index.js"),
+  "sericulture/plant-spacing-mulberry-row": () => import("../../sericulture/plant-spacing-mulberry-row/index.js"),
   "size/anklet": () => import("../../size/anklet/index.js"),
   "size/collar": () => import("../../size/collar/index.js"),
   "sociology/life-table-ex-from-lx-step": () => import("../../sociology/life-table-ex-from-lx-step/index.js"),
@@ -86,4 +90,5 @@ export const toolModuleLoaders: Readonly<
   "veterinary/spo2-pulse-oximeter-interpretation": () => import("../../veterinary/spo2-pulse-oximeter-interpretation/index.js"),
   "veterinary/whelping-date-from-mating": () => import("../../veterinary/whelping-date-from-mating/index.js"),
   "viticulture/smart-dyson-up-down-shoot-count": () => import("../../viticulture/smart-dyson-up-down-shoot-count/index.js"),
+  "volcanology/dense-rock-equivalent-density": () => import("../../volcanology/dense-rock-equivalent-density/index.js"),
 };

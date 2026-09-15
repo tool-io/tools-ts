@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/negative-inventory-perpetual-warning-checker": () => import("../../accounting/negative-inventory-perpetual-warning-checker/index.js"),
   "apiculture/split-ratio-colony-divider": () => import("../../apiculture/split-ratio-colony-divider/index.js"),
   "aquaculture/profit-per-kg": () => import("../../aquaculture/profit-per-kg/index.js"),
   "archival-studies/oral-history-abstract-limit-finder": () => import("../../archival-studies/oral-history-abstract-limit-finder/index.js"),
@@ -67,6 +68,7 @@ export const toolModuleLoaders: Readonly<
   "sports/rowing-stroke-rate-to-pace-checker": () => import("../../sports/rowing-stroke-rate-to-pace-checker/index.js"),
   "taxation/bonus-depreciation-phase-down-year-lookup": () => import("../../taxation/bonus-depreciation-phase-down-year-lookup/index.js"),
   "theatre/preview-performance-discount-standard-lookup": () => import("../../theatre/preview-performance-discount-standard-lookup/index.js"),
+  "typography/line-length-mm-from-cpl-and-em": () => import("../../typography/line-length-mm-from-cpl-and-em/index.js"),
   "veterinary/colorado-state-pain-scale-canine": () => import("../../veterinary/colorado-state-pain-scale-canine/index.js"),
   "vr/heat-dissipation-headset": () => import("../../vr/heat-dissipation-headset/index.js"),
 };

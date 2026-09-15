@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "biology/leaf-thickness": () => import("../../biology/leaf-thickness/index.js"),
   "biology/primer-melting-temp-nearest-neighbor": () => import("../../biology/primer-melting-temp-nearest-neighbor/index.js"),
   "carpentry/din-4556-schreibtisch-hoehe": () => import("../../carpentry/din-4556-schreibtisch-hoehe/index.js"),
+  "cartography/quadrant-to-azimuth-converter": () => import("../../cartography/quadrant-to-azimuth-converter/index.js"),
   "chemistry/clausius-clapeyron-lnp": () => import("../../chemistry/clausius-clapeyron-lnp/index.js"),
   "chemistry/colloid-stability-dlvo": () => import("../../chemistry/colloid-stability-dlvo/index.js"),
   "chemistry/jahn-teller-distortion-checker": () => import("../../chemistry/jahn-teller-distortion-checker/index.js"),

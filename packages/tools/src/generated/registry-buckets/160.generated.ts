@@ -35,9 +35,11 @@ export const toolModuleLoaders: Readonly<
   "gemology/carats-oval": () => import("../../gemology/carats-oval/index.js"),
   "genomics/gc-coverage-dropout": () => import("../../genomics/gc-coverage-dropout/index.js"),
   "heraldry/in-arch-arc-angle-solver": () => import("../../heraldry/in-arch-arc-angle-solver/index.js"),
+  "html/dir-auto-first-strong-heuristic": () => import("../../html/dir-auto-first-strong-heuristic/index.js"),
   "journalism/video-provenance-check": () => import("../../journalism/video-provenance-check/index.js"),
   "laser/ao-fitting-strehl": () => import("../../laser/ao-fitting-strehl/index.js"),
   "laser/cantilever-photoacoustic-gain": () => import("../../laser/cantilever-photoacoustic-gain/index.js"),
+  "logic/kmap-gray-code-order-generator": () => import("../../logic/kmap-gray-code-order-generator/index.js"),
   "logistics/liftgate-fee-applicability-checker": () => import("../../logistics/liftgate-fee-applicability-checker/index.js"),
   "math/schinzel-hypothesis-h": () => import("../../math/schinzel-hypothesis-h/index.js"),
   "math/syracuse-function": () => import("../../math/syracuse-function/index.js"),
@@ -68,5 +70,6 @@ export const toolModuleLoaders: Readonly<
   "virology/replicate-plaque-assay-titer": () => import("../../virology/replicate-plaque-assay-titer/index.js"),
   "viticulture/bud-fruitfulness-cluster-per-shoot-lookup": () => import("../../viticulture/bud-fruitfulness-cluster-per-shoot-lookup/index.js"),
   "viticulture/heat-wave-shriveling-risk-days": () => import("../../viticulture/heat-wave-shriveling-risk-days/index.js"),
+  "volcanology/large-igneous-province-volume-reference-lookup": () => import("../../volcanology/large-igneous-province-volume-reference-lookup/index.js"),
   "web/csp-parser": () => import("../../web/csp-parser/index.js"),
 };

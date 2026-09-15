@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "classics/diogenes-cynic-lantern-platos-chicken-anecdotes-lookup": () => import("../../classics/diogenes-cynic-lantern-platos-chicken-anecdotes-lookup/index.js"),
   "classics/hadrians-villa-tivoli-recreated-provinces-travels-lookup": () => import("../../classics/hadrians-villa-tivoli-recreated-provinces-travels-lookup/index.js"),
   "classics/vergil-georgics-four-book-agriculture-didactic-structure": () => import("../../classics/vergil-georgics-four-book-agriculture-didactic-structure/index.js"),
+  "color/film-stock-look-lut-family-note-lookup": () => import("../../color/film-stock-look-lut-family-note-lookup/index.js"),
   "convert/markdown-to-table": () => import("../../convert/markdown-to-table/index.js"),
   "cooking/sourdough-starter-feed-ratio": () => import("../../cooking/sourdough-starter-feed-ratio/index.js"),
   "decode/url-component": () => import("../../decode/url-component/index.js"),
@@ -62,6 +63,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/mosfet-threshold-voltage-body-effect": () => import("../../semiconductor/mosfet-threshold-voltage-body-effect/index.js"),
   "semiconductor/quantum-cascade-laser-wavelength": () => import("../../semiconductor/quantum-cascade-laser-wavelength/index.js"),
   "semiconductor/single-event-upset-rate": () => import("../../semiconductor/single-event-upset-rate/index.js"),
+  "sericulture/stifling-vs-sun-drying-quality-loss-lookup": () => import("../../sericulture/stifling-vs-sun-drying-quality-loss-lookup/index.js"),
   "theatre/magic-sheet-coverage": () => import("../../theatre/magic-sheet-coverage/index.js"),
   "virology/compensatory-fitness-interaction": () => import("../../virology/compensatory-fitness-interaction/index.js"),
 };

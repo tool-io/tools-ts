@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "biology/bleeding-time": () => import("../../biology/bleeding-time/index.js"),
   "biology/dead-space-volume": () => import("../../biology/dead-space-volume/index.js"),
   "carpentry/poly-coats-needed": () => import("../../carpentry/poly-coats-needed/index.js"),
+  "cartography/trail-grade-accessibility-checker": () => import("../../cartography/trail-grade-accessibility-checker/index.js"),
   "classics/property-action-classifier": () => import("../../classics/property-action-classifier/index.js"),
   "construction/paint-tint-ratio": () => import("../../construction/paint-tint-ratio/index.js"),
   "convert/electric-charge": () => import("../../convert/electric-charge/index.js"),

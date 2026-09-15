@@ -83,5 +83,6 @@ export const toolModuleLoaders: Readonly<
   "vexillology/letter-height-min-rule": () => import("../../vexillology/letter-height-min-rule/index.js"),
   "vexillology/map-on-flag-detector": () => import("../../vexillology/map-on-flag-detector/index.js"),
   "virology/serology-adjusted-ifr": () => import("../../virology/serology-adjusted-ifr/index.js"),
+  "volcanology/flank-instability-slope-angle-checker": () => import("../../volcanology/flank-instability-slope-angle-checker/index.js"),
   "web/integrity-attribute-parser": () => import("../../web/integrity-attribute-parser/index.js"),
 };

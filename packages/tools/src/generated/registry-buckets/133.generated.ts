@@ -9,8 +9,10 @@ export const toolModuleLoaders: Readonly<
   "aquaculture/processing-yield": () => import("../../aquaculture/processing-yield/index.js"),
   "archaeology/bone-weathering-behrensmyer-stage": () => import("../../archaeology/bone-weathering-behrensmyer-stage/index.js"),
   "archival-studies/date-span-open-closed-classifier": () => import("../../archival-studies/date-span-open-closed-classifier/index.js"),
+  "astrometry/annual-aberration-constant-lookup": () => import("../../astrometry/annual-aberration-constant-lookup/index.js"),
   "astronomy/distance-modulus-parsecs": () => import("../../astronomy/distance-modulus-parsecs/index.js"),
   "aviation/true-airspeed": () => import("../../aviation/true-airspeed/index.js"),
+  "bacteriology/petroff-hausser-direct-count-conversion": () => import("../../bacteriology/petroff-hausser-direct-count-conversion/index.js"),
   "biology/selection-coefficient": () => import("../../biology/selection-coefficient/index.js"),
   "biology/species-richness": () => import("../../biology/species-richness/index.js"),
   "celestial-mechanics/aerobraking-geometric-pass-count": () => import("../../celestial-mechanics/aerobraking-geometric-pass-count/index.js"),
@@ -68,4 +70,5 @@ export const toolModuleLoaders: Readonly<
   "vector/hadamard-product": () => import("../../vector/hadamard-product/index.js"),
   "virology/efficacy-adjusted-herd-coverage": () => import("../../virology/efficacy-adjusted-herd-coverage/index.js"),
   "viticulture/replant-mortality-replacement-count": () => import("../../viticulture/replant-mortality-replacement-count/index.js"),
+  "viticulture/spray-drift-buffer-distance-wind": () => import("../../viticulture/spray-drift-buffer-distance-wind/index.js"),
 };

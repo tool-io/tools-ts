@@ -41,6 +41,7 @@ export const toolModuleLoaders: Readonly<
   "insurance/do-side-a-b-c-coverage-split-lookup": () => import("../../insurance/do-side-a-b-c-coverage-split-lookup/index.js"),
   "laser/comb-ranging-ambiguity": () => import("../../laser/comb-ranging-ambiguity/index.js"),
   "limnology/sediment-accumulation-rate-mm-year": () => import("../../limnology/sediment-accumulation-rate-mm-year/index.js"),
+  "linguistics/latin-american-seseo-checker": () => import("../../linguistics/latin-american-seseo-checker/index.js"),
   "logic/square-contradictory-mapper": () => import("../../logic/square-contradictory-mapper/index.js"),
   "math/error-function-erfc-approx": () => import("../../math/error-function-erfc-approx/index.js"),
   "meteorology/haboob-dust-wall-height-wind-lookup": () => import("../../meteorology/haboob-dust-wall-height-wind-lookup/index.js"),

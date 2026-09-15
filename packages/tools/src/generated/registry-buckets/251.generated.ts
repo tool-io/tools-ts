@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "banking/heloc-interest-only-phase-checker": () => import("../../banking/heloc-interest-only-phase-checker/index.js"),
   "biology/bun-creatinine-ratio": () => import("../../biology/bun-creatinine-ratio/index.js"),
   "carpentry/dickenhobel-mass-endmass": () => import("../../carpentry/dickenhobel-mass-endmass/index.js"),
+  "cartography/label-collision-detector-pair": () => import("../../cartography/label-collision-detector-pair/index.js"),
   "classics/haruspicy-extispicy-liver-etruscan-reading-lookup": () => import("../../classics/haruspicy-extispicy-liver-etruscan-reading-lookup/index.js"),
   "color/brand-hue-variance-degrees-across-assets": () => import("../../color/brand-hue-variance-degrees-across-assets/index.js"),
   "color/pantone-approximate-nearest-rgb-lookup": () => import("../../color/pantone-approximate-nearest-rgb-lookup/index.js"),
@@ -75,4 +76,5 @@ export const toolModuleLoaders: Readonly<
   "theatre/running-sheet-coverage": () => import("../../theatre/running-sheet-coverage/index.js"),
   "toxicology/food-chain-multiplier": () => import("../../toxicology/food-chain-multiplier/index.js"),
   "virology/sir-final-size-root": () => import("../../virology/sir-final-size-root/index.js"),
+  "viticulture/soil-profile-available-water-vine-rooting": () => import("../../viticulture/soil-profile-available-water-vine-rooting/index.js"),
 };

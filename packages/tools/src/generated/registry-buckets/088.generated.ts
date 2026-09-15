@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/mass-defect": () => import("../../chemistry/mass-defect/index.js"),
   "chemistry/poh-from-oh": () => import("../../chemistry/poh-from-oh/index.js"),
   "classics/rubicon-alea-iacta-est-suetonius-quote-origin-lookup": () => import("../../classics/rubicon-alea-iacta-est-suetonius-quote-origin-lookup/index.js"),
+  "color/five-elements-traditional-color-lookup": () => import("../../color/five-elements-traditional-color-lookup/index.js"),
   "cryptography/verhoeff-algorithm-validator": () => import("../../cryptography/verhoeff-algorithm-validator/index.js"),
   "css/radial-gradient-extent-keywords-lookup": () => import("../../css/radial-gradient-extent-keywords-lookup/index.js"),
   "demography/omran-epidemiologic-transition-classifier": () => import("../../demography/omran-epidemiologic-transition-classifier/index.js"),

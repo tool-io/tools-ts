@@ -51,6 +51,7 @@ export const toolModuleLoaders: Readonly<
   "math/rough-number-count-approx": () => import("../../math/rough-number-count-approx/index.js"),
   "mining/core-recovery-percentage": () => import("../../mining/core-recovery-percentage/index.js"),
   "museology/loan-renewal-lead-weeks": () => import("../../museology/loan-renewal-lead-weeks/index.js"),
+  "music/midi-cc-common-assignment-lookup": () => import("../../music/midi-cc-common-assignment-lookup/index.js"),
   "music/seventh-chord-type-classifier": () => import("../../music/seventh-chord-type-classifier/index.js"),
   "neuroscience/cluster-forming-threshold": () => import("../../neuroscience/cluster-forming-threshold/index.js"),
   "number/pentagonal-checker": () => import("../../number/pentagonal-checker/index.js"),

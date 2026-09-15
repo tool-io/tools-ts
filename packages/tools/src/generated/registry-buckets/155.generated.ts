@@ -63,6 +63,7 @@ export const toolModuleLoaders: Readonly<
   "size/yukata-reconstruction": () => import("../../size/yukata-reconstruction/index.js"),
   "sports/split-time-per-km-marathon": () => import("../../sports/split-time-per-km-marathon/index.js"),
   "taxation/totalization-contribution-comparison": () => import("../../taxation/totalization-contribution-comparison/index.js"),
+  "typography/thin-space-width-fraction-em-lookup": () => import("../../typography/thin-space-width-fraction-em-lookup/index.js"),
   "veterinary/sheep-goat-dose-per-kg": () => import("../../veterinary/sheep-goat-dose-per-kg/index.js"),
   "volcanology/hyperconcentrated-flow-density-checker": () => import("../../volcanology/hyperconcentrated-flow-density-checker/index.js"),
 };

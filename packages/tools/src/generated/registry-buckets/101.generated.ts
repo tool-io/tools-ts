@@ -72,5 +72,6 @@ export const toolModuleLoaders: Readonly<
   "veterinary/nsaid-dose-meloxicam-dog": () => import("../../veterinary/nsaid-dose-meloxicam-dog/index.js"),
   "virology/defective-genome-deletion-union": () => import("../../virology/defective-genome-deletion-union/index.js"),
   "viticulture/berries-per-cluster-average-count": () => import("../../viticulture/berries-per-cluster-average-count/index.js"),
+  "volcanology/ballistic-energy-from-mass": () => import("../../volcanology/ballistic-energy-from-mass/index.js"),
   "web/url-port": () => import("../../web/url-port/index.js"),
 };

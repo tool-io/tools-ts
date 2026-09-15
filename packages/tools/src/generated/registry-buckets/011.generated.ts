@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "biology/leaf-phosphorus-content": () => import("../../biology/leaf-phosphorus-content/index.js"),
   "biology/meat-to-bone-ratio": () => import("../../biology/meat-to-bone-ratio/index.js"),
   "carpentry/holzfehler-ausschuss-prozent": () => import("../../carpentry/holzfehler-ausschuss-prozent/index.js"),
+  "cartography/mgrs-square-letter-validator": () => import("../../cartography/mgrs-square-letter-validator/index.js"),
   "chemistry/serial-dilution": () => import("../../chemistry/serial-dilution/index.js"),
   "climatology/pet-thornthwaite-monthly": () => import("../../climatology/pet-thornthwaite-monthly/index.js"),
   "convert/density": () => import("../../convert/density/index.js"),

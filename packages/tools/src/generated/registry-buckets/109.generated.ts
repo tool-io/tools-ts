@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "biology/creatinine-clearance-cockcroft-gault": () => import("../../biology/creatinine-clearance-cockcroft-gault/index.js"),
   "biology/white-cell-differential": () => import("../../biology/white-cell-differential/index.js"),
   "carpentry/sockelfuss-anzahl": () => import("../../carpentry/sockelfuss-anzahl/index.js"),
+  "celestial-mechanics/synodic-earth-mars-780day-lookup": () => import("../../celestial-mechanics/synodic-earth-mars-780day-lookup/index.js"),
   "chemistry/zero-order-integrated": () => import("../../chemistry/zero-order-integrated/index.js"),
   "classics/spartan-helot-revolts-third-messenian-war-context-lookup": () => import("../../classics/spartan-helot-revolts-third-messenian-war-context-lookup/index.js"),
   "climatology/aridity-de-martonne": () => import("../../climatology/aridity-de-martonne/index.js"),

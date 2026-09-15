@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "banking/yield-earning-assets-computed": () => import("../../banking/yield-earning-assets-computed/index.js"),
   "biology/therapeutic-index": () => import("../../biology/therapeutic-index/index.js"),
   "carpentry/domino-depth": () => import("../../carpentry/domino-depth/index.js"),
+  "cartography/leader-line-max-length-checker": () => import("../../cartography/leader-line-max-length-checker/index.js"),
   "chemistry/spectroscopy-absorptivity-from-slope": () => import("../../chemistry/spectroscopy-absorptivity-from-slope/index.js"),
   "climatology/rx1day-max": () => import("../../climatology/rx1day-max/index.js"),
   "convert/bytes-to-hex": () => import("../../convert/bytes-to-hex/index.js"),
@@ -44,6 +45,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/melzer-dextrinoid-amyloid-resolver": () => import("../../mycology/melzer-dextrinoid-amyloid-resolver/index.js"),
   "neuroscience/correct-trial-visual-search-slope": () => import("../../neuroscience/correct-trial-visual-search-slope/index.js"),
   "neuroscience/roi-tensor-mean-diffusivity": () => import("../../neuroscience/roi-tensor-mean-diffusivity/index.js"),
+  "oceanography/coriolis-parameter-f-latitude": () => import("../../oceanography/coriolis-parameter-f-latitude/index.js"),
   "oenology/total-package-oxygen": () => import("../../oenology/total-package-oxygen/index.js"),
   "pedagogy/formative-vs-summative-purpose-classifier": () => import("../../pedagogy/formative-vs-summative-purpose-classifier/index.js"),
   "philately/recess-ink-feel-flag": () => import("../../philately/recess-ink-feel-flag/index.js"),
@@ -60,4 +62,5 @@ export const toolModuleLoaders: Readonly<
   "taxation/luxury-tax-threshold-boat-auto-checker": () => import("../../taxation/luxury-tax-threshold-boat-auto-checker/index.js"),
   "text/remove-blank-lines": () => import("../../text/remove-blank-lines/index.js"),
   "viticulture/shoot-thinning-percent-removal": () => import("../../viticulture/shoot-thinning-percent-removal/index.js"),
+  "volcanology/ash-aircraft-ingestion-threshold-lookup": () => import("../../volcanology/ash-aircraft-ingestion-threshold-lookup/index.js"),
 };

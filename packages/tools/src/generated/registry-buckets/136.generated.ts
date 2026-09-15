@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/room-mean-free-path": () => import("../../acoustics/room-mean-free-path/index.js"),
   "agriculture/seed-requirement": () => import("../../agriculture/seed-requirement/index.js"),
+  "astrobiology/bond-albedo-temp-modifier": () => import("../../astrobiology/bond-albedo-temp-modifier/index.js"),
   "astronomy/hubble-law-distance-from-velocity": () => import("../../astronomy/hubble-law-distance-from-velocity/index.js"),
   "auditing/record-count-reconciliation": () => import("../../auditing/record-count-reconciliation/index.js"),
   "aviation/groundspeed-required-for-eta": () => import("../../aviation/groundspeed-required-for-eta/index.js"),
@@ -21,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/led-luminous-efficacy": () => import("../../electronics/led-luminous-efficacy/index.js"),
   "engineering/gear-ratio": () => import("../../engineering/gear-ratio/index.js"),
   "epigenetics/nucleosome-band-classifier": () => import("../../epigenetics/nucleosome-band-classifier/index.js"),
+  "ergonomics/rula-group-b-score": () => import("../../ergonomics/rula-group-b-score/index.js"),
   "folklore/yeti-scalp-relic-panboche-monastery-expedition-lookup": () => import("../../folklore/yeti-scalp-relic-panboche-monastery-expedition-lookup/index.js"),
   "fun/round-robin-scheduler": () => import("../../fun/round-robin-scheduler/index.js"),
   "futurology/rifkin-zero-marginal-cost-post-scarcity-thesis-lookup": () => import("../../futurology/rifkin-zero-marginal-cost-post-scarcity-thesis-lookup/index.js"),
@@ -37,6 +39,7 @@ export const toolModuleLoaders: Readonly<
   "math/jumping-champion": () => import("../../math/jumping-champion/index.js"),
   "math/lucky-number-checker": () => import("../../math/lucky-number-checker/index.js"),
   "meteorology/lifted-index-calculator": () => import("../../meteorology/lifted-index-calculator/index.js"),
+  "meteorology/sun-dog-parhelia-offset-angle": () => import("../../meteorology/sun-dog-parhelia-offset-angle/index.js"),
   "mri/brain-extraction-fractional-intensity": () => import("../../mri/brain-extraction-fractional-intensity/index.js"),
   "mri/voxel-world-affine-transform": () => import("../../mri/voxel-world-affine-transform/index.js"),
   "neuroscience/compound-muscle-action-potential-amplitude": () => import("../../neuroscience/compound-muscle-action-potential-amplitude/index.js"),

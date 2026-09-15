@@ -46,6 +46,7 @@ export const toolModuleLoaders: Readonly<
   "geology/geomechanics-coal-gas-content-langmuir": () => import("../../geology/geomechanics-coal-gas-content-langmuir/index.js"),
   "glaciology/basal-shear-stress": () => import("../../glaciology/basal-shear-stress/index.js"),
   "horology/asthmometer-breath-rate": () => import("../../horology/asthmometer-breath-rate/index.js"),
+  "horticulture/seed-depth-2x-rule-lookup": () => import("../../horticulture/seed-depth-2x-rule-lookup/index.js"),
   "html/aria-role-valid-names-lookup": () => import("../../html/aria-role-valid-names-lookup/index.js"),
   "insurance/copay-vs-coinsurance-scenario-compare": () => import("../../insurance/copay-vs-coinsurance-scenario-compare/index.js"),
   "journalism/small-denominator-instability-warning-checker": () => import("../../journalism/small-denominator-instability-warning-checker/index.js"),

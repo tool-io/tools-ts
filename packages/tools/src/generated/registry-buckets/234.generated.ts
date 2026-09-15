@@ -42,6 +42,7 @@ export const toolModuleLoaders: Readonly<
   "genetics/x-dominant-daughter-evidence": () => import("../../genetics/x-dominant-daughter-evidence/index.js"),
   "geology/cosmogenic-helium-3-age": () => import("../../geology/cosmogenic-helium-3-age/index.js"),
   "heraldry/annulet-orle-distinction-checker": () => import("../../heraldry/annulet-orle-distinction-checker/index.js"),
+  "horticulture/quarantine-isolation-days-lookup": () => import("../../horticulture/quarantine-isolation-days-lookup/index.js"),
   "html/dialog-open-backdrop-lookup": () => import("../../html/dialog-open-backdrop-lookup/index.js"),
   "insurance/at-fault-surcharge-percent-table": () => import("../../insurance/at-fault-surcharge-percent-table/index.js"),
   "insurance/stop-loss-attachment": () => import("../../insurance/stop-loss-attachment/index.js"),
@@ -75,6 +76,7 @@ export const toolModuleLoaders: Readonly<
   "taxation/audit-window-statute-limitations-lookup": () => import("../../taxation/audit-window-statute-limitations-lookup/index.js"),
   "taxation/highway-vehicle-tax": () => import("../../taxation/highway-vehicle-tax/index.js"),
   "virology/rcl-batch-screen-audit": () => import("../../virology/rcl-batch-screen-audit/index.js"),
+  "volcanology/carbon-subduction-flux-reference-lookup": () => import("../../volcanology/carbon-subduction-flux-reference-lookup/index.js"),
   "volcanology/plinian-dispersal-axis-isopach-area": () => import("../../volcanology/plinian-dispersal-axis-isopach-area/index.js"),
   "web/url-data-parser": () => import("../../web/url-data-parser/index.js"),
 };

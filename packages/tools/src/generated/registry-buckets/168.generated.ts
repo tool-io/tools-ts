@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "convert/text-to-unicode-code-points": () => import("../../convert/text-to-unicode-code-points/index.js"),
   "cryptography/adfgvx-cipher": () => import("../../cryptography/adfgvx-cipher/index.js"),
   "css/prefers-reduced-motion-pattern-lookup": () => import("../../css/prefers-reduced-motion-pattern-lookup/index.js"),
+  "dance/balboa-close-embrace-bal-swing-split-lookup": () => import("../../dance/balboa-close-embrace-bal-swing-split-lookup/index.js"),
   "electronics/battery-dod": () => import("../../electronics/battery-dod/index.js"),
   "electronics/led-series-resistor": () => import("../../electronics/led-series-resistor/index.js"),
   "electronics/power-supply-holdup-capacitor": () => import("../../electronics/power-supply-holdup-capacitor/index.js"),

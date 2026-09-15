@@ -4,9 +4,11 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/change-in-estimate-vs-principle-classifier": () => import("../../accounting/change-in-estimate-vs-principle-classifier/index.js"),
   "agriculture/drying-energy-requirement": () => import("../../agriculture/drying-energy-requirement/index.js"),
   "apiculture/efb-scale-vs-afb-differential-lookup": () => import("../../apiculture/efb-scale-vs-afb-differential-lookup/index.js"),
   "astrobiology/minimal-genetic-code-information-bits": () => import("../../astrobiology/minimal-genetic-code-information-bits/index.js"),
+  "astrobiology/travel-time-proxima-centauri": () => import("../../astrobiology/travel-time-proxima-centauri/index.js"),
   "auditing/equity-option-grant-board-approval-inspection-steps": () => import("../../auditing/equity-option-grant-board-approval-inspection-steps/index.js"),
   "aviation/standard-temperature": () => import("../../aviation/standard-temperature/index.js"),
   "biology/brillouin-diversity": () => import("../../biology/brillouin-diversity/index.js"),
@@ -56,6 +58,7 @@ export const toolModuleLoaders: Readonly<
   "random/combining-diacritical-mark": () => import("../../random/combining-diacritical-mark/index.js"),
   "semiconductor/apd-breakdown-voltage": () => import("../../semiconductor/apd-breakdown-voltage/index.js"),
   "semiconductor/cfet-inverter-delay": () => import("../../semiconductor/cfet-inverter-delay/index.js"),
+  "sericulture/harvest-time-water-content-lookup": () => import("../../sericulture/harvest-time-water-content-lookup/index.js"),
   "speleology/cave-depth-chain-total": () => import("../../speleology/cave-depth-chain-total/index.js"),
   "taxation/required-beginning-date-rbd-checker": () => import("../../taxation/required-beginning-date-rbd-checker/index.js"),
   "toxicology/hepatic-extraction-ratio": () => import("../../toxicology/hepatic-extraction-ratio/index.js"),

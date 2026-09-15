@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "aquaculture/aeration-requirement": () => import("../../aquaculture/aeration-requirement/index.js"),
   "aquaculture/temperature-correction-growth": () => import("../../aquaculture/temperature-correction-growth/index.js"),
+  "astrobiology/tidal-heating-io-flux-calculator": () => import("../../astrobiology/tidal-heating-io-flux-calculator/index.js"),
   "auditing/continuous-close-freshness": () => import("../../auditing/continuous-close-freshness/index.js"),
   "biology/canopy-gap-fraction": () => import("../../biology/canopy-gap-fraction/index.js"),
   "carpentry/edge-banding-trim-allowance": () => import("../../carpentry/edge-banding-trim-allowance/index.js"),
@@ -37,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "horology/beats-per-day": () => import("../../horology/beats-per-day/index.js"),
   "horology/free-sprung-index-regulator-comparison-lookup": () => import("../../horology/free-sprung-index-regulator-comparison-lookup/index.js"),
   "horology/retrograde-return-time": () => import("../../horology/retrograde-return-time/index.js"),
+  "html/datalist-combobox-pattern-lookup": () => import("../../html/datalist-combobox-pattern-lookup/index.js"),
   "insurance/builders-risk-soft-costs-check": () => import("../../insurance/builders-risk-soft-costs-check/index.js"),
   "kinesiology/acsm-guidelines-fitt-principle-edition-framework-lookup": () => import("../../kinesiology/acsm-guidelines-fitt-principle-edition-framework-lookup/index.js"),
   "laser/laser-pulse-duration-time-bandwidth-product-sech-gaussian-transform-limited-checker": () => import("../../laser/laser-pulse-duration-time-bandwidth-product-sech-gaussian-transform-limited-checker/index.js"),

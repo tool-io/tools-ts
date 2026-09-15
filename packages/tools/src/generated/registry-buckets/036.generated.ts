@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/asset-exchange-commercial-substance-boot-checker": () => import("../../accounting/asset-exchange-commercial-substance-boot-checker/index.js"),
   "actuarial/probability-of-death-qx": () => import("../../actuarial/probability-of-death-qx/index.js"),
   "astronomy/eddington-luminosity-limit": () => import("../../astronomy/eddington-luminosity-limit/index.js"),
   "aviation/demonstrated-crosswind-comparison": () => import("../../aviation/demonstrated-crosswind-comparison/index.js"),
@@ -33,11 +34,13 @@ export const toolModuleLoaders: Readonly<
   "folklore/sleeping-beauty-sun-moon-talents-gifts-variant-lookup": () => import("../../folklore/sleeping-beauty-sun-moon-talents-gifts-variant-lookup/index.js"),
   "futurology/three-horizons-framework-transition-map-lookup": () => import("../../futurology/three-horizons-framework-transition-map-lookup/index.js"),
   "game/blackjack-hi-lo-running-count-update": () => import("../../game/blackjack-hi-lo-running-count-update/index.js"),
+  "game/input-buffer-window-frames-converter": () => import("../../game/input-buffer-window-frames-converter/index.js"),
   "gemology/pearl-luster-rater": () => import("../../gemology/pearl-luster-rater/index.js"),
   "geology/magma-density": () => import("../../geology/magma-density/index.js"),
   "heraldry/per-bend-sinister-path": () => import("../../heraldry/per-bend-sinister-path/index.js"),
   "horology/caseback-turns-close": () => import("../../horology/caseback-turns-close/index.js"),
   "horology/moonphase-correction-days": () => import("../../horology/moonphase-correction-days/index.js"),
+  "html/svg-inline-vs-object-tradeoff-lookup": () => import("../../html/svg-inline-vs-object-tradeoff-lookup/index.js"),
   "insurance/roof-age-depreciation-payout-lookup": () => import("../../insurance/roof-age-depreciation-payout-lookup/index.js"),
   "kinesiology/sayers-vertical-jump-power": () => import("../../kinesiology/sayers-vertical-jump-power/index.js"),
   "laser/decoy-state-intensity-score": () => import("../../laser/decoy-state-intensity-score/index.js"),
@@ -63,6 +66,7 @@ export const toolModuleLoaders: Readonly<
   "search/beam-search": () => import("../../search/beam-search/index.js"),
   "seismology/damping-response-spectrum-heuristic-scaling": () => import("../../seismology/damping-response-spectrum-heuristic-scaling/index.js"),
   "sericulture/eggs-per-gram-silkworm-seed": () => import("../../sericulture/eggs-per-gram-silkworm-seed/index.js"),
+  "sericulture/tram-vs-organzine-twist-direction-lookup": () => import("../../sericulture/tram-vs-organzine-twist-direction-lookup/index.js"),
   "size/sweater": () => import("../../size/sweater/index.js"),
   "sociology/age-specific-fertility-rate": () => import("../../sociology/age-specific-fertility-rate/index.js"),
   "sociology/household-type-eurostat-classifier": () => import("../../sociology/household-type-eurostat-classifier/index.js"),

@@ -41,6 +41,7 @@ export const toolModuleLoaders: Readonly<
   "heraldry/dimidiation-half-merge-solver": () => import("../../heraldry/dimidiation-half-merge-solver/index.js"),
   "insurance/fsa-election-split": () => import("../../insurance/fsa-election-split/index.js"),
   "interpolation/linear": () => import("../../interpolation/linear/index.js"),
+  "journalism/lede-vs-lead-spelling-style-lookup": () => import("../../journalism/lede-vs-lead-spelling-style-lookup/index.js"),
   "kinesiology/pro-agility-5-10-5-shuttle-norms-lookup": () => import("../../kinesiology/pro-agility-5-10-5-shuttle-norms-lookup/index.js"),
   "kinesiology/self-selected-versus-optimal-cadence-economy-tradeoff-note": () => import("../../kinesiology/self-selected-versus-optimal-cadence-economy-tradeoff-note/index.js"),
   "limnology/vollenweider-phosphorus-load-limit": () => import("../../limnology/vollenweider-phosphorus-load-limit/index.js"),
@@ -73,5 +74,6 @@ export const toolModuleLoaders: Readonly<
   "statistics/odds-ratio": () => import("../../statistics/odds-ratio/index.js"),
   "transcriptomics/deseq-size-factor": () => import("../../transcriptomics/deseq-size-factor/index.js"),
   "transcriptomics/tmm-scaling-factor": () => import("../../transcriptomics/tmm-scaling-factor/index.js"),
+  "typography/size-adjust-percent-metric-match": () => import("../../typography/size-adjust-percent-metric-match/index.js"),
   "virology/confirmed-case-outcome-fatality": () => import("../../virology/confirmed-case-outcome-fatality/index.js"),
 };

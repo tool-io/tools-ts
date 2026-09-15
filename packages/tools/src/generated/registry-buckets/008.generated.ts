@@ -7,6 +7,8 @@ export const toolModuleLoaders: Readonly<
   "aesthetics/hermeneutic-circle-part-whole-gadamer-loop-checker": () => import("../../aesthetics/hermeneutic-circle-part-whole-gadamer-loop-checker/index.js"),
   "agriculture/panicle-number-per-hectare": () => import("../../agriculture/panicle-number-per-hectare/index.js"),
   "aquaculture/biofilter-media-volume": () => import("../../aquaculture/biofilter-media-volume/index.js"),
+  "astrobiology/hz-outer-maximum-greenhouse-boundary": () => import("../../astrobiology/hz-outer-maximum-greenhouse-boundary/index.js"),
+  "astrobiology/waterfall-channel-resolution-planner": () => import("../../astrobiology/waterfall-channel-resolution-planner/index.js"),
   "auditing/application-control-report-parameter-integrity-checker": () => import("../../auditing/application-control-report-parameter-integrity-checker/index.js"),
   "auditing/cash-on-hand-count-denomination-sheet-procedure": () => import("../../auditing/cash-on-hand-count-denomination-sheet-procedure/index.js"),
   "auditing/itgc-access-change-operations-domain-split-lookup": () => import("../../auditing/itgc-access-change-operations-domain-split-lookup/index.js"),

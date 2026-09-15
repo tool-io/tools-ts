@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/aging-method-allowance-matrix-estimate": () => import("../../accounting/aging-method-allowance-matrix-estimate/index.js"),
+  "accounting/edgar-filing-form-type-selector-lookup": () => import("../../accounting/edgar-filing-form-type-selector-lookup/index.js"),
   "acoustics/critical-band-width-lookup": () => import("../../acoustics/critical-band-width-lookup/index.js"),
   "acoustics/mlv-product-stc-lookup": () => import("../../acoustics/mlv-product-stc-lookup/index.js"),
   "activation/tanh": () => import("../../activation/tanh/index.js"),
@@ -33,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "generate/uuid-v6": () => import("../../generate/uuid-v6/index.js"),
   "genomics/on-target-read-efficiency": () => import("../../genomics/on-target-read-efficiency/index.js"),
   "heraldry/grant-date-age-calculator": () => import("../../heraldry/grant-date-age-calculator/index.js"),
+  "html/canonical-vs-og-url-dup-note": () => import("../../html/canonical-vs-og-url-dup-note/index.js"),
   "insurance/epl-third-party-harassment-claims-coverage-extension-lookup": () => import("../../insurance/epl-third-party-harassment-claims-coverage-extension-lookup/index.js"),
   "journalism/dimension-mark-check": () => import("../../journalism/dimension-mark-check/index.js"),
   "kinesiology/vertec-jump-reach": () => import("../../kinesiology/vertec-jump-reach/index.js"),
@@ -51,6 +53,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/radiant-floor-heat-output": () => import("../../plumbing/radiant-floor-heat-output/index.js"),
   "proteomics/y-ion-series": () => import("../../proteomics/y-ion-series/index.js"),
   "semiconductor/fermi-level-n-type": () => import("../../semiconductor/fermi-level-n-type/index.js"),
+  "sericulture/inspection-lot-sample-size-lookup": () => import("../../sericulture/inspection-lot-sample-size-lookup/index.js"),
   "sericulture/reeling-labor-cost-per-kg-silk": () => import("../../sericulture/reeling-labor-cost-per-kg-silk/index.js"),
   "sports/dots-score-powerlifting": () => import("../../sports/dots-score-powerlifting/index.js"),
   "sports/tennis-first-serve-percent-won-conversion": () => import("../../sports/tennis-first-serve-percent-won-conversion/index.js"),

@@ -6,6 +6,8 @@ export const toolModuleLoaders: Readonly<
 > = {
   "aesthetics/hambidge-dynamic-symmetry-root-rectangles-lookup": () => import("../../aesthetics/hambidge-dynamic-symmetry-root-rectangles-lookup/index.js"),
   "aquaculture/alkalinity-requirement": () => import("../../aquaculture/alkalinity-requirement/index.js"),
+  "astrobiology/copernican-principle-estimate": () => import("../../astrobiology/copernican-principle-estimate/index.js"),
+  "astrobiology/subsurface-ocean-ice-shell-thickness": () => import("../../astrobiology/subsurface-ocean-ice-shell-thickness/index.js"),
   "auditing/block-stratified-selection-coverage-adequacy-checker": () => import("../../auditing/block-stratified-selection-coverage-adequacy-checker/index.js"),
   "auditing/deficiency-severity": () => import("../../auditing/deficiency-severity/index.js"),
   "auditing/fictitious-vendor-w9-bank-duplicate-detector": () => import("../../auditing/fictitious-vendor-w9-bank-duplicate-detector/index.js"),
@@ -70,5 +72,6 @@ export const toolModuleLoaders: Readonly<
   "toxicology/avian-ld50": () => import("../../toxicology/avian-ld50/index.js"),
   "veterinary/emergency-drug-dose-crash-cart": () => import("../../veterinary/emergency-drug-dose-crash-cart/index.js"),
   "virology/exposure-quarantine-window": () => import("../../virology/exposure-quarantine-window/index.js"),
+  "volcanology/edm-line-change-inflation-percent": () => import("../../volcanology/edm-line-change-inflation-percent/index.js"),
   "vr/immersion-index": () => import("../../vr/immersion-index/index.js"),
 };

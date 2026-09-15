@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/fund-accounting-net-assets-restrictions-classifier": () => import("../../accounting/fund-accounting-net-assets-restrictions-classifier/index.js"),
   "actuarial/term-life-annuity-epv": () => import("../../actuarial/term-life-annuity-epv/index.js"),
   "apiculture/small-hive-beetle-trap-threshold": () => import("../../apiculture/small-hive-beetle-trap-threshold/index.js"),
   "aquaculture/larval-survival-rate": () => import("../../aquaculture/larval-survival-rate/index.js"),

@@ -36,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/video-frame-rate": () => import("../../electronics/video-frame-rate/index.js"),
   "engineering/heat-exchanger-lmtd-method": () => import("../../engineering/heat-exchanger-lmtd-method/index.js"),
   "epigraphy/ics-ref-format-validator": () => import("../../epigraphy/ics-ref-format-validator/index.js"),
+  "ergonomics/strain-index-speed-score": () => import("../../ergonomics/strain-index-speed-score/index.js"),
   "finance/discount-price": () => import("../../finance/discount-price/index.js"),
   "folklore/collective-noun-animal-terms-lookup": () => import("../../folklore/collective-noun-animal-terms-lookup/index.js"),
   "fun/who-is-more-likely": () => import("../../fun/who-is-more-likely/index.js"),
@@ -45,6 +46,7 @@ export const toolModuleLoaders: Readonly<
   "heraldry/azure-frequency-rank-finder": () => import("../../heraldry/azure-frequency-rank-finder/index.js"),
   "heraldry/lozenge-armorial-convention-checker": () => import("../../heraldry/lozenge-armorial-convention-checker/index.js"),
   "horticulture/injector-ratio-1-100-dosing": () => import("../../horticulture/injector-ratio-1-100-dosing/index.js"),
+  "html/msapplication-tile-legacy-lookup": () => import("../../html/msapplication-tile-legacy-lookup/index.js"),
   "journalism/b-roll-archive-footage-license-window-lookup": () => import("../../journalism/b-roll-archive-footage-license-window-lookup/index.js"),
   "kinesiology/pitcher-cocking-phase-external-rotation-degrees-lookup": () => import("../../kinesiology/pitcher-cocking-phase-external-rotation-degrees-lookup/index.js"),
   "laser/doppler-flow-perfusion-index": () => import("../../laser/doppler-flow-perfusion-index/index.js"),
@@ -84,6 +86,7 @@ export const toolModuleLoaders: Readonly<
   "theatre/apron-depth-percent-proscenium": () => import("../../theatre/apron-depth-percent-proscenium/index.js"),
   "theatre/dialect-transcription-coverage": () => import("../../theatre/dialect-transcription-coverage/index.js"),
   "toxicology/logit-analysis": () => import("../../toxicology/logit-analysis/index.js"),
+  "typography/monospace-cell-width-half-em": () => import("../../typography/monospace-cell-width-half-em/index.js"),
   "validate/luhn": () => import("../../validate/luhn/index.js"),
   "virology/probit-detection-limit": () => import("../../virology/probit-detection-limit/index.js"),
 };

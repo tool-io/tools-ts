@@ -4,9 +4,11 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/completed-contract-vs-poc-deferred-profit-checker": () => import("../../accounting/completed-contract-vs-poc-deferred-profit-checker/index.js"),
   "acoustics/room-criterion-reference": () => import("../../acoustics/room-criterion-reference/index.js"),
   "aesthetics/bourdieu-distinction-cultural-capital-taste-class-analysis": () => import("../../aesthetics/bourdieu-distinction-cultural-capital-taste-class-analysis/index.js"),
   "archaeology/charcoal-id-ring-porosity-classify": () => import("../../archaeology/charcoal-id-ring-porosity-classify/index.js"),
+  "astrometry/chromatic-refraction-band-note-generator": () => import("../../astrometry/chromatic-refraction-band-note-generator/index.js"),
   "auditing/net-worth-method": () => import("../../auditing/net-worth-method/index.js"),
   "aviation/contingency-fuel": () => import("../../aviation/contingency-fuel/index.js"),
   "aviation/fuel-at-waypoint": () => import("../../aviation/fuel-at-waypoint/index.js"),

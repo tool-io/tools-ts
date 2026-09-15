@@ -62,6 +62,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/ald-growth-per-cycle": () => import("../../semiconductor/ald-growth-per-cycle/index.js"),
   "semiconductor/photodiode-dark-current": () => import("../../semiconductor/photodiode-dark-current/index.js"),
   "semiconductor/quantum-well-laser-threshold-current": () => import("../../semiconductor/quantum-well-laser-threshold-current/index.js"),
+  "sericulture/tex-to-denier-converter": () => import("../../sericulture/tex-to-denier-converter/index.js"),
   "sericulture/value-chain-margin-cocoon-to-silk": () => import("../../sericulture/value-chain-margin-cocoon-to-silk/index.js"),
   "size/dog-collar": () => import("../../size/dog-collar/index.js"),
   "sports/darts-checkout-combination-lookup": () => import("../../sports/darts-checkout-combination-lookup/index.js"),

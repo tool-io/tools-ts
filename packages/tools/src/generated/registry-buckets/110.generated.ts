@@ -4,10 +4,12 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/accrual-classifying-balance-sheet-accounts-tool": () => import("../../accounting/accrual-classifying-balance-sheet-accounts-tool/index.js"),
   "accounting/payable-turnover-days-purchases": () => import("../../accounting/payable-turnover-days-purchases/index.js"),
   "agriculture/soil-texture-triangle-lookup": () => import("../../agriculture/soil-texture-triangle-lookup/index.js"),
   "auditing/user-access-review-quarterly-recertification-evidence-tester": () => import("../../auditing/user-access-review-quarterly-recertification-evidence-tester/index.js"),
   "carpentry/faceplate-screw-count": () => import("../../carpentry/faceplate-screw-count/index.js"),
+  "celestial-mechanics/tisserand-parameter-invariance-checker": () => import("../../celestial-mechanics/tisserand-parameter-invariance-checker/index.js"),
   "chemistry/kb-from-ka-kw": () => import("../../chemistry/kb-from-ka-kw/index.js"),
   "cipher/playfair-encoder": () => import("../../cipher/playfair-encoder/index.js"),
   "classics/piraeus-lion-roaring-wind-acoustics-medieval-note-lookup": () => import("../../classics/piraeus-lion-roaring-wind-acoustics-medieval-note-lookup/index.js"),

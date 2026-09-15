@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "auditing/sampling-coverage": () => import("../../auditing/sampling-coverage/index.js"),
   "aviation/runway-wind-component-specific": () => import("../../aviation/runway-wind-component-specific/index.js"),
   "biology/clotting-time": () => import("../../biology/clotting-time/index.js"),
+  "calculus/definite-integral": () => import("../../calculus/definite-integral/index.js"),
   "carpentry/miter-angle": () => import("../../carpentry/miter-angle/index.js"),
   "cartography/declination-drift-adjuster": () => import("../../cartography/declination-drift-adjuster/index.js"),
   "chemistry/critical-temperature-lookup": () => import("../../chemistry/critical-temperature-lookup/index.js"),

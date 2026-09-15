@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/oci-accumulated-comprehensive-income-items-lookup": () => import("../../accounting/oci-accumulated-comprehensive-income-items-lookup/index.js"),
   "agriculture/pasture-carrying-capacity": () => import("../../agriculture/pasture-carrying-capacity/index.js"),
   "aquaculture/do-saturation": () => import("../../aquaculture/do-saturation/index.js"),
   "archaeology/phosphorus-soil-test-anomaly": () => import("../../archaeology/phosphorus-soil-test-anomaly/index.js"),
@@ -19,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/crystallography-density-from-unit-cell": () => import("../../chemistry/crystallography-density-from-unit-cell/index.js"),
   "classics/ostia-antica-port-city-insulae-trade-hub-lookup": () => import("../../classics/ostia-antica-port-city-insulae-trade-hub-lookup/index.js"),
   "classics/thucydides-strict-contemporaneity-method-standard-lookup": () => import("../../classics/thucydides-strict-contemporaneity-method-standard-lookup/index.js"),
+  "color/midpoint-color-linear-interpolation-rgb": () => import("../../color/midpoint-color-linear-interpolation-rgb/index.js"),
   "cooking/pizza-sauce-per-dough-ball": () => import("../../cooking/pizza-sauce-per-dough-ball/index.js"),
   "criminology/time-to-rearrest-survival-quartile-estimate": () => import("../../criminology/time-to-rearrest-survival-quartile-estimate/index.js"),
   "csv/ragged-rows-wrong-field-count-finder": () => import("../../csv/ragged-rows-wrong-field-count-finder/index.js"),

@@ -7,6 +7,7 @@ export const toolModuleLoaders: Readonly<
   "accounting/accrual-vs-cash-basis-net-income-difference": () => import("../../accounting/accrual-vs-cash-basis-net-income-difference/index.js"),
   "aesthetics/affective-fallacy-reader-response-boundary-lookup": () => import("../../aesthetics/affective-fallacy-reader-response-boundary-lookup/index.js"),
   "aesthetics/dickie-institutional-theory-steps-lookup": () => import("../../aesthetics/dickie-institutional-theory-steps-lookup/index.js"),
+  "astrometry/cio-sp-prime-complement-calculator": () => import("../../astrometry/cio-sp-prime-complement-calculator/index.js"),
   "banking/cost-to-income-efficiency-ratio": () => import("../../banking/cost-to-income-efficiency-ratio/index.js"),
   "banking/sofr-libor-transition-basis-lookup": () => import("../../banking/sofr-libor-transition-basis-lookup/index.js"),
   "carpentry/leim-auftrag-einseitig-beidseitig-lookup": () => import("../../carpentry/leim-auftrag-einseitig-beidseitig-lookup/index.js"),

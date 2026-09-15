@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "apiculture/pollen-patty-protein-percent-mix": () => import("../../apiculture/pollen-patty-protein-percent-mix/index.js"),
   "apiculture/queen-laying-rate-eggs-per-day": () => import("../../apiculture/queen-laying-rate-eggs-per-day/index.js"),
   "archival-studies/pat-pass-flag-checker": () => import("../../archival-studies/pat-pass-flag-checker/index.js"),
+  "astrobiology/seti-sensitivity-distance-estimate": () => import("../../astrobiology/seti-sensitivity-distance-estimate/index.js"),
   "astrobiology/vegetation-rededge-feature-depth-percent": () => import("../../astrobiology/vegetation-rededge-feature-depth-percent/index.js"),
   "astronomy/saros-cycle-eclipse-repeat-years": () => import("../../astronomy/saros-cycle-eclipse-repeat-years/index.js"),
   "auditing/program-expenditure-threshold-screen": () => import("../../auditing/program-expenditure-threshold-screen/index.js"),
@@ -66,5 +67,6 @@ export const toolModuleLoaders: Readonly<
   "typography/ems-to-pixels": () => import("../../typography/ems-to-pixels/index.js"),
   "validate/vin-check-digit": () => import("../../validate/vin-check-digit/index.js"),
   "virology/poisson-corrected-lentiviral-titer": () => import("../../virology/poisson-corrected-lentiviral-titer/index.js"),
+  "viticulture/winter-pruning-hours-per-hectare": () => import("../../viticulture/winter-pruning-hours-per-hectare/index.js"),
   "volcanology/caldera-collapse-volume-ring-fault": () => import("../../volcanology/caldera-collapse-volume-ring-fault/index.js"),
 };

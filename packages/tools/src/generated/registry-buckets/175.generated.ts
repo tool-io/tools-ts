@@ -36,6 +36,8 @@ export const toolModuleLoaders: Readonly<
   "glaciology/flotation-thickness-draft": () => import("../../glaciology/flotation-thickness-draft/index.js"),
   "glaciology/los-to-horizontal-velocity-decomposition": () => import("../../glaciology/los-to-horizontal-velocity-decomposition/index.js"),
   "glaciology/vertical-velocity-from-accumulation": () => import("../../glaciology/vertical-velocity-from-accumulation/index.js"),
+  "horticulture/microgreens-days-harvest-lookup": () => import("../../horticulture/microgreens-days-harvest-lookup/index.js"),
+  "html/lang-attribute-bcp47-checker": () => import("../../html/lang-attribute-bcp47-checker/index.js"),
   "insurance/follow-form-versus-self-contained-excess-language-difference": () => import("../../insurance/follow-form-versus-self-contained-excess-language-difference/index.js"),
   "journalism/beat-source-coverage": () => import("../../journalism/beat-source-coverage/index.js"),
   "json/unflatten": () => import("../../json/unflatten/index.js"),

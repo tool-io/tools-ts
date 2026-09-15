@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "classics/villa-rustica-urbana-suburban-typology-functions-lookup": () => import("../../classics/villa-rustica-urbana-suburban-typology-functions-lookup/index.js"),
   "climatology/chill-hours-accumulator": () => import("../../climatology/chill-hours-accumulator/index.js"),
   "climatology/koppen-subclass-resolver": () => import("../../climatology/koppen-subclass-resolver/index.js"),
+  "color/litmus-red-blue-ph-range-checker": () => import("../../color/litmus-red-blue-ph-range-checker/index.js"),
   "color/tetradic-hue-rotation-90": () => import("../../color/tetradic-hue-rotation-90/index.js"),
   "css/perspective-z-scale-factor": () => import("../../css/perspective-z-scale-factor/index.js"),
   "decode/html-entities": () => import("../../decode/html-entities/index.js"),

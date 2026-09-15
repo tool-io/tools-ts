@@ -38,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "gemology/lower-half-percentage": () => import("../../gemology/lower-half-percentage/index.js"),
   "geology/petrophysical-dielectric-permittivity": () => import("../../geology/petrophysical-dielectric-permittivity/index.js"),
   "glaciology/delta-o18-paleotemperature": () => import("../../glaciology/delta-o18-paleotemperature/index.js"),
+  "horticulture/co2-enrichment-setpoint-ppm": () => import("../../horticulture/co2-enrichment-setpoint-ppm/index.js"),
   "html/text-extractor": () => import("../../html/text-extractor/index.js"),
   "insurance/waiver-of-subrogation-meaning-lookup": () => import("../../insurance/waiver-of-subrogation-meaning-lookup/index.js"),
   "journalism/gunning-fog-index-bulk-calculation": () => import("../../journalism/gunning-fog-index-bulk-calculation/index.js"),

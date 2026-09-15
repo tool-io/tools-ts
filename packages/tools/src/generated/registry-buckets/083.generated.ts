@@ -76,6 +76,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/station-residual-outlier-sigma-flagger": () => import("../../seismology/station-residual-outlier-sigma-flagger/index.js"),
   "semiconductor/mesfet-transconductance": () => import("../../semiconductor/mesfet-transconductance/index.js"),
   "semiconductor/wafer-bow": () => import("../../semiconductor/wafer-bow/index.js"),
+  "sericulture/fold-count-organzine-lookup": () => import("../../sericulture/fold-count-organzine-lookup/index.js"),
   "size/dog-shoe": () => import("../../size/dog-shoe/index.js"),
   "sociology/crime-rate-crude": () => import("../../sociology/crime-rate-crude/index.js"),
   "speleology/extended-elevation-length": () => import("../../speleology/extended-elevation-length/index.js"),

@@ -68,6 +68,8 @@ export const toolModuleLoaders: Readonly<
   "seismology/paleoseismic-trench-event-horizon-count": () => import("../../seismology/paleoseismic-trench-event-horizon-count/index.js"),
   "semiconductor/graphene-fermi-velocity": () => import("../../semiconductor/graphene-fermi-velocity/index.js"),
   "semiconductor/tunnel-diode-valley-current": () => import("../../semiconductor/tunnel-diode-valley-current/index.js"),
+  "sericulture/mother-moth-examination-protocol-lookup": () => import("../../sericulture/mother-moth-examination-protocol-lookup/index.js"),
+  "sericulture/multiend-reeling-speed-mpm": () => import("../../sericulture/multiend-reeling-speed-mpm/index.js"),
   "taxation/gst-layered-tax": () => import("../../taxation/gst-layered-tax/index.js"),
   "taxation/liquidity-pool-gain": () => import("../../taxation/liquidity-pool-gain/index.js"),
   "taxation/marginal-vs-effective-rate-gap": () => import("../../taxation/marginal-vs-effective-rate-gap/index.js"),

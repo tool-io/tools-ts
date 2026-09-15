@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/canopy-bulk-density-forestry": () => import("../../forestry/canopy-bulk-density-forestry/index.js"),
   "forestry/christmas-tree-rotation-years-by-site-quality": () => import("../../forestry/christmas-tree-rotation-years-by-site-quality/index.js"),
   "futurology/wright-law-learning-curve-cost-doubling-lookup": () => import("../../futurology/wright-law-learning-curve-cost-doubling-lookup/index.js"),
+  "game/hangman-vowel-first-heuristic-lookup": () => import("../../game/hangman-vowel-first-heuristic-lookup/index.js"),
   "game/swiss-round-count-log2": () => import("../../game/swiss-round-count-log2/index.js"),
   "gemology/pearl-size-classifier": () => import("../../gemology/pearl-size-classifier/index.js"),
   "generate/isbn-10": () => import("../../generate/isbn-10/index.js"),

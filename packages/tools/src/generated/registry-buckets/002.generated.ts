@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "apiculture/royal-jelly-per-cell-mg-harvest": () => import("../../apiculture/royal-jelly-per-cell-mg-harvest/index.js"),
   "archival-studies/storage-tube-size-selector": () => import("../../archival-studies/storage-tube-size-selector/index.js"),
   "carpentry/shelf-pin-holes-spacing": () => import("../../carpentry/shelf-pin-holes-spacing/index.js"),
+  "celestial-mechanics/collinear-stability-saddle-flag-checker": () => import("../../celestial-mechanics/collinear-stability-saddle-flag-checker/index.js"),
   "checksum/crc-16-modbus": () => import("../../checksum/crc-16-modbus/index.js"),
   "classics/charioteer-diocles-35-million-sestertii-earnings-record": () => import("../../classics/charioteer-diocles-35-million-sestertii-earnings-record/index.js"),
   "color/gamut-srgb-checker-rgb-bounds": () => import("../../color/gamut-srgb-checker-rgb-bounds/index.js"),

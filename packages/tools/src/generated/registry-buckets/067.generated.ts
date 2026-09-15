@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/fixed-charge-coverage-lease-adjusted": () => import("../../accounting/fixed-charge-coverage-lease-adjusted/index.js"),
   "archaeology/amino-acid-racemization-age": () => import("../../archaeology/amino-acid-racemization-age/index.js"),
   "archaeology/mandibular-gonial-angle-measure": () => import("../../archaeology/mandibular-gonial-angle-measure/index.js"),
   "archival-studies/name-form-normalizer-surname-first": () => import("../../archival-studies/name-form-normalizer-surname-first/index.js"),
@@ -41,6 +42,7 @@ export const toolModuleLoaders: Readonly<
   "gemology/treatment-discount-multiplier": () => import("../../gemology/treatment-discount-multiplier/index.js"),
   "horology/silicon-watch-component-property-lookup": () => import("../../horology/silicon-watch-component-property-lookup/index.js"),
   "horology/watch-serial-number-format-component-parser": () => import("../../horology/watch-serial-number-format-component-parser/index.js"),
+  "html/theme-color-meta-lookup": () => import("../../html/theme-color-meta-lookup/index.js"),
   "json/diff": () => import("../../json/diff/index.js"),
   "kinesiology/breaking-pitch-spin-efficiency-active-spin-percentage": () => import("../../kinesiology/breaking-pitch-spin-efficiency-active-spin-percentage/index.js"),
   "kinesiology/minimal-detectable-change": () => import("../../kinesiology/minimal-detectable-change/index.js"),
@@ -49,6 +51,7 @@ export const toolModuleLoaders: Readonly<
   "math/airy-zero-approx": () => import("../../math/airy-zero-approx/index.js"),
   "metabolomics/lipid-unsaturation": () => import("../../metabolomics/lipid-unsaturation/index.js"),
   "mining/pit-depth": () => import("../../mining/pit-depth/index.js"),
+  "paleography/punctus-virgule-era-marker": () => import("../../paleography/punctus-virgule-era-marker/index.js"),
   "philately/missing-color-severity-rank": () => import("../../philately/missing-color-severity-rank/index.js"),
   "philately/title-page-word-budget-checker": () => import("../../philately/title-page-word-budget-checker/index.js"),
   "plumbing/radiant-manifold-flow": () => import("../../plumbing/radiant-manifold-flow/index.js"),

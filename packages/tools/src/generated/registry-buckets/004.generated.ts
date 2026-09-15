@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/depreciation-journal-entry-generator-from-schedule": () => import("../../accounting/depreciation-journal-entry-generator-from-schedule/index.js"),
+  "accounting/guaranteed-payment-vs-distributive-share-classify": () => import("../../accounting/guaranteed-payment-vs-distributive-share-classify/index.js"),
   "activation/softmax": () => import("../../activation/softmax/index.js"),
   "actuarial/annuity-due-pv": () => import("../../actuarial/annuity-due-pv/index.js"),
   "apiculture/site-forage-capacity-colonies": () => import("../../apiculture/site-forage-capacity-colonies/index.js"),
@@ -35,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "glaciology/geodetic-mass-balance-density-correction": () => import("../../glaciology/geodetic-mass-balance-density-correction/index.js"),
   "graph/pinsage-aggregation": () => import("../../graph/pinsage-aggregation/index.js"),
   "horology/repeater-quarter-strikes": () => import("../../horology/repeater-quarter-strikes/index.js"),
+  "horticulture/mushroom-substrate-colonization-days": () => import("../../horticulture/mushroom-substrate-colonization-days/index.js"),
   "horticulture/pot-size-upshift-sequence-lookup": () => import("../../horticulture/pot-size-upshift-sequence-lookup/index.js"),
   "html/void-elements-list-checker": () => import("../../html/void-elements-list-checker/index.js"),
   "insurance/demand-response-window": () => import("../../insurance/demand-response-window/index.js"),
@@ -62,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "seismology/rupture-velocity-shear-wave-ratio-checker": () => import("../../seismology/rupture-velocity-shear-wave-ratio-checker/index.js"),
   "semiconductor/cvd-deposition-rate": () => import("../../semiconductor/cvd-deposition-rate/index.js"),
   "semiconductor/packaging-thermal-resistance": () => import("../../semiconductor/packaging-thermal-resistance/index.js"),
+  "sericulture/cold-storage-hibernation-weeks-lookup": () => import("../../sericulture/cold-storage-hibernation-weeks-lookup/index.js"),
   "taxation/refund-delay": () => import("../../taxation/refund-delay/index.js"),
   "toxicology/hershberger-assay": () => import("../../toxicology/hershberger-assay/index.js"),
   "typography/viewing-distance-signage-letter-height": () => import("../../typography/viewing-distance-signage-letter-height/index.js"),

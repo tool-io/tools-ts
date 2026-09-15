@@ -45,6 +45,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/zone-based-rate-table-step-lookup": () => import("../../logistics/zone-based-rate-table-step-lookup/index.js"),
   "mining/screen-capacity": () => import("../../mining/screen-capacity/index.js"),
   "museology/wall-text-word-limit-checker": () => import("../../museology/wall-text-word-limit-checker/index.js"),
+  "music/sidechain-ducking-depth-typical-lookup": () => import("../../music/sidechain-ducking-depth-typical-lookup/index.js"),
   "mycology/mycelial-growth-rate-radial-measurer": () => import("../../mycology/mycelial-growth-rate-radial-measurer/index.js"),
   "neuroscience/glm-contrast-t": () => import("../../neuroscience/glm-contrast-t/index.js"),
   "oceanography/revelle-factor-buffer-lookup": () => import("../../oceanography/revelle-factor-buffer-lookup/index.js"),

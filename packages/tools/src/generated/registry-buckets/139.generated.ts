@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/revenue-recognition-point-over-time-classifier": () => import("../../accounting/revenue-recognition-point-over-time-classifier/index.js"),
   "archaeology/dendro-master-curve-match": () => import("../../archaeology/dendro-master-curve-match/index.js"),
   "archaeology/marine-reservoir-correction": () => import("../../archaeology/marine-reservoir-correction/index.js"),
   "archival-studies/bulk-date-dominant-extractor": () => import("../../archival-studies/bulk-date-dominant-extractor/index.js"),
@@ -52,6 +53,7 @@ export const toolModuleLoaders: Readonly<
   "rhetoric/hysteron-proteron-illogical-order-lookup": () => import("../../rhetoric/hysteron-proteron-illogical-order-lookup/index.js"),
   "seismology/spatial-grid-cell-count-density-summary": () => import("../../seismology/spatial-grid-cell-count-density-summary/index.js"),
   "semiconductor/multiple-exciton-generation-quantum-yield": () => import("../../semiconductor/multiple-exciton-generation-quantum-yield/index.js"),
+  "sericulture/pierced-cocoon-percent-loss": () => import("../../sericulture/pierced-cocoon-percent-loss/index.js"),
   "taxation/cnc-affordability": () => import("../../taxation/cnc-affordability/index.js"),
   "typography/pica-to-inches": () => import("../../typography/pica-to-inches/index.js"),
   "veterinary/bcs-body-condition-score-equine": () => import("../../veterinary/bcs-body-condition-score-equine/index.js"),

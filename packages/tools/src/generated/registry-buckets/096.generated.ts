@@ -38,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/herbert-simon-attention-economy-prediction-lookup": () => import("../../futurology/herbert-simon-attention-economy-prediction-lookup/index.js"),
   "futurology/mit-technology-review-ten-breakthroughs-annual-list-history": () => import("../../futurology/mit-technology-review-ten-breakthroughs-annual-list-history/index.js"),
   "futurology/seventh-generation-indigenous-sustainability-principle-lookup": () => import("../../futurology/seventh-generation-indigenous-sustainability-principle-lookup/index.js"),
+  "game/pacman-ghost-personality-lookup": () => import("../../game/pacman-ghost-personality-lookup/index.js"),
   "genomics/mapq-filter-fraction": () => import("../../genomics/mapq-filter-fraction/index.js"),
   "geology/differentiation-index-di": () => import("../../geology/differentiation-index-di/index.js"),
   "horology/middle-temperature-rate-error-calculator": () => import("../../horology/middle-temperature-rate-error-calculator/index.js"),

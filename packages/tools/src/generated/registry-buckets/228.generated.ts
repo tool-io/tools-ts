@@ -43,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "heraldry/crown-points-charge-counter": () => import("../../heraldry/crown-points-charge-counter/index.js"),
   "heraldry/mantling-pairing-checker": () => import("../../heraldry/mantling-pairing-checker/index.js"),
   "horology/detent-impulse-rate": () => import("../../horology/detent-impulse-rate/index.js"),
+  "html/hidden-until-found-find-in-page-lookup": () => import("../../html/hidden-until-found-find-in-page-lookup/index.js"),
   "html/source-type-codecs-parameter-lookup": () => import("../../html/source-type-codecs-parameter-lookup/index.js"),
   "journalism/b-roll-shot-list-seconds-per-scene-standard-lookup": () => import("../../journalism/b-roll-shot-list-seconds-per-scene-standard-lookup/index.js"),
   "kinesiology/thoracic-rotation-side-bend-normative-lookup": () => import("../../kinesiology/thoracic-rotation-side-bend-normative-lookup/index.js"),

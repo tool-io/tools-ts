@@ -72,5 +72,6 @@ export const toolModuleLoaders: Readonly<
   "taxation/amended-return-statute-limitations-3yr-lookup": () => import("../../taxation/amended-return-statute-limitations-3yr-lookup/index.js"),
   "taxation/fiscal-year-calendar-quarter-mapping-lookup": () => import("../../taxation/fiscal-year-calendar-quarter-mapping-lookup/index.js"),
   "taxation/tcja-2017-major-changes-summary-map-lookup": () => import("../../taxation/tcja-2017-major-changes-summary-map-lookup/index.js"),
+  "volcanology/gps-baseline-shortening-inflation": () => import("../../volcanology/gps-baseline-shortening-inflation/index.js"),
   "vr/blink-rate-vr": () => import("../../vr/blink-rate-vr/index.js"),
 };

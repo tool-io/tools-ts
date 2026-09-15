@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "banking/loss-mitigation-modification-forbearance-short-sale-taxonomy": () => import("../../banking/loss-mitigation-modification-forbearance-short-sale-taxonomy/index.js"),
   "biology/therapeutic-window": () => import("../../biology/therapeutic-window/index.js"),
   "carpentry/gehrungswinkel-fuer-unregelmaessiges-eck": () => import("../../carpentry/gehrungswinkel-fuer-unregelmaessiges-eck/index.js"),
+  "celestial-mechanics/entry-velocity-planetary-comparison-lookup": () => import("../../celestial-mechanics/entry-velocity-planetary-comparison-lookup/index.js"),
   "classics/cleopatra-time-scale-moon-landing-pyramids-closer": () => import("../../classics/cleopatra-time-scale-moon-landing-pyramids-closer/index.js"),
   "construction/roof-pitch-angle": () => import("../../construction/roof-pitch-angle/index.js"),
   "convert/binary-to-hex": () => import("../../convert/binary-to-hex/index.js"),
@@ -69,5 +70,6 @@ export const toolModuleLoaders: Readonly<
   "taxation/home-office-simplified-square-foot-method": () => import("../../taxation/home-office-simplified-square-foot-method/index.js"),
   "taxation/inheritance-tax-class-beneficiary-lookup": () => import("../../taxation/inheritance-tax-class-beneficiary-lookup/index.js"),
   "theatre/boal-oppressed-spect-actor-legislative-forum-methods": () => import("../../theatre/boal-oppressed-spect-actor-legislative-forum-methods/index.js"),
+  "typography/footnote-size-ratio-to-body": () => import("../../typography/footnote-size-ratio-to-body/index.js"),
   "vexillology/bicolor-horizontal-family-checker": () => import("../../vexillology/bicolor-horizontal-family-checker/index.js"),
 };

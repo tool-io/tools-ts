@@ -4,12 +4,15 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/r-and-d-expense-vs-capitalize-classifier": () => import("../../accounting/r-and-d-expense-vs-capitalize-classifier/index.js"),
   "actuarial/apportionable-premium-factor": () => import("../../actuarial/apportionable-premium-factor/index.js"),
   "actuarial/tqx-multi-year-death-probability": () => import("../../actuarial/tqx-multi-year-death-probability/index.js"),
   "agriculture/crop-coefficient-kc": () => import("../../agriculture/crop-coefficient-kc/index.js"),
   "archaeology/suchey-brooks-phase-age": () => import("../../archaeology/suchey-brooks-phase-age/index.js"),
   "biology/specific-leaf-area": () => import("../../biology/specific-leaf-area/index.js"),
   "carpentry/polygon-frame-miter-angle": () => import("../../carpentry/polygon-frame-miter-angle/index.js"),
+  "cartography/graduated-circle-overlap-checker": () => import("../../cartography/graduated-circle-overlap-checker/index.js"),
+  "cartography/scale-denominator-comparator": () => import("../../cartography/scale-denominator-comparator/index.js"),
   "cartography/tobler-hiking-speed-estimate": () => import("../../cartography/tobler-hiking-speed-estimate/index.js"),
   "chemistry/entropy-change": () => import("../../chemistry/entropy-change/index.js"),
   "climatology/albedo-forcing-delta-t": () => import("../../climatology/albedo-forcing-delta-t/index.js"),
@@ -49,6 +52,7 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/global-cortical-atrophy-gca": () => import("../../neuroscience/global-cortical-atrophy-gca/index.js"),
   "neuroscience/ltp-magnitude": () => import("../../neuroscience/ltp-magnitude/index.js"),
   "optimization/nesterov-step": () => import("../../optimization/nesterov-step/index.js"),
+  "paleography/medieval-sigla-expander": () => import("../../paleography/medieval-sigla-expander/index.js"),
   "parasitology/morbidity-register-summary": () => import("../../parasitology/morbidity-register-summary/index.js"),
   "pedagogy/backward-design-three-stage-wiggins-mctighe-ubd-lookup": () => import("../../pedagogy/backward-design-three-stage-wiggins-mctighe-ubd-lookup/index.js"),
   "pedagogy/curve-grading-bell-adjustment-policy-lookup": () => import("../../pedagogy/curve-grading-bell-adjustment-policy-lookup/index.js"),

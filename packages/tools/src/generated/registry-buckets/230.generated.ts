@@ -9,6 +9,8 @@ export const toolModuleLoaders: Readonly<
   "actuarial/decreasing-term-epv": () => import("../../actuarial/decreasing-term-epv/index.js"),
   "aquaculture/fry-stocking": () => import("../../aquaculture/fry-stocking/index.js"),
   "arithmetic/percentage-points": () => import("../../arithmetic/percentage-points/index.js"),
+  "astrobiology/luminosity-mass-powerlaw-approximation": () => import("../../astrobiology/luminosity-mass-powerlaw-approximation/index.js"),
+  "astrobiology/radial-velocity-semiamplitude-k-calculator": () => import("../../astrobiology/radial-velocity-semiamplitude-k-calculator/index.js"),
   "auditing/sampling-statistical-nonstatistical-selection-classifier": () => import("../../auditing/sampling-statistical-nonstatistical-selection-classifier/index.js"),
   "aviation/headwind-crosswind-decomposition": () => import("../../aviation/headwind-crosswind-decomposition/index.js"),
   "biology/miniature-endplate-potential": () => import("../../biology/miniature-endplate-potential/index.js"),
@@ -30,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "geology/paleocurrent-direction": () => import("../../geology/paleocurrent-direction/index.js"),
   "geology/saturated-density": () => import("../../geology/saturated-density/index.js"),
   "horology/spring-drive-glide-motion-principle-lookup": () => import("../../horology/spring-drive-glide-motion-principle-lookup/index.js"),
+  "html/single-h1-per-page-rule-checker": () => import("../../html/single-h1-per-page-rule-checker/index.js"),
   "insurance/certificate-additional-insured-status-lookup": () => import("../../insurance/certificate-additional-insured-status-lookup/index.js"),
   "journalism/ap-style-numerals-vs-words-selector-lookup": () => import("../../journalism/ap-style-numerals-vs-words-selector-lookup/index.js"),
   "logistics/fuel-surcharge-index-weekly-lookup": () => import("../../logistics/fuel-surcharge-index-weekly-lookup/index.js"),
@@ -61,4 +64,5 @@ export const toolModuleLoaders: Readonly<
   "theatre/show-control-trigger-coverage": () => import("../../theatre/show-control-trigger-coverage/index.js"),
   "toxicology/two-agent-isobologram-deviation": () => import("../../toxicology/two-agent-isobologram-deviation/index.js"),
   "transcriptomics/junction-annotation-tally": () => import("../../transcriptomics/junction-annotation-tally/index.js"),
+  "volcanology/exclusion-zone-radius-alert-level-lookup": () => import("../../volcanology/exclusion-zone-radius-alert-level-lookup/index.js"),
 };

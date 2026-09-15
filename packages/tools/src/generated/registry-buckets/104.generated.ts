@@ -41,6 +41,7 @@ export const toolModuleLoaders: Readonly<
   "geology/void-ratio": () => import("../../geology/void-ratio/index.js"),
   "insurance/leak-device-discount": () => import("../../insurance/leak-device-discount/index.js"),
   "insurance/title-policy-scope-comparison": () => import("../../insurance/title-policy-scope-comparison/index.js"),
+  "journalism/oxford-comma-list-ambiguity-trigger-checker": () => import("../../journalism/oxford-comma-list-ambiguity-trigger-checker/index.js"),
   "journalism/rule-of-three-sources-stat-canvass-lookup": () => import("../../journalism/rule-of-three-sources-stat-canvass-lookup/index.js"),
   "kinesiology/critical-power-w-prime-three-minute-test-protocol": () => import("../../kinesiology/critical-power-w-prime-three-minute-test-protocol/index.js"),
   "linguistics/high-german-consonant-shift-checker": () => import("../../linguistics/high-german-consonant-shift-checker/index.js"),

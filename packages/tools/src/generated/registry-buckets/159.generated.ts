@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "aquaculture/cage-volume": () => import("../../aquaculture/cage-volume/index.js"),
   "aquaculture/ras-water-balance": () => import("../../aquaculture/ras-water-balance/index.js"),
   "astrobiology/chlorophyll-analog-peak-shift-estimator": () => import("../../astrobiology/chlorophyll-analog-peak-shift-estimator/index.js"),
+  "astrometry/polar-alignment-drift-monthly-tracker": () => import("../../astrometry/polar-alignment-drift-monthly-tracker/index.js"),
   "aviation/wind-direction-from-components": () => import("../../aviation/wind-direction-from-components/index.js"),
   "celestial-mechanics/j2-periapsis-precession": () => import("../../celestial-mechanics/j2-periapsis-precession/index.js"),
   "celestial-mechanics/normalized-l2-equilibrium": () => import("../../celestial-mechanics/normalized-l2-equilibrium/index.js"),
@@ -26,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "format/file-mode": () => import("../../format/file-mode/index.js"),
   "fun/leet-speak-converter": () => import("../../fun/leet-speak-converter/index.js"),
   "fun/this-or-that": () => import("../../fun/this-or-that/index.js"),
+  "game/fighting-game-frame-advantage-on-block": () => import("../../game/fighting-game-frame-advantage-on-block/index.js"),
   "genomics/transition-transversion-ratio": () => import("../../genomics/transition-transversion-ratio/index.js"),
   "geometry/chebyshev-distance": () => import("../../geometry/chebyshev-distance/index.js"),
   "glaciology/enhancement-factor-soft-ice": () => import("../../glaciology/enhancement-factor-soft-ice/index.js"),
@@ -59,6 +61,7 @@ export const toolModuleLoaders: Readonly<
   "sociology/network-centralization-degree": () => import("../../sociology/network-centralization-degree/index.js"),
   "sociology/poverty-gap-index": () => import("../../sociology/poverty-gap-index/index.js"),
   "sociology/structural-hole-redundancy-measure": () => import("../../sociology/structural-hole-redundancy-measure/index.js"),
+  "typography/math-superscript-exponent-offset-em": () => import("../../typography/math-superscript-exponent-offset-em/index.js"),
   "vexillology/pole-height-by-flag-size": () => import("../../vexillology/pole-height-by-flag-size/index.js"),
   "vexillology/us-canton-fraction": () => import("../../vexillology/us-canton-fraction/index.js"),
 };

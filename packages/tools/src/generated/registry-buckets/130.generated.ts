@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "classics/peloponnesian-war-three-phases-archidamian-sicilian-decelean": () => import("../../classics/peloponnesian-war-three-phases-archidamian-sicilian-decelean/index.js"),
   "construction/spray-tip-orifice": () => import("../../construction/spray-tip-orifice/index.js"),
   "convert/text-to-html-hex-entities": () => import("../../convert/text-to-html-hex-entities/index.js"),
+  "cryptography/substitution-frequency-solver-assist": () => import("../../cryptography/substitution-frequency-solver-assist/index.js"),
   "dentistry/pulp-test-response-checker": () => import("../../dentistry/pulp-test-response-checker/index.js"),
   "development/semantic-version-range": () => import("../../development/semantic-version-range/index.js"),
   "electronics/battery-calendar-aging": () => import("../../electronics/battery-calendar-aging/index.js"),

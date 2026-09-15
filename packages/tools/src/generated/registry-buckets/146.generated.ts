@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/band-loudness-aggregation": () => import("../../acoustics/band-loudness-aggregation/index.js"),
   "acoustics/binaural-unmasking-reference": () => import("../../acoustics/binaural-unmasking-reference/index.js"),
+  "astrometry/b1950-j2000-reconverter": () => import("../../astrometry/b1950-j2000-reconverter/index.js"),
   "astrometry/tan-wcs-pixel-to-sky": () => import("../../astrometry/tan-wcs-pixel-to-sky/index.js"),
   "auditing/group-audit-component-materiality-division-instruction-letter": () => import("../../auditing/group-audit-component-materiality-division-instruction-letter/index.js"),
   "bacteriology/minimal-medium-rescue-screen": () => import("../../bacteriology/minimal-medium-rescue-screen/index.js"),
@@ -14,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "biology/salt-tolerance-index": () => import("../../biology/salt-tolerance-index/index.js"),
   "carpentry/osb-rohdichte-lookup": () => import("../../carpentry/osb-rohdichte-lookup/index.js"),
   "carpentry/screw-length-rule": () => import("../../carpentry/screw-length-rule/index.js"),
+  "cartography/north-arrow-margin-convention-checker": () => import("../../cartography/north-arrow-margin-convention-checker/index.js"),
   "chemistry/gibbs-from-cell-potential": () => import("../../chemistry/gibbs-from-cell-potential/index.js"),
   "classics/carpe-diem-horace-ode-1-11-full-context-lookup": () => import("../../classics/carpe-diem-horace-ode-1-11-full-context-lookup/index.js"),
   "classics/stipulatio-sponsio-verbal-contract-question-answer-form": () => import("../../classics/stipulatio-sponsio-verbal-contract-question-answer-form/index.js"),
@@ -65,6 +67,7 @@ export const toolModuleLoaders: Readonly<
   "text/word-wrap": () => import("../../text/word-wrap/index.js"),
   "theatre/private-scene-throughput": () => import("../../theatre/private-scene-throughput/index.js"),
   "typography/baseline-offset-round-to-grid": () => import("../../typography/baseline-offset-round-to-grid/index.js"),
+  "typography/caption-size-ratio-to-body": () => import("../../typography/caption-size-ratio-to-body/index.js"),
   "typography/font-file-size-estimate-glyphs": () => import("../../typography/font-file-size-estimate-glyphs/index.js"),
   "vector/normalize": () => import("../../vector/normalize/index.js"),
   "vector/scalar-multiply": () => import("../../vector/scalar-multiply/index.js"),

@@ -70,6 +70,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/high-injection-levelfactor": () => import("../../semiconductor/high-injection-levelfactor/index.js"),
   "semiconductor/si-diffusion-coefficient-arsenic": () => import("../../semiconductor/si-diffusion-coefficient-arsenic/index.js"),
   "semiconductor/varactor-quality-factor": () => import("../../semiconductor/varactor-quality-factor/index.js"),
+  "sericulture/chawki-tender-leaf-selection-checker": () => import("../../sericulture/chawki-tender-leaf-selection-checker/index.js"),
   "sociology/cohort-component-projection": () => import("../../sociology/cohort-component-projection/index.js"),
   "taxation/homestead-exemption-assessed-reduction-lookup": () => import("../../taxation/homestead-exemption-assessed-reduction-lookup/index.js"),
   "toxicology/adme-excretion-half-life": () => import("../../toxicology/adme-excretion-half-life/index.js"),

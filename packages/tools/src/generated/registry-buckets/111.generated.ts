@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/duebel-bohrtiefe-plus2mm": () => import("../../carpentry/duebel-bohrtiefe-plus2mm/index.js"),
   "carpentry/schubkasten-stueckliste-zargen-boden-front": () => import("../../carpentry/schubkasten-stueckliste-zargen-boden-front/index.js"),
   "celestial-mechanics/j2-nodal-precession": () => import("../../celestial-mechanics/j2-nodal-precession/index.js"),
+  "celestial-mechanics/wsb-capture-saving-note-generator": () => import("../../celestial-mechanics/wsb-capture-saving-note-generator/index.js"),
   "chemistry/molality-from-molarity-density": () => import("../../chemistry/molality-from-molarity-density/index.js"),
   "climatology/declination-angle-doy": () => import("../../climatology/declination-angle-doy/index.js"),
   "color/tones-generator-mix-gray-percent": () => import("../../color/tones-generator-mix-gray-percent/index.js"),

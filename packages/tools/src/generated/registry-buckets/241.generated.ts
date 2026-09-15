@@ -27,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/morphological-freedom-body-modification-principle-lookup": () => import("../../futurology/morphological-freedom-body-modification-principle-lookup/index.js"),
   "futurology/who-pandemic-agreement-negotiation-status-timeline-lookup": () => import("../../futurology/who-pandemic-agreement-negotiation-status-timeline-lookup/index.js"),
   "genomics/six-frame-orf-scan": () => import("../../genomics/six-frame-orf-scan/index.js"),
+  "horticulture/thrips-blue-card-preference-lookup": () => import("../../horticulture/thrips-blue-card-preference-lookup/index.js"),
   "insurance/kidnap-ransom-confidentiality-requirement-unique-feature-lookup": () => import("../../insurance/kidnap-ransom-confidentiality-requirement-unique-feature-lookup/index.js"),
   "kinesiology/imu-sensor-placement-consistency-repeatability-issue-lookup": () => import("../../kinesiology/imu-sensor-placement-consistency-repeatability-issue-lookup/index.js"),
   "list/zip": () => import("../../list/zip/index.js"),

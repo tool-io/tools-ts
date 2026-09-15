@@ -56,6 +56,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/silicon-photonics-mach-zehnder-extinction-ratio": () => import("../../semiconductor/silicon-photonics-mach-zehnder-extinction-ratio/index.js"),
   "semiconductor/single-event-latchup-cross-section": () => import("../../semiconductor/single-event-latchup-cross-section/index.js"),
   "semiconductor/solar-cell-short-circuit-current-density": () => import("../../semiconductor/solar-cell-short-circuit-current-density/index.js"),
+  "sericulture/lime-washing-floor-dose": () => import("../../sericulture/lime-washing-floor-dose/index.js"),
   "toxicology/exposure-frequency-adjustment": () => import("../../toxicology/exposure-frequency-adjustment/index.js"),
   "toxicology/probit-slope": () => import("../../toxicology/probit-slope/index.js"),
   "vexillology/stripe-sequence-vector": () => import("../../vexillology/stripe-sequence-vector/index.js"),

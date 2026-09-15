@@ -4,9 +4,12 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/note-receivable-maturity-value-interest": () => import("../../accounting/note-receivable-maturity-value-interest/index.js"),
+  "accounting/related-party-disclosure-required-checker": () => import("../../accounting/related-party-disclosure-required-checker/index.js"),
   "accounting/suspense-account-clearance-aging-checker": () => import("../../accounting/suspense-account-clearance-aging-checker/index.js"),
   "agriculture/fertilizer-requirement-potassium": () => import("../../agriculture/fertilizer-requirement-potassium/index.js"),
   "agriculture/hay-bale-weight": () => import("../../agriculture/hay-bale-weight/index.js"),
+  "astrobiology/transit-duration-hours-calculator": () => import("../../astrobiology/transit-duration-hours-calculator/index.js"),
   "auditing/single-audit-expenditure-threshold-checker": () => import("../../auditing/single-audit-expenditure-threshold-checker/index.js"),
   "aviation/cg-shift-fuel": () => import("../../aviation/cg-shift-fuel/index.js"),
   "aviation/final-reserve-fuel": () => import("../../aviation/final-reserve-fuel/index.js"),
@@ -61,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "sociology/s80-s20-ratio": () => import("../../sociology/s80-s20-ratio/index.js"),
   "speleology/tape-temperature-correction": () => import("../../speleology/tape-temperature-correction/index.js"),
   "taxation/standard-vs-itemized-breakeven-compare": () => import("../../taxation/standard-vs-itemized-breakeven-compare/index.js"),
+  "taxation/vat-inclusive-exclusive-back-calculation": () => import("../../taxation/vat-inclusive-exclusive-back-calculation/index.js"),
   "toxicology/segment-weighted-ingestion-exposure-dose": () => import("../../toxicology/segment-weighted-ingestion-exposure-dose/index.js"),
   "typography/superscript-subscript-size-percent-default": () => import("../../typography/superscript-subscript-size-percent-default/index.js"),
   "virology/seir-latent-transition": () => import("../../virology/seir-latent-transition/index.js"),

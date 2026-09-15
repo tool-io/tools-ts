@@ -4,11 +4,14 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/ebit-operating-income-isolated": () => import("../../accounting/ebit-operating-income-isolated/index.js"),
   "acoustics/iso-9613-2-attenuation-reference": () => import("../../acoustics/iso-9613-2-attenuation-reference/index.js"),
   "apiculture/langstroth-vs-dadant-dimension-lookup": () => import("../../apiculture/langstroth-vs-dadant-dimension-lookup/index.js"),
   "arithmetic/add-two-numbers": () => import("../../arithmetic/add-two-numbers/index.js"),
   "arithmetic/subtract-numbers": () => import("../../arithmetic/subtract-numbers/index.js"),
   "astrobiology/dyson-sphere-ir-excess-classifier": () => import("../../astrobiology/dyson-sphere-ir-excess-classifier/index.js"),
+  "astrobiology/homochirality-enantiomeric-excess-percent": () => import("../../astrobiology/homochirality-enantiomeric-excess-percent/index.js"),
+  "astrobiology/vonneumann-galaxy-crossing-time": () => import("../../astrobiology/vonneumann-galaxy-crossing-time/index.js"),
   "auditing/electronic-workpaper-binder-signature-rollforward-lookup": () => import("../../auditing/electronic-workpaper-binder-signature-rollforward-lookup/index.js"),
   "auditing/fixed-asset-existence-floor-sample-sight-verification": () => import("../../auditing/fixed-asset-existence-floor-sample-sight-verification/index.js"),
   "aviation/max-range-airspeed": () => import("../../aviation/max-range-airspeed/index.js"),
@@ -68,6 +71,7 @@ export const toolModuleLoaders: Readonly<
   "random/quadratic-equation-exercise": () => import("../../random/quadratic-equation-exercise/index.js"),
   "seismology/foreshock-mainshock-probable-classifier": () => import("../../seismology/foreshock-mainshock-probable-classifier/index.js"),
   "sericulture/raw-silk-recovery-percent": () => import("../../sericulture/raw-silk-recovery-percent/index.js"),
+  "sericulture/stained-cocoon-grading-percent-lookup": () => import("../../sericulture/stained-cocoon-grading-percent-lookup/index.js"),
   "size/pipe": () => import("../../size/pipe/index.js"),
   "speleology/survey-csv-completeness-checker": () => import("../../speleology/survey-csv-completeness-checker/index.js"),
   "taxation/salt-deduction-cap-checker": () => import("../../taxation/salt-deduction-cap-checker/index.js"),

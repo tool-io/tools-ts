@@ -28,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "combinatorics/combination-count": () => import("../../combinatorics/combination-count/index.js"),
   "convert/morse-encode": () => import("../../convert/morse-encode/index.js"),
   "criminology/adjudicative-competence-macarthur-threshold-lookup": () => import("../../criminology/adjudicative-competence-macarthur-threshold-lookup/index.js"),
+  "cryptography/otp-code-six-digit-hotp-window-lookup": () => import("../../cryptography/otp-code-six-digit-hotp-window-lookup/index.js"),
   "demography/replacement-fertility-with-mortality-checker": () => import("../../demography/replacement-fertility-with-mortality-checker/index.js"),
   "electronics/antenna-far-field-boundary": () => import("../../electronics/antenna-far-field-boundary/index.js"),
   "electronics/capacitor-parallel-two": () => import("../../electronics/capacitor-parallel-two/index.js"),

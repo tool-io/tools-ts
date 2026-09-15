@@ -45,6 +45,7 @@ export const toolModuleLoaders: Readonly<
   "numismatics/panda-yearly-design-change-mintage-variance-lookup": () => import("../../numismatics/panda-yearly-design-change-mintage-variance-lookup/index.js"),
   "oenology/barrel-extraction-equivalent-days": () => import("../../oenology/barrel-extraction-equivalent-days/index.js"),
   "oenology/malic-acid-addition": () => import("../../oenology/malic-acid-addition/index.js"),
+  "paleography/ruling-type-detector": () => import("../../paleography/ruling-type-detector/index.js"),
   "paleontology/dimensionless-speed-calculator": () => import("../../paleontology/dimensionless-speed-calculator/index.js"),
   "pedagogy/socratic-seminar-inner-outer-circle-facilitation-guide": () => import("../../pedagogy/socratic-seminar-inner-outer-circle-facilitation-guide/index.js"),
   "plumbing/pump-affinity-power": () => import("../../plumbing/pump-affinity-power/index.js"),

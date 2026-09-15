@@ -27,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/rebar-area": () => import("../../engineering/rebar-area/index.js"),
   "entrepreneurship/franchise-vs-owned-unit-economics-compare-lookup": () => import("../../entrepreneurship/franchise-vs-owned-unit-economics-compare-lookup/index.js"),
   "epigenetics/tet-cascade-stage": () => import("../../epigenetics/tet-cascade-stage/index.js"),
+  "epigraphy/dm-formula-variant-classifier": () => import("../../epigraphy/dm-formula-variant-classifier/index.js"),
   "folklore/burning-man-ten-principles-temporary-city-ethos-lookup": () => import("../../folklore/burning-man-ten-principles-temporary-city-ethos-lookup/index.js"),
   "fun/lucky-number": () => import("../../fun/lucky-number/index.js"),
   "game/loot-box-expected-cost-per-item": () => import("../../game/loot-box-expected-cost-per-item/index.js"),

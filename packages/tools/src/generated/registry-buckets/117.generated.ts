@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/open-pipe-fundamental": () => import("../../acoustics/open-pipe-fundamental/index.js"),
   "agriculture/break-even-yield": () => import("../../agriculture/break-even-yield/index.js"),
+  "apiculture/thymol-treatment-temp-window-lookup": () => import("../../apiculture/thymol-treatment-temp-window-lookup/index.js"),
   "archaeology/reduction-stage-classify-flake": () => import("../../archaeology/reduction-stage-classify-flake/index.js"),
   "archaeology/suture-closure-degree-age": () => import("../../archaeology/suture-closure-degree-age/index.js"),
   "auditing/nonattest-hours-threshold": () => import("../../auditing/nonattest-hours-threshold/index.js"),
@@ -35,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/cryonics-information-theoretic-death-threshold-lookup": () => import("../../futurology/cryonics-information-theoretic-death-threshold-lookup/index.js"),
   "futurology/strategy-robustness-across-quadrants-score": () => import("../../futurology/strategy-robustness-across-quadrants-score/index.js"),
   "game/chess-fifty-move-rule-counter": () => import("../../game/chess-fifty-move-rule-counter/index.js"),
+  "game/uno-action-card-effect-lookup": () => import("../../game/uno-action-card-effect-lookup/index.js"),
   "generate/open-shop-scheduling-instance": () => import("../../generate/open-shop-scheduling-instance/index.js"),
   "geology/cosmogenic-exposure-age": () => import("../../geology/cosmogenic-exposure-age/index.js"),
   "geology/crater-diameter-scaling": () => import("../../geology/crater-diameter-scaling/index.js"),
@@ -45,6 +47,7 @@ export const toolModuleLoaders: Readonly<
   "insurance/build-pressure-class": () => import("../../insurance/build-pressure-class/index.js"),
   "kinesiology/reactive-strength-index": () => import("../../kinesiology/reactive-strength-index/index.js"),
   "linguistics/comparative-adjective": () => import("../../linguistics/comparative-adjective/index.js"),
+  "logic/commutativity-applicability-checker": () => import("../../logic/commutativity-applicability-checker/index.js"),
   "marriage/premarital-counseling-sessions-needed": () => import("../../marriage/premarital-counseling-sessions-needed/index.js"),
   "math/hardy-littlewood-conjecture": () => import("../../math/hardy-littlewood-conjecture/index.js"),
   "metabolomics/polyamine-progression": () => import("../../metabolomics/polyamine-progression/index.js"),

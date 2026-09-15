@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/holzpreis-pro-cbm": () => import("../../carpentry/holzpreis-pro-cbm/index.js"),
   "carpentry/wood-shrinkage-percentage": () => import("../../carpentry/wood-shrinkage-percentage/index.js"),
   "cartography/reduction-new-scale": () => import("../../cartography/reduction-new-scale/index.js"),
+  "celestial-mechanics/stable-manifold-tube-approach-note-generator": () => import("../../celestial-mechanics/stable-manifold-tube-approach-note-generator/index.js"),
   "chemistry/coordination-number": () => import("../../chemistry/coordination-number/index.js"),
   "chemistry/enthalpy-combustion": () => import("../../chemistry/enthalpy-combustion/index.js"),
   "chemistry/equilibrium-temperature": () => import("../../chemistry/equilibrium-temperature/index.js"),

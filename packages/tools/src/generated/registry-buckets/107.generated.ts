@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/equity-method-significant-influence-20-percent-checker": () => import("../../accounting/equity-method-significant-influence-20-percent-checker/index.js"),
   "acoustics/third-octave-band-centers": () => import("../../acoustics/third-octave-band-centers/index.js"),
   "archival-studies/repository-marc-org-code-checker": () => import("../../archival-studies/repository-marc-org-code-checker/index.js"),
   "aviation/rate-of-climb-from-gradient": () => import("../../aviation/rate-of-climb-from-gradient/index.js"),
@@ -19,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/flyback-duty-cycle": () => import("../../electronics/flyback-duty-cycle/index.js"),
   "electronics/gas-discharge-tube-holdover-voltage": () => import("../../electronics/gas-discharge-tube-holdover-voltage/index.js"),
   "epigenetics/hp1-enrichment": () => import("../../epigenetics/hp1-enrichment/index.js"),
+  "game/aggro-threat-decay-percent-per-second": () => import("../../game/aggro-threat-decay-percent-per-second/index.js"),
   "genomics/structural-variant-size-bands": () => import("../../genomics/structural-variant-size-bands/index.js"),
   "horology/lever-escapement-pallet-face-roles-lookup": () => import("../../horology/lever-escapement-pallet-face-roles-lookup/index.js"),
   "insurance/embedded-insurance-checkout-integrated-product-offers-lookup": () => import("../../insurance/embedded-insurance-checkout-integrated-product-offers-lookup/index.js"),

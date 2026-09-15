@@ -55,6 +55,7 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/reaction-time-hick": () => import("../../neuroscience/reaction-time-hick/index.js"),
   "numismatics/kennedy-40-percent-silver-content": () => import("../../numismatics/kennedy-40-percent-silver-content/index.js"),
   "numismatics/pcgs-ngc-icg-anacs-service-tier-comparison-lookup": () => import("../../numismatics/pcgs-ngc-icg-anacs-service-tier-comparison-lookup/index.js"),
+  "oceanography/shallow-water-wave-celerity-transition": () => import("../../oceanography/shallow-water-wave-celerity-transition/index.js"),
   "paleography/manuscript-format-classifier": () => import("../../paleography/manuscript-format-classifier/index.js"),
   "pregnancy/labor-duration-first-stage": () => import("../../pregnancy/labor-duration-first-stage/index.js"),
   "probability/metropolis-hastings-sampler": () => import("../../probability/metropolis-hastings-sampler/index.js"),

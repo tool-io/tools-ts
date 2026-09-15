@@ -4,14 +4,18 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/intercompany-sales-elimination-entry": () => import("../../accounting/intercompany-sales-elimination-entry/index.js"),
   "agriculture/pesticide-dosage-per-hectare": () => import("../../agriculture/pesticide-dosage-per-hectare/index.js"),
   "aquaculture/biomass": () => import("../../aquaculture/biomass/index.js"),
   "aquaculture/broodstock-requirement": () => import("../../aquaculture/broodstock-requirement/index.js"),
   "archaeology/storage-capacity-vessel-volume": () => import("../../archaeology/storage-capacity-vessel-volume/index.js"),
+  "astrobiology/roundtrip-signal-latency-exoplanet": () => import("../../astrobiology/roundtrip-signal-latency-exoplanet/index.js"),
   "astronomy/parsec-to-lightyear": () => import("../../astronomy/parsec-to-lightyear/index.js"),
   "auditing/disaggregated-analytics-margin-location-fluctuation-scanner": () => import("../../auditing/disaggregated-analytics-margin-location-fluctuation-scanner/index.js"),
   "aviation/time-to-climb": () => import("../../aviation/time-to-climb/index.js"),
   "biology/hardy-weinberg-chi-square": () => import("../../biology/hardy-weinberg-chi-square/index.js"),
+  "cartography/symbol-minimum-legibility-checker": () => import("../../cartography/symbol-minimum-legibility-checker/index.js"),
+  "cartography/watershed-pit-detection-flag": () => import("../../cartography/watershed-pit-detection-flag/index.js"),
   "chemistry/dewpoint-from-vapor-pressure": () => import("../../chemistry/dewpoint-from-vapor-pressure/index.js"),
   "chemistry/polymer-degree-polymerization": () => import("../../chemistry/polymer-degree-polymerization/index.js"),
   "chemistry/strong-base-ph": () => import("../../chemistry/strong-base-ph/index.js"),
@@ -48,6 +52,7 @@ export const toolModuleLoaders: Readonly<
   "metabolomics/acyl-fragment-ladder": () => import("../../metabolomics/acyl-fragment-ladder/index.js"),
   "neuroscience/brain-plasma-ratio": () => import("../../neuroscience/brain-plasma-ratio/index.js"),
   "numismatics/pound-sterling-coin-specs-lookup": () => import("../../numismatics/pound-sterling-coin-specs-lookup/index.js"),
+  "oceanography/beta-plane-parameter-change": () => import("../../oceanography/beta-plane-parameter-change/index.js"),
   "paleontology/mni-common-element": () => import("../../paleontology/mni-common-element/index.js"),
   "proportions/percentage-change": () => import("../../proportions/percentage-change/index.js"),
   "psychology/response-rate-follow-up-mailing-estimate": () => import("../../psychology/response-rate-follow-up-mailing-estimate/index.js"),

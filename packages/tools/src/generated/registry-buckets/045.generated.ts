@@ -59,6 +59,7 @@ export const toolModuleLoaders: Readonly<
   "theatre/mirror-ball-motor-rpm-spread-diameter-lookup": () => import("../../theatre/mirror-ball-motor-rpm-spread-diameter-lookup/index.js"),
   "theatre/worbla-thermoplastic-forming-heat-gun-temperature-lookup": () => import("../../theatre/worbla-thermoplastic-forming-heat-gun-temperature-lookup/index.js"),
   "toxicology/blood-air-partition": () => import("../../toxicology/blood-air-partition/index.js"),
+  "typography/hair-space-fraction-em-lookup": () => import("../../typography/hair-space-fraction-em-lookup/index.js"),
   "vector/l-infinity-norm": () => import("../../vector/l-infinity-norm/index.js"),
   "veterinary/bcs-body-condition-score-feline": () => import("../../veterinary/bcs-body-condition-score-feline/index.js"),
   "viticulture/lag-phase-weight-yield-forecast": () => import("../../viticulture/lag-phase-weight-yield-forecast/index.js"),

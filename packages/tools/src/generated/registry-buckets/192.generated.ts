@@ -75,5 +75,6 @@ export const toolModuleLoaders: Readonly<
   "toxicology/idlh": () => import("../../toxicology/idlh/index.js"),
   "transcriptomics/immune-signature-score": () => import("../../transcriptomics/immune-signature-score/index.js"),
   "veterinary/grain-ration-horse-workload": () => import("../../veterinary/grain-ration-horse-workload/index.js"),
+  "viticulture/erosion-contour-row-gradient-checker": () => import("../../viticulture/erosion-contour-row-gradient-checker/index.js"),
   "volcanology/historical-eruption-frequency-per-century": () => import("../../volcanology/historical-eruption-frequency-per-century/index.js"),
 };

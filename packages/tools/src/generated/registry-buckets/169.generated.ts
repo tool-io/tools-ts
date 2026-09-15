@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "cryptography/route-spiral-transposition": () => import("../../cryptography/route-spiral-transposition/index.js"),
   "css/color-function-parser": () => import("../../css/color-function-parser/index.js"),
   "css/shape-outside-float-wrap-note": () => import("../../css/shape-outside-float-wrap-note/index.js"),
+  "csv/column-name-reserved-word-flagger": () => import("../../csv/column-name-reserved-word-flagger/index.js"),
   "decode/geohash": () => import("../../decode/geohash/index.js"),
   "electronics/hall-voltage": () => import("../../electronics/hall-voltage/index.js"),
   "electronics/norton-current": () => import("../../electronics/norton-current/index.js"),
@@ -48,6 +49,7 @@ export const toolModuleLoaders: Readonly<
   "mining/solvent-extraction-stages": () => import("../../mining/solvent-extraction-stages/index.js"),
   "neuroscience/neurotransmitter-concentration": () => import("../../neuroscience/neurotransmitter-concentration/index.js"),
   "numismatics/counterfeit-density-flag-checker": () => import("../../numismatics/counterfeit-density-flag-checker/index.js"),
+  "oceanography/group-velocity-deepwater-half-phase": () => import("../../oceanography/group-velocity-deepwater-half-phase/index.js"),
   "paleography/regnal-english-year-converter": () => import("../../paleography/regnal-english-year-converter/index.js"),
   "pedagogy/rubric-descriptor-matrix": () => import("../../pedagogy/rubric-descriptor-matrix/index.js"),
   "petroleum/water-influx-steady-state-schilthuis": () => import("../../petroleum/water-influx-steady-state-schilthuis/index.js"),
@@ -66,5 +68,6 @@ export const toolModuleLoaders: Readonly<
   "speleology/through-trip-time-estimator": () => import("../../speleology/through-trip-time-estimator/index.js"),
   "taxation/child-tax-credit-phaseout-magi-checker": () => import("../../taxation/child-tax-credit-phaseout-magi-checker/index.js"),
   "transcriptomics/module-eigengene": () => import("../../transcriptomics/module-eigengene/index.js"),
+  "volcanology/visibility-reduction-ash-concentration-lookup": () => import("../../volcanology/visibility-reduction-ash-concentration-lookup/index.js"),
   "web/decoding-attribute-validator": () => import("../../web/decoding-attribute-validator/index.js"),
 };

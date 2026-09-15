@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "convert/date-to-unix-timestamp": () => import("../../convert/date-to-unix-timestamp/index.js"),
   "cooking/egg-boil-time-soft": () => import("../../cooking/egg-boil-time-soft/index.js"),
   "criminology/clearance-rate-percent-by-type-lookup": () => import("../../criminology/clearance-rate-percent-by-type-lookup/index.js"),
+  "cryptography/cipher-identifier-heuristic-scorer": () => import("../../cryptography/cipher-identifier-heuristic-scorer/index.js"),
   "development/version-parse": () => import("../../development/version-parse/index.js"),
   "electronics/battery-runtime": () => import("../../electronics/battery-runtime/index.js"),
   "electronics/lvds-differential-voltage": () => import("../../electronics/lvds-differential-voltage/index.js"),

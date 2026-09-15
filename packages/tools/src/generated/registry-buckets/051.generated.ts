@@ -20,6 +20,7 @@ export const toolModuleLoaders: Readonly<
   "classics/aqueduct-gradient-pont-du-gard-engineering-feat-lookup": () => import("../../classics/aqueduct-gradient-pont-du-gard-engineering-feat-lookup/index.js"),
   "climatology/climate-normal-averager": () => import("../../climatology/climate-normal-averager/index.js"),
   "construction/rebar-stirrup-spacing": () => import("../../construction/rebar-stirrup-spacing/index.js"),
+  "cryptography/htpasswd-apr1-marker-recognizer": () => import("../../cryptography/htpasswd-apr1-marker-recognizer/index.js"),
   "dance/sprung-floor-deflection-mm-spec-lookup": () => import("../../dance/sprung-floor-deflection-mm-spec-lookup/index.js"),
   "dentistry/jaw-mobility-index": () => import("../../dentistry/jaw-mobility-index/index.js"),
   "dentistry/pdl-injection-volume": () => import("../../dentistry/pdl-injection-volume/index.js"),

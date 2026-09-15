@@ -53,6 +53,7 @@ export const toolModuleLoaders: Readonly<
   "mri/ppm-shift-to-frequency-offset": () => import("../../mri/ppm-shift-to-frequency-offset/index.js"),
   "museology/accession-number-format-validator": () => import("../../museology/accession-number-format-validator/index.js"),
   "museology/ipm-inspection-interval-scheduler": () => import("../../museology/ipm-inspection-interval-scheduler/index.js"),
+  "music/haas-effect-delay-threshold-ms": () => import("../../music/haas-effect-delay-threshold-ms/index.js"),
   "mycology/trichophyton-reverse-pigment-note-generator": () => import("../../mycology/trichophyton-reverse-pigment-note-generator/index.js"),
   "neuroscience/conditional-attentional-blink-by-lag": () => import("../../neuroscience/conditional-attentional-blink-by-lag/index.js"),
   "neuroscience/cortical-thickness-average": () => import("../../neuroscience/cortical-thickness-average/index.js"),
@@ -71,6 +72,7 @@ export const toolModuleLoaders: Readonly<
   "sociology/status-inconsistency-score": () => import("../../sociology/status-inconsistency-score/index.js"),
   "theatre/paper-mache-strip-versus-pulp-dry-time-days-lookup": () => import("../../theatre/paper-mache-strip-versus-pulp-dry-time-days-lookup/index.js"),
   "toxicology/categorical-regression": () => import("../../toxicology/categorical-regression/index.js"),
+  "typography/en-dash-width-fraction-of-em-lookup": () => import("../../typography/en-dash-width-fraction-of-em-lookup/index.js"),
   "veterinary/fecal-egg-count-reduction-test": () => import("../../veterinary/fecal-egg-count-reduction-test/index.js"),
   "viticulture/ravaz-index-yield-pruning-ratio": () => import("../../viticulture/ravaz-index-yield-pruning-ratio/index.js"),
 };

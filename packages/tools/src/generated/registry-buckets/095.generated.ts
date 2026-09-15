@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/segregation-of-duties-conflict-matrix-checker": () => import("../../accounting/segregation-of-duties-conflict-matrix-checker/index.js"),
+  "astrobiology/astrometric-signature-microarcsec-calculator": () => import("../../astrobiology/astrometric-signature-microarcsec-calculator/index.js"),
   "astrobiology/perchlorate-soil-risk-classifier": () => import("../../astrobiology/perchlorate-soil-risk-classifier/index.js"),
   "carpentry/clamp-count": () => import("../../carpentry/clamp-count/index.js"),
   "carpentry/fraeser-drehzahl-vc-formel": () => import("../../carpentry/fraeser-drehzahl-vc-formel/index.js"),

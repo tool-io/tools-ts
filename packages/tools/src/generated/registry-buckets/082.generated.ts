@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "archaeology/tool-to-debitage-ratio": () => import("../../archaeology/tool-to-debitage-ratio/index.js"),
   "astrometry/ruwe-from-fit-normalization": () => import("../../astrometry/ruwe-from-fit-normalization/index.js"),
   "auditing/audit-strategy-vs-audit-plan-scope-timing-distinction-lookup": () => import("../../auditing/audit-strategy-vs-audit-plan-scope-timing-distinction-lookup/index.js"),
+  "bacteriology/thermal-death-point-entry-checker": () => import("../../bacteriology/thermal-death-point-entry-checker/index.js"),
   "banking/thin-file-cash-flow-underwriting-alternative-data-emerging-practice": () => import("../../banking/thin-file-cash-flow-underwriting-alternative-data-emerging-practice/index.js"),
   "carpentry/fence-picket-spacing": () => import("../../carpentry/fence-picket-spacing/index.js"),
   "carpentry/furnier-pressdruck-03n": () => import("../../carpentry/furnier-pressdruck-03n/index.js"),

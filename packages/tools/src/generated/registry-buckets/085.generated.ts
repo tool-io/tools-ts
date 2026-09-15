@@ -17,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "carpentry/face-frame-rail-length": () => import("../../carpentry/face-frame-rail-length/index.js"),
   "carpentry/holzschraube-vorbohrung-07d": () => import("../../carpentry/holzschraube-vorbohrung-07d/index.js"),
   "celestial-mechanics/elliptic-mean-to-true-anomaly": () => import("../../celestial-mechanics/elliptic-mean-to-true-anomaly/index.js"),
+  "celestial-mechanics/halo-orbit-amplitude-class-note-generator": () => import("../../celestial-mechanics/halo-orbit-amplitude-class-note-generator/index.js"),
   "celestial-mechanics/orbital-synodic-period": () => import("../../celestial-mechanics/orbital-synodic-period/index.js"),
   "checksum/crc-16-ccitt": () => import("../../checksum/crc-16-ccitt/index.js"),
   "chemistry/diffusion-coefficient": () => import("../../chemistry/diffusion-coefficient/index.js"),

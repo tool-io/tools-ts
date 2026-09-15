@@ -40,6 +40,7 @@ export const toolModuleLoaders: Readonly<
   "kinesiology/static-vs-dynamic-strength-mode-difference-lookup": () => import("../../kinesiology/static-vs-dynamic-strength-mode-difference-lookup/index.js"),
   "kinesiology/timed-up-and-go-screen": () => import("../../kinesiology/timed-up-and-go-screen/index.js"),
   "laser/photoconductive-antenna-field": () => import("../../laser/photoconductive-antenna-field/index.js"),
+  "linguistics/english-germanic-latin-origin-percent-estimate": () => import("../../linguistics/english-germanic-latin-origin-percent-estimate/index.js"),
   "marriage/honeymoon-budget": () => import("../../marriage/honeymoon-budget/index.js"),
   "mining/mining-dilution-percentage": () => import("../../mining/mining-dilution-percentage/index.js"),
   "museology/compact-shelving-space-saving-percent": () => import("../../museology/compact-shelving-space-saving-percent/index.js"),

@@ -7,6 +7,7 @@ export const toolModuleLoaders: Readonly<
   "actuarial/nominal-to-effective-interest-pthly": () => import("../../actuarial/nominal-to-effective-interest-pthly/index.js"),
   "aesthetics/greenberg-medium-specificity-formalism-lookup": () => import("../../aesthetics/greenberg-medium-specificity-formalism-lookup/index.js"),
   "agriculture/storage-loss-percentage": () => import("../../agriculture/storage-loss-percentage/index.js"),
+  "astrobiology/magnetosphere-standoff-distance-calculator": () => import("../../astrobiology/magnetosphere-standoff-distance-calculator/index.js"),
   "astrobiology/mars-co2-frost-sublimation-rate-calculator": () => import("../../astrobiology/mars-co2-frost-sublimation-rate-calculator/index.js"),
   "auditing/rpa-bot-audit-trail-versioning-evidence-lookup": () => import("../../auditing/rpa-bot-audit-trail-versioning-evidence-lookup/index.js"),
   "aviation/field-elevation-qnh": () => import("../../aviation/field-elevation-qnh/index.js"),

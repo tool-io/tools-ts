@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "actuarial/perpetuity-due-pv": () => import("../../actuarial/perpetuity-due-pv/index.js"),
   "actuarial/projected-salary-accrual-present-value": () => import("../../actuarial/projected-salary-accrual-present-value/index.js"),
   "aquaculture/lime-requirement": () => import("../../aquaculture/lime-requirement/index.js"),
+  "astrobiology/hz-optimistic-venus-mars-limits": () => import("../../astrobiology/hz-optimistic-venus-mars-limits/index.js"),
   "astrometry/astrometric-reduced-chi-square": () => import("../../astrometry/astrometric-reduced-chi-square/index.js"),
   "astronomy/exoplanet-density-gcc": () => import("../../astronomy/exoplanet-density-gcc/index.js"),
   "bacteriology/fluctuation-culture-zero-class": () => import("../../bacteriology/fluctuation-culture-zero-class/index.js"),
@@ -44,6 +45,7 @@ export const toolModuleLoaders: Readonly<
   "horology/decimal-minutes-scale": () => import("../../horology/decimal-minutes-scale/index.js"),
   "horology/movement-holder-use-limitation-lookup": () => import("../../horology/movement-holder-use-limitation-lookup/index.js"),
   "horology/tachymeter-speed": () => import("../../horology/tachymeter-speed/index.js"),
+  "horticulture/co2-generator-burn-rate": () => import("../../horticulture/co2-generator-burn-rate/index.js"),
   "information/shannon-entropy": () => import("../../information/shannon-entropy/index.js"),
   "laser/net-dispersion": () => import("../../laser/net-dispersion/index.js"),
   "limnology/freezing-degree-days-ice-growth": () => import("../../limnology/freezing-degree-days-ice-growth/index.js"),
@@ -77,6 +79,7 @@ export const toolModuleLoaders: Readonly<
   "taxation/qprt-remainder-value": () => import("../../taxation/qprt-remainder-value/index.js"),
   "theatre/speaker-array-coverage-angle-venue-width-calculator": () => import("../../theatre/speaker-array-coverage-angle-venue-width-calculator/index.js"),
   "transcriptomics/longest-orf": () => import("../../transcriptomics/longest-orf/index.js"),
+  "volcanology/pillow-lava-formation-depth-checker": () => import("../../volcanology/pillow-lava-formation-depth-checker/index.js"),
   "vr/fan-noise-db": () => import("../../vr/fan-noise-db/index.js"),
   "web/sri-hash-generator": () => import("../../web/sri-hash-generator/index.js"),
 };

@@ -48,6 +48,7 @@ export const toolModuleLoaders: Readonly<
   "mining/blast-hole-diameter": () => import("../../mining/blast-hole-diameter/index.js"),
   "mining/ore-waste-ratio": () => import("../../mining/ore-waste-ratio/index.js"),
   "mri/hrf-temporal-finite-difference": () => import("../../mri/hrf-temporal-finite-difference/index.js"),
+  "music/metronome-tempo-term-lookup": () => import("../../music/metronome-tempo-term-lookup/index.js"),
   "numismatics/dollar-90-percent-silver-content": () => import("../../numismatics/dollar-90-percent-silver-content/index.js"),
   "numismatics/seam-edge-cast-copy-checker": () => import("../../numismatics/seam-edge-cast-copy-checker/index.js"),
   "numismatics/specific-gravity-composition-checker": () => import("../../numismatics/specific-gravity-composition-checker/index.js"),
@@ -69,4 +70,5 @@ export const toolModuleLoaders: Readonly<
   "statistics/one-way-anova": () => import("../../statistics/one-way-anova/index.js"),
   "theatre/wll-safety-factor-5-to-1-checker": () => import("../../theatre/wll-safety-factor-5-to-1-checker/index.js"),
   "toxicology/pnec": () => import("../../toxicology/pnec/index.js"),
+  "volcanology/basalt-fiber-processing-temp-lookup": () => import("../../volcanology/basalt-fiber-processing-temp-lookup/index.js"),
 };

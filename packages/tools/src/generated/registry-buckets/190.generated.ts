@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "apiculture/honey-jar-case-fill-count": () => import("../../apiculture/honey-jar-case-fill-count/index.js"),
   "aquaculture/hydraulic-retention-time": () => import("../../aquaculture/hydraulic-retention-time/index.js"),
   "astrometry/iau1976-epoch-precession": () => import("../../astrometry/iau1976-epoch-precession/index.js"),
+  "astrometry/secular-aberration-drift-note-generator": () => import("../../astrometry/secular-aberration-drift-note-generator/index.js"),
   "astrometry/wcs-cd-matrix-orientation-sign-checker": () => import("../../astrometry/wcs-cd-matrix-orientation-sign-checker/index.js"),
   "astronomy/eclipse-central-duration-max-minutes-lookup": () => import("../../astronomy/eclipse-central-duration-max-minutes-lookup/index.js"),
   "astronomy/planet-surface-gravity-lookup": () => import("../../astronomy/planet-surface-gravity-lookup/index.js"),

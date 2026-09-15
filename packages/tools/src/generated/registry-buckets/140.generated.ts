@@ -66,6 +66,7 @@ export const toolModuleLoaders: Readonly<
   "sailing/winch-power-ratio": () => import("../../sailing/winch-power-ratio/index.js"),
   "seismology/source-spectral-falloff-high-frequency-slope-checker": () => import("../../seismology/source-spectral-falloff-high-frequency-slope-checker/index.js"),
   "semiconductor/germanidation-temperature": () => import("../../semiconductor/germanidation-temperature/index.js"),
+  "sericulture/beetle-predation-loss-percent-lookup": () => import("../../sericulture/beetle-predation-loss-percent-lookup/index.js"),
   "sociology/gross-reproduction-rate": () => import("../../sociology/gross-reproduction-rate/index.js"),
   "sociology/relative-median-income-gap": () => import("../../sociology/relative-median-income-gap/index.js"),
   "sports/soccer-distance-covered-km-per-match": () => import("../../sports/soccer-distance-covered-km-per-match/index.js"),

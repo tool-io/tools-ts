@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/ifrs-vs-gaap-topic-difference-crossref-lookup": () => import("../../accounting/ifrs-vs-gaap-topic-difference-crossref-lookup/index.js"),
   "acoustics/band-edge-frequencies": () => import("../../acoustics/band-edge-frequencies/index.js"),
   "apiculture/afb-ropey-matchstick-test-checker": () => import("../../apiculture/afb-ropey-matchstick-test-checker/index.js"),
   "aquaculture/mortality-rate": () => import("../../aquaculture/mortality-rate/index.js"),

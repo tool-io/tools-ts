@@ -7,6 +7,7 @@ export const toolModuleLoaders: Readonly<
   "acoustics/oitc-reference": () => import("../../acoustics/oitc-reference/index.js"),
   "archaeology/rank-size-index-settlement": () => import("../../archaeology/rank-size-index-settlement/index.js"),
   "arithmetic/fractional-integer-parts": () => import("../../arithmetic/fractional-integer-parts/index.js"),
+  "bacteriology/final-count-generations-2n": () => import("../../bacteriology/final-count-generations-2n/index.js"),
   "biology/hardy-weinberg-carrier-frequency": () => import("../../biology/hardy-weinberg-carrier-frequency/index.js"),
   "biology/punnett-square-mono": () => import("../../biology/punnett-square-mono/index.js"),
   "celestial-mechanics/shortway-elliptic-lambert-time-bound": () => import("../../celestial-mechanics/shortway-elliptic-lambert-time-bound/index.js"),

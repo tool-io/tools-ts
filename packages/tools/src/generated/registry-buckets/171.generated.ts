@@ -70,6 +70,7 @@ export const toolModuleLoaders: Readonly<
   "sailing/orc-corrected-time": () => import("../../sailing/orc-corrected-time/index.js"),
   "seismology/elevation-static-correction-replacement-velocity": () => import("../../seismology/elevation-static-correction-replacement-velocity/index.js"),
   "semiconductor/nonradiative-recombination-rate": () => import("../../semiconductor/nonradiative-recombination-rate/index.js"),
+  "semiconductor/quantum-dot-size-from-emission": () => import("../../semiconductor/quantum-dot-size-from-emission/index.js"),
   "semiconductor/valley-splitting-silicon": () => import("../../semiconductor/valley-splitting-silicon/index.js"),
   "size/climbing-harness": () => import("../../size/climbing-harness/index.js"),
   "statistics/ab-test": () => import("../../statistics/ab-test/index.js"),

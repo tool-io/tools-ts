@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "accounting/chart-of-accounts-numbering-range-designer": () => import("../../accounting/chart-of-accounts-numbering-range-designer/index.js"),
   "acoustics/concert-hall-shape-reference": () => import("../../acoustics/concert-hall-shape-reference/index.js"),
   "actuarial/monthly-premium-conversion": () => import("../../actuarial/monthly-premium-conversion/index.js"),
   "aesthetics/kawaii-cuteness-yomota-four-types-taxonomy-lookup": () => import("../../aesthetics/kawaii-cuteness-yomota-four-types-taxonomy-lookup/index.js"),
@@ -15,6 +16,8 @@ export const toolModuleLoaders: Readonly<
   "banking/bin-iin-issuer-network-lookup": () => import("../../banking/bin-iin-issuer-network-lookup/index.js"),
   "banking/bretton-woods-1944-to-nixon-shock-1971-timeline-lookup": () => import("../../banking/bretton-woods-1944-to-nixon-shock-1971-timeline-lookup/index.js"),
   "biology/diversity-hill-n1": () => import("../../biology/diversity-hill-n1/index.js"),
+  "cartography/azimuth-to-quadrant-formatter": () => import("../../cartography/azimuth-to-quadrant-formatter/index.js"),
+  "cartography/eight-figure-grid-precision-checker": () => import("../../cartography/eight-figure-grid-precision-checker/index.js"),
   "chemistry/gibbs-from-k": () => import("../../chemistry/gibbs-from-k/index.js"),
   "chemistry/mass-percent": () => import("../../chemistry/mass-percent/index.js"),
   "chemistry/solubility-from-ksp": () => import("../../chemistry/solubility-from-ksp/index.js"),
@@ -25,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "classics/sulla-proscriptions-death-lists-institutional-legacy-lookup": () => import("../../classics/sulla-proscriptions-death-lists-institutional-legacy-lookup/index.js"),
   "convert/character-to-ascii-code": () => import("../../convert/character-to-ascii-code/index.js"),
   "cooking/simple-syrup-ratio": () => import("../../cooking/simple-syrup-ratio/index.js"),
+  "cryptography/x509-serial-hex-length-parity-checker": () => import("../../cryptography/x509-serial-hex-length-parity-checker/index.js"),
   "dance/house-footwork-loft-style-lookup": () => import("../../dance/house-footwork-loft-style-lookup/index.js"),
   "dentistry/master-apical-file-size": () => import("../../dentistry/master-apical-file-size/index.js"),
   "electronics/darlington-beta": () => import("../../electronics/darlington-beta/index.js"),
