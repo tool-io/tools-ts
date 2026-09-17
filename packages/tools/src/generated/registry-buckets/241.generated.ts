@@ -26,6 +26,8 @@ export const toolModuleLoaders: Readonly<
   "forestry/moss-cover-percentage": () => import("../../forestry/moss-cover-percentage/index.js"),
   "futurology/morphological-freedom-body-modification-principle-lookup": () => import("../../futurology/morphological-freedom-body-modification-principle-lookup/index.js"),
   "futurology/who-pandemic-agreement-negotiation-status-timeline-lookup": () => import("../../futurology/who-pandemic-agreement-negotiation-status-timeline-lookup/index.js"),
+  "genetics/dominant-epistasis-1231-recognizer": () => import("../../genetics/dominant-epistasis-1231-recognizer/index.js"),
+  "genomics/longest-scaffold-extractor": () => import("../../genomics/longest-scaffold-extractor/index.js"),
   "genomics/six-frame-orf-scan": () => import("../../genomics/six-frame-orf-scan/index.js"),
   "horticulture/thrips-blue-card-preference-lookup": () => import("../../horticulture/thrips-blue-card-preference-lookup/index.js"),
   "insurance/kidnap-ransom-confidentiality-requirement-unique-feature-lookup": () => import("../../insurance/kidnap-ransom-confidentiality-requirement-unique-feature-lookup/index.js"),
@@ -50,6 +52,7 @@ export const toolModuleLoaders: Readonly<
   "random/khudawadi-character": () => import("../../random/khudawadi-character/index.js"),
   "sailing/wind-pressure-on-sail": () => import("../../sailing/wind-pressure-on-sail/index.js"),
   "semiconductor/bjt-output-conductance": () => import("../../semiconductor/bjt-output-conductance/index.js"),
+  "string/cyclic-string-equivalence": () => import("../../string/cyclic-string-equivalence/index.js"),
   "text/truncate": () => import("../../text/truncate/index.js"),
   "theatre/house-comp-seats-percent-cap-checker": () => import("../../theatre/house-comp-seats-percent-cap-checker/index.js"),
   "transcriptomics/library-mito-fraction": () => import("../../transcriptomics/library-mito-fraction/index.js"),
@@ -57,4 +60,5 @@ export const toolModuleLoaders: Readonly<
   "veterinary/poultry-feed-consumption-daily": () => import("../../veterinary/poultry-feed-consumption-daily/index.js"),
   "vexillology/union-jack-proportions": () => import("../../vexillology/union-jack-proportions/index.js"),
   "vr/vergence-distance": () => import("../../vr/vergence-distance/index.js"),
+  "web/url-query-pair-order-table": () => import("../../web/url-query-pair-order-table/index.js"),
 };

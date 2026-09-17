@@ -44,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "mining/leaching-rate-constant": () => import("../../mining/leaching-rate-constant/index.js"),
   "mining/metal-content": () => import("../../mining/metal-content/index.js"),
   "museology/provenance-gap-year-span": () => import("../../museology/provenance-gap-year-span/index.js"),
+  "music/note-event-channel-partition": () => import("../../music/note-event-channel-partition/index.js"),
   "music/parallel-key-lookup": () => import("../../music/parallel-key-lookup/index.js"),
   "neuroscience/burst-spike-fraction": () => import("../../neuroscience/burst-spike-fraction/index.js"),
   "neuroscience/descriptor-logbb-model": () => import("../../neuroscience/descriptor-logbb-model/index.js"),
@@ -73,6 +74,7 @@ export const toolModuleLoaders: Readonly<
   "size/rug": () => import("../../size/rug/index.js"),
   "sociology/wealth-quintile-ratio": () => import("../../sociology/wealth-quintile-ratio/index.js"),
   "speleology/neoprene-thickness-by-temp": () => import("../../speleology/neoprene-thickness-by-temp/index.js"),
+  "svg/line-cap-extension-budget": () => import("../../svg/line-cap-extension-budget/index.js"),
   "theatre/distributed-speaker-load": () => import("../../theatre/distributed-speaker-load/index.js"),
   "toxicology/eye-irritation-category": () => import("../../toxicology/eye-irritation-category/index.js"),
   "typography/gutter-width-column-grid-share": () => import("../../typography/gutter-width-column-grid-share/index.js"),
@@ -84,4 +86,5 @@ export const toolModuleLoaders: Readonly<
   "viticulture/picking-lugs-per-ton": () => import("../../viticulture/picking-lugs-per-ton/index.js"),
   "vr/total-system-latency": () => import("../../vr/total-system-latency/index.js"),
   "vr/volumetric-rendering-samples": () => import("../../vr/volumetric-rendering-samples/index.js"),
+  "web/url-query-key-repetition-summary": () => import("../../web/url-query-key-repetition-summary/index.js"),
 };

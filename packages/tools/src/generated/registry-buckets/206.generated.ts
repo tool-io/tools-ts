@@ -75,6 +75,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/silicon-interposer-warpage": () => import("../../semiconductor/silicon-interposer-warpage/index.js"),
   "size/gambeson-reconstruction": () => import("../../size/gambeson-reconstruction/index.js"),
   "speleology/inclination-true-dip-corrector": () => import("../../speleology/inclination-true-dip-corrector/index.js"),
+  "table/fixed-width-record-padder": () => import("../../table/fixed-width-record-padder/index.js"),
   "text/palindrome-checker": () => import("../../text/palindrome-checker/index.js"),
   "theatre/rehearsal-room-hourly-block-divider": () => import("../../theatre/rehearsal-room-hourly-block-divider/index.js"),
   "transcriptomics/fragments-per-kilobase-million": () => import("../../transcriptomics/fragments-per-kilobase-million/index.js"),

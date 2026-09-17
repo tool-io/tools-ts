@@ -47,6 +47,7 @@ export const toolModuleLoaders: Readonly<
   "journalism/cutline-caption-two-sentence-max-checker": () => import("../../journalism/cutline-caption-two-sentence-max-checker/index.js"),
   "kinesiology/deep-squat-flexion-screen": () => import("../../kinesiology/deep-squat-flexion-screen/index.js"),
   "kinesiology/youth-resistance-training-growth-stunt-myth-verdict": () => import("../../kinesiology/youth-resistance-training-growth-stunt-myth-verdict/index.js"),
+  "laser/hydrogen-chloride-hcl-chemical-transfer-mid-ir-lookup": () => import("../../laser/hydrogen-chloride-hcl-chemical-transfer-mid-ir-lookup/index.js"),
   "limnology/cesium-137-peak-year-marker": () => import("../../limnology/cesium-137-peak-year-marker/index.js"),
   "limnology/ice-out-date-trend-slope": () => import("../../limnology/ice-out-date-trend-slope/index.js"),
   "marriage/bids-for-connection-ratio": () => import("../../marriage/bids-for-connection-ratio/index.js"),

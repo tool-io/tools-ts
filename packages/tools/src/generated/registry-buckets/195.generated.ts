@@ -61,6 +61,7 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/npi-total": () => import("../../neuroscience/npi-total/index.js"),
   "oceanography/dynamic-topography-altimetry-residual": () => import("../../oceanography/dynamic-topography-altimetry-residual/index.js"),
   "oceanography/inertial-circle-radius-latitude": () => import("../../oceanography/inertial-circle-radius-latitude/index.js"),
+  "permutation/index-permutation-cycle-table": () => import("../../permutation/index-permutation-cycle-table/index.js"),
   "pregnancy/estimated-fetal-weight-shepard": () => import("../../pregnancy/estimated-fetal-weight-shepard/index.js"),
   "random/kannada-character": () => import("../../random/kannada-character/index.js"),
   "random/right-triangle-exercise": () => import("../../random/right-triangle-exercise/index.js"),

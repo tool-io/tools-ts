@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/rl-cutoff-frequency": () => import("../../electronics/rl-cutoff-frequency/index.js"),
   "electronics/solar-cell-short-circuit-current": () => import("../../electronics/solar-cell-short-circuit-current/index.js"),
   "entrepreneurship/mrr-movement-bridge": () => import("../../entrepreneurship/mrr-movement-bridge/index.js"),
+  "epigenetics/imprinting-parent-skew-detector": () => import("../../epigenetics/imprinting-parent-skew-detector/index.js"),
   "epigraphy/hic-situs-est-detector": () => import("../../epigraphy/hic-situs-est-detector/index.js"),
   "finance/break-even-price": () => import("../../finance/break-even-price/index.js"),
   "folklore/ring-on-string-gender-prediction-old-wives-myth-checker": () => import("../../folklore/ring-on-string-gender-prediction-old-wives-myth-checker/index.js"),

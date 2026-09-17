@@ -57,6 +57,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/pt-symmetric-threshold-gain": () => import("../../semiconductor/pt-symmetric-threshold-gain/index.js"),
   "sociology/zahavi-commute-time-budget-constant": () => import("../../sociology/zahavi-commute-time-budget-constant/index.js"),
   "speleology/guano-volume-estimate": () => import("../../speleology/guano-volume-estimate/index.js"),
+  "table/record-separator-text-joiner": () => import("../../table/record-separator-text-joiner/index.js"),
   "taxation/foreign-housing-exclusion": () => import("../../taxation/foreign-housing-exclusion/index.js"),
   "vr/comfort-rating-vr": () => import("../../vr/comfort-rating-vr/index.js"),
 };

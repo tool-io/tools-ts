@@ -56,6 +56,7 @@ export const toolModuleLoaders: Readonly<
   "oceanography/wave-age-young-mature-classifier": () => import("../../oceanography/wave-age-young-mature-classifier/index.js"),
   "oenology/lees-stirring-frequency": () => import("../../oenology/lees-stirring-frequency/index.js"),
   "oenology/tartrate-saturation-temp": () => import("../../oenology/tartrate-saturation-temp/index.js"),
+  "palette/palette-exact-rgb-duplicate-groups": () => import("../../palette/palette-exact-rgb-duplicate-groups/index.js"),
   "pharmacy/pediatric-dilling-rule": () => import("../../pharmacy/pediatric-dilling-rule/index.js"),
   "random/diverging-color-scale": () => import("../../random/diverging-color-scale/index.js"),
   "random/soundex-matching-cards": () => import("../../random/soundex-matching-cards/index.js"),

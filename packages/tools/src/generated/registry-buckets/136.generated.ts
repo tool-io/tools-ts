@@ -56,6 +56,7 @@ export const toolModuleLoaders: Readonly<
   "sericulture/momme-weight-conversion-fabric": () => import("../../sericulture/momme-weight-conversion-fabric/index.js"),
   "sociology/granovetter-threshold-distribution-checker": () => import("../../sociology/granovetter-threshold-distribution-checker/index.js"),
   "sociology/migration-effectiveness-index": () => import("../../sociology/migration-effectiveness-index/index.js"),
+  "text/literal-template-single-pass-renderer": () => import("../../text/literal-template-single-pass-renderer/index.js"),
   "theatre/cue-to-cue-runtime-pages-per-hour-estimator": () => import("../../theatre/cue-to-cue-runtime-pages-per-hour-estimator/index.js"),
   "toxicology/lc10-calculator": () => import("../../toxicology/lc10-calculator/index.js"),
   "transcriptomics/quantile-normalization": () => import("../../transcriptomics/quantile-normalization/index.js"),

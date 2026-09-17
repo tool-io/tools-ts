@@ -57,6 +57,8 @@ export const toolModuleLoaders: Readonly<
   "number/reverse-in-base": () => import("../../number/reverse-in-base/index.js"),
   "oenology/abv-start-finish-sg": () => import("../../oenology/abv-start-finish-sg/index.js"),
   "paleontology/manganese-stain-coverage": () => import("../../paleontology/manganese-stain-coverage/index.js"),
+  "parasitology/direct-smear-intensity-grade-rater": () => import("../../parasitology/direct-smear-intensity-grade-rater/index.js"),
+  "parse/escaped-delimiter-token-split": () => import("../../parse/escaped-delimiter-token-split/index.js"),
   "pregnancy/maternal-heart-rate-pregnancy": () => import("../../pregnancy/maternal-heart-rate-pregnancy/index.js"),
   "pregnancy/maternal-weight-gain-total": () => import("../../pregnancy/maternal-weight-gain-total/index.js"),
   "psychology/wcst-categories-completed": () => import("../../psychology/wcst-categories-completed/index.js"),
@@ -75,6 +77,7 @@ export const toolModuleLoaders: Readonly<
   "theatre/muslin-vs-canvas-covering-yardage-calculator": () => import("../../theatre/muslin-vs-canvas-covering-yardage-calculator/index.js"),
   "theatre/running-sheet-coverage": () => import("../../theatre/running-sheet-coverage/index.js"),
   "toxicology/food-chain-multiplier": () => import("../../toxicology/food-chain-multiplier/index.js"),
+  "virology/moi-regime-singlestep-classifier": () => import("../../virology/moi-regime-singlestep-classifier/index.js"),
   "virology/sir-final-size-root": () => import("../../virology/sir-final-size-root/index.js"),
   "viticulture/soil-profile-available-water-vine-rooting": () => import("../../viticulture/soil-profile-available-water-vine-rooting/index.js"),
 };

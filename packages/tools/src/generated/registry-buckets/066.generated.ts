@@ -30,6 +30,8 @@ export const toolModuleLoaders: Readonly<
   "criminology/adjudicative-competence-macarthur-threshold-lookup": () => import("../../criminology/adjudicative-competence-macarthur-threshold-lookup/index.js"),
   "cryptography/otp-code-six-digit-hotp-window-lookup": () => import("../../cryptography/otp-code-six-digit-hotp-window-lookup/index.js"),
   "demography/replacement-fertility-with-mortality-checker": () => import("../../demography/replacement-fertility-with-mortality-checker/index.js"),
+  "dns/label-ascii-case-normalizer": () => import("../../dns/label-ascii-case-normalizer/index.js"),
+  "dns/label-byte-budget-audit": () => import("../../dns/label-byte-budget-audit/index.js"),
   "electronics/antenna-far-field-boundary": () => import("../../electronics/antenna-far-field-boundary/index.js"),
   "electronics/capacitor-parallel-two": () => import("../../electronics/capacitor-parallel-two/index.js"),
   "electronics/gate-resistor-peak-current": () => import("../../electronics/gate-resistor-peak-current/index.js"),

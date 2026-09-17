@@ -48,6 +48,7 @@ export const toolModuleLoaders: Readonly<
   "number/greatest-common-factor": () => import("../../number/greatest-common-factor/index.js"),
   "oenology/khco3-dose": () => import("../../oenology/khco3-dose/index.js"),
   "oenology/kmbs-grams-ppm": () => import("../../oenology/kmbs-grams-ppm/index.js"),
+  "parse/integer-set-token": () => import("../../parse/integer-set-token/index.js"),
   "pharmacy/medication-schedule-builder-times-per-day": () => import("../../pharmacy/medication-schedule-builder-times-per-day/index.js"),
   "philately/rate-period-bracket-finder": () => import("../../philately/rate-period-bracket-finder/index.js"),
   "philately/uv-longwave-fluorescence-classifier": () => import("../../philately/uv-longwave-fluorescence-classifier/index.js"),
@@ -62,6 +63,7 @@ export const toolModuleLoaders: Readonly<
   "sailing/set-and-drift-correction": () => import("../../sailing/set-and-drift-correction/index.js"),
   "semiconductor/jfet-output-resistance": () => import("../../semiconductor/jfet-output-resistance/index.js"),
   "semiconductor/tsv-resistance": () => import("../../semiconductor/tsv-resistance/index.js"),
+  "series/hysteresis-binary-state-trace": () => import("../../series/hysteresis-binary-state-trace/index.js"),
   "size/hoop-skirt-reconstruction": () => import("../../size/hoop-skirt-reconstruction/index.js"),
   "statistics/mode": () => import("../../statistics/mode/index.js"),
   "statistics/quartile-deviation": () => import("../../statistics/quartile-deviation/index.js"),
@@ -74,4 +76,5 @@ export const toolModuleLoaders: Readonly<
   "toxicology/precautionary-statement-lookup": () => import("../../toxicology/precautionary-statement-lookup/index.js"),
   "toxicology/tolerable-weekly-intake": () => import("../../toxicology/tolerable-weekly-intake/index.js"),
   "vexillology/pantone-to-rgb-flag": () => import("../../vexillology/pantone-to-rgb-flag/index.js"),
+  "virology/virion-size-range-class-note-generator": () => import("../../virology/virion-size-range-class-note-generator/index.js"),
 };

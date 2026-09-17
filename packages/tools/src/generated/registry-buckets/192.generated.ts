@@ -19,6 +19,7 @@ export const toolModuleLoaders: Readonly<
   "biology/ec50": () => import("../../biology/ec50/index.js"),
   "biology/population-growth-exponential": () => import("../../biology/population-growth-exponential/index.js"),
   "biology/relative-water-content-2": () => import("../../biology/relative-water-content-2/index.js"),
+  "capacity/queue-serial-service-finish-time": () => import("../../capacity/queue-serial-service-finish-time/index.js"),
   "carpentry/stueckliste-schubkasten-generator": () => import("../../carpentry/stueckliste-schubkasten-generator/index.js"),
   "cartography/ground-to-map-distance": () => import("../../cartography/ground-to-map-distance/index.js"),
   "celestial-mechanics/rendezvous-phasing-period": () => import("../../celestial-mechanics/rendezvous-phasing-period/index.js"),
@@ -51,6 +52,7 @@ export const toolModuleLoaders: Readonly<
   "geology/permeability-hazen": () => import("../../geology/permeability-hazen/index.js"),
   "hash/sha-384": () => import("../../hash/sha-384/index.js"),
   "insurance/dime-formula-need-components": () => import("../../insurance/dime-formula-need-components/index.js"),
+  "laser/argon-ion-multiline-prism-line-selection-488-514-history": () => import("../../laser/argon-ion-multiline-prism-line-selection-488-514-history/index.js"),
   "limnology/thermocline-depth-max-gradient": () => import("../../limnology/thermocline-depth-max-gradient/index.js"),
   "marriage/negativity-threshold": () => import("../../marriage/negativity-threshold/index.js"),
   "math/borel-sum": () => import("../../math/borel-sum/index.js"),
@@ -75,6 +77,7 @@ export const toolModuleLoaders: Readonly<
   "toxicology/idlh": () => import("../../toxicology/idlh/index.js"),
   "transcriptomics/immune-signature-score": () => import("../../transcriptomics/immune-signature-score/index.js"),
   "veterinary/grain-ration-horse-workload": () => import("../../veterinary/grain-ration-horse-workload/index.js"),
+  "virology/rise-phase-log-slope-calculator": () => import("../../virology/rise-phase-log-slope-calculator/index.js"),
   "viticulture/erosion-contour-row-gradient-checker": () => import("../../viticulture/erosion-contour-row-gradient-checker/index.js"),
   "volcanology/historical-eruption-frequency-per-century": () => import("../../volcanology/historical-eruption-frequency-per-century/index.js"),
 };

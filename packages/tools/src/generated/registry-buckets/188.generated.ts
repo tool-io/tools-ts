@@ -65,6 +65,7 @@ export const toolModuleLoaders: Readonly<
   "paleography/tironian-et-frequency-counter": () => import("../../paleography/tironian-et-frequency-counter/index.js"),
   "paleontology/island-dwarfism-percent": () => import("../../paleontology/island-dwarfism-percent/index.js"),
   "petroleum/oil-compressibility": () => import("../../petroleum/oil-compressibility/index.js"),
+  "proteomics/dimethyl-label-massshift-lookup": () => import("../../proteomics/dimethyl-label-massshift-lookup/index.js"),
   "random/batak-character": () => import("../../random/batak-character/index.js"),
   "random/continued-fraction-exercise": () => import("../../random/continued-fraction-exercise/index.js"),
   "random/iso-week-number-exercise": () => import("../../random/iso-week-number-exercise/index.js"),
@@ -79,5 +80,6 @@ export const toolModuleLoaders: Readonly<
   "theatre/bunraku-three-puppeteers-main-left-feet-division-lookup": () => import("../../theatre/bunraku-three-puppeteers-main-left-feet-division-lookup/index.js"),
   "theatre/projection-pixel-density": () => import("../../theatre/projection-pixel-density/index.js"),
   "theatre/wire-rope-drum-groove-wrap-count": () => import("../../theatre/wire-rope-drum-groove-wrap-count/index.js"),
+  "time/timestamp-millisecond-component-join": () => import("../../time/timestamp-millisecond-component-join/index.js"),
   "typography/letter-spacing-points-from-tracking": () => import("../../typography/letter-spacing-points-from-tracking/index.js"),
 };

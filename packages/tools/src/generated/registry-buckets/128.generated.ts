@@ -45,6 +45,7 @@ export const toolModuleLoaders: Readonly<
   "glaciology/thickness-from-slope-driving-stress": () => import("../../glaciology/thickness-from-slope-driving-stress/index.js"),
   "glaciology/thickness-from-volume-area-scaling": () => import("../../glaciology/thickness-from-volume-area-scaling/index.js"),
   "graph/minimum-spanning-tree": () => import("../../graph/minimum-spanning-tree/index.js"),
+  "grid/row-major-stride-offset": () => import("../../grid/row-major-stride-offset/index.js"),
   "horology/beat-error-orientation-difference-screen": () => import("../../horology/beat-error-orientation-difference-screen/index.js"),
   "horology/train-wheel-teeth-sum": () => import("../../horology/train-wheel-teeth-sum/index.js"),
   "horticulture/hardening-off-day-schedule-lookup": () => import("../../horticulture/hardening-off-day-schedule-lookup/index.js"),
@@ -75,5 +76,6 @@ export const toolModuleLoaders: Readonly<
   "taxation/partnership-allocation-check": () => import("../../taxation/partnership-allocation-check/index.js"),
   "toxicology/dosimetric-adjustment-factor": () => import("../../toxicology/dosimetric-adjustment-factor/index.js"),
   "toxicology/eye-irritation-draize": () => import("../../toxicology/eye-irritation-draize/index.js"),
+  "virology/rna-drift-rate-year-note-generator": () => import("../../virology/rna-drift-rate-year-note-generator/index.js"),
   "vr/render-scale-percentage": () => import("../../vr/render-scale-percentage/index.js"),
 };

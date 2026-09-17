@@ -50,6 +50,7 @@ export const toolModuleLoaders: Readonly<
   "mycology/hair-perforation-test-classifier": () => import("../../mycology/hair-perforation-test-classifier/index.js"),
   "numismatics/storage-box-flip-count": () => import("../../numismatics/storage-box-flip-count/index.js"),
   "paleography/gothic-textualis-period-band": () => import("../../paleography/gothic-textualis-period-band/index.js"),
+  "palette/palette-entry-permutation": () => import("../../palette/palette-entry-permutation/index.js"),
   "parse/matrix": () => import("../../parse/matrix/index.js"),
   "pedagogy/cloze-passage-generator": () => import("../../pedagogy/cloze-passage-generator/index.js"),
   "petroleum/coning-critical-rate-water": () => import("../../petroleum/coning-critical-rate-water/index.js"),

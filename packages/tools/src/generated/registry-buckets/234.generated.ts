@@ -58,6 +58,7 @@ export const toolModuleLoaders: Readonly<
   "museology/significance-weighted-sum-score": () => import("../../museology/significance-weighted-sum-score/index.js"),
   "music/sample-buffer-latency-ms": () => import("../../music/sample-buffer-latency-ms/index.js"),
   "mycology/mushroom-moisture-freshtodry-ratio-calculator": () => import("../../mycology/mushroom-moisture-freshtodry-ratio-calculator/index.js"),
+  "order/fractional-rank-tie-table": () => import("../../order/fractional-rank-tie-table/index.js"),
   "paleontology/stride-hip-ratio": () => import("../../paleontology/stride-hip-ratio/index.js"),
   "plumbing/steam-quality": () => import("../../plumbing/steam-quality/index.js"),
   "proportions/percentage-error": () => import("../../proportions/percentage-error/index.js"),
@@ -78,5 +79,6 @@ export const toolModuleLoaders: Readonly<
   "virology/rcl-batch-screen-audit": () => import("../../virology/rcl-batch-screen-audit/index.js"),
   "volcanology/carbon-subduction-flux-reference-lookup": () => import("../../volcanology/carbon-subduction-flux-reference-lookup/index.js"),
   "volcanology/plinian-dispersal-axis-isopach-area": () => import("../../volcanology/plinian-dispersal-axis-isopach-area/index.js"),
+  "web/http-quoted-string-unescaper": () => import("../../web/http-quoted-string-unescaper/index.js"),
   "web/url-data-parser": () => import("../../web/url-data-parser/index.js"),
 };

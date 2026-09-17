@@ -51,6 +51,7 @@ export const toolModuleLoaders: Readonly<
   "random/dice-pool": () => import("../../random/dice-pool/index.js"),
   "random/digital-root-exercise": () => import("../../random/digital-root-exercise/index.js"),
   "random/sorani-kurdish-alphabet-letter": () => import("../../random/sorani-kurdish-alphabet-letter/index.js"),
+  "relation/relation-symmetric-completion": () => import("../../relation/relation-symmetric-completion/index.js"),
   "seismology/dart-pressure-tsunami-flag-checker": () => import("../../seismology/dart-pressure-tsunami-flag-checker/index.js"),
   "seismology/response-poles-zeros-consistency-checker": () => import("../../seismology/response-poles-zeros-consistency-checker/index.js"),
   "semiconductor/distributed-feedback-laser-grating-period": () => import("../../semiconductor/distributed-feedback-laser-grating-period/index.js"),
@@ -61,6 +62,7 @@ export const toolModuleLoaders: Readonly<
   "taxation/royalty-depletion": () => import("../../taxation/royalty-depletion/index.js"),
   "taxation/sugary-drink-penny-per-ounce-lookup": () => import("../../taxation/sugary-drink-penny-per-ounce-lookup/index.js"),
   "taxation/total-tax-burden": () => import("../../taxation/total-tax-burden/index.js"),
+  "text/line-prefix-filter": () => import("../../text/line-prefix-filter/index.js"),
   "text/sort-lines": () => import("../../text/sort-lines/index.js"),
   "vr/frame-rate-from-refresh": () => import("../../vr/frame-rate-from-refresh/index.js"),
 };

@@ -56,6 +56,7 @@ export const toolModuleLoaders: Readonly<
   "random/pwm-register-exercise": () => import("../../random/pwm-register-exercise/index.js"),
   "random/signwriting-dynamics-symbol": () => import("../../random/signwriting-dynamics-symbol/index.js"),
   "seismology/love-wave-dispersion-period-speed": () => import("../../seismology/love-wave-dispersion-period-speed/index.js"),
+  "series/event-rate-limit-acceptance-trace": () => import("../../series/event-rate-limit-acceptance-trace/index.js"),
   "size/racket-grip": () => import("../../size/racket-grip/index.js"),
   "sociology/network-density-sociology": () => import("../../sociology/network-density-sociology/index.js"),
   "taxation/wash-sale-rule-does-not-apply-to-crypto-loophole-status-lookup": () => import("../../taxation/wash-sale-rule-does-not-apply-to-crypto-loophole-status-lookup/index.js"),

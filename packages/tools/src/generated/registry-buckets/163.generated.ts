@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "heraldry/fleur-petal-count-validator": () => import("../../heraldry/fleur-petal-count-validator/index.js"),
   "insurance/mga-managing-general-agency-binding-authority-delegation-lookup": () => import("../../insurance/mga-managing-general-agency-binding-authority-delegation-lookup/index.js"),
   "insurance/social-engineering-coverage-gap": () => import("../../insurance/social-engineering-coverage-gap/index.js"),
+  "integrity/crc-polynomial-reversal": () => import("../../integrity/crc-polynomial-reversal/index.js"),
   "meteorology/supercell-composite-parameter": () => import("../../meteorology/supercell-composite-parameter/index.js"),
   "mycology/spore-deposit-mass-yield-calculator": () => import("../../mycology/spore-deposit-mass-yield-calculator/index.js"),
   "plumbing/expansion-loop-length": () => import("../../plumbing/expansion-loop-length/index.js"),

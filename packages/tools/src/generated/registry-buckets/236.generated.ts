@@ -46,6 +46,7 @@ export const toolModuleLoaders: Readonly<
   "geology/well-log-permeability-wyllie-rose": () => import("../../geology/well-log-permeability-wyllie-rose/index.js"),
   "geometry/triangle-perimeter": () => import("../../geometry/triangle-perimeter/index.js"),
   "glaciology/thermal-regime-temperate-polar-checker": () => import("../../glaciology/thermal-regime-temperate-polar-checker/index.js"),
+  "graph/edge-list-parallel-edge-buckets": () => import("../../graph/edge-list-parallel-edge-buckets/index.js"),
   "hash/sha3-224": () => import("../../hash/sha3-224/index.js"),
   "horticulture/germination-mat-temp-range-lookup": () => import("../../horticulture/germination-mat-temp-range-lookup/index.js"),
   "insurance/clue-report-comprehensive-loss-exchange-seven-year-history": () => import("../../insurance/clue-report-comprehensive-loss-exchange-seven-year-history/index.js"),
@@ -62,7 +63,9 @@ export const toolModuleLoaders: Readonly<
   "neuroscience/synaptic-conductance-trace": () => import("../../neuroscience/synaptic-conductance-trace/index.js"),
   "numismatics/love-token-engraved-charm-personalization-lookup": () => import("../../numismatics/love-token-engraved-charm-personalization-lookup/index.js"),
   "paleontology/eggshell-porosity-classifier": () => import("../../paleontology/eggshell-porosity-classifier/index.js"),
+  "path/path-separator-transcode": () => import("../../path/path-separator-transcode/index.js"),
   "pedagogy/kaplan-depth-complexity-icons-extension-menu-lookup": () => import("../../pedagogy/kaplan-depth-complexity-icons-extension-menu-lookup/index.js"),
+  "permutation/index-permutation-inverse": () => import("../../permutation/index-permutation-inverse/index.js"),
   "plumbing/gas-pipe-pressure-drop": () => import("../../plumbing/gas-pipe-pressure-drop/index.js"),
   "proteomics/protein-dilution-backcalculation": () => import("../../proteomics/protein-dilution-backcalculation/index.js"),
   "random/catalog-product": () => import("../../random/catalog-product/index.js"),
@@ -84,4 +87,5 @@ export const toolModuleLoaders: Readonly<
   "theatre/iris-diaphragm-aperture-range-lookup": () => import("../../theatre/iris-diaphragm-aperture-range-lookup/index.js"),
   "toxicology/route-absorption-aggregate-dose": () => import("../../toxicology/route-absorption-aggregate-dose/index.js"),
   "viticulture/row-length-vine-count": () => import("../../viticulture/row-length-vine-count/index.js"),
+  "web/url-path-prefix-token-match": () => import("../../web/url-path-prefix-token-match/index.js"),
 };

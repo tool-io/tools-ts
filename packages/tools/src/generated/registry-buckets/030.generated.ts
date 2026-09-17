@@ -44,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "math/sexy-prime-pair-checker": () => import("../../math/sexy-prime-pair-checker/index.js"),
   "music/meter-pulse-grouping-classifier": () => import("../../music/meter-pulse-grouping-classifier/index.js"),
   "music/quarter-tone-microtonal-frequency": () => import("../../music/quarter-tone-microtonal-frequency/index.js"),
+  "network/ipv6-low-bit-field-extractor": () => import("../../network/ipv6-low-bit-field-extractor/index.js"),
   "neuroscience/gds-total": () => import("../../neuroscience/gds-total/index.js"),
   "neuroscience/repetitive-tms-frequency": () => import("../../neuroscience/repetitive-tms-frequency/index.js"),
   "numismatics/type-one-type-two-standing-liberty-1917-change-lookup": () => import("../../numismatics/type-one-type-two-standing-liberty-1917-change-lookup/index.js"),

@@ -6,8 +6,10 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/gas-sound-speed-gamma-ratio": () => import("../../acoustics/gas-sound-speed-gamma-ratio/index.js"),
   "acoustics/microphone-incidence-reference": () => import("../../acoustics/microphone-incidence-reference/index.js"),
+  "auditing/assertion-level-existence-completeness-valuation-rights-accuracy-map": () => import("../../auditing/assertion-level-existence-completeness-valuation-rights-accuracy-map/index.js"),
   "auditing/management-override-journal-entry-testing-focus-lookup": () => import("../../auditing/management-override-journal-entry-testing-focus-lookup/index.js"),
   "bacteriology/twelved-sterility-total-time-lookup": () => import("../../bacteriology/twelved-sterility-total-time-lookup/index.js"),
+  "binary/byte-range-bit-offset": () => import("../../binary/byte-range-bit-offset/index.js"),
   "biology/half-life-biology": () => import("../../biology/half-life-biology/index.js"),
   "biology/mic-mbc-ratio": () => import("../../biology/mic-mbc-ratio/index.js"),
   "carpentry/weissleim-d2-d3-d4-lookup": () => import("../../carpentry/weissleim-d2-d3-d4-lookup/index.js"),

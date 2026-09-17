@@ -44,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "kinesiology/kayak-core-rotation-versus-arm-power-contribution-note": () => import("../../kinesiology/kayak-core-rotation-versus-arm-power-contribution-note/index.js"),
   "laser/jitter-rejection-budget": () => import("../../laser/jitter-rejection-budget/index.js"),
   "laser/shg-polarization-anisotropy": () => import("../../laser/shg-polarization-anisotropy/index.js"),
+  "list/monotonic-run-segmenter": () => import("../../list/monotonic-run-segmenter/index.js"),
   "logic/datisi-aii3-valid-lookup": () => import("../../logic/datisi-aii3-valid-lookup/index.js"),
   "map": () => import("../../map/index.js"),
   "marriage/jealousy-scale": () => import("../../marriage/jealousy-scale/index.js"),
@@ -53,6 +54,7 @@ export const toolModuleLoaders: Readonly<
   "museology/uv-content-per-lumen-checker": () => import("../../museology/uv-content-per-lumen-checker/index.js"),
   "mycology/antifungal-mic-clsi-value-recorder": () => import("../../mycology/antifungal-mic-clsi-value-recorder/index.js"),
   "parasitology/rainfall-incidence-lag": () => import("../../parasitology/rainfall-incidence-lag/index.js"),
+  "permutation/permutation-adjacent-swap-distance": () => import("../../permutation/permutation-adjacent-swap-distance/index.js"),
   "plumbing/hydronic-air-separator-size": () => import("../../plumbing/hydronic-air-separator-size/index.js"),
   "proteomics/digest-length-filter": () => import("../../proteomics/digest-length-filter/index.js"),
   "psychology/logit-method-or-to-standard-d": () => import("../../psychology/logit-method-or-to-standard-d/index.js"),
@@ -68,4 +70,5 @@ export const toolModuleLoaders: Readonly<
   "sports/darts-checkout-combination-lookup": () => import("../../sports/darts-checkout-combination-lookup/index.js"),
   "text/word-order-reverse": () => import("../../text/word-order-reverse/index.js"),
   "virology/primer-terminal-mismatch-screen": () => import("../../virology/primer-terminal-mismatch-screen/index.js"),
+  "web/url-path-empty-segment-profile": () => import("../../web/url-path-empty-segment-profile/index.js"),
 };

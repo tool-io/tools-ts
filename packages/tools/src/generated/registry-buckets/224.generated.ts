@@ -43,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "kinesiology/acute-chronic-workload-ratio": () => import("../../kinesiology/acute-chronic-workload-ratio/index.js"),
   "kinesiology/bike-saddle-inseam-fit": () => import("../../kinesiology/bike-saddle-inseam-fit/index.js"),
   "kinesiology/carriage-load-energy-cost-walking-extra-weight-lookup": () => import("../../kinesiology/carriage-load-energy-cost-walking-extra-weight-lookup/index.js"),
+  "laser/flacs-femtosecond-cataract-procedure-step-sequence-lookup": () => import("../../laser/flacs-femtosecond-cataract-procedure-step-sequence-lookup/index.js"),
   "linguistics/th-fronting-dialect-lookup": () => import("../../linguistics/th-fronting-dialect-lookup/index.js"),
   "logistics/deadhead-empty-miles-ratio": () => import("../../logistics/deadhead-empty-miles-ratio/index.js"),
   "math/waring-g2": () => import("../../math/waring-g2/index.js"),

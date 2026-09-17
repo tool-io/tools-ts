@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "astrobiology/direct-imaging-contrast-deltamag-calculator": () => import("../../astrobiology/direct-imaging-contrast-deltamag-calculator/index.js"),
   "auditing/debt-covenant-compliance-independent-recompute-step": () => import("../../auditing/debt-covenant-compliance-independent-recompute-step/index.js"),
   "aviation/lift-coefficient": () => import("../../aviation/lift-coefficient/index.js"),
+  "bits/bitstring-mask-replacement": () => import("../../bits/bitstring-mask-replacement/index.js"),
   "chemistry/altitude-from-pressure-barometric": () => import("../../chemistry/altitude-from-pressure-barometric/index.js"),
   "chemistry/critical-pressure-lookup": () => import("../../chemistry/critical-pressure-lookup/index.js"),
   "chemistry/root-mean-square-speed": () => import("../../chemistry/root-mean-square-speed/index.js"),
@@ -34,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "horology/column-wheel-ratchet-tooth-count": () => import("../../horology/column-wheel-ratchet-tooth-count/index.js"),
   "html/aria-state-attribute-pair-checker": () => import("../../html/aria-state-attribute-pair-checker/index.js"),
   "html/button-type-default-submit-note": () => import("../../html/button-type-default-submit-note/index.js"),
+  "layout/uniform-card-last-row-filler": () => import("../../layout/uniform-card-last-row-filler/index.js"),
   "limnology/heat-content-per-area": () => import("../../limnology/heat-content-per-area/index.js"),
   "limnology/light-attenuation-vertical-profile": () => import("../../limnology/light-attenuation-vertical-profile/index.js"),
   "linguistics/uvular-r-language-lookup": () => import("../../linguistics/uvular-r-language-lookup/index.js"),
@@ -77,4 +79,5 @@ export const toolModuleLoaders: Readonly<
   "vexillology/pall-intersection-point": () => import("../../vexillology/pall-intersection-point/index.js"),
   "viticulture/millerandage-hens-chicks-percent": () => import("../../viticulture/millerandage-hens-chicks-percent/index.js"),
   "vr/fov-from-focal-length-vr": () => import("../../vr/fov-from-focal-length-vr/index.js"),
+  "web/http-field-line-folding-audit": () => import("../../web/http-field-line-folding-audit/index.js"),
 };

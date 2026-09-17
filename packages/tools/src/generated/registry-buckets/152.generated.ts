@@ -57,6 +57,9 @@ export const toolModuleLoaders: Readonly<
   "random/ocr-symbol": () => import("../../random/ocr-symbol/index.js"),
   "random/pastel-palette": () => import("../../random/pastel-palette/index.js"),
   "random/playing-card": () => import("../../random/playing-card/index.js"),
+  "rational/fraction-integer-floor-remainder": () => import("../../rational/fraction-integer-floor-remainder/index.js"),
+  "rational/fraction-reciprocal-pair": () => import("../../rational/fraction-reciprocal-pair/index.js"),
+  "relation/relation-reflexive-completion": () => import("../../relation/relation-reflexive-completion/index.js"),
   "semiconductor/cu-cu-bonding-resistance": () => import("../../semiconductor/cu-cu-bonding-resistance/index.js"),
   "semiconductor/monolithic-3d-inter-tier-via-resistance": () => import("../../semiconductor/monolithic-3d-inter-tier-via-resistance/index.js"),
   "semiconductor/sic-mosfet-on-resistance-tempco": () => import("../../semiconductor/sic-mosfet-on-resistance-tempco/index.js"),
@@ -73,5 +76,6 @@ export const toolModuleLoaders: Readonly<
   "typography/ligature-count-common-fonts-lookup": () => import("../../typography/ligature-count-common-fonts-lookup/index.js"),
   "veterinary/heart-rate-cow": () => import("../../veterinary/heart-rate-cow/index.js"),
   "veterinary/weaning-age-lookup-species": () => import("../../veterinary/weaning-age-lookup-species/index.js"),
+  "web/http-quality-thousandths-parser": () => import("../../web/http-quality-thousandths-parser/index.js"),
   "web/url-is-absolute": () => import("../../web/url-is-absolute/index.js"),
 };

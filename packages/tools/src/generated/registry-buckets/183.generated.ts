@@ -31,6 +31,7 @@ export const toolModuleLoaders: Readonly<
   "kinesiology/countermovement-jump-benefit": () => import("../../kinesiology/countermovement-jump-benefit/index.js"),
   "kinesiology/shoulder-rotation-arc": () => import("../../kinesiology/shoulder-rotation-arc/index.js"),
   "laser/nominal-ocular-hazard-distance": () => import("../../laser/nominal-ocular-hazard-distance/index.js"),
+  "laser/optically-pumped-molecular-gas-opmgl-isotopes-lookup": () => import("../../laser/optically-pumped-molecular-gas-opmgl-isotopes-lookup/index.js"),
   "laser/thermal-lens-coefficient": () => import("../../laser/thermal-lens-coefficient/index.js"),
   "linguistics/language-family-tree-depth-lookup": () => import("../../linguistics/language-family-tree-depth-lookup/index.js"),
   "logistics/reorder-point-safety-stock": () => import("../../logistics/reorder-point-safety-stock/index.js"),
@@ -50,6 +51,7 @@ export const toolModuleLoaders: Readonly<
   "pedagogy/socratic-seminar-inner-outer-circle-facilitation-guide": () => import("../../pedagogy/socratic-seminar-inner-outer-circle-facilitation-guide/index.js"),
   "plumbing/pump-affinity-power": () => import("../../plumbing/pump-affinity-power/index.js"),
   "plumbing/water-softener-capacity": () => import("../../plumbing/water-softener-capacity/index.js"),
+  "print/print-booklet-sheet-count": () => import("../../print/print-booklet-sheet-count/index.js"),
   "psychology/judgment-of-line-orientation-band": () => import("../../psychology/judgment-of-line-orientation-band/index.js"),
   "random/bulgarian-alphabet-letter": () => import("../../random/bulgarian-alphabet-letter/index.js"),
   "random/chorasmian-letter": () => import("../../random/chorasmian-letter/index.js"),
@@ -67,5 +69,6 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/srh-recombination-lifetime": () => import("../../semiconductor/srh-recombination-lifetime/index.js"),
   "taxation/special-assessment-lid-cap-checker": () => import("../../taxation/special-assessment-lid-cap-checker/index.js"),
   "vexillology/meaning-to-signal-letter": () => import("../../vexillology/meaning-to-signal-letter/index.js"),
+  "virology/pcr-efficiency-standardcurve-slope-checker": () => import("../../virology/pcr-efficiency-standardcurve-slope-checker/index.js"),
   "volcanology/caldera-vs-summit-crater-classifier": () => import("../../volcanology/caldera-vs-summit-crater-classifier/index.js"),
 };

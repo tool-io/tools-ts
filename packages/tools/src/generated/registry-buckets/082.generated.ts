@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "generate/isbn-13": () => import("../../generate/isbn-13/index.js"),
   "geology/stable-isotope-delta": () => import("../../geology/stable-isotope-delta/index.js"),
   "geometry/scale-factor-area": () => import("../../geometry/scale-factor-area/index.js"),
+  "grid/grid-mask-cell-perimeter": () => import("../../grid/grid-mask-cell-perimeter/index.js"),
   "heraldry/fields-to-blazon-serializer": () => import("../../heraldry/fields-to-blazon-serializer/index.js"),
   "html/meter-optimum-low-high-band-classifier": () => import("../../html/meter-optimum-low-high-band-classifier/index.js"),
   "journalism/moderation-escalation": () => import("../../journalism/moderation-escalation/index.js"),
@@ -54,6 +55,7 @@ export const toolModuleLoaders: Readonly<
   "parasitology/k13-marker-match": () => import("../../parasitology/k13-marker-match/index.js"),
   "parasitology/miracidium-hatching-duration": () => import("../../parasitology/miracidium-hatching-duration/index.js"),
   "parse/port-range": () => import("../../parse/port-range/index.js"),
+  "path/path-component-redaction": () => import("../../path/path-component-redaction/index.js"),
   "pedagogy/interleaved-practice-order": () => import("../../pedagogy/interleaved-practice-order/index.js"),
   "plumbing/faucet-flow-rate": () => import("../../plumbing/faucet-flow-rate/index.js"),
   "plumbing/island-fixture-vent-sizing": () => import("../../plumbing/island-fixture-vent-sizing/index.js"),
@@ -70,4 +72,5 @@ export const toolModuleLoaders: Readonly<
   "typography/figure-space-width-monospace-equal-checker": () => import("../../typography/figure-space-width-monospace-equal-checker/index.js"),
   "vector/projection": () => import("../../vector/projection/index.js"),
   "vector/rejection": () => import("../../vector/rejection/index.js"),
+  "virology/hau-to-pfu-note-generator": () => import("../../virology/hau-to-pfu-note-generator/index.js"),
 };

@@ -49,6 +49,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/squid-flux-sensitivity": () => import("../../semiconductor/squid-flux-sensitivity/index.js"),
   "semiconductor/trench-mosfet-specific-on-resistance": () => import("../../semiconductor/trench-mosfet-specific-on-resistance/index.js"),
   "sericulture/feeding-frequency-by-instar-lookup": () => import("../../sericulture/feeding-frequency-by-instar-lookup/index.js"),
+  "series/event-debounce-window-filter": () => import("../../series/event-debounce-window-filter/index.js"),
   "sociology/theil-index": () => import("../../sociology/theil-index/index.js"),
   "statistics/minimum": () => import("../../statistics/minimum/index.js"),
   "statistics/sum-of-squares": () => import("../../statistics/sum-of-squares/index.js"),
