@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "archival-studies/paging-wait-average-calculator": () => import("../../archival-studies/paging-wait-average-calculator/index.js"),
   "archival-studies/persistent-id-slug-generator": () => import("../../archival-studies/persistent-id-slug-generator/index.js"),
   "arithmetic/nth-root": () => import("../../arithmetic/nth-root/index.js"),
+  "astrobiology/hz-poe-optimistic-luminosity-scaling": () => import("../../astrobiology/hz-poe-optimistic-luminosity-scaling/index.js"),
   "astrometry/lunar-laser-ranging-precision-note-generator": () => import("../../astrometry/lunar-laser-ranging-precision-note-generator/index.js"),
   "astronomy/pulsar-spin-down-age-characteristic": () => import("../../astronomy/pulsar-spin-down-age-characteristic/index.js"),
   "auditing/scope-limitation-decision": () => import("../../auditing/scope-limitation-decision/index.js"),

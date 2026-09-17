@@ -1045,6 +1045,7 @@
     "astrobiology/hydrodynamic-escape-energy-limited-massloss",
     "astrobiology/hz-optimistic-venus-mars-limits",
     "astrobiology/hz-outer-maximum-greenhouse-boundary",
+    "astrobiology/hz-poe-optimistic-luminosity-scaling",
     "astrobiology/hz-width-conservative-stellar-luminosity",
     "astrobiology/integration-time-snr-scaling-calculator",
     "astrobiology/jeans-parameter-escape-flag-checker",
