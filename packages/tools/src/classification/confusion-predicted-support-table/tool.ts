@@ -1,0 +1,50 @@
+import type { ToolExample } from "../../core/example.js";
+import { createSimpleTool, type SimpleField } from "../../core/simple.js";
+import * as H from "../../css/batch55-shared.js";
+export type Input = Readonly<{
+  matrix: readonly (readonly number[])[];
+  labels: readonly string[];
+}>;
+export type Output = { readonly result: Readonly<Record<string, unknown>> };
+const fields = [
+  { id: "matrix", label: "matrix", kind: "matrix" },
+  { id: "labels", label: "labels", kind: "stringList" },
+] as const satisfies readonly SimpleField[];
+export const calculate = (i: Input): Output => {
+  H.validate(i, fields);
+  H.confusion(i.matrix, i.labels);
+  return H.finish({
+    support: i.labels.map((label, j) => ({
+      label,
+      value: i.matrix.reduce((s, r) => s + r[j], 0),
+    })),
+  });
+};
+export const example = {
+  input: {
+    matrix: [
+      [2, 1],
+      [0, 1],
+    ],
+    labels: ["a", "b"],
+  },
+  output: {
+    result: {
+      support: [
+        { label: "a", value: 2 },
+        { label: "b", value: 2 },
+      ],
+    },
+  },
+} satisfies ToolExample<Input, Output>;
+export const tool = createSimpleTool({
+  id: "classification/confusion-predicted-support-table",
+  title: "Confusion Predicted Support Table",
+  description:
+    "Explicit nonnegative square confusion table with unique supplied labels, actual rows and predicted columns; report predicted column support totals without calculating per-class rates.",
+  inputs: fields,
+  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  calculate: (v) => calculate(v as unknown as Input),
+});
+export const run = tool.execute;
+export default tool;
