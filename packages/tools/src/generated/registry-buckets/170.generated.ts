@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "angle/turn-sector-index": () => import("../../angle/turn-sector-index/index.js"),
   "archaeology/nisp-specimen-count-taxa": () => import("../../archaeology/nisp-specimen-count-taxa/index.js"),
   "archival-studies/collection-code-prefix-uniqueness-checker": () => import("../../archival-studies/collection-code-prefix-uniqueness-checker/index.js"),
   "astrometry/angular-projected-binary-separation": () => import("../../astrometry/angular-projected-binary-separation/index.js"),
@@ -36,6 +37,8 @@ export const toolModuleLoaders: Readonly<
   "game-search/alpha-beta": () => import("../../game-search/alpha-beta/index.js"),
   "genomics/median-contig-length-finder": () => import("../../genomics/median-contig-length-finder/index.js"),
   "geometry/ellipse-area": () => import("../../geometry/ellipse-area/index.js"),
+  "geometry/point-segment-parameter": () => import("../../geometry/point-segment-parameter/index.js"),
+  "geometry/rectangle-point-clamp": () => import("../../geometry/rectangle-point-clamp/index.js"),
   "glaciology/calving-front-retreat-distance": () => import("../../glaciology/calving-front-retreat-distance/index.js"),
   "glaciology/station-component-velocity-vector": () => import("../../glaciology/station-component-velocity-vector/index.js"),
   "health/lean-mass-james": () => import("../../health/lean-mass-james/index.js"),
@@ -54,6 +57,7 @@ export const toolModuleLoaders: Readonly<
   "pharmacy/rivaroxaban-dose-indication-lookup": () => import("../../pharmacy/rivaroxaban-dose-indication-lookup/index.js"),
   "philately/mount-thickness-weight-lookup": () => import("../../philately/mount-thickness-weight-lookup/index.js"),
   "plumbing/irrigation-flow-rate": () => import("../../plumbing/irrigation-flow-rate/index.js"),
+  "quaternion/unit-sample-sign-continuity": () => import("../../quaternion/unit-sample-sign-continuity/index.js"),
   "random/cheese": () => import("../../random/cheese/index.js"),
   "random/hsv-color": () => import("../../random/hsv-color/index.js"),
   "random/ipa-diacritic": () => import("../../random/ipa-diacritic/index.js"),

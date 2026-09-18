@@ -6,8 +6,10 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/marine-mammal-hearing-group-reference": () => import("../../acoustics/marine-mammal-hearing-group-reference/index.js"),
   "actuarial/deferred-mortality-probability": () => import("../../actuarial/deferred-mortality-probability/index.js"),
+  "affine/matrix-rectangle-corner-map": () => import("../../affine/matrix-rectangle-corner-map/index.js"),
   "archaeology/carbon-nitrogen-ratio-diet": () => import("../../archaeology/carbon-nitrogen-ratio-diet/index.js"),
   "archaeology/thermoluminescence-dose-rate": () => import("../../archaeology/thermoluminescence-dose-rate/index.js"),
+  "arguments/option-dependency-presence-audit": () => import("../../arguments/option-dependency-presence-audit/index.js"),
   "arithmetic/sign": () => import("../../arithmetic/sign/index.js"),
   "astrobiology/reddwarf-premainseq-bright-phase-duration": () => import("../../astrobiology/reddwarf-premainseq-bright-phase-duration/index.js"),
   "astrometry/homologous-cluster-expansion-age": () => import("../../astrometry/homologous-cluster-expansion-age/index.js"),

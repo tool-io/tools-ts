@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/fair-value-option-financial-assets-election-lookup": () => import("../../accounting/fair-value-option-financial-assets-election-lookup/index.js"),
+  "affine/matrix-composition-pair": () => import("../../affine/matrix-composition-pair/index.js"),
   "arithmetic/round-significant-figures": () => import("../../arithmetic/round-significant-figures/index.js"),
   "astrometry/iterative-astrometric-sigma-clip": () => import("../../astrometry/iterative-astrometric-sigma-clip/index.js"),
   "aviation/crosswind-limit-check": () => import("../../aviation/crosswind-limit-check/index.js"),
@@ -72,6 +73,7 @@ export const toolModuleLoaders: Readonly<
   "size": () => import("../../size/index.js"),
   "size/hiking-boot": () => import("../../size/hiking-boot/index.js"),
   "size/mattress": () => import("../../size/mattress/index.js"),
+  "sparse/coordinate-triplet-diagonal-coverage": () => import("../../sparse/coordinate-triplet-diagonal-coverage/index.js"),
   "taxation/nexus-threshold-screen": () => import("../../taxation/nexus-threshold-screen/index.js"),
   "taxation/tire-federal-excise-per-tire-lookup": () => import("../../taxation/tire-federal-excise-per-tire-lookup/index.js"),
   "text/contains-checker": () => import("../../text/contains-checker/index.js"),

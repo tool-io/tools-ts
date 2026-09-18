@@ -24,6 +24,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/transistor-base-resistor": () => import("../../electronics/transistor-base-resistor/index.js"),
   "engineering/beam-warping-torsion": () => import("../../engineering/beam-warping-torsion/index.js"),
   "engineering/flow-rate-velocity-area": () => import("../../engineering/flow-rate-velocity-area/index.js"),
+  "env/dotenv-literal-value-quote-plan": () => import("../../env/dotenv-literal-value-quote-plan/index.js"),
   "epigenetics/mofa-factor-rank": () => import("../../epigenetics/mofa-factor-rank/index.js"),
   "finance/inflation-adjustment": () => import("../../finance/inflation-adjustment/index.js"),
   "forestry/site-index": () => import("../../forestry/site-index/index.js"),

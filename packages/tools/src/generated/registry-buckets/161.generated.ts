@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "classics/tacitus-germania-ethnography-tribes-description-lookup": () => import("../../classics/tacitus-germania-ethnography-tribes-description-lookup/index.js"),
   "climatology/extraterrestrial-radiation-daily": () => import("../../climatology/extraterrestrial-radiation-daily/index.js"),
   "css/shadow-dom-style-scoping-note": () => import("../../css/shadow-dom-style-scoping-note/index.js"),
+  "easing/unit-cubic-out-value": () => import("../../easing/unit-cubic-out-value/index.js"),
   "electronics/mixer-ip3": () => import("../../electronics/mixer-ip3/index.js"),
   "electronics/resistor-current-from-power": () => import("../../electronics/resistor-current-from-power/index.js"),
   "encode/geohash": () => import("../../encode/geohash/index.js"),

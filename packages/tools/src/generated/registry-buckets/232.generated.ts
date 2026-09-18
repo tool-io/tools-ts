@@ -43,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "geology/seismic-stress-drop": () => import("../../geology/seismic-stress-drop/index.js"),
   "geology/thermoluminescence-age": () => import("../../geology/thermoluminescence-age/index.js"),
   "heraldry/mullet-point-count-decoder": () => import("../../heraldry/mullet-point-count-decoder/index.js"),
+  "ical/parameter-occurrence-duplicate-audit": () => import("../../ical/parameter-occurrence-duplicate-audit/index.js"),
   "insurance/out-of-network-balance": () => import("../../insurance/out-of-network-balance/index.js"),
   "journalism/fuzzy-name-match": () => import("../../journalism/fuzzy-name-match/index.js"),
   "kinesiology/beep-test-level-shuttle-count-norms-lookup": () => import("../../kinesiology/beep-test-level-shuttle-count-norms-lookup/index.js"),

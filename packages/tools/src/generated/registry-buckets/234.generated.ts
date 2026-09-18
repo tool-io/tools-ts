@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "entrepreneurship/product-market-fit-survey": () => import("../../entrepreneurship/product-market-fit-survey/index.js"),
   "ergonomics/ctd-screening-point-scorer": () => import("../../ergonomics/ctd-screening-point-scorer/index.js"),
   "film/aspect-ratio-calculation": () => import("../../film/aspect-ratio-calculation/index.js"),
+  "float/binary32-ulp-step-from-fields": () => import("../../float/binary32-ulp-step-from-fields/index.js"),
   "forestry/quadratic-mean-diameter": () => import("../../forestry/quadratic-mean-diameter/index.js"),
   "fun/alliteration-analyzer": () => import("../../fun/alliteration-analyzer/index.js"),
   "fun/rune-name-translator": () => import("../../fun/rune-name-translator/index.js"),

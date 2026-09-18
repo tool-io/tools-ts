@@ -76,6 +76,7 @@ export const toolModuleLoaders: Readonly<
   "text/word-count": () => import("../../text/word-count/index.js"),
   "toxicology/mixture-acute-toxicity-estimate": () => import("../../toxicology/mixture-acute-toxicity-estimate/index.js"),
   "virology/envelope-disinfectant-susceptibility-note-generator": () => import("../../virology/envelope-disinfectant-susceptibility-note-generator/index.js"),
+  "voxel/box-tile-index-record": () => import("../../voxel/box-tile-index-record/index.js"),
   "vr/comfort-vignetting-radius": () => import("../../vr/comfort-vignetting-radius/index.js"),
   "wcag-contrast-check": () => import("../../wcag-contrast-check/index.js"),
 };

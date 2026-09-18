@@ -64,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "sociology/network-centralization-degree": () => import("../../sociology/network-centralization-degree/index.js"),
   "sociology/poverty-gap-index": () => import("../../sociology/poverty-gap-index/index.js"),
   "sociology/structural-hole-redundancy-measure": () => import("../../sociology/structural-hole-redundancy-measure/index.js"),
+  "statistics/group-median-centered-values": () => import("../../statistics/group-median-centered-values/index.js"),
   "string/palindromic-suffix-lengths": () => import("../../string/palindromic-suffix-lengths/index.js"),
   "typography/math-superscript-exponent-offset-em": () => import("../../typography/math-superscript-exponent-offset-em/index.js"),
   "vexillology/pole-height-by-flag-size": () => import("../../vexillology/pole-height-by-flag-size/index.js"),

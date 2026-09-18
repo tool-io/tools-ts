@@ -16,6 +16,7 @@ export const toolModuleLoaders: Readonly<
   "construction/site-batter-boards-offset": () => import("../../construction/site-batter-boards-offset/index.js"),
   "cooking/milk-volume-to-weight": () => import("../../cooking/milk-volume-to-weight/index.js"),
   "cooking/pizza-cheese-per-pizza": () => import("../../cooking/pizza-cheese-per-pizza/index.js"),
+  "css/border-radius-overlap-scale": () => import("../../css/border-radius-overlap-scale/index.js"),
   "decode/vigenere": () => import("../../decode/vigenere/index.js"),
   "dentistry/clinical-attachment-loss": () => import("../../dentistry/clinical-attachment-loss/index.js"),
   "dentistry/vasoconstrictor-limit-cardiac": () => import("../../dentistry/vasoconstrictor-limit-cardiac/index.js"),

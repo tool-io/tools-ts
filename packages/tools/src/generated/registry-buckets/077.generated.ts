@@ -38,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "genetics/maternal-transmission-evidence": () => import("../../genetics/maternal-transmission-evidence/index.js"),
   "geology/fission-track-chi-square-test": () => import("../../geology/fission-track-chi-square-test/index.js"),
   "geometry/surface-area": () => import("../../geometry/surface-area/index.js"),
+  "http/header-quality-threshold-selector": () => import("../../http/header-quality-threshold-selector/index.js"),
   "integrity/adler32-component-split": () => import("../../integrity/adler32-component-split/index.js"),
   "interval/interval-affine-transform": () => import("../../interval/interval-affine-transform/index.js"),
   "journalism/title-capitalization-before-after-name-lookup": () => import("../../journalism/title-capitalization-before-after-name-lookup/index.js"),

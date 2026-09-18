@@ -46,6 +46,7 @@ export const toolModuleLoaders: Readonly<
   "kinesiology/concussion-return-to-play-six-stage-graduated-protocol": () => import("../../kinesiology/concussion-return-to-play-six-stage-graduated-protocol/index.js"),
   "laser/interferometer-displacement": () => import("../../laser/interferometer-displacement/index.js"),
   "list/unzip": () => import("../../list/unzip/index.js"),
+  "log/log-level-order-selector": () => import("../../log/log-level-order-selector/index.js"),
   "metabolomics/nmr-water-suppression": () => import("../../metabolomics/nmr-water-suppression/index.js"),
   "metabolomics/quantification-limit": () => import("../../metabolomics/quantification-limit/index.js"),
   "meteorology/gradient-wind-curvature-correction": () => import("../../meteorology/gradient-wind-curvature-correction/index.js"),

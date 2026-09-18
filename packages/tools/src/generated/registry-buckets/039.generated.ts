@@ -40,6 +40,9 @@ export const toolModuleLoaders: Readonly<
   "genetics/imputation-info-gate": () => import("../../genetics/imputation-info-gate/index.js"),
   "genetics/synonymous-codon-sites": () => import("../../genetics/synonymous-codon-sites/index.js"),
   "geology/secondary-compression-settlement": () => import("../../geology/secondary-compression-settlement/index.js"),
+  "hex/pixel-to-fractional-axial-record": () => import("../../hex/pixel-to-fractional-axial-record/index.js"),
+  "http/header-quoted-token-source-map": () => import("../../http/header-quoted-token-source-map/index.js"),
+  "identifier/typed-scalar-key-decoder": () => import("../../identifier/typed-scalar-key-decoder/index.js"),
   "laser/laser-thulium-fiber-1908-nm-holmium-cascade-hard-tissue-lookup": () => import("../../laser/laser-thulium-fiber-1908-nm-holmium-cascade-hard-tissue-lookup/index.js"),
   "linguistics/tone-register-vs-contour-classifier": () => import("../../linguistics/tone-register-vs-contour-classifier/index.js"),
   "matrix/identity": () => import("../../matrix/identity/index.js"),
@@ -65,6 +68,7 @@ export const toolModuleLoaders: Readonly<
   "veterinary/respiratory-rate-cat": () => import("../../veterinary/respiratory-rate-cat/index.js"),
   "viticulture/tucking-in-catch-wire-passes": () => import("../../viticulture/tucking-in-catch-wire-passes/index.js"),
   "volcanology/tilt-vector-magma-depth-estimate": () => import("../../volcanology/tilt-vector-magma-depth-estimate/index.js"),
+  "voxel/box-boundary-cell-count": () => import("../../voxel/box-boundary-cell-count/index.js"),
   "vr/tracking-precision-mm": () => import("../../vr/tracking-precision-mm/index.js"),
   "web/multipart-boundary-generator": () => import("../../web/multipart-boundary-generator/index.js"),
 };

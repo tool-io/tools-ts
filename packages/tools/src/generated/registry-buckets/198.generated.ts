@@ -70,6 +70,7 @@ export const toolModuleLoaders: Readonly<
   "size/hat": () => import("../../size/hat/index.js"),
   "sports/pole-vault-energy-approx-height": () => import("../../sports/pole-vault-energy-approx-height/index.js"),
   "statistics/chi-square-goodness-of-fit": () => import("../../statistics/chi-square-goodness-of-fit/index.js"),
+  "terminal/sgr-style-span-map": () => import("../../terminal/sgr-style-span-map/index.js"),
   "text/anagram-checker": () => import("../../text/anagram-checker/index.js"),
   "text/title-case": () => import("../../text/title-case/index.js"),
   "theatre/afm-local-musician-union-pit-minimums-hiring-lookup": () => import("../../theatre/afm-local-musician-union-pit-minimums-hiring-lookup/index.js"),

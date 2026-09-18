@@ -46,6 +46,7 @@ export const toolModuleLoaders: Readonly<
   "insurance/adjuster-assignment-turnaround-days-lookup": () => import("../../insurance/adjuster-assignment-turnaround-days-lookup/index.js"),
   "journalism/internship-conversion-rate": () => import("../../journalism/internship-conversion-rate/index.js"),
   "limnology/freshwater-density-from-temperature": () => import("../../limnology/freshwater-density-from-temperature/index.js"),
+  "mime/media-type-offer-specificity-order": () => import("../../mime/media-type-offer-specificity-order/index.js"),
   "neuroscience/apathy-evaluation-scale": () => import("../../neuroscience/apathy-evaluation-scale/index.js"),
   "neuroscience/voxel-wise-threshold": () => import("../../neuroscience/voxel-wise-threshold/index.js"),
   "numismatics/weinman-designed-walking-liberty-mercury-dime-crossref": () => import("../../numismatics/weinman-designed-walking-liberty-mercury-dime-crossref/index.js"),
@@ -70,4 +71,5 @@ export const toolModuleLoaders: Readonly<
   "sociology/linguistic-fractionalization-index": () => import("../../sociology/linguistic-fractionalization-index/index.js"),
   "theatre/show-report-coverage": () => import("../../theatre/show-report-coverage/index.js"),
   "transcriptomics/polya-signal-scanner": () => import("../../transcriptomics/polya-signal-scanner/index.js"),
+  "version/semantic-version-record-formatter": () => import("../../version/semantic-version-record-formatter/index.js"),
 };

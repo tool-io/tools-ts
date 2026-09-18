@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "auditing/preparation-engagement-no-assurance-report-elements-lookup": () => import("../../auditing/preparation-engagement-no-assurance-report-elements-lookup/index.js"),
   "aviation/dynamic-pressure": () => import("../../aviation/dynamic-pressure/index.js"),
   "banking/neobank-baas-partner-bank-sponsorship-model-explainer": () => import("../../banking/neobank-baas-partner-bank-sponsorship-model-explainer/index.js"),
+  "bezier/quadratic-degree-elevation": () => import("../../bezier/quadratic-degree-elevation/index.js"),
   "biology/at-content": () => import("../../biology/at-content/index.js"),
   "biology/clearance-creatinine": () => import("../../biology/clearance-creatinine/index.js"),
   "cartography/equal-area-break-generator": () => import("../../cartography/equal-area-break-generator/index.js"),

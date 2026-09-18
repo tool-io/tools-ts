@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "aquaculture/nitrite-toxicity": () => import("../../aquaculture/nitrite-toxicity/index.js"),
   "aquaculture/sperm-requirement": () => import("../../aquaculture/sperm-requirement/index.js"),
   "archaeology/fracture-velocity-green-dry-classify": () => import("../../archaeology/fracture-velocity-green-dry-classify/index.js"),
+  "arguments/option-duplicate-policy-resolver": () => import("../../arguments/option-duplicate-policy-resolver/index.js"),
   "astrometry/four-term-nutation-components": () => import("../../astrometry/four-term-nutation-components/index.js"),
   "astrometry/parametric-trailing-loss": () => import("../../astrometry/parametric-trailing-loss/index.js"),
   "aviation/isa-pressure-at-tropopause": () => import("../../aviation/isa-pressure-at-tropopause/index.js"),

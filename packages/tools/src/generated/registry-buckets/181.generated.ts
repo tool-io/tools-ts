@@ -73,4 +73,5 @@ export const toolModuleLoaders: Readonly<
   "transcriptomics/correlation-distance-matrix": () => import("../../transcriptomics/correlation-distance-matrix/index.js"),
   "typography/minor-third-scale-generator": () => import("../../typography/minor-third-scale-generator/index.js"),
   "vexillology/circle-of-stars-radius": () => import("../../vexillology/circle-of-stars-radius/index.js"),
+  "voxel/coordinate-twenty-six-neighbor-list": () => import("../../voxel/coordinate-twenty-six-neighbor-list/index.js"),
 };

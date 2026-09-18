@@ -39,6 +39,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/ics-ref-format-validator": () => import("../../epigraphy/ics-ref-format-validator/index.js"),
   "ergonomics/strain-index-speed-score": () => import("../../ergonomics/strain-index-speed-score/index.js"),
   "finance/discount-price": () => import("../../finance/discount-price/index.js"),
+  "float/binary64-field-split": () => import("../../float/binary64-field-split/index.js"),
   "folklore/collective-noun-animal-terms-lookup": () => import("../../folklore/collective-noun-animal-terms-lookup/index.js"),
   "framing/byte-frame-delimiter-coverage": () => import("../../framing/byte-frame-delimiter-coverage/index.js"),
   "framing/cobs-payload-decoder": () => import("../../framing/cobs-payload-decoder/index.js"),
@@ -97,5 +98,6 @@ export const toolModuleLoaders: Readonly<
   "toxicology/logit-analysis": () => import("../../toxicology/logit-analysis/index.js"),
   "typography/monospace-cell-width-half-em": () => import("../../typography/monospace-cell-width-half-em/index.js"),
   "validate/luhn": () => import("../../validate/luhn/index.js"),
+  "version/semantic-version-build-replace": () => import("../../version/semantic-version-build-replace/index.js"),
   "virology/probit-detection-limit": () => import("../../virology/probit-detection-limit/index.js"),
 };

@@ -37,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "geometry/regular-polygon-area": () => import("../../geometry/regular-polygon-area/index.js"),
   "horology/bracelet-micro-adjust-clasp-link-removal-counter": () => import("../../horology/bracelet-micro-adjust-clasp-link-removal-counter/index.js"),
   "horology/carrousel-tourbillon-architecture-screen": () => import("../../horology/carrousel-tourbillon-architecture-screen/index.js"),
+  "http/header-quality-exclusion-partition": () => import("../../http/header-quality-exclusion-partition/index.js"),
   "journalism/records-request-sla": () => import("../../journalism/records-request-sla/index.js"),
   "kinesiology/epley-brzycki-comparison": () => import("../../kinesiology/epley-brzycki-comparison/index.js"),
   "kinesiology/grip-lock-double-strap-safety-regulation-lookup": () => import("../../kinesiology/grip-lock-double-strap-safety-regulation-lookup/index.js"),

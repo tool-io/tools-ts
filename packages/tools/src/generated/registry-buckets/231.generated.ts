@@ -66,6 +66,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/mosfet-channel-length-modulation": () => import("../../semiconductor/mosfet-channel-length-modulation/index.js"),
   "size/cap": () => import("../../size/cap/index.js"),
   "sociology/intervening-opportunities-stouffer-index": () => import("../../sociology/intervening-opportunities-stouffer-index/index.js"),
+  "sql/numbered-placeholder-rebase": () => import("../../sql/numbered-placeholder-rebase/index.js"),
   "text/literal-placeholder-inventory": () => import("../../text/literal-placeholder-inventory/index.js"),
   "theatre/dynamic-pricing-demand-tier-multiplier-lookup": () => import("../../theatre/dynamic-pricing-demand-tier-multiplier-lookup/index.js"),
   "theatre/playbill-program-page-ads-ratio-calculator": () => import("../../theatre/playbill-program-page-ads-ratio-calculator/index.js"),

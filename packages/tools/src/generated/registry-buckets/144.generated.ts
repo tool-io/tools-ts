@@ -36,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "epigraphy/salt-efflorescence-classifier": () => import("../../epigraphy/salt-efflorescence-classifier/index.js"),
   "ergonomics/walkway-two-person-width-checker": () => import("../../ergonomics/walkway-two-person-width-checker/index.js"),
   "finance/split-bill": () => import("../../finance/split-bill/index.js"),
+  "float/binary16-normal-exponent": () => import("../../float/binary16-normal-exponent/index.js"),
   "fun/finish-the-sentence": () => import("../../fun/finish-the-sentence/index.js"),
   "gemology/uv-reactivity-note": () => import("../../gemology/uv-reactivity-note/index.js"),
   "gemology/volume-round-brilliant": () => import("../../gemology/volume-round-brilliant/index.js"),

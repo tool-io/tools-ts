@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "astrobiology/microlensing-einstein-crossing-time-days": () => import("../../astrobiology/microlensing-einstein-crossing-time-days/index.js"),
   "bacteriology/acidfast-ziehl-neelsen-classifier": () => import("../../bacteriology/acidfast-ziehl-neelsen-classifier/index.js"),
   "banking/bic-swift-code-structure-validator": () => import("../../banking/bic-swift-code-structure-validator/index.js"),
+  "bezier/quadratic-tangent-value": () => import("../../bezier/quadratic-tangent-value/index.js"),
   "biology/diversity-simpson-index": () => import("../../biology/diversity-simpson-index/index.js"),
   "biology/elisa-concentration": () => import("../../biology/elisa-concentration/index.js"),
   "biology/epistatic-variance": () => import("../../biology/epistatic-variance/index.js"),

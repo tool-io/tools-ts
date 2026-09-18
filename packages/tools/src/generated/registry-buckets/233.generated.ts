@@ -70,6 +70,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/negative-bias-temperature-instability-shift": () => import("../../semiconductor/negative-bias-temperature-instability-shift/index.js"),
   "semiconductor/positive-bias-temperature-instability-shift": () => import("../../semiconductor/positive-bias-temperature-instability-shift/index.js"),
   "sociology/bridging-bonding-capital-ratio": () => import("../../sociology/bridging-bonding-capital-ratio/index.js"),
+  "sql/backtick-identifier-formatter": () => import("../../sql/backtick-identifier-formatter/index.js"),
   "theatre/thrust-sightline": () => import("../../theatre/thrust-sightline/index.js"),
   "time/duration-component-normalizer": () => import("../../time/duration-component-normalizer/index.js"),
   "toxicology/first-pass-metabolism": () => import("../../toxicology/first-pass-metabolism/index.js"),

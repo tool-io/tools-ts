@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "criminology/bed-count-rated-vs-operational-capacity-lookup": () => import("../../criminology/bed-count-rated-vs-operational-capacity-lookup/index.js"),
   "criminology/bloodstain-impact-angle-arcsine-calculator": () => import("../../criminology/bloodstain-impact-angle-arcsine-calculator/index.js"),
   "criminology/classification-custody-score-points-model": () => import("../../criminology/classification-custody-score-points-model/index.js"),
+  "css/declaration-source-order-winners": () => import("../../css/declaration-source-order-winners/index.js"),
   "demography/divorce-duration-table-lookup": () => import("../../demography/divorce-duration-table-lookup/index.js"),
   "demography/mmr-maternal-mortality-ratio": () => import("../../demography/mmr-maternal-mortality-ratio/index.js"),
   "dentistry/gow-gates-success-rate": () => import("../../dentistry/gow-gates-success-rate/index.js"),

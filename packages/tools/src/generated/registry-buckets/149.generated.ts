@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "aesthetics/brutalist-beauty-love-hate-divide-lookup": () => import("../../aesthetics/brutalist-beauty-love-hate-divide-lookup/index.js"),
   "aquaculture/transportation-density": () => import("../../aquaculture/transportation-density/index.js"),
+  "arguments/option-record-argv-formatter": () => import("../../arguments/option-record-argv-formatter/index.js"),
   "banking/stop-payment-duration-lookup": () => import("../../banking/stop-payment-duration-lookup/index.js"),
   "biology/bleeding-time": () => import("../../biology/bleeding-time/index.js"),
   "biology/dead-space-volume": () => import("../../biology/dead-space-volume/index.js"),

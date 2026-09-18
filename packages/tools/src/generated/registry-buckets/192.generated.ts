@@ -51,6 +51,8 @@ export const toolModuleLoaders: Readonly<
   "futurology/science-fiction-prototyping-narrative-method": () => import("../../futurology/science-fiction-prototyping-narrative-method/index.js"),
   "geology/permeability-hazen": () => import("../../geology/permeability-hazen/index.js"),
   "hash/sha-384": () => import("../../hash/sha-384/index.js"),
+  "http/header-occurrence-stable-merge": () => import("../../http/header-occurrence-stable-merge/index.js"),
+  "identifier/opaque-key-normalization-collisions": () => import("../../identifier/opaque-key-normalization-collisions/index.js"),
   "insurance/dime-formula-need-components": () => import("../../insurance/dime-formula-need-components/index.js"),
   "laser/argon-ion-multiline-prism-line-selection-488-514-history": () => import("../../laser/argon-ion-multiline-prism-line-selection-488-514-history/index.js"),
   "limnology/thermocline-depth-max-gradient": () => import("../../limnology/thermocline-depth-max-gradient/index.js"),

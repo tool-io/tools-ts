@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/column-effective-length": () => import("../../engineering/column-effective-length/index.js"),
   "entrepreneurship/acqui-hire-talent-price-per-engineer-heuristic-lookup": () => import("../../entrepreneurship/acqui-hire-talent-price-per-engineer-heuristic-lookup/index.js"),
   "entrepreneurship/mom-test-rules-question-checker": () => import("../../entrepreneurship/mom-test-rules-question-checker/index.js"),
+  "env/variable-reference-name-inventory": () => import("../../env/variable-reference-name-inventory/index.js"),
   "epigenetics/generation-skip": () => import("../../epigenetics/generation-skip/index.js"),
   "epigraphy/sttl-acronym-expander": () => import("../../epigraphy/sttl-acronym-expander/index.js"),
   "finance/sales-tax": () => import("../../finance/sales-tax/index.js"),

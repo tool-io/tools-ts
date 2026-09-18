@@ -41,6 +41,7 @@ export const toolModuleLoaders: Readonly<
   "geology/flexural-rigidity": () => import("../../geology/flexural-rigidity/index.js"),
   "hash/keccak-512": () => import("../../hash/keccak-512/index.js"),
   "heraldry/two-one-stack-position": () => import("../../heraldry/two-one-stack-position/index.js"),
+  "http/header-comma-token-top-level-split": () => import("../../http/header-comma-token-top-level-split/index.js"),
   "interpolation/exponential": () => import("../../interpolation/exponential/index.js"),
   "laser/photobiomodulation-dose": () => import("../../laser/photobiomodulation-dose/index.js"),
   "layout/rectangle-flip-placement": () => import("../../layout/rectangle-flip-placement/index.js"),

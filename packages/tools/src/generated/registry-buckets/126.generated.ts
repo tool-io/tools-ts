@@ -45,6 +45,8 @@ export const toolModuleLoaders: Readonly<
   "heraldry/hatching-line-tincture-encoder": () => import("../../heraldry/hatching-line-tincture-encoder/index.js"),
   "heraldry/pile-taper-depth-ratio": () => import("../../heraldry/pile-taper-depth-ratio/index.js"),
   "heraldry/three-in-f-spacing-checker": () => import("../../heraldry/three-in-f-spacing-checker/index.js"),
+  "hex/axial-to-even-column-offset": () => import("../../hex/axial-to-even-column-offset/index.js"),
+  "histogram/explicit-edge-membership-indexes": () => import("../../histogram/explicit-edge-membership-indexes/index.js"),
   "horology/observatory-trials-certificates-history-lookup": () => import("../../horology/observatory-trials-certificates-history-lookup/index.js"),
   "horticulture/nft-flow-rate-per-channel": () => import("../../horticulture/nft-flow-rate-per-channel/index.js"),
   "kinesiology/deload-trigger-screen": () => import("../../kinesiology/deload-trigger-screen/index.js"),

@@ -39,6 +39,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/hazmat-class-segregation-storage-checker": () => import("../../logistics/hazmat-class-segregation-storage-checker/index.js"),
   "math/mangoldt-lambda": () => import("../../math/mangoldt-lambda/index.js"),
   "math/selberg-class-approx": () => import("../../math/selberg-class-approx/index.js"),
+  "mime/media-type-record-formatter": () => import("../../mime/media-type-record-formatter/index.js"),
   "mining/mining-height": () => import("../../mining/mining-height/index.js"),
   "mycology/yeast-budding-pattern-classifier": () => import("../../mycology/yeast-budding-pattern-classifier/index.js"),
   "number/abundant-checker": () => import("../../number/abundant-checker/index.js"),
@@ -63,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "taxation/assessment-comparable-score": () => import("../../taxation/assessment-comparable-score/index.js"),
   "text/consecutive-duplicate-line-collapser": () => import("../../text/consecutive-duplicate-line-collapser/index.js"),
   "toxicology/partition-coefficient-tissue-blood": () => import("../../toxicology/partition-coefficient-tissue-blood/index.js"),
+  "version/semantic-version-stable-sort": () => import("../../version/semantic-version-stable-sort/index.js"),
   "veterinary/titer-vaccine-checker-parvo": () => import("../../veterinary/titer-vaccine-checker-parvo/index.js"),
   "web/url-query-pair-deletion": () => import("../../web/url-query-pair-deletion/index.js"),
 };

@@ -4,6 +4,7 @@ import type { RegisteredToolModule } from "../registry.generated.js";
 export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
+  "affine/matrix-inverse-record": () => import("../../affine/matrix-inverse-record/index.js"),
   "archival-studies/collecting-gap-priority-resolver": () => import("../../archival-studies/collecting-gap-priority-resolver/index.js"),
   "archival-studies/edtf-qualifier-decoder": () => import("../../archival-studies/edtf-qualifier-decoder/index.js"),
   "astronomy/proper-motion-tangential-velocity": () => import("../../astronomy/proper-motion-tangential-velocity/index.js"),
@@ -54,6 +55,7 @@ export const toolModuleLoaders: Readonly<
   "math/kelvin-function-ber-approx": () => import("../../math/kelvin-function-ber-approx/index.js"),
   "math/ramanujan-prime-checker": () => import("../../math/ramanujan-prime-checker/index.js"),
   "meteorology/upslope-fog-lcl-height-checker": () => import("../../meteorology/upslope-fog-lcl-height-checker/index.js"),
+  "midi/channel-message-program-selector": () => import("../../midi/channel-message-program-selector/index.js"),
   "mining/electrowinning-energy-consumption": () => import("../../mining/electrowinning-energy-consumption/index.js"),
   "music/tuplet-ratio-duration-calculator": () => import("../../music/tuplet-ratio-duration-calculator/index.js"),
   "mycology/conidiophore-branching-classifier": () => import("../../mycology/conidiophore-branching-classifier/index.js"),
@@ -68,6 +70,7 @@ export const toolModuleLoaders: Readonly<
   "random/telugu-digit": () => import("../../random/telugu-digit/index.js"),
   "semiconductor/impurity-scattering-mobility": () => import("../../semiconductor/impurity-scattering-mobility/index.js"),
   "statistics/sample-variance": () => import("../../statistics/sample-variance/index.js"),
+  "terminal/csi-final-byte-classifier": () => import("../../terminal/csi-final-byte-classifier/index.js"),
   "theatre/corner-brace-diagonal-length-cut-calculator": () => import("../../theatre/corner-brace-diagonal-length-cut-calculator/index.js"),
   "validate/ean-13": () => import("../../validate/ean-13/index.js"),
   "vexillology/bend-width-geometry": () => import("../../vexillology/bend-width-geometry/index.js"),

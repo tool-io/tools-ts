@@ -60,6 +60,7 @@ export const toolModuleLoaders: Readonly<
   "size/picture-frame": () => import("../../size/picture-frame/index.js"),
   "sports/decathlon-points-table-iaaf-lookup": () => import("../../sports/decathlon-points-table-iaaf-lookup/index.js"),
   "statistics/exponential-moving-average": () => import("../../statistics/exponential-moving-average/index.js"),
+  "statistics/trim-fixed-count-per-tail": () => import("../../statistics/trim-fixed-count-per-tail/index.js"),
   "taxation/crypto-swap-gain": () => import("../../taxation/crypto-swap-gain/index.js"),
   "text/line-pair-zipper": () => import("../../text/line-pair-zipper/index.js"),
   "toxicology/lognormal-species-sensitivity-fit": () => import("../../toxicology/lognormal-species-sensitivity-fit/index.js"),

@@ -42,6 +42,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/mind-uploading-whole-brain-emulation-feasibility-map": () => import("../../futurology/mind-uploading-whole-brain-emulation-feasibility-map/index.js"),
   "genetics/monohybrid-3to1-ratio-checker": () => import("../../genetics/monohybrid-3to1-ratio-checker/index.js"),
   "geometry/frustum-volume": () => import("../../geometry/frustum-volume/index.js"),
+  "histogram/edge-width-center-table": () => import("../../histogram/edge-width-center-table/index.js"),
   "horology/cnc-manual-lathe-watchmaking-lookup": () => import("../../horology/cnc-manual-lathe-watchmaking-lookup/index.js"),
   "insurance/hsa-sweep": () => import("../../insurance/hsa-sweep/index.js"),
   "journalism/crosstab-suppression": () => import("../../journalism/crosstab-suppression/index.js"),

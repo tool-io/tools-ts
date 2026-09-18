@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "generate/uuid-v7": () => import("../../generate/uuid-v7/index.js"),
   "geology/apatite-saturation-temperature": () => import("../../geology/apatite-saturation-temperature/index.js"),
   "horology/refinished-dial-evidence-screen": () => import("../../horology/refinished-dial-evidence-screen/index.js"),
+  "http/header-line-first-colon-split": () => import("../../http/header-line-first-colon-split/index.js"),
   "laser/cladding-dilution": () => import("../../laser/cladding-dilution/index.js"),
   "limnology/tsi-carlson-total-phosphorus": () => import("../../limnology/tsi-carlson-total-phosphorus/index.js"),
   "linguistics/castilian-theta-distincion-checker": () => import("../../linguistics/castilian-theta-distincion-checker/index.js"),

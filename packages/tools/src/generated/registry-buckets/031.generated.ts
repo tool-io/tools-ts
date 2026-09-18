@@ -59,6 +59,7 @@ export const toolModuleLoaders: Readonly<
   "optimization/nadam-step": () => import("../../optimization/nadam-step/index.js"),
   "permutation/permutation-lexicographic-unrank": () => import("../../permutation/permutation-lexicographic-unrank/index.js"),
   "psychology/rotter-locus-of-control-score": () => import("../../psychology/rotter-locus-of-control-score/index.js"),
+  "quaternion/rotation-canonical-sign": () => import("../../quaternion/rotation-canonical-sign/index.js"),
   "random/ottoman-siyaq-number": () => import("../../random/ottoman-siyaq-number/index.js"),
   "random/pressure-area-exercise": () => import("../../random/pressure-area-exercise/index.js"),
   "random/triadic-palette": () => import("../../random/triadic-palette/index.js"),
@@ -76,4 +77,5 @@ export const toolModuleLoaders: Readonly<
   "typography/baseline-grid-align-checker": () => import("../../typography/baseline-grid-align-checker/index.js"),
   "veterinary/mer-maintenance-energy-requirement-dog": () => import("../../veterinary/mer-maintenance-energy-requirement-dog/index.js"),
   "volcanology/isomass-loading-gm2-contour": () => import("../../volcanology/isomass-loading-gm2-contour/index.js"),
+  "voxel/box-fixed-axis-slice": () => import("../../voxel/box-fixed-axis-slice/index.js"),
 };

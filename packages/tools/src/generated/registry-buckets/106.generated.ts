@@ -51,6 +51,7 @@ export const toolModuleLoaders: Readonly<
   "graph/graph-complement-edge-list": () => import("../../graph/graph-complement-edge-list/index.js"),
   "heraldry/tail-number-queue-counter": () => import("../../heraldry/tail-number-queue-counter/index.js"),
   "heraldry/wing-stage-term-classifier": () => import("../../heraldry/wing-stage-term-classifier/index.js"),
+  "hex/hex-corner-coordinate-list": () => import("../../hex/hex-corner-coordinate-list/index.js"),
   "horticulture/microgreens-seeding-density-gram-tray": () => import("../../horticulture/microgreens-seeding-density-gram-tray/index.js"),
   "insurance/betterment-parts-wear-deduction-percent-lookup": () => import("../../insurance/betterment-parts-wear-deduction-percent-lookup/index.js"),
   "kinesiology/tibial-shock-accelerometer-distal-medial-tibia-mount-standard": () => import("../../kinesiology/tibial-shock-accelerometer-distal-medial-tibia-mount-standard/index.js"),
@@ -86,4 +87,5 @@ export const toolModuleLoaders: Readonly<
   "theatre/sandbag-counterweight-conversion-lookup": () => import("../../theatre/sandbag-counterweight-conversion-lookup/index.js"),
   "toxicology/hazard-statement-lookup": () => import("../../toxicology/hazard-statement-lookup/index.js"),
   "typography/ppi-screen-diagonal-resolution": () => import("../../typography/ppi-screen-diagonal-resolution/index.js"),
+  "voxel/coordinate-axis-reflection": () => import("../../voxel/coordinate-axis-reflection/index.js"),
 };

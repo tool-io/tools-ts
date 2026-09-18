@@ -65,5 +65,6 @@ export const toolModuleLoaders: Readonly<
   "text/line-column-to-utf16-offset": () => import("../../text/line-column-to-utf16-offset/index.js"),
   "theatre/arena-blocking-balance": () => import("../../theatre/arena-blocking-balance/index.js"),
   "volcanology/vesicularity-porosity-calculation": () => import("../../volcanology/vesicularity-porosity-calculation/index.js"),
+  "voxel/occupancy-axis-projection": () => import("../../voxel/occupancy-axis-projection/index.js"),
   "vr/god-ray-intensity": () => import("../../vr/god-ray-intensity/index.js"),
 };

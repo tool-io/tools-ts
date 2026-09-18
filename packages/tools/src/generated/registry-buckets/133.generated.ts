@@ -41,6 +41,7 @@ export const toolModuleLoaders: Readonly<
   "fun/sarcasm-strikethrough": () => import("../../fun/sarcasm-strikethrough/index.js"),
   "genomics/read-pair-orientation": () => import("../../genomics/read-pair-orientation/index.js"),
   "geology/k-ar-age": () => import("../../geology/k-ar-age/index.js"),
+  "geometry/segment-intersection-witness": () => import("../../geometry/segment-intersection-witness/index.js"),
   "heraldry/divided-field-pairing-validator": () => import("../../heraldry/divided-field-pairing-validator/index.js"),
   "laser/laser-thulium-holmium-two-micron-water-absorption-cutting-depth-table": () => import("../../laser/laser-thulium-holmium-two-micron-water-absorption-cutting-depth-table/index.js"),
   "laser/mamyshev-filter-separation": () => import("../../laser/mamyshev-filter-separation/index.js"),

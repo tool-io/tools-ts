@@ -5,10 +5,12 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/layered-gypsum-wall-stc-lookup": () => import("../../acoustics/layered-gypsum-wall-stc-lookup/index.js"),
+  "affine/matrix-rotation-record": () => import("../../affine/matrix-rotation-record/index.js"),
   "apiculture/honey-density-pound-per-gallon": () => import("../../apiculture/honey-density-pound-per-gallon/index.js"),
   "archival-studies/mplp-backlog-reduction-percent": () => import("../../archival-studies/mplp-backlog-reduction-percent/index.js"),
   "astronomy/chandrasekhar-limit-checker": () => import("../../astronomy/chandrasekhar-limit-checker/index.js"),
   "binary/byte-array-sentinel-split": () => import("../../binary/byte-array-sentinel-split/index.js"),
+  "cache/vary-request-value-fingerprint": () => import("../../cache/vary-request-value-fingerprint/index.js"),
   "carpentry/topfband-155-grad-weitwinkel": () => import("../../carpentry/topfband-155-grad-weitwinkel/index.js"),
   "celestial-mechanics/mutual-hill-separation": () => import("../../celestial-mechanics/mutual-hill-separation/index.js"),
   "chemistry/industrial-contact-process-conversion": () => import("../../chemistry/industrial-contact-process-conversion/index.js"),

@@ -37,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "horticulture/dli-target-crop-lookup": () => import("../../horticulture/dli-target-crop-lookup/index.js"),
   "html/link-rel-alternate-feed-type-lookup": () => import("../../html/link-rel-alternate-feed-type-lookup/index.js"),
   "http/content-disposition-parser": () => import("../../http/content-disposition-parser/index.js"),
+  "http/header-value-control-character-audit": () => import("../../http/header-value-control-character-audit/index.js"),
   "insurance/cat-model-vendors-air-rms-corelogic-verisk-comparison": () => import("../../insurance/cat-model-vendors-air-rms-corelogic-verisk-comparison/index.js"),
   "insurance/retrocession-waterfall": () => import("../../insurance/retrocession-waterfall/index.js"),
   "kinesiology/leg-stiffness": () => import("../../kinesiology/leg-stiffness/index.js"),

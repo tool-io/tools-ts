@@ -97,4 +97,5 @@ export const toolModuleLoaders: Readonly<
   "toxicology/emax-model": () => import("../../toxicology/emax-model/index.js"),
   "toxicology/loglinear-trophic-magnification-factor": () => import("../../toxicology/loglinear-trophic-magnification-factor/index.js"),
   "typography/image-dimensions-for-print-size": () => import("../../typography/image-dimensions-for-print-size/index.js"),
+  "version/semantic-version-lane-maxima": () => import("../../version/semantic-version-lane-maxima/index.js"),
 };

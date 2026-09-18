@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "accounting/depletion-units-natural-resource-extraction": () => import("../../accounting/depletion-units-natural-resource-extraction/index.js"),
   "acoustics/apparent-sound-reduction-index": () => import("../../acoustics/apparent-sound-reduction-index/index.js"),
+  "affine/matrix-chain-prefix-records": () => import("../../affine/matrix-chain-prefix-records/index.js"),
   "apiculture/fondant-patty-count-per-colony": () => import("../../apiculture/fondant-patty-count-per-colony/index.js"),
   "aquaculture/settling-velocity": () => import("../../aquaculture/settling-velocity/index.js"),
   "archaeology/sex-determination-pelvis-phenice-score": () => import("../../archaeology/sex-determination-pelvis-phenice-score/index.js"),

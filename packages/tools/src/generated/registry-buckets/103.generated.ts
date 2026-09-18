@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "geology/transmissivity": () => import("../../geology/transmissivity/index.js"),
   "geometry/point-line-distance": () => import("../../geometry/point-line-distance/index.js"),
   "glaciology/geothermal-flux-basal-melt": () => import("../../glaciology/geothermal-flux-basal-melt/index.js"),
+  "histogram/explicit-edge-count-table": () => import("../../histogram/explicit-edge-count-table/index.js"),
   "horology/tourbillon-rotating-cage-principle-lookup": () => import("../../horology/tourbillon-rotating-cage-principle-lookup/index.js"),
   "html/microdata-itemscope-itemprop-pattern": () => import("../../html/microdata-itemscope-itemprop-pattern/index.js"),
   "html/td-colspan-rowspan-coverage-validator": () => import("../../html/td-colspan-rowspan-coverage-validator/index.js"),

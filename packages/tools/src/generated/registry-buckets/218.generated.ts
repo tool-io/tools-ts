@@ -37,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "geology/fold-interlimb-angle": () => import("../../geology/fold-interlimb-angle/index.js"),
   "glaciology/front-position-change-between-years": () => import("../../glaciology/front-position-change-between-years/index.js"),
   "horticulture/ridge-vent-opening-ratio-checker": () => import("../../horticulture/ridge-vent-opening-ratio-checker/index.js"),
+  "ical/date-basic-token-parser": () => import("../../ical/date-basic-token-parser/index.js"),
   "layout/scroll-thumb-size": () => import("../../layout/scroll-thumb-size/index.js"),
   "logic/cnf-clause-set-from-truth-table-builder": () => import("../../logic/cnf-clause-set-from-truth-table-builder/index.js"),
   "math/gram-law": () => import("../../math/gram-law/index.js"),

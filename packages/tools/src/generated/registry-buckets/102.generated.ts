@@ -40,6 +40,7 @@ export const toolModuleLoaders: Readonly<
   "geology/bearing-capacity-vesic": () => import("../../geology/bearing-capacity-vesic/index.js"),
   "glaciology/hydraulic-potential-shreve": () => import("../../glaciology/hydraulic-potential-shreve/index.js"),
   "graph/edge-list-weight-threshold-partition": () => import("../../graph/edge-list-weight-threshold-partition/index.js"),
+  "hex/even-column-offset-to-axial": () => import("../../hex/even-column-offset-to-axial/index.js"),
   "horology/atm-to-meters": () => import("../../horology/atm-to-meters/index.js"),
   "horology/balance-spring-temperature-rate-change": () => import("../../horology/balance-spring-temperature-rate-change/index.js"),
   "horology/demagnetization-process-stage-lookup": () => import("../../horology/demagnetization-process-stage-lookup/index.js"),

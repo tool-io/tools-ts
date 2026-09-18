@@ -32,6 +32,8 @@ export const toolModuleLoaders: Readonly<
   "geology/petrophysical-cementation-exponent-m": () => import("../../geology/petrophysical-cementation-exponent-m/index.js"),
   "geology/u-pb-concordia": () => import("../../geology/u-pb-concordia/index.js"),
   "geology/well-log-gamma-ray-index": () => import("../../geology/well-log-gamma-ray-index/index.js"),
+  "hex/cube-line-coordinate-list": () => import("../../hex/cube-line-coordinate-list/index.js"),
+  "http/header-occurrence-value-redaction": () => import("../../http/header-occurrence-value-redaction/index.js"),
   "journalism/audience-segment-allocation": () => import("../../journalism/audience-segment-allocation/index.js"),
   "kinesiology/cross-country-v2-alternate-skate-timing-gear-change": () => import("../../kinesiology/cross-country-v2-alternate-skate-timing-gear-change/index.js"),
   "kinesiology/golf-shoulder-hip-separation": () => import("../../kinesiology/golf-shoulder-hip-separation/index.js"),

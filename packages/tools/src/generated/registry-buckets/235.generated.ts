@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/tone-prominence-ratio": () => import("../../acoustics/tone-prominence-ratio/index.js"),
   "apiculture/warre-box-dimension-lookup": () => import("../../apiculture/warre-box-dimension-lookup/index.js"),
+  "arguments/option-negated-name-pair-audit": () => import("../../arguments/option-negated-name-pair-audit/index.js"),
   "aviation/tas-from-mach-temp": () => import("../../aviation/tas-from-mach-temp/index.js"),
   "aviation/turn-load-factor-gust": () => import("../../aviation/turn-load-factor-gust/index.js"),
   "bacteriology/drug-antibiogram-tally": () => import("../../bacteriology/drug-antibiogram-tally/index.js"),

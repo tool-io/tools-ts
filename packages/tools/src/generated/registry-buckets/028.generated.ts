@@ -43,6 +43,8 @@ export const toolModuleLoaders: Readonly<
   "geology/seismic-rms-velocity": () => import("../../geology/seismic-rms-velocity/index.js"),
   "horticulture/thermal-screen-fuel-saving-percent": () => import("../../horticulture/thermal-screen-fuel-saving-percent/index.js"),
   "html/colgroup-span-count-calculator": () => import("../../html/colgroup-span-count-calculator/index.js"),
+  "ini/section-name-line-parser": () => import("../../ini/section-name-line-parser/index.js"),
+  "ini/section-required-key-coverage": () => import("../../ini/section-required-key-coverage/index.js"),
   "journalism/privacy-newsworthiness-public-disclosure-test-lookup": () => import("../../journalism/privacy-newsworthiness-public-disclosure-test-lookup/index.js"),
   "json/json-one-of-key-presence-check": () => import("../../json/json-one-of-key-presence-check/index.js"),
   "kinesiology/borelli-de-motu-animalium-biomechanics-father-history": () => import("../../kinesiology/borelli-de-motu-animalium-biomechanics-father-history/index.js"),

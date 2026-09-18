@@ -44,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "graph/dijkstra-shortest-path": () => import("../../graph/dijkstra-shortest-path/index.js"),
   "hash/sha3-384": () => import("../../hash/sha3-384/index.js"),
   "heraldry/bird-wing-term-classifier": () => import("../../heraldry/bird-wing-term-classifier/index.js"),
+  "hex/axial-to-odd-row-offset": () => import("../../hex/axial-to-odd-row-offset/index.js"),
   "horticulture/substrate-bulk-density-porosity": () => import("../../horticulture/substrate-bulk-density-porosity/index.js"),
   "html/comment-remover": () => import("../../html/comment-remover/index.js"),
   "html/dns-prefetch-rel-usage-lookup": () => import("../../html/dns-prefetch-rel-usage-lookup/index.js"),

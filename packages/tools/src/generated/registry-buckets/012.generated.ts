@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "accounting/cash-conversion-cycle-dso-dpo-dio": () => import("../../accounting/cash-conversion-cycle-dso-dpo-dio/index.js"),
   "acoustics/wave-number-calculator": () => import("../../acoustics/wave-number-calculator/index.js"),
+  "affine/matrix-shear-record": () => import("../../affine/matrix-shear-record/index.js"),
   "apiculture/pollen-patty-protein-percent-mix": () => import("../../apiculture/pollen-patty-protein-percent-mix/index.js"),
   "apiculture/queen-laying-rate-eggs-per-day": () => import("../../apiculture/queen-laying-rate-eggs-per-day/index.js"),
   "archival-studies/pat-pass-flag-checker": () => import("../../archival-studies/pat-pass-flag-checker/index.js"),
@@ -58,6 +59,7 @@ export const toolModuleLoaders: Readonly<
   "philately/imperforate-status-flag-checker": () => import("../../philately/imperforate-status-flag-checker/index.js"),
   "probability/mcmc-sampler": () => import("../../probability/mcmc-sampler/index.js"),
   "proteomics/isotope-charge-estimator": () => import("../../proteomics/isotope-charge-estimator/index.js"),
+  "quaternion/unit-short-arc-nlerp": () => import("../../quaternion/unit-short-arc-nlerp/index.js"),
   "random/emoji-skin-tone-sequence": () => import("../../random/emoji-skin-tone-sequence/index.js"),
   "random/http-content-negotiation-exercise": () => import("../../random/http-content-negotiation-exercise/index.js"),
   "random/tirhuta-character": () => import("../../random/tirhuta-character/index.js"),
@@ -66,6 +68,7 @@ export const toolModuleLoaders: Readonly<
   "sailing/opposite-tack-layline-bearing": () => import("../../sailing/opposite-tack-layline-bearing/index.js"),
   "seismology/normal-incidence-two-way-time-thickness-calculator": () => import("../../seismology/normal-incidence-two-way-time-thickness-calculator/index.js"),
   "size/belt": () => import("../../size/belt/index.js"),
+  "sql/positional-binding-arity-audit": () => import("../../sql/positional-binding-arity-audit/index.js"),
   "theatre/company-switch-tie-in-feeder-amperage-lookup": () => import("../../theatre/company-switch-tie-in-feeder-amperage-lookup/index.js"),
   "typography/ems-to-pixels": () => import("../../typography/ems-to-pixels/index.js"),
   "validate/vin-check-digit": () => import("../../validate/vin-check-digit/index.js"),

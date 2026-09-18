@@ -68,6 +68,8 @@ export const toolModuleLoaders: Readonly<
   "palette/palette-alpha-presence-summary": () => import("../../palette/palette-alpha-presence-summary/index.js"),
   "parasitology/trichuris-bipolar-plug-flag-detector": () => import("../../parasitology/trichuris-bipolar-plug-flag-detector/index.js"),
   "pedagogy/harkness-table-discussion-format-lookup": () => import("../../pedagogy/harkness-table-discussion-format-lookup/index.js"),
+  "polynomial/coefficient-derivative-list": () => import("../../polynomial/coefficient-derivative-list/index.js"),
+  "quaternion/rotation-equivalence-sign-check": () => import("../../quaternion/rotation-equivalence-sign-check/index.js"),
   "random/grayscale-color": () => import("../../random/grayscale-color/index.js"),
   "random/unicode-ligature": () => import("../../random/unicode-ligature/index.js"),
   "real-estate/cltv": () => import("../../real-estate/cltv/index.js"),
@@ -79,4 +81,6 @@ export const toolModuleLoaders: Readonly<
   "sociology/reynolds-smolensky-redistribution-effect": () => import("../../sociology/reynolds-smolensky-redistribution-effect/index.js"),
   "speleology/mapped-length-per-session": () => import("../../speleology/mapped-length-per-session/index.js"),
   "speleology/pitch-headroom-clearance": () => import("../../speleology/pitch-headroom-clearance/index.js"),
+  "version/semantic-version-major-bump": () => import("../../version/semantic-version-major-bump/index.js"),
+  "version/semantic-version-prerelease-record": () => import("../../version/semantic-version-prerelease-record/index.js"),
 };

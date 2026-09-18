@@ -7,6 +7,7 @@ export const toolModuleLoaders: Readonly<
   "acoustics/clamped-bar-fundamental": () => import("../../acoustics/clamped-bar-fundamental/index.js"),
   "archival-studies/dacs-minimum-elements-checker": () => import("../../archival-studies/dacs-minimum-elements-checker/index.js"),
   "auditing/audit-committee-financial-expert-designation-criteria-lookup": () => import("../../auditing/audit-committee-financial-expert-designation-criteria-lookup/index.js"),
+  "bezier/cubic-second-derivative-value": () => import("../../bezier/cubic-second-derivative-value/index.js"),
   "biology/codon-usage-bias": () => import("../../biology/codon-usage-bias/index.js"),
   "biology/oxygen-content-blood": () => import("../../biology/oxygen-content-blood/index.js"),
   "biology/simpson-evenness": () => import("../../biology/simpson-evenness/index.js"),

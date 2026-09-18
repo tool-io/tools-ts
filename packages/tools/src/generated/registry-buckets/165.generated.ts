@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "actuarial/expected-loss-ratio-reserve": () => import("../../actuarial/expected-loss-ratio-reserve/index.js"),
+  "affine/matrix-about-anchor-transform": () => import("../../affine/matrix-about-anchor-transform/index.js"),
   "apiculture/almond-bloom-rental-period-lookup": () => import("../../apiculture/almond-bloom-rental-period-lookup/index.js"),
   "apiculture/stores-depletion-rate-per-week": () => import("../../apiculture/stores-depletion-rate-per-week/index.js"),
   "archival-studies/offsite-manifest-reconciler": () => import("../../archival-studies/offsite-manifest-reconciler/index.js"),
@@ -16,6 +17,7 @@ export const toolModuleLoaders: Readonly<
   "biology/ejection-fraction": () => import("../../biology/ejection-fraction/index.js"),
   "biology/logistic-growth": () => import("../../biology/logistic-growth/index.js"),
   "biology/quantal-content": () => import("../../biology/quantal-content/index.js"),
+  "cache/expiration-sweep-records": () => import("../../cache/expiration-sweep-records/index.js"),
   "carpentry/gelaender-fuellstab-abstand-12cm-kind": () => import("../../carpentry/gelaender-fuellstab-abstand-12cm-kind/index.js"),
   "carpentry/massivholz-lamellen-max-80mm": () => import("../../carpentry/massivholz-lamellen-max-80mm/index.js"),
   "chemistry/gibbs-adsorption-isotherm": () => import("../../chemistry/gibbs-adsorption-isotherm/index.js"),
@@ -57,6 +59,7 @@ export const toolModuleLoaders: Readonly<
   "html/textarea-input-maxlength-parity": () => import("../../html/textarea-input-maxlength-parity/index.js"),
   "insurance/deductible-progress-percent-today": () => import("../../insurance/deductible-progress-percent-today/index.js"),
   "insurance/split-dollar-employer-employee-premium-sharing-arrangement-lookup": () => import("../../insurance/split-dollar-employer-employee-premium-sharing-arrangement-lookup/index.js"),
+  "log/syslog-priority-component-split": () => import("../../log/syslog-priority-component-split/index.js"),
   "marriage/wedding-guest-list-capacity": () => import("../../marriage/wedding-guest-list-capacity/index.js"),
   "math/sociable-chain-length-3": () => import("../../math/sociable-chain-length-3/index.js"),
   "mining/blast-energy-factor": () => import("../../mining/blast-energy-factor/index.js"),
@@ -89,6 +92,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/thermoelectric-peltier-coefficient": () => import("../../semiconductor/thermoelectric-peltier-coefficient/index.js"),
   "sericulture/charkha-vs-multiend-throughput-compare": () => import("../../sericulture/charkha-vs-multiend-throughput-compare/index.js"),
   "sociology/gender-pay-gap": () => import("../../sociology/gender-pay-gap/index.js"),
+  "sparse/coordinate-triplet-duplicate-combiner": () => import("../../sparse/coordinate-triplet-duplicate-combiner/index.js"),
   "taxation/amt-preference-items-addback-checklist": () => import("../../taxation/amt-preference-items-addback-checklist/index.js"),
   "taxation/collectibles-gain-tax": () => import("../../taxation/collectibles-gain-tax/index.js"),
   "taxation/privilege-communication-screen": () => import("../../taxation/privilege-communication-screen/index.js"),

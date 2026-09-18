@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "chemistry/lattice-energy-born-haber": () => import("../../chemistry/lattice-energy-born-haber/index.js"),
   "classics/funeral-imagines-wax-ancestor-masks-procession-display": () => import("../../classics/funeral-imagines-wax-ancestor-masks-procession-display/index.js"),
   "classics/thermopolium-snack-counter-menu-archaeology-lookup": () => import("../../classics/thermopolium-snack-counter-menu-archaeology-lookup/index.js"),
+  "classification/confusion-label-class-collapse": () => import("../../classification/confusion-label-class-collapse/index.js"),
   "construction/footing-bearing-pressure": () => import("../../construction/footing-bearing-pressure/index.js"),
   "convert/decimal-to-base62": () => import("../../convert/decimal-to-base62/index.js"),
   "convert/hsv-to-oklch": () => import("../../convert/hsv-to-oklch/index.js"),

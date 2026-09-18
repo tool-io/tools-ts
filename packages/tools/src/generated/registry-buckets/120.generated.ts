@@ -70,11 +70,13 @@ export const toolModuleLoaders: Readonly<
   "taxation/education-assistance-exclusion": () => import("../../taxation/education-assistance-exclusion/index.js"),
   "taxation/inherited-ira-10-year-rule-checker": () => import("../../taxation/inherited-ira-10-year-rule-checker/index.js"),
   "taxation/wash-sale-rule-30-day-flag-checker": () => import("../../taxation/wash-sale-rule-30-day-flag-checker/index.js"),
+  "terminal/sgr-normalized-style-replay": () => import("../../terminal/sgr-normalized-style-replay/index.js"),
   "text/readability-score": () => import("../../text/readability-score/index.js"),
   "theatre/nonprofit-501c3-board-governance-season-structure-lookup": () => import("../../theatre/nonprofit-501c3-board-governance-season-structure-lookup/index.js"),
   "toxicology/genotoxicity-ames": () => import("../../toxicology/genotoxicity-ames/index.js"),
   "toxicology/precautionary-statement-lookup": () => import("../../toxicology/precautionary-statement-lookup/index.js"),
   "toxicology/tolerable-weekly-intake": () => import("../../toxicology/tolerable-weekly-intake/index.js"),
+  "version/semantic-version-minor-bump": () => import("../../version/semantic-version-minor-bump/index.js"),
   "vexillology/pantone-to-rgb-flag": () => import("../../vexillology/pantone-to-rgb-flag/index.js"),
   "virology/virion-size-range-class-note-generator": () => import("../../virology/virion-size-range-class-note-generator/index.js"),
 };

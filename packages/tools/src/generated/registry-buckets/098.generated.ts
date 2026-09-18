@@ -49,6 +49,7 @@ export const toolModuleLoaders: Readonly<
   "journalism/live-blog-chronology-sorter": () => import("../../journalism/live-blog-chronology-sorter/index.js"),
   "laser/microdisk-q-threshold": () => import("../../laser/microdisk-q-threshold/index.js"),
   "linguistics/singularize-english": () => import("../../linguistics/singularize-english/index.js"),
+  "log/log-prefix-token-extractor": () => import("../../log/log-prefix-token-extractor/index.js"),
   "logistics/perfect-order-index-component-product": () => import("../../logistics/perfect-order-index-component-product/index.js"),
   "math/semiprime-count-approx": () => import("../../math/semiprime-count-approx/index.js"),
   "mri/parallel-imaging-snr-g-factor": () => import("../../mri/parallel-imaging-snr-g-factor/index.js"),

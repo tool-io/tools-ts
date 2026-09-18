@@ -40,6 +40,7 @@ export const toolModuleLoaders: Readonly<
   "geology/pore-pressure-prediction-eaton-sonic": () => import("../../geology/pore-pressure-prediction-eaton-sonic/index.js"),
   "geology/richter-magnitude-from-amplitude": () => import("../../geology/richter-magnitude-from-amplitude/index.js"),
   "geology/well-log-porosity-neutron": () => import("../../geology/well-log-porosity-neutron/index.js"),
+  "geometry/polygon-rectangle-clip": () => import("../../geometry/polygon-rectangle-clip/index.js"),
   "heraldry/hatching-angle-tincture-decoder": () => import("../../heraldry/hatching-angle-tincture-decoder/index.js"),
   "horology/mixed-donor-parts-evidence-screen": () => import("../../horology/mixed-donor-parts-evidence-screen/index.js"),
   "html/attribute-parser": () => import("../../html/attribute-parser/index.js"),
@@ -79,8 +80,10 @@ export const toolModuleLoaders: Readonly<
   "sericulture/tray-stack-gap-height": () => import("../../sericulture/tray-stack-gap-height/index.js"),
   "toxicology/rel-twa": () => import("../../toxicology/rel-twa/index.js"),
   "typography/page-count-from-wordcount-standard": () => import("../../typography/page-count-from-wordcount-standard/index.js"),
+  "version/semantic-version-patch-bump": () => import("../../version/semantic-version-patch-bump/index.js"),
   "veterinary/donor-blood-collection-limit": () => import("../../veterinary/donor-blood-collection-limit/index.js"),
   "vexillology/southern-cross-coordinates": () => import("../../vexillology/southern-cross-coordinates/index.js"),
   "viticulture/berry-average-weight-from-sample": () => import("../../viticulture/berry-average-weight-from-sample/index.js"),
   "viticulture/pre-pruning-machine-pass-speed": () => import("../../viticulture/pre-pruning-machine-pass-speed/index.js"),
+  "voxel/occupancy-surface-face-count": () => import("../../voxel/occupancy-surface-face-count/index.js"),
 };

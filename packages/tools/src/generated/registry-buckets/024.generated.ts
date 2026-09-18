@@ -74,6 +74,7 @@ export const toolModuleLoaders: Readonly<
   "size/hanfu-reconstruction": () => import("../../size/hanfu-reconstruction/index.js"),
   "sociology/hoover-index": () => import("../../sociology/hoover-index/index.js"),
   "sociology/sex-ratio": () => import("../../sociology/sex-ratio/index.js"),
+  "statistics/weighted-denominator-coverage": () => import("../../statistics/weighted-denominator-coverage/index.js"),
   "taxation/contractor-vs-employee-classification-test-checker": () => import("../../taxation/contractor-vs-employee-classification-test-checker/index.js"),
   "taxation/lob-criteria-check": () => import("../../taxation/lob-criteria-check/index.js"),
   "text/snake-case": () => import("../../text/snake-case/index.js"),

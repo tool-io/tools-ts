@@ -35,6 +35,8 @@ export const toolModuleLoaders: Readonly<
   "fun/word-search-generator": () => import("../../fun/word-search-generator/index.js"),
   "futurology/longevity-dividend-health-extension-economic-case-lookup": () => import("../../futurology/longevity-dividend-health-extension-economic-case-lookup/index.js"),
   "geology/fault-heave": () => import("../../geology/fault-heave/index.js"),
+  "geometry/rectangle-signed-axis-gaps": () => import("../../geometry/rectangle-signed-axis-gaps/index.js"),
+  "hex/cube-axis-reflection": () => import("../../hex/cube-axis-reflection/index.js"),
   "horticulture/poinsettia-short-day-trigger-date": () => import("../../horticulture/poinsettia-short-day-trigger-date/index.js"),
   "journalism/foia-fee-category-media-waiver-lookup": () => import("../../journalism/foia-fee-category-media-waiver-lookup/index.js"),
   "laser/impedance-swr": () => import("../../laser/impedance-swr/index.js"),

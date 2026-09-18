@@ -51,6 +51,7 @@ export const toolModuleLoaders: Readonly<
   "geology/passive-earth-pressure-coefficient": () => import("../../geology/passive-earth-pressure-coefficient/index.js"),
   "geology/volcanic-explosivity-index-calculator": () => import("../../geology/volcanic-explosivity-index-calculator/index.js"),
   "html/track-kind-subtitles-captions-chapters": () => import("../../html/track-kind-subtitles-captions-chapters/index.js"),
+  "identifier/opaque-key-alphabet-audit": () => import("../../identifier/opaque-key-alphabet-audit/index.js"),
   "kinesiology/nasm-nsca-acsm-certification-approach-comparison-lookup": () => import("../../kinesiology/nasm-nsca-acsm-certification-approach-comparison-lookup/index.js"),
   "kinesiology/punch-force-newton-boxer-measured-reference-lookup": () => import("../../kinesiology/punch-force-newton-boxer-measured-reference-lookup/index.js"),
   "laser/air-biased-thz-field": () => import("../../laser/air-biased-thz-field/index.js"),

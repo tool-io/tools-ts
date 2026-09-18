@@ -28,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/arc-flash-incident-energy": () => import("../../engineering/arc-flash-incident-energy/index.js"),
   "epigenetics/epimutation-rate": () => import("../../epigenetics/epimutation-rate/index.js"),
   "ergonomics/ocra-recovery-factor-lookup": () => import("../../ergonomics/ocra-recovery-factor-lookup/index.js"),
+  "float/binary32-sign-toggle-pattern": () => import("../../float/binary32-sign-toggle-pattern/index.js"),
   "folklore/maui-trickster-demigod-pacific-islands-tales-lookup": () => import("../../folklore/maui-trickster-demigod-pacific-islands-tales-lookup/index.js"),
   "folklore/vampire-apotropaic-charms-by-region-lookup": () => import("../../folklore/vampire-apotropaic-charms-by-region-lookup/index.js"),
   "futurology/takeoff-speed-fast-slow-scenario-classifier": () => import("../../futurology/takeoff-speed-fast-slow-scenario-classifier/index.js"),

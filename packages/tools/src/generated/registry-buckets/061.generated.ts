@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/inclined-plane-effort": () => import("../../engineering/inclined-plane-effort/index.js"),
   "engineering/sediment-transport-capacity": () => import("../../engineering/sediment-transport-capacity/index.js"),
   "engineering/specific-energy-open-channel": () => import("../../engineering/specific-energy-open-channel/index.js"),
+  "env/assignment-last-wins": () => import("../../env/assignment-last-wins/index.js"),
   "epigenetics/beadchip-probe-design-note-generator": () => import("../../epigenetics/beadchip-probe-design-note-generator/index.js"),
   "ergonomics/grip-diameter-fit-calculator": () => import("../../ergonomics/grip-diameter-fit-calculator/index.js"),
   "ergonomics/reba-grand-risk-mapper": () => import("../../ergonomics/reba-grand-risk-mapper/index.js"),

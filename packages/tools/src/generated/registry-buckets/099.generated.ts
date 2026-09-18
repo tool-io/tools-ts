@@ -17,6 +17,8 @@ export const toolModuleLoaders: Readonly<
   "carpentry/leim-presszeit-temperatur": () => import("../../carpentry/leim-presszeit-temperatur/index.js"),
   "chemistry/reduced-temperature": () => import("../../chemistry/reduced-temperature/index.js"),
   "classics/villa-rustica-urbana-suburban-typology-functions-lookup": () => import("../../classics/villa-rustica-urbana-suburban-typology-functions-lookup/index.js"),
+  "classification/prediction-top-label-tie-audit": () => import("../../classification/prediction-top-label-tie-audit/index.js"),
+  "classification/weighted-label-pair-confusion-table": () => import("../../classification/weighted-label-pair-confusion-table/index.js"),
   "climatology/chill-hours-accumulator": () => import("../../climatology/chill-hours-accumulator/index.js"),
   "climatology/koppen-subclass-resolver": () => import("../../climatology/koppen-subclass-resolver/index.js"),
   "color/litmus-red-blue-ph-range-checker": () => import("../../color/litmus-red-blue-ph-range-checker/index.js"),
@@ -59,6 +61,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/equivalent-length-fitting": () => import("../../plumbing/equivalent-length-fitting/index.js"),
   "plumbing/friction-factor-laminar": () => import("../../plumbing/friction-factor-laminar/index.js"),
   "pregnancy/twin-growth-percentile": () => import("../../pregnancy/twin-growth-percentile/index.js"),
+  "quaternion/hamilton-product-pair": () => import("../../quaternion/hamilton-product-pair/index.js"),
   "random/de-morgan-transformation-quiz": () => import("../../random/de-morgan-transformation-quiz/index.js"),
   "random/letter": () => import("../../random/letter/index.js"),
   "sailing/ferry-glide-course": () => import("../../sailing/ferry-glide-course/index.js"),
@@ -71,4 +74,5 @@ export const toolModuleLoaders: Readonly<
   "theatre/prompter-box-understage-position-opera-tradition-lookup": () => import("../../theatre/prompter-box-understage-position-opera-tradition-lookup/index.js"),
   "virology/incubation-exposure-bounds": () => import("../../virology/incubation-exposure-bounds/index.js"),
   "volcanology/mass-eruption-rate-from-column-height": () => import("../../volcanology/mass-eruption-rate-from-column-height/index.js"),
+  "voxel/row-major-index-xyz": () => import("../../voxel/row-major-index-xyz/index.js"),
 };

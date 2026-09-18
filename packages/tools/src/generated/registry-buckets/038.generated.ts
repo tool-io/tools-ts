@@ -44,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "laser/iec-60825-laser-class-1-to-4-accessible-emission-limit-table": () => import("../../laser/iec-60825-laser-class-1-to-4-accessible-emission-limit-table/index.js"),
   "linguistics/hangul-jamo-composition-count": () => import("../../linguistics/hangul-jamo-composition-count/index.js"),
   "linguistics/kana-romaji-mapping-lookup": () => import("../../linguistics/kana-romaji-mapping-lookup/index.js"),
+  "log/log-record-level-count-table": () => import("../../log/log-record-level-count-table/index.js"),
   "logistics/tare-payload-net-gross-split": () => import("../../logistics/tare-payload-net-gross-split/index.js"),
   "matrix/singular-value-decomposition": () => import("../../matrix/singular-value-decomposition/index.js"),
   "mining/ore-body-thickness": () => import("../../mining/ore-body-thickness/index.js"),

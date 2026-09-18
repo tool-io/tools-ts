@@ -35,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "glaciology/freeboard-flotation-requirement": () => import("../../glaciology/freeboard-flotation-requirement/index.js"),
   "hash/blake-384": () => import("../../hash/blake-384/index.js"),
   "horology/crown-thread-pitch-lookup": () => import("../../horology/crown-thread-pitch-lookup/index.js"),
+  "identifier/opaque-key-fixed-alphabet-ordinal": () => import("../../identifier/opaque-key-fixed-alphabet-ordinal/index.js"),
   "kinesiology/one-rep-max-training-loads": () => import("../../kinesiology/one-rep-max-training-loads/index.js"),
   "laser/fluorescence-upconversion": () => import("../../laser/fluorescence-upconversion/index.js"),
   "laser/laser-nd-yvo4-vs-nd-yag-absorption-cross-section-compare-lookup": () => import("../../laser/laser-nd-yvo4-vs-nd-yag-absorption-cross-section-compare-lookup/index.js"),
@@ -62,4 +63,5 @@ export const toolModuleLoaders: Readonly<
   "sociology/eigenvector-centrality-bonacich-power": () => import("../../sociology/eigenvector-centrality-bonacich-power/index.js"),
   "theatre/denouement-unknotting-french-term-origin-meaning-lookup": () => import("../../theatre/denouement-unknotting-french-term-origin-meaning-lookup/index.js"),
   "theatre/grid-height-to-proscenium-ratio": () => import("../../theatre/grid-height-to-proscenium-ratio/index.js"),
+  "voxel/xyz-row-major-index": () => import("../../voxel/xyz-row-major-index/index.js"),
 };

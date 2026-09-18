@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/dew-point-approx": () => import("../../engineering/dew-point-approx/index.js"),
   "engineering/grinding-removal-rate": () => import("../../engineering/grinding-removal-rate/index.js"),
   "engineering/sound-pressure-level": () => import("../../engineering/sound-pressure-level/index.js"),
+  "env/variable-reference-literal-substitution": () => import("../../env/variable-reference-literal-substitution/index.js"),
   "folklore/walking-under-ladder-origin-blacklist-lookup": () => import("../../folklore/walking-under-ladder-origin-blacklist-lookup/index.js"),
   "forestry/firewood-stack-cord-measure-standard-4x4x8": () => import("../../forestry/firewood-stack-cord-measure-standard-4x4x8/index.js"),
   "fun/bingo-card-generator": () => import("../../fun/bingo-card-generator/index.js"),

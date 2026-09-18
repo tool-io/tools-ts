@@ -44,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "geology/decline-rate-exponential": () => import("../../geology/decline-rate-exponential/index.js"),
   "geology/well-log-water-saturation-archie": () => import("../../geology/well-log-water-saturation-archie/index.js"),
   "hash/keccak-224": () => import("../../hash/keccak-224/index.js"),
+  "hex/axial-ring-coordinate-list": () => import("../../hex/axial-ring-coordinate-list/index.js"),
   "horology/moonphase-drift-per-year": () => import("../../horology/moonphase-drift-per-year/index.js"),
   "html/caption-vs-summary-deprecated-lookup": () => import("../../html/caption-vs-summary-deprecated-lookup/index.js"),
   "journalism/folio-deadline-section-pagination-order-lookup": () => import("../../journalism/folio-deadline-section-pagination-order-lookup/index.js"),
@@ -77,4 +78,5 @@ export const toolModuleLoaders: Readonly<
   "toxicology/exposure-assessment": () => import("../../toxicology/exposure-assessment/index.js"),
   "transcriptomics/housekeeping-cv-rank": () => import("../../transcriptomics/housekeeping-cv-rank/index.js"),
   "veterinary/lactate-perfusion-checker": () => import("../../veterinary/lactate-perfusion-checker/index.js"),
+  "voxel/box-halo-cell-budget": () => import("../../voxel/box-halo-cell-budget/index.js"),
 };

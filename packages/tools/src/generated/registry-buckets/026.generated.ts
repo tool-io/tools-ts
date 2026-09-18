@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "acoustics/railway-pass-by-sel": () => import("../../acoustics/railway-pass-by-sel/index.js"),
   "aesthetics/kandinsky-music-painting-correspondence-verdict-lookup": () => import("../../aesthetics/kandinsky-music-painting-correspondence-verdict-lookup/index.js"),
   "archival-studies/annual-metrics-rollup-aggregator": () => import("../../archival-studies/annual-metrics-rollup-aggregator/index.js"),
+  "arguments/option-positional-count-audit": () => import("../../arguments/option-positional-count-audit/index.js"),
   "astrometry/parallactic-angle-field-rotation": () => import("../../astrometry/parallactic-angle-field-rotation/index.js"),
   "astronomy/rule-of-500-astrophoto-shutter": () => import("../../astronomy/rule-of-500-astrophoto-shutter/index.js"),
   "auditing/compliance-supplement-parts-three-through-six-structure-lookup": () => import("../../auditing/compliance-supplement-parts-three-through-six-structure-lookup/index.js"),

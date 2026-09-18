@@ -46,6 +46,7 @@ export const toolModuleLoaders: Readonly<
   "heraldry/fimbriation-legality-checker": () => import("../../heraldry/fimbriation-legality-checker/index.js"),
   "horology/beat-error-milliseconds": () => import("../../horology/beat-error-milliseconds/index.js"),
   "html/s-del-ins-edited-content-diff": () => import("../../html/s-del-ins-edited-content-diff/index.js"),
+  "http/header-occurrence-singleton-audit": () => import("../../http/header-occurrence-singleton-audit/index.js"),
   "insurance/risk-retention-group-rrg-liability-lines-act-origin-lookup": () => import("../../insurance/risk-retention-group-rrg-liability-lines-act-origin-lookup/index.js"),
   "journalism/recording-consent-one-all-party-jurisdiction-lookup": () => import("../../journalism/recording-consent-one-all-party-jurisdiction-lookup/index.js"),
   "json/object-value-type-histogram": () => import("../../json/object-value-type-histogram/index.js"),

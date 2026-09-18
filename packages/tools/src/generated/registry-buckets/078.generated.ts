@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "convert/radiation-activity": () => import("../../convert/radiation-activity/index.js"),
   "criminology/miranda-custodial-interrogation-trigger-checker": () => import("../../criminology/miranda-custodial-interrogation-trigger-checker/index.js"),
   "css/appearance-none-form-reset-note": () => import("../../css/appearance-none-form-reset-note/index.js"),
+  "css/border-radius-pair-compactor": () => import("../../css/border-radius-pair-compactor/index.js"),
   "csv/excel-xfd-16384-column-limit-checker": () => import("../../csv/excel-xfd-16384-column-limit-checker/index.js"),
   "dance/pointe-shank-vamp-height-strength-lookup": () => import("../../dance/pointe-shank-vamp-height-strength-lookup/index.js"),
   "electronics/inductor-core-loss-density": () => import("../../electronics/inductor-core-loss-density/index.js"),

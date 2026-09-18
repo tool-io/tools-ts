@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "acoustics/intensity-level-from-intensity": () => import("../../acoustics/intensity-level-from-intensity/index.js"),
+  "affine/matrix-scale-record": () => import("../../affine/matrix-scale-record/index.js"),
   "apiculture/honey-frame-weight-full-estimate": () => import("../../apiculture/honey-frame-weight-full-estimate/index.js"),
   "aquaculture/feed-cost-per-kg-gain": () => import("../../aquaculture/feed-cost-per-kg-gain/index.js"),
   "astrometry/anisotropic-psf-sampling": () => import("../../astrometry/anisotropic-psf-sampling/index.js"),
@@ -26,6 +27,7 @@ export const toolModuleLoaders: Readonly<
   "criminology/safety-valve-eligibility-points-checker": () => import("../../criminology/safety-valve-eligibility-points-checker/index.js"),
   "cryptography/api-key-prefix-separability-checker": () => import("../../cryptography/api-key-prefix-separability-checker/index.js"),
   "cryptography/certificate-validity-window-days-left": () => import("../../cryptography/certificate-validity-window-days-left/index.js"),
+  "css/font-family-list-formatter": () => import("../../css/font-family-list-formatter/index.js"),
   "csv/double-quote-all-fields-enforcer-writer-style": () => import("../../csv/double-quote-all-fields-enforcer-writer-style/index.js"),
   "demography/person-years-exposed-risk-computation": () => import("../../demography/person-years-exposed-risk-computation/index.js"),
   "electronics/battery-state-of-health": () => import("../../electronics/battery-state-of-health/index.js"),
@@ -50,6 +52,7 @@ export const toolModuleLoaders: Readonly<
   "math/airy-zero-derivative-approx": () => import("../../math/airy-zero-derivative-approx/index.js"),
   "math/smooth-number-count-approx": () => import("../../math/smooth-number-count-approx/index.js"),
   "metabolomics/mass-accuracy-ppm": () => import("../../metabolomics/mass-accuracy-ppm/index.js"),
+  "midi/channel-message-controller-selector": () => import("../../midi/channel-message-controller-selector/index.js"),
   "museology/label-character-height-rule-checker": () => import("../../museology/label-character-height-rule-checker/index.js"),
   "network/ipv6-prefix-parent": () => import("../../network/ipv6-prefix-parent/index.js"),
   "neuroscience/glasgow-coma-scale": () => import("../../neuroscience/glasgow-coma-scale/index.js"),

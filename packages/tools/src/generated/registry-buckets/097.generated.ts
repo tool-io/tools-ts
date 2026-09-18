@@ -32,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "geology/active-earth-pressure-coefficient": () => import("../../geology/active-earth-pressure-coefficient/index.js"),
   "horology/long-now-10000-year-clock-status-lookup": () => import("../../horology/long-now-10000-year-clock-status-lookup/index.js"),
   "html/aria-live-polite-assertive-off-lookup": () => import("../../html/aria-live-polite-assertive-off-lookup/index.js"),
+  "ical/text-value-unescape": () => import("../../ical/text-value-unescape/index.js"),
   "interval/interval-merge-with-source-ids": () => import("../../interval/interval-merge-with-source-ids/index.js"),
   "kinesiology/plank-hold-time-norms-age-benchmark-table-lookup": () => import("../../kinesiology/plank-hold-time-norms-age-benchmark-table-lookup/index.js"),
   "laser/audience-safe-distance": () => import("../../laser/audience-safe-distance/index.js"),
@@ -40,6 +41,7 @@ export const toolModuleLoaders: Readonly<
   "math/composite-density-approx": () => import("../../math/composite-density-approx/index.js"),
   "metabolomics/neutral-loss-matcher": () => import("../../metabolomics/neutral-loss-matcher/index.js"),
   "metrics/matthews-correlation": () => import("../../metrics/matthews-correlation/index.js"),
+  "midi/channel-message-byte-count": () => import("../../midi/channel-message-byte-count/index.js"),
   "mining/waste-tonnage": () => import("../../mining/waste-tonnage/index.js"),
   "mri/spin-echo-center-timing-audit": () => import("../../mri/spin-echo-center-timing-audit/index.js"),
   "museology/image-storage-tb-estimate": () => import("../../museology/image-storage-tb-estimate/index.js"),
@@ -59,6 +61,7 @@ export const toolModuleLoaders: Readonly<
   "size/bracelet": () => import("../../size/bracelet/index.js"),
   "size/crinoline-reconstruction": () => import("../../size/crinoline-reconstruction/index.js"),
   "sociology/network-closeness-sociology": () => import("../../sociology/network-closeness-sociology/index.js"),
+  "terminal/escape-token-incomplete-tail": () => import("../../terminal/escape-token-incomplete-tail/index.js"),
   "toxicology/independent-action-mixture-response": () => import("../../toxicology/independent-action-mixture-response/index.js"),
   "vexillology/stripes-canton-family-checker": () => import("../../vexillology/stripes-canton-family-checker/index.js"),
 };

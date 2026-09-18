@@ -58,6 +58,7 @@ export const toolModuleLoaders: Readonly<
   "math/invert-transform-binomial": () => import("../../math/invert-transform-binomial/index.js"),
   "meteorology/lightning-leader-step-length-meters": () => import("../../meteorology/lightning-leader-step-length-meters/index.js"),
   "meteorology/nakaya-crystal-habit-temperature-lookup": () => import("../../meteorology/nakaya-crystal-habit-temperature-lookup/index.js"),
+  "mime/media-type-parameter-conflict-table": () => import("../../mime/media-type-parameter-conflict-table/index.js"),
   "mining/leaching-recovery-vs-time": () => import("../../mining/leaching-recovery-vs-time/index.js"),
   "numismatics/off-center-strike-percent": () => import("../../numismatics/off-center-strike-percent/index.js"),
   "oceanography/mean-sea-level-trend-mm-year": () => import("../../oceanography/mean-sea-level-trend-mm-year/index.js"),

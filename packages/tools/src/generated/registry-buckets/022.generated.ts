@@ -69,6 +69,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/photodiode-bandwidth": () => import("../../semiconductor/photodiode-bandwidth/index.js"),
   "semiconductor/schottky-barrier-inhomogeneity-sigma": () => import("../../semiconductor/schottky-barrier-inhomogeneity-sigma/index.js"),
   "statistics/count-above": () => import("../../statistics/count-above/index.js"),
+  "statistics/median-absolute-deviation-from-reference": () => import("../../statistics/median-absolute-deviation-from-reference/index.js"),
   "taxation/group-term-life-imputed-income": () => import("../../taxation/group-term-life-imputed-income/index.js"),
   "taxation/heir-basis-consistency": () => import("../../taxation/heir-basis-consistency/index.js"),
   "theatre/flying-harness-load-rating-performer-calculator": () => import("../../theatre/flying-harness-load-rating-performer-calculator/index.js"),

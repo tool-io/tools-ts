@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "aesthetics/hermeneutic-circle-part-whole-gadamer-loop-checker": () => import("../../aesthetics/hermeneutic-circle-part-whole-gadamer-loop-checker/index.js"),
   "agriculture/panicle-number-per-hectare": () => import("../../agriculture/panicle-number-per-hectare/index.js"),
+  "angle/turn-direction-ambiguity-audit": () => import("../../angle/turn-direction-ambiguity-audit/index.js"),
   "aquaculture/biofilter-media-volume": () => import("../../aquaculture/biofilter-media-volume/index.js"),
   "astrobiology/hz-outer-maximum-greenhouse-boundary": () => import("../../astrobiology/hz-outer-maximum-greenhouse-boundary/index.js"),
   "astrobiology/waterfall-channel-resolution-planner": () => import("../../astrobiology/waterfall-channel-resolution-planner/index.js"),
@@ -74,4 +75,5 @@ export const toolModuleLoaders: Readonly<
   "typography/points-to-pica": () => import("../../typography/points-to-pica/index.js"),
   "typography/units-per-em-scale-factor": () => import("../../typography/units-per-em-scale-factor/index.js"),
   "veterinary/temperature-normal-range-cat": () => import("../../veterinary/temperature-normal-range-cat/index.js"),
+  "voxel/box-overlap-cell-count": () => import("../../voxel/box-overlap-cell-count/index.js"),
 };

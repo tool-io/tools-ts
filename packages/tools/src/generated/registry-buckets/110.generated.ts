@@ -40,6 +40,7 @@ export const toolModuleLoaders: Readonly<
   "horology/tritium-decay-brightness": () => import("../../horology/tritium-decay-brightness/index.js"),
   "journalism/open-rate-inflation": () => import("../../journalism/open-rate-inflation/index.js"),
   "laser/twin-field-plob-comparison": () => import("../../laser/twin-field-plob-comparison/index.js"),
+  "log/log-record-window-count-table": () => import("../../log/log-record-window-count-table/index.js"),
   "meteorology/hail-kinetic-energy-damage-proxy": () => import("../../meteorology/hail-kinetic-energy-damage-proxy/index.js"),
   "meteorology/storm-relative-helicity-srh": () => import("../../meteorology/storm-relative-helicity-srh/index.js"),
   "mri/pgse-gradient-from-target-b": () => import("../../mri/pgse-gradient-from-target-b/index.js"),

@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "geology/cuttings-transport-velocity": () => import("../../geology/cuttings-transport-velocity/index.js"),
   "geology/geothermal-gradient": () => import("../../geology/geothermal-gradient/index.js"),
   "heraldry/french-english-cross-mapper": () => import("../../heraldry/french-english-cross-mapper/index.js"),
+  "hex/odd-column-offset-to-axial": () => import("../../hex/odd-column-offset-to-axial/index.js"),
   "horology/cannon-pinion-hour-wheel-ratio": () => import("../../horology/cannon-pinion-hour-wheel-ratio/index.js"),
   "horology/positional-rate-variation-threshold-screen": () => import("../../horology/positional-rate-variation-threshold-screen/index.js"),
   "horticulture/iron-chelate-stock-ml-per-liter": () => import("../../horticulture/iron-chelate-stock-ml-per-liter/index.js"),

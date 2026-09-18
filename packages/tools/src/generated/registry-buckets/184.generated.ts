@@ -21,6 +21,7 @@ export const toolModuleLoaders: Readonly<
   "css/all-unset-reset-behavior-lookup": () => import("../../css/all-unset-reset-behavior-lookup/index.js"),
   "csv/control-character-finder-in-fields": () => import("../../csv/control-character-finder-in-fields/index.js"),
   "csv/quoted-multiline-safe-splitter": () => import("../../csv/quoted-multiline-safe-splitter/index.js"),
+  "easing/unit-smoothstep-slope": () => import("../../easing/unit-smoothstep-slope/index.js"),
   "electronics/headphone-impedance": () => import("../../electronics/headphone-impedance/index.js"),
   "electronics/infrared-distance-from-voltage": () => import("../../electronics/infrared-distance-from-voltage/index.js"),
   "engineering/elevator-round-trip-time": () => import("../../engineering/elevator-round-trip-time/index.js"),

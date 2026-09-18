@@ -53,6 +53,7 @@ export const toolModuleLoaders: Readonly<
   "metabolomics/polyamine-progression": () => import("../../metabolomics/polyamine-progression/index.js"),
   "metabolomics/urea-cycle-marker-screen": () => import("../../metabolomics/urea-cycle-marker-screen/index.js"),
   "meteorology/bias-score-frequency-hit": () => import("../../meteorology/bias-score-frequency-hit/index.js"),
+  "midi/fourteen-bit-seven-bit-pair-split": () => import("../../midi/fourteen-bit-seven-bit-pair-split/index.js"),
   "network/ipv6-address-integer-string": () => import("../../network/ipv6-address-integer-string/index.js"),
   "oenology/ph-ta-balance": () => import("../../oenology/ph-ta-balance/index.js"),
   "philately/gum-crack-severity-rater": () => import("../../philately/gum-crack-severity-rater/index.js"),

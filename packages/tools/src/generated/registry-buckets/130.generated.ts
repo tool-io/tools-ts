@@ -60,6 +60,7 @@ export const toolModuleLoaders: Readonly<
   "parasitology/mda-round-coverage": () => import("../../parasitology/mda-round-coverage/index.js"),
   "plumbing/cistern-first-flush-diverter-size": () => import("../../plumbing/cistern-first-flush-diverter-size/index.js"),
   "plumbing/drainage-fixture-units-to-gpm": () => import("../../plumbing/drainage-fixture-units-to-gpm/index.js"),
+  "polynomial/coefficient-input-translation": () => import("../../polynomial/coefficient-input-translation/index.js"),
   "random/tai-xuan-jing-symbol": () => import("../../random/tai-xuan-jing-symbol/index.js"),
   "real-estate/common-area-factor": () => import("../../real-estate/common-area-factor/index.js"),
   "real-estate/rent-vs-buy-npv": () => import("../../real-estate/rent-vs-buy-npv/index.js"),

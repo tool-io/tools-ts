@@ -18,6 +18,7 @@ export const toolModuleLoaders: Readonly<
   "climatology/frost-free-period": () => import("../../climatology/frost-free-period/index.js"),
   "cost/api": () => import("../../cost/api/index.js"),
   "csv/latin1-mojibake-sequence-detector": () => import("../../csv/latin1-mojibake-sequence-detector/index.js"),
+  "easing/unit-progress-delay-remap": () => import("../../easing/unit-progress-delay-remap/index.js"),
   "epigraphy/illegible-ndot-encoder": () => import("../../epigraphy/illegible-ndot-encoder/index.js"),
   "folklore/golem-animation-word-emet-lookup": () => import("../../folklore/golem-animation-word-emet-lookup/index.js"),
   "forestry/double-bark-thickness": () => import("../../forestry/double-bark-thickness/index.js"),

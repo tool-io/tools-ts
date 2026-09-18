@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "actuarial/nominal-to-effective-interest-pthly": () => import("../../actuarial/nominal-to-effective-interest-pthly/index.js"),
   "aesthetics/greenberg-medium-specificity-formalism-lookup": () => import("../../aesthetics/greenberg-medium-specificity-formalism-lookup/index.js"),
+  "affine/matrix-axis-basis-image": () => import("../../affine/matrix-axis-basis-image/index.js"),
   "agriculture/storage-loss-percentage": () => import("../../agriculture/storage-loss-percentage/index.js"),
   "astrobiology/magnetosphere-standoff-distance-calculator": () => import("../../astrobiology/magnetosphere-standoff-distance-calculator/index.js"),
   "astrobiology/mars-co2-frost-sublimation-rate-calculator": () => import("../../astrobiology/mars-co2-frost-sublimation-rate-calculator/index.js"),
@@ -52,6 +53,7 @@ export const toolModuleLoaders: Readonly<
   "math/tribonacci-nth": () => import("../../math/tribonacci-nth/index.js"),
   "math/waring-g3": () => import("../../math/waring-g3/index.js"),
   "metabolomics/detection-limit-imputation": () => import("../../metabolomics/detection-limit-imputation/index.js"),
+  "midi/data-byte-range-check": () => import("../../midi/data-byte-range-check/index.js"),
   "mining/subsidence-strain": () => import("../../mining/subsidence-strain/index.js"),
   "mining/ventilation-pressure-drop": () => import("../../mining/ventilation-pressure-drop/index.js"),
   "neuroscience/network-betweenness-centrality": () => import("../../neuroscience/network-betweenness-centrality/index.js"),

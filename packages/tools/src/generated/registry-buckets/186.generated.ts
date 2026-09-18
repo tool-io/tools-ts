@@ -35,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "electronics/sic-mosfet-figure-of-merit": () => import("../../electronics/sic-mosfet-figure-of-merit/index.js"),
   "engineering/awg-diameter": () => import("../../engineering/awg-diameter/index.js"),
   "engineering/timber-connection-bolt-capacity": () => import("../../engineering/timber-connection-bolt-capacity/index.js"),
+  "env/assignment-empty-value-audit": () => import("../../env/assignment-empty-value-audit/index.js"),
   "epigraphy/tabula-ansata-note-generator": () => import("../../epigraphy/tabula-ansata-note-generator/index.js"),
   "film/guide-number-distance": () => import("../../film/guide-number-distance/index.js"),
   "folklore/christmas-tree-ornament-era-lookup": () => import("../../folklore/christmas-tree-ornament-era-lookup/index.js"),

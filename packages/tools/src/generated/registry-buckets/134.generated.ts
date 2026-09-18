@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "aesthetics/moral-rights-attribution-integrity-berne-lookup": () => import("../../aesthetics/moral-rights-attribution-integrity-berne-lookup/index.js"),
   "apiculture/flow-frame-slot-count-lookup": () => import("../../apiculture/flow-frame-slot-count-lookup/index.js"),
   "archival-studies/lignin-free-label-validator": () => import("../../archival-studies/lignin-free-label-validator/index.js"),
+  "arguments/short-option-attached-value-split": () => import("../../arguments/short-option-attached-value-split/index.js"),
   "aviation/density-altitude": () => import("../../aviation/density-altitude/index.js"),
   "biology/necrosis-percentage": () => import("../../biology/necrosis-percentage/index.js"),
   "carpentry/clamex-p-system-bohrbild": () => import("../../carpentry/clamex-p-system-bohrbild/index.js"),

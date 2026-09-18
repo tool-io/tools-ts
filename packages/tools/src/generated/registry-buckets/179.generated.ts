@@ -52,6 +52,7 @@ export const toolModuleLoaders: Readonly<
   "logic/prime-implicant-adjacency-edge-counter": () => import("../../logic/prime-implicant-adjacency-edge-counter/index.js"),
   "math/resultant-two-quadratics": () => import("../../math/resultant-two-quadratics/index.js"),
   "metabolomics/scfa-composition": () => import("../../metabolomics/scfa-composition/index.js"),
+  "midi/seven-bit-pair-fourteen-bit-join": () => import("../../midi/seven-bit-pair-fourteen-bit-join/index.js"),
   "mining/pit-slope-angle": () => import("../../mining/pit-slope-angle/index.js"),
   "mycology/fks-hotspot-screen-flag-checker": () => import("../../mycology/fks-hotspot-screen-flag-checker/index.js"),
   "numismatics/maria-theresa-thaler-specs-lookup": () => import("../../numismatics/maria-theresa-thaler-specs-lookup/index.js"),
@@ -70,6 +71,7 @@ export const toolModuleLoaders: Readonly<
   "text/line-comment-prefix-toggle": () => import("../../text/line-comment-prefix-toggle/index.js"),
   "vector/magnitude": () => import("../../vector/magnitude/index.js"),
   "vector/subtract": () => import("../../vector/subtract/index.js"),
+  "version/semantic-version-duplicate-spellings": () => import("../../version/semantic-version-duplicate-spellings/index.js"),
   "vexillology/distinctiveness-heuristic-rater": () => import("../../vexillology/distinctiveness-heuristic-rater/index.js"),
   "volcanology/ring-dike-thickness-estimate": () => import("../../volcanology/ring-dike-thickness-estimate/index.js"),
 };

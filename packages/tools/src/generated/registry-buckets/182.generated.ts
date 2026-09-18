@@ -7,6 +7,7 @@ export const toolModuleLoaders: Readonly<
   "acoustics/hud-noise-site-reference": () => import("../../acoustics/hud-noise-site-reference/index.js"),
   "acoustics/missing-fundamental-reference": () => import("../../acoustics/missing-fundamental-reference/index.js"),
   "aesthetics/waist-to-hip-ratio-claims-verdict-context-lookup": () => import("../../aesthetics/waist-to-hip-ratio-claims-verdict-context-lookup/index.js"),
+  "affine/matrix-translation-record": () => import("../../affine/matrix-translation-record/index.js"),
   "archaeology/flake-platform-angle-measurement": () => import("../../archaeology/flake-platform-angle-measurement/index.js"),
   "archival-studies/handle-urn-builder": () => import("../../archival-studies/handle-urn-builder/index.js"),
   "archival-studies/pencil-only-policy-note-generator": () => import("../../archival-studies/pencil-only-policy-note-generator/index.js"),

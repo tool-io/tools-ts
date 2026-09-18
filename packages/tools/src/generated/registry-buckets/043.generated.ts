@@ -5,6 +5,7 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "accounting/negative-inventory-perpetual-warning-checker": () => import("../../accounting/negative-inventory-perpetual-warning-checker/index.js"),
+  "angle/turn-sector-center": () => import("../../angle/turn-sector-center/index.js"),
   "apiculture/split-ratio-colony-divider": () => import("../../apiculture/split-ratio-colony-divider/index.js"),
   "aquaculture/profit-per-kg": () => import("../../aquaculture/profit-per-kg/index.js"),
   "archival-studies/oral-history-abstract-limit-finder": () => import("../../archival-studies/oral-history-abstract-limit-finder/index.js"),
@@ -14,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "astronomy/star-radius-from-luminosity-temperature": () => import("../../astronomy/star-radius-from-luminosity-temperature/index.js"),
   "aviation/crosswind-gust-component": () => import("../../aviation/crosswind-gust-component/index.js"),
   "aviation/v-speed-vlo": () => import("../../aviation/v-speed-vlo/index.js"),
+  "bezier/endpoint-join-tangent-audit": () => import("../../bezier/endpoint-join-tangent-audit/index.js"),
   "biology/dressing-percentage": () => import("../../biology/dressing-percentage/index.js"),
   "biology/mean-corpuscular-hemoglobin-concentration": () => import("../../biology/mean-corpuscular-hemoglobin-concentration/index.js"),
   "biology/primer-annealing-temp": () => import("../../biology/primer-annealing-temp/index.js"),

@@ -73,6 +73,7 @@ export const toolModuleLoaders: Readonly<
   "sociology/relative-median-income-gap": () => import("../../sociology/relative-median-income-gap/index.js"),
   "sports/soccer-distance-covered-km-per-match": () => import("../../sports/soccer-distance-covered-km-per-match/index.js"),
   "taxation/roth-magi-phaseout-eligibility-checker": () => import("../../taxation/roth-magi-phaseout-eligibility-checker/index.js"),
+  "version/semantic-version-core-change-classifier": () => import("../../version/semantic-version-core-change-classifier/index.js"),
   "veterinary/fluid-deficit-percent-dehydration": () => import("../../veterinary/fluid-deficit-percent-dehydration/index.js"),
   "vexillology/vertical-tricolor-family-checker": () => import("../../vexillology/vertical-tricolor-family-checker/index.js"),
   "viticulture/guyot-cane-total-buds": () => import("../../viticulture/guyot-cane-total-buds/index.js"),

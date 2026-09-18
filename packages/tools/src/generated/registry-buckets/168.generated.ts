@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "astrometry/bennett-observed-altitude-refraction": () => import("../../astrometry/bennett-observed-altitude-refraction/index.js"),
   "auditing/committee-self-evaluation": () => import("../../auditing/committee-self-evaluation/index.js"),
   "biology/quadrat-density": () => import("../../biology/quadrat-density/index.js"),
+  "cache/directive-presence-policy": () => import("../../cache/directive-presence-policy/index.js"),
   "carpentry/fenster-blendrahmen-fluegel-glasfalz": () => import("../../carpentry/fenster-blendrahmen-fluegel-glasfalz/index.js"),
   "celestial-mechanics/frozen-periapsis-angle-screen": () => import("../../celestial-mechanics/frozen-periapsis-angle-screen/index.js"),
   "checksum/crc-8-maxim-dow": () => import("../../checksum/crc-8-maxim-dow/index.js"),
@@ -66,8 +67,10 @@ export const toolModuleLoaders: Readonly<
   "size/pillowcase": () => import("../../size/pillowcase/index.js"),
   "sociology/crowding-index": () => import("../../sociology/crowding-index/index.js"),
   "sociology/informal-employment-rate": () => import("../../sociology/informal-employment-rate/index.js"),
+  "sql/single-quote-literal-formatter": () => import("../../sql/single-quote-literal-formatter/index.js"),
   "taxation/carryforward-loss-expiry-years-lookup": () => import("../../taxation/carryforward-loss-expiry-years-lookup/index.js"),
   "taxation/innocent-spouse-relief-type-selector-lookup": () => import("../../taxation/innocent-spouse-relief-type-selector-lookup/index.js"),
   "theatre/sitzprobe-versus-wandelprobe-orchestra-integration-lookup": () => import("../../theatre/sitzprobe-versus-wandelprobe-orchestra-integration-lookup/index.js"),
   "vexillology/no-seal-rule-checker": () => import("../../vexillology/no-seal-rule-checker/index.js"),
+  "voxel/axis-order-stride-record": () => import("../../voxel/axis-order-stride-record/index.js"),
 };

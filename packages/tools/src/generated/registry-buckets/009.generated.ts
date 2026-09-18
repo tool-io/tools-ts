@@ -64,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/single-event-latchup-cross-section": () => import("../../semiconductor/single-event-latchup-cross-section/index.js"),
   "semiconductor/solar-cell-short-circuit-current-density": () => import("../../semiconductor/solar-cell-short-circuit-current-density/index.js"),
   "sericulture/lime-washing-floor-dose": () => import("../../sericulture/lime-washing-floor-dose/index.js"),
+  "terminal/sgr-parameter-list-parser": () => import("../../terminal/sgr-parameter-list-parser/index.js"),
   "text/soft-wrap-offset-map": () => import("../../text/soft-wrap-offset-map/index.js"),
   "text/terminal-newline-enforcer": () => import("../../text/terminal-newline-enforcer/index.js"),
   "toxicology/exposure-frequency-adjustment": () => import("../../toxicology/exposure-frequency-adjustment/index.js"),

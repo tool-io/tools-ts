@@ -36,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "folklore/friday-thirteenth-friggatriskaidekaphobia-lookup": () => import("../../folklore/friday-thirteenth-friggatriskaidekaphobia-lookup/index.js"),
   "horticulture/step-up-schedule-shifts-per-season": () => import("../../horticulture/step-up-schedule-shifts-per-season/index.js"),
   "http/forwarded-parser": () => import("../../http/forwarded-parser/index.js"),
+  "ini/section-key-overlay-provenance": () => import("../../ini/section-key-overlay-provenance/index.js"),
   "insurance/coinsurance-split-after-deductible-computation": () => import("../../insurance/coinsurance-split-after-deductible-computation/index.js"),
   "insurance/earthquake-retrofit-brace-bolt-discount-lookup": () => import("../../insurance/earthquake-retrofit-brace-bolt-discount-lookup/index.js"),
   "insurance/prior-lapse-penalty-days-checker": () => import("../../insurance/prior-lapse-penalty-days-checker/index.js"),

@@ -25,6 +25,7 @@ export const toolModuleLoaders: Readonly<
   "construction/circuit-load-amps": () => import("../../construction/circuit-load-amps/index.js"),
   "cooking/water-volume-to-weight": () => import("../../cooking/water-volume-to-weight/index.js"),
   "criminology/crime-trend-percent-change-yoy": () => import("../../criminology/crime-trend-percent-change-yoy/index.js"),
+  "css/custom-property-reference-inventory": () => import("../../css/custom-property-reference-inventory/index.js"),
   "css/selector-specificity": () => import("../../css/selector-specificity/index.js"),
   "dance/growth-spurt-training-reduction-teens-lookup": () => import("../../dance/growth-spurt-training-reduction-teens-lookup/index.js"),
   "electronics/brushless-motor-propeller-thrust": () => import("../../electronics/brushless-motor-propeller-thrust/index.js"),

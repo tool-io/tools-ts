@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "acoustics/nrc-from-band-coefficients": () => import("../../acoustics/nrc-from-band-coefficients/index.js"),
   "aesthetics/death-of-the-author-barthes-scriptor-lookup": () => import("../../aesthetics/death-of-the-author-barthes-scriptor-lookup/index.js"),
+  "affine/matrix-point-list-transform": () => import("../../affine/matrix-point-list-transform/index.js"),
   "arithmetic/clamp": () => import("../../arithmetic/clamp/index.js"),
   "astrometry/analemma-northsouth-shift-extractor": () => import("../../astrometry/analemma-northsouth-shift-extractor/index.js"),
   "astronomy/schwarzschild-radius-mass": () => import("../../astronomy/schwarzschild-radius-mass/index.js"),
@@ -67,6 +68,7 @@ export const toolModuleLoaders: Readonly<
   "sericulture/pebrine-testing-sample-rate": () => import("../../sericulture/pebrine-testing-sample-rate/index.js"),
   "size/electrical-connector": () => import("../../size/electrical-connector/index.js"),
   "sociology/segregation-concentration-index": () => import("../../sociology/segregation-concentration-index/index.js"),
+  "statistics/finite-value-sign-counts": () => import("../../statistics/finite-value-sign-counts/index.js"),
   "theatre/dramaturg-production-research-program-notes-lobby-role": () => import("../../theatre/dramaturg-production-research-program-notes-lobby-role/index.js"),
   "theatre/kabuki-drop-solenoid-release-line-count": () => import("../../theatre/kabuki-drop-solenoid-release-line-count/index.js"),
   "transcriptomics/pseudocount-plusone-applier": () => import("../../transcriptomics/pseudocount-plusone-applier/index.js"),

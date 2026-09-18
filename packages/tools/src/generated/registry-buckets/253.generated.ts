@@ -22,6 +22,7 @@ export const toolModuleLoaders: Readonly<
   "checksum/crc-64-go-iso": () => import("../../checksum/crc-64-go-iso/index.js"),
   "chemistry/molar-mass-from-effusion": () => import("../../chemistry/molar-mass-from-effusion/index.js"),
   "classics/athenian-archon-year-conversion-lookup": () => import("../../classics/athenian-archon-year-conversion-lookup/index.js"),
+  "classification/confusion-column-rate-table": () => import("../../classification/confusion-column-rate-table/index.js"),
   "color/complementary-hue-rotation-180": () => import("../../color/complementary-hue-rotation-180/index.js"),
   "color/split-complementary-hues-150-210": () => import("../../color/split-complementary-hues-150-210/index.js"),
   "color/terminal-ansi-16-pastel-theme-generator": () => import("../../color/terminal-ansi-16-pastel-theme-generator/index.js"),

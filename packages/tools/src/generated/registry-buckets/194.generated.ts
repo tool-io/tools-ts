@@ -5,10 +5,12 @@ export const toolModuleLoaders: Readonly<
   Record<string, () => Promise<RegisteredToolModule>>
 > = {
   "archival-studies/retrieval-cart-capacity-checker": () => import("../../archival-studies/retrieval-cart-capacity-checker/index.js"),
+  "arguments/option-token-source-map": () => import("../../arguments/option-token-source-map/index.js"),
   "astrobiology/biosphere-claim-confidence-composite-scorer": () => import("../../astrobiology/biosphere-claim-confidence-composite-scorer/index.js"),
   "astrometry/lunar-libration-component-note-generator": () => import("../../astrometry/lunar-libration-component-note-generator/index.js"),
   "aviation/landing-ground-roll": () => import("../../aviation/landing-ground-roll/index.js"),
   "banking/pain-of-paying-cash-versus-card-neuroeconomic-note-lookup": () => import("../../banking/pain-of-paying-cash-versus-card-neuroeconomic-note-lookup/index.js"),
+  "bezier/cubic-split-control-points": () => import("../../bezier/cubic-split-control-points/index.js"),
   "biology/phosphorus-use-efficiency": () => import("../../biology/phosphorus-use-efficiency/index.js"),
   "cartography/line-weight-minimum-checker": () => import("../../cartography/line-weight-minimum-checker/index.js"),
   "chemistry/langmuir-isotherm-theta": () => import("../../chemistry/langmuir-isotherm-theta/index.js"),

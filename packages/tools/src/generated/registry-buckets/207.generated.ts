@@ -36,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "geology/specific-yield-gravity-drainage": () => import("../../geology/specific-yield-gravity-drainage/index.js"),
   "heraldry/impalement-left-right-assigner": () => import("../../heraldry/impalement-left-right-assigner/index.js"),
   "html/sizes-attribute-width-formula-lookup": () => import("../../html/sizes-attribute-width-formula-lookup/index.js"),
+  "ini/section-name-line-formatter": () => import("../../ini/section-name-line-formatter/index.js"),
   "json/record-key-multiplicity-audit": () => import("../../json/record-key-multiplicity-audit/index.js"),
   "kinesiology/torque-curve-sticking-point": () => import("../../kinesiology/torque-curve-sticking-point/index.js"),
   "limnology/hypolimnetic-oxygen-demand-rate": () => import("../../limnology/hypolimnetic-oxygen-demand-rate/index.js"),

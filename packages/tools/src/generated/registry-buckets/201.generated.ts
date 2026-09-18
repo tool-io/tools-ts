@@ -23,6 +23,7 @@ export const toolModuleLoaders: Readonly<
   "cryptography/pgp-word-list-hex-byte-mapping": () => import("../../cryptography/pgp-word-list-hex-byte-mapping/index.js"),
   "dance/impact-absorption-court-vs-dance-floor-compare-lookup": () => import("../../dance/impact-absorption-court-vs-dance-floor-compare-lookup/index.js"),
   "dns/label-list-wire-formatter": () => import("../../dns/label-list-wire-formatter/index.js"),
+  "easing/unit-easing-reversal-transform": () => import("../../easing/unit-easing-reversal-transform/index.js"),
   "electronics/rise-time-from-bandwidth": () => import("../../electronics/rise-time-from-bandwidth/index.js"),
   "electronics/susceptance-capacitive": () => import("../../electronics/susceptance-capacitive/index.js"),
   "engineering/anchor-bolt-tensile": () => import("../../engineering/anchor-bolt-tensile/index.js"),
