@@ -57,6 +57,7 @@ export const toolModuleLoaders: Readonly<
   "petroleum/coning-critical-rate-water": () => import("../../petroleum/coning-critical-rate-water/index.js"),
   "petroleum/nodal-analysis-inflow-ipr-vogel": () => import("../../petroleum/nodal-analysis-inflow-ipr-vogel/index.js"),
   "proteomics/tmt-channel-normalization": () => import("../../proteomics/tmt-channel-normalization/index.js"),
+  "random/film-35mm-equivalent-focal-length-worked-example": () => import("../../random/film-35mm-equivalent-focal-length-worked-example/index.js"),
   "random/welding-symbol": () => import("../../random/welding-symbol/index.js"),
   "real-estate/mill-rate-tax": () => import("../../real-estate/mill-rate-tax/index.js"),
   "sailing/cunningham-tension": () => import("../../sailing/cunningham-tension/index.js"),
@@ -69,4 +70,5 @@ export const toolModuleLoaders: Readonly<
   "vexillology/change-frequency-century": () => import("../../vexillology/change-frequency-century/index.js"),
   "vexillology/half-staff-position": () => import("../../vexillology/half-staff-position/index.js"),
   "viticulture/cover-crop-midrow-seeding-rate": () => import("../../viticulture/cover-crop-midrow-seeding-rate/index.js"),
+  "zone/offset-local-candidate-policy-selector": () => import("../../zone/offset-local-candidate-policy-selector/index.js"),
 };

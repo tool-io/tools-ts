@@ -60,6 +60,8 @@ export const toolModuleLoaders: Readonly<
   "petroleum/material-balance-gas": () => import("../../petroleum/material-balance-gas/index.js"),
   "plumbing/gas-pipe-btu-capacity": () => import("../../plumbing/gas-pipe-btu-capacity/index.js"),
   "proteomics/sh3-pxxp-motifs": () => import("../../proteomics/sh3-pxxp-motifs/index.js"),
+  "random/astronomy-neutron-star-density-tonnes-per-cubic-cm-worked-example": () => import("../../random/astronomy-neutron-star-density-tonnes-per-cubic-cm-worked-example/index.js"),
+  "random/electronics-adc-sfdr-worked-example": () => import("../../random/electronics-adc-sfdr-worked-example/index.js"),
   "random/gunjala-gondi-character": () => import("../../random/gunjala-gondi-character/index.js"),
   "random/ipv6-subnet-exercise": () => import("../../random/ipv6-subnet-exercise/index.js"),
   "random/musical-ornament-symbol": () => import("../../random/musical-ornament-symbol/index.js"),

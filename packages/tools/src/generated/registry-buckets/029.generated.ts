@@ -78,5 +78,7 @@ export const toolModuleLoaders: Readonly<
   "text/edit-distance": () => import("../../text/edit-distance/index.js"),
   "theatre/cyc-cyclorama-curve-radius-width-calculator": () => import("../../theatre/cyc-cyclorama-curve-radius-width-calculator/index.js"),
   "transcriptomics/mutually-exclusive-exon-switch": () => import("../../transcriptomics/mutually-exclusive-exon-switch/index.js"),
+  "tree/parent-record-subtree-height": () => import("../../tree/parent-record-subtree-height/index.js"),
   "vr/field-of-view-horizontal": () => import("../../vr/field-of-view-horizontal/index.js"),
+  "zone/offset-transition-state-at-instant": () => import("../../zone/offset-transition-state-at-instant/index.js"),
 };

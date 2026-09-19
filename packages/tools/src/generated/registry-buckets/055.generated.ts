@@ -58,6 +58,8 @@ export const toolModuleLoaders: Readonly<
   "plumbing/aggressive-index": () => import("../../plumbing/aggressive-index/index.js"),
   "plumbing/interceptor-oil-separation-efficiency": () => import("../../plumbing/interceptor-oil-separation-efficiency/index.js"),
   "psychology/meta-analysis-weighted-mean-d-fixed": () => import("../../psychology/meta-analysis-weighted-mean-d-fixed/index.js"),
+  "random/arithmetic-linear-blend-worked-example": () => import("../../random/arithmetic-linear-blend-worked-example/index.js"),
+  "random/celestial-mechanics-conic-flight-path-angle-worked-example": () => import("../../random/celestial-mechanics-conic-flight-path-angle-worked-example/index.js"),
   "random/ol-chiki-digit": () => import("../../random/ol-chiki-digit/index.js"),
   "random/tempo-synced-delay-preset": () => import("../../random/tempo-synced-delay-preset/index.js"),
   "rhetoric/anadiplosis-chain-last-first-link-validator": () => import("../../rhetoric/anadiplosis-chain-last-first-link-validator/index.js"),

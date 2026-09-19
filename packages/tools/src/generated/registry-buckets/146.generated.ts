@@ -59,6 +59,8 @@ export const toolModuleLoaders: Readonly<
   "plumbing/pipe-inner-diameter-from-outer": () => import("../../plumbing/pipe-inner-diameter-from-outer/index.js"),
   "psychology/thurstone-case-v-scale-value": () => import("../../psychology/thurstone-case-v-scale-value/index.js"),
   "random/circular-direction-experiment": () => import("../../random/circular-direction-experiment/index.js"),
+  "random/electronics-adc-lsb-voltage-worked-example": () => import("../../random/electronics-adc-lsb-voltage-worked-example/index.js"),
+  "random/horology-carrousel-rotation-worked-example": () => import("../../random/horology-carrousel-rotation-worked-example/index.js"),
   "seismology/cumulative-moment-release-catalog-summary": () => import("../../seismology/cumulative-moment-release-catalog-summary/index.js"),
   "seismology/focal-mechanism-strike-dip-rake-data-generator": () => import("../../seismology/focal-mechanism-strike-dip-rake-data-generator/index.js"),
   "seismology/focal-style-rake-band-classifier": () => import("../../seismology/focal-style-rake-band-classifier/index.js"),

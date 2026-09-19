@@ -58,6 +58,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/area-drain-size": () => import("../../plumbing/area-drain-size/index.js"),
   "plumbing/geothermal-loop-length": () => import("../../plumbing/geothermal-loop-length/index.js"),
   "random/asl-fingerspelling-letter": () => import("../../random/asl-fingerspelling-letter/index.js"),
+  "random/cartography-tobler-hiking-speed-estimate-worked-example": () => import("../../random/cartography-tobler-hiking-speed-estimate-worked-example/index.js"),
   "random/pitch-frequency-matching-quiz": () => import("../../random/pitch-frequency-matching-quiz/index.js"),
   "random/time": () => import("../../random/time/index.js"),
   "relation/relation-functionality-audit": () => import("../../relation/relation-functionality-audit/index.js"),
@@ -71,6 +72,7 @@ export const toolModuleLoaders: Readonly<
   "text/camel-case": () => import("../../text/camel-case/index.js"),
   "theatre/black-box-versus-found-space-transformation-compare-lookup": () => import("../../theatre/black-box-versus-found-space-transformation-compare-lookup/index.js"),
   "transcriptomics/probe-off-target-filter": () => import("../../transcriptomics/probe-off-target-filter/index.js"),
+  "tree/parent-record-leaf-inventory": () => import("../../tree/parent-record-leaf-inventory/index.js"),
   "vexillology/writing-on-flag-detector": () => import("../../vexillology/writing-on-flag-detector/index.js"),
   "viticulture/bird-damage-loss-percent-estimate": () => import("../../viticulture/bird-damage-loss-percent-estimate/index.js"),
 };

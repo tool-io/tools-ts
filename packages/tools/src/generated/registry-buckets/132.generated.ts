@@ -56,6 +56,7 @@ export const toolModuleLoaders: Readonly<
   "polynomial/coefficient-low-power-remainder": () => import("../../polynomial/coefficient-low-power-remainder/index.js"),
   "random/grayscale-palette": () => import("../../random/grayscale-palette/index.js"),
   "random/hazard-pictogram": () => import("../../random/hazard-pictogram/index.js"),
+  "random/horology-amplitude-lift-ratio-worked-example": () => import("../../random/horology-amplitude-lift-ratio-worked-example/index.js"),
   "random/logic-gate-symbol": () => import("../../random/logic-gate-symbol/index.js"),
   "random/planetary-symbol": () => import("../../random/planetary-symbol/index.js"),
   "random/tai-viet-character": () => import("../../random/tai-viet-character/index.js"),

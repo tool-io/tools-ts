@@ -84,6 +84,7 @@ export const toolModuleLoaders: Readonly<
   "statistics/skewness": () => import("../../statistics/skewness/index.js"),
   "taxation/remote-work-tax-overlap": () => import("../../taxation/remote-work-tax-overlap/index.js"),
   "text/remove-punctuation": () => import("../../text/remove-punctuation/index.js"),
+  "trie/terminal-membership-bit-list": () => import("../../trie/terminal-membership-bit-list/index.js"),
   "version/semantic-version-precedence-tie-groups": () => import("../../version/semantic-version-precedence-tie-groups/index.js"),
   "volcanology/perlite-expansion-ratio-industrial": () => import("../../volcanology/perlite-expansion-ratio-industrial/index.js"),
   "vr/ipd-from-pupils": () => import("../../vr/ipd-from-pupils/index.js"),

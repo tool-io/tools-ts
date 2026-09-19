@@ -6,6 +6,7 @@ export const toolModuleLoaders: Readonly<
 > = {
   "activation/leaky-relu": () => import("../../activation/leaky-relu/index.js"),
   "astrometry/sip-distortion-evaluation": () => import("../../astrometry/sip-distortion-evaluation/index.js"),
+  "ballot/rank-first-choice-support": () => import("../../ballot/rank-first-choice-support/index.js"),
   "banking/alert-backlog-aging-checker": () => import("../../banking/alert-backlog-aging-checker/index.js"),
   "biology/punnett-square-di": () => import("../../biology/punnett-square-di/index.js"),
   "board/board-coordinate-affine-mirror": () => import("../../board/board-coordinate-affine-mirror/index.js"),
@@ -64,4 +65,5 @@ export const toolModuleLoaders: Readonly<
   "terminal/escape-token-incomplete-tail": () => import("../../terminal/escape-token-incomplete-tail/index.js"),
   "toxicology/independent-action-mixture-response": () => import("../../toxicology/independent-action-mixture-response/index.js"),
   "vexillology/stripes-canton-family-checker": () => import("../../vexillology/stripes-canton-family-checker/index.js"),
+  "zone/offset-local-ambiguity-classifier": () => import("../../zone/offset-local-ambiguity-classifier/index.js"),
 };

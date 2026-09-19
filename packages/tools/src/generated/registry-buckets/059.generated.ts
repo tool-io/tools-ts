@@ -60,6 +60,7 @@ export const toolModuleLoaders: Readonly<
   "paleography/ell-yard-regional-converter": () => import("../../paleography/ell-yard-regional-converter/index.js"),
   "parasitology/attributable-daly-burden": () => import("../../parasitology/attributable-daly-burden/index.js"),
   "proteomics/gpi-anchor-signal-screen": () => import("../../proteomics/gpi-anchor-signal-screen/index.js"),
+  "random/color-contrast-ratio-worked-example": () => import("../../random/color-contrast-ratio-worked-example/index.js"),
   "random/gurmukhi-character": () => import("../../random/gurmukhi-character/index.js"),
   "random/latin-vowel": () => import("../../random/latin-vowel/index.js"),
   "real-estate/closing-costs": () => import("../../real-estate/closing-costs/index.js"),

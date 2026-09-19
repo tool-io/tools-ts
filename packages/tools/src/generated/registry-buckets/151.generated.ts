@@ -62,6 +62,7 @@ export const toolModuleLoaders: Readonly<
   "palette/palette-premultiplication-consistency": () => import("../../palette/palette-premultiplication-consistency/index.js"),
   "plumbing/pressure-relief-valve-sizing": () => import("../../plumbing/pressure-relief-valve-sizing/index.js"),
   "random/kaithi-character": () => import("../../random/kaithi-character/index.js"),
+  "random/quarter-turn-symmetric-bitmap": () => import("../../random/quarter-turn-symmetric-bitmap/index.js"),
   "relation/relation-injectivity-audit": () => import("../../relation/relation-injectivity-audit/index.js"),
   "sailing/man-overboard-return-course-quickstop": () => import("../../sailing/man-overboard-return-course-quickstop/index.js"),
   "seismology/site-kappa-path-tstar-decomposition": () => import("../../seismology/site-kappa-path-tstar-decomposition/index.js"),

@@ -61,6 +61,7 @@ export const toolModuleLoaders: Readonly<
   "probability/log-odds": () => import("../../probability/log-odds/index.js"),
   "random/checksum-test-corpus": () => import("../../random/checksum-test-corpus/index.js"),
   "random/earth-tone-palette": () => import("../../random/earth-tone-palette/index.js"),
+  "random/film-aspect-ratio-calculation-worked-example": () => import("../../random/film-aspect-ratio-calculation-worked-example/index.js"),
   "random/limbu-digit": () => import("../../random/limbu-digit/index.js"),
   "rational/fraction-sign-classifier": () => import("../../rational/fraction-sign-classifier/index.js"),
   "semiconductor/black-phosphorus-bandgap-vs-layer-number": () => import("../../semiconductor/black-phosphorus-bandgap-vs-layer-number/index.js"),
@@ -71,4 +72,6 @@ export const toolModuleLoaders: Readonly<
   "theatre/house-left-right-origin-globe-stage-directions-history": () => import("../../theatre/house-left-right-origin-globe-stage-directions-history/index.js"),
   "vexillology/chevron-height-stack": () => import("../../vexillology/chevron-height-stack/index.js"),
   "viticulture/black-rot-wetness-duration-risk-checker": () => import("../../viticulture/black-rot-wetness-duration-risk-checker/index.js"),
+  "zone/offset-span-overlap-conflicts": () => import("../../zone/offset-span-overlap-conflicts/index.js"),
+  "zone/offset-transition-calendar-marker-table": () => import("../../zone/offset-transition-calendar-marker-table/index.js"),
 };

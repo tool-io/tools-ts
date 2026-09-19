@@ -56,6 +56,8 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/maternal-blood-volume-increase": () => import("../../pregnancy/maternal-blood-volume-increase/index.js"),
   "psychology/npi-cutoff-band": () => import("../../psychology/npi-cutoff-band/index.js"),
   "quaternion/unit-dot-angular-separation": () => import("../../quaternion/unit-dot-angular-separation/index.js"),
+  "random/astrometry-detector-angular-field-of-view-worked-example": () => import("../../random/astrometry-detector-angular-field-of-view-worked-example/index.js"),
+  "random/astronomy-eddington-luminosity-limit-worked-example": () => import("../../random/astronomy-eddington-luminosity-limit-worked-example/index.js"),
   "random/mathematical-script-letter": () => import("../../random/mathematical-script-letter/index.js"),
   "random/ocr-symbol": () => import("../../random/ocr-symbol/index.js"),
   "random/pastel-palette": () => import("../../random/pastel-palette/index.js"),

@@ -43,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "glaciology/meltwater-storage-delay-glacier": () => import("../../glaciology/meltwater-storage-delay-glacier/index.js"),
   "glaciology/residual-flux-mass-balance-checker": () => import("../../glaciology/residual-flux-mass-balance-checker/index.js"),
   "glaciology/subglacial-flow-direction-gradient": () => import("../../glaciology/subglacial-flow-direction-gradient/index.js"),
+  "histogram/bin-center-weighted-mean": () => import("../../histogram/bin-center-weighted-mean/index.js"),
   "horology/dual-time-difference": () => import("../../horology/dual-time-difference/index.js"),
   "horology/kickstarter-funding-progress-calculator": () => import("../../horology/kickstarter-funding-progress-calculator/index.js"),
   "horology/wrist-coverage-percent": () => import("../../horology/wrist-coverage-percent/index.js"),

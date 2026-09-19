@@ -65,6 +65,7 @@ export const toolModuleLoaders: Readonly<
   "random/soundex-matching-cards": () => import("../../random/soundex-matching-cards/index.js"),
   "random/vai-character": () => import("../../random/vai-character/index.js"),
   "rhetoric/metanoia-correction-afterthought-marker-lookup": () => import("../../rhetoric/metanoia-correction-afterthought-marker-lookup/index.js"),
+  "runs/length-record-concatenation": () => import("../../runs/length-record-concatenation/index.js"),
   "sailing/mooring-load-windage": () => import("../../sailing/mooring-load-windage/index.js"),
   "seismology/network-cluster-singleton-fraction-quality": () => import("../../seismology/network-cluster-singleton-fraction-quality/index.js"),
   "semiconductor/halo-doping-concentration": () => import("../../semiconductor/halo-doping-concentration/index.js"),

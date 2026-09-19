@@ -59,6 +59,8 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/labor-duration-total": () => import("../../pregnancy/labor-duration-total/index.js"),
   "psychology/fail-safe-n-file-drawer": () => import("../../psychology/fail-safe-n-file-drawer/index.js"),
   "psychology/trail-making-b-minus-a": () => import("../../psychology/trail-making-b-minus-a/index.js"),
+  "random/arithmetic-golden-ratio-worked-example": () => import("../../random/arithmetic-golden-ratio-worked-example/index.js"),
+  "random/carpentry-baluster-spacing-4inch-worked-example": () => import("../../random/carpentry-baluster-spacing-4inch-worked-example/index.js"),
   "random/gpu": () => import("../../random/gpu/index.js"),
   "random/hamming-distance-exercise": () => import("../../random/hamming-distance-exercise/index.js"),
   "random/lydian-letter": () => import("../../random/lydian-letter/index.js"),

@@ -59,8 +59,10 @@ export const toolModuleLoaders: Readonly<
   "petroleum/relative-permeability-kro": () => import("../../petroleum/relative-permeability-kro/index.js"),
   "pharmacy/digoxin-level-checker": () => import("../../pharmacy/digoxin-level-checker/index.js"),
   "pharmacy/dose-adjustment-renal-crcl": () => import("../../pharmacy/dose-adjustment-renal-crcl/index.js"),
+  "random/engineering-bearing-life-l10-worked-example": () => import("../../random/engineering-bearing-life-l10-worked-example/index.js"),
   "random/korean-morse-character": () => import("../../random/korean-morse-character/index.js"),
   "random/morse-code-punctuation": () => import("../../random/morse-code-punctuation/index.js"),
+  "random/octet-lane-permutation": () => import("../../random/octet-lane-permutation/index.js"),
   "random/yezidi-letter": () => import("../../random/yezidi-letter/index.js"),
   "real-estate/annual-debt-service": () => import("../../real-estate/annual-debt-service/index.js"),
   "sailing/current-shear-gain": () => import("../../sailing/current-shear-gain/index.js"),
@@ -79,5 +81,6 @@ export const toolModuleLoaders: Readonly<
   "toxicology/biomonitoring-equivalent": () => import("../../toxicology/biomonitoring-equivalent/index.js"),
   "toxicology/toxicity-units": () => import("../../toxicology/toxicity-units/index.js"),
   "transcriptomics/branch-divergence": () => import("../../transcriptomics/branch-divergence/index.js"),
+  "tree/parent-record-postorder-index": () => import("../../tree/parent-record-postorder-index/index.js"),
   "veterinary/ecg-heart-rate-qrs-vet-interpretation": () => import("../../veterinary/ecg-heart-rate-qrs-vet-interpretation/index.js"),
 };

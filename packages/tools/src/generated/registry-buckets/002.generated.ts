@@ -63,4 +63,5 @@ export const toolModuleLoaders: Readonly<
   "transcriptomics/exon-skipping-psi": () => import("../../transcriptomics/exon-skipping-psi/index.js"),
   "transcriptomics/rna-editing-frequency": () => import("../../transcriptomics/rna-editing-frequency/index.js"),
   "veterinary/opioid-dose-methadone-dog": () => import("../../veterinary/opioid-dose-methadone-dog/index.js"),
+  "zone/offset-span-adjacent-compactor": () => import("../../zone/offset-span-adjacent-compactor/index.js"),
 };

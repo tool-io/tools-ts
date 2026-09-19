@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "archival-studies/name-form-normalizer-surname-first": () => import("../../archival-studies/name-form-normalizer-surname-first/index.js"),
   "arithmetic/divide-two-numbers": () => import("../../arithmetic/divide-two-numbers/index.js"),
   "astrobiology/lithopanspermia-ejection-escape-check": () => import("../../astrobiology/lithopanspermia-ejection-escape-check/index.js"),
+  "automaton/state-dead-partition": () => import("../../automaton/state-dead-partition/index.js"),
   "aviation/density-ratio": () => import("../../aviation/density-ratio/index.js"),
   "aviation/specific-endurance": () => import("../../aviation/specific-endurance/index.js"),
   "bacteriology/of-open-sealed-reaction": () => import("../../bacteriology/of-open-sealed-reaction/index.js"),

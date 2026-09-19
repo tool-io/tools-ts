@@ -54,6 +54,7 @@ export const toolModuleLoaders: Readonly<
   "random/apl-functional-symbol": () => import("../../random/apl-functional-symbol/index.js"),
   "random/cistercian-numeral": () => import("../../random/cistercian-numeral/index.js"),
   "random/equal-portion-weight-exercise": () => import("../../random/equal-portion-weight-exercise/index.js"),
+  "random/grid-cell-diagonal-choices": () => import("../../random/grid-cell-diagonal-choices/index.js"),
   "random/hebrew-letter": () => import("../../random/hebrew-letter/index.js"),
   "random/prime-factorization-exercise": () => import("../../random/prime-factorization-exercise/index.js"),
   "random/rgba-color": () => import("../../random/rgba-color/index.js"),

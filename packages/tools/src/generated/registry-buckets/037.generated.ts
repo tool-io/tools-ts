@@ -60,6 +60,7 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/iron-supplement-dose": () => import("../../pregnancy/iron-supplement-dose/index.js"),
   "psychology/post-hoc-power-from-d-and-n": () => import("../../psychology/post-hoc-power-from-d-and-n/index.js"),
   "random/byzantine-musical-symbol": () => import("../../random/byzantine-musical-symbol/index.js"),
+  "random/film-anamorphic-squeeze-factor-worked-example": () => import("../../random/film-anamorphic-squeeze-factor-worked-example/index.js"),
   "sailing/tidal-diamond-correction": () => import("../../sailing/tidal-diamond-correction/index.js"),
   "seismology/time-dependent-conditional-probability": () => import("../../seismology/time-dependent-conditional-probability/index.js"),
   "semiconductor/3d-ic-thermal-coupling": () => import("../../semiconductor/3d-ic-thermal-coupling/index.js"),

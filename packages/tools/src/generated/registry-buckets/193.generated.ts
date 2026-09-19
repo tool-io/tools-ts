@@ -57,6 +57,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/hazen-williams-velocity": () => import("../../plumbing/hazen-williams-velocity/index.js"),
   "plumbing/minor-loss-coefficient-k": () => import("../../plumbing/minor-loss-coefficient-k/index.js"),
   "pregnancy/free-beta-hcg-mom": () => import("../../pregnancy/free-beta-hcg-mom/index.js"),
+  "random/arithmetic-cube-worked-example": () => import("../../random/arithmetic-cube-worked-example/index.js"),
   "random/kannada-digit": () => import("../../random/kannada-digit/index.js"),
   "random/kirat-rai-character": () => import("../../random/kirat-rai-character/index.js"),
   "random/mandaic-letter": () => import("../../random/mandaic-letter/index.js"),

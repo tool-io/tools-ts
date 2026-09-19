@@ -70,6 +70,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/gas-pipe-pressure-drop": () => import("../../plumbing/gas-pipe-pressure-drop/index.js"),
   "proteomics/protein-dilution-backcalculation": () => import("../../proteomics/protein-dilution-backcalculation/index.js"),
   "random/catalog-product": () => import("../../random/catalog-product/index.js"),
+  "random/demography-marital-status-distribution-percent-worked-example": () => import("../../random/demography-marital-status-distribution-percent-worked-example/index.js"),
   "random/headphones": () => import("../../random/headphones/index.js"),
   "random/kangxi-radical": () => import("../../random/kangxi-radical/index.js"),
   "random/mahjong-practice-draw": () => import("../../random/mahjong-practice-draw/index.js"),
@@ -87,6 +88,7 @@ export const toolModuleLoaders: Readonly<
   "text/whitespace-count": () => import("../../text/whitespace-count/index.js"),
   "theatre/iris-diaphragm-aperture-range-lookup": () => import("../../theatre/iris-diaphragm-aperture-range-lookup/index.js"),
   "toxicology/route-absorption-aggregate-dose": () => import("../../toxicology/route-absorption-aggregate-dose/index.js"),
+  "trie/literal-prefix-completion-list": () => import("../../trie/literal-prefix-completion-list/index.js"),
   "viticulture/row-length-vine-count": () => import("../../viticulture/row-length-vine-count/index.js"),
   "web/url-path-prefix-token-match": () => import("../../web/url-path-prefix-token-match/index.js"),
 };

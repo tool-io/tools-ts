@@ -59,6 +59,8 @@ export const toolModuleLoaders: Readonly<
   "probability/empirical": () => import("../../probability/empirical/index.js"),
   "proteomics/nuclear-localization-clusters": () => import("../../proteomics/nuclear-localization-clusters/index.js"),
   "random/braille-cell": () => import("../../random/braille-cell/index.js"),
+  "random/cartography-magnetic-declination-applier-worked-example": () => import("../../random/cartography-magnetic-declination-applier-worked-example/index.js"),
+  "random/film-box-office-per-capita-worked-example": () => import("../../random/film-box-office-per-capita-worked-example/index.js"),
   "random/geomantic-figure": () => import("../../random/geomantic-figure/index.js"),
   "random/synthetic-division-exercise": () => import("../../random/synthetic-division-exercise/index.js"),
   "real-estate/comparable-adjustment": () => import("../../real-estate/comparable-adjustment/index.js"),

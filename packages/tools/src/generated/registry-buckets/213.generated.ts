@@ -67,6 +67,8 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/fetomaternal-hemorrhage-volume": () => import("../../pregnancy/fetomaternal-hemorrhage-volume/index.js"),
   "print/craft-bead-string-length": () => import("../../print/craft-bead-string-length/index.js"),
   "proteomics/digest-mass-filter": () => import("../../proteomics/digest-mass-filter/index.js"),
+  "random/film-bellows-exposure-compensation-worked-example": () => import("../../random/film-bellows-exposure-compensation-worked-example/index.js"),
+  "random/horology-bph-to-hertz-worked-example": () => import("../../random/horology-bph-to-hertz-worked-example/index.js"),
   "random/musical-barline": () => import("../../random/musical-barline/index.js"),
   "random/recipe-scaling-quiz": () => import("../../random/recipe-scaling-quiz/index.js"),
   "seismology/average-moment-rate-from-moment-duration": () => import("../../seismology/average-moment-rate-from-moment-duration/index.js"),

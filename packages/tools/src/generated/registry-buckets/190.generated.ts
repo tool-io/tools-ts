@@ -63,6 +63,7 @@ export const toolModuleLoaders: Readonly<
   "philately/foreign-catalogue-currency-convert": () => import("../../philately/foreign-catalogue-currency-convert/index.js"),
   "plumbing/fire-sprinkler-pipe-sizing-tree": () => import("../../plumbing/fire-sprinkler-pipe-sizing-tree/index.js"),
   "random/signwriting-head-face-symbol": () => import("../../random/signwriting-head-face-symbol/index.js"),
+  "random/single-bit-neighbor": () => import("../../random/single-bit-neighbor/index.js"),
   "real-estate/rehab-cost-per-sqft": () => import("../../real-estate/rehab-cost-per-sqft/index.js"),
   "real-estate/vacancy-loss": () => import("../../real-estate/vacancy-loss/index.js"),
   "sailing/secondary-port-correction": () => import("../../sailing/secondary-port-correction/index.js"),

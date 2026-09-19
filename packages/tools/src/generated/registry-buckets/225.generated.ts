@@ -70,6 +70,7 @@ export const toolModuleLoaders: Readonly<
   "philately/realized-hammer-variance-percent": () => import("../../philately/realized-hammer-variance-percent/index.js"),
   "physics/projectile-motion": () => import("../../physics/projectile-motion/index.js"),
   "probability/exponential-sampler": () => import("../../probability/exponential-sampler/index.js"),
+  "random/electronics-adc-aperture-jitter-snr-limit-worked-example": () => import("../../random/electronics-adc-aperture-jitter-snr-limit-worked-example/index.js"),
   "random/laundry-care-symbol": () => import("../../random/laundry-care-symbol/index.js"),
   "seismology/surface-rupture-length-recurrence-lookup": () => import("../../seismology/surface-rupture-length-recurrence-lookup/index.js"),
   "semiconductor/pcm-endurance-cycles": () => import("../../semiconductor/pcm-endurance-cycles/index.js"),
@@ -84,4 +85,5 @@ export const toolModuleLoaders: Readonly<
   "virology/one-step-burst-yield": () => import("../../virology/one-step-burst-yield/index.js"),
   "viticulture/pergola-beam-height-clearance": () => import("../../viticulture/pergola-beam-height-clearance/index.js"),
   "vr/controller-latency": () => import("../../vr/controller-latency/index.js"),
+  "zone/offset-local-utc-candidate-list": () => import("../../zone/offset-local-utc-candidate-list/index.js"),
 };

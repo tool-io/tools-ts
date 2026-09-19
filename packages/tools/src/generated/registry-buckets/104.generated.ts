@@ -67,6 +67,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/pipe-diameter-from-flow-velocity": () => import("../../plumbing/pipe-diameter-from-flow-velocity/index.js"),
   "proteomics/methionine-oxidation-screen": () => import("../../proteomics/methionine-oxidation-screen/index.js"),
   "random/hiragana-digraph": () => import("../../random/hiragana-digraph/index.js"),
+  "random/indexed-swap-trace": () => import("../../random/indexed-swap-trace/index.js"),
   "random/mathematical-sans-serif-letter": () => import("../../random/mathematical-sans-serif-letter/index.js"),
   "random/mobile-processor": () => import("../../random/mobile-processor/index.js"),
   "rational/fraction-repeating-cycle-length": () => import("../../rational/fraction-repeating-cycle-length/index.js"),

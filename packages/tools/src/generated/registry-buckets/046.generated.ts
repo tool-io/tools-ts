@@ -63,6 +63,7 @@ export const toolModuleLoaders: Readonly<
   "terminal/style-record-run-compactor": () => import("../../terminal/style-record-run-compactor/index.js"),
   "theatre/fog-chiller-ice-low-lying-duration-lookup": () => import("../../theatre/fog-chiller-ice-low-lying-duration-lookup/index.js"),
   "toxicology/tlv-stel": () => import("../../toxicology/tlv-stel/index.js"),
+  "tree/parent-record-root-inventory": () => import("../../tree/parent-record-root-inventory/index.js"),
   "viticulture/buds-per-hectare-total": () => import("../../viticulture/buds-per-hectare-total/index.js"),
   "volcanology/flow-discharge-rate-channel-width": () => import("../../volcanology/flow-discharge-rate-channel-width/index.js"),
 };

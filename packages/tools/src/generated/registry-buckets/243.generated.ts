@@ -64,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/water-hardness-grains-per-gallon": () => import("../../plumbing/water-hardness-grains-per-gallon/index.js"),
   "plumbing/water-heater-recovery-time": () => import("../../plumbing/water-heater-recovery-time/index.js"),
   "pregnancy/fetal-viability-checker": () => import("../../pregnancy/fetal-viability-checker/index.js"),
+  "random/epigraphy-stone-face-area-calculator-worked-example": () => import("../../random/epigraphy-stone-face-area-calculator-worked-example/index.js"),
   "random/grocery-unit-price-comparison-quiz": () => import("../../random/grocery-unit-price-comparison-quiz/index.js"),
   "random/sidetic-letter": () => import("../../random/sidetic-letter/index.js"),
   "random/uuid-version-recognition-quiz": () => import("../../random/uuid-version-recognition-quiz/index.js"),

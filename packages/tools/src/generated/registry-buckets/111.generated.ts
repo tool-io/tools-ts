@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "aquaculture/ice-requirement": () => import("../../aquaculture/ice-requirement/index.js"),
   "archival-studies/public-domain-boundary-checker": () => import("../../archival-studies/public-domain-boundary-checker/index.js"),
   "astronomy/physical-size-from-angular-distance": () => import("../../astronomy/physical-size-from-angular-distance/index.js"),
+  "ballot/approval-set-count-tally": () => import("../../ballot/approval-set-count-tally/index.js"),
   "banking/app-fraud-authorised-push-payment-uk-crm-reimbursement-code-lookup": () => import("../../banking/app-fraud-authorised-push-payment-uk-crm-reimbursement-code-lookup/index.js"),
   "banking/mudarabah-musharakah-profit-sharing-structures-lookup": () => import("../../banking/mudarabah-musharakah-profit-sharing-structures-lookup/index.js"),
   "banking/swift-mt103-required-fields-parser": () => import("../../banking/swift-mt103-required-fields-parser/index.js"),

@@ -69,6 +69,7 @@ export const toolModuleLoaders: Readonly<
   "pharmacy/qt-prolonging-combo-checker": () => import("../../pharmacy/qt-prolonging-combo-checker/index.js"),
   "philately/margin-balance-deviation-percent": () => import("../../philately/margin-balance-deviation-percent/index.js"),
   "random/clock-drift-measurement-dataset": () => import("../../random/clock-drift-measurement-dataset/index.js"),
+  "random/exact-deletion-index-mask": () => import("../../random/exact-deletion-index-mask/index.js"),
   "random/fraktur-letter": () => import("../../random/fraktur-letter/index.js"),
   "random/morse-code-practice-message": () => import("../../random/morse-code-practice-message/index.js"),
   "random/sogdian-letter": () => import("../../random/sogdian-letter/index.js"),

@@ -52,6 +52,7 @@ export const toolModuleLoaders: Readonly<
   "math/quartic-discriminant": () => import("../../math/quartic-discriminant/index.js"),
   "mining/mineral-resource-indicated": () => import("../../mining/mineral-resource-indicated/index.js"),
   "mining/stripping-ratio-incremental": () => import("../../mining/stripping-ratio-incremental/index.js"),
+  "morphology/explicit-stencil-top-hat": () => import("../../morphology/explicit-stencil-top-hat/index.js"),
   "mri/curvature-freesurfer": () => import("../../mri/curvature-freesurfer/index.js"),
   "mri/low-pass-filter-cutoff": () => import("../../mri/low-pass-filter-cutoff/index.js"),
   "mri/ppm-shift-to-frequency-offset": () => import("../../mri/ppm-shift-to-frequency-offset/index.js"),

@@ -84,6 +84,7 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/abdominal-circumference-from-ga": () => import("../../pregnancy/abdominal-circumference-from-ga/index.js"),
   "psychology/autism-quotient-band": () => import("../../psychology/autism-quotient-band/index.js"),
   "psychology/item-difficulty-pvalue": () => import("../../psychology/item-difficulty-pvalue/index.js"),
+  "random/astrometry-iau1976-epoch-precession-worked-example": () => import("../../random/astrometry-iau1976-epoch-precession-worked-example/index.js"),
   "random/inscriptional-pahlavi-character": () => import("../../random/inscriptional-pahlavi-character/index.js"),
   "sailing/polar-heel-target": () => import("../../sailing/polar-heel-target/index.js"),
   "sailing/tidal-curve-interpolation": () => import("../../sailing/tidal-curve-interpolation/index.js"),

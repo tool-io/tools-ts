@@ -31,6 +31,7 @@ export const toolModuleLoaders: Readonly<
   "logistics/accessorial-fees-total-itemizer": () => import("../../logistics/accessorial-fees-total-itemizer/index.js"),
   "math/ramanujan-tau-approx": () => import("../../math/ramanujan-tau-approx/index.js"),
   "midi/channel-message-note-transposer": () => import("../../midi/channel-message-note-transposer/index.js"),
+  "morphology/enclosed-hole-area-table": () => import("../../morphology/enclosed-hole-area-table/index.js"),
   "mri/sampled-gradient-slew-rates": () => import("../../mri/sampled-gradient-slew-rates/index.js"),
   "network/ipv4-wildcard-mask-pattern-check": () => import("../../network/ipv4-wildcard-mask-pattern-check/index.js"),
   "numismatics/libertad-onza-key-dates-mintage-history-lookup": () => import("../../numismatics/libertad-onza-key-dates-mintage-history-lookup/index.js"),

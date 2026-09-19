@@ -13,6 +13,7 @@ export const toolModuleLoaders: Readonly<
   "arithmetic/ratio-to-percentage": () => import("../../arithmetic/ratio-to-percentage/index.js"),
   "auditing/electronic-confirmation-direct-source-reliability-checker": () => import("../../auditing/electronic-confirmation-direct-source-reliability-checker/index.js"),
   "aviation/glide-distance": () => import("../../aviation/glide-distance/index.js"),
+  "ballot/ballot-abstention-coverage-table": () => import("../../ballot/ballot-abstention-coverage-table/index.js"),
   "biology/hematocrit-percentage": () => import("../../biology/hematocrit-percentage/index.js"),
   "chemistry/bet-isotherm-monolayer": () => import("../../chemistry/bet-isotherm-monolayer/index.js"),
   "chemistry/percent-ionization": () => import("../../chemistry/percent-ionization/index.js"),

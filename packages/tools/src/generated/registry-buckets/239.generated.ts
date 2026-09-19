@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "agriculture/border-irrigation-flow": () => import("../../agriculture/border-irrigation-flow/index.js"),
   "apiculture/swarm-trap-volume-standard-checker": () => import("../../apiculture/swarm-trap-volume-standard-checker/index.js"),
   "astronomy/neutron-star-density-tonnes-per-cubic-cm": () => import("../../astronomy/neutron-star-density-tonnes-per-cubic-cm/index.js"),
+  "automaton/state-unreachable-partition": () => import("../../automaton/state-unreachable-partition/index.js"),
   "aviation/best-glide-speed": () => import("../../aviation/best-glide-speed/index.js"),
   "banking/msb-under-3000-log-lookup": () => import("../../banking/msb-under-3000-log-lookup/index.js"),
   "biology/apoptotic-index": () => import("../../biology/apoptotic-index/index.js"),
@@ -63,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/bishop-score": () => import("../../pregnancy/bishop-score/index.js"),
   "psychology/gaf-score-band-lookup": () => import("../../psychology/gaf-score-band-lookup/index.js"),
   "random/entity-relationship-cardinality-symbol": () => import("../../random/entity-relationship-cardinality-symbol/index.js"),
+  "random/film-angle-of-view-diagonal-worked-example": () => import("../../random/film-angle-of-view-diagonal-worked-example/index.js"),
   "random/lao-character": () => import("../../random/lao-character/index.js"),
   "random/meroitic-cursive-character": () => import("../../random/meroitic-cursive-character/index.js"),
   "random/osmanya-character": () => import("../../random/osmanya-character/index.js"),
@@ -74,4 +76,5 @@ export const toolModuleLoaders: Readonly<
   "theatre/wll-safety-factor-5-to-1-checker": () => import("../../theatre/wll-safety-factor-5-to-1-checker/index.js"),
   "toxicology/pnec": () => import("../../toxicology/pnec/index.js"),
   "volcanology/basalt-fiber-processing-temp-lookup": () => import("../../volcanology/basalt-fiber-processing-temp-lookup/index.js"),
+  "zone/offset-span-coverage-gaps": () => import("../../zone/offset-span-coverage-gaps/index.js"),
 };

@@ -15,6 +15,7 @@ export const toolModuleLoaders: Readonly<
   "auditing/coso-2013-seventeen-principles-component-mapping-grid": () => import("../../auditing/coso-2013-seventeen-principles-component-mapping-grid/index.js"),
   "auditing/itgc-access-change-operations-domain-split-lookup": () => import("../../auditing/itgc-access-change-operations-domain-split-lookup/index.js"),
   "bacteriology/mpc-estimate-note-generator": () => import("../../bacteriology/mpc-estimate-note-generator/index.js"),
+  "ballot/single-choice-weight-tally": () => import("../../ballot/single-choice-weight-tally/index.js"),
   "biology/average-daily-gain": () => import("../../biology/average-daily-gain/index.js"),
   "biology/systemic-vascular-resistance": () => import("../../biology/systemic-vascular-resistance/index.js"),
   "chemistry/crystallography-void-fraction": () => import("../../chemistry/crystallography-void-fraction/index.js"),
@@ -62,6 +63,7 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/placental-weight-ratio": () => import("../../pregnancy/placental-weight-ratio/index.js"),
   "random/electrical-symbol": () => import("../../random/electrical-symbol/index.js"),
   "random/english-pluralization-quiz": () => import("../../random/english-pluralization-quiz/index.js"),
+  "random/geometry-octahedron-volume-worked-example": () => import("../../random/geometry-octahedron-volume-worked-example/index.js"),
   "random/set-theory-symbol": () => import("../../random/set-theory-symbol/index.js"),
   "random/unicode-variation-selector": () => import("../../random/unicode-variation-selector/index.js"),
   "seismology/eurocode-8-ground-type-lookup": () => import("../../seismology/eurocode-8-ground-type-lookup/index.js"),
@@ -76,4 +78,5 @@ export const toolModuleLoaders: Readonly<
   "typography/units-per-em-scale-factor": () => import("../../typography/units-per-em-scale-factor/index.js"),
   "veterinary/temperature-normal-range-cat": () => import("../../veterinary/temperature-normal-range-cat/index.js"),
   "voxel/box-overlap-cell-count": () => import("../../voxel/box-overlap-cell-count/index.js"),
+  "zone/offset-zone-pair-difference-table": () => import("../../zone/offset-zone-pair-difference-table/index.js"),
 };

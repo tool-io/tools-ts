@@ -57,6 +57,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/grease-interceptor-size": () => import("../../plumbing/grease-interceptor-size/index.js"),
   "plumbing/roof-drain-leader-size": () => import("../../plumbing/roof-drain-leader-size/index.js"),
   "print/print-fold-panel-widths": () => import("../../print/print-fold-panel-widths/index.js"),
+  "random/archival-studies-duplicate-hash-savings-mb-calculator-worked-example": () => import("../../random/archival-studies-duplicate-hash-savings-mb-calculator-worked-example/index.js"),
   "real-estate/direct-capitalization-value": () => import("../../real-estate/direct-capitalization-value/index.js"),
   "rhetoric/innuendo-insinuation-implied-claim-lookup": () => import("../../rhetoric/innuendo-insinuation-implied-claim-lookup/index.js"),
   "sailing/time-to-layline-current": () => import("../../sailing/time-to-layline-current/index.js"),

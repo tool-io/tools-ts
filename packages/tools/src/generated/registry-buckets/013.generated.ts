@@ -62,4 +62,5 @@ export const toolModuleLoaders: Readonly<
   "sociology/hollingshead-abi-status-index": () => import("../../sociology/hollingshead-abi-status-index/index.js"),
   "sociology/multidimensional-poverty-index": () => import("../../sociology/multidimensional-poverty-index/index.js"),
   "theatre/brecht-epic-placard-projection-fourth-wall-technique-lookup": () => import("../../theatre/brecht-epic-placard-projection-fourth-wall-technique-lookup/index.js"),
+  "tree/parent-record-node-path": () => import("../../tree/parent-record-node-path/index.js"),
 };

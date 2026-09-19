@@ -62,6 +62,8 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/single-deepest-pocket": () => import("../../pregnancy/single-deepest-pocket/index.js"),
   "proteomics/peptide-neutral-mass": () => import("../../proteomics/peptide-neutral-mass/index.js"),
   "proteomics/protein-abundance-zscore-normalizer": () => import("../../proteomics/protein-abundance-zscore-normalizer/index.js"),
+  "random/cartography-declination-drift-adjuster-worked-example": () => import("../../random/cartography-declination-drift-adjuster-worked-example/index.js"),
+  "random/geology-apparent-dip-worked-example": () => import("../../random/geology-apparent-dip-worked-example/index.js"),
   "random/irish-alphabet-letter": () => import("../../random/irish-alphabet-letter/index.js"),
   "random/miao-character": () => import("../../random/miao-character/index.js"),
   "random/uml-relationship-symbol": () => import("../../random/uml-relationship-symbol/index.js"),

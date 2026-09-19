@@ -69,6 +69,7 @@ export const toolModuleLoaders: Readonly<
   "regex/regex-replacement-tokenizer": () => import("../../regex/regex-replacement-tokenizer/index.js"),
   "relation/membership-table-pair-list": () => import("../../relation/membership-table-pair-list/index.js"),
   "rhetoric/antithesis-parallel-opposition-clause-checker": () => import("../../rhetoric/antithesis-parallel-opposition-clause-checker/index.js"),
+  "runs/length-record-range-splice": () => import("../../runs/length-record-range-splice/index.js"),
   "semiconductor/doping-concentration-from-resistivity": () => import("../../semiconductor/doping-concentration-from-resistivity/index.js"),
   "semiconductor/polaron-effective-mass": () => import("../../semiconductor/polaron-effective-mass/index.js"),
   "sericulture/stifling-hot-air-temp-duration-lookup": () => import("../../sericulture/stifling-hot-air-temp-duration-lookup/index.js"),

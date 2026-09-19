@@ -61,6 +61,7 @@ export const toolModuleLoaders: Readonly<
   "probability/geometric-sampler": () => import("../../probability/geometric-sampler/index.js"),
   "proteomics/signal-peptide-core-scan": () => import("../../proteomics/signal-peptide-core-scan/index.js"),
   "psychology/wright-map-item-map-position-lookup": () => import("../../psychology/wright-map-item-map-position-lookup/index.js"),
+  "random/arithmetic-clamp-worked-example": () => import("../../random/arithmetic-clamp-worked-example/index.js"),
   "random/braille-practice-line": () => import("../../random/braille-practice-line/index.js"),
   "random/stellar-magnitude-comparison-quiz": () => import("../../random/stellar-magnitude-comparison-quiz/index.js"),
   "random/vivid-palette": () => import("../../random/vivid-palette/index.js"),

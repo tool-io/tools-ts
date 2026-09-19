@@ -65,6 +65,7 @@ export const toolModuleLoaders: Readonly<
   "print/print-label-grid-gutter-budget": () => import("../../print/print-label-grid-gutter-budget/index.js"),
   "random/astronomical-symbol": () => import("../../random/astronomical-symbol/index.js"),
   "random/bit-reversal-exercise": () => import("../../random/bit-reversal-exercise/index.js"),
+  "random/demography-child-woman-ratio-cwr-worked-example": () => import("../../random/demography-child-woman-ratio-cwr-worked-example/index.js"),
   "random/gear-train-exercise": () => import("../../random/gear-train-exercise/index.js"),
   "random/mathematical-bold-letter": () => import("../../random/mathematical-bold-letter/index.js"),
   "random/neutral-palette": () => import("../../random/neutral-palette/index.js"),

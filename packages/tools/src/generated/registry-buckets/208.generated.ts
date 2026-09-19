@@ -80,6 +80,7 @@ export const toolModuleLoaders: Readonly<
   "random/chess-annotation-symbol": () => import("../../random/chess-annotation-symbol/index.js"),
   "random/http-entity-tag-comparison-cards": () => import("../../random/http-entity-tag-comparison-cards/index.js"),
   "random/mahajani-character": () => import("../../random/mahajani-character/index.js"),
+  "random/ring-start-direction": () => import("../../random/ring-start-direction/index.js"),
   "relation/pair-membership-table": () => import("../../relation/pair-membership-table/index.js"),
   "sailing/mast-rake-angle": () => import("../../sailing/mast-rake-angle/index.js"),
   "semiconductor/contact-resistance-transfer-length": () => import("../../semiconductor/contact-resistance-transfer-length/index.js"),
@@ -96,4 +97,5 @@ export const toolModuleLoaders: Readonly<
   "text/average-word-length": () => import("../../text/average-word-length/index.js"),
   "theatre/linklater-versus-fitzmaurice-voice-method-compare-lookup": () => import("../../theatre/linklater-versus-fitzmaurice-voice-method-compare-lookup/index.js"),
   "toxicology/erpg-2": () => import("../../toxicology/erpg-2/index.js"),
+  "trie/node-unary-chain-spans": () => import("../../trie/node-unary-chain-spans/index.js"),
 };

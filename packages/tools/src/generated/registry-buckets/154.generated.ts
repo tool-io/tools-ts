@@ -51,6 +51,7 @@ export const toolModuleLoaders: Readonly<
   "probability/t-sampler": () => import("../../probability/t-sampler/index.js"),
   "proteomics/c2h2-zinc-finger-motifs": () => import("../../proteomics/c2h2-zinc-finger-motifs/index.js"),
   "proteomics/disorder-residue-fraction": () => import("../../proteomics/disorder-residue-fraction/index.js"),
+  "random/acoustics-acoustic-impedance-medium-worked-example": () => import("../../random/acoustics-acoustic-impedance-medium-worked-example/index.js"),
   "random/laboratory-safety-symbol": () => import("../../random/laboratory-safety-symbol/index.js"),
   "random/rejang-character": () => import("../../random/rejang-character/index.js"),
   "regex/regex-zero-width-match-budget": () => import("../../regex/regex-zero-width-match-budget/index.js"),

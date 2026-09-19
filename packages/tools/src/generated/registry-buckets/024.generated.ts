@@ -66,6 +66,7 @@ export const toolModuleLoaders: Readonly<
   "random/pinyin-tone-marked-vowel": () => import("../../random/pinyin-tone-marked-vowel/index.js"),
   "real-estate/leasing-commission": () => import("../../real-estate/leasing-commission/index.js"),
   "regression/linear": () => import("../../regression/linear/index.js"),
+  "runs/length-record-index-lookup": () => import("../../runs/length-record-index-lookup/index.js"),
   "sailing/spinnaker-tack-position": () => import("../../sailing/spinnaker-tack-position/index.js"),
   "seismology/digitizer-input-loading-error-percent-calculator": () => import("../../seismology/digitizer-input-loading-error-percent-calculator/index.js"),
   "semiconductor/qcl-active-region-temperature": () => import("../../semiconductor/qcl-active-region-temperature/index.js"),

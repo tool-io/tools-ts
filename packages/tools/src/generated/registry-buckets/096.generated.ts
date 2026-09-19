@@ -62,6 +62,7 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/estimated-fetal-weight-hadlock-4param": () => import("../../pregnancy/estimated-fetal-weight-hadlock-4param/index.js"),
   "probability/f-sampler": () => import("../../probability/f-sampler/index.js"),
   "psychology/likert-sum-to-mean-rescaler": () => import("../../psychology/likert-sum-to-mean-rescaler/index.js"),
+  "random/cartography-photo-scale-altitude-focal-worked-example": () => import("../../random/cartography-photo-scale-altitude-focal-worked-example/index.js"),
   "random/double-struck-letter": () => import("../../random/double-struck-letter/index.js"),
   "regex/quantifier-bound-token-parser": () => import("../../regex/quantifier-bound-token-parser/index.js"),
   "sailing/metacentric-height": () => import("../../sailing/metacentric-height/index.js"),

@@ -10,6 +10,7 @@ export const toolModuleLoaders: Readonly<
   "archival-studies/transcript-drift-per-hour-estimator": () => import("../../archival-studies/transcript-drift-per-hour-estimator/index.js"),
   "astrometry/plate-solution-coefficient-count-checker": () => import("../../astrometry/plate-solution-coefficient-count-checker/index.js"),
   "auditing/recent-sas-143-144-145-summary-changes-lookup": () => import("../../auditing/recent-sas-143-144-145-summary-changes-lookup/index.js"),
+  "automaton/state-reachable-inventory": () => import("../../automaton/state-reachable-inventory/index.js"),
   "banking/cet1-capital-adequacy-ratio": () => import("../../banking/cet1-capital-adequacy-ratio/index.js"),
   "banking/qualified-purchaser-5-million-invested-distinction-lookup": () => import("../../banking/qualified-purchaser-5-million-invested-distinction-lookup/index.js"),
   "banking/reg-e-error-resolution-10-day-lookup": () => import("../../banking/reg-e-error-resolution-10-day-lookup/index.js"),

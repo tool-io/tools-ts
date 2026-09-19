@@ -66,6 +66,7 @@ export const toolModuleLoaders: Readonly<
   "random/light-bulb": () => import("../../random/light-bulb/index.js"),
   "real-estate/vacancy-rate": () => import("../../real-estate/vacancy-rate/index.js"),
   "rhetoric/zeugma-one-verb-two-objects-yoking-detector": () => import("../../rhetoric/zeugma-one-verb-two-objects-yoking-detector/index.js"),
+  "runs/length-record-adjacent-compaction": () => import("../../runs/length-record-adjacent-compaction/index.js"),
   "sailing/displacement-length-ratio": () => import("../../sailing/displacement-length-ratio/index.js"),
   "sailing/sound-signal-range": () => import("../../sailing/sound-signal-range/index.js"),
   "semiconductor/low-k-interconnect-capacitance": () => import("../../semiconductor/low-k-interconnect-capacitance/index.js"),

@@ -71,4 +71,5 @@ export const toolModuleLoaders: Readonly<
   "theatre/squib-blood-bag-pressure-setup-lookup": () => import("../../theatre/squib-blood-bag-pressure-setup-lookup/index.js"),
   "toxicology/renal-clearance": () => import("../../toxicology/renal-clearance/index.js"),
   "validate/upc-e": () => import("../../validate/upc-e/index.js"),
+  "zone/offset-utc-span-local-split": () => import("../../zone/offset-utc-span-local-split/index.js"),
 };

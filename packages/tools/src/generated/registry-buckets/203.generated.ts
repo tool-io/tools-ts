@@ -66,6 +66,7 @@ export const toolModuleLoaders: Readonly<
   "permutation/permutation-cycle-notation-formatter": () => import("../../permutation/permutation-cycle-notation-formatter/index.js"),
   "plumbing/wet-vent-sizing": () => import("../../plumbing/wet-vent-sizing/index.js"),
   "probability/multinomial-sampler": () => import("../../probability/multinomial-sampler/index.js"),
+  "random/carpentry-biscuit-spacing-worked-example": () => import("../../random/carpentry-biscuit-spacing-worked-example/index.js"),
   "random/dives-akuru-character": () => import("../../random/dives-akuru-character/index.js"),
   "rhetoric/epizeuxis-triple-immediate-repetition-checker": () => import("../../rhetoric/epizeuxis-triple-immediate-repetition-checker/index.js"),
   "seismology/scalar-moment-from-deviatoric-eigenvalues": () => import("../../seismology/scalar-moment-from-deviatoric-eigenvalues/index.js"),

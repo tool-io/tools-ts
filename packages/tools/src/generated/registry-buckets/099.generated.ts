@@ -43,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "geology/cement-compressive-strength": () => import("../../geology/cement-compressive-strength/index.js"),
   "glaciology/annual-mass-balance": () => import("../../glaciology/annual-mass-balance/index.js"),
   "heraldry/four-quarter-layout-generator": () => import("../../heraldry/four-quarter-layout-generator/index.js"),
+  "histogram/log-spaced-edge-plan": () => import("../../histogram/log-spaced-edge-plan/index.js"),
   "horticulture/plug-tray-cell-count-lookup": () => import("../../horticulture/plug-tray-cell-count-lookup/index.js"),
   "journalism/anonymous-source-justification-editorial-checklist": () => import("../../journalism/anonymous-source-justification-editorial-checklist/index.js"),
   "journalism/lower-third-fit": () => import("../../journalism/lower-third-fit/index.js"),

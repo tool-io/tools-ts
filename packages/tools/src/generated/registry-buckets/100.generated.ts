@@ -65,6 +65,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/hydronic-circulator-head": () => import("../../plumbing/hydronic-circulator-head/index.js"),
   "pregnancy/contraction-frequency": () => import("../../pregnancy/contraction-frequency/index.js"),
   "pregnancy/maternal-weight-gain-weekly": () => import("../../pregnancy/maternal-weight-gain-weekly/index.js"),
+  "random/bucket-representative-order": () => import("../../random/bucket-representative-order/index.js"),
   "random/georgian-letter": () => import("../../random/georgian-letter/index.js"),
   "random/reorder-point-scenario-cards": () => import("../../random/reorder-point-scenario-cards/index.js"),
   "random/smartphone": () => import("../../random/smartphone/index.js"),

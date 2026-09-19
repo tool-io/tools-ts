@@ -49,6 +49,7 @@ export const toolModuleLoaders: Readonly<
   "math/lemniscate-constant-approx": () => import("../../math/lemniscate-constant-approx/index.js"),
   "meteorology/pressure-tendency-3hr-change": () => import("../../meteorology/pressure-tendency-3hr-change/index.js"),
   "meteorology/zonal-index-circulation-strength": () => import("../../meteorology/zonal-index-circulation-strength/index.js"),
+  "morphology/isolated-cell-remover": () => import("../../morphology/isolated-cell-remover/index.js"),
   "numismatics/trade-fairness-value-swap-checker": () => import("../../numismatics/trade-fairness-value-swap-checker/index.js"),
   "order/sort-key-tie-stability-audit": () => import("../../order/sort-key-tie-stability-audit/index.js"),
   "paleontology/mau-calculator": () => import("../../paleontology/mau-calculator/index.js"),

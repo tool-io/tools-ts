@@ -57,6 +57,7 @@ export const toolModuleLoaders: Readonly<
   "limnology/internal-seiche-period-rectangular": () => import("../../limnology/internal-seiche-period-rectangular/index.js"),
   "math/sophie-germain-prime-checker": () => import("../../math/sophie-germain-prime-checker/index.js"),
   "meteorology/freezing-fog-rime-deposit-rate-lookup": () => import("../../meteorology/freezing-fog-rime-deposit-rate-lookup/index.js"),
+  "morphology/enclosed-hole-fill": () => import("../../morphology/enclosed-hole-fill/index.js"),
   "museology/condition-change-delta-score": () => import("../../museology/condition-change-delta-score/index.js"),
   "museology/wheelchair-reach-height-checker": () => import("../../museology/wheelchair-reach-height-checker/index.js"),
   "music/dotted-note-duration-calculator": () => import("../../music/dotted-note-duration-calculator/index.js"),
@@ -85,4 +86,6 @@ export const toolModuleLoaders: Readonly<
   "toxicology/intraspecies-uncertainty": () => import("../../toxicology/intraspecies-uncertainty/index.js"),
   "toxicology/linear-dose-probit-extra-risk-bmd": () => import("../../toxicology/linear-dose-probit-extra-risk-bmd/index.js"),
   "transcriptomics/microarray-background-correction": () => import("../../transcriptomics/microarray-background-correction/index.js"),
+  "tree/parent-record-child-index": () => import("../../tree/parent-record-child-index/index.js"),
+  "tree/parent-record-sibling-inventory": () => import("../../tree/parent-record-sibling-inventory/index.js"),
 };

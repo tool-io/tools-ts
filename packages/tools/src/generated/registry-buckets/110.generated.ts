@@ -52,6 +52,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/rainwater-harvesting-tank-size": () => import("../../plumbing/rainwater-harvesting-tank-size/index.js"),
   "pregnancy/blood-loss-estimate": () => import("../../pregnancy/blood-loss-estimate/index.js"),
   "pregnancy/multiple-pregnancy-risk-score": () => import("../../pregnancy/multiple-pregnancy-risk-score/index.js"),
+  "random/acoustics-band-loudness-aggregation-worked-example": () => import("../../random/acoustics-band-loudness-aggregation-worked-example/index.js"),
   "random/angular-size-practice-set": () => import("../../random/angular-size-practice-set/index.js"),
   "random/kaktovik-numeral": () => import("../../random/kaktovik-numeral/index.js"),
   "random/musical-clef": () => import("../../random/musical-clef/index.js"),

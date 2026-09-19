@@ -54,6 +54,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/fire-sprinkler-obstruction-distance": () => import("../../plumbing/fire-sprinkler-obstruction-distance/index.js"),
   "plumbing/gas-pipe-sizing-low-pressure": () => import("../../plumbing/gas-pipe-sizing-low-pressure/index.js"),
   "random/coptic-letter": () => import("../../random/coptic-letter/index.js"),
+  "random/horology-balance-rim-thermal-expansion-change-calculator-worked-example": () => import("../../random/horology-balance-rim-thermal-expansion-change-calculator-worked-example/index.js"),
   "random/monochromatic-palette": () => import("../../random/monochromatic-palette/index.js"),
   "random/nutrient": () => import("../../random/nutrient/index.js"),
   "random/phaistos-disc-sign": () => import("../../random/phaistos-disc-sign/index.js"),

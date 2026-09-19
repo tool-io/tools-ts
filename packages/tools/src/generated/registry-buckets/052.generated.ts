@@ -38,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "geology/tas-diagram-plot": () => import("../../geology/tas-diagram-plot/index.js"),
   "glaciology/avalanche-runout-alpha-angle": () => import("../../glaciology/avalanche-runout-alpha-angle/index.js"),
   "glaciology/firn-density-depth-profile": () => import("../../glaciology/firn-density-depth-profile/index.js"),
+  "histogram/bin-difference-table": () => import("../../histogram/bin-difference-table/index.js"),
   "html/data-attribute-naming-validator": () => import("../../html/data-attribute-naming-validator/index.js"),
   "insurance/deductible-premium-tradeoff-breakeven-years": () => import("../../insurance/deductible-premium-tradeoff-breakeven-years/index.js"),
   "insurance/reinstatement-lapse-gap-checker": () => import("../../insurance/reinstatement-lapse-gap-checker/index.js"),

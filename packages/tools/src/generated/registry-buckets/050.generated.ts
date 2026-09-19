@@ -79,6 +79,7 @@ export const toolModuleLoaders: Readonly<
   "taxation/sixteenth-amendment-1913-income-tax-ratification-origin": () => import("../../taxation/sixteenth-amendment-1913-income-tax-ratification-origin/index.js"),
   "theatre/understudy-cover-matrix": () => import("../../theatre/understudy-cover-matrix/index.js"),
   "transcriptomics/effective-transcript-length": () => import("../../transcriptomics/effective-transcript-length/index.js"),
+  "trie/terminal-word-path-list": () => import("../../trie/terminal-word-path-list/index.js"),
   "vexillology/wind-load-flag-area": () => import("../../vexillology/wind-load-flag-area/index.js"),
   "volcanology/lava-front-advance-speed-basaltic": () => import("../../volcanology/lava-front-advance-speed-basaltic/index.js"),
 };

@@ -69,6 +69,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/weir-flow-triangular": () => import("../../plumbing/weir-flow-triangular/index.js"),
   "pregnancy/interpregnancy-interval": () => import("../../pregnancy/interpregnancy-interval/index.js"),
   "psychology/reverse-code-item-transform": () => import("../../psychology/reverse-code-item-transform/index.js"),
+  "random/celestial-mechanics-ellipse-from-apsis-radii-worked-example": () => import("../../random/celestial-mechanics-ellipse-from-apsis-radii-worked-example/index.js"),
   "random/ellipse-set": () => import("../../random/ellipse-set/index.js"),
   "random/gurung-khema-character": () => import("../../random/gurung-khema-character/index.js"),
   "random/todhri-letter": () => import("../../random/todhri-letter/index.js"),
@@ -86,5 +87,6 @@ export const toolModuleLoaders: Readonly<
   "text/digit-count-in-text": () => import("../../text/digit-count-in-text/index.js"),
   "theatre/platform-leg-height-2x4-frame-load-lookup": () => import("../../theatre/platform-leg-height-2x4-frame-load-lookup/index.js"),
   "toxicology/ghs-classification": () => import("../../toxicology/ghs-classification/index.js"),
+  "trie/node-terminal-count-table": () => import("../../trie/node-terminal-count-table/index.js"),
   "typography/golden-ratio-type-scale": () => import("../../typography/golden-ratio-type-scale/index.js"),
 };

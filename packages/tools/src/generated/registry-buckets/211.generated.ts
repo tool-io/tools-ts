@@ -60,6 +60,8 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/fetal-lie-lookup": () => import("../../pregnancy/fetal-lie-lookup/index.js"),
   "proteomics/sh2-flvres-motif": () => import("../../proteomics/sh2-flvres-motif/index.js"),
   "psychology/z-composite-average-standardized": () => import("../../psychology/z-composite-average-standardized/index.js"),
+  "random/demography-keyfitz-momentum-factor-worked-example": () => import("../../random/demography-keyfitz-momentum-factor-worked-example/index.js"),
+  "random/electronics-amp-hours-from-coulombs-worked-example": () => import("../../random/electronics-amp-hours-from-coulombs-worked-example/index.js"),
   "regex/quantifier-bound-token-formatter": () => import("../../regex/quantifier-bound-token-formatter/index.js"),
   "sailing/current-correction-angle": () => import("../../sailing/current-correction-angle/index.js"),
   "sailing/sheet-load-jib": () => import("../../sailing/sheet-load-jib/index.js"),

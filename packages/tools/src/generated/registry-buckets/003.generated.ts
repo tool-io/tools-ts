@@ -80,6 +80,7 @@ export const toolModuleLoaders: Readonly<
   "toxicology/descriptor-distance-read-across": () => import("../../toxicology/descriptor-distance-read-across/index.js"),
   "transcriptomics/community-resolution-selector": () => import("../../transcriptomics/community-resolution-selector/index.js"),
   "transcriptomics/ma-plot-coordinates": () => import("../../transcriptomics/ma-plot-coordinates/index.js"),
+  "tree/parent-record-reroot-transform": () => import("../../tree/parent-record-reroot-transform/index.js"),
   "typography/words-per-page-trade-paperback": () => import("../../typography/words-per-page-trade-paperback/index.js"),
   "vexillology/design-era-classifier": () => import("../../vexillology/design-era-classifier/index.js"),
 };

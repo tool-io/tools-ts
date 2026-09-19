@@ -73,6 +73,7 @@ export const toolModuleLoaders: Readonly<
   "proteomics/kinase-motif-triad": () => import("../../proteomics/kinase-motif-triad/index.js"),
   "psychology/flourishing-scale-score": () => import("../../psychology/flourishing-scale-score/index.js"),
   "quaternion/unit-record-vector-rotation": () => import("../../quaternion/unit-record-vector-rotation/index.js"),
+  "random/celestial-mechanics-aerobraking-geometric-pass-count-worked-example": () => import("../../random/celestial-mechanics-aerobraking-geometric-pass-count-worked-example/index.js"),
   "random/devanagari-character": () => import("../../random/devanagari-character/index.js"),
   "random/unicode-noncharacter": () => import("../../random/unicode-noncharacter/index.js"),
   "real-estate/operating-expense-ratio": () => import("../../real-estate/operating-expense-ratio/index.js"),

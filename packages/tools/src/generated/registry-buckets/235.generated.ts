@@ -58,6 +58,7 @@ export const toolModuleLoaders: Readonly<
   "pharmacy/cmax-from-dose": () => import("../../pharmacy/cmax-from-dose/index.js"),
   "random/astrological-aspect-symbol": () => import("../../random/astrological-aspect-symbol/index.js"),
   "random/electric-car": () => import("../../random/electric-car/index.js"),
+  "runs/length-record-value-first-offset": () => import("../../runs/length-record-value-first-offset/index.js"),
   "sailing/sheet-load-main": () => import("../../sailing/sheet-load-main/index.js"),
   "seismology/average-radiation-factor-boore-boatwright-lookup": () => import("../../seismology/average-radiation-factor-boore-boatwright-lookup/index.js"),
   "seismology/well-log-acoustic-impedance-reflection-coefficient": () => import("../../seismology/well-log-acoustic-impedance-reflection-coefficient/index.js"),

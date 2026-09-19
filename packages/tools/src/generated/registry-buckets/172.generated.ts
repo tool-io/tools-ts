@@ -50,6 +50,7 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/quickening-week": () => import("../../pregnancy/quickening-week/index.js"),
   "proteomics/ww-ppxy-motifs": () => import("../../proteomics/ww-ppxy-motifs/index.js"),
   "random/cuboid-set": () => import("../../random/cuboid-set/index.js"),
+  "random/geometry-ellipsoid-volume-worked-example": () => import("../../random/geometry-ellipsoid-volume-worked-example/index.js"),
   "random/isbn-check-digit-quiz": () => import("../../random/isbn-check-digit-quiz/index.js"),
   "random/lens-field-of-view-quiz": () => import("../../random/lens-field-of-view-quiz/index.js"),
   "random/music-dynamic-mark": () => import("../../random/music-dynamic-mark/index.js"),

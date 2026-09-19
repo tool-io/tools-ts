@@ -11,6 +11,7 @@ export const toolModuleLoaders: Readonly<
   "archival-studies/daily-retrieval-productivity-metric": () => import("../../archival-studies/daily-retrieval-productivity-metric/index.js"),
   "auditing/dual-dating-subsequent-event-footnote-usage-lookup": () => import("../../auditing/dual-dating-subsequent-event-footnote-usage-lookup/index.js"),
   "auditing/proof-of-reserves-coverage": () => import("../../auditing/proof-of-reserves-coverage/index.js"),
+  "automaton/transition-target-state-coverage": () => import("../../automaton/transition-target-state-coverage/index.js"),
   "bacteriology/mcfarland-05-equivalent-lookup": () => import("../../bacteriology/mcfarland-05-equivalent-lookup/index.js"),
   "biology/population-doubling-time-ecology": () => import("../../biology/population-doubling-time-ecology/index.js"),
   "carpentry/edge-banding-length": () => import("../../carpentry/edge-banding-length/index.js"),

@@ -59,6 +59,7 @@ export const toolModuleLoaders: Readonly<
   "pedagogy/grade-weight-validator": () => import("../../pedagogy/grade-weight-validator/index.js"),
   "pharmacy/fentanyl-patch-to-oral-morphine": () => import("../../pharmacy/fentanyl-patch-to-oral-morphine/index.js"),
   "philately/error-variety-multiplier-classifier": () => import("../../philately/error-variety-multiplier-classifier/index.js"),
+  "random/arithmetic-modular-complement-worked-example": () => import("../../random/arithmetic-modular-complement-worked-example/index.js"),
   "random/box-drawing-character": () => import("../../random/box-drawing-character/index.js"),
   "random/ethiopic-numeral": () => import("../../random/ethiopic-numeral/index.js"),
   "random/nyiakeng-puachue-hmong-character": () => import("../../random/nyiakeng-puachue-hmong-character/index.js"),

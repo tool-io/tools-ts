@@ -38,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "geology/balanced-cross-section-line-length": () => import("../../geology/balanced-cross-section-line-length/index.js"),
   "geology/radiocarbon-calibration": () => import("../../geology/radiocarbon-calibration/index.js"),
   "graph/edge-list-degree-sum-audit": () => import("../../graph/edge-list-degree-sum-audit/index.js"),
+  "histogram/bin-sample-provenance-groups": () => import("../../histogram/bin-sample-provenance-groups/index.js"),
   "horology/escape-wheel-tooth-count": () => import("../../horology/escape-wheel-tooth-count/index.js"),
   "horticulture/stock-solution-nitrogen-ppm-target": () => import("../../horticulture/stock-solution-nitrogen-ppm-target/index.js"),
   "insurance/annuity-start-classifier": () => import("../../insurance/annuity-start-classifier/index.js"),

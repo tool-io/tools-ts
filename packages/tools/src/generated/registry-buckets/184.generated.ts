@@ -64,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/heat-loss-uninsulated-pipe": () => import("../../plumbing/heat-loss-uninsulated-pipe/index.js"),
   "plumbing/water-heater-energy": () => import("../../plumbing/water-heater-energy/index.js"),
   "pregnancy/kick-count-per-hour": () => import("../../pregnancy/kick-count-per-hour/index.js"),
+  "random/celestial-mechanics-conic-vis-viva-speed-worked-example": () => import("../../random/celestial-mechanics-conic-vis-viva-speed-worked-example/index.js"),
   "random/regex-literal-escaping-exercise": () => import("../../random/regex-literal-escaping-exercise/index.js"),
   "random/run-length-round-trip-test-case": () => import("../../random/run-length-round-trip-test-case/index.js"),
   "semiconductor/distributed-bragg-reflector-reflectivity": () => import("../../semiconductor/distributed-bragg-reflector-reflectivity/index.js"),

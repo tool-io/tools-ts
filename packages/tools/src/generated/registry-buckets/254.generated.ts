@@ -69,6 +69,7 @@ export const toolModuleLoaders: Readonly<
   "pharmacy/percent-strength-conversion-ratio-proportion": () => import("../../pharmacy/percent-strength-conversion-ratio-proportion/index.js"),
   "philately/cachet-type-note-classifier": () => import("../../philately/cachet-type-note-classifier/index.js"),
   "pregnancy/amniotic-fluid-volume-total": () => import("../../pregnancy/amniotic-fluid-volume-total/index.js"),
+  "random/astronomy-comoving-distance-approx-z-worked-example": () => import("../../random/astronomy-comoving-distance-approx-z-worked-example/index.js"),
   "rhetoric/epistrophe-final-word-repetition-counter": () => import("../../rhetoric/epistrophe-final-word-repetition-counter/index.js"),
   "sailing/chain-catenary-sag": () => import("../../sailing/chain-catenary-sag/index.js"),
   "semiconductor/mmi-splitter-excess-loss": () => import("../../semiconductor/mmi-splitter-excess-loss/index.js"),

@@ -62,6 +62,7 @@ export const toolModuleLoaders: Readonly<
   "philately/local-post-era-boundary-checker": () => import("../../philately/local-post-era-boundary-checker/index.js"),
   "philately/mount-size-recommender-mm": () => import("../../philately/mount-size-recommender-mm/index.js"),
   "random/coin-toss-experiment": () => import("../../random/coin-toss-experiment/index.js"),
+  "random/demography-general-growth-balance-completeness-worked-example": () => import("../../random/demography-general-growth-balance-completeness-worked-example/index.js"),
   "random/ipv6-address-set": () => import("../../random/ipv6-address-set/index.js"),
   "sailing/sail-force": () => import("../../sailing/sail-force/index.js"),
   "semiconductor/metamaterial-negative-index-condition": () => import("../../semiconductor/metamaterial-negative-index-condition/index.js"),

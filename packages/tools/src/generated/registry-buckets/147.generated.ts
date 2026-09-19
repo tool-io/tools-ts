@@ -57,4 +57,5 @@ export const toolModuleLoaders: Readonly<
   "theatre/crossover-passage-width-checker": () => import("../../theatre/crossover-passage-width-checker/index.js"),
   "toxicology/minimal-risk-level": () => import("../../toxicology/minimal-risk-level/index.js"),
   "virology/tcid50-to-pfu-poisson-converter": () => import("../../virology/tcid50-to-pfu-poisson-converter/index.js"),
+  "zone/offset-transition-record-audit": () => import("../../zone/offset-transition-record-audit/index.js"),
 };

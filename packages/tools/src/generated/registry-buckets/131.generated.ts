@@ -58,6 +58,7 @@ export const toolModuleLoaders: Readonly<
   "random/osage-letter": () => import("../../random/osage-letter/index.js"),
   "random/rot13-puzzle": () => import("../../random/rot13-puzzle/index.js"),
   "random/sinhala-digit": () => import("../../random/sinhala-digit/index.js"),
+  "random/specified-bit-length-integer": () => import("../../random/specified-bit-length-integer/index.js"),
   "regex/regex-literal-full-token-pattern": () => import("../../regex/regex-literal-full-token-pattern/index.js"),
   "sailing/polar-performance-percentage": () => import("../../sailing/polar-performance-percentage/index.js"),
   "sparse/coordinate-triplet-diagonal-selector": () => import("../../sparse/coordinate-triplet-diagonal-selector/index.js"),

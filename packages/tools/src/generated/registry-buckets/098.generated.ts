@@ -66,6 +66,8 @@ export const toolModuleLoaders: Readonly<
   "palette/palette-swatch-row-position": () => import("../../palette/palette-swatch-row-position/index.js"),
   "philately/letterpress-squash-rater": () => import("../../philately/letterpress-squash-rater/index.js"),
   "plumbing/pipe-weight-per-foot": () => import("../../plumbing/pipe-weight-per-foot/index.js"),
+  "random/carpentry-box-joint-depth-worked-example": () => import("../../random/carpentry-box-joint-depth-worked-example/index.js"),
+  "random/geometry-annulus-area-worked-example": () => import("../../random/geometry-annulus-area-worked-example/index.js"),
   "random/mongolian-cyrillic-alphabet-letter": () => import("../../random/mongolian-cyrillic-alphabet-letter/index.js"),
   "rational/fraction-divide-exact": () => import("../../rational/fraction-divide-exact/index.js"),
   "sailing/sail-area-jib": () => import("../../sailing/sail-area-jib/index.js"),

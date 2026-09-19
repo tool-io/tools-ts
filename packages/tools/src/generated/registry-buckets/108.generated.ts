@@ -58,6 +58,8 @@ export const toolModuleLoaders: Readonly<
   "proteomics/precursor-mz": () => import("../../proteomics/precursor-mz/index.js"),
   "psychology/benton-facial-recognition-band": () => import("../../psychology/benton-facial-recognition-band/index.js"),
   "psychology/factor-loading-communality": () => import("../../psychology/factor-loading-communality/index.js"),
+  "random/electronics-alias-frequency-worked-example": () => import("../../random/electronics-alias-frequency-worked-example/index.js"),
+  "random/film-anamorphic-desqueeze-worked-example": () => import("../../random/film-anamorphic-desqueeze-worked-example/index.js"),
   "real-estate/arv": () => import("../../real-estate/arv/index.js"),
   "relation/reflexive-diagonal-audit": () => import("../../relation/reflexive-diagonal-audit/index.js"),
   "sailing/tide-rule-of-twelfths": () => import("../../sailing/tide-rule-of-twelfths/index.js"),

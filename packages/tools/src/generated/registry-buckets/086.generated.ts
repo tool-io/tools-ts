@@ -55,6 +55,7 @@ export const toolModuleLoaders: Readonly<
   "limnology/chloride-conservative-mass-balance-checker": () => import("../../limnology/chloride-conservative-mass-balance-checker/index.js"),
   "marriage/gottman-ratio": () => import("../../marriage/gottman-ratio/index.js"),
   "metabolomics/bilirubin-fraction": () => import("../../metabolomics/bilirubin-fraction/index.js"),
+  "morphology/explicit-stencil-dilation": () => import("../../morphology/explicit-stencil-dilation/index.js"),
   "neuroscience/fitts-law-movement-time": () => import("../../neuroscience/fitts-law-movement-time/index.js"),
   "numismatics/dimes-per-ounce-silver-yield": () => import("../../numismatics/dimes-per-ounce-silver-yield/index.js"),
   "numismatics/doubled-die-vs-double-strike": () => import("../../numismatics/doubled-die-vs-double-strike/index.js"),

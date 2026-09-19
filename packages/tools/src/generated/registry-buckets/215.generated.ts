@@ -68,6 +68,7 @@ export const toolModuleLoaders: Readonly<
   "psychology/rasch-item-difficulty-logits": () => import("../../psychology/rasch-item-difficulty-logits/index.js"),
   "quaternion/unit-validity-audit": () => import("../../quaternion/unit-validity-audit/index.js"),
   "random/css-repeating-linear-gradient": () => import("../../random/css-repeating-linear-gradient/index.js"),
+  "random/fixed-pair-dyck-word": () => import("../../random/fixed-pair-dyck-word/index.js"),
   "random/map-sheet-coverage-exercise": () => import("../../random/map-sheet-coverage-exercise/index.js"),
   "random/tai-le-character": () => import("../../random/tai-le-character/index.js"),
   "random/tuning-beat-frequency-exercise": () => import("../../random/tuning-beat-frequency-exercise/index.js"),

@@ -62,6 +62,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/overflow-roof-drain-size": () => import("../../plumbing/overflow-roof-drain-size/index.js"),
   "plumbing/pipe-weight-filled": () => import("../../plumbing/pipe-weight-filled/index.js"),
   "quaternion/squared-norm": () => import("../../quaternion/squared-norm/index.js"),
+  "random/combinatorics-factorial-worked-example": () => import("../../random/combinatorics-factorial-worked-example/index.js"),
   "random/kitchen-container-fill-exercise": () => import("../../random/kitchen-container-fill-exercise/index.js"),
   "random/momentum-impulse-exercise": () => import("../../random/momentum-impulse-exercise/index.js"),
   "sailing/fuel-at-eta": () => import("../../sailing/fuel-at-eta/index.js"),

@@ -39,6 +39,7 @@ export const toolModuleLoaders: Readonly<
   "genetics/bluewhite-lacz-disruption-color-classifier": () => import("../../genetics/bluewhite-lacz-disruption-color-classifier/index.js"),
   "geology/atterberg-liquidity-index": () => import("../../geology/atterberg-liquidity-index/index.js"),
   "graph/edge-list-self-loop-partitioner": () => import("../../graph/edge-list-self-loop-partitioner/index.js"),
+  "histogram/bin-count-probability-table": () => import("../../histogram/bin-count-probability-table/index.js"),
   "horology/watch-winder-rotation-direction-lookup": () => import("../../horology/watch-winder-rotation-direction-lookup/index.js"),
   "horticulture/greenhouse-perimeter-baseboard-length": () => import("../../horticulture/greenhouse-perimeter-baseboard-length/index.js"),
   "insurance/loss-cost-pass-through-change-percent": () => import("../../insurance/loss-cost-pass-through-change-percent/index.js"),

@@ -46,6 +46,8 @@ export const toolModuleLoaders: Readonly<
   "number/harshad-checker": () => import("../../number/harshad-checker/index.js"),
   "parasitology/therapeutic-geographic-coverage-gap": () => import("../../parasitology/therapeutic-geographic-coverage-gap/index.js"),
   "pedagogy/mastery-scale-mapper": () => import("../../pedagogy/mastery-scale-mapper/index.js"),
+  "random/byte-replacement-position": () => import("../../random/byte-replacement-position/index.js"),
+  "random/geometry-hexagon-area-worked-example": () => import("../../random/geometry-hexagon-area-worked-example/index.js"),
   "random/tai-yo-character": () => import("../../random/tai-yo-character/index.js"),
   "real-estate/rentable-area": () => import("../../real-estate/rentable-area/index.js"),
   "sailing/opposite-tack-course": () => import("../../sailing/opposite-tack-course/index.js"),

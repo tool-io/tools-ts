@@ -43,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "math/firoozbakht-conjecture": () => import("../../math/firoozbakht-conjecture/index.js"),
   "math/lemniscate-area-bernoulli": () => import("../../math/lemniscate-area-bernoulli/index.js"),
   "mining/stripping-ratio": () => import("../../mining/stripping-ratio/index.js"),
+  "morphology/seed-component-mask": () => import("../../morphology/seed-component-mask/index.js"),
   "neuroscience/flanker-congruency-effect": () => import("../../neuroscience/flanker-congruency-effect/index.js"),
   "number/parity-checker": () => import("../../number/parity-checker/index.js"),
   "oceanography/vector-average-current-components": () => import("../../oceanography/vector-average-current-components/index.js"),

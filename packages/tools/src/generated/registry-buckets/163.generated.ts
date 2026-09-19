@@ -42,6 +42,8 @@ export const toolModuleLoaders: Readonly<
   "probability/pareto-sampler": () => import("../../probability/pareto-sampler/index.js"),
   "proteomics/nsaf-abundance": () => import("../../proteomics/nsaf-abundance/index.js"),
   "proteomics/pts1-terminal-signal": () => import("../../proteomics/pts1-terminal-signal/index.js"),
+  "random/acoustics-area-weighted-absorption-coefficient-worked-example": () => import("../../random/acoustics-area-weighted-absorption-coefficient-worked-example/index.js"),
+  "random/astrometry-micrometer-double-star-offsets-worked-example": () => import("../../random/astrometry-micrometer-double-star-offsets-worked-example/index.js"),
   "random/caesar-cipher-puzzle": () => import("../../random/caesar-cipher-puzzle/index.js"),
   "random/hsla-color": () => import("../../random/hsla-color/index.js"),
   "random/light-palette": () => import("../../random/light-palette/index.js"),

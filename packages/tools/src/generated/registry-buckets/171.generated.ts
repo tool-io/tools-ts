@@ -72,6 +72,7 @@ export const toolModuleLoaders: Readonly<
   "random/ideographic-description-character": () => import("../../random/ideographic-description-character/index.js"),
   "random/signwriting-movement-symbol": () => import("../../random/signwriting-movement-symbol/index.js"),
   "random/unicode-grapheme-cluster": () => import("../../random/unicode-grapheme-cluster/index.js"),
+  "runs/length-record-value-window-count": () => import("../../runs/length-record-value-window-count/index.js"),
   "sailing/anchor-scope-ratio": () => import("../../sailing/anchor-scope-ratio/index.js"),
   "sailing/orc-corrected-time": () => import("../../sailing/orc-corrected-time/index.js"),
   "seismology/elevation-static-correction-replacement-velocity": () => import("../../seismology/elevation-static-correction-replacement-velocity/index.js"),
@@ -84,5 +85,6 @@ export const toolModuleLoaders: Readonly<
   "theatre/site-specific-location-integration-performance-method": () => import("../../theatre/site-specific-location-integration-performance-method/index.js"),
   "time/clock-value-window-membership": () => import("../../time/clock-value-window-membership/index.js"),
   "transcriptomics/alternative-3prime-splice-shift": () => import("../../transcriptomics/alternative-3prime-splice-shift/index.js"),
+  "trie/node-path-compressed-edge-table": () => import("../../trie/node-path-compressed-edge-table/index.js"),
   "viticulture/machine-harvest-loss-percent": () => import("../../viticulture/machine-harvest-loss-percent/index.js"),
 };

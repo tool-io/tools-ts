@@ -57,6 +57,7 @@ export const toolModuleLoaders: Readonly<
   "pedagogy/ai-tutor-homework-disclosure-policy-statement-lookup": () => import("../../pedagogy/ai-tutor-homework-disclosure-policy-statement-lookup/index.js"),
   "plumbing/gas-regulator-capacity": () => import("../../plumbing/gas-regulator-capacity/index.js"),
   "pregnancy/twin-weight-discordance": () => import("../../pregnancy/twin-weight-discordance/index.js"),
+  "random/carpentry-bevel-angle-worked-example": () => import("../../random/carpentry-bevel-angle-worked-example/index.js"),
   "random/css-named-color": () => import("../../random/css-named-color/index.js"),
   "sailing/visibility-category": () => import("../../sailing/visibility-category/index.js"),
   "seismology/joint-hypocentral-grid-search-step": () => import("../../seismology/joint-hypocentral-grid-search-step/index.js"),

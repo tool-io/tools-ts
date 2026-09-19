@@ -56,6 +56,7 @@ export const toolModuleLoaders: Readonly<
   "philately/phosphor-band-decoder": () => import("../../philately/phosphor-band-decoder/index.js"),
   "proteomics/ef-hand-loop-screen": () => import("../../proteomics/ef-hand-loop-screen/index.js"),
   "proteomics/elisa-four-parameter-inversion": () => import("../../proteomics/elisa-four-parameter-inversion/index.js"),
+  "random/arithmetic-basis-points-worked-example": () => import("../../random/arithmetic-basis-points-worked-example/index.js"),
   "random/evenly-spaced-hue-palette": () => import("../../random/evenly-spaced-hue-palette/index.js"),
   "random/ipv4-host-set": () => import("../../random/ipv4-host-set/index.js"),
   "random/malayalam-character": () => import("../../random/malayalam-character/index.js"),
@@ -71,6 +72,8 @@ export const toolModuleLoaders: Readonly<
   "taxation/carryforward-loss-expiry-years-lookup": () => import("../../taxation/carryforward-loss-expiry-years-lookup/index.js"),
   "taxation/innocent-spouse-relief-type-selector-lookup": () => import("../../taxation/innocent-spouse-relief-type-selector-lookup/index.js"),
   "theatre/sitzprobe-versus-wandelprobe-orchestra-integration-lookup": () => import("../../theatre/sitzprobe-versus-wandelprobe-orchestra-integration-lookup/index.js"),
+  "trie/literal-prefix-node-lookup": () => import("../../trie/literal-prefix-node-lookup/index.js"),
   "vexillology/no-seal-rule-checker": () => import("../../vexillology/no-seal-rule-checker/index.js"),
   "voxel/axis-order-stride-record": () => import("../../voxel/axis-order-stride-record/index.js"),
+  "zone/offset-transition-local-fold-span": () => import("../../zone/offset-transition-local-fold-span/index.js"),
 };

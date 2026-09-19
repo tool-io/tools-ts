@@ -71,6 +71,8 @@ export const toolModuleLoaders: Readonly<
   "semiconductor/ge-quantum-well-hole-mobility": () => import("../../semiconductor/ge-quantum-well-hole-mobility/index.js"),
   "svg/arc-large-sweep-flag-pair": () => import("../../svg/arc-large-sweep-flag-pair/index.js"),
   "toxicology/assessment-factor": () => import("../../toxicology/assessment-factor/index.js"),
+  "tree/parent-record-pruned-node-map": () => import("../../tree/parent-record-pruned-node-map/index.js"),
+  "trie/literal-prefix-unique-completion": () => import("../../trie/literal-prefix-unique-completion/index.js"),
   "virology/spearman-karber-infectious-titer": () => import("../../virology/spearman-karber-infectious-titer/index.js"),
   "volcanology/ashfall-load-thickness-conversion": () => import("../../volcanology/ashfall-load-thickness-conversion/index.js"),
   "vr/lens-distortion-k1": () => import("../../vr/lens-distortion-k1/index.js"),

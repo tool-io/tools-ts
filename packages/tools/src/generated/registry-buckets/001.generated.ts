@@ -68,6 +68,7 @@ export const toolModuleLoaders: Readonly<
   "proteomics/fragment-neutral-loss-mass-table": () => import("../../proteomics/fragment-neutral-loss-mass-table/index.js"),
   "psychology/who5-wellbeing-percent-of-max": () => import("../../psychology/who5-wellbeing-percent-of-max/index.js"),
   "random/czech-alphabet-letter": () => import("../../random/czech-alphabet-letter/index.js"),
+  "random/geometry-circular-segment-area-worked-example": () => import("../../random/geometry-circular-segment-area-worked-example/index.js"),
   "real-estate/cash-on-cash-return": () => import("../../real-estate/cash-on-cash-return/index.js"),
   "sailing/jib-lead-angle": () => import("../../sailing/jib-lead-angle/index.js"),
   "sailing/sail-aspect-ratio-main": () => import("../../sailing/sail-aspect-ratio-main/index.js"),
@@ -83,6 +84,7 @@ export const toolModuleLoaders: Readonly<
   "taxation/pass-through-entity-election-deadline-lookup": () => import("../../taxation/pass-through-entity-election-deadline-lookup/index.js"),
   "time/clock-window-union-duration": () => import("../../time/clock-window-union-duration/index.js"),
   "toxicology/dose-ppm-to-mgkg": () => import("../../toxicology/dose-ppm-to-mgkg/index.js"),
+  "trie/query-missing-edge-witness": () => import("../../trie/query-missing-edge-witness/index.js"),
   "web/data-uri-size": () => import("../../web/data-uri-size/index.js"),
   "web/open-graph-parser": () => import("../../web/open-graph-parser/index.js"),
 };

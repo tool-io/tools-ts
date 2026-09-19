@@ -58,6 +58,8 @@ export const toolModuleLoaders: Readonly<
   "petroleum/pressure-derivative": () => import("../../petroleum/pressure-derivative/index.js"),
   "pregnancy/birth-weight-category": () => import("../../pregnancy/birth-weight-category/index.js"),
   "pregnancy/gestational-age-from-conception": () => import("../../pregnancy/gestational-age-from-conception/index.js"),
+  "random/acoustics-cents-to-ratio-converter-worked-example": () => import("../../random/acoustics-cents-to-ratio-converter-worked-example/index.js"),
+  "random/game-drop-rate-attempts-until-success-geometric-worked-example": () => import("../../random/game-drop-rate-attempts-until-success-geometric-worked-example/index.js"),
   "random/myanmar-character": () => import("../../random/myanmar-character/index.js"),
   "random/parcel-billable-weight-exercise": () => import("../../random/parcel-billable-weight-exercise/index.js"),
   "sailing/dead-reckoning-position": () => import("../../sailing/dead-reckoning-position/index.js"),

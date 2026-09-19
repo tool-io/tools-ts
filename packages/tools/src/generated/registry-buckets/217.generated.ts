@@ -52,6 +52,8 @@ export const toolModuleLoaders: Readonly<
   "plumbing/water-hammer-arrestor-size": () => import("../../plumbing/water-hammer-arrestor-size/index.js"),
   "random/dice-pool": () => import("../../random/dice-pool/index.js"),
   "random/digital-root-exercise": () => import("../../random/digital-root-exercise/index.js"),
+  "random/film-aperture-from-f-stop-worked-example": () => import("../../random/film-aperture-from-f-stop-worked-example/index.js"),
+  "random/geometry-pyramid-volume-worked-example": () => import("../../random/geometry-pyramid-volume-worked-example/index.js"),
   "random/sorani-kurdish-alphabet-letter": () => import("../../random/sorani-kurdish-alphabet-letter/index.js"),
   "relation/relation-symmetric-completion": () => import("../../relation/relation-symmetric-completion/index.js"),
   "seismology/dart-pressure-tsunami-flag-checker": () => import("../../seismology/dart-pressure-tsunami-flag-checker/index.js"),
@@ -67,5 +69,6 @@ export const toolModuleLoaders: Readonly<
   "taxation/total-tax-burden": () => import("../../taxation/total-tax-burden/index.js"),
   "text/line-prefix-filter": () => import("../../text/line-prefix-filter/index.js"),
   "text/sort-lines": () => import("../../text/sort-lines/index.js"),
+  "tree/parent-record-lowest-common-ancestor": () => import("../../tree/parent-record-lowest-common-ancestor/index.js"),
   "vr/frame-rate-from-refresh": () => import("../../vr/frame-rate-from-refresh/index.js"),
 };

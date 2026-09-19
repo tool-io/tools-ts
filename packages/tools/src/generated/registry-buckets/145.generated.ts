@@ -63,6 +63,8 @@ export const toolModuleLoaders: Readonly<
   "parse/name-value-token-list": () => import("../../parse/name-value-token-list/index.js"),
   "physics/momentum": () => import("../../physics/momentum/index.js"),
   "proteomics/phosphoserine-adapter-motifs": () => import("../../proteomics/phosphoserine-adapter-motifs/index.js"),
+  "random/acoustics-barrier-path-difference-worked-example": () => import("../../random/acoustics-barrier-path-difference-worked-example/index.js"),
+  "random/archival-studies-mplp-backlog-reduction-percent-worked-example": () => import("../../random/archival-studies-mplp-backlog-reduction-percent-worked-example/index.js"),
   "random/chinese-remainder-exercise": () => import("../../random/chinese-remainder-exercise/index.js"),
   "random/devanagari-digit": () => import("../../random/devanagari-digit/index.js"),
   "random/sinhala-character": () => import("../../random/sinhala-character/index.js"),

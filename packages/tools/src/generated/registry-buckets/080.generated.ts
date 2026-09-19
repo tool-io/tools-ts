@@ -70,6 +70,7 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/maternal-age-risk-category": () => import("../../pregnancy/maternal-age-risk-category/index.js"),
   "probability/slice-sampler": () => import("../../probability/slice-sampler/index.js"),
   "random/ahom-character": () => import("../../random/ahom-character/index.js"),
+  "random/arithmetic-ceiling-to-multiple-worked-example": () => import("../../random/arithmetic-ceiling-to-multiple-worked-example/index.js"),
   "random/cool-palette": () => import("../../random/cool-palette/index.js"),
   "random/signwriting-body-symbol": () => import("../../random/signwriting-body-symbol/index.js"),
   "semiconductor/mosfet-inversion-charge": () => import("../../semiconductor/mosfet-inversion-charge/index.js"),

@@ -62,6 +62,7 @@ export const toolModuleLoaders: Readonly<
   "ponderal-index": () => import("../../ponderal-index/index.js"),
   "proteomics/protein-aliphatic-index": () => import("../../proteomics/protein-aliphatic-index/index.js"),
   "psychology/rosenberg-self-esteem-band": () => import("../../psychology/rosenberg-self-esteem-band/index.js"),
+  "random/remaining-ticket-draw": () => import("../../random/remaining-ticket-draw/index.js"),
   "real-estate/lease-rollover-exposure": () => import("../../real-estate/lease-rollover-exposure/index.js"),
   "real-estate/usable-area": () => import("../../real-estate/usable-area/index.js"),
   "relation/relation-order-minimal-maximal-elements": () => import("../../relation/relation-order-minimal-maximal-elements/index.js"),

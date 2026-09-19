@@ -63,6 +63,7 @@ export const toolModuleLoaders: Readonly<
   "proteomics/target-decoy-fdr": () => import("../../proteomics/target-decoy-fdr/index.js"),
   "psychology/rocft-copy-band-lookup": () => import("../../psychology/rocft-copy-band-lookup/index.js"),
   "quaternion/unit-relative-rotation": () => import("../../quaternion/unit-relative-rotation/index.js"),
+  "random/film-color-temperature-kelvin-to-mired-worked-example": () => import("../../random/film-color-temperature-kelvin-to-mired-worked-example/index.js"),
   "rhetoric/memoria-ars-memoriae-method-lookup": () => import("../../rhetoric/memoria-ars-memoriae-method-lookup/index.js"),
   "sailing/charted-depth-corrected": () => import("../../sailing/charted-depth-corrected/index.js"),
   "sailing/search-pattern-area": () => import("../../sailing/search-pattern-area/index.js"),

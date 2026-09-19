@@ -55,6 +55,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/washing-machine-water-usage": () => import("../../plumbing/washing-machine-water-usage/index.js"),
   "pregnancy/gestational-age-from-lmp": () => import("../../pregnancy/gestational-age-from-lmp/index.js"),
   "psychology/cfi-tli-fit-threshold-checker": () => import("../../psychology/cfi-tli-fit-threshold-checker/index.js"),
+  "random/empty-slot-item-placement": () => import("../../random/empty-slot-item-placement/index.js"),
   "seismology/response-spectrum-corner-period-band-lookup": () => import("../../seismology/response-spectrum-corner-period-band-lookup/index.js"),
   "semiconductor/diffusion-capacitance": () => import("../../semiconductor/diffusion-capacitance/index.js"),
   "semiconductor/negative-capacitance-fet-voltage-amplification": () => import("../../semiconductor/negative-capacitance-fet-voltage-amplification/index.js"),

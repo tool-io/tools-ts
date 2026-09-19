@@ -49,6 +49,7 @@ export const toolModuleLoaders: Readonly<
   "metabolomics/anaplerosis-flux-split": () => import("../../metabolomics/anaplerosis-flux-split/index.js"),
   "meteorology/bora-katabatic-drainage-speed": () => import("../../meteorology/bora-katabatic-drainage-speed/index.js"),
   "midi/controller-fourteen-bit-pair-audit": () => import("../../midi/controller-fourteen-bit-pair-audit/index.js"),
+  "morphology/explicit-stencil-closing": () => import("../../morphology/explicit-stencil-closing/index.js"),
   "music/bpm-to-ms": () => import("../../music/bpm-to-ms/index.js"),
   "music/note-name-to-midi": () => import("../../music/note-name-to-midi/index.js"),
   "mycology/cap-shape-profile-classifier": () => import("../../mycology/cap-shape-profile-classifier/index.js"),
@@ -61,6 +62,8 @@ export const toolModuleLoaders: Readonly<
   "paleography/wormhole-density-rater": () => import("../../paleography/wormhole-density-rater/index.js"),
   "polynomial/coefficient-input-scale": () => import("../../polynomial/coefficient-input-scale/index.js"),
   "quaternion/component-layout-converter": () => import("../../quaternion/component-layout-converter/index.js"),
+  "random/geology-bearing-capacity-factor-nc-worked-example": () => import("../../random/geology-bearing-capacity-factor-nc-worked-example/index.js"),
+  "random/horology-beats-per-day-worked-example": () => import("../../random/horology-beats-per-day-worked-example/index.js"),
   "random/integer-matrix": () => import("../../random/integer-matrix/index.js"),
   "random/meroitic-hieroglyph": () => import("../../random/meroitic-hieroglyph/index.js"),
   "random/moon-type-character": () => import("../../random/moon-type-character/index.js"),
@@ -77,4 +80,5 @@ export const toolModuleLoaders: Readonly<
   "virology/vector-capacity-insert-space-calculator": () => import("../../virology/vector-capacity-insert-space-calculator/index.js"),
   "vr/battery-life-headset": () => import("../../vr/battery-life-headset/index.js"),
   "web/http-quality-thousandths-formatter": () => import("../../web/http-quality-thousandths-formatter/index.js"),
+  "zone/offset-local-event-order-witness": () => import("../../zone/offset-local-event-order-witness/index.js"),
 };

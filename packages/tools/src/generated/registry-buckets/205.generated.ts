@@ -55,6 +55,7 @@ export const toolModuleLoaders: Readonly<
   "philately/double-strike-plausibility-scorer": () => import("../../philately/double-strike-plausibility-scorer/index.js"),
   "philately/roulette-separation-identifier": () => import("../../philately/roulette-separation-identifier/index.js"),
   "random/business-date-set": () => import("../../random/business-date-set/index.js"),
+  "random/celestial-mechanics-circular-deorbit-interface-burn-worked-example": () => import("../../random/celestial-mechanics-circular-deorbit-interface-burn-worked-example/index.js"),
   "random/combining-diacritical-mark": () => import("../../random/combining-diacritical-mark/index.js"),
   "semiconductor/apd-breakdown-voltage": () => import("../../semiconductor/apd-breakdown-voltage/index.js"),
   "semiconductor/cfet-inverter-delay": () => import("../../semiconductor/cfet-inverter-delay/index.js"),
@@ -62,4 +63,5 @@ export const toolModuleLoaders: Readonly<
   "speleology/cave-depth-chain-total": () => import("../../speleology/cave-depth-chain-total/index.js"),
   "taxation/required-beginning-date-rbd-checker": () => import("../../taxation/required-beginning-date-rbd-checker/index.js"),
   "toxicology/hepatic-extraction-ratio": () => import("../../toxicology/hepatic-extraction-ratio/index.js"),
+  "zone/offset-transition-effective-spans": () => import("../../zone/offset-transition-effective-spans/index.js"),
 };

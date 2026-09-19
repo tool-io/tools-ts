@@ -76,6 +76,7 @@ export const toolModuleLoaders: Readonly<
   "text/prefix-suffix-overlap-length": () => import("../../text/prefix-suffix-overlap-length/index.js"),
   "toxicology/dermal-contact-absorbed-dose": () => import("../../toxicology/dermal-contact-absorbed-dose/index.js"),
   "toxicology/respiratory-sensitization": () => import("../../toxicology/respiratory-sensitization/index.js"),
+  "trie/word-shortest-unique-prefix": () => import("../../trie/word-shortest-unique-prefix/index.js"),
   "typography/kerning-pairs-per-font-average-lookup": () => import("../../typography/kerning-pairs-per-font-average-lookup/index.js"),
   "veterinary/queening-date-from-mating": () => import("../../veterinary/queening-date-from-mating/index.js"),
 };

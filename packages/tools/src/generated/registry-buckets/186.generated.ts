@@ -66,6 +66,7 @@ export const toolModuleLoaders: Readonly<
   "optimization/lbfgs-step": () => import("../../optimization/lbfgs-step/index.js"),
   "print/craft-loom-thread-count": () => import("../../print/craft-loom-thread-count/index.js"),
   "probability/beta-binomial-sampler": () => import("../../probability/beta-binomial-sampler/index.js"),
+  "random/color-relative-luminance-worked-example": () => import("../../random/color-relative-luminance-worked-example/index.js"),
   "random/mahjong-tile": () => import("../../random/mahjong-tile/index.js"),
   "random/photo-print-resolution-quiz": () => import("../../random/photo-print-resolution-quiz/index.js"),
   "random/samaritan-letter": () => import("../../random/samaritan-letter/index.js"),

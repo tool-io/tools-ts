@@ -66,6 +66,7 @@ export const toolModuleLoaders: Readonly<
   "random/chord-voicing": () => import("../../random/chord-voicing/index.js"),
   "random/classroom-choice-board": () => import("../../random/classroom-choice-board/index.js"),
   "random/esperanto-alphabet-letter": () => import("../../random/esperanto-alphabet-letter/index.js"),
+  "runs/length-record-prefix-take": () => import("../../runs/length-record-prefix-take/index.js"),
   "sailing/jib-overlap-percentage": () => import("../../sailing/jib-overlap-percentage/index.js"),
   "seismology/reduced-travel-time-plot-converter": () => import("../../seismology/reduced-travel-time-plot-converter/index.js"),
   "semiconductor/direct-tunneling-current": () => import("../../semiconductor/direct-tunneling-current/index.js"),

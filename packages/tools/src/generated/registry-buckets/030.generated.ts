@@ -67,6 +67,8 @@ export const toolModuleLoaders: Readonly<
   "sports/heptathlon-points-table-lookup": () => import("../../sports/heptathlon-points-table-lookup/index.js"),
   "taxation/cdp-appeal-window": () => import("../../taxation/cdp-appeal-window/index.js"),
   "theatre/stagehand-call-hours-load-in-out-estimator": () => import("../../theatre/stagehand-call-hours-load-in-out-estimator/index.js"),
+  "tree/parent-record-level-groups": () => import("../../tree/parent-record-level-groups/index.js"),
+  "trie/word-longest-stored-prefix": () => import("../../trie/word-longest-stored-prefix/index.js"),
   "viticulture/divided-canopy-scott-henry-buds": () => import("../../viticulture/divided-canopy-scott-henry-buds/index.js"),
   "volcanology/crystal-content-viscosity-correction": () => import("../../volcanology/crystal-content-viscosity-correction/index.js"),
   "vr/field-of-view-diagonal": () => import("../../vr/field-of-view-diagonal/index.js"),

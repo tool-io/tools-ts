@@ -65,6 +65,8 @@ export const toolModuleLoaders: Readonly<
   "parasitology/tick-attachment-risk-window-lookup": () => import("../../parasitology/tick-attachment-risk-window-lookup/index.js"),
   "petroleum/well-test-dual-porosity-lambda": () => import("../../petroleum/well-test-dual-porosity-lambda/index.js"),
   "psychology/ucla-loneliness-band": () => import("../../psychology/ucla-loneliness-band/index.js"),
+  "random/cryptography-brute-force-time-estimate-at-hashes-per-second-worked-example": () => import("../../random/cryptography-brute-force-time-estimate-at-hashes-per-second-worked-example/index.js"),
+  "random/geometry-kite-area-worked-example": () => import("../../random/geometry-kite-area-worked-example/index.js"),
   "random/issn-check-digit-quiz": () => import("../../random/issn-check-digit-quiz/index.js"),
   "random/roman-numeral": () => import("../../random/roman-numeral/index.js"),
   "random/romanian-alphabet-letter": () => import("../../random/romanian-alphabet-letter/index.js"),

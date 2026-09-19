@@ -59,6 +59,8 @@ export const toolModuleLoaders: Readonly<
   "plumbing/sewer-slope": () => import("../../plumbing/sewer-slope/index.js"),
   "psychology/stanine-band-from-percentile": () => import("../../psychology/stanine-band-from-percentile/index.js"),
   "random/accordion-register-symbol": () => import("../../random/accordion-register-symbol/index.js"),
+  "random/astrometry-parallactic-angle-field-rotation-worked-example": () => import("../../random/astrometry-parallactic-angle-field-rotation-worked-example/index.js"),
+  "random/astronomy-barlow-effective-focal-length-worked-example": () => import("../../random/astronomy-barlow-effective-focal-length-worked-example/index.js"),
   "random/bpmn-event-symbol": () => import("../../random/bpmn-event-symbol/index.js"),
   "random/circle-set": () => import("../../random/circle-set/index.js"),
   "random/rectangular-tetradic-palette": () => import("../../random/rectangular-tetradic-palette/index.js"),

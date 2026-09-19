@@ -46,8 +46,10 @@ export const toolModuleLoaders: Readonly<
   "paleontology/u-pb-age-ratio": () => import("../../paleontology/u-pb-age-ratio/index.js"),
   "plumbing/detention-basin-weir-length": () => import("../../plumbing/detention-basin-weir-length/index.js"),
   "random/bengali-character": () => import("../../random/bengali-character/index.js"),
+  "random/demography-lifetime-vs-recent-migrant-ratio-lookup-worked-example": () => import("../../random/demography-lifetime-vs-recent-migrant-ratio-lookup-worked-example/index.js"),
   "random/divisibility-exercise": () => import("../../random/divisibility-exercise/index.js"),
   "random/emoji-zwj-sequence": () => import("../../random/emoji-zwj-sequence/index.js"),
+  "random/geology-ar-ar-age-worked-example": () => import("../../random/geology-ar-ar-age-worked-example/index.js"),
   "random/permutation-test-exercise": () => import("../../random/permutation-test-exercise/index.js"),
   "random/thai-digit": () => import("../../random/thai-digit/index.js"),
   "rhetoric/circumlocution-periphrasis-roundabout-checker": () => import("../../rhetoric/circumlocution-periphrasis-roundabout-checker/index.js"),
@@ -64,6 +66,7 @@ export const toolModuleLoaders: Readonly<
   "theatre/shackle-capacity-angle-derating-calculator": () => import("../../theatre/shackle-capacity-angle-derating-calculator/index.js"),
   "toxicology/potency-factor": () => import("../../toxicology/potency-factor/index.js"),
   "transcriptomics/pca-outlier-screen": () => import("../../transcriptomics/pca-outlier-screen/index.js"),
+  "trie/completion-explicit-score-order": () => import("../../trie/completion-explicit-score-order/index.js"),
   "virology/segment-reassortment-combinations": () => import("../../virology/segment-reassortment-combinations/index.js"),
   "vr/dynamic-resolution-scale-factor": () => import("../../vr/dynamic-resolution-scale-factor/index.js"),
 };

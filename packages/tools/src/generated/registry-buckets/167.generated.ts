@@ -57,6 +57,7 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/umbilical-cord-length-normal": () => import("../../pregnancy/umbilical-cord-length-normal/index.js"),
   "psychology/guttman-scale-reproducibility-coefficient": () => import("../../psychology/guttman-scale-reproducibility-coefficient/index.js"),
   "random/arabic-indic-digit": () => import("../../random/arabic-indic-digit/index.js"),
+  "random/demography-abridged-to-complete-extension-open-worked-example": () => import("../../random/demography-abridged-to-complete-extension-open-worked-example/index.js"),
   "random/tablet": () => import("../../random/tablet/index.js"),
   "random/unicode-space-character": () => import("../../random/unicode-space-character/index.js"),
   "random/uyghur-arabic-alphabet-letter": () => import("../../random/uyghur-arabic-alphabet-letter/index.js"),
@@ -72,4 +73,5 @@ export const toolModuleLoaders: Readonly<
   "viticulture/magnesium-petiole-sufficiency-lookup": () => import("../../viticulture/magnesium-petiole-sufficiency-lookup/index.js"),
   "vr/display-pixels-per-degree": () => import("../../vr/display-pixels-per-degree/index.js"),
   "waist-circumference": () => import("../../waist-circumference/index.js"),
+  "zone/offset-local-window-utc-spans": () => import("../../zone/offset-local-window-utc-spans/index.js"),
 };

@@ -60,6 +60,7 @@ export const toolModuleLoaders: Readonly<
   "permutation/permutation-lexicographic-unrank": () => import("../../permutation/permutation-lexicographic-unrank/index.js"),
   "psychology/rotter-locus-of-control-score": () => import("../../psychology/rotter-locus-of-control-score/index.js"),
   "quaternion/rotation-canonical-sign": () => import("../../quaternion/rotation-canonical-sign/index.js"),
+  "random/arithmetic-absolute-difference-worked-example": () => import("../../random/arithmetic-absolute-difference-worked-example/index.js"),
   "random/ottoman-siyaq-number": () => import("../../random/ottoman-siyaq-number/index.js"),
   "random/pressure-area-exercise": () => import("../../random/pressure-area-exercise/index.js"),
   "random/triadic-palette": () => import("../../random/triadic-palette/index.js"),

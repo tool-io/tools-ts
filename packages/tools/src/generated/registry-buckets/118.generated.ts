@@ -52,6 +52,7 @@ export const toolModuleLoaders: Readonly<
   "pedagogy/formative-vs-summative-purpose-classifier": () => import("../../pedagogy/formative-vs-summative-purpose-classifier/index.js"),
   "philately/recess-ink-feel-flag": () => import("../../philately/recess-ink-feel-flag/index.js"),
   "plumbing/haaland-friction-factor": () => import("../../plumbing/haaland-friction-factor/index.js"),
+  "random/film-aspect-ratio-from-resolution-worked-example": () => import("../../random/film-aspect-ratio-from-resolution-worked-example/index.js"),
   "random/inscriptional-parthian-character": () => import("../../random/inscriptional-parthian-character/index.js"),
   "random/projectile-motion-scenario": () => import("../../random/projectile-motion-scenario/index.js"),
   "random/small-kana-character": () => import("../../random/small-kana-character/index.js"),

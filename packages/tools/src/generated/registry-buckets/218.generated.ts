@@ -52,6 +52,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/steam-pipe-sizing": () => import("../../plumbing/steam-pipe-sizing/index.js"),
   "pregnancy/birth-interval-recommended": () => import("../../pregnancy/birth-interval-recommended/index.js"),
   "pregnancy/due-date-naegele": () => import("../../pregnancy/due-date-naegele/index.js"),
+  "runs/length-record-repetition-factor": () => import("../../runs/length-record-repetition-factor/index.js"),
   "seismology/geophone-natural-period-response-corner": () => import("../../seismology/geophone-natural-period-response-corner/index.js"),
   "semiconductor/latchup-holding-current": () => import("../../semiconductor/latchup-holding-current/index.js"),
   "semiconductor/organic-substrate-dielectric-constant": () => import("../../semiconductor/organic-substrate-dielectric-constant/index.js"),

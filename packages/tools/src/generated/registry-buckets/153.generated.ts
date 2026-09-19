@@ -81,6 +81,8 @@ export const toolModuleLoaders: Readonly<
   "theatre/distressing-costume-ageing-tea-stain-sandpaper-techniques": () => import("../../theatre/distressing-costume-ageing-tea-stain-sandpaper-techniques/index.js"),
   "theatre/velour-weight-oz-linear-yard-lookup": () => import("../../theatre/velour-weight-oz-linear-yard-lookup/index.js"),
   "toxicology/clearance": () => import("../../toxicology/clearance/index.js"),
+  "tree/parent-record-descendant-inventory": () => import("../../tree/parent-record-descendant-inventory/index.js"),
   "typography/print-dpi-pixels-for-pt-size": () => import("../../typography/print-dpi-pixels-for-pt-size/index.js"),
   "veterinary/cpr-compression-rate-canine": () => import("../../veterinary/cpr-compression-rate-canine/index.js"),
+  "zone/offset-transition-local-gap-span": () => import("../../zone/offset-transition-local-gap-span/index.js"),
 };

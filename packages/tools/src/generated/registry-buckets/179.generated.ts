@@ -62,6 +62,7 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/estimated-fetal-weight-hadlock-3param": () => import("../../pregnancy/estimated-fetal-weight-hadlock-3param/index.js"),
   "proteomics/protein-sequence-residue-count-calculator": () => import("../../proteomics/protein-sequence-residue-count-calculator/index.js"),
   "psychology/binomial-effect-size-display": () => import("../../psychology/binomial-effect-size-display/index.js"),
+  "random/fixed-popcount-mask": () => import("../../random/fixed-popcount-mask/index.js"),
   "random/lithuanian-alphabet-letter": () => import("../../random/lithuanian-alphabet-letter/index.js"),
   "random/tajik-cyrillic-alphabet-letter": () => import("../../random/tajik-cyrillic-alphabet-letter/index.js"),
   "rhetoric/alliteration-initial-sound-density-calculator": () => import("../../rhetoric/alliteration-initial-sound-density-calculator/index.js"),

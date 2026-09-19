@@ -54,6 +54,8 @@ export const toolModuleLoaders: Readonly<
   "palette/palette-color-id-duplicate-audit": () => import("../../palette/palette-color-id-duplicate-audit/index.js"),
   "parasitology/epg-mcmaster-calculator": () => import("../../parasitology/epg-mcmaster-calculator/index.js"),
   "probability/negative-binomial-poisson-mixture-sampler": () => import("../../probability/negative-binomial-poisson-mixture-sampler/index.js"),
+  "random/astronomy-luminosity-distance-from-z-approx-worked-example": () => import("../../random/astronomy-luminosity-distance-from-z-approx-worked-example/index.js"),
+  "random/game-blackjack-true-count-divide-decks-worked-example": () => import("../../random/game-blackjack-true-count-divide-decks-worked-example/index.js"),
   "random/triangle-set": () => import("../../random/triangle-set/index.js"),
   "real-estate/laundry-income": () => import("../../real-estate/laundry-income/index.js"),
   "rhetoric/amplificatio-emphasis-expansion-lookup": () => import("../../rhetoric/amplificatio-emphasis-expansion-lookup/index.js"),

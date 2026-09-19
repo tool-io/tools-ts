@@ -8,6 +8,7 @@ export const toolModuleLoaders: Readonly<
   "acoustics/speech-snr-screen": () => import("../../acoustics/speech-snr-screen/index.js"),
   "acoustics/total-absorption-sabins": () => import("../../acoustics/total-absorption-sabins/index.js"),
   "actuarial/last-survivor-probability": () => import("../../actuarial/last-survivor-probability/index.js"),
+  "automaton/accepting-state-visit-indexes": () => import("../../automaton/accepting-state-visit-indexes/index.js"),
   "banking/uk-sort-code-format-parse": () => import("../../banking/uk-sort-code-format-parse/index.js"),
   "biology/carrying-capacity-checker": () => import("../../biology/carrying-capacity-checker/index.js"),
   "caption/cue-time-rational-scaler": () => import("../../caption/cue-time-rational-scaler/index.js"),

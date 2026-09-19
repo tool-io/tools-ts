@@ -62,6 +62,7 @@ export const toolModuleLoaders: Readonly<
   "paleontology/goods-u-coverage": () => import("../../paleontology/goods-u-coverage/index.js"),
   "philately/coil-guide-stripe-identifier": () => import("../../philately/coil-guide-stripe-identifier/index.js"),
   "plumbing/gas-appliance-btu-load": () => import("../../plumbing/gas-appliance-btu-load/index.js"),
+  "random/engineering-battery-energy-density-worked-example": () => import("../../random/engineering-battery-energy-density-worked-example/index.js"),
   "random/kyrgyz-cyrillic-alphabet-letter": () => import("../../random/kyrgyz-cyrillic-alphabet-letter/index.js"),
   "rhetoric/euphemism-dysphemism-tone-direction-selector": () => import("../../rhetoric/euphemism-dysphemism-tone-direction-selector/index.js"),
   "sailing/day-shape-visibility-range": () => import("../../sailing/day-shape-visibility-range/index.js"),

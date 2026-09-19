@@ -40,6 +40,7 @@ export const toolModuleLoaders: Readonly<
   "journalism/subscription-churn-after-price-rise-percent": () => import("../../journalism/subscription-churn-after-price-rise-percent/index.js"),
   "linguistics/english-loanword-source-era-lookup": () => import("../../linguistics/english-loanword-source-era-lookup/index.js"),
   "math/dirichlet-convolution": () => import("../../math/dirichlet-convolution/index.js"),
+  "morphology/hit-miss-stencil-match": () => import("../../morphology/hit-miss-stencil-match/index.js"),
   "mri/rectangular-pgse-diffusion-b-value": () => import("../../mri/rectangular-pgse-diffusion-b-value/index.js"),
   "oceanography/baroclinic-rossby-wave-speed": () => import("../../oceanography/baroclinic-rossby-wave-speed/index.js"),
   "palette/palette-adjacent-repeat-audit": () => import("../../palette/palette-adjacent-repeat-audit/index.js"),

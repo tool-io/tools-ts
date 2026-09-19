@@ -62,6 +62,7 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/gestational-weight-gain-category-iom": () => import("../../pregnancy/gestational-weight-gain-category-iom/index.js"),
   "random/adam-update-test-case": () => import("../../random/adam-update-test-case/index.js"),
   "random/dgs-fingerspelling-letter": () => import("../../random/dgs-fingerspelling-letter/index.js"),
+  "random/game-poker-pot-odds-percent-worked-example": () => import("../../random/game-poker-pot-odds-percent-worked-example/index.js"),
   "random/multicolor-checkerboard-pattern": () => import("../../random/multicolor-checkerboard-pattern/index.js"),
   "random/shell-glob-token": () => import("../../random/shell-glob-token/index.js"),
   "regex/ascii-character-class-formatter": () => import("../../regex/ascii-character-class-formatter/index.js"),

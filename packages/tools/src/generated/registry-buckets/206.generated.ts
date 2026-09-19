@@ -12,6 +12,7 @@ export const toolModuleLoaders: Readonly<
   "aquaculture/weight-length-relationship": () => import("../../aquaculture/weight-length-relationship/index.js"),
   "aviation/estimated-fuel-trip": () => import("../../aviation/estimated-fuel-trip/index.js"),
   "bacteriology/gradient-mic-upper-step": () => import("../../bacteriology/gradient-mic-upper-step/index.js"),
+  "ballot/rank-position-score-tally": () => import("../../ballot/rank-position-score-tally/index.js"),
   "banking/bust-out-sleeper-fraud-limit-maximize-vanish-pattern-lookup": () => import("../../banking/bust-out-sleeper-fraud-limit-maximize-vanish-pattern-lookup/index.js"),
   "banking/card-minimum-payment-months-payoff": () => import("../../banking/card-minimum-payment-months-payoff/index.js"),
   "banking/rfp-request-for-payment-versus-credit-push-direction-lookup": () => import("../../banking/rfp-request-for-payment-versus-credit-push-direction-lookup/index.js"),

@@ -59,6 +59,7 @@ export const toolModuleLoaders: Readonly<
   "numismatics/coin-show-budget-per-table": () => import("../../numismatics/coin-show-budget-per-table/index.js"),
   "numismatics/die-axis-clock-position-lookup": () => import("../../numismatics/die-axis-clock-position-lookup/index.js"),
   "paleography/greek-uncial-minuscule-checker": () => import("../../paleography/greek-uncial-minuscule-checker/index.js"),
+  "random/cryptography-entropy-bits-from-charset-length-worked-example": () => import("../../random/cryptography-entropy-bits-from-charset-length-worked-example/index.js"),
   "random/telescope-setup-practice-cards": () => import("../../random/telescope-setup-practice-cards/index.js"),
   "semiconductor/diode-saturation-current": () => import("../../semiconductor/diode-saturation-current/index.js"),
   "semiconductor/fe-ram-coercive-voltage": () => import("../../semiconductor/fe-ram-coercive-voltage/index.js"),

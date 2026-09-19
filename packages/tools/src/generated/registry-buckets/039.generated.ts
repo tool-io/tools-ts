@@ -56,6 +56,7 @@ export const toolModuleLoaders: Readonly<
   "pharmacy/lactation-risk-lookup": () => import("../../pharmacy/lactation-risk-lookup/index.js"),
   "philately/fdc-postmark-date-validator": () => import("../../philately/fdc-postmark-date-validator/index.js"),
   "plumbing/uv-transmittance": () => import("../../plumbing/uv-transmittance/index.js"),
+  "random/geology-active-earth-pressure-coefficient-worked-example": () => import("../../random/geology-active-earth-pressure-coefficient-worked-example/index.js"),
   "random/grade-one-english-braille-punctuation": () => import("../../random/grade-one-english-braille-punctuation/index.js"),
   "random/lisu-letter": () => import("../../random/lisu-letter/index.js"),
   "random/nabataean-letter": () => import("../../random/nabataean-letter/index.js"),

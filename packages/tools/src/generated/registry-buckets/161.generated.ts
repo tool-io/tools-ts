@@ -40,6 +40,7 @@ export const toolModuleLoaders: Readonly<
   "parse/numeric-dataset": () => import("../../parse/numeric-dataset/index.js"),
   "pedagogy/accommodation-vs-modification-distinction-lookup": () => import("../../pedagogy/accommodation-vs-modification-distinction-lookup/index.js"),
   "petroleum/overburden-pressure": () => import("../../petroleum/overburden-pressure/index.js"),
+  "random/astrometry-four-term-nutation-components-worked-example": () => import("../../random/astrometry-four-term-nutation-components-worked-example/index.js"),
   "random/cherokee-character": () => import("../../random/cherokee-character/index.js"),
   "random/dark-palette": () => import("../../random/dark-palette/index.js"),
   "random/nandinagari-character": () => import("../../random/nandinagari-character/index.js"),
