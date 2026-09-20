@@ -71,6 +71,8 @@ export const toolModuleLoaders: Readonly<
   "random/cartography-naismith-route-time-rule-worked-example": () => import("../../random/cartography-naismith-route-time-rule-worked-example/index.js"),
   "random/cartography-statute-nautical-chart-converter-worked-example": () => import("../../random/cartography-statute-nautical-chart-converter-worked-example/index.js"),
   "random/geology-air-loaded-subsidence-worked-example": () => import("../../random/geology-air-loaded-subsidence-worked-example/index.js"),
+  "random/meteorology-threat-score-critical-success-index-worked-example": () => import("../../random/meteorology-threat-score-critical-success-index-worked-example/index.js"),
+  "random/semiconductor-antiphase-boundary-energy-worked-example": () => import("../../random/semiconductor-antiphase-boundary-energy-worked-example/index.js"),
   "seismology/apparent-stress-energy-ratio": () => import("../../seismology/apparent-stress-energy-ratio/index.js"),
   "seismology/magnitude-frequency-entropy-shannon": () => import("../../seismology/magnitude-frequency-entropy-shannon/index.js"),
   "semiconductor/etch-rate": () => import("../../semiconductor/etch-rate/index.js"),

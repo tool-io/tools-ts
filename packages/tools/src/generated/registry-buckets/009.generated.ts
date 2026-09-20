@@ -57,6 +57,7 @@ export const toolModuleLoaders: Readonly<
   "random/geometric-tolerance-symbol": () => import("../../random/geometric-tolerance-symbol/index.js"),
   "random/polish-alphabet-letter": () => import("../../random/polish-alphabet-letter/index.js"),
   "random/video-storage-planning-exercise": () => import("../../random/video-storage-planning-exercise/index.js"),
+  "random/vr-foveated-rendering-gain-worked-example": () => import("../../random/vr-foveated-rendering-gain-worked-example/index.js"),
   "seismology/quarter-wave-layer-higher-mode-harmonics-calculator": () => import("../../seismology/quarter-wave-layer-higher-mode-harmonics-calculator/index.js"),
   "seismology/tsunami-runup-empirical-okal-synolakis-lookup": () => import("../../seismology/tsunami-runup-empirical-okal-synolakis-lookup/index.js"),
   "semiconductor/beta-ga2o3-breakdown-field": () => import("../../semiconductor/beta-ga2o3-breakdown-field/index.js"),

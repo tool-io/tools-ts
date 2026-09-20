@@ -54,6 +54,7 @@ export const toolModuleLoaders: Readonly<
   "numismatics/farthing-to-pound-converter": () => import("../../numismatics/farthing-to-pound-converter/index.js"),
   "numismatics/saint-gaudens-double-eagle-high-relief-history-lookup": () => import("../../numismatics/saint-gaudens-double-eagle-high-relief-history-lookup/index.js"),
   "random/cypriot-syllable": () => import("../../random/cypriot-syllable/index.js"),
+  "random/math-chebyshev-theta-worked-example": () => import("../../random/math-chebyshev-theta-worked-example/index.js"),
   "random/two-bank-bijection": () => import("../../random/two-bank-bijection/index.js"),
   "seismology/gmpe-log-distance-attenuation": () => import("../../seismology/gmpe-log-distance-attenuation/index.js"),
   "seismology/surface-wave-magnitude-vk20-formula": () => import("../../seismology/surface-wave-magnitude-vk20-formula/index.js"),

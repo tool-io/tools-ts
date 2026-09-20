@@ -68,6 +68,7 @@ export const toolModuleLoaders: Readonly<
   "proteomics/tmt-isotope-matrix-audit": () => import("../../proteomics/tmt-isotope-matrix-audit/index.js"),
   "random/ascii-control-character": () => import("../../random/ascii-control-character/index.js"),
   "random/icelandic-alphabet-letter": () => import("../../random/icelandic-alphabet-letter/index.js"),
+  "random/number-aliquot-sum-worked-example": () => import("../../random/number-aliquot-sum-worked-example/index.js"),
   "real-estate/monthly-mortgage-payment": () => import("../../real-estate/monthly-mortgage-payment/index.js"),
   "rhetoric/analogy-mapping-strength-checker": () => import("../../rhetoric/analogy-mapping-strength-checker/index.js"),
   "sailing/backstay-tension": () => import("../../sailing/backstay-tension/index.js"),

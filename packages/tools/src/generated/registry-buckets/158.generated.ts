@@ -74,6 +74,7 @@ export const toolModuleLoaders: Readonly<
   "philately/killer-bar-wave-counter": () => import("../../philately/killer-bar-wave-counter/index.js"),
   "probability/importance-sampler": () => import("../../probability/importance-sampler/index.js"),
   "random/amateur-radio-q-code": () => import("../../random/amateur-radio-q-code/index.js"),
+  "random/typography-baseline-offset-round-to-grid-worked-example": () => import("../../random/typography-baseline-offset-round-to-grid-worked-example/index.js"),
   "real-estate/max-allowable-offer": () => import("../../real-estate/max-allowable-offer/index.js"),
   "real-estate/rental-yield-gross": () => import("../../real-estate/rental-yield-gross/index.js"),
   "real-estate/turnover-cost": () => import("../../real-estate/turnover-cost/index.js"),

@@ -84,6 +84,7 @@ export const toolModuleLoaders: Readonly<
   "random/baybayin-character": () => import("../../random/baybayin-character/index.js"),
   "random/electronics-admittance-magnitude-worked-example": () => import("../../random/electronics-admittance-magnitude-worked-example/index.js"),
   "random/khmer-character": () => import("../../random/khmer-character/index.js"),
+  "random/logistics-claims-frequency-per-shipment-percent-worked-example": () => import("../../random/logistics-claims-frequency-per-shipment-percent-worked-example/index.js"),
   "random/number": () => import("../../random/number/index.js"),
   "real-estate/lease-renewal-probability": () => import("../../real-estate/lease-renewal-probability/index.js"),
   "rhetoric/forensic-past-blame-courtroom-genre-lookup": () => import("../../rhetoric/forensic-past-blame-courtroom-genre-lookup/index.js"),

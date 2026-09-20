@@ -37,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "gemology/amber-buoyancy-test": () => import("../../gemology/amber-buoyancy-test/index.js"),
   "gemology/eye-clean-threshold": () => import("../../gemology/eye-clean-threshold/index.js"),
   "genomics/overrepresented-read-screen": () => import("../../genomics/overrepresented-read-screen/index.js"),
+  "geodesy/parallel-arc-one-degree-longitude": () => import("../../geodesy/parallel-arc-one-degree-longitude/index.js"),
   "geology/air-loaded-subsidence": () => import("../../geology/air-loaded-subsidence/index.js"),
   "geometry/triangle-barycentric-point": () => import("../../geometry/triangle-barycentric-point/index.js"),
   "horology/box-papers-accessory-value-ratio-screen": () => import("../../horology/box-papers-accessory-value-ratio-screen/index.js"),

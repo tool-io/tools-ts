@@ -37,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "folklore/spider-verse-evening-wish-morning-grief-meaning-lookup": () => import("../../folklore/spider-verse-evening-wish-morning-grief-meaning-lookup/index.js"),
   "futurology/hopepunk-genre-counter-doomer-optimism-lookup": () => import("../../futurology/hopepunk-genre-counter-doomer-optimism-lookup/index.js"),
   "genomics/multimap-mapqzero-flag-counter": () => import("../../genomics/multimap-mapqzero-flag-counter/index.js"),
+  "geodesy/utm-scale-factor-central-meridian-lookup": () => import("../../geodesy/utm-scale-factor-central-meridian-lookup/index.js"),
   "geology/oxygen-isotope-thermometer-quartz-magnetite": () => import("../../geology/oxygen-isotope-thermometer-quartz-magnetite/index.js"),
   "glaciology/pdd-positive-degree-days-melt": () => import("../../glaciology/pdd-positive-degree-days-melt/index.js"),
   "heraldry/banner-shape-ratio-converter": () => import("../../heraldry/banner-shape-ratio-converter/index.js"),

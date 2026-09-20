@@ -32,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "fun/baby-name-popularity": () => import("../../fun/baby-name-popularity/index.js"),
   "genetics/cpg-island-window-scan": () => import("../../genetics/cpg-island-window-scan/index.js"),
   "genomics/plastid-ir-shift-event-note-generator": () => import("../../genomics/plastid-ir-shift-event-note-generator/index.js"),
+  "geodesy/gps-week-rollover-check-calculator": () => import("../../geodesy/gps-week-rollover-check-calculator/index.js"),
   "geology/api-gravity": () => import("../../geology/api-gravity/index.js"),
   "geometry/orientation-three-points": () => import("../../geometry/orientation-three-points/index.js"),
   "horology/gasket-compression-percent": () => import("../../horology/gasket-compression-percent/index.js"),

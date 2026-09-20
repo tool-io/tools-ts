@@ -30,6 +30,8 @@ export const toolModuleLoaders: Readonly<
   "forestry/diameter-growth-annual": () => import("../../forestry/diameter-growth-annual/index.js"),
   "fun/gamblers-ruin": () => import("../../fun/gamblers-ruin/index.js"),
   "futurology/amara-law-short-run-overestimate-rule-lookup": () => import("../../futurology/amara-law-short-run-overestimate-rule-lookup/index.js"),
+  "geodesy/ellipsoidal-height-h-plus-n": () => import("../../geodesy/ellipsoidal-height-h-plus-n/index.js"),
+  "geodesy/modified-julian-date-mjd-converter": () => import("../../geodesy/modified-julian-date-mjd-converter/index.js"),
   "geology/alumina-saturation-index-asi": () => import("../../geology/alumina-saturation-index-asi/index.js"),
   "geology/transmissivity-pumping-test-jacob": () => import("../../geology/transmissivity-pumping-test-jacob/index.js"),
   "horology/tourbillon-revolutions-per-day": () => import("../../horology/tourbillon-revolutions-per-day/index.js"),

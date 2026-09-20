@@ -38,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/dutch-elm-disease-vector-pressure-sanitation-checker": () => import("../../forestry/dutch-elm-disease-vector-pressure-sanitation-checker/index.js"),
   "forestry/taper-curve-kozak": () => import("../../forestry/taper-curve-kozak/index.js"),
   "gemology/density-mass-volume": () => import("../../gemology/density-mass-volume/index.js"),
+  "geodesy/geoid-separation-gradient-estimator": () => import("../../geodesy/geoid-separation-gradient-estimator/index.js"),
   "geology/geomechanics-shale-gas-total-gas-content": () => import("../../geology/geomechanics-shale-gas-total-gas-content/index.js"),
   "geology/moment-magnitude": () => import("../../geology/moment-magnitude/index.js"),
   "geometry/rectangle-minimum-separation-vector": () => import("../../geometry/rectangle-minimum-separation-vector/index.js"),

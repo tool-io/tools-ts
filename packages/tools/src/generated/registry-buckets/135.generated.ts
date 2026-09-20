@@ -38,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "game-search/alpha-beta-uct": () => import("../../game-search/alpha-beta-uct/index.js"),
   "game/bingo-column-letter-ranges-standard-lookup": () => import("../../game/bingo-column-letter-ranges-standard-lookup/index.js"),
   "gemology/ideal-diameter-from-carat": () => import("../../gemology/ideal-diameter-from-carat/index.js"),
+  "geodesy/enu-local-tangent-converter": () => import("../../geodesy/enu-local-tangent-converter/index.js"),
   "geology/hafnium-epsilon": () => import("../../geology/hafnium-epsilon/index.js"),
   "geometry/point-in-polygon": () => import("../../geometry/point-in-polygon/index.js"),
   "glaciology/meltwater-storage-delay-glacier": () => import("../../glaciology/meltwater-storage-delay-glacier/index.js"),

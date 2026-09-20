@@ -43,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "game/two-d6-sum-probability-table-lookup": () => import("../../game/two-d6-sum-probability-table-lookup/index.js"),
   "genomics/centromere-alpha-repeat-array-estimator": () => import("../../genomics/centromere-alpha-repeat-array-estimator/index.js"),
   "genomics/sequencing-fold-depth": () => import("../../genomics/sequencing-fold-depth/index.js"),
+  "geodesy/area-double-meridian-distance-dmd": () => import("../../geodesy/area-double-meridian-distance-dmd/index.js"),
   "geology/epicentral-distance": () => import("../../geology/epicentral-distance/index.js"),
   "geometry/rectangle-area": () => import("../../geometry/rectangle-area/index.js"),
   "horology/iana-zone-offset-at-instant": () => import("../../horology/iana-zone-offset-at-instant/index.js"),

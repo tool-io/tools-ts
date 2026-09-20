@@ -62,6 +62,7 @@ export const toolModuleLoaders: Readonly<
   "random/celestial-mechanics-conic-flight-path-angle-worked-example": () => import("../../random/celestial-mechanics-conic-flight-path-angle-worked-example/index.js"),
   "random/ol-chiki-digit": () => import("../../random/ol-chiki-digit/index.js"),
   "random/tempo-synced-delay-preset": () => import("../../random/tempo-synced-delay-preset/index.js"),
+  "random/typography-minor-third-scale-generator-worked-example": () => import("../../random/typography-minor-third-scale-generator-worked-example/index.js"),
   "rhetoric/anadiplosis-chain-last-first-link-validator": () => import("../../rhetoric/anadiplosis-chain-last-first-link-validator/index.js"),
   "semiconductor/2d-material-bandgap-layer-number": () => import("../../semiconductor/2d-material-bandgap-layer-number/index.js"),
   "series/threshold-upcrossing-indexes": () => import("../../series/threshold-upcrossing-indexes/index.js"),

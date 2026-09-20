@@ -68,6 +68,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/pipe-weight-per-foot": () => import("../../plumbing/pipe-weight-per-foot/index.js"),
   "random/carpentry-box-joint-depth-worked-example": () => import("../../random/carpentry-box-joint-depth-worked-example/index.js"),
   "random/geometry-annulus-area-worked-example": () => import("../../random/geometry-annulus-area-worked-example/index.js"),
+  "random/math-catenary-length-worked-example": () => import("../../random/math-catenary-length-worked-example/index.js"),
   "random/mongolian-cyrillic-alphabet-letter": () => import("../../random/mongolian-cyrillic-alphabet-letter/index.js"),
   "rational/fraction-divide-exact": () => import("../../rational/fraction-divide-exact/index.js"),
   "sailing/sail-area-jib": () => import("../../sailing/sail-area-jib/index.js"),

@@ -68,6 +68,8 @@ export const toolModuleLoaders: Readonly<
   "random/cryptography-brute-force-time-estimate-at-hashes-per-second-worked-example": () => import("../../random/cryptography-brute-force-time-estimate-at-hashes-per-second-worked-example/index.js"),
   "random/geometry-kite-area-worked-example": () => import("../../random/geometry-kite-area-worked-example/index.js"),
   "random/issn-check-digit-quiz": () => import("../../random/issn-check-digit-quiz/index.js"),
+  "random/meteorology-bias-score-frequency-hit-worked-example": () => import("../../random/meteorology-bias-score-frequency-hit-worked-example/index.js"),
+  "random/numismatics-diameter-measurement-average-worked-example": () => import("../../random/numismatics-diameter-measurement-average-worked-example/index.js"),
   "random/roman-numeral": () => import("../../random/roman-numeral/index.js"),
   "random/romanian-alphabet-letter": () => import("../../random/romanian-alphabet-letter/index.js"),
   "rhetoric/dramatic-pause-silent-beat-duration-counter": () => import("../../rhetoric/dramatic-pause-silent-beat-duration-counter/index.js"),

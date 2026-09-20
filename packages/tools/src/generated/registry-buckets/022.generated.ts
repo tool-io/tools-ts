@@ -59,6 +59,8 @@ export const toolModuleLoaders: Readonly<
   "proteomics/protein-charge-at-ph": () => import("../../proteomics/protein-charge-at-ph/index.js"),
   "random/chess-piece": () => import("../../random/chess-piece/index.js"),
   "random/italian-alphabet-letter": () => import("../../random/italian-alphabet-letter/index.js"),
+  "random/number-next-prime-worked-example": () => import("../../random/number-next-prime-worked-example/index.js"),
+  "random/sports-baseball-era-era-calculator-worked-example": () => import("../../random/sports-baseball-era-era-calculator-worked-example/index.js"),
   "sailing/anchor-rode-length": () => import("../../sailing/anchor-rode-length/index.js"),
   "sailing/traveler-position": () => import("../../sailing/traveler-position/index.js"),
   "seismology/dipping-refractor-true-velocity-updown-dip": () => import("../../seismology/dipping-refractor-true-velocity-updown-dip/index.js"),

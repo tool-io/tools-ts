@@ -30,6 +30,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/participatory-foresight-citizen-panel-design-checklist": () => import("../../futurology/participatory-foresight-citizen-panel-design-checklist/index.js"),
   "gemology/carats-cushion": () => import("../../gemology/carats-cushion/index.js"),
   "genetics/ibd-sharing-bands": () => import("../../genetics/ibd-sharing-bands/index.js"),
+  "geodesy/prime-vertical-radius-n-calculator": () => import("../../geodesy/prime-vertical-radius-n-calculator/index.js"),
   "geology/fluid-inclusion-salinity-from-ice-melting": () => import("../../geology/fluid-inclusion-salinity-from-ice-melting/index.js"),
   "geology/geological-strength-index-gsi": () => import("../../geology/geological-strength-index-gsi/index.js"),
   "glaciology/freeboard-flotation-requirement": () => import("../../glaciology/freeboard-flotation-requirement/index.js"),

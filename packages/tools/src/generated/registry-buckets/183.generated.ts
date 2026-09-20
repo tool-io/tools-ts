@@ -60,6 +60,7 @@ export const toolModuleLoaders: Readonly<
   "random/marchen-character": () => import("../../random/marchen-character/index.js"),
   "random/masaram-gondi-character": () => import("../../random/masaram-gondi-character/index.js"),
   "random/vector-projection-exercise": () => import("../../random/vector-projection-exercise/index.js"),
+  "random/vr-controller-latency-worked-example": () => import("../../random/vr-controller-latency-worked-example/index.js"),
   "random/work-power-exercise": () => import("../../random/work-power-exercise/index.js"),
   "real-estate/gross-income-multiplier": () => import("../../real-estate/gross-income-multiplier/index.js"),
   "rhetoric/anaphora-initial-word-repetition-counter": () => import("../../rhetoric/anaphora-initial-word-repetition-counter/index.js"),

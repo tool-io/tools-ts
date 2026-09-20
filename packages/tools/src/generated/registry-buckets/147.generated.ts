@@ -49,6 +49,7 @@ export const toolModuleLoaders: Readonly<
   "optimization/adam-step": () => import("../../optimization/adam-step/index.js"),
   "pedagogy/concrete-examples-abstract-concept-pairing-guide": () => import("../../pedagogy/concrete-examples-abstract-concept-pairing-guide/index.js"),
   "philately/color-shade-name-normalizer": () => import("../../philately/color-shade-name-normalizer/index.js"),
+  "random/probability-complement-worked-example": () => import("../../random/probability-complement-worked-example/index.js"),
   "random/regular-polygon-set": () => import("../../random/regular-polygon-set/index.js"),
   "real-estate/promote": () => import("../../real-estate/promote/index.js"),
   "semiconductor/led-light-extraction-efficiency": () => import("../../semiconductor/led-light-extraction-efficiency/index.js"),

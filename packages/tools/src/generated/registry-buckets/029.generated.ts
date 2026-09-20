@@ -37,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/wild-cards-low-probability-high-impact-register": () => import("../../futurology/wild-cards-low-probability-high-impact-register/index.js"),
   "game/yahtzee-upper-bonus-63-checker": () => import("../../game/yahtzee-upper-bonus-63-checker/index.js"),
   "gemology/cleavage-risk-checker": () => import("../../gemology/cleavage-risk-checker/index.js"),
+  "geodesy/geocentric-to-geodetic-bowring": () => import("../../geodesy/geocentric-to-geodetic-bowring/index.js"),
   "geology/degree-of-saturation": () => import("../../geology/degree-of-saturation/index.js"),
   "geology/flexural-rigidity": () => import("../../geology/flexural-rigidity/index.js"),
   "hash/keccak-512": () => import("../../hash/keccak-512/index.js"),

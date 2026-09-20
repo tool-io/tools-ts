@@ -35,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "gemology/carats-oval": () => import("../../gemology/carats-oval/index.js"),
   "genetics/recessive-suppression-133-recognizer": () => import("../../genetics/recessive-suppression-133-recognizer/index.js"),
   "genomics/gc-coverage-dropout": () => import("../../genomics/gc-coverage-dropout/index.js"),
+  "geodesy/cep-50-radius-converter": () => import("../../geodesy/cep-50-radius-converter/index.js"),
   "heraldry/in-arch-arc-angle-solver": () => import("../../heraldry/in-arch-arc-angle-solver/index.js"),
   "html/dir-auto-first-strong-heuristic": () => import("../../html/dir-auto-first-strong-heuristic/index.js"),
   "journalism/video-provenance-check": () => import("../../journalism/video-provenance-check/index.js"),

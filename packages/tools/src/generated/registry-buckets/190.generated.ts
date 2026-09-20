@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/stream-crossing-density-per-km-road": () => import("../../forestry/stream-crossing-density-per-km-road/index.js"),
   "fun/rap-name": () => import("../../fun/rap-name/index.js"),
   "gemology/star-facet-percentage": () => import("../../gemology/star-facet-percentage/index.js"),
+  "geodesy/isostatic-compensation-depth-airy": () => import("../../geodesy/isostatic-compensation-depth-airy/index.js"),
   "geometry/circle-arc-length": () => import("../../geometry/circle-arc-length/index.js"),
   "horology/fixodrop-epilame-surface-treatment-lookup": () => import("../../horology/fixodrop-epilame-surface-treatment-lookup/index.js"),
   "horology/remontoire-constant-force-type-lookup": () => import("../../horology/remontoire-constant-force-type-lookup/index.js"),

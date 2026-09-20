@@ -35,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "film/exposure-value-ev": () => import("../../film/exposure-value-ev/index.js"),
   "folklore/solstice-equinox-folk-practice-calendar-lookup": () => import("../../folklore/solstice-equinox-folk-practice-calendar-lookup/index.js"),
   "forestry/defect-deduction-percent-gross-scale": () => import("../../forestry/defect-deduction-percent-gross-scale/index.js"),
+  "geodesy/meridian-arc-inverse-solver": () => import("../../geodesy/meridian-arc-inverse-solver/index.js"),
   "heraldry/pale-band-position": () => import("../../heraldry/pale-band-position/index.js"),
   "http/header-occurrence-selector": () => import("../../http/header-occurrence-selector/index.js"),
   "insurance/fsa-forfeit-use-it-or-lose-it-estimate": () => import("../../insurance/fsa-forfeit-use-it-or-lose-it-estimate/index.js"),

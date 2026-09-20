@@ -28,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "epigenetics/input-background-correction": () => import("../../epigenetics/input-background-correction/index.js"),
   "fun/love-compatibility-meter": () => import("../../fun/love-compatibility-meter/index.js"),
   "gemology/pearl-shape-rater": () => import("../../gemology/pearl-shape-rater/index.js"),
+  "geodesy/terrain-correction-hammer-zone-a": () => import("../../geodesy/terrain-correction-hammer-zone-a/index.js"),
   "geology/gravity-anomaly-free-air": () => import("../../geology/gravity-anomaly-free-air/index.js"),
   "glaciology/elevation-change-rate-dhdt": () => import("../../glaciology/elevation-change-rate-dhdt/index.js"),
   "interval/interval-window-intersection-table": () => import("../../interval/interval-window-intersection-table/index.js"),

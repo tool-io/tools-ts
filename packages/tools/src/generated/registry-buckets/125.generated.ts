@@ -58,6 +58,7 @@ export const toolModuleLoaders: Readonly<
   "random/film-circle-of-confusion-worked-example": () => import("../../random/film-circle-of-confusion-worked-example/index.js"),
   "random/ol-onal-character": () => import("../../random/ol-onal-character/index.js"),
   "random/pinned-slot-permutation": () => import("../../random/pinned-slot-permutation/index.js"),
+  "random/typography-ellipsis-character-vs-three-periods-width-worked-example": () => import("../../random/typography-ellipsis-character-vs-three-periods-width-worked-example/index.js"),
   "seismology/event-count-poisson-confidence-interval-gehrels": () => import("../../seismology/event-count-poisson-confidence-interval-gehrels/index.js"),
   "size/picture-frame": () => import("../../size/picture-frame/index.js"),
   "sports/decathlon-points-table-iaaf-lookup": () => import("../../sports/decathlon-points-table-iaaf-lookup/index.js"),

@@ -45,6 +45,7 @@ export const toolModuleLoaders: Readonly<
   "folklore/chain-gang-work-song-call-response-heritage-lookup": () => import("../../folklore/chain-gang-work-song-call-response-heritage-lookup/index.js"),
   "forestry/current-annual-increment": () => import("../../forestry/current-annual-increment/index.js"),
   "futurology/assumption-reversal-question-generator": () => import("../../futurology/assumption-reversal-question-generator/index.js"),
+  "geodesy/molodensky-datum-shift-simplified": () => import("../../geodesy/molodensky-datum-shift-simplified/index.js"),
   "geology/clinoform-height": () => import("../../geology/clinoform-height/index.js"),
   "geology/stratigraphic-thickness-true-vs-apparent": () => import("../../geology/stratigraphic-thickness-true-vs-apparent/index.js"),
   "heraldry/eagle-frequency-counter-roll": () => import("../../heraldry/eagle-frequency-counter-roll/index.js"),

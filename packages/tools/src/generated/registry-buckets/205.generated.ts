@@ -57,6 +57,7 @@ export const toolModuleLoaders: Readonly<
   "random/business-date-set": () => import("../../random/business-date-set/index.js"),
   "random/celestial-mechanics-circular-deorbit-interface-burn-worked-example": () => import("../../random/celestial-mechanics-circular-deorbit-interface-burn-worked-example/index.js"),
   "random/combining-diacritical-mark": () => import("../../random/combining-diacritical-mark/index.js"),
+  "random/meteorology-equitable-threat-score-ets-worked-example": () => import("../../random/meteorology-equitable-threat-score-ets-worked-example/index.js"),
   "semiconductor/apd-breakdown-voltage": () => import("../../semiconductor/apd-breakdown-voltage/index.js"),
   "semiconductor/cfet-inverter-delay": () => import("../../semiconductor/cfet-inverter-delay/index.js"),
   "sericulture/harvest-time-water-content-lookup": () => import("../../sericulture/harvest-time-water-content-lookup/index.js"),

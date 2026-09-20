@@ -69,6 +69,7 @@ export const toolModuleLoaders: Readonly<
   "proteomics/silac-heavy-light-ratio": () => import("../../proteomics/silac-heavy-light-ratio/index.js"),
   "random/shogi-piece": () => import("../../random/shogi-piece/index.js"),
   "random/thaana-character": () => import("../../random/thaana-character/index.js"),
+  "random/typography-golden-ratio-type-scale-worked-example": () => import("../../random/typography-golden-ratio-type-scale-worked-example/index.js"),
   "random/varint-round-trip-test-case": () => import("../../random/varint-round-trip-test-case/index.js"),
   "rhetoric/hyperbole-register-appropriateness-lookup": () => import("../../rhetoric/hyperbole-register-appropriateness-lookup/index.js"),
   "rhetoric/monroe-motivated-sequence-five-step-checker": () => import("../../rhetoric/monroe-motivated-sequence-five-step-checker/index.js"),

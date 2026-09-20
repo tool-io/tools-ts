@@ -54,6 +54,8 @@ export const toolModuleLoaders: Readonly<
   "plumbing/chlorine-dosage": () => import("../../plumbing/chlorine-dosage/index.js"),
   "plumbing/reverse-osmosis-membrane-area": () => import("../../plumbing/reverse-osmosis-membrane-area/index.js"),
   "random/beria-erfe-letter": () => import("../../random/beria-erfe-letter/index.js"),
+  "random/logistics-cost-per-unit-shipped-allocation-worked-example": () => import("../../random/logistics-cost-per-unit-shipped-allocation-worked-example/index.js"),
+  "random/logistics-edge-board-length-pallet-total-worked-example": () => import("../../random/logistics-edge-board-length-pallet-total-worked-example/index.js"),
   "random/myanmar-digit": () => import("../../random/myanmar-digit/index.js"),
   "random/pwm-register-exercise": () => import("../../random/pwm-register-exercise/index.js"),
   "random/signwriting-dynamics-symbol": () => import("../../random/signwriting-dynamics-symbol/index.js"),

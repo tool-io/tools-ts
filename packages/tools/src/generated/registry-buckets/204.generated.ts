@@ -63,6 +63,7 @@ export const toolModuleLoaders: Readonly<
   "random/fullwidth-character": () => import("../../random/fullwidth-character/index.js"),
   "random/hatran-letter": () => import("../../random/hatran-letter/index.js"),
   "random/split-complementary-palette": () => import("../../random/split-complementary-palette/index.js"),
+  "random/typography-millimeters-to-points-print-worked-example": () => import("../../random/typography-millimeters-to-points-print-worked-example/index.js"),
   "rhetoric/erotesis-rhetorical-question-no-answer-checker": () => import("../../rhetoric/erotesis-rhetorical-question-no-answer-checker/index.js"),
   "rhetoric/oxymoron-contradiction-juxtaposition-detector": () => import("../../rhetoric/oxymoron-contradiction-juxtaposition-detector/index.js"),
   "sailing/williamson-turn-course": () => import("../../sailing/williamson-turn-course/index.js"),

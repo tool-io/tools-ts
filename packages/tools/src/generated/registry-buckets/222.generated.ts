@@ -67,6 +67,7 @@ export const toolModuleLoaders: Readonly<
   "random/arithmetic-distance-to-next-power-of-two-worked-example": () => import("../../random/arithmetic-distance-to-next-power-of-two-worked-example/index.js"),
   "random/bhaiksuki-character": () => import("../../random/bhaiksuki-character/index.js"),
   "random/cyclic-list-cut": () => import("../../random/cyclic-list-cut/index.js"),
+  "random/numismatics-album-page-slot-capacity-worked-example": () => import("../../random/numismatics-album-page-slot-capacity-worked-example/index.js"),
   "random/turkish-alphabet-letter": () => import("../../random/turkish-alphabet-letter/index.js"),
   "regex/literal-pattern-prefix-factoring": () => import("../../regex/literal-pattern-prefix-factoring/index.js"),
   "relation/antisymmetric-pair-audit": () => import("../../relation/antisymmetric-pair-audit/index.js"),

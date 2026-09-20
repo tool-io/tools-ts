@@ -51,6 +51,7 @@ export const toolModuleLoaders: Readonly<
   "random/bernoulli-streak-experiment": () => import("../../random/bernoulli-streak-experiment/index.js"),
   "random/electrical-ground-symbol": () => import("../../random/electrical-ground-symbol/index.js"),
   "random/jackknife-bias-exercise": () => import("../../random/jackknife-bias-exercise/index.js"),
+  "random/sports-lap-pool-length-count-worked-example": () => import("../../random/sports-lap-pool-length-count-worked-example/index.js"),
   "random/uart-baud-challenge": () => import("../../random/uart-baud-challenge/index.js"),
   "sailing/wind-shift-gain": () => import("../../sailing/wind-shift-gain/index.js"),
   "seismology/network-station-uptime-percent-calculator": () => import("../../seismology/network-station-uptime-percent-calculator/index.js"),

@@ -35,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/space-elevator-carbon-nanotube-feasibility-gap-lookup": () => import("../../futurology/space-elevator-carbon-nanotube-feasibility-gap-lookup/index.js"),
   "game/monopoly-jail-three-doubles-exit-rule": () => import("../../game/monopoly-jail-three-doubles-exit-rule/index.js"),
   "game/xp-quadratic-next-level-curve": () => import("../../game/xp-quadratic-next-level-curve/index.js"),
+  "geodesy/curvature-refraction-combined-00675d2": () => import("../../geodesy/curvature-refraction-combined-00675d2/index.js"),
   "geometry/circle-circumference": () => import("../../geometry/circle-circumference/index.js"),
   "graph/normalize-edge-list": () => import("../../graph/normalize-edge-list/index.js"),
   "horology/black-polish-labor-budget-calculator": () => import("../../horology/black-polish-labor-budget-calculator/index.js"),

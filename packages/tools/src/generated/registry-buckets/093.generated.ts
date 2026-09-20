@@ -77,6 +77,7 @@ export const toolModuleLoaders: Readonly<
   "random/common-subsequence-exercise": () => import("../../random/common-subsequence-exercise/index.js"),
   "random/constellation-abbreviation": () => import("../../random/constellation-abbreviation/index.js"),
   "random/kaprekar-sequence-exercise": () => import("../../random/kaprekar-sequence-exercise/index.js"),
+  "random/number-divisor-count-worked-example": () => import("../../random/number-divisor-count-worked-example/index.js"),
   "random/persian-digit": () => import("../../random/persian-digit/index.js"),
   "random/point-cloud-3d": () => import("../../random/point-cloud-3d/index.js"),
   "random/tifinagh-character": () => import("../../random/tifinagh-character/index.js"),

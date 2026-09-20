@@ -63,6 +63,8 @@ export const toolModuleLoaders: Readonly<
   "psychology/wright-map-item-map-position-lookup": () => import("../../psychology/wright-map-item-map-position-lookup/index.js"),
   "random/arithmetic-clamp-worked-example": () => import("../../random/arithmetic-clamp-worked-example/index.js"),
   "random/braille-practice-line": () => import("../../random/braille-practice-line/index.js"),
+  "random/proportions-percentage-of-number-worked-example": () => import("../../random/proportions-percentage-of-number-worked-example/index.js"),
+  "random/semiconductor-ballistic-mean-free-path-worked-example": () => import("../../random/semiconductor-ballistic-mean-free-path-worked-example/index.js"),
   "random/stellar-magnitude-comparison-quiz": () => import("../../random/stellar-magnitude-comparison-quiz/index.js"),
   "random/vivid-palette": () => import("../../random/vivid-palette/index.js"),
   "sailing/course-over-ground": () => import("../../sailing/course-over-ground/index.js"),

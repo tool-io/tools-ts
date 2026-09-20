@@ -64,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "random/cartography-great-circle-initial-bearing-worked-example": () => import("../../random/cartography-great-circle-initial-bearing-worked-example/index.js"),
   "random/geometry-circle-arc-length-worked-example": () => import("../../random/geometry-circle-arc-length-worked-example/index.js"),
   "random/horology-bracelet-link-adjustment-worked-example": () => import("../../random/horology-bracelet-link-adjustment-worked-example/index.js"),
+  "random/math-bessel-j0-approx-worked-example": () => import("../../random/math-bessel-j0-approx-worked-example/index.js"),
   "random/shahmukhi-letter": () => import("../../random/shahmukhi-letter/index.js"),
   "rhetoric/anastrophe-object-first-inversion-checker": () => import("../../rhetoric/anastrophe-object-first-inversion-checker/index.js"),
   "rhetoric/gesture-illustrator-emblem-type-taxonomy-lookup": () => import("../../rhetoric/gesture-illustrator-emblem-type-taxonomy-lookup/index.js"),

@@ -68,6 +68,7 @@ export const toolModuleLoaders: Readonly<
   "random/electronics-1db-compression-point-worked-example": () => import("../../random/electronics-1db-compression-point-worked-example/index.js"),
   "random/mac-address-set": () => import("../../random/mac-address-set/index.js"),
   "random/serbian-cyrillic-alphabet-letter": () => import("../../random/serbian-cyrillic-alphabet-letter/index.js"),
+  "random/sports-basketball-effective-field-goal-percent-efg-worked-example": () => import("../../random/sports-basketball-effective-field-goal-percent-efg-worked-example/index.js"),
   "rhetoric/isocolon-equal-clause-length-checker": () => import("../../rhetoric/isocolon-equal-clause-length-checker/index.js"),
   "seismology/hvsr-nakamura-peak-frequency": () => import("../../seismology/hvsr-nakamura-peak-frequency/index.js"),
   "seismology/slow-slip-equivalent-magnitude-duration-scaling": () => import("../../seismology/slow-slip-equivalent-magnitude-duration-scaling/index.js"),

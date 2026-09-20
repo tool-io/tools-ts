@@ -74,6 +74,7 @@ export const toolModuleLoaders: Readonly<
   "random/horology-anglage-labor-budget-calculator-worked-example": () => import("../../random/horology-anglage-labor-budget-calculator-worked-example/index.js"),
   "random/leap-day-date-set": () => import("../../random/leap-day-date-set/index.js"),
   "random/railroad-diagram-symbol": () => import("../../random/railroad-diagram-symbol/index.js"),
+  "random/vr-distortion-correction-factor-worked-example": () => import("../../random/vr-distortion-correction-factor-worked-example/index.js"),
   "random/yi-syllable": () => import("../../random/yi-syllable/index.js"),
   "rhetoric/maxim-gnome-classic-collection-lookup": () => import("../../rhetoric/maxim-gnome-classic-collection-lookup/index.js"),
   "sailing/gybe-loss-distance": () => import("../../sailing/gybe-loss-distance/index.js"),

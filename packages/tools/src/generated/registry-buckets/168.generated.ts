@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "fun/mafia-role-dealer": () => import("../../fun/mafia-role-dealer/index.js"),
   "futurology/delphi-consensus": () => import("../../futurology/delphi-consensus/index.js"),
   "futurology/scenario-planning-software-tools-platforms-landscape-lookup": () => import("../../futurology/scenario-planning-software-tools-platforms-landscape-lookup/index.js"),
+  "geodesy/authalic-latitude-equal-area-converter": () => import("../../geodesy/authalic-latitude-equal-area-converter/index.js"),
   "geology/consolidation-settlement": () => import("../../geology/consolidation-settlement/index.js"),
   "geology/s-p-interval-to-distance": () => import("../../geology/s-p-interval-to-distance/index.js"),
   "geology/strike-dip-to-dip-direction": () => import("../../geology/strike-dip-to-dip-direction/index.js"),

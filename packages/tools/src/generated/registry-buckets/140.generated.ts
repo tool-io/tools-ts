@@ -64,6 +64,8 @@ export const toolModuleLoaders: Readonly<
   "random/dgs-fingerspelling-letter": () => import("../../random/dgs-fingerspelling-letter/index.js"),
   "random/game-poker-pot-odds-percent-worked-example": () => import("../../random/game-poker-pot-odds-percent-worked-example/index.js"),
   "random/multicolor-checkerboard-pattern": () => import("../../random/multicolor-checkerboard-pattern/index.js"),
+  "random/number-coprime-count-worked-example": () => import("../../random/number-coprime-count-worked-example/index.js"),
+  "random/paleography-golden-number-cycle-position-worked-example": () => import("../../random/paleography-golden-number-cycle-position-worked-example/index.js"),
   "random/shell-glob-token": () => import("../../random/shell-glob-token/index.js"),
   "regex/ascii-character-class-formatter": () => import("../../regex/ascii-character-class-formatter/index.js"),
   "sailing/winch-power-ratio": () => import("../../sailing/winch-power-ratio/index.js"),

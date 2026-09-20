@@ -38,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "ergonomics/schoolbag-weight-safety-checker": () => import("../../ergonomics/schoolbag-weight-safety-checker/index.js"),
   "fun/drinking-game-rules": () => import("../../fun/drinking-game-rules/index.js"),
   "futurology/gross-national-happiness-bhutan-four-pillars-nine-domains": () => import("../../futurology/gross-national-happiness-bhutan-four-pillars-nine-domains/index.js"),
+  "geodesy/seconds-of-week-day-converter": () => import("../../geodesy/seconds-of-week-day-converter/index.js"),
   "health/ideal-weight-devine": () => import("../../health/ideal-weight-devine/index.js"),
   "heraldry/difference-subtlety-rater": () => import("../../heraldry/difference-subtlety-rater/index.js"),
   "insurance/indexed-annuity-credit": () => import("../../insurance/indexed-annuity-credit/index.js"),

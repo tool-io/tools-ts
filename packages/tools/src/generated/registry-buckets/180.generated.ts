@@ -77,6 +77,7 @@ export const toolModuleLoaders: Readonly<
   "random/point-cloud-2d": () => import("../../random/point-cloud-2d/index.js"),
   "random/studio-light": () => import("../../random/studio-light/index.js"),
   "random/tibetan-digit": () => import("../../random/tibetan-digit/index.js"),
+  "random/typography-inches-to-picas-worked-example": () => import("../../random/typography-inches-to-picas-worked-example/index.js"),
   "random/unicode-normalization-test-case": () => import("../../random/unicode-normalization-test-case/index.js"),
   "sailing/gybe-distance": () => import("../../sailing/gybe-distance/index.js"),
   "seismology/s-wave-nodal-and-maximum-azimuth-lookup": () => import("../../seismology/s-wave-nodal-and-maximum-azimuth-lookup/index.js"),

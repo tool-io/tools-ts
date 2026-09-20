@@ -61,6 +61,8 @@ export const toolModuleLoaders: Readonly<
   "random/celestial-mechanics-entry-ballistic-coefficient-worked-example": () => import("../../random/celestial-mechanics-entry-ballistic-coefficient-worked-example/index.js"),
   "random/elbasan-letter": () => import("../../random/elbasan-letter/index.js"),
   "random/raffle-draw": () => import("../../random/raffle-draw/index.js"),
+  "random/semiconductor-algan-bandgap-worked-example": () => import("../../random/semiconductor-algan-bandgap-worked-example/index.js"),
+  "random/semiconductor-annealing-activation-fraction-worked-example": () => import("../../random/semiconductor-annealing-activation-fraction-worked-example/index.js"),
   "rational/fraction-unit-interval-check": () => import("../../rational/fraction-unit-interval-check/index.js"),
   "semiconductor/sige-quantum-well-strain": () => import("../../semiconductor/sige-quantum-well-strain/index.js"),
   "semiconductor/solar-cell-suns-voc": () => import("../../semiconductor/solar-cell-suns-voc/index.js"),

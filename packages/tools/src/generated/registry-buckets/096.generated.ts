@@ -64,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "psychology/likert-sum-to-mean-rescaler": () => import("../../psychology/likert-sum-to-mean-rescaler/index.js"),
   "random/cartography-photo-scale-altitude-focal-worked-example": () => import("../../random/cartography-photo-scale-altitude-focal-worked-example/index.js"),
   "random/double-struck-letter": () => import("../../random/double-struck-letter/index.js"),
+  "random/statistics-fisher-z-transform-worked-example": () => import("../../random/statistics-fisher-z-transform-worked-example/index.js"),
   "regex/quantifier-bound-token-parser": () => import("../../regex/quantifier-bound-token-parser/index.js"),
   "sailing/metacentric-height": () => import("../../sailing/metacentric-height/index.js"),
   "sailing/true-wind-angle": () => import("../../sailing/true-wind-angle/index.js"),

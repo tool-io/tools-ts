@@ -35,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "fun/two-truths-lie": () => import("../../fun/two-truths-lie/index.js"),
   "futurology/jules-verne-from-earth-to-moon-florida-launch-coincidence": () => import("../../futurology/jules-verne-from-earth-to-moon-florida-launch-coincidence/index.js"),
   "genetics/exclusion-mismatch-tolerance": () => import("../../genetics/exclusion-mismatch-tolerance/index.js"),
+  "geodesy/flattening-from-axes": () => import("../../geodesy/flattening-from-axes/index.js"),
   "geology/cement-slurry-density": () => import("../../geology/cement-slurry-density/index.js"),
   "horology/six-position-orientation-code-lookup": () => import("../../horology/six-position-orientation-code-lookup/index.js"),
   "horticulture/urea-foliar-percent-safe-checker": () => import("../../horticulture/urea-foliar-percent-safe-checker/index.js"),

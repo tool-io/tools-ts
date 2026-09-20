@@ -68,6 +68,7 @@ export const toolModuleLoaders: Readonly<
   "random/alchemical-symbol": () => import("../../random/alchemical-symbol/index.js"),
   "random/contiguous-bit-burst-mask": () => import("../../random/contiguous-bit-burst-mask/index.js"),
   "random/geometry-circle-sector-area-worked-example": () => import("../../random/geometry-circle-sector-area-worked-example/index.js"),
+  "random/numismatics-coin-show-budget-per-table-worked-example": () => import("../../random/numismatics-coin-show-budget-per-table-worked-example/index.js"),
   "random/saturating-counter-input-trace": () => import("../../random/saturating-counter-input-trace/index.js"),
   "rational/fraction-exact-order": () => import("../../rational/fraction-exact-order/index.js"),
   "regex/regex-match-group-presence-table": () => import("../../regex/regex-match-group-presence-table/index.js"),

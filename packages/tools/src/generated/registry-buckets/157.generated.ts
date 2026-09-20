@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "fun/never-have-i-ever": () => import("../../fun/never-have-i-ever/index.js"),
   "futurology/triz-contradiction-matrix-40-principles-lookup": () => import("../../futurology/triz-contradiction-matrix-40-principles-lookup/index.js"),
   "game/tetris-line-clear-score-table-lookup": () => import("../../game/tetris-line-clear-score-table-lookup/index.js"),
+  "geodesy/linear-eccentricity-calculator": () => import("../../geodesy/linear-eccentricity-calculator/index.js"),
   "hash/ripemd-160": () => import("../../hash/ripemd-160/index.js"),
   "hash/sha-512": () => import("../../hash/sha-512/index.js"),
   "heraldry/orle-inner-margin": () => import("../../heraldry/orle-inner-margin/index.js"),

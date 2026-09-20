@@ -69,6 +69,7 @@ export const toolModuleLoaders: Readonly<
   "proteomics/digest-mass-filter": () => import("../../proteomics/digest-mass-filter/index.js"),
   "random/film-bellows-exposure-compensation-worked-example": () => import("../../random/film-bellows-exposure-compensation-worked-example/index.js"),
   "random/horology-bph-to-hertz-worked-example": () => import("../../random/horology-bph-to-hertz-worked-example/index.js"),
+  "random/math-apery-constant-approx-worked-example": () => import("../../random/math-apery-constant-approx-worked-example/index.js"),
   "random/musical-barline": () => import("../../random/musical-barline/index.js"),
   "random/recipe-scaling-quiz": () => import("../../random/recipe-scaling-quiz/index.js"),
   "seismology/average-moment-rate-from-moment-duration": () => import("../../seismology/average-moment-rate-from-moment-duration/index.js"),

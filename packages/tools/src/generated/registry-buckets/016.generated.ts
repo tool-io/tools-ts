@@ -72,6 +72,8 @@ export const toolModuleLoaders: Readonly<
   "psychology/asrs-part-a-screener-cutoff": () => import("../../psychology/asrs-part-a-screener-cutoff/index.js"),
   "random/bassa-vah-letter": () => import("../../random/bassa-vah-letter/index.js"),
   "random/carpentry-baseboard-miter-inside-worked-example": () => import("../../random/carpentry-baseboard-miter-inside-worked-example/index.js"),
+  "random/sports-baseball-whip-walks-hits-per-inning-worked-example": () => import("../../random/sports-baseball-whip-walks-hits-per-inning-worked-example/index.js"),
+  "random/statistics-relative-standard-error-worked-example": () => import("../../random/statistics-relative-standard-error-worked-example/index.js"),
   "real-estate/property-tax": () => import("../../real-estate/property-tax/index.js"),
   "rhetoric/peroratio-conclusion-recap-elements-lookup": () => import("../../rhetoric/peroratio-conclusion-recap-elements-lookup/index.js"),
   "sailing/sail-area-displacement-ratio": () => import("../../sailing/sail-area-displacement-ratio/index.js"),

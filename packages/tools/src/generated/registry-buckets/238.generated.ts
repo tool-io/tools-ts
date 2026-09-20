@@ -39,6 +39,7 @@ export const toolModuleLoaders: Readonly<
   "game/chess-castling-rights-checker": () => import("../../game/chess-castling-rights-checker/index.js"),
   "generate/uuid-v5": () => import("../../generate/uuid-v5/index.js"),
   "genetics/kinship-r-degree-table-lookup": () => import("../../genetics/kinship-r-degree-table-lookup/index.js"),
+  "geodesy/grs80-flattening-lookup": () => import("../../geodesy/grs80-flattening-lookup/index.js"),
   "horology/bronze-patina-development-factor-lookup": () => import("../../horology/bronze-patina-development-factor-lookup/index.js"),
   "horticulture/blackout-cloth-install-area": () => import("../../horticulture/blackout-cloth-install-area/index.js"),
   "horticulture/easter-lily-forcing-backward-count": () => import("../../horticulture/easter-lily-forcing-backward-count/index.js"),

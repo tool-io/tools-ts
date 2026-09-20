@@ -38,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/relative-dominance": () => import("../../forestry/relative-dominance/index.js"),
   "gemology/insurance-schedule-value": () => import("../../gemology/insurance-schedule-value/index.js"),
   "genomics/loh-segments": () => import("../../genomics/loh-segments/index.js"),
+  "geodesy/tidal-gravity-solid-earth-estimate": () => import("../../geodesy/tidal-gravity-solid-earth-estimate/index.js"),
   "glaciology/annual-layer-count-age-at-depth": () => import("../../glaciology/annual-layer-count-age-at-depth/index.js"),
   "glaciology/deformation-rate-glen-n-exponent": () => import("../../glaciology/deformation-rate-glen-n-exponent/index.js"),
   "glaciology/plastic-ideal-yield-stress": () => import("../../glaciology/plastic-ideal-yield-stress/index.js"),

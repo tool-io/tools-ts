@@ -80,6 +80,7 @@ export const toolModuleLoaders: Readonly<
   "random/chess-annotation-symbol": () => import("../../random/chess-annotation-symbol/index.js"),
   "random/http-entity-tag-comparison-cards": () => import("../../random/http-entity-tag-comparison-cards/index.js"),
   "random/mahajani-character": () => import("../../random/mahajani-character/index.js"),
+  "random/number-herons-method-worked-example": () => import("../../random/number-herons-method-worked-example/index.js"),
   "random/ring-start-direction": () => import("../../random/ring-start-direction/index.js"),
   "relation/pair-membership-table": () => import("../../relation/pair-membership-table/index.js"),
   "sailing/mast-rake-angle": () => import("../../sailing/mast-rake-angle/index.js"),

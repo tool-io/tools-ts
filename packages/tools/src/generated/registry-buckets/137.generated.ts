@@ -61,6 +61,7 @@ export const toolModuleLoaders: Readonly<
   "random/celestial-mechanics-hyperbolic-anomaly-chain-worked-example": () => import("../../random/celestial-mechanics-hyperbolic-anomaly-chain-worked-example/index.js"),
   "random/demography-intercensal-exponential-estimator-worked-example": () => import("../../random/demography-intercensal-exponential-estimator-worked-example/index.js"),
   "random/excluded-ticket-draw": () => import("../../random/excluded-ticket-draw/index.js"),
+  "random/vr-display-pixels-per-degree-worked-example": () => import("../../random/vr-display-pixels-per-degree-worked-example/index.js"),
   "random/within-block-permutation": () => import("../../random/within-block-permutation/index.js"),
   "real-estate/dscr": () => import("../../real-estate/dscr/index.js"),
   "real-estate/list-to-sale-ratio": () => import("../../real-estate/list-to-sale-ratio/index.js"),

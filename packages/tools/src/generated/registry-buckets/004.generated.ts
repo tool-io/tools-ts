@@ -64,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/gas-appliance-btu-load": () => import("../../plumbing/gas-appliance-btu-load/index.js"),
   "random/engineering-battery-energy-density-worked-example": () => import("../../random/engineering-battery-energy-density-worked-example/index.js"),
   "random/kyrgyz-cyrillic-alphabet-letter": () => import("../../random/kyrgyz-cyrillic-alphabet-letter/index.js"),
+  "random/typography-drop-cap-lines-height-span-worked-example": () => import("../../random/typography-drop-cap-lines-height-span-worked-example/index.js"),
   "rhetoric/euphemism-dysphemism-tone-direction-selector": () => import("../../rhetoric/euphemism-dysphemism-tone-direction-selector/index.js"),
   "sailing/day-shape-visibility-range": () => import("../../sailing/day-shape-visibility-range/index.js"),
   "sailing/horizon-distance": () => import("../../sailing/horizon-distance/index.js"),

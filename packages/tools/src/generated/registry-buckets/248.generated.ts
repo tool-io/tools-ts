@@ -65,6 +65,7 @@ export const toolModuleLoaders: Readonly<
   "psychology/wechsler-index-discrepancy-significance-check": () => import("../../psychology/wechsler-index-discrepancy-significance-check/index.js"),
   "random/astronomy-deep-sky-exposure-sub-length-light-pollution-checker-worked-example": () => import("../../random/astronomy-deep-sky-exposure-sub-length-light-pollution-checker-worked-example/index.js"),
   "random/cartography-nautical-mile-minute-arc-converter-worked-example": () => import("../../random/cartography-nautical-mile-minute-arc-converter-worked-example/index.js"),
+  "random/math-beta-function-approx-worked-example": () => import("../../random/math-beta-function-approx-worked-example/index.js"),
   "random/resistor-network-exercise": () => import("../../random/resistor-network-exercise/index.js"),
   "regression/ridge": () => import("../../regression/ridge/index.js"),
   "seismology/brune-corner-frequency-source-model": () => import("../../seismology/brune-corner-frequency-source-model/index.js"),

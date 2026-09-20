@@ -69,6 +69,7 @@ export const toolModuleLoaders: Readonly<
   "random/ancient-greek-numeral": () => import("../../random/ancient-greek-numeral/index.js"),
   "random/bread": () => import("../../random/bread/index.js"),
   "random/engineering-beam-deflection-cantilever-point-worked-example": () => import("../../random/engineering-beam-deflection-cantilever-point-worked-example/index.js"),
+  "random/numismatics-die-rotation-error-degrees-worked-example": () => import("../../random/numismatics-die-rotation-error-degrees-worked-example/index.js"),
   "random/smartwatch": () => import("../../random/smartwatch/index.js"),
   "regex/character-class-range-expander": () => import("../../regex/character-class-range-expander/index.js"),
   "seismology/tremor-slip-episodic-weeks-lookup": () => import("../../seismology/tremor-slip-episodic-weeks-lookup/index.js"),

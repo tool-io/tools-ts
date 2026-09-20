@@ -30,6 +30,8 @@ export const toolModuleLoaders: Readonly<
   "fun/rpsls": () => import("../../fun/rpsls/index.js"),
   "futurology/futures-radar-signal-database-tag-schema-designer": () => import("../../futurology/futures-radar-signal-database-tag-schema-designer/index.js"),
   "futurology/singapore-csf-centre-strategic-futures-signals-newsletter": () => import("../../futurology/singapore-csf-centre-strategic-futures-signals-newsletter/index.js"),
+  "geodesy/deltat-ut1-utc-interpolator-note": () => import("../../geodesy/deltat-ut1-utc-interpolator-note/index.js"),
+  "geodesy/state-plane-combined-factor-ground-grid": () => import("../../geodesy/state-plane-combined-factor-ground-grid/index.js"),
   "geology/foreland-basin-flexural-subsidence": () => import("../../geology/foreland-basin-flexural-subsidence/index.js"),
   "geology/fracture-pressure-gradient-eaton": () => import("../../geology/fracture-pressure-gradient-eaton/index.js"),
   "geology/helium-diffusion-closure-temperature": () => import("../../geology/helium-diffusion-closure-temperature/index.js"),

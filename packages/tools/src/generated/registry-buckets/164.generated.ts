@@ -32,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/lightning-strike-fatality-scatter-group-size-estimate": () => import("../../forestry/lightning-strike-fatality-scatter-group-size-estimate/index.js"),
   "fun/fortune-teller-origami": () => import("../../fun/fortune-teller-origami/index.js"),
   "game/go-standard-komi-value-lookup": () => import("../../game/go-standard-komi-value-lookup/index.js"),
+  "geodesy/helmert-transform-applier": () => import("../../geodesy/helmert-transform-applier/index.js"),
   "geology/hydraulic-gradient": () => import("../../geology/hydraulic-gradient/index.js"),
   "geology/oxygen-isotope-paleotemperature": () => import("../../geology/oxygen-isotope-paleotemperature/index.js"),
   "geology/rate-of-penetration": () => import("../../geology/rate-of-penetration/index.js"),

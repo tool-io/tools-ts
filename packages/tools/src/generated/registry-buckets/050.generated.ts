@@ -64,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "pharmacy/heparin-unit-per-hour": () => import("../../pharmacy/heparin-unit-per-hour/index.js"),
   "philately/dealer-buy-wholesale-fraction": () => import("../../philately/dealer-buy-wholesale-fraction/index.js"),
   "philately/hinge-trace-penalty-rater": () => import("../../philately/hinge-trace-penalty-rater/index.js"),
+  "random/typography-cap-height-percent-of-em-worked-example": () => import("../../random/typography-cap-height-percent-of-em-worked-example/index.js"),
   "seismology/blind-zone-hidden-layer-depth-checker": () => import("../../seismology/blind-zone-hidden-layer-depth-checker/index.js"),
   "seismology/characteristic-earthquake-window-lookup": () => import("../../seismology/characteristic-earthquake-window-lookup/index.js"),
   "seismology/declustering-retained-event-fraction-summary": () => import("../../seismology/declustering-retained-event-fraction-summary/index.js"),

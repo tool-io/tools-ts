@@ -70,6 +70,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/sprinkler-precipitation-rate": () => import("../../plumbing/sprinkler-precipitation-rate/index.js"),
   "pregnancy/contraception-effectiveness-postpartum": () => import("../../pregnancy/contraception-effectiveness-postpartum/index.js"),
   "probability/bayesian-network-simulator": () => import("../../probability/bayesian-network-simulator/index.js"),
+  "random/typography-line-height-ratio-worked-example": () => import("../../random/typography-line-height-ratio-worked-example/index.js"),
   "seismology/catalog-complete-timespan-denominator-checker": () => import("../../seismology/catalog-complete-timespan-denominator-checker/index.js"),
   "seismology/directivity-pulse-duration-near-source": () => import("../../seismology/directivity-pulse-duration-near-source/index.js"),
   "semiconductor/donor-qubit-hyperfine-interaction": () => import("../../semiconductor/donor-qubit-hyperfine-interaction/index.js"),

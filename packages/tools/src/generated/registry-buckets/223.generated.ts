@@ -64,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/weeks-remaining": () => import("../../pregnancy/weeks-remaining/index.js"),
   "random/morse-code-digit": () => import("../../random/morse-code-digit/index.js"),
   "random/nko-character": () => import("../../random/nko-character/index.js"),
+  "random/sports-vdot-from-race-result-worked-example": () => import("../../random/sports-vdot-from-race-result-worked-example/index.js"),
   "real-estate/lot-coverage-ratio": () => import("../../real-estate/lot-coverage-ratio/index.js"),
   "sailing/tide-height-at-time": () => import("../../sailing/tide-height-at-time/index.js"),
   "semiconductor/igbt-conduction-voltage-drop": () => import("../../semiconductor/igbt-conduction-voltage-drop/index.js"),

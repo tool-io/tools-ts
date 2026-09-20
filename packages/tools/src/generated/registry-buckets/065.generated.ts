@@ -56,6 +56,7 @@ export const toolModuleLoaders: Readonly<
   "psychology/ppv-from-sensitivity-and-base-rate": () => import("../../psychology/ppv-from-sensitivity-and-base-rate/index.js"),
   "random/celestial-mechanics-elliptic-semilatus-rectum-worked-example": () => import("../../random/celestial-mechanics-elliptic-semilatus-rectum-worked-example/index.js"),
   "random/month-boundary-exercise": () => import("../../random/month-boundary-exercise/index.js"),
+  "random/paleography-laid-line-density-estimator-worked-example": () => import("../../random/paleography-laid-line-density-estimator-worked-example/index.js"),
   "sailing/phrf-time-on-time": () => import("../../sailing/phrf-time-on-time/index.js"),
   "seismology/hazard-curve-probability-interpolation-loglog": () => import("../../seismology/hazard-curve-probability-interpolation-loglog/index.js"),
   "semiconductor/lithography-overlay-accuracy": () => import("../../semiconductor/lithography-overlay-accuracy/index.js"),

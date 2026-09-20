@@ -53,6 +53,7 @@ export const toolModuleLoaders: Readonly<
   "pedagogy/pacing-guide-coverage-versus-mastery-tension-lookup": () => import("../../pedagogy/pacing-guide-coverage-versus-mastery-tension-lookup/index.js"),
   "permutation/permutation-next-lexicographic": () => import("../../permutation/permutation-next-lexicographic/index.js"),
   "random/isogram-word-selection-quiz": () => import("../../random/isogram-word-selection-quiz/index.js"),
+  "random/semiconductor-bandgap-temperature-varshni-worked-example": () => import("../../random/semiconductor-bandgap-temperature-varshni-worked-example/index.js"),
   "random/unit-conversion-exercise": () => import("../../random/unit-conversion-exercise/index.js"),
   "rhetoric/ciceronian-period-long-sentence-suspense-checker": () => import("../../rhetoric/ciceronian-period-long-sentence-suspense-checker/index.js"),
   "rhetoric/socratic-elenchus-question-refutation-loop-lookup": () => import("../../rhetoric/socratic-elenchus-question-refutation-loop-lookup/index.js"),

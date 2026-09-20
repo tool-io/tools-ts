@@ -48,6 +48,7 @@ export const toolModuleLoaders: Readonly<
   "pedagogy/mastery-scale-mapper": () => import("../../pedagogy/mastery-scale-mapper/index.js"),
   "random/byte-replacement-position": () => import("../../random/byte-replacement-position/index.js"),
   "random/geometry-hexagon-area-worked-example": () => import("../../random/geometry-hexagon-area-worked-example/index.js"),
+  "random/proportions-percentage-increase-worked-example": () => import("../../random/proportions-percentage-increase-worked-example/index.js"),
   "random/tai-yo-character": () => import("../../random/tai-yo-character/index.js"),
   "real-estate/rentable-area": () => import("../../real-estate/rentable-area/index.js"),
   "sailing/opposite-tack-course": () => import("../../sailing/opposite-tack-course/index.js"),

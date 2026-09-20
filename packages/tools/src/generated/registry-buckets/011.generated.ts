@@ -61,6 +61,7 @@ export const toolModuleLoaders: Readonly<
   "random/http-status-classification-quiz": () => import("../../random/http-status-classification-quiz/index.js"),
   "random/multani-character": () => import("../../random/multani-character/index.js"),
   "random/reflecting-integer-walk": () => import("../../random/reflecting-integer-walk/index.js"),
+  "random/semiconductor-apd-breakdown-voltage-worked-example": () => import("../../random/semiconductor-apd-breakdown-voltage-worked-example/index.js"),
   "random/superscript-character": () => import("../../random/superscript-character/index.js"),
   "random/vithkuqi-letter": () => import("../../random/vithkuqi-letter/index.js"),
   "real-estate/gross-rent-multiplier": () => import("../../real-estate/gross-rent-multiplier/index.js"),

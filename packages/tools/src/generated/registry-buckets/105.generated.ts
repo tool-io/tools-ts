@@ -52,6 +52,7 @@ export const toolModuleLoaders: Readonly<
   "pedagogy/first-day-of-class-activity-syllabus-quiz-bank": () => import("../../pedagogy/first-day-of-class-activity-syllabus-quiz-bank/index.js"),
   "physics/kinetic-energy": () => import("../../physics/kinetic-energy/index.js"),
   "random/ismn-check-digit-quiz": () => import("../../random/ismn-check-digit-quiz/index.js"),
+  "random/math-chebyshev-polynomial-approx-worked-example": () => import("../../random/math-chebyshev-polynomial-approx-worked-example/index.js"),
   "real-estate/maintenance-reserve": () => import("../../real-estate/maintenance-reserve/index.js"),
   "real-estate/yield-capitalization-value": () => import("../../real-estate/yield-capitalization-value/index.js"),
   "sailing/polar-target-awa": () => import("../../sailing/polar-target-awa/index.js"),

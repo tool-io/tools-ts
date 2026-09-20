@@ -64,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "random/html-whitespace-normalization-corpus": () => import("../../random/html-whitespace-normalization-corpus/index.js"),
   "random/intel-hex-record-test-case": () => import("../../random/intel-hex-record-test-case/index.js"),
   "random/monotone-grid-route": () => import("../../random/monotone-grid-route/index.js"),
+  "random/music-subharmonic-frequency-worked-example": () => import("../../random/music-subharmonic-frequency-worked-example/index.js"),
   "seismology/attenuation-quality-factor-q": () => import("../../seismology/attenuation-quality-factor-q/index.js"),
   "seismology/jma-intensity-from-pgv-converter": () => import("../../seismology/jma-intensity-from-pgv-converter/index.js"),
   "semiconductor/gate-induced-drain-leakage": () => import("../../semiconductor/gate-induced-drain-leakage/index.js"),

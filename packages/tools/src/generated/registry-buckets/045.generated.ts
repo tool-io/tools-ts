@@ -51,6 +51,7 @@ export const toolModuleLoaders: Readonly<
   "random/grade-one-english-braille-letter": () => import("../../random/grade-one-english-braille-letter/index.js"),
   "random/one-hot-index-mask": () => import("../../random/one-hot-index-mask/index.js"),
   "random/palmyrene-letter": () => import("../../random/palmyrene-letter/index.js"),
+  "random/semiconductor-avalanche-breakdown-voltage-worked-example": () => import("../../random/semiconductor-avalanche-breakdown-voltage-worked-example/index.js"),
   "random/xiangqi-piece": () => import("../../random/xiangqi-piece/index.js"),
   "rhetoric/telos-audience-purpose-alignment-checker": () => import("../../rhetoric/telos-audience-purpose-alignment-checker/index.js"),
   "sailing/winch-handle-force": () => import("../../sailing/winch-handle-force/index.js"),

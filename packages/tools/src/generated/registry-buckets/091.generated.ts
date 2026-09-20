@@ -59,6 +59,7 @@ export const toolModuleLoaders: Readonly<
   "random/acoustics-clarity-c50-worked-example": () => import("../../random/acoustics-clarity-c50-worked-example/index.js"),
   "random/carpentry-box-joint-finger-width-worked-example": () => import("../../random/carpentry-box-joint-finger-width-worked-example/index.js"),
   "random/cooldown-history-next-pick": () => import("../../random/cooldown-history-next-pick/index.js"),
+  "random/math-brun-constant-approx-worked-example": () => import("../../random/math-brun-constant-approx-worked-example/index.js"),
   "semiconductor/fermi-level-n-type": () => import("../../semiconductor/fermi-level-n-type/index.js"),
   "sericulture/inspection-lot-sample-size-lookup": () => import("../../sericulture/inspection-lot-sample-size-lookup/index.js"),
   "sericulture/reeling-labor-cost-per-kg-silk": () => import("../../sericulture/reeling-labor-cost-per-kg-silk/index.js"),

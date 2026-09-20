@@ -57,6 +57,7 @@ export const toolModuleLoaders: Readonly<
   "random/kaktovik-numeral": () => import("../../random/kaktovik-numeral/index.js"),
   "random/musical-clef": () => import("../../random/musical-clef/index.js"),
   "random/punctuation-restoration-practice": () => import("../../random/punctuation-restoration-practice/index.js"),
+  "random/statistics-coefficient-of-range-worked-example": () => import("../../random/statistics-coefficient-of-range-worked-example/index.js"),
   "sailing/compass-deviation-lookup": () => import("../../sailing/compass-deviation-lookup/index.js"),
   "sailing/helm-balance-ratio": () => import("../../sailing/helm-balance-ratio/index.js"),
   "semiconductor/bjt-emitter-efficiency": () => import("../../semiconductor/bjt-emitter-efficiency/index.js"),

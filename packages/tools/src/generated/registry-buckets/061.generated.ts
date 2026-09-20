@@ -71,6 +71,8 @@ export const toolModuleLoaders: Readonly<
   "random/avestan-character": () => import("../../random/avestan-character/index.js"),
   "random/card-suit": () => import("../../random/card-suit/index.js"),
   "random/scale-bar-design-set": () => import("../../random/scale-bar-design-set/index.js"),
+  "random/vr-chromatic-aberration-correction-worked-example": () => import("../../random/vr-chromatic-aberration-correction-worked-example/index.js"),
+  "random/vr-controller-battery-life-worked-example": () => import("../../random/vr-controller-battery-life-worked-example/index.js"),
   "semiconductor/order-disorder-transition-temperature": () => import("../../semiconductor/order-disorder-transition-temperature/index.js"),
   "semiconductor/single-electron-transistor-coulomb-gap": () => import("../../semiconductor/single-electron-transistor-coulomb-gap/index.js"),
   "semiconductor/spintronic-spin-injection-efficiency": () => import("../../semiconductor/spintronic-spin-injection-efficiency/index.js"),

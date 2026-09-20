@@ -66,6 +66,8 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/fetal-position-lookup": () => import("../../pregnancy/fetal-position-lookup/index.js"),
   "proportions/percentage-decrease": () => import("../../proportions/percentage-decrease/index.js"),
   "random/bounded-chunk-cut-positions": () => import("../../random/bounded-chunk-cut-positions/index.js"),
+  "random/meteorology-gradient-wind-curvature-correction-worked-example": () => import("../../random/meteorology-gradient-wind-curvature-correction-worked-example/index.js"),
+  "random/numismatics-alloy-percentage-mass-share-worked-example": () => import("../../random/numismatics-alloy-percentage-mass-share-worked-example/index.js"),
   "random/rc-time-constant-worksheet": () => import("../../random/rc-time-constant-worksheet/index.js"),
   "random/waiting-time-experiment": () => import("../../random/waiting-time-experiment/index.js"),
   "runs/length-record-value-selector": () => import("../../runs/length-record-value-selector/index.js"),

@@ -68,6 +68,7 @@ export const toolModuleLoaders: Readonly<
   "proteomics/methionine-oxidation-screen": () => import("../../proteomics/methionine-oxidation-screen/index.js"),
   "random/hiragana-digraph": () => import("../../random/hiragana-digraph/index.js"),
   "random/indexed-swap-trace": () => import("../../random/indexed-swap-trace/index.js"),
+  "random/logistics-broker-margin-percent-on-carrier-worked-example": () => import("../../random/logistics-broker-margin-percent-on-carrier-worked-example/index.js"),
   "random/mathematical-sans-serif-letter": () => import("../../random/mathematical-sans-serif-letter/index.js"),
   "random/mobile-processor": () => import("../../random/mobile-processor/index.js"),
   "rational/fraction-repeating-cycle-length": () => import("../../rational/fraction-repeating-cycle-length/index.js"),

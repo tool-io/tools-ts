@@ -32,6 +32,8 @@ export const toolModuleLoaders: Readonly<
   "gemology/girdle-thickness-percentage": () => import("../../gemology/girdle-thickness-percentage/index.js"),
   "gemology/jade-bangle-weight": () => import("../../gemology/jade-bangle-weight/index.js"),
   "generate/isbn-13": () => import("../../generate/isbn-13/index.js"),
+  "geodesy/rectifying-radius-mean-calculator": () => import("../../geodesy/rectifying-radius-mean-calculator/index.js"),
+  "geodesy/transit-rule-adjustment-distributor": () => import("../../geodesy/transit-rule-adjustment-distributor/index.js"),
   "geology/stable-isotope-delta": () => import("../../geology/stable-isotope-delta/index.js"),
   "geometry/scale-factor-area": () => import("../../geometry/scale-factor-area/index.js"),
   "grid/grid-mask-cell-perimeter": () => import("../../grid/grid-mask-cell-perimeter/index.js"),

@@ -46,6 +46,7 @@ export const toolModuleLoaders: Readonly<
   "fun/who-is-more-likely": () => import("../../fun/who-is-more-likely/index.js"),
   "genomics/genomic-scar-composite": () => import("../../genomics/genomic-scar-composite/index.js"),
   "genomics/perbase-quality-summary-note-generator": () => import("../../genomics/perbase-quality-summary-note-generator/index.js"),
+  "geodesy/authalic-radius-calculator": () => import("../../geodesy/authalic-radius-calculator/index.js"),
   "geometry/cuboid-volume": () => import("../../geometry/cuboid-volume/index.js"),
   "glaciology/rate-factor-arrhenius-temperature": () => import("../../glaciology/rate-factor-arrhenius-temperature/index.js"),
   "heraldry/azure-frequency-rank-finder": () => import("../../heraldry/azure-frequency-rank-finder/index.js"),

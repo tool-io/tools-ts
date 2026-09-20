@@ -32,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/gartner-hype-cycle-phase-position-classifier": () => import("../../futurology/gartner-hype-cycle-phase-position-classifier/index.js"),
   "futurology/signal-insight-action-pipeline-stage-tracker": () => import("../../futurology/signal-insight-action-pipeline-stage-tracker/index.js"),
   "game/ticket-to-ride-route-length-points-lookup": () => import("../../game/ticket-to-ride-route-length-points-lookup/index.js"),
+  "geodesy/orthometric-height-h-minus-n": () => import("../../geodesy/orthometric-height-h-minus-n/index.js"),
   "geology/casing-collapse-pressure": () => import("../../geology/casing-collapse-pressure/index.js"),
   "horology/petite-sonnerie-strikes-per-day": () => import("../../horology/petite-sonnerie-strikes-per-day/index.js"),
   "horticulture/daily-light-integral-mol-m2-day": () => import("../../horticulture/daily-light-integral-mol-m2-day/index.js"),

@@ -38,6 +38,7 @@ export const toolModuleLoaders: Readonly<
   "game/chess-fifty-move-rule-counter": () => import("../../game/chess-fifty-move-rule-counter/index.js"),
   "game/uno-action-card-effect-lookup": () => import("../../game/uno-action-card-effect-lookup/index.js"),
   "generate/open-shop-scheduling-instance": () => import("../../generate/open-shop-scheduling-instance/index.js"),
+  "geodesy/polar-motion-components-note-generator": () => import("../../geodesy/polar-motion-components-note-generator/index.js"),
   "geology/cosmogenic-exposure-age": () => import("../../geology/cosmogenic-exposure-age/index.js"),
   "geology/crater-diameter-scaling": () => import("../../geology/crater-diameter-scaling/index.js"),
   "glaciology/feature-tracking-displacement-rate": () => import("../../glaciology/feature-tracking-displacement-rate/index.js"),

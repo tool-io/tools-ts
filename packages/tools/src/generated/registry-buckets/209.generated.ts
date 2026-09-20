@@ -34,6 +34,7 @@ export const toolModuleLoaders: Readonly<
   "entrepreneurship/arr-burn-multiple": () => import("../../entrepreneurship/arr-burn-multiple/index.js"),
   "film/angle-of-view-diagonal": () => import("../../film/angle-of-view-diagonal/index.js"),
   "fun/icebreaker-question": () => import("../../fun/icebreaker-question/index.js"),
+  "geodesy/leveling-loop-closure-grade-checker": () => import("../../geodesy/leveling-loop-closure-grade-checker/index.js"),
   "glaciology/snow-to-ice-thickness-conversion": () => import("../../glaciology/snow-to-ice-thickness-conversion/index.js"),
   "glyph/glyph-ink-gap-table": () => import("../../glyph/glyph-ink-gap-table/index.js"),
   "graph/edge-list-vertex-renaming": () => import("../../graph/edge-list-vertex-renaming/index.js"),

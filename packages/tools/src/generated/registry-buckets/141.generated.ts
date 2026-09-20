@@ -39,6 +39,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/leaf-area-density": () => import("../../forestry/leaf-area-density/index.js"),
   "fun/emoji-story-builder": () => import("../../fun/emoji-story-builder/index.js"),
   "genetics/double-crossover-coincidence": () => import("../../genetics/double-crossover-coincidence/index.js"),
+  "geodesy/triangle-closure-error-distributor": () => import("../../geodesy/triangle-closure-error-distributor/index.js"),
   "glaciology/volume-change-dhdt-area-integration": () => import("../../glaciology/volume-change-dhdt-area-integration/index.js"),
   "heraldry/blazon-tokenizer-parser": () => import("../../heraldry/blazon-tokenizer-parser/index.js"),
   "journalism/conflict-map-disclosure": () => import("../../journalism/conflict-map-disclosure/index.js"),

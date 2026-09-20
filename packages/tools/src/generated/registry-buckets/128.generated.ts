@@ -65,6 +65,7 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/middle-cerebral-artery-peak-systolic": () => import("../../pregnancy/middle-cerebral-artery-peak-systolic/index.js"),
   "random/greek-letter": () => import("../../random/greek-letter/index.js"),
   "random/linear-equation-exercise": () => import("../../random/linear-equation-exercise/index.js"),
+  "random/numismatics-bag-face-silver-dollar-count-worked-example": () => import("../../random/numismatics-bag-face-silver-dollar-count-worked-example/index.js"),
   "random/urdu-alphabet-letter": () => import("../../random/urdu-alphabet-letter/index.js"),
   "sailing/acceleration-after-tack": () => import("../../sailing/acceleration-after-tack/index.js"),
   "semiconductor/graphene-minimum-conductivity": () => import("../../semiconductor/graphene-minimum-conductivity/index.js"),

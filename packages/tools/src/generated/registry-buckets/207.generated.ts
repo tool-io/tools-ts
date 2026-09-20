@@ -32,6 +32,7 @@ export const toolModuleLoaders: Readonly<
   "fun/most-likely-to": () => import("../../fun/most-likely-to/index.js"),
   "futurology/technology-readiness-level-trl-scale-lookup": () => import("../../futurology/technology-readiness-level-trl-scale-lookup/index.js"),
   "game/tetris-t-spin-three-corner-rule-checker": () => import("../../game/tetris-t-spin-three-corner-rule-checker/index.js"),
+  "geodesy/mollweide-area-conservation-spot-checker": () => import("../../geodesy/mollweide-area-conservation-spot-checker/index.js"),
   "geology/geomechanics-landslide-factor-of-safety-janbu": () => import("../../geology/geomechanics-landslide-factor-of-safety-janbu/index.js"),
   "geology/specific-yield-gravity-drainage": () => import("../../geology/specific-yield-gravity-drainage/index.js"),
   "heraldry/impalement-left-right-assigner": () => import("../../heraldry/impalement-left-right-assigner/index.js"),

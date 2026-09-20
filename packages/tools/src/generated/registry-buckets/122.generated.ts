@@ -35,6 +35,7 @@ export const toolModuleLoaders: Readonly<
   "game/mastermind-black-white-peg-feedback-calculator": () => import("../../game/mastermind-black-white-peg-feedback-calculator/index.js"),
   "game/projectile-lead-intercept-angle-estimate": () => import("../../game/projectile-lead-intercept-angle-estimate/index.js"),
   "generate/network-flow-instance": () => import("../../generate/network-flow-instance/index.js"),
+  "geodesy/twodrms-horizontal-accuracy-estimate": () => import("../../geodesy/twodrms-horizontal-accuracy-estimate/index.js"),
   "glaciology/firn-line-versus-ela-offset": () => import("../../glaciology/firn-line-versus-ela-offset/index.js"),
   "heraldry/key-bow-type-identifier": () => import("../../heraldry/key-bow-type-identifier/index.js"),
   "horology/chrono-elapsed-from-steps": () => import("../../horology/chrono-elapsed-from-steps/index.js"),

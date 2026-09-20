@@ -36,6 +36,7 @@ export const toolModuleLoaders: Readonly<
   "futurology/south-korea-tfr-07-demographic-cliff-extreme-case-study": () => import("../../futurology/south-korea-tfr-07-demographic-cliff-extreme-case-study/index.js"),
   "game-search/alpha-beta": () => import("../../game-search/alpha-beta/index.js"),
   "genomics/median-contig-length-finder": () => import("../../genomics/median-contig-length-finder/index.js"),
+  "geodesy/stereographic-polar-scale-checker": () => import("../../geodesy/stereographic-polar-scale-checker/index.js"),
   "geometry/ellipse-area": () => import("../../geometry/ellipse-area/index.js"),
   "geometry/point-segment-parameter": () => import("../../geometry/point-segment-parameter/index.js"),
   "geometry/rectangle-point-clamp": () => import("../../geometry/rectangle-point-clamp/index.js"),

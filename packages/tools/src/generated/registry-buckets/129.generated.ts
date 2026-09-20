@@ -43,6 +43,7 @@ export const toolModuleLoaders: Readonly<
   "forestry/fire-behavior-hundred-hour-moisture-class": () => import("../../forestry/fire-behavior-hundred-hour-moisture-class/index.js"),
   "generate/uuid-v4": () => import("../../generate/uuid-v4/index.js"),
   "genetics/str-panel-completeness": () => import("../../genetics/str-panel-completeness/index.js"),
+  "geodesy/azimuthal-equidistant-center-property-checker": () => import("../../geodesy/azimuthal-equidistant-center-property-checker/index.js"),
   "geology/fault-slip": () => import("../../geology/fault-slip/index.js"),
   "horology/gear-train-ratio": () => import("../../horology/gear-train-ratio/index.js"),
   "html/id-reference-token-coverage": () => import("../../html/id-reference-token-coverage/index.js"),

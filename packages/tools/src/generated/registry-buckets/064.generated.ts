@@ -31,6 +31,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/pile-negative-skin-friction": () => import("../../engineering/pile-negative-skin-friction/index.js"),
   "epigenetics/narrow-broad-caller-guide-lookup": () => import("../../epigenetics/narrow-broad-caller-guide-lookup/index.js"),
   "epigraphy/weathering-degree-simplified-rater": () => import("../../epigraphy/weathering-degree-simplified-rater/index.js"),
+  "geodesy/mercator-meridional-part-row-calculator": () => import("../../geodesy/mercator-meridional-part-row-calculator/index.js"),
   "geology/th-u-ratio": () => import("../../geology/th-u-ratio/index.js"),
   "geology/travel-time-s-wave": () => import("../../geology/travel-time-s-wave/index.js"),
   "hash/keccak-384": () => import("../../hash/keccak-384/index.js"),

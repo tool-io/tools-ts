@@ -53,6 +53,7 @@ export const toolModuleLoaders: Readonly<
   "psychology/perceived-stress-scale-pps-score": () => import("../../psychology/perceived-stress-scale-pps-score/index.js"),
   "psychology/prelec-probability-weighting-gamma": () => import("../../psychology/prelec-probability-weighting-gamma/index.js"),
   "random/graph-degree-density-quiz": () => import("../../random/graph-degree-density-quiz/index.js"),
+  "random/math-cycloid-arc-length-worked-example": () => import("../../random/math-cycloid-arc-length-worked-example/index.js"),
   "random/shutter-angle-conversion-quiz": () => import("../../random/shutter-angle-conversion-quiz/index.js"),
   "sailing/polar-target-speed": () => import("../../sailing/polar-target-speed/index.js"),
   "seismology/gmm-total-dispersion-tau-sigma-combine": () => import("../../seismology/gmm-total-dispersion-tau-sigma-combine/index.js"),

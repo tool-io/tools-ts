@@ -67,6 +67,7 @@ export const toolModuleLoaders: Readonly<
   "random/bit-reversal-exercise": () => import("../../random/bit-reversal-exercise/index.js"),
   "random/demography-child-woman-ratio-cwr-worked-example": () => import("../../random/demography-child-woman-ratio-cwr-worked-example/index.js"),
   "random/gear-train-exercise": () => import("../../random/gear-train-exercise/index.js"),
+  "random/logistics-deadhead-empty-miles-ratio-worked-example": () => import("../../random/logistics-deadhead-empty-miles-ratio-worked-example/index.js"),
   "random/mathematical-bold-letter": () => import("../../random/mathematical-bold-letter/index.js"),
   "random/neutral-palette": () => import("../../random/neutral-palette/index.js"),
   "random/ohms-law-worksheet": () => import("../../random/ohms-law-worksheet/index.js"),

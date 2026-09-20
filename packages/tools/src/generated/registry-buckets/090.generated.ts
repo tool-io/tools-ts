@@ -72,6 +72,7 @@ export const toolModuleLoaders: Readonly<
   "random/modi-character": () => import("../../random/modi-character/index.js"),
   "random/nushu-character": () => import("../../random/nushu-character/index.js"),
   "random/optical-component-symbol": () => import("../../random/optical-component-symbol/index.js"),
+  "random/proportions-percentage-error-worked-example": () => import("../../random/proportions-percentage-error-worked-example/index.js"),
   "random/tempo-synced-lfo-bank": () => import("../../random/tempo-synced-lfo-bank/index.js"),
   "relation/symmetric-pair-audit": () => import("../../relation/symmetric-pair-audit/index.js"),
   "seismology/site-class-nehrp-from-vs30-lookup": () => import("../../seismology/site-class-nehrp-from-vs30-lookup/index.js"),

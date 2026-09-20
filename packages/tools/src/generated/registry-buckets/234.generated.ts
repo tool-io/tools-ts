@@ -66,6 +66,8 @@ export const toolModuleLoaders: Readonly<
   "proteomics/psm-qvalue-gate": () => import("../../proteomics/psm-qvalue-gate/index.js"),
   "psychology/tower-of-london-move-score": () => import("../../psychology/tower-of-london-move-score/index.js"),
   "random/currency-code": () => import("../../random/currency-code/index.js"),
+  "random/music-rms-to-peak-factor-audio-worked-example": () => import("../../random/music-rms-to-peak-factor-audio-worked-example/index.js"),
+  "random/music-tessitura-center-estimate-worked-example": () => import("../../random/music-tessitura-center-estimate-worked-example/index.js"),
   "random/suzhou-numeral": () => import("../../random/suzhou-numeral/index.js"),
   "real-estate/depreciation-straight-line": () => import("../../real-estate/depreciation-straight-line/index.js"),
   "rhetoric/polysyndeton-many-ands-list-checker": () => import("../../rhetoric/polysyndeton-many-ands-list-checker/index.js"),

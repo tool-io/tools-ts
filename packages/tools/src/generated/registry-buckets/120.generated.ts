@@ -56,6 +56,7 @@ export const toolModuleLoaders: Readonly<
   "proteomics/peptide-hydrophobicity": () => import("../../proteomics/peptide-hydrophobicity/index.js"),
   "random/electronic-component-reference-designator": () => import("../../random/electronic-component-reference-designator/index.js"),
   "random/kharoshthi-character": () => import("../../random/kharoshthi-character/index.js"),
+  "random/logistics-cost-per-ton-mile-computed-worked-example": () => import("../../random/logistics-cost-per-ton-mile-computed-worked-example/index.js"),
   "random/manichaean-character": () => import("../../random/manichaean-character/index.js"),
   "random/unicode-private-use-character": () => import("../../random/unicode-private-use-character/index.js"),
   "real-estate/debt-yield": () => import("../../real-estate/debt-yield/index.js"),

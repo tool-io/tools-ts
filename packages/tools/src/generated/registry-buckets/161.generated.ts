@@ -44,6 +44,7 @@ export const toolModuleLoaders: Readonly<
   "random/cherokee-character": () => import("../../random/cherokee-character/index.js"),
   "random/dark-palette": () => import("../../random/dark-palette/index.js"),
   "random/nandinagari-character": () => import("../../random/nandinagari-character/index.js"),
+  "random/number-trailing-zeros-worked-example": () => import("../../random/number-trailing-zeros-worked-example/index.js"),
   "seismology/coda-normalization-lapse-time-amplitude-correction": () => import("../../seismology/coda-normalization-lapse-time-amplitude-correction/index.js"),
   "seismology/miniseed-record-header-parser": () => import("../../seismology/miniseed-record-header-parser/index.js"),
   "semiconductor/bti-threshold-shift": () => import("../../semiconductor/bti-threshold-shift/index.js"),

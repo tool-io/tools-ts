@@ -64,6 +64,8 @@ export const toolModuleLoaders: Readonly<
   "psychology/bootstrap-percentile-ci-indirect": () => import("../../psychology/bootstrap-percentile-ci-indirect/index.js"),
   "psychology/t-score-conversion-mean50-sd10": () => import("../../psychology/t-score-conversion-mean50-sd10/index.js"),
   "random/light-bulb": () => import("../../random/light-bulb/index.js"),
+  "random/museology-datalogger-storage-days-calculator-worked-example": () => import("../../random/museology-datalogger-storage-days-calculator-worked-example/index.js"),
+  "random/vr-field-of-view-horizontal-worked-example": () => import("../../random/vr-field-of-view-horizontal-worked-example/index.js"),
   "real-estate/vacancy-rate": () => import("../../real-estate/vacancy-rate/index.js"),
   "rhetoric/zeugma-one-verb-two-objects-yoking-detector": () => import("../../rhetoric/zeugma-one-verb-two-objects-yoking-detector/index.js"),
   "runs/length-record-adjacent-compaction": () => import("../../runs/length-record-adjacent-compaction/index.js"),

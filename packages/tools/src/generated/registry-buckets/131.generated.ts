@@ -53,6 +53,7 @@ export const toolModuleLoaders: Readonly<
   "proteomics/ubiquitination-sites": () => import("../../proteomics/ubiquitination-sites/index.js"),
   "random/case-conversion-exercise": () => import("../../random/case-conversion-exercise/index.js"),
   "random/kitchen-scale-conversion-cards": () => import("../../random/kitchen-scale-conversion-cards/index.js"),
+  "random/meteorology-forecast-skill-heidke-score-worked-example": () => import("../../random/meteorology-forecast-skill-heidke-score-worked-example/index.js"),
   "random/mongolian-character": () => import("../../random/mongolian-character/index.js"),
   "random/moon-phase-symbol": () => import("../../random/moon-phase-symbol/index.js"),
   "random/osage-letter": () => import("../../random/osage-letter/index.js"),

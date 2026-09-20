@@ -28,6 +28,7 @@ export const toolModuleLoaders: Readonly<
   "folklore/peacock-feathers-indoors-argus-eyes-evil-eye-taboo": () => import("../../folklore/peacock-feathers-indoors-argus-eyes-evil-eye-taboo/index.js"),
   "forestry/seedling-survival-first-season-percent": () => import("../../forestry/seedling-survival-first-season-percent/index.js"),
   "forestry/site-index-from-height-age": () => import("../../forestry/site-index-from-height-age/index.js"),
+  "geodesy/ecef-from-geodetic-coordinates": () => import("../../geodesy/ecef-from-geodetic-coordinates/index.js"),
   "geology/bearing-capacity-meyerhof": () => import("../../geology/bearing-capacity-meyerhof/index.js"),
   "graph/node-classification": () => import("../../graph/node-classification/index.js"),
   "heraldry/fleur-petal-count-validator": () => import("../../heraldry/fleur-petal-count-validator/index.js"),

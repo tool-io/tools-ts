@@ -36,6 +36,8 @@ export const toolModuleLoaders: Readonly<
   "game/loot-box-expected-cost-per-item": () => import("../../game/loot-box-expected-cost-per-item/index.js"),
   "genetics/bottleneck-heterozygosity-loss": () => import("../../genetics/bottleneck-heterozygosity-loss/index.js"),
   "genetics/expected-cell-count-audit": () => import("../../genetics/expected-cell-count-audit/index.js"),
+  "geodesy/reduced-parametric-latitude-converter": () => import("../../geodesy/reduced-parametric-latitude-converter/index.js"),
+  "geodesy/second-eccentricity-squared": () => import("../../geodesy/second-eccentricity-squared/index.js"),
   "geology/rb-sr-initial-ratio": () => import("../../geology/rb-sr-initial-ratio/index.js"),
   "geology/slope-stability-factor-of-safety-infinite-slope": () => import("../../geology/slope-stability-factor-of-safety-infinite-slope/index.js"),
   "geology/sr-anomaly": () => import("../../geology/sr-anomaly/index.js"),

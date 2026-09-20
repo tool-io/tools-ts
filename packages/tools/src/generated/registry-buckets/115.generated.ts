@@ -37,6 +37,7 @@ export const toolModuleLoaders: Readonly<
   "fun/dnd-encounter": () => import("../../fun/dnd-encounter/index.js"),
   "genetics/independent-inbreeding-paths": () => import("../../genetics/independent-inbreeding-paths/index.js"),
   "genetics/x-recessive-son-risk": () => import("../../genetics/x-recessive-son-risk/index.js"),
+  "geodesy/utm-grid-convergence-angle-gamma": () => import("../../geodesy/utm-grid-convergence-angle-gamma/index.js"),
   "geology/downlap-angle": () => import("../../geology/downlap-angle/index.js"),
   "geology/ti-in-quartz-thermometer-titaniq": () => import("../../geology/ti-in-quartz-thermometer-titaniq/index.js"),
   "horology/foudroyante-steps": () => import("../../horology/foudroyante-steps/index.js"),

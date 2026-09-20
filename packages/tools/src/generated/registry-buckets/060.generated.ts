@@ -71,6 +71,7 @@ export const toolModuleLoaders: Readonly<
   "polynomial/coefficient-derivative-list": () => import("../../polynomial/coefficient-derivative-list/index.js"),
   "quaternion/rotation-equivalence-sign-check": () => import("../../quaternion/rotation-equivalence-sign-check/index.js"),
   "random/grayscale-color": () => import("../../random/grayscale-color/index.js"),
+  "random/statistics-pooled-variance-worked-example": () => import("../../random/statistics-pooled-variance-worked-example/index.js"),
   "random/unicode-ligature": () => import("../../random/unicode-ligature/index.js"),
   "real-estate/cltv": () => import("../../real-estate/cltv/index.js"),
   "seismology/b-value-standard-error-shi-bolt-formula": () => import("../../seismology/b-value-standard-error-shi-bolt-formula/index.js"),

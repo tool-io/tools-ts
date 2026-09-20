@@ -59,6 +59,7 @@ export const toolModuleLoaders: Readonly<
   "random/american-morse-character": () => import("../../random/american-morse-character/index.js"),
   "random/english-braille-contraction": () => import("../../random/english-braille-contraction/index.js"),
   "random/http-content-disposition-corpus": () => import("../../random/http-content-disposition-corpus/index.js"),
+  "random/statistics-pooled-standard-deviation-worked-example": () => import("../../random/statistics-pooled-standard-deviation-worked-example/index.js"),
   "real-estate/gross-potential-income": () => import("../../real-estate/gross-potential-income/index.js"),
   "seismology/deaggregation-mean-mag-dist-epsilon": () => import("../../seismology/deaggregation-mean-mag-dist-epsilon/index.js"),
   "semiconductor/photon-recycling-factor": () => import("../../semiconductor/photon-recycling-factor/index.js"),

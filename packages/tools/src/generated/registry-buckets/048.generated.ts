@@ -61,6 +61,7 @@ export const toolModuleLoaders: Readonly<
   "random/domino-practice-draw": () => import("../../random/domino-practice-draw/index.js"),
   "random/electronics-antenna-beamwidth-worked-example": () => import("../../random/electronics-antenna-beamwidth-worked-example/index.js"),
   "random/file-permission-exercise": () => import("../../random/file-permission-exercise/index.js"),
+  "random/number-mobius-worked-example": () => import("../../random/number-mobius-worked-example/index.js"),
   "sailing/vmg-to-leeward": () => import("../../sailing/vmg-to-leeward/index.js"),
   "seismology/ray-parameter-slowness-apparent-velocity": () => import("../../seismology/ray-parameter-slowness-apparent-velocity/index.js"),
   "semiconductor/algan-polarization-charge": () => import("../../semiconductor/algan-polarization-charge/index.js"),

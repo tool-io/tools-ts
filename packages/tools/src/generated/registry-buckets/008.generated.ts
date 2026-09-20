@@ -33,6 +33,7 @@ export const toolModuleLoaders: Readonly<
   "engineering/strut-and-tie-force": () => import("../../engineering/strut-and-tie-force/index.js"),
   "futurology/arxiv-preprint-velocity-doubling-fields-monitoring-note": () => import("../../futurology/arxiv-preprint-velocity-doubling-fields-monitoring-note/index.js"),
   "futurology/orwell-1984-surveillance-telescreen-prediction-scorecard": () => import("../../futurology/orwell-1984-surveillance-telescreen-prediction-scorecard/index.js"),
+  "geodesy/vincenty-inverse-distance-bearing": () => import("../../geodesy/vincenty-inverse-distance-bearing/index.js"),
   "geology/dunham-carbonate-classification": () => import("../../geology/dunham-carbonate-classification/index.js"),
   "geology/theis-drawdown": () => import("../../geology/theis-drawdown/index.js"),
   "grid/grid-tile-linear-address": () => import("../../grid/grid-tile-linear-address/index.js"),

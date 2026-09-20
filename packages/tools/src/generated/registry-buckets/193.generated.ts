@@ -61,6 +61,7 @@ export const toolModuleLoaders: Readonly<
   "random/kannada-digit": () => import("../../random/kannada-digit/index.js"),
   "random/kirat-rai-character": () => import("../../random/kirat-rai-character/index.js"),
   "random/mandaic-letter": () => import("../../random/mandaic-letter/index.js"),
+  "random/numismatics-broadstrike-diameter-expansion-worked-example": () => import("../../random/numismatics-broadstrike-diameter-expansion-worked-example/index.js"),
   "random/set-algebra-exercise": () => import("../../random/set-algebra-exercise/index.js"),
   "random/smart-ring": () => import("../../random/smart-ring/index.js"),
   "random/syriac-letter": () => import("../../random/syriac-letter/index.js"),

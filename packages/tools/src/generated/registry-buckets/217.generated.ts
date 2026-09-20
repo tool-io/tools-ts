@@ -54,6 +54,7 @@ export const toolModuleLoaders: Readonly<
   "random/digital-root-exercise": () => import("../../random/digital-root-exercise/index.js"),
   "random/film-aperture-from-f-stop-worked-example": () => import("../../random/film-aperture-from-f-stop-worked-example/index.js"),
   "random/geometry-pyramid-volume-worked-example": () => import("../../random/geometry-pyramid-volume-worked-example/index.js"),
+  "random/number-reverse-in-base-worked-example": () => import("../../random/number-reverse-in-base-worked-example/index.js"),
   "random/sorani-kurdish-alphabet-letter": () => import("../../random/sorani-kurdish-alphabet-letter/index.js"),
   "relation/relation-symmetric-completion": () => import("../../relation/relation-symmetric-completion/index.js"),
   "seismology/dart-pressure-tsunami-flag-checker": () => import("../../seismology/dart-pressure-tsunami-flag-checker/index.js"),
