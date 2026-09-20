@@ -1,0 +1,43 @@
+import { describe, it, expect } from "vitest";
+import tool, {
+  example,
+  calculateMultiSelectOptionFixture,
+  runMultiSelectOptionFixture,
+} from "./index.js";
+import {
+  canonical,
+  boundaries,
+  replay,
+} from "../m500b-ui-accessibility-test-support.js";
+describe(tool.id, () => {
+  it("lightweight canonical, schema, contract and index runner", () => {
+    canonical(tool, calculateMultiSelectOptionFixture, example);
+    expect(runMultiSelectOptionFixture(example.input)).toEqual({
+      ok: true,
+      output: example.output,
+    });
+  });
+  it("lightweight complete missing fields and code boundaries", () => {
+    boundaries(tool, example.input);
+    expect(
+      tool.execute({ ...example.input, maximumSelected: 3 }),
+    ).toMatchObject({
+      ok: false,
+      error: {
+        issues: [{ field: "maximumSelected", code: "infeasible_selection" }],
+      },
+    });
+  });
+  it("lightweight replay, seed precedence, source failures and immutability", () =>
+    replay(tool, example.input));
+  it("lightweight independent model case", () => {
+    const result = tool.execute({
+      ...example.input,
+      minimumSelected: 0,
+      maximumSelected: 0,
+    });
+    if (!result.ok) throw new Error("Expected empty selection");
+    expect(result.output.selectedIds).toEqual([]);
+    expect(result.output.options.every((o) => !o.selected)).toBe(true);
+  });
+});
