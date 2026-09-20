@@ -61,6 +61,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/fire-department-connection-flow": () => import("../../plumbing/fire-department-connection-flow/index.js"),
   "random/archival-studies-transcription-progress-percent-calculator-worked-example": () => import("../../random/archival-studies-transcription-progress-percent-calculator-worked-example/index.js"),
   "random/astronomy-hubble-time-age-estimate-worked-example": () => import("../../random/astronomy-hubble-time-age-estimate-worked-example/index.js"),
+  "random/tournament-bracket": () => import("../../random/tournament-bracket/index.js"),
   "sailing/halyard-tension-main": () => import("../../sailing/halyard-tension-main/index.js"),
   "semiconductor/charge-neutrality": () => import("../../semiconductor/charge-neutrality/index.js"),
   "semiconductor/rram-read-window": () => import("../../semiconductor/rram-read-window/index.js"),

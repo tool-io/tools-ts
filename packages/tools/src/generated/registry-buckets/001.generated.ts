@@ -69,6 +69,8 @@ export const toolModuleLoaders: Readonly<
   "psychology/who5-wellbeing-percent-of-max": () => import("../../psychology/who5-wellbeing-percent-of-max/index.js"),
   "random/czech-alphabet-letter": () => import("../../random/czech-alphabet-letter/index.js"),
   "random/geometry-circular-segment-area-worked-example": () => import("../../random/geometry-circular-segment-area-worked-example/index.js"),
+  "random/graph-bridge-cut-exercise": () => import("../../random/graph-bridge-cut-exercise/index.js"),
+  "random/stack-operation-trace": () => import("../../random/stack-operation-trace/index.js"),
   "real-estate/cash-on-cash-return": () => import("../../real-estate/cash-on-cash-return/index.js"),
   "sailing/jib-lead-angle": () => import("../../sailing/jib-lead-angle/index.js"),
   "sailing/sail-aspect-ratio-main": () => import("../../sailing/sail-aspect-ratio-main/index.js"),

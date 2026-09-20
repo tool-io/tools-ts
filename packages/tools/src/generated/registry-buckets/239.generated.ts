@@ -64,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/bishop-score": () => import("../../pregnancy/bishop-score/index.js"),
   "psychology/gaf-score-band-lookup": () => import("../../psychology/gaf-score-band-lookup/index.js"),
   "random/entity-relationship-cardinality-symbol": () => import("../../random/entity-relationship-cardinality-symbol/index.js"),
+  "random/fantasy-trade-route-network": () => import("../../random/fantasy-trade-route-network/index.js"),
   "random/film-angle-of-view-diagonal-worked-example": () => import("../../random/film-angle-of-view-diagonal-worked-example/index.js"),
   "random/lao-character": () => import("../../random/lao-character/index.js"),
   "random/meroitic-cursive-character": () => import("../../random/meroitic-cursive-character/index.js"),

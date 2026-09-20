@@ -63,6 +63,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/pipe-weight-filled": () => import("../../plumbing/pipe-weight-filled/index.js"),
   "quaternion/squared-norm": () => import("../../quaternion/squared-norm/index.js"),
   "random/combinatorics-factorial-worked-example": () => import("../../random/combinatorics-factorial-worked-example/index.js"),
+  "random/html-attribute-quoting-corpus": () => import("../../random/html-attribute-quoting-corpus/index.js"),
   "random/kitchen-container-fill-exercise": () => import("../../random/kitchen-container-fill-exercise/index.js"),
   "random/momentum-impulse-exercise": () => import("../../random/momentum-impulse-exercise/index.js"),
   "sailing/fuel-at-eta": () => import("../../sailing/fuel-at-eta/index.js"),

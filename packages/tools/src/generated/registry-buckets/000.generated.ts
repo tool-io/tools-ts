@@ -58,6 +58,8 @@ export const toolModuleLoaders: Readonly<
   "petroleum/nodal-analysis-inflow-ipr-vogel": () => import("../../petroleum/nodal-analysis-inflow-ipr-vogel/index.js"),
   "proteomics/tmt-channel-normalization": () => import("../../proteomics/tmt-channel-normalization/index.js"),
   "random/film-35mm-equivalent-focal-length-worked-example": () => import("../../random/film-35mm-equivalent-focal-length-worked-example/index.js"),
+  "random/json-flattening-round-trip-corpus": () => import("../../random/json-flattening-round-trip-corpus/index.js"),
+  "random/small-multiples-panel-dataset": () => import("../../random/small-multiples-panel-dataset/index.js"),
   "random/welding-symbol": () => import("../../random/welding-symbol/index.js"),
   "real-estate/mill-rate-tax": () => import("../../real-estate/mill-rate-tax/index.js"),
   "sailing/cunningham-tension": () => import("../../sailing/cunningham-tension/index.js"),

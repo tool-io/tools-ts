@@ -61,6 +61,7 @@ export const toolModuleLoaders: Readonly<
   "psychology/factor-loading-communality": () => import("../../psychology/factor-loading-communality/index.js"),
   "random/electronics-alias-frequency-worked-example": () => import("../../random/electronics-alias-frequency-worked-example/index.js"),
   "random/film-anamorphic-desqueeze-worked-example": () => import("../../random/film-anamorphic-desqueeze-worked-example/index.js"),
+  "random/market-basket-transaction-dataset": () => import("../../random/market-basket-transaction-dataset/index.js"),
   "real-estate/arv": () => import("../../real-estate/arv/index.js"),
   "relation/reflexive-diagonal-audit": () => import("../../relation/reflexive-diagonal-audit/index.js"),
   "sailing/tide-rule-of-twelfths": () => import("../../sailing/tide-rule-of-twelfths/index.js"),

@@ -65,6 +65,7 @@ export const toolModuleLoaders: Readonly<
   "random/game-crit-chance-expected-damage-multiplier-worked-example": () => import("../../random/game-crit-chance-expected-damage-multiplier-worked-example/index.js"),
   "random/geology-atterberg-plasticity-index-worked-example": () => import("../../random/geology-atterberg-plasticity-index-worked-example/index.js"),
   "random/http-content-negotiation-exercise": () => import("../../random/http-content-negotiation-exercise/index.js"),
+  "random/parallel-coordinate-profile-dataset": () => import("../../random/parallel-coordinate-profile-dataset/index.js"),
   "random/tirhuta-character": () => import("../../random/tirhuta-character/index.js"),
   "random/ugaritic-letter": () => import("../../random/ugaritic-letter/index.js"),
   "rhetoric/metaphor-vs-simile-explicit-marker-checker": () => import("../../rhetoric/metaphor-vs-simile-explicit-marker-checker/index.js"),

@@ -65,6 +65,7 @@ export const toolModuleLoaders: Readonly<
   "random/lao-digit": () => import("../../random/lao-digit/index.js"),
   "random/origami-practice-plan": () => import("../../random/origami-practice-plan/index.js"),
   "random/osmanya-digit": () => import("../../random/osmanya-digit/index.js"),
+  "random/rooted-tree-depth-profile": () => import("../../random/rooted-tree-depth-profile/index.js"),
   "real-estate/price-reduction-percentage": () => import("../../real-estate/price-reduction-percentage/index.js"),
   "rhetoric/metonymy-container-for-contained-lookup": () => import("../../rhetoric/metonymy-container-for-contained-lookup/index.js"),
   "sailing/lock-water-volume": () => import("../../sailing/lock-water-volume/index.js"),

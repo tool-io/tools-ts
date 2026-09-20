@@ -70,6 +70,8 @@ export const toolModuleLoaders: Readonly<
   "quaternion/unit-short-arc-slerp": () => import("../../quaternion/unit-short-arc-slerp/index.js"),
   "random/anagram-puzzle": () => import("../../random/anagram-puzzle/index.js"),
   "random/clock-divider-challenge": () => import("../../random/clock-divider-challenge/index.js"),
+  "random/polyrhythm-event-grid": () => import("../../random/polyrhythm-event-grid/index.js"),
+  "random/selector-specificity-quiz": () => import("../../random/selector-specificity-quiz/index.js"),
   "real-estate/load-factor": () => import("../../real-estate/load-factor/index.js"),
   "seismology/tsunami-seafloor-vertical-offset": () => import("../../seismology/tsunami-seafloor-vertical-offset/index.js"),
   "semiconductor/euv-dose-to-clear": () => import("../../semiconductor/euv-dose-to-clear/index.js"),

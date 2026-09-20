@@ -62,6 +62,7 @@ export const toolModuleLoaders: Readonly<
   "random/bopomofo-character": () => import("../../random/bopomofo-character/index.js"),
   "random/concentric-rectangle-insets": () => import("../../random/concentric-rectangle-insets/index.js"),
   "random/electronics-accelerometer-noise-density-worked-example": () => import("../../random/electronics-accelerometer-noise-density-worked-example/index.js"),
+  "random/knitting-colorwork-repeat": () => import("../../random/knitting-colorwork-repeat/index.js"),
   "random/tamil-character": () => import("../../random/tamil-character/index.js"),
   "random/urn-sampling-experiment": () => import("../../random/urn-sampling-experiment/index.js"),
   "random/warm-palette": () => import("../../random/warm-palette/index.js"),

@@ -61,6 +61,7 @@ export const toolModuleLoaders: Readonly<
   "proteomics/coiled-coil-register": () => import("../../proteomics/coiled-coil-register/index.js"),
   "random/canadian-syllabics-character": () => import("../../random/canadian-syllabics-character/index.js"),
   "random/japanese-sign-syllable": () => import("../../random/japanese-sign-syllable/index.js"),
+  "random/rank-sum-test-case": () => import("../../random/rank-sum-test-case/index.js"),
   "random/telugu-character": () => import("../../random/telugu-character/index.js"),
   "sailing/sea-state-lookup": () => import("../../sailing/sea-state-lookup/index.js"),
   "seismology/agc-gain-step-artifact-flagger": () => import("../../seismology/agc-gain-step-artifact-flagger/index.js"),

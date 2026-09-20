@@ -63,6 +63,8 @@ export const toolModuleLoaders: Readonly<
   "proteomics/tryptic-peptides": () => import("../../proteomics/tryptic-peptides/index.js"),
   "psychology/simple-slope-at-plus-one-sd": () => import("../../psychology/simple-slope-at-plus-one-sd/index.js"),
   "random/microphone": () => import("../../random/microphone/index.js"),
+  "random/rare-item-support-boundary-corpus": () => import("../../random/rare-item-support-boundary-corpus/index.js"),
+  "random/strip-packing-instance": () => import("../../random/strip-packing-instance/index.js"),
   "sailing/mast-bend-amount": () => import("../../sailing/mast-bend-amount/index.js"),
   "seismology/hvsr-clear-peak-confidence-checker": () => import("../../seismology/hvsr-clear-peak-confidence-checker/index.js"),
   "seismology/surface-wave-spreading-half-space": () => import("../../seismology/surface-wave-spreading-half-space/index.js"),

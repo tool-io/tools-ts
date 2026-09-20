@@ -65,6 +65,7 @@ export const toolModuleLoaders: Readonly<
   "philately/title-page-word-budget-checker": () => import("../../philately/title-page-word-budget-checker/index.js"),
   "plumbing/radiant-manifold-flow": () => import("../../plumbing/radiant-manifold-flow/index.js"),
   "random/bsl-fingerspelling-letter": () => import("../../random/bsl-fingerspelling-letter/index.js"),
+  "random/geometric-area-decomposition-puzzle": () => import("../../random/geometric-area-decomposition-puzzle/index.js"),
   "random/hungarian-alphabet-letter": () => import("../../random/hungarian-alphabet-letter/index.js"),
   "random/interleaved-topic-practice-playlist": () => import("../../random/interleaved-topic-practice-playlist/index.js"),
   "random/ipv4-subnet-exercise": () => import("../../random/ipv4-subnet-exercise/index.js"),

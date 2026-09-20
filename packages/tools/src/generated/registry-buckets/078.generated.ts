@@ -61,6 +61,7 @@ export const toolModuleLoaders: Readonly<
   "physics/impulse": () => import("../../physics/impulse/index.js"),
   "random/brahmi-character": () => import("../../random/brahmi-character/index.js"),
   "random/cjk-stroke": () => import("../../random/cjk-stroke/index.js"),
+  "random/css-grid-layout-preset": () => import("../../random/css-grid-layout-preset/index.js"),
   "random/indic-siyaq-number": () => import("../../random/indic-siyaq-number/index.js"),
   "random/museology-uv-filter-film-percentage-worked-example": () => import("../../random/museology-uv-filter-film-percentage-worked-example/index.js"),
   "random/persian-alphabet-letter": () => import("../../random/persian-alphabet-letter/index.js"),

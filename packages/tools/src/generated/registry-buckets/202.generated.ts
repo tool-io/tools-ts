@@ -62,6 +62,8 @@ export const toolModuleLoaders: Readonly<
   "path/filename-numbered-suffix-formatter": () => import("../../path/filename-numbered-suffix-formatter/index.js"),
   "philately/registered-fee-year-lookup": () => import("../../philately/registered-fee-year-lookup/index.js"),
   "random/force-acceleration-exercise": () => import("../../random/force-acceleration-exercise/index.js"),
+  "random/import-map-resolution-fixture": () => import("../../random/import-map-resolution-fixture/index.js"),
+  "random/improv-dialogue-word-ban": () => import("../../random/improv-dialogue-word-ban/index.js"),
   "random/mirror-symmetric-bitmap": () => import("../../random/mirror-symmetric-bitmap/index.js"),
   "rhetoric/aposiopesis-breaking-off-trailing-checker": () => import("../../rhetoric/aposiopesis-breaking-off-trailing-checker/index.js"),
   "seismology/tide-gauge-bottom-pressure-hydrostatic-depth": () => import("../../seismology/tide-gauge-bottom-pressure-hydrostatic-depth/index.js"),

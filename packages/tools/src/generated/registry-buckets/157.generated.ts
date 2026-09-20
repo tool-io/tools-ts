@@ -63,6 +63,7 @@ export const toolModuleLoaders: Readonly<
   "random/arithmetic-modular-complement-worked-example": () => import("../../random/arithmetic-modular-complement-worked-example/index.js"),
   "random/box-drawing-character": () => import("../../random/box-drawing-character/index.js"),
   "random/ethiopic-numeral": () => import("../../random/ethiopic-numeral/index.js"),
+  "random/identifier-transcription-error-corpus": () => import("../../random/identifier-transcription-error-corpus/index.js"),
   "random/nyiakeng-puachue-hmong-character": () => import("../../random/nyiakeng-puachue-hmong-character/index.js"),
   "random/sequential-color-scale": () => import("../../random/sequential-color-scale/index.js"),
   "random/siddham-character": () => import("../../random/siddham-character/index.js"),

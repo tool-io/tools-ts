@@ -9,6 +9,7 @@ export const toolModuleLoaders: Readonly<
   "acoustics/ultrasound-wavelength-tissue": () => import("../../acoustics/ultrasound-wavelength-tissue/index.js"),
   "aesthetics/white-cube-gallery-space-odoherty-inside-context-lookup": () => import("../../aesthetics/white-cube-gallery-space-odoherty-inside-context-lookup/index.js"),
   "affine/matrix-translation-component-replace": () => import("../../affine/matrix-translation-component-replace/index.js"),
+  "algebra/solve-linear-system": () => import("../../algebra/solve-linear-system/index.js"),
   "apiculture/bear-fence-electric-spec-lookup": () => import("../../apiculture/bear-fence-electric-spec-lookup/index.js"),
   "apiculture/robbing-frenzy-risk-score-checker": () => import("../../apiculture/robbing-frenzy-risk-score-checker/index.js"),
   "archaeology/stature-geniculate-tibia-formula": () => import("../../archaeology/stature-geniculate-tibia-formula/index.js"),

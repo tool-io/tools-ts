@@ -51,6 +51,8 @@ export const toolModuleLoaders: Readonly<
   "random/gurmukhi-digit": () => import("../../random/gurmukhi-digit/index.js"),
   "random/ipa-consonant": () => import("../../random/ipa-consonant/index.js"),
   "random/ipa-vowel": () => import("../../random/ipa-vowel/index.js"),
+  "random/rehearsal-line-cue-omission": () => import("../../random/rehearsal-line-cue-omission/index.js"),
+  "random/semantic-edit-markup-fixture": () => import("../../random/semantic-edit-markup-fixture/index.js"),
   "random/typography-scale": () => import("../../random/typography-scale/index.js"),
   "seismology/topographic-aggravation-factor-ridge": () => import("../../seismology/topographic-aggravation-factor-ridge/index.js"),
   "semiconductor/chern-number": () => import("../../semiconductor/chern-number/index.js"),

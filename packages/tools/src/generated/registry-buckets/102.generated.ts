@@ -66,6 +66,8 @@ export const toolModuleLoaders: Readonly<
   "pharmacy/steroid-prednisone-equivalent": () => import("../../pharmacy/steroid-prednisone-equivalent/index.js"),
   "psychology/rmsea-cutoff-band-lookup": () => import("../../psychology/rmsea-cutoff-band-lookup/index.js"),
   "random/auslan-fingerspelling-letter": () => import("../../random/auslan-fingerspelling-letter/index.js"),
+  "random/bookplate-design-brief": () => import("../../random/bookplate-design-brief/index.js"),
+  "random/cutting-stock-instance": () => import("../../random/cutting-stock-instance/index.js"),
   "random/demography-dual-system-chandrasekar-deming-estimator-worked-example": () => import("../../random/demography-dual-system-chandrasekar-deming-estimator-worked-example/index.js"),
   "random/nag-mundari-character": () => import("../../random/nag-mundari-character/index.js"),
   "random/newton-step-exercise": () => import("../../random/newton-step-exercise/index.js"),

@@ -67,6 +67,7 @@ export const toolModuleLoaders: Readonly<
   "sericulture/double-cocoon-percent-defect-rate": () => import("../../sericulture/double-cocoon-percent-defect-rate/index.js"),
   "size/ring": () => import("../../size/ring/index.js"),
   "sociology/added-worker-effect-share": () => import("../../sociology/added-worker-effect-share/index.js"),
+  "statistics/kendall-tau": () => import("../../statistics/kendall-tau/index.js"),
   "taxation/nft-creator-income": () => import("../../taxation/nft-creator-income/index.js"),
   "text/line-number-overlay-data": () => import("../../text/line-number-overlay-data/index.js"),
   "transcriptomics/hub-gene-rank": () => import("../../transcriptomics/hub-gene-rank/index.js"),

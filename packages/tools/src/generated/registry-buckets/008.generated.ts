@@ -65,6 +65,7 @@ export const toolModuleLoaders: Readonly<
   "random/electrical-symbol": () => import("../../random/electrical-symbol/index.js"),
   "random/english-pluralization-quiz": () => import("../../random/english-pluralization-quiz/index.js"),
   "random/geometry-octahedron-volume-worked-example": () => import("../../random/geometry-octahedron-volume-worked-example/index.js"),
+  "random/http-range-overlap-dataset": () => import("../../random/http-range-overlap-dataset/index.js"),
   "random/set-theory-symbol": () => import("../../random/set-theory-symbol/index.js"),
   "random/unicode-variation-selector": () => import("../../random/unicode-variation-selector/index.js"),
   "seismology/eurocode-8-ground-type-lookup": () => import("../../seismology/eurocode-8-ground-type-lookup/index.js"),

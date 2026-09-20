@@ -67,6 +67,7 @@ export const toolModuleLoaders: Readonly<
   "print/print-booklet-blank-page-budget": () => import("../../print/print-booklet-blank-page-budget/index.js"),
   "proteomics/pdz-terminal-motif": () => import("../../proteomics/pdz-terminal-motif/index.js"),
   "proteomics/silac-heavy-light-ratio": () => import("../../proteomics/silac-heavy-light-ratio/index.js"),
+  "random/independent-set-instance": () => import("../../random/independent-set-instance/index.js"),
   "random/shogi-piece": () => import("../../random/shogi-piece/index.js"),
   "random/thaana-character": () => import("../../random/thaana-character/index.js"),
   "random/typography-golden-ratio-type-scale-worked-example": () => import("../../random/typography-golden-ratio-type-scale-worked-example/index.js"),

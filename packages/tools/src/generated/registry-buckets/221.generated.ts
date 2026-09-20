@@ -60,6 +60,7 @@ export const toolModuleLoaders: Readonly<
   "print/print-folded-sheet-layer-count": () => import("../../print/print-folded-sheet-layer-count/index.js"),
   "probability/beta-distribution-sampler": () => import("../../probability/beta-distribution-sampler/index.js"),
   "random/ascii-punctuation-character": () => import("../../random/ascii-punctuation-character/index.js"),
+  "random/derangement-assignment": () => import("../../random/derangement-assignment/index.js"),
   "random/go-board-annotation-symbol": () => import("../../random/go-board-annotation-symbol/index.js"),
   "random/pau-cin-hau-character": () => import("../../random/pau-cin-hau-character/index.js"),
   "real-estate/pet-fee-income": () => import("../../real-estate/pet-fee-income/index.js"),

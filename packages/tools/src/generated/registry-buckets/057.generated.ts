@@ -47,6 +47,7 @@ export const toolModuleLoaders: Readonly<
   "psychology/average-variance-extracted-fornell-larcker": () => import("../../psychology/average-variance-extracted-fornell-larcker/index.js"),
   "random/monospace-letter": () => import("../../random/monospace-letter/index.js"),
   "random/nucleotide-code": () => import("../../random/nucleotide-code/index.js"),
+  "random/progress-meter-boundary-fixture": () => import("../../random/progress-meter-boundary-fixture/index.js"),
   "regex/regex-capture-index-map": () => import("../../regex/regex-capture-index-map/index.js"),
   "sailing/distance-to-layline": () => import("../../sailing/distance-to-layline/index.js"),
   "sailing/drying-height-clearance": () => import("../../sailing/drying-height-clearance/index.js"),

@@ -62,6 +62,7 @@ export const toolModuleLoaders: Readonly<
   "pedagogy/worked-example-fading": () => import("../../pedagogy/worked-example-fading/index.js"),
   "psychology/epq-extraversion-subscore": () => import("../../psychology/epq-extraversion-subscore/index.js"),
   "random/control-picture": () => import("../../random/control-picture/index.js"),
+  "random/csv-sort-stability-exercise": () => import("../../random/csv-sort-stability-exercise/index.js"),
   "random/hentaigana-character": () => import("../../random/hentaigana-character/index.js"),
   "random/monitor": () => import("../../random/monitor/index.js"),
   "random/statistics-sample-size-mean-worked-example": () => import("../../random/statistics-sample-size-mean-worked-example/index.js"),

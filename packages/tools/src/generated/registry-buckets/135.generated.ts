@@ -76,6 +76,7 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/quad-screen-risk": () => import("../../pregnancy/quad-screen-risk/index.js"),
   "psychology/block-design-scaled-score": () => import("../../psychology/block-design-scaled-score/index.js"),
   "random/acronym-expansion-puzzle": () => import("../../random/acronym-expansion-puzzle/index.js"),
+  "random/bingo-card": () => import("../../random/bingo-card/index.js"),
   "seismology/vs30-time-averaged-shear-velocity": () => import("../../seismology/vs30-time-averaged-shear-velocity/index.js"),
   "semiconductor/ingaas-critical-thickness": () => import("../../semiconductor/ingaas-critical-thickness/index.js"),
   "sql/numbered-placeholder-formatter": () => import("../../sql/numbered-placeholder-formatter/index.js"),

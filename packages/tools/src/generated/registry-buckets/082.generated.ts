@@ -64,6 +64,8 @@ export const toolModuleLoaders: Readonly<
   "probability/gumbel-sampler": () => import("../../probability/gumbel-sampler/index.js"),
   "random/hawaiian-alphabet-letter": () => import("../../random/hawaiian-alphabet-letter/index.js"),
   "random/origami-diagram-symbol": () => import("../../random/origami-diagram-symbol/index.js"),
+  "random/toy-planetary-system": () => import("../../random/toy-planetary-system/index.js"),
+  "random/union-find-connectivity-trace": () => import("../../random/union-find-connectivity-trace/index.js"),
   "sailing/marina-berth-depth-tide": () => import("../../sailing/marina-berth-depth-tide/index.js"),
   "sailing/righting-moment": () => import("../../sailing/righting-moment/index.js"),
   "semiconductor/dirac-point-energy": () => import("../../semiconductor/dirac-point-energy/index.js"),

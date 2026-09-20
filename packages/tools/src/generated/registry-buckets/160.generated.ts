@@ -59,6 +59,7 @@ export const toolModuleLoaders: Readonly<
   "random/monochromatic-palette": () => import("../../random/monochromatic-palette/index.js"),
   "random/nutrient": () => import("../../random/nutrient/index.js"),
   "random/phaistos-disc-sign": () => import("../../random/phaistos-disc-sign/index.js"),
+  "random/semantic-version-ordering-corpus": () => import("../../random/semantic-version-ordering-corpus/index.js"),
   "random/zigzag-round-trip-test-case": () => import("../../random/zigzag-round-trip-test-case/index.js"),
   "seismology/swarm-vs-mainshock-aftershock-sequence-classifier": () => import("../../seismology/swarm-vs-mainshock-aftershock-sequence-classifier/index.js"),
   "semiconductor/antiphase-boundary-energy": () => import("../../semiconductor/antiphase-boundary-energy/index.js"),

@@ -64,6 +64,8 @@ export const toolModuleLoaders: Readonly<
   "random/ipa-diacritic": () => import("../../random/ipa-diacritic/index.js"),
   "random/kazakh-cyrillic-alphabet-letter": () => import("../../random/kazakh-cyrillic-alphabet-letter/index.js"),
   "random/microtonal-melody": () => import("../../random/microtonal-melody/index.js"),
+  "random/numeric-parser-boundary-corpus": () => import("../../random/numeric-parser-boundary-corpus/index.js"),
+  "random/sliding-tile-scramble": () => import("../../random/sliding-tile-scramble/index.js"),
   "regex/character-class-overlap-table": () => import("../../regex/character-class-overlap-table/index.js"),
   "seismology/double-couple-p-t-axis-plunge-style-shortcut": () => import("../../seismology/double-couple-p-t-axis-plunge-style-shortcut/index.js"),
   "semiconductor/arrayed-waveguide-grating-channel-spacing": () => import("../../semiconductor/arrayed-waveguide-grating-channel-spacing/index.js"),

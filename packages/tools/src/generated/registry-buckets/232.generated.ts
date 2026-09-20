@@ -68,6 +68,8 @@ export const toolModuleLoaders: Readonly<
   "random/letter-spacing-specimen": () => import("../../random/letter-spacing-specimen/index.js"),
   "random/math-beta-dirichlet-approx-worked-example": () => import("../../random/math-beta-dirichlet-approx-worked-example/index.js"),
   "random/odia-character": () => import("../../random/odia-character/index.js"),
+  "random/paired-t-test-test-case": () => import("../../random/paired-t-test-test-case/index.js"),
+  "random/perceptually-distinct-palette": () => import("../../random/perceptually-distinct-palette/index.js"),
   "random/word-frequency-counting-quiz": () => import("../../random/word-frequency-counting-quiz/index.js"),
   "sailing/boom-force": () => import("../../sailing/boom-force/index.js"),
   "semiconductor/bjt-common-emitter-current-gain": () => import("../../semiconductor/bjt-common-emitter-current-gain/index.js"),

@@ -62,6 +62,8 @@ export const toolModuleLoaders: Readonly<
   "philately/thinning-light-test-checker": () => import("../../philately/thinning-light-test-checker/index.js"),
   "plumbing/pool-filter-flow-rate": () => import("../../plumbing/pool-filter-flow-rate/index.js"),
   "plumbing/radiant-tubing-spacing": () => import("../../plumbing/radiant-tubing-spacing/index.js"),
+  "random/dance-motif-permutation": () => import("../../random/dance-motif-permutation/index.js"),
+  "random/wordle-feedback-exercise": () => import("../../random/wordle-feedback-exercise/index.js"),
   "semiconductor/molding-compound-glass-transition-temperature": () => import("../../semiconductor/molding-compound-glass-transition-temperature/index.js"),
   "sericulture/evenness-defects-per-km-counter": () => import("../../sericulture/evenness-defects-per-km-counter/index.js"),
   "sociology/rural-population-percentage": () => import("../../sociology/rural-population-percentage/index.js"),

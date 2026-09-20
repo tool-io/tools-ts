@@ -65,6 +65,7 @@ export const toolModuleLoaders: Readonly<
   "random/energy-comparison-scenario": () => import("../../random/energy-comparison-scenario/index.js"),
   "random/nato-phonetic-codeword": () => import("../../random/nato-phonetic-codeword/index.js"),
   "random/ram-module": () => import("../../random/ram-module/index.js"),
+  "random/small-world-network-experiment": () => import("../../random/small-world-network-experiment/index.js"),
   "real-estate/cap-rate-spread": () => import("../../real-estate/cap-rate-spread/index.js"),
   "seismology/shake-alert-lead-time-seconds-estimate": () => import("../../seismology/shake-alert-lead-time-seconds-estimate/index.js"),
   "semiconductor/metamaterial-effective-index": () => import("../../semiconductor/metamaterial-effective-index/index.js"),

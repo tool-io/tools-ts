@@ -64,6 +64,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/pool-heater-energy": () => import("../../plumbing/pool-heater-energy/index.js"),
   "random/bopomofo-tone-mark": () => import("../../random/bopomofo-tone-mark/index.js"),
   "random/pashto-alphabet-letter": () => import("../../random/pashto-alphabet-letter/index.js"),
+  "random/unicode-byte-round-trip-corpus": () => import("../../random/unicode-byte-round-trip-corpus/index.js"),
   "rhetoric/common-topics-topoi-catalog-lookup": () => import("../../rhetoric/common-topics-topoi-catalog-lookup/index.js"),
   "sailing/moon-tide-phase": () => import("../../sailing/moon-tide-phase/index.js"),
   "size/tie": () => import("../../size/tie/index.js"),

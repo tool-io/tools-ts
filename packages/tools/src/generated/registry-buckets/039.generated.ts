@@ -59,6 +59,8 @@ export const toolModuleLoaders: Readonly<
   "random/geology-active-earth-pressure-coefficient-worked-example": () => import("../../random/geology-active-earth-pressure-coefficient-worked-example/index.js"),
   "random/grade-one-english-braille-punctuation": () => import("../../random/grade-one-english-braille-punctuation/index.js"),
   "random/lisu-letter": () => import("../../random/lisu-letter/index.js"),
+  "random/minimum-spanning-tree-test-case": () => import("../../random/minimum-spanning-tree-test-case/index.js"),
+  "random/monte-carlo-uniform": () => import("../../random/monte-carlo-uniform/index.js"),
   "random/nabataean-letter": () => import("../../random/nabataean-letter/index.js"),
   "sailing/sail-load": () => import("../../sailing/sail-load/index.js"),
   "semiconductor/solder-joint-fatigue-life-coffin-manson": () => import("../../semiconductor/solder-joint-fatigue-life-coffin-manson/index.js"),

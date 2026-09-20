@@ -43,6 +43,8 @@ export const toolModuleLoaders: Readonly<
   "random/astrometry-four-term-nutation-components-worked-example": () => import("../../random/astrometry-four-term-nutation-components-worked-example/index.js"),
   "random/cherokee-character": () => import("../../random/cherokee-character/index.js"),
   "random/dark-palette": () => import("../../random/dark-palette/index.js"),
+  "random/dot-to-dot-drawing": () => import("../../random/dot-to-dot-drawing/index.js"),
+  "random/fictional-island-archipelago-network": () => import("../../random/fictional-island-archipelago-network/index.js"),
   "random/nandinagari-character": () => import("../../random/nandinagari-character/index.js"),
   "random/number-trailing-zeros-worked-example": () => import("../../random/number-trailing-zeros-worked-example/index.js"),
   "seismology/coda-normalization-lapse-time-amplitude-correction": () => import("../../seismology/coda-normalization-lapse-time-amplitude-correction/index.js"),

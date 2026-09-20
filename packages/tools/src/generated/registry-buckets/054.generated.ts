@@ -62,6 +62,8 @@ export const toolModuleLoaders: Readonly<
   "proteomics/homeodomain-length": () => import("../../proteomics/homeodomain-length/index.js"),
   "random/imperial-aramaic-letter": () => import("../../random/imperial-aramaic-letter/index.js"),
   "random/javanese-digit": () => import("../../random/javanese-digit/index.js"),
+  "random/json-merge-conflict-scenario": () => import("../../random/json-merge-conflict-scenario/index.js"),
+  "random/monte-carlo-pi": () => import("../../random/monte-carlo-pi/index.js"),
   "rational/fraction-add-exact": () => import("../../rational/fraction-add-exact/index.js"),
   "relation/transitive-triple-audit": () => import("../../relation/transitive-triple-audit/index.js"),
   "rhetoric/litotes-understatement-double-negative-checker": () => import("../../rhetoric/litotes-understatement-double-negative-checker/index.js"),

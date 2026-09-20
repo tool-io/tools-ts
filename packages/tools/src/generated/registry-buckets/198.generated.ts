@@ -66,6 +66,7 @@ export const toolModuleLoaders: Readonly<
   "random/medefaidrin-letter": () => import("../../random/medefaidrin-letter/index.js"),
   "random/musical-articulation-symbol": () => import("../../random/musical-articulation-symbol/index.js"),
   "random/semiconductor-bandgap-narrowing-worked-example": () => import("../../random/semiconductor-bandgap-narrowing-worked-example/index.js"),
+  "random/word-wrap-boundary-corpus": () => import("../../random/word-wrap-boundary-corpus/index.js"),
   "rhetoric/diacope-interrupted-repetition-distance-checker": () => import("../../rhetoric/diacope-interrupted-repetition-distance-checker/index.js"),
   "rhetoric/example-generalization-scope-checker": () => import("../../rhetoric/example-generalization-scope-checker/index.js"),
   "sailing/start-line-bias": () => import("../../sailing/start-line-bias/index.js"),

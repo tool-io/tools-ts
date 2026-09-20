@@ -62,6 +62,7 @@ export const toolModuleLoaders: Readonly<
   "random/baking-pan-capacity-exercise": () => import("../../random/baking-pan-capacity-exercise/index.js"),
   "random/carpentry-beize-verduennung-verhaeltnis-worked-example": () => import("../../random/carpentry-beize-verduennung-verhaeltnis-worked-example/index.js"),
   "random/electronics-accelerometer-voltage-output-worked-example": () => import("../../random/electronics-accelerometer-voltage-output-worked-example/index.js"),
+  "random/geometric-op-art-grid": () => import("../../random/geometric-op-art-grid/index.js"),
   "random/lsf-fingerspelling-letter": () => import("../../random/lsf-fingerspelling-letter/index.js"),
   "seismology/refraction-layer-crossover-distance": () => import("../../seismology/refraction-layer-crossover-distance/index.js"),
   "sericulture/leaf-chopping-size-by-instar-lookup": () => import("../../sericulture/leaf-chopping-size-by-instar-lookup/index.js"),

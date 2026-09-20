@@ -54,6 +54,7 @@ export const toolModuleLoaders: Readonly<
   "numismatics/large-cent-matron-braided-hair-final-1857-lookup": () => import("../../numismatics/large-cent-matron-braided-hair-final-1857-lookup/index.js"),
   "philately/centering-grade-scorer": () => import("../../philately/centering-grade-scorer/index.js"),
   "polynomial/coefficient-low-power-remainder": () => import("../../polynomial/coefficient-low-power-remainder/index.js"),
+  "random/edit-script-reconstruction-challenge": () => import("../../random/edit-script-reconstruction-challenge/index.js"),
   "random/grayscale-palette": () => import("../../random/grayscale-palette/index.js"),
   "random/hazard-pictogram": () => import("../../random/hazard-pictogram/index.js"),
   "random/horology-amplitude-lift-ratio-worked-example": () => import("../../random/horology-amplitude-lift-ratio-worked-example/index.js"),

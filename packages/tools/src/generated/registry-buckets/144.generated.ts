@@ -80,6 +80,7 @@ export const toolModuleLoaders: Readonly<
   "random/guitar-fretboard-exercise": () => import("../../random/guitar-fretboard-exercise/index.js"),
   "random/hsl-color": () => import("../../random/hsl-color/index.js"),
   "random/math-archimedean-spiral-length-worked-example": () => import("../../random/math-archimedean-spiral-length-worked-example/index.js"),
+  "random/truchet-tile-mosaic": () => import("../../random/truchet-tile-mosaic/index.js"),
   "random/weather-symbol": () => import("../../random/weather-symbol/index.js"),
   "sailing/layline-overstand": () => import("../../sailing/layline-overstand/index.js"),
   "size/life-jacket": () => import("../../size/life-jacket/index.js"),

@@ -65,6 +65,7 @@ export const toolModuleLoaders: Readonly<
   "plumbing/relief-vent-sizing": () => import("../../plumbing/relief-vent-sizing/index.js"),
   "quaternion/unit-basis-vector-images": () => import("../../quaternion/unit-basis-vector-images/index.js"),
   "random/adlam-character": () => import("../../random/adlam-character/index.js"),
+  "random/boolean-adder-circuit-trace": () => import("../../random/boolean-adder-circuit-trace/index.js"),
   "random/electronics-1db-compression-point-worked-example": () => import("../../random/electronics-1db-compression-point-worked-example/index.js"),
   "random/mac-address-set": () => import("../../random/mac-address-set/index.js"),
   "random/serbian-cyrillic-alphabet-letter": () => import("../../random/serbian-cyrillic-alphabet-letter/index.js"),

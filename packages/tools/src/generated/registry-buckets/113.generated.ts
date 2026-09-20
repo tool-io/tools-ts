@@ -75,6 +75,7 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/fetal-growth-velocity": () => import("../../pregnancy/fetal-growth-velocity/index.js"),
   "proteomics/protein-group-parsimony": () => import("../../proteomics/protein-group-parsimony/index.js"),
   "random/carpentry-board-expansion-gap-worked-example": () => import("../../random/carpentry-board-expansion-gap-worked-example/index.js"),
+  "random/categorical-syllogism-quiz": () => import("../../random/categorical-syllogism-quiz/index.js"),
   "real-estate/months-of-inventory": () => import("../../real-estate/months-of-inventory/index.js"),
   "rhetoric/a-fortiori-stronger-case-argument-lookup": () => import("../../rhetoric/a-fortiori-stronger-case-argument-lookup/index.js"),
   "rhetoric/syllepsis-grammatical-mismatch-subtype-checker": () => import("../../rhetoric/syllepsis-grammatical-mismatch-subtype-checker/index.js"),

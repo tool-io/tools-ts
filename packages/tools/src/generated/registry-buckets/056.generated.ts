@@ -69,6 +69,7 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/fetal-weight-percentile": () => import("../../pregnancy/fetal-weight-percentile/index.js"),
   "pregnancy/preeclampsia-risk-factor-score": () => import("../../pregnancy/preeclampsia-risk-factor-score/index.js"),
   "random/celestial-mechanics-hyperbolic-capture-insertion-worked-example": () => import("../../random/celestial-mechanics-hyperbolic-capture-insertion-worked-example/index.js"),
+  "random/csv-ragged-row-repair-exercise": () => import("../../random/csv-ragged-row-repair-exercise/index.js"),
   "random/number-property-classification-exercise": () => import("../../random/number-property-classification-exercise/index.js"),
   "real-estate/cap-rate": () => import("../../real-estate/cap-rate/index.js"),
   "runs/length-record-value-total-table": () => import("../../runs/length-record-value-total-table/index.js"),

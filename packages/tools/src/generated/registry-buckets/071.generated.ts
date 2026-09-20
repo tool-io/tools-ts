@@ -68,6 +68,7 @@ export const toolModuleLoaders: Readonly<
   "petroleum/productivity-index-from-buildup": () => import("../../petroleum/productivity-index-from-buildup/index.js"),
   "proteomics/heptad-hydrophobicity": () => import("../../proteomics/heptad-hydrophobicity/index.js"),
   "psychology/confidence-interval-observed-score": () => import("../../psychology/confidence-interval-observed-score/index.js"),
+  "random/multi-select-option-fixture": () => import("../../random/multi-select-option-fixture/index.js"),
   "real-estate/net-rental-income": () => import("../../real-estate/net-rental-income/index.js"),
   "sailing/wave-period-fetch": () => import("../../sailing/wave-period-fetch/index.js"),
   "semiconductor/mosfet-flatband-voltage": () => import("../../semiconductor/mosfet-flatband-voltage/index.js"),

@@ -82,6 +82,7 @@ export const toolModuleLoaders: Readonly<
   "sociology/reynolds-smolensky-redistribution-effect": () => import("../../sociology/reynolds-smolensky-redistribution-effect/index.js"),
   "speleology/mapped-length-per-session": () => import("../../speleology/mapped-length-per-session/index.js"),
   "speleology/pitch-headroom-clearance": () => import("../../speleology/pitch-headroom-clearance/index.js"),
+  "statistics/spearman-rank-correlation": () => import("../../statistics/spearman-rank-correlation/index.js"),
   "version/semantic-version-major-bump": () => import("../../version/semantic-version-major-bump/index.js"),
   "version/semantic-version-prerelease-record": () => import("../../version/semantic-version-prerelease-record/index.js"),
 };

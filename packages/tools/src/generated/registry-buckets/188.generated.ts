@@ -71,6 +71,7 @@ export const toolModuleLoaders: Readonly<
   "proteomics/dimethyl-label-massshift-lookup": () => import("../../proteomics/dimethyl-label-massshift-lookup/index.js"),
   "random/batak-character": () => import("../../random/batak-character/index.js"),
   "random/continued-fraction-exercise": () => import("../../random/continued-fraction-exercise/index.js"),
+  "random/graph-reachability-mutation-corpus": () => import("../../random/graph-reachability-mutation-corpus/index.js"),
   "random/iso-week-number-exercise": () => import("../../random/iso-week-number-exercise/index.js"),
   "random/tagbanwa-character": () => import("../../random/tagbanwa-character/index.js"),
   "sailing/position-error-circle": () => import("../../sailing/position-error-circle/index.js"),

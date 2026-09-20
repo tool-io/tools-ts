@@ -61,6 +61,8 @@ export const toolModuleLoaders: Readonly<
   "plumbing/trap-arm-length": () => import("../../plumbing/trap-arm-length/index.js"),
   "plumbing/vent-pipe-sizing": () => import("../../plumbing/vent-pipe-sizing/index.js"),
   "psychology/sample-size-independent-t-power80": () => import("../../psychology/sample-size-independent-t-power80/index.js"),
+  "random/calendar-event-set": () => import("../../random/calendar-event-set/index.js"),
+  "random/constraint-satisfaction-instance": () => import("../../random/constraint-satisfaction-instance/index.js"),
   "random/old-italic-character": () => import("../../random/old-italic-character/index.js"),
   "runs/length-record-prefix-drop": () => import("../../runs/length-record-prefix-drop/index.js"),
   "sailing/mainsail-roach-area": () => import("../../sailing/mainsail-roach-area/index.js"),

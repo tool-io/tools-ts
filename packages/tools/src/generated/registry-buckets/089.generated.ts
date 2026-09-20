@@ -41,6 +41,7 @@ export const toolModuleLoaders: Readonly<
   "geodesy/lambert-constant-n-two-parallels-solver": () => import("../../geodesy/lambert-constant-n-two-parallels-solver/index.js"),
   "geology/critical-taper-wedge-angle": () => import("../../geology/critical-taper-wedge-angle/index.js"),
   "geometry/rectangle-perimeter": () => import("../../geometry/rectangle-perimeter/index.js"),
+  "graph/strongly-connected-components": () => import("../../graph/strongly-connected-components/index.js"),
   "grid/grid-mask-neighbor-counts": () => import("../../grid/grid-mask-neighbor-counts/index.js"),
   "hash/sha3-256": () => import("../../hash/sha3-256/index.js"),
   "heraldry/pile-descending-points-counter": () => import("../../heraldry/pile-descending-points-counter/index.js"),

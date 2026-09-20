@@ -58,6 +58,8 @@ export const toolModuleLoaders: Readonly<
   "proteomics/y-ion-series": () => import("../../proteomics/y-ion-series/index.js"),
   "random/acoustics-clarity-c50-worked-example": () => import("../../random/acoustics-clarity-c50-worked-example/index.js"),
   "random/carpentry-box-joint-finger-width-worked-example": () => import("../../random/carpentry-box-joint-finger-width-worked-example/index.js"),
+  "random/character-exit-entry-cues": () => import("../../random/character-exit-entry-cues/index.js"),
+  "random/character-secret-reveal-plan": () => import("../../random/character-secret-reveal-plan/index.js"),
   "random/cooldown-history-next-pick": () => import("../../random/cooldown-history-next-pick/index.js"),
   "random/math-brun-constant-approx-worked-example": () => import("../../random/math-brun-constant-approx-worked-example/index.js"),
   "semiconductor/fermi-level-n-type": () => import("../../semiconductor/fermi-level-n-type/index.js"),

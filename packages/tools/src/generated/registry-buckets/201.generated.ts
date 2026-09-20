@@ -58,6 +58,8 @@ export const toolModuleLoaders: Readonly<
   "pharmacy/oxycodone-to-morphine-conversion": () => import("../../pharmacy/oxycodone-to-morphine-conversion/index.js"),
   "plumbing/fire-sprinkler-hydraulic-demand": () => import("../../plumbing/fire-sprinkler-hydraulic-demand/index.js"),
   "psychology/pcl5-cutoff-checker": () => import("../../psychology/pcl5-cutoff-checker/index.js"),
+  "random/beam-search-pruning-challenge": () => import("../../random/beam-search-pruning-challenge/index.js"),
+  "random/csv-foreign-key-integrity-dataset": () => import("../../random/csv-foreign-key-integrity-dataset/index.js"),
   "random/hanifi-rohingya-letter": () => import("../../random/hanifi-rohingya-letter/index.js"),
   "random/syloti-nagri-character": () => import("../../random/syloti-nagri-character/index.js"),
   "real-estate/lease-escalation": () => import("../../real-estate/lease-escalation/index.js"),

@@ -68,6 +68,8 @@ export const toolModuleLoaders: Readonly<
   "print/print-label-grid-origin": () => import("../../print/print-label-grid-origin/index.js"),
   "proteomics/chymotrypsin-cleavage": () => import("../../proteomics/chymotrypsin-cleavage/index.js"),
   "random/geometry-frustum-volume-worked-example": () => import("../../random/geometry-frustum-volume-worked-example/index.js"),
+  "random/integer-partition-matching-puzzle": () => import("../../random/integer-partition-matching-puzzle/index.js"),
+  "random/minhash-similarity-workload": () => import("../../random/minhash-similarity-workload/index.js"),
   "random/television": () => import("../../random/television/index.js"),
   "seismology/asperity-area-fraction-scaling": () => import("../../seismology/asperity-area-fraction-scaling/index.js"),
   "seismology/paleoseismic-trench-event-horizon-count": () => import("../../seismology/paleoseismic-trench-event-horizon-count/index.js"),

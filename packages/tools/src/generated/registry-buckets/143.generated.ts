@@ -59,6 +59,8 @@ export const toolModuleLoaders: Readonly<
   "random/bengali-digit": () => import("../../random/bengali-digit/index.js"),
   "random/food": () => import("../../random/food/index.js"),
   "random/old-persian-character": () => import("../../random/old-persian-character/index.js"),
+  "random/optimistic-lock-conflict-fixture": () => import("../../random/optimistic-lock-conflict-fixture/index.js"),
+  "random/pagination-control-state-fixture": () => import("../../random/pagination-control-state-fixture/index.js"),
   "random/paleography-trim-loss-edge-recorder-worked-example": () => import("../../random/paleography-trim-loss-edge-recorder-worked-example/index.js"),
   "random/polyline": () => import("../../random/polyline/index.js"),
   "random/seeded-number": () => import("../../random/seeded-number/index.js"),

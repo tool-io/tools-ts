@@ -78,6 +78,8 @@ export const toolModuleLoaders: Readonly<
   "random/japanese-iteration-mark": () => import("../../random/japanese-iteration-mark/index.js"),
   "random/math-beta-incomplete-approx-worked-example": () => import("../../random/math-beta-incomplete-approx-worked-example/index.js"),
   "random/morse-prosign": () => import("../../random/morse-prosign/index.js"),
+  "random/radial-rosette-pattern": () => import("../../random/radial-rosette-pattern/index.js"),
+  "random/streaming-microcluster-benchmark": () => import("../../random/streaming-microcluster-benchmark/index.js"),
   "random/typography-ems-to-pixels-worked-example": () => import("../../random/typography-ems-to-pixels-worked-example/index.js"),
   "real-estate/cma": () => import("../../real-estate/cma/index.js"),
   "real-estate/dti": () => import("../../real-estate/dti/index.js"),

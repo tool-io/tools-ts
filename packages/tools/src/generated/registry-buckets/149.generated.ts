@@ -51,6 +51,7 @@ export const toolModuleLoaders: Readonly<
   "random/emoji-zwj-sequence": () => import("../../random/emoji-zwj-sequence/index.js"),
   "random/geology-ar-ar-age-worked-example": () => import("../../random/geology-ar-ar-age-worked-example/index.js"),
   "random/permutation-test-exercise": () => import("../../random/permutation-test-exercise/index.js"),
+  "random/point-in-polygon-classification-quiz": () => import("../../random/point-in-polygon-classification-quiz/index.js"),
   "random/thai-digit": () => import("../../random/thai-digit/index.js"),
   "rhetoric/circumlocution-periphrasis-roundabout-checker": () => import("../../rhetoric/circumlocution-periphrasis-roundabout-checker/index.js"),
   "sailing/capsize-screening-factor": () => import("../../sailing/capsize-screening-factor/index.js"),

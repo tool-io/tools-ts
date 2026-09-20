@@ -63,6 +63,8 @@ export const toolModuleLoaders: Readonly<
   "paleography/wormhole-density-rater": () => import("../../paleography/wormhole-density-rater/index.js"),
   "polynomial/coefficient-input-scale": () => import("../../polynomial/coefficient-input-scale/index.js"),
   "quaternion/component-layout-converter": () => import("../../quaternion/component-layout-converter/index.js"),
+  "random/dag-longest-path-exercise": () => import("../../random/dag-longest-path-exercise/index.js"),
+  "random/dungeon-room-key": () => import("../../random/dungeon-room-key/index.js"),
   "random/geology-bearing-capacity-factor-nc-worked-example": () => import("../../random/geology-bearing-capacity-factor-nc-worked-example/index.js"),
   "random/horology-beats-per-day-worked-example": () => import("../../random/horology-beats-per-day-worked-example/index.js"),
   "random/integer-matrix": () => import("../../random/integer-matrix/index.js"),

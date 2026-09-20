@@ -60,6 +60,8 @@ export const toolModuleLoaders: Readonly<
   "psychology/test-information-at-theta": () => import("../../psychology/test-information-at-theta/index.js"),
   "random/buhid-character": () => import("../../random/buhid-character/index.js"),
   "random/chemical-element-symbol": () => import("../../random/chemical-element-symbol/index.js"),
+  "random/responsive-image-source-fixture": () => import("../../random/responsive-image-source-fixture/index.js"),
+  "random/semantic-version-range-corpus": () => import("../../random/semantic-version-range-corpus/index.js"),
   "real-estate/rent-vs-buy-breakeven": () => import("../../real-estate/rent-vs-buy-breakeven/index.js"),
   "relation/relation-domain-image": () => import("../../relation/relation-domain-image/index.js"),
   "sailing/sail-aspect-ratio-jib": () => import("../../sailing/sail-aspect-ratio-jib/index.js"),

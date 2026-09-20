@@ -62,6 +62,7 @@ export const toolModuleLoaders: Readonly<
   "random/logic-symbol": () => import("../../random/logic-symbol/index.js"),
   "random/logistics-cycle-count-daily-sample-size-worked-example": () => import("../../random/logistics-cycle-count-daily-sample-size-worked-example/index.js"),
   "random/multicolor-dot-pattern": () => import("../../random/multicolor-dot-pattern/index.js"),
+  "random/search-results-relevance-fixture": () => import("../../random/search-results-relevance-fixture/index.js"),
   "random/sindhi-arabic-alphabet-letter": () => import("../../random/sindhi-arabic-alphabet-letter/index.js"),
   "random/typography-paragraph-spacing-vs-leading-ratio-worked-example": () => import("../../random/typography-paragraph-spacing-vs-leading-ratio-worked-example/index.js"),
   "rhetoric/meiosis-belittling-minimization-lookup": () => import("../../rhetoric/meiosis-belittling-minimization-lookup/index.js"),

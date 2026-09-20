@@ -70,6 +70,7 @@ export const toolModuleLoaders: Readonly<
   "random/shavian-letter": () => import("../../random/shavian-letter/index.js"),
   "random/statistics-f-statistic-worked-example": () => import("../../random/statistics-f-statistic-worked-example/index.js"),
   "random/symmetric-matrix": () => import("../../random/symmetric-matrix/index.js"),
+  "random/worldbuilding-document-bundle": () => import("../../random/worldbuilding-document-bundle/index.js"),
   "sailing/anchor-circle-radius": () => import("../../sailing/anchor-circle-radius/index.js"),
   "sailing/maneuver-time-loss": () => import("../../sailing/maneuver-time-loss/index.js"),
   "seismology/antialias-filter-corner-nyquist-checker": () => import("../../seismology/antialias-filter-corner-nyquist-checker/index.js"),

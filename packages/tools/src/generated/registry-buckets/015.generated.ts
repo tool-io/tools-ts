@@ -70,6 +70,8 @@ export const toolModuleLoaders: Readonly<
   "random/car": () => import("../../random/car/index.js"),
   "random/exposure-triangle-practice-cards": () => import("../../random/exposure-triangle-practice-cards/index.js"),
   "random/film-color-depth-bits-per-pixel-worked-example": () => import("../../random/film-color-depth-bits-per-pixel-worked-example/index.js"),
+  "random/landmark-region-layout-fixture": () => import("../../random/landmark-region-layout-fixture/index.js"),
+  "random/moire-line-interference": () => import("../../random/moire-line-interference/index.js"),
   "random/statistics-quartile-coefficient-of-dispersion-worked-example": () => import("../../random/statistics-quartile-coefficient-of-dispersion-worked-example/index.js"),
   "random/thai-character": () => import("../../random/thai-character/index.js"),
   "random/wrapping-counter-input-trace": () => import("../../random/wrapping-counter-input-trace/index.js"),

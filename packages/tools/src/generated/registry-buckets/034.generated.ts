@@ -60,6 +60,8 @@ export const toolModuleLoaders: Readonly<
   "random/analogous-palette": () => import("../../random/analogous-palette/index.js"),
   "random/astrometry-equatorial-horizontal-coordinates-worked-example": () => import("../../random/astrometry-equatorial-horizontal-coordinates-worked-example/index.js"),
   "random/astronomy-atmospheric-extinction-mag-airmass-worked-example": () => import("../../random/astronomy-atmospheric-extinction-mag-airmass-worked-example/index.js"),
+  "random/boolean-equivalence-quiz": () => import("../../random/boolean-equivalence-quiz/index.js"),
+  "random/configuration-override-chain-fixture": () => import("../../random/configuration-override-chain-fixture/index.js"),
   "random/fixed-endpoint-unit-walk": () => import("../../random/fixed-endpoint-unit-walk/index.js"),
   "random/meetei-mayek-digit": () => import("../../random/meetei-mayek-digit/index.js"),
   "random/url-component-encoding-quiz": () => import("../../random/url-component-encoding-quiz/index.js"),

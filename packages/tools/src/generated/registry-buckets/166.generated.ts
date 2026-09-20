@@ -54,6 +54,8 @@ export const toolModuleLoaders: Readonly<
   "plumbing/septic-drain-field-area": () => import("../../plumbing/septic-drain-field-area/index.js"),
   "random/baudot-character": () => import("../../random/baudot-character/index.js"),
   "random/catalog-item": () => import("../../random/catalog-item/index.js"),
+  "random/fallacy-spotting-cards": () => import("../../random/fallacy-spotting-cards/index.js"),
+  "random/orthogonal-matrix": () => import("../../random/orthogonal-matrix/index.js"),
   "random/regular-expression-token": () => import("../../random/regular-expression-token/index.js"),
   "random/runic-character": () => import("../../random/runic-character/index.js"),
   "random/takri-character": () => import("../../random/takri-character/index.js"),

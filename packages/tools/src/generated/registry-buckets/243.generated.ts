@@ -67,6 +67,7 @@ export const toolModuleLoaders: Readonly<
   "random/epigraphy-stone-face-area-calculator-worked-example": () => import("../../random/epigraphy-stone-face-area-calculator-worked-example/index.js"),
   "random/grocery-unit-price-comparison-quiz": () => import("../../random/grocery-unit-price-comparison-quiz/index.js"),
   "random/sidetic-letter": () => import("../../random/sidetic-letter/index.js"),
+  "random/solvable-maze-test-case": () => import("../../random/solvable-maze-test-case/index.js"),
   "random/uuid-version-recognition-quiz": () => import("../../random/uuid-version-recognition-quiz/index.js"),
   "rhetoric/dialectic-vs-rhetoric-probability-distinction-lookup": () => import("../../rhetoric/dialectic-vs-rhetoric-probability-distinction-lookup/index.js"),
   "sailing/handicap-per-mile": () => import("../../sailing/handicap-per-mile/index.js"),

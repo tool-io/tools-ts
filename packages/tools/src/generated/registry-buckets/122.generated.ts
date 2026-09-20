@@ -54,6 +54,8 @@ export const toolModuleLoaders: Readonly<
   "psychology/raven-standard-score-band": () => import("../../psychology/raven-standard-score-band/index.js"),
   "random/combinatorial-counting-exercise": () => import("../../random/combinatorial-counting-exercise/index.js"),
   "random/enharmonic-spelling-quiz": () => import("../../random/enharmonic-spelling-quiz/index.js"),
+  "random/heading-hierarchy-mutation-corpus": () => import("../../random/heading-hierarchy-mutation-corpus/index.js"),
+  "random/negative-pair-sampler": () => import("../../random/negative-pair-sampler/index.js"),
   "regex/regex-flag-set-audit": () => import("../../regex/regex-flag-set-audit/index.js"),
   "rhetoric/vocal-variety-pitch-pace-pause-power-4p-lookup": () => import("../../rhetoric/vocal-variety-pitch-pace-pause-power-4p-lookup/index.js"),
   "sailing/course-to-steer-current": () => import("../../sailing/course-to-steer-current/index.js"),

@@ -60,6 +60,7 @@ export const toolModuleLoaders: Readonly<
   "proteomics/precursor-tolerance-ppm-dalton-converter": () => import("../../proteomics/precursor-tolerance-ppm-dalton-converter/index.js"),
   "psychology/response-rate-follow-up-mailing-estimate": () => import("../../psychology/response-rate-follow-up-mailing-estimate/index.js"),
   "random/egyptian-hieroglyph": () => import("../../random/egyptian-hieroglyph/index.js"),
+  "random/fantasy-temple-pilgrimage-map": () => import("../../random/fantasy-temple-pilgrimage-map/index.js"),
   "random/fullwidth-character": () => import("../../random/fullwidth-character/index.js"),
   "random/hatran-letter": () => import("../../random/hatran-letter/index.js"),
   "random/split-complementary-palette": () => import("../../random/split-complementary-palette/index.js"),

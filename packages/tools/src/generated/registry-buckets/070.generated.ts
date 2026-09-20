@@ -56,6 +56,7 @@ export const toolModuleLoaders: Readonly<
   "numismatics/premium-over-spot-percent": () => import("../../numismatics/premium-over-spot-percent/index.js"),
   "pharmacy/bsa-dubois-dose": () => import("../../pharmacy/bsa-dubois-dose/index.js"),
   "probability/chi-square-sampler": () => import("../../probability/chi-square-sampler/index.js"),
+  "random/css-keyframe-motion": () => import("../../random/css-keyframe-motion/index.js"),
   "random/unit-vector-set": () => import("../../random/unit-vector-set/index.js"),
   "rational/fraction-nearest-integer-tie-policy": () => import("../../rational/fraction-nearest-integer-tie-policy/index.js"),
   "rhetoric/certainty-versus-probability-grounding-selector": () => import("../../rhetoric/certainty-versus-probability-grounding-selector/index.js"),

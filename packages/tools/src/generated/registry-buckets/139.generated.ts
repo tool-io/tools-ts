@@ -55,6 +55,7 @@ export const toolModuleLoaders: Readonly<
   "probability/cauchy-sampler": () => import("../../probability/cauchy-sampler/index.js"),
   "random/armenian-letter": () => import("../../random/armenian-letter/index.js"),
   "random/eui64-address-pair-set": () => import("../../random/eui64-address-pair-set/index.js"),
+  "random/fictional-postal-route-network": () => import("../../random/fictional-postal-route-network/index.js"),
   "random/geology-bearing-capacity-factor-ngamma-worked-example": () => import("../../random/geology-bearing-capacity-factor-ngamma-worked-example/index.js"),
   "rhetoric/hysteron-proteron-illogical-order-lookup": () => import("../../rhetoric/hysteron-proteron-illogical-order-lookup/index.js"),
   "seismology/spatial-grid-cell-count-density-summary": () => import("../../seismology/spatial-grid-cell-count-density-summary/index.js"),

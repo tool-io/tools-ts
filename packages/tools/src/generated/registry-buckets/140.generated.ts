@@ -63,6 +63,8 @@ export const toolModuleLoaders: Readonly<
   "random/adam-update-test-case": () => import("../../random/adam-update-test-case/index.js"),
   "random/dgs-fingerspelling-letter": () => import("../../random/dgs-fingerspelling-letter/index.js"),
   "random/game-poker-pot-odds-percent-worked-example": () => import("../../random/game-poker-pot-odds-percent-worked-example/index.js"),
+  "random/json-schema-union-branch-fixture": () => import("../../random/json-schema-union-branch-fixture/index.js"),
+  "random/monte-carlo-random-walk": () => import("../../random/monte-carlo-random-walk/index.js"),
   "random/multicolor-checkerboard-pattern": () => import("../../random/multicolor-checkerboard-pattern/index.js"),
   "random/number-coprime-count-worked-example": () => import("../../random/number-coprime-count-worked-example/index.js"),
   "random/paleography-golden-number-cycle-position-worked-example": () => import("../../random/paleography-golden-number-cycle-position-worked-example/index.js"),

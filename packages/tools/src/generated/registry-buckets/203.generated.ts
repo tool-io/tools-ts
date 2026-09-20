@@ -68,6 +68,7 @@ export const toolModuleLoaders: Readonly<
   "probability/multinomial-sampler": () => import("../../probability/multinomial-sampler/index.js"),
   "random/carpentry-biscuit-spacing-worked-example": () => import("../../random/carpentry-biscuit-spacing-worked-example/index.js"),
   "random/dives-akuru-character": () => import("../../random/dives-akuru-character/index.js"),
+  "random/url-path-segment-corpus": () => import("../../random/url-path-segment-corpus/index.js"),
   "rhetoric/epizeuxis-triple-immediate-repetition-checker": () => import("../../rhetoric/epizeuxis-triple-immediate-repetition-checker/index.js"),
   "seismology/scalar-moment-from-deviatoric-eigenvalues": () => import("../../seismology/scalar-moment-from-deviatoric-eigenvalues/index.js"),
   "semiconductor/chiplet-die-to-die-latency": () => import("../../semiconductor/chiplet-die-to-die-latency/index.js"),

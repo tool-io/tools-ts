@@ -71,6 +71,7 @@ export const toolModuleLoaders: Readonly<
   "polynomial/coefficient-truncated-product": () => import("../../polynomial/coefficient-truncated-product/index.js"),
   "print/craft-repeat-centered-end-margins": () => import("../../print/craft-repeat-centered-end-margins/index.js"),
   "psychology/mmpi-validity-scale-checker": () => import("../../psychology/mmpi-validity-scale-checker/index.js"),
+  "random/fictional-school-course-map": () => import("../../random/fictional-school-course-map/index.js"),
   "random/film-bellows-extension-factor-worked-example": () => import("../../random/film-bellows-extension-factor-worked-example/index.js"),
   "random/french-accented-letter": () => import("../../random/french-accented-letter/index.js"),
   "random/hangul-jamo": () => import("../../random/hangul-jamo/index.js"),

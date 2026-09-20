@@ -71,6 +71,7 @@ export const toolModuleLoaders: Readonly<
   "random/ethiopic-character": () => import("../../random/ethiopic-character/index.js"),
   "random/item": () => import("../../random/item/index.js"),
   "random/javanese-character": () => import("../../random/javanese-character/index.js"),
+  "random/text-encoding-detection-practice-cards": () => import("../../random/text-encoding-detection-practice-cards/index.js"),
   "semiconductor/oxidation-rate-deal-grove": () => import("../../semiconductor/oxidation-rate-deal-grove/index.js"),
   "semiconductor/through-silicon-via-aspect-ratio": () => import("../../semiconductor/through-silicon-via-aspect-ratio/index.js"),
   "size/kilt-reconstruction": () => import("../../size/kilt-reconstruction/index.js"),

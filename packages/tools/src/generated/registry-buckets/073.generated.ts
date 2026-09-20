@@ -69,6 +69,8 @@ export const toolModuleLoaders: Readonly<
   "psychology/eta-squared-from-anova-f": () => import("../../psychology/eta-squared-from-anova-f/index.js"),
   "psychology/loss-aversion-lambda-estimate": () => import("../../psychology/loss-aversion-lambda-estimate/index.js"),
   "quaternion/unit-record-matrix3": () => import("../../quaternion/unit-record-matrix3/index.js"),
+  "random/bitset-membership-operation-trace": () => import("../../random/bitset-membership-operation-trace/index.js"),
+  "random/crochet-stripe-sequence": () => import("../../random/crochet-stripe-sequence/index.js"),
   "random/density-measurement-exercise": () => import("../../random/density-measurement-exercise/index.js"),
   "random/metronome-accent-pattern": () => import("../../random/metronome-accent-pattern/index.js"),
   "rhetoric/rogerian-common-ground-four-part-structure-lookup": () => import("../../rhetoric/rogerian-common-ground-four-part-structure-lookup/index.js"),

@@ -72,6 +72,8 @@ export const toolModuleLoaders: Readonly<
   "random/celestial-mechanics-ellipse-from-apsis-radii-worked-example": () => import("../../random/celestial-mechanics-ellipse-from-apsis-radii-worked-example/index.js"),
   "random/ellipse-set": () => import("../../random/ellipse-set/index.js"),
   "random/gurung-khema-character": () => import("../../random/gurung-khema-character/index.js"),
+  "random/http-bearer-shape-corpus": () => import("../../random/http-bearer-shape-corpus/index.js"),
+  "random/significant-figure-rounding-quiz": () => import("../../random/significant-figure-rounding-quiz/index.js"),
   "random/todhri-letter": () => import("../../random/todhri-letter/index.js"),
   "sailing/sail-area": () => import("../../sailing/sail-area/index.js"),
   "sailing/under-keel-clearance": () => import("../../sailing/under-keel-clearance/index.js"),

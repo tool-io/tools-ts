@@ -50,6 +50,7 @@ export const toolModuleLoaders: Readonly<
   "physics/work": () => import("../../physics/work/index.js"),
   "plumbing/pipe-flow-rate": () => import("../../plumbing/pipe-flow-rate/index.js"),
   "psychology/kmo-sampling-adequacy": () => import("../../psychology/kmo-sampling-adequacy/index.js"),
+  "random/fictional-faction-alliance-map": () => import("../../random/fictional-faction-alliance-map/index.js"),
   "random/grantha-character": () => import("../../random/grantha-character/index.js"),
   "real-estate/annual-rent": () => import("../../real-estate/annual-rent/index.js"),
   "real-estate/storage-income": () => import("../../real-estate/storage-income/index.js"),

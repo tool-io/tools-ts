@@ -65,6 +65,7 @@ export const toolModuleLoaders: Readonly<
   "pregnancy/calorie-requirement-pregnancy": () => import("../../pregnancy/calorie-requirement-pregnancy/index.js"),
   "proportions/unit-rate": () => import("../../proportions/unit-rate/index.js"),
   "random/bitwise-truth-table-exercise": () => import("../../random/bitwise-truth-table-exercise/index.js"),
+  "random/css-custom-property-fallback-corpus": () => import("../../random/css-custom-property-fallback-corpus/index.js"),
   "security/pem-certificate-inspector": () => import("../../security/pem-certificate-inspector/index.js"),
   "seismology/strain-drop-slip-over-length-stress-drop": () => import("../../seismology/strain-drop-slip-over-length-stress-drop/index.js"),
   "semiconductor/distributed-feedback-laser-coupling-coefficient": () => import("../../semiconductor/distributed-feedback-laser-coupling-coefficient/index.js"),

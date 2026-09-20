@@ -59,6 +59,7 @@ export const toolModuleLoaders: Readonly<
   "philately/exhibit-significance-weighted-score": () => import("../../philately/exhibit-significance-weighted-score/index.js"),
   "plumbing/pipe-inner-diameter-from-outer": () => import("../../plumbing/pipe-inner-diameter-from-outer/index.js"),
   "psychology/thurstone-case-v-scale-value": () => import("../../psychology/thurstone-case-v-scale-value/index.js"),
+  "random/assessment-item-sampler": () => import("../../random/assessment-item-sampler/index.js"),
   "random/circular-direction-experiment": () => import("../../random/circular-direction-experiment/index.js"),
   "random/electronics-adc-lsb-voltage-worked-example": () => import("../../random/electronics-adc-lsb-voltage-worked-example/index.js"),
   "random/horology-carrousel-rotation-worked-example": () => import("../../random/horology-carrousel-rotation-worked-example/index.js"),

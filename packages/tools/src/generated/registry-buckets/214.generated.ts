@@ -59,6 +59,7 @@ export const toolModuleLoaders: Readonly<
   "proteomics/trypsin-cleavage-sites": () => import("../../proteomics/trypsin-cleavage-sites/index.js"),
   "quaternion/normalized-components": () => import("../../quaternion/normalized-components/index.js"),
   "random/horology-atm-to-meters-worked-example": () => import("../../random/horology-atm-to-meters-worked-example/index.js"),
+  "random/identicon": () => import("../../random/identicon/index.js"),
   "rational/fraction-decimal-termination-check": () => import("../../rational/fraction-decimal-termination-check/index.js"),
   "rhetoric/enthymeme-suppressed-premise-exposer": () => import("../../rhetoric/enthymeme-suppressed-premise-exposer/index.js"),
   "runs/length-record-aligned-pair-spans": () => import("../../runs/length-record-aligned-pair-spans/index.js"),

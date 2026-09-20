@@ -65,6 +65,7 @@ export const toolModuleLoaders: Readonly<
   "sequence/geometric": () => import("../../sequence/geometric/index.js"),
   "sociology/class-reproduction-odds-ratio": () => import("../../sociology/class-reproduction-odds-ratio/index.js"),
   "sociology/robin-hood-index-pietra": () => import("../../sociology/robin-hood-index-pietra/index.js"),
+  "statistics/chi-square-independence": () => import("../../statistics/chi-square-independence/index.js"),
   "taxation/accountable-plan-reimbursement-taxable-checker": () => import("../../taxation/accountable-plan-reimbursement-taxable-checker/index.js"),
   "transcriptomics/gene-body-coverage-bias": () => import("../../transcriptomics/gene-body-coverage-bias/index.js"),
   "viticulture/foliage-wire-raise-height-per-pass": () => import("../../viticulture/foliage-wire-raise-height-per-pass/index.js"),
