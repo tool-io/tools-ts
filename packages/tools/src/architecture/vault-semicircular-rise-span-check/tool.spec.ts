@@ -1,0 +1,62 @@
+import { describe, it, expect } from "vitest";
+import tool, { calculate, example, inputSchema, outputSchema } from "./tool.js";
+import {
+  validateToolContract,
+  matchesToolJsonSchema,
+} from "../../core/contract.js";
+describe("architecture/vault-semicircular-rise-span-check", () => {
+  it("publishes a valid portable contract", () => {
+    expect(validateToolContract(tool)).toEqual([]);
+    expect(matchesToolJsonSchema(example.input, inputSchema)).toBe(true);
+    expect(matchesToolJsonSchema(example.output, outputSchema)).toBe(true);
+  });
+  it("reproduces its exact canonical example", () => {
+    expect(tool.execute(example.input)).toEqual({
+      ok: true,
+      output: example.output,
+    });
+    expect(calculate(example.input)).toEqual(example.output);
+    expect(JSON.parse(JSON.stringify(example))).toEqual(example);
+  });
+  it("matches an independent valid or boundary fixture", () => {
+    expect(tool.execute({ span: 6, rise: 3, tolerance: 0 })).toEqual({
+      ok: true,
+      output: { expectedRise: 3, residual: 0, semicircular: true },
+    });
+  });
+  it.each([
+    null,
+    [],
+    "invalid",
+    {},
+    { ...example.input, unexpected: 1 },
+    ...Object.keys(example.input).map((key) => ({
+      ...example.input,
+      [key]: null,
+    })),
+  ])("rejects malformed or missing input %j", (input) => {
+    const r = tool.execute(input);
+    expect(r.ok).toBe(false);
+    if (!r.ok) {
+      expect(r.error.code).toBe("invalid_input");
+      expect(r.error.issues[0].code).toBe("invalid_field");
+    }
+  });
+  it.each([NaN, Infinity, -Infinity])("rejects nonfinite span", (value) =>
+    expect(tool.execute({ ...example.input, span: value }).ok).toBe(false),
+  );
+  it.each([NaN, Infinity, -Infinity])("rejects nonfinite rise", (value) =>
+    expect(tool.execute({ ...example.input, rise: value }).ok).toBe(false),
+  );
+  it.each([NaN, Infinity, -Infinity])("rejects nonfinite tolerance", (value) =>
+    expect(tool.execute({ ...example.input, tolerance: value }).ok).toBe(false),
+  );
+  it.each([{ span: 0 }, { rise: -1 }, { tolerance: -1 }])(
+    "rejects documented invalid domains %j",
+    (change) => {
+      const r = tool.execute({ ...example.input, ...change });
+      expect(r.ok).toBe(false);
+      if (!r.ok) expect(r.error.code).toBe("invalid_input");
+    },
+  );
+});
