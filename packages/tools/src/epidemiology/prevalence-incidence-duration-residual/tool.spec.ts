@@ -1,0 +1,80 @@
+import { describe, it, expect } from "vitest";
+import tool, { calculate, example, inputSchema, outputSchema } from "./tool.js";
+import {
+  validateToolContract,
+  matchesToolJsonSchema,
+} from "../../core/contract.js";
+describe("epidemiology/prevalence-incidence-duration-residual", () => {
+  it("publishes a valid portable contract", () => {
+    expect(validateToolContract(tool)).toEqual([]);
+    expect(matchesToolJsonSchema(example.input, inputSchema)).toBe(true);
+    expect(matchesToolJsonSchema(example.output, outputSchema)).toBe(true);
+  });
+  it("reproduces its exact canonical example", () => {
+    expect(tool.execute(example.input)).toEqual({
+      ok: true,
+      output: example.output,
+    });
+    expect(calculate(example.input)).toEqual(example.output);
+    expect(JSON.parse(JSON.stringify(example))).toEqual(example);
+  });
+  it("matches an independent valid or boundary fixture", () => {
+    expect(
+      tool.execute({
+        prevalence: 0.05,
+        incidencePerTime: 0.01,
+        meanDuration: 5,
+      }),
+    ).toEqual({
+      ok: true,
+      output: { approximatePrevalence: 0.05, residual: 0 },
+    });
+  });
+  it.each([
+    null,
+    [],
+    "invalid",
+    {},
+    { ...example.input, unexpected: 1 },
+    ...Object.keys(example.input).map((key) => ({
+      ...example.input,
+      [key]: null,
+    })),
+  ])("rejects malformed or missing input %j", (input) => {
+    const r = tool.execute(input);
+    expect(r.ok).toBe(false);
+    if (!r.ok) {
+      expect(r.error.code).toBe("invalid_input");
+      expect(r.error.issues[0].code).toBe("invalid_field");
+    }
+  });
+  it.each([NaN, Infinity, -Infinity])("rejects nonfinite prevalence", (value) =>
+    expect(tool.execute({ ...example.input, prevalence: value }).ok).toBe(
+      false,
+    ),
+  );
+  it.each([NaN, Infinity, -Infinity])(
+    "rejects nonfinite incidencePerTime",
+    (value) =>
+      expect(
+        tool.execute({ ...example.input, incidencePerTime: value }).ok,
+      ).toBe(false),
+  );
+  it.each([NaN, Infinity, -Infinity])(
+    "rejects nonfinite meanDuration",
+    (value) =>
+      expect(tool.execute({ ...example.input, meanDuration: value }).ok).toBe(
+        false,
+      ),
+  );
+  it.each([
+    { prevalence: -1 },
+    { prevalence: 2 },
+    { incidencePerTime: -1 },
+    { meanDuration: -1 },
+  ])("rejects documented invalid domains %j", (change) => {
+    const r = tool.execute({ ...example.input, ...change });
+    expect(r.ok).toBe(false);
+    if (!r.ok) expect(r.error.code).toBe("invalid_input");
+  });
+});
