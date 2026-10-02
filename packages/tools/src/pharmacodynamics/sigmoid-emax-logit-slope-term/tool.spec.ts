@@ -1,0 +1,93 @@
+import { describe, it, expect } from "vitest";
+import tool, { calculate, example, inputSchema, outputSchema } from "./tool.js";
+import {
+  validateToolContract,
+  matchesToolJsonSchema,
+} from "../../core/contract.js";
+describe("pharmacodynamics/sigmoid-emax-logit-slope-term", () => {
+  it("publishes a valid portable contract", () => {
+    expect(validateToolContract(tool)).toEqual([]);
+    expect(matchesToolJsonSchema(example.input, inputSchema)).toBe(true);
+    expect(matchesToolJsonSchema(example.output, outputSchema)).toBe(true);
+  });
+  it("reproduces its exact canonical example", () => {
+    expect(tool.execute(example.input)).toEqual({
+      ok: true,
+      output: example.output,
+    });
+    expect(calculate(example.input)).toEqual(example.output);
+    expect(JSON.parse(JSON.stringify(example))).toEqual(example);
+  });
+  it("matches an independent valid or boundary fixture", () => {
+    expect(
+      tool.execute({
+        concentration: 2,
+        ec50: 2,
+        hill: 3,
+        baseline: 0,
+        maximumEffect: 6,
+      }),
+    ).toEqual({ ok: true, output: { fraction: 0.5, logit: 0, effect: 3 } });
+  });
+  it.each([
+    null,
+    [],
+    "invalid",
+    {},
+    { ...example.input, unexpected: 1 },
+    ...Object.keys(example.input).map((key) => ({
+      ...example.input,
+      [key]: null,
+    })),
+  ])("rejects malformed or missing input %j", (input) => {
+    const r = tool.execute(input);
+    expect(r.ok).toBe(false);
+    if (!r.ok) {
+      expect(r.error.code).toBe("invalid_input");
+      expect(r.error.issues[0].code).toBe("invalid_field");
+    }
+  });
+  it.each([NaN, Infinity, -Infinity])(
+    "rejects nonfinite concentration",
+    (value) =>
+      expect(tool.execute({ ...example.input, concentration: value }).ok).toBe(
+        false,
+      ),
+  );
+  it.each([NaN, Infinity, -Infinity])("rejects nonfinite ec50", (value) =>
+    expect(tool.execute({ ...example.input, ec50: value }).ok).toBe(false),
+  );
+  it.each([NaN, Infinity, -Infinity])("rejects nonfinite hill", (value) =>
+    expect(tool.execute({ ...example.input, hill: value }).ok).toBe(false),
+  );
+  it.each([NaN, Infinity, -Infinity])("rejects nonfinite baseline", (value) =>
+    expect(tool.execute({ ...example.input, baseline: value }).ok).toBe(false),
+  );
+  it.each([NaN, Infinity, -Infinity])(
+    "rejects nonfinite maximumEffect",
+    (value) =>
+      expect(tool.execute({ ...example.input, maximumEffect: value }).ok).toBe(
+        false,
+      ),
+  );
+  it.each([{ concentration: 0 }, { ec50: 0 }, { hill: 0 }])(
+    "rejects documented invalid domains %j",
+    (change) => {
+      const r = tool.execute({ ...example.input, ...change });
+      expect(r.ok).toBe(false);
+      if (!r.ok) expect(r.error.code).toBe("invalid_input");
+    },
+  );
+});
+
+import { SimpleToolError } from "../../core/simple.js";
+describe("direct calculation domain validation", () => {
+  it.each([{ concentration: 0 }, { ec50: 0 }, { hill: 0 }])(
+    "rejects a documented invalid domain before returning %j",
+    (change) => {
+      expect(() => calculate({ ...example.input, ...change })).toThrowError(
+        SimpleToolError,
+      );
+    },
+  );
+});
