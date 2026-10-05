@@ -6,7 +6,7 @@ export type Input = Readonly<{
   xpArcseconds: number;
   ypArcseconds: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "ecefMeters", label: "Ecef meters", kind: "numberList", unit: "m" },
   {
@@ -22,7 +22,7 @@ const fields = [
     unit: "arcsec",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.vector3(i.ecefMeters);
   H.check(Math.abs(i.xpArcseconds) <= 1 && Math.abs(i.ypArcseconds) <= 1);
@@ -44,8 +44,20 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
-  id: "geodesy/polar-motion-components-note-generator",
-  title: "Polar Motion x-y Components Displacement mm Note Generator",
+  discovery: {
+    aliases: [
+      "Polar Motion Displacement Calculator",
+      "Polar Motion x-y Components Displacement mm Note Generator",
+      "geodesy/polar-motion-components-note-generator",
+      "geodesy polar motion components note generator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
+  id: "geodesy/polar-motion-displacement",
+  title: "Polar Motion Displacement Calculator",
   description:
     "Compute first-order Cartesian polar-motion displacement for explicitly stated rotation/sign convention from supplied xp/yp; omits s-prime, UT1, precession/nutation and full IERS frame transformation.",
   inputs: fields,
@@ -54,6 +66,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          displacementMm: { type: "array", items: { type: "number" } },
+          convention: { type: "string" },
+        },
+        required: ["displacementMm", "convention"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
