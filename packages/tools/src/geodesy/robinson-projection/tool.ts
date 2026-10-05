@@ -7,7 +7,7 @@ export type Input = Readonly<{
   centralMeridianDegrees: number;
   radiusMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "latitudeDegrees",
@@ -29,7 +29,7 @@ const fields = [
   },
   { id: "radiusMeters", label: "Radius meters", kind: "number", unit: "m" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.latitude(i.latitudeDegrees);
   H.longitude(i.longitudeDegrees);
@@ -79,8 +79,20 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
-  id: "geodesy/robinson-table-interpolation-note-generator",
-  title: "Robinson Projection Table Interpolation Pseudocylindrical Note",
+  discovery: {
+    aliases: [
+      "Robinson Projection Calculator (Linear Interpolation)",
+      "Robinson Projection Table Interpolation Pseudocylindrical Note",
+      "geodesy/robinson-table-interpolation-note-generator",
+      "geodesy robinson table interpolation note generator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
+  id: "geodesy/robinson-projection",
+  title: "Robinson Projection Calculator (Linear Interpolation)",
   description:
     "Interpolate the published Robinson 5-degree coefficient table linearly and project spherical coordinates; explicitly not conformal/equal-area or identical to PROJ cubic interpolation between knots.",
   inputs: fields,
@@ -89,6 +101,25 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          xMeters: { type: "number" },
+          yMeters: { type: "number" },
+          xMultiplier: { type: "number" },
+          yMultiplier: { type: "number" },
+          interpolation: { type: "string" },
+        },
+        required: [
+          "xMeters",
+          "yMeters",
+          "xMultiplier",
+          "yMultiplier",
+          "interpolation",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
