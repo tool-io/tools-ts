@@ -1,0 +1,56 @@
+import { describe, it, expect } from "vitest";
+import tool, { calculate, example, inputSchema, outputSchema } from "./tool.js";
+import {
+  validateToolContract,
+  matchesToolJsonSchema,
+} from "../../core/contract.js";
+describe("physics/force-torque-lever-arm-sign", () => {
+  it("publishes a valid portable contract", () => {
+    expect(validateToolContract(tool)).toEqual([]);
+    expect(matchesToolJsonSchema(example.input, inputSchema)).toBe(true);
+    expect(matchesToolJsonSchema(example.output, outputSchema)).toBe(true);
+  });
+  it("reproduces its exact canonical example", () => {
+    expect(tool.execute(example.input)).toEqual({
+      ok: true,
+      output: example.output,
+    });
+    expect(calculate(example.input)).toEqual(example.output);
+    expect(JSON.parse(JSON.stringify(example))).toEqual(example);
+  });
+  it("matches an independent valid or boundary fixture", () => {
+    expect(
+      tool.execute({ leverArmX: 0, leverArmY: 2, forceX: 3, forceY: 0 }),
+    ).toEqual({ ok: true, output: { torqueZ: -6, sense: "clockwise" } });
+  });
+  it.each([
+    null,
+    [],
+    "invalid",
+    {},
+    { ...example.input, unexpected: 1 },
+    ...Object.keys(example.input).map((key) => ({
+      ...example.input,
+      [key]: null,
+    })),
+  ])("rejects malformed or missing input %j", (input) => {
+    const r = tool.execute(input);
+    expect(r.ok).toBe(false);
+    if (!r.ok) {
+      expect(r.error.code).toBe("invalid_input");
+      expect(r.error.issues[0].code).toBe("invalid_field");
+    }
+  });
+  it.each([NaN, Infinity, -Infinity])("rejects nonfinite leverArmX", (value) =>
+    expect(tool.execute({ ...example.input, leverArmX: value }).ok).toBe(false),
+  );
+  it.each([NaN, Infinity, -Infinity])("rejects nonfinite leverArmY", (value) =>
+    expect(tool.execute({ ...example.input, leverArmY: value }).ok).toBe(false),
+  );
+  it.each([NaN, Infinity, -Infinity])("rejects nonfinite forceX", (value) =>
+    expect(tool.execute({ ...example.input, forceX: value }).ok).toBe(false),
+  );
+  it.each([NaN, Infinity, -Infinity])("rejects nonfinite forceY", (value) =>
+    expect(tool.execute({ ...example.input, forceY: value }).ok).toBe(false),
+  );
+});
