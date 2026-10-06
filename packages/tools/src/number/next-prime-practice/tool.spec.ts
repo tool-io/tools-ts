@@ -471,7 +471,7 @@ it("refuses out-of-practice integer search bounds before drawing entropy", () =>
   expect(draws).toBe(0);
 }, 30000);
 it("prevents unsafe-integer stall candidates from reaching an imported executor", async () => {
-  const { practice } = await import("../batch57-practice.js");
+  const { practice } = await import("../../random/batch57-practice.js");
   let calls = 0;
   const fake = {
     ...sourceTool,
