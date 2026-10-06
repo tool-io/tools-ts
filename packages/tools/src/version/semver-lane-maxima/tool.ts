@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ versions: readonly string[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "versions", label: "versions", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = i.versions.map(H.version);
   return H.finish({
@@ -27,12 +27,50 @@ export const example = {
   output: { result: { lanes: [{ lane: "1.0", indexes: [1, 2] }] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
-  id: "version/semantic-version-lane-maxima",
-  title: "Semantic Version Lane Maxima",
+  discovery: {
+    aliases: [
+      "SemVer Lane Maxima",
+      "Semantic Version Lane Maxima",
+      "version/semantic-version-lane-maxima",
+      "version semantic version lane maxima",
+      "SemVer",
+      "semantic versioning",
+    ],
+    collections: ["encode-decode"],
+    fields: ["version", "SemVer", "semantic versioning"],
+    keywords: ["SemVer", "semantic versioning"],
+  },
+  id: "version/semver-lane-maxima",
+  title: "SemVer Lane Maxima",
   description:
     "Return all equal-precedence maxima in each explicit major.minor SemVer lane, preserving build ties instead of arbitrarily choosing a release.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          lanes: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                lane: { type: "string" },
+                indexes: { type: "array", items: { type: "number" } },
+              },
+              required: ["lane", "indexes"],
+            },
+          },
+        },
+        required: ["lanes"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
