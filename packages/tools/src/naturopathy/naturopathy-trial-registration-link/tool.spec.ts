@@ -1,0 +1,101 @@
+import { describe, it, expect } from "vitest";
+import tool, { calculate, example, inputSchema, outputSchema } from "./tool.js";
+import {
+  validateToolContract,
+  matchesToolJsonSchema,
+} from "../../core/contract.js";
+describe("naturopathy/naturopathy-trial-registration-link", () => {
+  it("publishes a valid portable contract", () => {
+    expect(validateToolContract(tool)).toEqual([]);
+    expect(matchesToolJsonSchema(example.input, inputSchema)).toBe(true);
+    expect(matchesToolJsonSchema(example.output, outputSchema)).toBe(true);
+  });
+  it("reproduces its exact canonical example", () => {
+    expect(tool.execute(example.input)).toEqual({
+      ok: true,
+      output: example.output,
+    });
+    expect(calculate(example.input)).toEqual(example.output);
+    expect(JSON.parse(JSON.stringify(example))).toEqual(example);
+  });
+  it("matches an independent valid or boundary fixture", () => {
+    expect(
+      tool.execute({
+        registryBaseUrl: "https://registry.example/record/",
+        registrationId: "A/B",
+      }),
+    ).toEqual({
+      ok: true,
+      output: { url: "https://registry.example/record/A%2FB" },
+    });
+  });
+  it.each([
+    null,
+    [],
+    "invalid",
+    {},
+    { ...example.input, unexpected: 1 },
+    ...Object.keys(example.input).map((key) => ({
+      ...example.input,
+      [key]: null,
+    })),
+  ])("rejects malformed or missing input %j", (input) => {
+    const r = tool.execute(input);
+    expect(r.ok).toBe(false);
+    if (!r.ok) {
+      expect(r.error.code).toBe("invalid_input");
+      expect(r.error.issues[0].code).toBe("invalid_field");
+    }
+  });
+});
+
+describe("reviewed boundary cases", () => {
+  it.each(["registrationId"])(
+    "rejects empty required text with its field",
+    (field) => {
+      const result = tool.execute({ ...example.input, [field]: "" });
+      expect(result).toMatchObject({
+        ok: false,
+        error: {
+          code: "invalid_input",
+          issues: [{ field, code: "invalid_field" }],
+        },
+      });
+    },
+  );
+  it("rejects an explicit domain boundary with stable field", () => {
+    const input = { ...example.input, ...{ registrationId: "\ud800" } };
+    expect(tool.execute(input)).toMatchObject({
+      ok: false,
+      error: {
+        code: "invalid_input",
+        issues: [{ field: "registrationId", code: "invalid_domain" }],
+      },
+    });
+    expect(() => calculate(input)).toThrow();
+  });
+  it("rejects an explicit domain boundary with stable field", () => {
+    const input = {
+      ...example.input,
+      ...{ registryBaseUrl: "https://registry.example/\n" },
+    };
+    expect(tool.execute(input)).toMatchObject({
+      ok: false,
+      error: {
+        code: "invalid_input",
+        issues: [{ field: "registryBaseUrl", code: "invalid_domain" }],
+      },
+    });
+    expect(() => calculate(input)).toThrow();
+  });
+  it("matches an independently reviewed edge fixture", () => {
+    const input = { ...example.input, ...{ registrationId: "A?B#C" } };
+    expect(tool.execute(input)).toEqual({
+      ok: true,
+      output: { url: "https://registry.example/record/A%3FB%23C" },
+    });
+    expect(calculate(input)).toEqual({
+      url: "https://registry.example/record/A%3FB%23C",
+    });
+  });
+});
