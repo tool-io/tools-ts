@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly actualBandCenterHz: number;
   readonly actualOctaveFractionDenominator: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualBandCenterHz", label: "Actual band center hz", kind: "number" },
   {
@@ -15,10 +15,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   positive(input.actualBandCenterHz, "center");
   bounded(input.actualOctaveFractionDenominator, "denominator", 1, 24);
   const r = 2 ** (1 / (2 * input.actualOctaveFractionDenominator));
@@ -27,10 +24,7 @@ const compute = (
     upperEdgeHz: input.actualBandCenterHz * r,
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -51,6 +45,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          lowerEdgeHz: { type: "number" },
+          upperEdgeHz: { type: "number" },
+        },
+        required: ["lowerEdgeHz", "upperEdgeHz"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
