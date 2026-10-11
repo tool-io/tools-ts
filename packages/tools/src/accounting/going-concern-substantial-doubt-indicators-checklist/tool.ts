@@ -12,13 +12,13 @@ export type Input = Readonly<{
   readonly knownFlags: readonly number[];
   readonly presentFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "indicatorIds", label: "Indicator ids", kind: "stringList" },
   { id: "knownFlags", label: "Known flags", kind: "numberList" },
   { id: "presentFlags", label: "Present flags", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   aligned(i.indicatorIds, i.knownFlags, "indicators");
   aligned(i.indicatorIds, i.presentFlags, "indicators");
   unique(i.indicatorIds, "ids");
@@ -32,7 +32,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     substantialDoubtDetermined: false,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -61,6 +61,24 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedPresentIndicators: {
+            type: "array",
+            items: { type: "string" },
+          },
+          unknownIndicators: { type: "array", items: { type: "string" } },
+          substantialDoubtDetermined: { type: "boolean" },
+        },
+        required: [
+          "observedPresentIndicators",
+          "unknownIndicators",
+          "substantialDoubtDetermined",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
