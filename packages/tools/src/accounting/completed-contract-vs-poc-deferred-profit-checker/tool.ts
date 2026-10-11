@@ -12,13 +12,13 @@ export type Input = Readonly<{
   readonly estimatedTotalCost: number;
   readonly costIncurred: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "contractPrice", label: "Contract price", kind: "number" },
   { id: "estimatedTotalCost", label: "Estimated total cost", kind: "number" },
   { id: "costIncurred", label: "Cost incurred", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.contractPrice, "price");
   positive(i.estimatedTotalCost, "cost");
   angle(i.costIncurred, "incurred", 0, i.estimatedTotalCost);
@@ -32,7 +32,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       i.costIncurred === i.estimatedTotalCost ? 0 : pocProfit,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -57,6 +57,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalCostToCostProfit: { type: "number" },
+          conditionalCompletedContractProfit: { type: "number" },
+          profitTimingDifference: { type: "number" },
+        },
+        required: [
+          "conditionalCostToCostProfit",
+          "conditionalCompletedContractProfit",
+          "profitTimingDifference",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
