@@ -6,19 +6,19 @@ export type Input = Readonly<{
   readonly costOfSales: number;
   readonly operatingExpenses: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "revenue", label: "Revenue", kind: "number" },
   { id: "costOfSales", label: "Cost of sales", kind: "number" },
   { id: "operatingExpenses", label: "Operating expenses", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   [i.revenue, i.costOfSales, i.operatingExpenses].forEach((v) =>
     nonnegative(v, "component"),
   );
   return { operatingIncome: i.revenue - i.costOfSales - i.operatingExpenses };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -37,6 +37,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { operatingIncome: { type: "number" } },
+        required: ["operatingIncome"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
