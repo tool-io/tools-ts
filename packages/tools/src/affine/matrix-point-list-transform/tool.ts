@@ -5,12 +5,12 @@ export type Input = Readonly<{
   matrix: readonly number[];
   points: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "matrix", label: "matrix", kind: "numberList" },
   { id: "points", label: "points", kind: "matrix" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.affine(i.matrix);
   return H.finish({ points: i.points.map((p) => H.affinePoint(i.matrix, p)) });
@@ -33,12 +33,39 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Affine Point List Transform",
+      "affine transformations",
+      "mathematics",
+    ],
+    collections: ["data", "learn"],
+    fields: ["affine", "affine transformations", "mathematics"],
+    keywords: ["affine transformations", "mathematics"],
+  },
   id: "affine/matrix-point-list-transform",
   title: "Affine Point List Transform",
   description:
     "Affine six-coefficient layout [a,b,c,d,e,f] maps x,y to a*x+c*y+e,b*x+d*y+f; transform an explicit ordered planar point list without topology or visibility inference.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          points: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["points"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
