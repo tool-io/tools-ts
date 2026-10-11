@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly independentlyAnnotatedContinuityLinks: readonly (readonly number[])[];
   readonly observedElementCount: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyAnnotatedSimilarityLinks",
@@ -37,7 +37,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.observedElementCount, "elements", 1, 64);
   const m = Array.from(
     { length: input.observedElementCount },
@@ -68,7 +68,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
   }
   return { pairPrincipleMaskMatrix: m };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -100,6 +100,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          pairPrincipleMaskMatrix: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["pairPrincipleMaskMatrix"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
