@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ matrix: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "matrix", label: "matrix", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.affine(i.matrix);
   const a = 1 - i.matrix[0],
@@ -24,12 +24,34 @@ export const example = {
   output: { result: { point: [-1, -1] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Affine Fixed Point Solve",
+      "affine transformations",
+      "mathematics",
+    ],
+    collections: ["data", "learn"],
+    fields: ["affine", "affine transformations", "mathematics"],
+    keywords: ["affine transformations", "mathematics"],
+  },
   id: "affine/matrix-fixed-point-solve",
   title: "Affine Fixed Point Solve",
   description:
-    "Affine six-coefficient layout [a,b,c,d,e,f] maps x,y to a*x+c*y+e,b*x+d*y+f; solve the unique fixed point of a nonsingular I-linear block; nonunique/no-solution singular systems reject, not guessed. ",
+    "Affine six-coefficient layout [a,b,c,d,e,f] maps x,y to a*x+c*y+e,b*x+d*y+f; solve the unique fixed point of a nonsingular I-linear block; nonunique/no-solution singular systems reject, not guessed.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { point: { type: "array", items: { type: "number" } } },
+        required: ["point"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
