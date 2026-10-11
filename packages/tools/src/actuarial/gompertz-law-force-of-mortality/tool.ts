@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly callerCalibratedAnnualGrowthFactor: number;
   readonly ageYears: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerCalibratedBaselineForcePerYear",
@@ -26,7 +26,7 @@ const fields = [
   },
   { id: "ageYears", label: "Age years", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.callerCalibratedBaselineForcePerYear, "baseline");
   if (input.callerCalibratedAnnualGrowthFactor <= 1)
     simpleError(
@@ -50,7 +50,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     conditionalNextYearSurvival: Math.exp(-h),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -80,6 +80,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalForcePerYear: { type: "number" },
+          forceDoublingAgeIntervalYears: { type: "number" },
+          conditionalIntegratedNextYearHazard: { type: "number" },
+          conditionalNextYearSurvival: { type: "number" },
+        },
+        required: [
+          "conditionalForcePerYear",
+          "forceDoublingAgeIntervalYears",
+          "conditionalIntegratedNextYearHazard",
+          "conditionalNextYearSurvival",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
