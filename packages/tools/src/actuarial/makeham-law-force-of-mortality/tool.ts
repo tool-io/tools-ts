@@ -14,17 +14,14 @@ export type Input = Readonly<{
   readonly callerGompertzC: number;
   readonly actualAgeYears: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "callerMakehamA", label: "Caller makeham a", kind: "number" },
   { id: "callerGompertzB", label: "Caller gompertz b", kind: "number" },
   { id: "callerGompertzC", label: "Caller gompertz c", kind: "number" },
   { id: "actualAgeYears", label: "Actual age years", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   nonnegative(input.callerMakehamA, "callerMakehamA");
   positive(input.callerGompertzB, "callerGompertzB");
   positive(input.callerGompertzC, "callerGompertzC");
@@ -36,10 +33,7 @@ const compute = (
       input.callerGompertzB * input.callerGompertzC ** input.actualAgeYears,
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -63,6 +57,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
