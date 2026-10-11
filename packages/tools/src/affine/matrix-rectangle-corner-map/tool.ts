@@ -5,12 +5,12 @@ export type Input = Readonly<{
   matrix: readonly number[];
   rectangle: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "matrix", label: "matrix", kind: "numberList" },
   { id: "rectangle", label: "rectangle", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.affine(i.matrix);
   H.rect(i.rectangle);
@@ -37,12 +37,39 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Affine Rectangle Corner Map",
+      "affine transformations",
+      "mathematics",
+    ],
+    collections: ["data", "learn"],
+    fields: ["affine", "affine transformations", "mathematics"],
+    keywords: ["affine transformations", "mathematics"],
+  },
   id: "affine/matrix-rectangle-corner-map",
   title: "Affine Rectangle Corner Map",
   description:
     "Affine six-coefficient layout [a,b,c,d,e,f] maps x,y to a*x+c*y+e,b*x+d*y+f; map rectangle corners to an ordered quadrilateral; no assumption that the transformed shape stays axis-aligned.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          corners: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["corners"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
