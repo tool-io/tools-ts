@@ -12,13 +12,13 @@ export type Input = Readonly<{
   readonly firstNumbers: readonly number[];
   readonly lastNumbers: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "sectionIds", label: "Section ids", kind: "stringList" },
   { id: "firstNumbers", label: "First numbers", kind: "numberList" },
   { id: "lastNumbers", label: "Last numbers", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   aligned(i.sectionIds, i.firstNumbers, "sections");
   aligned(i.sectionIds, i.lastNumbers, "sections");
   unique(i.sectionIds, "sections");
@@ -39,7 +39,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     overlappingSectionPairs: overlaps,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -62,6 +62,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          capacities: { type: "array", items: { type: "number" } },
+          overlappingSectionPairs: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["capacities", "overlappingSectionPairs"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
