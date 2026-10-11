@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly independentlyMeasuredPositions: readonly number[];
   readonly queryMotifId: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyObservedMotifIds",
@@ -27,7 +27,7 @@ const fields = [
   },
   { id: "queryMotifId", label: "Query motif id", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.independentlyObservedMotifIds,
     input.independentlyMeasuredPositions,
@@ -53,7 +53,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -81,6 +81,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          matchedPositionIndices: { type: "array", items: { type: "number" } },
+          consecutiveMatchedIntervals: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: ["matchedPositionIndices", "consecutiveMatchedIntervals"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
