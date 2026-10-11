@@ -7,16 +7,13 @@ export type Input = Readonly<{
   readonly actualDeferralYears: number;
   readonly actualCoverageYears: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualAnnualQx", label: "Actual annual qx", kind: "numberList" },
   { id: "actualDeferralYears", label: "Actual deferral years", kind: "number" },
   { id: "actualCoverageYears", label: "Actual coverage years", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   bounded(
     input.actualCoverageYears,
     "coverage",
@@ -34,10 +31,7 @@ const compute = (
         )),
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -60,6 +54,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { deferredDeathProbability: { type: "number" } },
+        required: ["deferredDeathProbability"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
