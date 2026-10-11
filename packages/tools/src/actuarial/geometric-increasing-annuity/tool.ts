@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly actualFirstPaymentAmount: number;
   readonly actualPerPaymentGrowthRate: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualEffectivePeriodInterest",
@@ -33,10 +33,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   if (input.actualEffectivePeriodInterest <= -1)
     simpleError("interest", "i>-1.");
   bounded(input.actualPaymentCount, "n", 0, 10000);
@@ -50,10 +47,7 @@ const compute = (
       (1 + input.actualEffectivePeriodInterest) ** (k + 1);
   return { presentValue: s };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -77,6 +71,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { presentValue: { type: "number" } },
+        required: ["presentValue"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
