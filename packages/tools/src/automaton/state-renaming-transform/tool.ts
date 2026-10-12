@@ -9,7 +9,7 @@ export type Input = Readonly<{
   names: readonly string[];
   replacements: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "transitionsJson", label: "transitionsJson", kind: "string" },
   { id: "states", label: "states", kind: "stringList" },
@@ -17,7 +17,7 @@ const fields = [
   { id: "names", label: "names", kind: "stringList" },
   { id: "replacements", label: "replacements", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.transitions(i.transitionsJson);
   H.dfa(i.states, i.alphabet, t);
@@ -56,12 +56,46 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["DFA State Renaming Transform"],
+    collections: ["data", "learn"],
+    fields: ["automaton"],
+    keywords: [],
+  },
   id: "automaton/state-renaming-transform",
   title: "DFA State Renaming Transform",
   description:
     "Apply an explicit injective automaton state renaming to a validated deterministic transition table; collisions reject, no label coercion.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          states: { type: "array", items: { type: "string" } },
+          alphabet: { type: "array", items: { type: "string" } },
+          transitions: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                symbol: { type: "string" },
+                from: { type: "string" },
+                to: { type: "string" },
+              },
+              required: ["symbol", "from", "to"],
+            },
+          },
+        },
+        required: ["states", "alphabet", "transitions"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
