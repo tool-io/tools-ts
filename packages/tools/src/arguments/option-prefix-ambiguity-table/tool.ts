@@ -5,12 +5,12 @@ export type Input = Readonly<{
   prefixes: readonly string[];
   options: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "prefixes", label: "prefixes", kind: "stringList" },
   { id: "options", label: "options", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     H.unique(i.options).length === i.options.length &&
@@ -36,12 +36,44 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Option Prefix Ambiguity Table"],
+    collections: ["encode-decode"],
+    fields: ["arguments"],
+    keywords: [],
+  },
   id: "arguments/option-prefix-ambiguity-table",
   title: "Option Prefix Ambiguity Table",
   description:
     "Inventory exact long-option prefix candidates and ambiguities under an explicit option-name bank; no abbreviation acceptance policy.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          matches: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                prefix: { type: "string" },
+                options: { type: "array", items: { type: "string" } },
+                ambiguous: { type: "boolean" },
+              },
+              required: ["prefix", "options", "ambiguous"],
+            },
+          },
+        },
+        required: ["matches"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
