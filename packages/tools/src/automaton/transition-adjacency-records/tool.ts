@@ -7,13 +7,13 @@ export type Input = Readonly<{
   states: readonly string[];
   alphabet: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "transitionsJson", label: "transitionsJson", kind: "string" },
   { id: "states", label: "states", kind: "stringList" },
   { id: "alphabet", label: "alphabet", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.transitions(i.transitionsJson);
   H.dfa(i.states, i.alphabet, t);
@@ -44,12 +44,55 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["DFA Transition Adjacency Records"],
+    collections: ["data", "learn"],
+    fields: ["automaton"],
+    keywords: [],
+  },
   id: "automaton/transition-adjacency-records",
   title: "DFA Transition Adjacency Records",
   description:
     "Expose labeled outgoing adjacency with original transition indexes for every declared deterministic automaton state, including states without outgoing edges.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          adjacency: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                state: { type: "string" },
+                outgoing: {
+                  type: "array",
+                  items: {
+                    type: "object",
+                    additionalProperties: false,
+                    properties: {
+                      index: { type: "number" },
+                      symbol: { type: "string" },
+                      to: { type: "string" },
+                    },
+                    required: ["index", "symbol", "to"],
+                  },
+                },
+              },
+              required: ["state", "outgoing"],
+            },
+          },
+        },
+        required: ["adjacency"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
