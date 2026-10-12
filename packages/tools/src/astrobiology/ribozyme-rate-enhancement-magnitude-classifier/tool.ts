@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly independentlyMeasuredCatalyzedRate: number;
   readonly independentlyMeasuredUncatalyzedRate: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredCatalyzedRate",
@@ -18,7 +18,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.independentlyMeasuredCatalyzedRate, "catalyzed");
   positive(input.independentlyMeasuredUncatalyzedRate, "uncatalyzed");
   const r =
@@ -29,7 +29,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     observedLog10Enhancement: Math.log10(r),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -54,6 +54,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedCatalyticEnhancement: { type: "number" },
+          observedLog10Enhancement: { type: "number" },
+        },
+        required: ["observedCatalyticEnhancement", "observedLog10Enhancement"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
