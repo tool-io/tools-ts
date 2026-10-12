@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ window: number; serviceDuration: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "window", kind: "number", label: "window" },
   { id: "serviceDuration", kind: "number", label: "serviceDuration" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.window >= 0);
   H.positive(i.serviceDuration);
@@ -27,7 +27,22 @@ export const tool = createSimpleTool({
   description:
     "Budget complete equal-duration serial services in an explicit time window, retaining unused time; no parallelism or arrival model.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          completed: { type: "number" },
+          unusedTime: { type: "number" },
+        },
+        required: ["completed", "unusedTime"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
