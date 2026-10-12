@@ -93,6 +93,34 @@ export const vertexCoverTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Approximate vertex cover",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          approximationRatio: { type: "number" },
+          cover: {
+            type: "array",
+            items: { anyOf: [{ type: "number" }, { type: "string" }] },
+          },
+          coverSize: { type: "number" },
+          maximalMatching: {
+            type: "array",
+            items: {
+              type: "array",
+              items: { anyOf: [{ type: "number" }, { type: "string" }] },
+              minItems: 2,
+              maxItems: 2,
+            },
+          },
+        },
+        required: [
+          "approximationRatio",
+          "cover",
+          "coverSize",
+          "maximalMatching",
+        ],
+      },
     },
   ],
   calculate: (input) => {
