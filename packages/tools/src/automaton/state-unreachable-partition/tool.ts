@@ -8,14 +8,14 @@ export type Input = Readonly<{
   alphabet: readonly string[];
   start: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "transitionsJson", label: "transitionsJson", kind: "string" },
   { id: "states", label: "states", kind: "stringList" },
   { id: "alphabet", label: "alphabet", kind: "stringList" },
   { id: "start", label: "start", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.transitions(i.transitionsJson);
   H.dfa(i.states, i.alphabet, t);
@@ -37,12 +37,33 @@ export const example = {
   output: { result: { reachable: ["a", "b"], unreachable: ["c"] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["DFA Unreachable State Partitioner"],
+    collections: ["data", "learn"],
+    fields: ["automaton"],
+    keywords: [],
+  },
   id: "automaton/state-unreachable-partition",
   title: "DFA Unreachable State Partitioner",
   description:
     "Compute finite declared automaton forward reachability from an explicit start state and its declared-state complement; no minimization or language equivalence claim.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          reachable: { type: "array", items: { type: "string" } },
+          unreachable: { type: "array", items: { type: "string" } },
+        },
+        required: ["reachable", "unreachable"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
