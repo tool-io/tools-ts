@@ -5,12 +5,12 @@ export type Input = Readonly<{
   points: readonly (readonly number[])[];
   parameters: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "points", label: "points", kind: "matrix" },
   { id: "parameters", label: "parameters", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.curve(i.points);
   return H.finish({
@@ -37,12 +37,47 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Bezier Fixed Parameter Sample Table",
+      "Bezier curves",
+      "geometry",
+    ],
+    collections: ["data", "learn"],
+    fields: ["bezier", "Bezier curves", "geometry"],
+    keywords: ["Bezier curves", "geometry"],
+  },
   id: "bezier/fixed-parameter-sample-table",
   title: "Bezier Fixed Parameter Sample Table",
   description:
     "Sample an explicit planar quadratic/cubic Bezier at caller unit parameters in caller order, preserving repeats; not equal arc-length sampling.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          samples: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                t: { type: "number" },
+                point: { type: "array", items: { type: "number" } },
+              },
+              required: ["t", "point"],
+            },
+          },
+        },
+        required: ["samples"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
