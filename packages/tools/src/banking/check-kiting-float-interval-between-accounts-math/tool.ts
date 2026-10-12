@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly independentlyLoggedDepositDate: string;
   readonly independentlyLoggedCollectedDate: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyLoggedDepositDate",
@@ -23,7 +23,7 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const d = daysBetween(
     input.independentlyLoggedDepositDate,
     input.independentlyLoggedCollectedDate,
@@ -35,7 +35,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     );
   return { observedUncollectedIntervalDays: d };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -57,6 +57,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { observedUncollectedIntervalDays: { type: "number" } },
+        required: ["observedUncollectedIntervalDays"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
