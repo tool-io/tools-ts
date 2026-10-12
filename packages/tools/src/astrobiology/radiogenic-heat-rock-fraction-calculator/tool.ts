@@ -15,7 +15,7 @@ export type Input = Readonly<{
   readonly isotopeMassFractionsInRock: readonly number[];
   readonly isotopeSpecificPowerWPerKg: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bodyMassKg", label: "Body mass kg", kind: "number" },
   { id: "rockFraction", label: "Rock fraction", kind: "number" },
@@ -30,7 +30,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.bodyMassKg, "mass");
   fraction(i.rockFraction, "rock");
   aligned(
@@ -53,7 +53,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       ),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -77,6 +77,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { radiogenicPowerWatts: { type: "number" } },
+        required: ["radiogenicPowerWatts"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
