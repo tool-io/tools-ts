@@ -6,13 +6,13 @@ export type Input = Readonly<{
   gapEnd: number;
   duration: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "gapStart", kind: "integer", label: "gapStart" },
   { id: "gapEnd", kind: "integer", label: "gapEnd" },
   { id: "duration", kind: "integer", label: "duration" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.gapStart, 0, 1e12);
   H.int(i.gapEnd, i.gapStart, 1e12);
@@ -36,7 +36,24 @@ export const tool = createSimpleTool({
   description:
     "Center an integer-duration caption inside a supplied gap; odd leftover milliseconds place the extra millisecond on the right.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          start: { type: "number" },
+          end: { type: "number" },
+          leftMargin: { type: "number" },
+          rightMargin: { type: "number" },
+        },
+        required: ["start", "end", "leftMargin", "rightMargin"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
