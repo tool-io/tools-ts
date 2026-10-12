@@ -15,7 +15,7 @@ export type Input = Readonly<{
   readonly loveNumber: number;
   readonly dissipationQ: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "primaryMassKg", label: "Primary mass kg", kind: "number" },
   { id: "radiusMeters", label: "Radius meters", kind: "number" },
@@ -24,7 +24,7 @@ const fields = [
   { id: "loveNumber", label: "Love number", kind: "number" },
   { id: "dissipationQ", label: "Dissipation q", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   [
     i.primaryMassKg,
     i.radiusMeters,
@@ -46,7 +46,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       (4 * Math.PI * i.semimajorMeters ** 6),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -72,6 +72,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { approximateFluxWPerM2: { type: "number" } },
+        required: ["approximateFluxWPerM2"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
