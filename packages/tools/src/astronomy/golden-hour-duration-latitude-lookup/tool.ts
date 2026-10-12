@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly actualLatitudeDegrees: number;
   readonly callerIndependentSolarDeclinationDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualLatitudeDegrees",
@@ -19,10 +19,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const a = haAngle(
       input.actualLatitudeDegrees,
       input.callerIndependentSolarDeclinationDegrees,
@@ -43,10 +40,7 @@ const compute = (
     condition: "both-boundaries-cross",
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -73,6 +67,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          declaredEveningWindowMinutes: { type: "number" },
+          condition: { type: "string" },
+        },
+        required: ["declaredEveningWindowMinutes", "condition"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
