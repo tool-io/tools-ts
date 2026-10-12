@@ -8,7 +8,7 @@ export type Input = Readonly<{
   height: number;
   diagonal: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "x", kind: "integer", label: "x" },
   { id: "y", kind: "integer", label: "y" },
@@ -16,7 +16,7 @@ const fields = [
   { id: "height", kind: "integer", label: "height" },
   { id: "diagonal", kind: "boolean", label: "diagonal" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.width, 1, 1e6);
   H.int(i.height, 1, 1e6);
@@ -49,7 +49,24 @@ export const tool = createSimpleTool({
   description:
     "Enumerate bounded orthogonal or eight-neighbor square-board cells with explicit edge clipping; origin is excluded.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          cells: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["cells"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
