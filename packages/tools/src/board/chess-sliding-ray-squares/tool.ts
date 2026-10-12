@@ -2,13 +2,13 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ square: string; dx: number; dy: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "square", kind: "string", label: "square" },
   { id: "dx", kind: "integer", label: "dx" },
   { id: "dy", kind: "integer", label: "dy" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const [x, y] = H.square(i.square);
   H.int(i.dx, -1, 1);
@@ -33,7 +33,19 @@ export const tool = createSimpleTool({
   description:
     "Enumerate an empty-board sliding ray in a supplied unit grid direction, excluding the origin and stopping at the board edge.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { squares: { type: "array", items: { type: "string" } } },
+        required: ["squares"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
