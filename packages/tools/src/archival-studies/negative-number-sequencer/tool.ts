@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly callerConfirmedUnusedStartingNumber: number;
   readonly actualUnnumberedNegativeIds: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerCollectionNamespace",
@@ -30,7 +30,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (!/^[A-Za-z0-9_-]{1,64}$/.test(input.callerCollectionNamespace))
     simpleError("namespace", "Explicit restricted collection namespace.");
   bounded(input.callerConfirmedUnusedStartingNumber, "start", 1, 1000000000);
@@ -45,7 +45,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     originalCallerNegativeIds: input.actualUnnumberedNegativeIds,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -73,6 +73,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          assignedNegativeNumbers: { type: "array", items: { type: "string" } },
+          originalCallerNegativeIds: {
+            type: "array",
+            items: { type: "string" },
+          },
+        },
+        required: ["assignedNegativeNumbers", "originalCallerNegativeIds"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
