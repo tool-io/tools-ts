@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly occupiedSeams: number;
   readonly callerLabelmLPerSeam: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "occupiedSeams", label: "Occupied seams", kind: "number" },
   {
@@ -19,12 +19,12 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.occupiedSeams, "units", 0, 1000);
   nonnegative(i.callerLabelmLPerSeam, "authorized rate");
   return { conditionalTotalMl: i.occupiedSeams * i.callerLabelmLPerSeam };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -43,6 +43,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalTotalMl: { type: "number" } },
+        required: ["conditionalTotalMl"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
