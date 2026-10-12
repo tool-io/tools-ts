@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly rightAscensionDegrees: number;
   readonly declinationDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "rightAscensionDegrees",
@@ -19,12 +19,12 @@ const fields = [
   },
   { id: "declinationDegrees", label: "Declination degrees", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   angle(i.rightAscensionDegrees, "RA", 0, 360);
   angle(i.declinationDegrees, "Dec", -90, 90);
   return legacyFrame(i.rightAscensionDegrees, i.declinationDegrees, false);
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -49,6 +49,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          approximateRightAscensionDegrees: { type: "number" },
+          approximateDeclinationDegrees: { type: "number" },
+          fullFk4Fk5ConversionApplied: { type: "boolean" },
+        },
+        required: [
+          "approximateRightAscensionDegrees",
+          "approximateDeclinationDegrees",
+          "fullFk4Fk5ConversionApplied",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
