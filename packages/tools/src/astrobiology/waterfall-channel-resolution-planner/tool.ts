@@ -5,17 +5,17 @@ export type Input = Readonly<{
   readonly totalBandwidthHz: number;
   readonly channelCount: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "totalBandwidthHz", label: "Total bandwidth hz", kind: "number" },
   { id: "channelCount", label: "Channel count", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.totalBandwidthHz, "bandwidth");
   bounded(i.channelCount, "channels", 1, 1000000000);
   return { channelWidthHz: i.totalBandwidthHz / i.channelCount };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -34,6 +34,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { channelWidthHz: { type: "number" } },
+        required: ["channelWidthHz"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
