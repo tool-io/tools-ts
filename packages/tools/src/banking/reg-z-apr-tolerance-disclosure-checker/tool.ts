@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly independentlyCalculatedAprPercent: number;
   readonly callerApplicableTolerancePercentagePoints: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "disclosedAprPercent", label: "Disclosed apr percent", kind: "number" },
   {
@@ -20,7 +20,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.disclosedAprPercent, "APR");
   nonnegative(input.independentlyCalculatedAprPercent, "APR");
   nonnegative(input.callerApplicableTolerancePercentagePoints, "tolerance");
@@ -31,7 +31,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       Math.abs(d) <= input.callerApplicableTolerancePercentagePoints,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -59,6 +59,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedAprDifferencePercentagePoints: { type: "number" },
+          withinCallerTolerance: { type: "boolean" },
+        },
+        required: [
+          "signedAprDifferencePercentagePoints",
+          "withinCallerTolerance",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
