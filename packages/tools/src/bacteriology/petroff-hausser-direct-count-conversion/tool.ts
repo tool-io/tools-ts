@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly actualChamberDepthMm: number;
   readonly dilutionDivisor: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "cellsPerCountedSquare",
@@ -33,7 +33,7 @@ const fields = [
   },
   { id: "dilutionDivisor", label: "Dilution divisor", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   if (!i.cellsPerCountedSquare.length)
     simpleError("counts", "Actual counted squares.");
   i.cellsPerCountedSquare.forEach((v) => bounded(v, "count", 0, 1000000000));
@@ -46,7 +46,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       (i.actualSquareAreaMm2 * i.actualChamberDepthMm),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -70,6 +70,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { cellsPerMl: { type: "number" } },
+        required: ["cellsPerMl"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
