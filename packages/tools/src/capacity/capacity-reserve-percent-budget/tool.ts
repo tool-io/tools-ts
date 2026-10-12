@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ capacity: number; reservePercent: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "capacity", kind: "integer", label: "capacity" },
   { id: "reservePercent", kind: "number", label: "reservePercent" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.capacity);
   H.check(i.reservePercent >= 0 && i.reservePercent <= 100);
@@ -24,7 +24,22 @@ export const tool = createSimpleTool({
   description:
     "Reserve a ceiling-rounded percentage of integer capacity and expose the usable whole-unit budget; explicit arithmetic, not availability certification.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          reserved: { type: "number" },
+          usable: { type: "number" },
+        },
+        required: ["reserved", "usable"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
