@@ -7,15 +7,12 @@ export type Input = Readonly<{
   resistantColonies: number;
   totalViableColonies: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "resistantColonies", label: "Resistant colonies", kind: "number" },
   { id: "totalViableColonies", label: "Total viable colonies", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   return {
     observedMutationFrequency: countFraction(
       i.resistantColonies,
@@ -24,7 +21,7 @@ const compute = (
     mutationRatePerGeneration: "not-estimated",
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -48,6 +45,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedMutationFrequency: { type: "number" },
+          mutationRatePerGeneration: { type: "string" },
+        },
+        required: ["observedMutationFrequency", "mutationRatePerGeneration"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
