@@ -5,12 +5,12 @@ export type Input = Readonly<{
   readonly dipoleMomentAm2: number;
   readonly externalPressurePa: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "dipoleMomentAm2", label: "Dipole moment am2", kind: "number" },
   { id: "externalPressurePa", label: "External pressure pa", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.dipoleMomentAm2, "dipole");
   positive(i.externalPressurePa, "pressure");
   return {
@@ -20,7 +20,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       (1 / 6),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -39,6 +39,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { equatorialPressureBalanceRadiusM: { type: "number" } },
+        required: ["equatorialPressureBalanceRadiusM"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
