@@ -7,13 +7,13 @@ export type Input = Readonly<{
   ballotsJson: string;
   weights: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "candidates", label: "candidates", kind: "stringList" },
   { id: "ballotsJson", label: "ballotsJson", kind: "string" },
   { id: "weights", label: "weights", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const b = H.ballots(i.ballotsJson, i.candidates);
   H.check(b.every((v) => v.length <= 1));
@@ -47,12 +47,44 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Single Choice Ballot Weight Tally", "voting", "elections"],
+    collections: ["data", "learn"],
+    fields: ["ballot", "voting", "elections"],
+    keywords: ["voting", "elections"],
+  },
   id: "ballot/single-choice-weight-tally",
   title: "Single Choice Ballot Weight Tally",
   description:
     "Explicit supplied candidate IDs and finite ballot observations only; no voter authenticity, eligibility, audit certification or election-result guarantee. Tally nonnegative supplied weight of single-choice ballots; empty ballots are abstentions, more than one choice rejects.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          tally: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                candidate: { type: "string" },
+                support: { type: "number" },
+              },
+              required: ["candidate", "support"],
+            },
+          },
+          abstentions: { type: "number" },
+        },
+        required: ["tally", "abstentions"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
