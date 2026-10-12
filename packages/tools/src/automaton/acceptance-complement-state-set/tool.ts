@@ -8,14 +8,14 @@ export type Input = Readonly<{
   alphabet: readonly string[];
   accepting: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "transitionsJson", label: "transitionsJson", kind: "string" },
   { id: "states", label: "states", kind: "stringList" },
   { id: "alphabet", label: "alphabet", kind: "stringList" },
   { id: "accepting", label: "accepting", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.transitions(i.transitionsJson);
   H.dfa(i.states, i.alphabet, t);
@@ -42,12 +42,30 @@ export const example = {
   output: { result: { accepting: ["a"] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Complete DFA Acceptance Complement Set"],
+    collections: ["data", "learn"],
+    fields: ["automaton"],
+    keywords: [],
+  },
   id: "automaton/acceptance-complement-state-set",
   title: "Complete DFA Acceptance Complement Set",
   description:
     "Complement accepting states only for an explicitly complete deterministic finite automaton; incomplete transition tables reject rather than claim language complement.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { accepting: { type: "array", items: { type: "string" } } },
+        required: ["accepting"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
