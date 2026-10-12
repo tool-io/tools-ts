@@ -6,12 +6,12 @@ export type Input = Readonly<{
   candidates: readonly string[];
   ballotsJson: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "candidates", label: "candidates", kind: "stringList" },
   { id: "ballotsJson", label: "ballotsJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const b = H.ballots(i.ballotsJson, i.candidates);
   return H.finish({
@@ -42,12 +42,46 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Ballot Abstention Coverage Table", "voting", "elections"],
+    collections: ["data", "learn"],
+    fields: ["ballot", "voting", "elections"],
+    keywords: ["voting", "elections"],
+  },
   id: "ballot/ballot-abstention-coverage-table",
   title: "Ballot Abstention Coverage Table",
   description:
     "Explicit supplied candidate IDs and finite ballot observations only; no voter authenticity, eligibility, audit certification or election-result guarantee. Report whole-ballot abstentions separately from candidate non-observation in partial rankings/approval sets; missing does not imply opposition.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          ballots: { type: "number" },
+          abstentions: { type: "number" },
+          candidates: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                candidate: { type: "string" },
+                observed: { type: "number" },
+                notObserved: { type: "number" },
+              },
+              required: ["candidate", "observed", "notObserved"],
+            },
+          },
+        },
+        required: ["ballots", "abstentions", "candidates"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
