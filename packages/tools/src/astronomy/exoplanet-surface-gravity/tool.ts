@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualExoplanetMassKg: number;
   readonly actualExoplanetRadiusMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualExoplanetMassKg",
@@ -24,10 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   nonnegative(input.actualExoplanetMassKg, "actualExoplanetMassKg");
   positive(input.actualExoplanetRadiusMeters, "actualExoplanetRadiusMeters");
   return {
@@ -36,10 +33,7 @@ const compute = (
       input.actualExoplanetRadiusMeters ** 2,
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -58,6 +52,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
