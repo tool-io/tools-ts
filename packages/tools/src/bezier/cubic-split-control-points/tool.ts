@@ -5,12 +5,12 @@ export type Input = Readonly<{
   points: readonly (readonly number[])[];
   t: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "points", label: "points", kind: "matrix" },
   { id: "t", label: "t", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.curve(i.points, 3);
   return H.finish(H.bezierSplit(i.points, i.t));
@@ -43,12 +43,39 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Cubic Bezier Split Control Points", "Bezier curves", "geometry"],
+    collections: ["data", "learn"],
+    fields: ["bezier", "Bezier curves", "geometry"],
+    keywords: ["Bezier curves", "geometry"],
+  },
   id: "bezier/cubic-split-control-points",
   title: "Cubic Bezier Split Control Points",
   description:
     "Finite planar Bezier control points in supplied order, unit parameter t; split at explicit t into two complete control polygons with duplicated join endpoint, preserving curve geometry.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          left: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          right: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["left", "right"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
