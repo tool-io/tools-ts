@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly heatingEfficiency: number;
   readonly rocheCorrection: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "planetMassKg", label: "Planet mass kg", kind: "number" },
   { id: "absorptionRadiusM", label: "Absorption radius m", kind: "number" },
@@ -22,7 +22,7 @@ const fields = [
   { id: "heatingEfficiency", label: "Heating efficiency", kind: "number" },
   { id: "rocheCorrection", label: "Roche correction", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.planetMassKg, "mass");
   positive(i.absorptionRadiusM, "radius");
   nonnegative(i.xuvFluxWPerM2, "flux");
@@ -37,7 +37,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       (6.6743e-11 * i.planetMassKg * i.rocheCorrection),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -62,6 +62,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalMassLossKgPerS: { type: "number" } },
+        required: ["conditionalMassLossKgPerS"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
