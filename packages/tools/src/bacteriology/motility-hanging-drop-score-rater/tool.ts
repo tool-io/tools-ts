@@ -15,7 +15,7 @@ export type Input = Readonly<{
   brownianOnly: boolean;
   observationKnown: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "netDisplacementMicrometres",
@@ -31,10 +31,7 @@ const fields = [
   { id: "brownianOnly", label: "Brownian only", kind: "boolean" },
   { id: "observationKnown", label: "Observation known", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   nonnegative(i.netDisplacementMicrometres, "displacement");
   positive(i.elapsedSeconds, "time");
   nonnegative(i.callerMotionThreshold, "threshold");
@@ -50,7 +47,7 @@ const compute = (
           : "not-above-threshold",
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -80,6 +77,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedSpeedMicrometresPerSecond: { type: "number" },
+          motionEvidence: { type: "string" },
+        },
+        required: ["observedSpeedMicrometresPerSecond", "motionEvidence"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
