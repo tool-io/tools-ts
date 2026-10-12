@@ -5,12 +5,12 @@ export type Input = Readonly<{
   directivesJson: string;
   numericNames: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "directivesJson", label: "directivesJson", kind: "string" },
   { id: "numericNames", label: "numericNames", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.directives(i.directivesJson);
   i.numericNames.forEach((s) => H.check(H.token(s)));
@@ -45,12 +45,49 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Cache Directive Numeric Value Audit",
+      "caching",
+      "software development",
+    ],
+    collections: ["data", "learn"],
+    fields: ["cache", "caching", "software development"],
+    keywords: ["caching", "software development"],
+  },
   id: "cache/directive-numeric-value-audit",
   title: "Cache Directive Numeric Value Audit",
   description:
     "Audit unsigned decimal syntax of caller-declared numeric cache directives without coercing or accepting signs, quotes or defaults; values remain raw strings.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          values: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                name: { type: "string" },
+                valid: { type: "boolean" },
+                value: { anyOf: [{ type: "string" }, { type: "null" }] },
+              },
+              required: ["index", "name", "valid", "value"],
+            },
+          },
+        },
+        required: ["values"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
