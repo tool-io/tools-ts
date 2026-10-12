@@ -9,7 +9,7 @@ export type Input = Readonly<{
   mirrorX: boolean;
   mirrorY: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "x", kind: "integer", label: "x" },
   { id: "y", kind: "integer", label: "y" },
@@ -18,7 +18,7 @@ const fields = [
   { id: "mirrorX", kind: "boolean", label: "mirrorX" },
   { id: "mirrorY", kind: "boolean", label: "mirrorY" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.width, 1, 1e6);
   H.int(i.height, 1, 1e6);
@@ -39,7 +39,19 @@ export const tool = createSimpleTool({
   description:
     "Mirror zero-based rectangular board cell coordinates across explicitly selected board centerlines; no piece-state transformation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { x: { type: "number" }, y: { type: "number" } },
+        required: ["x", "y"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
