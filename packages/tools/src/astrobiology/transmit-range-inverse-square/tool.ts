@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly referenceEirpWatts: number;
   readonly proposedEirpWatts: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "referenceRangeMeters",
@@ -22,7 +22,7 @@ const fields = [
   { id: "referenceEirpWatts", label: "Reference eirp watts", kind: "number" },
   { id: "proposedEirpWatts", label: "Proposed eirp watts", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.referenceRangeMeters, "range");
   positive(i.referenceEirpWatts, "reference");
   nonnegative(i.proposedEirpWatts, "power");
@@ -32,7 +32,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       Math.sqrt(i.proposedEirpWatts / i.referenceEirpWatts),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -55,6 +55,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalRangeMeters: { type: "number" } },
+        required: ["conditionalRangeMeters"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
