@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly radiogenicFluxWPerM2: number;
   readonly tidalFluxWPerM2: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "surfaceTemperatureK", label: "Surface temperature k", kind: "number" },
   {
@@ -34,7 +34,7 @@ const fields = [
   },
   { id: "tidalFluxWPerM2", label: "Tidal flux w per m2", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.surfaceTemperatureK, "surface");
   positive(i.pressureAdjustedMeltK, "melt");
   positive(i.iceConductivityWPerMK, "conductivity");
@@ -50,7 +50,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       (i.radiogenicFluxWPerM2 + i.tidalFluxWPerM2),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -76,6 +76,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conductiveThicknessMeters: { type: "number" } },
+        required: ["conductiveThicknessMeters"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
