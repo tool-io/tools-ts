@@ -6,13 +6,13 @@ export type Input = Readonly<{
   from: string;
   to: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "occupied", kind: "stringList", label: "occupied" },
   { id: "from", kind: "string", label: "from" },
   { id: "to", kind: "string", label: "to" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(H.unique(i.occupied).length === i.occupied.length);
   return H.finish({
@@ -33,7 +33,23 @@ export const tool = createSimpleTool({
   description:
     "Audit explicit board occupancy at move source/destination, without deciding piece movement, capture rules or legal moves.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          sourcePresent: { type: "boolean" },
+          destinationOccupied: { type: "boolean" },
+          sameCell: { type: "boolean" },
+        },
+        required: ["sourcePresent", "destinationOccupied", "sameCell"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
