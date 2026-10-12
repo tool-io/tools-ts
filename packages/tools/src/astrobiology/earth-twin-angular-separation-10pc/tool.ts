@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly projectedOrbitalSeparationAu: number;
   readonly stellarDistanceParsecs: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "projectedOrbitalSeparationAu",
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.projectedOrbitalSeparationAu, "projectedseparation");
   positive(input.stellarDistanceParsecs, "distance");
   return {
@@ -32,7 +32,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.stellarDistanceParsecs,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -51,6 +51,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalAngularSeparationMilliarcseconds: { type: "number" },
+        },
+        required: ["conditionalAngularSeparationMilliarcseconds"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
