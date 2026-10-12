@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly planetToStarRadius: number;
   readonly eclipseDepthFraction: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "starTemperatureK", label: "Star temperature k", kind: "number" },
   { id: "wavelengthM", label: "Wavelength m", kind: "number" },
@@ -24,7 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.starTemperatureK, "star temperature");
   positive(i.wavelengthM, "wavelength");
   positive(i.planetToStarRadius, "radius ratio");
@@ -46,7 +46,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
         )),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -70,6 +70,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { monochromaticBrightnessTemperatureK: { type: "number" } },
+        required: ["monochromaticBrightnessTemperatureK"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
