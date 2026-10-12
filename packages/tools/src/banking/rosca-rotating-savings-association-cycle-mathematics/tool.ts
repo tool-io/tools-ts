@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly participantIds: readonly string[];
   readonly contributionPerParticipantPerRoundMinor: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "participantIds", label: "Participant ids", kind: "stringList" },
   {
@@ -22,25 +22,25 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.participantIds, "participants");
   if (input.participantIds.length > 64)
     simpleError("participants", "At most64explicit participants.");
   money(input.contributionPerParticipantPerRoundMinor, "contribution");
   const n = input.participantIds.length,
     c = input.contributionPerParticipantPerRoundMinor,
-    p = sumMoney(Array(n).fill(c));
+    p = sumMoney(Array<number>(n).fill(c));
   return {
     potPerRoundMinor: p,
     roundCount: n,
     totalPerParticipantContributionMinor: p,
-    payoutByRoundMinor: Array(n).fill(p),
+    payoutByRoundMinor: Array<number>(n).fill(p),
     netCashFlowsByParticipantMinor: input.participantIds.map((_, i) =>
       input.participantIds.map((_, r) => (r === i ? signedSum([p, -c]) : -c)),
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -74,6 +74,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          potPerRoundMinor: { type: "number" },
+          roundCount: { type: "integer" },
+          totalPerParticipantContributionMinor: { type: "number" },
+          payoutByRoundMinor: { type: "array", items: { type: "number" } },
+          netCashFlowsByParticipantMinor: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: [
+          "potPerRoundMinor",
+          "roundCount",
+          "totalPerParticipantContributionMinor",
+          "payoutByRoundMinor",
+          "netCashFlowsByParticipantMinor",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
