@@ -6,12 +6,12 @@ export type Input = Readonly<{
   candidates: readonly string[];
   scores: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "candidates", label: "candidates", kind: "stringList" },
   { id: "scores", label: "scores", kind: "matrix" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     H.unique(i.candidates).length === i.candidates.length &&
@@ -42,12 +42,43 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Explicit Score Ballot Sum Tally", "voting", "elections"],
+    collections: ["data", "learn"],
+    fields: ["ballot", "voting", "elections"],
+    keywords: ["voting", "elections"],
+  },
   id: "ballot/explicit-score-sum-tally",
   title: "Explicit Score Ballot Sum Tally",
   description:
     "Explicit supplied candidate IDs and finite ballot observations only; no voter authenticity, eligibility, audit certification or election-result guarantee. Aggregate sum of aligned complete explicit numeric score rows; signed scores allowed, absent rows yield zero sums.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          tally: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                candidate: { type: "string" },
+                score: { type: "number" },
+              },
+              required: ["candidate", "score"],
+            },
+          },
+        },
+        required: ["tally"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
