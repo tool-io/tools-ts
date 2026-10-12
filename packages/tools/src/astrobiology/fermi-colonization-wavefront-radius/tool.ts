@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly wavefrontFractionOfC: number;
   readonly elapsedYears: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "wavefrontFractionOfC",
@@ -19,12 +19,12 @@ const fields = [
   },
   { id: "elapsedYears", label: "Elapsed years", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   fraction(i.wavefrontFractionOfC, "speed fraction");
   nonnegative(i.elapsedYears, "time");
   return { idealRadiusLightyears: i.wavefrontFractionOfC * i.elapsedYears };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -43,6 +43,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { idealRadiusLightyears: { type: "number" } },
+        required: ["idealRadiusLightyears"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
