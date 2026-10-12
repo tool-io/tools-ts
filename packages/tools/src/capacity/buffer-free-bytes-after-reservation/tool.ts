@@ -6,13 +6,13 @@ export type Input = Readonly<{
   used: number;
   reservation: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "capacity", kind: "integer", label: "capacity" },
   { id: "used", kind: "integer", label: "used" },
   { id: "reservation", kind: "integer", label: "reservation" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.capacity);
   H.int(i.used, 0, i.capacity);
@@ -32,7 +32,22 @@ export const tool = createSimpleTool({
   description:
     "Audit a proposed byte-buffer reservation retaining negative free-space evidence; does not allocate memory or silently clamp over-reservation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          freeBytes: { type: "number" },
+          overReserved: { type: "boolean" },
+        },
+        required: ["freeBytes", "overReserved"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
