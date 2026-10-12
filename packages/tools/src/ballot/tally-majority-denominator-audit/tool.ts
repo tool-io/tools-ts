@@ -7,13 +7,13 @@ export type Input = Readonly<{
   cast: number;
   eligible: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "support", label: "support", kind: "number" },
   { id: "cast", label: "cast", kind: "number" },
   { id: "eligible", label: "eligible", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.support >= 0 && i.cast >= i.support && i.eligible >= i.cast);
   return H.finish({
@@ -35,12 +35,40 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Ballot Tally Majority Denominator Audit", "voting", "elections"],
+    collections: ["data", "learn"],
+    fields: ["ballot", "voting", "elections"],
+    keywords: ["voting", "elections"],
+  },
   id: "ballot/tally-majority-denominator-audit",
   title: "Ballot Tally Majority Denominator Audit",
   description:
     "Explicit supplied candidate IDs and finite ballot observations only; no voter authenticity, eligibility, audit certification or election-result guarantee. Compare supplied support against explicit cast versus eligible denominators, with strict-majority and null zero-denominator evidence; quantities must use the same units.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          castMajority: { anyOf: [{ type: "boolean" }, { type: "null" }] },
+          eligibleMajority: { anyOf: [{ type: "boolean" }, { type: "null" }] },
+          castShare: { anyOf: [{ type: "number" }, { type: "null" }] },
+          eligibleShare: { anyOf: [{ type: "number" }, { type: "null" }] },
+        },
+        required: [
+          "castMajority",
+          "eligibleMajority",
+          "castShare",
+          "eligibleShare",
+        ],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
