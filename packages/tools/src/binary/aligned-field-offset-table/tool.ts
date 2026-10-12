@@ -6,13 +6,13 @@ export type Input = Readonly<{
   alignments: readonly number[];
   initialOffset: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "lengths", kind: "numberList", label: "lengths" },
   { id: "alignments", kind: "numberList", label: "alignments" },
   { id: "initialOffset", kind: "integer", label: "initialOffset" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.initialOffset);
   H.check(i.lengths.length === i.alignments.length);
@@ -46,7 +46,34 @@ export const tool = createSimpleTool({
   description:
     "Lay out explicit byte field lengths with per-field integer alignment and report every padding gap; no ABI inference.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          fields: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                start: { type: "number" },
+                end: { type: "number" },
+                padding: { type: "number" },
+              },
+              required: ["start", "end", "padding"],
+            },
+          },
+          endOffset: { type: "number" },
+        },
+        required: ["fields", "endOffset"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
