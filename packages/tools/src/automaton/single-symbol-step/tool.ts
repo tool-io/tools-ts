@@ -7,13 +7,13 @@ export type Input = Readonly<{
   state: string;
   symbol: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "transitionsJson", label: "transitionsJson", kind: "string" },
   { id: "state", label: "state", kind: "string" },
   { id: "symbol", label: "symbol", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.transitions(i.transitionsJson);
   H.check(
@@ -35,12 +35,33 @@ export const example = {
   output: { result: { target: "b", defined: true } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["DFA Single Symbol Step"],
+    collections: ["data", "learn"],
+    fields: ["automaton"],
+    keywords: [],
+  },
   id: "automaton/single-symbol-step",
   title: "DFA Single Symbol Step",
   description:
     "Step one supplied deterministic transition table, returning explicit undefined/null when no source/symbol pair exists; duplicate keys reject.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          target: { anyOf: [{ type: "string" }, { type: "null" }] },
+          defined: { type: "boolean" },
+        },
+        required: ["target", "defined"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
