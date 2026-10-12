@@ -5,12 +5,12 @@ export type Input = Readonly<{
   varyNames: readonly string[];
   requestHeadersJson: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "varyNames", label: "varyNames", kind: "stringList" },
   { id: "requestHeadersJson", label: "requestHeadersJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const names = H.unique(i.varyNames.map((x) => x.toLowerCase()));
   names.forEach((s) => H.check(s === "*" || H.token(s)));
@@ -42,12 +42,37 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Vary Request Value Fingerprint",
+      "caching",
+      "software development",
+    ],
+    collections: ["data", "learn"],
+    fields: ["cache", "caching", "software development"],
+    keywords: ["caching", "software development"],
+  },
   id: "cache/vary-request-value-fingerprint",
   title: "Vary Request Value Fingerprint",
   description:
     "Fingerprint explicit Vary request field occurrence arrays, distinguishing absent from empty fields and returning null for Vary star; reusable means no star only, not full cache reuse authorization.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          fingerprint: { anyOf: [{ type: "string" }, { type: "null" }] },
+          reusable: { type: "boolean" },
+        },
+        required: ["fingerprint", "reusable"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
