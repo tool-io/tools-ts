@@ -6,13 +6,13 @@ export type Input = Readonly<{
   right: readonly (readonly number[])[];
   tolerance: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", label: "left", kind: "matrix" },
   { id: "right", label: "right", kind: "matrix" },
   { id: "tolerance", label: "tolerance", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.curve(i.left);
   H.curve(i.right);
@@ -39,12 +39,37 @@ export const example = {
   output: { result: { distance: 0, joined: true } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Bezier Endpoint Join Position Audit",
+      "Bezier curves",
+      "geometry",
+    ],
+    collections: ["data", "learn"],
+    fields: ["bezier", "Bezier curves", "geometry"],
+    keywords: ["Bezier curves", "geometry"],
+  },
   id: "bezier/endpoint-join-position-audit",
   title: "Bezier Endpoint Join Position Audit",
   description:
     "Audit endpoint positional continuity of two explicit planar Bezier segments against an absolute supplied tolerance; no tangent or curvature continuity inferred.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          distance: { type: "number" },
+          joined: { type: "boolean" },
+        },
+        required: ["distance", "joined"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
