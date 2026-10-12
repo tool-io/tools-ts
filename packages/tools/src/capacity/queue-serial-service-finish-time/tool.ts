@@ -7,14 +7,14 @@ export type Input = Readonly<{
   ahead: number;
   serviceDuration: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "now", kind: "number", label: "now" },
   { id: "serverFreeAt", kind: "number", label: "serverFreeAt" },
   { id: "ahead", kind: "integer", label: "ahead" },
   { id: "serviceDuration", kind: "number", label: "serviceDuration" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.ahead);
   H.positive(i.serviceDuration);
@@ -31,7 +31,19 @@ export const tool = createSimpleTool({
   description:
     "Deterministic serial-service timing for an item behind a supplied count of equal-service jobs; not a stochastic queueing or guaranteed completion forecast.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { start: { type: "number" }, finish: { type: "number" } },
+        required: ["start", "finish"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
