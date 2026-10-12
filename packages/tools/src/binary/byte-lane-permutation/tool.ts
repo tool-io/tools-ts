@@ -5,12 +5,12 @@ export type Input = Readonly<{
   data: readonly number[];
   permutation: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "data", kind: "numberList", label: "data" },
   { id: "permutation", kind: "numberList", label: "permutation" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.bytes(i.data);
   const data = i.data;
@@ -28,7 +28,19 @@ export const tool = createSimpleTool({
   description:
     "Reorder byte lanes with a complete output-to-input permutation; no endian or packing assumptions.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { bytes: { type: "array", items: { type: "number" } } },
+        required: ["bytes"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
