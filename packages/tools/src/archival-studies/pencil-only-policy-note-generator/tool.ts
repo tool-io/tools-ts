@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly callerVerifiedPolicySource: string;
   readonly callerVerifiedExceptionText: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerVerifiedPolicyText",
@@ -24,7 +24,7 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     !input.callerVerifiedPolicyText.trim() ||
     !input.callerVerifiedPolicySource.trim() ||
@@ -44,7 +44,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.callerVerifiedExceptionText,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -73,6 +73,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { note: { type: "string" } },
+        required: ["note"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
