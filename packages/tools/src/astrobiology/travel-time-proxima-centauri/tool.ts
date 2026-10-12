@@ -7,16 +7,16 @@ import {
   simpleError,
 } from "../batch52-shared.js";
 export type Input = Readonly<{ readonly fractionOfC: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "fractionOfC", label: "Fraction of c", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.fractionOfC, "speed");
   if (i.fractionOfC >= 1) simpleError("speed", "Massive ship 0<v/c<1.");
   return { coordinateTravelYears: 4.2465 / i.fractionOfC };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -35,6 +35,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { coordinateTravelYears: { type: "number" } },
+        required: ["coordinateTravelYears"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
