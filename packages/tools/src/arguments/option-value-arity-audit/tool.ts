@@ -6,13 +6,13 @@ export type Input = Readonly<{
   minimum: number;
   maximum: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "counts", label: "counts", kind: "numberList" },
   { id: "minimum", label: "minimum", kind: "integer" },
   { id: "maximum", label: "maximum", kind: "integer" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.minimum, 0, 128);
   H.int(i.maximum, i.minimum, 128);
@@ -35,12 +35,43 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Option Value Arity Audit"],
+    collections: ["encode-decode"],
+    fields: ["arguments"],
+    keywords: [],
+  },
   id: "arguments/option-value-arity-audit",
   title: "Option Value Arity Audit",
   description:
     "Audit explicitly supplied value counts for each option occurrence against an inclusive arity range; no greedy token assignment.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          violations: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                count: { type: "number" },
+              },
+              required: ["index", "count"],
+            },
+          },
+        },
+        required: ["violations"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
