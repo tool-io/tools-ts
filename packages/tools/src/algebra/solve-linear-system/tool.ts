@@ -227,6 +227,12 @@ export const solveLinearSystemTool = createModelDefinition<
   SolveLinearSystemInput,
   SolveLinearSystemOutput
 >({
+  discovery: {
+    aliases: ["General Linear System Solver", "mathematics"],
+    collections: ["data", "learn"],
+    fields: ["algebra", "mathematics"],
+    keywords: ["mathematics"],
+  },
   id: "algebra/solve-linear-system",
   title: "General Linear System Solver",
   description:
