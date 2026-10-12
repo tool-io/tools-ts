@@ -7,14 +7,14 @@ export type Input = Readonly<{
   rate: number;
   cost: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "capacity", kind: "number", label: "capacity" },
   { id: "tokens", kind: "number", label: "tokens" },
   { id: "rate", kind: "number", label: "rate" },
   { id: "cost", kind: "number", label: "cost" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.capacity >= 0 &&
@@ -39,7 +39,22 @@ export const tool = createSimpleTool({
   description:
     "Compute deterministic next token-bucket admission delay with null for impossible requests; assumes constant refill and no intervening consumption.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          possible: { type: "boolean" },
+          delay: { anyOf: [{ type: "number" }, { type: "null" }] },
+        },
+        required: ["possible", "delay"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
