@@ -10,14 +10,11 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ diametersMm: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "diametersMm", label: "Diameters mm", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!i.diametersMm.length)
     simpleError("diameters", "Actual measurements required.");
   i.diametersMm.forEach((v) => positive(v, "diameter"));
@@ -28,7 +25,7 @@ const compute = (
     maximumMm: Math.max(...i.diametersMm),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -49,6 +46,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          count: { type: "number" },
+          meanDiameterMm: { type: "number" },
+          minimumMm: { type: "number" },
+          maximumMm: { type: "number" },
+        },
+        required: ["count", "meanDiameterMm", "minimumMm", "maximumMm"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
