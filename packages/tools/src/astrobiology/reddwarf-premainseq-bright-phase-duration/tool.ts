@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly qualifiedBrightPhaseYears: readonly number[];
   readonly query: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerVerifiedSource",
@@ -43,7 +43,7 @@ const fields = [
   },
   { id: "query", label: "Query", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   ownReference(
     i.callerVerifiedSource,
     i.callerVerifiedContext,
@@ -57,7 +57,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -84,6 +84,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { interpolatedValue: { type: "number" } },
+        required: ["interpolatedValue"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
