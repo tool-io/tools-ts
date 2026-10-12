@@ -7,13 +7,13 @@ export type Input = Readonly<{
   ballotsJson: string;
   positionScores: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "candidates", label: "candidates", kind: "stringList" },
   { id: "ballotsJson", label: "ballotsJson", kind: "string" },
   { id: "positionScores", label: "positionScores", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const b = H.ballots(i.ballotsJson, i.candidates);
   H.check(i.positionScores.length === i.candidates.length);
@@ -44,12 +44,43 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Rank Position Score Ballot Tally", "voting", "elections"],
+    collections: ["data", "learn"],
+    fields: ["ballot", "voting", "elections"],
+    keywords: ["voting", "elections"],
+  },
   id: "ballot/rank-position-score-tally",
   title: "Rank Position Score Ballot Tally",
   description:
     "Explicit supplied candidate IDs and finite ballot observations only; no voter authenticity, eligibility, audit certification or election-result guarantee. Apply explicit caller rank-position points to strict partial rankings; unranked candidates receive zero, no hidden Borda variant or tie ranks.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          tally: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                candidate: { type: "string" },
+                score: { type: "number" },
+              },
+              required: ["candidate", "score"],
+            },
+          },
+        },
+        required: ["tally"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
