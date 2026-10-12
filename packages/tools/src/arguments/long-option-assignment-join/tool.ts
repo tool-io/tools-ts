@@ -6,13 +6,13 @@ export type Input = Readonly<{
   value: string;
   assigned: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "name", label: "name", kind: "string" },
   { id: "value", label: "value", kind: "string" },
   { id: "assigned", label: "assigned", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(/^[A-Za-z0-9][A-Za-z0-9-]*(?![\s\S])/.test(i.name));
   return H.finish({
@@ -24,12 +24,30 @@ export const example = {
   output: { result: { argument: "--name=a=b" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Long Option Assignment Joiner"],
+    collections: ["encode-decode"],
+    fields: ["arguments"],
+    keywords: [],
+  },
   id: "arguments/long-option-assignment-join",
   title: "Long Option Assignment Joiner",
   description:
     "Format one literal long-option argv token under a restricted ASCII option-name grammar; returns one argument, not shell quoting.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { argument: { type: "string" } },
+        required: ["argument"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
