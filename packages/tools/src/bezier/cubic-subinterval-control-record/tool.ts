@@ -6,13 +6,13 @@ export type Input = Readonly<{
   start: number;
   end: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "points", label: "points", kind: "matrix" },
   { id: "start", label: "start", kind: "number" },
   { id: "end", label: "end", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.curve(i.points, 3);
   H.unit(i.start);
@@ -49,12 +49,39 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Cubic Bezier Subinterval Control Record",
+      "Bezier curves",
+      "geometry",
+    ],
+    collections: ["data", "learn"],
+    fields: ["bezier", "Bezier curves", "geometry"],
+    keywords: ["Bezier curves", "geometry"],
+  },
   id: "bezier/cubic-subinterval-control-record",
   title: "Cubic Bezier Subinterval Control Record",
   description:
     "Extract cubic Bezier subinterval control points, reparameterized to the unit interval; equal endpoints produce a point-valued cubic, no extrapolation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          points: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["points"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
