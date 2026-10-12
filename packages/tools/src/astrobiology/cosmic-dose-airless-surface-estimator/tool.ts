@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly days: number;
   readonly exposureFraction: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerMeasuredDoseMsvPerDay",
@@ -21,7 +21,7 @@ const fields = [
   { id: "days", label: "Days", kind: "number" },
   { id: "exposureFraction", label: "Exposure fraction", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.callerMeasuredDoseMsvPerDay, "dose");
   nonnegative(i.days, "days");
   fraction(i.exposureFraction, "fraction");
@@ -30,7 +30,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       i.callerMeasuredDoseMsvPerDay * i.days * i.exposureFraction,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -49,6 +49,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalDoseMsv: { type: "number" } },
+        required: ["conditionalDoseMsv"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
