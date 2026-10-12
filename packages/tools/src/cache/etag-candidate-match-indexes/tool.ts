@@ -6,13 +6,13 @@ export type Input = Readonly<{
   target: string;
   weak: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "candidateTags", label: "candidateTags", kind: "stringList" },
   { id: "target", label: "target", kind: "string" },
   { id: "weak", label: "weak", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = i.candidateTags.map(H.tag),
     t = H.tag(i.target);
@@ -29,12 +29,34 @@ export const example = {
   output: { result: { indexes: [1] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Entity Tag Candidate Match Indexes",
+      "caching",
+      "software development",
+    ],
+    collections: ["data", "learn"],
+    fields: ["cache", "caching", "software development"],
+    keywords: ["caching", "software development"],
+  },
   id: "cache/etag-candidate-match-indexes",
   title: "Entity Tag Candidate Match Indexes",
   description:
     "Return all entity-tag comparison candidate indexes under an explicit weak/strong rule, retaining ties and rejecting malformed tags; not If-Match/If-None-Match wildcard evaluation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { indexes: { type: "array", items: { type: "number" } } },
+        required: ["indexes"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
