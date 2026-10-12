@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly callerVerifiedChecksumModulus: number;
   readonly callerVerifiedChecksumConvention: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualInstitutionBarcode",
@@ -35,7 +35,7 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (!/^[0-9]{2,128}$/.test(input.actualInstitutionBarcode))
     simpleError(
       "barcode",
@@ -78,7 +78,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     matchesDeclaredInstitutionScheme: e === actual,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -108,6 +108,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalExpectedCheckDigit: { type: "number" },
+          actualCheckDigit: { type: "number" },
+          matchesDeclaredInstitutionScheme: { type: "boolean" },
+        },
+        required: [
+          "conditionalExpectedCheckDigit",
+          "actualCheckDigit",
+          "matchesDeclaredInstitutionScheme",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
