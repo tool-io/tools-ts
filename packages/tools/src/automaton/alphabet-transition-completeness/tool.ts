@@ -7,13 +7,13 @@ export type Input = Readonly<{
   states: readonly string[];
   alphabet: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "transitionsJson", label: "transitionsJson", kind: "string" },
   { id: "states", label: "states", kind: "stringList" },
   { id: "alphabet", label: "alphabet", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.transitions(i.transitionsJson);
   H.dfa(i.states, i.alphabet, t);
@@ -37,12 +37,43 @@ export const example = {
   output: { result: { missing: [{ state: "c", symbol: "x" }] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["DFA Alphabet Transition Completeness"],
+    collections: ["data", "learn"],
+    fields: ["automaton"],
+    keywords: [],
+  },
   id: "automaton/alphabet-transition-completeness",
   title: "DFA Alphabet Transition Completeness",
   description:
     "Audit every declared state/alphabet pair for absent transition keys in a finite deterministic automaton; no sink completion or unbounded alphabet.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          missing: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                state: { type: "string" },
+                symbol: { type: "string" },
+              },
+              required: ["state", "symbol"],
+            },
+          },
+        },
+        required: ["missing"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
