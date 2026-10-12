@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly observedStainPattern: string;
   readonly controlsValid: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedStainPattern",
@@ -14,7 +14,7 @@ const fields = [
   },
   { id: "controlsValid", label: "Controls valid", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   pick(
     i.observedStainPattern,
     { "green-spore": 0, other: 1, unknown: 2 },
@@ -30,7 +30,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     speciesIdentified: false,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -54,6 +54,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observationClass: { type: "string" },
+          speciesIdentified: { type: "boolean" },
+        },
+        required: ["observationClass", "speciesIdentified"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
