@@ -8,7 +8,7 @@ export type Input = Readonly<{
   readonly exobaseTemperatureK: number;
   readonly callerReviewLambda: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bodyMassKg", label: "Body mass kg", kind: "number" },
   { id: "exobaseRadiusM", label: "Exobase radius m", kind: "number" },
@@ -16,7 +16,7 @@ const fields = [
   { id: "exobaseTemperatureK", label: "Exobase temperature k", kind: "number" },
   { id: "callerReviewLambda", label: "Caller review lambda", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   [
     i.bodyMassKg,
     i.exobaseRadiusM,
@@ -29,7 +29,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     (1.380649e-23 * i.exobaseTemperatureK * i.exobaseRadiusM);
   return { jeansParameter: l, callerLowLambdaReview: l < i.callerReviewLambda };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -59,6 +59,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          jeansParameter: { type: "number" },
+          callerLowLambdaReview: { type: "boolean" },
+        },
+        required: ["jeansParameter", "callerLowLambdaReview"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
