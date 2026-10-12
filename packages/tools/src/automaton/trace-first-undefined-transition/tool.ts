@@ -7,13 +7,13 @@ export type Input = Readonly<{
   start: string;
   symbols: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "transitionsJson", label: "transitionsJson", kind: "string" },
   { id: "start", label: "start", kind: "string" },
   { id: "symbols", label: "symbols", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.transitions(i.transitionsJson);
   const trace = H.trace(t, i.start, i.symbols);
@@ -33,12 +33,34 @@ export const example = {
   output: { result: { undefinedAt: 1, state: "b", symbol: "y" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["DFA First Undefined Transition Finder"],
+    collections: ["data", "learn"],
+    fields: ["automaton"],
+    keywords: [],
+  },
   id: "automaton/trace-first-undefined-transition",
   title: "DFA First Undefined Transition Finder",
   description:
     "Locate the first undefined transition in a supplied partial deterministic input trace, retaining state and symbol or null when complete.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          undefinedAt: { anyOf: [{ type: "number" }, { type: "null" }] },
+          state: { type: "string" },
+          symbol: { anyOf: [{ type: "string" }, { type: "null" }] },
+        },
+        required: ["undefinedAt", "state", "symbol"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
