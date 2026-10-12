@@ -5,12 +5,12 @@ export type Input = Readonly<{
   readonly initialCount: number;
   readonly finalCount: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "initialCount", label: "Initial count", kind: "number" },
   { id: "finalCount", label: "Final count", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.initialCount, "initial");
   positive(i.finalCount, "final");
   return {
@@ -18,7 +18,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       Math.log2(i.finalCount) - Math.log2(i.initialCount),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -37,6 +37,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { signedCountEquivalentGenerations: { type: "number" } },
+        required: ["signedCountEquivalentGenerations"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
