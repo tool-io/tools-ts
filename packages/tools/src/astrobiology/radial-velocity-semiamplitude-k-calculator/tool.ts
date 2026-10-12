@@ -16,7 +16,7 @@ export type Input = Readonly<{
   readonly inclinationDegrees: number;
   readonly eccentricity: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "periodSeconds", label: "Period seconds", kind: "number" },
   { id: "planetMassKg", label: "Planet mass kg", kind: "number" },
@@ -24,7 +24,7 @@ const fields = [
   { id: "inclinationDegrees", label: "Inclination degrees", kind: "number" },
   { id: "eccentricity", label: "Eccentricity", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.periodSeconds, "period");
   nonnegative(i.planetMassKg, "planet");
   positive(i.starMassKg, "star");
@@ -39,7 +39,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       Math.sqrt(1 - i.eccentricity ** 2),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -64,6 +64,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { semiAmplitudeMPerS: { type: "number" } },
+        required: ["semiAmplitudeMPerS"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
