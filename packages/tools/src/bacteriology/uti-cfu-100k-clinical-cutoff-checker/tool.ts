@@ -4,21 +4,18 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, nonnegative } from "../batch53-shared.js";
 
 export type Input = Readonly<{ cfuPerMl: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "cfuPerMl", label: "Cfu per ml", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   nonnegative(i.cfuPerMl, "count");
   return {
     atOrAboveHistorical100000: i.cfuPerMl >= 100000,
     diagnosis: "not-established",
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -39,6 +36,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          atOrAboveHistorical100000: { type: "boolean" },
+          diagnosis: { type: "string" },
+        },
+        required: ["atOrAboveHistorical100000", "diagnosis"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
