@@ -12,14 +12,14 @@ export type Input = Readonly<{
   readonly orbitSemimajorAu: number;
   readonly distanceParsecs: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "planetMassKg", label: "Planet mass kg", kind: "number" },
   { id: "starMassKg", label: "Star mass kg", kind: "number" },
   { id: "orbitSemimajorAu", label: "Orbit semimajor au", kind: "number" },
   { id: "distanceParsecs", label: "Distance parsecs", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.planetMassKg, "planet");
   positive(i.starMassKg, "star");
   positive(i.orbitSemimajorAu, "axis");
@@ -31,7 +31,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       i.distanceParsecs,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -55,6 +55,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { angularSemimajorMicroarcsec: { type: "number" } },
+        required: ["angularSemimajorMicroarcsec"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
