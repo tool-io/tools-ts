@@ -7,13 +7,13 @@ export type Input = Readonly<{
   start: string;
   symbols: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "transitionsJson", label: "transitionsJson", kind: "string" },
   { id: "start", label: "start", kind: "string" },
   { id: "symbols", label: "symbols", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.transitions(i.transitionsJson);
   const trace = H.trace(t, i.start, i.symbols);
@@ -32,12 +32,33 @@ export const example = {
   output: { result: { counts: [1, 1], undefinedAt: null } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["DFA Transition Occurrence Counts"],
+    collections: ["data", "learn"],
+    fields: ["automaton"],
+    keywords: [],
+  },
   id: "automaton/transition-occurrence-counts",
   title: "DFA Transition Occurrence Counts",
   description:
     "Count supplied transition occurrence use along a deterministic symbol trace, retaining unused transitions and first undefined input evidence.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          counts: { type: "array", items: { type: "number" } },
+          undefinedAt: { anyOf: [{ type: "number" }, { type: "null" }] },
+        },
+        required: ["counts", "undefinedAt"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
