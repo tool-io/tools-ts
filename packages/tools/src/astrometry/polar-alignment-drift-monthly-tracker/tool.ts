@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly observedMonthlyDriftArcminutes: number;
   readonly elapsedMonths: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "initialErrorArcminutes",
@@ -20,7 +20,7 @@ const fields = [
   },
   { id: "elapsedMonths", label: "Elapsed months", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.elapsedMonths, "months");
   return {
     projectedSignedErrorArcminutes:
@@ -28,7 +28,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       i.observedMonthlyDriftArcminutes * i.elapsedMonths,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -51,6 +51,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { projectedSignedErrorArcminutes: { type: "number" } },
+        required: ["projectedSignedErrorArcminutes"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
