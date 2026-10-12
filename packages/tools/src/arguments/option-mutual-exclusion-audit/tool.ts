@@ -5,12 +5,12 @@ export type Input = Readonly<{
   present: readonly string[];
   groupsJson: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "present", label: "present", kind: "stringList" },
   { id: "groupsJson", label: "groupsJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.arr(i.groupsJson).map((x) => {
     H.check(Array.isArray(x));
@@ -30,12 +30,43 @@ export const example = {
   output: { result: { violations: [{ index: 0, names: ["a", "b"] }] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Option Mutual Exclusion Audit"],
+    collections: ["encode-decode"],
+    fields: ["arguments"],
+    keywords: [],
+  },
   id: "arguments/option-mutual-exclusion-audit",
   title: "Option Mutual Exclusion Audit",
   description:
     "Audit caller-declared mutually exclusive option groups against explicit present names, not shell or argv syntax.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          violations: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                names: { type: "array", items: { type: "string" } },
+              },
+              required: ["index", "names"],
+            },
+          },
+        },
+        required: ["violations"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
