@@ -4,14 +4,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, positive, angle } from "../batch53-shared.js";
 
 export type Input = Readonly<{ ph: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "ph", label: "Ph", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   angle(i.ph, "pH", 0, 14);
   return {
     below44: i.ph < 4.4,
@@ -24,7 +21,7 @@ const compute = (
           : "intermediate",
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -49,6 +46,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          below44: { type: "boolean" },
+          atOrAbove62: { type: "boolean" },
+          interpretation: { type: "string" },
+        },
+        required: ["below44", "atOrAbove62", "interpretation"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
