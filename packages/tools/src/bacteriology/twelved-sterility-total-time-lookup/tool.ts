@@ -4,7 +4,7 @@ import { validateInput, finish, positive } from "../batch52-shared.js";
 export type Input = Readonly<{
   readonly callerValidatedDecimalReductionMinutes: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerValidatedDecimalReductionMinutes",
@@ -12,13 +12,13 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.callerValidatedDecimalReductionMinutes, "D");
   return {
     conditionalTwelveDMinutes: 12 * i.callerValidatedDecimalReductionMinutes,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -37,6 +37,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalTwelveDMinutes: { type: "number" } },
+        required: ["conditionalTwelveDMinutes"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
