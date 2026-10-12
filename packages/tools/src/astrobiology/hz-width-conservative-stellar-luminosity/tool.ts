@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly callerRunawayGreenhouseFlux: number;
   readonly callerMaximumGreenhouseFlux: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "luminositySolar", label: "Luminosity solar", kind: "number" },
   {
@@ -25,7 +25,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.luminositySolar, "luminosity");
   positive(i.callerRunawayGreenhouseFlux, "inner flux");
   positive(i.callerMaximumGreenhouseFlux, "outer flux");
@@ -35,7 +35,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     b = Math.sqrt(i.luminositySolar / i.callerMaximumGreenhouseFlux);
   return { innerAu: a, outerAu: b, widthAu: b - a };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -58,6 +58,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          innerAu: { type: "number" },
+          outerAu: { type: "number" },
+          widthAu: { type: "number" },
+        },
+        required: ["innerAu", "outerAu", "widthAu"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
