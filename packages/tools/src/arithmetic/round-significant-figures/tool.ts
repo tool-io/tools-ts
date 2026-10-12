@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly actualFiniteNumber: number;
   readonly actualSignificantDigits: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualFiniteNumber", label: "Actual finite number", kind: "number" },
   {
@@ -15,10 +15,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   bounded(input.actualSignificantDigits, "digits", 1, 15);
   const text = input.actualFiniteNumber.toPrecision(
       input.actualSignificantDigits,
@@ -26,10 +23,7 @@ const compute = (
     v = Number(text);
   return { roundedValue: v, roundedSignificantText: text };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -48,6 +42,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          roundedValue: { type: "number" },
+          roundedSignificantText: { type: "string" },
+        },
+        required: ["roundedValue", "roundedSignificantText"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
