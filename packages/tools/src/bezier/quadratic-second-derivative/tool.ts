@@ -5,12 +5,12 @@ export type Input = Readonly<{
   points: readonly (readonly number[])[];
   t: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "points", label: "points", kind: "matrix" },
   { id: "t", label: "t", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.curve(i.points, 2);
   return H.finish({
@@ -29,12 +29,34 @@ export const example = {
   output: { result: { value: [0, -4] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Quadratic Bezier Second Derivative",
+      "Bezier curves",
+      "geometry",
+    ],
+    collections: ["data", "learn"],
+    fields: ["bezier", "Bezier curves", "geometry"],
+    keywords: ["Bezier curves", "geometry"],
+  },
   id: "bezier/quadratic-second-derivative",
   title: "Quadratic Bezier Second Derivative",
   description:
     "Finite planar Bezier control points in supplied order, unit parameter t; evaluate second derivative using De Casteljau arithmetic, not a screen-space or arc-length parameter.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "array", items: { type: "number" } } },
+        required: ["value"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
