@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ timestamp: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "timestamp", kind: "string", label: "timestamp" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const m = /^(\d{2,6}):([0-5]\d):([0-5]\d)[.,](\d{3})(?![\s\S])/.exec(
     i.timestamp,
@@ -30,7 +30,19 @@ export const tool = createSimpleTool({
   description:
     "Parse a strict caption HH:MM:SS.mmm or comma timestamp into integer milliseconds; hours may exceed 23, no sign or frame notation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { milliseconds: { type: "number" } },
+        required: ["milliseconds"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
