@@ -8,22 +8,19 @@ export type Input = Readonly<{
   observationKnown: boolean;
   controlValid: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "clot", label: "Clot", kind: "boolean" },
   { id: "observationKnown", label: "Observation known", kind: "boolean" },
   { id: "controlValid", label: "Control valid", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   return {
     assayObservation: observation(i.observationKnown, i.clot, i.controlValid),
     diagnosticConclusion: "not-established",
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -47,6 +44,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          assayObservation: { type: "string" },
+          diagnosticConclusion: { type: "string" },
+        },
+        required: ["assayObservation", "diagnosticConclusion"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
