@@ -6,12 +6,12 @@ export type Input = Readonly<{
   candidates: readonly string[];
   ballotsJson: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "candidates", label: "candidates", kind: "stringList" },
   { id: "ballotsJson", label: "ballotsJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(H.unique(i.candidates).length === i.candidates.length);
   const b = H.arr(i.ballotsJson).map((v) => {
@@ -37,12 +37,49 @@ export const example = {
   output: { result: { unknown: [], unused: ["c"] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Ballot Candidate Occurrence Coverage Audit",
+      "voting",
+      "elections",
+    ],
+    collections: ["data", "learn"],
+    fields: ["ballot", "voting", "elections"],
+    keywords: ["voting", "elections"],
+  },
   id: "ballot/candidate-occurrence-coverage-audit",
   title: "Ballot Candidate Occurrence Coverage Audit",
   description:
     "Explicit supplied candidate IDs and finite ballot observations only; no voter authenticity, eligibility, audit certification or election-result guarantee. Audit unknown ballot candidate occurrences separately from candidates never observed, retaining all occurrence positions.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          unknown: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                position: { type: "number" },
+                candidate: { type: "string" },
+              },
+              required: ["index", "position", "candidate"],
+            },
+          },
+          unused: { type: "array", items: { type: "string" } },
+        },
+        required: ["unknown", "unused"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
