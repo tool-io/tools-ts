@@ -8,7 +8,7 @@ export type Input = Readonly<{
   height: number;
   turns: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "x", kind: "integer", label: "x" },
   { id: "y", kind: "integer", label: "y" },
@@ -16,7 +16,7 @@ const fields = [
   { id: "height", kind: "integer", label: "height" },
   { id: "turns", kind: "integer", label: "turns" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.width, 1, 1e6);
   H.int(i.height, 1, 1e6);
@@ -43,7 +43,24 @@ export const tool = createSimpleTool({
   description:
     "Apply signed clockwise quarter turns to zero-based board coordinates, retaining swapped rectangular dimensions; positive y points downward.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          x: { type: "number" },
+          y: { type: "number" },
+          width: { type: "number" },
+          height: { type: "number" },
+        },
+        required: ["x", "y", "width", "height"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
