@@ -145,6 +145,29 @@ export const daylightTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Daylight result",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          daylightMinutes: { type: "number" },
+          solarNoonLocalMinutes: { type: "number" },
+          status: { type: "string" },
+          sunriseLocalMinutes: {
+            anyOf: [{ type: "number" }, { type: "null" }],
+          },
+          sunsetLocalMinutes: { anyOf: [{ type: "number" }, { type: "null" }] },
+          theoreticalSunshineMinutes: { type: "number" },
+        },
+        required: [
+          "daylightMinutes",
+          "solarNoonLocalMinutes",
+          "status",
+          "sunriseLocalMinutes",
+          "sunsetLocalMinutes",
+          "theoreticalSunshineMinutes",
+        ],
+      },
     },
   ],
   title: "Sunrise, Sunset, and Daylight Calculator",
