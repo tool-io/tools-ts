@@ -5,12 +5,12 @@ export type Input = Readonly<{
   optionsJson: string;
   positionals: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "optionsJson", label: "optionsJson", kind: "string" },
   { id: "positionals", label: "positionals", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.records(i.optionsJson).map((v) => {
     const name = H.str(v.name);
@@ -33,12 +33,30 @@ export const example = {
   output: { result: { arguments: ["--x=a b", "--quiet", "--", "-file"] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Option Record Argument Vector Formatter"],
+    collections: ["encode-decode"],
+    fields: ["arguments"],
+    keywords: [],
+  },
   id: "arguments/option-record-argv-formatter",
   title: "Option Record Argument Vector Formatter",
   description:
     "Format explicit option records and positional tokens into a literal argv vector using attached values and an end marker; not a shell command string.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { arguments: { type: "array", items: { type: "string" } } },
+        required: ["arguments"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
