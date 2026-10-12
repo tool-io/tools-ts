@@ -8,14 +8,14 @@ export type Input = Readonly<{
   alphabet: readonly string[];
   accepting: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "transitionsJson", label: "transitionsJson", kind: "string" },
   { id: "states", label: "states", kind: "stringList" },
   { id: "alphabet", label: "alphabet", kind: "stringList" },
   { id: "accepting", label: "accepting", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.transitions(i.transitionsJson);
   H.dfa(i.states, i.alphabet, t);
@@ -37,12 +37,33 @@ export const example = {
   output: { result: { coaccessible: ["b", "a"], dead: ["c"] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["DFA Dead State Partitioner"],
+    collections: ["data", "learn"],
+    fields: ["automaton"],
+    keywords: [],
+  },
   id: "automaton/state-dead-partition",
   title: "DFA Dead State Partitioner",
   description:
     "Compute finite declared automaton reverse reachability from explicit accepting states and its declared-state complement; no minimization or language equivalence claim.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          coaccessible: { type: "array", items: { type: "string" } },
+          dead: { type: "array", items: { type: "string" } },
+        },
+        required: ["coaccessible", "dead"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
