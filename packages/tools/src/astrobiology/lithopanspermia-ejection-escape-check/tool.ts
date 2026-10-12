@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly independentlyMeasuredEjectionSpeedMetersPerSecond: number;
   readonly callerVerifiedEscapeSpeedMetersPerSecond: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredEjectionSpeedMetersPerSecond",
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.independentlyMeasuredEjectionSpeedMetersPerSecond, "speed");
   positive(input.callerVerifiedEscapeSpeedMetersPerSecond, "escape");
   const r =
@@ -31,7 +31,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     input.callerVerifiedEscapeSpeedMetersPerSecond;
   return { statedSpeedToEscapeRatio: r, meetsIdealEscapeSpeed: r >= 1 };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -58,6 +58,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          statedSpeedToEscapeRatio: { type: "number" },
+          meetsIdealEscapeSpeed: { type: "boolean" },
+        },
+        required: ["statedSpeedToEscapeRatio", "meetsIdealEscapeSpeed"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
