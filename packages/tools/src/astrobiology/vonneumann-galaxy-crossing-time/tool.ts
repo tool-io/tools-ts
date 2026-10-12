@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly stops: number;
   readonly replicationYearsPerStop: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "galaxyDistanceLightyears",
@@ -29,7 +29,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.galaxyDistanceLightyears, "distance");
   positive(i.shipFractionOfC, "speed");
   fraction(i.shipFractionOfC, "speed");
@@ -42,7 +42,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       1e6,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -66,6 +66,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { serialCrossingMillionYears: { type: "number" } },
+        required: ["serialCrossingMillionYears"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
