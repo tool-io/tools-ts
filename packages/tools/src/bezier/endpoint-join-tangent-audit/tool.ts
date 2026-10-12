@@ -6,13 +6,13 @@ export type Input = Readonly<{
   right: readonly (readonly number[])[];
   tolerance: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", label: "left", kind: "matrix" },
   { id: "right", label: "right", kind: "matrix" },
   { id: "tolerance", label: "tolerance", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.curve(i.left);
   H.curve(i.right);
@@ -57,12 +57,39 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Bezier Endpoint Join Tangent Audit",
+      "Bezier curves",
+      "geometry",
+    ],
+    collections: ["data", "learn"],
+    fields: ["bezier", "Bezier curves", "geometry"],
+    keywords: ["Bezier curves", "geometry"],
+  },
   id: "bezier/endpoint-join-tangent-audit",
   title: "Bezier Endpoint Join Tangent Audit",
   description:
     "Audit actual degree-scaled endpoint tangents for C1 equality and same-direction alignment separately; zero tangents yield unknown alignment, position continuity is not assumed.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          leftTangent: { type: "array", items: { type: "number" } },
+          rightTangent: { type: "array", items: { type: "number" } },
+          c1: { type: "boolean" },
+          directionAligned: { anyOf: [{ type: "boolean" }, { type: "null" }] },
+        },
+        required: ["leftTangent", "rightTangent", "c1", "directionAligned"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
