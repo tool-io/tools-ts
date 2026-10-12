@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ bits: string; stride: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bits", kind: "string", label: "bits" },
   { id: "stride", kind: "integer", label: "stride" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.bits(i.bits);
   H.int(i.stride, 1, 128);
@@ -30,7 +30,19 @@ export const tool = createSimpleTool({
   description:
     "Deinterleave bit positions into explicitly many modulo-stride lanes, retaining empty lanes and incomplete final groups.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { lanes: { type: "array", items: { type: "string" } } },
+        required: ["lanes"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
