@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly independentlyMeasuredProtectedSheetThicknessMm: number;
   readonly callerAuthorizedSheetCountCap: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredUsableStackDepthMm",
@@ -30,7 +30,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.independentlyMeasuredUsableStackDepthMm, "depth");
   positive(input.independentlyMeasuredProtectedSheetThicknessMm, "thickness");
   bounded(input.callerAuthorizedSheetCountCap, "cap", 0, 1000000);
@@ -46,7 +46,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -74,6 +74,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalDepthOnlyWholeSheetCount: { type: "number" },
+          conditionalCombinedSheetCap: { type: "number" },
+        },
+        required: [
+          "conditionalDepthOnlyWholeSheetCount",
+          "conditionalCombinedSheetCap",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
