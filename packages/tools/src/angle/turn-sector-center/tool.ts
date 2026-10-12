@@ -6,13 +6,13 @@ export type Input = Readonly<{
   sectors: number;
   origin: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "index", label: "index", kind: "integer" },
   { id: "sectors", label: "sectors", kind: "integer" },
   { id: "origin", label: "origin", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.sectors, 1, 1e6);
   H.int(i.index, 0, i.sectors - 1);
@@ -23,12 +23,30 @@ export const example = {
   output: { result: { turn: 0.375 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Turn Sector Center", "angles", "mathematics"],
+    collections: ["data", "learn"],
+    fields: ["angle", "angles", "mathematics"],
+    keywords: ["angles", "mathematics"],
+  },
   id: "angle/turn-sector-center",
   title: "Turn Sector Center",
   description:
     "Return the normalized center turn of an explicit zero-based equal angular sector; origin is a caller coordinate.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { turn: { type: "number" } },
+        required: ["turn"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
