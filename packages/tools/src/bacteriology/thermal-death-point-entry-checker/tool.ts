@@ -15,7 +15,7 @@ export type Input = Readonly<{
   readonly holdMinutes: number;
   readonly callerControlsValid: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "testedTemperaturesC",
@@ -34,7 +34,7 @@ const fields = [
     kind: "boolean",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   aligned(i.testedTemperaturesC, i.viableDetectedFlags, "observations");
   strictlyIncreasing(i.testedTemperaturesC, "temperatures", 1);
   binary(i.viableDetectedFlags, "detected");
@@ -54,7 +54,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     actualSterilityEstablished: false,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -85,6 +85,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          allControlsValid: { type: "boolean" },
+          observedFirstNoDetectionTemperatureC: { type: "number" },
+          noDetectionObserved: { type: "boolean" },
+          actualSterilityEstablished: { type: "boolean" },
+        },
+        required: [
+          "allControlsValid",
+          "observedFirstNoDetectionTemperatureC",
+          "noDetectionObserved",
+          "actualSterilityEstablished",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
