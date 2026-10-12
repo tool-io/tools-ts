@@ -6,12 +6,12 @@ export type Input = Readonly<{
   transitionsJson: string;
   states: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "transitionsJson", label: "transitionsJson", kind: "string" },
   { id: "states", label: "states", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.transitions(i.transitionsJson);
   H.check(H.unique(i.states).length === i.states.length);
@@ -41,12 +41,55 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["DFA Transition Target State Coverage"],
+    collections: ["data", "learn"],
+    fields: ["automaton"],
+    keywords: [],
+  },
   id: "automaton/transition-target-state-coverage",
   title: "DFA Transition Target State Coverage",
   description:
     "Audit transition source and target state references independently against an explicit declared state bank; no inferred undeclared states.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          missing: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                state: { type: "string" },
+              },
+              required: ["index", "state"],
+            },
+          },
+          missingSources: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                state: { type: "string" },
+              },
+              required: ["index", "state"],
+            },
+          },
+        },
+        required: ["missing", "missingSources"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
