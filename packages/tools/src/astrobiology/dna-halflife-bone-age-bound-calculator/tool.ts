@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly halfLifeYears: number;
   readonly minimumSurvivingFraction: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "halfLifeYears", label: "Half life years", kind: "number" },
   {
@@ -19,7 +19,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.halfLifeYears, "half-life");
   positive(i.minimumSurvivingFraction, "fraction");
   fraction(i.minimumSurvivingFraction, "fraction");
@@ -28,7 +28,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       -i.halfLifeYears * Math.log2(i.minimumSurvivingFraction),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -47,6 +47,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalMaximumYears: { type: "number" } },
+        required: ["conditionalMaximumYears"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
