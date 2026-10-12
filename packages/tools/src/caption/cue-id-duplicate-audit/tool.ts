@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ cuesJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "cuesJson", kind: "string", label: "cuesJson" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.cueRecords(i.cuesJson);
   return H.finish({ duplicates: H.duplicates(r, (v) => v.id) });
@@ -24,7 +24,32 @@ export const tool = createSimpleTool({
   description:
     "Audit repeated explicit caption IDs without assuming IDs are unique, renumbering or dropping observations.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          duplicates: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                key: { type: "string" },
+                indexes: { type: "array", items: { type: "number" } },
+              },
+              required: ["key", "indexes"],
+            },
+          },
+        },
+        required: ["duplicates"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
