@@ -5,12 +5,12 @@ export type Input = Readonly<{
   from: readonly number[];
   to: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "from", kind: "numberList", label: "from" },
   { id: "to", kind: "numberList", label: "to" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.from.length === 3 && i.to.length === 3);
   [i.from, i.to].forEach((r) => {
@@ -31,7 +31,19 @@ export const tool = createSimpleTool({
   description:
     "Compute exact infinite-grid hex distance between validated cube coordinates; no obstacles, terrain or pathfinding.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { distance: { type: "number" } },
+        required: ["distance"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
