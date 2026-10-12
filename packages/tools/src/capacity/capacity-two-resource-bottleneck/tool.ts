@@ -7,14 +7,14 @@ export type Input = Readonly<{
   perItemA: number;
   perItemB: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "resourceA", kind: "number", label: "resourceA" },
   { id: "resourceB", kind: "number", label: "resourceB" },
   { id: "perItemA", kind: "number", label: "perItemA" },
   { id: "perItemB", kind: "number", label: "perItemB" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.resourceA >= 0 && i.resourceB >= 0);
   H.positive(i.perItemA);
@@ -37,7 +37,22 @@ export const tool = createSimpleTool({
   description:
     "Count complete items under two explicitly positive per-item resource requirements, retaining tied limiting resources.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          items: { type: "number" },
+          bottlenecks: { type: "array", items: { type: "string" } },
+        },
+        required: ["items", "bottlenecks"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
