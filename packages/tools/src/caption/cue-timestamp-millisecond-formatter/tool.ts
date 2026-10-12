@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ milliseconds: number; comma: boolean }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "milliseconds", kind: "integer", label: "milliseconds" },
   { id: "comma", kind: "boolean", label: "comma" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.milliseconds, 0, 1e12);
   const h = Math.floor(i.milliseconds / 3600000),
@@ -35,7 +35,19 @@ export const tool = createSimpleTool({
   description:
     "Format nonnegative integer caption milliseconds with a caller-selected decimal separator; no frame-rate or cue-file serialization.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { timestamp: { type: "string" } },
+        required: ["timestamp"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
