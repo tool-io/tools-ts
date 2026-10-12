@@ -6,13 +6,13 @@ export type Input = Readonly<{
   recordBytes: number;
   headerBytes: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bytes", kind: "integer", label: "bytes" },
   { id: "recordBytes", kind: "integer", label: "recordBytes" },
   { id: "headerBytes", kind: "integer", label: "headerBytes" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.bytes);
   H.int(i.recordBytes, 1);
@@ -33,7 +33,22 @@ export const tool = createSimpleTool({
   description:
     "Budget fixed-byte records after an explicit buffer header reservation, retaining unused tail bytes.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          records: { type: "number" },
+          remainder: { type: "number" },
+        },
+        required: ["records", "remainder"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
