@@ -2,13 +2,13 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ cuesJson: string; start: number; end: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "cuesJson", kind: "string", label: "cuesJson" },
   { id: "start", kind: "integer", label: "start" },
   { id: "end", kind: "integer", label: "end" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.cueRecords(i.cuesJson);
   H.int(i.start, 0, 1e12);
@@ -34,7 +34,29 @@ export const tool = createSimpleTool({
   description:
     "Extract ID/text observations from cues with positive half-open overlap of an explicit media window; not a transcript alignment model.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          texts: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: { id: { type: "string" }, text: { type: "string" } },
+              required: ["id", "text"],
+            },
+          },
+        },
+        required: ["texts"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
