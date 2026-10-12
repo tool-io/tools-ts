@@ -6,13 +6,13 @@ export type Input = Readonly<{
   mask: string;
   replacement: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bits", kind: "string", label: "bits" },
   { id: "mask", kind: "string", label: "mask" },
   { id: "replacement", kind: "string", label: "replacement" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   [i.bits, i.mask, i.replacement].forEach(H.bits);
   H.check(
@@ -35,7 +35,19 @@ export const tool = createSimpleTool({
   description:
     "Replace bit positions only where an equal-width explicit mask has one; preserve all unmasked source positions.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { bits: { type: "string" } },
+        required: ["bits"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
