@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly callerCandidateMinimumKelvin: number;
   readonly callerCandidateMaximumKelvin: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyFittedInfraredTemperatureKelvin",
@@ -29,7 +29,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.independentlyFittedInfraredTemperatureKelvin, "temperature");
   positive(input.callerCandidateMinimumKelvin, "minimum");
   if (input.callerCandidateMaximumKelvin < input.callerCandidateMinimumKelvin)
@@ -42,7 +42,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
         input.callerCandidateMaximumKelvin,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -65,6 +65,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { withinCallerTemperatureWindow: { type: "boolean" } },
+        required: ["withinCallerTemperatureWindow"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
