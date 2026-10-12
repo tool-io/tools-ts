@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ costs: readonly number[]; budget: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "costs", kind: "numberList", label: "costs" },
   { id: "budget", kind: "number", label: "budget" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.budget >= 0 && i.costs.every((x) => x >= 0));
   let used = 0,
@@ -41,7 +41,24 @@ export const tool = createSimpleTool({
   description:
     "Admit only the longest affordable ordered prefix of explicit per-item costs; after the first failure later cheaper items are not skipped into admission.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          admittedCount: { type: "number" },
+          used: { type: "number" },
+          remainder: { type: "number" },
+          rejectedIndexes: { type: "array", items: { type: "number" } },
+        },
+        required: ["admittedCount", "used", "remainder", "rejectedIndexes"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
