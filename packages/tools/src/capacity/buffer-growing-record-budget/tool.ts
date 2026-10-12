@@ -6,13 +6,13 @@ export type Input = Readonly<{
   initialBytes: number;
   growthBytes: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "budget", kind: "integer", label: "budget" },
   { id: "initialBytes", kind: "integer", label: "initialBytes" },
   { id: "growthBytes", kind: "integer", label: "growthBytes" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.budget);
   H.int(i.initialBytes, 1);
@@ -42,7 +42,23 @@ export const tool = createSimpleTool({
   description:
     "Admit complete records whose byte sizes grow arithmetically from an explicit initial size; bounded to 128 records with signed residual budget evidence.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          records: { type: "number" },
+          used: { type: "number" },
+          remainder: { type: "number" },
+        },
+        required: ["records", "used", "remainder"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
