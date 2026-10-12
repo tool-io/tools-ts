@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly observedSolarDeclinationDegrees: number;
   readonly referenceDeclinationDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedSolarDeclinationDegrees",
@@ -18,7 +18,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   angle(i.observedSolarDeclinationDegrees, "declination", -90, 90);
   angle(i.referenceDeclinationDegrees, "reference", -90, 90);
   return {
@@ -26,7 +26,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       i.observedSolarDeclinationDegrees - i.referenceDeclinationDegrees,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -48,6 +48,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { signedNorthSouthDegrees: { type: "number" } },
+        required: ["signedNorthSouthDegrees"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
