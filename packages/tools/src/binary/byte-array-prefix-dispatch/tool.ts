@@ -5,12 +5,12 @@ export type Input = Readonly<{
   bytes: readonly number[];
   prefixesJson: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bytes", kind: "numberList", label: "bytes" },
   { id: "prefixesJson", kind: "string", label: "prefixesJson" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.bytes(i.bytes);
   const r = H.arr(i.prefixesJson).map((v) => {
@@ -38,7 +38,22 @@ export const tool = createSimpleTool({
   description:
     "Match caller-supplied byte prefixes and expose all longest ties; no protocol-identification guarantee.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          matchingIndexes: { type: "array", items: { type: "number" } },
+          longestIndexes: { type: "array", items: { type: "number" } },
+        },
+        required: ["matchingIndexes", "longestIndexes"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
