@@ -6,13 +6,13 @@ export type Input = Readonly<{
   minimum: number;
   maximum: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "cuesJson", kind: "string", label: "cuesJson" },
   { id: "minimum", kind: "integer", label: "minimum" },
   { id: "maximum", kind: "integer", label: "maximum" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.cueRecords(i.cuesJson);
   H.int(i.minimum);
@@ -40,7 +40,33 @@ export const tool = createSimpleTool({
   description:
     "Audit cue duration against caller-supplied inclusive millisecond bounds; no universal readability or accessibility claim.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          violations: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                id: { type: "string" },
+                duration: { type: "number" },
+              },
+              required: ["index", "id", "duration"],
+            },
+          },
+        },
+        required: ["violations"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
