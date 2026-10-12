@@ -6,13 +6,13 @@ export type Input = Readonly<{
   numerator: number;
   denominator: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "cuesJson", kind: "string", label: "cuesJson" },
   { id: "numerator", kind: "integer", label: "numerator" },
   { id: "denominator", kind: "integer", label: "denominator" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.cueRecords(i.cuesJson);
   H.int(i.numerator, 1, 1e6);
@@ -52,7 +52,34 @@ export const tool = createSimpleTool({
   description:
     "Scale cue endpoints by a positive rational factor exactly; reject fractional milliseconds rather than inventing a rounding policy.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          cues: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                id: { type: "string" },
+                text: { type: "string" },
+                start: { type: "number" },
+                end: { type: "number" },
+              },
+              required: ["id", "text", "start", "end"],
+            },
+          },
+        },
+        required: ["cues"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
