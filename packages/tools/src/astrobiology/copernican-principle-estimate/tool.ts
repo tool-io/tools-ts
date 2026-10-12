@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly emergenceWindowYears: number;
   readonly activeLifetimeYears: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "eligibleSystems", label: "Eligible systems", kind: "number" },
   {
@@ -21,7 +21,7 @@ const fields = [
   },
   { id: "activeLifetimeYears", label: "Active lifetime years", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.eligibleSystems, "systems");
   positive(i.emergenceWindowYears, "window");
   nonnegative(i.activeLifetimeYears, "lifetime");
@@ -31,7 +31,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       Math.min(1, i.activeLifetimeYears / i.emergenceWindowYears),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -54,6 +54,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { toyExpectedActiveSystems: { type: "number" } },
+        required: ["toyExpectedActiveSystems"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
