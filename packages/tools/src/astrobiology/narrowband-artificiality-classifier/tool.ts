@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly independentlyMeasuredChannelWidthHz: number;
   readonly callerNarrowFeatureLimitHz: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredNarrowbandWidthHz",
@@ -29,7 +29,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.independentlyMeasuredNarrowbandWidthHz, "width");
   positive(input.independentlyMeasuredChannelWidthHz, "resolution");
   positive(input.callerNarrowFeatureLimitHz, "limit");
@@ -42,7 +42,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.independentlyMeasuredChannelWidthHz,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -67,6 +67,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          meetsCallerWidthScreen: { type: "boolean" },
+          spectrallyResolved: { type: "boolean" },
+        },
+        required: ["meetsCallerWidthScreen", "spectrallyResolved"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
