@@ -8,7 +8,7 @@ export type Input = Readonly<{
   elapsed: number;
   cost: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "capacity", kind: "number", label: "capacity" },
   { id: "tokens", kind: "number", label: "tokens" },
@@ -16,7 +16,7 @@ const fields = [
   { id: "elapsed", kind: "number", label: "elapsed" },
   { id: "cost", kind: "number", label: "cost" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.capacity >= 0 &&
@@ -44,7 +44,23 @@ export const tool = createSimpleTool({
   description:
     "Apply one deterministic token-bucket event with bounded refill and all-or-nothing consumption; no real-time state, burst guarantee or distributed synchronization.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          available: { type: "number" },
+          admitted: { type: "boolean" },
+          tokens: { type: "number" },
+        },
+        required: ["available", "admitted", "tokens"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
