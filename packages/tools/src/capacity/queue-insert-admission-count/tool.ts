@@ -6,13 +6,13 @@ export type Input = Readonly<{
   occupied: number;
   requested: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "capacity", kind: "integer", label: "capacity" },
   { id: "occupied", kind: "integer", label: "occupied" },
   { id: "requested", kind: "integer", label: "requested" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.capacity);
   H.int(i.occupied, 0, i.capacity);
@@ -34,7 +34,23 @@ export const tool = createSimpleTool({
   description:
     "Apply one bounded queue insertion request, retaining admitted/rejected counts and new occupancy; no concurrency or queueing forecast.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          admitted: { type: "number" },
+          rejected: { type: "number" },
+          occupied: { type: "number" },
+        },
+        required: ["admitted", "rejected", "occupied"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
