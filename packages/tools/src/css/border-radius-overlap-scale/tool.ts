@@ -7,14 +7,14 @@ export type Input = Readonly<{
   horizontal: readonly number[];
   vertical: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "width", label: "width", kind: "number" },
   { id: "height", label: "height", kind: "number" },
   { id: "horizontal", label: "horizontal", kind: "numberList" },
   { id: "vertical", label: "vertical", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.positive(i.width);
   H.positive(i.height);
@@ -46,12 +46,34 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["CSS Border Radius Overlap Scale", "CSS", "web development"],
+    collections: ["encode-decode"],
+    fields: ["CSS", "web development"],
+    keywords: ["CSS", "web development"],
+  },
   id: "css/border-radius-overlap-scale",
   title: "CSS Border Radius Overlap Scale",
   description:
     "Apply the CSS uniform corner-radius overlap reduction to explicit resolved numeric dimensions; zero-radius sums impose no constraint.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          scale: { type: "number" },
+          horizontal: { type: "array", items: { type: "number" } },
+          vertical: { type: "array", items: { type: "number" } },
+        },
+        required: ["scale", "horizontal", "vertical"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
