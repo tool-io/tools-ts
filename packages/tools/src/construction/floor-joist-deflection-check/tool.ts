@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly callerApplicableLowerBound: number;
   readonly callerApplicableUpperBound: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualMeasuredValue", label: "Actual measured value", kind: "number" },
   {
@@ -20,7 +20,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (input.callerApplicableLowerBound > input.callerApplicableUpperBound)
     simpleError("bounds", "Actual ordered independently applicable bounds.");
   return {
@@ -33,7 +33,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.callerApplicableUpperBound - input.actualMeasuredValue,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -62,6 +62,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          withinCallerBounds: { type: "boolean" },
+          signedLowerMargin: { type: "number" },
+          signedUpperMargin: { type: "number" },
+        },
+        required: [
+          "withinCallerBounds",
+          "signedLowerMargin",
+          "signedUpperMargin",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
