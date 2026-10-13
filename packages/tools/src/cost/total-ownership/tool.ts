@@ -112,6 +112,27 @@ export const totalOwnershipCostTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Ownership cost",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          averageAnnualCost: { type: "number" },
+          currency: { type: "string" },
+          purchasePrice: { type: "number" },
+          recurringCosts: { type: "number" },
+          resaleValue: { type: "number" },
+          totalCost: { type: "number" },
+        },
+        required: [
+          "averageAnnualCost",
+          "currency",
+          "purchasePrice",
+          "recurringCosts",
+          "resaleValue",
+          "totalCost",
+        ],
+      },
     },
   ],
   calculate: (input) => {
