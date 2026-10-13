@@ -4,7 +4,7 @@ import { validateInput, finish, sum, simpleError } from "../batch52-shared.js";
 export type Input = Readonly<{
   readonly observedElevationsM: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedElevationsM",
@@ -12,7 +12,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   if (i.observedElevationsM.length < 2)
     simpleError("elevations", "At least two fixes.");
   return {
@@ -23,7 +23,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -42,6 +42,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { cumulativeDescentM: { type: "number" } },
+        required: ["cumulativeDescentM"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
