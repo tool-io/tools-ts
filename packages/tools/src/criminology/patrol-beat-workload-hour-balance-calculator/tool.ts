@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly observedServiceWorkloadHours: readonly number[];
   readonly independentlyAvailableStaffHours: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "callerBeatIds", label: "Caller beat ids", kind: "stringList" },
   {
@@ -27,7 +27,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.callerBeatIds, "beats");
   aligned(input.callerBeatIds, input.observedServiceWorkloadHours, "workload");
   aligned(input.callerBeatIds, input.independentlyAvailableStaffHours, "hours");
@@ -43,7 +43,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     observedTotalWorkloadHours: sum(input.observedServiceWorkloadHours),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -71,6 +71,22 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedAvailableMinusObservedHours: {
+            type: "array",
+            items: { type: "number" },
+          },
+          observedTotalWorkloadHours: { type: "number" },
+        },
+        required: [
+          "signedAvailableMinusObservedHours",
+          "observedTotalWorkloadHours",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
