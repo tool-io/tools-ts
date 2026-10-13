@@ -90,6 +90,29 @@ export const employeeCostTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Employee cost",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          annualCost: { type: "number" },
+          benefitsAndOverhead: { type: "number" },
+          costPerHour: { type: "number" },
+          currency: { type: "string" },
+          monthlyCost: { type: "number" },
+          payrollTaxCost: { type: "number" },
+          salary: { type: "number" },
+        },
+        required: [
+          "annualCost",
+          "benefitsAndOverhead",
+          "costPerHour",
+          "currency",
+          "monthlyCost",
+          "payrollTaxCost",
+          "salary",
+        ],
+      },
     },
   ],
   calculate: (input) => {
