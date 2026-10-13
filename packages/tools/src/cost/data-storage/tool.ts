@@ -102,6 +102,27 @@ export const dataStorageCostTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Storage cost",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          currency: { type: "string" },
+          monthlyTotal: { type: "number" },
+          operationsCost: { type: "number" },
+          retrievalCost: { type: "number" },
+          storageCost: { type: "number" },
+          yearlyTotal: { type: "number" },
+        },
+        required: [
+          "currency",
+          "monthlyTotal",
+          "operationsCost",
+          "retrievalCost",
+          "storageCost",
+          "yearlyTotal",
+        ],
+      },
     },
   ],
   calculate: (input) => {
