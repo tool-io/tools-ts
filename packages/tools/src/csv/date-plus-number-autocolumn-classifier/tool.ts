@@ -7,11 +7,11 @@ import {
   daysBetween,
 } from "../batch52-shared.js";
 export type Input = Readonly<{ readonly cells: readonly string[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "cells", label: "Cells", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   if (!i.cells.length) simpleError("cells", "Nonempty observed cells.");
   const kinds = i.cells.map((s) => {
     if (s === "") return "empty";
@@ -41,7 +41,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
           : "mixed",
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -62,6 +62,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          cellKinds: { type: "array", items: { type: "string" } },
+          columnKind: { type: "string" },
+        },
+        required: ["cellKinds", "columnKind"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
