@@ -6,13 +6,13 @@ export type Input = Readonly<{
   readonly radiusBMm: number;
   readonly centerDistanceMm: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "radiusAMm", label: "Radius a mm", kind: "number" },
   { id: "radiusBMm", label: "Radius b mm", kind: "number" },
   { id: "centerDistanceMm", label: "Center distance mm", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   [i.radiusAMm, i.radiusBMm, i.centerDistanceMm].forEach((v) =>
     nonnegative(v, "geometry"),
   );
@@ -24,7 +24,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     tangent: i.centerDistanceMm === i.radiusAMm + i.radiusBMm,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -43,6 +43,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          positiveAreaOverlap: { type: "boolean" },
+          tangent: { type: "boolean" },
+        },
+        required: ["positiveAreaOverlap", "tangent"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
