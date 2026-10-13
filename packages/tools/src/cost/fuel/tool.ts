@@ -62,7 +62,23 @@ export const fuelCostTool = createSimpleTool({
     { id: "price", kind: "number", label: "Fuel price", minimum: 0 },
   ],
   outputs: [
-    { format: "cost/fuel", id: "result", kind: "object", label: "Fuel cost" },
+    {
+      format: "cost/fuel",
+      id: "result",
+      kind: "object",
+      label: "Fuel cost",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          currency: { type: "string" },
+          fuelAmount: { type: "number" },
+          fuelUnit: { type: "string" },
+          totalCost: { type: "number" },
+        },
+        required: ["currency", "fuelAmount", "fuelUnit", "totalCost"],
+      },
+    },
   ],
   calculate: (input) => {
     const result = calculateFuelCost(
