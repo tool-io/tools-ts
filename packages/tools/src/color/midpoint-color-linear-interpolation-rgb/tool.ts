@@ -5,19 +5,19 @@ export type Input = Readonly<{
   readonly encodedRgbA: readonly number[];
   readonly encodedRgbB: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "encodedRgbA", label: "Encoded rgb a", kind: "numberList" },
   { id: "encodedRgbB", label: "Encoded rgb b", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   rgb3(i.encodedRgbA);
   rgb3(i.encodedRgbB);
   return {
     encodedRgbMidpoint: i.encodedRgbA.map((v, j) => (v + i.encodedRgbB[j]) / 2),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -36,6 +36,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          encodedRgbMidpoint: { type: "array", items: { type: "number" } },
+        },
+        required: ["encodedRgbMidpoint"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
