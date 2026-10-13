@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly records: number;
   readonly maximumCollisionProbability: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "records", label: "Records", kind: "number" },
   {
@@ -19,7 +19,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.records, "records", 2, 1000000000);
   if (i.maximumCollisionProbability <= 0 || i.maximumCollisionProbability >= 1)
     simpleError("probability", "Strict 0<p<1.");
@@ -35,7 +35,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -54,6 +54,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { unionBoundMinimumBits: { type: "number" } },
+        required: ["unionBoundMinimumBits"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
