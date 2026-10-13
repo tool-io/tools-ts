@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly annotatedArticleFeatures: readonly string[];
   readonly annotatedNounFeatures: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "annotatedArticleFeatures",
@@ -19,7 +19,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     input.annotatedArticleFeatures.length !== 3 ||
     input.annotatedNounFeatures.length !== 3
@@ -48,7 +48,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     mismatchedFeatureIndices: indices,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -70,6 +70,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          featureAgreement: { type: "boolean" },
+          mismatchedFeatureIndices: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: ["featureAgreement", "mismatchedFeatureIndices"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
