@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly signedRelativeLongitudeDegrees: number;
   readonly callerAngularToleranceDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "signedRelativeLongitudeDegrees",
@@ -18,7 +18,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   angle(i.signedRelativeLongitudeDegrees, "longitude", -360, 360);
   angle(i.callerAngularToleranceDegrees, "tolerance", 0, 180);
   const delta = ((i.signedRelativeLongitudeDegrees - -60 + 540) % 360) - 180;
@@ -28,7 +28,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       Math.abs(delta) <= i.callerAngularToleranceDegrees,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -55,6 +55,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedAngularDepartureDegrees: { type: "number" },
+          withinCallerAngularTolerance: { type: "boolean" },
+        },
+        required: [
+          "signedAngularDepartureDegrees",
+          "withinCallerAngularTolerance",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
