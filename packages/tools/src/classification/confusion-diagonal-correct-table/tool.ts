@@ -5,12 +5,12 @@ export type Input = Readonly<{
   matrix: readonly (readonly number[])[];
   labels: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "matrix", label: "matrix", kind: "matrix" },
   { id: "labels", label: "labels", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.confusion(i.matrix, i.labels);
   return H.finish({
@@ -37,12 +37,48 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Confusion Diagonal Correct Table",
+      "machine learning",
+      "classification metrics",
+    ],
+    collections: ["ai", "data"],
+    fields: ["classification", "machine learning", "classification metrics"],
+    keywords: ["machine learning", "classification metrics"],
+  },
   id: "classification/confusion-diagonal-correct-table",
   title: "Confusion Diagonal Correct Table",
   description:
     "Explicit nonnegative square confusion table with unique supplied labels, actual rows and predicted columns; report diagonal correct counts separately by label and in total; not a normalized accuracy estimate.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          correct: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                label: { type: "string" },
+                value: { type: "number" },
+              },
+              required: ["label", "value"],
+            },
+          },
+          totalCorrect: { type: "number" },
+        },
+        required: ["correct", "totalCorrect"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
