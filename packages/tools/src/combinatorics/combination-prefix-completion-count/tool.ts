@@ -6,13 +6,13 @@ export type Input = Readonly<{
   size: number;
   count: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "prefix", kind: "numberList", label: "prefix" },
   { id: "size", kind: "integer", label: "size" },
   { id: "count", kind: "integer", label: "count" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.combo(i.prefix, i.size);
   H.int(i.count, i.prefix.length, i.size);
@@ -31,7 +31,19 @@ export const tool = createSimpleTool({
   description:
     "Count exact sorted-combination completions of an explicit prefix, excluding earlier skipped indexes; does not enumerate or assume the prefix is arbitrary subset membership.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { completions: { type: "string" } },
+        required: ["completions"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
