@@ -6,13 +6,13 @@ export type Input = Readonly<{
   predicted: readonly string[];
   labels: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actual", label: "actual", kind: "stringList" },
   { id: "predicted", label: "predicted", kind: "stringList" },
   { id: "labels", label: "labels", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({
     labels: [...i.labels],
@@ -36,12 +36,40 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Label Pair Confusion Table",
+      "machine learning",
+      "classification metrics",
+    ],
+    collections: ["ai", "data"],
+    fields: ["classification", "machine learning", "classification metrics"],
+    keywords: ["machine learning", "classification metrics"],
+  },
   id: "classification/label-pair-confusion-table",
   title: "Label Pair Confusion Table",
   description:
     "Build an occurrence-count multiclass confusion table over explicit actual/predicted label observations with a caller-ordered complete label universe; unknown labels reject, no identity coercion.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          labels: { type: "array", items: { type: "string" } },
+          matrix: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["labels", "matrix"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
