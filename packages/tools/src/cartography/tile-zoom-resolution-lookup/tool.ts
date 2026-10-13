@@ -12,13 +12,13 @@ export type Input = Readonly<{
   readonly latitudeDegrees: number;
   readonly tilePixels: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "zoom", label: "Zoom", kind: "number" },
   { id: "latitudeDegrees", label: "Latitude degrees", kind: "number" },
   { id: "tilePixels", label: "Tile pixels", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.zoom, "zoom", 0, 30);
   bounded(i.tilePixels, "pixels", 1, 8192);
   angle(i.latitudeDegrees, "latitude", -85.0511287798066, 85.0511287798066);
@@ -28,7 +28,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       (i.tilePixels * 2 ** i.zoom),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -47,6 +47,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { approximateGroundMetersPerPixel: { type: "number" } },
+        required: ["approximateGroundMetersPerPixel"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
