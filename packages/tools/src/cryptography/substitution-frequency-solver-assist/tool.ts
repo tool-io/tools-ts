@@ -5,12 +5,12 @@ export type Input = Readonly<{
   readonly ciphertext: string;
   readonly callerPlaintextRank: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "ciphertext", label: "Ciphertext", kind: "string" },
   { id: "callerPlaintextRank", label: "Caller plaintext rank", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   if (
     !/^[A-Z]{26}$(?![\s\S])/.test(i.callerPlaintextRank) ||
     new Set(i.callerPlaintextRank).size !== 26
@@ -36,7 +36,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -94,6 +94,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedAlphabetCounts: { type: "array", items: { type: "number" } },
+          observedCipherRank: { type: "string" },
+          hypothesisPairs: { type: "array", items: { type: "string" } },
+        },
+        required: [
+          "observedAlphabetCounts",
+          "observedCipherRank",
+          "hypothesisPairs",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
