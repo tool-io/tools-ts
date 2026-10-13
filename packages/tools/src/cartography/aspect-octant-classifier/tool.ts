@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly eastwardUphillGradient: number;
   readonly northwardUphillGradient: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "eastwardUphillGradient",
@@ -18,7 +18,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   if (i.eastwardUphillGradient === 0 && i.northwardUphillGradient === 0)
     return { downhillAspect: "flat", bearingDegrees: 0 };
   const a =
@@ -32,7 +32,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     bearingDegrees: a,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -51,6 +51,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          downhillAspect: { type: "string" },
+          bearingDegrees: { type: "number" },
+        },
+        required: ["downhillAspect", "bearingDegrees"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
