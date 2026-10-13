@@ -7,7 +7,7 @@ export type Input = Readonly<{
   readonly annotatedComparisonEndExclusive: number;
   readonly totalLineTokens: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "annotatedComparisonStartToken",
@@ -21,7 +21,7 @@ const fields = [
   },
   { id: "totalLineTokens", label: "Total line tokens", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.totalLineTokens, "tokens", 1, 1000000);
   bounded(
     input.annotatedComparisonStartToken,
@@ -45,7 +45,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.totalLineTokens,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -70,6 +70,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          annotatedComparisonTokens: { type: "number" },
+          comparisonTokenFraction: { type: "number" },
+        },
+        required: ["annotatedComparisonTokens", "comparisonTokenFraction"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
