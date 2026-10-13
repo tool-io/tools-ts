@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly obstacleDistancesM: readonly number[];
   readonly obstacleHeightsM: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "observerHeightM", label: "Observer height m", kind: "number" },
   { id: "targetHeightM", label: "Target height m", kind: "number" },
@@ -26,7 +26,7 @@ const fields = [
   },
   { id: "obstacleHeightsM", label: "Obstacle heights m", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.targetDistanceM, "target distance");
   aligned(i.obstacleDistancesM, i.obstacleHeightsM, "obstacles");
   i.obstacleDistancesM.forEach((v) => {
@@ -42,7 +42,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     obstructingIndices: margins.flatMap((v, j) => (v <= 0 ? [j] : [])),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -67,6 +67,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedClearanceM: { type: "array", items: { type: "number" } },
+          obstructingIndices: { type: "array", items: { type: "number" } },
+        },
+        required: ["signedClearanceM", "obstructingIndices"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
