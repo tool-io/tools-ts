@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish } from "../batch52-shared.js";
 export type Input = Readonly<{ readonly storedHash: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "storedHash", label: "Stored hash", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   const prefix = i.storedHash.split("$")[1] ?? "";
   const label =
     (
@@ -27,7 +27,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     hashVerified: false,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -52,6 +52,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          prefixFamily: { type: "string" },
+          lockedMarker: { type: "boolean" },
+          hashVerified: { type: "boolean" },
+        },
+        required: ["prefixFamily", "lockedMarker", "hashVerified"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
