@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly northingDigits: string;
   readonly targetDigitsPerAxis: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "eastingDigits", label: "Easting digits", kind: "string" },
   { id: "northingDigits", label: "Northing digits", kind: "string" },
@@ -21,7 +21,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.targetDigitsPerAxis, "digits", 1, 5);
   for (const s of [i.eastingDigits, i.northingDigits])
     if (!/^\d+$(?![\s\S])/.test(s) || s.length > i.targetDigitsPerAxis)
@@ -34,7 +34,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     normalizedNorthing: i.northingDigits.padStart(i.targetDigitsPerAxis, "0"),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -53,6 +53,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          normalizedEasting: { type: "string" },
+          normalizedNorthing: { type: "string" },
+        },
+        required: ["normalizedEasting", "normalizedNorthing"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
