@@ -5,12 +5,12 @@ export type Input = Readonly<{
   digits: readonly number[];
   radices: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "digits", kind: "numberList", label: "digits" },
   { id: "radices", kind: "numberList", label: "radices" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const index = H.radixEncode(i.digits, i.radices) - 1n;
   return H.finish({
@@ -30,7 +30,26 @@ export const tool = createSimpleTool({
   description:
     "Advance a mixed-radix tuple backward by one in most-significant-first lexicographic order, returning null rather than wrapping at boundaries.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          digits: {
+            anyOf: [
+              { type: "array", items: { type: "number" } },
+              { type: "null" },
+            ],
+          },
+        },
+        required: ["digits"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
