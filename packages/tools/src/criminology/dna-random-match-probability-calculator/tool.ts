@@ -15,7 +15,7 @@ export type Input = Readonly<{
   readonly alleleAFrequencies: readonly number[];
   readonly alleleBFrequencies: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "genotypeKinds", label: "Genotype kinds", kind: "stringList" },
   {
@@ -29,7 +29,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   aligned(i.genotypeKinds, i.alleleAFrequencies, "loci");
   aligned(i.genotypeKinds, i.alleleBFrequencies, "loci");
   if (!i.genotypeKinds.length)
@@ -68,7 +68,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     identityDetermined: false,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -98,6 +98,26 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          locusGenotypeProbabilities: {
+            type: "array",
+            items: { type: "number" },
+          },
+          log10RandomMatchProbability: { type: "number" },
+          randomMatchProbability: { type: "number" },
+          identityDetermined: { type: "boolean" },
+        },
+        required: [
+          "locusGenotypeProbabilities",
+          "log10RandomMatchProbability",
+          "randomMatchProbability",
+          "identityDetermined",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
