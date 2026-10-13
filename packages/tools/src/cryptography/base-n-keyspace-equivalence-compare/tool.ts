@@ -7,14 +7,14 @@ export type Input = Readonly<{
   readonly alphabetB: number;
   readonly lengthB: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "alphabetA", label: "Alphabet a", kind: "number" },
   { id: "lengthA", label: "Length a", kind: "number" },
   { id: "alphabetB", label: "Alphabet b", kind: "number" },
   { id: "lengthB", label: "Length b", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.alphabetA, "alphabet", 2, 1000000);
   bounded(i.alphabetB, "alphabet", 2, 1000000);
   bounded(i.lengthA, "length", 0, 1000000);
@@ -24,7 +24,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       i.lengthA * Math.log2(i.alphabetA) - i.lengthB * Math.log2(i.alphabetB),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -43,6 +43,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { signedBitsDifference: { type: "number" } },
+        required: ["signedBitsDifference"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
