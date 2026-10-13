@@ -90,7 +90,30 @@ export const apiCostTool = createSimpleTool({
     },
   ],
   outputs: [
-    { format: "cost/api", id: "result", kind: "object", label: "API cost" },
+    {
+      format: "cost/api",
+      id: "result",
+      kind: "object",
+      label: "API cost",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          billableRequests: { type: "number" },
+          currency: { type: "string" },
+          monthlyTotal: { type: "number" },
+          requestCost: { type: "number" },
+          transferCost: { type: "number" },
+        },
+        required: [
+          "billableRequests",
+          "currency",
+          "monthlyTotal",
+          "requestCost",
+          "transferCost",
+        ],
+      },
+    },
   ],
   calculate: (input) => {
     const result = calculateApiCost(
