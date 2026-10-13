@@ -12,12 +12,12 @@ export type Input = Readonly<{
   readonly yearNumber: number;
   readonly era: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "yearNumber", label: "Year number", kind: "number" },
   { id: "era", label: "Era", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.yearNumber, "year", 1, 9999);
   const a = pick(
       input.era,
@@ -32,7 +32,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     yearWithinOlympiad: (offset % 4) + 1,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -51,6 +51,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          olympiad: { type: "number" },
+          yearWithinOlympiad: { type: "number" },
+        },
+        required: ["olympiad", "yearWithinOlympiad"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
