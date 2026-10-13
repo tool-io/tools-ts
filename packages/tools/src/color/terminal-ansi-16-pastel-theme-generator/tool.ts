@@ -11,12 +11,12 @@ export type Input = Readonly<{
   readonly callerAnsi16Srgb: readonly (readonly number[])[];
   readonly whiteBlendFraction: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "callerAnsi16Srgb", label: "Caller ansi16 srgb", kind: "matrix" },
   { id: "whiteBlendFraction", label: "White blend fraction", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   if (i.callerAnsi16Srgb.length !== 16)
     simpleError("palette", "Exactly 16 caller ANSI slots.");
   i.callerAnsi16Srgb.forEach(rgb3);
@@ -27,7 +27,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -87,6 +87,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          pastelSrgbSlots: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["pastelSrgbSlots"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
