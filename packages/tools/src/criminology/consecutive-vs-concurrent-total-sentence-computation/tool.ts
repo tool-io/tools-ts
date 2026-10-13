@@ -10,7 +10,7 @@ import {
 export type Input = Readonly<{
   readonly independentlyAuthorizedSentenceDurationsDays: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyAuthorizedSentenceDurationsDays",
@@ -18,7 +18,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (!input.independentlyAuthorizedSentenceDurationsDays.length)
     simpleError("sentences", "Nonempty actual authorized durations.");
   input.independentlyAuthorizedSentenceDurationsDays.forEach((v) =>
@@ -33,7 +33,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -57,6 +57,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalAllConcurrentDays: { type: "number" },
+          conditionalAllConsecutiveDays: { type: "number" },
+        },
+        required: [
+          "conditionalAllConcurrentDays",
+          "conditionalAllConsecutiveDays",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
