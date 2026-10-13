@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly independentlyAttestedApplicableQuorum: number;
   readonly observedEligibleAttendees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyAttestedApplicableQuorum",
@@ -19,7 +19,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.independentlyAttestedApplicableQuorum, "quorum", 1, 1000000);
   bounded(input.observedEligibleAttendees, "attendees", 0, 1000000);
   return {
@@ -31,7 +31,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.independentlyAttestedApplicableQuorum,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -53,6 +53,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedAttendeeMargin: { type: "number" },
+          meetsCallerQuorum: { type: "boolean" },
+        },
+        required: ["signedAttendeeMargin", "meetsCallerQuorum"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
