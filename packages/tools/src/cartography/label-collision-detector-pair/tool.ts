@@ -5,19 +5,19 @@ export type Input = Readonly<{
   readonly labelABoundsMm: readonly number[];
   readonly labelBBoundsMm: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "labelABoundsMm", label: "Label a bounds mm", kind: "numberList" },
   { id: "labelBBoundsMm", label: "Label b bounds mm", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   const a = box(i.labelABoundsMm),
     b = box(i.labelBBoundsMm),
     w = Math.max(0, Math.min(a[2], b[2]) - Math.max(a[0], b[0])),
     h = Math.max(0, Math.min(a[3], b[3]) - Math.max(a[1], b[1]));
   return { overlapAreaMm2: w * h, positiveAreaCollision: w * h > 0 };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -36,6 +36,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          overlapAreaMm2: { type: "number" },
+          positiveAreaCollision: { type: "boolean" },
+        },
+        required: ["overlapAreaMm2", "positiveAreaCollision"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
