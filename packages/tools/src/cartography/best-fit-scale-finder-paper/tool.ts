@@ -7,7 +7,7 @@ export type Input = Readonly<{
   readonly usablePaperWidthMm: number;
   readonly usablePaperHeightMm: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "groundWidthM", label: "Ground width m", kind: "number" },
   { id: "groundHeightM", label: "Ground height m", kind: "number" },
@@ -18,7 +18,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   [
     i.groundWidthM,
     i.groundHeightM,
@@ -32,7 +32,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -56,6 +56,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { minimumFitDenominator: { type: "number" } },
+        required: ["minimumFitDenominator"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
