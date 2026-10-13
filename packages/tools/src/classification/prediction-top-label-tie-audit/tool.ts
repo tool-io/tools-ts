@@ -5,12 +5,12 @@ export type Input = Readonly<{
   scores: readonly (readonly number[])[];
   labels: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "scores", label: "scores", kind: "matrix" },
   { id: "labels", label: "labels", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.scoreRows(i.scores, i.labels);
   return H.finish({
@@ -42,12 +42,48 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Prediction Top Label Tie Audit",
+      "machine learning",
+      "classification metrics",
+    ],
+    collections: ["ai", "data"],
+    fields: ["classification", "machine learning", "classification metrics"],
+    keywords: ["machine learning", "classification metrics"],
+  },
   id: "classification/prediction-top-label-tie-audit",
   title: "Prediction Top Label Tie Audit",
   description:
     "Audit every maximum-probability label tie from explicit nonnegative unit-sum score rows; retain all ties and do not assume calibration or pick a hidden winner.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          predictions: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                score: { type: "number" },
+                labels: { type: "array", items: { type: "string" } },
+                tied: { type: "boolean" },
+              },
+              required: ["score", "labels", "tied"],
+            },
+          },
+        },
+        required: ["predictions"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
