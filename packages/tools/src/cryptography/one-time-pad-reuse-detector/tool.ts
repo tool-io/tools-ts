@@ -13,13 +13,13 @@ export type Input = Readonly<{
   readonly startOffsets: readonly number[];
   readonly byteLengths: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "padIds", label: "Pad ids", kind: "stringList" },
   { id: "startOffsets", label: "Start offsets", kind: "numberList" },
   { id: "byteLengths", label: "Byte lengths", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   aligned(i.padIds, i.startOffsets, "ranges");
   aligned(i.padIds, i.byteLengths, "ranges");
   i.padIds.forEach((v) => {
@@ -44,7 +44,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     reuseDetected: overlaps.length > 0,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -69,6 +69,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          overlappingRequestPairs: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          reuseDetected: { type: "boolean" },
+        },
+        required: ["overlappingRequestPairs", "reuseDetected"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
