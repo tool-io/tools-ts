@@ -95,6 +95,25 @@ export const roadTripCostTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Road trip cost",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          costPerTraveler: { type: "number" },
+          currency: { type: "string" },
+          fuelCost: { type: "number" },
+          tollsAndParking: { type: "number" },
+          totalCost: { type: "number" },
+        },
+        required: [
+          "costPerTraveler",
+          "currency",
+          "fuelCost",
+          "tollsAndParking",
+          "totalCost",
+        ],
+      },
     },
   ],
   calculate: (input) => {
