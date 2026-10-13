@@ -82,6 +82,25 @@ export const heatingCostTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Heating cost",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          currency: { type: "string" },
+          energyKwh: { type: "number" },
+          fixedCharges: { type: "number" },
+          totalCost: { type: "number" },
+          usageCost: { type: "number" },
+        },
+        required: [
+          "currency",
+          "energyKwh",
+          "fixedCharges",
+          "totalCost",
+          "usageCost",
+        ],
+      },
     },
   ],
   calculate: (input) => {
