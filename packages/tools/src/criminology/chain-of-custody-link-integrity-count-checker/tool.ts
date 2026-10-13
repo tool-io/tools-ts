@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly independentlyRecordedReceiverIds: readonly string[];
   readonly transferEvidenceKnownFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "callerTransferIds", label: "Caller transfer ids", kind: "stringList" },
   {
@@ -33,7 +33,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.callerTransferIds, "transfers");
   for (const v of [
     input.independentlyRecordedSenderIds,
@@ -71,7 +71,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -97,6 +97,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          brokenKnownLinkIndices: { type: "array", items: { type: "number" } },
+          unknownAdjacentLinkIndices: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: ["brokenKnownLinkIndices", "unknownAdjacentLinkIndices"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
