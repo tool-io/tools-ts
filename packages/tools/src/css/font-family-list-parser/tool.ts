@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ text: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "text", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({
     families: H.lexicalSplit(i.text, ",").map((v) => {
@@ -28,12 +28,30 @@ export const example = {
   output: { result: { families: ["A B", "serif"] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["CSS Font Family List Parser", "CSS", "web development"],
+    collections: ["encode-decode"],
+    fields: ["CSS", "web development"],
+    keywords: ["CSS", "web development"],
+  },
   id: "css/font-family-list-parser",
   title: "CSS Font Family List Parser",
   description:
     "Parse a restricted CSS font-family list of JSON-double-quoted strings or valid unescaped ASCII identifier sequences; CSS escape and single-quoted syntax is intentionally rejected.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { families: { type: "array", items: { type: "string" } } },
+        required: ["families"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
