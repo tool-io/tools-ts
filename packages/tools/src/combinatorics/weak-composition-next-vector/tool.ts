@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ vector: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "vector", kind: "numberList", label: "vector" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.vector.length > 0);
   i.vector.forEach((x) => H.int(x, 0, 128));
@@ -30,7 +30,26 @@ export const tool = createSimpleTool({
   description:
     "Return the next lexicographically increasing weak composition of the same total and length, preserving nonnegative integer parts; null marks the final vector.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          vector: {
+            anyOf: [
+              { type: "array", items: { type: "integer" } },
+              { type: "null" },
+            ],
+          },
+        },
+        required: ["vector"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
