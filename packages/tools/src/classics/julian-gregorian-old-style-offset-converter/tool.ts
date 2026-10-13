@@ -7,13 +7,13 @@ export type Input = Readonly<{
   readonly julianMonth: number;
   readonly julianDay: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "julianYear", label: "Julian year", kind: "number" },
   { id: "julianMonth", label: "Julian month", kind: "number" },
   { id: "julianDay", label: "Julian day", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.julianYear, "year", 1, 9998);
   bounded(input.julianMonth, "month", 1, 12);
   const lengths = [
@@ -49,7 +49,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       Math.floor(adjusted / 100) - Math.floor(adjusted / 400) - 2,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -73,6 +73,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          prolepticGregorianDate: { type: "string" },
+          gregorianMinusJulianNominalDays: { type: "number" },
+        },
+        required: ["prolepticGregorianDate", "gregorianMinusJulianNominalDays"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
