@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish } from "../batch52-shared.js";
 export type Input = Readonly<{ readonly physicalLines: readonly string[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "physicalLines", label: "Physical lines", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   const parity = i.physicalLines.map(
     (s) => [...s].filter((c) => c === String.fromCharCode(34)).length % 2,
   );
@@ -24,7 +24,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     unclosedQuoteAtEnd: open,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -49,6 +49,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          oddQuotePhysicalLineIndices: {
+            type: "array",
+            items: { type: "number" },
+          },
+          quoteStateTransitionLineIndices: {
+            type: "array",
+            items: { type: "number" },
+          },
+          unclosedQuoteAtEnd: { type: "boolean" },
+        },
+        required: [
+          "oddQuotePhysicalLineIndices",
+          "quoteStateTransitionLineIndices",
+          "unclosedQuoteAtEnd",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
