@@ -5,17 +5,17 @@ export type Input = Readonly<{
   readonly actualSpotColors: number;
   readonly callerMaximum: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualSpotColors", label: "Actual spot colors", kind: "number" },
   { id: "callerMaximum", label: "Caller maximum", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.actualSpotColors, "colors", 0, 1000);
   bounded(i.callerMaximum, "maximum", 0, 1000);
   return { budgetExceeded: i.actualSpotColors > i.callerMaximum };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -34,6 +34,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { budgetExceeded: { type: "boolean" } },
+        required: ["budgetExceeded"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
