@@ -2,15 +2,15 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, angle } from "../batch52-shared.js";
 export type Input = Readonly<{ readonly altitudeDegrees: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "altitudeDegrees", label: "Altitude degrees", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   angle(i.altitudeDegrees, "altitude", 0, 90);
   return { matchesIllustrativeDefault45: i.altitudeDegrees === 45 };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -29,6 +29,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { matchesIllustrativeDefault45: { type: "boolean" } },
+        required: ["matchesIllustrativeDefault45"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
