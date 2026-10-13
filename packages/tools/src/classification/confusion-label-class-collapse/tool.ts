@@ -6,13 +6,13 @@ export type Input = Readonly<{
   labels: readonly string[];
   groups: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "matrix", label: "matrix", kind: "matrix" },
   { id: "labels", label: "labels", kind: "stringList" },
   { id: "groups", label: "groups", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.confusion(i.matrix, i.labels);
   H.check(i.groups.length === i.labels.length);
@@ -46,12 +46,40 @@ export const example = {
   output: { result: { labels: ["all"], matrix: [[4]] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Confusion Label Class Collapse",
+      "machine learning",
+      "classification metrics",
+    ],
+    collections: ["ai", "data"],
+    fields: ["classification", "machine learning", "classification metrics"],
+    keywords: ["machine learning", "classification metrics"],
+  },
   id: "classification/confusion-label-class-collapse",
   title: "Confusion Label Class Collapse",
   description:
     "Explicit nonnegative square confusion table with unique supplied labels, actual rows and predicted columns; collapse both axes through explicit per-label group names, summing every count exactly once; first group appearance defines output order.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          labels: { type: "array", items: { type: "string" } },
+          matrix: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["labels", "matrix"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
