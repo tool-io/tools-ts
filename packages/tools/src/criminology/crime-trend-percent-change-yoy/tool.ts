@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly previousMatchedRecordedCount: number;
   readonly currentMatchedRecordedCount: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "previousMatchedRecordedCount",
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.previousMatchedRecordedCount, "previous");
   nonnegative(input.currentMatchedRecordedCount, "current");
   return {
@@ -34,7 +34,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.previousMatchedRecordedCount,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -53,6 +53,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { signedRecordedChangePercent: { type: "number" } },
+        required: ["signedRecordedChangePercent"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
