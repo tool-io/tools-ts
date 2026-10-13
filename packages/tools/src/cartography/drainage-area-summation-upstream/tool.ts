@@ -12,18 +12,18 @@ export type Input = Readonly<{
   readonly cellIds: readonly string[];
   readonly cellAreasM2: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "cellIds", label: "Cell ids", kind: "stringList" },
   { id: "cellAreasM2", label: "Cell areas m2", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   aligned(i.cellIds, i.cellAreasM2, "cells");
   unique(i.cellIds, "cells");
   i.cellAreasM2.forEach((v) => positive(v, "area"));
   return { totalUpstreamAreaM2: sum(i.cellAreasM2) };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -42,6 +42,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { totalUpstreamAreaM2: { type: "number" } },
+        required: ["totalUpstreamAreaM2"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
