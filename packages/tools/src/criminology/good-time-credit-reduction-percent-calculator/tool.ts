@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly callerVerifiedSentenceDays: number;
   readonly independentlyAuthorizedGoodTimeDays: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerVerifiedSentenceDays",
@@ -18,7 +18,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.callerVerifiedSentenceDays, "sentence", 1, 1000000);
   bounded(
     input.independentlyAuthorizedGoodTimeDays,
@@ -35,7 +35,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.callerVerifiedSentenceDays,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -62,6 +62,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalRemainingSentenceDays: { type: "number" },
+          authorizedGoodTimePercent: { type: "number" },
+        },
+        required: [
+          "conditionalRemainingSentenceDays",
+          "authorizedGoodTimePercent",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
