@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly glyphAdvanceTotalMm: number;
   readonly characterCount: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pathLengthMm", label: "Path length mm", kind: "number" },
   {
@@ -21,7 +21,7 @@ const fields = [
   },
   { id: "characterCount", label: "Character count", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.pathLengthMm, "path");
   nonnegative(i.glyphAdvanceTotalMm, "advance");
   bounded(i.characterCount, "characters", 2, 1000000);
@@ -30,7 +30,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       (i.pathLengthMm - i.glyphAdvanceTotalMm) / (i.characterCount - 1),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -49,6 +49,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { extraGapMm: { type: "number" } },
+        required: ["extraGapMm"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
