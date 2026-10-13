@@ -7,7 +7,7 @@ export type Input = Readonly<{
   readonly callerPyramidReferenceYearBce: number;
   readonly moonLandingYearCe: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "cleopatraDeathYearBce",
@@ -21,7 +21,7 @@ const fields = [
   },
   { id: "moonLandingYearCe", label: "Moon landing year ce", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.cleopatraDeathYearBce, "death", 1, 9999);
   bounded(
     input.callerPyramidReferenceYearBce,
@@ -38,7 +38,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     nearerYearLabelEvent: p === m ? "tie" : p < m ? "pyramid" : "moon-landing",
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -67,6 +67,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          yearLabelDistanceToPyramid: { type: "number" },
+          yearLabelDistanceToMoonLanding: { type: "number" },
+          nearerYearLabelEvent: { type: "string" },
+        },
+        required: [
+          "yearLabelDistanceToPyramid",
+          "yearLabelDistanceToMoonLanding",
+          "nearerYearLabelEvent",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
