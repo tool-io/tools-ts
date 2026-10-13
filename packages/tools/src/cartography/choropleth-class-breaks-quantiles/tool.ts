@@ -11,12 +11,12 @@ export type Input = Readonly<{
   readonly observedValues: readonly number[];
   readonly classes: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "observedValues", label: "Observed values", kind: "numberList" },
   { id: "classes", label: "Classes", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   if (!i.observedValues.length) simpleError("values", "Nonempty observations.");
   bounded(i.classes, "classes", 1, Math.min(128, i.observedValues.length));
   const a = [...i.observedValues].sort((a, b) => a - b);
@@ -27,7 +27,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     tiesMayCollapseClasses: new Set(a).size < i.classes,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -46,6 +46,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          breaks: { type: "array", items: { type: "number" } },
+          tiesMayCollapseClasses: { type: "boolean" },
+        },
+        required: ["breaks", "tiesMayCollapseClasses"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
