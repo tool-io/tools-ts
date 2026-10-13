@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, pick } from "../batch52-shared.js";
 export type Input = Readonly<{ readonly wordCount: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "wordCount", label: "Word count", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   const bits = pick(
     String(i.wordCount),
     { "12": 128, "15": 160, "18": 192, "21": 224, "24": 256 },
@@ -19,7 +19,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     validMnemonicVerified: false,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -45,6 +45,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          entropyBits: { type: "number" },
+          checksumBits: { type: "number" },
+          totalEncodedBits: { type: "number" },
+          validMnemonicVerified: { type: "boolean" },
+        },
+        required: [
+          "entropyBits",
+          "checksumBits",
+          "totalEncodedBits",
+          "validMnemonicVerified",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
