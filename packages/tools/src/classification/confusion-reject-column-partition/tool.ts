@@ -6,13 +6,13 @@ export type Input = Readonly<{
   labels: readonly string[];
   rejectLabel: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "matrix", label: "matrix", kind: "matrix" },
   { id: "labels", label: "labels", kind: "stringList" },
   { id: "rejectLabel", label: "rejectLabel", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.confusion(i.matrix, i.labels);
   const at = i.labels.indexOf(i.rejectLabel);
@@ -43,12 +43,42 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Confusion Reject Column Partition",
+      "machine learning",
+      "classification metrics",
+    ],
+    collections: ["ai", "data"],
+    fields: ["classification", "machine learning", "classification metrics"],
+    keywords: ["machine learning", "classification metrics"],
+  },
   id: "classification/confusion-reject-column-partition",
   title: "Confusion Reject Column Partition",
   description:
     "Explicit nonnegative square confusion table with unique supplied labels, actual rows and predicted columns; partition one explicit predicted reject column without removing actual rows or relabeling rejected observations as errors.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          actualLabels: { type: "array", items: { type: "string" } },
+          predictedLabels: { type: "array", items: { type: "string" } },
+          accepted: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          rejected: { type: "array", items: { type: "number" } },
+        },
+        required: ["actualLabels", "predictedLabels", "accepted", "rejected"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
