@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly verifiedPressDurationMinutesKnots: readonly number[];
   readonly actualQueryCoordinate: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerVerifiedSource",
@@ -47,7 +47,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   ownReference(
     input.callerVerifiedSource,
     input.callerVerifiedContext,
@@ -64,7 +64,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     asOfDate: input.callerVerifiedAsOfDate,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -99,6 +99,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalInterpolatedValue: { type: "number" },
+          source: { type: "string" },
+          context: { type: "string" },
+          asOfDate: { type: "string" },
+        },
+        required: [
+          "conditionalInterpolatedValue",
+          "source",
+          "context",
+          "asOfDate",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
