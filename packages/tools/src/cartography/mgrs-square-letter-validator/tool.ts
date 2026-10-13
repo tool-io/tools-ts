@@ -10,12 +10,12 @@ export type Input = Readonly<{
   readonly utmZone: number;
   readonly squareLetters: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "utmZone", label: "Utm zone", kind: "number" },
   { id: "squareLetters", label: "Square letters", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.utmZone, "zone", 1, 60);
   if (!/^[A-Z]{2}$(?![\s\S])/.test(i.squareLetters))
     simpleError("square", "Two uppercase letters.");
@@ -27,7 +27,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     fullMgrsPositionValidated: false,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -51,6 +51,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          validUtmSquareLetterInventory: { type: "boolean" },
+          fullMgrsPositionValidated: { type: "boolean" },
+        },
+        required: [
+          "validUtmSquareLetterInventory",
+          "fullMgrsPositionValidated",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
