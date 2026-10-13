@@ -6,13 +6,13 @@ export type Input = Readonly<{
   durations: readonly number[];
   delays: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "properties", label: "properties", kind: "stringList" },
   { id: "durations", label: "durations", kind: "numberList" },
   { id: "delays", label: "delays", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.durations.length > 0 &&
@@ -40,12 +40,44 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["CSS Transition Property Slot Pairing", "CSS", "web development"],
+    collections: ["encode-decode"],
+    fields: ["CSS", "web development"],
+    keywords: ["CSS", "web development"],
+  },
   id: "css/transition-property-slot-pairing",
   title: "CSS Transition Property Slot Pairing",
   description:
     "Pair explicit transition properties with cyclic duration/delay lists; no shorthand parsing, timing interpolation or special all/none expansion.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          slots: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                name: { type: "string" },
+                duration: { type: "number" },
+                delay: { type: "number" },
+              },
+              required: ["name", "duration", "delay"],
+            },
+          },
+        },
+        required: ["slots"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
