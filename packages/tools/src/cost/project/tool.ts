@@ -84,6 +84,27 @@ export const projectCostTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Project cost",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          contingencyCost: { type: "number" },
+          currency: { type: "string" },
+          laborCost: { type: "number" },
+          materialsAndEquipment: { type: "number" },
+          subtotal: { type: "number" },
+          totalCost: { type: "number" },
+        },
+        required: [
+          "contingencyCost",
+          "currency",
+          "laborCost",
+          "materialsAndEquipment",
+          "subtotal",
+          "totalCost",
+        ],
+      },
     },
   ],
   calculate: (input) => {
