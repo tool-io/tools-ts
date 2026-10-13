@@ -5,12 +5,12 @@ export type Input = Readonly<{
   imageLayers: number;
   counts: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "imageLayers", label: "imageLayers", kind: "integer" },
   { id: "counts", label: "counts", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.imageLayers, 0, 128);
   i.counts.forEach((x) => H.int(x, 1, 128));
@@ -38,12 +38,46 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["CSS Background Layer Count Audit", "CSS", "web development"],
+    collections: ["encode-decode"],
+    fields: ["CSS", "web development"],
+    keywords: ["CSS", "web development"],
+  },
   id: "css/background-layer-count-audit",
   title: "CSS Background Layer Count Audit",
   description:
     "Audit background longhand list cycling/truncation against explicit image-layer count; resolved list counts only, no CSS token parsing.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          effective: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                sourceCount: { type: "number" },
+                used: { type: "number" },
+                cycles: { type: "number" },
+                tail: { type: "number" },
+              },
+              required: ["sourceCount", "used", "cycles", "tail"],
+            },
+          },
+          extra: { type: "array", items: { type: "number" } },
+        },
+        required: ["effective", "extra"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
