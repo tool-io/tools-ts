@@ -9,7 +9,7 @@ export type Input = Readonly<{
   readonly observedCriterionFlags: readonly number[];
   readonly criterionKnownFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedCriterionFlags",
@@ -22,7 +22,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   return annotatedChecklist(
     [
       "site access/use permissions established",
@@ -34,7 +34,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     input.criterionKnownFlags,
   );
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -67,6 +67,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          witnessedCriteria: { type: "array", items: { type: "string" } },
+          knownMissingCriteria: { type: "array", items: { type: "string" } },
+          unknownCriteria: { type: "array", items: { type: "string" } },
+        },
+        required: [
+          "witnessedCriteria",
+          "knownMissingCriteria",
+          "unknownCriteria",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
