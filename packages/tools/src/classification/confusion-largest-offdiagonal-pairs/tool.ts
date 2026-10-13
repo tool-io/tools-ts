@@ -5,12 +5,12 @@ export type Input = Readonly<{
   matrix: readonly (readonly number[])[];
   labels: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "matrix", label: "matrix", kind: "matrix" },
   { id: "labels", label: "labels", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.confusion(i.matrix, i.labels);
   const maximum = Math.max(
@@ -41,12 +41,49 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Confusion Largest Offdiagonal Pairs",
+      "machine learning",
+      "classification metrics",
+    ],
+    collections: ["ai", "data"],
+    fields: ["classification", "machine learning", "classification metrics"],
+    keywords: ["machine learning", "classification metrics"],
+  },
   id: "classification/confusion-largest-offdiagonal-pairs",
   title: "Confusion Largest Offdiagonal Pairs",
   description:
     "Explicit nonnegative square confusion table with unique supplied labels, actual rows and predicted columns; return every positive maximum off-diagonal error pair, retaining ties; an error-free table has maximum zero and no invented error pair.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          maximum: { type: "number" },
+          pairs: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                actual: { type: "string" },
+                predicted: { type: "string" },
+                value: { type: "number" },
+              },
+              required: ["actual", "predicted", "value"],
+            },
+          },
+        },
+        required: ["maximum", "pairs"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
