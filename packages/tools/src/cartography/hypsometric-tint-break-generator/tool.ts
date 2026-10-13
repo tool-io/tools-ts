@@ -6,13 +6,13 @@ export type Input = Readonly<{
   readonly maximumElevationM: number;
   readonly bands: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "minimumElevationM", label: "Minimum elevation m", kind: "number" },
   { id: "maximumElevationM", label: "Maximum elevation m", kind: "number" },
   { id: "bands", label: "Bands", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   range([i.minimumElevationM, i.maximumElevationM], "extent");
   bounded(i.bands, "bands", 1, 128);
   return {
@@ -24,7 +24,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -43,6 +43,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          elevationBreaksM: { type: "array", items: { type: "number" } },
+        },
+        required: ["elevationBreaksM"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
