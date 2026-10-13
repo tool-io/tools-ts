@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly prerequisiteIndices: readonly number[];
   readonly dependentIndices: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "itemIds", label: "Item ids", kind: "stringList" },
   {
@@ -16,10 +16,10 @@ const fields = [
   },
   { id: "dependentIndices", label: "Dependent indices", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   return topo(i.itemIds, i.prerequisiteIndices, i.dependentIndices);
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -42,6 +42,14 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          orderedItemIds: { type: "array", items: { type: "string" } },
+        },
+        required: ["orderedItemIds"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
