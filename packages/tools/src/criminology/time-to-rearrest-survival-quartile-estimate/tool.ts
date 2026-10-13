@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly independentlyObservedFollowupTimes: readonly number[];
   readonly independentlyVerifiedRearrestEventFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyObservedFollowupTimes",
@@ -25,7 +25,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.independentlyObservedFollowupTimes,
     input.independentlyVerifiedRearrestEventFlags,
@@ -45,7 +45,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     quartileReachedFlags: q.map((v) => (v >= 0 ? 1 : 0)),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -72,6 +72,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedProductLimitQuartileTimes: {
+            type: "array",
+            items: { type: "number" },
+          },
+          quartileReachedFlags: { type: "array", items: { type: "number" } },
+        },
+        required: ["observedProductLimitQuartileTimes", "quartileReachedFlags"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
