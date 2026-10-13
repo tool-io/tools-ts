@@ -81,7 +81,34 @@ export const waterCostTool = createSimpleTool({
     { id: "fixedCharge", kind: "number", label: "Fixed charge", minimum: 0 },
   ],
   outputs: [
-    { format: "cost/water", id: "result", kind: "object", label: "Water cost" },
+    {
+      format: "cost/water",
+      id: "result",
+      kind: "object",
+      label: "Water cost",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          billableUnits: { type: "number" },
+          currency: { type: "string" },
+          fixedCharge: { type: "number" },
+          totalCost: { type: "number" },
+          usage: { type: "number" },
+          usageCost: { type: "number" },
+          usageUnit: { type: "string" },
+        },
+        required: [
+          "billableUnits",
+          "currency",
+          "fixedCharge",
+          "totalCost",
+          "usage",
+          "usageCost",
+          "usageUnit",
+        ],
+      },
+    },
   ],
   calculate: (input) => {
     const result = calculateWaterCost(
