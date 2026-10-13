@@ -5,12 +5,12 @@ export type Input = Readonly<{
   actual: readonly string[];
   predicted: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actual", label: "actual", kind: "stringList" },
   { id: "predicted", label: "predicted", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.actual.length === i.predicted.length);
   return H.finish({
@@ -28,12 +28,48 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Label Pair Disagreement Selector",
+      "machine learning",
+      "classification metrics",
+    ],
+    collections: ["ai", "data"],
+    fields: ["classification", "machine learning", "classification metrics"],
+    keywords: ["machine learning", "classification metrics"],
+  },
   id: "classification/label-pair-disagreement-selector",
   title: "Label Pair Disagreement Selector",
   description:
     "Select exact actual/predicted label disagreement observations with original indexes, preserving repeated labels; no classification threshold or error severity model.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          disagreements: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                actual: { type: "string" },
+                predicted: { type: "string" },
+              },
+              required: ["index", "actual", "predicted"],
+            },
+          },
+        },
+        required: ["disagreements"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
