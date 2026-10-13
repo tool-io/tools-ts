@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly colorBLab: readonly number[];
   readonly callerMinimumDeltaE76: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "colorALab", label: "Color a lab", kind: "numberList" },
   { id: "colorBLab", label: "Color b lab", kind: "numberList" },
@@ -21,14 +21,14 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   if (i.colorALab.length !== 3 || i.colorBLab.length !== 3)
     simpleError("Lab", "Three actual same-white Lab coordinates.");
   nonnegative(i.callerMinimumDeltaE76, "threshold");
   const d = Math.hypot(...i.colorALab.map((v, j) => v - i.colorBLab[j]));
   return { deltaE76: d, callerConflictFlag: d < i.callerMinimumDeltaE76 };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -51,6 +51,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          deltaE76: { type: "number" },
+          callerConflictFlag: { type: "boolean" },
+        },
+        required: ["deltaE76", "callerConflictFlag"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
