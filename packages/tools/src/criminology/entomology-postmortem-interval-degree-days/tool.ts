@@ -7,7 +7,7 @@ export type Input = Readonly<{
   readonly callerValidatedDevelopmentBaseCelsius: number;
   readonly callerValidatedDevelopmentThresholdDegreeDays: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedBinTemperaturesCelsius",
@@ -30,7 +30,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.observedBinTemperaturesCelsius,
     input.observedBinDurationsDays,
@@ -65,7 +65,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     thresholdReached: cross >= 0,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -95,6 +95,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedAccumulationDegreeDays: { type: "number" },
+          conditionalThresholdElapsedDays: { type: "number" },
+          thresholdReached: { type: "boolean" },
+        },
+        required: [
+          "observedAccumulationDegreeDays",
+          "conditionalThresholdElapsedDays",
+          "thresholdReached",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
