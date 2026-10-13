@@ -5,7 +5,7 @@ import { validateInput, finish, simpleError } from "../batch43-shared.js";
 export type Input = Readonly<{
   readonly independentlyAnnotatedSectionMotifIds: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyAnnotatedSectionMotifIds",
@@ -13,7 +13,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     input.independentlyAnnotatedSectionMotifIds.length < 2 ||
     input.independentlyAnnotatedSectionMotifIds.some((v) => !v.trim())
@@ -43,7 +43,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -70,6 +70,22 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          matchedOuterPairIndices: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          unmatchedOuterPairIndices: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["matchedOuterPairIndices", "unmatchedOuterPairIndices"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
