@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly verifiedRecordedOffenses: number;
   readonly matchedObservationDurationSeconds: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "verifiedRecordedOffenses",
@@ -18,7 +18,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.verifiedRecordedOffenses, "offenses");
   positive(input.matchedObservationDurationSeconds, "duration");
   return {
@@ -26,7 +26,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.matchedObservationDurationSeconds / input.verifiedRecordedOffenses,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -48,6 +48,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedMeanSecondsPerRecordedOffense: { type: "number" },
+        },
+        required: ["observedMeanSecondsPerRecordedOffense"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
