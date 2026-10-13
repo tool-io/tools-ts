@@ -5,7 +5,7 @@ import { validateInput, finish, simpleError } from "../batch43-shared.js";
 export type Input = Readonly<{
   readonly independentlyScannedFeet: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyScannedFeet",
@@ -13,7 +13,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     input.independentlyScannedFeet.length !== 6 ||
     input.independentlyScannedFeet.some((v) => !["-uu", "--", "-x"].includes(v))
@@ -30,7 +30,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     substitutedFifthFoot: f[4] === "--",
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -51,6 +51,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          matchesRestrictedHexameter: { type: "boolean" },
+          substitutedFifthFoot: { type: "boolean" },
+        },
+        required: ["matchesRestrictedHexameter", "substitutedFifthFoot"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
