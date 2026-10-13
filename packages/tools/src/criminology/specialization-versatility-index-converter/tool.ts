@@ -4,7 +4,7 @@ import { validateInput, finish, sum, shares } from "../batch46-shared.js";
 export type Input = Readonly<{
   readonly independentlyClassifiedOffenseTypeCounts: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyClassifiedOffenseTypeCounts",
@@ -12,12 +12,12 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const p = shares(input.independentlyClassifiedOffenseTypeCounts),
     c = sum(p.map((v) => v * v));
   return { observedTypeConcentration: c, observedTypeVersatility: 1 - c };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -38,6 +38,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedTypeConcentration: { type: "number" },
+          observedTypeVersatility: { type: "number" },
+        },
+        required: ["observedTypeConcentration", "observedTypeVersatility"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
