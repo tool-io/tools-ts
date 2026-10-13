@@ -5,12 +5,12 @@ export type Input = Readonly<{
   matrix: readonly (readonly number[])[];
   labels: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "matrix", label: "matrix", kind: "matrix" },
   { id: "labels", label: "labels", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.confusion(i.matrix, i.labels);
   const totals = i.labels.map((_, j) =>
@@ -40,12 +40,42 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Confusion Column Rate Table",
+      "machine learning",
+      "classification metrics",
+    ],
+    collections: ["ai", "data"],
+    fields: ["classification", "machine learning", "classification metrics"],
+    keywords: ["machine learning", "classification metrics"],
+  },
   id: "classification/confusion-column-rate-table",
   title: "Confusion Column Rate Table",
   description:
     "Explicit nonnegative square confusion table with unique supplied labels, actual rows and predicted columns; normalize each predicted column independently with null for zero-support columns; no calibrated probability claim.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          rates: {
+            type: "array",
+            items: {
+              type: "array",
+              items: { anyOf: [{ type: "number" }, { type: "null" }] },
+            },
+          },
+        },
+        required: ["rates"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
