@@ -183,6 +183,49 @@ export const compoundInterestTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Projection",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          finalBalance: { type: "number" },
+          points: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                balance: { type: "number" },
+                contributions: { type: "number" },
+                fees: { type: "number" },
+                interest: { type: "number" },
+                principal: { type: "number" },
+                year: { type: "number" },
+              },
+              required: [
+                "balance",
+                "contributions",
+                "fees",
+                "interest",
+                "principal",
+                "year",
+              ],
+            },
+          },
+          totalContributions: { type: "number" },
+          totalFees: { type: "number" },
+          totalInterest: { type: "number" },
+          totalPrincipal: { type: "number" },
+        },
+        required: [
+          "finalBalance",
+          "points",
+          "totalContributions",
+          "totalFees",
+          "totalInterest",
+          "totalPrincipal",
+        ],
+      },
     },
   ],
   calculate: (input) => {
