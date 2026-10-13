@@ -8,7 +8,7 @@ export type Input = Readonly<{
   readonly maxTileY: number;
   readonly zoom: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "minTileX", label: "Min tile x", kind: "number" },
   { id: "maxTileX", label: "Max tile x", kind: "number" },
@@ -16,7 +16,7 @@ const fields = [
   { id: "maxTileY", label: "Max tile y", kind: "number" },
   { id: "zoom", label: "Zoom", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.zoom, "zoom", 0, 26);
   const n = 2 ** i.zoom;
   [i.minTileX, i.maxTileX, i.minTileY, i.maxTileY].forEach((v) =>
@@ -28,7 +28,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     tileCount: (i.maxTileX - i.minTileX + 1) * (i.maxTileY - i.minTileY + 1),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -47,6 +47,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { tileCount: { type: "number" } },
+        required: ["tileCount"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
