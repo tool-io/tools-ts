@@ -86,6 +86,25 @@ export const electricityCostTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Electricity cost",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          currency: { type: "string" },
+          dailyCost: { type: "number" },
+          dailyEnergyKwh: { type: "number" },
+          monthlyCost: { type: "number" },
+          yearlyCost: { type: "number" },
+        },
+        required: [
+          "currency",
+          "dailyCost",
+          "dailyEnergyKwh",
+          "monthlyCost",
+          "yearlyCost",
+        ],
+      },
     },
   ],
   calculate: (input) => {
