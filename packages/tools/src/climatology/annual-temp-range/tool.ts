@@ -5,7 +5,7 @@ import { validateInput, finish, simpleError } from "../batch51-shared.js";
 export type Input = Readonly<{
   readonly actualCompleteMonthlyMeanTemperaturesC: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualCompleteMonthlyMeanTemperaturesC",
@@ -13,10 +13,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   if (!input.actualCompleteMonthlyMeanTemperaturesC.length)
     simpleError(
       "actualCompleteMonthlyMeanTemperaturesC",
@@ -30,10 +27,7 @@ const compute = (
       Math.min(...input.actualCompleteMonthlyMeanTemperaturesC),
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -56,6 +50,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
