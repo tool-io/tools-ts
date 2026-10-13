@@ -5,12 +5,12 @@ export type Input = Readonly<{
   readonly signedRise: number;
   readonly horizontalRun: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "signedRise", label: "Signed rise", kind: "number" },
   { id: "horizontalRun", label: "Horizontal run", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.horizontalRun, "run");
   return {
     gradientRatio:
@@ -21,7 +21,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
           String(i.horizontalRun / Math.abs(i.signedRise)),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -40,6 +40,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { gradientRatio: { type: "string" } },
+        required: ["gradientRatio"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
