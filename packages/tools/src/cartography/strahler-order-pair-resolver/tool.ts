@@ -5,12 +5,12 @@ export type Input = Readonly<{
   readonly orderA: number;
   readonly orderB: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "orderA", label: "Order a", kind: "number" },
   { id: "orderB", label: "Order b", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.orderA, "order", 1, 1000);
   bounded(i.orderB, "order", 1, 1000);
   return {
@@ -18,7 +18,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       i.orderA === i.orderB ? i.orderA + 1 : Math.max(i.orderA, i.orderB),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -37,6 +37,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { mergedOrder: { type: "number" } },
+        required: ["mergedOrder"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
