@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly independentlyAuthorizedRestitutionBalanceMinor: number;
   readonly callerPermittedPeriodPaymentMinor: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyAuthorizedRestitutionBalanceMinor",
@@ -18,7 +18,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   money(input.independentlyAuthorizedRestitutionBalanceMinor, "balance");
   money(input.callerPermittedPeriodPaymentMinor, "payment");
   positive(input.callerPermittedPeriodPaymentMinor, "payment");
@@ -30,7 +30,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     lastConditionalPaymentMinor: n ? Number(b - (n - 1n) * p) : 0,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -57,6 +57,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalWholePaymentPeriodCount: { type: "number" },
+          lastConditionalPaymentMinor: { type: "number" },
+        },
+        required: [
+          "conditionalWholePaymentPeriodCount",
+          "lastConditionalPaymentMinor",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
