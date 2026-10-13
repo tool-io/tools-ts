@@ -112,6 +112,27 @@ export const cloudComputingCostTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Cloud cost",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          computeCost: { type: "number" },
+          currency: { type: "string" },
+          egressCost: { type: "number" },
+          monthlyTotal: { type: "number" },
+          storageCost: { type: "number" },
+          yearlyTotal: { type: "number" },
+        },
+        required: [
+          "computeCost",
+          "currency",
+          "egressCost",
+          "monthlyTotal",
+          "storageCost",
+          "yearlyTotal",
+        ],
+      },
     },
   ],
   calculate: (input) => {
