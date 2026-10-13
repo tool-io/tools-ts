@@ -7,11 +7,11 @@ import {
   binary,
 } from "../batch52-shared.js";
 export type Input = Readonly<{ readonly ciphertext: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "ciphertext", label: "Ciphertext", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   const s = i.ciphertext.trim();
   if (!s.length) simpleError("text", "Nonempty sample.");
   return {
@@ -34,7 +34,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     identificationCertain: false,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -58,6 +58,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          compatibleHeuristicEncodings: {
+            type: "array",
+            items: { type: "string" },
+          },
+          identificationCertain: { type: "boolean" },
+        },
+        required: ["compatibleHeuristicEncodings", "identificationCertain"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
