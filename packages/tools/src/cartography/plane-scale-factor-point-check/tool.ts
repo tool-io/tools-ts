@@ -12,14 +12,14 @@ export type Input = Readonly<{
   readonly callerScaleFactor: number;
   readonly callerTolerance: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "mapDistanceM", label: "Map distance m", kind: "number" },
   { id: "groundDistanceM", label: "Ground distance m", kind: "number" },
   { id: "callerScaleFactor", label: "Caller scale factor", kind: "number" },
   { id: "callerTolerance", label: "Caller tolerance", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.mapDistanceM, "map");
   positive(i.groundDistanceM, "ground");
   positive(i.callerScaleFactor, "factor");
@@ -30,7 +30,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       i.callerTolerance,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -54,6 +54,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { callerReviewFlag: { type: "boolean" } },
+        required: ["callerReviewFlag"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
