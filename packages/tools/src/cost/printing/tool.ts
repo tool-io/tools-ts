@@ -93,6 +93,27 @@ export const printingCostTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Printing cost",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          costPerCopy: { type: "number" },
+          currency: { type: "string" },
+          printedPages: { type: "number" },
+          setupCost: { type: "number" },
+          totalCost: { type: "number" },
+          variableCost: { type: "number" },
+        },
+        required: [
+          "costPerCopy",
+          "currency",
+          "printedPages",
+          "setupCost",
+          "totalCost",
+          "variableCost",
+        ],
+      },
     },
   ],
   calculate: (input) => {
