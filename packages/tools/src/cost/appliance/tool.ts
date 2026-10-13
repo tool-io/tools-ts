@@ -72,6 +72,17 @@ export const applianceCostTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Appliance cost",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          currency: { type: "string" },
+          energyKwh: { type: "number" },
+          usageCost: { type: "number" },
+        },
+        required: ["currency", "energyKwh", "usageCost"],
+      },
     },
   ],
   calculate: (input) => {
