@@ -5,12 +5,12 @@ export type Input = Readonly<{
   readonly denominatorA: number;
   readonly denominatorB: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "denominatorA", label: "Denominator a", kind: "number" },
   { id: "denominatorB", label: "Denominator b", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.denominatorA, "A");
   positive(i.denominatorB, "B");
   return {
@@ -23,7 +23,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     linearDetailRatioAtoB: i.denominatorB / i.denominatorA,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -42,6 +42,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          largerScale: { type: "string" },
+          linearDetailRatioAtoB: { type: "number" },
+        },
+        required: ["largerScale", "linearDetailRatioAtoB"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
