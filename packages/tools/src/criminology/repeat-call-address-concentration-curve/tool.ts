@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly callerAddressIds: readonly string[];
   readonly independentlyRecordedCallCounts: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "callerAddressIds", label: "Caller address ids", kind: "stringList" },
   {
@@ -22,7 +22,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.callerAddressIds, "addresses");
   aligned(
     input.callerAddressIds,
@@ -47,7 +47,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -75,6 +75,30 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          descendingCallerAddressIds: {
+            type: "array",
+            items: { type: "string" },
+          },
+          cumulativeAddressFractions: {
+            type: "array",
+            items: { type: "number" },
+          },
+          cumulativeObservedCallFractions: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: [
+          "descendingCallerAddressIds",
+          "cumulativeAddressFractions",
+          "cumulativeObservedCallFractions",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
