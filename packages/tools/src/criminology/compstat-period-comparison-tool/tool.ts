@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly previousMatchedPeriodCounts: readonly number[];
   readonly currentMatchedPeriodCounts: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerOffenseCategoryIds",
@@ -30,7 +30,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.callerOffenseCategoryIds, "categories");
   aligned(
     input.callerOffenseCategoryIds,
@@ -61,7 +61,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -90,6 +90,30 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedCategoryCountChanges: {
+            type: "array",
+            items: { type: "number" },
+          },
+          relativeChangeKnownFlags: {
+            type: "array",
+            items: { type: "number" },
+          },
+          signedCategoryChangePercents: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: [
+          "signedCategoryCountChanges",
+          "relativeChangeKnownFlags",
+          "signedCategoryChangePercents",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
