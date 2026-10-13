@@ -7,11 +7,11 @@ import {
   simpleError,
 } from "../batch52-shared.js";
 export type Input = Readonly<{ readonly serialHex: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "serialHex", label: "Serial hex", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   if (!/^[0-9A-Fa-f]+$(?![\s\S])/.test(i.serialHex) || i.serialHex.length > 40)
     simpleError("serial", "1–40 hexadecimal digits.");
   const n = BigInt("0x" + i.serialHex);
@@ -24,7 +24,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     certificateValidityVerified: false,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -51,6 +51,25 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          evenHexLength: { type: "boolean" },
+          positive: { type: "boolean" },
+          unsignedOctets: { type: "number" },
+          derSignPaddingNeeded: { type: "boolean" },
+          certificateValidityVerified: { type: "boolean" },
+        },
+        required: [
+          "evenHexLength",
+          "positive",
+          "unsignedOctets",
+          "derSignPaddingNeeded",
+          "certificateValidityVerified",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
