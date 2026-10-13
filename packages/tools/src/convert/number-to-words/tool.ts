@@ -5,7 +5,7 @@ import { validateInput, finish, englishInteger } from "../batch51-shared.js";
 export type Input = Readonly<{
   readonly actualCanonicalIntegerDecimal: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualCanonicalIntegerDecimal",
@@ -13,16 +13,10 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   return { englishWords: englishInteger(input.actualCanonicalIntegerDecimal) };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -43,6 +37,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { englishWords: { type: "string" } },
+        required: ["englishWords"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
