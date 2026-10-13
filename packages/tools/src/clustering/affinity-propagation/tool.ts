@@ -183,6 +183,27 @@ export const affinityPropagationTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Clusters",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          clusters: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                exemplar: { type: "number" },
+                members: { type: "array", items: { type: "number" } },
+              },
+              required: ["exemplar", "members"],
+            },
+          },
+          iterations: { type: "number" },
+        },
+        required: ["clusters", "iterations"],
+      },
     },
   ],
   calculate: (input) => {
