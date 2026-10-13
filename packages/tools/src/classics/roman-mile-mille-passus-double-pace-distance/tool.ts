@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly romanMiles: number;
   readonly callerVerifiedMetresPerFoot: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "romanMiles", label: "Roman miles", kind: "number" },
   {
@@ -20,7 +20,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.callerVerifiedMetresPerFoot, "callerVerifiedMetresPerFoot");
   nonnegative(input.romanMiles, "romanMiles");
   return {
@@ -30,7 +30,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       5000 * input.romanMiles * input.callerVerifiedMetresPerFoot,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -51,6 +51,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          doublePaces: { type: "number" },
+          feet: { type: "number" },
+          conditionalMetres: { type: "number" },
+        },
+        required: ["doublePaces", "feet", "conditionalMetres"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
