@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ token: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "token", label: "token", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(/^[+-]?(?:\d*\.\d+|\d+)(?:[eE][+-]?\d+)?(?![\s\S])/.test(i.token));
   const d = H.decimal(i.token);
@@ -20,12 +20,33 @@ export const example = {
   output: { result: { normalized: "01.20", negativeZero: false } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["CSS Number Token Sign Normalizer", "CSS", "web development"],
+    collections: ["encode-decode"],
+    fields: ["CSS", "web development"],
+    keywords: ["CSS", "web development"],
+  },
   id: "css/css-number-token-sign-normalizer",
   title: "CSS Number Token Sign Normalizer",
   description:
     "Normalize only an explicit plus sign on a strict CSS numeric spelling while retaining decimal scale and negative-zero evidence; not unit parsing.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          normalized: { type: "string" },
+          negativeZero: { type: "boolean" },
+        },
+        required: ["normalized", "negativeZero"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
