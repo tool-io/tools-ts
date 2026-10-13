@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly independentlyVerifiedOffenseOneElements: readonly string[];
   readonly independentlyVerifiedOffenseTwoElements: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyVerifiedOffenseOneElements",
@@ -18,7 +18,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.independentlyVerifiedOffenseOneElements, "firstelements");
   unique(input.independentlyVerifiedOffenseTwoElements, "secondelements");
   const a = input.independentlyVerifiedOffenseOneElements.filter(
@@ -33,7 +33,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     bothHaveDistinctRequiredElements: !!a.length && !!b.length,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -61,6 +61,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          elementsOnlyInFirst: { type: "array", items: { type: "string" } },
+          elementsOnlyInSecond: { type: "array", items: { type: "string" } },
+          bothHaveDistinctRequiredElements: { type: "boolean" },
+        },
+        required: [
+          "elementsOnlyInFirst",
+          "elementsOnlyInSecond",
+          "bothHaveDistinctRequiredElements",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
