@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly callerClinicianSpecifiedTargetConcentrationPercent: number;
   readonly callerClinicianSpecifiedFinalVolumeMl: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "verifiedStockConcentrationPercent",
@@ -30,7 +30,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.verifiedStockConcentrationPercent, "stock");
   nonnegative(
     input.callerClinicianSpecifiedTargetConcentrationPercent,
@@ -55,7 +55,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     conditionalDiluentVolumeMl: input.callerClinicianSpecifiedFinalVolumeMl - v,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -80,6 +80,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalStockVolumeMl: { type: "number" },
+          conditionalDiluentVolumeMl: { type: "number" },
+        },
+        required: ["conditionalStockVolumeMl", "conditionalDiluentVolumeMl"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
