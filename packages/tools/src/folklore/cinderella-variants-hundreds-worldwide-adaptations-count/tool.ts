@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly callerDistinctEditionVariantIds: readonly string[];
   readonly callerIndependentlyAssignedTraditionLabels: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerDistinctEditionVariantIds",
@@ -25,7 +25,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.callerDistinctEditionVariantIds, "distinctvariants");
   aligned(
     input.callerDistinctEditionVariantIds,
@@ -40,7 +40,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     variantCountsByTradition: h.counts,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -76,6 +76,24 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          distinctDocumentedVariantCount: { type: "number" },
+          traditionLabels: { type: "array", items: { type: "string" } },
+          variantCountsByTradition: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: [
+          "distinctDocumentedVariantCount",
+          "traditionLabels",
+          "variantCountsByTradition",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
