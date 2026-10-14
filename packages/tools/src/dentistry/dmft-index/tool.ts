@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly independentlyCodedMutuallyExclusiveToothStatus: readonly number[];
   readonly toothEvidenceKnownFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyIdentifiedFdiTeeth",
@@ -24,7 +24,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   return toothAudit(
     input.independentlyIdentifiedFdiTeeth,
     input.independentlyCodedMutuallyExclusiveToothStatus,
@@ -32,7 +32,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     false,
   );
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -63,6 +63,25 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          decayedCount: { type: "number" },
+          missingOrExtractionCount: { type: "number" },
+          filledCount: { type: "number" },
+          knownIndexTotal: { type: "number" },
+          unknownToothIds: { type: "array", items: { type: "string" } },
+        },
+        required: [
+          "decayedCount",
+          "missingOrExtractionCount",
+          "filledCount",
+          "knownIndexTotal",
+          "unknownToothIds",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
