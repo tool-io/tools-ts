@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ pattern: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pattern", label: "pattern", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const f = H.floatFields(i.pattern, 32);
   H.check(f.kind !== "nan" && f.kind !== "infinity");
@@ -33,12 +33,37 @@ export const example = {
   output: { result: { nextUp: "1065353217", nextDown: "1065353215" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "IEEE Binary32 Adjacent Finite Patterns",
+      "floating-point arithmetic",
+      "mathematics",
+    ],
+    collections: ["data", "learn"],
+    fields: ["float", "floating-point arithmetic", "mathematics"],
+    keywords: ["floating-point arithmetic", "mathematics"],
+  },
   id: "float/binary32-adjacent-finite-patterns",
   title: "IEEE Binary32 Adjacent Finite Patterns",
   description:
     "Return adjacent finite binary32 raw value patterns toward positive/negative infinity; signed zeros skip the equivalent other zero and extrema return null instead of infinity.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          nextUp: { anyOf: [{ type: "string" }, { type: "null" }] },
+          nextDown: { anyOf: [{ type: "string" }, { type: "null" }] },
+        },
+        required: ["nextUp", "nextDown"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
