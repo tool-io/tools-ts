@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ text: string; assignmentsJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "text", kind: "string" },
   { id: "assignmentsJson", label: "assignmentsJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const rows = H.assignments(i.assignmentsJson),
     map = new Map(rows.map((v) => [v.name, v.value])),
@@ -31,12 +31,37 @@ export const example = {
   output: { result: { text: "$B ${B}", unknown: ["B"] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Environment Literal Reference Substitution",
+      "environment variables",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["env", "environment variables", "software development"],
+    keywords: ["environment variables", "software development"],
+  },
   id: "env/variable-reference-literal-substitution",
   title: "Environment Literal Reference Substitution",
   description:
     "Substitute simple literal environment references once using explicit last-wins values, preserve unknown references and do not recursively expand inserted dollar text.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          text: { type: "string" },
+          unknown: { type: "array", items: { type: "string" } },
+        },
+        required: ["text", "unknown"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
