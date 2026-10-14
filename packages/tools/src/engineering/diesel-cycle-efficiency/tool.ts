@@ -11,13 +11,13 @@ export type Input = Readonly<{
   readonly cutoffRatio: number;
   readonly heatCapacityRatio: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "compressionRatio", label: "Compression ratio", kind: "number" },
   { id: "cutoffRatio", label: "Cutoff ratio", kind: "number" },
   { id: "heatCapacityRatio", label: "Heat capacity ratio", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.compressionRatio, "compressionRatio");
   positive(input.cutoffRatio, "cutoffRatio");
   positive(input.heatCapacityRatio, "heatCapacityRatio");
@@ -36,7 +36,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
           input.compressionRatio ** (input.heatCapacityRatio - 1)),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -55,6 +55,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
