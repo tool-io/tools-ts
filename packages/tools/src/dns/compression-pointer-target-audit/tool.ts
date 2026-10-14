@@ -7,14 +7,14 @@ export type Input = Readonly<{
   packetBytes: number;
   labelBoundaries: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pointerPosition", kind: "integer", label: "pointerPosition" },
   { id: "target", kind: "integer", label: "target" },
   { id: "packetBytes", kind: "integer", label: "packetBytes" },
   { id: "labelBoundaries", kind: "numberList", label: "labelBoundaries" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.packetBytes, 0, 65535);
   H.int(i.pointerPosition, 0, i.packetBytes - 2);
@@ -52,7 +52,24 @@ export const tool = createSimpleTool({
   description:
     "Audit an explicit DNS compression pointer against packet bounds, backward direction and independently supplied label boundaries; not pointer-chain decoding or loop proof.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          inBounds: { type: "boolean" },
+          backward: { type: "boolean" },
+          labelBoundary: { type: "boolean" },
+          eligible: { type: "boolean" },
+        },
+        required: ["inBounds", "backward", "labelBoundary", "eligible"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
