@@ -176,8 +176,17 @@ export const salaryComparisonTool = createModelDefinition<
   SalaryComparisonInput,
   SalaryComparisonOutput
 >({
+  discovery: {
+    aliases: [
+      "Gross Salary and Effective Hourly Pay Comparison",
+      "Gross Salary and Effective Hourly Pay Comparison Tool",
+    ],
+    collections: ["data", "trading"],
+    fields: ["finance"],
+    keywords: [],
+  },
   id: "finance/salary-comparison",
-  title: "Gross Salary and Effective Hourly Pay Comparison Tool",
+  title: "Gross Salary and Effective Hourly Pay Comparison",
   description:
     "Compare two supplied same-currency annual base salaries and bonuses against explicit weekly hours and paid weeks; report nominal gross cash and effective hourly differences without taxes, benefits, exchange rates or recommendations.",
   inputSchema,
