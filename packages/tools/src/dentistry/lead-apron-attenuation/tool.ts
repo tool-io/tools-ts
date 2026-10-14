@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly independentlyMeasuredUnshieldedDose: number;
   readonly independentlyMatchedShieldedDose: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredUnshieldedDose",
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.independentlyMeasuredUnshieldedDose, "unshielded");
   nonnegative(input.independentlyMatchedShieldedDose, "shielded");
   const r =
@@ -34,7 +34,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     observedAttenuationPercent: 100 * (1 - r),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -61,6 +61,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedTransmissionFraction: { type: "number" },
+          observedAttenuationPercent: { type: "number" },
+        },
+        required: [
+          "observedTransmissionFraction",
+          "observedAttenuationPercent",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
