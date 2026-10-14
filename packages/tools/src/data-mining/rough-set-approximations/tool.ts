@@ -180,8 +180,19 @@ export const roughSetApproximationsTool = createModelDefinition<
   RoughSetApproximationsInput,
   RoughSetApproximationsOutput
 >({
+  discovery: {
+    aliases: [
+      "Rough Set Lower and Upper Approximation Calculator",
+      "Rough Set Lower and Upper Approximation Tool",
+      "data mining",
+      "machine learning",
+    ],
+    collections: ["ai", "data"],
+    fields: ["data-mining", "data mining", "machine learning"],
+    keywords: ["data mining", "machine learning"],
+  },
   id: "data-mining/rough-set-approximations",
-  title: "Rough Set Lower and Upper Approximation Tool",
+  title: "Rough Set Lower and Upper Approximation Calculator",
   description:
     "Compute Pawlak lower, upper, boundary and negative regions for a supplied row-index target under exact equality of selected categorical columns; empty column selection creates one indiscernibility class.",
   inputSchema,
