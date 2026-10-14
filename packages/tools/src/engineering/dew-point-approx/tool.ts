@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualAirTemperatureCelsius: number;
   readonly actualRelativeHumidityFraction: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualAirTemperatureCelsius",
@@ -24,7 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     input.actualAirTemperatureCelsius < -40 ||
     input.actualAirTemperatureCelsius > 60
@@ -38,7 +38,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       (243.12 + input.actualAirTemperatureCelsius);
   return { conditionalMagnusDewPointCelsius: (243.12 * g) / (17.62 - g) };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -60,6 +60,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalMagnusDewPointCelsius: { type: "number" } },
+        required: ["conditionalMagnusDewPointCelsius"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
