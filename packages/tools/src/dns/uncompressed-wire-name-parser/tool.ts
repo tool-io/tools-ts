@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ bytes: readonly number[]; offset: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bytes", kind: "numberList", label: "bytes" },
   { id: "offset", kind: "integer", label: "offset" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.bytes(i.bytes);
   H.int(i.offset, 0, i.bytes.length - 1);
@@ -35,7 +35,25 @@ export const tool = createSimpleTool({
   description:
     "Parse one uncompressed DNS wire name at an explicit byte offset, returning the next offset; pointers and extended labels are rejected, trailing packet bytes remain unread.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          labels: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          endOffset: { type: "number" },
+        },
+        required: ["labels", "endOffset"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
