@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ baseJson: string; overlayJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "baseJson", label: "baseJson", kind: "string" },
   { id: "overlayJson", label: "overlayJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const a = H.assignments(i.baseJson),
     b = H.assignments(i.overlayJson),
@@ -44,12 +44,50 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Environment Assignment Overlay Provenance",
+      "environment variables",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["env", "environment variables", "software development"],
+    keywords: ["environment variables", "software development"],
+  },
   id: "env/assignment-overlay-provenance",
   title: "Environment Assignment Overlay Provenance",
   description:
     "Overlay two explicit environment occurrence lists with last-wins shadow provenance; case-sensitive portable names, no process environment mutation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          assignments: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                name: { type: "string" },
+                value: { type: "string" },
+                side: { type: "string" },
+                sourceIndex: { type: "number" },
+                shadowed: { type: "array", items: { type: "number" } },
+              },
+              required: ["name", "value", "side", "sourceIndex", "shadowed"],
+            },
+          },
+        },
+        required: ["assignments"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
