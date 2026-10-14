@@ -139,6 +139,16 @@ export const particleFilterTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Estimate",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          estimates: { type: "array", items: { type: "number" } },
+          finalParticles: { type: "array", items: { type: "number" } },
+        },
+        required: ["estimates", "finalParticles"],
+      },
     },
   ],
   calculate: (input) => {
