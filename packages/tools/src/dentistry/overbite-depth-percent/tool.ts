@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly independentlyMeasuredSignedVerticalIncisorOverlapMm: number;
   readonly independentlyMeasuredMatchedLowerIncisorClinicalCrownHeightMm: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredSignedVerticalIncisorOverlapMm",
@@ -19,7 +19,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(
     input.independentlyMeasuredMatchedLowerIncisorClinicalCrownHeightMm,
     "crownheight",
@@ -30,7 +30,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.independentlyMeasuredMatchedLowerIncisorClinicalCrownHeightMm,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -52,6 +52,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { signedObservedOverbitePercent: { type: "number" } },
+        required: ["signedObservedOverbitePercent"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
