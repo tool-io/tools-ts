@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualWidthMeters: number;
   readonly actualThicknessMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualTraceLengthMeters",
@@ -25,7 +25,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.actualTraceLengthMeters, "actualTraceLengthMeters");
   positive(input.actualWidthMeters, "actualWidthMeters");
   positive(input.actualThicknessMeters, "actualThicknessMeters");
@@ -46,7 +46,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
           (3 * input.actualTraceLengthMeters)),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -69,6 +69,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
