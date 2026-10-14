@@ -10,7 +10,7 @@ import {
 export type Input = Readonly<{
   readonly independentlyMeasuredFourLowerIncisorWidthsMm: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredFourLowerIncisorWidthsMm",
@@ -18,7 +18,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (input.independentlyMeasuredFourLowerIncisorWidthsMm.length !== 4)
     simpleError(
       "incisors",
@@ -33,7 +33,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     conditionalMaxillaryCaninePremolarWidthPerQuadrantMm: s / 2 + 11,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -57,6 +57,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalMandibularCaninePremolarWidthPerQuadrantMm: {
+            type: "number",
+          },
+          conditionalMaxillaryCaninePremolarWidthPerQuadrantMm: {
+            type: "number",
+          },
+        },
+        required: [
+          "conditionalMandibularCaninePremolarWidthPerQuadrantMm",
+          "conditionalMaxillaryCaninePremolarWidthPerQuadrantMm",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
