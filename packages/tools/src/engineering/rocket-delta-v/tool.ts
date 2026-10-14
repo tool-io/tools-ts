@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly initialMassKg: number;
   readonly finalMassKg: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerVerifiedEffectiveExhaustVelocityMetersPerSecond",
@@ -21,7 +21,7 @@ const fields = [
   { id: "initialMassKg", label: "Initial mass kg", kind: "number" },
   { id: "finalMassKg", label: "Final mass kg", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(
     input.callerVerifiedEffectiveExhaustVelocityMetersPerSecond,
     "callerVerifiedEffectiveExhaustVelocityMetersPerSecond",
@@ -35,7 +35,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       Math.log(input.initialMassKg / input.finalMassKg),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -58,6 +58,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
