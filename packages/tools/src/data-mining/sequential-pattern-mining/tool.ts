@@ -178,8 +178,19 @@ export const sequentialPatternMiningTool = createModelDefinition<
   SequentialPatternMiningInput,
   SequentialPatternMiningOutput
 >({
+  discovery: {
+    aliases: [
+      "Sequential Pattern Miner",
+      "Sequential Pattern Mining Tool",
+      "data mining",
+      "machine learning",
+    ],
+    collections: ["ai", "data"],
+    fields: ["data-mining", "data mining", "machine learning"],
+    keywords: ["data mining", "machine learning"],
+  },
   id: "data-mining/sequential-pattern-mining",
-  title: "Sequential Pattern Mining Tool",
+  title: "Sequential Pattern Miner",
   description:
     "Mine bounded frequent ordered subsequences of single-event string sequences using prefix projection, allowing arbitrary gaps and repeated events and counting each source sequence at most once per pattern.",
   inputSchema,
