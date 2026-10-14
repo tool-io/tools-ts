@@ -4,7 +4,7 @@ import { validateInput, finish, pick, toothMap } from "../batch47-shared.js";
 export type Input = Readonly<{
   readonly independentlyIdentifiedFdiTooth: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyIdentifiedFdiTooth",
@@ -12,7 +12,7 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   return {
     universalTooth: pick(
       input.independentlyIdentifiedFdiTooth,
@@ -21,7 +21,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -40,6 +40,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { universalTooth: { type: "string" } },
+        required: ["universalTooth"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
