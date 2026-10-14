@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ recordsJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "recordsJson", kind: "string", label: "recordsJson" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.records(i.recordsJson).map((v) => ({
     preference: H.int(H.num(v.preference), 0, 65535),
@@ -42,7 +42,33 @@ export const tool = createSimpleTool({
   description:
     "Group explicit DNS MX records by ascending unsigned preference, retaining equal-preference alternatives and indexes; no resolver ordering, target validation or mail delivery claim.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          groups: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                preference: { type: "number" },
+                indexes: { type: "array", items: { type: "number" } },
+                exchanges: { type: "array", items: { type: "string" } },
+              },
+              required: ["preference", "indexes", "exchanges"],
+            },
+          },
+        },
+        required: ["groups"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
