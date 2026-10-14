@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly actualNeutralPatchLinearRgb: readonly number[];
   readonly callerChosenNeutralReferenceValue: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualNeutralPatchLinearRgb",
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (input.actualNeutralPatchLinearRgb.length !== 3)
     simpleError("RGB", "ActualthreepositiveLINEARchannelmeans.");
   input.actualNeutralPatchLinearRgb.forEach((v) => positive(v, "channel"));
@@ -34,7 +34,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -56,6 +56,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalRgbMultiplicativeGains: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: ["conditionalRgbMultiplicativeGains"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
