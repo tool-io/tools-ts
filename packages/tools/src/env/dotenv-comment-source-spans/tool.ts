@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ line: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "line", label: "line", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(!/[\r\n]/.test(i.line));
   let quote = "",
@@ -38,12 +38,41 @@ export const example = {
   output: { result: { commentSpan: [8, 14] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Restricted Dotenv Comment Source Spans",
+      "environment variables",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["env", "environment variables", "software development"],
+    keywords: ["environment variables", "software development"],
+  },
   id: "env/dotenv-comment-source-spans",
   title: "Restricted Dotenv Comment Source Spans",
   description:
     "Locate an unquoted whitespace-introduced dotenv comment in one balanced single/double-quoted line; literal hash inside quotes is not a comment.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          commentSpan: {
+            anyOf: [
+              { type: "array", items: { type: "number" } },
+              { type: "null" },
+            ],
+          },
+        },
+        required: ["commentSpan"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
