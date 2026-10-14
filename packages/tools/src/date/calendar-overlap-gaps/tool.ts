@@ -347,6 +347,12 @@ export const calendarOverlapGapsTool = createModelDefinition<
   CalendarOverlapGapsInput,
   CalendarOverlapGapsOutput
 >({
+  discovery: {
+    aliases: ["Calendar Overlap and Common Gap Finder"],
+    collections: ["data", "learn"],
+    fields: ["date"],
+    keywords: [],
+  },
   id: "date/calendar-overlap-gaps",
   title: "Calendar Overlap and Common Gap Finder",
   description:
