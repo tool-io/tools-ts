@@ -323,8 +323,19 @@ export const cuckooHashTraceTool = createModelDefinition<
   CuckooHashTraceInput,
   CuckooHashTraceOutput
 >({
+  discovery: {
+    aliases: [
+      "Two-Table Cuckoo Hashing Trace",
+      "Two-Table Cuckoo Hashing Trace Tool",
+      "data structures",
+      "software development",
+    ],
+    collections: ["data", "learn"],
+    fields: ["data-structure", "data structures", "software development"],
+    keywords: ["data structures", "software development"],
+  },
   id: "data-structure/cuckoo-hash-trace",
-  title: "Two-Table Cuckoo Hashing Trace Tool",
+  title: "Two-Table Cuckoo Hashing Trace",
   description:
     "Trace insertion evictions, lookups and deletion in two fixed-size integer-key cuckoo tables using h1(k)=k mod m and h2(k)=floor(k/m) mod m; a kick limit rolls back the insertion and signals rehash-needed, without automatic resizing or hash-quality guarantees.",
   inputSchema,
