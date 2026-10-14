@@ -126,6 +126,28 @@ export const aprioriTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Frequent itemsets",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          frequentItemsets: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                count: { type: "number" },
+                items: { type: "array", items: { type: "string" } },
+                support: { type: "number" },
+              },
+              required: ["count", "items", "support"],
+            },
+          },
+          transactionCount: { type: "number" },
+        },
+        required: ["frequentItemsets", "transactionCount"],
+      },
     },
   ],
   calculate: (input) => {
