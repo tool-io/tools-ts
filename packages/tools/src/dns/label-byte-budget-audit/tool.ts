@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ labelsJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "labelsJson", kind: "string", label: "labelsJson" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const labels = H.dnsLabels(i.labelsJson, false),
     wireBytes = labels.reduce((s, r) => s + r.length + 1, 1);
@@ -37,7 +37,34 @@ export const tool = createSimpleTool({
   description:
     "Audit supplied DNS label byte lengths and total uncompressed wire-name budget independently; no text character count or IDNA assumption.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          labelViolations: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                bytes: { type: "number" },
+              },
+              required: ["index", "bytes"],
+            },
+          },
+          wireBytes: { type: "number" },
+          nameFits: { type: "boolean" },
+        },
+        required: ["labelViolations", "wireBytes", "nameFits"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
