@@ -245,8 +245,19 @@ export const fpGrowthTool = createModelDefinition<
   FpGrowthInput,
   FpGrowthOutput
 >({
+  discovery: {
+    aliases: [
+      "FP-Growth Frequent Itemset Miner",
+      "FP-Growth Frequent Itemset Mining Tool",
+      "data mining",
+      "machine learning",
+    ],
+    collections: ["ai", "data"],
+    fields: ["data-mining", "data mining", "machine learning"],
+    keywords: ["data mining", "machine learning"],
+  },
   id: "data-mining/fp-growth",
-  title: "FP-Growth Frequent Itemset Mining Tool",
+  title: "FP-Growth Frequent Itemset Miner",
   description:
     "Mine bounded transaction itemsets with actual FP-trees and weighted conditional pattern bases, counting each item once per transaction and retaining empty transactions in support denominators.",
   inputSchema,
