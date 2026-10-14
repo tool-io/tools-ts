@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ stringsJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "stringsJson", kind: "string", label: "stringsJson" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const strings = H.arr(i.stringsJson).map((v) => {
     H.check(Array.isArray(v));
@@ -28,7 +28,19 @@ export const tool = createSimpleTool({
   description:
     "Format a nonempty DNS TXT character-string list as length-prefixed octets without a terminator; total output is bounded to 128 bytes and strings are not text-decoded.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { bytes: { type: "array", items: { type: "number" } } },
+        required: ["bytes"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
