@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly independentlyEstablishedToothReferenceLengthMm: number;
   readonly callerClinicianEstablishedApicalOffsetMm: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyEstablishedToothReferenceLengthMm",
@@ -24,7 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.independentlyEstablishedToothReferenceLengthMm, "reference");
   nonnegative(input.callerClinicianEstablishedApicalOffsetMm, "offset");
   if (
@@ -41,7 +41,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.callerClinicianEstablishedApicalOffsetMm,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -63,6 +63,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalCallerWorkingReferenceLengthMm: { type: "number" },
+        },
+        required: ["conditionalCallerWorkingReferenceLengthMm"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
