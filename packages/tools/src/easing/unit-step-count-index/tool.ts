@@ -6,13 +6,13 @@ export type Input = Readonly<{
   steps: number;
   jumpAtStart: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "t", label: "t", kind: "number" },
   { id: "steps", label: "steps", kind: "integer" },
   { id: "jumpAtStart", label: "jumpAtStart", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.unit(i.t);
   H.int(i.steps, 1, 1e6);
@@ -27,12 +27,30 @@ export const example = {
   output: { result: { index: 1, value: 0.25 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Unit Step Count Index", "mathematics"],
+    collections: ["data", "learn"],
+    fields: ["easing", "mathematics"],
+    keywords: ["mathematics"],
+  },
   id: "easing/unit-step-count-index",
   title: "Unit Step Count Index",
   description:
     "Evaluate a unit step-end or step-start index with explicit positive count; both modes cap at the final step at progress one.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { index: { type: "number" }, value: { type: "number" } },
+        required: ["index", "value"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
