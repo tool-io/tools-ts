@@ -60,7 +60,7 @@ export const bloomFilterExample = {
   output: {
     result: {
       bitCount: 128,
-        falsePositiveProbability: 0.00031301237,
+      falsePositiveProbability: 0.00031301237,
       hashCount: 3,
       itemCount: 3,
       possiblyPresent: true,
@@ -107,6 +107,29 @@ export const bloomFilterTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Bloom filter result",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          bitCount: { type: "number" },
+          falsePositiveProbability: { type: "number" },
+          hashCount: { type: "number" },
+          itemCount: { type: "number" },
+          possiblyPresent: { type: "boolean" },
+          query: { type: "string" },
+          setBits: { type: "number" },
+        },
+        required: [
+          "bitCount",
+          "falsePositiveProbability",
+          "hashCount",
+          "itemCount",
+          "possiblyPresent",
+          "query",
+          "setBits",
+        ],
+      },
     },
   ],
   calculate: (input) => ({
