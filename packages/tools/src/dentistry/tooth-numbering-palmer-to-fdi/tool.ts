@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly callerIdentifiedDentition: string;
   readonly palmerToothPosition: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerIdentifiedPalmerQuadrant",
@@ -20,7 +20,7 @@ const fields = [
   },
   { id: "palmerToothPosition", label: "Palmer tooth position", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const quadrant = Number(
     pick(
       input.callerIdentifiedPalmerQuadrant,
@@ -53,7 +53,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       ) + String(position),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -76,6 +76,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { fdiTooth: { type: "string" } },
+        required: ["fdiTooth"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
