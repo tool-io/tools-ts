@@ -3,7 +3,7 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, bounded, wrap } from "../batch44-shared.js";
 
 export type Input = Readonly<{ readonly explicitChineseYearLabel: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "explicitChineseYearLabel",
@@ -11,7 +11,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.explicitChineseYearLabel, "yearlabel", 1, 9999);
   const k = wrap(input.explicitChineseYearLabel - 1984, 60),
     stems = [
@@ -61,7 +61,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     animal: animals[k % 12],
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -82,6 +82,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          cycleOrdinal: { type: "number" },
+          stem: { type: "string" },
+          branch: { type: "string" },
+          animal: { type: "string" },
+        },
+        required: ["cycleOrdinal", "stem", "branch", "animal"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
