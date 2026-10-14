@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly actualSoundPowerWatts: number;
   readonly callerReferencePowerWatts: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualSoundPowerWatts",
@@ -18,7 +18,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.actualSoundPowerWatts, "actualSoundPowerWatts");
   positive(input.callerReferencePowerWatts, "callerReferencePowerWatts");
   return {
@@ -27,7 +27,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       Math.log10(input.actualSoundPowerWatts / input.callerReferencePowerWatts),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -46,6 +46,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
