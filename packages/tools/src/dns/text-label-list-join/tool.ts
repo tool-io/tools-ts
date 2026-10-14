@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ labelsJson: string; absolute: boolean }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "labelsJson", kind: "string", label: "labelsJson" },
   { id: "absolute", kind: "boolean", label: "absolute" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const labels = H.dnsLabels(i.labelsJson);
   H.check(labels.length > 0 || i.absolute);
@@ -23,7 +23,19 @@ export const tool = createSimpleTool({
   description:
     "Join explicit DNS label octets into ASCII presentation text using decimal escapes for dots, backslashes and nonprintable octets; root is a single dot.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { name: { type: "string" } },
+        required: ["name"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
