@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly independentlyAnnotatedStopAffricateCount: number;
   readonly totalIndependentlyTranscribedSegments: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyAnnotatedStopAffricateCount",
@@ -19,7 +19,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.totalIndependentlyTranscribedSegments, "segments", 1, 1000000);
   bounded(
     input.independentlyAnnotatedStopAffricateCount,
@@ -33,7 +33,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.totalIndependentlyTranscribedSegments,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -55,6 +55,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { percussiveSegmentFraction: { type: "number" } },
+        required: ["percussiveSegmentFraction"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
