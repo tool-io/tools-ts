@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ value: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "value", label: "value", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(!i.value.includes("\u0000"));
   const portable = /^[A-Za-z0-9_./:-]+(?![\s\S])/.test(i.value);
@@ -20,12 +20,34 @@ export const example = {
   output: { result: { style: "json-double", token: '"a b"' } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Dotenv Literal Value Quote Plan",
+      "environment variables",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["env", "environment variables", "software development"],
+    keywords: ["environment variables", "software development"],
+  },
   id: "env/dotenv-literal-value-quote-plan",
   title: "Dotenv Literal Value Quote Plan",
   description:
     "Plan literal dotenv value spelling for this restricted unquoted-or-JSON-double dialect; quoted dollar text stays literal, no shell execution compatibility claim.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { style: { type: "string" }, token: { type: "string" } },
+        required: ["style", "token"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
