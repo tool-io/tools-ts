@@ -7,14 +7,14 @@ export type Input = Readonly<{
   readonly dryBulbC: number;
   readonly outdoorSolarFlag: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "naturalWetBulbC", label: "Natural wet bulb c", kind: "number" },
   { id: "globeC", label: "Globe c", kind: "number" },
   { id: "dryBulbC", label: "Dry bulb c", kind: "number" },
   { id: "outdoorSolarFlag", label: "Outdoor solar flag", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.outdoorSolarFlag, "solar flag", 0, 1);
   return {
     measuredWbgtC:
@@ -23,7 +23,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
         : 0.7 * i.naturalWetBulbC + 0.3 * i.globeC,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -42,6 +42,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { measuredWbgtC: { type: "number" } },
+        required: ["measuredWbgtC"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
