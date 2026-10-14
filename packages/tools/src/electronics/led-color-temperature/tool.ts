@@ -10,12 +10,12 @@ export type Input = Readonly<{
   readonly actualChromaticityX: number;
   readonly actualChromaticityY: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualChromaticityX", label: "Actual chromaticity x", kind: "number" },
   { id: "actualChromaticityY", label: "Actual chromaticity y", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   fraction(input.actualChromaticityX, "actualChromaticityX");
   fraction(input.actualChromaticityY, "actualChromaticityY");
   if (
@@ -41,7 +41,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       5520.33,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -60,6 +60,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
