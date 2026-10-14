@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ pattern: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pattern", label: "pattern", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const f = H.floatFields(i.pattern, 64),
     finite = f.kind !== "nan" && f.kind !== "infinity",
@@ -42,12 +42,51 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "IEEE Binary64 Exact Dyadic Record",
+      "floating-point arithmetic",
+      "mathematics",
+    ],
+    collections: ["data", "learn"],
+    fields: ["float", "floating-point arithmetic", "mathematics"],
+    keywords: ["floating-point arithmetic", "mathematics"],
+  },
   id: "float/binary64-exact-dyadic-record",
   title: "IEEE Binary64 Exact Dyadic Record",
   description:
     "Decode an exact IEEE binary64 raw pattern into signed integer significand times 2^binaryExponent; infinity/NaN have null dyadic value, negative zero remains explicit.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          classification: { type: "string" },
+          dyadic: {
+            anyOf: [
+              {
+                type: "object",
+                additionalProperties: false,
+                properties: {
+                  significand: { type: "string" },
+                  binaryExponent: { type: "number" },
+                  negativeZero: { type: "boolean" },
+                },
+                required: ["significand", "binaryExponent", "negativeZero"],
+              },
+              { type: "null" },
+            ],
+          },
+        },
+        required: ["classification", "dyadic"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
