@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly callerVerifiedHorizontalBinning: number;
   readonly callerVerifiedVerticalBinning: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualFullSensorWidthPhotosites",
@@ -35,7 +35,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   [
     input.actualFullSensorWidthPhotosites,
     input.actualFullSensorHeightPhotosites,
@@ -57,7 +57,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.callerVerifiedVerticalBinning,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -86,6 +86,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalOpenGateWidthPixels: { type: "number" },
+          conditionalOpenGateHeightPixels: { type: "number" },
+        },
+        required: [
+          "conditionalOpenGateWidthPixels",
+          "conditionalOpenGateHeightPixels",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
