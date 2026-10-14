@@ -4,14 +4,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, bounded } from "../batch53-shared.js";
 
 export type Input = Readonly<{ acetylatedLysines: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "acetylatedLysines", label: "Acetylated lysines", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.acetylatedLysines, "lysines", 0, 10000);
   return {
     formalPositiveChargeChange: -i.acetylatedLysines,
@@ -19,7 +16,7 @@ const compute = (
     transcriptionEffectEstablished: false,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -45,6 +42,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          formalPositiveChargeChange: { type: "number" },
+          assumption: { type: "string" },
+          transcriptionEffectEstablished: { type: "boolean" },
+        },
+        required: [
+          "formalPositiveChargeChange",
+          "assumption",
+          "transcriptionEffectEstablished",
+        ],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
