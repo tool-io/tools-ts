@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualRetainerWearIntervalStartsHours: readonly number[];
   readonly actualRetainerWearIntervalEndsHours: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualRetainerWearIntervalStartsHours",
@@ -24,7 +24,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.actualRetainerWearIntervalStartsHours,
     input.actualRetainerWearIntervalEndsHours,
@@ -50,7 +50,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
   }
   return { observedUnionWearHours: u, observedWearIntervalOverlapHours: t - u };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -74,6 +74,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedUnionWearHours: { type: "number" },
+          observedWearIntervalOverlapHours: { type: "number" },
+        },
+        required: [
+          "observedUnionWearHours",
+          "observedWearIntervalOverlapHours",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
