@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly independentlyCodedSiteScores: readonly number[];
   readonly siteEvidenceKnownFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyCodedSiteScores",
@@ -25,7 +25,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.independentlyCodedSiteScores,
     input.siteEvidenceKnownFlags,
@@ -46,7 +46,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -74,6 +74,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedKnownSiteMeanScore: { type: "number" },
+          knownSiteCount: { type: "number" },
+          unknownSiteIndices: { type: "array", items: { type: "number" } },
+        },
+        required: [
+          "observedKnownSiteMeanScore",
+          "knownSiteCount",
+          "unknownSiteIndices",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
