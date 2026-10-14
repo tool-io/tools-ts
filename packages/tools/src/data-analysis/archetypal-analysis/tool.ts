@@ -122,6 +122,26 @@ export const archetypalAnalysisTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Archetypes",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          archetypeIndices: { type: "array", items: { type: "number" } },
+          archetypes: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          assignments: { type: "array", items: { type: "number" } },
+          reconstructionError: { type: "number" },
+        },
+        required: [
+          "archetypeIndices",
+          "archetypes",
+          "assignments",
+          "reconstructionError",
+        ],
+      },
     },
   ],
   calculate: (input) => {
