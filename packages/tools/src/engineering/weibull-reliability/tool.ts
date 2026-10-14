@@ -13,7 +13,7 @@ export type Input = Readonly<{
   callerCalibratedWeibullScale: number;
   callerCalibratedShape: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "elapsedTime", label: "Elapsed time", kind: "number" },
   {
@@ -27,7 +27,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   nonnegative(input.elapsedTime, "elapsedTime");
   positive(input.callerCalibratedWeibullScale, "callerCalibratedWeibullScale");
@@ -62,6 +62,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
