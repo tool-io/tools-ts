@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly baselineForceN: number;
   readonly callerVerifiedFrictionMultiplier: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "baselineForceN", label: "Baseline force n", kind: "number" },
   {
@@ -19,7 +19,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.baselineForceN, "force");
   positive(i.callerVerifiedFrictionMultiplier, "factor");
   return {
@@ -27,7 +27,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       i.baselineForceN * i.callerVerifiedFrictionMultiplier,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -46,6 +46,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalAdjustedForceN: { type: "number" } },
+        required: ["conditionalAdjustedForceN"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
