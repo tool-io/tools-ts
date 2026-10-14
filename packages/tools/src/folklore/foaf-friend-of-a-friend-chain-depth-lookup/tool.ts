@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly callerObservedTransmissionNodes: readonly string[];
   readonly callerObservedLinkEvidenceKnown: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerObservedTransmissionNodes",
@@ -26,7 +26,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.callerObservedTransmissionNodes, "distinct chain nodes");
   if (
     input.callerObservedLinkEvidenceKnown.length !==
@@ -47,7 +47,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -75,6 +75,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedChainDepth: { type: "number" },
+          fullyWitnessedPrefixDepth: { type: "number" },
+          unknownLinkIndices: { type: "array", items: { type: "number" } },
+        },
+        required: [
+          "observedChainDepth",
+          "fullyWitnessedPrefixDepth",
+          "unknownLinkIndices",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
