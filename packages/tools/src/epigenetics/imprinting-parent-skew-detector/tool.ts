@@ -14,16 +14,13 @@ export type Input = Readonly<{
   paternalExpression: number;
   callerSkewFraction: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "maternalExpression", label: "Maternal expression", kind: "number" },
   { id: "paternalExpression", label: "Paternal expression", kind: "number" },
   { id: "callerSkewFraction", label: "Caller skew fraction", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   nonnegative(i.maternalExpression, "maternal");
   nonnegative(i.paternalExpression, "paternal");
   angle(i.callerSkewFraction, "skew", 0.5, 1);
@@ -42,7 +39,7 @@ const compute = (
     imprintingEstablished: false,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -72,6 +69,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          fractionMaternal: { type: "number" },
+          dominantParent: { type: "string" },
+          skewed: { type: "boolean" },
+          imprintingEstablished: { type: "boolean" },
+        },
+        required: [
+          "fractionMaternal",
+          "dominantParent",
+          "skewed",
+          "imprintingEstablished",
+        ],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
