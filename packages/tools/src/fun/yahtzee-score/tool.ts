@@ -12,15 +12,12 @@ export type Input = Readonly<{
   readonly actualFiveDice: readonly number[];
   readonly actualCategory: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualFiveDice", label: "Actual five dice", kind: "numberList" },
   { id: "actualCategory", label: "Actual category", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   if (input.actualFiveDice.length !== 5) simpleError("dice", "Exactlyfive.");
   input.actualFiveDice.forEach((v) => bounded(v, "die", 1, 6));
   const a = input.actualFiveDice,
@@ -45,10 +42,7 @@ const compute = (
     );
   return { categoryScore: score };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -67,6 +61,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { categoryScore: { type: "number" } },
+        required: ["categoryScore"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
