@@ -8,7 +8,7 @@ export type Input = Readonly<{
   longitudeDifferenceDegrees: number;
   centralScale: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -31,7 +31,7 @@ const fields = [
   },
   { id: "centralScale", label: "Central scale", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.ellipsoid(i.semiMajorMeters, i.flattening);
   const phi = H.latitude(i.latitudeDegrees);
@@ -72,6 +72,12 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["UTM Grid Convergence Angle gamma Calculator", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/utm-grid-convergence-angle-gamma",
   title: "UTM Grid Convergence Angle gamma Calculator",
   description:
@@ -82,6 +88,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          gridConvergenceDegrees: { type: "number" },
+          order: { type: "string" },
+        },
+        required: ["gridConvergenceDegrees", "order"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
