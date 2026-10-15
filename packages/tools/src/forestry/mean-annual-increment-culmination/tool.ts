@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly actualInventoryAgesYears: readonly number[];
   readonly actualInventoryStandingVolumes: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualInventoryAgesYears",
@@ -25,7 +25,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.actualInventoryAgesYears,
     input.actualInventoryStandingVolumes,
@@ -48,7 +48,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     observedMaximumMai: m,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -72,6 +72,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedMaiMaximizingAgesYears: {
+            type: "array",
+            items: { type: "number" },
+          },
+          observedMaximumMai: { type: "number" },
+        },
+        required: ["observedMaiMaximizingAgesYears", "observedMaximumMai"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
