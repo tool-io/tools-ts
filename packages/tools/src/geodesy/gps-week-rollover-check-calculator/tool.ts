@@ -6,13 +6,13 @@ export type Input = Readonly<{
   referenceFullWeek: number;
   bits: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "broadcastWeek", label: "Broadcast week", kind: "integer" },
   { id: "referenceFullWeek", label: "Reference full week", kind: "integer" },
   { id: "bits", label: "Bits", kind: "integer" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.bits, 1, 16);
   const period = 2 ** i.bits;
@@ -43,8 +43,18 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "GPS Week Rollover Resolver",
+      "GPS Week Number rollover Check Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/gps-week-rollover-check-calculator",
-  title: "GPS Week Number rollover Check Calculator",
+  title: "GPS Week Rollover Resolver",
   description:
     "Resolve a modulo GPS broadcast week only when a unique nonnegative full week lies within half a rollover of a caller reference; ties/out-of-window eras reject, with no current-clock or UTC inference.",
   inputs: fields,
@@ -53,6 +63,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          resolvedFullWeek: { type: "number" },
+          era: { type: "number" },
+          differenceFromReferenceWeeks: { type: "number" },
+          ambiguous: { type: "boolean" },
+        },
+        required: [
+          "resolvedFullWeek",
+          "era",
+          "differenceFromReferenceWeeks",
+          "ambiguous",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
