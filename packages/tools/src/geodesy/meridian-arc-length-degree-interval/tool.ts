@@ -7,7 +7,7 @@ export type Input = Readonly<{
   startLatitudeDegrees: number;
   endLatitudeDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -29,7 +29,7 @@ const fields = [
     unit: "deg",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.ellipsoid(i.semiMajorMeters, i.flattening);
   const start = H.latitude(i.startLatitudeDegrees),
@@ -49,6 +49,12 @@ export const example = {
   output: { result: { signedDistanceMeters: 5.235987755982989 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Meridian Arc Length Degree Interval Calculator", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/meridian-arc-length-degree-interval",
   title: "Meridian Arc Length Degree Interval Calculator",
   description:
@@ -59,6 +65,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { signedDistanceMeters: { type: "number" } },
+        required: ["signedDistanceMeters"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
