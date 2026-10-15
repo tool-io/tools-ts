@@ -4,14 +4,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, bounded } from "../batch53-shared.js";
 
 export type Input = Readonly<{ mapqValues: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "mapqValues", label: "Mapq values", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   i.mapqValues.forEach((v) => bounded(v, "MAPQ", 0, 255));
   return {
     zeroMapqCount: i.mapqValues.filter((v) => v === 0).length,
@@ -19,7 +16,7 @@ const compute = (
     multiMappingConfirmed: false,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -44,6 +41,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          zeroMapqCount: { type: "number" },
+          unavailable255Count: { type: "number" },
+          multiMappingConfirmed: { type: "boolean" },
+        },
+        required: [
+          "zeroMapqCount",
+          "unavailable255Count",
+          "multiMappingConfirmed",
+        ],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
