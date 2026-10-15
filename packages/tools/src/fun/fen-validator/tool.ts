@@ -3,14 +3,11 @@ import type { ToolExecutionContext } from "../../core/definition.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, simpleError } from "../batch51-shared.js";
 export type Input = Readonly<{ readonly actualFen: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualFen", label: "Actual fen", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const p = input.actualFen.trim().split(/\s+/);
   if (p.length !== 6) simpleError("FEN", "Actualsixfields.");
   const ranks = p[0].split("/");
@@ -43,10 +40,7 @@ const compute = (
     simpleError("kings", "Actualexactlyonekingpercolor.");
   return { validDeclaredFenSyntax: true };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -65,6 +59,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { validDeclaredFenSyntax: { type: "boolean" } },
+        required: ["validDeclaredFenSyntax"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
