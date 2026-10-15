@@ -5,12 +5,12 @@ export type Input = Readonly<{
   point: readonly number[];
   rectangle: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "point", label: "point", kind: "numberList" },
   { id: "rectangle", label: "rectangle", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.point(i.point);
   H.rect(i.rectangle);
@@ -26,12 +26,30 @@ export const example = {
   output: { result: { point: [2, 0] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Rectangle Point Clamp", "mathematics"],
+    collections: ["data", "learn"],
+    fields: ["geometry", "mathematics"],
+    keywords: ["mathematics"],
+  },
   id: "geometry/rectangle-point-clamp",
   title: "Rectangle Point Clamp",
   description:
     "Clamp a finite planar point to a closed axis-aligned rectangle, allowing degenerate rectangle axes; no polygon or geographic containment.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { point: { type: "array", items: { type: "number" } } },
+        required: ["point"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
