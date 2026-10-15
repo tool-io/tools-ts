@@ -5,7 +5,7 @@ export type Input = Readonly<{
   semiMajorMeters: number;
   semiMinorMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -20,7 +20,7 @@ const fields = [
     unit: "m",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.axes(i.semiMajorMeters, i.semiMinorMeters);
   return H.finish({ flattening: p.f });
@@ -30,16 +30,33 @@ export const example = {
   output: { result: { flattening: 0.1 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Ellipsoid Flattening Calculator",
+      "Ellipsoid Flattening from Axes Calculator f=(a-b)/a",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/flattening-from-axes",
-  title: "Ellipsoid Flattening from Axes Calculator f=(a-b)/a",
+  title: "Ellipsoid Flattening Calculator",
   description:
-    "Compute oblate ellipsoid geometric flattening (a-b)/a from matching metre axes; supports spheres and b>=0.9a, not dynamical flattening.",
+    "Compute oblate ellipsoid geometric flattening (a-b)/a from matching meter axes; supports spheres and b>=0.9a, not dynamical flattening.",
   inputs: fields,
   outputs: [
     {
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { flattening: { type: "number" } },
+        required: ["flattening"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
