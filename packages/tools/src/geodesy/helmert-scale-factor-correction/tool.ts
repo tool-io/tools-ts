@@ -2,7 +2,7 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../batch58-shared.js";
 export type Input = Readonly<{ coordinateMeters: number; scalePpm: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "coordinateMeters",
@@ -12,7 +12,7 @@ const fields = [
   },
   { id: "scalePpm", label: "Scale ppm", kind: "number", unit: "ppm" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.magnitude(i.coordinateMeters);
   H.check(Math.abs(i.scalePpm) <= 1000);
@@ -33,8 +33,18 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Helmert Scale Correction Calculator",
+      "Scale Factor ppm Correction in Helmert Applier",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/helmert-scale-factor-correction",
-  title: "Scale Factor ppm Correction in Helmert Applier",
+  title: "Helmert Scale Correction Calculator",
   description:
     "Apply the signed Helmert scale convention k=1+ppm*1e-6 and expose its coordinate correction separately; not a full Helmert transform.",
   inputs: fields,
@@ -43,6 +53,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          scaleFactor: { type: "number" },
+          scaledMeters: { type: "number" },
+          correctionMeters: { type: "number" },
+        },
+        required: ["scaleFactor", "scaledMeters", "correctionMeters"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
