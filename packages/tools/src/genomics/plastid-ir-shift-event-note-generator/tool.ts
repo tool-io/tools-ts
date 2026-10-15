@@ -7,15 +7,12 @@ export type Input = Readonly<{
   beforeIrLengthBp: number;
   afterIrLengthBp: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "beforeIrLengthBp", label: "Before ir length bp", kind: "number" },
   { id: "afterIrLengthBp", label: "After ir length bp", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.beforeIrLengthBp, "before", 0, 1e9);
   bounded(i.afterIrLengthBp, "after", 0, 1e9);
   const change = i.afterIrLengthBp - i.beforeIrLengthBp;
@@ -25,7 +22,7 @@ const compute = (
     homologyEstablished: false,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -51,6 +48,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedLengthChangeBp: { type: "number" },
+          event: { type: "string" },
+          homologyEstablished: { type: "boolean" },
+        },
+        required: ["signedLengthChangeBp", "event", "homologyEstablished"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
