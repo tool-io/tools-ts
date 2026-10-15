@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ frameBytes: number; trailerBytes: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "frameBytes", kind: "integer", label: "frameBytes" },
   { id: "trailerBytes", kind: "integer", label: "trailerBytes" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.frameBytes, 0, 128);
   H.int(i.trailerBytes, 0, i.frameBytes);
@@ -23,7 +23,19 @@ export const tool = createSimpleTool({
   description:
     "Locate the half-open trailer span from a complete frame byte count and explicit trailer width; does not identify a checksum format.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { start: { type: "number" }, end: { type: "number" } },
+        required: ["start", "end"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
