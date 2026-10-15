@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly currentWindowPreprintCounts: readonly number[];
   readonly matchedWindowDurationDays: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "callerFieldIds", label: "Caller field ids", kind: "stringList" },
   {
@@ -33,7 +33,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.callerFieldIds, "fields");
   aligned(input.callerFieldIds, input.previousWindowPreprintCounts, "previous");
   aligned(input.callerFieldIds, input.currentWindowPreprintCounts, "current");
@@ -57,7 +57,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -87,6 +87,24 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedGrowthMultipliers: {
+            type: "array",
+            items: { type: "number" },
+          },
+          multiplierKnownFlags: { type: "array", items: { type: "number" } },
+          conditionalDoublingDays: { type: "array", items: { type: "number" } },
+        },
+        required: [
+          "observedGrowthMultipliers",
+          "multiplierKnownFlags",
+          "conditionalDoublingDays",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
