@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly actualDivalentIronMoles: number;
   readonly actualMagnesiumMoles: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualDivalentIronMoles",
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.actualDivalentIronMoles, "Fe2");
   nonnegative(input.actualMagnesiumMoles, "Mg");
   return {
@@ -35,7 +35,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -54,6 +54,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { observedDivalentIronNumber: { type: "number" } },
+        required: ["observedDivalentIronNumber"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
