@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../batch58-shared.js";
 export type Input = Readonly<{ utcDate: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "utcDate", label: "Utc date", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const tai = H.taiMinusUtc(H.julianDay(i.utcDate, 0));
   return H.finish({
@@ -26,6 +26,12 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Leap Second Count Since 1972 Counter", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/leap-second-count-since-1972-counter",
   title: "Leap Second Count Since 1972 Counter",
   description:
@@ -36,6 +42,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          leapSecondsSince1972: { type: "number" },
+          taiMinusUtcSeconds: { type: "number" },
+          reference: { type: "string" },
+        },
+        required: ["leapSecondsSince1972", "taiMinusUtcSeconds", "reference"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
