@@ -7,7 +7,7 @@ export type Input = Readonly<{
   radiusMeters: number;
   relativeTolerance: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "latitudeDegrees",
@@ -24,7 +24,7 @@ const fields = [
   { id: "radiusMeters", label: "Radius meters", kind: "number", unit: "m" },
   { id: "relativeTolerance", label: "Relative tolerance", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const phi = H.latitude(i.latitudeDegrees),
     lam = H.longitude(i.longitudeDegrees);
@@ -64,12 +64,22 @@ export const example = {
   output: {
     result: {
       projectedMeters: [0, 0],
-      relativeAreaError: 0,
+      // Finite-difference estimate, not an exact symbolic area identity.
+      relativeAreaError: 6.3967720009827644e-12,
       withinTolerance: true,
     },
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Mollweide Projection Area Conservation Spot Checker",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/mollweide-area-conservation-spot-checker",
   title: "Mollweide Projection Area Conservation Spot Checker",
   description:
@@ -80,6 +90,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          projectedMeters: { type: "array", items: { type: "number" } },
+          relativeAreaError: { type: "number" },
+          withinTolerance: { type: "boolean" },
+        },
+        required: ["projectedMeters", "relativeAreaError", "withinTolerance"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
