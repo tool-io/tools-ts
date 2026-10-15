@@ -5,7 +5,7 @@ export type Input = Readonly<{
   orthometricHeightMeters: number;
   geoidUndulationMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "orthometricHeightMeters",
@@ -20,7 +20,7 @@ const fields = [
     unit: "m",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(Object.values(i).every((x) => Math.abs(x) <= 1e7));
   return H.finish({
@@ -33,8 +33,18 @@ export const example = {
   output: { result: { ellipsoidalHeightMeters: 120 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Ellipsoidal Height Calculator",
+      "Ellipsoidal Height h from H plus N Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/ellipsoidal-height-h-plus-n",
-  title: "Ellipsoidal Height h from H plus N Calculator",
+  title: "Ellipsoidal Height Calculator",
   description:
     "Apply the physical height relation h=H+N with explicit matching vertical datum/tide-system geoid undulation N; no geoid lookup or automatic vertical-datum transformation.",
   inputs: fields,
@@ -43,6 +53,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { ellipsoidalHeightMeters: { type: "number" } },
+        required: ["ellipsoidalHeightMeters"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
