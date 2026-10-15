@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ points: readonly (readonly number[])[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "points", label: "points", kind: "matrix" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   i.points.forEach(H.point);
   return H.finish({
@@ -42,12 +42,45 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Polygon Edge Orientation Table", "mathematics"],
+    collections: ["data", "learn"],
+    fields: ["geometry", "mathematics"],
+    keywords: ["mathematics"],
+  },
   id: "geometry/polygon-edge-orientation-table",
   title: "Polygon Edge Orientation Table",
   description:
     "Report directed polygon edge displacements and radian orientations; zero edges have null direction, and the cycle is implicitly closed.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          edges: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                dx: { type: "number" },
+                dy: { type: "number" },
+                angle: { anyOf: [{ type: "number" }, { type: "null" }] },
+              },
+              required: ["index", "dx", "dy", "angle"],
+            },
+          },
+        },
+        required: ["edges"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
