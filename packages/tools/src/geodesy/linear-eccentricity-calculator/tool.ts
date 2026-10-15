@@ -2,7 +2,7 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../batch58-shared.js";
 export type Input = Readonly<{ semiMajorMeters: number; eccentricity: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -12,7 +12,7 @@ const fields = [
   },
   { id: "eccentricity", label: "Eccentricity", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.semiMajorMeters >= 1 &&
@@ -29,16 +29,29 @@ export const example = {
   output: { result: { linearEccentricityMeters: 1 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Linear Eccentricity c from a and e Calculator", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/linear-eccentricity-calculator",
   title: "Linear Eccentricity c from a and e Calculator",
   description:
-    "Compute ellipsoid focal linear eccentricity c=a*e in metres from a dimensionless first eccentricity, requiring 0<=e<1.",
+    "Compute ellipsoid focal linear eccentricity c=a*e in meters from a dimensionless first eccentricity, requiring 0<=e<1.",
   inputs: fields,
   outputs: [
     {
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { linearEccentricityMeters: { type: "number" } },
+        required: ["linearEccentricityMeters"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
