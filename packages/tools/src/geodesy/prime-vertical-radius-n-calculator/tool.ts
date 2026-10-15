@@ -6,7 +6,7 @@ export type Input = Readonly<{
   flattening: number;
   latitudeDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -22,7 +22,7 @@ const fields = [
     unit: "deg",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.ellipsoid(i.semiMajorMeters, i.flattening);
   const phi = H.latitude(i.latitudeDegrees);
@@ -33,16 +33,29 @@ export const example = {
   output: { result: { radiusMeters: 10 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Prime Vertical Radius of Curvature N Calculator", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/prime-vertical-radius-n-calculator",
   title: "Prime Vertical Radius of Curvature N Calculator",
   description:
-    "Compute the prime-vertical N radius of curvature of an explicit oblate/spherical ellipsoid in metres, not a generic global Earth radius.",
+    "Compute the prime-vertical N radius of curvature of an explicit oblate/spherical ellipsoid in meters, not a generic global Earth radius.",
   inputs: fields,
   outputs: [
     {
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { radiusMeters: { type: "number" } },
+        required: ["radiusMeters"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
