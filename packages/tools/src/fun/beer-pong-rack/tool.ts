@@ -3,7 +3,7 @@ import type { ToolExecutionContext } from "../../core/definition.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, bounded } from "../batch51-shared.js";
 export type Input = Readonly<{ readonly actualTriangularRackRows: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualTriangularRackRows",
@@ -11,20 +11,14 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   bounded(input.actualTriangularRackRows, "rows", 1, 10);
   const a: number[][] = [];
   for (let r = 0; r < input.actualTriangularRackRows; r++)
     for (let c = 0; c <= r; c++) a.push([c - r / 2, (r * Math.sqrt(3)) / 2]);
   return { cupCenters: a };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -54,6 +48,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          cupCenters: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["cupCenters"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
