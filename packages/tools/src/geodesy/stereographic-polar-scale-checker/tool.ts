@@ -8,7 +8,7 @@ export type Input = Readonly<{
   pole: string;
   poleScale: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -26,7 +26,7 @@ const fields = [
   { id: "pole", label: "Pole", kind: "string" },
   { id: "poleScale", label: "Pole scale", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.ellipsoid(i.semiMajorMeters, i.flattening);
   const phi = H.latitude(i.latitudeDegrees);
@@ -59,6 +59,15 @@ export const example = {
   output: { result: { pointScale: 1, atPole: true } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Stereographic Polar Aspect Scale True-at-Pole Checker",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/stereographic-polar-scale-checker",
   title: "Stereographic Polar Aspect Scale True-at-Pole Checker",
   description:
@@ -69,6 +78,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          pointScale: { type: "number" },
+          atPole: { type: "boolean" },
+        },
+        required: ["pointScale", "atPole"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
