@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly actualMatchedLosVelocities: readonly number[];
   readonly callerHorizontalProjectionRows: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualMatchedLosVelocities",
@@ -19,10 +19,7 @@ const fields = [
     kind: "matrix",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const a = input.callerHorizontalProjectionRows;
   if (
     a.length !== 2 ||
@@ -47,10 +44,7 @@ const compute = (
       d,
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -75,6 +69,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          eastVelocity: { type: "number" },
+          northVelocity: { type: "number" },
+        },
+        required: ["eastVelocity", "northVelocity"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
