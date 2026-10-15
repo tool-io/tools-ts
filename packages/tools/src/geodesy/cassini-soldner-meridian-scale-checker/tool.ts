@@ -5,7 +5,7 @@ export type Input = Readonly<{
   latitudeDegrees: number;
   longitudeDifferenceDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "latitudeDegrees",
@@ -20,7 +20,7 @@ const fields = [
     unit: "deg",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const phi = H.latitude(i.latitudeDegrees),
     dl = H.rad(i.longitudeDifferenceDegrees);
@@ -48,6 +48,15 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Cassini-Soldner Transverse Scale Along Meridian Checker",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/cassini-soldner-meridian-scale-checker",
   title: "Cassini-Soldner Transverse Scale Along Meridian Checker",
   description:
@@ -58,6 +67,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          meridianScale: { type: "number" },
+          onCentralMeridian: { type: "boolean" },
+          model: { type: "string" },
+        },
+        required: ["meridianScale", "onCentralMeridian", "model"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
