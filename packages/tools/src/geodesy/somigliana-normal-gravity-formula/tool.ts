@@ -8,7 +8,7 @@ export type Input = Readonly<{
   equatorialGravity: number;
   polarGravity: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -26,7 +26,7 @@ const fields = [
   { id: "equatorialGravity", label: "Equatorial gravity", kind: "number" },
   { id: "polarGravity", label: "Polar gravity", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.ellipsoid(i.semiMajorMeters, i.flattening);
   const phi = H.latitude(i.latitudeDegrees);
@@ -55,8 +55,18 @@ export const example = {
   output: { result: { gravityMetersPerSecondSquared: 9.8 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Somigliana Normal Gravity Calculator",
+      "Somigliana Normal Gravity Theoretical Formula Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/somigliana-normal-gravity-formula",
-  title: "Somigliana Normal Gravity Theoretical Formula Calculator",
+  title: "Somigliana Normal Gravity Calculator",
   description:
     "Evaluate Somigliana normal gravity from an explicit ellipsoid and matching equatorial/polar normal-gravity constants in m/s^2; not observed gravity, altitude correction or a mixed-datum model.",
   inputs: fields,
@@ -65,6 +75,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { gravityMetersPerSecondSquared: { type: "number" } },
+        required: ["gravityMetersPerSecondSquared"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
