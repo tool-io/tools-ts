@@ -8,7 +8,7 @@ export type Input = Readonly<{
   densityKgPerM3: number;
   angularWidthDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "innerRadiusMeters",
@@ -31,7 +31,7 @@ const fields = [
     unit: "deg",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.innerRadiusMeters >= 0 &&
@@ -73,6 +73,12 @@ export const example = {
   output: { result: { terrainCorrectionMgal: 0.08387172739141742 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Terrain Correction Simple Hammer Zone A Estimator", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/terrain-correction-hammer-zone-a",
   title: "Terrain Correction Simple Hammer Zone A Estimator",
   description:
@@ -83,6 +89,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { terrainCorrectionMgal: { type: "number" } },
+        required: ["terrainCorrectionMgal"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
