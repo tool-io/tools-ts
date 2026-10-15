@@ -6,7 +6,7 @@ export type Input = Readonly<{
   flattening: number;
   latitudeDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -22,7 +22,7 @@ const fields = [
     unit: "deg",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.ellipsoid(i.semiMajorMeters, i.flattening);
   const phi = H.latitude(i.latitudeDegrees);
@@ -38,6 +38,15 @@ export const example = {
   output: { result: { rectifyingLatitudeDegrees: 30 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Rectifying Latitude Meridian Arc Fraction Converter",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/rectifying-latitude-converter",
   title: "Rectifying Latitude Meridian Arc Fraction Converter",
   description:
@@ -48,6 +57,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { rectifyingLatitudeDegrees: { type: "number" } },
+        required: ["rectifyingLatitudeDegrees"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
