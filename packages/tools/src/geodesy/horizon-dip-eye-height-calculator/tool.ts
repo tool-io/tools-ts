@@ -5,7 +5,7 @@ export type Input = Readonly<{
   eyeHeightMeters: number;
   earthRadiusMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "eyeHeightMeters",
@@ -20,7 +20,7 @@ const fields = [
     unit: "m",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.eyeHeightMeters >= 0 &&
@@ -44,6 +44,12 @@ export const example = {
   output: { result: { geometricDipDegrees: 0 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Horizon Dip Angle from Eye Height Calculator", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/horizon-dip-eye-height-calculator",
   title: "Horizon Dip Angle from Eye Height Calculator",
   description:
@@ -54,6 +60,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { geometricDipDegrees: { type: "number" } },
+        required: ["geometricDipDegrees"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
