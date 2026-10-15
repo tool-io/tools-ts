@@ -3,14 +3,11 @@ import type { ToolExecutionContext } from "../../core/definition.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, simpleError } from "../batch51-shared.js";
 export type Input = Readonly<{ readonly actualAsciiWords: readonly string[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualAsciiWords", label: "Actual ascii words", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   if (
     !input.actualAsciiWords.length ||
     input.actualAsciiWords.some((v) => !/^[A-Za-z]+$/.test(v))
@@ -25,10 +22,7 @@ const compute = (
     totalWords: input.actualAsciiWords.length,
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -49,6 +43,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          initialLetter: { type: "string" },
+          sameInitialWordCount: { type: "number" },
+          totalWords: { type: "number" },
+        },
+        required: ["initialLetter", "sameInitialWordCount", "totalWords"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
