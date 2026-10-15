@@ -6,7 +6,7 @@ export type Input = Readonly<{
   lowerGravityMicrogal: number;
   heightDifferenceMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "upperGravityMicrogal",
@@ -25,7 +25,7 @@ const fields = [
     unit: "m",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.heightDifferenceMeters > 0 && i.heightDifferenceMeters <= 1e4);
   H.magnitude(i.upperGravityMicrogal, 1e10);
@@ -45,6 +45,15 @@ export const example = {
   output: { result: { signedMicrogalPerMeter: -10 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Vertical Gradient of Gravity microGal per metre Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/vertical-gradient-gravity-microgal",
   title: "Vertical Gradient of Gravity microGal per metre Calculator",
   description:
@@ -55,6 +64,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { signedMicrogalPerMeter: { type: "number" } },
+        required: ["signedMicrogalPerMeter"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
