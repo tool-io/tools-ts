@@ -7,14 +7,14 @@ export type Input = Readonly<{
   normalY: number;
   maximum: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "points", label: "points", kind: "matrix" },
   { id: "normalX", label: "normalX", kind: "number" },
   { id: "normalY", label: "normalY", kind: "number" },
   { id: "maximum", label: "maximum", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({
     points: H.clipPolygon(i.points, i.normalX, i.normalY, i.maximum),
@@ -44,12 +44,35 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Polygon Half Plane Clip", "mathematics"],
+    collections: ["data", "learn"],
+    fields: ["geometry", "mathematics"],
+    keywords: ["mathematics"],
+  },
   id: "geometry/polygon-half-plane-clip",
   title: "Polygon Half Plane Clip",
   description:
     "Clip an ordered polygon against the closed half-plane nx*x+ny*y<=maximum; no self-intersection validation or geographic geometry.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          points: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["points"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
