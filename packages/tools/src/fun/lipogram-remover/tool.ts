@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly actualText: string;
   readonly actualForbiddenLetters: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualText", label: "Actual text", kind: "string" },
   {
@@ -15,20 +15,14 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   return {
     convertedText: Array.from(input.actualText)
       .filter((c) => !input.actualForbiddenLetters.includes(c))
       .join(""),
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -47,6 +41,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { convertedText: { type: "string" } },
+        required: ["convertedText"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
