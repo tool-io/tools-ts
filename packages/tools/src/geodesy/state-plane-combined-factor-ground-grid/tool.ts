@@ -7,7 +7,7 @@ export type Input = Readonly<{
   curvatureRadiusMeters: number;
   projectionPointScale: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "groundDistanceMeters",
@@ -33,7 +33,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.groundDistanceMeters >= 0 &&
@@ -70,6 +70,15 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "State Plane Combined Factor Ground-to-Grid Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/state-plane-combined-factor-ground-grid",
   title: "State Plane Combined Factor Ground-to-Grid Calculator",
   description:
@@ -80,6 +89,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          elevationFactor: { type: "number" },
+          combinedFactor: { type: "number" },
+          gridDistanceMeters: { type: "number" },
+        },
+        required: ["elevationFactor", "combinedFactor", "gridDistanceMeters"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
