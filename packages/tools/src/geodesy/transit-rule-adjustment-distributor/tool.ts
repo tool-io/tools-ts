@@ -5,7 +5,7 @@ export type Input = Readonly<{
   lengthsMeters: readonly number[];
   azimuthsDegrees: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "lengthsMeters",
@@ -20,7 +20,7 @@ const fields = [
     unit: "deg",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish(H.adjustTraverse(i.lengthsMeters, i.azimuthsDegrees, true));
 };
@@ -44,6 +44,12 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Transit Rule Alternative Adjustment Distributor", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/transit-rule-adjustment-distributor",
   title: "Transit Rule Alternative Adjustment Distributor",
   description:
@@ -54,6 +60,38 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          originalClosureNorthMeters: { type: "number" },
+          originalClosureEastMeters: { type: "number" },
+          correctionsNorthMeters: { type: "array", items: { type: "number" } },
+          correctionsEastMeters: { type: "array", items: { type: "number" } },
+          northMeters: { type: "array", items: { type: "number" } },
+          eastMeters: { type: "array", items: { type: "number" } },
+          coordinatesEastNorthMeters: {
+            type: "array",
+            items: {
+              type: "array",
+              items: { type: "number" },
+              minItems: 2,
+              maxItems: 2,
+            },
+          },
+          residualMeters: { type: "number" },
+        },
+        required: [
+          "originalClosureNorthMeters",
+          "originalClosureEastMeters",
+          "correctionsNorthMeters",
+          "correctionsEastMeters",
+          "northMeters",
+          "eastMeters",
+          "coordinatesEastNorthMeters",
+          "residualMeters",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
