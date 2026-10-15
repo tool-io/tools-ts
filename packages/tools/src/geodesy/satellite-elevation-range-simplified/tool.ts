@@ -6,7 +6,7 @@ export type Input = Readonly<{
   satelliteRadiusMeters: number;
   geocentricSeparationDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "stationRadiusMeters",
@@ -27,7 +27,7 @@ const fields = [
     unit: "deg",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.stationRadiusMeters > 0 &&
@@ -54,6 +54,15 @@ export const example = {
   output: { result: { elevationDegrees: 90, slantRangeMeters: 10 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Satellite Elevation Angle from Range Geometry Simplified Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/satellite-elevation-range-simplified",
   title: "Satellite Elevation Angle from Range Geometry Simplified Calculator",
   description:
@@ -64,6 +73,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          elevationDegrees: { type: "number" },
+          slantRangeMeters: { type: "number" },
+        },
+        required: ["elevationDegrees", "slantRangeMeters"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
