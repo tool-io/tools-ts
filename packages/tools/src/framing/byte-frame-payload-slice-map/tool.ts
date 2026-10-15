@@ -6,13 +6,13 @@ export type Input = Readonly<{
   headerBytes: number;
   trailerBytes: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "frameBytes", kind: "integer", label: "frameBytes" },
   { id: "headerBytes", kind: "integer", label: "headerBytes" },
   { id: "trailerBytes", kind: "integer", label: "trailerBytes" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.frameBytes, 0, 128);
   H.int(i.headerBytes, 0, i.frameBytes);
@@ -33,7 +33,23 @@ export const tool = createSimpleTool({
   description:
     "Map explicit byte-frame header, payload and trailer half-open spans; zero-width regions remain explicit and impossible lengths are rejected.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          header: { type: "array", items: { type: "number" } },
+          payload: { type: "array", items: { type: "number" } },
+          trailer: { type: "array", items: { type: "number" } },
+        },
+        required: ["header", "payload", "trailer"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
