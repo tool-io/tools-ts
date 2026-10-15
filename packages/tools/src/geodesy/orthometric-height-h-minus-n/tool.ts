@@ -5,7 +5,7 @@ export type Input = Readonly<{
   ellipsoidalHeightMeters: number;
   geoidUndulationMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "ellipsoidalHeightMeters",
@@ -20,7 +20,7 @@ const fields = [
     unit: "m",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(Object.values(i).every((x) => Math.abs(x) <= 1e7));
   return H.finish({
@@ -33,6 +33,12 @@ export const example = {
   output: { result: { orthometricHeightMeters: 80 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Orthometric Height H from h minus N Calculator", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/orthometric-height-h-minus-n",
   title: "Orthometric Height H from h minus N Calculator",
   description:
@@ -43,6 +49,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { orthometricHeightMeters: { type: "number" } },
+        required: ["orthometricHeightMeters"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
