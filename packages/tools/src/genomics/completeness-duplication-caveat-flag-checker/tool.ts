@@ -13,16 +13,13 @@ export type Input = Readonly<{
   fragmented: number;
   totalOrthologs: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "duplicatedComplete", label: "Duplicated complete", kind: "number" },
   { id: "fragmented", label: "Fragmented", kind: "number" },
   { id: "totalOrthologs", label: "Total orthologs", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   countFraction(i.duplicatedComplete, i.totalOrthologs);
   countFraction(i.fragmented, i.totalOrthologs);
   if (i.duplicatedComplete + i.fragmented > i.totalOrthologs)
@@ -33,7 +30,7 @@ const compute = (
     completenessAloneEstablishesAssemblyQuality: false,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -58,6 +55,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          duplicationCaveat: { type: "boolean" },
+          fragmentationCaveat: { type: "boolean" },
+          completenessAloneEstablishesAssemblyQuality: { type: "boolean" },
+        },
+        required: [
+          "duplicationCaveat",
+          "fragmentationCaveat",
+          "completenessAloneEstablishesAssemblyQuality",
+        ],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
