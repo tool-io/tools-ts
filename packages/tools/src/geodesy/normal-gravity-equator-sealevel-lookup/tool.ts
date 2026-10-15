@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../batch58-shared.js";
 export type Input = Readonly<{ model: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "model", label: "Model", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.model === "GRS80");
   return H.finish({
@@ -26,6 +26,15 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Normal Gravity at Sea Level Equator 978032 mGal Lookup",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/normal-gravity-equator-sealevel-lookup",
   title: "Normal Gravity at Sea Level Equator 978032 mGal Lookup",
   description:
@@ -36,6 +45,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          equatorialGravityMgal: { type: "number" },
+          equatorialGravityMetersPerSecondSquared: { type: "number" },
+          model: { type: "string" },
+        },
+        required: [
+          "equatorialGravityMgal",
+          "equatorialGravityMetersPerSecondSquared",
+          "model",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
