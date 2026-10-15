@@ -8,7 +8,7 @@ export type Input = Readonly<{
   fractionX: number;
   fractionY: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "anchor", label: "anchor", kind: "numberList" },
   { id: "width", label: "width", kind: "number" },
@@ -16,7 +16,7 @@ const fields = [
   { id: "fractionX", label: "fractionX", kind: "number" },
   { id: "fractionY", label: "fractionY", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.point(i.anchor);
   H.check(i.width >= 0 && i.height >= 0);
@@ -35,12 +35,30 @@ export const example = {
   output: { result: { rectangle: [8, 17, 12, 23] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Rectangle Center Anchor Transform", "mathematics"],
+    collections: ["data", "learn"],
+    fields: ["geometry", "mathematics"],
+    keywords: ["mathematics"],
+  },
   id: "geometry/rectangle-center-anchor-transform",
   title: "Rectangle Center Anchor Transform",
   description:
     "Position a rectangle around a supplied fractional anchor, with nonnegative dimensions and arbitrary explicit fractions; no CSS writing-mode interpretation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { rectangle: { type: "array", items: { type: "number" } } },
+        required: ["rectangle"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
