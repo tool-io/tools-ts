@@ -7,7 +7,7 @@ export type Input = Readonly<{
   mantleDensityKgPerM3: number;
   referenceCrustThicknessMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "topographicHeightMeters",
@@ -32,7 +32,7 @@ const fields = [
     unit: "m",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.topographicHeightMeters >= 0 &&
@@ -67,6 +67,15 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Isostatic Compensation Depth Airy Heiskanen Estimate Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/isostatic-compensation-depth-airy",
   title: "Isostatic Compensation Depth Airy Heiskanen Estimate Calculator",
   description:
@@ -77,6 +86,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          rootThicknessMeters: { type: "number" },
+          compensationDepthBelowReferenceMeters: { type: "number" },
+        },
+        required: [
+          "rootThicknessMeters",
+          "compensationDepthBelowReferenceMeters",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
