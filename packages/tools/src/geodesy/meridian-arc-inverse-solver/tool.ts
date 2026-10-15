@@ -7,7 +7,7 @@ export type Input = Readonly<{
   signedArcMeters: number;
   toleranceMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -29,7 +29,7 @@ const fields = [
     unit: "m",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.ellipsoid(i.semiMajorMeters, i.flattening);
   return H.finish(
@@ -53,6 +53,12 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Meridian Arc Length Inverse Problem Solver", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/meridian-arc-inverse-solver",
   title: "Meridian Arc Length Inverse Problem Solver",
   description:
@@ -63,6 +69,22 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          latitudeDegrees: { type: "number" },
+          residualMeters: { type: "number" },
+          iterations: { type: "integer" },
+          converged: { type: "boolean" },
+        },
+        required: [
+          "latitudeDegrees",
+          "residualMeters",
+          "iterations",
+          "converged",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
