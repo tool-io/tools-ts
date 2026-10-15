@@ -8,7 +8,7 @@ export type Input = Readonly<{
   scalePpm: number;
   convention: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "ecefMeters", label: "Ecef meters", kind: "numberList", unit: "m" },
   {
@@ -26,7 +26,7 @@ const fields = [
   { id: "scalePpm", label: "Scale ppm", kind: "number", unit: "ppm" },
   { id: "convention", label: "Convention", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({
     ecefMeters: H.helmert(
@@ -49,6 +49,12 @@ export const example = {
   output: { result: { ecefMeters: [2, 3, 4] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Helmert Transform Coordinate Rotation Applier", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/helmert-transform-applier",
   title: "Helmert Transform Coordinate Rotation Applier",
   description:
@@ -59,6 +65,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          ecefMeters: { type: "array", items: { type: "number" } },
+        },
+        required: ["ecefMeters"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
