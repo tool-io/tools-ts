@@ -6,15 +6,12 @@ export type Input = Readonly<{
   readonly actualAcrosticWord: string;
   readonly actualPoemLines: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualAcrosticWord", label: "Actual acrostic word", kind: "string" },
   { id: "actualPoemLines", label: "Actual poem lines", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const a = Array.from(input.actualAcrosticWord.toUpperCase());
   aligned(a, input.actualPoemLines, "lines");
   return {
@@ -23,10 +20,7 @@ const compute = (
     ),
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -48,6 +42,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { matchesAcrostic: { type: "boolean" } },
+        required: ["matchesAcrostic"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
