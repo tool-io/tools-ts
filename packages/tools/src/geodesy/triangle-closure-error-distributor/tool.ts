@@ -6,7 +6,7 @@ export type Input = Readonly<{
   precisionWeights: readonly number[];
   sphericalExcessDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "anglesDegrees",
@@ -22,7 +22,7 @@ const fields = [
     unit: "deg",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.anglesDegrees.length === 3 &&
@@ -67,6 +67,12 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Triangulation Triangle Closure Error Distributor", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/triangle-closure-error-distributor",
   title: "Triangulation Triangle Closure Error Distributor",
   description:
@@ -77,6 +83,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          closureArcseconds: { type: "number" },
+          correctionsArcseconds: { type: "array", items: { type: "number" } },
+          adjustedDegrees: { type: "array", items: { type: "number" } },
+        },
+        required: [
+          "closureArcseconds",
+          "correctionsArcseconds",
+          "adjustedDegrees",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
