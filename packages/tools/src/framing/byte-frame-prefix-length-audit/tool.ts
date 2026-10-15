@@ -6,13 +6,13 @@ export type Input = Readonly<{
   lengthBytes: number;
   littleEndian: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bytes", kind: "numberList", label: "bytes" },
   { id: "lengthBytes", kind: "integer", label: "lengthBytes" },
   { id: "littleEndian", kind: "boolean", label: "littleEndian" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.bytes(i.bytes);
   H.int(i.lengthBytes, 1, 4);
@@ -39,7 +39,24 @@ export const tool = createSimpleTool({
   description:
     "Compare a leading unsigned byte length field against the complete remaining frame payload; mismatch is evidence, not a thrown truncation error.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          declared: { type: "number" },
+          actual: { type: "number" },
+          difference: { type: "number" },
+          matches: { type: "boolean" },
+        },
+        required: ["declared", "actual", "difference", "matches"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
