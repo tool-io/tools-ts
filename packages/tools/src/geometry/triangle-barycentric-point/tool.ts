@@ -5,12 +5,12 @@ export type Input = Readonly<{
   vertices: readonly (readonly number[])[];
   weights: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "vertices", label: "vertices", kind: "matrix" },
   { id: "weights", label: "weights", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.vertices.length === 3 &&
@@ -36,12 +36,30 @@ export const example = {
   output: { result: { point: [0.5, 0.5] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Triangle Barycentric Point", "mathematics"],
+    collections: ["data", "learn"],
+    fields: ["geometry", "mathematics"],
+    keywords: ["mathematics"],
+  },
   id: "geometry/triangle-barycentric-point",
   title: "Triangle Barycentric Point",
   description:
     "Map three supplied barycentric weights summing to one to a planar triangle point; weights may be negative, no inside-triangle claim.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { point: { type: "array", items: { type: "number" } } },
+        required: ["point"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
