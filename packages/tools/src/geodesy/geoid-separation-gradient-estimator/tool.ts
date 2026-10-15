@@ -6,7 +6,7 @@ export type Input = Readonly<{
   secondUndulationMeters: number;
   distanceKm: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "firstUndulationMeters",
@@ -22,7 +22,7 @@ const fields = [
   },
   { id: "distanceKm", label: "Distance km", kind: "number", unit: "km" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     Math.abs(i.firstUndulationMeters) <= 1000 &&
@@ -47,6 +47,12 @@ export const example = {
   output: { result: { signedMetersPerKm: 1, dimensionlessSlope: 0.001 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Geoid Separation Gradient per km Estimator", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/geoid-separation-gradient-estimator",
   title: "Geoid Separation Gradient per km Estimator",
   description:
@@ -57,6 +63,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedMetersPerKm: { type: "number" },
+          dimensionlessSlope: { type: "number" },
+        },
+        required: ["signedMetersPerKm", "dimensionlessSlope"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
