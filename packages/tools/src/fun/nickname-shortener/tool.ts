@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly actualName: string;
   readonly actualCodepointLimit: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualName", label: "Actual name", kind: "string" },
   {
@@ -15,10 +15,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   bounded(input.actualCodepointLimit, "limit", 1, 128);
   return {
     convertedText: Array.from(input.actualName)
@@ -26,10 +23,7 @@ const compute = (
       .join(""),
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -48,6 +42,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { convertedText: { type: "string" } },
+        required: ["convertedText"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
