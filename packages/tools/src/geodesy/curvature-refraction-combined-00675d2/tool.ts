@@ -2,7 +2,7 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../batch58-shared.js";
 export type Input = Readonly<{ horizontalDistanceKm: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "horizontalDistanceKm",
@@ -11,7 +11,7 @@ const fields = [
     unit: "km",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.horizontalDistanceKm >= 0 && i.horizontalDistanceKm <= 100);
   return H.finish({
@@ -23,17 +23,33 @@ export const example = {
   output: { result: { combinedCorrectionMeters: 0.27 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Combined Curvature and Refraction Correction Calculator",
+      "Combined Curvature and Refraction Correction c=0.0675d² Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/curvature-refraction-combined-00675d2",
-  title:
-    "Combined Curvature and Refraction Correction c=0.0675d\u00b2 Calculator",
+  title: "Combined Curvature and Refraction Correction Calculator",
   description:
-    "Evaluate the explicitly named historical combined curvature/refraction approximation 0.0675*dKm^2 metres; fixed conventional coefficient, not measured refraction or an exact universal Earth model.",
+    "Evaluate the explicitly named historical combined curvature/refraction approximation 0.0675*dKm^2 meters; fixed conventional coefficient, not measured refraction or an exact universal Earth model.",
   inputs: fields,
   outputs: [
     {
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { combinedCorrectionMeters: { type: "number" } },
+        required: ["combinedCorrectionMeters"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
