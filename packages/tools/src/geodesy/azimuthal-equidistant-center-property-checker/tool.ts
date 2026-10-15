@@ -9,7 +9,7 @@ export type Input = Readonly<{
   radiusMeters: number;
   relativeTolerance: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "centerLatitudeDegrees",
@@ -38,7 +38,7 @@ const fields = [
   { id: "radiusMeters", label: "Radius meters", kind: "number", unit: "m" },
   { id: "relativeTolerance", label: "Relative tolerance", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const phi0 = H.latitude(i.centerLatitudeDegrees),
     lam0 = H.longitude(i.centerLongitudeDegrees),
@@ -82,8 +82,18 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Azimuthal Equidistant Center-Distance Checker",
+      "Azimuthal Equidistant Distance Truth Center Property Checker",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/azimuthal-equidistant-center-property-checker",
-  title: "Azimuthal Equidistant Distance Truth Center Property Checker",
+  title: "Azimuthal Equidistant Center-Distance Checker",
   description:
     "Project a point with spherical azimuthal-equidistant equations and compare its planar radius with center-to-point great-circle distance; antipodes rejected, does not preserve distances between arbitrary noncentral points.",
   inputs: fields,
@@ -92,6 +102,25 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          projectedMeters: { type: "array", items: { type: "number" } },
+          greatCircleDistanceMeters: { type: "number" },
+          radialDistanceMeters: { type: "number" },
+          relativeError: { type: "number" },
+          withinTolerance: { type: "boolean" },
+        },
+        required: [
+          "projectedMeters",
+          "greatCircleDistanceMeters",
+          "radialDistanceMeters",
+          "relativeError",
+          "withinTolerance",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
