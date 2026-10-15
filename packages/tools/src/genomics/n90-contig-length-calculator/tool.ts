@@ -10,14 +10,11 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ contigLengths: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "contigLengths", label: "Contig lengths", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!i.contigLengths.length) simpleError("contigs", "Observed lengths.");
   i.contigLengths.forEach((v) => bounded(v, "length", 1, 1e12));
   const a = [...i.contigLengths].sort((a, b) => b - a),
@@ -28,7 +25,7 @@ const compute = (
   while (cumulative < 0.9 * total) cumulative += a[j++];
   return { n90: a[j - 1], l90: j, totalBases: total };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -47,6 +44,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          n90: { type: "number" },
+          l90: { type: "number" },
+          totalBases: { type: "number" },
+        },
+        required: ["n90", "l90", "totalBases"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
