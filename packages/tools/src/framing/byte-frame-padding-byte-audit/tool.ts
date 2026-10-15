@@ -6,13 +6,13 @@ export type Input = Readonly<{
   start: number;
   paddingByte: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bytes", kind: "numberList", label: "bytes" },
   { id: "start", kind: "integer", label: "start" },
   { id: "paddingByte", kind: "integer", label: "paddingByte" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.bytes(i.bytes);
   H.int(i.start, 0, i.bytes.length);
@@ -33,7 +33,32 @@ export const tool = createSimpleTool({
   description:
     "Audit every byte in a caller-declared padding suffix against one exact expected padding byte; no padding-format auto-detection.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          violations: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                byte: { type: "number" },
+              },
+              required: ["index", "byte"],
+            },
+          },
+        },
+        required: ["violations"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
