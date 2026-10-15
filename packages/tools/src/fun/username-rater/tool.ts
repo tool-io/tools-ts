@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualCandidateUsername: string;
   readonly callerObservedUnavailableUsernames: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualCandidateUsername",
@@ -24,10 +24,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   if (!input.actualCandidateUsername.trim())
     simpleError("username", "Nonblankcandidate.");
   unique(input.callerObservedUnavailableUsernames, "observations");
@@ -41,10 +38,7 @@ const compute = (
       ),
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -71,6 +65,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          matchesDeclaredLocalSyntax: { type: "boolean" },
+          notInCallerUnavailableList: { type: "boolean" },
+        },
+        required: ["matchesDeclaredLocalSyntax", "notInCallerUnavailableList"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
