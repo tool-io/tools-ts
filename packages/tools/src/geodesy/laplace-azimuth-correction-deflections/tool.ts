@@ -5,7 +5,7 @@ export type Input = Readonly<{
   latitudeDegrees: number;
   etaArcseconds: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "latitudeDegrees",
@@ -20,7 +20,7 @@ const fields = [
     unit: "arcsec",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const phi = H.latitude(i.latitudeDegrees, false);
   H.check(Math.abs(i.etaArcseconds) <= 300);
@@ -33,6 +33,15 @@ export const example = {
   output: { result: { azimuthCorrectionArcseconds: 1 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Laplace Equation Azimuth Correction from Deflections Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/laplace-azimuth-correction-deflections",
   title: "Laplace Equation Azimuth Correction from Deflections Calculator",
   description:
@@ -43,6 +52,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { azimuthCorrectionArcseconds: { type: "number" } },
+        required: ["azimuthCorrectionArcseconds"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
