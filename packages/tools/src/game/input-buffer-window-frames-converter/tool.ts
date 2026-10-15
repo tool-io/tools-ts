@@ -5,17 +5,17 @@ export type Input = Readonly<{
   readonly bufferFrames: number;
   readonly framesPerSecond: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bufferFrames", label: "Buffer frames", kind: "number" },
   { id: "framesPerSecond", label: "Frames per second", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.bufferFrames, "frames", 0, 1000000);
   positive(i.framesPerSecond, "fps");
   return { windowMilliseconds: (1000 * i.bufferFrames) / i.framesPerSecond };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -34,6 +34,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { windowMilliseconds: { type: "number" } },
+        required: ["windowMilliseconds"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
