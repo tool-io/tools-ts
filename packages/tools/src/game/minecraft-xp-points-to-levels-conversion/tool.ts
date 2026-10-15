@@ -7,7 +7,7 @@ import {
   minecraftXp,
 } from "../batch52-shared.js";
 export type Input = Readonly<{ readonly totalExperiencePoints: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "totalExperiencePoints",
@@ -15,7 +15,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.totalExperiencePoints, "xp", 0, 1000000000);
   let lo = 0,
     hi = 100000;
@@ -32,7 +32,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     fractionIntoLevel: (i.totalExperiencePoints - start) / (next - start),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -51,6 +51,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          level: { type: "number" },
+          pointsIntoLevel: { type: "number" },
+          fractionIntoLevel: { type: "number" },
+        },
+        required: ["level", "pointsIntoLevel", "fractionIntoLevel"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
