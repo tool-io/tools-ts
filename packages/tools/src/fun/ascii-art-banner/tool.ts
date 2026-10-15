@@ -3,24 +3,18 @@ import type { ToolExecutionContext } from "../../core/definition.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, simpleError } from "../batch51-shared.js";
 export type Input = Readonly<{ readonly actualText: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualText", label: "Actual text", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const a = Array.from(input.actualText);
   if (!a.length || a.length > 80 || /[^ -~]/.test(input.actualText))
     simpleError("banner", "1–80singlelineprintableASCII.");
   const line = "+" + "-".repeat(a.length + 2) + "+";
   return { bannerLines: [line, "| " + input.actualText + " |", line] };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -39,6 +33,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          bannerLines: { type: "array", items: { type: "string" } },
+        },
+        required: ["bannerLines"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
