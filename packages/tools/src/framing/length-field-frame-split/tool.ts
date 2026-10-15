@@ -6,13 +6,13 @@ export type Input = Readonly<{
   lengthBytes: number;
   littleEndian: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bytes", kind: "numberList", label: "bytes" },
   { id: "lengthBytes", kind: "integer", label: "lengthBytes" },
   { id: "littleEndian", kind: "boolean", label: "littleEndian" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.bytes(i.bytes);
   H.int(i.lengthBytes, 1, 4);
@@ -37,7 +37,24 @@ export const tool = createSimpleTool({
   description:
     "Split a complete length-field byte stream with explicit 1\u20134 byte unsigned payload lengths and byte order; truncation is rejected, no checksum or sync inference.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          frames: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["frames"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
