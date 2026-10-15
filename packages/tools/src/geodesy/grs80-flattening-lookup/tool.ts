@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../batch58-shared.js";
 export type Input = Readonly<{ ellipsoid: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "ellipsoid", label: "Ellipsoid", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.ellipsoid === "GRS80");
   return H.finish({
@@ -26,6 +26,12 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["GRS80 Flattening Parameter Lookup", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/grs80-flattening-lookup",
   title: "GRS80 Flattening Parameter Lookup",
   description:
@@ -36,6 +42,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          flattening: { type: "number" },
+          inverseFlattening: { type: "number" },
+          reference: { type: "string" },
+        },
+        required: ["flattening", "inverseFlattening", "reference"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
