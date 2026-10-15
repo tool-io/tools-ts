@@ -5,7 +5,7 @@ export type Input = Readonly<{
   northIncrementsMeters: readonly number[];
   eastIncrementsMeters: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "northIncrementsMeters",
@@ -20,7 +20,7 @@ const fields = [
     unit: "m",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.northIncrementsMeters.length >= 3 &&
@@ -64,8 +64,18 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Double Meridian Distance Traverse Area Calculator",
+      "Area by Double Meridian Distance DMD Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/area-double-meridian-distance-dmd",
-  title: "Area by Double Meridian Distance DMD Calculator",
+  title: "Double Meridian Distance Traverse Area Calculator",
   description:
     "Compute signed traverse area by double-meridian distances from explicitly closed local north/east leg increments; positive is counterclockwise in east/north coordinates, no geodetic area or hidden closure correction.",
   inputs: fields,
@@ -74,6 +84,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          doubleMeridianDistancesMeters: {
+            type: "array",
+            items: { type: "number" },
+          },
+          signedAreaSquareMeters: { type: "number" },
+        },
+        required: ["doubleMeridianDistancesMeters", "signedAreaSquareMeters"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
