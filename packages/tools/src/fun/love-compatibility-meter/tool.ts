@@ -3,21 +3,15 @@ import type { ToolExecutionContext } from "../../core/definition.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, sourceFor, draw } from "../batch51-shared.js";
 export type Input = Readonly<{ readonly seed: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "seed", label: "Seed", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   return { fictionalEntertainmentPercent: draw(0, 100, random) };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -40,6 +34,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { fictionalEntertainmentPercent: { type: "number" } },
+        required: ["fictionalEntertainmentPercent"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
