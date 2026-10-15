@@ -6,13 +6,13 @@ export type Input = Readonly<{
   chunk: readonly number[];
   frameBytes: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "carry", kind: "numberList", label: "carry" },
   { id: "chunk", kind: "numberList", label: "chunk" },
   { id: "frameBytes", kind: "integer", label: "frameBytes" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.bytes(i.carry);
   H.bytes(i.chunk);
@@ -37,7 +37,25 @@ export const tool = createSimpleTool({
   description:
     "Advance one fixed-byte streaming frame chunk with explicit incomplete carry, emitting complete frames and retaining the new tail; no sync search.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          frames: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          carry: { type: "array", items: { type: "number" } },
+        },
+        required: ["frames", "carry"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
