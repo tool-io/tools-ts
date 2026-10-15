@@ -7,15 +7,12 @@ export type Input = Readonly<{
   contigLengths: readonly number[];
   minimumLength: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "contigLengths", label: "Contig lengths", kind: "numberList" },
   { id: "minimumLength", label: "Minimum length", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.minimumLength, "minimum", 0, 1e12);
   i.contigLengths.forEach((v) => bounded(v, "length", 0, 1e12));
   return {
@@ -24,7 +21,7 @@ const compute = (
     excludedCount: i.contigLengths.filter((v) => v < i.minimumLength).length,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -43,6 +40,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          atOrAboveMinimum: { type: "number" },
+          excludedCount: { type: "number" },
+        },
+        required: ["atOrAboveMinimum", "excludedCount"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
