@@ -11,15 +11,12 @@ export type Input = Readonly<{
   readonly actualBirthMonth: number;
   readonly actualBirthDay: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualBirthMonth", label: "Actual birth month", kind: "number" },
   { id: "actualBirthDay", label: "Actual birth day", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   bounded(input.actualBirthMonth, "month", 1, 12);
   bounded(input.actualBirthDay, "day", 1, 31);
   daysBetween(
@@ -30,10 +27,7 @@ const compute = (
     toyEncodedBirthday: 100 * input.actualBirthMonth + input.actualBirthDay,
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -52,6 +46,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { toyEncodedBirthday: { type: "number" } },
+        required: ["toyEncodedBirthday"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
