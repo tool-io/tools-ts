@@ -6,7 +6,7 @@ export type Input = Readonly<{
   flattening: number;
   latitudeDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -22,7 +22,7 @@ const fields = [
     unit: "deg",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.ellipsoid(i.semiMajorMeters, i.flattening);
   const phi = H.latitude(i.latitudeDegrees);
@@ -42,6 +42,12 @@ export const example = {
   output: { result: { authalicLatitudeDegrees: 30 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Authalic Latitude Equal-Area Converter", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/authalic-latitude-equal-area-converter",
   title: "Authalic Latitude Equal-Area Converter",
   description:
@@ -52,6 +58,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { authalicLatitudeDegrees: { type: "number" } },
+        required: ["authalicLatitudeDegrees"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
