@@ -7,14 +7,14 @@ export type Input = Readonly<{
   c: readonly number[];
   d: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "a", label: "a", kind: "numberList" },
   { id: "b", label: "b", kind: "numberList" },
   { id: "c", label: "c", kind: "numberList" },
   { id: "d", label: "d", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   [i.a, i.b, i.c, i.d].forEach(H.point);
   return H.finish({
@@ -31,12 +31,33 @@ export const example = {
   output: { result: { xOverlap: true, yOverlap: true } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Segment Axis Bounding Overlap", "mathematics"],
+    collections: ["data", "learn"],
+    fields: ["geometry", "mathematics"],
+    keywords: ["mathematics"],
+  },
   id: "geometry/segment-axis-bounding-overlap",
   title: "Segment Axis Bounding Overlap",
   description:
     "Audit inclusive axis-envelope overlap of two planar segments; overlapping envelopes alone do not prove segment intersection.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          xOverlap: { type: "boolean" },
+          yOverlap: { type: "boolean" },
+        },
+        required: ["xOverlap", "yOverlap"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
