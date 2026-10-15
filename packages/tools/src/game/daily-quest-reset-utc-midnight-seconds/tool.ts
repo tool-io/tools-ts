@@ -8,11 +8,11 @@ import {
   daysBetween,
 } from "../batch52-shared.js";
 export type Input = Readonly<{ readonly isoUtcTimestamp: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "isoUtcTimestamp", label: "Iso utc timestamp", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   if (
     !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$(?![\s\S])/.test(i.isoUtcTimestamp)
   )
@@ -26,7 +26,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
   bounded(s, "second", 0, 59);
   return { secondsUntilNextUtcMidnight: 86400 - h * 3600 - m * 60 - s };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -45,6 +45,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { secondsUntilNextUtcMidnight: { type: "number" } },
+        required: ["secondsUntilNextUtcMidnight"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
