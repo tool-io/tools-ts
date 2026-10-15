@@ -4,14 +4,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, bounded } from "../batch53-shared.js";
 
 export type Input = Readonly<{ year: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "year", label: "Year", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.year, "year", 1583, 4099);
   const a = i.year % 19,
     b = Math.floor(i.year / 100),
@@ -40,7 +37,7 @@ const compute = (
       String(day).padStart(2, "0"),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -61,6 +58,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          year: { type: "number" },
+          month: { type: "number" },
+          day: { type: "number" },
+          gregorianDate: { type: "string" },
+        },
+        required: ["year", "month", "day", "gregorianDate"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
