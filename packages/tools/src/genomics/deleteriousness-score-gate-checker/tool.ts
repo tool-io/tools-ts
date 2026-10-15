@@ -4,22 +4,19 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish } from "../batch53-shared.js";
 
 export type Input = Readonly<{ score: number; callerThreshold: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "score", label: "Score", kind: "number" },
   { id: "callerThreshold", label: "Caller threshold", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   return {
     signedMargin: i.score - i.callerThreshold,
     atOrAboveThreshold: i.score >= i.callerThreshold,
     pathogenicityEstablished: false,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -44,6 +41,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedMargin: { type: "number" },
+          atOrAboveThreshold: { type: "boolean" },
+          pathogenicityEstablished: { type: "boolean" },
+        },
+        required: [
+          "signedMargin",
+          "atOrAboveThreshold",
+          "pathogenicityEstablished",
+        ],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
