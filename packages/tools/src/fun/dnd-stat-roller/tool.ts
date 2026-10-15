@@ -13,15 +13,12 @@ export type Input = Readonly<{
   readonly seed: string;
   readonly statCount: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "statCount", label: "Stat count", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   bounded(input.statCount, "stats", 1, 16);
   const rolls = Array.from({ length: input.statCount }, () =>
@@ -29,10 +26,7 @@ const compute = (
   );
   return { rolls, stats: rolls.map((r) => sum(r) - Math.min(...r)) };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -59,6 +53,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          rolls: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          stats: { type: "array", items: { type: "number" } },
+        },
+        required: ["rolls", "stats"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
