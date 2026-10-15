@@ -6,7 +6,7 @@ export type Input = Readonly<{
   flattening: number;
   ecefMeters: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -17,7 +17,7 @@ const fields = [
   { id: "flattening", label: "Flattening", kind: "number" },
   { id: "ecefMeters", label: "Ecef meters", kind: "numberList", unit: "m" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.ellipsoid(i.semiMajorMeters, i.flattening);
   return H.finish(H.reverseEcef(p.a, p.f, i.ecefMeters));
@@ -36,16 +36,47 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "ECEF to Geodetic Coordinate Converter",
+      "Geodetic from ECEF XYZ Iterative Converter",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/geodetic-from-ecef-iterative-converter",
-  title: "Geodetic from ECEF XYZ Iterative Converter",
+  title: "ECEF to Geodetic Coordinate Converter",
   description:
-    "Convert exterior/near-surface ECEF metres to geodetic latitude, longitude and ellipsoidal height with bounded iteration and explicit round-trip residual; excludes deep-interior ambiguous normals.",
+    "Convert exterior/near-surface ECEF meters to geodetic latitude, longitude and ellipsoidal height with bounded iteration and explicit round-trip residual; excludes deep-interior ambiguous normals.",
   inputs: fields,
   outputs: [
     {
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          latitudeDegrees: { type: "number" },
+          longitudeDegrees: { type: "number" },
+          ellipsoidalHeightMeters: { type: "number" },
+          iterations: { type: "number" },
+          residualMeters: { type: "number" },
+          converged: { type: "boolean" },
+        },
+        required: [
+          "latitudeDegrees",
+          "longitudeDegrees",
+          "ellipsoidalHeightMeters",
+          "iterations",
+          "residualMeters",
+          "converged",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
