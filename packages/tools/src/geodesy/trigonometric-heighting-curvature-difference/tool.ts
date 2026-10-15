@@ -9,7 +9,7 @@ export type Input = Readonly<{
   earthRadiusMeters: number;
   refractionCoefficient: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "slantDistanceMeters",
@@ -47,7 +47,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const angle = H.latitude(i.elevationDegrees, false);
   H.check(
@@ -91,6 +91,15 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Trigonometric Heighting Difference Calculator with Earth Curvature",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/trigonometric-heighting-curvature-difference",
   title: "Trigonometric Heighting Difference Calculator with Earth Curvature",
   description:
@@ -101,6 +110,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          horizontalDistanceMeters: { type: "number" },
+          heightDifferenceMeters: { type: "number" },
+          curvatureRefractionMeters: { type: "number" },
+        },
+        required: [
+          "horizontalDistanceMeters",
+          "heightDifferenceMeters",
+          "curvatureRefractionMeters",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
