@@ -9,7 +9,7 @@ export type Input = Readonly<{
   initialBearingDegrees: number;
   distanceMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -38,7 +38,7 @@ const fields = [
   },
   { id: "distanceMeters", label: "Distance meters", kind: "number", unit: "m" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.ellipsoid(i.semiMajorMeters, i.flattening);
   const phi = H.latitude(i.latitudeDegrees);
@@ -75,8 +75,18 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Vincenty Direct Geodesic Calculator",
+      "Geodetic Forward Problem Vincenty Direct Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/vincenty-direct-forward-problem",
-  title: "Geodetic Forward Problem Vincenty Direct Calculator",
+  title: "Vincenty Direct Geodesic Calculator",
   description:
     "Solve Vincenty direct geodesics on supplied oblate/spherical ellipsoids, bounded to 200 iterations and half-equatorial circumference; report forward end bearing and explicit nonconvergence.",
   inputs: fields,
@@ -85,6 +95,26 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          converged: { type: "boolean" },
+          iterations: { type: "integer" },
+          latitudeDegrees: { anyOf: [{ type: "number" }, { type: "null" }] },
+          longitudeDegrees: { anyOf: [{ type: "number" }, { type: "null" }] },
+          finalBearingDegrees: {
+            anyOf: [{ type: "number" }, { type: "null" }],
+          },
+        },
+        required: [
+          "converged",
+          "iterations",
+          "latitudeDegrees",
+          "longitudeDegrees",
+          "finalBearingDegrees",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
