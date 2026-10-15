@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ sequence: readonly number[]; modulus: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "sequence", kind: "numberList", label: "sequence" },
   { id: "modulus", kind: "integer", label: "modulus" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.modulus, 2, 1e9);
   i.sequence.forEach((x) => H.int(x, 0, i.modulus - 1));
@@ -48,7 +48,41 @@ export const tool = createSimpleTool({
   description:
     "Audit modular frame sequence transitions under an explicit forward-order assumption; duplicates retain unknown missing count and reordering cannot be inferred from residues alone.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          transitions: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                fromIndex: { type: "number" },
+                toIndex: { type: "number" },
+                forward: { type: "number" },
+                missing: { anyOf: [{ type: "number" }, { type: "null" }] },
+                duplicate: { type: "boolean" },
+              },
+              required: [
+                "fromIndex",
+                "toIndex",
+                "forward",
+                "missing",
+                "duplicate",
+              ],
+            },
+          },
+        },
+        required: ["transitions"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
