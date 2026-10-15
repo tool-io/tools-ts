@@ -9,7 +9,7 @@ import {
 export type Input = Readonly<{
   readonly actualQualifyingEventTimesYears: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualQualifyingEventTimesYears",
@@ -17,7 +17,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   strictlyIncreasing(input.actualQualifyingEventTimesYears, "event-times", 2);
   const t = input.actualQualifyingEventTimesYears
     .slice(1)
@@ -27,7 +27,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     observedMeanIntervalYears: mean(t),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -51,6 +51,22 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedIntereventIntervalsYears: {
+            type: "array",
+            items: { type: "number" },
+          },
+          observedMeanIntervalYears: { type: "number" },
+        },
+        required: [
+          "observedIntereventIntervalsYears",
+          "observedMeanIntervalYears",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
