@@ -5,7 +5,7 @@ export type Input = Readonly<{
   gregorianDate: string;
   secondsSinceMidnight: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "gregorianDate", label: "Gregorian date", kind: "string" },
   {
@@ -14,7 +14,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({
     julianDay: H.julianDay(i.gregorianDate, i.secondsSinceMidnight),
@@ -25,6 +25,12 @@ export const example = {
   output: { result: { julianDay: 2451545 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Julian Date from Calendar Date Standard Converter", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/julian-date-calendar-standard-converter",
   title: "Julian Date from Calendar Date Standard Converter",
   description:
@@ -35,6 +41,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { julianDay: { type: "number" } },
+        required: ["julianDay"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
