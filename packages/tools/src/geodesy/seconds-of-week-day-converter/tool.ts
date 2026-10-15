@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../batch58-shared.js";
 export type Input = Readonly<{ gpsDayOfWeek: number; secondsOfDay: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "gpsDayOfWeek", label: "Gps day of week", kind: "integer" },
   { id: "secondsOfDay", label: "Seconds of day", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.gpsDayOfWeek, 0, 6);
   H.check(i.secondsOfDay >= 0 && i.secondsOfDay < 86400);
@@ -18,6 +18,12 @@ export const example = {
   output: { result: { secondsOfWeek: 176400 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Seconds of Week from Day of Week Converter", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/seconds-of-week-day-converter",
   title: "Seconds of Week from Day of Week Converter",
   description:
@@ -28,6 +34,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { secondsOfWeek: { type: "number" } },
+        required: ["secondsOfWeek"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
