@@ -5,7 +5,7 @@ export type Input = Readonly<{
   eastSigmaMeters: number;
   northSigmaMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "eastSigmaMeters",
@@ -20,7 +20,7 @@ const fields = [
     unit: "m",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.eastSigmaMeters >= 0 &&
@@ -40,8 +40,18 @@ export const example = {
   output: { result: { twoDrmsMeters: 10, isotropicGaussianCoverage: null } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "2DRMS Horizontal Accuracy Calculator",
+      "2DRMS Horizontal Accuracy Estimate Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/twodrms-horizontal-accuracy-estimate",
-  title: "2DRMS Horizontal Accuracy Estimate Calculator",
+  title: "2DRMS Horizontal Accuracy Calculator",
   description:
     "Compute 2DRMS from supplied horizontal standard deviations, exposing its approximately 98.17% radial coverage only in the unbiased isotropic Gaussian case; not universally 95% accuracy.",
   inputs: fields,
@@ -50,6 +60,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          twoDrmsMeters: { type: "number" },
+          isotropicGaussianCoverage: {
+            anyOf: [{ type: "number" }, { type: "null" }],
+          },
+        },
+        required: ["twoDrmsMeters", "isotropicGaussianCoverage"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
