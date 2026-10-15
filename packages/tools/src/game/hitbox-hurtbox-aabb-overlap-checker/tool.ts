@@ -12,14 +12,14 @@ export type Input = Readonly<{
   readonly hurtboxMin: readonly number[];
   readonly hurtboxMax: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "hitboxMin", label: "Hitbox min", kind: "numberList" },
   { id: "hitboxMax", label: "Hitbox max", kind: "numberList" },
   { id: "hurtboxMin", label: "Hurtbox min", kind: "numberList" },
   { id: "hurtboxMax", label: "Hurtbox max", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   const n = i.hitboxMin.length;
   if (n !== 2 && n !== 3) simpleError("axes", "2D or 3D vectors.");
   for (const a of [i.hitboxMax, i.hurtboxMin, i.hurtboxMax])
@@ -41,7 +41,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -65,6 +65,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          positiveVolumeOverlap: { type: "boolean" },
+          closedSetContact: { type: "boolean" },
+        },
+        required: ["positiveVolumeOverlap", "closedSetContact"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
