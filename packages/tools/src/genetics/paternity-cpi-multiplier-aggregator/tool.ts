@@ -10,7 +10,7 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ locusLikelihoodRatios: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "locusLikelihoodRatios",
@@ -18,10 +18,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!i.locusLikelihoodRatios.length)
     simpleError("loci", "Explicit locus ratios required.");
   i.locusLikelihoodRatios.forEach((v) => positive(v, "LR"));
@@ -33,7 +30,7 @@ const compute = (
     paternityEstablished: false,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -59,6 +56,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          log10Cpi: { type: "number" },
+          cpi: { type: "number" },
+          assumption: { type: "string" },
+          paternityEstablished: { type: "boolean" },
+        },
+        required: ["log10Cpi", "cpi", "assumption", "paternityEstablished"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
