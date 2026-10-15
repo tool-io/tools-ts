@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly callerIndependentlyCalibratedHazenCoefficientPerMeterSecond: number;
   readonly actualEffectiveGrainDiameterMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerIndependentlyCalibratedHazenCoefficientPerMeterSecond",
@@ -18,7 +18,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.actualEffectiveGrainDiameterMeters, "d10");
   positive(
     input.callerIndependentlyCalibratedHazenCoefficientPerMeterSecond,
@@ -30,7 +30,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.actualEffectiveGrainDiameterMeters ** 2,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -54,6 +54,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalHazenHydraulicConductivityMetersPerSecond: {
+            type: "number",
+          },
+        },
+        required: ["conditionalHazenHydraulicConductivityMetersPerSecond"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
