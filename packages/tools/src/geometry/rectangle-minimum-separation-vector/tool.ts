@@ -5,12 +5,12 @@ export type Input = Readonly<{
   left: readonly number[];
   right: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", label: "left", kind: "numberList" },
   { id: "right", label: "right", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.rect(i.left);
   H.rect(i.right);
@@ -45,12 +45,33 @@ export const example = {
   output: { result: { vector: [-1, 0], overlap: true } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Rectangle Minimum Separation Vector", "mathematics"],
+    collections: ["data", "learn"],
+    fields: ["geometry", "mathematics"],
+    keywords: ["mathematics"],
+  },
   id: "geometry/rectangle-minimum-separation-vector",
   title: "Rectangle Minimum Separation Vector",
   description:
     "For disjoint rectangles return the shortest translation closing both axis gaps; for overlapping rectangles return a minimum axis escape translation, ties left/right/down/up in that order.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          vector: { type: "array", items: { type: "number" } },
+          overlap: { type: "boolean" },
+        },
+        required: ["vector", "overlap"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
