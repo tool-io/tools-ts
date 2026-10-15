@@ -6,13 +6,13 @@ export type Input = Readonly<{
   end: readonly number[];
   rectangle: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "start", label: "start", kind: "numberList" },
   { id: "end", label: "end", kind: "numberList" },
   { id: "rectangle", label: "rectangle", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({ segment: H.clipSegment(i.start, i.end, i.rectangle) });
 };
@@ -28,12 +28,40 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Segment Rectangle Clip", "mathematics"],
+    collections: ["data", "learn"],
+    fields: ["geometry", "mathematics"],
+    keywords: ["mathematics"],
+  },
   id: "geometry/segment-rectangle-clip",
   title: "Segment Rectangle Clip",
   description:
     "Clip one closed planar segment to an inclusive axis-aligned rectangle using parameter bounds; null means no intersection.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          segment: {
+            anyOf: [
+              {
+                type: "array",
+                items: { type: "array", items: { type: "number" } },
+              },
+              { type: "null" },
+            ],
+          },
+        },
+        required: ["segment"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
