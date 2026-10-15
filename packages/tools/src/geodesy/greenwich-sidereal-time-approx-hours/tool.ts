@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../batch58-shared.js";
 export type Input = Readonly<{ ut1JulianDay: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "ut1JulianDay", label: "Ut1 julian day", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.ut1JulianDay >= 2415020.5 && i.ut1JulianDay <= 2488070.5);
   const T = (i.ut1JulianDay - 2451545) / 36525;
@@ -26,6 +26,15 @@ export const example = {
   output: { result: { greenwichMeanSiderealHours: 18.697374558 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Greenwich Sidereal Time Approximation Hours Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/greenwich-sidereal-time-approx-hours",
   title: "Greenwich Sidereal Time Approximation Hours Calculator",
   description:
@@ -36,6 +45,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { greenwichMeanSiderealHours: { type: "number" } },
+        required: ["greenwichMeanSiderealHours"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
