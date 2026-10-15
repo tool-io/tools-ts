@@ -3,19 +3,16 @@ import type { ToolExecutionContext } from "../../core/definition.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, bounded } from "../batch51-shared.js";
 export type Input = Readonly<{ readonly actualHeartScale: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualHeartScale", label: "Actual heart scale", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   bounded(input.actualHeartScale, "scale", 1, 8);
   const base = [" ** ** ", "*******", " ***** ", "  ***  ", "   *   "];
   return {
     heartLines: base.flatMap((r) =>
-      Array(input.actualHeartScale).fill(
+      Array<string>(input.actualHeartScale).fill(
         Array.from(r)
           .map((c) => c.repeat(input.actualHeartScale))
           .join(""),
@@ -23,10 +20,7 @@ const compute = (
     ),
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -49,6 +43,14 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          heartLines: { type: "array", items: { type: "string" } },
+        },
+        required: ["heartLines"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
