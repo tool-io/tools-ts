@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly callerActualNetOddsDenominator: number;
   readonly actualWin: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualStakeMinorUnits",
@@ -33,10 +33,7 @@ const fields = [
   },
   { id: "actualWin", label: "Actual win", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   money(input.actualStakeMinorUnits, "stake");
   bounded(input.callerActualNetOddsNumerator, "oddsnum", 0, 1000000);
   bounded(input.callerActualNetOddsDenominator, "oddsden", 1, 1000000);
@@ -54,10 +51,7 @@ const compute = (
       : 0,
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -81,6 +75,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          netChangeMinorUnits: { type: "number" },
+          grossReturnMinorUnits: { type: "number" },
+        },
+        required: ["netChangeMinorUnits", "grossReturnMinorUnits"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
