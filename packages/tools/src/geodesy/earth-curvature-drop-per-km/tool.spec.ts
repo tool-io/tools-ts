@@ -4,7 +4,9 @@ import {
   matchesToolJsonSchema,
 } from "../../core/contract.js";
 import tool, { calculate, example, type Input } from "./tool.js";
-const expected = { result: { dropBelowTangentMeters: 0.5000001250300556 } };
+// Independently evaluated with 70-digit Decimal arithmetic:
+// 1000000 - sqrt(1000000^2 - 1000^2) = 0.5000001250000625000390625...
+const expected = { result: { dropBelowTangentMeters: 0.5000001250000625 } };
 export const close = (a: unknown, b: unknown): void => {
   if (typeof b === "number") {
     expect(typeof a).toBe("number");
@@ -23,6 +25,12 @@ export const close = (a: unknown, b: unknown): void => {
   } else expect(a).toEqual(b);
 };
 describe(tool.id, () => {
+  it("retains precision for an offset much smaller than the sphere radius", () => {
+    expect(calculate(example.input).result.dropBelowTangentMeters).toBeCloseTo(
+      0.5000001250000625,
+      14,
+    );
+  });
   it("matches an independent canonical value", () =>
     close(calculate(example.input), expected));
   it("executes the same public calculation", () => {
