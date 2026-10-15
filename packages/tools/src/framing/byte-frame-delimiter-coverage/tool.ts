@@ -6,13 +6,13 @@ export type Input = Readonly<{
   delimiter: number;
   declaredPositions: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bytes", kind: "numberList", label: "bytes" },
   { id: "delimiter", kind: "integer", label: "delimiter" },
   { id: "declaredPositions", kind: "numberList", label: "declaredPositions" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.bytes(i.bytes);
   H.int(i.delimiter, 0, 255);
@@ -34,7 +34,22 @@ export const tool = createSimpleTool({
   description:
     "Compare explicit byte delimiter observations against caller-declared boundary positions, retaining both undeclared delimiters and false boundary claims.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          undeclared: { type: "array", items: { type: "number" } },
+          falseDeclarations: { type: "array", items: { type: "number" } },
+        },
+        required: ["undeclared", "falseDeclarations"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
