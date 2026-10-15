@@ -7,7 +7,7 @@ export type Input = Readonly<{
   readonly callerForbiddenPairFirst: readonly string[];
   readonly callerForbiddenPairSecond: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualChosenToppings",
@@ -25,10 +25,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   unique(input.actualChosenToppings, "toppings");
   aligned(
     input.callerForbiddenPairFirst,
@@ -43,10 +40,7 @@ const compute = (
     ).length,
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -69,6 +63,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { observedForbiddenPairCount: { type: "number" } },
+        required: ["observedForbiddenPairCount"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
