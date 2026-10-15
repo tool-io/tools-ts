@@ -6,7 +6,7 @@ export type Input = Readonly<{
   misclosureMeters: number;
   significantDigits: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "perimeterMeters",
@@ -22,7 +22,7 @@ const fields = [
   },
   { id: "significantDigits", label: "Significant digits", kind: "integer" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.perimeterMeters > 0 &&
@@ -46,6 +46,12 @@ export const example = {
   output: { result: { oneIn: 10000, formatted: "1:1.000e+4" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Traverse Precision Ratio 1-in-N Formatter", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/traverse-precision-ratio-formatter",
   title: "Traverse Precision Ratio 1-in-N Formatter",
   description:
@@ -56,6 +62,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          oneIn: { anyOf: [{ type: "number" }, { type: "null" }] },
+          formatted: { type: "string" },
+        },
+        required: ["oneIn", "formatted"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
