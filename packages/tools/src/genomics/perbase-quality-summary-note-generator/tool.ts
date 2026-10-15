@@ -10,14 +10,11 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ qualityScores: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "qualityScores", label: "Quality scores", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!i.qualityScores.length)
     simpleError("quality", "Observed per-base quality sample.");
   i.qualityScores.forEach((v) => nonnegative(v, "quality"));
@@ -27,10 +24,10 @@ const compute = (
     q1: quantile(a, 0.25),
     median: quantile(a, 0.5),
     q3: quantile(a, 0.75),
-    maximum: a.at(-1),
+    maximum: a[a.length - 1],
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -49,6 +46,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          minimum: { type: "number" },
+          q1: { type: "number" },
+          median: { type: "number" },
+          q3: { type: "number" },
+          maximum: { type: "number" },
+        },
+        required: ["minimum", "q1", "median", "q3", "maximum"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
