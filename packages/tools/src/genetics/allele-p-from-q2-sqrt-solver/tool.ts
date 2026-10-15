@@ -4,7 +4,7 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, fraction } from "../batch53-shared.js";
 
 export type Input = Readonly<{ recessiveHomozygoteFraction: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "recessiveHomozygoteFraction",
@@ -12,15 +12,12 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   fraction(i.recessiveHomozygoteFraction, "q2");
   const q = Math.sqrt(i.recessiveHomozygoteFraction);
   return { q, p: 1 - q, assumption: "biallelic-Hardy-Weinberg" };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -41,6 +38,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          q: { type: "number" },
+          p: { type: "number" },
+          assumption: { type: "string" },
+        },
+        required: ["q", "p", "assumption"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
