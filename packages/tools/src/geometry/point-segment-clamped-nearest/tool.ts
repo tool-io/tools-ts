@@ -6,13 +6,13 @@ export type Input = Readonly<{
   start: readonly number[];
   end: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "point", label: "point", kind: "numberList" },
   { id: "start", label: "start", kind: "numberList" },
   { id: "end", label: "end", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = Math.max(
     0,
@@ -33,12 +33,34 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Point Segment Clamped Nearest Point", "mathematics"],
+    collections: ["data", "learn"],
+    fields: ["geometry", "mathematics"],
+    keywords: ["mathematics"],
+  },
   id: "geometry/point-segment-clamped-nearest",
   title: "Point Segment Clamped Nearest Point",
   description:
     "Find the clamped nearest point on a nondegenerate planar segment and its Euclidean distance; finite number arithmetic, not a spatial index.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          parameter: { type: "number" },
+          point: { type: "array", items: { type: "number" } },
+          distance: { type: "number" },
+        },
+        required: ["parameter", "point", "distance"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
