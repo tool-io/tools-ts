@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly callerMatchedBulkPartitionCoefficient: number;
   readonly actualInitialTraceConcentration: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualRemainingMeltFraction",
@@ -30,7 +30,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   fraction(input.actualRemainingMeltFraction, "remainingmelt");
   positive(input.actualRemainingMeltFraction, "remainingmelt");
   nonnegative(input.callerMatchedBulkPartitionCoefficient, "bulkD");
@@ -42,7 +42,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
         (input.callerMatchedBulkPartitionCoefficient - 1),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -65,6 +65,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalRayleighResidualMeltConcentration: { type: "number" },
+        },
+        required: ["conditionalRayleighResidualMeltConcentration"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
