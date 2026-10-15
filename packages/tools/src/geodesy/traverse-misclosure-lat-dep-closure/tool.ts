@@ -5,7 +5,7 @@ export type Input = Readonly<{
   lengthsMeters: readonly number[];
   azimuthsDegrees: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "lengthsMeters",
@@ -20,7 +20,7 @@ const fields = [
     unit: "deg",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.traverse(i.lengthsMeters, i.azimuthsDegrees);
   return H.finish({
@@ -46,6 +46,15 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Traverse Misclosure Lat Departure Closure Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/traverse-misclosure-lat-dep-closure",
   title: "Traverse Misclosure Lat Departure Closure Calculator",
   description:
@@ -56,6 +65,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          northMeters: { type: "array", items: { type: "number" } },
+          eastMeters: { type: "array", items: { type: "number" } },
+          closureNorthMeters: { type: "number" },
+          closureEastMeters: { type: "number" },
+          perimeterMeters: { type: "number" },
+          misclosureMeters: { type: "number" },
+        },
+        required: [
+          "northMeters",
+          "eastMeters",
+          "closureNorthMeters",
+          "closureEastMeters",
+          "perimeterMeters",
+          "misclosureMeters",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
