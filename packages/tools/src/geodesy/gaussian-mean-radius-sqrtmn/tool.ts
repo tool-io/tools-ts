@@ -6,7 +6,7 @@ export type Input = Readonly<{
   flattening: number;
   latitudeDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -22,7 +22,7 @@ const fields = [
     unit: "deg",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.ellipsoid(i.semiMajorMeters, i.flattening);
   const phi = H.latitude(i.latitudeDegrees);
@@ -34,8 +34,18 @@ export const example = {
   output: { result: { radiusMeters: 10 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Gaussian Radius of Curvature Calculator",
+      "Gaussian Mean Curvature Radius sqrt(MN) Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/gaussian-mean-radius-sqrtmn",
-  title: "Gaussian Mean Curvature Radius sqrt(MN) Calculator",
+  title: "Gaussian Radius of Curvature Calculator",
   description:
     "Compute Gaussian mean curvature radius sqrt(M*N) from ellipsoid geometry at latitude, deriving both directional curvature radii rather than averaging caller numbers.",
   inputs: fields,
@@ -44,6 +54,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { radiusMeters: { type: "number" } },
+        required: ["radiusMeters"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
