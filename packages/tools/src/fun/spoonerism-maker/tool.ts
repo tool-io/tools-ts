@@ -8,17 +8,14 @@ export type Input = Readonly<{
   readonly actualSecondOnset: string;
   readonly actualSecondRime: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualFirstOnset", label: "Actual first onset", kind: "string" },
   { id: "actualFirstRime", label: "Actual first rime", kind: "string" },
   { id: "actualSecondOnset", label: "Actual second onset", kind: "string" },
   { id: "actualSecondRime", label: "Actual second rime", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   if (
     [
       input.actualFirstOnset,
@@ -35,10 +32,7 @@ const compute = (
     ],
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -62,6 +56,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          spoonerizedWords: { type: "array", items: { type: "string" } },
+        },
+        required: ["spoonerizedWords"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
