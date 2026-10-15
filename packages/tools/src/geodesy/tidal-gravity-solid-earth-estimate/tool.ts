@@ -9,7 +9,7 @@ export type Input = Readonly<{
   loveH2: number;
   loveK2: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bodyGm", label: "Body gm", kind: "numberList" },
   {
@@ -33,7 +33,7 @@ const fields = [
   { id: "loveH2", label: "Love h2", kind: "number" },
   { id: "loveK2", label: "Love k2", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.bodyGm.length > 0 &&
@@ -87,6 +87,15 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Tidal Gravity Correction Solid Earth Tide Estimate Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/tidal-gravity-solid-earth-estimate",
   title: "Tidal Gravity Correction Solid Earth Tide Estimate Calculator",
   description:
@@ -97,6 +106,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          gravimetricFactor: { type: "number" },
+          tidalDownGravityChangeMicrogal: { type: "number" },
+          correctionToObservedMicrogal: { type: "number" },
+        },
+        required: [
+          "gravimetricFactor",
+          "tidalDownGravityChangeMicrogal",
+          "correctionToObservedMicrogal",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
