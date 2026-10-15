@@ -7,7 +7,7 @@ export type Input = Readonly<{
   geocentricLatitudeDegrees: number;
   geocentricRadiusMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -29,7 +29,7 @@ const fields = [
     unit: "m",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.ellipsoid(i.semiMajorMeters, i.flattening);
   const theta = H.latitude(i.geocentricLatitudeDegrees);
@@ -68,8 +68,18 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Bowring Geocentric to Geodetic Coordinate Converter",
+      "Geocentric to Geodetic Latitude Converter Bowring Method",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/geocentric-to-geodetic-bowring",
-  title: "Geocentric to Geodetic Latitude Converter Bowring Method",
+  title: "Bowring Geocentric to Geodetic Coordinate Converter",
   description:
     "Convert geocentric latitude plus radius using Bowring initialization and bounded refinement; returns geodetic latitude/height and ECEF residual, excluding deep-interior ambiguous normals.",
   inputs: fields,
@@ -78,6 +88,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          latitudeDegrees: { type: "number" },
+          longitudeDegrees: { type: "number" },
+          ellipsoidalHeightMeters: { type: "number" },
+          iterations: { type: "number" },
+          residualMeters: { type: "number" },
+          converged: { type: "boolean" },
+        },
+        required: [
+          "latitudeDegrees",
+          "longitudeDegrees",
+          "ellipsoidalHeightMeters",
+          "iterations",
+          "residualMeters",
+          "converged",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
