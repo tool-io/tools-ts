@@ -7,7 +7,7 @@ export type Input = Readonly<{
   firstParallelDegrees: number;
   secondParallelDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -29,7 +29,7 @@ const fields = [
     unit: "deg",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.ellipsoid(i.semiMajorMeters, i.flattening);
   const phi1 = H.latitude(i.firstParallelDegrees, false),
@@ -65,8 +65,18 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Albers Equal-Area Conic Projection Constants Calculator",
+      "Albers Equal Area Conic Parallel Weight Summator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/albers-equal-area-parallel-weight-summator",
-  title: "Albers Equal Area Conic Parallel Weight Summator",
+  title: "Albers Equal-Area Conic Projection Constants Calculator",
   description:
     "Compute Albers equal-area conic n and C from ellipsoidal parallel m/q weights, including the tangent limit and explicit zero-n degeneracy; no complete Albers coordinate transform.",
   inputs: fields,
@@ -75,6 +85,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          n: { type: "number" },
+          c: { type: "number" },
+          firstParallelQ: { type: "number" },
+          secondParallelQ: { type: "number" },
+          degenerate: { type: "boolean" },
+        },
+        required: ["n", "c", "firstParallelQ", "secondParallelQ", "degenerate"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
