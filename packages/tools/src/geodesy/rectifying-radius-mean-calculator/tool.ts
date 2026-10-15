@@ -5,7 +5,7 @@ export type Input = Readonly<{
   semiMajorMeters: number;
   semiMinorMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -20,7 +20,7 @@ const fields = [
     unit: "m",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.axes(i.semiMajorMeters, i.semiMinorMeters);
   H.check(p.f <= 0.02);
@@ -34,8 +34,18 @@ export const example = {
   output: { result: { rectifyingRadiusMeters: 10 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Rectifying Radius Calculator",
+      "Rectifying Radius Mean Radius Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/rectifying-radius-mean-calculator",
-  title: "Rectifying Radius Mean Radius Calculator",
+  title: "Rectifying Radius Calculator",
   description:
     "Compute rectifying radius as meridian-quadrant length divided by pi/2 using bounded 1024-panel Simpson integration; b>=0.98a, not arithmetic mean radius.",
   inputs: fields,
@@ -44,6 +54,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { rectifyingRadiusMeters: { type: "number" } },
+        required: ["rectifyingRadiusMeters"],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
