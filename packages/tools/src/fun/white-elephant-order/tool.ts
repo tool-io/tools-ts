@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly seed: string;
   readonly actualParticipants: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "seed", label: "Seed", kind: "string" },
   {
@@ -21,18 +21,12 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   unique(input.actualParticipants, "participants");
   return { turnOrder: shuffle(input.actualParticipants, random) };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -55,6 +49,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { turnOrder: { type: "array", items: { type: "string" } } },
+        required: ["turnOrder"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
