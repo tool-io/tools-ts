@@ -6,7 +6,7 @@ export type Input = Readonly<{
   backAzimuthDegrees: number;
   toleranceDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "forwardAzimuthDegrees",
@@ -27,7 +27,7 @@ const fields = [
     unit: "deg",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.forwardAzimuthDegrees >= 0 &&
@@ -60,6 +60,15 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Reciprocal Azimuth Difference Blunder Flag Checker",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/reciprocal-azimuth-blunder-flag-checker",
   title: "Reciprocal Azimuth Difference Blunder Flag Checker",
   description:
@@ -70,6 +79,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          expectedBackAzimuthDegrees: { type: "number" },
+          signedDiscrepancyDegrees: { type: "number" },
+          flag: { type: "boolean" },
+        },
+        required: [
+          "expectedBackAzimuthDegrees",
+          "signedDiscrepancyDegrees",
+          "flag",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
