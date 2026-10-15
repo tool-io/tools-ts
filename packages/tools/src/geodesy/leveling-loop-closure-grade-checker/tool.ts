@@ -7,7 +7,7 @@ export type Input = Readonly<{
   coefficientMmPerSqrtKm: number;
   gradeDefinition: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "closureMm", label: "Closure mm", kind: "number", unit: "mm" },
   { id: "distanceKm", label: "Distance km", kind: "number", unit: "km" },
@@ -19,7 +19,7 @@ const fields = [
   },
   { id: "gradeDefinition", label: "Grade definition", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.distanceKm > 0 &&
@@ -54,6 +54,12 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Leveling Loop Closure mm per km Grade Checker", "surveying"],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/leveling-loop-closure-grade-checker",
   title: "Leveling Loop Closure mm per km Grade Checker",
   description:
@@ -64,6 +70,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          allowedMm: { type: "number" },
+          withinCallerTolerance: { type: "boolean" },
+          excessMm: { type: "number" },
+          gradeDefinition: { type: "string" },
+        },
+        required: [
+          "allowedMm",
+          "withinCallerTolerance",
+          "excessMm",
+          "gradeDefinition",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
