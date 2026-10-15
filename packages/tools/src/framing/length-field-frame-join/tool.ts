@@ -6,13 +6,13 @@ export type Input = Readonly<{
   lengthBytes: number;
   littleEndian: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "framesJson", kind: "string", label: "framesJson" },
   { id: "lengthBytes", kind: "integer", label: "lengthBytes" },
   { id: "littleEndian", kind: "boolean", label: "littleEndian" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.lengthBytes, 1, 4);
   const frames = H.arr(i.framesJson).map((v) => {
@@ -37,7 +37,19 @@ export const tool = createSimpleTool({
   description:
     "Join bounded byte payload frames with explicit unsigned length prefixes and byte order; output stream is limited to 128 bytes.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { bytes: { type: "array", items: { type: "number" } } },
+        required: ["bytes"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
