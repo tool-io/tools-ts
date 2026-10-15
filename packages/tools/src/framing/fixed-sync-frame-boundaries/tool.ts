@@ -5,12 +5,12 @@ export type Input = Readonly<{
   bytes: readonly number[];
   sync: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bytes", kind: "numberList", label: "bytes" },
   { id: "sync", kind: "numberList", label: "sync" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.bytes(i.bytes);
   H.bytes(i.sync);
@@ -31,7 +31,19 @@ export const tool = createSimpleTool({
   description:
     "Find all overlapping occurrences of an explicit sync byte sequence; occurrences are candidate boundaries, not validated frames.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { positions: { type: "array", items: { type: "number" } } },
+        required: ["positions"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
