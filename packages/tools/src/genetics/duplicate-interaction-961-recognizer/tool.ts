@@ -15,7 +15,7 @@ export type Input = Readonly<{
   observedCounts: readonly number[];
   maximumAbsoluteFractionDeviation: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "observedCounts", label: "Observed counts", kind: "numberList" },
   {
@@ -24,10 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const ratios = [9, 6, 1];
   if (i.observedCounts.length !== ratios.length)
     simpleError("counts", "Ordered phenotype categories required.");
@@ -45,7 +42,7 @@ const compute = (
     mechanismEstablished: false,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -71,6 +68,26 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          expectedRatio: { type: "array", items: { type: "number" } },
+          signedFractionDeviations: {
+            type: "array",
+            items: { type: "number" },
+          },
+          withinSuppliedTolerance: { type: "boolean" },
+          mechanismEstablished: { type: "boolean" },
+        },
+        required: [
+          "expectedRatio",
+          "signedFractionDeviations",
+          "withinSuppliedTolerance",
+          "mechanismEstablished",
+        ],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
