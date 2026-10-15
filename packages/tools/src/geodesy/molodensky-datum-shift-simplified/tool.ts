@@ -11,7 +11,7 @@ export type Input = Readonly<{
   semiMajorDeltaMeters: number;
   flatteningDelta: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -52,7 +52,7 @@ const fields = [
   },
   { id: "flatteningDelta", label: "Flattening delta", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.ellipsoid(i.semiMajorMeters, i.flattening);
   const phi = H.latitude(i.latitudeDegrees);
@@ -94,6 +94,15 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Molodensky Datum Shift Simplified A-B-Delta Converter",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/molodensky-datum-shift-simplified",
   title: "Molodensky Datum Shift Simplified A-B-Delta Converter",
   description:
@@ -104,6 +113,26 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          latitudeDegrees: { type: "number" },
+          longitudeDegrees: { type: "number" },
+          ellipsoidalHeightMeters: { type: "number" },
+          latitudeShiftArcseconds: { type: "number" },
+          longitudeShiftArcseconds: { type: "number" },
+          heightShiftMeters: { type: "number" },
+        },
+        required: [
+          "latitudeDegrees",
+          "longitudeDegrees",
+          "ellipsoidalHeightMeters",
+          "latitudeShiftArcseconds",
+          "longitudeShiftArcseconds",
+          "heightShiftMeters",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
