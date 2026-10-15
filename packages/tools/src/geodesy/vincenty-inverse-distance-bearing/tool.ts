@@ -9,7 +9,7 @@ export type Input = Readonly<{
   endLatitudeDegrees: number;
   endLongitudeDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "semiMajorMeters",
@@ -43,7 +43,7 @@ const fields = [
     unit: "deg",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.ellipsoid(i.semiMajorMeters, i.flattening);
   const phi1 = H.latitude(i.startLatitudeDegrees),
@@ -72,8 +72,18 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Vincenty Inverse Geodesic Calculator",
+      "Geodetic Inverse Problem Vincenty Inverse Calculator",
+      "surveying",
+    ],
+    collections: ["data", "learn"],
+    fields: ["geodesy", "surveying"],
+    keywords: ["surveying"],
+  },
   id: "geodesy/vincenty-inverse-distance-bearing",
-  title: "Geodetic Inverse Problem Vincenty Inverse Calculator",
+  title: "Vincenty Inverse Geodesic Calculator",
   description:
     "Solve Vincenty inverse distance and forward endpoint bearings with a 200-iteration cap; near-antipodal failure returns null distances, never a fabricated spherical fallback.",
   inputs: fields,
@@ -82,6 +92,29 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Explicit geodesy result; see field names for units",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          converged: { type: "boolean" },
+          iterations: { type: "integer" },
+          distanceMeters: { anyOf: [{ type: "number" }, { type: "null" }] },
+          initialBearingDegrees: {
+            anyOf: [{ type: "number" }, { type: "null" }],
+          },
+          finalBearingDegrees: {
+            anyOf: [{ type: "number" }, { type: "null" }],
+          },
+          reason: { type: "string" },
+        },
+        required: [
+          "converged",
+          "iterations",
+          "distanceMeters",
+          "initialBearingDegrees",
+          "finalBearingDegrees",
+        ],
+      },
     },
   ],
   calculate: (v) => calculate(v as unknown as Input),
