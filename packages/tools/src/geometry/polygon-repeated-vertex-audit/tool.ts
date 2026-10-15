@@ -5,7 +5,7 @@ export type Input = Readonly<{
   points: readonly (readonly number[])[];
   repeatedClosureAllowed: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "points", label: "points", kind: "matrix" },
   {
@@ -14,7 +14,7 @@ const fields = [
     kind: "boolean",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   i.points.forEach(H.point);
   const closed =
@@ -38,12 +38,44 @@ export const example = {
   output: { result: { duplicates: [], explicitClosure: true } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Polygon Repeated Vertex Audit", "mathematics"],
+    collections: ["data", "learn"],
+    fields: ["geometry", "mathematics"],
+    keywords: ["mathematics"],
+  },
   id: "geometry/polygon-repeated-vertex-audit",
   title: "Polygon Repeated Vertex Audit",
   description:
     "Audit exact repeated polygon coordinates with an explicit allowance for one repeated closure point; interior repetition remains observable.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          duplicates: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                key: { type: "string" },
+                indexes: { type: "array", items: { type: "number" } },
+              },
+              required: ["key", "indexes"],
+            },
+          },
+          explicitClosure: { type: "boolean" },
+        },
+        required: ["duplicates", "explicitClosure"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
