@@ -98,6 +98,17 @@ export const alphaBetaTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Search result",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          bestValue: { type: "number" },
+          evaluatedLeaves: { type: "number" },
+          prunedBranches: { type: "number" },
+        },
+        required: ["bestValue", "evaluatedLeaves", "prunedBranches"],
+      },
     },
   ],
   calculate: (input) => {
