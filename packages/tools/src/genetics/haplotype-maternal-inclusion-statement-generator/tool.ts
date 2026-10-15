@@ -8,16 +8,13 @@ export type Input = Readonly<{
   referenceHaplotype: string;
   comparable: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "observedHaplotype", label: "Observed haplotype", kind: "string" },
   { id: "referenceHaplotype", label: "Reference haplotype", kind: "string" },
   { id: "comparable", label: "Comparable", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!i.observedHaplotype.trim() || !i.referenceHaplotype.trim())
     simpleError("haplotype", "Explicit canonical haplotype strings.");
   return {
@@ -29,7 +26,7 @@ const compute = (
     individualIdentityEstablished: false,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -57,6 +54,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          comparison: { type: "string" },
+          individualIdentityEstablished: { type: "boolean" },
+        },
+        required: ["comparison", "individualIdentityEstablished"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
