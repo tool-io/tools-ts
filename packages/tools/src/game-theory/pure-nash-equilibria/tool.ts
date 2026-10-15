@@ -107,6 +107,41 @@ export const pureNashEquilibriaTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Pure Nash equilibria",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          columnStrategies: { type: "number" },
+          equilibria: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                columnPayoff: { type: "number" },
+                columnStrategy: { type: "number" },
+                rowPayoff: { type: "number" },
+                rowStrategy: { type: "number" },
+              },
+              required: [
+                "columnPayoff",
+                "columnStrategy",
+                "rowPayoff",
+                "rowStrategy",
+              ],
+            },
+          },
+          equilibriumCount: { type: "number" },
+          rowStrategies: { type: "number" },
+        },
+        required: [
+          "columnStrategies",
+          "equilibria",
+          "equilibriumCount",
+          "rowStrategies",
+        ],
+      },
     },
   ],
   title: "Pure-Strategy Nash Equilibrium Calculator",
