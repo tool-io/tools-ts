@@ -13,13 +13,13 @@ export type Input = Readonly<{
   readonly observedPpm: number;
   readonly callerTargetPpm: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "roomM3", label: "Room m3", kind: "number" },
   { id: "observedPpm", label: "Observed ppm", kind: "number" },
   { id: "callerTargetPpm", label: "Caller target ppm", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.roomM3, "room");
   nonnegative(i.observedPpm, "ppm");
   nonnegative(i.callerTargetPpm, "ppm");
@@ -29,7 +29,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     signedCo2VolumeM3: i.roomM3 * (i.callerTargetPpm - i.observedPpm) * 1e-6,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -48,6 +48,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { signedCo2VolumeM3: { type: "number" } },
+        required: ["signedCo2VolumeM3"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
