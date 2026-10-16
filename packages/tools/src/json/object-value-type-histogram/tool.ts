@@ -10,20 +10,17 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ objectJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "objectJson", label: "Object json", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = Object.values(record(parseJson(i.objectJson))),
     m = new Map<string, number>();
   a.forEach((v) => m.set(typeOf(v), (m.get(typeOf(v)) ?? 0) + 1));
   return { histogram: Object.fromEntries(m) };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -42,6 +39,20 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          histogram: {
+            type: "object",
+            additionalProperties: { type: "number" },
+            properties: {},
+            required: [],
+          },
+        },
+        required: ["histogram"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
