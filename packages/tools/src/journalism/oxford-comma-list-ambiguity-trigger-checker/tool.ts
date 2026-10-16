@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly callerObservedAppositiveAmbiguity: boolean;
   readonly callerObservedCompoundItemAmbiguity: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "itemCount", label: "Item count", kind: "number" },
   {
@@ -20,7 +20,7 @@ const fields = [
     kind: "boolean",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.itemCount, "items", 0, 1000000);
   return {
     callerAmbiguityReview:
@@ -30,7 +30,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     textAmbiguityDetectedAutomatically: false,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -58,6 +58,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          callerAmbiguityReview: { type: "boolean" },
+          textAmbiguityDetectedAutomatically: { type: "boolean" },
+        },
+        required: [
+          "callerAmbiguityReview",
+          "textAmbiguityDetectedAutomatically",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
