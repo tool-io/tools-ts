@@ -13,14 +13,14 @@ export type Input = Readonly<{
   readonly verticalArmWidth: number;
   readonly horizontalArmWidth: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "fieldWidth", label: "Field width", kind: "number" },
   { id: "fieldHeight", label: "Field height", kind: "number" },
   { id: "verticalArmWidth", label: "Vertical arm width", kind: "number" },
   { id: "horizontalArmWidth", label: "Horizontal arm width", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.fieldWidth, "fieldWidth");
   positive(input.fieldHeight, "fieldHeight");
   positive(input.verticalArmWidth, "verticalArmWidth");
@@ -35,7 +35,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     horizontalArmFraction: input.horizontalArmWidth / input.fieldHeight,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -59,6 +59,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          verticalArmFraction: { type: "number" },
+          horizontalArmFraction: { type: "number" },
+        },
+        required: ["verticalArmFraction", "horizontalArmFraction"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
