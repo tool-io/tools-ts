@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ polynomial: string; degree: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "polynomial", kind: "string", label: "polynomial" },
   { id: "degree", kind: "integer", label: "degree" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.degree, 1, 128);
   const p = H.bigint(i.polynomial);
@@ -31,7 +31,19 @@ export const tool = createSimpleTool({
   description:
     "Reverse all coefficients of a full monic CRC polynomial with nonzero constant coefficient to obtain its reciprocal; includes the leading coefficient.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { reciprocalPolynomial: { type: "string" } },
+        required: ["reciprocalPolynomial"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
