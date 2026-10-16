@@ -5,12 +5,12 @@ export type Input = Readonly<{
   properties: readonly string[];
   rulesJson: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "properties", label: "properties", kind: "stringList" },
   { id: "rulesJson", label: "rulesJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.records(i.rulesJson).map((v) => {
     const name = H.str(v.name).toUpperCase();
@@ -39,12 +39,45 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["iCalendar Property Cardinality Audit", "iCalendar", "calendars"],
+    collections: ["encode-decode"],
+    fields: ["ical", "iCalendar", "calendars"],
+    keywords: ["iCalendar", "calendars"],
+  },
   id: "ical/property-cardinality-audit",
   title: "iCalendar Property Cardinality Audit",
   description:
     "Audit property-name occurrence cardinality only against explicitly supplied component rules; no embedded current iCalendar rule table or complete validity claim.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          violations: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                name: { type: "string" },
+                minimum: { type: "number" },
+                maximum: { type: "number" },
+                count: { type: "number" },
+              },
+              required: ["name", "minimum", "maximum", "count"],
+            },
+          },
+        },
+        required: ["violations"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
