@@ -6,13 +6,13 @@ export type Input = Readonly<{
   weights: readonly number[];
   edges: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "values", label: "values", kind: "numberList" },
   { id: "weights", label: "weights", kind: "numberList" },
   { id: "edges", label: "edges", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.histogramEdges(i.edges);
   H.check(
@@ -38,12 +38,37 @@ export const example = {
   output: { result: { weights: [2, 7], outsideWeight: 6 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Histogram Explicit Edge Weight Table",
+      "histograms",
+      "statistics",
+    ],
+    collections: ["data", "learn"],
+    fields: ["histogram", "histograms", "statistics"],
+    keywords: ["histograms", "statistics"],
+  },
   id: "histogram/explicit-edge-weight-table",
   title: "Histogram Explicit Edge Weight Table",
   description:
     "Sum explicit nonnegative observation weights in supplied histogram bins while retaining total outside weight; not probability normalization or automatic edge selection.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          weights: { type: "array", items: { type: "number" } },
+          outsideWeight: { type: "number" },
+        },
+        required: ["weights", "outsideWeight"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
