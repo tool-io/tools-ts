@@ -10,7 +10,7 @@ export type Input = Readonly<{
   cropRows: number;
   cropColumns: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "coordinates", label: "Coordinates", kind: "matrix" },
   { id: "cropTop", label: "Crop top", kind: "number" },
@@ -18,10 +18,7 @@ const fields = [
   { id: "cropRows", label: "Crop rows", kind: "number" },
   { id: "cropColumns", label: "Crop columns", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   points(i.coordinates, 0);
   [i.cropTop, i.cropLeft].forEach((v) => bounded(v, "origin", 0, 1e9));
   [i.cropRows, i.cropColumns].forEach((v) => bounded(v, "size", 1, 1e9));
@@ -40,7 +37,7 @@ const compute = (
     }),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -75,6 +72,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          mapping: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                inside: { type: "boolean" },
+                row: { anyOf: [{ type: "number" }, { type: "null" }] },
+                column: { anyOf: [{ type: "number" }, { type: "null" }] },
+              },
+              required: ["inside", "row", "column"],
+            },
+          },
+        },
+        required: ["mapping"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
