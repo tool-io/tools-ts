@@ -7,14 +7,14 @@ export type Input = Readonly<{
   pointy: boolean;
   origin: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "point", label: "point", kind: "numberList" },
   { id: "size", label: "size", kind: "number" },
   { id: "pointy", label: "pointy", kind: "boolean" },
   { id: "origin", label: "origin", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.positive(i.size);
   H.point(i.point);
@@ -35,12 +35,34 @@ export const example = {
   output: { result: { q: 0, r: 0 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Hex Pixel to Fractional Axial Record",
+      "hexadecimal",
+      "encoding",
+    ],
+    collections: ["encode-decode"],
+    fields: ["hex", "hexadecimal", "encoding"],
+    keywords: ["hexadecimal", "encoding"],
+  },
   id: "hex/pixel-to-fractional-axial-record",
   title: "Hex Pixel to Fractional Axial Record",
   description:
     "Invert explicit hex-center pixel mapping to fractional axial coordinates without rounding to a cell; caller supplies orientation, circumradius and origin.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { q: { type: "number" }, r: { type: "number" } },
+        required: ["q", "r"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
