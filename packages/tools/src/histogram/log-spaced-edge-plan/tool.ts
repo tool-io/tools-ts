@@ -7,13 +7,13 @@ export type Input = Readonly<{
   maximum: number;
   bins: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "minimum", label: "minimum", kind: "number" },
   { id: "maximum", label: "maximum", kind: "number" },
   { id: "bins", label: "bins", kind: "integer" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.positive(i.minimum);
   H.check(i.maximum > i.minimum);
@@ -36,12 +36,30 @@ export const example = {
   output: { result: { edges: [1, 10, 100] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Histogram Log Spaced Edge Plan", "histograms", "statistics"],
+    collections: ["data", "learn"],
+    fields: ["histogram", "histograms", "statistics"],
+    keywords: ["histograms", "statistics"],
+  },
   id: "histogram/log-spaced-edge-plan",
   title: "Histogram Log Spaced Edge Plan",
   description:
     "Plan positive logarithmically equally spaced histogram edges with explicit endpoints, rejecting unrepresentable spacing; not automatic bin selection.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { edges: { type: "array", items: { type: "number" } } },
+        required: ["edges"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
