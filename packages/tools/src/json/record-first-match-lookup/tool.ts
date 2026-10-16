@@ -15,16 +15,13 @@ export type Input = Readonly<{
   keyField: string;
   queryJson: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "recordsJson", label: "Records json", kind: "string" },
   { id: "keyField", label: "Key field", kind: "string" },
   { id: "queryJson", label: "Query json", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const q = scalarKey(parseJson(i.queryJson)),
     a = records(i.recordsJson),
     j = a.findIndex(
@@ -36,7 +33,7 @@ const compute = (
     record: j >= 0 ? a[j] : null,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -55,6 +52,28 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          found: { type: "boolean" },
+          recordIndex: {
+            anyOf: [{ type: "integer", minimum: 0 }, { type: "null" }],
+          },
+          record: {
+            anyOf: [
+              {
+                type: "object",
+                additionalProperties: true,
+                description:
+                  "Caller-owned JSON members retain arbitrary finite JSON values.",
+              },
+              { type: "null" },
+            ],
+          },
+        },
+        required: ["found", "recordIndex", "record"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
