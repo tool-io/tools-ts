@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly measuredWordsPerMinute: number;
   readonly fixedNonSpeechSeconds: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "wordCount", label: "Word count", kind: "number" },
   {
@@ -26,7 +26,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.wordCount, "words", 0, 1000000);
   positive(i.measuredWordsPerMinute, "rate");
   nonnegative(i.fixedNonSpeechSeconds, "extra");
@@ -35,7 +35,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       (60 * i.wordCount) / i.measuredWordsPerMinute + i.fixedNonSpeechSeconds,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -58,6 +58,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { estimatedStorySeconds: { type: "number" } },
+        required: ["estimatedStorySeconds"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
