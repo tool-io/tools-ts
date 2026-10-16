@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly observedChargeCenter: readonly number[];
   readonly independentlyMeasuredFieldCentroid: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedChargeCenter",
@@ -19,7 +19,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     input.observedChargeCenter.length !== 2 ||
     input.independentlyMeasuredFieldCentroid.length !== 2
@@ -30,7 +30,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
   );
   return { signedOffset: v, offsetDistance: Math.hypot(...v) };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -54,6 +54,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedOffset: { type: "array", items: { type: "number" } },
+          offsetDistance: { type: "number" },
+        },
+        required: ["signedOffset", "offsetDistance"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
