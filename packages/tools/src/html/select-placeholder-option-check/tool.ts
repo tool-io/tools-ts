@@ -8,7 +8,7 @@ export type Input = Readonly<{
   optionValues: readonly string[];
   firstDirectChild: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "required", label: "required", kind: "boolean" },
   { id: "multiple", label: "multiple", kind: "boolean" },
@@ -16,7 +16,7 @@ const fields = [
   { id: "optionValues", label: "optionValues", kind: "stringList" },
   { id: "firstDirectChild", label: "firstDirectChild", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.displaySize, 1, 128);
   return H.finish({
@@ -40,12 +40,30 @@ export const example = {
   output: { result: { placeholder: true } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["HTML Select Placeholder Option Check"],
+    collections: ["encode-decode"],
+    fields: ["html"],
+    keywords: [],
+  },
   id: "html/select-placeholder-option-check",
   title: "HTML Select Placeholder Option Check",
   description:
     "Check the supplied select placeholder-label-option conditions for a direct first empty-valued option; no DOM or validation state inference.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { placeholder: { type: "boolean" } },
+        required: ["placeholder"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
