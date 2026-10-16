@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ eventsJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "eventsJson", label: "eventsJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.records(i.eventsJson).map((v) => ({
     uid: H.str(v.uid),
@@ -27,12 +27,47 @@ export const example = {
   output: { result: { conflicts: [{ key: '["x",1]', indexes: [0, 1] }] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "iCalendar UID Sequence Conflict Table",
+      "iCalendar",
+      "calendars",
+    ],
+    collections: ["encode-decode"],
+    fields: ["ical", "iCalendar", "calendars"],
+    keywords: ["iCalendar", "calendars"],
+  },
   id: "ical/uid-sequence-conflict-table",
   title: "iCalendar UID Sequence Conflict Table",
   description:
     "Audit distinct supplied payloads for equal UID/SEQUENCE observations; no calendar merge, latest revision or recurrence resolution claim.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conflicts: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                key: { type: "string" },
+                indexes: { type: "array", items: { type: "number" } },
+              },
+              required: ["key", "indexes"],
+            },
+          },
+        },
+        required: ["conflicts"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
