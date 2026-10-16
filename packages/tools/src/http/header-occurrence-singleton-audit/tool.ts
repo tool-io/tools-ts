@@ -5,12 +5,12 @@ export type Input = Readonly<{
   headersJson: string;
   singletonNames: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "headersJson", label: "headersJson", kind: "string" },
   { id: "singletonNames", label: "singletonNames", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.headerPairs(i.headersJson);
   i.singletonNames.forEach((s) => H.check(H.token(s)));
@@ -31,12 +31,47 @@ export const example = {
   output: { result: { violations: [{ key: "x-a", indexes: [0, 1] }] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "HTTP Header Singleton Occurrence Audit",
+      "HTTP",
+      "web development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["HTTP", "web development"],
+    keywords: ["HTTP", "web development"],
+  },
   id: "http/header-occurrence-singleton-audit",
   title: "HTTP Header Singleton Occurrence Audit",
   description:
     "Audit repeated HTTP fields only for caller-declared singleton names; does not invent a universal singleton table or enforce request-smuggling policy.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          violations: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                key: { type: "string" },
+                indexes: { type: "array", items: { type: "number" } },
+              },
+              required: ["key", "indexes"],
+            },
+          },
+        },
+        required: ["violations"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
