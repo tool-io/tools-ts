@@ -4,14 +4,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, intervals } from "../batch53-shared.js";
 
 export type Input = Readonly<{ intervals: readonly (readonly number[])[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "intervals", label: "Intervals", kind: "matrix" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = intervals(i.intervals),
     x = [...new Set(a.flat())].sort((a, b) => a - b);
   return {
@@ -29,7 +26,7 @@ const compute = (
     })),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -76,6 +73,33 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          events: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                endpoint: { type: "number" },
+                startingIndexes: { type: "array", items: { type: "number" } },
+                endingIndexes: { type: "array", items: { type: "number" } },
+                emptyIndexes: { type: "array", items: { type: "number" } },
+              },
+              required: [
+                "endpoint",
+                "startingIndexes",
+                "endingIndexes",
+                "emptyIndexes",
+              ],
+            },
+          },
+        },
+        required: ["events"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
