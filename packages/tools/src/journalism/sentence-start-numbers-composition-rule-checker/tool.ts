@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly sentence: string;
   readonly callerAllowsDigitStarts: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "sentence", label: "Sentence", kind: "string" },
   {
@@ -14,14 +14,14 @@ const fields = [
     kind: "boolean",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   return {
     startsWithAsciiDigit: /^\s*[0-9]/.test(i.sentence),
     callerStyleReview:
       /^\s*[0-9]/.test(i.sentence) && !i.callerAllowsDigitStarts,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -40,6 +40,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          startsWithAsciiDigit: { type: "boolean" },
+          callerStyleReview: { type: "boolean" },
+        },
+        required: ["startsWithAsciiDigit", "callerStyleReview"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
