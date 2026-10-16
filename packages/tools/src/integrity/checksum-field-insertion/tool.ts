@@ -8,7 +8,7 @@ export type Input = Readonly<{
   checksum: string;
   littleEndian: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bytes", kind: "numberList", label: "bytes" },
   { id: "start", kind: "integer", label: "start" },
@@ -16,7 +16,7 @@ const fields = [
   { id: "checksum", kind: "string", label: "checksum" },
   { id: "littleEndian", kind: "boolean", label: "littleEndian" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.bytes(i.bytes);
   H.int(i.width, 1, 16);
@@ -44,7 +44,19 @@ export const tool = createSimpleTool({
   description:
     "Insert an explicit unsigned exact checksum integer into a bounded byte field with caller-selected byte order; does not recompute checksum coverage.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { bytes: { type: "array", items: { type: "number" } } },
+        required: ["bytes"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
