@@ -4,21 +4,18 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, bounded, mod } from "../batch53-shared.js";
 
 export type Input = Readonly<{ rowBytes: number; alignmentBytes: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "rowBytes", label: "Row bytes", kind: "number" },
   { id: "alignmentBytes", label: "Alignment bytes", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.rowBytes, "row", 0, 1e12);
   bounded(i.alignmentBytes, "alignment", 1, 1e9);
   const paddingBytes = mod(-i.rowBytes, i.alignmentBytes);
   return { paddingBytes, paddedBytes: i.rowBytes + paddingBytes };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -37,6 +34,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          paddingBytes: { type: "number" },
+          paddedBytes: { type: "number" },
+        },
+        required: ["paddingBytes", "paddedBytes"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
