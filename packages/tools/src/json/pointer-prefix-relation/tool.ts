@@ -4,21 +4,18 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, pointerTokens } from "../batch53-shared.js";
 
 export type Input = Readonly<{ prefix: string; pointer: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "prefix", label: "Prefix", kind: "string" },
   { id: "pointer", label: "Pointer", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = pointerTokens(i.prefix),
     b = pointerTokens(i.pointer),
     prefix = a.length <= b.length && a.every((v, j) => v === b[j]);
   return { isPrefix: prefix, equal: prefix && a.length === b.length };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -37,6 +34,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          isPrefix: { type: "boolean" },
+          equal: { type: "boolean" },
+        },
+        required: ["isPrefix", "equal"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
