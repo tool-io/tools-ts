@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly lines: readonly string[];
   readonly callerMaximumCodepoints: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "lines", label: "Lines", kind: "stringList" },
   {
@@ -14,7 +14,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.callerMaximumCodepoints, "limit", 1, 1000000);
   const counts = i.lines.map((s) => [...s].length);
   return {
@@ -24,7 +24,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -45,6 +45,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          lineCodepointCounts: { type: "array", items: { type: "number" } },
+          overLimitLineIndices: { type: "array", items: { type: "number" } },
+        },
+        required: ["lineCodepointCounts", "overLimitLineIndices"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
