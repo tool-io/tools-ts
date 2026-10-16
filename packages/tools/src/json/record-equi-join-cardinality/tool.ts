@@ -14,17 +14,14 @@ export type Input = Readonly<{
   leftKey: string;
   rightKey: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "leftRecordsJson", label: "Left records json", kind: "string" },
   { id: "rightRecordsJson", label: "Right records json", kind: "string" },
   { id: "leftKey", label: "Left key", kind: "string" },
   { id: "rightKey", label: "Right key", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = records(i.leftRecordsJson),
     b = records(i.rightRecordsJson);
   let pairs = 0;
@@ -39,7 +36,7 @@ const compute = (
   });
   return { matchingPairCount: pairs, rightMatchCountsPerLeft: counts };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -63,6 +60,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          matchingPairCount: { type: "number" },
+          rightMatchCountsPerLeft: { type: "array", items: { type: "number" } },
+        },
+        required: ["matchingPairCount", "rightMatchCountsPerLeft"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
