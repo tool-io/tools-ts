@@ -14,16 +14,13 @@ export type Input = Readonly<{
   triggerKey: string;
   requiredKeys: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "objectJson", label: "Object json", kind: "string" },
   { id: "triggerKey", label: "Trigger key", kind: "string" },
   { id: "requiredKeys", label: "Required keys", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   unique(i.requiredKeys, "keys");
   const r = record(parseJson(i.objectJson)),
     triggerPresent = Object.hasOwn(r, i.triggerKey),
@@ -34,7 +31,7 @@ const compute = (
     passes: !triggerPresent || missing.length === 0,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -55,6 +52,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          triggerPresent: { type: "boolean" },
+          missingRequiredKeys: { type: "array", items: { type: "string" } },
+          passes: { type: "boolean" },
+        },
+        required: ["triggerPresent", "missingRequiredKeys", "passes"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
