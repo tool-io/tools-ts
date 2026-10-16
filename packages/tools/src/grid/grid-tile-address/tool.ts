@@ -9,17 +9,14 @@ export type Input = Readonly<{
   tileRows: number;
   tileColumns: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "row", label: "Row", kind: "number" },
   { id: "column", label: "Column", kind: "number" },
   { id: "tileRows", label: "Tile rows", kind: "number" },
   { id: "tileColumns", label: "Tile columns", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.row, "row", 0, 1e9);
   bounded(i.column, "column", 0, 1e9);
   bounded(i.tileRows, "tile-rows", 1, 1e9);
@@ -31,7 +28,7 @@ const compute = (
     localColumn: i.column % i.tileColumns,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -52,6 +49,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          tileRow: { type: "number" },
+          tileColumn: { type: "number" },
+          localRow: { type: "number" },
+          localColumn: { type: "number" },
+        },
+        required: ["tileRow", "tileColumn", "localRow", "localColumn"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
