@@ -4,14 +4,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, runs, mask } from "../batch53-shared.js";
 
 export type Input = Readonly<{ mask: readonly (readonly number[])[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "mask", label: "Mask", kind: "matrix" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const d = mask(i.mask),
     a = Array.from({ length: d.columns }, (_, x) => i.mask.map((r) => r[x]));
   return {
@@ -22,7 +19,7 @@ const compute = (
     ),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -54,6 +51,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          runs: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                column: { type: "number" },
+                start: { type: "number" },
+                end: { type: "number" },
+              },
+              required: ["column", "start", "end"],
+            },
+          },
+        },
+        required: ["runs"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
