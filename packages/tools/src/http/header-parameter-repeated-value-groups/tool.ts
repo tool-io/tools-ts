@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ parameters: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "parameters", label: "parameters", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.parameters(i.parameters);
   return H.finish({
@@ -20,12 +20,47 @@ export const example = {
   output: { result: { groups: [{ key: '["a","1"]', indexes: [0, 1] }] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "HTTP Header Parameter Repeated Value Groups",
+      "HTTP",
+      "web development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["HTTP", "web development"],
+    keywords: ["HTTP", "web development"],
+  },
   id: "http/header-parameter-repeated-value-groups",
   title: "HTTP Header Parameter Repeated Value Groups",
   description:
     "Group repeated exact decoded HTTP parameter values by case-insensitive name plus case-sensitive value, reusing the existing parameter parser.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          groups: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                key: { type: "string" },
+                indexes: { type: "array", items: { type: "number" } },
+              },
+              required: ["key", "indexes"],
+            },
+          },
+        },
+        required: ["groups"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
