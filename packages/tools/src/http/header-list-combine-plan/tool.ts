@@ -5,12 +5,12 @@ export type Input = Readonly<{
   headersJson: string;
   combinableNames: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "headersJson", label: "headersJson", kind: "string" },
   { id: "combinableNames", label: "combinableNames", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.headerPairs(i.headersJson);
   i.combinableNames.forEach((s) => H.check(H.token(s)));
@@ -42,12 +42,44 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["HTTP Header List Combination Plan", "HTTP", "web development"],
+    collections: ["encode-decode"],
+    fields: ["HTTP", "web development"],
+    keywords: ["HTTP", "web development"],
+  },
   id: "http/header-list-combine-plan",
   title: "HTTP Header List Combination Plan",
   description:
     "Plan comma combination only for explicit caller-qualified list fields, always preserving Set-Cookie as uncombined; no universal field-combination inference.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          plan: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                name: { type: "string" },
+                indexes: { type: "array", items: { type: "number" } },
+                combined: { anyOf: [{ type: "string" }, { type: "null" }] },
+              },
+              required: ["name", "indexes", "combined"],
+            },
+          },
+        },
+        required: ["plan"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
