@@ -5,12 +5,12 @@ export type Input = Readonly<{
   edgesJson: string;
   vertices: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "edgesJson", kind: "string", label: "edgesJson" },
   { id: "vertices", kind: "stringList", label: "vertices" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const e = H.edges(i.edgesJson);
   H.check(H.unique(i.vertices).length === i.vertices.length);
@@ -41,7 +41,34 @@ export const tool = createSimpleTool({
   description:
     "Select edges crossing an explicit vertex-set boundary using endpoint exclusive membership; direction and occurrence IDs remain intact.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          edges: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                id: { type: "string" },
+                source: { type: "string" },
+                target: { type: "string" },
+                weight: { type: "number" },
+              },
+              required: ["id", "source", "target", "weight"],
+            },
+          },
+        },
+        required: ["edges"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
