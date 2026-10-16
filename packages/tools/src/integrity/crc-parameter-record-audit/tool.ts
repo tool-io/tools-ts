@@ -9,7 +9,7 @@ export type Input = Readonly<{
   reflectIn: boolean;
   reflectOut: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "width", kind: "integer", label: "width" },
   { id: "polynomial", kind: "string", label: "polynomial" },
@@ -18,7 +18,7 @@ const fields = [
   { id: "reflectIn", kind: "boolean", label: "reflectIn" },
   { id: "reflectOut", kind: "boolean", label: "reflectOut" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.width, 1, 128);
   const values = [
@@ -60,7 +60,31 @@ export const tool = createSimpleTool({
   description:
     "Audit explicit CRC parameter width evidence under the omitted-leading-coefficient convention; no CRC computation, polynomial quality or catalog identification.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          withinWidth: { type: "array", items: { type: "boolean" } },
+          polynomialHasConstant: { type: "boolean" },
+          reflectIn: { type: "boolean" },
+          reflectOut: { type: "boolean" },
+          convention: { type: "string" },
+        },
+        required: [
+          "withinWidth",
+          "polynomialHasConstant",
+          "reflectIn",
+          "reflectOut",
+          "convention",
+        ],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
