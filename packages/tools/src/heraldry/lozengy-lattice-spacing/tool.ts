@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly horizontalDiamondDiagonal: number;
   readonly verticalDiamondDiagonal: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "horizontalDiamondDiagonal",
@@ -19,7 +19,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.horizontalDiamondDiagonal, "horizontalDiamondDiagonal");
   positive(input.verticalDiamondDiagonal, "verticalDiamondDiagonal");
   return {
@@ -29,7 +29,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       (input.horizontalDiamondDiagonal * input.verticalDiamondDiagonal) / 2,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -54,6 +54,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          horizontalHalfSpacing: { type: "number" },
+          verticalHalfSpacing: { type: "number" },
+          diamondCellArea: { type: "number" },
+        },
+        required: [
+          "horizontalHalfSpacing",
+          "verticalHalfSpacing",
+          "diamondCellArea",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
