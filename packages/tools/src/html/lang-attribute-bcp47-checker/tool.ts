@@ -2,14 +2,14 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, languageTagShape } from "../batch52-shared.js";
 export type Input = Readonly<{ readonly languageTag: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "languageTag", label: "Language tag", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   return languageTagShape(i.languageTag);
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -30,6 +30,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          wellFormedSyntax: { type: "boolean" },
+          registeredSubtagsVerified: { type: "boolean", const: false },
+        },
+        required: ["wellFormedSyntax", "registeredSubtagsVerified"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
