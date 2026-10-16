@@ -7,13 +7,13 @@ export type Input = Readonly<{
   mass: readonly number[];
   boundaries: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "edges", label: "edges", kind: "numberList" },
   { id: "mass", label: "mass", kind: "numberList" },
   { id: "boundaries", label: "boundaries", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.histogram(i.edges, i.mass);
   H.check(
@@ -39,12 +39,33 @@ export const example = {
   output: { result: { edges: [0, 2, 4], mass: [3, 3] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Histogram Adjacent Bin Merge Plan", "histograms", "statistics"],
+    collections: ["data", "learn"],
+    fields: ["histogram", "histograms", "statistics"],
+    keywords: ["histograms", "statistics"],
+  },
   id: "histogram/bin-adjacent-merge-plan",
   title: "Histogram Adjacent Bin Merge Plan",
   description:
     "Explicit finite ordered histogram edges and nonnegative mass observations; merge whole adjacent bins using explicit increasing boundary indexes including both endpoints; no proportional splitting or extrapolation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          edges: { type: "array", items: { type: "number" } },
+          mass: { type: "array", items: { type: "number" } },
+        },
+        required: ["edges", "mass"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
