@@ -4,21 +4,18 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, parseJson, record } from "../batch53-shared.js";
 
 export type Input = Readonly<{ objectJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "objectJson", label: "Object json", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const r = record(parseJson(i.objectJson));
   return {
     object: Object.fromEntries(Object.entries(r).filter(([, v]) => v !== null)),
     removedKeys: Object.keys(r).filter((k) => r[k] === null),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -37,6 +34,20 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          object: {
+            type: "object",
+            additionalProperties: true,
+            description:
+              "Caller-owned JSON members retain arbitrary finite JSON values.",
+          },
+          removedKeys: { type: "array", items: { type: "string" } },
+        },
+        required: ["object", "removedKeys"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
