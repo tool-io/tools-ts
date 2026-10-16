@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ edgesJson: string; mappingJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "edgesJson", kind: "string", label: "edgesJson" },
   { id: "mappingJson", kind: "string", label: "mappingJson" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const e = H.edges(i.edgesJson);
   const m = H.records(i.mappingJson).map(
@@ -50,7 +50,34 @@ export const tool = createSimpleTool({
   description:
     "Rename all observed edge endpoints with an explicit injective complete mapping; no vertex merging or inferred aliases.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          edges: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                id: { type: "string" },
+                weight: { type: "number" },
+                source: { type: "string" },
+                target: { type: "string" },
+              },
+              required: ["id", "weight", "source", "target"],
+            },
+          },
+        },
+        required: ["edges"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
