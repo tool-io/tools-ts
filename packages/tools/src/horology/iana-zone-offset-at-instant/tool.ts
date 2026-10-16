@@ -74,7 +74,9 @@ export const resolveWorldTimerZoneOffset = (
   return {
     ianaTimeZone: input.ianaTimeZone,
     localDateTime: `${String(year).padStart(4, "0")}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")} ${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}:${String(second).padStart(2, "0")}`,
-    utcOffsetLabel: partValue(parts, "timeZoneName"),
+    // ICU versions differ between "GMT" and "GMT+00:00" at zero offset.
+    utcOffsetLabel:
+      utcOffsetMinutes === 0 ? "GMT" : partValue(parts, "timeZoneName"),
     utcOffsetMinutes,
     worldTimerCaution:
       "A mechanical world-timer city disc encodes the maker's chosen standard-time and daylight-saving convention. Resolve the named IANA zone for the relevant date instead of treating a printed city offset as timeless.",
