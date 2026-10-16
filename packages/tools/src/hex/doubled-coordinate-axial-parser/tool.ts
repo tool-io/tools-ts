@@ -6,13 +6,13 @@ export type Input = Readonly<{
   row: number;
   horizontal: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "column", label: "column", kind: "integer" },
   { id: "row", label: "row", kind: "integer" },
   { id: "horizontal", label: "horizontal", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.column, -1e9, 1e9);
   H.int(i.row, -1e9, 1e9);
@@ -27,12 +27,30 @@ export const example = {
   output: { result: { q: 2, r: 1 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Hex Doubled Coordinate Axial Parser", "hexadecimal", "encoding"],
+    collections: ["encode-decode"],
+    fields: ["hex", "hexadecimal", "encoding"],
+    keywords: ["hexadecimal", "encoding"],
+  },
   id: "hex/doubled-coordinate-axial-parser",
   title: "Hex Doubled Coordinate Axial Parser",
   description:
     "Invert doubled hex coordinates only when column-row parity agrees; odd parity is invalid lattice evidence, not rounded silently.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { q: { type: "number" }, r: { type: "number" } },
+        required: ["q", "r"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
