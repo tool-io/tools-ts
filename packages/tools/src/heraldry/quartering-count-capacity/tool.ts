@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly callerLayoutRows: number;
   readonly callerLayoutColumns: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "requiredArmorialQuarterCount",
@@ -22,7 +22,7 @@ const fields = [
   { id: "callerLayoutRows", label: "Caller layout rows", kind: "number" },
   { id: "callerLayoutColumns", label: "Caller layout columns", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.requiredArmorialQuarterCount, "quarters", 0, 128);
   bounded(input.callerLayoutRows, "rows", 1, 64);
   bounded(input.callerLayoutColumns, "columns", 1, 64);
@@ -36,7 +36,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     allFit: input.requiredArmorialQuarterCount <= capacity,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -59,6 +59,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          capacity: { type: "number" },
+          unusedQuarterSlots: { type: "number" },
+          allFit: { type: "boolean" },
+        },
+        required: ["capacity", "unusedQuarterSlots", "allFit"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
