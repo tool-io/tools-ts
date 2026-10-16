@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ attributesJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "attributesJson", kind: "string", label: "attributesJson" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.attributes(i.attributesJson),
     keep = r.flatMap((v, j) =>
@@ -36,7 +36,33 @@ export const tool = createSimpleTool({
   description:
     "Apply an explicit last-occurrence-wins policy to supplied HTML attribute observations, preserving winning source indexes; browsers\u2019 tokenizer normally uses first wins instead.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          attributes: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                name: { type: "string" },
+                value: { type: "string" },
+                sourceIndex: { type: "number" },
+              },
+              required: ["name", "value", "sourceIndex"],
+            },
+          },
+        },
+        required: ["attributes"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
