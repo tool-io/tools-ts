@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ glyphsJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "glyphsJson", label: "glyphsJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const g = H.glyphPlaced(i.glyphsJson);
   return H.finish({
@@ -25,12 +25,44 @@ export const example = {
   output: { result: { gaps: [{ left: 0, right: 1, gap: null }] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Glyph Ink Gap Table", "typography", "Unicode"],
+    collections: ["data", "learn"],
+    fields: ["glyph", "typography", "Unicode"],
+    keywords: ["typography", "Unicode"],
+  },
   id: "glyph/glyph-ink-gap-table",
   title: "Glyph Ink Gap Table",
   description:
     "Report signed adjacent placed glyph ink gaps with null when either box is missing; negative values retain ink overlap.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          gaps: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                left: { type: "number" },
+                right: { type: "number" },
+                gap: { anyOf: [{ type: "number" }, { type: "null" }] },
+              },
+              required: ["left", "right", "gap"],
+            },
+          },
+        },
+        required: ["gaps"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
