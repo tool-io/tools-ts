@@ -11,7 +11,7 @@ import {
 export type Input = Readonly<{
   readonly perArmAnnotatedChargeCounts: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "perArmAnnotatedChargeCounts",
@@ -19,7 +19,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   input.perArmAnnotatedChargeCounts.forEach((v) =>
     nonnegative(v, "perArmAnnotatedChargeCounts"),
   );
@@ -30,7 +30,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       .length,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -49,6 +49,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          totalChargeOccurrences: { type: "number" },
+          armsWithCharge: { type: "number" },
+        },
+        required: ["totalChargeOccurrences", "armsWithCharge"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
