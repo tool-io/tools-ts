@@ -4,15 +4,12 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, parseJson, record } from "../batch53-shared.js";
 
 export type Input = Readonly<{ leftJson: string; rightJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "leftJson", label: "Left json", kind: "string" },
   { id: "rightJson", label: "Right json", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = Object.keys(record(parseJson(i.leftJson))),
     b = Object.keys(record(parseJson(i.rightJson)));
   return {
@@ -21,7 +18,7 @@ const compute = (
     shared: a.filter((k) => b.includes(k)),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -40,6 +37,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          onlyLeft: { type: "array", items: { type: "string" } },
+          onlyRight: { type: "array", items: { type: "string" } },
+          shared: { type: "array", items: { type: "string" } },
+        },
+        required: ["onlyLeft", "onlyRight", "shared"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
