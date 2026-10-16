@@ -3,15 +3,15 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, bounded } from "../batch43-shared.js";
 
 export type Input = Readonly<{ readonly stackedChevronRows: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "stackedChevronRows", label: "Stacked chevron rows", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.stackedChevronRows, "annotatedcount", 0, 64);
   return { observedCount: input.stackedChevronRows };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -30,6 +30,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { observedCount: { type: "number" } },
+        required: ["observedCount"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
