@@ -13,15 +13,12 @@ export type Input = Readonly<{
   objectJson: string;
   groupKeys: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "objectJson", label: "Object json", kind: "string" },
   { id: "groupKeys", label: "Group keys", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   unique(i.groupKeys, "keys");
   const r = record(parseJson(i.objectJson)),
     present = i.groupKeys.filter((k) => Object.hasOwn(r, k));
@@ -30,7 +27,7 @@ const compute = (
     allOrNone: present.length === 0 || present.length === i.groupKeys.length,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -49,6 +46,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          presentKeys: { type: "array", items: { type: "string" } },
+          allOrNone: { type: "boolean" },
+        },
+        required: ["presentKeys", "allOrNone"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
