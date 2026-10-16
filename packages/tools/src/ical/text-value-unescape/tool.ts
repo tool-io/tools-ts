@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ text: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "text", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({ text: H.icalUnescape(i.text) });
 };
@@ -15,12 +15,30 @@ export const example = {
   output: { result: { text: "a,b;c\nx" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["iCalendar Text Value Unescaper", "iCalendar", "calendars"],
+    collections: ["encode-decode"],
+    fields: ["ical", "iCalendar", "calendars"],
+    keywords: ["iCalendar", "calendars"],
+  },
   id: "ical/text-value-unescape",
   title: "iCalendar Text Value Unescaper",
   description:
     "Decode only defined iCalendar TEXT escapes, including uppercase N for newline; malformed escape and raw line endings reject.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { text: { type: "string" } },
+        required: ["text"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
