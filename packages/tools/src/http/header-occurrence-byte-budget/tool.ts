@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ headersJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "headersJson", label: "headersJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.headerPairs(i.headersJson);
   return H.finish({
@@ -22,12 +22,33 @@ export const example = {
   output: { result: { lines: [10, 10, 17], total: 39 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["HTTP Header Occurrence Byte Budget", "HTTP", "web development"],
+    collections: ["encode-decode"],
+    fields: ["HTTP", "web development"],
+    keywords: ["HTTP", "web development"],
+  },
   id: "http/header-occurrence-byte-budget",
   title: "HTTP Header Occurrence Byte Budget",
   description:
     "Budget HTTP/1 field section octets under literal name-colon-space-value-CRLF serialization plus final CRLF; Latin-1 octets, not HTTP/2 compression or UTF-8.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          lines: { type: "array", items: { type: "number" } },
+          total: { type: "number" },
+        },
+        required: ["lines", "total"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
