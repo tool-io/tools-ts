@@ -8,27 +8,26 @@ import {
   runs,
   parseJson,
   scalarKey,
+  scalarValue,
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ arrayJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "arrayJson", label: "Array json", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const v = parseJson(i.arrayJson);
   if (!Array.isArray(v)) simpleError("array", "Scalar JSON array required.");
-  const a = v.map(scalarKey);
+  const values = v.map(scalarValue),
+    a = values.map(scalarKey);
   return {
     runs: runs(a)
       .filter((r) => r.end - r.start > 1)
-      .map((r) => ({ start: r.start, end: r.end, value: v[r.start] })),
+      .map((r) => ({ start: r.start, end: r.end, value: values[r.start] })),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -54,6 +53,33 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          runs: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                start: { type: "integer", minimum: 0 },
+                end: { type: "integer", minimum: 0 },
+                value: {
+                  anyOf: [
+                    { type: "null" },
+                    { type: "boolean" },
+                    { type: "number" },
+                    { type: "string" },
+                  ],
+                },
+              },
+              required: ["start", "end", "value"],
+            },
+          },
+        },
+        required: ["runs"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
