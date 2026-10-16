@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ line: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "line", label: "line", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(!/[\r\n\u0000]/.test(i.line));
   let quote = false,
@@ -40,12 +40,38 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "iCalendar Content Line Name Parameter Split",
+      "iCalendar",
+      "calendars",
+    ],
+    collections: ["encode-decode"],
+    fields: ["ical", "iCalendar", "calendars"],
+    keywords: ["iCalendar", "calendars"],
+  },
   id: "ical/content-line-name-parameter-split",
   title: "iCalendar Content Line Name Parameter Split",
   description:
     "Split an unfolded iCalendar content line at its unquoted first colon and semicolon parameter boundaries; value remains opaque, raw parameters retain quote-aware spelling, no RFC 6868 decoding or component validation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          name: { type: "string" },
+          parameters: { type: "array", items: { type: "string" } },
+          value: { type: "string" },
+        },
+        required: ["name", "parameters", "value"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
