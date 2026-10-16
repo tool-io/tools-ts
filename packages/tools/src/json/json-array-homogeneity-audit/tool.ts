@@ -11,14 +11,11 @@ import {
 import type { Json } from "../batch53-shared.js";
 
 export type Input = Readonly<{ documentJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "documentJson", label: "Document json", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   return {
     arrays: jsonNodes(parseJson(i.documentJson))
       .filter((v) => Array.isArray(v.value))
@@ -34,7 +31,7 @@ const compute = (
       }),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -64,6 +61,28 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          arrays: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                path: { type: "string" },
+                length: { type: "number" },
+                types: { type: "array", items: { type: "string" } },
+                homogeneous: { type: "boolean" },
+              },
+              required: ["path", "length", "types", "homogeneous"],
+            },
+          },
+        },
+        required: ["arrays"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
