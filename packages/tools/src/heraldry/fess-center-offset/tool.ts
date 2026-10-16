@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly fieldHeight: number;
   readonly observedFessCenterY: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "fieldHeight", label: "Field height", kind: "number" },
   {
@@ -20,7 +20,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.fieldHeight, "fieldHeight");
   if (
     input.observedFessCenterY < 0 ||
@@ -32,7 +32,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     normalizedCenterOffset: input.observedFessCenterY / input.fieldHeight - 0.5,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -51,6 +51,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedCenterOffset: { type: "number" },
+          normalizedCenterOffset: { type: "number" },
+        },
+        required: ["signedCenterOffset", "normalizedCenterOffset"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
