@@ -12,13 +12,13 @@ export type Input = Readonly<{
   readonly startAngleDegrees: number;
   readonly arcSpanDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "chargeCount", label: "Charge count", kind: "number" },
   { id: "startAngleDegrees", label: "Start angle degrees", kind: "number" },
   { id: "arcSpanDegrees", label: "Arc span degrees", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.chargeCount, "count", 2, 64);
   if (input.arcSpanDegrees < 0 || input.arcSpanDegrees > 360)
     simpleError("arc", "0–360 degrees explicit oriented arc.");
@@ -31,7 +31,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -50,6 +50,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          placementAngles: { type: "array", items: { type: "number" } },
+        },
+        required: ["placementAngles"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
