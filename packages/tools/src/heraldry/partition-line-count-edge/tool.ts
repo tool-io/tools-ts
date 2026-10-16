@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly observedPartitionEdgePositions: readonly number[];
   readonly edgeLength: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedPartitionEdgePositions",
@@ -22,7 +22,7 @@ const fields = [
   },
   { id: "edgeLength", label: "Edge length", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.edgeLength, "edgeLength");
   input.observedPartitionEdgePositions.forEach((v) =>
     nonnegative(v, "observedPartitionEdgePositions"),
@@ -39,7 +39,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       ],
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -58,6 +58,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          intersectionCount: { type: "number" },
+          uncoveredEndGap: { type: "number" },
+        },
+        required: ["intersectionCount", "uncoveredEndGap"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
