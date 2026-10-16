@@ -6,12 +6,12 @@ export type Input = Readonly<{
   leftEdges: readonly number[];
   rightEdges: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "leftEdges", label: "leftEdges", kind: "numberList" },
   { id: "rightEdges", label: "rightEdges", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.histogramEdges(i.leftEdges);
   H.histogramEdges(i.rightEdges);
@@ -40,12 +40,34 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Histogram Common Edge Coarsening", "histograms", "statistics"],
+    collections: ["data", "learn"],
+    fields: ["histogram", "histograms", "statistics"],
+    keywords: ["histograms", "statistics"],
+  },
   id: "histogram/bin-common-edge-coarsening",
   title: "Histogram Common Edge Coarsening",
   description:
     "Find exact common histogram boundaries for whole-bin coarsening, requiring identical outer domain endpoints; no approximate matching or invented split masses.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          edges: { type: "array", items: { type: "number" } },
+          leftIndexes: { type: "array", items: { type: "number" } },
+          rightIndexes: { type: "array", items: { type: "number" } },
+        },
+        required: ["edges", "leftIndexes", "rightIndexes"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
