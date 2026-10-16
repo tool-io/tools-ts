@@ -8,16 +8,13 @@ export type Input = Readonly<{
   arrayLength: number;
   allowAppend: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "token", label: "Token", kind: "string" },
   { id: "arrayLength", label: "Array length", kind: "number" },
   { id: "allowAppend", label: "Allow append", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.arrayLength, "length", 0, 1e9);
   const append = i.token === "-",
     canonical = /^(?:0|[1-9][0-9]*)$(?![\s\S])/.test(i.token),
@@ -29,7 +26,7 @@ const compute = (
     appendAllowed: append && i.allowAppend,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -55,6 +52,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          canonicalIndex: { type: "boolean" },
+          safeIndex: { anyOf: [{ type: "number" }, { type: "null" }] },
+          withinArray: { type: "boolean" },
+          appendAllowed: { type: "boolean" },
+        },
+        required: [
+          "canonicalIndex",
+          "safeIndex",
+          "withinArray",
+          "appendAllowed",
+        ],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
