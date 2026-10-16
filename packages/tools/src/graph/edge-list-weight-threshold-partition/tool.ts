@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ edgesJson: string; threshold: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "edgesJson", kind: "string", label: "edgesJson" },
   { id: "threshold", kind: "number", label: "threshold" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const e = H.edges(i.edgesJson);
   return H.finish({
@@ -37,7 +37,48 @@ export const tool = createSimpleTool({
   description:
     "Partition weighted edge observations at an explicit inclusive threshold, preserving signed weights and all occurrence identities.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          below: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                id: { type: "string" },
+                source: { type: "string" },
+                target: { type: "string" },
+                weight: { type: "number" },
+              },
+              required: ["id", "source", "target", "weight"],
+            },
+          },
+          atOrAbove: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                id: { type: "string" },
+                source: { type: "string" },
+                target: { type: "string" },
+                weight: { type: "number" },
+              },
+              required: ["id", "source", "target", "weight"],
+            },
+          },
+        },
+        required: ["below", "atOrAbove"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
