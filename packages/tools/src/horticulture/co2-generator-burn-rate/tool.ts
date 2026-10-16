@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly requiredCo2KgPerHour: number;
   readonly callerEmissionKgCo2PerKgFuel: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "requiredCo2KgPerHour",
@@ -23,14 +23,14 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.requiredCo2KgPerHour, "demand");
   positive(i.callerEmissionKgCo2PerKgFuel, "factor");
   return {
     fuelKgPerHour: i.requiredCo2KgPerHour / i.callerEmissionKgCo2PerKgFuel,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -49,6 +49,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { fuelKgPerHour: { type: "number" } },
+        required: ["fuelKgPerHour"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
