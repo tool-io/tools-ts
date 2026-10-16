@@ -9,17 +9,14 @@ export type Input = Readonly<{
   scale: number;
   shift: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "start", label: "Start", kind: "number" },
   { id: "end", label: "End", kind: "number" },
   { id: "scale", label: "Scale", kind: "number" },
   { id: "shift", label: "Shift", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   orderedPair(i.start, i.end);
   const a = i.scale * i.start + i.shift,
     b = i.scale * i.end + i.shift;
@@ -29,7 +26,7 @@ const compute = (
     orientationReversed: i.scale < 0,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -48,6 +45,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          start: { type: "number" },
+          end: { type: "number" },
+          orientationReversed: { type: "boolean" },
+        },
+        required: ["start", "end", "orientationReversed"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
