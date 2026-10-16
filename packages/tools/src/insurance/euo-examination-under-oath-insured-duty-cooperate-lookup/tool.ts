@@ -2,7 +2,7 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, pick, notice } from "../batch45-shared.js";
 export type Input = Readonly<{ readonly topic: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "topic",
@@ -11,7 +11,7 @@ const fields = [
     enum: ["summary", "reference", "limitations"],
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   return {
     text: pick(
       input.topic,
@@ -26,7 +26,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -49,6 +49,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { text: { type: "string" } },
+        required: ["text"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
