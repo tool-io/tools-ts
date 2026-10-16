@@ -6,13 +6,13 @@ export type Input = Readonly<{
   readonly callerMinimum: number;
   readonly callerMaximum: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "observedPercent", label: "Observed percent", kind: "number" },
   { id: "callerMinimum", label: "Caller minimum", kind: "number" },
   { id: "callerMaximum", label: "Caller maximum", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   range([i.callerMinimum, i.callerMaximum], "bounds");
   return {
     withinCallerBounds:
@@ -20,7 +20,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       i.observedPercent <= i.callerMaximum,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -39,6 +39,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { withinCallerBounds: { type: "boolean" } },
+        required: ["withinCallerBounds"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
