@@ -2,16 +2,16 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ key: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "key", label: "key", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const m = /^t:(0|[1-9]\d*):/.exec(i.key);
   H.check(m);
   const count = H.int(Number(m![1]), 0, 128),
-    values: unknown[] = [];
+    values: ReturnType<typeof H.untypedKey>[] = [];
   let p = m![0].length;
   for (let j = 0; j < count; j++) {
     const t = /^(0|[1-9]\d*):/.exec(i.key.slice(p));
@@ -30,12 +30,42 @@ export const example = {
   output: { result: { values: [1, "1", null] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Typed Tuple Key Decoder", "identifiers", "software development"],
+    collections: ["encode-decode"],
+    fields: ["identifier", "identifiers", "software development"],
+    keywords: ["identifiers", "software development"],
+  },
   id: "identifier/typed-tuple-key-decoder",
   title: "Typed Tuple Key Decoder",
   description:
     "Decode the bounded typed tuple key dialect, rejecting incomplete/trailing fields and preserving scalar types; no arbitrary JSON object keys.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          values: {
+            type: "array",
+            items: {
+              anyOf: [
+                { type: "null" },
+                { type: "boolean" },
+                { type: "number" },
+                { type: "string" },
+              ],
+            },
+          },
+        },
+        required: ["values"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
