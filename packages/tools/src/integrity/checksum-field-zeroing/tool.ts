@@ -6,13 +6,13 @@ export type Input = Readonly<{
   start: number;
   width: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bytes", kind: "numberList", label: "bytes" },
   { id: "start", kind: "integer", label: "start" },
   { id: "width", kind: "integer", label: "width" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.bytes(i.bytes);
   H.int(i.width, 1, 16);
@@ -33,7 +33,19 @@ export const tool = createSimpleTool({
   description:
     "Zero an explicitly bounded checksum field span in copied frame bytes; coverage and protocol layout remain caller responsibilities.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { bytes: { type: "array", items: { type: "number" } } },
+        required: ["bytes"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
