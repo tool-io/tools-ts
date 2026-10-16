@@ -6,13 +6,13 @@ export type Input = Readonly<{
   oldPrefix: string;
   newPrefix: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "keys", label: "keys", kind: "stringList" },
   { id: "oldPrefix", label: "oldPrefix", kind: "string" },
   { id: "newPrefix", label: "newPrefix", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.oldPrefix.length > 0);
   return H.finish({
@@ -27,12 +27,34 @@ export const example = {
   output: { result: { keys: ["new/a", "new/b"] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Opaque Key Prefix Rebase",
+      "identifiers",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["identifier", "identifiers", "software development"],
+    keywords: ["identifiers", "software development"],
+  },
   id: "identifier/opaque-key-prefix-rebase",
   title: "Opaque Key Prefix Rebase",
   description:
     "Rebase literal opaque key prefixes only when every supplied key matches the explicit old prefix; no path normalization, substring replacement or inferred aliases.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { keys: { type: "array", items: { type: "string" } } },
+        required: ["keys"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
