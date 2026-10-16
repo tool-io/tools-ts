@@ -7,14 +7,14 @@ export type Input = Readonly<{
   startZone: string;
   endZone: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "startKind", label: "startKind", kind: "string" },
   { id: "endKind", label: "endKind", kind: "string" },
   { id: "startZone", label: "startZone", kind: "string" },
   { id: "endZone", label: "endZone", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     ["date", "floating", "utc", "zoned"].includes(i.startKind) &&
@@ -33,12 +33,34 @@ export const example = {
   output: { result: { compatible: false } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "iCalendar Date Time Value Kind Compatibility",
+      "iCalendar",
+      "calendars",
+    ],
+    collections: ["encode-decode"],
+    fields: ["ical", "iCalendar", "calendars"],
+    keywords: ["iCalendar", "calendars"],
+  },
   id: "ical/date-time-value-kind-compatibility",
   title: "iCalendar Date Time Value Kind Compatibility",
   description:
     "Check explicit date/floating/UTC/zoned value-kind compatibility and exact zone-label agreement; not zone equivalence, chronology or complete iCalendar component validation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { compatible: { type: "boolean" } },
+        required: ["compatible"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
