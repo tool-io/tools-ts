@@ -14,16 +14,13 @@ export type Input = Readonly<{
   keyField: string;
   descending: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "recordsJson", label: "Records json", kind: "string" },
   { id: "keyField", label: "Key field", kind: "string" },
   { id: "descending", label: "Descending", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = records(i.recordsJson);
   a.forEach((r) => {
     if (!Object.hasOwn(r, i.keyField))
@@ -51,7 +48,7 @@ const compute = (
     });
   return { records: out.map((v) => v.r), sourceIndexes: out.map((v) => v.j) };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -79,6 +76,26 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          records: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: true,
+              description:
+                "Caller-owned JSON members retain arbitrary finite JSON values.",
+            },
+          },
+          sourceIndexes: {
+            type: "array",
+            items: { type: "integer", minimum: 0 },
+          },
+        },
+        required: ["records", "sourceIndexes"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
