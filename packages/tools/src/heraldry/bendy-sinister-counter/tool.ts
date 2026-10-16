@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly projectedStripeEdgePositions: readonly number[];
   readonly projectedFieldExtent: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "projectedStripeEdgePositions",
@@ -26,7 +26,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.projectedFieldExtent, "projectedFieldExtent");
   input.projectedStripeEdgePositions.forEach((v) =>
     nonnegative(v, "projectedStripeEdgePositions"),
@@ -40,7 +40,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.projectedFieldExtent - input.projectedStripeEdgePositions.at(-1)!,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -62,6 +62,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedStripeIntervals: { type: "number" },
+          trailingProjectedGap: { type: "number" },
+        },
+        required: ["observedStripeIntervals", "trailingProjectedGap"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
