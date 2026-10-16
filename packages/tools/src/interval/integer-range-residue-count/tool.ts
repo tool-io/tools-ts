@@ -9,17 +9,14 @@ export type Input = Readonly<{
   modulus: number;
   residue: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "start", label: "Start", kind: "number" },
   { id: "end", label: "End", kind: "number" },
   { id: "modulus", label: "Modulus", kind: "number" },
   { id: "residue", label: "Residue", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.start, "start", -1e12, 1e12);
   bounded(i.end, "end", i.start, 1e12);
   bounded(i.modulus, "modulus", 1, 1e9);
@@ -30,7 +27,7 @@ const compute = (
     first: first > i.end ? null : first,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -49,6 +46,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          count: { type: "number" },
+          first: { anyOf: [{ type: "number" }, { type: "null" }] },
+        },
+        required: ["count", "first"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
