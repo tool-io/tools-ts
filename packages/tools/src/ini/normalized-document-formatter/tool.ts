@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ recordsJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "recordsJson", label: "recordsJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.iniRecords(i.recordsJson);
   r.forEach((v) =>
@@ -42,12 +42,34 @@ export const example = {
   output: { result: { text: "[a]\nx=1\n[b]\nx=3" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Restricted INI Record Document Formatter",
+      "INI configuration",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["ini", "INI configuration", "software development"],
+    keywords: ["INI configuration", "software development"],
+  },
   id: "ini/normalized-document-formatter",
   title: "Restricted INI Record Document Formatter",
   description:
-    "Format normalized explicit INI records preserving occurrence order, re-emitting section headings on changes; values must be single-line trimmed literals, no quoting or interpolation. ",
+    "Format normalized explicit INI records preserving occurrence order, re-emitting section headings on changes; values must be single-line trimmed literals, no quoting or interpolation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { text: { type: "string" } },
+        required: ["text"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
