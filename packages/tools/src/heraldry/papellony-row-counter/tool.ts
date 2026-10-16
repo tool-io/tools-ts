@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly completeUnitsPerRow: readonly number[];
   readonly partialUnitsPerRow: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "completeUnitsPerRow",
@@ -26,7 +26,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   input.completeUnitsPerRow.forEach((v) =>
     nonnegative(v, "completeUnitsPerRow"),
   );
@@ -44,7 +44,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     partialUnitCount: sum(input.partialUnitsPerRow),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -63,6 +63,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          completeUnitCount: { type: "number" },
+          partialUnitCount: { type: "number" },
+        },
+        required: ["completeUnitCount", "partialUnitCount"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
