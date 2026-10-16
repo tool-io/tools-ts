@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ edgesJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "edgesJson", kind: "string", label: "edgesJson" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const e = H.edges(i.edgesJson);
   const vertices = H.unique(e.flatMap((v) => [v.source, v.target]));
@@ -51,7 +51,38 @@ export const tool = createSimpleTool({
   description:
     "Audit degree-sum identities on occurrence-preserving directed edges; loops contribute twice to undirected degree and parallel occurrences count.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          degrees: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                vertex: { type: "string" },
+                incoming: { type: "number" },
+                outgoing: { type: "number" },
+                undirected: { type: "number" },
+              },
+              required: ["vertex", "incoming", "outgoing", "undirected"],
+            },
+          },
+          inSum: { type: "number" },
+          outSum: { type: "number" },
+          undirectedSum: { type: "number" },
+          edgeCount: { type: "number" },
+        },
+        required: ["degrees", "inSum", "outSum", "undirectedSum", "edgeCount"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
