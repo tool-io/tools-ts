@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ glyphsJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "glyphsJson", label: "glyphsJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const g = H.glyphPlaced(i.glyphsJson);
   const advance = g.reduce((s, v) => s + v.advance, 0),
@@ -29,12 +29,34 @@ export const example = {
   output: { result: { advance: 9, leading: 0, trailing: 0 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Glyph Overhang Budget", "typography", "Unicode"],
+    collections: ["data", "learn"],
+    fields: ["glyph", "typography", "Unicode"],
+    keywords: ["typography", "Unicode"],
+  },
   id: "glyph/glyph-overhang-budget",
   title: "Glyph Overhang Budget",
   description:
-    "Budget horizontal ink overhang outside the explicit advance run, using null when no ink boxes are known; no font rendering. ",
+    "Budget horizontal ink overhang outside the explicit advance run, using null when no ink boxes are known; no font rendering.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          advance: { type: "number" },
+          leading: { anyOf: [{ type: "number" }, { type: "null" }] },
+          trailing: { anyOf: [{ type: "number" }, { type: "null" }] },
+        },
+        required: ["advance", "leading", "trailing"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
