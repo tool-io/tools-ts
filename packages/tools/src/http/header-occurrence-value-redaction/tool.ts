@@ -6,13 +6,13 @@ export type Input = Readonly<{
   names: readonly string[];
   replacement: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "headersJson", label: "headersJson", kind: "string" },
   { id: "names", label: "names", kind: "stringList" },
   { id: "replacement", label: "replacement", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.headerPairs(i.headersJson);
   H.headerPairs(JSON.stringify([{ name: "x", value: i.replacement }]));
@@ -44,12 +44,47 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "HTTP Header Occurrence Value Redaction",
+      "HTTP",
+      "web development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["HTTP", "web development"],
+    keywords: ["HTTP", "web development"],
+  },
   id: "http/header-occurrence-value-redaction",
   title: "HTTP Header Occurrence Value Redaction",
   description:
     "Redact complete supplied HTTP field values by explicit case-insensitive names without modifying occurrence order; not a guarantee that sensitive data is absent elsewhere.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          headers: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                name: { type: "string" },
+                value: { type: "string" },
+              },
+              required: ["name", "value"],
+            },
+          },
+        },
+        required: ["headers"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
