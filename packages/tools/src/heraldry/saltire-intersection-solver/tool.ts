@@ -8,14 +8,14 @@ export type Input = Readonly<{
   readonly segmentBStart: readonly number[];
   readonly segmentBEnd: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "segmentAStart", label: "Segment a start", kind: "numberList" },
   { id: "segmentAEnd", label: "Segment a end", kind: "numberList" },
   { id: "segmentBStart", label: "Segment b start", kind: "numberList" },
   { id: "segmentBEnd", label: "Segment b end", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   for (const p of [
     input.segmentAStart,
     input.segmentAEnd,
@@ -40,7 +40,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     secondSegmentFraction: u,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -70,6 +70,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          intersection: { type: "array", items: { type: "number" } },
+          firstSegmentFraction: { type: "number" },
+          secondSegmentFraction: { type: "number" },
+        },
+        required: [
+          "intersection",
+          "firstSegmentFraction",
+          "secondSegmentFraction",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
