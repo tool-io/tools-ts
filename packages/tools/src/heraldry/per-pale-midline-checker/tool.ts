@@ -11,18 +11,18 @@ export type Input = Readonly<{
   readonly fieldWidth: number;
   readonly observedSplitX: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "fieldWidth", label: "Field width", kind: "number" },
   { id: "observedSplitX", label: "Observed split x", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.fieldWidth, "fieldWidth");
   if (input.observedSplitX < 0 || input.observedSplitX > input.fieldWidth)
     simpleError("split", "Inside field.");
   return { signedMidlineOffset: input.observedSplitX - input.fieldWidth / 2 };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -41,6 +41,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { signedMidlineOffset: { type: "number" } },
+        required: ["signedMidlineOffset"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
