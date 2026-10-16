@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly annotatedFieldStageOrdinals: readonly number[];
   readonly callerExpectedStageOrdinals: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "annotatedFieldStageOrdinals",
@@ -19,7 +19,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.annotatedFieldStageOrdinals,
     input.callerExpectedStageOrdinals,
@@ -32,7 +32,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
   );
   return { matchesCallerOrder: k < 0, firstOrderMismatchIndex: k };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -54,6 +54,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          matchesCallerOrder: { type: "boolean" },
+          firstOrderMismatchIndex: { type: "number" },
+        },
+        required: ["matchesCallerOrder", "firstOrderMismatchIndex"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
