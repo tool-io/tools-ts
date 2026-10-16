@@ -6,13 +6,13 @@ export type Input = Readonly<{
   left: string;
   right: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pairsJson", label: "pairsJson", kind: "string" },
   { id: "left", label: "left", kind: "string" },
   { id: "right", label: "right", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.records(i.pairsJson);
   r.forEach((v) => {
@@ -37,12 +37,43 @@ export const example = {
   output: { result: { matches: [{ index: 0, adjustment: -1 }] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Glyph Pair Adjustment Lookup", "typography", "Unicode"],
+    collections: ["data", "learn"],
+    fields: ["glyph", "typography", "Unicode"],
+    keywords: ["typography", "Unicode"],
+  },
   id: "glyph/glyph-pair-adjustment-lookup",
   title: "Glyph Pair Adjustment Lookup",
   description:
     "Lookup every explicit pair-adjustment record for two glyph IDs, retaining conflicting duplicate values rather than assuming authoritative font kerning.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          matches: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                adjustment: { type: "number" },
+              },
+              required: ["index", "adjustment"],
+            },
+          },
+        },
+        required: ["matches"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
