@@ -6,13 +6,13 @@ export type Input = Readonly<{
   section: string;
   keys: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "recordsJson", label: "recordsJson", kind: "string" },
   { id: "section", label: "section", kind: "string" },
   { id: "keys", label: "keys", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.iniRecords(i.recordsJson);
   return H.finish({
@@ -40,12 +40,49 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "INI Section Key Selector",
+      "INI configuration",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["ini", "INI configuration", "software development"],
+    keywords: ["INI configuration", "software development"],
+  },
   id: "ini/section-key-selector",
   title: "INI Section Key Selector",
   description:
     "Select every explicit INI observation matching an exact section and key bank, preserving duplicates and occurrence provenance rather than choosing a winner.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          records: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                section: { type: "string" },
+                name: { type: "string" },
+                value: { type: "string" },
+                index: { type: "number" },
+              },
+              required: ["section", "name", "value", "index"],
+            },
+          },
+        },
+        required: ["records"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
