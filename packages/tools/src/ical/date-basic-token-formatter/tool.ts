@@ -2,13 +2,13 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ year: number; month: number; day: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "year", label: "year", kind: "integer" },
   { id: "month", label: "month", kind: "integer" },
   { id: "day", label: "day", kind: "integer" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.dateValid(i.year, i.month, i.day);
   return H.finish({
@@ -23,12 +23,30 @@ export const example = {
   output: { result: { token: "20240229" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["iCalendar Basic Date Token Formatter", "iCalendar", "calendars"],
+    collections: ["encode-decode"],
+    fields: ["ical", "iCalendar", "calendars"],
+    keywords: ["iCalendar", "calendars"],
+  },
   id: "ical/date-basic-token-formatter",
   title: "iCalendar Basic Date Token Formatter",
   description:
     "Format a validated proleptic Gregorian iCalendar basic date with year 1\u20139999; no time zone or floating date-time inference.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { token: { type: "string" } },
+        required: ["token"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
