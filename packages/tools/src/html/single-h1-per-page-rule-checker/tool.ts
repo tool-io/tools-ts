@@ -2,15 +2,15 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, bounded } from "../batch52-shared.js";
 export type Input = Readonly<{ readonly observedH1Count: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "observedH1Count", label: "Observed h1 count", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.observedH1Count, "count", 0, 1000000);
   return { matchesCallerOneH1Rule: i.observedH1Count === 1 };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -29,6 +29,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { matchesCallerOneH1Rule: { type: "boolean" } },
+        required: ["matchesCallerOneH1Rule"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
