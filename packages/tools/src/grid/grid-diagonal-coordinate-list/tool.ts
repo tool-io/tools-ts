@@ -8,16 +8,13 @@ export type Input = Readonly<{
   columns: number;
   diagonalOffset: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "rows", label: "Rows", kind: "number" },
   { id: "columns", label: "Columns", kind: "number" },
   { id: "diagonalOffset", label: "Diagonal offset", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.rows, "rows", 1, 128);
   bounded(i.columns, "columns", 1, 128);
   bounded(i.diagonalOffset, "offset", -128, 128);
@@ -28,7 +25,7 @@ const compute = (
     ]).filter(([, c]) => c >= 0 && c < i.columns),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -54,6 +51,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          coordinates: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["coordinates"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
