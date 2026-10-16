@@ -9,22 +9,19 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ pointer: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pointer", label: "Pointer", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = pointerTokens(i.pointer);
   return {
     hasParent: a.length > 0,
     parent: a.length ? pointerFormat(a.slice(0, -1)) : null,
-    finalToken: a.length ? a.at(-1) : null,
+    finalToken: a.length ? a[a.length - 1] : null,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -43,6 +40,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          hasParent: { type: "boolean" },
+          parent: { anyOf: [{ type: "string" }, { type: "null" }] },
+          finalToken: { anyOf: [{ type: "string" }, { type: "null" }] },
+        },
+        required: ["hasParent", "parent", "finalToken"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
