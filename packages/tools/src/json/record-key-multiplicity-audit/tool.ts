@@ -6,29 +6,28 @@ import {
   finish,
   records,
   scalarKey,
+  scalarValue,
 } from "../batch53-shared.js";
-import type { Json } from "../batch53-shared.js";
+import type { JsonScalar } from "../batch53-shared.js";
 
 export type Input = Readonly<{ recordsJson: string; keyField: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "recordsJson", label: "Records json", kind: "string" },
   { id: "keyField", label: "Key field", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = records(i.recordsJson),
-    m = new Map<string, { key: Json; indexes: number[] }>(),
+    m = new Map<string, { key: JsonScalar; indexes: number[] }>(),
     missing: number[] = [];
   a.forEach((r, j) => {
     if (!Object.hasOwn(r, i.keyField)) {
       missing.push(j);
       return;
     }
-    const k = scalarKey(r[i.keyField]);
-    if (!m.has(k)) m.set(k, { key: r[i.keyField], indexes: [] });
+    const value = scalarValue(r[i.keyField]),
+      k = scalarKey(value);
+    if (!m.has(k)) m.set(k, { key: value, indexes: [] });
     m.get(k)!.indexes.push(j);
   });
   return {
@@ -36,7 +35,7 @@ const compute = (
     missingRecordIndexes: missing,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -60,6 +59,40 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          groups: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                key: {
+                  anyOf: [
+                    { type: "null" },
+                    { type: "boolean" },
+                    { type: "number" },
+                    { type: "string" },
+                  ],
+                },
+                indexes: {
+                  type: "array",
+                  items: { type: "integer", minimum: 0 },
+                },
+                count: { type: "integer", minimum: 0 },
+              },
+              required: ["key", "indexes", "count"],
+            },
+          },
+          missingRecordIndexes: {
+            type: "array",
+            items: { type: "integer", minimum: 0 },
+          },
+        },
+        required: ["groups", "missingRecordIndexes"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
