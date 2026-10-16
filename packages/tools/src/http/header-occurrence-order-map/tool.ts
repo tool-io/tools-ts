@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ headersJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "headersJson", label: "headersJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.headerPairs(i.headersJson);
   return H.finish({
@@ -37,12 +37,33 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["HTTP Header Occurrence Order Map", "HTTP", "web development"],
+    collections: ["encode-decode"],
+    fields: ["HTTP", "web development"],
+    keywords: ["HTTP", "web development"],
+  },
   id: "http/header-occurrence-order-map",
   title: "HTTP Header Occurrence Order Map",
   description:
     "Map explicit field occurrences to stable canonical-name ordering and within-name ordinals without serializing or reordering a request.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          canonicalOrder: { type: "array", items: { type: "number" } },
+          occurrenceOrdinals: { type: "array", items: { type: "number" } },
+        },
+        required: ["canonicalOrder", "occurrenceOrdinals"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
