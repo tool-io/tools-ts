@@ -6,13 +6,13 @@ export type Input = Readonly<{
   vertices: readonly string[];
   directed: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "edgesJson", kind: "string", label: "edgesJson" },
   { id: "vertices", kind: "stringList", label: "vertices" },
   { id: "directed", kind: "boolean", label: "directed" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const e = H.edges(i.edgesJson);
   H.check(
@@ -59,7 +59,24 @@ export const tool = createSimpleTool({
   description:
     "Build the loop-free complement on an explicit bounded vertex set; parallel edges count as one adjacency and directed complements use ordered pairs.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          edges: {
+            type: "array",
+            items: { type: "array", items: { type: "string" } },
+          },
+        },
+        required: ["edges"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
