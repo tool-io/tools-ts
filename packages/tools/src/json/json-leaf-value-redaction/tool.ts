@@ -15,16 +15,13 @@ export type Input = Readonly<{
   paths: readonly string[];
   replacementJson: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "documentJson", label: "Document json", kind: "string" },
   { id: "paths", label: "Paths", kind: "stringList" },
   { id: "replacementJson", label: "Replacement json", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   i.paths.forEach(pointerTokens);
   const root = parseJson(i.documentJson),
     replacement = parseJson(i.replacementJson),
@@ -52,7 +49,7 @@ const compute = (
     unmatchedPaths: i.paths.filter((p) => !changed.includes(p)),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
