@@ -5,12 +5,12 @@ export type Input = Readonly<{
   values: readonly number[];
   edges: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "values", label: "values", kind: "numberList" },
   { id: "edges", label: "edges", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.histogramEdges(i.edges);
   const indexes = i.values.map((x) => H.binIndex(x, i.edges));
@@ -27,12 +27,37 @@ export const example = {
   output: { result: { counts: [1, 2], outside: 2 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Histogram Explicit Edge Count Table",
+      "histograms",
+      "statistics",
+    ],
+    collections: ["data", "learn"],
+    fields: ["histogram", "histograms", "statistics"],
+    keywords: ["histograms", "statistics"],
+  },
   id: "histogram/explicit-edge-count-table",
   title: "Histogram Explicit Edge Count Table",
   description:
     "Count explicit observations in supplied ordered histogram bins with final edge included, reporting outside count without clamping under/overflow into endpoint bins.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          counts: { type: "array", items: { type: "number" } },
+          outside: { type: "number" },
+        },
+        required: ["counts", "outside"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
