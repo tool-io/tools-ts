@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ edges: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "edges", label: "edges", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const violations = i.edges
     .slice(1)
@@ -33,12 +33,45 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Histogram Edge Monotonicity Audit", "histograms", "statistics"],
+    collections: ["data", "learn"],
+    fields: ["histogram", "histograms", "statistics"],
+    keywords: ["histograms", "statistics"],
+  },
   id: "histogram/edge-monotonicity-audit",
   title: "Histogram Edge Monotonicity Audit",
   description:
     "Audit strict histogram edge monotonicity and minimum arity without silently sorting or removing equal/backwards edges; preserve signed adjacent differences.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          valid: { type: "boolean" },
+          violations: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                left: { type: "number" },
+                right: { type: "number" },
+                difference: { type: "number" },
+              },
+              required: ["left", "right", "difference"],
+            },
+          },
+        },
+        required: ["valid", "violations"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
