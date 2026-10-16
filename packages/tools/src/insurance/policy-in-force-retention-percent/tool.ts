@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly eligibleRenewalPolicies: number;
   readonly retainedEligiblePolicies: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "eligibleRenewalPolicies",
@@ -18,7 +18,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.eligibleRenewalPolicies, "eligible", 1, 1000000000);
   bounded(
     input.retainedEligiblePolicies,
@@ -31,7 +31,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       (100 * input.retainedEligiblePolicies) / input.eligibleRenewalPolicies,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -50,6 +50,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { observedCohortRetentionPercent: { type: "number" } },
+        required: ["observedCohortRetentionPercent"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
