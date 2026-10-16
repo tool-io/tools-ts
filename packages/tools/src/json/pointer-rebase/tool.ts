@@ -14,16 +14,13 @@ export type Input = Readonly<{
   oldBase: string;
   newBase: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pointer", label: "Pointer", kind: "string" },
   { id: "oldBase", label: "Old base", kind: "string" },
   { id: "newBase", label: "New base", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = pointerTokens(i.pointer),
     b = pointerTokens(i.oldBase),
     c = pointerTokens(i.newBase);
@@ -31,7 +28,7 @@ const compute = (
     simpleError("base", "Old base must be a token prefix.");
   return { pointer: pointerFormat([...c, ...a.slice(b.length)]) };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -50,6 +47,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { pointer: { type: "string" } },
+        required: ["pointer"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
