@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly lineAnglesDegrees: readonly number[];
   readonly stippled: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "lineAnglesDegrees",
@@ -20,7 +20,7 @@ const fields = [
   },
   { id: "stippled", label: "Observed stippling", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     input.lineAnglesDegrees.length > 4 ||
     input.lineAnglesDegrees.some((v) => v < 0 || v >= 180) ||
@@ -42,7 +42,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       .map(([name]) => name),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -61,6 +61,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          matchingTinctures: { type: "array", items: { type: "string" } },
+        },
+        required: ["matchingTinctures"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
