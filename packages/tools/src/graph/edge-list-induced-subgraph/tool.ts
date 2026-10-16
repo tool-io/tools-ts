@@ -5,12 +5,12 @@ export type Input = Readonly<{
   edgesJson: string;
   vertices: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "edgesJson", kind: "string", label: "edgesJson" },
   { id: "vertices", kind: "stringList", label: "vertices" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const e = H.edges(i.edgesJson);
   H.check(H.unique(i.vertices).length === i.vertices.length);
@@ -40,7 +40,35 @@ export const tool = createSimpleTool({
   description:
     "Select the vertex-induced edge observations for an explicit vertex set, preserving isolated declared vertices and occurrence identities.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          edges: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                id: { type: "string" },
+                source: { type: "string" },
+                target: { type: "string" },
+                weight: { type: "number" },
+              },
+              required: ["id", "source", "target", "weight"],
+            },
+          },
+          vertices: { type: "array", items: { type: "string" } },
+        },
+        required: ["edges", "vertices"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
