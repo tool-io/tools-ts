@@ -6,13 +6,13 @@ export type Input = Readonly<{
   minimum: string;
   maximum: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "value", label: "value", kind: "string" },
   { id: "minimum", label: "minimum", kind: "string" },
   { id: "maximum", label: "maximum", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const v = H.bigint(i.value),
     min = H.bigint(i.minimum),
@@ -27,12 +27,34 @@ export const example = {
   output: { result: { key: "08" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Opaque Key Sortable Signed Padding",
+      "identifiers",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["identifier", "identifiers", "software development"],
+    keywords: ["identifiers", "software development"],
+  },
   id: "identifier/opaque-key-sortable-signed-padding",
   title: "Opaque Key Sortable Signed Padding",
   description:
     "Encode a signed exact integer into lexicographic order by biasing against explicit inclusive range endpoints and fixed decimal width; caller retains endpoints for decoding.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { key: { type: "string" } },
+        required: ["key"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
