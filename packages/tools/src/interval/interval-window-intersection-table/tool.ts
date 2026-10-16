@@ -7,15 +7,12 @@ export type Input = Readonly<{
   intervals: readonly (readonly number[])[];
   windows: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "intervals", label: "Intervals", kind: "matrix" },
   { id: "windows", label: "Windows", kind: "matrix" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = intervals(i.intervals),
     b = intervals(i.windows);
   return {
@@ -28,7 +25,7 @@ const compute = (
     ),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -51,6 +48,28 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          intersections: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                sourceIndex: { type: "number" },
+                windowIndex: { type: "number" },
+                start: { type: "number" },
+                end: { type: "number" },
+              },
+              required: ["sourceIndex", "windowIndex", "start", "end"],
+            },
+          },
+        },
+        required: ["intersections"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
