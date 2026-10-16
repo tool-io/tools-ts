@@ -12,19 +12,19 @@ export type Input = Readonly<{
   readonly pileDepth: number;
   readonly fieldHeight: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pileDepth", label: "Pile depth", kind: "number" },
   { id: "fieldHeight", label: "Field height", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.fieldHeight, "fieldHeight");
   nonnegative(input.pileDepth, "pileDepth");
   if (input.pileDepth > input.fieldHeight)
     simpleError("dimension", "Observed extent fits reference envelope.");
   return { observedFraction: input.pileDepth / input.fieldHeight };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -43,6 +43,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { observedFraction: { type: "number" } },
+        required: ["observedFraction"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
