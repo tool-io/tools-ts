@@ -6,13 +6,13 @@ export type Input = Readonly<{
   rows: number;
   columns: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "cellsJson", kind: "string", label: "cellsJson" },
   { id: "rows", kind: "integer", label: "rows" },
   { id: "columns", kind: "integer", label: "columns" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.rows, 0, 128);
   H.int(i.columns, 0, 128);
@@ -64,7 +64,40 @@ export const tool = createSimpleTool({
   description:
     "Build an occurrence-preserving HTML cell-span owner map at explicitly supplied source coordinates for one row group; rowspan zero reaches that group\u2019s end, no automatic browser table placement.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          occupancy: {
+            type: "array",
+            items: {
+              type: "array",
+              items: { type: "array", items: { type: "number" } },
+            },
+          },
+          overlaps: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                row: { type: "number" },
+                column: { type: "number" },
+                owners: { type: "array", items: { type: "number" } },
+              },
+              required: ["row", "column", "owners"],
+            },
+          },
+        },
+        required: ["occupancy", "overlaps"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
