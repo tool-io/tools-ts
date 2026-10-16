@@ -8,16 +8,13 @@ export type Input = Readonly<{
   candidateFields: readonly string[];
   targetField: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "recordsJson", label: "Records json", kind: "string" },
   { id: "candidateFields", label: "Candidate fields", kind: "stringList" },
   { id: "targetField", label: "Target field", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   return {
     records: records(i.recordsJson).map((r) => {
       const k = i.candidateFields.find(
@@ -30,7 +27,7 @@ const compute = (
     }),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -53,6 +50,22 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          records: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: true,
+              description:
+                "Caller-owned JSON members retain arbitrary finite JSON values.",
+            },
+          },
+        },
+        required: ["records"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
