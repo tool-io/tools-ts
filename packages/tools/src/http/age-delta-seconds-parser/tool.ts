@@ -4,14 +4,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, decimalUnsigned } from "../batch53-shared.js";
 
 export type Input = Readonly<{ value: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "value", label: "Value", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const canonical = decimalUnsigned(i.value),
     n = BigInt(canonical),
     limit = 2147483648n;
@@ -21,7 +18,7 @@ const compute = (
     saturated: n > limit,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -46,6 +43,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          canonicalDecimal: { type: "string" },
+          conservativeAgeSeconds: { type: "number" },
+          saturated: { type: "boolean" },
+        },
+        required: ["canonicalDecimal", "conservativeAgeSeconds", "saturated"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
