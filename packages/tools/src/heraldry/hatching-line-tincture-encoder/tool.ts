@@ -10,18 +10,18 @@ import {
 export type Input = Readonly<{
   readonly tincture: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "tincture", label: "Standard tincture", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const pattern = pick(input.tincture, hatchingPatterns, "tincture");
   return {
     lineAnglesDegrees: [...pattern.lineAnglesDegrees],
     stippled: pattern.stippled,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -40,6 +40,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          lineAnglesDegrees: { type: "array", items: { type: "number" } },
+          stippled: { type: "boolean" },
+        },
+        required: ["lineAnglesDegrees", "stippled"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
