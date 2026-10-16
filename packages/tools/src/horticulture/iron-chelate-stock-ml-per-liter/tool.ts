@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly targetElementMgPerLiter: number;
   readonly stockElementMgPerMl: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "targetElementMgPerLiter",
@@ -23,14 +23,14 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.targetElementMgPerLiter, "target");
   positive(i.stockElementMgPerMl, "stock");
   return {
     stockMlPerFinalLiter: i.targetElementMgPerLiter / i.stockElementMgPerMl,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -49,6 +49,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { stockMlPerFinalLiter: { type: "number" } },
+        required: ["stockMlPerFinalLiter"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
