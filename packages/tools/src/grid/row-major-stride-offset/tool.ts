@@ -11,7 +11,7 @@ export type Input = Readonly<{
   elementBytes: number;
   baseOffset: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "rows", label: "Rows", kind: "number" },
   { id: "columns", label: "Columns", kind: "number" },
@@ -20,10 +20,7 @@ const fields = [
   { id: "elementBytes", label: "Element bytes", kind: "number" },
   { id: "baseOffset", label: "Base offset", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.rows, "rows", 1, 1e6);
   bounded(i.columns, "columns", 1, 1e6);
   bounded(i.row, "row", 0, i.rows - 1);
@@ -35,7 +32,7 @@ const compute = (
   bounded(byteOffset, "offset", 0, Number.MAX_SAFE_INTEGER);
   return { byteOffset };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -61,6 +58,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { byteOffset: { type: "number" } },
+        required: ["byteOffset"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
