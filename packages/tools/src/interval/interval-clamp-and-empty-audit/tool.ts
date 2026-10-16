@@ -13,16 +13,13 @@ export type Input = Readonly<{
   domainStart: number;
   domainEnd: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "intervals", label: "Intervals", kind: "matrix" },
   { id: "domainStart", label: "Domain start", kind: "number" },
   { id: "domainEnd", label: "Domain end", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   orderedPair(i.domainStart, i.domainEnd);
   return {
     audit: intervals(i.intervals).map(([s, e], sourceIndex) => {
@@ -38,7 +35,7 @@ const compute = (
     }),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -71,6 +68,29 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          audit: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                sourceIndex: { type: "number" },
+                start: { type: "number" },
+                end: { type: "number" },
+                empty: { type: "boolean" },
+                clipped: { type: "boolean" },
+              },
+              required: ["sourceIndex", "start", "end", "empty", "clipped"],
+            },
+          },
+        },
+        required: ["audit"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
