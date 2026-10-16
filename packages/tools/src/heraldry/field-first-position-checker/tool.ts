@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly annotatedFieldTinctureTokenIndex: number;
   readonly totalAnnotatedTokens: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "annotatedFieldTinctureTokenIndex",
@@ -19,7 +19,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.totalAnnotatedTokens, "tokens", 1, 128);
   bounded(
     input.annotatedFieldTinctureTokenIndex,
@@ -29,7 +29,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
   );
   return { fieldTinctureFirst: input.annotatedFieldTinctureTokenIndex === 0 };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -48,6 +48,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { fieldTinctureFirst: { type: "boolean" } },
+        required: ["fieldTinctureFirst"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
