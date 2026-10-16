@@ -9,34 +9,33 @@ import {
   record,
   records,
   scalarKey,
+  scalarValue,
 } from "../batch53-shared.js";
-import type { Json } from "../batch53-shared.js";
+import type { JsonScalar } from "../batch53-shared.js";
 
 export type Input = Readonly<{ recordsJson: string; keyField: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "recordsJson", label: "Records json", kind: "string" },
   { id: "keyField", label: "Key field", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = records(i.recordsJson),
-    out: { key: Json; recordIndex: number }[] = [];
+    out: { key: JsonScalar; recordIndex: number }[] = [];
   const seen = new Set<string>();
   a.forEach((r, j) => {
     if (!Object.hasOwn(r, i.keyField))
       simpleError("key", "Every record must have an own scalar index key.");
-    const k = scalarKey(r[i.keyField]);
+    const value = scalarValue(r[i.keyField]),
+      k = scalarKey(value);
     if (seen.has(k))
       simpleError("key", "Index keys must be unique by type and value.");
     seen.add(k);
-    out.push({ key: r[i.keyField], recordIndex: j });
+    out.push({ key: value, recordIndex: j });
   });
   return { index: out };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -62,6 +61,32 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          index: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                key: {
+                  anyOf: [
+                    { type: "null" },
+                    { type: "boolean" },
+                    { type: "number" },
+                    { type: "string" },
+                  ],
+                },
+                recordIndex: { type: "integer", minimum: 0 },
+              },
+              required: ["key", "recordIndex"],
+            },
+          },
+        },
+        required: ["index"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
