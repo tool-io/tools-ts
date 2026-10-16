@@ -11,12 +11,12 @@ export type Input = Readonly<{
   readonly fusilLongDiagonal: number;
   readonly fusilShortDiagonal: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "fusilLongDiagonal", label: "Fusil long diagonal", kind: "number" },
   { id: "fusilShortDiagonal", label: "Fusil short diagonal", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.fusilLongDiagonal, "fusilLongDiagonal");
   positive(input.fusilShortDiagonal, "fusilShortDiagonal");
   if (input.fusilLongDiagonal < input.fusilShortDiagonal)
@@ -26,7 +26,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     cellArea: (input.fusilLongDiagonal * input.fusilShortDiagonal) / 2,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -45,6 +45,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          elongationRatio: { type: "number" },
+          cellArea: { type: "number" },
+        },
+        required: ["elongationRatio", "cellArea"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
