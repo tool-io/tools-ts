@@ -6,13 +6,13 @@ export type Input = Readonly<{
   size: number;
   pointy: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "center", label: "center", kind: "numberList" },
   { id: "size", label: "size", kind: "number" },
   { id: "pointy", label: "pointy", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.point(i.center);
   H.positive(i.size);
@@ -42,12 +42,35 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Hex Corner Coordinate List", "hexadecimal", "encoding"],
+    collections: ["encode-decode"],
+    fields: ["hex", "hexadecimal", "encoding"],
+    keywords: ["hexadecimal", "encoding"],
+  },
   id: "hex/hex-corner-coordinate-list",
   title: "Hex Corner Coordinate List",
   description:
     "Enumerate six Cartesian regular-hex corners at an explicit center and circumradius; angle zero for flat, thirty degrees for pointy, mathematical positive-y coordinates.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          corners: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["corners"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
