@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly independentlyMeasuredInvolvedHopResults: readonly number[];
   readonly independentlyMatchedUninvolvedHopResults: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredInvolvedHopResults",
@@ -25,7 +25,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.independentlyMeasuredInvolvedHopResults,
     input.independentlyMatchedUninvolvedHopResults,
@@ -49,7 +49,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     atOrAboveNominalNinetyFlags: r.map((v) => (v >= 90 ? 1 : 0)),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -76,6 +76,25 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedHopLimbSymmetryPercents: {
+            type: "array",
+            items: { type: "number" },
+          },
+          atOrAboveNominalNinetyFlags: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: [
+          "observedHopLimbSymmetryPercents",
+          "atOrAboveNominalNinetyFlags",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
