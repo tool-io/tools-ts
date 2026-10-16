@@ -7,14 +7,14 @@ export type Input = Readonly<{
   second: number;
   utc: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "hour", label: "hour", kind: "integer" },
   { id: "minute", label: "minute", kind: "integer" },
   { id: "second", label: "second", kind: "integer" },
   { id: "utc", label: "utc", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.hour, 0, 23);
   H.int(i.minute, 0, 59);
@@ -32,12 +32,30 @@ export const example = {
   output: { result: { token: "010203Z" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["iCalendar Basic Time Token Formatter", "iCalendar", "calendars"],
+    collections: ["encode-decode"],
+    fields: ["ical", "iCalendar", "calendars"],
+    keywords: ["iCalendar", "calendars"],
+  },
   id: "ical/time-basic-token-formatter",
   title: "iCalendar Basic Time Token Formatter",
   description:
     "Format validated iCalendar HHMMSS with optional Z; second 60 is retained as explicit leap-second notation, not proof of a real leap second.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { token: { type: "string" } },
+        required: ["token"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
