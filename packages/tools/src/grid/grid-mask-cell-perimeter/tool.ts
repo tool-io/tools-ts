@@ -4,14 +4,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, mask, neighbors } from "../batch53-shared.js";
 
 export type Input = Readonly<{ mask: readonly (readonly number[])[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "mask", label: "Mask", kind: "matrix" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   mask(i.mask);
   let perimeter = 0;
   for (let r = 0; r < i.mask.length; r++)
@@ -22,7 +19,7 @@ const compute = (
         ).length;
   return { unitEdgePerimeter: perimeter };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -41,6 +38,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { unitEdgePerimeter: { type: "number" } },
+        required: ["unitEdgePerimeter"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
