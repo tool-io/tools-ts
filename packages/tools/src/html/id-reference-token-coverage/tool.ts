@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ references: string; ids: readonly string[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "references", kind: "string", label: "references" },
   { id: "ids", kind: "stringList", label: "ids" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const tokens = H.classTokens(i.references);
   return H.finish({
@@ -32,7 +32,34 @@ export const tool = createSimpleTool({
   description:
     "Audit an explicit HTML ID-reference token list against supplied document IDs, retaining unknown references and repeated tokens; not DOM traversal or an accessibility certification.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          tokens: { type: "array", items: { type: "string" } },
+          missing: { type: "array", items: { type: "string" } },
+          duplicates: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                key: { type: "string" },
+                indexes: { type: "array", items: { type: "number" } },
+              },
+              required: ["key", "indexes"],
+            },
+          },
+        },
+        required: ["tokens", "missing", "duplicates"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
