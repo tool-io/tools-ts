@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly comparableTermTotalPremiumMinor: number;
   readonly independentlyVerifiedEligibleRefundMinor: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "returnOfPremiumPolicyTotalPremiumMinor",
@@ -30,7 +30,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   [
     input.returnOfPremiumPolicyTotalPremiumMinor,
     input.comparableTermTotalPremiumMinor,
@@ -56,7 +56,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ]),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -84,6 +84,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          extraNominalPremiumMinor: { type: "number" },
+          conditionalNominalNetExtraOutlayMinor: { type: "number" },
+        },
+        required: [
+          "extraNominalPremiumMinor",
+          "conditionalNominalNetExtraOutlayMinor",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
