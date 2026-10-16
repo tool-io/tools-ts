@@ -8,7 +8,7 @@ export type Input = Readonly<{
   pointy: boolean;
   origin: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "q", label: "q", kind: "number" },
   { id: "r", label: "r", kind: "number" },
@@ -16,7 +16,7 @@ const fields = [
   { id: "pointy", label: "pointy", kind: "boolean" },
   { id: "origin", label: "origin", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.positive(i.size);
   H.point(i.origin);
@@ -37,12 +37,30 @@ export const example = {
   output: { result: { point: [3, 4] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Hex Axial Center to Pixel Record", "hexadecimal", "encoding"],
+    collections: ["encode-decode"],
+    fields: ["hex", "hexadecimal", "encoding"],
+    keywords: ["hexadecimal", "encoding"],
+  },
   id: "hex/axial-center-to-pixel-record",
   title: "Hex Axial Center to Pixel Record",
   description:
     "Map supplied fractional axial hex coordinates to Cartesian pixel centers for explicit pointy/flat orientation, circumradius and origin; no geographic units.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { point: { type: "array", items: { type: "number" } } },
+        required: ["point"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
