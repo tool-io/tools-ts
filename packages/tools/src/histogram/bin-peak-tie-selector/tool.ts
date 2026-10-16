@@ -3,11 +3,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../histogram/batch56-shared.js";
 export type Input = Readonly<{ mass: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "mass", label: "mass", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.nonnegative(i.mass);
   return H.finish({
@@ -22,12 +22,33 @@ export const example = {
   output: { result: { maximum: 3, indexes: [1, 2] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Histogram Peak Tie Selector", "histograms", "statistics"],
+    collections: ["data", "learn"],
+    fields: ["histogram", "histograms", "statistics"],
+    keywords: ["histograms", "statistics"],
+  },
   id: "histogram/bin-peak-tie-selector",
   title: "Histogram Peak Tie Selector",
   description:
     "Select every observed maximum histogram bin, retaining ties; an empty bank has null maximum, an all-zero bank ties every supplied bin.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          maximum: { anyOf: [{ type: "number" }, { type: "null" }] },
+          indexes: { type: "array", items: { type: "number" } },
+        },
+        required: ["maximum", "indexes"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
