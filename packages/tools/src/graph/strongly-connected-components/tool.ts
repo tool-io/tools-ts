@@ -182,6 +182,12 @@ export const stronglyConnectedComponentsTool = createModelDefinition<
   StronglyConnectedComponentsInput,
   StronglyConnectedComponentsOutput
 >({
+  discovery: {
+    aliases: ["Strongly Connected Components Finder"],
+    collections: ["data", "learn"],
+    fields: ["graph"],
+    keywords: [],
+  },
   id: "graph/strongly-connected-components",
   title: "Strongly Connected Components Finder",
   description:
