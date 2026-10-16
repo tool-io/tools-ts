@@ -12,14 +12,14 @@ export type Input = Readonly<{
   readonly sideDropM: number;
   readonly overlapM: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "lengthM", label: "Length m", kind: "number" },
   { id: "widthM", label: "Width m", kind: "number" },
   { id: "sideDropM", label: "Side drop m", kind: "number" },
   { id: "overlapM", label: "Overlap m", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   [i.lengthM, i.widthM].forEach((v) => positive(v, "dimension"));
   [i.sideDropM, i.overlapM].forEach((v) => nonnegative(v, "allowance"));
   return {
@@ -28,7 +28,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       (i.widthM + 2 * i.sideDropM + 2 * i.overlapM),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -47,6 +47,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { blankAreaM2: { type: "number" } },
+        required: ["blankAreaM2"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
