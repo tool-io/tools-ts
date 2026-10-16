@@ -7,13 +7,13 @@ export type Input = Readonly<{
   minimum: number;
   maximum: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "edges", label: "edges", kind: "numberList" },
   { id: "minimum", label: "minimum", kind: "number" },
   { id: "maximum", label: "maximum", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.histogramEdges(i.edges);
   H.check(i.maximum >= i.minimum);
@@ -31,12 +31,34 @@ export const example = {
   output: { result: { covered: 2, below: 1, above: 2 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Histogram Domain Coverage Budget", "histograms", "statistics"],
+    collections: ["data", "learn"],
+    fields: ["histogram", "histograms", "statistics"],
+    keywords: ["histograms", "statistics"],
+  },
   id: "histogram/bin-domain-coverage-budget",
   title: "Histogram Domain Coverage Budget",
   description:
     "Budget lengths of a supplied finite numeric domain covered by a contiguous histogram domain versus below/above portions; not sample count or probability coverage.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          covered: { type: "number" },
+          below: { type: "number" },
+          above: { type: "number" },
+        },
+        required: ["covered", "below", "above"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
