@@ -5,12 +5,12 @@ export type Input = Readonly<{
   components: readonly string[];
   delimiter: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "components", label: "components", kind: "stringList" },
   { id: "delimiter", label: "delimiter", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.delimiter.length > 0);
   return H.finish({
@@ -27,12 +27,37 @@ export const example = {
   output: { result: { ambiguousComponents: [0], emptyComponents: [1] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Opaque Key Delimiter Ambiguity Audit",
+      "identifiers",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["identifier", "identifiers", "software development"],
+    keywords: ["identifiers", "software development"],
+  },
   id: "identifier/opaque-key-delimiter-ambiguity-audit",
   title: "Opaque Key Delimiter Ambiguity Audit",
   description:
     "Audit literal delimiter occurrences and empty components before naive opaque composite-key joining; reports hazards without inventing an escaping dialect.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          ambiguousComponents: { type: "array", items: { type: "number" } },
+          emptyComponents: { type: "array", items: { type: "number" } },
+        },
+        required: ["ambiguousComponents", "emptyComponents"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
