@@ -6,13 +6,13 @@ export type Input = Readonly<{
   alphabet: string;
   width: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "ordinal", label: "ordinal", kind: "string" },
   { id: "alphabet", label: "alphabet", kind: "string" },
   { id: "width", label: "width", kind: "integer" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const a = i.alphabet.split("");
   H.check(a.length >= 2 && H.unique(a).length === a.length);
@@ -31,12 +31,34 @@ export const example = {
   output: { result: { key: "ba" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Opaque Key Fixed Alphabet Inverse",
+      "identifiers",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["identifier", "identifiers", "software development"],
+    keywords: ["identifiers", "software development"],
+  },
   id: "identifier/opaque-key-fixed-alphabet-inverse",
   title: "Opaque Key Fixed Alphabet Inverse",
   description:
     "Decode an exact nonnegative ordinal into a caller fixed-width opaque alphabet key; rejects overflow rather than growing the key or truncating leading symbols.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { key: { type: "string" } },
+        required: ["key"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
