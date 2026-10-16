@@ -8,11 +8,11 @@ import {
 } from "../batch43-shared.js";
 
 export type Input = Readonly<{ readonly blazonText: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "blazonText", label: "Blazon text", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (input.blazonText.length > 8192)
     simpleError(
       "text",
@@ -88,7 +88,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     chargeTinctures,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -116,6 +116,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          tokens: { type: "array", items: { type: "string" } },
+          firstToken: { type: "string" },
+          fieldTincture: { type: "string" },
+          chargeCounts: { type: "array", items: { type: "number" } },
+          chargeNames: { type: "array", items: { type: "string" } },
+          chargeTinctures: { type: "array", items: { type: "string" } },
+        },
+        required: [
+          "tokens",
+          "firstToken",
+          "fieldTincture",
+          "chargeCounts",
+          "chargeNames",
+          "chargeTinctures",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
