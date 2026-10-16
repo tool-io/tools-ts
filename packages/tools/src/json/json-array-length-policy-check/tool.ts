@@ -15,16 +15,13 @@ export type Input = Readonly<{
   minimumLength: number;
   maximumLength: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "documentJson", label: "Document json", kind: "string" },
   { id: "minimumLength", label: "Minimum length", kind: "number" },
   { id: "maximumLength", label: "Maximum length", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.minimumLength, "minimum", 0, 10000);
   bounded(i.maximumLength, "maximum", i.minimumLength, 10000);
   return {
@@ -38,7 +35,7 @@ const compute = (
       .map((v) => ({ path: v.path, length: (v.value as Json[]).length })),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -61,6 +58,26 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          violations: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                path: { type: "string" },
+                length: { type: "number" },
+              },
+              required: ["path", "length"],
+            },
+          },
+        },
+        required: ["violations"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
