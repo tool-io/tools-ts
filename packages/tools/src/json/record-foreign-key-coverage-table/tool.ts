@@ -15,16 +15,13 @@ export type Input = Readonly<{
   keyField: string;
   referenceKeysJson: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "recordsJson", label: "Records json", kind: "string" },
   { id: "keyField", label: "Key field", kind: "string" },
   { id: "referenceKeysJson", label: "Reference keys json", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const q = parseJson(i.referenceKeysJson);
   if (!Array.isArray(q)) simpleError("keys", "Scalar reference key array.");
   const keys = new Set(q.map(scalarKey));
@@ -37,7 +34,7 @@ const compute = (
     })),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -68,6 +65,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          coverage: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                recordIndex: { type: "number" },
+                keyPresent: { type: "boolean" },
+                covered: { type: "boolean" },
+              },
+              required: ["recordIndex", "keyPresent", "covered"],
+            },
+          },
+        },
+        required: ["coverage"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
