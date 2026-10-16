@@ -6,13 +6,13 @@ export type Input = Readonly<{
   walk: readonly string[];
   directed: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "edgesJson", kind: "string", label: "edgesJson" },
   { id: "walk", kind: "stringList", label: "walk" },
   { id: "directed", kind: "boolean", label: "directed" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const e = H.edges(i.edgesJson);
   const missingSteps = i.walk
@@ -43,7 +43,22 @@ export const tool = createSimpleTool({
   description:
     "Verify consecutive vertex transitions against explicit directed or undirected edge observations; repeated vertices and edges are allowed in a walk.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          valid: { type: "boolean" },
+          missingSteps: { type: "array", items: { type: "number" } },
+        },
+        required: ["valid", "missingSteps"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
