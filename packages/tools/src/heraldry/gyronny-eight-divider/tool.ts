@@ -3,11 +3,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish } from "../batch43-shared.js";
 
 export type Input = Readonly<{ readonly startAngleDegrees: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "startAngleDegrees", label: "Start angle degrees", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   return {
     boundaryAnglesDegrees: Array.from(
       { length: 9 },
@@ -15,7 +15,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -38,6 +38,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          boundaryAnglesDegrees: { type: "array", items: { type: "number" } },
+        },
+        required: ["boundaryAnglesDegrees"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
