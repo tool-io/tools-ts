@@ -13,15 +13,12 @@ export type Input = Readonly<{
   objectJson: string;
   orderedKeys: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "objectJson", label: "Object json", kind: "string" },
   { id: "orderedKeys", label: "Ordered keys", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const r = record(parseJson(i.objectJson));
   unique(i.orderedKeys, "keys");
   return {
@@ -31,7 +28,7 @@ const compute = (
     missingKeys: i.orderedKeys.filter((k) => !Object.hasOwn(r, k)),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
