@@ -5,12 +5,12 @@ export type Input = Readonly<{
   values: readonly number[];
   edges: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "values", label: "values", kind: "numberList" },
   { id: "edges", label: "edges", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.histogramEdges(i.edges);
   return H.finish({
@@ -26,12 +26,41 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Histogram Explicit Edge Membership Indexes",
+      "histograms",
+      "statistics",
+    ],
+    collections: ["data", "learn"],
+    fields: ["histogram", "histograms", "statistics"],
+    keywords: ["histograms", "statistics"],
+  },
   id: "histogram/explicit-edge-membership-indexes",
   title: "Histogram Explicit Edge Membership Indexes",
   description:
     "Assign explicit finite observations to strictly increasing finite bins, left-closed/right-open except final upper edge included; outside values retain null/index provenance.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          indexes: {
+            type: "array",
+            items: { anyOf: [{ type: "number" }, { type: "null" }] },
+          },
+          underflow: { type: "array", items: { type: "number" } },
+          overflow: { type: "array", items: { type: "number" } },
+        },
+        required: ["indexes", "underflow", "overflow"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
