@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ sections: readonly string[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "sections", label: "sections", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({
     occurrences: H.runs(i.sections, (x) => x).map((r, occurrence) => ({
@@ -28,12 +28,49 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "INI Section Occurrence Grouping",
+      "INI configuration",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["ini", "INI configuration", "software development"],
+    keywords: ["INI configuration", "software development"],
+  },
   id: "ini/section-occurrence-grouping",
   title: "INI Section Occurrence Grouping",
   description:
     "Group adjacent supplied INI section labels into distinct occurrence runs, preserving later returns to the same name rather than globally merging sections.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          occurrences: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                key: { type: "string" },
+                start: { type: "number" },
+                end: { type: "number" },
+                occurrence: { type: "number" },
+              },
+              required: ["key", "start", "end", "occurrence"],
+            },
+          },
+        },
+        required: ["occurrences"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
