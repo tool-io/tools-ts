@@ -7,14 +7,14 @@ export type Input = Readonly<{
   reversed: boolean;
   useDefaultStart: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "itemsJson", kind: "string", label: "itemsJson" },
   { id: "start", kind: "integer", label: "start" },
   { id: "reversed", kind: "boolean", label: "reversed" },
   { id: "useDefaultStart", kind: "boolean", label: "useDefaultStart" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const rows = H.records(i.itemsJson);
   H.int(i.start, -1e9, 1e9);
@@ -43,7 +43,22 @@ export const tool = createSimpleTool({
   description:
     "Calculate ordered-list counters with explicit start, reversed/default-start policy and per-item integer value overrides; operates on supplied item records, not a DOM tree.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          counters: { type: "array", items: { type: "number" } },
+          next: { type: "number" },
+        },
+        required: ["counters", "next"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
