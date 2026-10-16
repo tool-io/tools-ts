@@ -11,19 +11,19 @@ export type Input = Readonly<{
   readonly removedMassGrams: number;
   readonly initialMassGrams: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "removedMassGrams", label: "Removed mass grams", kind: "number" },
   { id: "initialMassGrams", label: "Initial mass grams", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.removedMassGrams, "removed");
   positive(i.initialMassGrams, "initial");
   if (i.removedMassGrams > i.initialMassGrams)
     simpleError("removed", "Removed mass exceeds initial mass.");
   return { heuristicExceeded: i.removedMassGrams / i.initialMassGrams > 1 / 3 };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -42,6 +42,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { heuristicExceeded: { type: "boolean" } },
+        required: ["heuristicExceeded"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
