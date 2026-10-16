@@ -7,13 +7,13 @@ export type Input = Readonly<{
   left: readonly number[];
   right: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "edges", label: "edges", kind: "numberList" },
   { id: "left", label: "left", kind: "numberList" },
   { id: "right", label: "right", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.histogram(i.edges, i.left);
   H.histogram(i.edges, i.right);
@@ -27,12 +27,37 @@ export const example = {
   output: { result: { difference: [2, -3], totalDifference: -1 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Histogram Matched Bin Difference Table",
+      "histograms",
+      "statistics",
+    ],
+    collections: ["data", "learn"],
+    fields: ["histogram", "histograms", "statistics"],
+    keywords: ["histograms", "statistics"],
+  },
   id: "histogram/bin-difference-table",
   title: "Histogram Matched Bin Difference Table",
   description:
     "Explicit finite ordered histogram edges and nonnegative mass observations; compare aligned right-minus-left bin masses with signed discrepancies and identical explicitly shared boundaries.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          difference: { type: "array", items: { type: "number" } },
+          totalDifference: { type: "number" },
+        },
+        required: ["difference", "totalDifference"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
