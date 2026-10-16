@@ -11,12 +11,12 @@ export type Input = Readonly<{
   readonly fieldWidth: number;
   readonly paleWidth: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "fieldWidth", label: "Field width", kind: "number" },
   { id: "paleWidth", label: "Pale width", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.fieldWidth, "fieldWidth");
   positive(input.paleWidth, "paleWidth");
   if (input.paleWidth > input.fieldWidth)
@@ -26,7 +26,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     rightEdgeX: (input.fieldWidth + input.paleWidth) / 2,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -45,6 +45,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          leftEdgeX: { type: "number" },
+          rightEdgeX: { type: "number" },
+        },
+        required: ["leftEdgeX", "rightEdgeX"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
