@@ -6,13 +6,13 @@ export type Input = Readonly<{
   left: readonly string[];
   right: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "edgesJson", kind: "string", label: "edgesJson" },
   { id: "left", kind: "stringList", label: "left" },
   { id: "right", kind: "stringList", label: "right" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const e = H.edges(i.edgesJson);
   H.check(
@@ -43,7 +43,22 @@ export const tool = createSimpleTool({
   description:
     "Verify a supplied disjoint bipartition against each edge occurrence, reporting unknown endpoints and within-side edges rather than finding a new coloring.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          valid: { type: "boolean" },
+          violations: { type: "array", items: { type: "number" } },
+        },
+        required: ["valid", "violations"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
