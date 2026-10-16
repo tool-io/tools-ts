@@ -12,15 +12,12 @@ export type Input = Readonly<{
   leftIntervals: readonly (readonly number[])[];
   rightIntervals: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "leftIntervals", label: "Left intervals", kind: "matrix" },
   { id: "rightIntervals", label: "Right intervals", kind: "matrix" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = intervals(i.leftIntervals),
     b = intervals(i.rightIntervals);
   return {
@@ -33,7 +30,7 @@ const compute = (
       .map((c) => [c.start, c.end]),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -59,6 +56,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          cells: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["cells"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
