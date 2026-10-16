@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ recordsJson: string; requiredJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "recordsJson", label: "recordsJson", kind: "string" },
   { id: "requiredJson", label: "requiredJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.iniRecords(i.recordsJson);
   const q = H.records(i.requiredJson).map((v) => ({
@@ -29,12 +29,47 @@ export const example = {
   output: { result: { missing: [{ section: "a", name: "z" }] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "INI Required Key Coverage",
+      "INI configuration",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["ini", "INI configuration", "software development"],
+    keywords: ["INI configuration", "software development"],
+  },
   id: "ini/section-required-key-coverage",
   title: "INI Required Key Coverage",
   description:
-    "Audit exact section-scoped required INI keys against supplied observations, distinguishing an empty value from a missing key; no required-key registry. ",
+    "Audit exact section-scoped required INI keys against supplied observations, distinguishing an empty value from a missing key; no required-key registry.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          missing: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                section: { type: "string" },
+                name: { type: "string" },
+              },
+              required: ["section", "name"],
+            },
+          },
+        },
+        required: ["missing"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
