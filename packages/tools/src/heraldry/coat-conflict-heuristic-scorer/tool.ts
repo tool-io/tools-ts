@@ -7,7 +7,7 @@ export type Input = Readonly<{
   readonly referenceAnnotatedAttributes: readonly string[];
   readonly callerWeights: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "candidateAnnotatedAttributes",
@@ -21,14 +21,14 @@ const fields = [
   },
   { id: "callerWeights", label: "Caller weights", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   return similarity(
     input.candidateAnnotatedAttributes,
     input.referenceAnnotatedAttributes,
     input.callerWeights,
   );
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -51,6 +51,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          weightedExactSimilarity: { type: "number" },
+          differentIndices: { type: "array", items: { type: "number" } },
+        },
+        required: ["weightedExactSimilarity", "differentIndices"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
