@@ -8,16 +8,13 @@ export type Input = Readonly<{
   domainStart: number;
   domainEnd: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "boundaries", label: "Boundaries", kind: "numberList" },
   { id: "domainStart", label: "Domain start", kind: "number" },
   { id: "domainEnd", label: "Domain end", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   orderedPair(i.domainStart, i.domainEnd, true);
   const firstMatches = i.boundaries[0] === i.domainStart,
     lastMatches = i.boundaries.at(-1) === i.domainEnd,
@@ -35,7 +32,7 @@ const compute = (
     nonIncreasingIndexes,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -61,6 +58,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          valid: { type: "boolean" },
+          firstMatches: { type: "boolean" },
+          lastMatches: { type: "boolean" },
+          nonIncreasingIndexes: { type: "array", items: { type: "number" } },
+        },
+        required: [
+          "valid",
+          "firstMatches",
+          "lastMatches",
+          "nonIncreasingIndexes",
+        ],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
