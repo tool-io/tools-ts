@@ -7,14 +7,14 @@ export type Input = Readonly<{
   start: string;
   directed: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "edgesJson", kind: "string", label: "edgesJson" },
   { id: "edgeIds", kind: "stringList", label: "edgeIds" },
   { id: "start", kind: "string", label: "start" },
   { id: "directed", kind: "boolean", label: "directed" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const e = H.edges(i.edgesJson);
   const map = new Map(e.map((v) => [v.id, v])),
@@ -52,7 +52,23 @@ export const tool = createSimpleTool({
   description:
     "Verify an edge-ID trail with no repeated edge occurrences from an explicit start; directed or undirected traversal, with failure indexes retained.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          valid: { type: "boolean" },
+          violations: { type: "array", items: { type: "number" } },
+          vertices: { type: "array", items: { type: "string" } },
+        },
+        required: ["valid", "violations", "vertices"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
