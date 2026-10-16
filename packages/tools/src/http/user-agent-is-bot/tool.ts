@@ -2,7 +2,7 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, simpleError } from "../batch50-shared.js";
 export type Input = Readonly<{ readonly actualUserAgentHeader: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualUserAgentHeader",
@@ -10,7 +10,7 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (/[\r\n]/.test(input.actualUserAgentHeader))
     simpleError("UA", "OneactualUAfieldwithoutlineinjection.");
   return {
@@ -20,7 +20,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -39,6 +39,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { heuristicPatternMatch: { type: "boolean" } },
+        required: ["heuristicPatternMatch"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
