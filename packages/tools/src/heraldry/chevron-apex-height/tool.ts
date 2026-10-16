@@ -13,20 +13,20 @@ export type Input = Readonly<{
   readonly armAngleDegrees: number;
   readonly baseY: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "halfSpan", label: "Half span", kind: "number" },
   { id: "armAngleDegrees", label: "Arm angle degrees", kind: "number" },
   { id: "baseY", label: "Base y", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.halfSpan, "halfSpan");
   if (input.armAngleDegrees < 0 || input.armAngleDegrees >= 90)
     simpleError("angle", "0–less-than 90 degrees.");
   const rise = input.halfSpan * Math.tan(rad(input.armAngleDegrees));
   return { apexY: input.baseY - rise, apexRise: rise };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -45,6 +45,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { apexY: { type: "number" }, apexRise: { type: "number" } },
+        required: ["apexY", "apexRise"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
