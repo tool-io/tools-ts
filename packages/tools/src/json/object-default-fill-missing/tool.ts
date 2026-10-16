@@ -4,15 +4,12 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, parseJson, record } from "../batch53-shared.js";
 
 export type Input = Readonly<{ objectJson: string; defaultsJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "objectJson", label: "Object json", kind: "string" },
   { id: "defaultsJson", label: "Defaults json", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const r = record(parseJson(i.objectJson)),
     d = record(parseJson(i.defaultsJson));
   return {
@@ -23,7 +20,7 @@ const compute = (
     filledKeys: Object.keys(d).filter((k) => !Object.hasOwn(r, k)),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -42,6 +39,20 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          object: {
+            type: "object",
+            additionalProperties: true,
+            description:
+              "Caller-owned JSON members retain arbitrary finite JSON values.",
+          },
+          filledKeys: { type: "array", items: { type: "string" } },
+        },
+        required: ["object", "filledKeys"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
