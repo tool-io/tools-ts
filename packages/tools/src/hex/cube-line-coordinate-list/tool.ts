@@ -5,12 +5,12 @@ export type Input = Readonly<{
   from: readonly number[];
   to: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "from", label: "from", kind: "numberList" },
   { id: "to", label: "to", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.cube(i.from);
   H.cube(i.to);
@@ -39,12 +39,35 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Hex Cube Line Coordinate List", "hexadecimal", "encoding"],
+    collections: ["encode-decode"],
+    fields: ["hex", "hexadecimal", "encoding"],
+    keywords: ["hexadecimal", "encoding"],
+  },
   id: "hex/cube-line-coordinate-list",
   title: "Hex Cube Line Coordinate List",
   description:
     "Enumerate a bounded shortest hex cube line by linear interpolation and deterministic zero-sum rounding, including both endpoints; no obstacles or tie-randomization.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          coordinates: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["coordinates"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
