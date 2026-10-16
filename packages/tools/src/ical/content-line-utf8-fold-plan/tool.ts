@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ line: string; limit: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "line", label: "line", kind: "string" },
   { id: "limit", label: "limit", kind: "integer" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.limit, 5, 75);
   H.check(!/[\r\n]/.test(i.line));
@@ -34,12 +34,33 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["iCalendar UTF-8 Line Fold Plan", "iCalendar", "calendars"],
+    collections: ["encode-decode"],
+    fields: ["ical", "iCalendar", "calendars"],
+    keywords: ["iCalendar", "calendars"],
+  },
   id: "ical/content-line-utf8-fold-plan",
   title: "iCalendar UTF-8 Line Fold Plan",
   description:
     "Fold a single iCalendar content line without splitting Unicode code points, budgeting UTF-8 octets including one continuation space; limit 5\u201375, no CRLF terminator added.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          lines: { type: "array", items: { type: "string" } },
+          folded: { type: "string" },
+        },
+        required: ["lines", "folded"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
