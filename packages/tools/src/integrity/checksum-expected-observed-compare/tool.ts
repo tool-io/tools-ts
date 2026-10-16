@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ expected: string; observed: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "expected", kind: "string", label: "expected" },
   { id: "observed", kind: "string", label: "observed" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const expected = H.bigint(i.expected),
     observed = H.bigint(i.observed);
@@ -27,7 +27,22 @@ export const tool = createSimpleTool({
   description:
     "Compare exact unsigned expected and observed checksum integers, retaining signed discrepancy; equality does not prove authenticity or collision freedom.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          matches: { type: "boolean" },
+          difference: { type: "string" },
+        },
+        required: ["matches", "difference"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
