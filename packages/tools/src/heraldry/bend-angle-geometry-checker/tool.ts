@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly verticalRise: number;
   readonly callerReferenceAngleDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "horizontalRun", label: "Horizontal run", kind: "number" },
   { id: "verticalRise", label: "Vertical rise", kind: "number" },
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.horizontalRun, "horizontalRun");
   nonnegative(input.verticalRise, "verticalRise");
   const angle = deg(Math.atan2(input.verticalRise, input.horizontalRun));
@@ -32,7 +32,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     signedReferenceDifferenceDegrees: angle - input.callerReferenceAngleDegrees,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -57,6 +57,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedAngleDegrees: { type: "number" },
+          signedReferenceDifferenceDegrees: { type: "number" },
+        },
+        required: ["observedAngleDegrees", "signedReferenceDifferenceDegrees"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
