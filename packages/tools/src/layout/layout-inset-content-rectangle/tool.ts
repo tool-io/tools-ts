@@ -15,7 +15,7 @@ export type Input = Readonly<{
   bottom: number;
   left: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "rectangle", label: "Rectangle", kind: "numberList" },
   { id: "top", label: "Top", kind: "number" },
@@ -23,10 +23,7 @@ const fields = [
   { id: "bottom", label: "Bottom", kind: "number" },
   { id: "left", label: "Left", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   rectangle(i.rectangle);
   [i.top, i.right, i.bottom, i.left].forEach((v) => nonnegative(v, "inset"));
   const width = i.rectangle[2] - i.left - i.right,
@@ -41,7 +38,7 @@ const compute = (
     overconstrained: width < 0 || height < 0,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -60,6 +57,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          rectangle: { type: "array", items: { type: "number" } },
+          overconstrained: { type: "boolean" },
+        },
+        required: ["rectangle", "overconstrained"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
