@@ -5,12 +5,12 @@ export type Input = Readonly<{
   readonly knownLiterals: readonly string[];
   readonly goalAtom: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "knownLiterals", label: "Known literals", kind: "stringList" },
   { id: "goalAtom", label: "Goal atom", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   i.knownLiterals.forEach(literal);
   atom(i.goalAtom);
   const contradictory = i.knownLiterals.some(
@@ -22,7 +22,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     nonclassicalLogicsNotAssumed: true,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -47,6 +47,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          classicalExFalsoAvailable: { type: "boolean" },
+          goal: { type: "string" },
+          nonclassicalLogicsNotAssumed: { type: "boolean" },
+        },
+        required: [
+          "classicalExFalsoAvailable",
+          "goal",
+          "nonclassicalLogicsNotAssumed",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
