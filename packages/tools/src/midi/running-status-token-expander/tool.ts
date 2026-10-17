@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ bytes: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bytes", label: "bytes", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.bytes(i.bytes);
   let p = 0,
@@ -38,12 +38,43 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["MIDI Running Status Token Expander", "MIDI", "music"],
+    collections: ["encode-decode"],
+    fields: ["MIDI", "music"],
+    keywords: ["MIDI", "music"],
+  },
   id: "midi/running-status-token-expander",
   title: "MIDI Running Status Token Expander",
   description:
     "Expand channel-only MIDI running status into complete message records; incomplete data, system messages and realtime interleaving are rejected.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          messages: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                status: { type: "number" },
+                data: { type: "array", items: { type: "number" } },
+              },
+              required: ["status", "data"],
+            },
+          },
+        },
+        required: ["messages"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
