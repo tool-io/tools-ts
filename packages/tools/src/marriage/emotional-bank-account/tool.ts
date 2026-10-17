@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly callerIndependentPositiveInteractionWeights: readonly number[];
   readonly callerIndependentNegativeInteractionWeights: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerIndependentPositiveInteractionWeights",
@@ -18,7 +18,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   [
     input.callerIndependentPositiveInteractionWeights,
     input.callerIndependentNegativeInteractionWeights,
@@ -29,7 +29,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       sum(input.callerIndependentNegativeInteractionWeights),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -51,6 +51,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedCustomInteractionLedgerBalance: { type: "number" },
+        },
+        required: ["signedCustomInteractionLedgerBalance"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
