@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly observedLateralVelocitiesMetersPerSecond: readonly number[];
   readonly matchedPhaseDurationsSeconds: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedParallelVelocitiesMetersPerSecond",
@@ -30,7 +30,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.observedParallelVelocitiesMetersPerSecond,
     input.observedLateralVelocitiesMetersPerSecond,
@@ -60,7 +60,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     timeWeightedLateralVelocityMetersPerSecond: l / t,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -90,6 +90,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedParallelDisplacementMeters: { type: "number" },
+          observedLateralDisplacementMeters: { type: "number" },
+          timeWeightedParallelVelocityMetersPerSecond: { type: "number" },
+          timeWeightedLateralVelocityMetersPerSecond: { type: "number" },
+        },
+        required: [
+          "observedParallelDisplacementMeters",
+          "observedLateralDisplacementMeters",
+          "timeWeightedParallelVelocityMetersPerSecond",
+          "timeWeightedLateralVelocityMetersPerSecond",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
