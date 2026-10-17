@@ -13,23 +13,20 @@ export type Input = Readonly<{
   itemWidth: number;
   itemCount: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "targetWidth", label: "Target width", kind: "number" },
   { id: "itemWidth", label: "Item width", kind: "number" },
   { id: "itemCount", label: "Item count", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   nonnegative(i.targetWidth, "target");
   nonnegative(i.itemWidth, "item");
   bounded(i.itemCount, "count", 2, 1e9);
   const gap = (i.targetWidth - i.itemCount * i.itemWidth) / (i.itemCount - 1);
   return { signedGap: gap, nonnegativeGapPossible: gap >= 0 };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -48,6 +45,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedGap: { type: "number" },
+          nonnegativeGapPossible: { type: "boolean" },
+        },
+        required: ["signedGap", "nonnegativeGapPossible"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
