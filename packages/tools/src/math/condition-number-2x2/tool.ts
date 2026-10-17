@@ -4,16 +4,16 @@ import { validateInput, finish, positive, svd2 } from "../batch49-shared.js";
 export type Input = Readonly<{
   readonly actualMatrix: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualMatrix", label: "Actual matrix", kind: "matrix" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const s = svd2(input.actualMatrix);
   positive(s[1], "smallestsingularvalue");
   return { spectralConditionNumber: s[0] / s[1] };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -37,6 +37,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { spectralConditionNumber: { type: "number" } },
+        required: ["spectralConditionNumber"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
