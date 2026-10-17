@@ -4,18 +4,15 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish } from "../batch53-shared.js";
 
 export type Input = Readonly<{ normalStart: number; stickyInset: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "normalStart", label: "Normal start", kind: "number" },
   { id: "stickyInset", label: "Sticky inset", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   return { scrollThreshold: i.normalStart - i.stickyInset };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -34,6 +31,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { scrollThreshold: { type: "number" } },
+        required: ["scrollThreshold"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
