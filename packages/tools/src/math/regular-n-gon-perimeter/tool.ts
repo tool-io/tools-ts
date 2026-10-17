@@ -11,18 +11,18 @@ export type Input = Readonly<{
   readonly actualSideCount: number;
   readonly actualSideLength: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualSideCount", label: "Actual side count", kind: "number" },
   { id: "actualSideLength", label: "Actual side length", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.actualSideCount, "actualSideCount", 1, 1000000);
   positive(input.actualSideLength, "actualSideLength");
   if (input.actualSideCount < 3) simpleError("sides", "n≥3.");
   return { value: input.actualSideCount * input.actualSideLength };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -41,6 +41,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
