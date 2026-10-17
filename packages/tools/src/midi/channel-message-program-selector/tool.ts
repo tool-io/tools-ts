@@ -5,12 +5,12 @@ export type Input = Readonly<{
   messagesJson: string;
   programs: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "messagesJson", label: "messagesJson", kind: "string" },
   { id: "programs", label: "programs", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.midiRecords(i.messagesJson);
   i.programs.forEach((x) => H.int(x, 0, 127));
@@ -28,12 +28,43 @@ export const example = {
   output: { result: { messages: [{ status: 192, data: [10] }] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["MIDI Channel Message Program Selector", "MIDI", "music"],
+    collections: ["encode-decode"],
+    fields: ["MIDI", "music"],
+    keywords: ["MIDI", "music"],
+  },
   id: "midi/channel-message-program-selector",
   title: "MIDI Channel Message Program Selector",
   description:
     "Select MIDI program-change records by explicit zero-based program numbers; no General MIDI instrument-name or bank-selection model.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          messages: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                status: { type: "number" },
+                data: { type: "array", items: { type: "number" } },
+              },
+              required: ["status", "data"],
+            },
+          },
+        },
+        required: ["messages"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
