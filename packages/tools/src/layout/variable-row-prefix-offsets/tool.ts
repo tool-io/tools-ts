@@ -4,14 +4,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, nonnegative } from "../batch53-shared.js";
 
 export type Input = Readonly<{ rowExtents: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "rowExtents", label: "Row extents", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   i.rowExtents.forEach((v) => nonnegative(v, "extent"));
   let k = 0;
   const offsets = [0];
@@ -21,7 +18,7 @@ const compute = (
   }
   return { boundaryOffsets: offsets, totalExtent: k };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -40,6 +37,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          boundaryOffsets: { type: "array", items: { type: "number" } },
+          totalExtent: { type: "number" },
+        },
+        required: ["boundaryOffsets", "totalExtent"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
