@@ -9,17 +9,14 @@ export type Input = Readonly<{
   newItemExtent: number;
   itemBeforeAnchor: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "scrollPosition", label: "Scroll position", kind: "number" },
   { id: "oldItemExtent", label: "Old item extent", kind: "number" },
   { id: "newItemExtent", label: "New item extent", kind: "number" },
   { id: "itemBeforeAnchor", label: "Item before anchor", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   nonnegative(i.scrollPosition, "scroll");
   nonnegative(i.oldItemExtent, "old");
   nonnegative(i.newItemExtent, "new");
@@ -30,7 +27,7 @@ const compute = (
     signedExtentChange: i.newItemExtent - i.oldItemExtent,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -54,6 +51,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalPosition: { type: "number" },
+          signedExtentChange: { type: "number" },
+        },
+        required: ["conditionalPosition", "signedExtentChange"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
