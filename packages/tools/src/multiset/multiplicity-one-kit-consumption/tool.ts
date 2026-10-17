@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ inventoryJson: string; kitJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "inventoryJson", kind: "string", label: "inventoryJson" },
   { id: "kitJson", kind: "string", label: "kitJson" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const inv = H.multiset(i.inventoryJson),
     kit = H.multiset(i.kitJson);
@@ -48,7 +48,40 @@ export const tool = createSimpleTool({
   description:
     "Apply one all-or-nothing typed kit consumption; insufficient inventory remains unchanged rather than partially consumed.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          canConsume: { type: "boolean" },
+          remaining: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                value: {
+                  anyOf: [
+                    { type: "string" },
+                    { type: "number" },
+                    { type: "boolean" },
+                    { type: "null" },
+                  ],
+                },
+                count: { type: "number" },
+              },
+              required: ["value", "count"],
+            },
+          },
+        },
+        required: ["canConsume", "remaining"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
