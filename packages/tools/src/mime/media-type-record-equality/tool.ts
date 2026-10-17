@@ -7,14 +7,14 @@ export type Input = Readonly<{
   leftParametersJson: string;
   rightParametersJson: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", label: "left", kind: "string" },
   { id: "right", label: "right", kind: "string" },
   { id: "leftParametersJson", label: "leftParametersJson", kind: "string" },
   { id: "rightParametersJson", label: "rightParametersJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const a = H.media(i.left),
     b = H.media(i.right),
@@ -35,12 +35,33 @@ export const example = {
   output: { result: { sameType: true, sameOrderedParameters: true } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Media Type Record Equality", "MIME", "encoding"],
+    collections: ["encode-decode"],
+    fields: ["MIME", "encoding"],
+    keywords: ["MIME", "encoding"],
+  },
   id: "mime/media-type-record-equality",
   title: "Media Type Record Equality",
   description:
     "Compare case-insensitive type/subtype and exact ordered decoded parameter records separately; not semantic media-type equivalence or parameter reordering/case normalization.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          sameType: { type: "boolean" },
+          sameOrderedParameters: { type: "boolean" },
+        },
+        required: ["sameType", "sameOrderedParameters"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
