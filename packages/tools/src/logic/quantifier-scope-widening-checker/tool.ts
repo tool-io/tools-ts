@@ -8,7 +8,7 @@ export type Input = Readonly<{
   readonly independentPartFreeVariables: readonly string[];
   readonly callerDomainNonempty: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "quantifier", label: "Quantifier", kind: "string" },
   { id: "connective", label: "Connective", kind: "string" },
@@ -24,7 +24,7 @@ const fields = [
     kind: "boolean",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   pick(i.quantifier, { forall: 0, exists: 1 }, "quantifier");
   pick(i.connective, { AND: 0, OR: 1 }, "connective");
   identifier(i.boundVariable);
@@ -39,7 +39,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     nonemptyDomainNeeded: needsNonempty,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -66,6 +66,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          passesDeclaredScopeConditions: { type: "boolean" },
+          nonemptyDomainNeeded: { type: "boolean" },
+        },
+        required: ["passesDeclaredScopeConditions", "nonemptyDomainNeeded"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
