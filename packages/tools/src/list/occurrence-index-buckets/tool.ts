@@ -4,14 +4,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish } from "../batch53-shared.js";
 
 export type Input = Readonly<{ values: readonly string[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "values", label: "Values", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const m = new Map<string, number[]>();
   i.values.forEach((v, j) => {
     if (!m.has(v)) m.set(v, []);
@@ -19,7 +16,7 @@ const compute = (
   });
   return { buckets: [...m].map(([value, indexes]) => ({ value, indexes })) };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -45,6 +42,26 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          buckets: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                value: { type: "string" },
+                indexes: { type: "array", items: { type: "number" } },
+              },
+              required: ["value", "indexes"],
+            },
+          },
+        },
+        required: ["buckets"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
