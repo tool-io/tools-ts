@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly actualCallerApprovedCareIntervalsMinutes: readonly (readonly number[])[];
   readonly actualCompleteReferencePeriodMinutes: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualCallerApprovedCareIntervalsMinutes",
@@ -25,7 +25,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.actualCompleteReferencePeriodMinutes, "period");
   if (
     input.actualCallerApprovedCareIntervalsMinutes.some(
@@ -48,7 +48,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     observedCareDayEquivalents: m / 1440,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -79,6 +79,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedUnionCareMinutes: { type: "number" },
+          observedReferencePeriodCarePercent: { type: "number" },
+          observedCareDayEquivalents: { type: "number" },
+        },
+        required: [
+          "observedUnionCareMinutes",
+          "observedReferencePeriodCarePercent",
+          "observedCareDayEquivalents",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
