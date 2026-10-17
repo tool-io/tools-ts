@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, pick } from "../batch52-shared.js";
 export type Input = Readonly<{ readonly cellStates: readonly string[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "cellStates", label: "Cell states", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   i.cellStates.forEach((s) => pick(s, { "0": 0, "1": 1, X: 2 }, "cell"));
   const n = i.cellStates.filter((s) => s === "X").length;
   return {
@@ -15,7 +15,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     logicMinimized: false,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -40,6 +40,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          dontCareCount: { type: "number" },
+          possibleAssignmentsDecimal: { type: "string" },
+          logicMinimized: { type: "boolean" },
+        },
+        required: [
+          "dontCareCount",
+          "possibleAssignmentsDecimal",
+          "logicMinimized",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
