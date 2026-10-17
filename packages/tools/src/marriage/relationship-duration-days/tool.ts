@@ -10,17 +10,17 @@ export type Input = Readonly<{
   readonly actualStartDate: string;
   readonly actualEndDate: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualStartDate", label: "Actual start date", kind: "string" },
   { id: "actualEndDate", label: "Actual end date", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const d = daysBetween(input.actualStartDate, input.actualEndDate);
   if (d < 0) simpleError("dates", "End date≥start date.");
   return { observedElapsedDays: d };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -39,6 +39,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { observedElapsedDays: { type: "number" } },
+        required: ["observedElapsedDays"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
