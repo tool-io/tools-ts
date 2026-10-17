@@ -8,14 +8,14 @@ export type Input = Readonly<{
   row: number;
   column: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "mask", label: "mask", kind: "matrix" },
   { id: "eight", label: "eight", kind: "boolean" },
   { id: "row", label: "row", kind: "integer" },
   { id: "column", label: "column", kind: "integer" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const c = H.components(i.mask, i.eight);
   H.int(i.row, 0, i.mask.length - 1);
@@ -51,12 +51,40 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Binary Mask Seed Component Mask",
+      "image morphology",
+      "image processing",
+    ],
+    collections: ["data", "learn"],
+    fields: ["morphology", "image morphology", "image processing"],
+    keywords: ["image morphology", "image processing"],
+  },
   id: "morphology/seed-component-mask",
   title: "Binary Mask Seed Component Mask",
   description:
     "Select only the connected foreground component containing a supplied in-bounds cell; a background seed yields label zero and an empty mask.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          label: { type: "number" },
+          mask: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["label", "mask"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
