@@ -4,14 +4,14 @@ import { validateInput, finish, eigenvectors2 } from "../batch49-shared.js";
 export type Input = Readonly<{
   readonly actualMatrix: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualMatrix", label: "Actual matrix", kind: "matrix" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   return eigenvectors2(input.actualMatrix);
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -44,6 +44,20 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          realEigenvalues: { type: "array", items: { type: "number" } },
+          unitEigenvectors: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          repeatedEigenvalue: { type: "boolean" },
+        },
+        required: ["realEigenvalues", "unitEigenvectors", "repeatedEigenvalue"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
