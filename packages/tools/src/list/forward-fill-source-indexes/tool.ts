@@ -4,25 +4,22 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, binary } from "../batch53-shared.js";
 
 export type Input = Readonly<{ present: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "present", label: "Present", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   binary(i.present, "present");
   const known = i.present.flatMap((v, j) => (v ? [j] : []));
   return {
-    sourceIndexes: i.present.map((_, j) => {
+    sourceIndexes: i.present.map((_, j): number | null => {
       const candidates = known.filter((k) => k <= j);
       candidates.sort((a, b) => Math.abs(a - j) - Math.abs(b - j) || a - b);
       return candidates[0] ?? null;
     }),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -41,6 +38,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          sourceIndexes: {
+            type: "array",
+            items: { anyOf: [{ type: "number" }, { type: "null" }] },
+          },
+        },
+        required: ["sourceIndexes"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
