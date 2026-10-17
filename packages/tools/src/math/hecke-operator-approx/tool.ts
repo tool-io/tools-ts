@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly actualOutputFourierIndex: number;
   readonly actualQualifiedFourierCoefficientsStartingOne: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualModularWeight", label: "Actual modular weight", kind: "number" },
   { id: "actualHeckeIndex", label: "Actual hecke index", kind: "number" },
@@ -27,7 +27,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.actualModularWeight, "weight", 1, 16);
   bounded(input.actualHeckeIndex, "m", 1, 64);
   bounded(input.actualOutputFourierIndex, "n", 1, 64);
@@ -45,7 +45,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
         ];
   return { conditionalHeckeFourierCoefficient: a };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -69,6 +69,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalHeckeFourierCoefficient: { type: "number" } },
+        required: ["conditionalHeckeFourierCoefficient"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
