@@ -5,12 +5,12 @@ export type Input = Readonly<{
   readonly proposedConstant: string;
   readonly usedConstants: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "proposedConstant", label: "Proposed constant", kind: "string" },
   { id: "usedConstants", label: "Used constants", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   identifier(i.proposedConstant);
   i.usedConstants.forEach(identifier);
   return {
@@ -18,7 +18,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     fullExistentialEliminationVerified: false,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -42,6 +42,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          freshAgainstDeclaredContext: { type: "boolean" },
+          fullExistentialEliminationVerified: { type: "boolean" },
+        },
+        required: [
+          "freshAgainstDeclaredContext",
+          "fullExistentialEliminationVerified",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
