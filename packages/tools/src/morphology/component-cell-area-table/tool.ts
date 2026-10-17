@@ -6,12 +6,12 @@ export type Input = Readonly<{
   mask: readonly (readonly number[])[];
   eight: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "mask", label: "mask", kind: "matrix" },
   { id: "eight", label: "eight", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const c = H.components(i.mask, i.eight);
   return H.finish({
@@ -36,12 +36,47 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Binary Mask Component Cell Area Table",
+      "image morphology",
+      "image processing",
+    ],
+    collections: ["data", "learn"],
+    fields: ["morphology", "image morphology", "image processing"],
+    keywords: ["image morphology", "image processing"],
+  },
   id: "morphology/component-cell-area-table",
   title: "Binary Mask Component Cell Area Table",
   description:
     "Count cell areas of explicit four/eight-connected binary-mask foreground components; area is cells only, not calibrated physical area.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          areas: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                label: { type: "number" },
+                area: { type: "number" },
+              },
+              required: ["label", "area"],
+            },
+          },
+        },
+        required: ["areas"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
