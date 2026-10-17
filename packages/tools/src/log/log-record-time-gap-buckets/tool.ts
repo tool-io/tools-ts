@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ recordsJson: string; edges: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "recordsJson", label: "recordsJson", kind: "string" },
   { id: "edges", label: "edges", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.logs(i.recordsJson);
   H.check(i.edges.every((x, j) => j === 0 || x > i.edges[j - 1]));
@@ -31,12 +31,44 @@ export const example = {
   output: { result: { gaps: [{ index: 1, gap: 2, bucket: 2 }] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Log Record Time Gap Buckets"],
+    collections: ["encode-decode"],
+    fields: ["log"],
+    keywords: [],
+  },
   id: "log/log-record-time-gap-buckets",
   title: "Log Record Time Gap Buckets",
   description:
     "Bucket signed adjacent log timestamp gaps by caller-supplied strictly increasing thresholds; negative clock jumps remain signed observations.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          gaps: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                gap: { type: "number" },
+                bucket: { type: "number" },
+              },
+              required: ["index", "gap", "bucket"],
+            },
+          },
+        },
+        required: ["gaps"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
