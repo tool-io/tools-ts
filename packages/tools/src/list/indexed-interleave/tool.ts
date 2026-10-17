@@ -7,15 +7,12 @@ export type Input = Readonly<{
   left: readonly string[];
   right: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", label: "Left", kind: "stringList" },
   { id: "right", label: "Right", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const values: string[] = [],
     sources: { side: string; index: number }[] = [];
   for (let j = 0; j < Math.max(i.left.length, i.right.length); j++) {
@@ -30,7 +27,7 @@ const compute = (
   }
   return { values, sources };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -58,6 +55,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          values: { type: "array", items: { type: "string" } },
+          sources: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                side: { type: "string" },
+                index: { type: "number" },
+              },
+              required: ["side", "index"],
+            },
+          },
+        },
+        required: ["values", "sources"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
