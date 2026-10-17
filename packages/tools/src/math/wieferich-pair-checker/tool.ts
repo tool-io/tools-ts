@@ -12,12 +12,12 @@ export type Input = Readonly<{
   readonly actualFirstPrime: number;
   readonly actualSecondPrime: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualFirstPrime", label: "Actual first prime", kind: "number" },
   { id: "actualSecondPrime", label: "Actual second prime", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const a = bounded(input.actualFirstPrime, "p", 2, 1000000),
     b = bounded(input.actualSecondPrime, "q", 2, 1000000);
   if (a === b || !prime(a) || !prime(b))
@@ -30,7 +30,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     isMutualWieferichPair: x && y,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -55,6 +55,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          firstBaseWieferichAtSecond: { type: "boolean" },
+          secondBaseWieferichAtFirst: { type: "boolean" },
+          isMutualWieferichPair: { type: "boolean" },
+        },
+        required: [
+          "firstBaseWieferichAtSecond",
+          "secondBaseWieferichAtFirst",
+          "isMutualWieferichPair",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
