@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly actualQ: number;
   readonly actualHighestPositivePower: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualQ", label: "Actual q", kind: "number" },
   {
@@ -21,7 +21,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.actualQ, "q");
   if (input.actualQ > 0.05) simpleError("q", "Real0<q≤.05branch.");
   bounded(input.actualHighestPositivePower, "power", 0, 12);
@@ -30,7 +30,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     a += Number(modularJ(k)) * input.actualQ ** k;
   return { truncatedModularJ: a };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -49,6 +49,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { truncatedModularJ: { type: "number" } },
+        required: ["truncatedModularJ"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
