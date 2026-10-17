@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ recordsJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "recordsJson", label: "recordsJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.logs(i.recordsJson);
   return H.finish({
@@ -29,12 +29,46 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Log Record Source Run Table"],
+    collections: ["encode-decode"],
+    fields: ["log"],
+    keywords: [],
+  },
   id: "log/log-record-source-run-table",
   title: "Log Record Source Run Table",
   description:
     "Group adjacent log source observations with original run indexes and first/last timestamps; no sorting or clock monotonicity assumptions.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          runs: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                key: { type: "string" },
+                start: { type: "number" },
+                end: { type: "number" },
+                firstTime: { type: "number" },
+                lastTime: { type: "number" },
+              },
+              required: ["key", "start", "end", "firstTime", "lastTime"],
+            },
+          },
+        },
+        required: ["runs"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
