@@ -2,7 +2,7 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, simpleError } from "../batch49-shared.js";
 export type Input = Readonly<{ readonly actualNonnegativeSafeInteger: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualNonnegativeSafeInteger",
@@ -10,7 +10,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     !Number.isSafeInteger(input.actualNonnegativeSafeInteger) ||
     input.actualNonnegativeSafeInteger < 0
@@ -20,7 +20,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     input.actualNonnegativeSafeInteger.toString(2).split("1").length - 1;
   return { isOdious: n % 2 === 1, binaryOneBitCount: n };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -39,6 +39,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          isOdious: { type: "boolean" },
+          binaryOneBitCount: { type: "number" },
+        },
+        required: ["isOdious", "binaryOneBitCount"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
