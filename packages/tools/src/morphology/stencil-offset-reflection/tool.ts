@@ -3,11 +3,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../histogram/batch56-shared.js";
 export type Input = Readonly<{ stencil: readonly (readonly number[])[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "stencil", label: "stencil", kind: "matrix" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.stencil(i.stencil);
   return H.finish({ stencil: i.stencil.map(([y, x]) => [-y, -x]) });
@@ -29,12 +29,39 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Binary Mask Stencil Offset Reflection",
+      "image morphology",
+      "image processing",
+    ],
+    collections: ["data", "learn"],
+    fields: ["morphology", "image morphology", "image processing"],
+    keywords: ["image morphology", "image processing"],
+  },
   id: "morphology/stencil-offset-reflection",
   title: "Binary Mask Stencil Offset Reflection",
   description:
     "Reflect explicit bounded binary-mask stencil offsets about the origin without changing their order; used for asymmetric dilation/erosion conventions.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          stencil: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["stencil"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
