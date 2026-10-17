@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, simpleError, deg } from "../batch52-shared.js";
 export type Input = Readonly<{ readonly iceRefractiveIndex: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "iceRefractiveIndex", label: "Ice refractive index", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   if (i.iceRefractiveIndex <= 1 || i.iceRefractiveIndex >= 2)
     simpleError("index", "1<n<2 for transmitted prism branch.");
   return {
@@ -14,7 +14,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       deg(2 * Math.asin(i.iceRefractiveIndex * 0.5)) - 60,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -33,6 +33,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { minimumDeviationDegrees: { type: "number" } },
+        required: ["minimumDeviationDegrees"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
