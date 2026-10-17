@@ -11,12 +11,12 @@ export type Input = Readonly<{
   readonly actualFirst: number;
   readonly actualSecond: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualFirst", label: "Actual first", kind: "number" },
   { id: "actualSecond", label: "Actual second", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.actualFirst, "a", 1, 1000000);
   bounded(input.actualSecond, "b", 1, 1000000);
   if (
@@ -27,7 +27,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     simpleError("pair", "Actualdistinctamicablepairrequired.");
   return { verifiedAmicablePairSum: input.actualFirst + input.actualSecond };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -46,6 +46,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { verifiedAmicablePairSum: { type: "number" } },
+        required: ["verifiedAmicablePairSum"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
