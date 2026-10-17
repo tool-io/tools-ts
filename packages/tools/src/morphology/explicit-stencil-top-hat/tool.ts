@@ -6,12 +6,12 @@ export type Input = Readonly<{
   mask: readonly (readonly number[])[];
   stencil: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "mask", label: "mask", kind: "matrix" },
   { id: "stencil", label: "stencil", kind: "matrix" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.mask(i.mask);
   H.stencil(i.stencil);
@@ -43,12 +43,39 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Binary Mask Explicit Stencil Top Hat",
+      "image morphology",
+      "image processing",
+    ],
+    collections: ["data", "learn"],
+    fields: ["morphology", "image morphology", "image processing"],
+    keywords: ["image morphology", "image processing"],
+  },
   id: "morphology/explicit-stencil-top-hat",
   title: "Binary Mask Explicit Stencil Top Hat",
   description:
     "Explicit binary masks <=64x64 and unique integer [row,column] stencil offsets in +/-16, outside treated as zero; return signed input-minus-opening top-hat, with finite-stage zero borders and no hidden clipping.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          mask: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["mask"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
