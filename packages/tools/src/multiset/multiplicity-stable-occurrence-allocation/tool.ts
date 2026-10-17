@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ valuesJson: string; budgetJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "valuesJson", kind: "string", label: "valuesJson" },
   { id: "budgetJson", kind: "string", label: "budgetJson" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const values = H.arr(i.valuesJson),
     budget = H.multiset(i.budgetJson);
@@ -44,7 +44,41 @@ export const tool = createSimpleTool({
   description:
     "Allocate typed occurrences stably against explicit per-key count budgets; earliest matching occurrences consume slots and all rejections remain indexed.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          admitted: { type: "array", items: { type: "number" } },
+          rejected: { type: "array", items: { type: "number" } },
+          remaining: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                value: {
+                  anyOf: [
+                    { type: "string" },
+                    { type: "number" },
+                    { type: "boolean" },
+                    { type: "null" },
+                  ],
+                },
+                count: { type: "number" },
+              },
+              required: ["value", "count"],
+            },
+          },
+        },
+        required: ["admitted", "rejected", "remaining"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
