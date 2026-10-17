@@ -7,7 +7,7 @@ import {
   exactDecimal,
 } from "../batch50-shared.js";
 export type Input = Readonly<{ readonly actualPositiveOddDecimal: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualPositiveOddDecimal",
@@ -15,14 +15,14 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   let x = exactDecimal(input.actualPositiveOddDecimal);
   if (x === 0n || x % 2n === 0n) simpleError("n", "Actualpositiveoddstart.");
   x = 3n * x + 1n;
   while (x % 2n === 0n) x /= 2n;
   return { exactNextOddSyracuseDecimal: x.toString() };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -41,6 +41,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { exactNextOddSyracuseDecimal: { type: "string" } },
+        required: ["exactNextOddSyracuseDecimal"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
