@@ -10,12 +10,12 @@ export type Input = Readonly<{
   readonly actualQ: number;
   readonly actualTermBudget: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualQ", label: "Actual q", kind: "number" },
   { id: "actualTermBudget", label: "Actual term budget", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (Math.abs(input.actualQ) >= 1) simpleError("q", "Real|q|<1.");
   bounded(input.actualTermBudget, "budget", 1, 256);
   let s = 1,
@@ -26,7 +26,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
   }
   return { truncatedThirdOrderMockThetaF: s };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -45,6 +45,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { truncatedThirdOrderMockThetaF: { type: "number" } },
+        required: ["truncatedThirdOrderMockThetaF"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
