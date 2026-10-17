@@ -15,16 +15,13 @@ export type Input = Readonly<{
   blockLengths: readonly number[];
   order: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "values", label: "Values", kind: "stringList" },
   { id: "blockLengths", label: "Block lengths", kind: "numberList" },
   { id: "order", label: "Order", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   i.blockLengths.forEach((v) => bounded(v, "block", 1, 128));
   if (
     sum(i.blockLengths) !== i.values.length ||
@@ -42,7 +39,7 @@ const compute = (
   });
   return { values: i.order.flatMap((j) => blocks[j]) };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -61,6 +58,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { values: { type: "array", items: { type: "string" } } },
+        required: ["values"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
