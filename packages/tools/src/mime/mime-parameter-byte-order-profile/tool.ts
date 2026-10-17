@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ parametersJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "parametersJson", label: "parametersJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.parameterRecords(i.parametersJson),
     text = H.parameterText(r);
@@ -36,12 +36,45 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["MIME Parameter Byte Order Profile", "MIME", "encoding"],
+    collections: ["encode-decode"],
+    fields: ["MIME", "encoding"],
+    keywords: ["MIME", "encoding"],
+  },
   id: "mime/mime-parameter-byte-order-profile",
   title: "MIME Parameter Byte Order Profile",
   description:
     "Profile byte-order source spans in canonical Latin-1 MIME parameter serialization, retaining occurrence order; not machine endianness or Unicode encoding detection.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          text: { type: "string" },
+          spans: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                name: { type: "string" },
+                start: { type: "number" },
+                end: { type: "number" },
+              },
+              required: ["name", "start", "end"],
+            },
+          },
+        },
+        required: ["text", "spans"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
