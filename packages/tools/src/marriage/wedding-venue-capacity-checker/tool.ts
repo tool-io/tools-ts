@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly actualOtherOccupantCount: number;
   readonly callerAuthorityApplicableVenueOccupantCap: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualGuestCount", label: "Actual guest count", kind: "number" },
   {
@@ -20,7 +20,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   [
     input.actualGuestCount,
     input.actualOtherOccupantCount,
@@ -35,7 +35,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.actualOtherOccupantCount,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -63,6 +63,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedTotalOccupants: { type: "number" },
+          signedAuthorityCapRemainingOccupants: { type: "number" },
+        },
+        required: [
+          "observedTotalOccupants",
+          "signedAuthorityCapRemainingOccupants",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
