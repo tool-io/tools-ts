@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly latitudeDegrees: number;
   readonly solarAltitudeDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "dayOfYear", label: "Day of year", kind: "number" },
   { id: "latitudeDegrees", label: "Latitude degrees", kind: "number" },
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.dayOfYear, "day", 1, 366);
   angle(i.latitudeDegrees, "latitude", -89.9, 89.9);
   angle(i.solarAltitudeDegrees, "altitude", -90, 90);
@@ -38,7 +38,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     hourAngleDegrees: q >= -1 && q <= 1 ? deg(Math.acos(q)) : 0,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -63,6 +63,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          approximateDeclinationDegrees: { type: "number" },
+          altitudeAttainable: { type: "boolean" },
+          hourAngleDegrees: { type: "number" },
+        },
+        required: [
+          "approximateDeclinationDegrees",
+          "altitudeAttainable",
+          "hourAngleDegrees",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
