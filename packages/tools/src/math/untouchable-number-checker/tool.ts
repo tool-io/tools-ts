@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, bounded } from "../batch49-shared.js";
 export type Input = Readonly<{ readonly actualInteger: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualInteger", label: "Actual integer", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.actualInteger, "integer", 0, 1000);
   if (input.actualInteger === 0)
     return { isUntouchable: false, smallestProperDivisorSumWitness: 1 };
@@ -21,7 +21,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       return { isUntouchable: false, smallestProperDivisorSumWitness: m };
   return { isUntouchable: true, smallestProperDivisorSumWitness: 0 };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -42,6 +42,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          isUntouchable: { type: "boolean" },
+          smallestProperDivisorSumWitness: { type: "number" },
+        },
+        required: ["isUntouchable", "smallestProperDivisorSumWitness"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
