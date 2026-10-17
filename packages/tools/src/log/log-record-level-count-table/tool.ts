@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ recordsJson: string; aliasesJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "recordsJson", label: "recordsJson", kind: "string" },
   { id: "aliasesJson", label: "aliasesJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.logs(i.recordsJson);
   const m = H.aliases(i.aliasesJson);
@@ -33,12 +33,48 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Log Record Level Count Table"],
+    collections: ["encode-decode"],
+    fields: ["log"],
+    keywords: [],
+  },
   id: "log/log-record-level-count-table",
   title: "Log Record Level Count Table",
   description:
     "Count explicit log severity observations after caller alias normalization, retaining source indexes and an explicit alias-cycle category; not a universal level classification.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          counts: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                level: { anyOf: [{ type: "string" }, { type: "null" }] },
+                aliasCycle: { type: "boolean", const: true },
+                count: { type: "integer", minimum: 0 },
+                indexes: {
+                  type: "array",
+                  items: { type: "integer", minimum: 0 },
+                },
+              },
+              required: ["level", "count", "indexes"],
+            },
+          },
+        },
+        required: ["counts"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
