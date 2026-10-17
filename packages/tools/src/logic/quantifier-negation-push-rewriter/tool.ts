@@ -6,13 +6,13 @@ export type Input = Readonly<{
   readonly variableName: string;
   readonly predicateName: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "negatedQuantifier", label: "Negated quantifier", kind: "string" },
   { id: "variableName", label: "Variable name", kind: "string" },
   { id: "predicateName", label: "Predicate name", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   pick(i.negatedQuantifier, { forall: 0, exists: 1 }, "quantifier");
   identifier(i.variableName);
   identifier(i.predicateName);
@@ -27,7 +27,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       ")",
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -46,6 +46,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { rewrittenFormula: { type: "string" } },
+        required: ["rewrittenFormula"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
