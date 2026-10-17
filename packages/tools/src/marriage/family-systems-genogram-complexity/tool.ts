@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualGenogramNodeIds: readonly string[];
   readonly actualIndependentlyAnnotatedEdgeEndpointIndices: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualGenogramNodeIds",
@@ -24,7 +24,7 @@ const fields = [
     kind: "matrix",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.actualGenogramNodeIds, "persons");
   const n = input.actualGenogramNodeIds.length;
   if (n < 2) simpleError("persons", "At least two actual identified persons.");
@@ -46,7 +46,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       (n * (n - 1)),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -77,6 +77,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedIdentifiedPersonCount: { type: "number" },
+          observedUniqueUndirectedRelationCount: { type: "number" },
+          conditionalSimpleGraphDensity: { type: "number" },
+        },
+        required: [
+          "observedIdentifiedPersonCount",
+          "observedUniqueUndirectedRelationCount",
+          "conditionalSimpleGraphDensity",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
