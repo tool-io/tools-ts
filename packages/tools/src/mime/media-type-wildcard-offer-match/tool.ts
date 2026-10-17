@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ range: string; offers: readonly string[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "range", label: "range", kind: "string" },
   { id: "offers", label: "offers", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const a = H.media(i.range),
     r = i.offers.map(H.media);
@@ -29,12 +29,30 @@ export const example = {
   output: { result: { matches: [0] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Media Type Wildcard Offer Match", "MIME", "encoding"],
+    collections: ["encode-decode"],
+    fields: ["MIME", "encoding"],
+    keywords: ["MIME", "encoding"],
+  },
   id: "mime/media-type-wildcard-offer-match",
   title: "Media Type Wildcard Offer Match",
   description:
     "Match explicit */*, type/* or exact MIME ranges against complete offers with ASCII case folding; no quality, parameters or suffix wildcard matching.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { matches: { type: "array", items: { type: "number" } } },
+        required: ["matches"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
