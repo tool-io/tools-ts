@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualWhiteIceThicknessMeters: number;
   readonly actualBlackIceThicknessMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualWhiteIceThicknessMeters",
@@ -24,10 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   nonnegative(input.actualWhiteIceThicknessMeters, "white");
   nonnegative(input.actualBlackIceThicknessMeters, "black");
   const t = positive(
@@ -40,10 +37,7 @@ const compute = (
     blackIceFraction: input.actualBlackIceThicknessMeters / t,
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -71,6 +65,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          totalIceThicknessMeters: { type: "number" },
+          whiteIceFraction: { type: "number" },
+          blackIceFraction: { type: "number" },
+        },
+        required: [
+          "totalIceThicknessMeters",
+          "whiteIceFraction",
+          "blackIceFraction",
+        ],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
