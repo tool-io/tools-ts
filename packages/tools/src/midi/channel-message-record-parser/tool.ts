@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ bytes: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bytes", label: "bytes", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.bytes(i.bytes);
   H.check(i.bytes.length > 0 && i.bytes.length === H.midiCount(i.bytes[0]) + 1);
@@ -23,12 +23,35 @@ export const example = {
   output: { result: { status: 146, type: 9, channel: 2, data: [60, 100] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["MIDI Channel Message Record Parser", "MIDI", "music"],
+    collections: ["encode-decode"],
+    fields: ["MIDI", "music"],
+    keywords: ["MIDI", "music"],
+  },
   id: "midi/channel-message-record-parser",
   title: "MIDI Channel Message Record Parser",
   description:
     "Parse exactly one complete explicit-status MIDI channel message; running status, realtime interleaving and system messages are rejected.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          status: { type: "number" },
+          type: { type: "number" },
+          channel: { type: "number" },
+          data: { type: "array", items: { type: "number" } },
+        },
+        required: ["status", "type", "channel", "data"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
