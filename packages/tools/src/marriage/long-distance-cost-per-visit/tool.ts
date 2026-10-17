@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualLongDistanceVisitCostsMinorUnits: number;
   readonly actualCompletedVisitCount: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualLongDistanceVisitCostsMinorUnits",
@@ -24,7 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   money(input.actualLongDistanceVisitCostsMinorUnits, "cost");
   bounded(
     input.actualCompletedVisitCount,
@@ -49,7 +49,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     roundedRateMinorUnits: roundMinor(a, b),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -77,6 +77,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          exactRateNumeratorMinorUnits: { type: "string" },
+          exactRateDenominator: { type: "string" },
+          roundedRateMinorUnits: { type: "number" },
+        },
+        required: [
+          "exactRateNumeratorMinorUnits",
+          "exactRateDenominator",
+          "roundedRateMinorUnits",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
