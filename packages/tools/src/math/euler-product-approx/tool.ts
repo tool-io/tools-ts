@@ -12,12 +12,12 @@ export type Input = Readonly<{
   readonly actualRealExponent: number;
   readonly actualPrimeCutoff: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualRealExponent", label: "Actual real exponent", kind: "number" },
   { id: "actualPrimeCutoff", label: "Actual prime cutoff", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.actualRealExponent - 1, "s>1");
   bounded(input.actualPrimeCutoff, "cutoff", 2, 1000000);
   return {
@@ -30,7 +30,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -49,6 +49,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { truncatedZetaEulerProduct: { type: "number" } },
+        required: ["truncatedZetaEulerProduct"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
