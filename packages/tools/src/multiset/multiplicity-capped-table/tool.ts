@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ countsJson: string; cap: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "countsJson", kind: "string", label: "countsJson" },
   { id: "cap", kind: "integer", label: "cap" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.cap, 0, 1e6);
   return H.finish({
@@ -36,7 +36,39 @@ export const tool = createSimpleTool({
   description:
     "Cap each normalized typed multiplicity at an explicit nonnegative integer and omit resulting zeros; no proportional redistribution.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          counts: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                value: {
+                  anyOf: [
+                    { type: "string" },
+                    { type: "number" },
+                    { type: "boolean" },
+                    { type: "null" },
+                  ],
+                },
+                count: { type: "number" },
+              },
+              required: ["value", "count"],
+            },
+          },
+        },
+        required: ["counts"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
