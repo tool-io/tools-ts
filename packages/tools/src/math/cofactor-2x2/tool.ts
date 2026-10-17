@@ -12,13 +12,13 @@ export type Input = Readonly<{
   readonly actualRowIndex: number;
   readonly actualColumnIndex: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualMatrix", label: "Actual matrix", kind: "matrix" },
   { id: "actualRowIndex", label: "Actual row index", kind: "number" },
   { id: "actualColumnIndex", label: "Actual column index", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     shape(input.actualMatrix, "matrix") !== 2 ||
     input.actualMatrix.length !== 2
@@ -33,7 +33,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       ] * ((input.actualRowIndex + input.actualColumnIndex) % 2 ? -1 : 1),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -59,6 +59,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
