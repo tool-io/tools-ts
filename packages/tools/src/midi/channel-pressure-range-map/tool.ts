@@ -6,13 +6,13 @@ export type Input = Readonly<{
   minimum: number;
   maximum: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pressure", label: "pressure", kind: "integer" },
   { id: "minimum", label: "minimum", kind: "number" },
   { id: "maximum", label: "maximum", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.pressure, 0, 127);
   H.check(i.maximum >= i.minimum);
@@ -25,12 +25,30 @@ export const example = {
   output: { result: { value: 1 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["MIDI Channel Pressure Range Map", "MIDI", "music"],
+    collections: ["encode-decode"],
+    fields: ["MIDI", "music"],
+    keywords: ["MIDI", "music"],
+  },
   id: "midi/channel-pressure-range-map",
   title: "MIDI Channel Pressure Range Map",
   description:
     "Map an explicit seven-bit MIDI channel pressure to a caller-supplied ascending finite numeric range; linear caller model, not synth-specific response.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
