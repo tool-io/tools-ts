@@ -7,15 +7,12 @@ export type Input = Readonly<{
   rectangle: readonly number[];
   viewport: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "rectangle", label: "Rectangle", kind: "numberList" },
   { id: "viewport", label: "Viewport", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   rectangle(i.rectangle);
   rectangle(i.viewport);
   const delta = (a: number, size: number, b: number, view: number) =>
@@ -25,7 +22,7 @@ const compute = (
     deltaY: delta(i.rectangle[1], i.rectangle[3], i.viewport[1], i.viewport[3]),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -44,6 +41,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { deltaX: { type: "number" }, deltaY: { type: "number" } },
+        required: ["deltaX", "deltaY"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
