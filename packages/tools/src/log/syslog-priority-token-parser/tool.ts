@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ token: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "token", label: "token", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const m = /^<(0|[1-9]\d{0,2})>(?![\s\S])/.exec(i.token);
   H.check(m);
@@ -18,12 +18,30 @@ export const example = {
   output: { result: { priority: 165 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Syslog Priority Token Parser"],
+    collections: ["encode-decode"],
+    fields: ["log"],
+    keywords: [],
+  },
   id: "log/syslog-priority-token-parser",
   title: "Syslog Priority Token Parser",
   description:
     "Parse or format one complete RFC 5424 syslog priority token in the 0\u2013191 range; no full message parsing.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { priority: { type: "number" } },
+        required: ["priority"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
