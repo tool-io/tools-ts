@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, bounded, primes } from "../batch50-shared.js";
 export type Input = Readonly<{ readonly actualCutoff: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualCutoff", label: "Actual cutoff", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.actualCutoff, "cutoff", 1, 100000);
   let total = 0;
   const p = primes(input.actualCutoff);
@@ -15,7 +15,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       total++;
   return { exactObservedSemiprimeCount: total };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -34,6 +34,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { exactObservedSemiprimeCount: { type: "number" } },
+        required: ["exactObservedSemiprimeCount"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
