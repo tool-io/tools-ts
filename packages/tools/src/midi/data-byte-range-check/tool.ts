@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ bytes: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bytes", label: "bytes", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.bytes(i.bytes);
   return H.finish({
@@ -21,12 +21,44 @@ export const example = {
   output: { result: { valid: false, violations: [{ index: 2, value: 128 }] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["MIDI Data Byte Range Check", "MIDI", "music"],
+    collections: ["encode-decode"],
+    fields: ["MIDI", "music"],
+    keywords: ["MIDI", "music"],
+  },
   id: "midi/data-byte-range-check",
   title: "MIDI Data Byte Range Check",
   description:
     "Audit explicit raw byte values for MIDI seven-bit data-byte eligibility, retaining status-bit violations instead of interpreting them as messages.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          valid: { type: "boolean" },
+          violations: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                value: { type: "number" },
+              },
+              required: ["index", "value"],
+            },
+          },
+        },
+        required: ["valid", "violations"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
