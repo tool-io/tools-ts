@@ -6,13 +6,13 @@ export type Input = Readonly<{
   headerLines: readonly string[];
   payloadBytes: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "boundary", label: "boundary", kind: "string" },
   { id: "headerLines", label: "headerLines", kind: "stringList" },
   { id: "payloadBytes", label: "payloadBytes", kind: "integer" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.boundary(i.boundary);
   H.int(i.payloadBytes, 0, 1e9);
@@ -37,12 +37,35 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Multipart Part Envelope Byte Budget", "MIME", "encoding"],
+    collections: ["encode-decode"],
+    fields: ["MIME", "encoding"],
+    keywords: ["MIME", "encoding"],
+  },
   id: "mime/multipart-part-envelope-byte-budget",
   title: "Multipart Part Envelope Byte Budget",
   description:
     "Budget one MIME part as opening delimiter, supplied Latin-1 header lines plus blank line, explicit payload byte count and trailing CRLF; excludes final closing delimiter.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          openingBytes: { type: "number" },
+          headerBytes: { type: "number" },
+          payloadBytes: { type: "number" },
+          total: { type: "number" },
+        },
+        required: ["openingBytes", "headerBytes", "payloadBytes", "total"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
