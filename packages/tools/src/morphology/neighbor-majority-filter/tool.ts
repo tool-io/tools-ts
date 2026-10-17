@@ -6,12 +6,12 @@ export type Input = Readonly<{
   mask: readonly (readonly number[])[];
   includeCenter: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "mask", label: "mask", kind: "matrix" },
   { id: "includeCenter", label: "includeCenter", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.mask(i.mask);
   return H.finish({
@@ -48,12 +48,39 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Binary Mask Neighbor Majority Filter",
+      "image morphology",
+      "image processing",
+    ],
+    collections: ["data", "learn"],
+    fields: ["morphology", "image morphology", "image processing"],
+    keywords: ["image morphology", "image processing"],
+  },
   id: "morphology/neighbor-majority-filter",
   title: "Binary Mask Neighbor Majority Filter",
   description:
     "Apply a strict local 3x3 majority filter with explicit center inclusion; outside zeros participate in fixed neighbor count and ties become zero.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          mask: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["mask"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
