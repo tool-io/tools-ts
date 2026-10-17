@@ -17,7 +17,7 @@ export type Input = Readonly<{
   gap: number;
   preferredSide: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "anchor", label: "Anchor", kind: "numberList" },
   { id: "viewport", label: "Viewport", kind: "numberList" },
@@ -26,10 +26,7 @@ const fields = [
   { id: "gap", label: "Gap", kind: "number" },
   { id: "preferredSide", label: "Preferred side", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   rectangle(i.anchor);
   rectangle(i.viewport);
   nonnegative(i.popupWidth, "width");
@@ -66,7 +63,7 @@ const compute = (
   }
   return { side, rectangle: r, fits: fits(r) };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -92,6 +89,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          side: { type: "string" },
+          rectangle: { type: "array", items: { type: "number" } },
+          fits: { type: "boolean" },
+        },
+        required: ["side", "rectangle", "fits"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
