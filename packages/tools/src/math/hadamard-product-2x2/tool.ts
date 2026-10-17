@@ -10,12 +10,12 @@ export type Input = Readonly<{
   readonly actualFirstMatrix: readonly (readonly number[])[];
   readonly actualSecondMatrix: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualFirstMatrix", label: "Actual first matrix", kind: "matrix" },
   { id: "actualSecondMatrix", label: "Actual second matrix", kind: "matrix" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   [input.actualFirstMatrix, input.actualSecondMatrix].forEach((a) => {
     if (shape(a, "matrix") !== 2 || a.length !== 2)
       simpleError("matrix", "Twoactual2×2matrices.");
@@ -26,7 +26,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -61,6 +61,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          hadamardProduct: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["hadamardProduct"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
