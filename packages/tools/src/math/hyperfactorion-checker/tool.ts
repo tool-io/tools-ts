@@ -2,7 +2,7 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, sigmaDigital } from "../batch50-shared.js";
 export type Input = Readonly<{ readonly actualCanonicalDecimal: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualCanonicalDecimal",
@@ -10,14 +10,14 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const a = sigmaDigital(input.actualCanonicalDecimal, 1, "hyper");
   return {
     exactDigitInvariantSum: a,
     isNamedDigitInvariant: a === input.actualCanonicalDecimal,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -38,6 +38,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          exactDigitInvariantSum: { type: "string" },
+          isNamedDigitInvariant: { type: "boolean" },
+        },
+        required: ["exactDigitInvariantSum", "isNamedDigitInvariant"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
