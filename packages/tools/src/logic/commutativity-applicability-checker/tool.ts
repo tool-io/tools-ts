@@ -6,19 +6,19 @@ export type Input = Readonly<{
   readonly a: boolean;
   readonly b: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "operator", label: "Operator", kind: "string" },
   { id: "a", label: "A", kind: "boolean" },
   { id: "b", label: "B", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   pick(i.operator, { AND: 0, OR: 1 }, "operator");
   const op = (a: boolean, b: boolean) =>
     i.operator === "AND" ? a && b : a || b;
   return { identityHolds: op(i.a, i.b) === op(i.b, i.a) };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -37,6 +37,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { identityHolds: { type: "boolean" } },
+        required: ["identityHolds"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
