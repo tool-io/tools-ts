@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly firstPrefixCodePointCount: number;
   readonly secondSuffixCodePointStart: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "firstName", label: "First name", kind: "string" },
   { id: "secondName", label: "Second name", kind: "string" },
@@ -27,7 +27,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     !input.firstName.trim() ||
     !input.secondName.trim() ||
@@ -49,7 +49,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       b.slice(input.secondSuffixCodePointStart).join(""),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -73,6 +73,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { customCombinedName: { type: "string" } },
+        required: ["customCombinedName"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
