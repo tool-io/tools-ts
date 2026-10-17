@@ -8,14 +8,14 @@ export type Input = Readonly<{
   minimum: number;
   maximum: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "mask", label: "mask", kind: "matrix" },
   { id: "eight", label: "eight", kind: "boolean" },
   { id: "minimum", label: "minimum", kind: "integer" },
   { id: "maximum", label: "maximum", kind: "integer" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.minimum, 0, 4096);
   H.int(i.maximum, i.minimum, 4096);
@@ -52,12 +52,39 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Binary Mask Component Size Selector",
+      "image morphology",
+      "image processing",
+    ],
+    collections: ["data", "learn"],
+    fields: ["morphology", "image morphology", "image processing"],
+    keywords: ["image morphology", "image processing"],
+  },
   id: "morphology/component-size-selector",
   title: "Binary Mask Component Size Selector",
   description:
     "Retain entire connected foreground components only when their explicit cell count falls in inclusive caller bounds, no partial size trimming.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          mask: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["mask"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
