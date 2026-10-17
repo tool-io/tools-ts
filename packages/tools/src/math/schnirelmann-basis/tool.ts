@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualSumsetTermCount: number;
   readonly actualObservedPrefixCutoff: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualFiniteBasisElements",
@@ -29,7 +29,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.actualSumsetTermCount, "terms", 1, 16);
   bounded(input.actualObservedPrefixCutoff, "cutoff", 0, 10000);
   if (
@@ -59,7 +59,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     observedMissingPrefixIntegers: r.filter((v) => !a.has(v)),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -87,6 +87,25 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedRepresentablePrefixIntegers: {
+            type: "array",
+            items: { type: "number" },
+          },
+          observedMissingPrefixIntegers: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: [
+          "observedRepresentablePrefixIntegers",
+          "observedMissingPrefixIntegers",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
