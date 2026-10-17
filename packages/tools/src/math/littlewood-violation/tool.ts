@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualCutoff: number;
   readonly callerIndependentOffsetLiAtTwo: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualCutoff", label: "Actual cutoff", kind: "number" },
   {
@@ -20,7 +20,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.actualCutoff, "cutoff", 2, 1000000);
   const p = primes(input.actualCutoff).length,
     l =
@@ -39,7 +39,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     observedPositiveDiscrepancy: d > 0,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -68,6 +68,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedPi: { type: "number" },
+          conditionalLi: { type: "number" },
+          signedPiMinusConditionalLi: { type: "number" },
+          observedPositiveDiscrepancy: { type: "boolean" },
+        },
+        required: [
+          "observedPi",
+          "conditionalLi",
+          "signedPiMinusConditionalLi",
+          "observedPositiveDiscrepancy",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
