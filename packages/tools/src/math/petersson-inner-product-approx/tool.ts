@@ -18,7 +18,7 @@ export type Input = Readonly<{
   readonly callerQualifiedEuclideanAreaWeights: readonly number[];
   readonly actualModularWeight: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualQuadratureFReal",
@@ -48,7 +48,7 @@ const fields = [
   },
   { id: "actualModularWeight", label: "Actual modular weight", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const a = input.actualQuadratureFReal;
   [
     input.actualQuadratureFImaginary,
@@ -88,7 +88,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -115,6 +115,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { real: { type: "number" }, imaginary: { type: "number" } },
+        required: ["real", "imaginary"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
