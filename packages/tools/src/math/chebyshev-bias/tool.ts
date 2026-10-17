@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly actualFirstResidueModFour: number;
   readonly actualSecondResidueModFour: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualCutoff", label: "Actual cutoff", kind: "number" },
   {
@@ -26,7 +26,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.actualCutoff, "cutoff", 2, 1000000);
   if (
     ![1, 3].includes(input.actualFirstResidueModFour) ||
@@ -43,7 +43,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     signedFirstMinusSecondCount: a - b,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -72,6 +72,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          firstResiduePrimeCount: { type: "number" },
+          secondResiduePrimeCount: { type: "number" },
+          signedFirstMinusSecondCount: { type: "number" },
+        },
+        required: [
+          "firstResiduePrimeCount",
+          "secondResiduePrimeCount",
+          "signedFirstMinusSecondCount",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
