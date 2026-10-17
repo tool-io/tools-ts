@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly actualFinitePowerSeriesCoefficients: readonly number[];
   readonly actualRealEvaluationPoint: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualFinitePowerSeriesCoefficients",
@@ -18,7 +18,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (!input.actualFinitePowerSeriesCoefficients.length)
     simpleError("coefficients", "Actualfinitepolynomial.");
   if (
@@ -37,7 +37,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.actualFinitePowerSeriesCoefficients[i];
   return { exactPolynomialBorelLaplaceValue: y };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -59,6 +59,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { exactPolynomialBorelLaplaceValue: { type: "number" } },
+        required: ["exactPolynomialBorelLaplaceValue"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
