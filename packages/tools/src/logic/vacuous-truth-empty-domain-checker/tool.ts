@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly domainSize: number;
   readonly falsePredicateInstances: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "domainSize", label: "Domain size", kind: "number" },
   {
@@ -14,7 +14,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.domainSize, "size", 0, 1000000000);
   bounded(i.falsePredicateInstances, "counterexamples", 0, i.domainSize);
   return {
@@ -22,7 +22,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     vacuouslySatisfied: i.domainSize === 0,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -41,6 +41,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          universalSatisfied: { type: "boolean" },
+          vacuouslySatisfied: { type: "boolean" },
+        },
+        required: ["universalSatisfied", "vacuouslySatisfied"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
