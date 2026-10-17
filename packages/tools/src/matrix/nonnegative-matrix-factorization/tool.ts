@@ -149,6 +149,27 @@ export const nonnegativeMatrixFactorizationTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Factorization",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          approximation: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          basis: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          coefficients: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          error: { type: "number" },
+        },
+        required: ["approximation", "basis", "coefficients", "error"],
+      },
     },
   ],
   calculate: (input) => {
