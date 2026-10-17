@@ -14,17 +14,14 @@ export type Input = Readonly<{
   trackExtent: number;
   thumbExtent: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "scrollPosition", label: "Scroll position", kind: "number" },
   { id: "maximumScroll", label: "Maximum scroll", kind: "number" },
   { id: "trackExtent", label: "Track extent", kind: "number" },
   { id: "thumbExtent", label: "Thumb extent", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   nonnegative(i.maximumScroll, "maximum");
   angle(i.scrollPosition, "scroll", 0, i.maximumScroll);
   nonnegative(i.trackExtent, "track");
@@ -35,7 +32,7 @@ const compute = (
       : 0,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -59,6 +56,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { thumbStart: { type: "number" } },
+        required: ["thumbStart"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
