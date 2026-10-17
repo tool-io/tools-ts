@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, simpleError, pick } from "../batch52-shared.js";
 export type Input = Readonly<{ readonly assumptionEvents: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "assumptionEvents", label: "Assumption events", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   let depth = 0,
     max = 0;
   const depths = i.assumptionEvents.map((v) => {
@@ -23,7 +23,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     undischargedDepth: depth,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -48,6 +48,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          depthAfterEvents: { type: "array", items: { type: "number" } },
+          maximumDepth: { type: "number" },
+          undischargedDepth: { type: "number" },
+        },
+        required: ["depthAfterEvents", "maximumDepth", "undischargedDepth"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
