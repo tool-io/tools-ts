@@ -7,7 +7,7 @@ export type Input = Readonly<{
   readonly actualStartIndex: number;
   readonly actualEndIndexExclusive: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualValues", label: "Actual values", kind: "stringList" },
   { id: "actualStartIndex", label: "Actual start index", kind: "number" },
@@ -17,10 +17,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   if (
     !Number.isSafeInteger(input.actualStartIndex) ||
     !Number.isSafeInteger(input.actualEndIndexExclusive)
@@ -33,10 +30,7 @@ const compute = (
     ),
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -59,6 +53,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          slicedValues: { type: "array", items: { type: "string" } },
+        },
+        required: ["slicedValues"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
