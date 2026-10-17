@@ -12,14 +12,14 @@ export type Input = Readonly<{
   readonly constantName: string;
   readonly proposedFormula: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "predicateName", label: "Predicate name", kind: "string" },
   { id: "variableName", label: "Variable name", kind: "string" },
   { id: "constantName", label: "Constant name", kind: "string" },
   { id: "proposedFormula", label: "Proposed formula", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   identifier(i.predicateName);
   identifier(i.variableName);
   identifier(i.constantName);
@@ -38,7 +38,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     premiseRequired: i.predicateName + "(" + i.constantName + ")",
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -62,6 +62,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          validUnaryAtomicStep: { type: "boolean" },
+          premiseRequired: { type: "string" },
+        },
+        required: ["validUnaryAtomicStep", "premiseRequired"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
