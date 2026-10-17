@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly zBeforeVowelPhoneme: string;
   readonly cBeforeEOrIPhoneme: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "sPhoneme", label: "S phoneme", kind: "string" },
   {
@@ -20,7 +20,7 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   for (const s of [i.sPhoneme, i.zBeforeVowelPhoneme, i.cBeforeEOrIPhoneme])
     pick(s, { s: 0, θ: 1, unknown: 2 }, "phoneme");
   return {
@@ -37,7 +37,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     speakerOriginInferred: false,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -58,6 +58,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedMerger: { type: "string" },
+          speakerOriginInferred: { type: "boolean" },
+        },
+        required: ["observedMerger", "speakerOriginInferred"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
