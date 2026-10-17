@@ -13,16 +13,13 @@ export type Input = Readonly<{
   viewportStart: number;
   viewportExtent: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "rowExtents", label: "Row extents", kind: "numberList" },
   { id: "viewportStart", label: "Viewport start", kind: "number" },
   { id: "viewportExtent", label: "Viewport extent", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   i.rowExtents.forEach((v) => positive(v, "row"));
   nonnegative(i.viewportStart, "start");
   nonnegative(i.viewportExtent, "viewport");
@@ -43,7 +40,7 @@ const compute = (
     endExclusive: indexes.length ? indexes.at(-1)! + 1 : null,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -62,6 +59,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          visibleIndexes: { type: "array", items: { type: "number" } },
+          firstIndex: { anyOf: [{ type: "number" }, { type: "null" }] },
+          endExclusive: { anyOf: [{ type: "number" }, { type: "null" }] },
+        },
+        required: ["visibleIndexes", "firstIndex", "endExclusive"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
