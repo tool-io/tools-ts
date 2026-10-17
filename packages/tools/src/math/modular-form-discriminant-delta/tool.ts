@@ -13,12 +13,12 @@ export type Input = Readonly<{
   readonly actualRealQ: number;
   readonly actualProductCutoff: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualRealQ", label: "Actual real q", kind: "number" },
   { id: "actualProductCutoff", label: "Actual product cutoff", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.actualRealQ, "q");
   if (input.actualRealQ >= 1) simpleError("q", "Real0<q<1.");
   bounded(input.actualProductCutoff, "cutoff", 1, 10000);
@@ -33,7 +33,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
   );
   return { truncatedDelta: x };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -52,6 +52,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { truncatedDelta: { type: "number" } },
+        required: ["truncatedDelta"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
