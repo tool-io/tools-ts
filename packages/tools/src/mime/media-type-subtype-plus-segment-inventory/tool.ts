@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ mediaType: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "mediaType", label: "mediaType", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const m = H.media(i.mediaType);
   return H.finish({
@@ -28,12 +28,34 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Media Type Subtype Plus Segment Inventory", "MIME", "encoding"],
+    collections: ["encode-decode"],
+    fields: ["MIME", "encoding"],
+    keywords: ["MIME", "encoding"],
+  },
   id: "mime/media-type-subtype-plus-segment-inventory",
   title: "Media Type Subtype Plus Segment Inventory",
   description:
     "Inventory every plus-separated subtype segment, including empty segments, after token grammar validation; final structured suffix is not a registry claim.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          subtype: { type: "string" },
+          segments: { type: "array", items: { type: "string" } },
+          finalSuffix: { anyOf: [{ type: "string" }, { type: "null" }] },
+        },
+        required: ["subtype", "segments", "finalSuffix"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
