@@ -12,20 +12,17 @@ export type Input = Readonly<{
   cultureStartDate: string;
   observationDate: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "cultureStartDate", label: "Culture start date", kind: "string" },
   { id: "observationDate", label: "Observation date", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const elapsedDays = daysBetween(i.cultureStartDate, i.observationDate);
   nonnegative(elapsedDays, "dates");
   return { elapsedDays, l3DifferentiationEstablished: false };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -44,6 +41,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          elapsedDays: { type: "number" },
+          l3DifferentiationEstablished: { type: "boolean" },
+        },
+        required: ["elapsedDays", "l3DifferentiationEstablished"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
