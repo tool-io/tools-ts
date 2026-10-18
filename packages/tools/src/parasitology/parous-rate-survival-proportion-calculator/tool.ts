@@ -9,15 +9,12 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ parousFraction: number; cycleDays: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "parousFraction", label: "Parous fraction", kind: "number" },
   { id: "cycleDays", label: "Cycle days", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   fraction(i.parousFraction, "parous");
   positive(i.cycleDays, "cycle");
   return {
@@ -25,7 +22,7 @@ const compute = (
     assumption: "stationary-parity-model",
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -49,6 +46,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalDailySurvival: { type: "number" },
+          assumption: { type: "string" },
+        },
+        required: ["conditionalDailySurvival", "assumption"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
