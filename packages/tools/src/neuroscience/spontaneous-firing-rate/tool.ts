@@ -15,7 +15,7 @@ export type Input = Readonly<{
   readonly callerQualifiedWindowEndsSeconds: readonly number[];
   readonly callerQualifiedProtocolContext: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualSpikeTimesSeconds",
@@ -38,7 +38,7 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (!input.callerQualifiedProtocolContext.trim())
     simpleError("context", "Actual independently classified windows/protocol.");
   aligned(
@@ -68,7 +68,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     observedConditionalRatePerSecond: count / t,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -99,6 +99,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          actualQualifiedSpikeCount: { type: "number" },
+          actualQualifiedExposureSeconds: { type: "number" },
+          observedConditionalRatePerSecond: { type: "number" },
+        },
+        required: [
+          "actualQualifiedSpikeCount",
+          "actualQualifiedExposureSeconds",
+          "observedConditionalRatePerSecond",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
