@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ address: string; prefix: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "address", kind: "string", label: "address" },
   { id: "prefix", kind: "integer", label: "prefix" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.prefix(i.address, i.prefix, 128);
   H.check(i.prefix < 128);
@@ -35,7 +35,32 @@ export const tool = createSimpleTool({
   description:
     "Return the two immediate IPv6 child prefixes of a normalized non-leaf parent; /128 leaves are rejected rather than wrapped.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          children: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                address: { type: "string" },
+                prefix: { type: "number" },
+              },
+              required: ["address", "prefix"],
+            },
+          },
+        },
+        required: ["children"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
