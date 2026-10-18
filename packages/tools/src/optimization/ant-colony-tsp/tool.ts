@@ -149,6 +149,16 @@ export const antColonyTspTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Best tour",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          distance: { type: "number" },
+          tour: { type: "array", items: { type: "number" } },
+        },
+        required: ["distance", "tour"],
+      },
     },
   ],
   calculate: (input) => {
