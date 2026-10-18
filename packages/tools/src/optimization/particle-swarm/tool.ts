@@ -156,6 +156,17 @@ export const particleSwarmTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Best solution",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          minimum: { type: "number" },
+          objective: { type: "string" },
+          position: { type: "array", items: { type: "number" } },
+        },
+        required: ["minimum", "objective", "position"],
+      },
     },
   ],
   calculate: (input) => {
