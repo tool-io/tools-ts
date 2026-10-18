@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly independentlyMeasuredStimulusCurrentsMa: readonly number[];
   readonly matchedQualifiedHreflexAmplitudesMv: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredStimulusCurrentsMa",
@@ -24,7 +24,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.independentlyMeasuredStimulusCurrentsMa,
     input.matchedQualifiedHreflexAmplitudesMv,
@@ -49,7 +49,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
         input.independentlyMeasuredStimulusCurrentsMa[0]),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -71,6 +71,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedEndpointRecruitmentSlopeMvPerMa: { type: "number" },
+        },
+        required: ["observedEndpointRecruitmentSlopeMvPerMa"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
