@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ tuples: readonly (readonly number[])[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "tuples", kind: "matrix", label: "tuples" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const j = i.tuples.findIndex(
     (v, j) => j > 0 && H.tupleCompare(i.tuples[j - 1], v) > 0,
@@ -23,7 +23,27 @@ export const tool = createSimpleTool({
   description:
     "Check finite numeric tuples in lexicographic order, with shorter matching prefixes before longer tuples and explicit adjacent failure witnesses.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          sorted: { type: "boolean" },
+          violation: {
+            anyOf: [
+              { type: "array", items: { type: "number" } },
+              { type: "null" },
+            ],
+          },
+        },
+        required: ["sorted", "violation"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
