@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly callerVerifiedBytesPerImageByClass: readonly number[];
   readonly callerExplicitReplicaCount: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerImageCountsByClass",
@@ -24,7 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.callerImageCountsByClass,
     input.callerVerifiedBytesPerImageByClass,
@@ -49,7 +49,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       Number(t / 1000000000000n) + Number(t % 1000000000000n) / 1e12,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -77,6 +77,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalTotalStorageBytesText: { type: "string" },
+          conditionalDecimalTerabytes: { type: "number" },
+        },
+        required: [
+          "conditionalTotalStorageBytesText",
+          "conditionalDecimalTerabytes",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
