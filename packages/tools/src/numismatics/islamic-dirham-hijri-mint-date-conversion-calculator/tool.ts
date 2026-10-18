@@ -13,16 +13,13 @@ export type Input = Readonly<{
   hijriMonth: number;
   hijriDay: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "hijriYear", label: "Hijri year", kind: "number" },
   { id: "hijriMonth", label: "Hijri month", kind: "number" },
   { id: "hijriDay", label: "Hijri day", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.hijriYear, "year", 1, 5000);
   bounded(i.hijriMonth, "month", 1, 12);
   const leap = (11 * i.hijriYear + 14) % 30 < 11,
@@ -40,7 +37,7 @@ const compute = (
     historicalMintDateConfirmed: false,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -65,6 +62,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          prolepticGregorianDate: { type: "string" },
+          calendar: { type: "string" },
+          historicalMintDateConfirmed: { type: "boolean" },
+        },
+        required: [
+          "prolepticGregorianDate",
+          "calendar",
+          "historicalMintDateConfirmed",
+        ],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
