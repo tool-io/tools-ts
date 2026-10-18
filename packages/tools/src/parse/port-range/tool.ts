@@ -8,7 +8,7 @@ import {
   bounded,
 } from "../batch51-shared.js";
 export type Input = Readonly<{ readonly actualPortRangeText: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualPortRangeText",
@@ -16,10 +16,7 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const m = /^(\d{1,5})(?:-(\d{1,5}))?$/.exec(input.actualPortRangeText);
   if (!m) simpleError("range", "Exactintegerorascendinghyphenrange.");
   const a = Number(m[1]),
@@ -28,10 +25,7 @@ const compute = (
   bounded(b, "end", a, 65535);
   return { inclusiveStartPort: a, inclusiveEndPort: b, portCount: b - a + 1 };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -52,6 +46,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          inclusiveStartPort: { type: "number" },
+          inclusiveEndPort: { type: "number" },
+          portCount: { type: "number" },
+        },
+        required: ["inclusiveStartPort", "inclusiveEndPort", "portCount"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
