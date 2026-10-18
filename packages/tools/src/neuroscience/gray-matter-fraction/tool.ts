@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly independentlySegmentedGrayMatterMl: number;
   readonly independentlyMatchedIntracranialMl: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlySegmentedGrayMatterMl",
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.independentlySegmentedGrayMatterMl, "numerator");
   positive(input.independentlyMatchedIntracranialMl, "denominator");
   return {
@@ -32,7 +32,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.independentlyMatchedIntracranialMl,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -54,6 +54,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { observedRatio: { type: "number" } },
+        required: ["observedRatio"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
