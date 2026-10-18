@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly callerVerifiedItemWeights: readonly number[];
   readonly itemEvidenceKnownFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerVerifiedSource",
@@ -66,7 +66,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   return callerInstrument(
     input.callerVerifiedSource,
     input.callerVerifiedContext,
@@ -80,7 +80,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     input.itemEvidenceKnownFlags,
   );
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -118,6 +118,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          knownWeightedItemSum: { type: "number" },
+          minimumPossibleWeightedTotal: { type: "number" },
+          maximumPossibleWeightedTotal: { type: "number" },
+          unknownItemIds: { type: "array", items: { type: "string" } },
+        },
+        required: [
+          "knownWeightedItemSum",
+          "minimumPossibleWeightedTotal",
+          "maximumPossibleWeightedTotal",
+          "unknownItemIds",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
