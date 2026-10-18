@@ -5,12 +5,12 @@ export type Input = Readonly<{
   paletteJson: string;
   indexes: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "paletteJson", kind: "string", label: "paletteJson" },
   { id: "indexes", kind: "numberList", label: "indexes" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.colors(i.paletteJson);
   i.indexes.forEach((x) => H.int(x, 0, p.length - 1));
@@ -42,7 +42,29 @@ export const tool = createSimpleTool({
   description:
     "Count explicit palette-index usage including unused entries; rejects unknown indexes rather than guessing nearest colors.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          usage: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: { id: { type: "string" }, count: { type: "number" } },
+              required: ["id", "count"],
+            },
+          },
+        },
+        required: ["usage"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
