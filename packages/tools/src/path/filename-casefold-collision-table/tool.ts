@@ -9,14 +9,11 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ names: readonly string[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "names", label: "Names", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   i.names.forEach((v) => {
     filename(v);
     if (/[^\x00-\x7f]/.test(v))
@@ -30,7 +27,7 @@ const compute = (
     }),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -49,6 +46,26 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          collisions: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                folded: { type: "string" },
+                indexes: { type: "array", items: { type: "number" } },
+              },
+              required: ["folded", "indexes"],
+            },
+          },
+        },
+        required: ["collisions"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
