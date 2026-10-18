@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ values: readonly number[]; k: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "values", kind: "numberList", label: "values" },
   { id: "k", kind: "integer", label: "k" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.k, 0, i.values.length);
   const sorted = [...i.values].sort((a, b) => b - a),
@@ -34,7 +34,24 @@ export const tool = createSimpleTool({
   description:
     "Partition a numeric top-K cutoff into strict selections and all tied candidates, reporting how many ties are needed without arbitrarily breaking them.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          cutoff: { anyOf: [{ type: "number" }, { type: "null" }] },
+          strict: { type: "array", items: { type: "number" } },
+          ties: { type: "array", items: { type: "number" } },
+          neededFromTies: { type: "number" },
+        },
+        required: ["cutoff", "strict", "ties", "neededFromTies"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
