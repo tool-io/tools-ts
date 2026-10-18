@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly callerDistinctJurisdictionIds: readonly string[];
   readonly callerObservedIssueYears: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerDistinctJurisdictionIds",
@@ -24,7 +24,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.callerDistinctJurisdictionIds, "jurisdictions");
   aligned(
     input.callerDistinctJurisdictionIds,
@@ -45,7 +45,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.callerObservedIssueYears.filter(inRange).length,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -73,6 +73,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          in1999To2008ProgramJurisdictionIds: {
+            type: "array",
+            items: { type: "string" },
+          },
+          outsideProgramJurisdictionIds: {
+            type: "array",
+            items: { type: "string" },
+          },
+          distinctObservedProgramJurisdictionCount: { type: "number" },
+        },
+        required: [
+          "in1999To2008ProgramJurisdictionIds",
+          "outsideProgramJurisdictionIds",
+          "distinctObservedProgramJurisdictionCount",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
