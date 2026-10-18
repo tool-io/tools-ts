@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly actualQualifiedTaxonCounts: readonly number[];
   readonly actualWithoutReplacementRarefactionN: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualQualifiedTaxonCounts",
@@ -25,10 +25,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   if (!input.actualQualifiedTaxonCounts.length)
     simpleError("counts", "Actualtaxoncounts.");
   input.actualQualifiedTaxonCounts.forEach((v) =>
@@ -47,10 +44,7 @@ const compute = (
   }
   return { expectedObservedTaxonRichness: s };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -72,6 +66,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { expectedObservedTaxonRichness: { type: "number" } },
+        required: ["expectedObservedTaxonRichness"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
