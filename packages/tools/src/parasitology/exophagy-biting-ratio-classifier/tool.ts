@@ -9,15 +9,12 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ indoorBites: number; outdoorBites: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "indoorBites", label: "Indoor bites", kind: "number" },
   { id: "outdoorBites", label: "Outdoor bites", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   nonnegative(i.indoorBites, "indoor");
   nonnegative(i.outdoorBites, "outdoor");
   positive(i.indoorBites + i.outdoorBites, "total");
@@ -31,7 +28,7 @@ const compute = (
           : "tie",
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -52,6 +49,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          outdoorFraction: { type: "number" },
+          observedPredominance: { type: "string" },
+        },
+        required: ["outdoorFraction", "observedPredominance"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
