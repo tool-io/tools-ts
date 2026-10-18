@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly callerApplicableLower: number;
   readonly callerApplicableUpper: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "observedQuantity", label: "Observed quantity", kind: "number" },
   {
@@ -20,7 +20,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   ordered(input.callerApplicableLower, input.callerApplicableUpper);
   return {
     signedLowerMargin: input.observedQuantity - input.callerApplicableLower,
@@ -30,7 +30,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.observedQuantity <= input.callerApplicableUpper,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -59,6 +59,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedLowerMargin: { type: "number" },
+          signedUpperMargin: { type: "number" },
+          withinCallerInclusiveBand: { type: "boolean" },
+        },
+        required: [
+          "signedLowerMargin",
+          "signedUpperMargin",
+          "withinCallerInclusiveBand",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
