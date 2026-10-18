@@ -6,13 +6,13 @@ export type Input = Readonly<{
   readonly waterDensityKgM3: number;
   readonly gravityMPerS2: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pressureAnomalyHpa", label: "Pressure anomaly hpa", kind: "number" },
   { id: "waterDensityKgM3", label: "Water density kg m3", kind: "number" },
   { id: "gravityMPerS2", label: "Gravity m per s2", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.waterDensityKgM3, "density");
   positive(i.gravityMPerS2, "gravity");
   return {
@@ -20,7 +20,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       (-10000 * i.pressureAnomalyHpa) / (i.waterDensityKgM3 * i.gravityMPerS2),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -39,6 +39,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { seaLevelAnomalyCm: { type: "number" } },
+        required: ["seaLevelAnomalyCm"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
