@@ -7,14 +7,14 @@ export type Input = Readonly<{
   rightStart: string;
   rightEnd: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "leftStart", kind: "string", label: "leftStart" },
   { id: "leftEnd", kind: "string", label: "leftEnd" },
   { id: "rightStart", kind: "string", label: "rightStart" },
   { id: "rightEnd", kind: "string", label: "rightEnd" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const [a, b] = H.ipRange(i.leftStart, i.leftEnd, 32),
     [c, d] = H.ipRange(i.rightStart, i.rightEnd, 32),
@@ -50,7 +50,35 @@ export const tool = createSimpleTool({
   description:
     "Intersect arbitrary inclusive IPv4 ranges exactly and return null for disjoint ranges; all addresses count, not only assignable hosts.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          intersection: {
+            anyOf: [
+              {
+                type: "object",
+                additionalProperties: false,
+                properties: {
+                  start: { type: "string" },
+                  end: { type: "string" },
+                  count: { type: "string" },
+                },
+                required: ["start", "end", "count"],
+              },
+              { type: "null" },
+            ],
+          },
+        },
+        required: ["intersection"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
