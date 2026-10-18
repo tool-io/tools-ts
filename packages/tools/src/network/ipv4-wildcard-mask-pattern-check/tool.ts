@@ -6,13 +6,13 @@ export type Input = Readonly<{
   pattern: string;
   wildcard: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "address", kind: "string", label: "address" },
   { id: "pattern", kind: "string", label: "pattern" },
   { id: "wildcard", kind: "string", label: "wildcard" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const a = H.ip(i.address, 32),
     p = H.ip(i.pattern, 32),
@@ -30,7 +30,19 @@ export const tool = createSimpleTool({
   description:
     "Test arbitrary IPv4 wildcard matching where one mask bits are ignored, including noncontiguous wildcards; no firewall policy or prefix assumption.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { matches: { type: "boolean" } },
+        required: ["matches"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
