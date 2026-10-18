@@ -7,14 +7,14 @@ export type Input = Readonly<{
   right: string;
   rightPrefix: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", kind: "string", label: "left" },
   { id: "leftPrefix", kind: "integer", label: "leftPrefix" },
   { id: "right", kind: "string", label: "right" },
   { id: "rightPrefix", kind: "integer", label: "rightPrefix" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const a = H.prefix(i.left, i.leftPrefix, 32),
     b = H.prefix(i.right, i.rightPrefix, 32),
@@ -41,7 +41,19 @@ export const tool = createSimpleTool({
   description:
     "Return the smallest IPv4 prefix containing two complete normalized prefixes; it may include additional addresses beyond their union.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { address: { type: "string" }, prefix: { type: "number" } },
+        required: ["address", "prefix"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
