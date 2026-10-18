@@ -6,13 +6,13 @@ export type Input = Readonly<{
   aliasesJson: string;
   allowed: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "token", kind: "string", label: "token" },
   { id: "aliasesJson", kind: "string", label: "aliasesJson" },
   { id: "allowed", kind: "stringList", label: "allowed" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.resolveAlias(H.aliases(i.aliasesJson), i.token);
   return H.finish({
@@ -36,7 +36,24 @@ export const tool = createSimpleTool({
   description:
     "Resolve caller-defined enumeration aliases with cycle/path evidence and check the terminal against an explicit allowed bank.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          path: { type: "array", items: { type: "string" } },
+          terminal: { anyOf: [{ type: "string" }, { type: "null" }] },
+          cycle: { type: "boolean" },
+          allowed: { type: "boolean" },
+        },
+        required: ["path", "terminal", "cycle", "allowed"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
