@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly observedUniformShelfLoadNewtonsPerMeter: number;
   readonly callerEngineeredAllowableSimpleSpanMomentNewtonMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedBracketSpacingMeters",
@@ -29,7 +29,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.observedBracketSpacingMeters, "span");
   nonnegative(input.observedUniformShelfLoadNewtonsPerMeter, "load");
   positive(
@@ -46,7 +46,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.callerEngineeredAllowableSimpleSpanMomentNewtonMeters - m,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -74,6 +74,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalSimpleSpanMaximumMomentNewtonMeters: { type: "number" },
+          signedAllowableMomentMarginNewtonMeters: { type: "number" },
+        },
+        required: [
+          "conditionalSimpleSpanMaximumMomentNewtonMeters",
+          "signedAllowableMomentMarginNewtonMeters",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
