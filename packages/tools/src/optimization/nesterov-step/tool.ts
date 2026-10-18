@@ -71,6 +71,17 @@ export const nesterovStepTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Nesterov step",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          lookahead: { type: "number" },
+          parameter: { type: "number" },
+          velocity: { type: "number" },
+        },
+        required: ["lookahead", "parameter", "velocity"],
+      },
     },
   ],
   calculate: (input) => ({
