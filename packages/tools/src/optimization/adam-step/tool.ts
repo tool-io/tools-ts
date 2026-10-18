@@ -123,6 +123,29 @@ export const adamStepTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Adam step",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          correctedFirstMoment: { type: "number" },
+          correctedSecondMoment: { type: "number" },
+          firstMoment: { type: "number" },
+          parameter: { type: "number" },
+          secondMoment: { type: "number" },
+          step: { type: "number" },
+          update: { type: "number" },
+        },
+        required: [
+          "correctedFirstMoment",
+          "correctedSecondMoment",
+          "firstMoment",
+          "parameter",
+          "secondMoment",
+          "step",
+          "update",
+        ],
+      },
     },
   ],
   calculate: (input) => ({
