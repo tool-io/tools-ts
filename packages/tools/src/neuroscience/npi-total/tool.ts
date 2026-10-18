@@ -15,7 +15,7 @@ export type Input = Readonly<{
   readonly independentlyCodedDomainSeverities: readonly number[];
   readonly domainKnownFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyCodedDomainFrequencies",
@@ -29,7 +29,7 @@ const fields = [
   },
   { id: "domainKnownFlags", label: "Domain known flags", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (input.independentlyCodedDomainFrequencies.length !== 12)
     simpleError("domains", "Declared12-domain NPIversion.");
   aligned(
@@ -68,7 +68,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     unknownDomainIndices: unknown,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -98,6 +98,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          knownNpiTotal: { type: "number" },
+          minimumPossibleTotal: { type: "number" },
+          maximumPossibleTotal: { type: "number" },
+          unknownDomainIndices: { type: "array", items: { type: "number" } },
+        },
+        required: [
+          "knownNpiTotal",
+          "minimumPossibleTotal",
+          "maximumPossibleTotal",
+          "unknownDomainIndices",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
