@@ -10,7 +10,7 @@ export type Input = Readonly<{
   addPrefix: string;
   addSuffix: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "name", label: "Name", kind: "string" },
   { id: "removePrefix", label: "Remove prefix", kind: "string" },
@@ -18,10 +18,7 @@ const fields = [
   { id: "addPrefix", label: "Add prefix", kind: "string" },
   { id: "addSuffix", label: "Add suffix", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   filename(i.name);
   let name = i.name;
   if (i.removePrefix && name.startsWith(i.removePrefix))
@@ -32,7 +29,7 @@ const compute = (
   filename(name);
   return { name };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -57,6 +54,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { name: { type: "string" } },
+        required: ["name"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
