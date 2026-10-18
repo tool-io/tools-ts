@@ -7,14 +7,14 @@ export type Input = Readonly<{
   right: string;
   rightPrefix: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", kind: "string", label: "left" },
   { id: "leftPrefix", kind: "integer", label: "leftPrefix" },
   { id: "right", kind: "string", label: "right" },
   { id: "rightPrefix", kind: "integer", label: "rightPrefix" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({
     relation: H.ipRelation(
@@ -38,7 +38,19 @@ export const tool = createSimpleTool({
   description:
     "Classify normalized IPv4 CIDR set relation as equal, contains, contained-by or disjoint; host bits in supplied addresses are masked.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { relation: { type: "string" } },
+        required: ["relation"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
