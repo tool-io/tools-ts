@@ -5,12 +5,12 @@ export type Input = Readonly<{
   indexes: readonly number[];
   mapping: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "indexes", kind: "numberList", label: "indexes" },
   { id: "mapping", kind: "numberList", label: "mapping" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   i.mapping.forEach((x) => H.int(x, 0, 127));
   i.indexes.forEach((x) => H.int(x, 0, i.mapping.length - 1));
@@ -26,7 +26,19 @@ export const tool = createSimpleTool({
   description:
     "Remap indexed palette data through an explicit old-to-new index table; many-to-one mappings are allowed and destinations are caller-defined.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { indexes: { type: "array", items: { type: "number" } } },
+        required: ["indexes"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
