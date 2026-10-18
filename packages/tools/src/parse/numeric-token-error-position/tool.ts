@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ token: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "token", kind: "string", label: "token" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const chars = i.token.split("");
   let position: number | null = null;
@@ -43,7 +43,29 @@ export const tool = createSimpleTool({
   description:
     "Find the first illegal UTF-16 character in a strict numeric token and separately flag grammar errors made only of allowed characters; does not claim a full parser failure position.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          valid: { type: "boolean" },
+          invalidCharacterPosition: {
+            anyOf: [{ type: "number" }, { type: "null" }],
+          },
+          grammarErrorWithoutIllegalCharacter: { type: "boolean" },
+        },
+        required: [
+          "valid",
+          "invalidCharacterPosition",
+          "grammarErrorWithoutIllegalCharacter",
+        ],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
