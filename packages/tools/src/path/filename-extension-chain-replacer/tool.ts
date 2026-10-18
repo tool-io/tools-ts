@@ -9,15 +9,12 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ name: string; extensions: readonly string[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "name", label: "Name", kind: "string" },
   { id: "extensions", label: "Extensions", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const p = extensionParts(i.name);
   if (i.extensions.some((v) => !v || /[.\/\0]/.test(v)))
     simpleError("extensions", "Nonempty dot/slash-free extension segments.");
@@ -25,7 +22,7 @@ const compute = (
     name: p.stem + (i.extensions.length ? "." + i.extensions.join(".") : ""),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -44,6 +41,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { name: { type: "string" } },
+        required: ["name"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
