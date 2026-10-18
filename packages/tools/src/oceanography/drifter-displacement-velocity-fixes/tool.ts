@@ -11,13 +11,13 @@ export type Input = Readonly<{
   readonly northFixesM: readonly number[];
   readonly timesSeconds: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "eastFixesM", label: "East fixes m", kind: "numberList" },
   { id: "northFixesM", label: "North fixes m", kind: "numberList" },
   { id: "timesSeconds", label: "Times seconds", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   aligned(i.eastFixesM, i.northFixesM, "fixes");
   aligned(i.eastFixesM, i.timesSeconds, "fixes");
   strictlyIncreasing(i.timesSeconds, "time", 2);
@@ -31,7 +31,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -56,6 +56,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          eastVelocitiesMPerS: { type: "array", items: { type: "number" } },
+          northVelocitiesMPerS: { type: "array", items: { type: "number" } },
+        },
+        required: ["eastVelocitiesMPerS", "northVelocitiesMPerS"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
