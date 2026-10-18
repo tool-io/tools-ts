@@ -10,15 +10,12 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ left: string; right: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", label: "Left", kind: "string" },
   { id: "right", label: "Right", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!i.left.startsWith("/") || !i.right.startsWith("/"))
     simpleError("path", "Absolute POSIX paths.");
   const a = collapse(i.left).components,
@@ -27,7 +24,7 @@ const compute = (
   while (j < a.length && j < b.length && a[j] === b[j]) j++;
   return { ancestor: "/" + a.slice(0, j).join("/"), sharedComponentCount: j };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -46,6 +43,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          ancestor: { type: "string" },
+          sharedComponentCount: { type: "number" },
+        },
+        required: ["ancestor", "sharedComponentCount"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
