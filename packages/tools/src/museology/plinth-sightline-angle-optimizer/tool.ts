@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly observedHorizontalViewingDistanceMeters: number;
   readonly callerPreferredSignedViewingAngleDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerCandidatePlinthHeightsMeters",
@@ -42,7 +42,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (!input.callerCandidatePlinthHeightsMeters.length)
     simpleError("candidates", "Actual nonempty declared candidates.");
   input.callerCandidatePlinthHeightsMeters.forEach((v) =>
@@ -79,7 +79,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     candidateSignedViewingAnglesDegrees: angles,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -111,6 +111,25 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          bestCallerCandidateHeightsMeters: {
+            type: "array",
+            items: { type: "number" },
+          },
+          candidateSignedViewingAnglesDegrees: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: [
+          "bestCallerCandidateHeightsMeters",
+          "candidateSignedViewingAnglesDegrees",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
