@@ -6,13 +6,13 @@ export type Input = Readonly<{
   right: string;
   fractionalBits: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", kind: "string", label: "left" },
   { id: "right", kind: "string", label: "right" },
   { id: "fractionalBits", kind: "integer", label: "fractionalBits" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.fractionalBits, 0, 128);
   const a = H.bigint(i.left),
@@ -37,7 +37,23 @@ export const tool = createSimpleTool({
   description:
     "Exact raw fixed-point division and rescaling, truncating toward zero while retaining signed remainder evidence.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          integer: { type: "string" },
+          remainder: { type: "string" },
+          divisor: { type: "string" },
+        },
+        required: ["integer", "remainder", "divisor"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
