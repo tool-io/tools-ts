@@ -7,14 +7,14 @@ export type Input = Readonly<{
   bits: number;
   signed: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", kind: "string", label: "left" },
   { id: "right", kind: "string", label: "right" },
   { id: "bits", kind: "integer", label: "bits" },
   { id: "signed", kind: "boolean", label: "signed" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.bits, 1, 128);
   const sum = H.bigint(i.left) + H.bigint(i.right),
@@ -32,7 +32,19 @@ export const tool = createSimpleTool({
   description:
     "Add exact raw fixed-point integers and flag explicit signed or unsigned word overflow; does not wrap or saturate.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { sum: { type: "string" }, overflow: { type: "boolean" } },
+        required: ["sum", "overflow"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
