@@ -7,14 +7,14 @@ export type Input = Readonly<{
   parentPrefix: number;
   childPrefix: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "address", kind: "string", label: "address" },
   { id: "network", kind: "string", label: "network" },
   { id: "parentPrefix", kind: "integer", label: "parentPrefix" },
   { id: "childPrefix", kind: "integer", label: "childPrefix" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.prefix(i.network, i.parentPrefix, 32);
   H.int(i.childPrefix, i.parentPrefix, 32);
@@ -42,7 +42,23 @@ export const tool = createSimpleTool({
   description:
     "Locate a member IPv4 address\u2019s normalized child-prefix index inside an explicit parent at a requested subdivision width.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          index: { type: "string" },
+          address: { type: "string" },
+          prefix: { type: "number" },
+        },
+        required: ["index", "address", "prefix"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
