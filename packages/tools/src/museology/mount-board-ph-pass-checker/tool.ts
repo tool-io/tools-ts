@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly callerApplicableMinimumPh: number;
   readonly callerApplicableMaximumPh: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredBoardPh",
@@ -24,7 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     [
       input.independentlyMeasuredBoardPh,
@@ -40,7 +40,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.independentlyMeasuredBoardPh <= input.callerApplicableMaximumPh,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -63,6 +63,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { withinCallerPhScreen: { type: "boolean" } },
+        required: ["withinCallerPhScreen"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
