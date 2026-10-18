@@ -4,7 +4,7 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, positive } from "../batch53-shared.js";
 
 export type Input = Readonly<{ observedDiameterMicrometres: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedDiameterMicrometres",
@@ -12,10 +12,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   positive(i.observedDiameterMicrometres, "diameter");
   return {
     recordedDiameterMicrometres: i.observedDiameterMicrometres,
@@ -24,7 +21,7 @@ const compute = (
       "E. histolytica and E. dispar cyst morphology and size overlap; no valid size-only discriminator.",
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -51,6 +48,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          recordedDiameterMicrometres: { type: "number" },
+          sizeOnlySpeciesResolution: { type: "string" },
+          reason: { type: "string" },
+        },
+        required: [
+          "recordedDiameterMicrometres",
+          "sizeOnlySpeciesResolution",
+          "reason",
+        ],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
