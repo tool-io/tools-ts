@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly independentlyEstablishedSilentPeriodStartMs: number;
   readonly independentlyEstablishedSilentPeriodEndMs: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyEstablishedSilentPeriodStartMs",
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.independentlyEstablishedSilentPeriodStartMs, "start");
   if (
     input.independentlyEstablishedSilentPeriodEndMs <
@@ -36,7 +36,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.independentlyEstablishedSilentPeriodStartMs,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -58,6 +58,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedCorticalSilentPeriodDurationMs: { type: "number" },
+        },
+        required: ["observedCorticalSilentPeriodDurationMs"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
