@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly independentlyMeasuredFixtureLoadNewtons: readonly number[];
   readonly independentlyEngineeredAllowableFixtureLoadsNewtons: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredFixtureLoadNewtons",
@@ -24,7 +24,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.independentlyMeasuredFixtureLoadNewtons,
     input.independentlyEngineeredAllowableFixtureLoadsNewtons,
@@ -49,7 +49,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -76,6 +76,25 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedFixtureCapacityMarginsNewtons: {
+            type: "array",
+            items: { type: "number" },
+          },
+          fixtureExceedsCallerRatingFlags: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: [
+          "signedFixtureCapacityMarginsNewtons",
+          "fixtureExceedsCallerRatingFlags",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
