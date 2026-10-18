@@ -5,12 +5,12 @@ export type Input = Readonly<{
   left: readonly number[];
   right: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", kind: "numberList", label: "left" },
   { id: "right", kind: "numberList", label: "right" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.left.length === i.right.length);
   const concordant: number[][] = [],
@@ -43,7 +43,32 @@ export const tool = createSimpleTool({
   description:
     "Classify numeric rank-order pair agreement and disagreement while retaining all pairs tied in either observation; not a normalized correlation coefficient.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          concordant: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          discordant: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          tied: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["concordant", "discordant", "tied"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
