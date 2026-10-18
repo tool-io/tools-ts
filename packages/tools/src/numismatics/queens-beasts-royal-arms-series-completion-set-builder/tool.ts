@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly callerVerifiedTargetTypeIds: readonly string[];
   readonly callerOwnedTypeIds: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerVerifiedTargetTypeIds",
@@ -23,7 +23,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.callerVerifiedTargetTypeIds, "targettypes");
   if (input.callerOwnedTypeIds.some((v) => !v.trim()))
     simpleError("owned", "Explicit nonempty owned-type IDs.");
@@ -40,7 +40,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -68,6 +68,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          missingTargetTypeIds: { type: "array", items: { type: "string" } },
+          distinctOwnedTargetCount: { type: "number" },
+          ownedOutsideTargetIds: { type: "array", items: { type: "string" } },
+        },
+        required: [
+          "missingTargetTypeIds",
+          "distinctOwnedTargetCount",
+          "ownedOutsideTargetIds",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
