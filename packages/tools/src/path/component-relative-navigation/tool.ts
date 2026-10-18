@@ -10,15 +10,12 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ fromDirectory: string; toPath: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "fromDirectory", label: "From directory", kind: "string" },
   { id: "toPath", label: "To path", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!i.fromDirectory.startsWith("/") || !i.toPath.startsWith("/"))
     simpleError("path", "Absolute POSIX paths.");
   const a = collapse(i.fromDirectory).components,
@@ -28,7 +25,7 @@ const compute = (
   const c = [...Array(a.length - j).fill(".."), ...b.slice(j)];
   return { relativePath: c.length ? c.join("/") : "." };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -47,6 +44,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { relativePath: { type: "string" } },
+        required: ["relativePath"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
