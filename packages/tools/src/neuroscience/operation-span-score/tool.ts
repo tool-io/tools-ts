@@ -18,7 +18,7 @@ export type Input = Readonly<{
   actualProcessingProblemCounts: readonly number[];
   setEvidenceKnownFlags: readonly number[];
 }>;
-export type Output = Readonly<{ result: Readonly<Record<string, unknown>> }>;
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerTrialSetIds",
@@ -46,7 +46,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   unique(input.callerTrialSetIds, "sets");
   for (const v of [
@@ -148,6 +148,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified actual recall scores and processing accuracy",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          knownPartialCreditRecallScore: { type: "number" },
+          knownAbsoluteCreditRecallScore: { type: "number" },
+          maximumPossiblePartialCreditScore: { type: "number" },
+          maximumPossibleAbsoluteCreditScore: { type: "number" },
+          knownProcessingAccuracyPercent: { type: "number" },
+          unknownSetIds: { type: "array", items: { type: "string" } },
+        },
+        required: [
+          "knownPartialCreditRecallScore",
+          "knownAbsoluteCreditRecallScore",
+          "maximumPossiblePartialCreditScore",
+          "maximumPossibleAbsoluteCreditScore",
+          "knownProcessingAccuracyPercent",
+          "unknownSetIds",
+        ],
+      },
     },
   ],
   calculate: (input) => calculate(input as unknown as Input),
