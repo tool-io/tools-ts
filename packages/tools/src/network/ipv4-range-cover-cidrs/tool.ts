@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ start: string; end: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "start", kind: "string", label: "start" },
   { id: "end", kind: "string", label: "end" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const [a, b] = H.ipRange(i.start, i.end, 32);
   return H.finish({ cidrs: H.cidrCover(a, b, 32) });
@@ -31,7 +31,32 @@ export const tool = createSimpleTool({
   description:
     "Cover an arbitrary inclusive IPv4 range by a minimal disjoint aligned CIDR sequence; no network/broadcast address subtraction.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          cidrs: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                address: { type: "string" },
+                prefix: { type: "number" },
+              },
+              required: ["address", "prefix"],
+            },
+          },
+        },
+        required: ["cidrs"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
