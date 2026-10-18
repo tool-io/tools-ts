@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly observedPurchasingVisitorCount: number;
   readonly observedNetShopRevenueMinor: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedVisitorCount",
@@ -24,7 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.observedVisitorCount, "visitors", 1, 1000000000);
   bounded(
     input.observedPurchasingVisitorCount,
@@ -42,7 +42,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.observedNetShopRevenueMinor / input.observedPurchasingVisitorCount,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -71,6 +71,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedShopConversionPercent: { type: "number" },
+          observedRevenueMinorPerVisitor: { type: "number" },
+          observedRevenueMinorPerPurchasingVisitor: { type: "number" },
+        },
+        required: [
+          "observedShopConversionPercent",
+          "observedRevenueMinorPerVisitor",
+          "observedRevenueMinorPerPurchasingVisitor",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
