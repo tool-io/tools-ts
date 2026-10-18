@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly independentlyAnnotatedSentenceCount: number;
   readonly independentlyAnnotatedSyllableCount: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyAnnotatedWordCount",
@@ -24,7 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.independentlyAnnotatedWordCount, "words", 1, 1000000);
   bounded(
     input.independentlyAnnotatedSentenceCount,
@@ -47,7 +47,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       15.59,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -70,6 +70,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalFleschKincaidGrade: { type: "number" } },
+        required: ["conditionalFleschKincaidGrade"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
