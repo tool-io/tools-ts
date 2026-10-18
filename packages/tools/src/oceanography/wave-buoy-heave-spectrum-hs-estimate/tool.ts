@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly frequencyBinWidthsHz: readonly number[];
   readonly heaveDensityM2PerHz: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "frequencyBinWidthsHz",
@@ -25,7 +25,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   aligned(i.frequencyBinWidthsHz, i.heaveDensityM2PerHz, "bins");
   i.frequencyBinWidthsHz.forEach((v) => positive(v, "width"));
   i.heaveDensityM2PerHz.forEach((v) => nonnegative(v, "density"));
@@ -34,7 +34,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
   );
   return { zerothMomentM2: m0, spectralSignificantHeightM: 4 * Math.sqrt(m0) };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -53,6 +53,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          zerothMomentM2: { type: "number" },
+          spectralSignificantHeightM: { type: "number" },
+        },
+        required: ["zerothMomentM2", "spectralSignificantHeightM"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
