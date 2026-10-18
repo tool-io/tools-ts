@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ steps: readonly number[]; gridSize: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "steps", kind: "numberList", label: "steps" },
   { id: "gridSize", kind: "integer", label: "gridSize" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.gridSize, 0, 128);
   i.steps.forEach((x) => H.int(x, 0, i.gridSize - 1));
@@ -28,7 +28,19 @@ export const tool = createSimpleTool({
   description:
     "Count rhythm events at every bounded grid step including unused steps and collisions.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { counts: { type: "array", items: { type: "number" } } },
+        required: ["counts"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
