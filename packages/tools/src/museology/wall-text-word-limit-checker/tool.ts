@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly actualWallText: string;
   readonly callerEditorialMaximumWhitespaceWords: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualWallText", label: "Actual wall text", kind: "string" },
   {
@@ -14,7 +14,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.callerEditorialMaximumWhitespaceWords, "limit", 0, 1000000);
   const n = input.actualWallText.trim()
     ? input.actualWallText.trim().split(/\s+/u).length
@@ -25,7 +25,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       n > input.callerEditorialMaximumWhitespaceWords,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -52,6 +52,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedWhitespaceWordCount: { type: "number" },
+          exceedsCallerEditorialLimit: { type: "boolean" },
+        },
+        required: [
+          "observedWhitespaceWordCount",
+          "exceedsCallerEditorialLimit",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
