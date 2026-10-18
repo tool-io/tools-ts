@@ -103,6 +103,17 @@ export const feedforwardTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Layer output",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          activation: { type: "string" },
+          output: { type: "array", items: { type: "number" } },
+          preActivation: { type: "array", items: { type: "number" } },
+        },
+        required: ["activation", "output", "preActivation"],
+      },
     },
   ],
   calculate: (input) => {
