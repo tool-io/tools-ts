@@ -19,7 +19,7 @@ export type Input = Readonly<{
   readonly callerVerifiedReverseFlags: readonly number[];
   readonly itemKnownFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerVerifiedSource",
@@ -53,7 +53,7 @@ const fields = [
   },
   { id: "itemKnownFlags", label: "Item known flags", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   ownReference(
     input.callerVerifiedSource,
     input.callerVerifiedContext,
@@ -94,7 +94,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     unknownItemIndices: input.itemKnownFlags.flatMap((v, i) => (v ? [] : [i])),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -128,6 +128,24 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          knownFactorMeans: { type: "array", items: { type: "number" } },
+          knownFactorMeanAvailableFlags: {
+            type: "array",
+            items: { type: "number" },
+          },
+          unknownItemIndices: { type: "array", items: { type: "number" } },
+        },
+        required: [
+          "knownFactorMeans",
+          "knownFactorMeanAvailableFlags",
+          "unknownItemIndices",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
