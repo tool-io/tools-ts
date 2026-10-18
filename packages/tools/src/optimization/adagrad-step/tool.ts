@@ -85,6 +85,17 @@ export const adagradStepTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Adagrad step",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          accumulatedSquaredGradient: { type: "number" },
+          parameter: { type: "number" },
+          update: { type: "number" },
+        },
+        required: ["accumulatedSquaredGradient", "parameter", "update"],
+      },
     },
   ],
   calculate: (input) => ({
