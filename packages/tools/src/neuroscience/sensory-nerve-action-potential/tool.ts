@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly independentlyMeasuredBaselineCorrectedAmplitudesMv: readonly number[];
   readonly callerVerifiedBaselineMv: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredBaselineCorrectedAmplitudesMv",
@@ -18,7 +18,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (!input.independentlyMeasuredBaselineCorrectedAmplitudesMv.length)
     simpleError("samples", "Nonempty independently identified component.");
   const lo = Math.min(
@@ -39,7 +39,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     observedBaselineToPositivePeakMv: hi - input.callerVerifiedBaselineMv,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -67,6 +67,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedPeakToPeakAmplitudeMv: { type: "number" },
+          observedBaselineToNegativePeakMv: { type: "number" },
+          observedBaselineToPositivePeakMv: { type: "number" },
+        },
+        required: [
+          "observedPeakToPeakAmplitudeMv",
+          "observedBaselineToNegativePeakMv",
+          "observedBaselineToPositivePeakMv",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
