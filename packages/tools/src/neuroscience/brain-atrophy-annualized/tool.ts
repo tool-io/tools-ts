@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly independentlyMeasuredFollowupBrainVolumeMl: number;
   readonly independentlyMeasuredElapsedYears: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredBaselineBrainVolumeMl",
@@ -29,7 +29,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.independentlyMeasuredBaselineBrainVolumeMl, "baseline");
   nonnegative(input.independentlyMeasuredFollowupBrainVolumeMl, "followup");
   positive(input.independentlyMeasuredElapsedYears, "years");
@@ -42,7 +42,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.independentlyMeasuredElapsedYears,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -65,6 +65,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedBaselineRelativeLossPercentPerYear: { type: "number" },
+        },
+        required: ["signedBaselineRelativeLossPercentPerYear"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
