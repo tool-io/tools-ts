@@ -101,6 +101,23 @@ export const adaDeltaStepTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "AdaDelta step",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          averageSquaredGradient: { type: "number" },
+          averageSquaredUpdate: { type: "number" },
+          parameter: { type: "number" },
+          update: { type: "number" },
+        },
+        required: [
+          "averageSquaredGradient",
+          "averageSquaredUpdate",
+          "parameter",
+          "update",
+        ],
+      },
     },
   ],
   calculate: (input) => ({
