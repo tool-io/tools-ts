@@ -6,13 +6,13 @@ export type Input = Readonly<{
   prefix: number;
   offset: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "address", kind: "string", label: "address" },
   { id: "prefix", kind: "integer", label: "prefix" },
   { id: "offset", kind: "string", label: "offset" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.prefix(i.address, i.prefix, 32),
     offset = H.bigint(i.offset);
@@ -29,7 +29,19 @@ export const tool = createSimpleTool({
   description:
     "Locate an exact zero-based offset within a normalized IPv4 prefix, including network and broadcast addresses; no assignability promise.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { address: { type: "string" } },
+        required: ["address"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
