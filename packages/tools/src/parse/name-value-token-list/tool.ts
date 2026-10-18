@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ text: string; delimiter: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", kind: "string", label: "text" },
   { id: "delimiter", kind: "string", label: "delimiter" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.delimiter.length === 1 && i.delimiter !== "=");
   const tokens = H.splitEscaped(i.text, i.delimiter);
@@ -36,7 +36,24 @@ export const tool = createSimpleTool({
   description:
     "Parse escaped-delimited name=value tokens at the first equals sign; preserves duplicates, empty names and untrimmed values.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          pairs: {
+            type: "array",
+            items: { type: "array", items: { type: "string" } },
+          },
+        },
+        required: ["pairs"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
