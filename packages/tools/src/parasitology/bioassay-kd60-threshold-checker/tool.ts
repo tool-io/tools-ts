@@ -13,7 +13,7 @@ export type Input = Readonly<{
   exposedCount: number;
   callerMinimumFraction: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "knockedDownAt60Minutes",
@@ -27,10 +27,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   fraction(i.callerMinimumFraction, "threshold");
   const fractionAt60 = countFraction(i.knockedDownAt60Minutes, i.exposedCount);
   return {
@@ -39,7 +36,7 @@ const compute = (
     resistanceConfirmed: false,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -69,6 +66,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          fractionAt60: { type: "number" },
+          atOrAboveCallerThreshold: { type: "boolean" },
+          resistanceConfirmed: { type: "boolean" },
+        },
+        required: [
+          "fractionAt60",
+          "atOrAboveCallerThreshold",
+          "resistanceConfirmed",
+        ],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
