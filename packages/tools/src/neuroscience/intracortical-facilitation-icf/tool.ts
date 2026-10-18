@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly independentlyMatchedConditionedMepAmplitudesMv: readonly number[];
   readonly independentlyMatchedUnconditionedMepAmplitudesMv: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMatchedConditionedMepAmplitudesMv",
@@ -25,7 +25,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.independentlyMatchedConditionedMepAmplitudesMv,
     input.independentlyMatchedUnconditionedMepAmplitudesMv,
@@ -46,7 +46,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     signedSuppressionPercent: 100 - r,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -73,6 +73,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedPooledConditionedPercentOfUnconditioned: { type: "number" },
+          signedSuppressionPercent: { type: "number" },
+        },
+        required: [
+          "observedPooledConditionedPercentOfUnconditioned",
+          "signedSuppressionPercent",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
