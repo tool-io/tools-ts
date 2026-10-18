@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ prefixesJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "prefixesJson", kind: "string", label: "prefixesJson" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.records(i.prefixesJson)
       .map((v) => H.prefix(H.str(v.address), H.num(v.prefix), 32))
@@ -34,7 +34,32 @@ export const tool = createSimpleTool({
   description:
     "Collapse the exact union of explicit IPv4 prefixes to minimal aligned CIDRs by merging overlaps/adjacency first; no route preference or policy interpretation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          cidrs: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                address: { type: "string" },
+                prefix: { type: "number" },
+              },
+              required: ["address", "prefix"],
+            },
+          },
+        },
+        required: ["cidrs"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
