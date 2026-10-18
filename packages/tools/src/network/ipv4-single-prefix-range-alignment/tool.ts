@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ start: string; end: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "start", kind: "string", label: "start" },
   { id: "end", kind: "string", label: "end" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const [a, b] = H.ipRange(i.start, i.end, 32),
     count = b - a + 1n;
@@ -28,7 +28,22 @@ export const tool = createSimpleTool({
   description:
     "Audit whether an arbitrary inclusive IPv4 range is exactly one aligned CIDR block; power-of-two length alone is insufficient.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          singlePrefix: { type: "boolean" },
+          prefix: { anyOf: [{ type: "number" }, { type: "null" }] },
+        },
+        required: ["singlePrefix", "prefix"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
