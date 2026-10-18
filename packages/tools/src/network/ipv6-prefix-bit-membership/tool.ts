@@ -6,13 +6,13 @@ export type Input = Readonly<{
   network: string;
   prefix: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "address", kind: "string", label: "address" },
   { id: "network", kind: "string", label: "network" },
   { id: "prefix", kind: "integer", label: "prefix" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.prefix(i.network, i.prefix, 128),
     a = H.ip(i.address, 128);
@@ -28,7 +28,19 @@ export const tool = createSimpleTool({
   description:
     "Check IPv6 address membership in an explicitly normalized prefix with exact bit arithmetic; no routing or reachability claim.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { member: { type: "boolean" } },
+        required: ["member"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
