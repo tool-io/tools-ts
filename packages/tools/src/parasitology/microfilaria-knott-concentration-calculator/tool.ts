@@ -14,7 +14,7 @@ export type Input = Readonly<{
   originalBloodVolumeMl: number;
   aliquotFraction: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "microfilariaeCounted",
@@ -28,10 +28,7 @@ const fields = [
   },
   { id: "aliquotFraction", label: "Aliquot fraction", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.microfilariaeCounted, "count", 0, 1e9);
   positive(i.originalBloodVolumeMl, "volume");
   fraction(i.aliquotFraction, "fraction");
@@ -41,7 +38,7 @@ const compute = (
       i.microfilariaeCounted / (i.originalBloodVolumeMl * i.aliquotFraction),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -64,6 +61,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { microfilariaePerMl: { type: "number" } },
+        required: ["microfilariaePerMl"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
