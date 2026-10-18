@@ -14,7 +14,7 @@ export type Input = Readonly<{
   actualPureBlockMatchedTrialTimesMs: readonly number[];
   pureTrialValidCorrectFlags: readonly number[];
 }>;
-export type Output = Readonly<{ result: Readonly<Record<string, unknown>> }>;
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualMixedBlockRepeatTrialTimesMs",
@@ -37,7 +37,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   aligned(
     input.actualMixedBlockRepeatTrialTimesMs,
@@ -110,6 +110,35 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual qualified signed latency discrepancy",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedMixedRepeatMeanMs: { type: "number" },
+          observedPureTaskMeanMs: { type: "number" },
+          signedObservedMixingCostMs: { type: "number" },
+          includedMixedRepeatTrialCount: { type: "number" },
+          includedPureTrialCount: { type: "number" },
+          excludedMixedRepeatTrialIndices: {
+            type: "array",
+            items: { type: "number" },
+          },
+          excludedPureTrialIndices: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: [
+          "observedMixedRepeatMeanMs",
+          "observedPureTaskMeanMs",
+          "signedObservedMixingCostMs",
+          "includedMixedRepeatTrialCount",
+          "includedPureTrialCount",
+          "excludedMixedRepeatTrialIndices",
+          "excludedPureTrialIndices",
+        ],
+      },
     },
   ],
   calculate: (input) => calculate(input as unknown as Input),
