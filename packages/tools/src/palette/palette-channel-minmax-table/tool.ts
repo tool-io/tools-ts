@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ paletteJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "paletteJson", kind: "string", label: "paletteJson" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.colors(i.paletteJson);
   return H.finish({
@@ -39,7 +39,33 @@ export const tool = createSimpleTool({
   description:
     "Report observed per-channel RGBA byte extrema, using null for an empty palette rather than invented bounds.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          channels: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                channel: { type: "string" },
+                minimum: { anyOf: [{ type: "number" }, { type: "null" }] },
+                maximum: { anyOf: [{ type: "number" }, { type: "null" }] },
+              },
+              required: ["channel", "minimum", "maximum"],
+            },
+          },
+        },
+        required: ["channels"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
