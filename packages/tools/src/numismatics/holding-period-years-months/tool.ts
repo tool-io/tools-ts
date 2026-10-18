@@ -10,12 +10,12 @@ export type Input = Readonly<{
   readonly acquisitionDate: string;
   readonly dispositionDate: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "acquisitionDate", label: "Acquisition date", kind: "string" },
   { id: "dispositionDate", label: "Disposition date", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const elapsed = daysBetween(input.acquisitionDate, input.dispositionDate);
   if (elapsed < 0)
     simpleError("dates", "Disposition must not precede acquisition.");
@@ -32,7 +32,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     residualMonths: months % 12,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -58,6 +58,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          elapsedCalendarDays: { type: "number" },
+          completedCalendarMonths: { type: "number" },
+          wholeYears: { type: "number" },
+          residualMonths: { type: "number" },
+        },
+        required: [
+          "elapsedCalendarDays",
+          "completedCalendarMonths",
+          "wholeYears",
+          "residualMonths",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
