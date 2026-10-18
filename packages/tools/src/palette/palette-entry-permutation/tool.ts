@@ -5,12 +5,12 @@ export type Input = Readonly<{
   paletteJson: string;
   permutation: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "paletteJson", kind: "string", label: "paletteJson" },
   { id: "permutation", kind: "numberList", label: "permutation" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.colors(i.paletteJson);
   H.permutation(i.permutation);
@@ -42,7 +42,34 @@ export const tool = createSimpleTool({
   description:
     "Permute palette entries using output-to-input ordering and report the inverse remapping for existing indexed pixels.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          palette: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                id: { type: "string" },
+                name: { type: "string" },
+                rgba: { type: "array", items: { type: "number" } },
+              },
+              required: ["id", "name", "rgba"],
+            },
+          },
+          oldToNew: { type: "array", items: { type: "number" } },
+        },
+        required: ["palette", "oldToNew"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
