@@ -80,6 +80,17 @@ export const bfgsStepTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "BFGS step",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          direction: { type: "number" },
+          inverseHessian: { type: "number" },
+          parameter: { type: "number" },
+        },
+        required: ["direction", "inverseHessian", "parameter"],
+      },
     },
   ],
   calculate: (input) => {
