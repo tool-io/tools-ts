@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualDeliveredPulseCountsByIndependentlyQualifiedBurst: readonly number[];
   readonly callerPrescribedExpectedPulseCountsByBurst: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualDeliveredPulseCountsByIndependentlyQualifiedBurst",
@@ -24,7 +24,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.actualDeliveredPulseCountsByIndependentlyQualifiedBurst,
     input.callerPrescribedExpectedPulseCountsByBurst,
@@ -48,7 +48,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -76,6 +76,24 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedDeliveredBurstCount: { type: "number" },
+          observedDeliveredPulseCount: { type: "number" },
+          signedPulseDiscrepanciesByBurst: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: [
+          "observedDeliveredBurstCount",
+          "observedDeliveredPulseCount",
+          "signedPulseDiscrepanciesByBurst",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
