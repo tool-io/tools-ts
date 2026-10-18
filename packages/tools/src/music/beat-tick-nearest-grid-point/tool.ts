@@ -2,13 +2,13 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ tick: number; grid: number; origin: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "tick", kind: "integer", label: "tick" },
   { id: "grid", kind: "integer", label: "grid" },
   { id: "origin", kind: "integer", label: "origin" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.tick, -1e9, 1e9);
   H.int(i.origin, -1e9, 1e9);
@@ -33,7 +33,23 @@ export const tool = createSimpleTool({
   description:
     "Find nearest integer tick grid point with midpoint ties forward and expose signed quantization error.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          nearest: { type: "number" },
+          error: { type: "number" },
+          tie: { type: "boolean" },
+        },
+        required: ["nearest", "error", "tie"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
