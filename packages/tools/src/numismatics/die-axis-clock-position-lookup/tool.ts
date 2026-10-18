@@ -2,15 +2,15 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, bounded } from "../batch45-shared.js";
 export type Input = Readonly<{ readonly clockPosition: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "clockPosition", label: "Clock position", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.clockPosition, "clock", 1, 12);
   return { axisDegreesClockwise: (input.clockPosition % 12) * 30 };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -29,6 +29,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { axisDegreesClockwise: { type: "number" } },
+        required: ["axisDegreesClockwise"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
