@@ -6,13 +6,13 @@ export type Input = Readonly<{
   end: string;
   prefixesJson: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "start", kind: "string", label: "start" },
   { id: "end", kind: "string", label: "end" },
   { id: "prefixesJson", kind: "string", label: "prefixesJson" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const [start, end] = H.ipRange(i.start, i.end, 32),
     r = H.records(i.prefixesJson)
@@ -55,7 +55,32 @@ export const tool = createSimpleTool({
   description:
     "Find arbitrary inclusive IPv4 domain ranges not covered by an explicit prefix set, preserving uncovered endpoints exactly.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          ranges: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                start: { type: "string" },
+                end: { type: "string" },
+              },
+              required: ["start", "end"],
+            },
+          },
+        },
+        required: ["ranges"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
