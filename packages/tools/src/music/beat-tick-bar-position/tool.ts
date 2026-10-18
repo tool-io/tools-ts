@@ -6,13 +6,13 @@ export type Input = Readonly<{
   ticksPerBeat: number;
   beatsPerBar: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "tick", kind: "integer", label: "tick" },
   { id: "ticksPerBeat", kind: "integer", label: "ticksPerBeat" },
   { id: "beatsPerBar", kind: "integer", label: "beatsPerBar" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.tick);
   H.int(i.ticksPerBeat, 1);
@@ -34,7 +34,23 @@ export const tool = createSimpleTool({
   description:
     "Split nonnegative linear musical ticks into zero-based bar, beat and residual tick using explicit grid dimensions.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          bar: { type: "number" },
+          beat: { type: "number" },
+          tick: { type: "number" },
+        },
+        required: ["bar", "beat", "tick"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
