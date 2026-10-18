@@ -92,6 +92,17 @@ export const rmspropStepTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "RMSProp step",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          averageSquaredGradient: { type: "number" },
+          parameter: { type: "number" },
+          update: { type: "number" },
+        },
+        required: ["averageSquaredGradient", "parameter", "update"],
+      },
     },
   ],
   calculate: (input) => ({
