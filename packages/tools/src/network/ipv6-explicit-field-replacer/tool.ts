@@ -7,14 +7,14 @@ export type Input = Readonly<{
   width: number;
   value: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "address", kind: "string", label: "address" },
   { id: "offset", kind: "integer", label: "offset" },
   { id: "width", kind: "integer", label: "width" },
   { id: "value", kind: "string", label: "value" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.offset, 0, 128);
   H.int(i.width, 0, 128 - i.offset);
@@ -36,7 +36,19 @@ export const tool = createSimpleTool({
   description:
     "Replace an exact IPv6 bit field with least-significant-bit offset zero, preserving all unmasked address bits; no assignment or routing semantics.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { address: { type: "string" } },
+        required: ["address"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
