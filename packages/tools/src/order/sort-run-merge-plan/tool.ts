@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ runs: readonly (readonly number[])[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "runs", kind: "matrix", label: "runs" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.runs.every((r) => r.every((x, j) => j === 0 || x >= r[j - 1])));
   const positions = i.runs.map(() => 0),
@@ -50,7 +50,33 @@ export const tool = createSimpleTool({
   description:
     "Produce a stable merge provenance plan for sorted numeric runs, breaking equal keys by earlier run index without mutating runs.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          plan: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                run: { type: "number" },
+                index: { type: "number" },
+                value: { type: "number" },
+              },
+              required: ["run", "index", "value"],
+            },
+          },
+        },
+        required: ["plan"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
