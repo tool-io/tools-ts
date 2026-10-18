@@ -12,12 +12,12 @@ export type Input = Readonly<{
   readonly speedMPerS: number;
   readonly latitudeDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "speedMPerS", label: "Speed m per s", kind: "number" },
   { id: "latitudeDegrees", label: "Latitude degrees", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.speedMPerS, "speed");
   angle(i.latitudeDegrees, "latitude", -90, 90);
   if (i.latitudeDegrees === 0)
@@ -28,7 +28,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       Math.abs(2 * 7.292115e-5 * Math.sin(rad(i.latitudeDegrees))),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -47,6 +47,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { radiusM: { type: "number" } },
+        required: ["radiusM"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
