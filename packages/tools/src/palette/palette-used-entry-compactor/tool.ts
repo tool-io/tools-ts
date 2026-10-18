@@ -5,12 +5,12 @@ export type Input = Readonly<{
   paletteJson: string;
   indexes: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "paletteJson", kind: "string", label: "paletteJson" },
   { id: "indexes", kind: "numberList", label: "indexes" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.colors(i.paletteJson);
   i.indexes.forEach((x) => H.int(x, 0, p.length - 1));
@@ -41,7 +41,35 @@ export const tool = createSimpleTool({
   description:
     "Compact a palette to explicitly used entries in original palette order and remap all indexes, retaining old-index provenance.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          palette: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                id: { type: "string" },
+                name: { type: "string" },
+                rgba: { type: "array", items: { type: "number" } },
+              },
+              required: ["id", "name", "rgba"],
+            },
+          },
+          indexes: { type: "array", items: { type: "number" } },
+          oldIndexes: { type: "array", items: { type: "number" } },
+        },
+        required: ["palette", "indexes", "oldIndexes"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
