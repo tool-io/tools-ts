@@ -9,7 +9,7 @@ export type Input = Readonly<{
   gapX: number;
   gapY: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "index", kind: "integer", label: "index" },
   { id: "columns", kind: "integer", label: "columns" },
@@ -18,7 +18,7 @@ const fields = [
   { id: "gapX", kind: "number", label: "gapX" },
   { id: "gapY", kind: "number", label: "gapY" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.index);
   H.int(i.columns, 1, 128);
@@ -51,7 +51,24 @@ export const tool = createSimpleTool({
   description:
     "Place an explicit palette swatch index on a row-major grid with physical size and gaps; no renderer or color-space behavior.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          row: { type: "number" },
+          column: { type: "number" },
+          x: { type: "number" },
+          y: { type: "number" },
+        },
+        required: ["row", "column", "x", "y"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
