@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualDendriticDecayTimesSeconds: readonly number[];
   readonly actualPositiveBaselineSubtractedDendriticResponses: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualDendriticDecayTimesSeconds",
@@ -24,7 +24,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   input.actualPositiveBaselineSubtractedDendriticResponses.forEach((v) =>
     positive(v, "response"),
   );
@@ -35,7 +35,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
   if (a.slope >= 0) simpleError("slope", "Actualdecayingloglinearbranch.");
   return { fittedDendriticDecayTimeConstantSeconds: -1 / a.slope };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -59,6 +59,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          fittedDendriticDecayTimeConstantSeconds: { type: "number" },
+        },
+        required: ["fittedDendriticDecayTimeConstantSeconds"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
