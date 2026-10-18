@@ -8,7 +8,7 @@ export type Input = Readonly<{
   lowerConfidenceBoundPercent: number;
   lowerBoundKnown: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedReductionPercent",
@@ -22,10 +22,7 @@ const fields = [
   },
   { id: "lowerBoundKnown", label: "Lower bound known", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   angle(i.observedReductionPercent, "reduction", -1000000, 100);
   angle(
     i.lowerConfidenceBoundPercent,
@@ -42,7 +39,7 @@ const compute = (
     resistanceConfirmed: false,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -72,6 +69,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          belowHistorical95: { type: "boolean" },
+          lowerBoundKnown: { type: "boolean" },
+          lowerBoundBelow90: { anyOf: [{ type: "boolean" }, { type: "null" }] },
+          resistanceConfirmed: { type: "boolean" },
+        },
+        required: [
+          "belowHistorical95",
+          "lowerBoundKnown",
+          "lowerBoundBelow90",
+          "resistanceConfirmed",
+        ],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
