@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly independentlyMeasuredLaterSynapseCount: number;
   readonly independentlyMeasuredElapsedYears: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredEarlierSynapseCount",
@@ -29,7 +29,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.independentlyMeasuredEarlierSynapseCount, "earlier");
   nonnegative(input.independentlyMeasuredLaterSynapseCount, "later");
   positive(input.independentlyMeasuredElapsedYears, "years");
@@ -40,7 +40,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.independentlyMeasuredElapsedYears,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -63,6 +63,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { signedObservedChangePerYear: { type: "number" } },
+        required: ["signedObservedChangePerYear"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
