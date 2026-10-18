@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly actualMatchedLatitudesDegrees: readonly number[];
   readonly actualMatchedBodySizeMeasurements: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualMatchedLatitudesDegrees",
@@ -27,10 +27,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   aligned(
     input.actualMatchedLatitudesDegrees,
     input.actualMatchedBodySizeMeasurements,
@@ -55,10 +52,7 @@ const compute = (
       sum(x.map((v, i) => (v - mx) * (y[i] - my))) / Math.sqrt(sx * sy),
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -80,6 +74,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { absoluteLatitudePearsonR: { type: "number" } },
+        required: ["absoluteLatitudePearsonR"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
