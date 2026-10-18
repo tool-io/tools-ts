@@ -5,12 +5,12 @@ export type Input = Readonly<{
   paletteSize: number;
   indexes: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "paletteSize", kind: "integer", label: "paletteSize" },
   { id: "indexes", kind: "numberList", label: "indexes" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.paletteSize, 0, 128);
   i.indexes.forEach((x) => H.int(x, -1e9, 1e9));
@@ -37,7 +37,32 @@ export const tool = createSimpleTool({
   description:
     "Audit signed integer palette-index bounds without rejecting the whole observation or mutating index data.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          violations: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                value: { type: "number" },
+              },
+              required: ["index", "value"],
+            },
+          },
+        },
+        required: ["violations"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
