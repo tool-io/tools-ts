@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly actualPsd: readonly number[];
   readonly actualBinWidthHz: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualUniformFrequencyCentersHz",
@@ -16,7 +16,7 @@ const fields = [
   { id: "actualPsd", label: "Actual psd", kind: "numberList" },
   { id: "actualBinWidthHz", label: "Actual bin width hz", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   return {
     actualBandPowerRatio: bandRatio(
       input.actualUniformFrequencyCentersHz,
@@ -29,7 +29,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -52,6 +52,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { actualBandPowerRatio: { type: "number" } },
+        required: ["actualBandPowerRatio"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
