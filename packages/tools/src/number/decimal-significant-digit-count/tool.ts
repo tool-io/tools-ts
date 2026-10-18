@@ -5,7 +5,7 @@ export type Input = Readonly<{
   decimal: string;
   integerTrailingZerosSignificant: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "decimal", kind: "string", label: "decimal" },
   {
@@ -14,7 +14,7 @@ const fields = [
     label: "integerTrailingZerosSignificant",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const d = H.decimal(i.decimal);
   const m = /^[+-]?(\d+)(?:\.(\d*))?/.exec(i.decimal)!;
@@ -33,7 +33,22 @@ export const tool = createSimpleTool({
   description:
     "Count spelling-defined significant digits with an explicit integer-trailing-zero policy; decimal trailing zeros count and all-zero text counts as one.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          significantDigits: { type: "number" },
+          zero: { type: "boolean" },
+        },
+        required: ["significantDigits", "zero"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
