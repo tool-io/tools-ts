@@ -6,13 +6,13 @@ export type Input = Readonly<{
   fractionalBits: number;
   signed: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "bits", kind: "integer", label: "bits" },
   { id: "fractionalBits", kind: "integer", label: "fractionalBits" },
   { id: "signed", kind: "boolean", label: "signed" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.bits, 1, 128);
   H.int(i.fractionalBits, 0, 128);
@@ -39,7 +39,38 @@ export const tool = createSimpleTool({
   description:
     "Report the exact representable rational envelope of a signed or unsigned binary fixed-point word; no floating approximation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          minimum: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              numerator: { type: "string" },
+              denominator: { type: "string" },
+            },
+            required: ["numerator", "denominator"],
+          },
+          maximum: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              numerator: { type: "string" },
+              denominator: { type: "string" },
+            },
+            required: ["numerator", "denominator"],
+          },
+        },
+        required: ["minimum", "maximum"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
