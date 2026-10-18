@@ -4,21 +4,18 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, countFraction } from "../batch53-shared.js";
 
 export type Input = Readonly<{ hatchedEggs: number; eggsTested: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "hatchedEggs", label: "Hatched eggs", kind: "number" },
   { id: "eggsTested", label: "Eggs tested", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   return {
     hatchRatePercent: 100 * countFraction(i.hatchedEggs, i.eggsTested),
     causalInference: "not-established",
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -39,6 +36,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          hatchRatePercent: { type: "number" },
+          causalInference: { type: "string" },
+        },
+        required: ["hatchRatePercent", "causalInference"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
