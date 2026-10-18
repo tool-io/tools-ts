@@ -5,12 +5,12 @@ export type Input = Readonly<{
   values: readonly number[];
   permutation: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "values", kind: "numberList", label: "values" },
   { id: "permutation", kind: "numberList", label: "permutation" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.permutation(i.permutation);
   H.check(i.values.length === i.permutation.length);
@@ -33,7 +33,25 @@ export const tool = createSimpleTool({
   description:
     "Audit only tie-order stability of an explicit numeric sort permutation, independently of whether the keys themselves are sorted.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          stable: { type: "boolean" },
+          reversedTiePairs: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["stable", "reversedTiePairs"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
