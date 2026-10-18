@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ eventsJson: string; window: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "eventsJson", kind: "string", label: "eventsJson" },
   { id: "window", kind: "integer", label: "window" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.records(i.eventsJson).map((v) => ({
     start: H.int(H.num(v.start)),
@@ -36,7 +36,34 @@ export const tool = createSimpleTool({
   description:
     "Reverse note intervals within an explicit tick window, preserving durations and caller order; all events must fit.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          events: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                duration: { type: "number" },
+                pitch: { type: "number" },
+                channel: { type: "number" },
+                start: { type: "number" },
+              },
+              required: ["duration", "pitch", "channel", "start"],
+            },
+          },
+        },
+        required: ["events"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
