@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly actualIndependentlyVerifiedMedullaryBoneEvidence: boolean;
   readonly actualIndependentReproductiveContextEvidenceKnown: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualIndependentlyVerifiedMedullaryBoneEvidence",
@@ -19,10 +19,7 @@ const fields = [
     kind: "boolean",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   return {
     observedMedullaryBoneEvidence:
       input.actualIndependentlyVerifiedMedullaryBoneEvidence,
@@ -32,10 +29,7 @@ const compute = (
         : "unknown-not-a-pregnancy-diagnosis",
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -62,6 +56,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedMedullaryBoneEvidence: { type: "boolean" },
+          reproductiveContextStatus: { type: "string" },
+        },
+        required: [
+          "observedMedullaryBoneEvidence",
+          "reproductiveContextStatus",
+        ],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
