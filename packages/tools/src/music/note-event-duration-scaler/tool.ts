@@ -6,13 +6,13 @@ export type Input = Readonly<{
   numerator: number;
   denominator: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "eventsJson", kind: "string", label: "eventsJson" },
   { id: "numerator", kind: "integer", label: "numerator" },
   { id: "denominator", kind: "integer", label: "denominator" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.records(i.eventsJson).map((v) => ({
     start: H.int(H.num(v.start)),
@@ -45,7 +45,34 @@ export const tool = createSimpleTool({
   description:
     "Scale note durations by an explicit rational factor while preserving starts, pitch and channel; fractional ticks are allowed and not rounded.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          events: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                start: { type: "number" },
+                pitch: { type: "number" },
+                channel: { type: "number" },
+                duration: { type: "number" },
+              },
+              required: ["start", "pitch", "channel", "duration"],
+            },
+          },
+        },
+        required: ["events"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
