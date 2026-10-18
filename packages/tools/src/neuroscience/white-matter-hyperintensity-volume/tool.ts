@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly independentlySegmentedLesionVolumesMl: readonly number[];
   readonly lesionEvidenceKnownFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerIndependentlyClassifiedWmhLesionIds",
@@ -32,7 +32,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.callerIndependentlyClassifiedWmhLesionIds, "lesions");
   aligned(
     input.callerIndependentlyClassifiedWmhLesionIds,
@@ -62,7 +62,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -91,6 +91,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedKnownWmhVolumeMl: { type: "number" },
+          knownWmhLesionIds: { type: "array", items: { type: "string" } },
+          unknownWmhLesionIds: { type: "array", items: { type: "string" } },
+        },
+        required: [
+          "observedKnownWmhVolumeMl",
+          "knownWmhLesionIds",
+          "unknownWmhLesionIds",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
