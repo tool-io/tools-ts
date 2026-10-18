@@ -54,6 +54,13 @@ export const newtonStepTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Newton step",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { parameter: { type: "number" }, step: { type: "number" } },
+        required: ["parameter", "step"],
+      },
     },
   ],
   calculate: (input) => {
