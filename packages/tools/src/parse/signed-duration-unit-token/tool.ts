@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ token: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "token", kind: "string", label: "token" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const m = /^([+-]?(?:\d+(?:\.\d*)?|\.\d+))(ms|s|min|h|d)(?![\s\S])/.exec(
     i.token,
@@ -33,7 +33,23 @@ export const tool = createSimpleTool({
   description:
     "Parse a strict signed duration token with explicit ms,s,min,h,d suffix; d is exactly 86400 seconds, not a calendar-day interval.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          value: { type: "number" },
+          unit: { type: "string" },
+          seconds: { type: "number" },
+        },
+        required: ["value", "unit", "seconds"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
