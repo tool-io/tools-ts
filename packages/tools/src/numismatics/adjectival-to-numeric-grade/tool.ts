@@ -7,11 +7,11 @@ import {
   gradeTable,
 } from "../batch45-shared.js";
 export type Input = Readonly<{ readonly adjectivalBand: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "adjectivalBand", label: "Adjectival band", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (!Object.values(gradeTable).includes(input.adjectivalBand))
     simpleError("grade", "Exact published adjectival band key.");
   return {
@@ -20,7 +20,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       .map(([k]) => Number(k)),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -39,6 +39,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          recognizedNumericGrades: { type: "array", items: { type: "number" } },
+        },
+        required: ["recognizedNumericGrades"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
