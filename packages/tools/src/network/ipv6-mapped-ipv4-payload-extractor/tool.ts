@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ address: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "address", kind: "string", label: "address" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const v = H.ip(i.address, 128),
     mapped = v >> 32n === 65535n;
@@ -25,7 +25,22 @@ export const tool = createSimpleTool({
   description:
     "Extract an IPv4 payload only from the exact IPv4-mapped IPv6 ::ffff:0:0/96 format; other embeddings are not guessed.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          mapped: { type: "boolean" },
+          ipv4: { anyOf: [{ type: "string" }, { type: "null" }] },
+        },
+        required: ["mapped", "ipv4"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
