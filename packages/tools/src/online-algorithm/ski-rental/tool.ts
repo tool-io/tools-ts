@@ -78,6 +78,25 @@ export const skiRentalTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Online decision",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          competitiveRatio: { type: "number" },
+          decision: { type: "string" },
+          onlineCost: { type: "number" },
+          optimalCost: { type: "number" },
+          purchaseDay: { type: "number" },
+        },
+        required: [
+          "competitiveRatio",
+          "decision",
+          "onlineCost",
+          "optimalCost",
+          "purchaseDay",
+        ],
+      },
     },
   ],
   calculate: (input) => ({
