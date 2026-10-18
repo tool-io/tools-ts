@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly observedReadingDistanceMm: number;
   readonly callerRequiredCharacterAngularHeightDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedLabelCharacterHeightMm",
@@ -29,7 +29,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.observedLabelCharacterHeightMm, "height");
   positive(input.observedReadingDistanceMm, "distance");
   positive(input.callerRequiredCharacterAngularHeightDegrees, "screen");
@@ -47,7 +47,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       a >= input.callerRequiredCharacterAngularHeightDegrees,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -75,6 +75,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedCharacterAngularHeightDegrees: { type: "number" },
+          meetsCallerAngleScreen: { type: "boolean" },
+        },
+        required: [
+          "observedCharacterAngularHeightDegrees",
+          "meetsCallerAngleScreen",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
