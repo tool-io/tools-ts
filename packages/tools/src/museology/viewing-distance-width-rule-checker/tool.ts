@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly observedViewingDistanceMeters: number;
   readonly callerRequiredDistanceWidthMultiple: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedObjectWidthMeters",
@@ -29,7 +29,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.observedObjectWidthMeters, "width");
   nonnegative(input.observedViewingDistanceMeters, "distance");
   positive(input.callerRequiredDistanceWidthMultiple, "multiple");
@@ -40,7 +40,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     meetsCallerDistanceScreen: r >= input.callerRequiredDistanceWidthMultiple,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -68,6 +68,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedDistanceWidthRatio: { type: "number" },
+          meetsCallerDistanceScreen: { type: "boolean" },
+        },
+        required: ["observedDistanceWidthRatio", "meetsCallerDistanceScreen"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
