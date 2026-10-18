@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ aliasesJson: string; name: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "aliasesJson", kind: "string", label: "aliasesJson" },
   { id: "name", kind: "string", label: "name" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish(H.resolveAlias(H.aliases(i.aliasesJson), i.name));
 };
@@ -24,7 +24,23 @@ export const tool = createSimpleTool({
   description:
     "Resolve an explicit palette role alias chain with path provenance and cycle evidence; an unmapped name is a terminal literal, not a verified palette entry.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          path: { type: "array", items: { type: "string" } },
+          terminal: { anyOf: [{ type: "string" }, { type: "null" }] },
+          cycle: { type: "boolean" },
+        },
+        required: ["path", "terminal", "cycle"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
