@@ -6,13 +6,13 @@ export type Input = Readonly<{
   right: readonly number[];
   directions: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", kind: "numberList", label: "left" },
   { id: "right", kind: "numberList", label: "right" },
   { id: "directions", kind: "numberList", label: "directions" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.left.length === i.right.length &&
@@ -36,7 +36,22 @@ export const tool = createSimpleTool({
   description:
     "Compare two numeric multi-key tuples with per-key ascending/descending directions, exposing the first decisive key rather than coercing ties.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          decisiveKey: { anyOf: [{ type: "number" }, { type: "null" }] },
+          order: { type: "number" },
+        },
+        required: ["decisiveKey", "order"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
