@@ -5,17 +5,17 @@ export type Input = Readonly<{
   readonly depthM: number;
   readonly gravityMPerS2: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "depthM", label: "Depth m", kind: "number" },
   { id: "gravityMPerS2", label: "Gravity m per s2", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.depthM, "depth");
   positive(i.gravityMPerS2, "gravity");
   return { speedMPerS: Math.sqrt(i.gravityMPerS2 * i.depthM) };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -34,6 +34,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { speedMPerS: { type: "number" } },
+        required: ["speedMPerS"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
