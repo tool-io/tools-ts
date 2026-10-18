@@ -7,7 +7,7 @@ export type Input = Readonly<{
   sheddingPositiveSnails: number;
   snailsTested: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "sheddingPositiveSnails",
@@ -16,17 +16,14 @@ const fields = [
   },
   { id: "snailsTested", label: "Snails tested", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   return {
     observedSheddingPercent:
       100 * countFraction(i.sheddingPositiveSnails, i.snailsTested),
     causalInference: "not-established",
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -50,6 +47,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedSheddingPercent: { type: "number" },
+          causalInference: { type: "string" },
+        },
+        required: ["observedSheddingPercent", "causalInference"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
