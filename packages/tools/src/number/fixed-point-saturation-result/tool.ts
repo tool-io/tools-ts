@@ -6,13 +6,13 @@ export type Input = Readonly<{
   bits: number;
   signed: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "integer", kind: "string", label: "integer" },
   { id: "bits", kind: "integer", label: "bits" },
   { id: "signed", kind: "boolean", label: "signed" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.bits, 1, 128);
   const v = H.bigint(i.integer),
@@ -33,7 +33,22 @@ export const tool = createSimpleTool({
   description:
     "Saturate an exact fixed-point raw integer to an explicit word range, retaining whether clipping occurred.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          integer: { type: "string" },
+          saturated: { type: "boolean" },
+        },
+        required: ["integer", "saturated"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
