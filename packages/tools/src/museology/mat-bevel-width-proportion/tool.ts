@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly observedMatBevelWidthMm: number;
   readonly observedMatBorderWidthMm: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedMatBevelWidthMm",
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.observedMatBevelWidthMm, "bevel");
   positive(input.observedMatBorderWidthMm, "border");
   return {
@@ -31,7 +31,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.observedMatBevelWidthMm / input.observedMatBorderWidthMm,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -50,6 +50,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { observedBevelBorderFraction: { type: "number" } },
+        required: ["observedBevelBorderFraction"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
