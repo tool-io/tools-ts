@@ -4,7 +4,7 @@ import { validateInput, finish, tokenInventory } from "../batch45-shared.js";
 export type Input = Readonly<{
   readonly independentlyTranscribedEdgeLettering: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyTranscribedEdgeLettering",
@@ -12,14 +12,14 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   return {
     whitespaceDelimitedTokenCount: tokenInventory(
       input.independentlyTranscribedEdgeLettering,
     ).length,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -38,6 +38,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { whitespaceDelimitedTokenCount: { type: "number" } },
+        required: ["whitespaceDelimitedTokenCount"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
