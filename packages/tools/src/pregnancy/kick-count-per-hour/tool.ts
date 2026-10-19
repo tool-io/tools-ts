@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly independentlyRecordedMovementCount: number;
   readonly actualObservationMinutes: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyRecordedMovementCount",
@@ -18,7 +18,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.independentlyRecordedMovementCount, "count", 0, 1000000);
   positive(input.actualObservationMinutes, "minutes");
   return {
@@ -27,7 +27,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.actualObservationMinutes,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -49,6 +49,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { observedMovementsPerHour: { type: "number" } },
+        required: ["observedMovementsPerHour"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
