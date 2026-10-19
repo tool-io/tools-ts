@@ -290,6 +290,15 @@ export const attentionMatrixTestCaseTool = createModelDefinition<
   AttentionMatrixTestCaseInput,
   AttentionMatrixTestCaseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Attention Matrix Test Case Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/attention-matrix-test-case",
   title: "Random Attention Matrix Test Case Generator",
   description:
