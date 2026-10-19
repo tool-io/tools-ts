@@ -257,6 +257,12 @@ export const clusteredPointDatasetTool = createModelDefinition<
   ClusteredPointDatasetInput,
   ClusteredPointDatasetOutput
 >({
+  discovery: {
+    aliases: ["Random Clustered Point Dataset Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/clustered-point-dataset",
   title: "Random Clustered Point Dataset Generator",
   description:
