@@ -257,6 +257,15 @@ export const bootstrapIntervalExperimentTool = createModelDefinition<
   BootstrapIntervalExperimentInput,
   BootstrapIntervalExperimentOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Bootstrap Interval Experiment Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/bootstrap-interval-experiment",
   title: "Random Bootstrap Interval Experiment Generator",
   description:
