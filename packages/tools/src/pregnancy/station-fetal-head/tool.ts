@@ -9,7 +9,7 @@ import {
 export type Input = Readonly<{
   readonly independentlyReportedSignedStationCm: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyReportedSignedStationCm",
@@ -17,7 +17,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     input.independentlyReportedSignedStationCm < -5 ||
     input.independentlyReportedSignedStationCm > 5
@@ -33,7 +33,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
           : "at-stated-ischial-spine-plane",
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -57,6 +57,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          recordedSignedStationCm: { type: "number" },
+          referencePlaneRelationship: { type: "string" },
+        },
+        required: ["recordedSignedStationCm", "referencePlaneRelationship"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
