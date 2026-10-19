@@ -202,6 +202,15 @@ export const bulletJournalSpreadLayoutTool = createModelDefinition<
   BulletJournalSpreadLayoutInput,
   BulletJournalSpreadLayoutOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Bullet Journal Spread Layout Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/bullet-journal-spread-layout",
   title: "Random Bullet Journal Spread Layout Generator",
   description:
