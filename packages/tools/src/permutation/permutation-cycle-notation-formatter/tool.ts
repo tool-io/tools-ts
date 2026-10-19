@@ -5,12 +5,12 @@ export type Input = Readonly<{
   permutation: readonly number[];
   includeFixed: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "permutation", kind: "numberList", label: "permutation" },
   { id: "includeFixed", kind: "boolean", label: "includeFixed" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const c = H.cycles(i.permutation);
   return H.finish({
@@ -30,7 +30,19 @@ export const tool = createSimpleTool({
   description:
     "Format canonical zero-based disjoint permutation cycles with an explicit fixed-point display policy; no one-based convention implied.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { notation: { type: "string" } },
+        required: ["notation"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
