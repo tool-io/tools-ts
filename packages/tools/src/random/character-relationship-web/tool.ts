@@ -124,6 +124,15 @@ export const characterRelationshipWebTool = createModelDefinition<
   CharacterRelationshipWebInput,
   CharacterRelationshipWebOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Character Relationship Web Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/character-relationship-web",
   title: "Random Character Relationship Web Generator",
   description:
