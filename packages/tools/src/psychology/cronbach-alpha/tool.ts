@@ -12,7 +12,7 @@ import {
 export type Input = Readonly<{
   readonly actualPersonByItemScores: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualPersonByItemScores",
@@ -20,7 +20,7 @@ const fields = [
     kind: "matrix",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const k = shape(input.actualPersonByItemScores, "items");
   if (k < 2 || input.actualPersonByItemScores.length < 2)
     simpleError("items", "At least two persons and items.");
@@ -38,7 +38,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
           v),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -63,6 +63,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { cronbachAlpha: { type: "number" } },
+        required: ["cronbachAlpha"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
