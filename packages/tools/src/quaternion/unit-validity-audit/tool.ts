@@ -5,12 +5,12 @@ export type Input = Readonly<{
   quaternion: readonly number[];
   tolerance: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "quaternion", label: "quaternion", kind: "numberList" },
   { id: "tolerance", label: "tolerance", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.quat(i.quaternion);
   H.check(i.tolerance >= 0);
@@ -22,12 +22,30 @@ export const example = {
   output: { result: { norm: 1, unit: true } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Quaternion Unit Validity Audit", "quaternions", "3D rotations"],
+    collections: ["data", "learn"],
+    fields: ["quaternion", "quaternions", "3D rotations"],
+    keywords: ["quaternions", "3D rotations"],
+  },
   id: "quaternion/unit-validity-audit",
   title: "Quaternion Unit Validity Audit",
   description:
     "Quaternion order is scalar-first [w,x,y,z], Hamilton product and right-handed active rotations; audit unit norm against an explicit nonnegative tolerance; finite components alone do not prove a rotation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { norm: { type: "number" }, unit: { type: "boolean" } },
+        required: ["norm", "unit"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
