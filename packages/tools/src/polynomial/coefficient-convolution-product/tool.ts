@@ -5,12 +5,12 @@ export type Input = Readonly<{
   left: readonly number[];
   right: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", label: "left", kind: "numberList" },
   { id: "right", label: "right", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({ coefficients: H.polyProduct(i.left, i.right) });
 };
@@ -19,12 +19,32 @@ export const example = {
   output: { result: { coefficients: [3, 10, 8] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Polynomial Coefficient Convolution Product", "mathematics"],
+    collections: ["data", "learn"],
+    fields: ["polynomial", "mathematics"],
+    keywords: ["mathematics"],
+  },
   id: "polynomial/coefficient-convolution-product",
   title: "Polynomial Coefficient Convolution Product",
   description:
     "Multiply two ascending-power polynomial coefficient lists by convolution and normalize high-power exact zeros; no FFT or symbolic integer arithmetic.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          coefficients: { type: "array", items: { type: "number" } },
+        },
+        required: ["coefficients"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
