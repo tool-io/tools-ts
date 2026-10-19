@@ -225,6 +225,15 @@ export const bipartiteGraphConstructionPuzzleTool = createModelDefinition<
   BipartiteGraphConstructionPuzzleInput,
   BipartiteGraphConstructionPuzzleOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Bipartite Graph Construction Puzzle Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/bipartite-graph-construction-puzzle",
   title: "Random Bipartite Graph Construction Puzzle Generator",
   description:
