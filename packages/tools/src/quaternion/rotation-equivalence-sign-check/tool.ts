@@ -6,13 +6,13 @@ export type Input = Readonly<{
   right: readonly number[];
   tolerance: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", label: "left", kind: "numberList" },
   { id: "right", label: "right", kind: "numberList" },
   { id: "tolerance", label: "tolerance", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.qUnit(i.left);
   H.qUnit(i.right);
@@ -30,12 +30,34 @@ export const example = {
   output: { result: { equivalent: true } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Quaternion Rotation Sign Equivalence Check",
+      "quaternions",
+      "3D rotations",
+    ],
+    collections: ["data", "learn"],
+    fields: ["quaternion", "quaternions", "3D rotations"],
+    keywords: ["quaternions", "3D rotations"],
+  },
   id: "quaternion/rotation-equivalence-sign-check",
   title: "Quaternion Rotation Sign Equivalence Check",
   description:
     "Quaternion order is scalar-first [w,x,y,z], Hamilton product and right-handed active rotations; compare unit rotations under q and -q sign equivalence using explicit component-space tolerance.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { equivalent: { type: "boolean" } },
+        required: ["equivalent"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
