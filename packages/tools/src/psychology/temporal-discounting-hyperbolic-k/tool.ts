@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly actualImmediateIndifferenceReward: number;
   readonly actualDelay: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualDelayedReward", label: "Actual delayed reward", kind: "number" },
   {
@@ -16,7 +16,7 @@ const fields = [
   },
   { id: "actualDelay", label: "Actual delay", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.actualDelayedReward, "actualDelayedReward");
   positive(
     input.actualImmediateIndifferenceReward,
@@ -30,7 +30,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.actualDelay,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -53,6 +53,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
