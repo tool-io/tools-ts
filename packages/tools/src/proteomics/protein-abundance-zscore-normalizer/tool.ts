@@ -12,14 +12,11 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ intensities: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "intensities", label: "Intensities", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (i.intensities.length < 2)
     simpleError("intensities", "At least two observations.");
   i.intensities.forEach((v) => nonnegative(v, "intensity"));
@@ -31,7 +28,7 @@ const compute = (
     zScores: i.intensities.map((v) => (v - m) / sd),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -52,6 +49,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          mean: { type: "number" },
+          sampleStandardDeviation: { type: "number" },
+          zScores: { type: "array", items: { type: "number" } },
+        },
+        required: ["mean", "sampleStandardDeviation", "zScores"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
