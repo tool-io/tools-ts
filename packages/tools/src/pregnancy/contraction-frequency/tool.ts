@@ -9,7 +9,7 @@ import {
 export type Input = Readonly<{
   readonly independentlyRecordedContractionOnsetsMinutes: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyRecordedContractionOnsetsMinutes",
@@ -17,7 +17,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   strictlyIncreasing(
     input.independentlyRecordedContractionOnsetsMinutes,
     "onsets",
@@ -31,7 +31,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     observedMeanOnsetIntervalMinutes: mean(g),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -55,6 +55,22 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedOnsetIntervalsMinutes: {
+            type: "array",
+            items: { type: "number" },
+          },
+          observedMeanOnsetIntervalMinutes: { type: "number" },
+        },
+        required: [
+          "observedOnsetIntervalsMinutes",
+          "observedMeanOnsetIntervalMinutes",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
