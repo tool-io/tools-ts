@@ -292,6 +292,15 @@ export const affinityPropagationPreferenceBenchmarkTool = createModelDefinition<
   AffinityPropagationPreferenceBenchmarkInput,
   AffinityPropagationPreferenceBenchmarkOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Affinity Propagation Preference Benchmark Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/affinity-propagation-preference-benchmark",
   title: "Random Affinity Propagation Preference Benchmark Generator",
   description:
