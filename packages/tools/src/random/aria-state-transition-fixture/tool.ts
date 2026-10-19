@@ -210,6 +210,15 @@ export const ariaStateTransitionFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random ARIA State Transition Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/aria-state-transition-fixture",
   title: "Random ARIA State Transition Fixture Generator",
   description:
