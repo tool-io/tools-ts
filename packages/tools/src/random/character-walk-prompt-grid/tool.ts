@@ -117,6 +117,15 @@ export const characterWalkPromptGridTool = createModelDefinition<
   CharacterWalkPromptGridInput,
   CharacterWalkPromptGridOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Character Walk Prompt Grid Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/character-walk-prompt-grid",
   title: "Random Character Walk Prompt Grid Generator",
   description:
