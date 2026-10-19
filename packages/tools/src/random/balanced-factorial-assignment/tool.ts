@@ -188,6 +188,15 @@ export const balancedFactorialAssignmentTool = createModelDefinition<
   BalancedFactorialAssignmentInput,
   BalancedFactorialAssignmentOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Balanced Factorial Assignment Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/balanced-factorial-assignment",
   title: "Random Balanced Factorial Assignment Generator",
   description:
