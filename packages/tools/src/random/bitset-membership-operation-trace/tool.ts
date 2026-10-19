@@ -188,6 +188,15 @@ export const bitsetMembershipOperationTraceTool = createModelDefinition<
   BitsetMembershipOperationTraceInput,
   BitsetMembershipOperationTraceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Bitset Membership Operation Trace Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/bitset-membership-operation-trace",
   title: "Random Bitset Membership Operation Trace Generator",
   description:
