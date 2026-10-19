@@ -10,15 +10,12 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ path: string; maximumUtf8Bytes: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "path", label: "Path", kind: "string" },
   { id: "maximumUtf8Bytes", label: "Maximum utf8 bytes", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.maximumUtf8Bytes, "budget", 1, 1000000);
   return {
     components: components(i.path).map((name, index) => ({
@@ -29,7 +26,7 @@ const compute = (
     })),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -55,6 +52,28 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          components: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                name: { type: "string" },
+                utf8Bytes: { type: "number" },
+                withinBudget: { type: "boolean" },
+              },
+              required: ["index", "name", "utf8Bytes", "withinBudget"],
+            },
+          },
+        },
+        required: ["components"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
