@@ -221,6 +221,15 @@ export const booleanAdderCircuitTraceTool = createModelDefinition<
   BooleanAdderCircuitTraceInput,
   BooleanAdderCircuitTraceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Boolean Adder Circuit Trace Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/boolean-adder-circuit-trace",
   title: "Random Boolean Adder Circuit Trace Generator",
   description:
