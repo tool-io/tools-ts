@@ -143,6 +143,12 @@ export const bookplateDesignBriefTool = createModelDefinition<
   BookplateDesignBriefInput,
   BookplateDesignBriefOutput
 >({
+  discovery: {
+    aliases: ["Random Bookplate Design Brief Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/bookplate-design-brief",
   title: "Random Bookplate Design Brief Generator",
   description:
