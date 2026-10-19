@@ -7,11 +7,11 @@ import {
   nonnegative,
 } from "../batch49-shared.js";
 export type Input = Readonly<{ readonly actualPercentile: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualPercentile", label: "Actual percentile", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.actualPercentile, "actualPercentile");
   if (input.actualPercentile > 100)
     simpleError("percentile", "Percentile0…100.");
@@ -22,7 +22,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
         .length,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -41,6 +41,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
