@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly actualSameMedicationPossessionDayIntervals: readonly (readonly number[])[];
   readonly actualReferencePeriodDays: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualSameMedicationPossessionDayIntervals",
@@ -25,7 +25,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.actualReferencePeriodDays, "period", 1, 1000000);
   input.actualSameMedicationPossessionDayIntervals.forEach((r) => {
     if (r.length !== 2) simpleError("intervals", "Actualstart/enddaypair.");
@@ -41,7 +41,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     observedPdcFraction: d / input.actualReferencePeriodDays,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -66,6 +66,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedUnionCoveredDays: { type: "number" },
+          observedPdcFraction: { type: "number" },
+        },
+        required: ["observedUnionCoveredDays", "observedPdcFraction"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
