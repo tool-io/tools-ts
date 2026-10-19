@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly callerVerifiedSem: number;
   readonly callerApplicableNormalCriticalValue: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualObservedScore", label: "Actual observed score", kind: "number" },
   { id: "callerVerifiedSem", label: "Caller verified sem", kind: "number" },
@@ -21,7 +21,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.callerVerifiedSem, "SEM");
   positive(input.callerApplicableNormalCriticalValue, "critical");
   const h = input.callerVerifiedSem * input.callerApplicableNormalCriticalValue;
@@ -30,7 +30,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     upperConditionalScoreBound: input.actualObservedScore + h,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -55,6 +55,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          lowerConditionalScoreBound: { type: "number" },
+          upperConditionalScoreBound: { type: "number" },
+        },
+        required: ["lowerConditionalScoreBound", "upperConditionalScoreBound"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
