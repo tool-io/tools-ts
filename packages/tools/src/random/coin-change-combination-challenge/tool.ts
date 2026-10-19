@@ -208,6 +208,15 @@ export const coinChangeCombinationChallengeTool = createModelDefinition<
   CoinChangeCombinationChallengeInput,
   CoinChangeCombinationChallengeOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Coin Change Combination Challenge Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/coin-change-combination-challenge",
   title: "Random Coin Change Combination Challenge Generator",
   description:
