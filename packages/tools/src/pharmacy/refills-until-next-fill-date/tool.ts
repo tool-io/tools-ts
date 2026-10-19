@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly actualInventoryAsOfDate: string;
   readonly callerNextRecordedFillDate: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualCurrentQuantityUnits",
@@ -37,7 +37,7 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.actualCurrentQuantityUnits, "quantity");
   positive(input.callerClinicianPrescribedUnitsPerDay, "actualdirections");
   const d = daysBetween(
@@ -54,7 +54,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     signedSupplyMinusDaysToNextFill: s - d,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -84,6 +84,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          recordedDaysUntilNextFill: { type: "number" },
+          conditionalAvailableSupplyDays: { type: "number" },
+          signedSupplyMinusDaysToNextFill: { type: "number" },
+        },
+        required: [
+          "recordedDaysUntilNextFill",
+          "conditionalAvailableSupplyDays",
+          "signedSupplyMinusDaysToNextFill",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
