@@ -10,15 +10,12 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ fragmentMz: number; charge: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "fragmentMz", label: "Fragment mz", kind: "number" },
   { id: "charge", label: "Charge", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   positive(i.fragmentMz, "mz");
   bounded(i.charge, "charge", 1, 100);
   const water = 18.01056468403,
@@ -30,7 +27,7 @@ const compute = (
     ammoniaLossMz: i.fragmentMz - ammonia / i.charge,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -51,6 +48,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          waterLossMz: { type: "number" },
+          ammoniaLossMz: { type: "number" },
+        },
+        required: ["waterLossMz", "ammoniaLossMz"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
