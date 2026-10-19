@@ -205,6 +205,15 @@ export const activityHeatmapCalendarDatasetTool = createModelDefinition<
   ActivityHeatmapCalendarDatasetInput,
   ActivityHeatmapCalendarDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Activity Heatmap Calendar Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/activity-heatmap-calendar-dataset",
   title: "Random Activity Heatmap Calendar Dataset Generator",
   description:
