@@ -136,6 +136,15 @@ export const alternateEndingComparisonTool = createModelDefinition<
   AlternateEndingComparisonInput,
   AlternateEndingComparisonOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Alternate Ending Comparison Packet Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/alternate-ending-comparison",
   title: "Random Alternate Ending Comparison Packet Generator",
   description:
