@@ -5,12 +5,12 @@ export type Input = Readonly<{
   quaternion: readonly number[];
   vector: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "quaternion", label: "quaternion", kind: "numberList" },
   { id: "vector", label: "vector", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({ vector: H.qRotate(i.quaternion, i.vector) });
 };
@@ -19,12 +19,30 @@ export const example = {
   output: { result: { vector: [-1, -2, 3] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Unit Quaternion Vector Rotation", "quaternions", "3D rotations"],
+    collections: ["data", "learn"],
+    fields: ["quaternion", "quaternions", "3D rotations"],
+    keywords: ["quaternions", "3D rotations"],
+  },
   id: "quaternion/unit-record-vector-rotation",
   title: "Unit Quaternion Vector Rotation",
   description:
     "Quaternion order is scalar-first [w,x,y,z], Hamilton product and right-handed active rotations; rotate a finite three-vector by a validated unit quaternion without applying translation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { vector: { type: "array", items: { type: "number" } } },
+        required: ["vector"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
