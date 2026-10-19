@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly independentlyEstablishedCurrentGestationalDays: number;
   readonly callerChosenGestationalEndpointDays: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyEstablishedCurrentGestationalDays",
@@ -18,7 +18,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(
     input.independentlyEstablishedCurrentGestationalDays,
     "current",
@@ -34,7 +34,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     signedAdditionalDaysToCallerEndpoint: d % 7,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -61,6 +61,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedCompleteWeeksToCallerEndpoint: { type: "number" },
+          signedAdditionalDaysToCallerEndpoint: { type: "number" },
+        },
+        required: [
+          "signedCompleteWeeksToCallerEndpoint",
+          "signedAdditionalDaysToCallerEndpoint",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
