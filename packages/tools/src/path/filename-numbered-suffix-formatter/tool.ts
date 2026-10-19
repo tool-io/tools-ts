@@ -15,24 +15,21 @@ export type Input = Readonly<{
   digitWidth: number;
   suffix: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "prefix", label: "Prefix", kind: "string" },
   { id: "numberDecimal", label: "Number decimal", kind: "string" },
   { id: "digitWidth", label: "Digit width", kind: "number" },
   { id: "suffix", label: "Suffix", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const n = decimalUnsigned(i.numberDecimal);
   bounded(i.digitWidth, "width", 1, 1024);
   const name = i.prefix + "(" + n.padStart(i.digitWidth, "0") + ")" + i.suffix;
   filename(name);
   return { name };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -56,6 +53,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { name: { type: "string" } },
+        required: ["name"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
