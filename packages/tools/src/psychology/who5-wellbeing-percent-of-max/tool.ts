@@ -11,7 +11,7 @@ import {
 export type Input = Readonly<{
   readonly actualWho5ItemCodes: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualWho5ItemCodes",
@@ -19,7 +19,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (!input.actualWho5ItemCodes.length)
     simpleError("actualWho5ItemCodes", "Actual nonempty observations.");
   input.actualWho5ItemCodes.forEach((v) =>
@@ -30,7 +30,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
   input.actualWho5ItemCodes.forEach((v) => bounded(v, "code", 0, 5));
   return { value: 4 * sum(input.actualWho5ItemCodes) };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -49,6 +49,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
