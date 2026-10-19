@@ -157,6 +157,15 @@ export const binarySearchBoundaryCorpusTool = createModelDefinition<
   BinarySearchBoundaryCorpusInput,
   BinarySearchBoundaryCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Binary Search Boundary Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/binary-search-boundary-corpus",
   title: "Random Binary Search Boundary Corpus Generator",
   description:
