@@ -7,7 +7,7 @@ export type Input = Readonly<{
   readonly callerApplicableCfiLowerReviewBound: number;
   readonly callerApplicableTliLowerReviewBound: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualCfi", label: "Actual cfi", kind: "number" },
   { id: "actualTli", label: "Actual tli", kind: "number" },
@@ -22,7 +22,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   return {
     cfiMeetsCallerCriterion:
       input.actualCfi >= input.callerApplicableCfiLowerReviewBound,
@@ -30,7 +30,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.actualTli >= input.callerApplicableTliLowerReviewBound,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -56,6 +56,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          cfiMeetsCallerCriterion: { type: "boolean" },
+          tliMeetsCallerCriterion: { type: "boolean" },
+        },
+        required: ["cfiMeetsCallerCriterion", "tliMeetsCallerCriterion"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
