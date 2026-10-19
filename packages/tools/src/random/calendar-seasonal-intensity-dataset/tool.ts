@@ -177,6 +177,15 @@ export const calendarSeasonalIntensityDatasetTool = createModelDefinition<
   CalendarSeasonalIntensityDatasetInput,
   CalendarSeasonalIntensityDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Calendar Seasonal Intensity Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/calendar-seasonal-intensity-dataset",
   title: "Random Calendar Seasonal Intensity Dataset Generator",
   description:
