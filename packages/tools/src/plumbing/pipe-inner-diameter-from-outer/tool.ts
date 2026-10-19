@@ -10,19 +10,19 @@ export type Input = Readonly<{
   readonly actualOuterDiameter: number;
   readonly actualWallThickness: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualOuterDiameter", label: "Actual outer diameter", kind: "number" },
   { id: "actualWallThickness", label: "Actual wall thickness", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.actualOuterDiameter, "actualOuterDiameter");
   positive(input.actualWallThickness, "actualWallThickness");
   if (input.actualOuterDiameter <= 2 * input.actualWallThickness)
     simpleError("geometry", "OD>2t.");
   return { value: input.actualOuterDiameter - input.actualWallThickness * 2 };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -41,6 +41,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
