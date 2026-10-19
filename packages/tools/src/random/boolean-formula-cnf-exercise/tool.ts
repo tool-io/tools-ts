@@ -226,6 +226,15 @@ export const booleanFormulaCnfExerciseTool = createModelDefinition<
   BooleanFormulaCnfExerciseInput,
   BooleanFormulaCnfExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Boolean Formula to CNF Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/boolean-formula-cnf-exercise",
   title: "Random Boolean Formula to CNF Exercise Generator",
   description:
