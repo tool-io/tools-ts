@@ -4,18 +4,15 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, positive } from "../batch53-shared.js";
 
 export type Input = Readonly<{ neutralMassDa: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "neutralMassDa", label: "Neutral mass da", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   positive(i.neutralMassDa, "mass");
   return { singlyProtonatedMz: i.neutralMassDa + 1.007276466621 };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -34,6 +31,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { singlyProtonatedMz: { type: "number" } },
+        required: ["singlyProtonatedMz"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
