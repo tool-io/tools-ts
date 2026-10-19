@@ -158,6 +158,15 @@ export const accordionContentFixtureExample = {
 } satisfies ToolExample<Input, Output>;
 export const accordionContentFixtureTool = createModelDefinition<Input, Output>(
   {
+    discovery: {
+      aliases: [
+        "Random Accordion Content Fixture Generator",
+        "random generation",
+      ],
+      collections: ["data", "learn"],
+      fields: ["random", "random generation"],
+      keywords: ["random generation"],
+    },
     id: "random/accordion-content-fixture",
     title: "Random Accordion Content Fixture Generator",
     description:
