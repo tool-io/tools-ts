@@ -13,7 +13,7 @@ import {
 export type Input = Readonly<{
   readonly actualSubjectByCategoryRaterCounts: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualSubjectByCategoryRaterCounts",
@@ -21,7 +21,7 @@ const fields = [
     kind: "matrix",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const a = input.actualSubjectByCategoryRaterCounts,
     c = shape(a, "counts");
   if (c < 2 || a.length < 2)
@@ -40,7 +40,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
   positive(1 - pe, "chancecomplement");
   return { fleissKappa: (po - pe) / (1 - pe) };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -64,6 +64,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { fleissKappa: { type: "number" } },
+        required: ["fleissKappa"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
