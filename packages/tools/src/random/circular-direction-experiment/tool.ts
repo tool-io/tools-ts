@@ -15,12 +15,12 @@ import {
 } from "../batch42-shared.js";
 
 export type Input = Readonly<{ readonly seed: string; readonly count: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   bounded(input.count, "directions", 1, 64);
   const angles = Array.from({ length: input.count }, () => 360 * random()),
@@ -40,10 +40,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -57,7 +54,29 @@ export const tool = createSimpleTool({
     "Simulate independent uniform planar directions in [0,360) and circular mean/resultant. Zero placeholder with false availability for unresolved mean; not linear averaging,3D spherical directions or a compass calibration.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          anglesDegrees: { type: "array", items: { type: "number" } },
+          resultantLength: { type: "number" },
+          meanDirectionKnown: { type: "boolean" },
+          meanDirectionDegrees: { type: "number" },
+          meanDirectionConvention: { type: "string" },
+        },
+        required: [
+          "anglesDegrees",
+          "resultantLength",
+          "meanDirectionKnown",
+          "meanDirectionDegrees",
+          "meanDirectionConvention",
+        ],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
