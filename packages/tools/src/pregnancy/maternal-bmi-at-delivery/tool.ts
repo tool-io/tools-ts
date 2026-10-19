@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly independentlyRecordedPrepregnancyWeightKg: number;
   readonly independentlyMeasuredAdultHeightMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyRecordedDeliveryWeightKg",
@@ -24,7 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.independentlyRecordedDeliveryWeightKg, "deliveryweight");
   positive(input.independentlyRecordedPrepregnancyWeightKg, "baseline");
   positive(input.independentlyMeasuredAdultHeightMeters, "height");
@@ -37,7 +37,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       h,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -65,6 +65,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedDeliveryBmi: { type: "number" },
+          signedDeliveryMinusPrepregnancyBmi: { type: "number" },
+        },
+        required: ["observedDeliveryBmi", "signedDeliveryMinusPrepregnancyBmi"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
