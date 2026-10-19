@@ -231,6 +231,15 @@ export const associationRuleThresholdExerciseTool = createModelDefinition<
   AssociationRuleThresholdExerciseInput,
   AssociationRuleThresholdExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Association Rule Threshold Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/association-rule-threshold-exercise",
   title: "Random Association Rule Threshold Exercise Generator",
   description:
