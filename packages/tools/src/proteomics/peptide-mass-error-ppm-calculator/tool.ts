@@ -7,15 +7,12 @@ export type Input = Readonly<{
   observedMassDa: number;
   theoreticalMassDa: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "observedMassDa", label: "Observed mass da", kind: "number" },
   { id: "theoreticalMassDa", label: "Theoretical mass da", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   positive(i.observedMassDa, "observed");
   positive(i.theoreticalMassDa, "theoretical");
   return {
@@ -23,13 +20,13 @@ const compute = (
       (1e6 * (i.observedMassDa - i.theoreticalMassDa)) / i.theoreticalMassDa,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
 export const example = {
-  input: { observedMassDa: 100.001, theoreticalMassDa: 100 },
-  output: { result: { signedErrorPpm: 10 } },
+  input: { observedMassDa: 100.125, theoreticalMassDa: 100 },
+  output: { result: { signedErrorPpm: 1250 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
   id: "proteomics/peptide-mass-error-ppm-calculator",
@@ -42,6 +39,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { signedErrorPpm: { type: "number" } },
+        required: ["signedErrorPpm"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),

@@ -4,7 +4,8 @@ import {
   matchesToolJsonSchema,
 } from "../../core/contract.js";
 import tool, { calculate, example, type Input } from "./tool.js";
-const expected = { result: { signedErrorPpm: 10 } };
+// 0.125 / 100 * 1,000,000 = 1,250; all operands are exactly representable.
+const expected = { result: { signedErrorPpm: 1250 } };
 const close = (actual: unknown, expected: unknown): void => {
   if (typeof expected === "number") {
     expect(typeof actual).toBe("number");
