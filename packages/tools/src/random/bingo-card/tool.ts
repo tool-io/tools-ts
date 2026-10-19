@@ -284,6 +284,12 @@ export const bingoCardTool = createModelDefinition<
   BingoCardInput,
   BingoCardOutput
 >({
+  discovery: {
+    aliases: ["Random Configurable Bingo Card Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/bingo-card",
   title: "Random Configurable Bingo Card Generator",
   description:
