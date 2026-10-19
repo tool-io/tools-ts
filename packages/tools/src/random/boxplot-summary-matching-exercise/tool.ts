@@ -165,6 +165,15 @@ export const boxplotSummaryMatchingExerciseTool = createModelDefinition<
   BoxplotSummaryMatchingExerciseInput,
   BoxplotSummaryMatchingExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Boxplot Summary Matching Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/boxplot-summary-matching-exercise",
   title: "Random Boxplot Summary Matching Exercise Generator",
   description:
