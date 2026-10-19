@@ -162,6 +162,12 @@ export const beadLoomRowChartTool = createModelDefinition<
   BeadLoomRowChartInput,
   BeadLoomRowChartOutput
 >({
+  discovery: {
+    aliases: ["Random Bead Loom Row Chart Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/bead-loom-row-chart",
   title: "Random Bead Loom Row Chart Generator",
   description:
