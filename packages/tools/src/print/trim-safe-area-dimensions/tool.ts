@@ -2,13 +2,13 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ width: number; height: number; margin: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "width", kind: "number", label: "width" },
   { id: "height", kind: "number", label: "height" },
   { id: "margin", kind: "number", label: "margin" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.positive(i.width);
   H.positive(i.height);
@@ -29,7 +29,19 @@ export const tool = createSimpleTool({
   description:
     "Compute rectangular safe interior dimensions from explicit same-unit symmetric margins; not a print-production specification.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { width: { type: "number" }, height: { type: "number" } },
+        required: ["width", "height"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
