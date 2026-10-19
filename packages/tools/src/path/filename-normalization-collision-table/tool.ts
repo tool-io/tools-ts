@@ -9,15 +9,12 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ names: readonly string[]; form: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "names", label: "Names", kind: "stringList" },
   { id: "form", label: "Form", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!["NFC", "NFD", "NFKC", "NFKD"].includes(i.form))
     simpleError("form", "Explicit Unicode normalization form.");
   i.names.forEach(filename);
@@ -29,7 +26,7 @@ const compute = (
     }),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -48,6 +45,26 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          collisions: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                normalized: { type: "string" },
+                indexes: { type: "array", items: { type: "number" } },
+              },
+              required: ["normalized", "indexes"],
+            },
+          },
+        },
+        required: ["collisions"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
