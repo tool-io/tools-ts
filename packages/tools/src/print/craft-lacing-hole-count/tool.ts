@@ -6,13 +6,13 @@ export type Input = Readonly<{
   pitch: number;
   includeBothEnds: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "length", kind: "number", label: "length" },
   { id: "pitch", kind: "number", label: "pitch" },
   { id: "includeBothEnds", kind: "boolean", label: "includeBothEnds" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.length >= 0);
   H.positive(i.pitch);
@@ -34,7 +34,22 @@ export const tool = createSimpleTool({
   description:
     "Count regularly pitched lacing holes starting at zero, optionally adding an irregular final hole at the far endpoint.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          holes: { type: "number" },
+          regularEnd: { type: "number" },
+        },
+        required: ["holes", "regularEnd"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
