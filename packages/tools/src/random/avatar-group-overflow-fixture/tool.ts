@@ -181,6 +181,15 @@ export const avatarGroupOverflowFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Avatar Group Overflow Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/avatar-group-overflow-fixture",
   title: "Random Avatar Group Overflow Fixture Generator",
   description:
