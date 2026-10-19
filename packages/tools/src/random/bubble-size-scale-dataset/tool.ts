@@ -139,6 +139,15 @@ export const bubbleSizeScaleDatasetTool = createModelDefinition<
   BubbleSizeScaleDatasetInput,
   BubbleSizeScaleDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Bubble Size Scale Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/bubble-size-scale-dataset",
   title: "Random Bubble Size Scale Dataset Generator",
   description:
