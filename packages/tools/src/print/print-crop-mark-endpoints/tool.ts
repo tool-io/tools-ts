@@ -7,14 +7,14 @@ export type Input = Readonly<{
   gap: number;
   length: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "width", kind: "number", label: "width" },
   { id: "height", kind: "number", label: "height" },
   { id: "gap", kind: "number", label: "gap" },
   { id: "length", kind: "number", label: "length" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.positive(i.width);
   H.positive(i.height);
@@ -60,7 +60,24 @@ export const tool = createSimpleTool({
   description:
     "Place eight axis-aligned crop-mark segments outside a rectangular trim box at the origin with explicit gap and length.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          segments: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["segments"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
