@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly callerVerifiedCycleLengthDays: number;
   readonly callerAssumedLutealPhaseDays: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyRecordedLmpDate",
@@ -29,7 +29,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.callerVerifiedCycleLengthDays, "cycle", 15, 60);
   bounded(
     input.callerAssumedLutealPhaseDays,
@@ -44,7 +44,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -67,6 +67,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalConceptionWindowAnchorDate: { type: "string" },
+        },
+        required: ["conditionalConceptionWindowAnchorDate"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
