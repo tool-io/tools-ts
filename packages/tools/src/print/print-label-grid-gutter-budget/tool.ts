@@ -7,14 +7,14 @@ export type Input = Readonly<{
   columns: number;
   margin: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "sheetWidth", kind: "number", label: "sheetWidth" },
   { id: "labelWidth", kind: "number", label: "labelWidth" },
   { id: "columns", kind: "integer", label: "columns" },
   { id: "margin", kind: "number", label: "margin" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.positive(i.sheetWidth);
   H.positive(i.labelWidth);
@@ -33,7 +33,22 @@ export const tool = createSimpleTool({
   description:
     "Budget equal horizontal label gutters from explicit sheet, margins and label widths; negative gutter remains a fit failure.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          availableGutter: { type: "number" },
+          fits: { type: "boolean" },
+        },
+        required: ["availableGutter", "fits"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
