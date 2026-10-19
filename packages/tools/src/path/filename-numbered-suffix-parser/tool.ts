@@ -9,14 +9,11 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ name: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "name", label: "Name", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   filename(i.name);
   const m = /^(.*)\(([0-9]+)\)([^()]*)$(?![\s\S])/.exec(i.name);
   return {
@@ -27,7 +24,7 @@ const compute = (
     suffix: m ? m[3] : null,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -54,6 +51,25 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          matched: { type: "boolean" },
+          prefix: { anyOf: [{ type: "string" }, { type: "null" }] },
+          numberDecimal: { anyOf: [{ type: "string" }, { type: "null" }] },
+          digitWidth: { anyOf: [{ type: "number" }, { type: "null" }] },
+          suffix: { anyOf: [{ type: "string" }, { type: "null" }] },
+        },
+        required: [
+          "matched",
+          "prefix",
+          "numberDecimal",
+          "digitWidth",
+          "suffix",
+        ],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
