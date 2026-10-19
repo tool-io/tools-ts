@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly actualRecordedAdministeredVolumeMl: number;
   readonly callerVerifiedPrescriptionAndProductContext: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualVerifiedBodyMassKg",
@@ -42,7 +42,7 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.actualVerifiedBodyMassKg, "kg");
   nonnegative(
     input.callerClinicianPrescribedMassMgPerKgPerAdministration,
@@ -63,7 +63,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.actualRecordedAdministeredVolumeMl - v,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -95,6 +95,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          orderedMassMg: { type: "number" },
+          orderedProductVolumeMl: { type: "number" },
+          signedRecordedMinusOrderedVolumeMl: { type: "number" },
+        },
+        required: [
+          "orderedMassMg",
+          "orderedProductVolumeMl",
+          "signedRecordedMinusOrderedVolumeMl",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
