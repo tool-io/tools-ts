@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly firstSampleSize: number;
   readonly secondSampleSize: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualPooledIndependentT",
@@ -21,7 +21,7 @@ const fields = [
   { id: "firstSampleSize", label: "First sample size", kind: "number" },
   { id: "secondSampleSize", label: "Second sample size", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.firstSampleSize, "firstSampleSize", 1, 1000000);
   bounded(input.secondSampleSize, "secondSampleSize", 1, 1000000);
   if (input.firstSampleSize < 2 || input.secondSampleSize < 2)
@@ -33,7 +33,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       Math.sqrt(1 / input.firstSampleSize + 1 / input.secondSampleSize),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -56,6 +56,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
