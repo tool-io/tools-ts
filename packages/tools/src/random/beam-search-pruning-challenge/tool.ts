@@ -274,6 +274,15 @@ export const beamSearchPruningChallengeTool = createModelDefinition<
   BeamSearchPruningChallengeInput,
   BeamSearchPruningChallengeOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Beam Search Pruning Challenge Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/beam-search-pruning-challenge",
   title: "Random Beam Search Pruning Challenge Generator",
   description:
