@@ -5,12 +5,12 @@ export type Input = Readonly<{
   permutation: readonly number[];
   exponent: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "permutation", kind: "numberList", label: "permutation" },
   { id: "exponent", kind: "string", label: "exponent" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const cycles = H.cycles(i.permutation),
     power = H.bigint(i.exponent),
@@ -32,7 +32,21 @@ export const tool = createSimpleTool({
   description:
     "Raise an index permutation to an exact signed integer power by cycle offsets, including negative inverse powers and zero identity.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          permutation: { type: "array", items: { type: "number" } },
+        },
+        required: ["permutation"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
