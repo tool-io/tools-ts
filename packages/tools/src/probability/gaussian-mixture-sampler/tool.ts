@@ -198,8 +198,17 @@ export const gaussianMixtureSamplerTool = createModelDefinition<
   GaussianMixtureSamplerInput,
   GaussianMixtureSamplerOutput
 >({
+  discovery: {
+    aliases: [
+      "Gaussian Mixture Model Sampler",
+      "Gaussian Mixture Model Sampler Tool",
+    ],
+    collections: ["data", "learn"],
+    fields: ["probability"],
+    keywords: [],
+  },
   id: "probability/gaussian-mixture-sampler",
-  title: "Gaussian Mixture Model Sampler Tool",
+  title: "Gaussian Mixture Model Sampler",
   description:
     "Draw labeled samples from supplied univariate Gaussian components using the weighted-item and Box–Muller cores, with scaled weights and the normal core's epsilon-clipped zero-draw convention; no model fitting.",
   inputSchema,
