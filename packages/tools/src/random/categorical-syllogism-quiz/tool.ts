@@ -252,6 +252,15 @@ export const categoricalSyllogismQuizTool = createModelDefinition<
   CategoricalSyllogismQuizInput,
   CategoricalSyllogismQuizOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Categorical Syllogism Quiz Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/categorical-syllogism-quiz",
   title: "Random Categorical Syllogism Quiz Generator",
   description:
