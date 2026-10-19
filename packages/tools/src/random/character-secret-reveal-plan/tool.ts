@@ -195,6 +195,15 @@ export const characterSecretRevealPlanTool = createModelDefinition<
   CharacterSecretRevealPlanInput,
   CharacterSecretRevealPlanOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Character Secret Reveal Plan Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/character-secret-reveal-plan",
   title: "Random Character Secret Reveal Plan Generator",
   description:
