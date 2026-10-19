@@ -278,6 +278,12 @@ export const calendarEventSetTool = createModelDefinition<
   CalendarEventSetInput,
   CalendarEventSetOutput
 >({
+  discovery: {
+    aliases: ["Random Calendar Event Set Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/calendar-event-set",
   title: "Random Calendar Event Set Generator",
   description:
