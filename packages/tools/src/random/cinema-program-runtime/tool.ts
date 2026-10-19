@@ -414,6 +414,12 @@ export const cinemaProgramRuntimeTool = createModelDefinition<
   CinemaProgramRuntimeInput,
   CinemaProgramRuntimeOutput
 >({
+  discovery: {
+    aliases: ["Random Cinema Program Runtime Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/cinema-program-runtime",
   title: "Random Cinema Program Runtime Generator",
   description:
