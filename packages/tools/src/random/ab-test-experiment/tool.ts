@@ -295,6 +295,12 @@ export const abTestExperimentTool = createModelDefinition<
   AbTestExperimentInput,
   AbTestExperimentOutput
 >({
+  discovery: {
+    aliases: ["Random A/B Test Experiment Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/ab-test-experiment",
   title: "Random A/B Test Experiment Generator",
   description:
