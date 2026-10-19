@@ -189,6 +189,12 @@ export const clozePracticePacketTool = createModelDefinition<
   ClozePracticePacketInput,
   ClozePracticePacketOutput
 >({
+  discovery: {
+    aliases: ["Random Cloze Practice Packet Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/cloze-practice-packet",
   title: "Random Cloze Practice Packet Generator",
   description:
