@@ -244,6 +244,15 @@ export const cadenceChordProgressionTool = createModelDefinition<
   CadenceChordProgressionInput,
   CadenceChordProgressionOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Cadence Chord Progression Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/cadence-chord-progression",
   title: "Random Cadence Chord Progression Generator",
   description:
