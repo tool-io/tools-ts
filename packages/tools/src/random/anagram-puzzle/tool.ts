@@ -18,13 +18,13 @@ export type Input = Readonly<{
   readonly count: number;
   readonly candidateWords: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
   { id: "candidateWords", label: "Candidate words", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   unique(input.candidateWords, "words");
   input.candidateWords.forEach((v) => {
@@ -55,10 +55,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
   });
   return { result: { puzzles } };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -72,7 +69,31 @@ export const tool = createSimpleTool({
     "Uniform caller word selection and uniform letter-position permutations; repeated letters and identity permutations allowed rather than retry-biased scrambling. ASCII spelling drill, not language validity or a guaranteed different anagram.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          puzzles: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                scrambled: { type: "string" },
+                answer: { type: "string" },
+                unchanged: { type: "boolean" },
+              },
+              required: ["scrambled", "answer", "unchanged"],
+            },
+          },
+        },
+        required: ["puzzles"],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
