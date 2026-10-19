@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly independentlyMeasuredEndDiastolicVelocity: number;
   readonly independentlyMeasuredCycleMeanVelocity: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredSystolicVelocity",
@@ -30,7 +30,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.independentlyMeasuredSystolicVelocity, "systolic");
   positive(input.independentlyMeasuredCycleMeanVelocity, "cycle-mean");
   if (
@@ -48,7 +48,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.independentlyMeasuredCycleMeanVelocity,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -71,6 +71,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { observedPulsatilityIndex: { type: "number" } },
+        required: ["observedPulsatilityIndex"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
