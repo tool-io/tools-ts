@@ -157,6 +157,15 @@ export const chapterTitleThemeSequenceTool = createModelDefinition<
   ChapterTitleThemeSequenceInput,
   ChapterTitleThemeSequenceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Chapter Title Theme Sequence Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/chapter-title-theme-sequence",
   title: "Random Chapter Title Theme Sequence Generator",
   description:
