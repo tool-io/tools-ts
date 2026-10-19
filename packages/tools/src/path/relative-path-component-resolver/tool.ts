@@ -10,21 +10,18 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ baseDirectory: string; relativePath: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "baseDirectory", label: "Base directory", kind: "string" },
   { id: "relativePath", label: "Relative path", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!i.baseDirectory.startsWith("/") || i.relativePath.startsWith("/"))
     simpleError("path", "Absolute base directory and relative target.");
   const out = collapse(i.baseDirectory + "/" + i.relativePath);
   return { path: "/" + out.components.join("/") };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -43,6 +40,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { path: { type: "string" } },
+        required: ["path"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
