@@ -4,17 +4,14 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, collapse } from "../batch53-shared.js";
 
 export type Input = Readonly<{ path: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "path", label: "Path", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   return collapse(i.path);
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -43,6 +40,29 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          components: { type: "array", items: { type: "string" } },
+          events: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                component: { type: "string" },
+                action: { type: "string" },
+              },
+              required: ["index", "component", "action"],
+            },
+          },
+          absolute: { type: "boolean" },
+        },
+        required: ["components", "events", "absolute"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
