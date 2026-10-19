@@ -194,6 +194,15 @@ export const characterExitEntryCuesTool = createModelDefinition<
   CharacterExitEntryCuesInput,
   CharacterExitEntryCuesOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Character Entry and Exit Cue Plan Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/character-exit-entry-cues",
   title: "Random Character Entry and Exit Cue Plan Generator",
   description:
