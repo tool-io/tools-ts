@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly withinSubjectsMeanSquare: number;
   readonly ratingsPerPerson: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "betweenSubjectsMeanSquare",
@@ -26,7 +26,7 @@ const fields = [
   },
   { id: "ratingsPerPerson", label: "Ratings per person", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.betweenSubjectsMeanSquare, "betweenSubjectsMeanSquare");
   nonnegative(input.withinSubjectsMeanSquare, "withinSubjectsMeanSquare");
   bounded(input.ratingsPerPerson, "ratingsPerPerson", 1, 1000000);
@@ -39,7 +39,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
         (input.ratingsPerPerson - 1) * input.withinSubjectsMeanSquare),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -62,6 +62,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
