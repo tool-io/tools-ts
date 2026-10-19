@@ -184,6 +184,15 @@ export const characterObjectiveConflictTool = createModelDefinition<
   CharacterObjectiveConflictInput,
   CharacterObjectiveConflictOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Character Objective Conflict Matrix Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/character-objective-conflict",
   title: "Random Character Objective Conflict Matrix Generator",
   description:
