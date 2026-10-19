@@ -262,6 +262,15 @@ export const circularBufferWraparoundTraceTool = createModelDefinition<
   CircularBufferWraparoundTraceInput,
   CircularBufferWraparoundTraceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Circular Buffer Wraparound Trace Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/circular-buffer-wraparound-trace",
   title: "Random Circular Buffer Wraparound Trace Generator",
   description:
