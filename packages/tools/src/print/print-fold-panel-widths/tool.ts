@@ -6,13 +6,13 @@ export type Input = Readonly<{
   panels: number;
   inset: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "sheetWidth", kind: "number", label: "sheetWidth" },
   { id: "panels", kind: "integer", label: "panels" },
   { id: "inset", kind: "number", label: "inset" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.positive(i.sheetWidth);
   H.int(i.panels, 2, 128);
@@ -35,7 +35,19 @@ export const tool = createSimpleTool({
   description:
     "Allocate an explicit sheet width to equal fold panels except one tucked final panel shortened by the supplied inset; no paper-thickness model.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { widths: { type: "array", items: { type: "number" } } },
+        required: ["widths"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
