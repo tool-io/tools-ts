@@ -294,6 +294,12 @@ export const bloomFilterWorkloadTool = createModelDefinition<
   BloomFilterWorkloadInput,
   BloomFilterWorkloadOutput
 >({
+  discovery: {
+    aliases: ["Random Bloom Filter Workload Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/bloom-filter-workload",
   title: "Random Bloom Filter Workload Generator",
   description:
