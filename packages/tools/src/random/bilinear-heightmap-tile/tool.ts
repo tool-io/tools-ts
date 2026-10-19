@@ -216,6 +216,12 @@ export const bilinearHeightmapTileTool = createModelDefinition<
   BilinearHeightmapTileInput,
   BilinearHeightmapTileOutput
 >({
+  discovery: {
+    aliases: ["Random Bilinear Heightmap Tile Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/bilinear-heightmap-tile",
   title: "Random Bilinear Heightmap Tile Generator",
   description:
