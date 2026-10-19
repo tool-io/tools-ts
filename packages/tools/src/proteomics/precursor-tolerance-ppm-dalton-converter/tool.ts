@@ -9,15 +9,12 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ precursorMz: number; tolerancePpm: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "precursorMz", label: "Precursor mz", kind: "number" },
   { id: "tolerancePpm", label: "Tolerance ppm", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   positive(i.precursorMz, "mz");
   nonnegative(i.tolerancePpm, "tolerance");
   const halfWidthDa = (i.precursorMz * i.tolerancePpm) / 1e6;
@@ -27,7 +24,7 @@ const compute = (
     upperMz: i.precursorMz + halfWidthDa,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -48,6 +45,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          halfWidthDa: { type: "number" },
+          lowerMz: { type: "number" },
+          upperMz: { type: "number" },
+        },
+        required: ["halfWidthDa", "lowerMz", "upperMz"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
