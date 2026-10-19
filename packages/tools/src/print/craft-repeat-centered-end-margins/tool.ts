@@ -6,13 +6,13 @@ export type Input = Readonly<{
   repeatLength: number;
   repeats: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "length", kind: "number", label: "length" },
   { id: "repeatLength", kind: "number", label: "repeatLength" },
   { id: "repeats", kind: "integer", label: "repeats" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.length >= 0);
   H.positive(i.repeatLength);
@@ -30,7 +30,23 @@ export const tool = createSimpleTool({
   description:
     "Center an explicitly chosen number of craft repeats in a length budget; negative margins retain oversize evidence.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          margin: { type: "number" },
+          fits: { type: "boolean" },
+          remainder: { type: "number" },
+        },
+        required: ["margin", "fits", "remainder"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
