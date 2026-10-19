@@ -117,6 +117,15 @@ export const balanceScaleEquationPuzzleTool = createModelDefinition<
   BalanceScaleEquationPuzzleInput,
   BalanceScaleEquationPuzzleOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Balance Scale Equation Puzzle Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/balance-scale-equation-puzzle",
   title: "Random Balance Scale Equation Puzzle Generator",
   description:
