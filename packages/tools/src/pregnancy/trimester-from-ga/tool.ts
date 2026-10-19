@@ -4,7 +4,7 @@ import { validateInput, finish, bounded } from "../batch47-shared.js";
 export type Input = Readonly<{
   readonly independentlyEstablishedGestationalDays: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyEstablishedGestationalDays",
@@ -12,7 +12,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.independentlyEstablishedGestationalDays, "days", 0, 450);
   return {
     conventionalTrimester:
@@ -23,7 +23,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
           : 3,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -42,6 +42,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conventionalTrimester: { type: "number" } },
+        required: ["conventionalTrimester"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
