@@ -272,6 +272,12 @@ export const barcodeLabelSheetTool = createModelDefinition<
   BarcodeLabelSheetInput,
   BarcodeLabelSheetOutput
 >({
+  discovery: {
+    aliases: ["Random Barcode Label Sheet Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/barcode-label-sheet",
   title: "Random Barcode Label Sheet Generator",
   description:
