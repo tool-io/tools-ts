@@ -12,14 +12,14 @@ export type Input = Readonly<{
   readonly observedAcCm: number;
   readonly observedFlCm: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "observedBpdCm", label: "Observed bpd cm", kind: "number" },
   { id: "observedHcCm", label: "Observed hc cm", kind: "number" },
   { id: "observedAcCm", label: "Observed ac cm", kind: "number" },
   { id: "observedFlCm", label: "Observed fl cm", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.observedBpdCm, "dimension-cm");
   if (input.observedBpdCm > 100)
     simpleError(
@@ -55,7 +55,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
         0.174 * input.observedFlCm),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -81,6 +81,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalEstimatedFetalWeightGrams: { type: "number" },
+        },
+        required: ["conditionalEstimatedFetalWeightGrams"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
