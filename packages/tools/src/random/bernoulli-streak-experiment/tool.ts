@@ -20,13 +20,13 @@ export type Input = Readonly<{
   readonly count: number;
   readonly successProbability: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
   { id: "successProbability", label: "Success probability", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   bounded(input.count, "trials", 1, 64);
   fraction(input.successProbability, "probability");
@@ -53,10 +53,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -70,7 +67,31 @@ export const tool = createSimpleTool({
     "Simulate ordered Bernoulli trials and success-streak endpoints using explicit independent success probability; finite observed proportions and streaks do not establish fairness or population probability.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          outcomes: { type: "array", items: { type: "number" } },
+          successes: { type: "number" },
+          observedSuccessFraction: { type: "number" },
+          longestSuccessStreak: { type: "number" },
+          successStreakEndIndices: { type: "array", items: { type: "number" } },
+          samplingConvention: { type: "string" },
+        },
+        required: [
+          "outcomes",
+          "successes",
+          "observedSuccessFraction",
+          "longestSuccessStreak",
+          "successStreakEndIndices",
+          "samplingConvention",
+        ],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
