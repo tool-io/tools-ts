@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly independentlyVerifiedFetalCellPercent: number;
   readonly callerClinicallyEstablishedMaternalBloodVolumeMl: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyVerifiedFetalCellPercent",
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     input.independentlyVerifiedFetalCellPercent < 0 ||
     input.independentlyVerifiedFetalCellPercent > 100
@@ -36,7 +36,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.callerClinicallyEstablishedMaternalBloodVolumeMl,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -58,6 +58,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalFetalCellEquivalentVolumeMl: { type: "number" },
+        },
+        required: ["conditionalFetalCellEquivalentVolumeMl"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
