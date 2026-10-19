@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly actualMeanVelocityMetersPerSecond: number;
   readonly callerGravityMetersPerSecondSquared: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerIndependentDarcyFrictionFactor",
@@ -41,7 +41,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(
     input.callerIndependentDarcyFrictionFactor,
     "callerIndependentDarcyFrictionFactor",
@@ -65,7 +65,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       (2 * input.callerGravityMetersPerSecondSquared),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -90,6 +90,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
