@@ -5,12 +5,12 @@ export type Input = Readonly<{
   first: readonly number[];
   second: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "first", kind: "numberList", label: "first" },
   { id: "second", kind: "numberList", label: "second" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.permutation(i.first);
   H.permutation(i.second);
@@ -28,7 +28,19 @@ export const tool = createSimpleTool({
   description:
     "Compute minimum unrestricted swap distance between two index permutations from relative cycle count; adjacent-swap distance is different.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { distance: { type: "number" } },
+        required: ["distance"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
