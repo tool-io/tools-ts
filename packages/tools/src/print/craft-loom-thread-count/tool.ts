@@ -6,13 +6,13 @@ export type Input = Readonly<{
   threadsPerUnit: number;
   edgeThreads: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "width", kind: "number", label: "width" },
   { id: "threadsPerUnit", kind: "number", label: "threadsPerUnit" },
   { id: "edgeThreads", kind: "integer", label: "edgeThreads" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.width >= 0);
   H.positive(i.threadsPerUnit);
@@ -32,7 +32,22 @@ export const tool = createSimpleTool({
   description:
     "Budget whole loom warp threads from explicit width and sett, rounding body threads up and adding a total edge allowance.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          bodyThreads: { type: "number" },
+          totalThreads: { type: "number" },
+        },
+        required: ["bodyThreads", "totalThreads"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
