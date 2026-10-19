@@ -177,6 +177,15 @@ export const categoricalColorPaletteTool = createModelDefinition<
   CategoricalColorPaletteInput,
   CategoricalColorPaletteOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Categorical Color Palette Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/categorical-color-palette",
   title: "Random Categorical Color Palette Generator",
   description:
