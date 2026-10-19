@@ -133,7 +133,30 @@ export const aStarTool = createSimpleTool({
     },
   ],
   outputs: [
-    { format: "path/grid", id: "result", kind: "object", label: "Path" },
+    {
+      format: "path/grid",
+      id: "result",
+      kind: "object",
+      label: "Path",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          cost: { type: "number" },
+          explored: { type: "number" },
+          path: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: { x: { type: "number" }, y: { type: "number" } },
+              required: ["x", "y"],
+            },
+          },
+        },
+        required: ["cost", "explored", "path"],
+      },
+    },
   ],
   calculate: (input) => {
     const result = findAStarPath(
