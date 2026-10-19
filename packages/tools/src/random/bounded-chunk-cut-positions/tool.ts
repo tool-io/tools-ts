@@ -9,7 +9,7 @@ export type Input = Readonly<{
   maximum: number;
   seed: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "length", label: "length", kind: "integer" },
   { id: "chunks", label: "chunks", kind: "integer" },
@@ -17,7 +17,7 @@ const fields = [
   { id: "maximum", label: "maximum", kind: "integer" },
   { id: "seed", label: "seed", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   H.validate(i, fields);
   const random = H.randomSource(i.seed, context);
   const model = H.chunkCounts(i.length, i.chunks, i.minimum, i.maximum);
@@ -53,16 +53,39 @@ export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
 export const example = {
   input: { length: 6, chunks: 3, minimum: 1, maximum: 3, seed: "batch56" },
   output: {
-    result: { seed: "batch56", lengths: [1, 2, 3], cuts: [1, 3], support: "7" },
+    result: { seed: "batch56", lengths: [2, 3, 1], cuts: [2, 5], support: "7" },
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Random Bounded Chunk Cut Positions", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/bounded-chunk-cut-positions",
   title: "Random Bounded Chunk Cut Positions",
   description:
     "Replay seed or one advancing injected source, uniform over the explicitly stated finite support, not cryptographically secure. Uniformly sample bounded positive chunk-length compositions of an explicit total with fixed chunk count using exact completion-count unranking; infeasible support rejects.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          seed: { type: "string" },
+          lengths: { type: "array", items: { type: "number" } },
+          cuts: { type: "array", items: { type: "number" } },
+          support: { type: "string" },
+        },
+        required: ["seed", "lengths", "cuts", "support"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
 });
 export const run = tool.execute;
