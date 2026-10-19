@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ coefficients: readonly number[]; x: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "coefficients", label: "coefficients", kind: "numberList" },
   { id: "x", label: "x", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.coefficients.length > 0);
   return H.finish({
@@ -23,12 +23,30 @@ export const example = {
   output: { result: { value: 17, slope: 14 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Polynomial Value Slope Pair", "mathematics"],
+    collections: ["data", "learn"],
+    fields: ["polynomial", "mathematics"],
+    keywords: ["mathematics"],
+  },
   id: "polynomial/coefficient-value-slope-pair",
   title: "Polynomial Value Slope Pair",
   description:
     "Evaluate a nonempty ascending-power polynomial and derivative at one finite x using Horner arithmetic; no root or stability claim.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" }, slope: { type: "number" } },
+        required: ["value", "slope"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
