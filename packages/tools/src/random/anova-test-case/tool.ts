@@ -188,6 +188,12 @@ export const anovaTestCaseTool = createModelDefinition<
   AnovaTestCaseInput,
   AnovaTestCaseOutput
 >({
+  discovery: {
+    aliases: ["Random ANOVA Test Case Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/anova-test-case",
   title: "Random ANOVA Test Case Generator",
   description:
