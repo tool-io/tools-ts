@@ -117,6 +117,15 @@ export const choroplethBinBoundaryDatasetTool = createModelDefinition<
   ChoroplethBinBoundaryDatasetInput,
   ChoroplethBinBoundaryDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Choropleth Bin Boundary Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/choropleth-bin-boundary-dataset",
   title: "Random Choropleth Bin Boundary Dataset Generator",
   description:
