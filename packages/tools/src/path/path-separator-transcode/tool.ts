@@ -8,16 +8,13 @@ export type Input = Readonly<{
   fromSeparator: string;
   toSeparator: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "path", label: "Path", kind: "string" },
   { id: "fromSeparator", label: "From separator", kind: "string" },
   { id: "toSeparator", label: "To separator", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (
     i.fromSeparator.length !== 1 ||
     i.toSeparator.length !== 1 ||
@@ -26,7 +23,7 @@ const compute = (
     simpleError("separator", "Distinct one-unit separators.");
   return { path: i.path.replaceAll(i.fromSeparator, i.toSeparator) };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -45,6 +42,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { path: { type: "string" } },
+        required: ["path"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
