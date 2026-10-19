@@ -6,13 +6,13 @@ export type Input = Readonly<{
   gaps: readonly number[];
   ends: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "diameters", kind: "numberList", label: "diameters" },
   { id: "gaps", kind: "numberList", label: "gaps" },
   { id: "ends", kind: "number", label: "ends" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.diameters.length > 0 &&
@@ -38,7 +38,19 @@ export const tool = createSimpleTool({
   description:
     "Budget craft bead string length from individually supplied bead diameters, inter-bead gaps and total end allowance; no elastic or knot model.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { length: { type: "number" } },
+        required: ["length"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
