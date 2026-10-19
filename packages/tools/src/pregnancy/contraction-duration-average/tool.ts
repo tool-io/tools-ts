@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly independentlyRecordedContractionOnsetsSeconds: readonly number[];
   readonly independentlyRecordedContractionEndsSeconds: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyRecordedContractionOnsetsSeconds",
@@ -25,7 +25,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.independentlyRecordedContractionOnsetsSeconds,
     input.independentlyRecordedContractionEndsSeconds,
@@ -56,7 +56,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     observedMeanContractionDurationSeconds: mean(d),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -83,6 +83,22 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedContractionDurationsSeconds: {
+            type: "array",
+            items: { type: "number" },
+          },
+          observedMeanContractionDurationSeconds: { type: "number" },
+        },
+        required: [
+          "observedContractionDurationsSeconds",
+          "observedMeanContractionDurationSeconds",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
