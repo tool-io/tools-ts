@@ -98,6 +98,17 @@ export const rejectionSamplerTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Samples",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          acceptanceRate: { type: "number" },
+          attempts: { type: "number" },
+          samples: { type: "array", items: { type: "number" } },
+        },
+        required: ["acceptanceRate", "attempts", "samples"],
+      },
     },
   ],
   calculate: (input) => {
