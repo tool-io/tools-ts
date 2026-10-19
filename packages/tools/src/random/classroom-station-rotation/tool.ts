@@ -246,6 +246,15 @@ export const classroomStationRotationTool = createModelDefinition<
   ClassroomStationRotationInput,
   ClassroomStationRotationOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Classroom Station Rotation Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/classroom-station-rotation",
   title: "Random Classroom Station Rotation Generator",
   description:
