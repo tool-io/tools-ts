@@ -5,12 +5,12 @@ export type Input = Readonly<{
   left: readonly number[];
   right: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", label: "left", kind: "numberList" },
   { id: "right", label: "right", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.qUnit(i.left);
   H.qUnit(i.right);
@@ -33,12 +33,34 @@ export const example = {
   output: { result: { radians: 3.141592653589793 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Unit Quaternion Angular Separation",
+      "quaternions",
+      "3D rotations",
+    ],
+    collections: ["data", "learn"],
+    fields: ["quaternion", "quaternions", "3D rotations"],
+    keywords: ["quaternions", "3D rotations"],
+  },
   id: "quaternion/unit-dot-angular-separation",
   title: "Unit Quaternion Angular Separation",
   description:
     "Quaternion order is scalar-first [w,x,y,z], Hamilton product and right-handed active rotations; measure shortest rotation separation through absolute unit dot product, treating q and -q as identical.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { radians: { type: "number" } },
+        required: ["radians"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
