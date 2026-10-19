@@ -275,6 +275,12 @@ export const assessmentItemSamplerTool = createModelDefinition<
   AssessmentItemSamplerInput,
   AssessmentItemSamplerOutput
 >({
+  discovery: {
+    aliases: ["Random Assessment Item Sampler Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/assessment-item-sampler",
   title: "Random Assessment Item Sampler Generator",
   description:
