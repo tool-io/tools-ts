@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ quaternion: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "quaternion", label: "quaternion", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const q = H.qCanonical(i.quaternion),
     n = Math.hypot(...q.slice(1));
@@ -20,12 +20,42 @@ export const example = {
   output: { result: { radians: 0, axis: null } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Unit Quaternion Record to Axis Angle",
+      "quaternions",
+      "3D rotations",
+    ],
+    collections: ["data", "learn"],
+    fields: ["quaternion", "quaternions", "3D rotations"],
+    keywords: ["quaternions", "3D rotations"],
+  },
   id: "quaternion/unit-record-to-axis-angle",
   title: "Unit Quaternion Record to Axis Angle",
   description:
     "Quaternion order is scalar-first [w,x,y,z], Hamilton product and right-handed active rotations; convert a unit rotation to canonical shortest axis-angle; zero rotation has an unknown/null axis, not an invented direction.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          radians: { type: "number" },
+          axis: {
+            anyOf: [
+              { type: "array", items: { type: "number" } },
+              { type: "null" },
+            ],
+          },
+        },
+        required: ["radians", "axis"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
