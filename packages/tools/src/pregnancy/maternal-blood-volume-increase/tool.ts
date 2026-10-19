@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly callerVerifiedBaselineBloodVolumeMl: number;
   readonly callerIndependentlyCalibratedPregnancyExpansionFraction: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerVerifiedBaselineBloodVolumeMl",
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.callerVerifiedBaselineBloodVolumeMl, "baseline");
   fraction(
     input.callerIndependentlyCalibratedPregnancyExpansionFraction,
@@ -38,7 +38,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       (1 + input.callerIndependentlyCalibratedPregnancyExpansionFraction),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -65,6 +65,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalBloodVolumeIncreaseMl: { type: "number" },
+          conditionalTotalBloodVolumeMl: { type: "number" },
+        },
+        required: [
+          "conditionalBloodVolumeIncreaseMl",
+          "conditionalTotalBloodVolumeMl",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
