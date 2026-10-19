@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualMedicationCostMinorUnits: number;
   readonly actualCoveredDays: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualMedicationCostMinorUnits",
@@ -20,7 +20,7 @@ const fields = [
   },
   { id: "actualCoveredDays", label: "Actual covered days", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   money(input.actualMedicationCostMinorUnits, "cost");
   bounded(input.actualCoveredDays, "days", 1, 1000000);
   let a = BigInt(input.actualMedicationCostMinorUnits),
@@ -40,7 +40,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     roundedCostPerDayMinorUnits: roundMinor(a, b),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -65,6 +65,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          exactCostRateNumeratorMinorUnits: { type: "string" },
+          exactCostRateDenominatorDays: { type: "string" },
+          roundedCostPerDayMinorUnits: { type: "number" },
+        },
+        required: [
+          "exactCostRateNumeratorMinorUnits",
+          "exactCostRateDenominatorDays",
+          "roundedCostPerDayMinorUnits",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
