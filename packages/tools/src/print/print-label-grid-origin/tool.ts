@@ -11,7 +11,7 @@ export type Input = Readonly<{
   originX: number;
   originY: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "row", kind: "integer", label: "row" },
   { id: "column", kind: "integer", label: "column" },
@@ -22,7 +22,7 @@ const fields = [
   { id: "originX", kind: "number", label: "originX" },
   { id: "originY", kind: "number", label: "originY" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.row);
   H.int(i.column);
@@ -53,7 +53,19 @@ export const tool = createSimpleTool({
   description:
     "Place a label-grid cell origin from explicit zero-based coordinates, dimensions, gutters and starting origin; no sheet bounds assumed.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { x: { type: "number" }, y: { type: "number" } },
+        required: ["x", "y"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
