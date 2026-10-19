@@ -345,6 +345,15 @@ export const bookingOccupancyDatasetTool = createModelDefinition<
   BookingOccupancyDatasetInput,
   BookingOccupancyDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Booking Occupancy Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/booking-occupancy-dataset",
   title: "Random Booking Occupancy Dataset Generator",
   description:
