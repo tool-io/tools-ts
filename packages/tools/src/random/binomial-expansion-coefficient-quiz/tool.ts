@@ -134,6 +134,15 @@ export const binomialExpansionCoefficientQuizTool = createModelDefinition<
   BinomialExpansionCoefficientQuizInput,
   BinomialExpansionCoefficientQuizOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Binomial Expansion Coefficient Quiz Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/binomial-expansion-coefficient-quiz",
   title: "Random Binomial Expansion Coefficient Quiz Generator",
   description:
