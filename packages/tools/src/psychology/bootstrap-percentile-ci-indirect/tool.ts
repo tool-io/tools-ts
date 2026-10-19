@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualBootstrapIndirectEffectReplicates: readonly number[];
   readonly callerCentralCoverageFraction: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualBootstrapIndirectEffectReplicates",
@@ -24,7 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   fraction(input.callerCentralCoverageFraction, "coverage");
   if (
     input.callerCentralCoverageFraction <= 0 ||
@@ -42,7 +42,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -66,6 +66,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedPercentileLower: { type: "number" },
+          observedPercentileUpper: { type: "number" },
+        },
+        required: ["observedPercentileLower", "observedPercentileUpper"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
