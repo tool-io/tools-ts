@@ -140,6 +140,15 @@ export const badgeStatusCombinationFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Badge Status Combination Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/badge-status-combination-fixture",
   title: "Random Badge Status Combination Fixture Generator",
   description:
