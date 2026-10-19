@@ -4,7 +4,7 @@ import { validateInput, finish, positive } from "../batch47-shared.js";
 export type Input = Readonly<{
   readonly independentlyMeasuredBirthWeightGrams: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredBirthWeightGrams",
@@ -12,7 +12,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.independentlyMeasuredBirthWeightGrams, "weight");
   return {
     belowConventional2500Grams:
@@ -20,7 +20,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     signed2500GramMargin: input.independentlyMeasuredBirthWeightGrams - 2500,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -41,6 +41,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          belowConventional2500Grams: { type: "boolean" },
+          signed2500GramMargin: { type: "number" },
+        },
+        required: ["belowConventional2500Grams", "signed2500GramMargin"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
