@@ -151,6 +151,12 @@ export const breadcrumbDepthFixtureExample = {
   },
 } satisfies ToolExample<Input, Output>;
 export const breadcrumbDepthFixtureTool = createModelDefinition<Input, Output>({
+  discovery: {
+    aliases: ["Random Breadcrumb Depth Fixture Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/breadcrumb-depth-fixture",
   title: "Random Breadcrumb Depth Fixture Generator",
   description:
