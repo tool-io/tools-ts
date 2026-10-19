@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly independentlyRecordedLochiaStartDate: string;
   readonly independentlyRecordedLochiaEndDate: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyRecordedLochiaStartDate",
@@ -23,7 +23,7 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const d = daysBetween(
     input.independentlyRecordedLochiaStartDate,
     input.independentlyRecordedLochiaEndDate,
@@ -31,7 +31,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
   nonnegative(d, "elapsed");
   return { observedElapsedLochiaDays: d };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -53,6 +53,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { observedElapsedLochiaDays: { type: "number" } },
+        required: ["observedElapsedLochiaDays"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
