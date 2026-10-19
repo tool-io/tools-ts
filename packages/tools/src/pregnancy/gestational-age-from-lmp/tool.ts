@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly independentlyRecordedLmpDate: string;
   readonly asOfDate: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyRecordedLmpDate",
@@ -19,7 +19,7 @@ const fields = [
   },
   { id: "asOfDate", label: "As of date", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const d = daysBetween(input.independentlyRecordedLmpDate, input.asOfDate);
   bounded(d, "observed-calendar-days", 0, 450);
   return {
@@ -28,7 +28,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     additionalGestationalDays: d % 7,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -53,6 +53,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalGestationalDays: { type: "number" },
+          completedGestationalWeeks: { type: "number" },
+          additionalGestationalDays: { type: "number" },
+        },
+        required: [
+          "conditionalGestationalDays",
+          "completedGestationalWeeks",
+          "additionalGestationalDays",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
