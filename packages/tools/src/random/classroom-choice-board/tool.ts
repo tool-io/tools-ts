@@ -22,7 +22,7 @@ export type Input = Readonly<{
   readonly choiceDescriptions: readonly string[];
   readonly columns: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -34,7 +34,7 @@ const inputFields = [
   },
   { id: "columns", label: "Columns", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   unique(input.choiceIds, "choices");
   aligned(input.choiceIds, input.choiceDescriptions, "descriptions");
@@ -61,10 +61,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -88,7 +85,35 @@ export const tool = createSimpleTool({
     "Draw distinct caller-defined accessible activity choices into a row-major board. Partial final rows retain unused cells; no pedagogy efficacy, differentiation or accessibility certification.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          cells: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                row: { type: "number" },
+                column: { type: "number" },
+                choiceId: { type: "string" },
+                description: { type: "string" },
+              },
+              required: ["row", "column", "choiceId", "description"],
+            },
+          },
+          rows: { type: "number" },
+          unusedCells: { type: "number" },
+          unselectedChoiceIds: { type: "array", items: { type: "string" } },
+        },
+        required: ["cells", "rows", "unusedCells", "unselectedChoiceIds"],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
