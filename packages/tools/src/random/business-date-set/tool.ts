@@ -21,7 +21,7 @@ export type Input = Readonly<{
   readonly callerBusinessWeekdayNumbers: readonly number[];
   readonly callerHolidayDates: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -38,7 +38,7 @@ const inputFields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   unique(input.candidateDates, "candidate dates");
   input.candidateDates.forEach((v) => dayOffset(v, 0));
@@ -67,10 +67,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -91,7 +88,27 @@ export const tool = createSimpleTool({
     "Uniformly sample actual supplied eligible businessdates, not dates inferred from the machine clock. Caller business weekdays/holiday calendar or exact ISO weekday is explicit; leap-day candidates must be real civil February29dates. Infeasible empty inventories or excessive unique requests fail. No jurisdiction-specific trading or business-day inference.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          dates: { type: "array", items: { type: "string" } },
+          eligibleCandidateDates: { type: "array", items: { type: "string" } },
+          excludedCandidateDates: { type: "array", items: { type: "string" } },
+          eligibleEntryIndices: { type: "array", items: { type: "number" } },
+        },
+        required: [
+          "dates",
+          "eligibleCandidateDates",
+          "excludedCandidateDates",
+          "eligibleEntryIndices",
+        ],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
