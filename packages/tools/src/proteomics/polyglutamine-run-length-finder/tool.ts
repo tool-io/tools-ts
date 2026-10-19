@@ -4,14 +4,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, proteinSequence } from "../batch53-shared.js";
 
 export type Input = Readonly<{ sequence: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "sequence", label: "Sequence", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const s = proteinSequence(i.sequence);
   let longest = 0,
     current = 0;
@@ -26,7 +23,7 @@ const compute = (
   }
   return { longestRun: longest, tiedStartOffsets: starts };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -45,6 +42,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          longestRun: { type: "number" },
+          tiedStartOffsets: { type: "array", items: { type: "number" } },
+        },
+        required: ["longestRun", "tiedStartOffsets"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
