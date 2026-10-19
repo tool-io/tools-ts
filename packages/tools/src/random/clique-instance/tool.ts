@@ -126,6 +126,12 @@ export const cliqueInstanceTool = createModelDefinition<
   CliqueInstanceInput,
   CliqueInstanceOutput
 >({
+  discovery: {
+    aliases: ["Random Clique Instance Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/clique-instance",
   title: "Random Clique Instance Generator",
   description:
