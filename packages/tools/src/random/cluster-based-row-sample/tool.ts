@@ -225,6 +225,12 @@ export const clusterBasedRowSampleTool = createModelDefinition<
   ClusterBasedRowSampleInput,
   ClusterBasedRowSampleOutput
 >({
+  discovery: {
+    aliases: ["Random Cluster-Based Row Sample Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/cluster-based-row-sample",
   title: "Random Cluster-Based Row Sample Generator",
   description:
