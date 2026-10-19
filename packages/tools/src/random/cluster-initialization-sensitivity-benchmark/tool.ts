@@ -277,6 +277,15 @@ export const clusterInitializationSensitivityBenchmarkTool =
     ClusterInitializationSensitivityBenchmarkInput,
     ClusterInitializationSensitivityBenchmarkOutput
   >({
+    discovery: {
+      aliases: [
+        "Random Cluster Initialization Sensitivity Benchmark Generator",
+        "random generation",
+      ],
+      collections: ["data", "learn"],
+      fields: ["random", "random generation"],
+      keywords: ["random generation"],
+    },
     id: "random/cluster-initialization-sensitivity-benchmark",
     title: "Random Cluster Initialization Sensitivity Benchmark Generator",
     description:
