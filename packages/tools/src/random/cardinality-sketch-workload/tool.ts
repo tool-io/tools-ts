@@ -183,6 +183,15 @@ export const cardinalitySketchWorkloadTool = createModelDefinition<
   CardinalitySketchWorkloadInput,
   CardinalitySketchWorkloadOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Cardinality Sketch Workload Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/cardinality-sketch-workload",
   title: "Random Cardinality Sketch Workload Generator",
   description:
