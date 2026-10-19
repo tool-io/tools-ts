@@ -147,6 +147,12 @@ export const chinesePostmanInstanceTool = createModelDefinition<
   ChinesePostmanInstanceInput,
   ChinesePostmanInstanceOutput
 >({
+  discovery: {
+    aliases: ["Random Chinese Postman Instance Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/chinese-postman-instance",
   title: "Random Chinese Postman Instance Generator",
   description:
