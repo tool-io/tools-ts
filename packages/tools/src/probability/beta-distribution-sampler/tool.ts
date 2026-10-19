@@ -82,6 +82,23 @@ export const betaDistributionTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Beta samples",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          sampleMean: { type: "number" },
+          samples: { type: "array", items: { type: "number" } },
+          theoreticalMean: { type: "number" },
+          theoreticalVariance: { type: "number" },
+        },
+        required: [
+          "sampleMean",
+          "samples",
+          "theoreticalMean",
+          "theoreticalVariance",
+        ],
+      },
     },
   ],
   calculate: (input) => {
