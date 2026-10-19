@@ -13,16 +13,13 @@ export type Input = Readonly<{
   componentIndexes: readonly number[];
   replacement: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "path", label: "Path", kind: "string" },
   { id: "componentIndexes", label: "Component indexes", kind: "numberList" },
   { id: "replacement", label: "Replacement", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!i.replacement || /[\/\0]/.test(i.replacement))
     simpleError("replacement", "One nonempty literal component.");
   const a = i.path.split("/"),
@@ -37,7 +34,7 @@ const compute = (
       .join("/"),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -56,6 +53,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { path: { type: "string" } },
+        required: ["path"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
