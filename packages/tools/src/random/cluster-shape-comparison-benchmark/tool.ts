@@ -417,6 +417,15 @@ export const clusterShapeComparisonBenchmarkTool = createModelDefinition<
   ClusterShapeComparisonBenchmarkInput,
   ClusterShapeComparisonBenchmarkOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Cluster Shape Comparison Benchmark Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/cluster-shape-comparison-benchmark",
   title: "Random Cluster Shape Comparison Benchmark Generator",
   description:
