@@ -147,6 +147,12 @@ export const booleanEquivalenceQuizTool = createModelDefinition<
   BooleanEquivalenceQuizInput,
   BooleanEquivalenceQuizOutput
 >({
+  discovery: {
+    aliases: ["Random Boolean Equivalence Quiz Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/boolean-equivalence-quiz",
   title: "Random Boolean Equivalence Quiz Generator",
   description:
