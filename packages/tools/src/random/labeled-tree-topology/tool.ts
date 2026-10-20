@@ -110,6 +110,12 @@ export const labeledTreeTopologyTool = createModelDefinition<
   LabeledTreeTopologyInput,
   LabeledTreeTopologyOutput
 >({
+  discovery: {
+    aliases: ["Random Labeled Tree Topology Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/labeled-tree-topology",
   title: "Random Labeled Tree Topology Generator",
   description:
