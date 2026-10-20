@@ -165,6 +165,15 @@ export const csvMixedTypeRepairExerciseTool = createModelDefinition<
   CsvMixedTypeRepairExerciseInput,
   CsvMixedTypeRepairExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Mixed Type Repair Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-mixed-type-repair-exercise",
   title: "Random CSV Mixed Type Repair Exercise Generator",
   description:
