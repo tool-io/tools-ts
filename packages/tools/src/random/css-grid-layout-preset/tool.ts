@@ -199,6 +199,12 @@ export const cssGridLayoutPresetTool = createModelDefinition<
   CssGridLayoutPresetInput,
   CssGridLayoutPresetOutput
 >({
+  discovery: {
+    aliases: ["Random CSS Grid Layout Preset Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/css-grid-layout-preset",
   title: "Random CSS Grid Layout Preset Generator",
   description:
