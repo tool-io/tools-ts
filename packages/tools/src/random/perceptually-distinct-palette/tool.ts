@@ -133,6 +133,15 @@ export const perceptuallyDistinctPaletteTool = createModelDefinition<
   PerceptuallyDistinctPaletteInput,
   PerceptuallyDistinctPaletteOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Perceptually Distinct Palette Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/perceptually-distinct-palette",
   title: "Random Perceptually Distinct Palette Generator",
   description:
