@@ -303,6 +303,15 @@ export const csvQuotingEdgeCaseCorpusTool = createModelDefinition<
   CsvQuotingEdgeCaseCorpusInput,
   CsvQuotingEdgeCaseCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Quoting Edge-Case Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-quoting-edge-case-corpus",
   title: "Random CSV Quoting Edge-Case Corpus Generator",
   description:
