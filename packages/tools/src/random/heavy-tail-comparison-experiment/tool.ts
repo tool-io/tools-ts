@@ -288,6 +288,15 @@ export const heavyTailComparisonExperimentTool = createModelDefinition<
   HeavyTailComparisonExperimentInput,
   HeavyTailComparisonExperimentOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Heavy-Tail Comparison Experiment Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/heavy-tail-comparison-experiment",
   title: "Random Heavy-Tail Comparison Experiment Generator",
   description:
