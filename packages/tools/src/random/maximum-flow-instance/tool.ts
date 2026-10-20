@@ -196,6 +196,12 @@ export const maximumFlowInstanceTool = createModelDefinition<
   MaximumFlowInstanceInput,
   MaximumFlowInstanceOutput
 >({
+  discovery: {
+    aliases: ["Random Maximum Flow Instance Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/maximum-flow-instance",
   title: "Random Maximum Flow Instance Generator",
   description:
