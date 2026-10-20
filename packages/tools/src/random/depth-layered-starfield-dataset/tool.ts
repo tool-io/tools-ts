@@ -259,6 +259,15 @@ export const depthLayeredStarfieldDatasetTool = createModelDefinition<
   DepthLayeredStarfieldDatasetInput,
   DepthLayeredStarfieldDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Depth-Layered Starfield Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/depth-layered-starfield-dataset",
   title: "Random Depth-Layered Starfield Dataset Generator",
   description:
