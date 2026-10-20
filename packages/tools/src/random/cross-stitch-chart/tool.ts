@@ -188,6 +188,12 @@ export const crossStitchChartTool = createModelDefinition<
   CrossStitchChartInput,
   CrossStitchChartOutput
 >({
+  discovery: {
+    aliases: ["Random Cross-Stitch Chart Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/cross-stitch-chart",
   title: "Random Cross-Stitch Chart Generator",
   description:
