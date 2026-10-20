@@ -44,10 +44,7 @@ describe(tool.id, () => {
       baseToolId: base.id,
     });
     if (expected.ok)
-      expect(
-        (actual.result as { exercises: { answer: unknown }[] }).exercises[0]
-          .answer,
-      ).toEqual(expected.output);
+      expect(actual.result.exercises[0].answer).toEqual(expected.output);
   });
   it("publishes portable schemas and valid contracts", () => {
     expect(validateToolContract(tool)).toEqual([]);
