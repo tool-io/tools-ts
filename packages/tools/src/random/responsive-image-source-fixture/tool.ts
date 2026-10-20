@@ -228,6 +228,15 @@ export const responsiveImageSourceFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Responsive Image Source Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/responsive-image-source-fixture",
   title: "Random Responsive Image Source Fixture Generator",
   description:
