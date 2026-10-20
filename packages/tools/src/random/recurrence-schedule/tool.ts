@@ -251,6 +251,12 @@ export const recurrenceScheduleTool = createModelDefinition<
   RecurrenceScheduleInput,
   RecurrenceScheduleOutput
 >({
+  discovery: {
+    aliases: ["Random Recurrence Schedule Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/recurrence-schedule",
   title: "Random Recurrence Schedule Generator",
   description:
