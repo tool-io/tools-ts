@@ -20,7 +20,7 @@ export type Input = Readonly<{
   readonly topicTexts: readonly string[];
   readonly questionTemplates: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -28,7 +28,7 @@ const inputFields = [
   { id: "topicTexts", label: "Topic texts", kind: "stringList" },
   { id: "questionTemplates", label: "Question templates", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   unique(input.topicTexts, "topics");
   unique(input.questionTemplates, "templates");
@@ -53,10 +53,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -79,7 +76,32 @@ export const tool = createSimpleTool({
     "Draw uniform topic/template pairs for independently reviewed elaborative question cards; count, replacement and duplicate semantic possibilities explicit. Does not generate/verify factual answers or promise retention efficacy.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          questions: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                topic: { type: "string" },
+                question: { type: "string" },
+              },
+              required: ["topic", "question"],
+            },
+          },
+          selectedPairIndices: { type: "array", items: { type: "number" } },
+          unselectedPairCount: { type: "number" },
+        },
+        required: ["questions", "selectedPairIndices", "unselectedPairCount"],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
