@@ -189,6 +189,12 @@ export const scaleMelodyTool = createModelDefinition<
   ScaleMelodyInput,
   ScaleMelodyOutput
 >({
+  discovery: {
+    aliases: ["Random Scale-Constrained Melody Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/scale-melody",
   title: "Random Scale-Constrained Melody Generator",
   description:
