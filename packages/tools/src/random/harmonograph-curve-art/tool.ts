@@ -126,6 +126,15 @@ export const harmonographCurveArtTool = createModelDefinition<
   HarmonographCurveArtInput,
   HarmonographCurveArtOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Harmonograph Curve Artwork Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/harmonograph-curve-art",
   title: "Random Harmonograph Curve Artwork Generator",
   description:
