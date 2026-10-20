@@ -158,6 +158,12 @@ export const danceCanonEntryPlanTool = createModelDefinition<
   DanceCanonEntryPlanInput,
   DanceCanonEntryPlanOutput
 >({
+  discovery: {
+    aliases: ["Random Dance Canon Entry Plan Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/dance-canon-entry-plan",
   title: "Random Dance Canon Entry Plan Generator",
   description:
