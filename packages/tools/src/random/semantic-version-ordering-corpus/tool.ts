@@ -177,6 +177,15 @@ export const semanticVersionOrderingCorpusTool = createModelDefinition<
   SemanticVersionOrderingCorpusInput,
   SemanticVersionOrderingCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Semantic Version Ordering Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/semantic-version-ordering-corpus",
   title: "Random Semantic Version Ordering Corpus Generator",
   description:
