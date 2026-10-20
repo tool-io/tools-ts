@@ -153,6 +153,15 @@ export const itemsetInstanceTool = createModelDefinition<
   ItemsetInstanceInput,
   ItemsetInstanceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Transaction Itemset Instance Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/itemset-instance",
   title: "Random Transaction Itemset Instance Generator",
   description:
