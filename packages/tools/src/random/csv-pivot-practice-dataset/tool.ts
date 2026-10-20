@@ -337,6 +337,15 @@ export const csvPivotPracticeDatasetTool = createModelDefinition<
   CsvPivotPracticeDatasetInput,
   CsvPivotPracticeDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Pivot Practice Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-pivot-practice-dataset",
   title: "Random CSV Pivot Practice Dataset Generator",
   description:
