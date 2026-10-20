@@ -231,6 +231,15 @@ export const multipleTestingTestCaseTool = createModelDefinition<
   MultipleTestingTestCaseInput,
   MultipleTestingTestCaseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Multiple-Testing Test Case Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/multiple-testing-test-case",
   title: "Random Multiple-Testing Test Case Generator",
   description:
