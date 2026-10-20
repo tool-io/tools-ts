@@ -191,8 +191,18 @@ export const monteCarloUniformTool = createModelDefinition<
   MonteCarloUniformInput,
   MonteCarloUniformOutput
 >({
+  discovery: {
+    aliases: [
+      "Uniform Distribution Monte Carlo Experiment",
+      "Monte Carlo Uniform Distribution Experiment Tool",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/monte-carlo-uniform",
-  title: "Monte Carlo Uniform Distribution Experiment Tool",
+  title: "Uniform Distribution Monte Carlo Experiment",
   description:
     "Generate affine floating-point uniform interval samples, histogram counts and delegated population summaries alongside theoretical mean/variance; rounding may attain the upper endpoint and bins include it in the last cell.",
   inputSchema,
