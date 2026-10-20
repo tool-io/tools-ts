@@ -323,6 +323,15 @@ export const mixtureDistributionExperimentTool = createModelDefinition<
   MixtureDistributionExperimentInput,
   MixtureDistributionExperimentOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Mixture Distribution Experiment Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/mixture-distribution-experiment",
   title: "Random Mixture Distribution Experiment Generator",
   description:
