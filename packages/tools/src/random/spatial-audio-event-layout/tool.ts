@@ -255,6 +255,15 @@ export const spatialAudioEventLayoutTool = createModelDefinition<
   SpatialAudioEventLayoutInput,
   SpatialAudioEventLayoutOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Spatial Audio Event Layout Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/spatial-audio-event-layout",
   title: "Random Spatial Audio Event Layout Generator",
   description:
