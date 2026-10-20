@@ -196,6 +196,15 @@ export const danceMotifPermutationTool = createModelDefinition<
   DanceMotifPermutationInput,
   DanceMotifPermutationOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Dance Motif Permutation Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/dance-motif-permutation",
   title: "Random Dance Motif Permutation Exercise Generator",
   description:
