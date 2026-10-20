@@ -162,6 +162,15 @@ export const httpMethodRoutingFixtureTool = createModelDefinition<
   HttpMethodRoutingFixtureInput,
   HttpMethodRoutingFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random HTTP Method Routing Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/http-method-routing-fixture",
   title: "Random HTTP Method Routing Fixture Generator",
   description:
