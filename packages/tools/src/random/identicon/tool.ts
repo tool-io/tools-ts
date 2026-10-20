@@ -149,6 +149,12 @@ export const identiconTool = createModelDefinition<
   IdenticonInput,
   IdenticonOutput
 >({
+  discovery: {
+    aliases: ["Random Identicon Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/identicon",
   title: "Random Identicon Generator",
   description:
