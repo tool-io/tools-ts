@@ -260,6 +260,15 @@ export const dragDropItemStateFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Drag and Drop Item State Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/drag-drop-item-state-fixture",
   title: "Random Drag and Drop Item State Fixture Generator",
   description:
