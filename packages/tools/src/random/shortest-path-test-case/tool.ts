@@ -194,6 +194,12 @@ export const shortestPathTestCaseTool = createModelDefinition<
   ShortestPathTestCaseInput,
   ShortestPathTestCaseOutput
 >({
+  discovery: {
+    aliases: ["Random Shortest Path Test Case Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/shortest-path-test-case",
   title: "Random Shortest Path Test Case Generator",
   description:
