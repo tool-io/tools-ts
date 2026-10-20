@@ -110,6 +110,15 @@ export const pascalTriangleMissingEntryTool = createModelDefinition<
   PascalTriangleMissingEntryInput,
   PascalTriangleMissingEntryOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Pascal Triangle Missing Entry Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/pascal-triangle-missing-entry",
   title: "Random Pascal Triangle Missing Entry Generator",
   description:
