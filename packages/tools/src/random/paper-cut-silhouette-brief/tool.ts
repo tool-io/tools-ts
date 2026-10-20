@@ -142,6 +142,15 @@ export const paperCutSilhouetteBriefTool = createModelDefinition<
   PaperCutSilhouetteBriefInput,
   PaperCutSilhouetteBriefOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Paper Cut Silhouette Brief Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/paper-cut-silhouette-brief",
   title: "Random Paper Cut Silhouette Brief Generator",
   description:
