@@ -160,6 +160,15 @@ export const intervalSchedulingChallengeTool = createModelDefinition<
   IntervalSchedulingChallengeInput,
   IntervalSchedulingChallengeOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Interval Scheduling Challenge Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/interval-scheduling-challenge",
   title: "Random Interval Scheduling Challenge Generator",
   description:
