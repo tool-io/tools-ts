@@ -164,6 +164,15 @@ export const kenkenCageArithmeticQuizTool = createModelDefinition<
   KenkenCageArithmeticQuizInput,
   KenkenCageArithmeticQuizOutput
 >({
+  discovery: {
+    aliases: [
+      "Random KenKen Cage Arithmetic Quiz Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/kenken-cage-arithmetic-quiz",
   title: "Random KenKen Cage Arithmetic Quiz Generator",
   description:
