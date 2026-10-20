@@ -164,6 +164,15 @@ export const geometricHatchingPatchworkTool = createModelDefinition<
   GeometricHatchingPatchworkInput,
   GeometricHatchingPatchworkOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Geometric Hatching Patchwork Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/geometric-hatching-patchwork",
   title: "Random Geometric Hatching Patchwork Generator",
   description:
