@@ -197,6 +197,12 @@ export const lacingCardHoleLayoutTool = createModelDefinition<
   LacingCardHoleLayoutInput,
   LacingCardHoleLayoutOutput
 >({
+  discovery: {
+    aliases: ["Random Lacing Card Hole Layout Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/lacing-card-hole-layout",
   title: "Random Lacing Card Hole Layout Generator",
   description:
