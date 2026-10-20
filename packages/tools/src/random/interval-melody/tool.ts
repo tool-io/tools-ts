@@ -191,6 +191,12 @@ export const intervalMelodyTool = createModelDefinition<
   IntervalMelodyInput,
   IntervalMelodyOutput
 >({
+  discovery: {
+    aliases: ["Random Bounded-Interval Melody Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/interval-melody",
   title: "Random Bounded-Interval Melody Generator",
   description:
