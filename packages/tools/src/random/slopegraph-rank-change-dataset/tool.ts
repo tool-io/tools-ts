@@ -158,6 +158,15 @@ export const slopegraphRankChangeDatasetTool = createModelDefinition<
   SlopegraphRankChangeDatasetInput,
   SlopegraphRankChangeDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Slopegraph Rank Change Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/slopegraph-rank-change-dataset",
   title: "Random Slopegraph Rank Change Dataset Generator",
   description:
