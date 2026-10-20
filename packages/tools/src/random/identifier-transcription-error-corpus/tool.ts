@@ -334,6 +334,15 @@ export const identifierTranscriptionErrorCorpusTool = createModelDefinition<
   IdentifierTranscriptionErrorCorpusInput,
   IdentifierTranscriptionErrorCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Identifier Transcription Error Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/identifier-transcription-error-corpus",
   title: "Random Identifier Transcription Error Corpus Generator",
   description:
