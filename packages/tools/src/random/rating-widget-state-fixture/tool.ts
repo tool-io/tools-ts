@@ -152,6 +152,15 @@ export const ratingWidgetStateFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Rating Widget State Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/rating-widget-state-fixture",
   title: "Random Rating Widget State Fixture Generator",
   description:
