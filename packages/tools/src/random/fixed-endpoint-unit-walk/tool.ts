@@ -8,14 +8,14 @@ export type Input = Readonly<{
   steps: number;
   seed: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "start", label: "start", kind: "integer" },
   { id: "end", label: "end", kind: "integer" },
   { id: "steps", label: "steps", kind: "integer" },
   { id: "seed", label: "seed", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   H.validate(i, fields);
   const random = H.randomSource(i.seed, context);
   H.int(i.steps, 1, 127);
@@ -42,19 +42,42 @@ export const example = {
   output: {
     result: {
       seed: "batch56",
-      increments: [1, 1, -1, -1],
-      states: [0, 1, 2, 1, 0],
+      increments: [-1, -1, 1, 1],
+      states: [0, -1, -2, -1, 0],
       support: "6",
     },
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Random Fixed-Endpoint Unit Walk", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fixed-endpoint-unit-walk",
   title: "Random Fixed-Endpoint Unit Walk",
   description:
     "Replay seed or one advancing injected source, uniform over the explicitly stated finite support, not cryptographically secure. Uniformly sample all unit-step walks with specified start/end and step count by choosing exactly the required up-step subset; impossible endpoint/parity requests reject.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          seed: { type: "string" },
+          increments: { type: "array", items: { type: "number" } },
+          states: { type: "array", items: { type: "number" } },
+          support: { type: "string" },
+        },
+        required: ["seed", "increments", "states", "support"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
 });
 export const run = tool.execute;
