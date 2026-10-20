@@ -199,6 +199,15 @@ export const minHashSimilarityWorkloadTool = createModelDefinition<
   MinHashSimilarityWorkloadInput,
   MinHashSimilarityWorkloadOutput
 >({
+  discovery: {
+    aliases: [
+      "Random MinHash Similarity Workload Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/minhash-similarity-workload",
   title: "Random MinHash Similarity Workload Generator",
   description:
