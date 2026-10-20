@@ -119,6 +119,15 @@ export const paperChainColorOrderTool = createModelDefinition<
   PaperChainColorOrderInput,
   PaperChainColorOrderOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Paper Chain Color Order Plan Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/paper-chain-color-order",
   title: "Random Paper Chain Color Order Plan Generator",
   description:
