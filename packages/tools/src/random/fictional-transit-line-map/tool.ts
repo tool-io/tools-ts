@@ -129,6 +129,15 @@ export const fictionalTransitLineMapTool = createModelDefinition<
   FictionalTransitLineMapInput,
   FictionalTransitLineMapOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fictional Transit Line Map Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fictional-transit-line-map",
   title: "Random Fictional Transit Line Map Generator",
   description:
