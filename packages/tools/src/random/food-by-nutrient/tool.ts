@@ -481,6 +481,12 @@ export const foodByNutrientTool = createModelDefinition<
   FoodByNutrientInput,
   FoodByNutrientOutput
 >({
+  discovery: {
+    aliases: ["Random Food by Nutrient Picker", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/food-by-nutrient",
   title: "Random Food by Nutrient Picker",
   description:
