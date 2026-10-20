@@ -173,6 +173,15 @@ export const multipartFormMessageFixtureTool = createModelDefinition<
   MultipartFormMessageFixtureInput,
   MultipartFormMessageFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Multipart Form Message Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/multipart-form-message-fixture",
   title: "Random Multipart Form Message Fixture Generator",
   description:
