@@ -160,6 +160,15 @@ export const csvDateColumnCleaningExerciseTool = createModelDefinition<
   CsvDateColumnCleaningExerciseInput,
   CsvDateColumnCleaningExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Date Column Cleaning Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-date-column-cleaning-exercise",
   title: "Random CSV Date Column Cleaning Exercise Generator",
   description:
