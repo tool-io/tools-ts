@@ -289,6 +289,15 @@ export const importMapResolutionFixtureTool = createModelDefinition<
   ImportMapResolutionFixtureInput,
   ImportMapResolutionFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Import Map Resolution Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/import-map-resolution-fixture",
   title: "Random Import Map Resolution Fixture Generator",
   description:
