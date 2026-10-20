@@ -1,3 +1,4 @@
+import { corpusResultSchema } from "../exercise-schema.js";
 import type { ToolExecutionContext } from "../../core/definition.js";
 import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
@@ -12,7 +13,7 @@ export type Input = Readonly<{
   readonly candidateInputsJson: readonly string[];
   readonly comparisonEtag: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -24,7 +25,7 @@ const inputFields = [
   },
   { id: "comparisonEtag", label: "Comparison etag", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const other = base.execute({ etag: input.comparisonEtag });
   if (!other.ok)
     simpleError(
@@ -46,10 +47,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
   });
   return { result: { ...drawn.result, exercises } };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -69,7 +67,19 @@ export const tool = createSimpleTool({
     "Build a bounded reproducible http entity tag comparison cards from explicitly supplied candidate scenarios. Every candidate must satisfy imported http/etag-parser before selection; answer cards preserve its units, conventions, domain limitations and signed/unknown results. Draws are uniform over caller candidate positions; no replacement means no repeated positions, not necessarily distinct answers. No automatic pedagogical correctness, compliance or physical readiness. Compares each parsed candidate with explicit second entity tag: weak equality requires opaque equality, strong equality also requires neither tag weak; not precondition evaluation or cache freshness.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+
+      schema: corpusResultSchema(base, {
+        exercise: {
+          comparisonTag: { type: "string" },
+          weaklyEqual: { type: "boolean" },
+          stronglyEqual: { type: "boolean" },
+        },
+      }),
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
