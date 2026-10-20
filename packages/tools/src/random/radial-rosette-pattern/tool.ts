@@ -98,6 +98,12 @@ export const radialRosettePatternTool = createModelDefinition<
   RadialRosettePatternInput,
   RadialRosettePatternOutput
 >({
+  discovery: {
+    aliases: ["Random Radial Rosette Pattern Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/radial-rosette-pattern",
   title: "Random Radial Rosette Pattern Generator",
   description:
