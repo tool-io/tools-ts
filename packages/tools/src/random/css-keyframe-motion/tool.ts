@@ -242,6 +242,12 @@ export const cssKeyframeMotionTool = createModelDefinition<
   CssKeyframeMotionInput,
   CssKeyframeMotionOutput
 >({
+  discovery: {
+    aliases: ["Random CSS Keyframe Motion Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/css-keyframe-motion",
   title: "Random CSS Keyframe Motion Generator",
   description:
