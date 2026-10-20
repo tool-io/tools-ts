@@ -225,6 +225,15 @@ export const lfuCacheTieBreakTraceTool = createModelDefinition<
   LfuCacheTieBreakTraceInput,
   LfuCacheTieBreakTraceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random LFU Cache Tie Break Trace Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/lfu-cache-tie-break-trace",
   title: "Random LFU Cache Tie Break Trace Generator",
   description:
