@@ -201,6 +201,15 @@ export const radarAxisComparisonDatasetTool = createModelDefinition<
   RadarAxisComparisonDatasetInput,
   RadarAxisComparisonDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Radar Axis Comparison Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/radar-axis-comparison-dataset",
   title: "Random Radar Axis Comparison Dataset Generator",
   description:
