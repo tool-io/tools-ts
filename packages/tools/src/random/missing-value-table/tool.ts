@@ -250,6 +250,12 @@ export const missingValueTableTool = createModelDefinition<
   MissingValueTableInput,
   MissingValueTableOutput
 >({
+  discovery: {
+    aliases: ["Random Missing-Value Table Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/missing-value-table",
   title: "Random Missing-Value Table Generator",
   description:
