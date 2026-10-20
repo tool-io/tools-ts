@@ -114,6 +114,15 @@ export const csvLeadingZeroPreservationFixtureTool = createModelDefinition<
   CsvLeadingZeroPreservationFixtureInput,
   CsvLeadingZeroPreservationFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Leading Zero Preservation Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-leading-zero-preservation-fixture",
   title: "Random CSV Leading Zero Preservation Fixture Generator",
   description:
