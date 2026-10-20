@@ -211,6 +211,12 @@ export const flexLayoutStressCaseTool = createModelDefinition<
   FlexLayoutStressCaseInput,
   FlexLayoutStressCaseOutput
 >({
+  discovery: {
+    aliases: ["Random Flex Layout Stress Case Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/flex-layout-stress-case",
   title: "Random Flex Layout Stress Case Generator",
   description:
