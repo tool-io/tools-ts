@@ -192,6 +192,15 @@ export const fantasyGuildMembershipNetworkTool = createModelDefinition<
   FantasyGuildMembershipNetworkInput,
   FantasyGuildMembershipNetworkOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fantasy Guild Membership Network Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fantasy-guild-membership-network",
   title: "Random Fantasy Guild Membership Network Generator",
   description:
