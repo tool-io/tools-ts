@@ -133,6 +133,15 @@ export const colorVisionDeficiencyPaletteTool = createModelDefinition<
   ColorVisionDeficiencyPaletteInput,
   ColorVisionDeficiencyPaletteOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Color Vision Deficiency Palette Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/color-vision-deficiency-palette",
   title: "Random Color Vision Deficiency Palette Generator",
   description:
