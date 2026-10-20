@@ -178,6 +178,15 @@ export const idempotencyKeyReplayFixtureTool = createModelDefinition<
   IdempotencyKeyReplayFixtureInput,
   IdempotencyKeyReplayFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Idempotency Key Replay Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/idempotency-key-replay-fixture",
   title: "Random Idempotency Key Replay Fixture Generator",
   description:
