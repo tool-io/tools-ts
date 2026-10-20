@@ -229,6 +229,15 @@ export const jsonFlatteningRoundTripCorpusTool = createModelDefinition<
   JsonFlatteningRoundTripCorpusInput,
   JsonFlatteningRoundTripCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random JSON Flattening Round-Trip Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/json-flattening-round-trip-corpus",
   title: "Random JSON Flattening Round-Trip Corpus Generator",
   description:
