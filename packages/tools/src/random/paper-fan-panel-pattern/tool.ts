@@ -229,6 +229,12 @@ export const paperFanPanelPatternTool = createModelDefinition<
   PaperFanPanelPatternInput,
   PaperFanPanelPatternOutput
 >({
+  discovery: {
+    aliases: ["Random Paper Fan Panel Pattern Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/paper-fan-panel-pattern",
   title: "Random Paper Fan Panel Pattern Generator",
   description:
