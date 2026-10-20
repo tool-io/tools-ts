@@ -126,6 +126,15 @@ export const csvBooleanTokenCleaningExerciseTool = createModelDefinition<
   CsvBooleanTokenCleaningExerciseInput,
   CsvBooleanTokenCleaningExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Boolean Token Cleaning Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-boolean-token-cleaning-exercise",
   title: "Random CSV Boolean Token Cleaning Exercise Generator",
   description:
