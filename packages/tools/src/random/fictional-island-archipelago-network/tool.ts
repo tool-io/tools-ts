@@ -163,6 +163,15 @@ export const fictionalIslandArchipelagoNetworkTool = createModelDefinition<
   FictionalIslandArchipelagoNetworkInput,
   FictionalIslandArchipelagoNetworkOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fictional Island Archipelago Network Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fictional-island-archipelago-network",
   title: "Random Fictional Island Archipelago Network Generator",
   description:
