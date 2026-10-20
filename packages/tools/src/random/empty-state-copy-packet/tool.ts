@@ -144,6 +144,12 @@ export const emptyStateCopyPacketExample = {
   },
 } satisfies ToolExample<Input, Output>;
 export const emptyStateCopyPacketTool = createModelDefinition<Input, Output>({
+  discovery: {
+    aliases: ["Random Empty State Copy Packet Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/empty-state-copy-packet",
   title: "Random Empty State Copy Packet Generator",
   description:
