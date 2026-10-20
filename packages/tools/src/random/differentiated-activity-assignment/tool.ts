@@ -247,6 +247,15 @@ export const differentiatedActivityAssignmentTool = createModelDefinition<
   DifferentiatedActivityAssignmentInput,
   DifferentiatedActivityAssignmentOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Differentiated Activity Assignment Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/differentiated-activity-assignment",
   title: "Random Differentiated Activity Assignment Generator",
   description:
