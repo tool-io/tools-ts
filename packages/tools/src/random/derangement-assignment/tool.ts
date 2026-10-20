@@ -175,6 +175,12 @@ export const derangementAssignmentTool = createModelDefinition<
   DerangementAssignmentInput,
   DerangementAssignmentOutput
 >({
+  discovery: {
+    aliases: ["Random Derangement Assignment Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/derangement-assignment",
   title: "Random Derangement Assignment Generator",
   description:
