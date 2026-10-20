@@ -245,6 +245,15 @@ export const minCostFlowInstanceTool = createModelDefinition<
   MinCostFlowInstanceInput,
   MinCostFlowInstanceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Minimum-Cost Flow Instance Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/min-cost-flow-instance",
   title: "Random Minimum-Cost Flow Instance Generator",
   description:
