@@ -185,6 +185,12 @@ export const nestedJsonDocumentTool = createModelDefinition<
   NestedJsonDocumentInput,
   NestedJsonDocumentOutput
 >({
+  discovery: {
+    aliases: ["Random Nested JSON Document Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/nested-json-document",
   title: "Random Nested JSON Document Generator",
   description:
