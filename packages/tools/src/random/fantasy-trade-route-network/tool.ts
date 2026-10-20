@@ -149,6 +149,15 @@ export const fantasyTradeRouteNetworkTool = createModelDefinition<
   FantasyTradeRouteNetworkInput,
   FantasyTradeRouteNetworkOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fantasy Trade Route Network Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fantasy-trade-route-network",
   title: "Random Fantasy Trade Route Network Generator",
   description:
