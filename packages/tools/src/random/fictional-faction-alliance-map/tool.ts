@@ -132,6 +132,15 @@ export const fictionalFactionAllianceMapTool = createModelDefinition<
   FictionalFactionAllianceMapInput,
   FictionalFactionAllianceMapOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fictional Faction Alliance Map Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fictional-faction-alliance-map",
   title: "Random Fictional Faction Alliance Map Generator",
   description:
