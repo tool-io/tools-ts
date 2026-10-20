@@ -344,6 +344,15 @@ export const inventoryAbcClassificationDatasetTool = createModelDefinition<
   InventoryAbcClassificationDatasetInput,
   InventoryAbcClassificationDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Inventory ABC Classification Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/inventory-abc-classification-dataset",
   title: "Random Inventory ABC Classification Dataset Generator",
   description:
