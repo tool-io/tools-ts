@@ -393,6 +393,15 @@ export const httpSetCookieAttributeCorpusTool = createModelDefinition<
   HttpSetCookieAttributeCorpusInput,
   HttpSetCookieAttributeCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random HTTP Set-Cookie Attribute Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/http-set-cookie-attribute-corpus",
   title: "Random HTTP Set-Cookie Attribute Corpus Generator",
   description:
