@@ -195,6 +195,12 @@ export const dialogLabelingFixtureExample = {
   },
 } satisfies ToolExample<Input, Output>;
 export const dialogLabelingFixtureTool = createModelDefinition<Input, Output>({
+  discovery: {
+    aliases: ["Random Dialog Labeling Fixture Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/dialog-labeling-fixture",
   title: "Random Dialog Labeling Fixture Generator",
   description:
