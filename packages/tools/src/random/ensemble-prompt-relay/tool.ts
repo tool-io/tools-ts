@@ -175,6 +175,12 @@ export const ensemblePromptRelayTool = createModelDefinition<
   EnsemblePromptRelayInput,
   EnsemblePromptRelayOutput
 >({
+  discovery: {
+    aliases: ["Random Ensemble Prompt Relay Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/ensemble-prompt-relay",
   title: "Random Ensemble Prompt Relay Generator",
   description:
