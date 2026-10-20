@@ -202,6 +202,15 @@ export const formWizardStateFixtureExample = {
   },
 } satisfies ToolExample<Input, Output>;
 export const formWizardStateFixtureTool = createModelDefinition<Input, Output>({
+  discovery: {
+    aliases: [
+      "Random Form Wizard State Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/form-wizard-state-fixture",
   title: "Random Form Wizard State Fixture Generator",
   description:
