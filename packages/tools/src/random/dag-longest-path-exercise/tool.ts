@@ -216,6 +216,15 @@ export const dagLongestPathExerciseTool = createModelDefinition<
   DagLongestPathExerciseInput,
   DagLongestPathExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Dag Longest Path Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/dag-longest-path-exercise",
   title: "Random Dag Longest Path Exercise Generator",
   description:
