@@ -247,6 +247,15 @@ export const cssCustomPropertyFallbackCorpusTool = createModelDefinition<
   CssCustomPropertyFallbackCorpusInput,
   CssCustomPropertyFallbackCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSS Custom Property Fallback Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/css-custom-property-fallback-corpus",
   title: "Random CSS Custom Property Fallback Corpus Generator",
   description:
