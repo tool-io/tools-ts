@@ -214,6 +214,15 @@ export const languageAttributeNestingFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Language Attribute Nesting Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/language-attribute-nesting-fixture",
   title: "Random Language Attribute Nesting Fixture Generator",
   description:
