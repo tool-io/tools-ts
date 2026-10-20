@@ -196,6 +196,15 @@ export const palindromeConstructionPuzzleTool = createModelDefinition<
   PalindromeConstructionPuzzleInput,
   PalindromeConstructionPuzzleOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Palindrome Construction Puzzle Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/palindrome-construction-puzzle",
   title: "Random Palindrome Construction Puzzle Generator",
   description:
