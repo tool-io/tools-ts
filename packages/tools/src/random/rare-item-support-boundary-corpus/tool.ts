@@ -190,6 +190,15 @@ export const rareItemSupportBoundaryCorpusTool = createModelDefinition<
   RareItemSupportBoundaryCorpusInput,
   RareItemSupportBoundaryCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Rare Item Support Boundary Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/rare-item-support-boundary-corpus",
   title: "Random Rare Item Support Boundary Corpus Generator",
   description:
