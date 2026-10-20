@@ -172,6 +172,12 @@ export const correlatedPointDatasetTool = createModelDefinition<
   CorrelatedPointDatasetInput,
   CorrelatedPointDatasetOutput
 >({
+  discovery: {
+    aliases: ["Random Correlated Point Dataset Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/correlated-point-dataset",
   title: "Random Correlated Point Dataset Generator",
   description:
