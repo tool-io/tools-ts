@@ -212,6 +212,12 @@ export const cssClipPathShapeTool = createModelDefinition<
   CssClipPathShapeInput,
   CssClipPathShapeOutput
 >({
+  discovery: {
+    aliases: ["Random CSS Clip-Path Shape Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/css-clip-path-shape",
   title: "Random CSS Clip-Path Shape Generator",
   description:
