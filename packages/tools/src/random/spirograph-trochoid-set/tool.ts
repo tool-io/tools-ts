@@ -166,6 +166,12 @@ export const spirographTrochoidSetTool = createModelDefinition<
   SpirographTrochoidSetInput,
   SpirographTrochoidSetOutput
 >({
+  discovery: {
+    aliases: ["Random Spirograph Trochoid Set Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/spirograph-trochoid-set",
   title: "Random Spirograph Trochoid Set Generator",
   description:
