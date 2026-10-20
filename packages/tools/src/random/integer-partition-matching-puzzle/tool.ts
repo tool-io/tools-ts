@@ -136,6 +136,15 @@ export const integerPartitionMatchingPuzzleTool = createModelDefinition<
   IntegerPartitionMatchingPuzzleInput,
   IntegerPartitionMatchingPuzzleOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Integer Partition Matching Puzzle Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/integer-partition-matching-puzzle",
   title: "Random Integer Partition Matching Puzzle Generator",
   description:
