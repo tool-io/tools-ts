@@ -201,6 +201,15 @@ export const csvUnicodeNormalizationCorpusTool = createModelDefinition<
   CsvUnicodeNormalizationCorpusInput,
   CsvUnicodeNormalizationCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Unicode Normalization Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-unicode-normalization-corpus",
   title: "Random CSV Unicode Normalization Corpus Generator",
   description:
