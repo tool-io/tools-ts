@@ -141,6 +141,12 @@ export const pixelArtTileTool = createModelDefinition<
   PixelArtTileInput,
   PixelArtTileOutput
 >({
+  discovery: {
+    aliases: ["Random Pixel Art Tile Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/pixel-art-tile",
   title: "Random Pixel Art Tile Generator",
   description:
