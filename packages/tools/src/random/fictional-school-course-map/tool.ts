@@ -170,6 +170,15 @@ export const fictionalSchoolCourseMapTool = createModelDefinition<
   FictionalSchoolCourseMapInput,
   FictionalSchoolCourseMapOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fictional School Course Map Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fictional-school-course-map",
   title: "Random Fictional School Course Map Generator",
   description:
