@@ -131,6 +131,15 @@ export const jsonSchemaEnumLabelFixtureTool = createModelDefinition<
   JsonSchemaEnumLabelFixtureInput,
   JsonSchemaEnumLabelFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random JSON Schema Enum Label Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/json-schema-enum-label-fixture",
   title: "Random JSON Schema Enum Label Fixture Generator",
   description:
