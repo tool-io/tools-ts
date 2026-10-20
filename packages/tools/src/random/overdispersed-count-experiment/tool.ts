@@ -246,6 +246,15 @@ export const overdispersedCountExperimentTool = createModelDefinition<
   OverdispersedCountExperimentInput,
   OverdispersedCountExperimentOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Overdispersed Count Experiment Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/overdispersed-count-experiment",
   title: "Random Overdispersed Count Experiment Generator",
   description:
