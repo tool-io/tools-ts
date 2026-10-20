@@ -204,6 +204,15 @@ export const flowShopSchedulingInstanceTool = createModelDefinition<
   FlowShopSchedulingInstanceInput,
   FlowShopSchedulingInstanceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Flow-Shop Scheduling Instance Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/flow-shop-scheduling-instance",
   title: "Random Flow-Shop Scheduling Instance Generator",
   description:
