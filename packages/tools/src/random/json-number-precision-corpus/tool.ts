@@ -174,6 +174,15 @@ export const jsonNumberPrecisionCorpusTool = createModelDefinition<
   JsonNumberPrecisionCorpusInput,
   JsonNumberPrecisionCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random JSON Number Precision Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/json-number-precision-corpus",
   title: "Random JSON Number Precision Corpus Generator",
   description:
