@@ -3,12 +3,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../histogram/batch56-shared.js";
 export type Input = Readonly<{ pairs: number; seed: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pairs", label: "pairs", kind: "integer" },
   { id: "seed", label: "seed", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   H.validate(i, fields);
   const random = H.randomSource(i.seed, context);
   H.int(i.pairs, 1, 64);
@@ -33,15 +33,37 @@ export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
 };
 export const example = {
   input: { pairs: 3, seed: "batch56" },
-  output: { result: { seed: "batch56", word: "((()))", support: "5" } },
+  output: { result: { seed: "batch56", word: "()(())", support: "5" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Random Fixed-Pair Dyck Word", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fixed-pair-dyck-word",
   title: "Random Fixed-Pair Dyck Word",
   description:
     "Replay seed or one advancing injected source, uniform over the explicitly stated finite support, not cryptographically secure. Uniformly sample a fixed-pair Dyck word by exact valid-completion count unranking; no rejection of unbalanced random strings, bounded to 64 pairs.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          seed: { type: "string" },
+          word: { type: "string" },
+          support: { type: "string" },
+        },
+        required: ["seed", "word", "support"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
 });
 export const run = tool.execute;
