@@ -280,6 +280,15 @@ export const pointInPolygonClassificationQuizTool = createModelDefinition<
   PointInPolygonClassificationQuizInput,
   PointInPolygonClassificationQuizOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Point in Polygon Classification Quiz Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/point-in-polygon-classification-quiz",
   title: "Random Point in Polygon Classification Quiz Generator",
   description:
