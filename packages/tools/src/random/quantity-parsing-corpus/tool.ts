@@ -221,6 +221,12 @@ export const quantityParsingCorpusTool = createModelDefinition<
   QuantityParsingCorpusInput,
   QuantityParsingCorpusOutput
 >({
+  discovery: {
+    aliases: ["Random Quantity Parsing Corpus Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/quantity-parsing-corpus",
   title: "Random Quantity Parsing Corpus Generator",
   description:
