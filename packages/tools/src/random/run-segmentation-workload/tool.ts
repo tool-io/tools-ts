@@ -155,6 +155,15 @@ export const runSegmentationWorkloadTool = createModelDefinition<
   RunSegmentationWorkloadInput,
   RunSegmentationWorkloadOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Run Segmentation Workload Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/run-segmentation-workload",
   title: "Random Run Segmentation Workload Generator",
   description:
