@@ -273,6 +273,15 @@ export const progressMeterBoundaryFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Progress and Meter Boundary Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/progress-meter-boundary-fixture",
   title: "Random Progress and Meter Boundary Fixture Generator",
   description:
