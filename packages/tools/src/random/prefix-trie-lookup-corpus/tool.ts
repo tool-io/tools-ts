@@ -238,6 +238,15 @@ export const prefixTrieLookupCorpusTool = createModelDefinition<
   PrefixTrieLookupCorpusInput,
   PrefixTrieLookupCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Prefix Trie Lookup Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/prefix-trie-lookup-corpus",
   title: "Random Prefix Trie Lookup Corpus Generator",
   description:
