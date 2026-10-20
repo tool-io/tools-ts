@@ -147,6 +147,15 @@ export const improvGenreTransitionTool = createModelDefinition<
   ImprovGenreTransitionInput,
   ImprovGenreTransitionOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Improv Genre Transition Cards Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/improv-genre-transition",
   title: "Random Improv Genre Transition Cards Generator",
   description:
