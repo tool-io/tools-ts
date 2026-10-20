@@ -221,6 +221,15 @@ export const constraintSatisfactionInstanceTool = createModelDefinition<
   ConstraintSatisfactionInstanceInput,
   ConstraintSatisfactionInstanceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Binary Constraint Satisfaction Instance Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/constraint-satisfaction-instance",
   title: "Random Binary Constraint Satisfaction Instance Generator",
   description:
