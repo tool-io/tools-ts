@@ -207,6 +207,15 @@ export const jsonSchemaUnionBranchFixtureTool = createModelDefinition<
   JsonSchemaUnionBranchFixtureInput,
   JsonSchemaUnionBranchFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random JSON Schema Union Branch Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/json-schema-union-branch-fixture",
   title: "Random JSON Schema Union Branch Fixture Generator",
   description:
