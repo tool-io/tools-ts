@@ -232,6 +232,15 @@ export const smallWorldNetworkExperimentTool = createModelDefinition<
   SmallWorldNetworkExperimentInput,
   SmallWorldNetworkExperimentOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Small World Network Experiment Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/small-world-network-experiment",
   title: "Random Small World Network Experiment Generator",
   description:
