@@ -164,6 +164,15 @@ export const editScriptReconstructionChallengeTool = createModelDefinition<
   EditScriptReconstructionChallengeInput,
   EditScriptReconstructionChallengeOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Edit Script Reconstruction Challenge Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/edit-script-reconstruction-challenge",
   title: "Random Edit Script Reconstruction Challenge Generator",
   description:
