@@ -270,6 +270,12 @@ export const dungeonRoomKeyTool = createModelDefinition<
   DungeonRoomKeyInput,
   DungeonRoomKeyOutput
 >({
+  discovery: {
+    aliases: ["Random Dungeon Room Key Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/dungeon-room-key",
   title: "Random Dungeon Room Key Generator",
   description:
