@@ -152,6 +152,15 @@ export const eulerianCircuitTestCaseTool = createModelDefinition<
   EulerianCircuitTestCaseInput,
   EulerianCircuitTestCaseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Eulerian Circuit Test Case Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/eulerian-circuit-test-case",
   title: "Random Eulerian Circuit Test Case Generator",
   description:
