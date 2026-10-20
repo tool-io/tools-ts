@@ -185,6 +185,15 @@ export const minimumSpanningTreeTestCaseTool = createModelDefinition<
   MinimumSpanningTreeTestCaseInput,
   MinimumSpanningTreeTestCaseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Minimum Spanning Tree Test Case Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/minimum-spanning-tree-test-case",
   title: "Random Minimum Spanning Tree Test Case Generator",
   description:
