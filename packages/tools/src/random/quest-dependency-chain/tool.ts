@@ -158,6 +158,12 @@ export const questDependencyChainTool = createModelDefinition<
   QuestDependencyChainInput,
   QuestDependencyChainOutput
 >({
+  discovery: {
+    aliases: ["Random Quest Dependency Chain Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/quest-dependency-chain",
   title: "Random Quest Dependency Chain Generator",
   description:
