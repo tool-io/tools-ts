@@ -171,6 +171,15 @@ export const monteCarloRandomWalkTool = createModelDefinition<
   MonteCarloRandomWalkInput,
   MonteCarloRandomWalkOutput
 >({
+  discovery: {
+    aliases: [
+      "One-Dimensional Monte Carlo Random Walk Simulator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/monte-carlo-random-walk",
   title: "One-Dimensional Monte Carlo Random Walk Simulator",
   description:
