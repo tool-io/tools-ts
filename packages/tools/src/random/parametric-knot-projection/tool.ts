@@ -176,6 +176,15 @@ export const parametricKnotProjectionTool = createModelDefinition<
   ParametricKnotProjectionInput,
   ParametricKnotProjectionOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Parametric Knot Projection Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/parametric-knot-projection",
   title: "Random Parametric Knot Projection Generator",
   description:
