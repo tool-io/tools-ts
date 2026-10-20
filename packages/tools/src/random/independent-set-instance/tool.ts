@@ -127,6 +127,12 @@ export const independentSetInstanceTool = createModelDefinition<
   IndependentSetInstanceInput,
   IndependentSetInstanceOutput
 >({
+  discovery: {
+    aliases: ["Random Independent Set Instance Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/independent-set-instance",
   title: "Random Independent Set Instance Generator",
   description:
