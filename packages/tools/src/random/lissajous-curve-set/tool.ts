@@ -140,6 +140,12 @@ export const lissajousCurveSetTool = createModelDefinition<
   LissajousCurveSetInput,
   LissajousCurveSetOutput
 >({
+  discovery: {
+    aliases: ["Random Lissajous Curve Set Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/lissajous-curve-set",
   title: "Random Lissajous Curve Set Generator",
   description:
