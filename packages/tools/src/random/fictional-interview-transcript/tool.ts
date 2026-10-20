@@ -206,6 +206,15 @@ export const fictionalInterviewTranscriptTool = createModelDefinition<
   FictionalInterviewTranscriptInput,
   FictionalInterviewTranscriptOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fictional Interview Transcript Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fictional-interview-transcript",
   title: "Random Fictional Interview Transcript Generator",
   description:
