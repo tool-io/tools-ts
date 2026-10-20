@@ -138,6 +138,15 @@ export const forestComponentSizeSetTool = createModelDefinition<
   ForestComponentSizeSetInput,
   ForestComponentSizeSetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Forest Component Size Set Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/forest-component-size-set",
   title: "Random Forest Component Size Set Generator",
   description:
