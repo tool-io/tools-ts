@@ -369,6 +369,12 @@ export const epistolaryStoryPacketTool = createModelDefinition<
   EpistolaryStoryPacketInput,
   EpistolaryStoryPacketOutput
 >({
+  discovery: {
+    aliases: ["Random Epistolary Story Packet Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/epistolary-story-packet",
   title: "Random Epistolary Story Packet Generator",
   description:
