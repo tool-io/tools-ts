@@ -138,6 +138,15 @@ export const setTripleRecognitionQuizTool = createModelDefinition<
   SetTripleRecognitionQuizInput,
   SetTripleRecognitionQuizOutput
 >({
+  discovery: {
+    aliases: [
+      "Random SET Triple Recognition Quiz Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/set-triple-recognition-quiz",
   title: "Random SET Triple Recognition Quiz Generator",
   description:
