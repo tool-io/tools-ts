@@ -203,6 +203,15 @@ export const httpRangeOverlapDatasetTool = createModelDefinition<
   HttpRangeOverlapDatasetInput,
   HttpRangeOverlapDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random HTTP Range Overlap Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/http-range-overlap-dataset",
   title: "Random HTTP Range Overlap Dataset Generator",
   description:
