@@ -173,6 +173,15 @@ export const dataAttributeRoundTripFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Data Attribute Round-Trip Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/data-attribute-round-trip-fixture",
   title: "Random Data Attribute Round-Trip Fixture Generator",
   description:
