@@ -137,6 +137,15 @@ export const mirrorKaleidoscopeLayoutTool = createModelDefinition<
   MirrorKaleidoscopeLayoutInput,
   MirrorKaleidoscopeLayoutOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Mirror Kaleidoscope Layout Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/mirror-kaleidoscope-layout",
   title: "Random Mirror Kaleidoscope Layout Generator",
   description:
