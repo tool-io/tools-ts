@@ -11,12 +11,12 @@ import {
 import base from "../mahjong-tile/tool.js";
 
 export type Input = Readonly<{ readonly seed: string; readonly count: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const deck: string[] = [];
   for (let i = 0; i < 34; i++) {
     const v = base.execute({}, { random: () => (i + 0.5) / 44 });
@@ -38,10 +38,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -55,7 +52,27 @@ export const tool = createSimpleTool({
     "Sample physical tile indices without replacement from a136tile four-copies-per-type mahjong teaching inventory. Imports the first34existing tile symbols; excludes flowers/seasons/jokers/backs, repeated glyphs are valid physical copies. Not a wall/deal simulator or gambling odds predictor.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          pieces: { type: "array", items: { type: "string" } },
+          physicalPieceIndices: { type: "array", items: { type: "number" } },
+          inventorySize: { type: "number" },
+          undrawnPieceCount: { type: "number" },
+        },
+        required: [
+          "pieces",
+          "physicalPieceIndices",
+          "inventorySize",
+          "undrawnPieceCount",
+        ],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
