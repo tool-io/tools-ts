@@ -201,6 +201,15 @@ export const graphReachabilityMutationCorpusTool = createModelDefinition<
   GraphReachabilityMutationCorpusInput,
   GraphReachabilityMutationCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Graph Reachability Mutation Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/graph-reachability-mutation-corpus",
   title: "Random Graph Reachability Mutation Corpus Generator",
   description:
