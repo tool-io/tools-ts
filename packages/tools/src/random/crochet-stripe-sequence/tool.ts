@@ -173,6 +173,15 @@ export const crochetStripeSequenceTool = createModelDefinition<
   CrochetStripeSequenceInput,
   CrochetStripeSequenceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Crochet Stripe Sequence Plan Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/crochet-stripe-sequence",
   title: "Random Crochet Stripe Sequence Plan Generator",
   description:
