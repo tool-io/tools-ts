@@ -239,6 +239,15 @@ export const linearRegressionNoiseBenchmarkTool = createModelDefinition<
   LinearRegressionNoiseBenchmarkInput,
   LinearRegressionNoiseBenchmarkOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Linear Regression Noise Benchmark Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/linear-regression-noise-benchmark",
   title: "Random Linear Regression Noise Benchmark Generator",
   description:
