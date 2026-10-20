@@ -145,6 +145,15 @@ export const kakuroRunCompletionExerciseTool = createModelDefinition<
   KakuroRunCompletionExerciseInput,
   KakuroRunCompletionExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Kakuro Run Completion Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/kakuro-run-completion-exercise",
   title: "Random Kakuro Run Completion Exercise Generator",
   description:
