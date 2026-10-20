@@ -338,6 +338,12 @@ export const objectFitCropCorpusTool = createModelDefinition<
   ObjectFitCropCorpusInput,
   ObjectFitCropCorpusOutput
 >({
+  discovery: {
+    aliases: ["Random Object-Fit Crop Corpus Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/object-fit-crop-corpus",
   title: "Random Object-Fit Crop Corpus Generator",
   description:
