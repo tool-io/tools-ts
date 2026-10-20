@@ -195,6 +195,15 @@ export const semanticEditMarkupFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Semantic Edit Markup Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/semantic-edit-markup-fixture",
   title: "Random Semantic Edit Markup Fixture Generator",
   description:
