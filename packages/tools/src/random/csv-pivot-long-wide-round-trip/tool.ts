@@ -196,6 +196,15 @@ export const csvPivotLongWideRoundTripTool = createModelDefinition<
   CsvPivotLongWideRoundTripInput,
   CsvPivotLongWideRoundTripOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Long and Wide Round-Trip Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-pivot-long-wide-round-trip",
   title: "Random CSV Long and Wide Round-Trip Fixture Generator",
   description:
