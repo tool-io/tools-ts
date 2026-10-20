@@ -199,6 +199,15 @@ export const csvMissingDataPatternCorpusTool = createModelDefinition<
   CsvMissingDataPatternCorpusInput,
   CsvMissingDataPatternCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Missing Data Pattern Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-missing-data-pattern-corpus",
   title: "Random CSV Missing Data Pattern Corpus Generator",
   description:
