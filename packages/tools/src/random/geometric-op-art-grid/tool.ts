@@ -126,6 +126,12 @@ export const geometricOpArtGridTool = createModelDefinition<
   GeometricOpArtGridInput,
   GeometricOpArtGridOutput
 >({
+  discovery: {
+    aliases: ["Random Geometric Op Art Grid Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/geometric-op-art-grid",
   title: "Random Geometric Op Art Grid Generator",
   description:
