@@ -154,6 +154,15 @@ export const graphArticulationPointExerciseTool = createModelDefinition<
   GraphArticulationPointExerciseInput,
   GraphArticulationPointExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Graph Articulation Point Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/graph-articulation-point-exercise",
   title: "Random Graph Articulation Point Exercise Generator",
   description:
