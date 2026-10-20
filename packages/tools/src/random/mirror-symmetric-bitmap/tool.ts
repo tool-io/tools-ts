@@ -3,13 +3,13 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../histogram/batch56-shared.js";
 export type Input = Readonly<{ rows: number; columns: number; seed: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "rows", label: "rows", kind: "integer" },
   { id: "columns", label: "columns", kind: "integer" },
   { id: "seed", label: "seed", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   H.validate(i, fields);
   const random = H.randomSource(i.seed, context);
   const orbits = H.gridOrbits(i.rows, i.columns, false),
@@ -29,20 +29,45 @@ export const example = {
     result: {
       seed: "batch56",
       mask: [
-        [0, 0],
-        [0, 0],
+        [1, 1],
+        [1, 1],
       ],
       orbitCount: 2,
     },
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Random Mirror-Symmetric Bitmap", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/mirror-symmetric-bitmap",
   title: "Random Mirror-Symmetric Bitmap",
   description:
     "Replay seed or one advancing injected source, uniform over the explicitly stated finite support, not cryptographically secure. Choose independent fair binary values for each left/right mirror orbit, uniform over symmetry-compatible masks; orbit cells are tied, not independently sampled.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          seed: { type: "string" },
+          mask: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          orbitCount: { type: "number" },
+        },
+        required: ["seed", "mask", "orbitCount"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
 });
 export const run = tool.execute;
