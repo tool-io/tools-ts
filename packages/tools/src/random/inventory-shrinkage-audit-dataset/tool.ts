@@ -245,6 +245,15 @@ export const inventoryShrinkageAuditDatasetTool = createModelDefinition<
   InventoryShrinkageAuditDatasetInput,
   InventoryShrinkageAuditDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Inventory Shrinkage Audit Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/inventory-shrinkage-audit-dataset",
   title: "Random Inventory Shrinkage Audit Dataset Generator",
   description:
