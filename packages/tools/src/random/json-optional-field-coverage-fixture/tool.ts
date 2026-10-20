@@ -162,6 +162,15 @@ export const jsonOptionalFieldCoverageFixtureTool = createModelDefinition<
   JsonOptionalFieldCoverageFixtureInput,
   JsonOptionalFieldCoverageFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random JSON Optional Field Coverage Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/json-optional-field-coverage-fixture",
   title: "Random JSON Optional Field Coverage Fixture Generator",
   description:
