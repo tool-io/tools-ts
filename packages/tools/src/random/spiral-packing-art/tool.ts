@@ -151,6 +151,12 @@ export const spiralPackingArtTool = createModelDefinition<
   SpiralPackingArtInput,
   SpiralPackingArtOutput
 >({
+  discovery: {
+    aliases: ["Random Spiral Packing Artwork Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/spiral-packing-art",
   title: "Random Spiral Packing Artwork Generator",
   description:
