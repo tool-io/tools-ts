@@ -11,7 +11,7 @@ export type Input = Readonly<{
   stepMaximum: number;
   seed: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "initial", label: "initial", kind: "integer" },
   { id: "minimum", label: "minimum", kind: "integer" },
@@ -21,7 +21,7 @@ const fields = [
   { id: "stepMaximum", label: "stepMaximum", kind: "integer" },
   { id: "seed", label: "seed", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   H.validate(i, fields);
   const random = H.randomSource(i.seed, context);
   H.int(i.minimum, -1000000, 1000000);
@@ -51,16 +51,38 @@ export const example = {
     seed: "batch56",
   },
   output: {
-    result: { seed: "batch56", increments: [-1, -1, -1], states: [1, 0, 0, 0] },
+    result: { seed: "batch56", increments: [0, 1, 1], states: [1, 1, 2, 3] },
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Random Saturating Counter Input Trace", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/saturating-counter-input-trace",
   title: "Random Saturating Counter Input Trace",
   description:
     "Replay seed or one advancing injected source, uniform over the explicitly stated finite support, not cryptographically secure. Draw independent uniform bounded integer increments and saturate each result to explicit inclusive endpoints; not uniform over final states or hardware fault behavior.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          seed: { type: "string" },
+          increments: { type: "array", items: { type: "number" } },
+          states: { type: "array", items: { type: "number" } },
+        },
+        required: ["seed", "increments", "states"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
 });
 export const run = tool.execute;
