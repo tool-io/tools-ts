@@ -150,6 +150,15 @@ export const scientificPrefixMatchingQuizTool = createModelDefinition<
   ScientificPrefixMatchingQuizInput,
   ScientificPrefixMatchingQuizOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Scientific Prefix Matching Quiz Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/scientific-prefix-matching-quiz",
   title: "Random Scientific Prefix Matching Quiz Generator",
   description:
