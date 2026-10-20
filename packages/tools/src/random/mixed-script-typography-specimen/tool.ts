@@ -21,7 +21,7 @@ export type Input = Readonly<{
   readonly scriptLabels: readonly string[];
   readonly callerTextFragments: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -32,7 +32,7 @@ const inputFields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   unique(input.scriptLabels, "script labels");
   aligned(input.scriptLabels, input.callerTextFragments, "script samples");
@@ -58,10 +58,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
   );
   return { result: { specimens } };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -80,7 +77,30 @@ export const tool = createSimpleTool({
     "Compose all caller labeled script fragments in a uniformly random order per typography specimen; preserves actual supplied Unicode rather than claiming that labels establish script/language or normalization.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          specimens: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                scriptOrder: { type: "array", items: { type: "string" } },
+                text: { type: "string" },
+              },
+              required: ["scriptOrder", "text"],
+            },
+          },
+        },
+        required: ["specimens"],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
