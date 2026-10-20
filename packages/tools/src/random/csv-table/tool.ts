@@ -186,6 +186,12 @@ export const csvTableTool = createModelDefinition<
   CsvTableInput,
   CsvTableOutput
 >({
+  discovery: {
+    aliases: ["Random CSV Table Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-table",
   title: "Random CSV Table Generator",
   description:
