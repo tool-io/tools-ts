@@ -1,3 +1,4 @@
+import { corpusResultSchema } from "../exercise-schema.js";
 import type { ToolExecutionContext } from "../../core/definition.js";
 import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
@@ -12,7 +13,7 @@ export type Input = Readonly<{
   readonly withoutReplacement: boolean;
   readonly candidateInputsJson: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -23,7 +24,7 @@ const inputFields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const drawn = corpus(base, input, context);
   const exercises = drawn.result.exercises.map((e) => {
     const extra = secondary.execute(e.input);
@@ -38,10 +39,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     result: { ...drawn.result, secondaryToolId: secondary.id, exercises },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -60,7 +58,16 @@ export const tool = createSimpleTool({
     "Build a bounded reproducible month boundary exercise from explicitly supplied candidate scenarios. Every candidate must satisfy imported date/end-of-month before selection; answer cards preserve its units, conventions, domain limitations and signed/unknown results. Draws are uniform over caller candidate positions; no replacement means no repeated positions, not necessarily distinct answers. No automatic pedagogical correctness, compliance or physical readiness. Also includes matched date/start-of-month answers; its domain guards remain applicable.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+
+      schema: corpusResultSchema(base, {
+        result: { secondaryToolId: { type: "string" } },
+        exercise: { secondaryAnswer: secondary.outputSchema },
+      }),
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
