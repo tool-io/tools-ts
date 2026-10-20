@@ -159,6 +159,15 @@ export const significantFigureRoundingQuizTool = createModelDefinition<
   SignificantFigureRoundingQuizInput,
   SignificantFigureRoundingQuizOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Significant Figure Rounding Quiz Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/significant-figure-rounding-quiz",
   title: "Random Significant Figure Rounding Quiz Generator",
   description:
