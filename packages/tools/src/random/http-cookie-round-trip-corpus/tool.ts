@@ -310,6 +310,15 @@ export const httpCookieRoundTripCorpusTool = createModelDefinition<
   HttpCookieRoundTripCorpusInput,
   HttpCookieRoundTripCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random HTTP Cookie Round-Trip Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/http-cookie-round-trip-corpus",
   title: "Random HTTP Cookie Round-Trip Corpus Generator",
   description:
