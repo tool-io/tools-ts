@@ -115,6 +115,15 @@ export const histogramBinEdgeChallengeTool = createModelDefinition<
   HistogramBinEdgeChallengeInput,
   HistogramBinEdgeChallengeOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Histogram Bin Edge Challenge Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/histogram-bin-edge-challenge",
   title: "Random Histogram Bin Edge Challenge Generator",
   description:
