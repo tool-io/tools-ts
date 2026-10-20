@@ -184,6 +184,12 @@ export const contourLineArtFieldTool = createModelDefinition<
   ContourLineArtFieldInput,
   ContourLineArtFieldOutput
 >({
+  discovery: {
+    aliases: ["Random Contour Line Art Field Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/contour-line-art-field",
   title: "Random Contour Line Art Field Generator",
   description:
