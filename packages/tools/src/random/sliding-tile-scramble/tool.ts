@@ -210,6 +210,12 @@ export const slidingTileScrambleTool = createModelDefinition<
   SlidingTileScrambleInput,
   SlidingTileScrambleOutput
 >({
+  discovery: {
+    aliases: ["Random Sliding Tile Scramble Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/sliding-tile-scramble",
   title: "Random Sliding Tile Scramble Generator",
   description:
