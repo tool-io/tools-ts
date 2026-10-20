@@ -133,6 +133,15 @@ export const csvControlCharacterAuditFixtureTool = createModelDefinition<
   CsvControlCharacterAuditFixtureInput,
   CsvControlCharacterAuditFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Control Character Audit Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-control-character-audit-fixture",
   title: "Random CSV Control Character Audit Fixture Generator",
   description:
