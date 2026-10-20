@@ -17,13 +17,13 @@ export type Input = Readonly<{
   readonly count: number;
   readonly rate: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
   { id: "rate", label: "Rate", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   bounded(input.count, "replicates", 1, 64);
   nonnegative(input.rate, "rate");
@@ -47,10 +47,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -64,7 +61,22 @@ export const tool = createSimpleTool({
     "Generate IID count experiment samples with the existing Poisson variate calculation and explicit model moments. Source calls bounded to100000per request, including degenerate caller randomness. Not a hypothesis-test verdict.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          samples: { type: "array", items: { type: "number" } },
+          observedMean: { type: "number" },
+          modelMean: { type: "number" },
+          modelVariance: { type: "number" },
+        },
+        required: ["samples", "observedMean", "modelMean", "modelVariance"],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
