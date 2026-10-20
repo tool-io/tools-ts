@@ -239,6 +239,12 @@ export const geometricColorPatternTool = createModelDefinition<
   GeometricColorPatternInput,
   GeometricColorPatternOutput
 >({
+  discovery: {
+    aliases: ["Random Geometric Color Pattern Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/geometric-color-pattern",
   title: "Random Geometric Color Pattern Generator",
   description:
