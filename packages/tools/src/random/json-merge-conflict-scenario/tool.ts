@@ -200,6 +200,15 @@ export const jsonMergeConflictScenarioTool = createModelDefinition<
   JsonMergeConflictScenarioInput,
   JsonMergeConflictScenarioOutput
 >({
+  discovery: {
+    aliases: [
+      "Random JSON Merge Conflict Scenario Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/json-merge-conflict-scenario",
   title: "Random JSON Merge Conflict Scenario Generator",
   description:
