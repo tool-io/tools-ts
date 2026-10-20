@@ -180,6 +180,15 @@ export const navigationMenuTreeExample = {
   },
 } satisfies ToolExample<Input, Output>;
 export const navigationMenuTreeTool = createModelDefinition<Input, Output>({
+  discovery: {
+    aliases: [
+      "Random Navigation Menu Tree Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/navigation-menu-tree",
   title: "Random Navigation Menu Tree Fixture Generator",
   description:
