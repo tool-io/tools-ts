@@ -179,6 +179,15 @@ export const fractalTreeBranchLayoutTool = createModelDefinition<
   FractalTreeBranchLayoutInput,
   FractalTreeBranchLayoutOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fractal Tree Branch Layout Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fractal-tree-branch-layout",
   title: "Random Fractal Tree Branch Layout Generator",
   description:
