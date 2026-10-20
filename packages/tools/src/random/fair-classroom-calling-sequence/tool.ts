@@ -273,6 +273,15 @@ export const fairClassroomCallingSequenceTool = createModelDefinition<
   FairClassroomCallingSequenceInput,
   FairClassroomCallingSequenceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fair Classroom Calling Sequence Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fair-classroom-calling-sequence",
   title: "Random Fair Classroom Calling Sequence Generator",
   description:
