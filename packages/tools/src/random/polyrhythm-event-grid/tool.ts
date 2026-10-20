@@ -267,6 +267,12 @@ export const polyrhythmEventGridTool = createModelDefinition<
   PolyrhythmEventGridInput,
   PolyrhythmEventGridOutput
 >({
+  discovery: {
+    aliases: ["Random Polyrhythm Event Grid Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/polyrhythm-event-grid",
   title: "Random Polyrhythm Event Grid Generator",
   description:
