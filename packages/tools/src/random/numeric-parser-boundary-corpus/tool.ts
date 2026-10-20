@@ -272,6 +272,15 @@ export const numericParserBoundaryCorpusTool = createModelDefinition<
   NumericParserBoundaryCorpusInput,
   NumericParserBoundaryCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Numeric Parser Boundary Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/numeric-parser-boundary-corpus",
   title: "Random Numeric Parser Boundary Corpus Generator",
   description:
