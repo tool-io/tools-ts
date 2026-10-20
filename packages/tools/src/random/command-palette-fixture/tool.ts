@@ -209,6 +209,12 @@ export const commandPaletteFixtureExample = {
   },
 } satisfies ToolExample<Input, Output>;
 export const commandPaletteFixtureTool = createModelDefinition<Input, Output>({
+  discovery: {
+    aliases: ["Random Command Palette Fixture Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/command-palette-fixture",
   title: "Random Command Palette Fixture Generator",
   description:
