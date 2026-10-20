@@ -253,6 +253,12 @@ export const multicolorPlaidPatternTool = createModelDefinition<
   MulticolorPlaidPatternInput,
   MulticolorPlaidPatternOutput
 >({
+  discovery: {
+    aliases: ["Random Multicolor Plaid Pattern Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/multicolor-plaid-pattern",
   title: "Random Multicolor Plaid Pattern Generator",
   description:
