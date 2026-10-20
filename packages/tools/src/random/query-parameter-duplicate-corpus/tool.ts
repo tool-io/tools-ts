@@ -173,6 +173,15 @@ export const queryParameterDuplicateCorpusTool = createModelDefinition<
   QueryParameterDuplicateCorpusInput,
   QueryParameterDuplicateCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Query Parameter Duplicate Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/query-parameter-duplicate-corpus",
   title: "Random Query Parameter Duplicate Corpus Generator",
   description:
