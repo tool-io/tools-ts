@@ -150,6 +150,15 @@ export const knittingColorworkRepeatTool = createModelDefinition<
   KnittingColorworkRepeatInput,
   KnittingColorworkRepeatOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Knitting Colorwork Repeat Chart Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/knitting-colorwork-repeat",
   title: "Random Knitting Colorwork Repeat Chart Generator",
   description:
