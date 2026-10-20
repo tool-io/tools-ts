@@ -8,14 +8,14 @@ export type Input = Readonly<{
   cuts: number;
   seed: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "width", label: "width", kind: "integer" },
   { id: "height", label: "height", kind: "integer" },
   { id: "cuts", label: "cuts", kind: "integer" },
   { id: "seed", label: "seed", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   H.validate(i, fields);
   const random = H.randomSource(i.seed, context);
   H.int(i.width, 1, 128);
@@ -47,21 +47,58 @@ export const example = {
   output: {
     result: {
       seed: "batch56",
-      trace: [{ rectangle: 0, axis: "x", cut: 1 }],
+      trace: [{ rectangle: 0, axis: "y", cut: 1 }],
       rectangles: [
-        [0, 0, 1, 2],
-        [1, 0, 4, 2],
+        [0, 0, 4, 1],
+        [0, 1, 4, 2],
       ],
     },
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Random Guillotine Rectangle Cut Trace", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/guillotine-rectangle-cut-trace",
   title: "Random Guillotine Rectangle Cut Trace",
   description:
     "Replay seed or one advancing injected source, uniform over the explicitly stated finite support, not cryptographically secure. At each step choose a uniform splittable current rectangle, then a uniform legal axis and integer interior cut; local-choice process, not uniform over final partitions.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          seed: { type: "string" },
+          trace: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                rectangle: { type: "number" },
+                axis: { type: "string" },
+                cut: { type: "number" },
+              },
+              required: ["rectangle", "axis", "cut"],
+            },
+          },
+          rectangles: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["seed", "trace", "rectangles"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
 });
 export const run = tool.execute;
