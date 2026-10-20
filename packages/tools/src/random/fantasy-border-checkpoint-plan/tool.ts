@@ -182,6 +182,15 @@ export const fantasyBorderCheckpointPlanTool = createModelDefinition<
   FantasyBorderCheckpointPlanInput,
   FantasyBorderCheckpointPlanOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fantasy Border Checkpoint Plan Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fantasy-border-checkpoint-plan",
   title: "Random Fantasy Border Checkpoint Plan Generator",
   description:
