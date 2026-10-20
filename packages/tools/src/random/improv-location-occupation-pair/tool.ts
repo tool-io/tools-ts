@@ -152,6 +152,15 @@ export const improvLocationOccupationPairTool = createModelDefinition<
   ImprovLocationOccupationPairInput,
   ImprovLocationOccupationPairOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Improv Location and Occupation Pairings Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/improv-location-occupation-pair",
   title: "Random Improv Location and Occupation Pairings Generator",
   description:
