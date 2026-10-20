@@ -1,3 +1,4 @@
+import { corpusResultSchema } from "../exercise-schema.js";
 import type { ToolExecutionContext } from "../../core/definition.js";
 import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
@@ -19,7 +20,7 @@ export type Input = Readonly<{
   readonly massKg: number;
   readonly initialVelocityMs: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -39,7 +40,7 @@ const fields = [
     kind: "number",
   } as const,
 ];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   positive(input.massKg, "mass");
   const initial = momentum.execute({
     massKg: input.massKg,
@@ -74,10 +75,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, fields);
   return finish(compute(input, context));
 };
@@ -98,7 +96,23 @@ export const tool = createSimpleTool({
     "Build reproducible constant-force impulse cards and matched initial/final signed momentum for an explicit positive mass and initial velocity, importing both existing calculators. Uniform candidate-position draws; no replacement means distinct positions. One-dimensional constant-mass ideal model only, not collision dynamics, a variable-force integral, automatic pedagogical correctness or physical readiness.",
   inputs: fields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+
+      schema: corpusResultSchema(base, {
+        result: {
+          massKg: { type: "number" },
+          initialVelocityMs: { type: "number" },
+        },
+        exercise: {
+          initialMomentum: momentum.outputSchema,
+          finalMomentum: momentum.outputSchema,
+          finalSignedVelocityMs: { type: "number" },
+        },
+      }),
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
