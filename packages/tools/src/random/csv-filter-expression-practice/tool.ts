@@ -217,6 +217,15 @@ export const csvFilterExpressionPracticeTool = createModelDefinition<
   CsvFilterExpressionPracticeInput,
   CsvFilterExpressionPracticeOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Filter Expression Practice Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-filter-expression-practice",
   title: "Random CSV Filter Expression Practice Generator",
   description:
