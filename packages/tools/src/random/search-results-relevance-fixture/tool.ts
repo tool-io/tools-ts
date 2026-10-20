@@ -279,6 +279,15 @@ export const searchResultsRelevanceFixtureTool = createModelDefinition<
   SearchResultsRelevanceFixtureInput,
   SearchResultsRelevanceFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Search Results Relevance Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/search-results-relevance-fixture",
   title: "Random Search Results Relevance Fixture Generator",
   description:
