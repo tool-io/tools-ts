@@ -137,6 +137,12 @@ export const nestedStoryFrameTool = createModelDefinition<
   NestedStoryFrameInput,
   NestedStoryFrameOutput
 >({
+  discovery: {
+    aliases: ["Random Nested Story Frame Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/nested-story-frame",
   title: "Random Nested Story Frame Generator",
   description:
