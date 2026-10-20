@@ -11,12 +11,12 @@ import {
 import base from "../domino-tile/tool.js";
 
 export type Input = Readonly<{ readonly seed: string; readonly count: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const deck: string[] = [];
   for (let a = 0; a <= 6; a++)
     for (let b = a; b <= 6; b++) {
@@ -41,10 +41,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -58,7 +55,27 @@ export const tool = createSimpleTool({
     "Sample physical tiles without replacement from a28piece unordered double-six horizontal domino subset. Reuses existing single-value repertoire, excluding tile backs and duplicate orientations. Not a wall/deal simulator or gambling odds predictor.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          pieces: { type: "array", items: { type: "string" } },
+          physicalPieceIndices: { type: "array", items: { type: "number" } },
+          inventorySize: { type: "number" },
+          undrawnPieceCount: { type: "number" },
+        },
+        required: [
+          "pieces",
+          "physicalPieceIndices",
+          "inventorySize",
+          "undrawnPieceCount",
+        ],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
