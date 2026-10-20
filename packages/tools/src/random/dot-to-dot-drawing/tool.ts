@@ -197,6 +197,12 @@ export const dotToDotDrawingTool = createModelDefinition<
   DotToDotDrawingInput,
   DotToDotDrawingOutput
 >({
+  discovery: {
+    aliases: ["Random Dot-to-Dot Drawing Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/dot-to-dot-drawing",
   title: "Random Dot-to-Dot Drawing Generator",
   description:
