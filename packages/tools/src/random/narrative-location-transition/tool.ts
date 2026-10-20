@@ -225,6 +225,15 @@ export const narrativeLocationTransitionTool = createModelDefinition<
   NarrativeLocationTransitionInput,
   NarrativeLocationTransitionOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Narrative Location Transition Plan Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/narrative-location-transition",
   title: "Random Narrative Location Transition Plan Generator",
   description:
