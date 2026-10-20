@@ -1,3 +1,4 @@
+import { corpusResultSchema } from "../exercise-schema.js";
 import type { ToolExecutionContext } from "../../core/definition.js";
 import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
@@ -17,7 +18,7 @@ export type Input = Readonly<{
   readonly candidateInputsJson: readonly string[];
   readonly comparisonInputJson: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -36,7 +37,7 @@ const fields = [
     kind: "string",
   } as const,
 ];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const comparisonInput = jsonCases([input.comparisonInputJson])[0];
   const comparison = base.execute(comparisonInput);
   if (!comparison.ok)
@@ -64,10 +65,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, fields);
   return finish(compute(input, context));
 };
@@ -87,7 +85,24 @@ export const tool = createSimpleTool({
     "Build reproducible candidate-versus-reference kinetic-energy comparison cards using the existing calculator for both scenarios. Preserve signed joule discrepancies and exact ties. Every candidate must satisfy the imported calculator before uniform position sampling; no replacement means no repeated positions, not necessarily distinct energies. Explicit comparison JSON, mass and speed units follow physics/kinetic-energy. No automatic pedagogical correctness or physical readiness.",
   inputs: fields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: corpusResultSchema(base, {
+        result: {
+          comparisonInput: { type: "object", additionalProperties: true },
+          comparisonAnswer: base.outputSchema,
+        },
+        exercise: {
+          signedEnergyDifferenceJoules: { type: "number" },
+          energyComparison: {
+            type: "string",
+            enum: ["equal", "higher", "lower"],
+          },
+        },
+      }),
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
