@@ -202,6 +202,15 @@ export const eventSourcingReplayFixtureTool = createModelDefinition<
   EventSourcingReplayFixtureInput,
   EventSourcingReplayFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Event Sourcing Replay Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/event-sourcing-replay-fixture",
   title: "Random Event Sourcing Replay Fixture Generator",
   description:
