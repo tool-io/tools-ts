@@ -341,6 +341,15 @@ export const deliveryAttemptOutcomeDatasetTool = createModelDefinition<
   DeliveryAttemptOutcomeDatasetInput,
   DeliveryAttemptOutcomeDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Delivery Attempt Outcome Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/delivery-attempt-outcome-dataset",
   title: "Random Delivery Attempt Outcome Dataset Generator",
   description:
