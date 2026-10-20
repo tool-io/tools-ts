@@ -162,6 +162,15 @@ export const maxSatInstanceTool = createModelDefinition<
   MaxSatInstanceInput,
   MaxSatInstanceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Unweighted Max-SAT Instance Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/max-sat-instance",
   title: "Random Unweighted Max-SAT Instance Generator",
   description:
