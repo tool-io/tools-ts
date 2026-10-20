@@ -214,6 +214,12 @@ export const knapsackInstanceTool = createModelDefinition<
   KnapsackInstanceInput,
   KnapsackInstanceOutput
 >({
+  discovery: {
+    aliases: ["Random 0/1 Knapsack Instance Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/knapsack-instance",
   title: "Random 0/1 Knapsack Instance Generator",
   description:
