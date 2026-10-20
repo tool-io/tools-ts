@@ -194,6 +194,15 @@ export const landmarkRegionLayoutFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Landmark Region Layout Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/landmark-region-layout-fixture",
   title: "Random Landmark Region Layout Fixture Generator",
   description:
