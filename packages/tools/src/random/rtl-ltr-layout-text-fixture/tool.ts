@@ -157,6 +157,15 @@ export const rtlLtrLayoutTextFixtureExample = {
 } satisfies ToolExample<Input, Output>;
 export const rtlLtrLayoutTextFixtureTool = createModelDefinition<Input, Output>(
   {
+    discovery: {
+      aliases: [
+        "Random RTL and LTR Layout Text Fixture Generator",
+        "random generation",
+      ],
+      collections: ["data", "learn"],
+      fields: ["random", "random generation"],
+      keywords: ["random generation"],
+    },
     id: "random/rtl-ltr-layout-text-fixture",
     title: "Random RTL and LTR Layout Text Fixture Generator",
     description:
