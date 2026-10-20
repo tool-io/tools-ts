@@ -207,6 +207,15 @@ export const fantasyFestivalDistrictPlanTool = createModelDefinition<
   FantasyFestivalDistrictPlanInput,
   FantasyFestivalDistrictPlanOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fantasy Festival District Plan Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fantasy-festival-district-plan",
   title: "Random Fantasy Festival District Plan Generator",
   description:
