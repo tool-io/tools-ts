@@ -186,6 +186,15 @@ export const csvWhitespaceCleaningCorpusTool = createModelDefinition<
   CsvWhitespaceCleaningCorpusInput,
   CsvWhitespaceCleaningCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Whitespace Cleaning Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-whitespace-cleaning-corpus",
   title: "Random CSV Whitespace Cleaning Corpus Generator",
   description:
