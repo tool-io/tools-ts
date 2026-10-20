@@ -130,6 +130,15 @@ export const propOnlySceneChallengeTool = createModelDefinition<
   PropOnlySceneChallengeInput,
   PropOnlySceneChallengeOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Prop-Only Scene Challenge Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/prop-only-scene-challenge",
   title: "Random Prop-Only Scene Challenge Generator",
   description:
