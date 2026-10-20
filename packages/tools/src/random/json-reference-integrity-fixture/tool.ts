@@ -152,6 +152,15 @@ export const jsonReferenceIntegrityFixtureTool = createModelDefinition<
   JsonReferenceIntegrityFixtureInput,
   JsonReferenceIntegrityFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random JSON Reference Integrity Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/json-reference-integrity-fixture",
   title: "Random JSON Reference Integrity Fixture Generator",
   description:
