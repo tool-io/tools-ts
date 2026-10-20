@@ -281,6 +281,15 @@ export const htmlTextExtractionCorpusTool = createModelDefinition<
   HtmlTextExtractionCorpusInput,
   HtmlTextExtractionCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random HTML Text Extraction Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/html-text-extraction-corpus",
   title: "Random HTML Text Extraction Corpus Generator",
   description:
