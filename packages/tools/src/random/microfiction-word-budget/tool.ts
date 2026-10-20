@@ -143,6 +143,15 @@ export const microfictionWordBudgetTool = createModelDefinition<
   MicrofictionWordBudgetInput,
   MicrofictionWordBudgetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Microfiction Word Budget Challenge Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/microfiction-word-budget",
   title: "Random Microfiction Word Budget Challenge Generator",
   description:
