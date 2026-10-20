@@ -214,6 +214,15 @@ export const optimisticLockConflictFixtureTool = createModelDefinition<
   OptimisticLockConflictFixtureInput,
   OptimisticLockConflictFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Optimistic Lock Conflict Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/optimistic-lock-conflict-fixture",
   title: "Random Optimistic Lock Conflict Fixture Generator",
   description:
