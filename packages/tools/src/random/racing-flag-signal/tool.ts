@@ -19,7 +19,7 @@ export type Input = Readonly<{
   readonly callerReferenceEdition: string;
   readonly callerVerifiedRacingFlagAssets: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -35,7 +35,7 @@ const inputFields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   if (!input.callerReferenceEdition.trim())
     simpleError(
       "edition",
@@ -60,10 +60,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -86,7 +83,27 @@ export const tool = createSimpleTool({
     "Randomize explicit independently verified RacingFlag glyph/asset tokens with captions under one stated reference edition. Asset text may include a stable caller reference ID rather than a complete drawing. Not a built-in normative symbol, Morse timing dictionary, certified safety sign, folding/handling instruction or actual operation recommendation; different traditions/editions cannot be inferred.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          values: { type: "array", items: { type: "string" } },
+          selectedEntryIndices: { type: "array", items: { type: "number" } },
+          repertoireSize: { type: "number" },
+          callerReferenceEdition: { type: "string" },
+        },
+        required: [
+          "values",
+          "selectedEntryIndices",
+          "repertoireSize",
+          "callerReferenceEdition",
+        ],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
