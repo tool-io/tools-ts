@@ -167,6 +167,15 @@ export const fictionalRoadsideStopChainTool = createModelDefinition<
   FictionalRoadsideStopChainInput,
   FictionalRoadsideStopChainOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fictional Roadside Stop Chain Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fictional-roadside-stop-chain",
   title: "Random Fictional Roadside Stop Chain Generator",
   description:
