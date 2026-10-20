@@ -186,6 +186,15 @@ export const inferenceRuleProofCardsTool = createModelDefinition<
   InferenceRuleProofCardsInput,
   InferenceRuleProofCardsOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Inference Rule Proof Cards Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/inference-rule-proof-cards",
   title: "Random Inference Rule Proof Cards Generator",
   description:
