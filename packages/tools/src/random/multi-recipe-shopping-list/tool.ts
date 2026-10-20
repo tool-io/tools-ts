@@ -524,6 +524,15 @@ export const multiRecipeShoppingListTool = createModelDefinition<
   MultiRecipeShoppingListInput,
   MultiRecipeShoppingListOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Multi-Recipe Shopping List Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/multi-recipe-shopping-list",
   title: "Random Multi-Recipe Shopping List Generator",
   description:
