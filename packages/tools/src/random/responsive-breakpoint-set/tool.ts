@@ -148,6 +148,15 @@ export const responsiveBreakpointSetTool = createModelDefinition<
   ResponsiveBreakpointSetInput,
   ResponsiveBreakpointSetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Responsive Breakpoint Set Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/responsive-breakpoint-set",
   title: "Random Responsive Breakpoint Set Generator",
   description:
