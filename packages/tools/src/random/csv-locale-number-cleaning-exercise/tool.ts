@@ -135,6 +135,15 @@ export const csvLocaleNumberCleaningExerciseTool = createModelDefinition<
   CsvLocaleNumberCleaningExerciseInput,
   CsvLocaleNumberCleaningExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Locale Number Cleaning Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-locale-number-cleaning-exercise",
   title: "Random CSV Locale Number Cleaning Exercise Generator",
   description:
