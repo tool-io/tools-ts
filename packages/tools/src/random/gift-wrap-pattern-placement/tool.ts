@@ -206,6 +206,15 @@ export const giftWrapPatternPlacementTool = createModelDefinition<
   GiftWrapPatternPlacementInput,
   GiftWrapPatternPlacementOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Gift Wrap Pattern Placement Plan Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/gift-wrap-pattern-placement",
   title: "Random Gift Wrap Pattern Placement Plan Generator",
   description:
