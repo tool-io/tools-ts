@@ -165,6 +165,15 @@ export const imageAltContextFixtureExample = {
   },
 } satisfies ToolExample<Input, Output>;
 export const imageAltContextFixtureTool = createModelDefinition<Input, Output>({
+  discovery: {
+    aliases: [
+      "Random Image Alt Context Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/image-alt-context-fixture",
   title: "Random Image Alt Context Fixture Generator",
   description:
