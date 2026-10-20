@@ -185,6 +185,12 @@ export const comicPanelStoryboardTool = createModelDefinition<
   ComicPanelStoryboardInput,
   ComicPanelStoryboardOutput
 >({
+  discovery: {
+    aliases: ["Random Comic Panel Storyboard Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/comic-panel-storyboard",
   title: "Random Comic Panel Storyboard Generator",
   description:
