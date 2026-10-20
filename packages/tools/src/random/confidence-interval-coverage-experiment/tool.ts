@@ -347,6 +347,15 @@ export const confidenceIntervalCoverageExperimentTool = createModelDefinition<
   ConfidenceIntervalCoverageExperimentInput,
   ConfidenceIntervalCoverageExperimentOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Confidence Interval Coverage Experiment Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/confidence-interval-coverage-experiment",
   title: "Random Confidence Interval Coverage Experiment Generator",
   description:
