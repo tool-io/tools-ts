@@ -237,6 +237,12 @@ export const colorWheelTool = createModelDefinition<
   ColorWheelInput,
   ColorWheelOutput
 >({
+  discovery: {
+    aliases: ["Random Color Wheel Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/color-wheel",
   title: "Random Color Wheel Generator",
   description:
