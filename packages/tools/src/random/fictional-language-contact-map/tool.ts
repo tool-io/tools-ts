@@ -156,6 +156,15 @@ export const fictionalLanguageContactMapTool = createModelDefinition<
   FictionalLanguageContactMapInput,
   FictionalLanguageContactMapOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fictional Language Contact Map Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fictional-language-contact-map",
   title: "Random Fictional Language Contact Map Generator",
   description:
