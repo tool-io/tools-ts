@@ -175,6 +175,15 @@ export const euclideanAlgorithmTracePuzzleTool = createModelDefinition<
   EuclideanAlgorithmTracePuzzleInput,
   EuclideanAlgorithmTracePuzzleOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Euclidean Algorithm Trace Puzzle Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/euclidean-algorithm-trace-puzzle",
   title: "Random Euclidean Algorithm Trace Puzzle Generator",
   description:
