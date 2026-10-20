@@ -388,6 +388,15 @@ export const palletPackingMeasurementDatasetTool = createModelDefinition<
   PalletPackingMeasurementDatasetInput,
   PalletPackingMeasurementDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Pallet Packing Measurement Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/pallet-packing-measurement-dataset",
   title: "Random Pallet Packing Measurement Dataset Generator",
   description:
