@@ -233,6 +233,15 @@ export const ridgeRegressionBenchmarkTool = createModelDefinition<
   RidgeRegressionBenchmarkInput,
   RidgeRegressionBenchmarkOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Ridge Regression Benchmark Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/ridge-regression-benchmark",
   title: "Random Ridge Regression Benchmark Generator",
   description:
