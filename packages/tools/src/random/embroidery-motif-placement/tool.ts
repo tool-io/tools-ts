@@ -166,6 +166,15 @@ export const embroideryMotifPlacementTool = createModelDefinition<
   EmbroideryMotifPlacementInput,
   EmbroideryMotifPlacementOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Embroidery Motif Placement Plan Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/embroidery-motif-placement",
   title: "Random Embroidery Motif Placement Plan Generator",
   description:
