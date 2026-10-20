@@ -40,19 +40,16 @@ export type Input = Readonly<{
   readonly count: number;
   readonly withoutReplacement: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
   { id: "withoutReplacement", label: "Without replacement", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   return repertoire(source, 24, input, context);
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -66,7 +63,21 @@ export const tool = createSimpleTool({
     "Focused Pinyin four-tone a/e/i/o/u/\u00fc precomposed vowel subset, excludes neutral unmarked vowels. IPA chart:https://www.internationalphoneticassociation.org/content/ipa-chart; Pinyin:https://www.unicode.org/Public/17.0.0/ucd/UnicodeData.txt. Uniform pinned repertoire-entry sampling; without replacement means distinct entry indices, not guaranteed distinct rendered glyphs. Reproducible seed or one advancing caller source; not secure randomness.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          values: { type: "array", items: { type: "string" } },
+          selectedEntryIndices: { type: "array", items: { type: "number" } },
+          repertoireSize: { type: "number" },
+        },
+        required: ["values", "selectedEntryIndices", "repertoireSize"],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
