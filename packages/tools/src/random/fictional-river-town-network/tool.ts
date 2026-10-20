@@ -162,6 +162,15 @@ export const fictionalRiverTownNetworkTool = createModelDefinition<
   FictionalRiverTownNetworkInput,
   FictionalRiverTownNetworkOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fictional River Town Network Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fictional-river-town-network",
   title: "Random Fictional River Town Network Generator",
   description:
