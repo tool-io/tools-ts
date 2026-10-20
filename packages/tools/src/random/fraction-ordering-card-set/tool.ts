@@ -165,6 +165,15 @@ export const fractionOrderingCardSetTool = createModelDefinition<
   FractionOrderingCardSetInput,
   FractionOrderingCardSetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fraction Ordering Card Set Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fraction-ordering-card-set",
   title: "Random Fraction Ordering Card Set Generator",
   description:
