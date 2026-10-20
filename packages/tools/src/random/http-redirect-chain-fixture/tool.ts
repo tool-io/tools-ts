@@ -174,6 +174,15 @@ export const httpRedirectChainFixtureTool = createModelDefinition<
   HttpRedirectChainFixtureInput,
   HttpRedirectChainFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random HTTP Redirect Chain Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/http-redirect-chain-fixture",
   title: "Random HTTP Redirect Chain Fixture Generator",
   description:
