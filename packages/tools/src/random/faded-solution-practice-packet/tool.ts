@@ -227,6 +227,15 @@ export const fadedSolutionPracticePacketTool = createModelDefinition<
   FadedSolutionPracticePacketInput,
   FadedSolutionPracticePacketOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Faded Solution Practice Packet Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/faded-solution-practice-packet",
   title: "Random Faded Solution Practice Packet Generator",
   description:
