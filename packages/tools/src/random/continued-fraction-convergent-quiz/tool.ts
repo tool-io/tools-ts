@@ -158,6 +158,15 @@ export const continuedFractionConvergentQuizTool = createModelDefinition<
   ContinuedFractionConvergentQuizInput,
   ContinuedFractionConvergentQuizOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Continued Fraction Convergent Quiz Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/continued-fraction-convergent-quiz",
   title: "Random Continued Fraction Convergent Quiz Generator",
   description:
