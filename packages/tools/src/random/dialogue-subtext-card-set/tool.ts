@@ -155,6 +155,15 @@ export const dialogueSubtextCardSetTool = createModelDefinition<
   DialogueSubtextCardSetInput,
   DialogueSubtextCardSetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Dialogue Subtext Card Set Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/dialogue-subtext-card-set",
   title: "Random Dialogue Subtext Card Set Generator",
   description:
