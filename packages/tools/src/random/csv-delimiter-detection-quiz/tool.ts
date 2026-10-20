@@ -171,6 +171,15 @@ export const csvDelimiterDetectionQuizTool = createModelDefinition<
   CsvDelimiterDetectionQuizInput,
   CsvDelimiterDetectionQuizOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Delimiter Detection Quiz Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-delimiter-detection-quiz",
   title: "Random CSV Delimiter Detection Quiz Generator",
   description:
