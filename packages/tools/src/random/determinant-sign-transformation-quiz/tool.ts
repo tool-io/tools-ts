@@ -135,6 +135,15 @@ export const determinantSignTransformationQuizTool = createModelDefinition<
   DeterminantSignTransformationQuizInput,
   DeterminantSignTransformationQuizOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Determinant Sign Transformation Quiz Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/determinant-sign-transformation-quiz",
   title: "Random Determinant Sign Transformation Quiz Generator",
   description:
