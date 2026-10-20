@@ -136,6 +136,15 @@ export const moireLineInterferenceTool = createModelDefinition<
   MoireLineInterferenceInput,
   MoireLineInterferenceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Moire Line Interference Pattern Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/moire-line-interference",
   title: "Random Moire Line Interference Pattern Generator",
   description:
