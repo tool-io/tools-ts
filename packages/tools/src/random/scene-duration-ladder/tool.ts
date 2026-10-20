@@ -158,6 +158,12 @@ export const sceneDurationLadderTool = createModelDefinition<
   SceneDurationLadderInput,
   SceneDurationLadderOutput
 >({
+  discovery: {
+    aliases: ["Random Scene Duration Ladder Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/scene-duration-ladder",
   title: "Random Scene Duration Ladder Generator",
   description:
