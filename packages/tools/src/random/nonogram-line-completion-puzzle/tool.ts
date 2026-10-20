@@ -176,6 +176,15 @@ export const nonogramLineCompletionPuzzleTool = createModelDefinition<
   NonogramLineCompletionPuzzleInput,
   NonogramLineCompletionPuzzleOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Nonogram Line Completion Puzzle Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/nonogram-line-completion-puzzle",
   title: "Random Nonogram Line Completion Puzzle Generator",
   description:
