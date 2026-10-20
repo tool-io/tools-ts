@@ -131,6 +131,15 @@ export const sortingInversionChallengeTool = createModelDefinition<
   SortingInversionChallengeInput,
   SortingInversionChallengeOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Sorting Inversion Challenge Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/sorting-inversion-challenge",
   title: "Random Sorting Inversion Challenge Generator",
   description:
