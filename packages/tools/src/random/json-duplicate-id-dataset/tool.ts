@@ -161,6 +161,15 @@ export const jsonDuplicateIdDatasetTool = createModelDefinition<
   JsonDuplicateIdDatasetInput,
   JsonDuplicateIdDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random JSON Duplicate ID Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/json-duplicate-id-dataset",
   title: "Random JSON Duplicate ID Dataset Generator",
   description:
