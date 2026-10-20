@@ -125,6 +125,15 @@ export const modularInversePracticeSetTool = createModelDefinition<
   ModularInversePracticeSetInput,
   ModularInversePracticeSetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Modular Inverse Practice Set Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/modular-inverse-practice-set",
   title: "Random Modular Inverse Practice Set Generator",
   description:
