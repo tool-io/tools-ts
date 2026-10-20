@@ -204,6 +204,15 @@ export const jobShopSchedulingInstanceTool = createModelDefinition<
   JobShopSchedulingInstanceInput,
   JobShopSchedulingInstanceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Job-Shop Scheduling Instance Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/job-shop-scheduling-instance",
   title: "Random Job-Shop Scheduling Instance Generator",
   description:
