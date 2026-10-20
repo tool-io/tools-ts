@@ -211,6 +211,12 @@ export const newsFeedMockDatasetTool = createModelDefinition<
   NewsFeedMockDatasetInput,
   NewsFeedMockDatasetOutput
 >({
+  discovery: {
+    aliases: ["Random News Feed Mock Dataset Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/news-feed-mock-dataset",
   title: "Random News Feed Mock Dataset Generator",
   description:
