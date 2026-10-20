@@ -237,6 +237,15 @@ export const formErrorSummaryFixtureExample = {
 } satisfies ToolExample<Input, Output>;
 export const formErrorSummaryFixtureTool = createModelDefinition<Input, Output>(
   {
+    discovery: {
+      aliases: [
+        "Random Form Error Summary Fixture Generator",
+        "random generation",
+      ],
+      collections: ["data", "learn"],
+      fields: ["random", "random generation"],
+      keywords: ["random generation"],
+    },
     id: "random/form-error-summary-fixture",
     title: "Random Form Error Summary Fixture Generator",
     description:
