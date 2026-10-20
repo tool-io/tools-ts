@@ -149,6 +149,15 @@ export const sankeyFlowConservationDatasetTool = createModelDefinition<
   SankeyFlowConservationDatasetInput,
   SankeyFlowConservationDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Sankey Flow Conservation Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/sankey-flow-conservation-dataset",
   title: "Random Sankey Flow Conservation Dataset Generator",
   description:
