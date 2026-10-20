@@ -150,6 +150,12 @@ export const queueOperationTraceTool = createModelDefinition<
   QueueOperationTraceInput,
   QueueOperationTraceOutput
 >({
+  discovery: {
+    aliases: ["Random Queue Operation Trace Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/queue-operation-trace",
   title: "Random Queue Operation Trace Generator",
   description:
