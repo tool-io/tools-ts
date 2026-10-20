@@ -214,6 +214,12 @@ export const focusOrderFixtureExample = {
   },
 } satisfies ToolExample<Input, Output>;
 export const focusOrderFixtureTool = createModelDefinition<Input, Output>({
+  discovery: {
+    aliases: ["Random Focus Order Fixture Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/focus-order-fixture",
   title: "Random Focus Order Fixture Generator",
   description:
