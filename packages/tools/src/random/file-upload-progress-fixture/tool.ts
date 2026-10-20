@@ -240,6 +240,15 @@ export const fileUploadProgressFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random File Upload Progress Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/file-upload-progress-fixture",
   title: "Random File Upload Progress Fixture Generator",
   description:
