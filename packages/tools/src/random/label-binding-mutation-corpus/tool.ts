@@ -172,6 +172,15 @@ export const labelBindingMutationCorpusTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Label Binding Mutation Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/label-binding-mutation-corpus",
   title: "Random Label Binding Mutation Corpus Generator",
   description:
