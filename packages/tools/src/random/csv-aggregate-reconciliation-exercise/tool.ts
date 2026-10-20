@@ -196,6 +196,15 @@ export const csvAggregateReconciliationExerciseTool = createModelDefinition<
   CsvAggregateReconciliationExerciseInput,
   CsvAggregateReconciliationExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Aggregate Reconciliation Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-aggregate-reconciliation-exercise",
   title: "Random CSV Aggregate Reconciliation Exercise Generator",
   description:
