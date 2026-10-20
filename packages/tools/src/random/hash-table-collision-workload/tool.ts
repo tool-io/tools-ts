@@ -167,6 +167,15 @@ export const hashTableCollisionWorkloadTool = createModelDefinition<
   HashTableCollisionWorkloadInput,
   HashTableCollisionWorkloadOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Hash Table Collision Workload Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/hash-table-collision-workload",
   title: "Random Hash Table Collision Workload Generator",
   description:
