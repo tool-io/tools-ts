@@ -193,6 +193,15 @@ export const inWorldNewspaperFrontPageTool = createModelDefinition<
   InWorldNewspaperFrontPageInput,
   InWorldNewspaperFrontPageOutput
 >({
+  discovery: {
+    aliases: [
+      "Random In-World Newspaper Front Page Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/in-world-newspaper-front-page",
   title: "Random In-World Newspaper Front Page Generator",
   description:
