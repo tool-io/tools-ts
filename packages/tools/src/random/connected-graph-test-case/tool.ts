@@ -134,6 +134,15 @@ export const connectedGraphTestCaseTool = createModelDefinition<
   ConnectedGraphTestCaseInput,
   ConnectedGraphTestCaseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Connected Graph Test Case Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/connected-graph-test-case",
   title: "Random Connected Graph Test Case Generator",
   description:
