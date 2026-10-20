@@ -131,6 +131,15 @@ export const hamiltonianCycleInstanceTool = createModelDefinition<
   HamiltonianCycleInstanceInput,
   HamiltonianCycleInstanceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Hamiltonian Cycle Instance Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/hamiltonian-cycle-instance",
   title: "Random Hamiltonian Cycle Instance Generator",
   description:
