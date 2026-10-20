@@ -141,6 +141,15 @@ export const linearCongruencePracticeSetTool = createModelDefinition<
   LinearCongruencePracticeSetInput,
   LinearCongruencePracticeSetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Linear Congruence Practice Set Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/linear-congruence-practice-set",
   title: "Random Linear Congruence Practice Set Generator",
   description:
