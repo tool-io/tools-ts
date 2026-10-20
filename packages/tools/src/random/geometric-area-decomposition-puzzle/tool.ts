@@ -197,6 +197,15 @@ export const geometricAreaDecompositionPuzzleTool = createModelDefinition<
   GeometricAreaDecompositionPuzzleInput,
   GeometricAreaDecompositionPuzzleOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Geometric Area Decomposition Puzzle Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/geometric-area-decomposition-puzzle",
   title: "Random Geometric Area Decomposition Puzzle Generator",
   description:
