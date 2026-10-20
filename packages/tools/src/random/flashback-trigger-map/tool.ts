@@ -191,6 +191,12 @@ export const flashbackTriggerMapTool = createModelDefinition<
   FlashbackTriggerMapInput,
   FlashbackTriggerMapOutput
 >({
+  discovery: {
+    aliases: ["Random Flashback Trigger Map Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/flashback-trigger-map",
   title: "Random Flashback Trigger Map Generator",
   description:
