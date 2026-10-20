@@ -157,6 +157,15 @@ export const formUrlencodedRoundTripCorpusTool = createModelDefinition<
   FormUrlencodedRoundTripCorpusInput,
   FormUrlencodedRoundTripCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Form URLencoded Round-Trip Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/form-urlencoded-round-trip-corpus",
   title: "Random Form URLencoded Round-Trip Corpus Generator",
   description:
