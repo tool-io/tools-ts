@@ -151,6 +151,15 @@ export const csvHeaderRepairExerciseTool = createModelDefinition<
   CsvHeaderRepairExerciseInput,
   CsvHeaderRepairExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Header Repair Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-header-repair-exercise",
   title: "Random CSV Header Repair Exercise Generator",
   description:
