@@ -137,6 +137,15 @@ export const silentSceneConstraintTool = createModelDefinition<
   SilentSceneConstraintInput,
   SilentSceneConstraintOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Silent Scene Constraint Cards Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/silent-scene-constraint",
   title: "Random Silent Scene Constraint Cards Generator",
   description:
