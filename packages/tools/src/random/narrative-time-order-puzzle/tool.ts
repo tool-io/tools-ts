@@ -148,6 +148,15 @@ export const narrativeTimeOrderPuzzleTool = createModelDefinition<
   NarrativeTimeOrderPuzzleInput,
   NarrativeTimeOrderPuzzleOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Narrative Time Order Puzzle Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/narrative-time-order-puzzle",
   title: "Random Narrative Time Order Puzzle Generator",
   description:
