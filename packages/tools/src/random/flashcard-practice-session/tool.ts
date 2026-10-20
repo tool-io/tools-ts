@@ -22,7 +22,7 @@ export type Input = Readonly<{
   readonly fronts: readonly string[];
   readonly backs: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -31,7 +31,7 @@ const inputFields = [
   { id: "fronts", label: "Fronts", kind: "stringList" },
   { id: "backs", label: "Backs", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   unique(input.cardIds, "cards");
   aligned(input.cardIds, input.fronts, "fronts");
@@ -48,10 +48,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -72,7 +69,32 @@ export const tool = createSimpleTool({
     "Generate a reproducible practice session from caller verified front/back flashcards, explicitly choosing replacement. No spaced-repetition efficacy or answer verification is claimed.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          session: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                cardId: { type: "string" },
+                front: { type: "string" },
+                answer: { type: "string" },
+              },
+              required: ["cardId", "front", "answer"],
+            },
+          },
+          unselectedCardIds: { type: "array", items: { type: "string" } },
+        },
+        required: ["session", "unselectedCardIds"],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
