@@ -159,6 +159,12 @@ export const graphTraversalQuizTool = createModelDefinition<
   GraphTraversalQuizInput,
   GraphTraversalQuizOutput
 >({
+  discovery: {
+    aliases: ["Random Graph Traversal Quiz Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/graph-traversal-quiz",
   title: "Random Graph Traversal Quiz Generator",
   description:
