@@ -210,8 +210,18 @@ export const monteCarloIntegrationTool = createModelDefinition<
   MonteCarloIntegrationInput,
   MonteCarloIntegrationOutput
 >({
+  discovery: {
+    aliases: [
+      "Monte Carlo Integration Calculator",
+      "One-Dimensional Monte Carlo Integration Tool",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/monte-carlo-integration",
-  title: "One-Dimensional Monte Carlo Integration Tool",
+  title: "Monte Carlo Integration Calculator",
   description:
     "Estimate a regular finite real expression integral with uniform samples and an empirical standard error, retaining samples and seed metadata without claiming a certified bound or improper-integral support.",
   inputSchema,
