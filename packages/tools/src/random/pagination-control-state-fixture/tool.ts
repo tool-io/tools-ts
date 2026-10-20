@@ -174,6 +174,15 @@ export const paginationControlStateFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Pagination Control State Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/pagination-control-state-fixture",
   title: "Random Pagination Control State Fixture Generator",
   description:
