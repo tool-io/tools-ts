@@ -147,6 +147,15 @@ export const greetingCardFoldLayoutTool = createModelDefinition<
   GreetingCardFoldLayoutInput,
   GreetingCardFoldLayoutOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Greeting Card Fold Layout Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/greeting-card-fold-layout",
   title: "Random Greeting Card Fold Layout Generator",
   description:
