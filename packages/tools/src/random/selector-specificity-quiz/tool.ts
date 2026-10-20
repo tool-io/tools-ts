@@ -193,6 +193,15 @@ export const selectorSpecificityQuizTool = createModelDefinition<
   SelectorSpecificityQuizInput,
   SelectorSpecificityQuizOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Selector Specificity Quiz Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/selector-specificity-quiz",
   title: "Random Selector Specificity Quiz Generator",
   description:
