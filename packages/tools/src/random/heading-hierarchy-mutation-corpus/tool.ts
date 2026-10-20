@@ -180,6 +180,15 @@ export const headingHierarchyMutationCorpusTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Heading Hierarchy Mutation Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/heading-hierarchy-mutation-corpus",
   title: "Random Heading Hierarchy Mutation Corpus Generator",
   description:
