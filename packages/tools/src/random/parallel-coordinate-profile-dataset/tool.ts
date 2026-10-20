@@ -132,6 +132,15 @@ export const parallelCoordinateProfileDatasetTool = createModelDefinition<
   ParallelCoordinateProfileDatasetInput,
   ParallelCoordinateProfileDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Parallel Coordinate Profile Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/parallel-coordinate-profile-dataset",
   title: "Random Parallel Coordinate Profile Dataset Generator",
   description:
