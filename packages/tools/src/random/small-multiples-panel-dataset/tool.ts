@@ -158,6 +158,15 @@ export const smallMultiplesPanelDatasetTool = createModelDefinition<
   SmallMultiplesPanelDatasetInput,
   SmallMultiplesPanelDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Small Multiples Panel Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/small-multiples-panel-dataset",
   title: "Random Small Multiples Panel Dataset Generator",
   description:
