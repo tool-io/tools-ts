@@ -167,6 +167,12 @@ export const meshColorPatternTool = createModelDefinition<
   MeshColorPatternInput,
   MeshColorPatternOutput
 >({
+  discovery: {
+    aliases: ["Random Mesh Color Pattern Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/mesh-color-pattern",
   title: "Random Mesh Color Pattern Generator",
   description:
