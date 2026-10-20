@@ -3,12 +3,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../histogram/batch56-shared.js";
 export type Input = Readonly<{ queuesJson: string; seed: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "queuesJson", label: "queuesJson", kind: "string" },
   { id: "seed", label: "seed", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   H.validate(i, fields);
   const random = H.randomSource(i.seed, context);
   const q = H.buckets(i.queuesJson),
@@ -30,19 +30,55 @@ export const example = {
       seed: "batch56",
       output: [
         { queue: 0, position: 0, value: "a" },
-        { queue: 0, position: 1, value: "b" },
         { queue: 1, position: 0, value: "c" },
+        { queue: 0, position: 1, value: "b" },
       ],
     },
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Random Order-Preserving Queue Interleaving",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/order-preserving-queue-interleaving",
   title: "Random Order-Preserving Queue Interleaving",
   description:
     "Replay seed or one advancing injected source, uniform over the explicitly stated finite support, not cryptographically secure. Sample uniformly over order-preserving queue-identity interleavings by choosing next queue proportional to remaining item count; unequal queue lengths are not equal-weight queues.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          seed: { type: "string" },
+          output: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                queue: { type: "number" },
+                position: { type: "number" },
+                value: { type: "string" },
+              },
+              required: ["queue", "position", "value"],
+            },
+          },
+        },
+        required: ["seed", "output"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
 });
 export const run = tool.execute;
