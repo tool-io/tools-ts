@@ -148,6 +148,12 @@ export const monteCarloPiTool = createModelDefinition<
   MonteCarloPiInput,
   MonteCarloPiOutput
 >({
+  discovery: {
+    aliases: ["Monte Carlo Pi Estimator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/monte-carlo-pi",
   title: "Monte Carlo Pi Estimator",
   description:
