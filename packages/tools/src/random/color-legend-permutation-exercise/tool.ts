@@ -138,6 +138,15 @@ export const colorLegendPermutationExerciseTool = createModelDefinition<
   ColorLegendPermutationExerciseInput,
   ColorLegendPermutationExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Color Legend Permutation Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/color-legend-permutation-exercise",
   title: "Random Color Legend Permutation Exercise Generator",
   description:
