@@ -154,6 +154,12 @@ export const mastermindRoundDatasetTool = createModelDefinition<
   MastermindRoundDatasetInput,
   MastermindRoundDatasetOutput
 >({
+  discovery: {
+    aliases: ["Random Mastermind Round Dataset Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/mastermind-round-dataset",
   title: "Random Mastermind Round Dataset Generator",
   description:
