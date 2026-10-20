@@ -350,6 +350,15 @@ export const rhythmMeasureTool = createModelDefinition<
   RhythmMeasureInput,
   RhythmMeasureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Exact-Fill Rhythm Measure Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/rhythm-measure",
   title: "Random Exact-Fill Rhythm Measure Generator",
   description:
