@@ -22,7 +22,7 @@ export type Input = Readonly<{
   readonly practiceItemIds: readonly string[];
   readonly itemTopicIds: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -30,7 +30,7 @@ const inputFields = [
   { id: "practiceItemIds", label: "Practice item ids", kind: "stringList" },
   { id: "itemTopicIds", label: "Item topic ids", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   unique(input.topicIds, "topics");
   unique(input.practiceItemIds, "items");
@@ -87,10 +87,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -110,7 +107,32 @@ export const tool = createSimpleTool({
     "Build bounded distinct-item practice playlists with no adjacent equal topic. Uniform eligible topics, not globally uniform feasible playlists; explicit failure if sampled prefix exhausts another topic. No learning-efficacy claim.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          playlist: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                itemId: { type: "string" },
+                topicId: { type: "string" },
+              },
+              required: ["itemId", "topicId"],
+            },
+          },
+          unusedItemIds: { type: "array", items: { type: "string" } },
+          samplingConvention: { type: "string" },
+        },
+        required: ["playlist", "unusedItemIds", "samplingConvention"],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
