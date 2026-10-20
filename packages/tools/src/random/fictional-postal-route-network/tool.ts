@@ -138,6 +138,15 @@ export const fictionalPostalRouteNetworkTool = createModelDefinition<
   FictionalPostalRouteNetworkInput,
   FictionalPostalRouteNetworkOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fictional Postal Route Network Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fictional-postal-route-network",
   title: "Random Fictional Postal Route Network Generator",
   description:
