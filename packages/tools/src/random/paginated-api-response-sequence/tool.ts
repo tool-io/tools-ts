@@ -219,6 +219,15 @@ export const paginatedApiResponseSequenceTool = createModelDefinition<
   PaginatedApiResponseSequenceInput,
   PaginatedApiResponseSequenceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Paginated API Response Sequence Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/paginated-api-response-sequence",
   title: "Random Paginated API Response Sequence Generator",
   description:
