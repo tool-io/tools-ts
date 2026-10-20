@@ -187,6 +187,15 @@ export const fileExtensionEdgeCaseCorpusTool = createModelDefinition<
   FileExtensionEdgeCaseCorpusInput,
   FileExtensionEdgeCaseCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random File Extension Edge-Case Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/file-extension-edge-case-corpus",
   title: "Random File Extension Edge-Case Corpus Generator",
   description:
