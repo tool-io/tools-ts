@@ -157,6 +157,15 @@ export const fictionalStarProfileSetTool = createModelDefinition<
   FictionalStarProfileSetInput,
   FictionalStarProfileSetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fictional Star Profile Set Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fictional-star-profile-set",
   title: "Random Fictional Star Profile Set Generator",
   description:
