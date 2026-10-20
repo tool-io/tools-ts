@@ -233,6 +233,15 @@ export const feedforwardNetworkTestCaseTool = createModelDefinition<
   FeedforwardNetworkTestCaseInput,
   FeedforwardNetworkTestCaseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Feedforward Network Test Case Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/feedforward-network-test-case",
   title: "Random Feedforward Network Test Case Generator",
   description:
