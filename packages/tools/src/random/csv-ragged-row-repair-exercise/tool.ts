@@ -165,6 +165,15 @@ export const csvRaggedRowRepairExerciseTool = createModelDefinition<
   CsvRaggedRowRepairExerciseInput,
   CsvRaggedRowRepairExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Ragged Row Repair Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-ragged-row-repair-exercise",
   title: "Random CSV Ragged Row Repair Exercise Generator",
   description:
