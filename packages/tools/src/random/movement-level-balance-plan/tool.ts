@@ -179,6 +179,15 @@ export const movementLevelBalancePlanTool = createModelDefinition<
   MovementLevelBalancePlanInput,
   MovementLevelBalancePlanOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Movement Level Balance Plan Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/movement-level-balance-plan",
   title: "Random Movement Level Balance Plan Generator",
   description:
