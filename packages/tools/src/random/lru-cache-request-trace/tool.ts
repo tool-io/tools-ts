@@ -164,6 +164,12 @@ export const lruCacheRequestTraceTool = createModelDefinition<
   LruCacheRequestTraceInput,
   LruCacheRequestTraceOutput
 >({
+  discovery: {
+    aliases: ["Random LRU Cache Request Trace Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/lru-cache-request-trace",
   title: "Random LRU Cache Request Trace Generator",
   description:
