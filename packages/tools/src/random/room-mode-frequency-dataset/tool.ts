@@ -235,6 +235,15 @@ export const roomModeFrequencyDatasetTool = createModelDefinition<
   RoomModeFrequencyDatasetInput,
   RoomModeFrequencyDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Room Mode Frequency Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/room-mode-frequency-dataset",
   title: "Random Room Mode Frequency Dataset Generator",
   description:
