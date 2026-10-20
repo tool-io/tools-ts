@@ -193,6 +193,15 @@ export const fictionalMigrationStoryMapTool = createModelDefinition<
   FictionalMigrationStoryMapInput,
   FictionalMigrationStoryMapOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fictional Migration Story Map Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fictional-migration-story-map",
   title: "Random Fictional Migration Story Map Generator",
   description:
