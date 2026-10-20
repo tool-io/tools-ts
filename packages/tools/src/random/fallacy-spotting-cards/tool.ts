@@ -195,6 +195,12 @@ export const fallacySpottingCardsTool = createModelDefinition<
   FallacySpottingCardsInput,
   FallacySpottingCardsOutput
 >({
+  discovery: {
+    aliases: ["Random Fallacy Spotting Cards Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fallacy-spotting-cards",
   title: "Random Fallacy Spotting Cards Generator",
   description:
