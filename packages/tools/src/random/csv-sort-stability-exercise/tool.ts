@@ -137,6 +137,15 @@ export const csvSortStabilityExerciseTool = createModelDefinition<
   CsvSortStabilityExerciseInput,
   CsvSortStabilityExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Sort Stability Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-sort-stability-exercise",
   title: "Random CSV Sort Stability Exercise Generator",
   description:
