@@ -350,6 +350,15 @@ export const countingBloomFilterWorkloadTool = createModelDefinition<
   CountingBloomFilterWorkloadInput,
   CountingBloomFilterWorkloadOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Counting Bloom Filter Workload Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/counting-bloom-filter-workload",
   title: "Random Counting Bloom Filter Workload Generator",
   description:
