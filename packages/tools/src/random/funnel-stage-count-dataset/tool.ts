@@ -131,6 +131,15 @@ export const funnelStageCountDatasetTool = createModelDefinition<
   FunnelStageCountDatasetInput,
   FunnelStageCountDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Funnel Stage Count Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/funnel-stage-count-dataset",
   title: "Random Funnel Stage Count Dataset Generator",
   description:
