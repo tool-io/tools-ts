@@ -247,6 +247,12 @@ export const reservoirStreamSampleTool = createModelDefinition<
   ReservoirStreamSampleInput,
   ReservoirStreamSampleOutput
 >({
+  discovery: {
+    aliases: ["Random Reservoir Stream Sample Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/reservoir-stream-sample",
   title: "Random Reservoir Stream Sample Generator",
   description:
