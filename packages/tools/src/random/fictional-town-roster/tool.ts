@@ -192,6 +192,12 @@ export const fictionalTownRosterTool = createModelDefinition<
   FictionalTownRosterInput,
   FictionalTownRosterOutput
 >({
+  discovery: {
+    aliases: ["Random Fictional Town Roster Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fictional-town-roster",
   title: "Random Fictional Town Roster Generator",
   description:
