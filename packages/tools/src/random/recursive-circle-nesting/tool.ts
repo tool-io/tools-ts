@@ -132,6 +132,15 @@ export const recursiveCircleNestingTool = createModelDefinition<
   RecursiveCircleNestingInput,
   RecursiveCircleNestingOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Recursive Circle Nesting Pattern Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/recursive-circle-nesting",
   title: "Random Recursive Circle Nesting Pattern Generator",
   description:
