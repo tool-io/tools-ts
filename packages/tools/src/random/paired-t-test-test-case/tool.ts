@@ -205,6 +205,12 @@ export const pairedTTestTestCaseTool = createModelDefinition<
   PairedTTestTestCaseInput,
   PairedTTestTestCaseOutput
 >({
+  discovery: {
+    aliases: ["Random Paired T-Test Test Case Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/paired-t-test-test-case",
   title: "Random Paired T-Test Test Case Generator",
   description:
