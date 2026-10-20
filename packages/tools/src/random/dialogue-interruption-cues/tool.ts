@@ -199,6 +199,15 @@ export const dialogueInterruptionCuesTool = createModelDefinition<
   DialogueInterruptionCuesInput,
   DialogueInterruptionCuesOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Dialogue Interruption Cue Sheet Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/dialogue-interruption-cues",
   title: "Random Dialogue Interruption Cue Sheet Generator",
   description:
