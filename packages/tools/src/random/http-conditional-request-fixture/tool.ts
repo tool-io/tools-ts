@@ -229,6 +229,15 @@ export const httpConditionalRequestFixtureTool = createModelDefinition<
   HttpConditionalRequestFixtureInput,
   HttpConditionalRequestFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random HTTP Conditional Request Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/http-conditional-request-fixture",
   title: "Random HTTP Conditional Request Fixture Generator",
   description:
