@@ -211,6 +211,15 @@ export const graphRepresentationRoundTripCorpusTool = createModelDefinition<
   GraphRepresentationRoundTripCorpusInput,
   GraphRepresentationRoundTripCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Graph Representation Round-Trip Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/graph-representation-round-trip-corpus",
   title: "Random Graph Representation Round-Trip Corpus Generator",
   description:
