@@ -165,6 +165,12 @@ export const mosaicTileCutlistTool = createModelDefinition<
   MosaicTileCutlistInput,
   MosaicTileCutlistOutput
 >({
+  discovery: {
+    aliases: ["Random Mosaic Tile Cutlist Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/mosaic-tile-cutlist",
   title: "Random Mosaic Tile Cutlist Generator",
   description:
