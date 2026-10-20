@@ -19,7 +19,7 @@ export type Input = Readonly<{
   callerReferenceEdition: string;
   practiceStepsJson: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -31,14 +31,10 @@ const fields = [
   },
   { id: "practiceStepsJson", label: "Practice steps json", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!i.callerReferenceEdition.trim())
     simpleError("edition", "Qualified diagram convention required.");
-  const a = records(i.practiceStepsJson);
-  for (const r of a)
+  const a = records(i.practiceStepsJson).map((r) => {
     if (
       typeof r.task !== "string" ||
       !r.task.trim() ||
@@ -50,10 +46,12 @@ const compute = (
         (k) => !["task", "symbolAsset", "minutes"].includes(k),
       )
     )
-      simpleError(
+      return simpleError(
         "steps",
         "Explicit task, qualified asset and positive minutes.",
       );
+    return { task: r.task, symbolAsset: r.symbolAsset, minutes: r.minutes };
+  });
   const random = sourceFor(i.seed, context),
     selected = indices(a.length, i, random),
     steps = selected.map((j) => {
@@ -79,11 +77,11 @@ const compute = (
   return {
     selectedStepIndexes: selected,
     steps,
-    totalMinutes: sum(steps.map((r) => r.minutes as number)),
+    totalMinutes: sum(steps.map((r) => r.minutes)),
     edition: i.callerReferenceEdition,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -129,6 +127,55 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          selectedStepIndexes: { type: "array", items: { type: "number" } },
+          steps: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                task: { type: "string" },
+                minutes: { type: "number" },
+                symbolEvidence: {
+                  type: "object",
+                  additionalProperties: false,
+                  properties: {
+                    result: {
+                      type: "object",
+                      additionalProperties: false,
+                      properties: {
+                        values: { type: "array", items: { type: "string" } },
+                        selectedEntryIndices: {
+                          type: "array",
+                          items: { type: "number" },
+                        },
+                        repertoireSize: { type: "number" },
+                        callerReferenceEdition: { type: "string" },
+                      },
+                      required: [
+                        "values",
+                        "selectedEntryIndices",
+                        "repertoireSize",
+                        "callerReferenceEdition",
+                      ],
+                    },
+                  },
+                  required: ["result"],
+                },
+              },
+              required: ["task", "minutes", "symbolEvidence"],
+            },
+          },
+          totalMinutes: { type: "number" },
+          edition: { type: "string" },
+        },
+        required: ["selectedStepIndexes", "steps", "totalMinutes", "edition"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
