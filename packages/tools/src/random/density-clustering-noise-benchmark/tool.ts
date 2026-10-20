@@ -279,6 +279,15 @@ export const densityClusteringNoiseBenchmarkTool = createModelDefinition<
   DensityClusteringNoiseBenchmarkInput,
   DensityClusteringNoiseBenchmarkOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Density Clustering Noise Benchmark Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/density-clustering-noise-benchmark",
   title: "Random Density Clustering Noise Benchmark Generator",
   description:
