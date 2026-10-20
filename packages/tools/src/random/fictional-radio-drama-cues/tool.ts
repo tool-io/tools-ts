@@ -229,6 +229,15 @@ export const fictionalRadioDramaCuesTool = createModelDefinition<
   FictionalRadioDramaCuesInput,
   FictionalRadioDramaCuesOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fictional Radio Drama Cue Sheet Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fictional-radio-drama-cues",
   title: "Random Fictional Radio Drama Cue Sheet Generator",
   description:
