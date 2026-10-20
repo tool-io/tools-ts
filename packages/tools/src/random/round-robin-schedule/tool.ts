@@ -264,6 +264,12 @@ export const roundRobinScheduleTool = createModelDefinition<
   RoundRobinScheduleInput,
   RoundRobinScheduleOutput
 >({
+  discovery: {
+    aliases: ["Random Round-Robin Schedule Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/round-robin-schedule",
   title: "Random Round-Robin Schedule Generator",
   description:
