@@ -319,6 +319,15 @@ export const polynomialRegressionBenchmarkTool = createModelDefinition<
   PolynomialRegressionBenchmarkInput,
   PolynomialRegressionBenchmarkOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Polynomial Regression Benchmark Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/polynomial-regression-benchmark",
   title: "Random Polynomial Regression Benchmark Generator",
   description:
