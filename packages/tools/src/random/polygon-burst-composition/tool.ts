@@ -179,6 +179,15 @@ export const polygonBurstCompositionTool = createModelDefinition<
   PolygonBurstCompositionInput,
   PolygonBurstCompositionOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Polygon Burst Composition Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/polygon-burst-composition",
   title: "Random Polygon Burst Composition Generator",
   description:
