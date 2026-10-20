@@ -1,3 +1,4 @@
+import { corpusResultSchema } from "../exercise-schema.js";
 import type { ToolExecutionContext } from "../../core/definition.js";
 import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
@@ -17,7 +18,7 @@ export type Input = Readonly<{
   readonly candidateInputsJson: readonly string[];
   readonly offeredMediaTypes: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -36,7 +37,7 @@ const fields = [
     kind: "stringList",
   } as const,
 ];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const offers = input.offeredMediaTypes.map((v) => v.toLowerCase());
   unique(offers, "offers");
   if (
@@ -106,10 +107,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
   });
   return { result: { ...drawn.result, exercises } };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, fields);
   return finish(compute(input, context));
 };
@@ -131,7 +129,28 @@ export const tool = createSimpleTool({
     "Build reproducible Accept-header negotiation cards with imported parsing and explicit parameter-free offered media types. Most-specific range determines each quality; zero-quality offers excluded and best-quality ties retained. Conflicting duplicate qualities or media parameters/extensions fail this bounded submodel rather than infer precedence. Uniform caller candidate-position sampling with explicit replacement; not a full HTTP server negotiation or precondition implementation.",
   inputs: fields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: corpusResultSchema(base, {
+        exercise: {
+          negotiation: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              offeredMediaTypes: { type: "array", items: { type: "string" } },
+              qualities: { type: "array", items: { type: "number" } },
+              bestOfferIndices: {
+                type: "array",
+                items: { type: "integer", minimum: 0 },
+              },
+            },
+            required: ["offeredMediaTypes", "qualities", "bestOfferIndices"],
+          },
+        },
+      }),
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
