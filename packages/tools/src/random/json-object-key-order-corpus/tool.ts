@@ -149,6 +149,15 @@ export const jsonObjectKeyOrderCorpusTool = createModelDefinition<
   JsonObjectKeyOrderCorpusInput,
   JsonObjectKeyOrderCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random JSON Object Key Order Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/json-object-key-order-corpus",
   title: "Random JSON Object Key Order Corpus Generator",
   description:
