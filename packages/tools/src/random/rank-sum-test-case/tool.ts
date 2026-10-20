@@ -206,6 +206,12 @@ export const rankSumTestCaseTool = createModelDefinition<
   RankSumTestCaseInput,
   RankSumTestCaseOutput
 >({
+  discovery: {
+    aliases: ["Random Rank-Sum Test Case Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/rank-sum-test-case",
   title: "Random Rank-Sum Test Case Generator",
   description:
