@@ -341,6 +341,12 @@ export const skeletonScreenLayoutTool = createModelDefinition<
   SkeletonScreenLayoutInput,
   SkeletonScreenLayoutOutput
 >({
+  discovery: {
+    aliases: ["Random Skeleton Screen Layout Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/skeleton-screen-layout",
   title: "Random Skeleton Screen Layout Generator",
   description:
