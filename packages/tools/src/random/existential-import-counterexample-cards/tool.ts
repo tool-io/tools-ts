@@ -190,6 +190,15 @@ export const existentialImportCounterexampleCardsTool = createModelDefinition<
   ExistentialImportCounterexampleCardsInput,
   ExistentialImportCounterexampleCardsOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Existential Import Counterexample Cards Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/existential-import-counterexample-cards",
   title: "Random Existential Import Counterexample Cards Generator",
   description:
