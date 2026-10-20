@@ -365,6 +365,15 @@ export const htmlAttributeQuotingCorpusTool = createModelDefinition<
   HtmlAttributeQuotingCorpusInput,
   HtmlAttributeQuotingCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random HTML Attribute Quoting Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/html-attribute-quoting-corpus",
   title: "Random HTML Attribute Quoting Corpus Generator",
   description:
