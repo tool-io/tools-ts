@@ -195,6 +195,12 @@ export const negativePairSamplerTool = createModelDefinition<
   NegativePairSamplerInput,
   NegativePairSamplerOutput
 >({
+  discovery: {
+    aliases: ["Random Negative Pair Sampler Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/negative-pair-sampler",
   title: "Random Negative Pair Sampler Generator",
   description:
