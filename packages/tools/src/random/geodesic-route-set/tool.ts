@@ -280,6 +280,12 @@ export const geodesicRouteSetTool = createModelDefinition<
   GeodesicRouteSetInput,
   GeodesicRouteSetOutput
 >({
+  discovery: {
+    aliases: ["Random Geodesic Route Set Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/geodesic-route-set",
   title: "Random Geodesic Route Set Generator",
   description:
