@@ -215,6 +215,12 @@ export const positiveDefiniteMatrixTool = createModelDefinition<
   PositiveDefiniteMatrixInput,
   PositiveDefiniteMatrixOutput
 >({
+  discovery: {
+    aliases: ["Random Positive-Definite Matrix Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/positive-definite-matrix",
   title: "Random Positive-Definite Matrix Generator",
   description:
