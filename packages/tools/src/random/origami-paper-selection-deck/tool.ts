@@ -190,6 +190,15 @@ export const origamiPaperSelectionDeckTool = createModelDefinition<
   OrigamiPaperSelectionDeckInput,
   OrigamiPaperSelectionDeckOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Origami Paper Selection Deck Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/origami-paper-selection-deck",
   title: "Random Origami Paper Selection Deck Generator",
   description:
