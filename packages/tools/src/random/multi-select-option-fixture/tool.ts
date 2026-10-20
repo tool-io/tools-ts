@@ -186,6 +186,15 @@ export const multiSelectOptionFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Multi-Select Option Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/multi-select-option-fixture",
   title: "Random Multi-Select Option Fixture Generator",
   description:
