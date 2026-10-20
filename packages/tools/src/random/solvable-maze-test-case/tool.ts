@@ -285,6 +285,12 @@ export const solvableMazeTestCaseTool = createModelDefinition<
   SolvableMazeTestCaseInput,
   SolvableMazeTestCaseOutput
 >({
+  discovery: {
+    aliases: ["Random Solvable Maze Test Case Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/solvable-maze-test-case",
   title: "Random Solvable Maze Test Case Generator",
   description:
