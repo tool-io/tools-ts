@@ -8,14 +8,14 @@ export type Input = Readonly<{
   occupied: readonly number[];
   seed: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "items", label: "items", kind: "stringList" },
   { id: "slots", label: "slots", kind: "integer" },
   { id: "occupied", label: "occupied", kind: "numberList" },
   { id: "seed", label: "seed", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   H.validate(i, fields);
   const random = H.randomSource(i.seed, context);
   H.uniqueIds(i.items);
@@ -41,19 +41,51 @@ export const example = {
     result: {
       seed: "batch56",
       placements: [
-        { item: "a", slot: 0 },
-        { item: "b", slot: 2 },
+        { item: "a", slot: 2 },
+        { item: "b", slot: 3 },
       ],
     },
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Random Empty Slot Item Placement", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/empty-slot-item-placement",
   title: "Random Empty Slot Item Placement",
   description:
     "Replay seed or one advancing injected source, uniform over the explicitly stated finite support, not cryptographically secure. Assign unique supplied item IDs to distinct currently empty integer slots without replacement; report actual slot IDs, preserve occupied slots.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          seed: { type: "string" },
+          placements: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                item: { type: "string" },
+                slot: { type: "number" },
+              },
+              required: ["item", "slot"],
+            },
+          },
+        },
+        required: ["seed", "placements"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
 });
 export const run = tool.execute;
