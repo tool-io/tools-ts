@@ -192,6 +192,15 @@ export const degreePreservingGraphRewireTool = createModelDefinition<
   DegreePreservingGraphRewireInput,
   DegreePreservingGraphRewireOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Degree Preserving Graph Rewire Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/degree-preserving-graph-rewire",
   title: "Random Degree Preserving Graph Rewire Generator",
   description:
