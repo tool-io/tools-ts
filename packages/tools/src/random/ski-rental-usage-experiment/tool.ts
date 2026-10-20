@@ -254,6 +254,15 @@ export const skiRentalUsageExperimentTool = createModelDefinition<
   SkiRentalUsageExperimentInput,
   SkiRentalUsageExperimentOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Ski Rental Usage Experiment Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/ski-rental-usage-experiment",
   title: "Random Ski Rental Usage Experiment Generator",
   description:
