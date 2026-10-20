@@ -207,6 +207,15 @@ export const notificationInboxDatasetTool = createModelDefinition<
   NotificationInboxDatasetInput,
   NotificationInboxDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Notification Inbox Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/notification-inbox-dataset",
   title: "Random Notification Inbox Dataset Generator",
   description:
