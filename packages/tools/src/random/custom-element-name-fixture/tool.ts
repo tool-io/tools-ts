@@ -172,6 +172,15 @@ export const customElementNameFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Custom Element Name Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/custom-element-name-fixture",
   title: "Random Custom Element Name Fixture Generator",
   description:
