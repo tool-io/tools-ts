@@ -408,6 +408,12 @@ export const drumPatternTool = createModelDefinition<
   DrumPatternInput,
   DrumPatternOutput
 >({
+  discovery: {
+    aliases: ["Random Quantized Drum Pattern Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/drum-pattern",
   title: "Random Quantized Drum Pattern Generator",
   description:
