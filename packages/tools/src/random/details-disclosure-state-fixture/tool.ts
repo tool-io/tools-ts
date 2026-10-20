@@ -204,6 +204,15 @@ export const detailsDisclosureStateFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Details Disclosure State Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/details-disclosure-state-fixture",
   title: "Random Details Disclosure State Fixture Generator",
   description:
