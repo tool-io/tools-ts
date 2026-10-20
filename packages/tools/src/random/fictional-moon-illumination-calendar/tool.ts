@@ -236,6 +236,15 @@ export const fictionalMoonIlluminationCalendarTool = createModelDefinition<
   FictionalMoonIlluminationCalendarInput,
   FictionalMoonIlluminationCalendarOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fictional Moon Illumination Calendar Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fictional-moon-illumination-calendar",
   title: "Random Fictional Moon Illumination Calendar Generator",
   description:
