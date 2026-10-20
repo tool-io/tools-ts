@@ -213,6 +213,12 @@ export const qrMessageCardSetTool = createModelDefinition<
   QrMessageCardSetInput,
   QrMessageCardSetOutput
 >({
+  discovery: {
+    aliases: ["Random QR Message Card Set Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/qr-message-card-set",
   title: "Random QR Message Card Set Generator",
   description:
