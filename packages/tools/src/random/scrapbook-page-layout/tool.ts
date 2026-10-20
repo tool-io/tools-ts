@@ -236,6 +236,12 @@ export const scrapbookPageLayoutTool = createModelDefinition<
   ScrapbookPageLayoutInput,
   ScrapbookPageLayoutOutput
 >({
+  discovery: {
+    aliases: ["Random Scrapbook Page Layout Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/scrapbook-page-layout",
   title: "Random Scrapbook Page Layout Generator",
   description:
