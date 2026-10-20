@@ -190,6 +190,15 @@ export const multiprocessorSchedulingInstanceTool = createModelDefinition<
   MultiprocessorSchedulingInstanceInput,
   MultiprocessorSchedulingInstanceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Multiprocessor Scheduling Instance Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/multiprocessor-scheduling-instance",
   title: "Random Multiprocessor Scheduling Instance Generator",
   description:
