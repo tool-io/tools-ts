@@ -163,6 +163,15 @@ export const rootedTreeDepthProfileTool = createModelDefinition<
   RootedTreeDepthProfileInput,
   RootedTreeDepthProfileOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Rooted Tree Depth Profile Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/rooted-tree-depth-profile",
   title: "Random Rooted Tree Depth Profile Generator",
   description:
