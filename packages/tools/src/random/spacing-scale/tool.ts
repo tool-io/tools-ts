@@ -1,3 +1,4 @@
+import { corpusResultSchema } from "../exercise-schema.js";
 import type { ToolExecutionContext } from "../../core/definition.js";
 import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
@@ -17,7 +18,7 @@ export type Input = Readonly<{
   readonly candidateInputsJson: readonly string[];
   readonly spacingTokenCount: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -29,7 +30,7 @@ const inputFields = [
   },
   { id: "spacingTokenCount", label: "Spacing token count", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   bounded(input.spacingTokenCount, "tokens", 1, 32);
   const drawn = corpus(base, input, context);
   const scales = drawn.result.exercises.map((e) => {
@@ -46,10 +47,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
   });
   return { result: { ...drawn.result, scales } };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -69,7 +67,40 @@ export const tool = createSimpleTool({
     "Build a bounded reproducible spacing scale from explicitly supplied candidate scenarios. Every candidate must satisfy imported typography/modular-scale-step-size before selection; answer cards preserve its units, conventions, domain limitations and signed/unknown results. Draws are uniform over caller candidate positions; no replacement means no repeated positions, not necessarily distinct answers. No automatic pedagogical correctness, compliance or physical readiness. Creates space-prefixed ordered token rows using the imported scale at successive integer steps; explicit bounded spacingTokenCount. Spacing and typography inventories remain separate operational token namespaces.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+
+      schema: corpusResultSchema(base, {
+        result: {
+          scales: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                scenario: { type: "object", additionalProperties: true },
+                tokens: {
+                  type: "array",
+                  items: {
+                    type: "object",
+                    additionalProperties: false,
+                    properties: {
+                      token: { type: "string" },
+                      step: { type: "number" },
+                      answer: base.outputSchema,
+                    },
+                    required: ["token", "step", "answer"],
+                  },
+                },
+              },
+              required: ["scenario", "tokens"],
+            },
+          },
+        },
+      }),
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
