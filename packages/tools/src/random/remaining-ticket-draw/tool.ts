@@ -8,14 +8,14 @@ export type Input = Readonly<{
   count: number;
   seed: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "tickets", label: "tickets", kind: "stringList" },
   { id: "used", label: "used", kind: "stringList" },
   { id: "count", label: "count", kind: "integer" },
   { id: "seed", label: "seed", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   H.validate(i, fields);
   const random = H.randomSource(i.seed, context);
   H.uniqueIds(i.tickets);
@@ -32,15 +32,37 @@ export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
 };
 export const example = {
   input: { tickets: ["a", "b", "c"], used: ["b"], count: 1, seed: "batch56" },
-  output: { result: { seed: "batch56", drawn: ["a"], remaining: ["c"] } },
+  output: { result: { seed: "batch56", drawn: ["c"], remaining: ["a"] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Random Remaining Ticket Draw", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/remaining-ticket-draw",
   title: "Random Remaining Ticket Draw",
   description:
     "Replay seed or one advancing injected source, uniform over the explicitly stated finite support, not cryptographically secure. Draw uniform remaining unique ticket IDs without replacement after explicit used membership; infeasible counts reject, no persistent history.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          seed: { type: "string" },
+          drawn: { type: "array", items: { type: "string" } },
+          remaining: { type: "array", items: { type: "string" } },
+        },
+        required: ["seed", "drawn", "remaining"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
 });
 export const run = tool.execute;
