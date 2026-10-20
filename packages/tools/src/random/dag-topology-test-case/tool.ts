@@ -156,6 +156,12 @@ export const dagTopologyTestCaseTool = createModelDefinition<
   DagTopologyTestCaseInput,
   DagTopologyTestCaseOutput
 >({
+  discovery: {
+    aliases: ["Random DAG Topology Test Case Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/dag-topology-test-case",
   title: "Random DAG Topology Test Case Generator",
   description:
