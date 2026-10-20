@@ -18,13 +18,13 @@ export type Input = Readonly<{
   readonly count: number;
   readonly eligibleTicketIds: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
   { id: "eligibleTicketIds", label: "Eligible ticket ids", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   unique(input.eligibleTicketIds, "tickets");
   const chosen = indices(
@@ -42,10 +42,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -63,7 +60,21 @@ export const tool = createSimpleTool({
     "Draw unique eligible tickets uniformly without replacement; individuals with multiple tickets can win multiple prizes. Caller supplies eligibility. Reproducible PRNG is not secure randomness, audited fairness or legal raffle approval.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          winningTicketIds: { type: "array", items: { type: "string" } },
+          undrawnTicketIds: { type: "array", items: { type: "string" } },
+          samplingUnit: { type: "string" },
+        },
+        required: ["winningTicketIds", "undrawnTicketIds", "samplingUnit"],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
