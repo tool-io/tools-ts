@@ -196,6 +196,15 @@ export const improvDialogueWordBanTool = createModelDefinition<
   ImprovDialogueWordBanInput,
   ImprovDialogueWordBanOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Improv Dialogue Word Ban Challenge Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/improv-dialogue-word-ban",
   title: "Random Improv Dialogue Word Ban Challenge Generator",
   description:
