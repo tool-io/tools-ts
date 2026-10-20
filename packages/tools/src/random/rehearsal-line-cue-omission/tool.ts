@@ -173,6 +173,15 @@ export const rehearsalLineCueOmissionTool = createModelDefinition<
   RehearsalLineCueOmissionInput,
   RehearsalLineCueOmissionOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Rehearsal Line Cue Omission Packet Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/rehearsal-line-cue-omission",
   title: "Random Rehearsal Line Cue Omission Packet Generator",
   description:
