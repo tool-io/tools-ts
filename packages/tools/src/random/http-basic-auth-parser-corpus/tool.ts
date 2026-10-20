@@ -160,6 +160,15 @@ export const httpBasicAuthParserCorpusTool = createModelDefinition<
   HttpBasicAuthParserCorpusInput,
   HttpBasicAuthParserCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random HTTP Basic Auth Parser Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/http-basic-auth-parser-corpus",
   title: "Random HTTP Basic Auth Parser Corpus Generator",
   description:
