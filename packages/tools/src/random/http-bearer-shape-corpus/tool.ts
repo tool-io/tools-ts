@@ -154,6 +154,12 @@ export const httpBearerShapeCorpusTool = createModelDefinition<
   HttpBearerShapeCorpusInput,
   HttpBearerShapeCorpusOutput
 >({
+  discovery: {
+    aliases: ["Random HTTP Bearer Shape Corpus Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/http-bearer-shape-corpus",
   title: "Random HTTP Bearer Shape Corpus Generator",
   description:
