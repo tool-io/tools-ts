@@ -117,6 +117,15 @@ export const constrainedMonologueChallengeTool = createModelDefinition<
   ConstrainedMonologueChallengeInput,
   ConstrainedMonologueChallengeOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Constrained Monologue Challenge Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/constrained-monologue-challenge",
   title: "Random Constrained Monologue Challenge Generator",
   description:
