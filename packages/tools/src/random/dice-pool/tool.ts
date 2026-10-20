@@ -16,13 +16,13 @@ export type Input = Readonly<{
   readonly count: number;
   readonly sides: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
   { id: "sides", label: "Sides", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   bounded(input.count, "dice", 1, 64);
   bounded(input.sides, "sides", 2, 1000000);
@@ -39,10 +39,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -56,7 +53,21 @@ export const tool = createSimpleTool({
     "Roll a bounded pool of caller-sided dice with one advancing source, importing the existing random integer calculation. Each die independent with replacement; no secure or fair physical-roll guarantee.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          rolls: { type: "array", items: { type: "number" } },
+          total: { type: "number" },
+          samplingConvention: { type: "string" },
+        },
+        required: ["rolls", "total", "samplingConvention"],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
