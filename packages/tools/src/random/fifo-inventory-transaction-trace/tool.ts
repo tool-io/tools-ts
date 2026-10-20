@@ -369,6 +369,15 @@ export const fifoInventoryTransactionTraceTool = createModelDefinition<
   FifoInventoryTransactionTraceInput,
   FifoInventoryTransactionTraceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random FIFO Inventory Transaction Trace Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fifo-inventory-transaction-trace",
   title: "Random FIFO Inventory Transaction Trace Generator",
   description:
