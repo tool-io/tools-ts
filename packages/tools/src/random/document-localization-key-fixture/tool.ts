@@ -154,6 +154,15 @@ export const documentLocalizationKeyFixtureTool = createModelDefinition<
   DocumentLocalizationKeyFixtureInput,
   DocumentLocalizationKeyFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Document Localization Key Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/document-localization-key-fixture",
   title: "Random Document Localization Key Fixture Generator",
   description:
