@@ -205,6 +205,15 @@ export const fictionalPowerGridTopologyTool = createModelDefinition<
   FictionalPowerGridTopologyInput,
   FictionalPowerGridTopologyOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fictional Power Grid Topology Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fictional-power-grid-topology",
   title: "Random Fictional Power Grid Topology Generator",
   description:
