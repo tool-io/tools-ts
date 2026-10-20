@@ -208,6 +208,12 @@ export const cubicHermiteCurveBankTool = createModelDefinition<
   CubicHermiteCurveBankInput,
   CubicHermiteCurveBankOutput
 >({
+  discovery: {
+    aliases: ["Random Cubic Hermite Curve Bank Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/cubic-hermite-curve-bank",
   title: "Random Cubic Hermite Curve Bank Generator",
   description:
