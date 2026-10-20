@@ -184,6 +184,15 @@ export const jigsawLearningAssignmentTool = createModelDefinition<
   JigsawLearningAssignmentInput,
   JigsawLearningAssignmentOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Jigsaw Learning Assignment Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/jigsaw-learning-assignment",
   title: "Random Jigsaw Learning Assignment Generator",
   description:
