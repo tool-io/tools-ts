@@ -318,6 +318,15 @@ export const jsonPointerNavigationExerciseTool = createModelDefinition<
   JsonPointerNavigationExerciseInput,
   JsonPointerNavigationExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random JSON Pointer Navigation Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/json-pointer-navigation-exercise",
   title: "Random JSON Pointer Navigation Exercise Generator",
   description:
