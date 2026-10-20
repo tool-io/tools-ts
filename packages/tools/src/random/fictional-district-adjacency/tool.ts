@@ -189,6 +189,15 @@ export const fictionalDistrictAdjacencyTool = createModelDefinition<
   FictionalDistrictAdjacencyInput,
   FictionalDistrictAdjacencyOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fictional District Adjacency Map Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fictional-district-adjacency",
   title: "Random Fictional District Adjacency Map Generator",
   description:
