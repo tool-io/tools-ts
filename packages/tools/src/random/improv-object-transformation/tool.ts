@@ -198,6 +198,15 @@ export const improvObjectTransformationTool = createModelDefinition<
   ImprovObjectTransformationInput,
   ImprovObjectTransformationOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Improv Object Transformation Relay Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/improv-object-transformation",
   title: "Random Improv Object Transformation Relay Generator",
   description:
