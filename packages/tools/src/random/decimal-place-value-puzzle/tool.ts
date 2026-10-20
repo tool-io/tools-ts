@@ -127,6 +127,15 @@ export const decimalPlaceValuePuzzleTool = createModelDefinition<
   DecimalPlaceValuePuzzleInput,
   DecimalPlaceValuePuzzleOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Decimal Place Value Puzzle Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/decimal-place-value-puzzle",
   title: "Random Decimal Place Value Puzzle Generator",
   description:
