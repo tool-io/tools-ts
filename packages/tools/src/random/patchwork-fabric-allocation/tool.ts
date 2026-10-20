@@ -192,6 +192,15 @@ export const patchworkFabricAllocationTool = createModelDefinition<
   PatchworkFabricAllocationInput,
   PatchworkFabricAllocationOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Patchwork Fabric Allocation Plan Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/patchwork-fabric-allocation",
   title: "Random Patchwork Fabric Allocation Plan Generator",
   description:
