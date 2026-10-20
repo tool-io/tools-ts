@@ -220,6 +220,15 @@ export const decimalRoundingBoundaryCorpusTool = createModelDefinition<
   DecimalRoundingBoundaryCorpusInput,
   DecimalRoundingBoundaryCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Decimal Rounding Boundary Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/decimal-rounding-boundary-corpus",
   title: "Random Decimal Rounding Boundary Corpus Generator",
   description:
