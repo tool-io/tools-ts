@@ -186,6 +186,15 @@ export const featureFlagStateMatrixTool = createModelDefinition<
   FeatureFlagStateMatrixInput,
   FeatureFlagStateMatrixOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Feature Flag State Matrix Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/feature-flag-state-matrix",
   title: "Random Feature Flag State Matrix Generator",
   description:
