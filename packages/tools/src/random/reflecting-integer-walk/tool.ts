@@ -9,7 +9,7 @@ export type Input = Readonly<{
   steps: number;
   seed: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "initial", label: "initial", kind: "integer" },
   { id: "minimum", label: "minimum", kind: "integer" },
@@ -17,7 +17,7 @@ const fields = [
   { id: "steps", label: "steps", kind: "integer" },
   { id: "seed", label: "seed", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   H.validate(i, fields);
   const random = H.randomSource(i.seed, context);
   H.int(i.minimum, -1000000, 1000000);
@@ -43,16 +43,38 @@ export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
 export const example = {
   input: { initial: 1, minimum: 0, maximum: 2, steps: 3, seed: "batch56" },
   output: {
-    result: { seed: "batch56", states: [1, 0, 1, 0], proposals: [-1, -1, -1] },
+    result: { seed: "batch56", states: [1, 2, 1, 2], proposals: [1, 1, 1] },
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Random Reflecting Integer Walk", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/reflecting-integer-walk",
   title: "Random Reflecting Integer Walk",
   description:
     "Replay seed or one advancing injected source, uniform over the explicitly stated finite support, not cryptographically secure. Generate fair independent unit-step proposals and reflect outward steps inward at either endpoint in an explicit bounded integer interval; every step consumes a proposal, including steps taken from a boundary.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          seed: { type: "string" },
+          states: { type: "array", items: { type: "number" } },
+          proposals: { type: "array", items: { type: "number" } },
+        },
+        required: ["seed", "states", "proposals"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
 });
 export const run = tool.execute;
