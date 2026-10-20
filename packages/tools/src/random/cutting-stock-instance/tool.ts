@@ -227,6 +227,15 @@ export const cuttingStockInstanceTool = createModelDefinition<
   CuttingStockInstanceInput,
   CuttingStockInstanceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random One-Dimensional Cutting Stock Instance Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/cutting-stock-instance",
   title: "Random One-Dimensional Cutting Stock Instance Generator",
   description:
