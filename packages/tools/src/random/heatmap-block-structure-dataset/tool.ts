@@ -163,6 +163,15 @@ export const heatmapBlockStructureDatasetTool = createModelDefinition<
   HeatmapBlockStructureDatasetInput,
   HeatmapBlockStructureDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Heatmap Block Structure Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/heatmap-block-structure-dataset",
   title: "Random Heatmap Block Structure Dataset Generator",
   description:
