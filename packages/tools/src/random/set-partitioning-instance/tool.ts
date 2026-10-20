@@ -160,6 +160,15 @@ export const setPartitioningInstanceTool = createModelDefinition<
   SetPartitioningInstanceInput,
   SetPartitioningInstanceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Set Partitioning Instance Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/set-partitioning-instance",
   title: "Random Set Partitioning Instance Generator",
   description:
