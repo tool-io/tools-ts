@@ -168,6 +168,15 @@ export const configurationOverrideChainFixtureTool = createModelDefinition<
   ConfigurationOverrideChainFixtureInput,
   ConfigurationOverrideChainFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Configuration Override Chain Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/configuration-override-chain-fixture",
   title: "Random Configuration Override Chain Fixture Generator",
   description:
