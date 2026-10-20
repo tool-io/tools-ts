@@ -197,6 +197,15 @@ export const rollingWindowAggregateTraceTool = createModelDefinition<
   RollingWindowAggregateTraceInput,
   RollingWindowAggregateTraceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Rolling Window Aggregate Trace Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/rolling-window-aggregate-trace",
   title: "Random Rolling Window Aggregate Trace Generator",
   description:
