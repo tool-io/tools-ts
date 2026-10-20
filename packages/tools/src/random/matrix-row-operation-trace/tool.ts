@@ -152,6 +152,15 @@ export const matrixRowOperationTraceTool = createModelDefinition<
   MatrixRowOperationTraceInput,
   MatrixRowOperationTraceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Matrix Row Operation Trace Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/matrix-row-operation-trace",
   title: "Random Matrix Row Operation Trace Generator",
   description:
