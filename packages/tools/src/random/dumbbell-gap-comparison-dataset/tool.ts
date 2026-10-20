@@ -164,6 +164,15 @@ export const dumbbellGapComparisonDatasetTool = createModelDefinition<
   DumbbellGapComparisonDatasetInput,
   DumbbellGapComparisonDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Dumbbell Gap Comparison Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/dumbbell-gap-comparison-dataset",
   title: "Random Dumbbell Gap Comparison Dataset Generator",
   description:
