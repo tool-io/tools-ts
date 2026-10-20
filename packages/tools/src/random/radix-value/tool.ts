@@ -83,6 +83,19 @@ export const randomRadixValueTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Random base number",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          base: { type: "number" },
+          decimal: { type: "number" },
+          digits: { type: "string" },
+          prefixed: { type: "string" },
+          text: { type: "string" },
+        },
+        required: ["base", "decimal", "digits", "prefixed", "text"],
+      },
     },
   ],
   calculate: (input, context) => {
