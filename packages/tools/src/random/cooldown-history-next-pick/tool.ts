@@ -8,14 +8,14 @@ export type Input = Readonly<{
   cooldown: number;
   seed: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "items", label: "items", kind: "stringList" },
   { id: "history", label: "history", kind: "stringList" },
   { id: "cooldown", label: "cooldown", kind: "integer" },
   { id: "seed", label: "seed", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   H.validate(i, fields);
   const random = H.randomSource(i.seed, context);
   H.uniqueIds(i.items);
@@ -36,15 +36,37 @@ export const example = {
     cooldown: 1,
     seed: "batch56",
   },
-  output: { result: { seed: "batch56", item: "a", eligible: ["a", "c"] } },
+  output: { result: { seed: "batch56", item: "c", eligible: ["a", "c"] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Random Cooldown History Next Pick", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/cooldown-history-next-pick",
   title: "Random Cooldown History Next Pick",
   description:
     "Replay seed or one advancing injected source, uniform over the explicitly stated finite support, not cryptographically secure. Uniformly choose a unique item ID excluding the last K caller history IDs; empty feasible support rejects instead of falling back.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          seed: { type: "string" },
+          item: { type: "string" },
+          eligible: { type: "array", items: { type: "string" } },
+        },
+        required: ["seed", "item", "eligible"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
 });
 export const run = tool.execute;
