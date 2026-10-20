@@ -258,6 +258,12 @@ export const paperDioramaLayerPlanTool = createModelDefinition<
   PaperDioramaLayerPlanInput,
   PaperDioramaLayerPlanOutput
 >({
+  discovery: {
+    aliases: ["Random Paper Diorama Layer Plan Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/paper-diorama-layer-plan",
   title: "Random Paper Diorama Layer Plan Generator",
   description:
