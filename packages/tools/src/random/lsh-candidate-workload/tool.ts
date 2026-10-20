@@ -276,6 +276,12 @@ export const lshCandidateWorkloadTool = createModelDefinition<
   LshCandidateWorkloadInput,
   LshCandidateWorkloadOutput
 >({
+  discovery: {
+    aliases: ["Random LSH Candidate Workload Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/lsh-candidate-workload",
   title: "Random LSH Candidate Workload Generator",
   description:
