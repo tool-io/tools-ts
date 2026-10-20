@@ -8,14 +8,14 @@ export type Input = Readonly<{
   count: number;
   seed: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "width", label: "width", kind: "integer" },
   { id: "height", label: "height", kind: "integer" },
   { id: "count", label: "count", kind: "integer" },
   { id: "seed", label: "seed", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   H.validate(i, fields);
   const random = H.randomSource(i.seed, context);
   H.int(i.width, 1, 256);
@@ -34,21 +34,46 @@ export const example = {
   output: {
     result: {
       seed: "batch56",
-      insets: [0, 1],
+      insets: [2, 3],
       rectangles: [
-        [0, 0, 10, 8],
-        [1, 1, 9, 7],
+        [2, 2, 8, 6],
+        [3, 3, 7, 5],
       ],
     },
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Random Concentric Rectangle Insets", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/concentric-rectangle-insets",
   title: "Random Concentric Rectangle Insets",
   description:
     "Replay seed or one advancing injected source, uniform over the explicitly stated finite support, not cryptographically secure. Choose a uniform distinct subset of feasible integer concentric inset distances then sort outward-to-inward; rectangles have positive interior dimensions, not arbitrary recursive cuts.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          seed: { type: "string" },
+          insets: { type: "array", items: { type: "number" } },
+          rectangles: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["seed", "insets", "rectangles"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
 });
 export const run = tool.execute;
