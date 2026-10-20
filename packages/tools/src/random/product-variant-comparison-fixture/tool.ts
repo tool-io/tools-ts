@@ -225,6 +225,15 @@ export const productVariantComparisonFixtureTool = createModelDefinition<
   ProductVariantComparisonFixtureInput,
   ProductVariantComparisonFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Product Variant Comparison Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/product-variant-comparison-fixture",
   title: "Random Product Variant Comparison Fixture Generator",
   description:
