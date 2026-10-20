@@ -243,6 +243,15 @@ export const fantasyFortressRoomHierarchyTool = createModelDefinition<
   FantasyFortressRoomHierarchyInput,
   FantasyFortressRoomHierarchyOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fantasy Fortress Room Hierarchy Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fantasy-fortress-room-hierarchy",
   title: "Random Fantasy Fortress Room Hierarchy Generator",
   description:
