@@ -233,6 +233,12 @@ export const ipv4CidrBlockSetTool = createModelDefinition<
   Ipv4CidrBlockSetInput,
   Ipv4CidrBlockSetOutput
 >({
+  discovery: {
+    aliases: ["Random IPv4 CIDR Block Set Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/ipv4-cidr-block-set",
   title: "Random IPv4 CIDR Block Set Generator",
   description:
