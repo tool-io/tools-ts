@@ -203,6 +203,15 @@ export const semanticVersionRangeCorpusTool = createModelDefinition<
   SemanticVersionRangeCorpusInput,
   SemanticVersionRangeCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Semantic Version Range Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/semantic-version-range-corpus",
   title: "Random Semantic Version Range Corpus Generator",
   description:
