@@ -187,6 +187,15 @@ export const improvEmotionTransitionTool = createModelDefinition<
   ImprovEmotionTransitionInput,
   ImprovEmotionTransitionOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Improv Emotion Transition Sequence Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/improv-emotion-transition",
   title: "Random Improv Emotion Transition Sequence Generator",
   description:
