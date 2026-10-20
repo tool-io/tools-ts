@@ -159,6 +159,15 @@ export const robotsRuleMatchingExerciseTool = createModelDefinition<
   RobotsRuleMatchingExerciseInput,
   RobotsRuleMatchingExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Robots Rule Matching Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/robots-rule-matching-exercise",
   title: "Random Robots Rule Matching Exercise Generator",
   description:
