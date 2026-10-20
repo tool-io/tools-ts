@@ -286,6 +286,15 @@ export const minimaxGameTreeTestCaseTool = createModelDefinition<
   MinimaxGameTreeTestCaseInput,
   MinimaxGameTreeTestCaseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Minimax Game Tree Test Case Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/minimax-game-tree-test-case",
   title: "Random Minimax Game Tree Test Case Generator",
   description:
