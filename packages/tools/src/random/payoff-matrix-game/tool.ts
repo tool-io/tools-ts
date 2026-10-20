@@ -298,6 +298,12 @@ export const payoffMatrixGameTool = createModelDefinition<
   PayoffMatrixGameInput,
   PayoffMatrixGameOutput
 >({
+  discovery: {
+    aliases: ["Random Payoff Matrix Game Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/payoff-matrix-game",
   title: "Random Payoff Matrix Game Generator",
   description:
