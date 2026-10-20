@@ -180,6 +180,15 @@ export const improvStatusReversalTool = createModelDefinition<
   ImprovStatusReversalInput,
   ImprovStatusReversalOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Improv Status Reversal Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/improv-status-reversal",
   title: "Random Improv Status Reversal Exercise Generator",
   description:
