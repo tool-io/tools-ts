@@ -205,6 +205,15 @@ export const marketBasketTransactionDatasetTool = createModelDefinition<
   MarketBasketTransactionDatasetInput,
   MarketBasketTransactionDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Market Basket Transaction Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/market-basket-transaction-dataset",
   title: "Random Market Basket Transaction Dataset Generator",
   description:
