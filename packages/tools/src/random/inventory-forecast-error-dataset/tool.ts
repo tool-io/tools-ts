@@ -329,6 +329,15 @@ export const inventoryForecastErrorDatasetTool = createModelDefinition<
   InventoryForecastErrorDatasetInput,
   InventoryForecastErrorDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Inventory Forecast Error Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/inventory-forecast-error-dataset",
   title: "Random Inventory Forecast Error Dataset Generator",
   description:
