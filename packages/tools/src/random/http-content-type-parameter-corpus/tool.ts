@@ -176,6 +176,15 @@ export const httpContentTypeParameterCorpusTool = createModelDefinition<
   HttpContentTypeParameterCorpusInput,
   HttpContentTypeParameterCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random HTTP Content Type Parameter Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/http-content-type-parameter-corpus",
   title: "Random HTTP Content Type Parameter Corpus Generator",
   description:
