@@ -141,6 +141,15 @@ export const contrastConstrainedPaletteTool = createModelDefinition<
   ContrastConstrainedPaletteInput,
   ContrastConstrainedPaletteOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Contrast-Constrained Palette Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/contrast-constrained-palette",
   title: "Random Contrast-Constrained Palette Generator",
   description:
