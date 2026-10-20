@@ -237,6 +237,12 @@ export const dashboardWidgetLayoutTool = createModelDefinition<
   DashboardWidgetLayoutInput,
   DashboardWidgetLayoutOutput
 >({
+  discovery: {
+    aliases: ["Random Dashboard Widget Layout Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/dashboard-widget-layout",
   title: "Random Dashboard Widget Layout Generator",
   description:
