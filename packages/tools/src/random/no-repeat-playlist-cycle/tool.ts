@@ -293,6 +293,12 @@ export const noRepeatPlaylistCycleTool = createModelDefinition<
   NoRepeatPlaylistCycleInput,
   NoRepeatPlaylistCycleOutput
 >({
+  discovery: {
+    aliases: ["Random No-Repeat Playlist Cycle Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/no-repeat-playlist-cycle",
   title: "Random No-Repeat Playlist Cycle Generator",
   description:
