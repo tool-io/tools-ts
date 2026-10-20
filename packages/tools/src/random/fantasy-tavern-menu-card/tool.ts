@@ -170,6 +170,12 @@ export const fantasyTavernMenuCardTool = createModelDefinition<
   FantasyTavernMenuCardInput,
   FantasyTavernMenuCardOutput
 >({
+  discovery: {
+    aliases: ["Random Fantasy Tavern Menu Card Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fantasy-tavern-menu-card",
   title: "Random Fantasy Tavern Menu Card Generator",
   description:
