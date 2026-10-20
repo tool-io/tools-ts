@@ -234,6 +234,12 @@ export const jsonPatchTestCaseTool = createModelDefinition<
   JsonPatchTestCaseInput,
   JsonPatchTestCaseOutput
 >({
+  discovery: {
+    aliases: ["Random JSON Patch Test Case Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/json-patch-test-case",
   title: "Random JSON Patch Test Case Generator",
   description:
