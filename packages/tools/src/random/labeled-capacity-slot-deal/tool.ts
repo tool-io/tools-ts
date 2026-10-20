@@ -8,14 +8,14 @@ export type Input = Readonly<{
   capacities: readonly number[];
   seed: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "items", label: "items", kind: "stringList" },
   { id: "labels", label: "labels", kind: "stringList" },
   { id: "capacities", label: "capacities", kind: "numberList" },
   { id: "seed", label: "seed", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   H.validate(i, fields);
   const random = H.randomSource(i.seed, context);
   H.uniqueIds(i.items);
@@ -52,19 +52,51 @@ export const example = {
     result: {
       seed: "batch56",
       assignments: [
-        { label: "x", items: ["b"] },
-        { label: "y", items: ["c", "a"] },
+        { label: "x", items: ["a"] },
+        { label: "y", items: ["c", "b"] },
       ],
     },
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Random Labeled Capacity Slot Deal", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/labeled-capacity-slot-deal",
   title: "Random Labeled Capacity Slot Deal",
   description:
     "Replay seed or one advancing injected source, uniform over the explicitly stated finite support, not cryptographically secure. Uniform labeled slot permutation for explicit capacities whose sum equals the unique item count; within-group slot order is retained.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          seed: { type: "string" },
+          assignments: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                label: { type: "string" },
+                items: { type: "array", items: { type: "string" } },
+              },
+              required: ["label", "items"],
+            },
+          },
+        },
+        required: ["seed", "assignments"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
 });
 export const run = tool.execute;
