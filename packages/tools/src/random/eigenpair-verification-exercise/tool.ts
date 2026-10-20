@@ -160,6 +160,15 @@ export const eigenpairVerificationExerciseTool = createModelDefinition<
   EigenpairVerificationExerciseInput,
   EigenpairVerificationExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Eigenpair Verification Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/eigenpair-verification-exercise",
   title: "Random Eigenpair Verification Exercise Generator",
   description:
