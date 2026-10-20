@@ -243,6 +243,15 @@ export const lightTravelTimeNetworkTool = createModelDefinition<
   LightTravelTimeNetworkInput,
   LightTravelTimeNetworkOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Light Travel Time Network Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/light-travel-time-network",
   title: "Random Light Travel Time Network Generator",
   description:
