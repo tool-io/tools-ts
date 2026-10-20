@@ -152,6 +152,15 @@ export const graphBridgeCutExerciseTool = createModelDefinition<
   GraphBridgeCutExerciseInput,
   GraphBridgeCutExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Graph Bridge Cut Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/graph-bridge-cut-exercise",
   title: "Random Graph Bridge Cut Exercise Generator",
   description:
