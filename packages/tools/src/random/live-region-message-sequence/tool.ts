@@ -170,6 +170,15 @@ export const liveRegionMessageSequenceTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Live Region Message Sequence Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/live-region-message-sequence",
   title: "Random Live Region Message Sequence Generator",
   description:
