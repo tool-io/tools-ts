@@ -216,6 +216,15 @@ export const kanbanBoardSnapshotDatasetTool = createModelDefinition<
   KanbanBoardSnapshotDatasetInput,
   KanbanBoardSnapshotDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Kanban Board Snapshot Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/kanban-board-snapshot-dataset",
   title: "Random Kanban Board Snapshot Dataset Generator",
   description:
