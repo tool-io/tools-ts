@@ -167,6 +167,15 @@ export const csvForeignKeyIntegrityDatasetTool = createModelDefinition<
   CsvForeignKeyIntegrityDatasetInput,
   CsvForeignKeyIntegrityDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Foreign Key Integrity Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-foreign-key-integrity-dataset",
   title: "Random CSV Foreign Key Integrity Dataset Generator",
   description:
