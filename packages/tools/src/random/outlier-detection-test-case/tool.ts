@@ -191,6 +191,15 @@ export const outlierDetectionTestCaseTool = createModelDefinition<
   OutlierDetectionTestCaseInput,
   OutlierDetectionTestCaseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Outlier Detection Test Case Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/outlier-detection-test-case",
   title: "Random Outlier Detection Test Case Generator",
   description:
