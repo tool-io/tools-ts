@@ -193,6 +193,12 @@ export const quiltBlockArrangementTool = createModelDefinition<
   QuiltBlockArrangementInput,
   QuiltBlockArrangementOutput
 >({
+  discovery: {
+    aliases: ["Random Quilt Block Arrangement Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/quilt-block-arrangement",
   title: "Random Quilt Block Arrangement Generator",
   description:
