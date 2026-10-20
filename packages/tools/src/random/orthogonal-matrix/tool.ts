@@ -172,6 +172,12 @@ export const orthogonalMatrixTool = createModelDefinition<
   OrthogonalMatrixInput,
   OrthogonalMatrixOutput
 >({
+  discovery: {
+    aliases: ["Random Orthogonal Matrix Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/orthogonal-matrix",
   title: "Random Orthogonal Matrix Generator",
   description:
