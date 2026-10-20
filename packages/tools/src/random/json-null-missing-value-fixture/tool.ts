@@ -184,6 +184,15 @@ export const jsonNullMissingValueFixtureTool = createModelDefinition<
   JsonNullMissingValueFixtureInput,
   JsonNullMissingValueFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random JSON Null and Missing Value Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/json-null-missing-value-fixture",
   title: "Random JSON Null and Missing Value Fixture Generator",
   description:
