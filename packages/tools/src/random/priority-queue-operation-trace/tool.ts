@@ -249,6 +249,15 @@ export const priorityQueueOperationTraceTool = createModelDefinition<
   PriorityQueueOperationTraceInput,
   PriorityQueueOperationTraceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Priority Queue Operation Trace Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/priority-queue-operation-trace",
   title: "Random Priority Queue Operation Trace Generator",
   description:
