@@ -226,6 +226,15 @@ export const jsonSchemaExampleFixtureTool = createModelDefinition<
   JsonSchemaExampleFixtureInput,
   JsonSchemaExampleFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random JSON Schema Example Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/json-schema-example-fixture",
   title: "Random JSON Schema Example Fixture Generator",
   description:
