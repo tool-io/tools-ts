@@ -19,10 +19,7 @@ describe(tool.id, () => {
       baseToolId: base.id,
     });
     if (expected.ok)
-      expect(
-        (actual.result as { exercises: { answer: unknown }[] }).exercises[0]
-          .answer,
-      ).toEqual(expected.output);
+      expect(actual.result.exercises[0].answer).toEqual(expected.output);
     expect(calculate(example.input, { random: () => 0 }).result).toMatchObject({
       exercises: [
         {

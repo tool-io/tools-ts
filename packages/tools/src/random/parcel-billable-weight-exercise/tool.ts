@@ -1,3 +1,4 @@
+import { corpusResultSchema } from "../exercise-schema.js";
 import type { ToolExecutionContext } from "../../core/definition.js";
 import type { ToolExample } from "../../core/example.js";
 import {
@@ -23,7 +24,7 @@ export type Input = Readonly<{
   readonly actualWeightKg: number;
   readonly callerBillingStepKg: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -40,7 +41,7 @@ const inputFields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   nonnegative(input.actualWeightKg, "actualweight");
   positive(input.callerBillingStepKg, "billingstep");
   const drawn = corpus(base, input, context);
@@ -61,10 +62,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
   });
   return { result: { ...drawn.result, exercises } };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -87,7 +85,18 @@ export const tool = createSimpleTool({
     "Build a bounded reproducible parcel billable weight exercise from explicitly supplied candidate scenarios. Every candidate must satisfy imported logistics/dimensional-weight-divisor-calculator before selection; answer cards preserve its units, conventions, domain limitations and signed/unknown results. Draws are uniform over caller candidate positions; no replacement means no repeated positions, not necessarily distinct answers. No automatic pedagogical correctness, compliance or physical readiness. Billable weight is the larger of explicit scale weight and imported geometric weight, rounded upward to independently verified caller tariff step; no carrier tariff feed or dimension-rounding inference.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: corpusResultSchema(base, {
+        exercise: {
+          actualWeightKg: { type: "number" },
+          unroundedBillableWeightKg: { type: "number" },
+          callerRoundedBillableWeightKg: { type: "number" },
+        },
+      }),
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
