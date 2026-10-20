@@ -22,7 +22,7 @@ export type Input = Readonly<{
   readonly offerQuantityInCommonIntegerUnits: readonly number[];
   readonly offerIds: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -34,7 +34,7 @@ const inputFields = [
   },
   { id: "offerIds", label: "Offer ids", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   unique(input.offerIds, "offers");
   aligned(input.offerIds, input.offerPricesMinor, "prices");
@@ -79,10 +79,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
   });
   return { result: { quizzes } };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -102,7 +99,37 @@ export const tool = createSimpleTool({
     "Draw distinct offer pairs and compare exact rational minor-unit prices by BigIntcross-products, retaining ties. All quantities in one caller common integer unit, prices in one currency; display divisions only, no tax/promotion, nutrition or current grocery-price inference.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          quizzes: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                offerIds: { type: "array", items: { type: "string" } },
+                unitPricesMinor: { type: "array", items: { type: "number" } },
+                cheaperOfferIds: { type: "array", items: { type: "string" } },
+                exactUnitPriceTie: { type: "boolean" },
+              },
+              required: [
+                "offerIds",
+                "unitPricesMinor",
+                "cheaperOfferIds",
+                "exactUnitPriceTie",
+              ],
+            },
+          },
+        },
+        required: ["quizzes"],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
