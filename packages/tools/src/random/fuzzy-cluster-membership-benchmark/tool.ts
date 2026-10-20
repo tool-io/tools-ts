@@ -313,6 +313,15 @@ export const fuzzyClusterMembershipBenchmarkTool = createModelDefinition<
   FuzzyClusterMembershipBenchmarkInput,
   FuzzyClusterMembershipBenchmarkOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fuzzy Cluster Membership Benchmark Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fuzzy-cluster-membership-benchmark",
   title: "Random Fuzzy Cluster Membership Benchmark Generator",
   description:
