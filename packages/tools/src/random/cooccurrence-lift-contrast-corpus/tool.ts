@@ -287,6 +287,15 @@ export const cooccurrenceLiftContrastCorpusTool = createModelDefinition<
   CooccurrenceLiftContrastCorpusInput,
   CooccurrenceLiftContrastCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Cooccurrence Lift Contrast Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/cooccurrence-lift-contrast-corpus",
   title: "Random Cooccurrence Lift Contrast Corpus Generator",
   description:
