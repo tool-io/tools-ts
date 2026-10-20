@@ -372,6 +372,15 @@ export const debounceSignalTestCaseTool = createModelDefinition<
   DebounceSignalTestCaseInput,
   DebounceSignalTestCaseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Debounce Signal Test Case Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/debounce-signal-test-case",
   title: "Random Debounce Signal Test Case Generator",
   description:
