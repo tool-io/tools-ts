@@ -163,6 +163,15 @@ export const karnaughMintermPracticeCorpusTool = createModelDefinition<
   KarnaughMintermPracticeCorpusInput,
   KarnaughMintermPracticeCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Karnaugh Minterm Practice Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/karnaugh-minterm-practice-corpus",
   title: "Random Karnaugh Minterm Practice Corpus Generator",
   description:
