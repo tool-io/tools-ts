@@ -201,6 +201,15 @@ export const csvDuplicateRecordMutationTool = createModelDefinition<
   CsvDuplicateRecordMutationInput,
   CsvDuplicateRecordMutationOutput
 >({
+  discovery: {
+    aliases: [
+      "Random CSV Duplicate Record Mutation Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/csv-duplicate-record-mutation",
   title: "Random CSV Duplicate Record Mutation Dataset Generator",
   description:
