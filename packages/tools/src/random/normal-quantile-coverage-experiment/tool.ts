@@ -20,7 +20,7 @@ export type Input = Readonly<{
   readonly lowerZ: number;
   readonly upperZ: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -29,7 +29,7 @@ const inputFields = [
   { id: "lowerZ", label: "Lower z", kind: "number" },
   { id: "upperZ", label: "Upper z", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   bounded(input.count, "replicates", 1, 64);
   positive(input.standardDeviation, "standard deviation");
@@ -56,10 +56,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -80,7 +77,29 @@ export const tool = createSimpleTool({
     "Generate IID normal samples and observed coverage under caller z-interval bounds using existing normalBoxMuller variates. Does not claim theoretical coverage from observations, a calibrated confidence interval or statistical certification.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          samples: { type: "array", items: { type: "number" } },
+          insideFlags: { type: "array", items: { type: "number" } },
+          observedCoverageFraction: { type: "number" },
+          declaredLowerZ: { type: "number" },
+          declaredUpperZ: { type: "number" },
+        },
+        required: [
+          "samples",
+          "insideFlags",
+          "observedCoverageFraction",
+          "declaredLowerZ",
+          "declaredUpperZ",
+        ],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
