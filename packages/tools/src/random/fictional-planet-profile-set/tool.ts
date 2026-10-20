@@ -186,6 +186,15 @@ export const fictionalPlanetProfileSetTool = createModelDefinition<
   FictionalPlanetProfileSetInput,
   FictionalPlanetProfileSetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fictional Planet Profile Set Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fictional-planet-profile-set",
   title: "Random Fictional Planet Profile Set Generator",
   description:
