@@ -158,6 +158,15 @@ export const modalStackStateFixtureExample = {
   },
 } satisfies ToolExample<Input, Output>;
 export const modalStackStateFixtureTool = createModelDefinition<Input, Output>({
+  discovery: {
+    aliases: [
+      "Random Modal Stack State Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/modal-stack-state-fixture",
   title: "Random Modal Stack State Fixture Generator",
   description:
