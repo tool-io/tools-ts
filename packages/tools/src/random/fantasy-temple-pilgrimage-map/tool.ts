@@ -203,6 +203,15 @@ export const fantasyTemplePilgrimageMapTool = createModelDefinition<
   FantasyTemplePilgrimageMapInput,
   FantasyTemplePilgrimageMapOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Fantasy Temple Pilgrimage Map Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/fantasy-temple-pilgrimage-map",
   title: "Random Fantasy Temple Pilgrimage Map Generator",
   description:
