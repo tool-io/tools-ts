@@ -171,6 +171,15 @@ export const httpVaryCacheKeyFixtureTool = createModelDefinition<
   HttpVaryCacheKeyFixtureInput,
   HttpVaryCacheKeyFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random HTTP Vary Cache Key Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/http-vary-cache-key-fixture",
   title: "Random HTTP Vary Cache Key Fixture Generator",
   description:
