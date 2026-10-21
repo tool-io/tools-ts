@@ -123,6 +123,12 @@ export const vertexCoverInstanceTool = createModelDefinition<
   VertexCoverInstanceInput,
   VertexCoverInstanceOutput
 >({
+  discovery: {
+    aliases: ["Random Vertex Cover Instance Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/vertex-cover-instance",
   title: "Random Vertex Cover Instance Generator",
   description:
