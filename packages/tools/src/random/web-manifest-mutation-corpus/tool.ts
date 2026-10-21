@@ -193,6 +193,15 @@ export const webManifestMutationCorpusTool = createModelDefinition<
   WebManifestMutationCorpusInput,
   WebManifestMutationCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Web Manifest Mutation Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/web-manifest-mutation-corpus",
   title: "Random Web Manifest Mutation Corpus Generator",
   description:
