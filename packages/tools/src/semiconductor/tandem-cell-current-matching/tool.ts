@@ -9,7 +9,7 @@ import {
 export type Input = Readonly<{
   readonly independentlyMeasuredSubcellCurrentDensities: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredSubcellCurrentDensities",
@@ -17,7 +17,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (!input.independentlyMeasuredSubcellCurrentDensities.length)
     simpleError("cells", "Actual nonempty series subcell inventory.");
   input.independentlyMeasuredSubcellCurrentDensities.forEach((v) =>
@@ -34,7 +34,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.independentlyMeasuredSubcellCurrentDensities.map((v) => v - m),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -59,6 +59,24 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalSeriesLimitingCurrentDensity: { type: "number" },
+          limitingSubcellIndices: { type: "array", items: { type: "number" } },
+          signedSubcellExcessCurrentDensities: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: [
+          "conditionalSeriesLimitingCurrentDensity",
+          "limitingSubcellIndices",
+          "signedSubcellExcessCurrentDensities",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
