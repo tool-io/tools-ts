@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly targetInitials: string;
   readonly callerReviewedWordBank: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "targetInitials", label: "Target initials", kind: "string" },
   {
@@ -20,7 +20,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (!/^[A-Z]{1,64}$/.test(input.targetInitials))
     simpleError(
       "target",
@@ -42,7 +42,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     candidateCountsByInitial: pools.map((v) => v.length),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -69,6 +69,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          mnemonicWords: { type: "array", items: { type: "string" } },
+          candidateCountsByInitial: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: ["mnemonicWords", "candidateCountsByInitial"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
