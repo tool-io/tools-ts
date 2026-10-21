@@ -15,7 +15,7 @@ export type Input = Readonly<{
   readonly independentlyObservedRealizationFlags: readonly number[];
   readonly pairedKnownFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "callerCohortIds", label: "Caller cohort ids", kind: "stringList" },
   {
@@ -30,7 +30,7 @@ const fields = [
   },
   { id: "pairedKnownFlags", label: "Paired known flags", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.callerCohortIds, "cohort");
   for (const v of [
     input.independentlyRecordedIntentFlags,
@@ -65,7 +65,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -96,6 +96,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          intendedKnownCount: { type: "number" },
+          realizedIntendedKnownCount: { type: "number" },
+          observedIntentionRealizationFraction: { type: "number" },
+          unknownCallerIds: { type: "array", items: { type: "string" } },
+        },
+        required: [
+          "intendedKnownCount",
+          "realizedIntendedKnownCount",
+          "observedIntentionRealizationFraction",
+          "unknownCallerIds",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
