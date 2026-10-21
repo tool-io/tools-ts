@@ -238,6 +238,12 @@ export const stratifiedRowSampleTool = createModelDefinition<
   StratifiedRowSampleInput,
   StratifiedRowSampleOutput
 >({
+  discovery: {
+    aliases: ["Random Stratified Row Sample Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/stratified-row-sample",
   title: "Random Stratified Row Sample Generator",
   description:
