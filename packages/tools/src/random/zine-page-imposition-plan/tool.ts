@@ -197,6 +197,15 @@ export const zinePageImpositionPlanTool = createModelDefinition<
   ZinePageImpositionPlanInput,
   ZinePageImpositionPlanOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Zine Page Imposition Plan Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/zine-page-imposition-plan",
   title: "Random Zine Page Imposition Plan Generator",
   description:
