@@ -243,6 +243,15 @@ export const streamingMicroclusterBenchmarkTool = createModelDefinition<
   StreamingMicroclusterBenchmarkInput,
   StreamingMicroclusterBenchmarkOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Streaming Microcluster Benchmark Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/streaming-microcluster-benchmark",
   title: "Random Streaming Microcluster Benchmark Generator",
   description:
