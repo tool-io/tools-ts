@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ numerator: string; denominator: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "numerator", kind: "string", label: "numerator" },
   { id: "denominator", kind: "string", label: "denominator" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const [n, d] = H.fracInput(i.numerator, i.denominator);
   H.check(d <= 10000n, "Denominator budget is 10000");
@@ -33,7 +33,22 @@ export const tool = createSimpleTool({
   description:
     "Trace the exact base-ten remainder cycle of a fraction with reduced denominator at most 10000; terminating fractions have zero repeating cycle length.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          cycleLength: { type: "number" },
+          nonrepeatingDigits: { type: "number" },
+        },
+        required: ["cycleLength", "nonrepeatingDigits"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
