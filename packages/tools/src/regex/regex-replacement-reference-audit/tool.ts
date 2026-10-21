@@ -6,13 +6,13 @@ export type Input = Readonly<{
   captureCount: number;
   names: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "replacement", kind: "string", label: "replacement" },
   { id: "captureCount", kind: "integer", label: "captureCount" },
   { id: "names", kind: "stringList", label: "names" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.captureCount, 0, 99);
   const tokens = H.replacementTokens(i.replacement),
@@ -48,7 +48,33 @@ export const tool = createSimpleTool({
   description:
     "Audit replacement references against an explicit capture count/name bank, accounting for two-digit-to-one-digit fallback; unresolved references remain literal in ECMAScript, not execution errors.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          issues: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                type: { type: "string" },
+                text: { type: "string" },
+                position: { type: "number" },
+              },
+              required: ["type", "text", "position"],
+            },
+          },
+        },
+        required: ["issues"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
