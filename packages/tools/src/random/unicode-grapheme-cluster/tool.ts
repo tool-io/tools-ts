@@ -16,17 +16,14 @@ export type Input = Readonly<{
   withoutReplacement: boolean;
   candidateClusters: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
   { id: "withoutReplacement", label: "Without replacement", kind: "boolean" },
   { id: "candidateClusters", label: "Candidate clusters", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!i.candidateClusters.length)
     simpleError("clusters", "Explicit nonempty cluster inventory.");
   const segmenter = new Intl.Segmenter("und", { granularity: "grapheme" });
@@ -46,7 +43,7 @@ const compute = (
     context,
   ).result;
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -72,6 +69,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          values: { type: "array", items: { type: "string" } },
+          selectedEntryIndices: { type: "array", items: { type: "number" } },
+          repertoireSize: { type: "number" },
+        },
+        required: ["values", "selectedEntryIndices", "repertoireSize"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
