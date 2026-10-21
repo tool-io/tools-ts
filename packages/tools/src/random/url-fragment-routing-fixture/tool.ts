@@ -142,6 +142,15 @@ export const urlFragmentRoutingFixtureTool = createModelDefinition<
   UrlFragmentRoutingFixtureInput,
   UrlFragmentRoutingFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random URL Fragment Routing Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/url-fragment-routing-fixture",
   title: "Random URL Fragment Routing Fixture Generator",
   description:
