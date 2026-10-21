@@ -6,13 +6,13 @@ export type Input = Readonly<{
   maximum: number;
   unbounded: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "minimum", kind: "integer", label: "minimum" },
   { id: "maximum", kind: "integer", label: "maximum" },
   { id: "unbounded", kind: "boolean", label: "unbounded" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.minimum, 0, 1e6);
   H.int(i.maximum, 0, 1e6);
@@ -35,7 +35,19 @@ export const tool = createSimpleTool({
   description:
     "Format bounded repeat quantifier integers with an explicit unbounded flag; ignored maximum is still validated as a nonnegative integer.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { token: { type: "string" } },
+        required: ["token"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
