@@ -134,6 +134,15 @@ export const vennRegionIdentificationPuzzleTool = createModelDefinition<
   VennRegionIdentificationPuzzleInput,
   VennRegionIdentificationPuzzleOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Venn Region Identification Puzzle Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/venn-region-identification-puzzle",
   title: "Random Venn Region Identification Puzzle Generator",
   description:
