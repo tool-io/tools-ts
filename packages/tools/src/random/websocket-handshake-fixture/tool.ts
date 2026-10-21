@@ -180,6 +180,15 @@ export const websocketHandshakeFixtureTool = createModelDefinition<
   WebsocketHandshakeFixtureInput,
   WebsocketHandshakeFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random WebSocket Handshake Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/websocket-handshake-fixture",
   title: "Random WebSocket Handshake Fixture Generator",
   description:
