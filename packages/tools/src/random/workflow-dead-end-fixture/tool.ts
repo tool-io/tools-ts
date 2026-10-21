@@ -183,6 +183,15 @@ export const workflowDeadEndFixtureTool = createModelDefinition<
   WorkflowDeadEndFixtureInput,
   WorkflowDeadEndFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Workflow Dead-End Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/workflow-dead-end-fixture",
   title: "Random Workflow Dead-End Fixture Generator",
   description:
