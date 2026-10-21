@@ -7,15 +7,12 @@ export type Input = Readonly<{
   times: readonly number[];
   values: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "times", label: "Times", kind: "numberList" },
   { id: "values", label: "Values", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   timeSamples(i.times, i.values, 2);
   let integral = 0;
   for (let j = 0; j < i.times.length - 1; j++)
@@ -23,7 +20,7 @@ const compute = (
   const duration = i.times.at(-1)! - i.times[0];
   return { integral, duration, mean: integral / duration };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -42,6 +39,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          integral: { type: "number" },
+          duration: { type: "number" },
+          mean: { type: "number" },
+        },
+        required: ["integral", "duration", "mean"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
