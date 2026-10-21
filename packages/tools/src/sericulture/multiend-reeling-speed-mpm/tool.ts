@@ -10,17 +10,17 @@ export type Input = Readonly<{
   readonly reeledLengthMeters: number;
   readonly elapsedMinutes: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "reeledLengthMeters", label: "Reeled length meters", kind: "number" },
   { id: "elapsedMinutes", label: "Elapsed minutes", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.reeledLengthMeters, "length");
   positive(i.elapsedMinutes, "time");
   return { lineSpeedMetersPerMinute: i.reeledLengthMeters / i.elapsedMinutes };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -39,6 +39,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { lineSpeedMetersPerMinute: { type: "number" } },
+        required: ["lineSpeedMetersPerMinute"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
