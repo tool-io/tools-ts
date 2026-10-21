@@ -5,12 +5,12 @@ export type Input = Readonly<{
   matrix: readonly (readonly number[])[];
   universe: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "matrix", kind: "matrix", label: "matrix" },
   { id: "universe", kind: "stringList", label: "universe" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     H.unique(i.universe).length === i.universe.length &&
@@ -49,7 +49,24 @@ export const tool = createSimpleTool({
   description:
     "Decode a square binary finite relation membership matrix into unique ordered pairs with explicit universe labels.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          pairs: {
+            type: "array",
+            items: { type: "array", items: { type: "string" } },
+          },
+        },
+        required: ["pairs"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
