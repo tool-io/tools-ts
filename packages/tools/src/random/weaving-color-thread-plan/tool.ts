@@ -156,6 +156,15 @@ export const weavingColorThreadPlanTool = createModelDefinition<
   WeavingColorThreadPlanInput,
   WeavingColorThreadPlanOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Weaving Color Thread Plan Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/weaving-color-thread-plan",
   title: "Random Weaving Color Thread Plan Generator",
   description:
