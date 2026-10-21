@@ -106,6 +106,15 @@ export const stackedBarTotalDatasetTool = createModelDefinition<
   StackedBarTotalDatasetInput,
   StackedBarTotalDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Stacked Bar Total Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/stacked-bar-total-dataset",
   title: "Random Stacked Bar Total Dataset Generator",
   description:
