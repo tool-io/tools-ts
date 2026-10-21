@@ -318,6 +318,12 @@ export const wallpaperMotifRepeatTool = createModelDefinition<
   WallpaperMotifRepeatInput,
   WallpaperMotifRepeatOutput
 >({
+  discovery: {
+    aliases: ["Random Wallpaper Motif Repeat Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/wallpaper-motif-repeat",
   title: "Random Wallpaper Motif Repeat Generator",
   description:
