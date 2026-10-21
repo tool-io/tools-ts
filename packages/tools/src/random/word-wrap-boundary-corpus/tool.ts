@@ -235,6 +235,15 @@ export const wordWrapBoundaryCorpusTool = createModelDefinition<
   WordWrapBoundaryCorpusInput,
   WordWrapBoundaryCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Word Wrap Boundary Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/word-wrap-boundary-corpus",
   title: "Random Word Wrap Boundary Corpus Generator",
   description:
