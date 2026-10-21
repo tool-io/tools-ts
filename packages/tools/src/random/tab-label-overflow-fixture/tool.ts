@@ -163,6 +163,15 @@ export const tabLabelOverflowFixtureExample = {
 } satisfies ToolExample<Input, Output>;
 export const tabLabelOverflowFixtureTool = createModelDefinition<Input, Output>(
   {
+    discovery: {
+      aliases: [
+        "Random Tab Label Overflow Fixture Generator",
+        "random generation",
+      ],
+      collections: ["data", "learn"],
+      fields: ["random", "random generation"],
+      keywords: ["random generation"],
+    },
     id: "random/tab-label-overflow-fixture",
     title: "Random Tab Label Overflow Fixture Generator",
     description:
