@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ replacement: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "replacement", kind: "string", label: "replacement" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({ tokens: H.replacementTokens(i.replacement) });
 };
@@ -28,7 +28,33 @@ export const tool = createSimpleTool({
   description:
     "Tokenize ECMAScript replacement-dollar syntax without applying matches; numeric reference resolution depends on separately supplied capture evidence.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          tokens: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                type: { type: "string" },
+                text: { type: "string" },
+                position: { type: "number" },
+              },
+              required: ["type", "text", "position"],
+            },
+          },
+        },
+        required: ["tokens"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
