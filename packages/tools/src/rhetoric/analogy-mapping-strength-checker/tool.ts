@@ -7,7 +7,7 @@ export type Input = Readonly<{
   readonly independentlyWitnessedMappingFlags: readonly number[];
   readonly mappingKnownFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyDeclaredMappingWeights",
@@ -21,14 +21,14 @@ const fields = [
   },
   { id: "mappingKnownFlags", label: "Mapping known flags", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   return weightedCoverage(
     input.independentlyDeclaredMappingWeights,
     input.independentlyWitnessedMappingFlags,
     input.mappingKnownFlags,
   );
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -56,6 +56,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          witnessedFraction: { type: "number" },
+          unknownWeightFraction: { type: "number" },
+        },
+        required: ["witnessedFraction", "unknownWeightFraction"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
