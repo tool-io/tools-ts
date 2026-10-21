@@ -254,6 +254,15 @@ export const subtitleTimingPracticeSetTool = createModelDefinition<
   SubtitleTimingPracticeSetInput,
   SubtitleTimingPracticeSetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Subtitle Timing Practice Set Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/subtitle-timing-practice-set",
   title: "Random Subtitle Timing Practice Set Generator",
   description:
