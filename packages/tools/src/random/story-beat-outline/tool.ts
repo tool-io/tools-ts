@@ -232,6 +232,12 @@ export const storyBeatOutlineTool = createModelDefinition<
   StoryBeatOutlineInput,
   StoryBeatOutlineOutput
 >({
+  discovery: {
+    aliases: ["Random Story Beat Outline Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/story-beat-outline",
   title: "Random Story Beat Outline Generator",
   description:
