@@ -20,14 +20,14 @@ export type Input = Readonly<{
   readonly memberIds: readonly string[];
   readonly teamCount: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
   { id: "memberIds", label: "Member ids", kind: "stringList" },
   { id: "teamCount", label: "Team count", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   unique(input.memberIds, "members");
   bounded(input.teamCount, "teams", 1, input.count);
@@ -49,10 +49,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -71,7 +68,36 @@ export const tool = createSimpleTool({
     "Uniform distinct member draw then round-robin assignment to indexed teams, yielding size difference at most one. Count is participating members; unselected inventory retained. Does not balance skill, protect privacy or infer fair eligibility.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          selectedMemberIds: { type: "array", items: { type: "string" } },
+          teamAssignments: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                memberId: { type: "string" },
+                teamIndex: { type: "number" },
+              },
+              required: ["memberId", "teamIndex"],
+            },
+          },
+          unassignedMemberIds: { type: "array", items: { type: "string" } },
+        },
+        required: [
+          "selectedMemberIds",
+          "teamAssignments",
+          "unassignedMemberIds",
+        ],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
