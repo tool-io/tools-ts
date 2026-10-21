@@ -160,6 +160,15 @@ export const urlOriginComparisonQuizTool = createModelDefinition<
   UrlOriginComparisonQuizInput,
   UrlOriginComparisonQuizOutput
 >({
+  discovery: {
+    aliases: [
+      "Random URL Origin Comparison Quiz Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/url-origin-comparison-quiz",
   title: "Random URL Origin Comparison Quiz Generator",
   description:
