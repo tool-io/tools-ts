@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly callerCalibratedCriterionWeights: readonly number[];
   readonly criterionKnownFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyAnnotatedCriterionScores",
@@ -31,7 +31,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const scores = input.independentlyAnnotatedCriterionScores,
     weights = input.callerCalibratedCriterionWeights,
     known = input.criterionKnownFlags;
@@ -58,7 +58,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     unknownItemIndices: unknown,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -88,6 +88,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          knownItemSum: { type: "number" },
+          minimumPossibleFiveItemSum: { type: "number" },
+          maximumPossibleFiveItemSum: { type: "number" },
+          unknownItemIndices: { type: "array", items: { type: "number" } },
+        },
+        required: [
+          "knownItemSum",
+          "minimumPossibleFiveItemSum",
+          "maximumPossibleFiveItemSum",
+          "unknownItemIndices",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
