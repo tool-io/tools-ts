@@ -158,6 +158,12 @@ export const wordleFeedbackExerciseTool = createModelDefinition<
   WordleFeedbackExerciseInput,
   WordleFeedbackExerciseOutput
 >({
+  discovery: {
+    aliases: ["Random Wordle Feedback Exercise Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/wordle-feedback-exercise",
   title: "Random Wordle Feedback Exercise Generator",
   description:
