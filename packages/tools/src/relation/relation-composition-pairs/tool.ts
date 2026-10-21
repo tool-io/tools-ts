@@ -6,13 +6,13 @@ export type Input = Readonly<{
   secondJson: string;
   universe: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "firstJson", kind: "string", label: "firstJson" },
   { id: "secondJson", kind: "string", label: "secondJson" },
   { id: "universe", kind: "stringList", label: "universe" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.relation(i.firstJson, i.universe),
     q = H.relation(i.secondJson, i.universe);
@@ -36,7 +36,24 @@ export const tool = createSimpleTool({
   description:
     "Compose finite relations by following first then second, coalescing duplicate witnesses into unique endpoint pairs; order convention is explicit.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          pairs: {
+            type: "array",
+            items: { type: "array", items: { type: "string" } },
+          },
+        },
+        required: ["pairs"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
