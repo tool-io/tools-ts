@@ -5,7 +5,7 @@ import { validateInput, finish, simpleError } from "../batch43-shared.js";
 export type Input = Readonly<{
   readonly independentlyAnnotatedStages: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyAnnotatedStages",
@@ -13,7 +13,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const expected = [
     "attention",
     "need",
@@ -35,7 +35,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     k = indices.findIndex((v, i) => i > 0 && v < indices[i - 1]);
   return { missingStages: missing, firstOutOfOrderIndex: k };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -62,6 +62,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          missingStages: { type: "array", items: { type: "string" } },
+          firstOutOfOrderIndex: { type: "number" },
+        },
+        required: ["missingStages", "firstOutOfOrderIndex"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
