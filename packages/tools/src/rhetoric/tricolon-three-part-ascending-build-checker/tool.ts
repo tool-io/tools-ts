@@ -5,7 +5,7 @@ import { validateInput, finish, simpleError } from "../batch43-shared.js";
 export type Input = Readonly<{
   readonly independentlyAssessedThreeClauseSalience: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyAssessedThreeClauseSalience",
@@ -13,7 +13,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (input.independentlyAssessedThreeClauseSalience.length !== 3)
     simpleError(
       "tricolon",
@@ -27,7 +27,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
         input.independentlyAssessedThreeClauseSalience[2],
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -46,6 +46,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { strictlyAscendingCallerSalience: { type: "boolean" } },
+        required: ["strictlyAscendingCallerSalience"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
