@@ -247,6 +247,15 @@ export const worldbuildingDocumentBundleTool = createModelDefinition<
   WorldbuildingDocumentBundleInput,
   WorldbuildingDocumentBundleOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Worldbuilding Document Bundle Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/worldbuilding-document-bundle",
   title: "Random Worldbuilding Document Bundle Generator",
   description:
