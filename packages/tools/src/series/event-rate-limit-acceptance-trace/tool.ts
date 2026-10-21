@@ -14,16 +14,13 @@ export type Input = Readonly<{
   windowDuration: number;
   maximumAccepted: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "eventTimes", label: "Event times", kind: "numberList" },
   { id: "windowDuration", label: "Window duration", kind: "number" },
   { id: "maximumAccepted", label: "Maximum accepted", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   positive(i.windowDuration, "window");
   bounded(i.maximumAccepted, "maximum", 1, 10000);
   eventOrder(i.eventTimes);
@@ -39,7 +36,7 @@ const compute = (
   });
   return { acceptedIndexes: accepted, acceptance: trace };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -63,6 +60,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          acceptedIndexes: { type: "array", items: { type: "number" } },
+          acceptance: { type: "array", items: { type: "boolean" } },
+        },
+        required: ["acceptedIndexes", "acceptance"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
