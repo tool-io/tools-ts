@@ -248,6 +248,12 @@ export const toyPlanetarySystemTool = createModelDefinition<
   ToyPlanetarySystemInput,
   ToyPlanetarySystemOutput
 >({
+  discovery: {
+    aliases: ["Random Toy Planetary System Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/toy-planetary-system",
   title: "Random Toy Planetary System Generator",
   description:
