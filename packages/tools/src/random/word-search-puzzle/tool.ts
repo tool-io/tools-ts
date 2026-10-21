@@ -325,6 +325,12 @@ export const wordSearchPuzzleTool = createModelDefinition<
   WordSearchPuzzleInput,
   WordSearchPuzzleOutput
 >({
+  discovery: {
+    aliases: ["Random Word Search Puzzle Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/word-search-puzzle",
   title: "Random Word Search Puzzle Generator",
   description:
