@@ -310,6 +310,15 @@ export const warehousePickingProductivityDatasetTool = createModelDefinition<
   WarehousePickingProductivityDatasetInput,
   WarehousePickingProductivityDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Warehouse Picking Productivity Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/warehouse-picking-productivity-dataset",
   title: "Random Warehouse Picking Productivity Dataset Generator",
   description:
