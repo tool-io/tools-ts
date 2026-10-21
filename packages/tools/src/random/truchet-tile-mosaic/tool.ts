@@ -182,6 +182,12 @@ export const truchetTileMosaicTool = createModelDefinition<
   TruchetTileMosaicInput,
   TruchetTileMosaicOutput
 >({
+  discovery: {
+    aliases: ["Random Truchet Tile Mosaic Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/truchet-tile-mosaic",
   title: "Random Truchet Tile Mosaic Generator",
   description:
