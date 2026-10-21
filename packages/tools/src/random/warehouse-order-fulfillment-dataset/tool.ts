@@ -350,6 +350,15 @@ export const warehouseOrderFulfillmentDatasetTool = createModelDefinition<
   WarehouseOrderFulfillmentDatasetInput,
   WarehouseOrderFulfillmentDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Warehouse Order Fulfillment Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/warehouse-order-fulfillment-dataset",
   title: "Random Warehouse Order Fulfillment Dataset Generator",
   description:
