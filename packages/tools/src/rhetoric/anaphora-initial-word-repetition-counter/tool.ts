@@ -9,11 +9,11 @@ import {
 } from "../batch43-shared.js";
 
 export type Input = Readonly<{ readonly clauses: readonly string[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "clauses", label: "Clauses", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (input.clauses.length < 2)
     simpleError("clauses", "At least two caller delimited nonempty clauses.");
   const tokens = input.clauses.map((v) => {
@@ -27,7 +27,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     repeatedTokenCounts: h.counts.filter((v) => v >= 2),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -46,6 +46,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          repeatedTokens: { type: "array", items: { type: "string" } },
+          repeatedTokenCounts: { type: "array", items: { type: "number" } },
+        },
+        required: ["repeatedTokens", "repeatedTokenCounts"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
