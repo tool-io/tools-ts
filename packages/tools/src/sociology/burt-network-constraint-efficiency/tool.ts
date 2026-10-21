@@ -12,12 +12,12 @@ export type Input = Readonly<{
   readonly observedAdjacency: readonly (readonly number[])[];
   readonly egoNodeIndex: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "observedAdjacency", label: "Observed adjacency", kind: "matrix" },
   { id: "egoNodeIndex", label: "Ego node index", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const n = graph(input.observedAdjacency);
   bounded(input.egoNodeIndex, "ego", 0, n - 1);
   const i = input.egoNodeIndex,
@@ -46,7 +46,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     observedEgoEfficiency: 1 - (2 * ties) / (k * k),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -72,6 +72,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedEgoConstraint: { type: "number" },
+          observedEgoEfficiency: { type: "number" },
+        },
+        required: ["observedEgoConstraint", "observedEgoEfficiency"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
