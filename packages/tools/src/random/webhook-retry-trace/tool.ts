@@ -266,6 +266,12 @@ export const webhookRetryTraceTool = createModelDefinition<
   WebhookRetryTraceInput,
   WebhookRetryTraceOutput
 >({
+  discovery: {
+    aliases: ["Random Webhook Retry Trace Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/webhook-retry-trace",
   title: "Random Webhook Retry Trace Generator",
   description:
