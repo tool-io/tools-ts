@@ -168,6 +168,12 @@ export const uiThemeColorSetTool = createModelDefinition<
   UiThemeColorSetInput,
   UiThemeColorSetOutput
 >({
+  discovery: {
+    aliases: ["Random UI Theme Color Set Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/ui-theme-color-set",
   title: "Random UI Theme Color Set Generator",
   description:
