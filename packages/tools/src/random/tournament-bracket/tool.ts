@@ -381,6 +381,15 @@ export const tournamentBracketTool = createModelDefinition<
   TournamentBracketInput,
   TournamentBracketOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Single-Elimination Tournament Bracket Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/tournament-bracket",
   title: "Random Single-Elimination Tournament Bracket Generator",
   description:
