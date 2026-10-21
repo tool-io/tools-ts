@@ -159,6 +159,15 @@ export const spreadsheetCoordinateNavigationQuizTool = createModelDefinition<
   SpreadsheetCoordinateNavigationQuizInput,
   SpreadsheetCoordinateNavigationQuizOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Spreadsheet Coordinate Navigation Quiz Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/spreadsheet-coordinate-navigation-quiz",
   title: "Random Spreadsheet Coordinate Navigation Quiz Generator",
   description:
