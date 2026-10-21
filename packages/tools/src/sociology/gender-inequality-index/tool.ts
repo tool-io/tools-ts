@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly callerNormalizedFemaleDomainIndices: readonly number[];
   readonly callerNormalizedMaleDomainIndices: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerNormalizedFemaleDomainIndices",
@@ -24,7 +24,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const f = input.callerNormalizedFemaleDomainIndices,
     m = input.callerNormalizedMaleDomainIndices;
   if (f.length !== 3 || m.length !== 3)
@@ -44,7 +44,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     reference = Math.cbrt(((f[0] + m[0]) * (f[1] + m[1]) * (f[2] + m[2])) / 8);
   return { conditionalGenderInequalityIndex: 1 - harmonic / reference };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -66,6 +66,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalGenderInequalityIndex: { type: "number" } },
+        required: ["conditionalGenderInequalityIndex"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
