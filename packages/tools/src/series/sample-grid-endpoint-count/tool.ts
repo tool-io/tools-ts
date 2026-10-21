@@ -15,17 +15,14 @@ export type Input = Readonly<{
   step: number;
   includeEnd: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "start", label: "Start", kind: "number" },
   { id: "end", label: "End", kind: "number" },
   { id: "step", label: "Step", kind: "number" },
   { id: "includeEnd", label: "Include end", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   orderedPair(i.start, i.end);
   positive(i.step, "step");
   const q = (i.end - i.start) / i.step;
@@ -33,7 +30,7 @@ const compute = (
   const count = i.includeEnd ? Math.floor(q) + 1 : Math.ceil(q);
   return { count, lastSample: count ? i.start + (count - 1) * i.step : null };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -52,6 +49,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          count: { type: "number" },
+          lastSample: { anyOf: [{ type: "number" }, { type: "null" }] },
+        },
+        required: ["count", "lastSample"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
