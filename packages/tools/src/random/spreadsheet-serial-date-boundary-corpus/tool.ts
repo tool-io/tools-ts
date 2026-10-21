@@ -181,6 +181,15 @@ export const spreadsheetSerialDateBoundaryCorpusTool = createModelDefinition<
   SpreadsheetSerialDateBoundaryCorpusInput,
   SpreadsheetSerialDateBoundaryCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Spreadsheet Serial Date Boundary Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/spreadsheet-serial-date-boundary-corpus",
   title: "Random Spreadsheet Serial Date Boundary Corpus Generator",
   description:
