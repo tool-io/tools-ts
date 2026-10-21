@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly actualExtractedOpticalPowerWatts: number;
   readonly callerCalibratedActiveRegionThermalResistanceKelvinPerWatt: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualQclAmbientTemperatureKelvin",
@@ -36,7 +36,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.actualQclAmbientTemperatureKelvin, "kelvin");
   nonnegative(input.actualElectricalPowerWatts, "electrical");
   nonnegative(input.actualExtractedOpticalPowerWatts, "optical");
@@ -57,7 +57,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
         input.callerCalibratedActiveRegionThermalResistanceKelvinPerWatt,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -81,6 +81,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalQclActiveRegionTemperatureKelvin: { type: "number" },
+        },
+        required: ["conditionalQclActiveRegionTemperatureKelvin"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
