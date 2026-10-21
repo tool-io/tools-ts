@@ -18,7 +18,7 @@ export type Input = Readonly<{
   readonly withoutReplacement: boolean;
   readonly physicalItemLabels: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
@@ -29,7 +29,7 @@ const inputFields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const random = sourceFor(input.seed, context);
   if (
     !input.physicalItemLabels.length ||
@@ -56,10 +56,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -78,7 +75,41 @@ export const tool = createSimpleTool({
     "Sample explicit physical urn items with caller replacement convention. Labels may repeat; distinct indices, not colors, are the no-replacement unit. Unused physical inventory retained.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          drawnLabels: { type: "array", items: { type: "string" } },
+          physicalItemIndices: { type: "array", items: { type: "number" } },
+          drawnLabelCounts: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                label: { type: "string" },
+                count: { type: "number" },
+              },
+              required: ["label", "count"],
+            },
+          },
+          undrawnPhysicalItemIndices: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: [
+          "drawnLabels",
+          "physicalItemIndices",
+          "drawnLabelCounts",
+          "undrawnPhysicalItemIndices",
+        ],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
