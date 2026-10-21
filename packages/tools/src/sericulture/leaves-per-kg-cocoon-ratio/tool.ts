@@ -10,17 +10,17 @@ export type Input = Readonly<{
   readonly consumedLeafKg: number;
   readonly cocoonKg: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "consumedLeafKg", label: "Consumed leaf kg", kind: "number" },
   { id: "cocoonKg", label: "Cocoon kg", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.consumedLeafKg, "leaves");
   positive(i.cocoonKg, "cocoons");
   return { leafKgPerCocoonKg: i.consumedLeafKg / i.cocoonKg };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -39,6 +39,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { leafKgPerCocoonKg: { type: "number" } },
+        required: ["leafKgPerCocoonKg"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
