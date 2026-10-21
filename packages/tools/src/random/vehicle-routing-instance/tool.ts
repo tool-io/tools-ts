@@ -262,6 +262,15 @@ export const vehicleRoutingInstanceTool = createModelDefinition<
   VehicleRoutingInstanceInput,
   VehicleRoutingInstanceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Capacitated Vehicle Routing Instance Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/vehicle-routing-instance",
   title: "Random Capacitated Vehicle Routing Instance Generator",
   description:
