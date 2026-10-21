@@ -133,6 +133,15 @@ export const storyOpeningClosingPairTool = createModelDefinition<
   StoryOpeningClosingPairInput,
   StoryOpeningClosingPairOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Story Opening and Closing Pair Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/story-opening-closing-pair",
   title: "Random Story Opening and Closing Pair Generator",
   description:
