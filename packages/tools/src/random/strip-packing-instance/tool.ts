@@ -241,6 +241,15 @@ export const stripPackingInstanceTool = createModelDefinition<
   StripPackingInstanceInput,
   StripPackingInstanceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Two-Dimensional Strip Packing Instance Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/strip-packing-instance",
   title: "Random Two-Dimensional Strip Packing Instance Generator",
   description:
