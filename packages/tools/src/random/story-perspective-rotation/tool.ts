@@ -192,6 +192,15 @@ export const storyPerspectiveRotationTool = createModelDefinition<
   StoryPerspectiveRotationInput,
   StoryPerspectiveRotationOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Story Perspective Rotation Plan Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/story-perspective-rotation",
   title: "Random Story Perspective Rotation Plan Generator",
   description:
