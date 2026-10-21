@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly independentlyMeasuredPeriphrasisWords: number;
   readonly independentlyMatchedDirectExpressionWords: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredPeriphrasisWords",
@@ -19,7 +19,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(
     input.independentlyMeasuredPeriphrasisWords,
     "independentlyMeasuredPeriphrasisWords",
@@ -34,7 +34,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.independentlyMatchedDirectExpressionWords,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -56,6 +56,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { expressionExpansionRatio: { type: "number" } },
+        required: ["expressionExpansionRatio"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
