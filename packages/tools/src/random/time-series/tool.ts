@@ -208,6 +208,12 @@ export const timeSeriesTool = createModelDefinition<
   TimeSeriesInput,
   TimeSeriesOutput
 >({
+  discovery: {
+    aliases: ["Random Time Series Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/time-series",
   title: "Random Time Series Generator",
   description:
