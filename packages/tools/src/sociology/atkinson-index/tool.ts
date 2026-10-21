@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly observedPositiveIncomes: readonly number[];
   readonly callerInequalityAversion: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedPositiveIncomes",
@@ -25,7 +25,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (!input.observedPositiveIncomes.length)
     simpleError("income", "Nonempty strictly positive sample.");
   input.observedPositiveIncomes.forEach((v) => positive(v, "income"));
@@ -41,7 +41,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
           );
   return { conditionalAtkinsonIndex: 1 - ede / m };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -60,6 +60,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalAtkinsonIndex: { type: "number" } },
+        required: ["conditionalAtkinsonIndex"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
