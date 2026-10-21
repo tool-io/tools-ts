@@ -326,6 +326,15 @@ export const trainValidationTestSplitTool = createModelDefinition<
   TrainValidationTestSplitInput,
   TrainValidationTestSplitOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Train Validation Test Split Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/train-validation-test-split",
   title: "Random Train Validation Test Split Generator",
   description:
