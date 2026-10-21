@@ -12,13 +12,13 @@ export type Input = Readonly<{
   readonly count: number;
   readonly withoutReplacement: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
   { id: "withoutReplacement", label: "Without replacement", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const drawn = repertoire(source, 10, input, context);
   const values = drawn.result.values.map((text) => {
     const v = base.execute({ text });
@@ -28,10 +28,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
   });
   return { result: { ...drawn.result, values, converterId: base.id } };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -45,7 +42,27 @@ export const tool = createSimpleTool({
     "Sample explicit supported ASCII letters/digits, then import convert/text-to-superscript for each mapping. Uniform source-entry sampling; no replacement refers to source entries. Superscript/subscript tools intentionally cover decimal digits only; small capitals cover the explicitly listed supported phonetic letters. Not a complete mathematical alphabet or typographic/font guarantee.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          selectedEntryIndices: { type: "array", items: { type: "number" } },
+          repertoireSize: { type: "number" },
+          values: { type: "array", items: { type: "string" } },
+          converterId: { type: "string" },
+        },
+        required: [
+          "selectedEntryIndices",
+          "repertoireSize",
+          "values",
+          "converterId",
+        ],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
