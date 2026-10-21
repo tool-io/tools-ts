@@ -8,16 +8,13 @@ export type Input = Readonly<{
   values: readonly number[];
   threshold: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "times", label: "Times", kind: "numberList" },
   { id: "values", label: "Values", kind: "numberList" },
   { id: "threshold", label: "Threshold", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   timeSamples(i.times, i.values, 2);
   let durationAbove = 0;
   for (let j = 0; j < i.times.length - 1; j++)
@@ -30,7 +27,7 @@ const compute = (
     model: "left-continuous-sample-hold",
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -55,6 +52,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          durationAtOrAbove: { type: "number" },
+          fractionAtOrAbove: { type: "number" },
+          model: { type: "string" },
+        },
+        required: ["durationAtOrAbove", "fractionAtOrAbove", "model"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
