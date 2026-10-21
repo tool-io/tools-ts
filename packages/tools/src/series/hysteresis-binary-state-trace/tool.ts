@@ -9,17 +9,14 @@ export type Input = Readonly<{
   upperThreshold: number;
   initialState: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "values", label: "Values", kind: "numberList" },
   { id: "lowerThreshold", label: "Lower threshold", kind: "number" },
   { id: "upperThreshold", label: "Upper threshold", kind: "number" },
   { id: "initialState", label: "Initial state", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   orderedPair(i.lowerThreshold, i.upperThreshold, true);
   let state = i.initialState;
   return {
@@ -30,7 +27,7 @@ const compute = (
     }),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -54,6 +51,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { states: { type: "array", items: { type: "boolean" } } },
+        required: ["states"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
