@@ -181,6 +181,15 @@ export const timelineCardContentFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Timeline Card Content Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/timeline-card-content-fixture",
   title: "Random Timeline Card Content Fixture Generator",
   description:
