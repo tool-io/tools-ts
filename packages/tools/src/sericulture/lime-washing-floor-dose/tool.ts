@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly floorAreaM2: number;
   readonly callerAuthorizedGramsPerM2: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "floorAreaM2", label: "Floor area m2", kind: "number" },
   {
@@ -14,12 +14,12 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.floorAreaM2, "area");
   nonnegative(i.callerAuthorizedGramsPerM2, "rate");
   return { conditionalLimeGrams: i.floorAreaM2 * i.callerAuthorizedGramsPerM2 };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -38,6 +38,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalLimeGrams: { type: "number" } },
+        required: ["conditionalLimeGrams"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
