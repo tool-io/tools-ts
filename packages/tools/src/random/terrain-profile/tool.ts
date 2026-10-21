@@ -243,6 +243,12 @@ export const terrainProfileTool = createModelDefinition<
   TerrainProfileInput,
   TerrainProfileOutput
 >({
+  discovery: {
+    aliases: ["Random Terrain Profile Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/terrain-profile",
   title: "Random Terrain Profile Generator",
   description:
