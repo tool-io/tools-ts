@@ -13,13 +13,13 @@ export type Input = Readonly<{
   readonly callerAlpha: number;
   readonly callerBeta: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "observedAdjacency", label: "Observed adjacency", kind: "matrix" },
   { id: "callerAlpha", label: "Caller alpha", kind: "number" },
   { id: "callerBeta", label: "Caller beta", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const n = graph(input.observedAdjacency),
     d = input.observedAdjacency.map((r) => sum(r)),
     max = Math.max(...d);
@@ -42,7 +42,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
   }
   return { conditionalBonacichPowerByNode: x };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -69,6 +69,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalBonacichPowerByNode: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: ["conditionalBonacichPowerByNode"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
