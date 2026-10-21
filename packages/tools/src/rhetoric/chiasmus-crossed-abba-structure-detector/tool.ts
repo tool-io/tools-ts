@@ -5,7 +5,7 @@ import { validateInput, finish, simpleError } from "../batch43-shared.js";
 export type Input = Readonly<{
   readonly independentlyAnnotatedRoleLabels: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyAnnotatedRoleLabels",
@@ -13,7 +13,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     input.independentlyAnnotatedRoleLabels.length !== 4 ||
     input.independentlyAnnotatedRoleLabels.some((v) => !v.trim())
@@ -22,7 +22,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
   const [a, b, c, d] = input.independentlyAnnotatedRoleLabels;
   return { matchesAbbaRolePattern: a === d && b === c && a !== b };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -41,6 +41,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { matchesAbbaRolePattern: { type: "boolean" } },
+        required: ["matchesAbbaRolePattern"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
