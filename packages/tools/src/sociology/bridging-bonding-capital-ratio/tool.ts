@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly independentlyClassifiedBridgingTieCounts: readonly number[];
   readonly independentlyClassifiedBondingTieCounts: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyClassifiedBridgingTieCounts",
@@ -25,7 +25,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.independentlyClassifiedBridgingTieCounts,
     input.independentlyClassifiedBondingTieCounts,
@@ -41,7 +41,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       positive(sum(input.independentlyClassifiedBondingTieCounts), "bonding"),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -63,6 +63,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { observedBridgingBondingRatio: { type: "number" } },
+        required: ["observedBridgingBondingRatio"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
