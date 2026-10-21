@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ literals: readonly string[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "literals", kind: "stringList", label: "literals" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({
     lengths: i.literals.map((s) => s.length),
@@ -31,7 +31,24 @@ export const tool = createSimpleTool({
   description:
     "Profile UTF-16 lengths of a literal regex alternative bank, retaining empty alternatives and null extrema for no alternatives.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          lengths: { type: "array", items: { type: "number" } },
+          minimum: { anyOf: [{ type: "number" }, { type: "null" }] },
+          maximum: { anyOf: [{ type: "number" }, { type: "null" }] },
+          emptyIndexes: { type: "array", items: { type: "number" } },
+        },
+        required: ["lengths", "minimum", "maximum", "emptyIndexes"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
