@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualQualifiedPromotableResidualMinorUnits: number;
   readonly callerContractPromoteBasisPoints: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualQualifiedPromotableResidualMinorUnits",
@@ -24,7 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   money(input.actualQualifiedPromotableResidualMinorUnits, "residual");
   bounded(input.callerContractPromoteBasisPoints, "bps", 0, 10000);
   const p = roundMinor(
@@ -38,7 +38,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.actualQualifiedPromotableResidualMinorUnits - p,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -62,6 +62,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          actualPromoteMinorUnits: { type: "number" },
+          remainingResidualMinorUnits: { type: "number" },
+        },
+        required: ["actualPromoteMinorUnits", "remainingResidualMinorUnits"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
