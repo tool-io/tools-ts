@@ -138,6 +138,12 @@ export const topKFrequencyWorkloadTool = createModelDefinition<
   TopKFrequencyWorkloadInput,
   TopKFrequencyWorkloadOutput
 >({
+  discovery: {
+    aliases: ["Random Top K Frequency Workload Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/top-k-frequency-workload",
   title: "Random Top K Frequency Workload Generator",
   description:
