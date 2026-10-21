@@ -309,6 +309,15 @@ export const workflowAuditTrailDatasetTool = createModelDefinition<
   WorkflowAuditTrailDatasetInput,
   WorkflowAuditTrailDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Workflow Audit Trail Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/workflow-audit-trail-dataset",
   title: "Random Workflow Audit Trail Dataset Generator",
   description:
