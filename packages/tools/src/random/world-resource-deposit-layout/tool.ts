@@ -207,6 +207,15 @@ export const worldResourceDepositLayoutTool = createModelDefinition<
   WorldResourceDepositLayoutInput,
   WorldResourceDepositLayoutOutput
 >({
+  discovery: {
+    aliases: [
+      "Random World Resource Deposit Layout Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/world-resource-deposit-layout",
   title: "Random World Resource Deposit Layout Generator",
   description:
