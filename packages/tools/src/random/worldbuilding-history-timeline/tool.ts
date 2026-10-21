@@ -223,6 +223,15 @@ export const worldbuildingHistoryTimelineTool = createModelDefinition<
   WorldbuildingHistoryTimelineInput,
   WorldbuildingHistoryTimelineOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Worldbuilding History Timeline Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/worldbuilding-history-timeline",
   title: "Random Worldbuilding History Timeline Generator",
   description:
