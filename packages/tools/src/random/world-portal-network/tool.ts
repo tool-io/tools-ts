@@ -275,6 +275,12 @@ export const worldPortalNetworkTool = createModelDefinition<
   WorldPortalNetworkInput,
   WorldPortalNetworkOutput
 >({
+  discovery: {
+    aliases: ["Random World Portal Network Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/world-portal-network",
   title: "Random World Portal Network Generator",
   description:
