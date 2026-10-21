@@ -11,12 +11,12 @@ export type Input = Readonly<{
   readonly observedAdjacency: readonly (readonly number[])[];
   readonly callerCoreFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "observedAdjacency", label: "Observed adjacency", kind: "matrix" },
   { id: "callerCoreFlags", label: "Caller core flags", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const n = graph(input.observedAdjacency);
   aligned(input.observedAdjacency, input.callerCoreFlags, "core");
   binary(input.callerCoreFlags, "core");
@@ -33,7 +33,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     }
   return { observedIdealCorePeripheryAgreementFraction: agree / total };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -59,6 +59,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedIdealCorePeripheryAgreementFraction: { type: "number" },
+        },
+        required: ["observedIdealCorePeripheryAgreementFraction"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
