@@ -207,6 +207,15 @@ export const unionFindConnectivityTraceTool = createModelDefinition<
   UnionFindConnectivityTraceInput,
   UnionFindConnectivityTraceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Union Find Connectivity Trace Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/union-find-connectivity-trace",
   title: "Random Union Find Connectivity Trace Generator",
   description:
