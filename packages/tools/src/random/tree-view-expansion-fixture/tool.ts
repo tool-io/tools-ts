@@ -170,6 +170,15 @@ export const treeViewExpansionFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Tree View Expansion Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/tree-view-expansion-fixture",
   title: "Random Tree View Expansion Fixture Generator",
   description:
