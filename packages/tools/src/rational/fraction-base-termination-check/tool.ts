@@ -6,13 +6,13 @@ export type Input = Readonly<{
   denominator: string;
   base: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "numerator", kind: "string", label: "numerator" },
   { id: "denominator", kind: "string", label: "denominator" },
   { id: "base", kind: "integer", label: "base" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const [n, d] = H.fracInput(i.numerator, i.denominator);
   H.int(i.base, 2, 36);
@@ -34,7 +34,19 @@ export const tool = createSimpleTool({
   description:
     "Check exact rational termination in an explicit integer radix 2\u201336 by removing denominator factors shared with that radix.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { terminates: { type: "boolean" } },
+        required: ["terminates"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
