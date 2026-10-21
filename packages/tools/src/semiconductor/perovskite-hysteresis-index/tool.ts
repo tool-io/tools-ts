@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly actualReverseScanEfficiency: number;
   readonly matchedForwardScanEfficiency: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualReverseScanEfficiency",
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.actualReverseScanEfficiency, "reverse");
   nonnegative(input.matchedForwardScanEfficiency, "forward");
   return {
@@ -32,7 +32,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.actualReverseScanEfficiency,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -54,6 +54,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedReverseNormalizedHysteresisIndex: { type: "number" },
+        },
+        required: ["signedReverseNormalizedHysteresisIndex"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
