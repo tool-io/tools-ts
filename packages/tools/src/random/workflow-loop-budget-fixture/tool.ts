@@ -169,6 +169,15 @@ export const workflowLoopBudgetFixtureTool = createModelDefinition<
   WorkflowLoopBudgetFixtureInput,
   WorkflowLoopBudgetFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Workflow Loop Budget Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/workflow-loop-budget-fixture",
   title: "Random Workflow Loop Budget Fixture Generator",
   description:
