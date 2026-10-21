@@ -178,6 +178,12 @@ export const waterfallChangeDatasetTool = createModelDefinition<
   WaterfallChangeDatasetInput,
   WaterfallChangeDatasetOutput
 >({
+  discovery: {
+    aliases: ["Random Waterfall Change Dataset Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/waterfall-change-dataset",
   title: "Random Waterfall Change Dataset Generator",
   description:
