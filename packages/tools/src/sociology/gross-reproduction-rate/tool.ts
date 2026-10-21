@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly ageBandWidthsYears: readonly number[];
   readonly femaleBirthFractions: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedAsfrPer1000",
@@ -32,7 +32,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(input.observedAsfrPer1000, input.ageBandWidthsYears, "bands");
   input.observedAsfrPer1000.forEach((v) => nonnegative(v, "ASFR"));
   input.ageBandWidthsYears.forEach((v) => positive(v, "width"));
@@ -52,7 +52,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       ) / 1000,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -75,6 +75,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalLifetimeBirths: { type: "number" } },
+        required: ["conditionalLifetimeBirths"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
