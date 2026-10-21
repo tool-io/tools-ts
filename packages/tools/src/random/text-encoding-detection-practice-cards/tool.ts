@@ -301,6 +301,15 @@ export const textEncodingDetectionPracticeCardsTool = createModelDefinition<
   TextEncodingDetectionPracticeCardsInput,
   TextEncodingDetectionPracticeCardsOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Text Encoding Detection Practice Cards Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/text-encoding-detection-practice-cards",
   title: "Random Text Encoding Detection Practice Cards Generator",
   description:
