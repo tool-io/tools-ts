@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly independentlyMeasuredClauseLengths: readonly number[];
   readonly callerPermittedSpread: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredClauseLengths",
@@ -25,7 +25,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (input.independentlyMeasuredClauseLengths.length < 2)
     simpleError(
       "clauses",
@@ -43,7 +43,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     withinCallerSpread: s <= input.callerPermittedSpread,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -65,6 +65,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedLengthSpread: { type: "number" },
+          withinCallerSpread: { type: "boolean" },
+        },
+        required: ["observedLengthSpread", "withinCallerSpread"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
