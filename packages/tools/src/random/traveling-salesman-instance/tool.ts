@@ -138,6 +138,15 @@ export const travelingSalesmanInstanceTool = createModelDefinition<
   TravelingSalesmanInstanceInput,
   TravelingSalesmanInstanceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Euclidean Traveling Salesman Instance Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/traveling-salesman-instance",
   title: "Random Euclidean Traveling Salesman Instance Generator",
   description:
