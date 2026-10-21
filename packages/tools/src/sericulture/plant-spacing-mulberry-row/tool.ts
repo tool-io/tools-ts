@@ -11,13 +11,13 @@ export type Input = Readonly<{
   readonly rowSpacingM: number;
   readonly plantSpacingM: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "areaM2", label: "Area m2", kind: "number" },
   { id: "rowSpacingM", label: "Row spacing m", kind: "number" },
   { id: "plantSpacingM", label: "Plant spacing m", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.areaM2, "area");
   positive(i.rowSpacingM, "rows");
   positive(i.plantSpacingM, "plants");
@@ -25,7 +25,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     continuousPlantCapacity: i.areaM2 / (i.rowSpacingM * i.plantSpacingM),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -44,6 +44,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { continuousPlantCapacity: { type: "number" } },
+        required: ["continuousPlantCapacity"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
