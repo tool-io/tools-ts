@@ -137,6 +137,28 @@ export const beamSearchTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Beam trace",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          bestPath: { type: "array", items: { type: "string" } },
+          bestScore: { type: "number" },
+          levels: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                kept: { type: "array", items: { type: "string" } },
+                pruned: { type: "array", items: { type: "string" } },
+              },
+              required: ["kept", "pruned"],
+            },
+          },
+        },
+        required: ["bestPath", "bestScore", "levels"],
+      },
     },
   ],
   calculate: (input) => {
