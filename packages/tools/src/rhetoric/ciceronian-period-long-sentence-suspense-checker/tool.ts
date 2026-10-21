@@ -8,14 +8,14 @@ export type Input = Readonly<{
   readonly callerUpper: readonly number[];
   readonly knownFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "observedValues", label: "Observed values", kind: "numberList" },
   { id: "callerLower", label: "Caller lower", kind: "numberList" },
   { id: "callerUpper", label: "Caller upper", kind: "numberList" },
   { id: "knownFlags", label: "Known flags", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   return observedBands(
     input.observedValues,
     input.callerLower,
@@ -23,7 +23,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     input.knownFlags,
   );
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -53,6 +53,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedKnownMargins: { type: "array", items: { type: "number" } },
+          knownReviewIndices: { type: "array", items: { type: "number" } },
+          unknownIndices: { type: "array", items: { type: "number" } },
+        },
+        required: [
+          "signedKnownMargins",
+          "knownReviewIndices",
+          "unknownIndices",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
