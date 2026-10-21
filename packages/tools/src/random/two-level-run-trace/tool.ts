@@ -10,7 +10,7 @@ export type Input = Readonly<{
   maximum: number;
   seed: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "low", label: "low", kind: "number" },
   { id: "high", label: "high", kind: "number" },
@@ -19,7 +19,7 @@ const fields = [
   { id: "maximum", label: "maximum", kind: "integer" },
   { id: "seed", label: "seed", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   H.validate(i, fields);
   const random = H.randomSource(i.seed, context);
   H.check(i.low !== i.high);
@@ -39,7 +39,9 @@ export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
       length,
     })),
     values: lengths.flatMap((length, j) =>
-      Array(length).fill((j % 2 === 0) === initialHigh ? i.high : i.low),
+      Array<number>(length).fill(
+        (j % 2 === 0) === initialHigh ? i.high : i.low,
+      ),
     ),
   });
 };
@@ -48,23 +50,57 @@ export const example = {
   output: {
     result: {
       seed: "batch56",
-      initialHigh: false,
+      initialHigh: true,
       runs: [
-        { value: 0, length: 1 },
-        { value: 1, length: 1 },
-        { value: 0, length: 1 },
+        { value: 1, length: 2 },
+        { value: 0, length: 2 },
+        { value: 1, length: 2 },
       ],
-      values: [0, 1, 0],
+      values: [1, 1, 0, 0, 1, 1],
     },
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Random Two-Level Run Trace", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/two-level-run-trace",
   title: "Random Two-Level Run Trace",
   description:
     "Replay seed or one advancing injected source, uniform over the explicitly stated finite support, not cryptographically secure. Choose a fair initial level and independent uniform run lengths, then alternate two explicit distinct levels; support is level/run assignments, not uniform over all bounded traces.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          seed: { type: "string" },
+          initialHigh: { type: "boolean" },
+          runs: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                value: { type: "number" },
+                length: { type: "number" },
+              },
+              required: ["value", "length"],
+            },
+          },
+          values: { type: "array", items: { type: "number" } },
+        },
+        required: ["seed", "initialHigh", "runs", "values"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
 });
 export const run = tool.execute;
