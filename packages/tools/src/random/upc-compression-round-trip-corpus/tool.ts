@@ -351,6 +351,15 @@ export const upcCompressionRoundTripCorpusTool = createModelDefinition<
   UpcCompressionRoundTripCorpusInput,
   UpcCompressionRoundTripCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random UPC Compression Round-Trip Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/upc-compression-round-trip-corpus",
   title: "Random UPC Compression Round-Trip Corpus Generator",
   description:
