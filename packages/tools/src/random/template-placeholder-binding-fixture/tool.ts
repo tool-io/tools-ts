@@ -231,6 +231,15 @@ export const templatePlaceholderBindingFixtureTool = createModelDefinition<
   TemplatePlaceholderBindingFixtureInput,
   TemplatePlaceholderBindingFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Template Placeholder Binding Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/template-placeholder-binding-fixture",
   title: "Random Template Placeholder Binding Fixture Generator",
   description:
