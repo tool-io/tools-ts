@@ -3,11 +3,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, simpleError } from "../batch43-shared.js";
 
 export type Input = Readonly<{ readonly lexicalTokens: readonly string[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "lexicalTokens", label: "Lexical tokens", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     input.lexicalTokens.length > 64 ||
     !input.lexicalTokens.length ||
@@ -24,7 +24,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       }
   return { repeatedTokenPairs: pairs, interveningTokenCounts: gaps };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -52,6 +52,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          repeatedTokenPairs: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          interveningTokenCounts: { type: "array", items: { type: "number" } },
+        },
+        required: ["repeatedTokenPairs", "interveningTokenCounts"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
