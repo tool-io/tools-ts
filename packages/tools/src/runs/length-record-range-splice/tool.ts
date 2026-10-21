@@ -8,14 +8,14 @@ export type Input = Readonly<{
   end: string;
   replacementJson: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "runsJson", label: "runsJson", kind: "string" },
   { id: "start", label: "start", kind: "string" },
   { id: "end", label: "end", kind: "string" },
   { id: "replacementJson", label: "replacementJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.lengthRuns(i.runsJson);
   const start = H.bigint(i.start),
@@ -51,12 +51,47 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Run Length Record Range Splice",
+      "run-length encoding",
+      "data compression",
+    ],
+    collections: ["data", "learn"],
+    fields: ["runs", "run-length encoding", "data compression"],
+    keywords: ["run-length encoding", "data compression"],
+  },
   id: "runs/length-record-range-splice",
   title: "Run Length Record Range Splice",
   description:
     "Run lengths are positive exact integer decimal strings with literal string values, never expanded; splice a bounded exact half-open range with encoded replacement records and compact the resulting join boundaries.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          runs: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                value: { type: "string" },
+                length: { type: "string" },
+              },
+              required: ["value", "length"],
+            },
+          },
+        },
+        required: ["runs"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
