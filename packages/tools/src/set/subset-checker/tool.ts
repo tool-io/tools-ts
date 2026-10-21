@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly actualCandidateSubset: readonly string[];
   readonly actualSuperset: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualCandidateSubset",
@@ -15,19 +15,13 @@ const fields = [
   },
   { id: "actualSuperset", label: "Actual superset", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const missing = [...new Set(input.actualCandidateSubset)].filter(
     (v) => !input.actualSuperset.includes(v),
   );
   return { isSubset: missing.length === 0, missingDistinctValues: missing };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -46,6 +40,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          isSubset: { type: "boolean" },
+          missingDistinctValues: { type: "array", items: { type: "string" } },
+        },
+        required: ["isSubset", "missingDistinctValues"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
