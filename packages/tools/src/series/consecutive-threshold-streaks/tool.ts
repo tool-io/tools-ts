@@ -8,16 +8,13 @@ export type Input = Readonly<{
   threshold: number;
   atOrAbove: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "values", label: "Values", kind: "numberList" },
   { id: "threshold", label: "Threshold", kind: "number" },
   { id: "atOrAbove", label: "At or above", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = i.values.map((v) =>
     i.atOrAbove ? v >= i.threshold : v < i.threshold,
   );
@@ -27,7 +24,7 @@ const compute = (
       .map((r) => ({ start: r.start, end: r.end, count: r.end - r.start })),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -53,6 +50,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          streaks: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                start: { type: "number" },
+                end: { type: "number" },
+                count: { type: "number" },
+              },
+              required: ["start", "end", "count"],
+            },
+          },
+        },
+        required: ["streaks"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
