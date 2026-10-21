@@ -8,17 +8,17 @@ import {
 } from "../batch43-shared.js";
 
 export type Input = Readonly<{ readonly clause: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "clause", label: "Clause", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const t = tokenInventory(input.clause);
   if (t.length < 2)
     simpleError("clause", "At least two explicit lexical tokens.");
   return { exactFrameToken: t[0], frameMatches: t[0] === t.at(-1) };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -37,6 +37,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          exactFrameToken: { type: "string" },
+          frameMatches: { type: "boolean" },
+        },
+        required: ["exactFrameToken", "frameMatches"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
