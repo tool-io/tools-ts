@@ -158,6 +158,15 @@ export const violinDensityShapeDatasetTool = createModelDefinition<
   ViolinDensityShapeDatasetInput,
   ViolinDensityShapeDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Violin Density Shape Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/violin-density-shape-dataset",
   title: "Random Violin Density Shape Dataset Generator",
   description:
