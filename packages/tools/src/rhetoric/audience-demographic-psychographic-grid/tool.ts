@@ -7,7 +7,7 @@ export type Input = Readonly<{
   readonly demographicContextNotes: readonly string[];
   readonly psychographicContextNotes: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerAudienceSegmentIds",
@@ -25,7 +25,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.callerAudienceSegmentIds, "segments");
   aligned(
     input.callerAudienceSegmentIds,
@@ -43,7 +43,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     psychographicNotes: [...input.psychographicContextNotes],
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -84,6 +84,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          segmentIds: { type: "array", items: { type: "string" } },
+          demographicNotes: { type: "array", items: { type: "string" } },
+          psychographicNotes: { type: "array", items: { type: "string" } },
+        },
+        required: ["segmentIds", "demographicNotes", "psychographicNotes"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
