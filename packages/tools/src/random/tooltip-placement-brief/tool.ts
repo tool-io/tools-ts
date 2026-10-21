@@ -172,6 +172,12 @@ export const tooltipPlacementBriefExample = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tooltipPlacementBriefTool = createModelDefinition<Input, Output>({
+  discovery: {
+    aliases: ["Random Tooltip Placement Brief Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/tooltip-placement-brief",
   title: "Random Tooltip Placement Brief Generator",
   description:
