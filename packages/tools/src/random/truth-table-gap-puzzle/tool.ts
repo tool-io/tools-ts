@@ -229,6 +229,12 @@ export const truthTableGapPuzzleTool = createModelDefinition<
   TruthTableGapPuzzleInput,
   TruthTableGapPuzzleOutput
 >({
+  discovery: {
+    aliases: ["Random Truth Table Gap Puzzle Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/truth-table-gap-puzzle",
   title: "Random Truth Table Gap Puzzle Generator",
   description:
