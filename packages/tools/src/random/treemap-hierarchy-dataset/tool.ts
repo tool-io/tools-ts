@@ -131,6 +131,15 @@ export const treemapHierarchyDatasetTool = createModelDefinition<
   TreemapHierarchyDatasetInput,
   TreemapHierarchyDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Treemap Hierarchy Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/treemap-hierarchy-dataset",
   title: "Random Treemap Hierarchy Dataset Generator",
   description:
