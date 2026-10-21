@@ -5,12 +5,12 @@ export type Input = Readonly<{
   pairsJson: string;
   universe: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pairsJson", kind: "string", label: "pairsJson" },
   { id: "universe", kind: "stringList", label: "universe" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.relation(i.pairsJson, i.universe);
   const q = H.relationProperties(p, i.universe);
@@ -33,7 +33,22 @@ export const tool = createSimpleTool({
   description:
     "Return all minimal and maximal elements only after validating a supplied finite partial order; these need not be a unique least/greatest element.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          minimal: { type: "array", items: { type: "string" } },
+          maximal: { type: "array", items: { type: "string" } },
+        },
+        required: ["minimal", "maximal"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
