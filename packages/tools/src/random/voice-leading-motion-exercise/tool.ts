@@ -206,6 +206,15 @@ export const voiceLeadingMotionExerciseTool = createModelDefinition<
   VoiceLeadingMotionExerciseInput,
   VoiceLeadingMotionExerciseOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Voice Leading Motion Exercise Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/voice-leading-motion-exercise",
   title: "Random Voice Leading Motion Exercise Generator",
   description:
