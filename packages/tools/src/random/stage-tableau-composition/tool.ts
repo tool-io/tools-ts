@@ -190,6 +190,15 @@ export const stageTableauCompositionTool = createModelDefinition<
   StageTableauCompositionInput,
   StageTableauCompositionOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Stage Tableau Composition Brief Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/stage-tableau-composition",
   title: "Random Stage Tableau Composition Brief Generator",
   description:
