@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly callerApplicableMinimumYears: number;
   readonly callerApplicableMaximumYears: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedLifeExpectancyYears",
@@ -29,7 +29,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.observedLifeExpectancyYears, "lifeexpectancy");
   if (input.callerApplicableMaximumYears <= input.callerApplicableMinimumYears)
     simpleError("goalposts", "Positive goalpost span.");
@@ -39,7 +39,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       (input.callerApplicableMaximumYears - input.callerApplicableMinimumYears),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -62,6 +62,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalHealthIndex: { type: "number" } },
+        required: ["conditionalHealthIndex"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
