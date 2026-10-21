@@ -397,6 +397,15 @@ export const worldHistoricalBorderChangeTool = createModelDefinition<
   WorldHistoricalBorderChangeInput,
   WorldHistoricalBorderChangeOutput
 >({
+  discovery: {
+    aliases: [
+      "Random World Historical Border Change Sequence Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/world-historical-border-change",
   title: "Random World Historical Border Change Sequence Generator",
   description:
