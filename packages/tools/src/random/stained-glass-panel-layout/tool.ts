@@ -222,6 +222,15 @@ export const stainedGlassPanelLayoutTool = createModelDefinition<
   StainedGlassPanelLayoutInput,
   StainedGlassPanelLayoutOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Stained Glass Panel Layout Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/stained-glass-panel-layout",
   title: "Random Stained Glass Panel Layout Generator",
   description:
