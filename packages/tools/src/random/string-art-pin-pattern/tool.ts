@@ -229,6 +229,12 @@ export const stringArtPinPatternTool = createModelDefinition<
   StringArtPinPatternInput,
   StringArtPinPatternOutput
 >({
+  discovery: {
+    aliases: ["Random String Art Pin Pattern Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/string-art-pin-pattern",
   title: "Random String Art Pin Pattern Generator",
   description:
