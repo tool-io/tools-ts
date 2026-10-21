@@ -272,6 +272,15 @@ export const structuredValidationErrorCorpusTool = createModelDefinition<
   StructuredValidationErrorCorpusInput,
   StructuredValidationErrorCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Structured Validation Error Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/structured-validation-error-corpus",
   title: "Random Structured Validation Error Corpus Generator",
   description:
