@@ -17,7 +17,7 @@ export type Input = Readonly<{
   callerCoulombCoefficientEvNm: number;
   callerStokesLossEv: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerVerifiedSource",
@@ -56,7 +56,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   ownReference(
     i.callerVerifiedSource,
@@ -118,7 +118,27 @@ export const tool = createSimpleTool({
     "Invert a caller independently applicable emission effective-mass model E_em=E_bulk+A/r²-B/r-StokesLoss on its positive confinement branch. Source-qualified material coefficients and Stokes loss required; not the existing CdSe first-exciton absorption calibration, a universal size law, spectral-peak detector or fabrication recommendation.",
   inputs: fields,
   outputs: [
-    { id: "result", label: "Conditional emission-model size", kind: "object" },
+    {
+      id: "result",
+      label: "Conditional emission-model size",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          photonEnergyEv: { type: "number" },
+          confinementExcessEv: { type: "number" },
+          conditionalRadiusNm: { type: "number" },
+          conditionalDiameterNm: { type: "number" },
+        },
+        required: [
+          "photonEnergyEv",
+          "confinementExcessEv",
+          "conditionalRadiusNm",
+          "conditionalDiameterNm",
+        ],
+      },
+    },
   ],
   calculate: (value) => calculate(value as unknown as Input),
 });
