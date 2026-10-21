@@ -195,6 +195,15 @@ export const unicodeByteRoundTripCorpusTool = createModelDefinition<
   UnicodeByteRoundTripCorpusInput,
   UnicodeByteRoundTripCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Unicode Byte Round-Trip Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/unicode-byte-round-trip-corpus",
   title: "Random Unicode Byte Round-Trip Corpus Generator",
   description:
