@@ -127,6 +127,15 @@ export const urlCredentialRedactionCorpusTool = createModelDefinition<
   UrlCredentialRedactionCorpusInput,
   UrlCredentialRedactionCorpusOutput
 >({
+  discovery: {
+    aliases: [
+      "Random URL Credential Redaction Corpus Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/url-credential-redaction-corpus",
   title: "Random URL Credential Redaction Corpus Generator",
   description:
