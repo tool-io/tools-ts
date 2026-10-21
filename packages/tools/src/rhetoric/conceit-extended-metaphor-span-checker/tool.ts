@@ -7,7 +7,7 @@ export type Input = Readonly<{
   readonly independentlyAnnotatedMetaphorTokenEndExclusive: number;
   readonly totalTokens: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyAnnotatedMetaphorTokenStart",
@@ -21,7 +21,7 @@ const fields = [
   },
   { id: "totalTokens", label: "Total tokens", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.totalTokens, "tokens", 1, 1000000);
   bounded(
     input.independentlyAnnotatedMetaphorTokenStart,
@@ -45,7 +45,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.totalTokens,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -68,6 +68,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          annotatedSpanTokens: { type: "number" },
+          annotatedSpanFraction: { type: "number" },
+        },
+        required: ["annotatedSpanTokens", "annotatedSpanFraction"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
