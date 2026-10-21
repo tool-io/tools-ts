@@ -186,6 +186,15 @@ export const sqidsReversibleIdFixtureTool = createModelDefinition<
   SqidsReversibleIdFixtureInput,
   SqidsReversibleIdFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Sqids Reversible ID Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/sqids-reversible-id-fixture",
   title: "Random Sqids Reversible ID Fixture Generator",
   description:
