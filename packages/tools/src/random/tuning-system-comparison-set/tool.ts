@@ -238,6 +238,15 @@ export const tuningSystemComparisonSetTool = createModelDefinition<
   TuningSystemComparisonSetInput,
   TuningSystemComparisonSetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Tuning System Comparison Set Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/tuning-system-comparison-set",
   title: "Random Tuning System Comparison Set Generator",
   description:
