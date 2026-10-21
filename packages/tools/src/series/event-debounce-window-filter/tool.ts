@@ -12,15 +12,12 @@ export type Input = Readonly<{
   eventTimes: readonly number[];
   quietWindow: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "eventTimes", label: "Event times", kind: "numberList" },
   { id: "quietWindow", label: "Quiet window", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   nonnegative(i.quietWindow, "window");
   eventOrder(i.eventTimes);
   const acceptedIndexes = i.eventTimes.flatMap((t, j) =>
@@ -33,7 +30,7 @@ const compute = (
     emissionTimes: acceptedIndexes.map((j) => i.eventTimes[j] + i.quietWindow),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -52,6 +49,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          acceptedIndexes: { type: "array", items: { type: "number" } },
+          emissionTimes: { type: "array", items: { type: "number" } },
+        },
+        required: ["acceptedIndexes", "emissionTimes"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
