@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualOutputPortPowersWatts: readonly number[];
   readonly matchedIncidentPowerWatts: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualOutputPortPowersWatts",
@@ -24,7 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.matchedIncidentPowerWatts, "input-power");
   input.actualOutputPortPowersWatts.forEach((v) =>
     nonnegative(v, "port-power"),
@@ -38,7 +38,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -57,6 +57,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { signedObservedMmiExcessLossDb: { type: "number" } },
+        required: ["signedObservedMmiExcessLossDb"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
