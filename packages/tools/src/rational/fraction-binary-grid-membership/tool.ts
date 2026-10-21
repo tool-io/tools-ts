@@ -6,13 +6,13 @@ export type Input = Readonly<{
   denominator: string;
   fractionalBits: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "numerator", kind: "string", label: "numerator" },
   { id: "denominator", kind: "string", label: "denominator" },
   { id: "fractionalBits", kind: "integer", label: "fractionalBits" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const [n, d] = H.fracInput(i.numerator, i.denominator);
   H.int(i.fractionalBits, 0, 128);
@@ -30,7 +30,19 @@ export const tool = createSimpleTool({
   description:
     "Check exact rational membership on an explicitly chosen binary fixed-point grid, not merely denominator power-of-two termination.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { member: { type: "boolean" } },
+        required: ["member"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
