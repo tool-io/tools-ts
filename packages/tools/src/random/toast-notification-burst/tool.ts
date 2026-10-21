@@ -184,6 +184,15 @@ export const toastNotificationBurstExample = {
   },
 } satisfies ToolExample<Input, Output>;
 export const toastNotificationBurstTool = createModelDefinition<Input, Output>({
+  discovery: {
+    aliases: [
+      "Random Toast Notification Burst Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/toast-notification-burst",
   title: "Random Toast Notification Burst Fixture Generator",
   description:
