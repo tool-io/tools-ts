@@ -10,11 +10,11 @@ import {
 export type Input = Readonly<{
   readonly observedAdjacency: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "observedAdjacency", label: "Observed adjacency", kind: "matrix" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const n = graph(input.observedAdjacency),
     a = input.observedAdjacency,
     d = a.map((r) => sum(r)),
@@ -32,7 +32,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     connectedTripleCount: triples,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -63,6 +63,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedGlobalTransitivity: { type: "number" },
+          observedTriangleCount: { type: "number" },
+          connectedTripleCount: { type: "number" },
+        },
+        required: [
+          "observedGlobalTransitivity",
+          "observedTriangleCount",
+          "connectedTripleCount",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
