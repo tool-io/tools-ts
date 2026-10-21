@@ -17,13 +17,13 @@ export type Input = Readonly<{
   readonly count: number;
   readonly rate: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const inputFields = [
   { id: "seed", label: "Seed", kind: "string" },
   { id: "count", label: "Count", kind: "number" },
   { id: "rate", label: "Rate", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input, context?: ToolExecutionContext): Output => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   sourceFor(input.seed);
   if (context?.random)
     simpleError(
@@ -51,10 +51,7 @@ const compute = (input: Input, context?: ToolExecutionContext): Output => {
     },
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateRandomInput(input, inputFields);
   return finish(compute(input, context));
 };
@@ -68,7 +65,27 @@ export const tool = createSimpleTool({
     "Use the existing seed-only exponential sampler once for the entire IID waiting-time experiment batch, retaining observations and model mean. Explicit seed required; injected sources rejected rather than silently ignored or restarted per sample. Rate/time units reciprocal; no actual service-delay inference.",
   inputs: inputFields,
   outputs: [
-    { id: "result", label: "Reproducible sample and evidence", kind: "object" },
+    {
+      id: "result",
+      label: "Reproducible sample and evidence",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          samples: { type: "array", items: { type: "number" } },
+          observedMean: { type: "number" },
+          modelMean: { type: "number" },
+          samplingConvention: { type: "string" },
+        },
+        required: [
+          "samples",
+          "observedMean",
+          "modelMean",
+          "samplingConvention",
+        ],
+      },
+    },
   ],
   calculate: (input, context) => calculate(input as unknown as Input, context),
 });
