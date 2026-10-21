@@ -151,6 +151,15 @@ export const sunburstHierarchyDatasetTool = createModelDefinition<
   SunburstHierarchyDatasetInput,
   SunburstHierarchyDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Sunburst Hierarchy Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/sunburst-hierarchy-dataset",
   title: "Random Sunburst Hierarchy Dataset Generator",
   description:
