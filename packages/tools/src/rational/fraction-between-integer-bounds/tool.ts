@@ -7,14 +7,14 @@ export type Input = Readonly<{
   minimum: string;
   maximum: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "numerator", kind: "string", label: "numerator" },
   { id: "denominator", kind: "string", label: "denominator" },
   { id: "minimum", kind: "string", label: "minimum" },
   { id: "maximum", kind: "string", label: "maximum" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const [n, d] = H.fracInput(i.numerator, i.denominator);
   const min = H.bigint(i.minimum),
@@ -32,7 +32,19 @@ export const tool = createSimpleTool({
   description:
     "Check exact rational membership in caller-supplied inclusive integer bounds without decimal approximation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { inside: { type: "boolean" } },
+        required: ["inside"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
