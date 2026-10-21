@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly independentlyEstablishedParticipationThresholds: readonly number[];
   readonly initialParticipantIds: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerParticipantIds",
@@ -31,7 +31,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.callerParticipantIds, "participants");
   aligned(
     input.callerParticipantIds,
@@ -73,7 +73,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     newParticipantRoundIndices: rounds,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -102,6 +102,30 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalParticipantIds: {
+            type: "array",
+            items: { type: "string" },
+          },
+          newParticipantIdsByRound: {
+            type: "array",
+            items: { type: "string" },
+          },
+          newParticipantRoundIndices: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: [
+          "conditionalParticipantIds",
+          "newParticipantIdsByRound",
+          "newParticipantRoundIndices",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
