@@ -374,6 +374,12 @@ export const stringDistanceMatrixTool = createModelDefinition<
   StringDistanceMatrixInput,
   StringDistanceMatrixOutput
 >({
+  discovery: {
+    aliases: ["Random String Distance Matrix Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/string-distance-matrix",
   title: "Random String Distance Matrix Generator",
   description:
