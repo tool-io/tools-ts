@@ -197,6 +197,12 @@ export const weightedShuffleTool = createModelDefinition<
   WeightedShuffleInput,
   WeightedShuffleOutput
 >({
+  discovery: {
+    aliases: ["Random Weighted Shuffle Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/weighted-shuffle",
   title: "Random Weighted Shuffle Generator",
   description:
