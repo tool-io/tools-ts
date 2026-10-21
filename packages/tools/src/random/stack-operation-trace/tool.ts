@@ -147,6 +147,12 @@ export const stackOperationTraceTool = createModelDefinition<
   StackOperationTraceInput,
   StackOperationTraceOutput
 >({
+  discovery: {
+    aliases: ["Random Stack Operation Trace Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/stack-operation-trace",
   title: "Random Stack Operation Trace Generator",
   description:
