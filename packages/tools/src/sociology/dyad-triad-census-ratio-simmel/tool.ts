@@ -4,11 +4,11 @@ import { validateInput, finish, sum, graph } from "../batch46-shared.js";
 export type Input = Readonly<{
   readonly observedAdjacency: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "observedAdjacency", label: "Observed adjacency", kind: "matrix" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const n = graph(input.observedAdjacency),
     a = input.observedAdjacency;
   let complete = 0,
@@ -26,7 +26,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     observedDyadEdgeCount: sum(a.map((r) => sum(r))) / 2,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -57,6 +57,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          completeTriadCount: { type: "number" },
+          incompleteConnectedTriadCount: { type: "number" },
+          observedDyadEdgeCount: { type: "number" },
+        },
+        required: [
+          "completeTriadCount",
+          "incompleteConnectedTriadCount",
+          "observedDyadEdgeCount",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
