@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly callerContractGpBasisPoints: number;
   readonly callerContractLpBasisPoints: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualDistributablePoolMinorUnits",
@@ -30,7 +30,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.callerContractGpBasisPoints, "GP", 0, 10000);
   bounded(input.callerContractLpBasisPoints, "LP", 0, 10000);
   if (
@@ -44,7 +44,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
   ]);
   return { actualGpCashMinorUnits: a[0], actualLpCashMinorUnits: a[1] };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -69,6 +69,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          actualGpCashMinorUnits: { type: "number" },
+          actualLpCashMinorUnits: { type: "number" },
+        },
+        required: ["actualGpCashMinorUnits", "actualLpCashMinorUnits"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
