@@ -9,15 +9,12 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ times: readonly number[]; maximumGap: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "times", label: "Times", kind: "numberList" },
   { id: "maximumGap", label: "Maximum gap", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   nonnegative(i.maximumGap, "maximum");
   timeSamples(i.times, i.times);
   return {
@@ -28,7 +25,7 @@ const compute = (
     })),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -54,6 +51,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          gaps: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                afterIndex: { type: "number" },
+                duration: { type: "number" },
+                exceedsBudget: { type: "boolean" },
+              },
+              required: ["afterIndex", "duration", "exceedsBudget"],
+            },
+          },
+        },
+        required: ["gaps"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
