@@ -135,6 +135,15 @@ export const uncertaintyBandChartDatasetTool = createModelDefinition<
   UncertaintyBandChartDatasetInput,
   UncertaintyBandChartDatasetOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Uncertainty Band Chart Dataset Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/uncertainty-band-chart-dataset",
   title: "Random Uncertainty Band Chart Dataset Generator",
   description:
