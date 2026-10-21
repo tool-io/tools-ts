@@ -7,14 +7,14 @@ export type Input = Readonly<{
   rightNumerator: string;
   rightDenominator: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "leftNumerator", kind: "string", label: "leftNumerator" },
   { id: "leftDenominator", kind: "string", label: "leftDenominator" },
   { id: "rightNumerator", kind: "string", label: "rightNumerator" },
   { id: "rightDenominator", kind: "string", label: "rightDenominator" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const [a, b] = H.fracInput(i.leftNumerator, i.leftDenominator),
     [c, d] = H.fracInput(i.rightNumerator, i.rightDenominator);
@@ -35,7 +35,22 @@ export const tool = createSimpleTool({
   description:
     "Exact rational subtraction using decimal integer text and coprime output; no IEEE-754 precision loss.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          numerator: { type: "string" },
+          denominator: { type: "string" },
+        },
+        required: ["numerator", "denominator"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
