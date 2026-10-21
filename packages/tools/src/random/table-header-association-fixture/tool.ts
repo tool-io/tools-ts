@@ -272,6 +272,15 @@ export const tableHeaderAssociationFixtureTool = createModelDefinition<
   Input,
   Output
 >({
+  discovery: {
+    aliases: [
+      "Random Table Header Association Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/table-header-association-fixture",
   title: "Random Table Header Association Fixture Generator",
   description:
