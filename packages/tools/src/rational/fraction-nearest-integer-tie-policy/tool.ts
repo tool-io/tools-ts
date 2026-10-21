@@ -6,13 +6,13 @@ export type Input = Readonly<{
   denominator: string;
   ties: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "numerator", kind: "string", label: "numerator" },
   { id: "denominator", kind: "string", label: "denominator" },
   { id: "ties", kind: "string", label: "ties" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const [n, d] = H.fracInput(i.numerator, i.denominator);
   H.check(["even", "away", "positive"].includes(i.ties));
@@ -42,7 +42,19 @@ export const tool = createSimpleTool({
   description:
     "Round an exact fraction to a nearest integer with explicit half-even, away-from-zero or positive-infinity tie policy.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { integer: { type: "string" }, tie: { type: "boolean" } },
+        required: ["integer", "tie"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
