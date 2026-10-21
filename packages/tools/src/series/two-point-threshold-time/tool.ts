@@ -10,7 +10,7 @@ export type Input = Readonly<{
   secondValue: number;
   threshold: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "firstTime", label: "First time", kind: "number" },
   { id: "secondTime", label: "Second time", kind: "number" },
@@ -18,10 +18,7 @@ const fields = [
   { id: "secondValue", label: "Second value", kind: "number" },
   { id: "threshold", label: "Threshold", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   orderedPair(i.firstTime, i.secondTime, true);
   if (i.firstValue === i.secondValue)
     return {
@@ -42,7 +39,7 @@ const compute = (
     condition: "one-linear-crossing",
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -67,6 +64,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          crossingTime: { anyOf: [{ type: "number" }, { type: "null" }] },
+          condition: {
+            type: "string",
+            enum: [
+              "entire-plateau",
+              "no-crossing",
+              "outside-segment",
+              "one-linear-crossing",
+            ],
+          },
+        },
+        required: ["crossingTime", "condition"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
