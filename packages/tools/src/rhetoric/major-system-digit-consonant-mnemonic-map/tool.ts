@@ -3,11 +3,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, simpleError } from "../batch43-shared.js";
 
 export type Input = Readonly<{ readonly digitText: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "digitText", label: "Digit text", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (!/^[0-9]{1,64}$/.test(input.digitText))
     simpleError("digits", "1–64ASCIIdecimaldigits; leading zeros retained.");
   const map = [
@@ -26,7 +26,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     consonantOptions: Array.from(input.digitText, (v) => map[Number(v)]),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -45,6 +45,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          consonantOptions: { type: "array", items: { type: "string" } },
+        },
+        required: ["consonantOptions"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
