@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly callerItemsPerLocus: number;
   readonly requiredItems: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "availableDistinctLociPerRoom",
@@ -27,7 +27,7 @@ const fields = [
   },
   { id: "requiredItems", label: "Required items", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   input.availableDistinctLociPerRoom.forEach((v) =>
     bounded(v, "loci", 0, 10000),
   );
@@ -42,7 +42,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     signedRemainingCapacity: capacity - input.requiredItems,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -65,6 +65,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          totalCapacity: { type: "number" },
+          signedRemainingCapacity: { type: "number" },
+        },
+        required: ["totalCapacity", "signedRemainingCapacity"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
