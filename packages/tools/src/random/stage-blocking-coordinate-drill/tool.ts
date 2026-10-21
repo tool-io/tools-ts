@@ -199,6 +199,15 @@ export const stageBlockingCoordinateDrillTool = createModelDefinition<
   StageBlockingCoordinateDrillInput,
   StageBlockingCoordinateDrillOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Stage Blocking Coordinate Drill Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/stage-blocking-coordinate-drill",
   title: "Random Stage Blocking Coordinate Drill Generator",
   description:
