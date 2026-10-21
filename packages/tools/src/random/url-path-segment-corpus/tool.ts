@@ -139,6 +139,12 @@ export const urlPathSegmentCorpusTool = createModelDefinition<
   UrlPathSegmentCorpusInput,
   UrlPathSegmentCorpusOutput
 >({
+  discovery: {
+    aliases: ["Random URL Path Segment Corpus Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/url-path-segment-corpus",
   title: "Random URL Path Segment Corpus Generator",
   description:
