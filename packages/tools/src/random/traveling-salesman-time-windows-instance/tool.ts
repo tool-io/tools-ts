@@ -235,8 +235,17 @@ export const travelingSalesmanTimeWindowsInstanceTool = createModelDefinition<
   TravelingSalesmanTimeWindowsInstanceInput,
   TravelingSalesmanTimeWindowsInstanceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Traveling Salesman With Time Windows Instance Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/traveling-salesman-time-windows-instance",
-  title: "Random Traveling Salesman With Time Windows Instance Generator",
+  title: "Random Traveling Salesman with Time Windows Instance Generator",
   description:
     "Generate integer-coordinate cities, ceiling-Euclidean travel times in abstract time units, fixed customer service times and inclusive windows around a feasible randomized depot-return tour; no optimality or real routing claim.",
   inputSchema,
