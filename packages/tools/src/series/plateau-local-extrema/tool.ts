@@ -4,14 +4,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, runs } from "../batch53-shared.js";
 
 export type Input = Readonly<{ values: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "values", label: "Values", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = runs(i.values);
   return {
     extrema: a.flatMap((r, j) => {
@@ -30,7 +27,7 @@ const compute = (
     }),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -56,6 +53,28 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          extrema: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                start: { type: "number" },
+                end: { type: "number" },
+                value: { type: "number" },
+                kind: { type: "string" },
+              },
+              required: ["start", "end", "value", "kind"],
+            },
+          },
+        },
+        required: ["extrema"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
