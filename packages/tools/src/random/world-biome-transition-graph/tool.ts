@@ -172,6 +172,15 @@ export const worldBiomeTransitionGraphTool = createModelDefinition<
   WorldBiomeTransitionGraphInput,
   WorldBiomeTransitionGraphOutput
 >({
+  discovery: {
+    aliases: [
+      "Random World Biome Transition Graph Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/world-biome-transition-graph",
   title: "Random World Biome Transition Graph Generator",
   description:
