@@ -330,6 +330,15 @@ export const unreliableNarratorEvidenceTool = createModelDefinition<
   UnreliableNarratorEvidenceInput,
   UnreliableNarratorEvidenceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Unreliable Narrator Evidence Deck Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/unreliable-narrator-evidence",
   title: "Random Unreliable Narrator Evidence Deck Generator",
   description:
