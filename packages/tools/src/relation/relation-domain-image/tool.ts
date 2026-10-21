@@ -5,12 +5,12 @@ export type Input = Readonly<{
   pairsJson: string;
   universe: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pairsJson", kind: "string", label: "pairsJson" },
   { id: "universe", kind: "stringList", label: "universe" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.relation(i.pairsJson, i.universe);
   return H.finish({
@@ -28,7 +28,22 @@ export const tool = createSimpleTool({
   description:
     "Return finite homogeneous relation domain and image in explicit universe order; preserve isolated universe elements as absent, not inferred pairs.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          domain: { type: "array", items: { type: "string" } },
+          image: { type: "array", items: { type: "string" } },
+        },
+        required: ["domain", "image"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
