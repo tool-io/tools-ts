@@ -230,6 +230,15 @@ export const svgConstellationPatternTool = createModelDefinition<
   SvgConstellationPatternInput,
   SvgConstellationPatternOutput
 >({
+  discovery: {
+    aliases: [
+      "Random SVG Constellation Pattern Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/svg-constellation-pattern",
   title: "Random SVG Constellation Pattern Generator",
   description:
