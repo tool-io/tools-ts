@@ -5,12 +5,12 @@ export type Input = Readonly<{
   pairsJson: string;
   universe: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pairsJson", kind: "string", label: "pairsJson" },
   { id: "universe", kind: "stringList", label: "universe" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.relation(i.pairsJson, i.universe);
   const properties = H.relationProperties(p, i.universe);
@@ -40,7 +40,32 @@ export const tool = createSimpleTool({
   description:
     "Report equivalence property evidence for an explicit finite relation; does not assume a claimed order or repair missing pairs.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          properties: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              reflexive: { type: "boolean" },
+              symmetric: { type: "boolean" },
+              antisymmetric: { type: "boolean" },
+              transitive: { type: "boolean" },
+            },
+            required: ["reflexive", "symmetric", "antisymmetric", "transitive"],
+          },
+          holds: { type: "boolean" },
+        },
+        required: ["properties", "holds"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
