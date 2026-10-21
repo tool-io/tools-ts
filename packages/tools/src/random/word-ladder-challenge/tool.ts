@@ -170,6 +170,12 @@ export const wordLadderChallengeTool = createModelDefinition<
   WordLadderChallengeInput,
   WordLadderChallengeOutput
 >({
+  discovery: {
+    aliases: ["Random Word Ladder Challenge Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/word-ladder-challenge",
   title: "Random Word Ladder Challenge Generator",
   description:
