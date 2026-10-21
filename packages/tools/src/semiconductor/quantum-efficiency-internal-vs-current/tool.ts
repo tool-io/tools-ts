@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly callerCalibratedAugerC: number;
   readonly independentlyEstablishedCarrierDensities: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerCalibratedMonomolecularA",
@@ -36,7 +36,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   [
     input.callerCalibratedMonomolecularA,
     input.callerCalibratedBimolecularB,
@@ -64,7 +64,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -94,6 +94,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalAbcRadiativeFractions: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: ["conditionalAbcRadiativeFractions"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
