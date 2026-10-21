@@ -232,6 +232,15 @@ export const variableSizeBinPackingInstanceTool = createModelDefinition<
   VariableSizeBinPackingInstanceInput,
   VariableSizeBinPackingInstanceOutput
 >({
+  discovery: {
+    aliases: [
+      "Random Variable-Size Bin Packing Instance Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/variable-size-bin-packing-instance",
   title: "Random Variable-Size Bin Packing Instance Generator",
   description:
