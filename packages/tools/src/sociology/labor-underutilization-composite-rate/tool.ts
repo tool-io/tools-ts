@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly potentialLaborForceCount: number;
   readonly observedLaborForceCount: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "unemployedCount", label: "Unemployed count", kind: "number" },
   {
@@ -32,7 +32,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   [
     input.unemployedCount,
     input.timeRelatedUnderemployedCount,
@@ -53,7 +53,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       (input.observedLaborForceCount + input.potentialLaborForceCount),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -77,6 +77,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalLu4Percent: { type: "number" } },
+        required: ["conditionalLu4Percent"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
