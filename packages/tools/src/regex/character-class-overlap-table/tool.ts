@@ -5,12 +5,12 @@ export type Input = Readonly<{
   left: readonly number[];
   right: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", kind: "numberList", label: "left" },
   { id: "right", kind: "numberList", label: "right" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   [i.left, i.right].forEach((r) => r.forEach((x) => H.int(x, 0, 127)));
   return H.finish({
@@ -29,7 +29,19 @@ export const tool = createSimpleTool({
   description:
     "Return exact overlap codes between explicit ASCII character banks; no Unicode normalization or regex execution.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { overlap: { type: "array", items: { type: "number" } } },
+        required: ["overlap"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
