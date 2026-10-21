@@ -10,19 +10,19 @@ export type Input = Readonly<{
   readonly piercedCount: number;
   readonly inspectedCount: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "piercedCount", label: "Pierced count", kind: "number" },
   { id: "inspectedCount", label: "Inspected count", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.piercedCount, "pierced", 0, 1000000000);
   bounded(i.inspectedCount, "inspected", 1, 1000000000);
   if (i.piercedCount > i.inspectedCount)
     simpleError("count", "Pierced exceeds inspected.");
   return { piercedPercent: (100 * i.piercedCount) / i.inspectedCount };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -41,6 +41,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { piercedPercent: { type: "number" } },
+        required: ["piercedPercent"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
