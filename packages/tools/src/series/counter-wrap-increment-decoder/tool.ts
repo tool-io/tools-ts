@@ -4,15 +4,12 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, bounded, mod } from "../batch53-shared.js";
 
 export type Input = Readonly<{ counts: readonly number[]; modulus: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "counts", label: "Counts", kind: "numberList" },
   { id: "modulus", label: "Modulus", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.modulus, "modulus", 1, 1e12);
   i.counts.forEach((v) => bounded(v, "count", 0, i.modulus - 1));
   return {
@@ -22,7 +19,7 @@ const compute = (
     assumption: "at-most-one-wrap-and-no-reset-between-samples",
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -46,6 +43,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          increments: { type: "array", items: { type: "number" } },
+          assumption: { type: "string" },
+        },
+        required: ["increments", "assumption"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
