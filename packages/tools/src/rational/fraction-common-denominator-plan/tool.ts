@@ -7,14 +7,14 @@ export type Input = Readonly<{
   rightNumerator: string;
   rightDenominator: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "leftNumerator", kind: "string", label: "leftNumerator" },
   { id: "leftDenominator", kind: "string", label: "leftDenominator" },
   { id: "rightNumerator", kind: "string", label: "rightNumerator" },
   { id: "rightDenominator", kind: "string", label: "rightDenominator" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const [a, b] = H.fracInput(i.leftNumerator, i.leftDenominator),
     [c, d] = H.fracInput(i.rightNumerator, i.rightDenominator);
@@ -42,7 +42,23 @@ export const tool = createSimpleTool({
   description:
     "Plan the least positive common denominator for two canonical exact fractions and report aligned numerators.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          denominator: { type: "string" },
+          leftNumerator: { type: "string" },
+          rightNumerator: { type: "string" },
+        },
+        required: ["denominator", "leftNumerator", "rightNumerator"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
