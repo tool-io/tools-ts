@@ -56,6 +56,25 @@ export const randomTimeTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "Random time",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          hours: { type: "number" },
+          minutes: { type: "number" },
+          seconds: { type: "number" },
+          secondsSinceMidnight: { type: "number" },
+          text: { type: "string" },
+        },
+        required: [
+          "hours",
+          "minutes",
+          "seconds",
+          "secondsSinceMidnight",
+          "text",
+        ],
+      },
     },
   ],
   calculate: (input, context) => {
