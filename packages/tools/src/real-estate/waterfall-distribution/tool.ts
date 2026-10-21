@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly actualDistributableCashMinorUnits: number;
   readonly callerContractEstablishedSequentialTierClaimsMinorUnits: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualDistributableCashMinorUnits",
@@ -18,7 +18,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   money(input.actualDistributableCashMinorUnits, "cash");
   let cash = input.actualDistributableCashMinorUnits;
   const paid =
@@ -37,7 +37,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     unallocatedResidualMinorUnits: cash,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -65,6 +65,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          actualPaidPerTierMinorUnits: {
+            type: "array",
+            items: { type: "number" },
+          },
+          unpaidTierClaimMinorUnits: {
+            type: "array",
+            items: { type: "number" },
+          },
+          unallocatedResidualMinorUnits: { type: "number" },
+        },
+        required: [
+          "actualPaidPerTierMinorUnits",
+          "unpaidTierClaimMinorUnits",
+          "unallocatedResidualMinorUnits",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
