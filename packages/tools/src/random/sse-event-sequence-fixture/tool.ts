@@ -163,6 +163,15 @@ export const sseEventSequenceFixtureTool = createModelDefinition<
   SseEventSequenceFixtureInput,
   SseEventSequenceFixtureOutput
 >({
+  discovery: {
+    aliases: [
+      "Random SSE Event Sequence Fixture Generator",
+      "random generation",
+    ],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/sse-event-sequence-fixture",
   title: "Random SSE Event Sequence Fixture Generator",
   description:
