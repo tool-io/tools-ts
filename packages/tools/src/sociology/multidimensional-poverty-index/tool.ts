@@ -15,7 +15,7 @@ export type Input = Readonly<{
   readonly verifiedDeprivationFractions: readonly number[];
   readonly matchedSurveyWeights: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyClassifiedPovertyFlags",
@@ -33,7 +33,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.independentlyClassifiedPovertyFlags,
     input.verifiedDeprivationFractions,
@@ -70,7 +70,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     conditionalMpi: i / t,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -99,6 +99,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedHeadcountFraction: { type: "number" },
+          observedIntensityAmongPoor: { type: "number" },
+          conditionalMpi: { type: "number" },
+        },
+        required: [
+          "observedHeadcountFraction",
+          "observedIntensityAmongPoor",
+          "conditionalMpi",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
