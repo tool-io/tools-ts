@@ -11,19 +11,19 @@ export type Input = Readonly<{
   readonly cocoonInputKg: number;
   readonly rawSilkOutputKg: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "cocoonInputKg", label: "Cocoon input kg", kind: "number" },
   { id: "rawSilkOutputKg", label: "Raw silk output kg", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.cocoonInputKg, "input");
   positive(i.rawSilkOutputKg, "output");
   if (i.rawSilkOutputKg > i.cocoonInputKg)
     simpleError("output", "Silk output exceeds cocoon input.");
   return { renditta: i.cocoonInputKg / i.rawSilkOutputKg };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -42,6 +42,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { renditta: { type: "number" } },
+        required: ["renditta"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
