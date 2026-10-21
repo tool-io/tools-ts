@@ -256,6 +256,12 @@ export const swingTimingDatasetTool = createModelDefinition<
   SwingTimingDatasetInput,
   SwingTimingDatasetOutput
 >({
+  discovery: {
+    aliases: ["Random Swing Timing Dataset Generator", "random generation"],
+    collections: ["data", "learn"],
+    fields: ["random", "random generation"],
+    keywords: ["random generation"],
+  },
   id: "random/swing-timing-dataset",
   title: "Random Swing Timing Dataset Generator",
   description:
