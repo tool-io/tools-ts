@@ -5,7 +5,7 @@ export type Input = Readonly<{
   length: number;
   unicodeCodePointLengths: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "length", kind: "integer", label: "length" },
   {
@@ -14,7 +14,7 @@ const fields = [
     label: "unicodeCodePointLengths",
   },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.length, 0, 8192);
   H.check(
@@ -36,7 +36,22 @@ export const tool = createSimpleTool({
   description:
     "Budget possible zero-width progression positions from explicit UTF-16 length and code-point widths; not an actual pattern match count.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          codeUnitPositions: { type: "number" },
+          unicodePositions: { type: "number" },
+        },
+        required: ["codeUnitPositions", "unicodePositions"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
