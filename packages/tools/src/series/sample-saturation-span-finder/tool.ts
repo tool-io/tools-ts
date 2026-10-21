@@ -8,16 +8,13 @@ export type Input = Readonly<{
   lowerLimit: number;
   upperLimit: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "values", label: "Values", kind: "numberList" },
   { id: "lowerLimit", label: "Lower limit", kind: "number" },
   { id: "upperLimit", label: "Upper limit", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   orderedPair(i.lowerLimit, i.upperLimit, true);
   return {
     spans: runs(
@@ -29,7 +26,7 @@ const compute = (
       .map((r) => ({ start: r.start, end: r.end, side: r.value })),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -55,6 +52,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          spans: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                start: { type: "number" },
+                end: { type: "number" },
+                side: { type: "string" },
+              },
+              required: ["start", "end", "side"],
+            },
+          },
+        },
+        required: ["spans"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
