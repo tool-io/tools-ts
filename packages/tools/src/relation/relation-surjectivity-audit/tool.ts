@@ -6,13 +6,13 @@ export type Input = Readonly<{
   domain: readonly string[];
   codomain: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pairsJson", kind: "string", label: "pairsJson" },
   { id: "domain", kind: "stringList", label: "domain" },
   { id: "codomain", kind: "stringList", label: "codomain" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.relation(i.pairsJson, i.domain, i.codomain),
     witnesses = i.codomain.filter((b) => !p.some((r) => r[1] === b));
@@ -32,7 +32,22 @@ export const tool = createSimpleTool({
   description:
     "Audit finite relation coverage of the explicit codomain (relational surjectivity); functionality does not require totality.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          holds: { type: "boolean" },
+          witnesses: { type: "array", items: { type: "string" } },
+        },
+        required: ["holds", "witnesses"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
