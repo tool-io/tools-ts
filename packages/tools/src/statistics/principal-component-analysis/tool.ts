@@ -209,8 +209,17 @@ export const principalComponentAnalysisTool = createModelDefinition<
   PrincipalComponentAnalysisInput,
   PrincipalComponentAnalysisOutput
 >({
+  discovery: {
+    aliases: [
+      "Principal Component Analysis (PCA)",
+      "Principal Component Analysis Tool",
+    ],
+    collections: ["data", "learn"],
+    fields: ["statistics"],
+    keywords: [],
+  },
   id: "statistics/principal-component-analysis",
-  title: "Principal Component Analysis Tool",
+  title: "Principal Component Analysis (PCA)",
   description:
     "Compute centered, unstandardized sample-covariance PCA through the existing thin Jacobi SVD, with projected scores, sample explained variances and deterministic component signs; degenerate subspaces remain nonunique.",
   inputSchema,
