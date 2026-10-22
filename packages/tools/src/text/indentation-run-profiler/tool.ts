@@ -4,14 +4,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, lines } from "../batch53-shared.js";
 
 export type Input = Readonly<{ text: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "Text", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   return {
     lines: lines(i.text).map((r, j) => {
       const prefix = r.text.match(/^[ \t]*/)![0];
@@ -24,7 +21,7 @@ const compute = (
     }),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -50,6 +47,28 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          lines: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                line: { type: "number" },
+                prefix: { type: "string" },
+                spaces: { type: "number" },
+                tabs: { type: "number" },
+              },
+              required: ["line", "prefix", "spaces", "tabs"],
+            },
+          },
+        },
+        required: ["lines"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
