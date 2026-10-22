@@ -18,7 +18,7 @@ export type Input = Readonly<{
   startRightAffinity: boolean;
   endRightAffinity: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "sourceLength", label: "Source length", kind: "number" },
   { id: "start", label: "Start", kind: "number" },
@@ -27,10 +27,7 @@ const fields = [
   { id: "startRightAffinity", label: "Start right affinity", kind: "boolean" },
   { id: "endRightAffinity", label: "End right affinity", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.sourceLength, "length", 0, 8192);
   span(i.start, i.end, i.sourceLength);
   const a = edits(i.editsJson, i.sourceLength),
@@ -38,7 +35,7 @@ const compute = (
     end = throughEdits(i.end, a, i.endRightAffinity);
   return { start, end, orientationReversed: start > end };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -64,6 +61,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          start: { type: "number" },
+          end: { type: "number" },
+          orientationReversed: { type: "boolean" },
+        },
+        required: ["start", "end", "orientationReversed"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
