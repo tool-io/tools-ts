@@ -5,12 +5,12 @@ export type Input = Readonly<{
   values: readonly number[];
   groups: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "values", label: "values", kind: "numberList" },
   { id: "groups", label: "groups", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.values.length === i.groups.length);
   const centers = new Map(
@@ -37,12 +37,44 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Group Median Centered Values"],
+    collections: ["data", "learn"],
+    fields: ["statistics"],
+    keywords: [],
+  },
   id: "statistics/group-median-centered-values",
   title: "Group Median Centered Values",
   description:
     "Center each observation by its explicit group\u2019s sample median, retaining group-center evidence and original order; no between-group inference.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          centered: { type: "array", items: { type: "number" } },
+          centers: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                group: { type: "string" },
+                value: { type: "number" },
+              },
+              required: ["group", "value"],
+            },
+          },
+        },
+        required: ["centered", "centers"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
