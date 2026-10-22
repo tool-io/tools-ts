@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly callerRequiredDistanceUnit: string;
   readonly callerRequiredAngleUnit: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualDistanceUnitTags",
@@ -35,7 +35,7 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(input.actualDistanceUnitTags, input.actualAngleUnitTags, "shots");
   if (
     !input.callerRequiredDistanceUnit.trim() ||
@@ -54,7 +54,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -78,6 +78,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          distanceMismatchIndices: { type: "array", items: { type: "number" } },
+          angleMismatchIndices: { type: "array", items: { type: "number" } },
+        },
+        required: ["distanceMismatchIndices", "angleMismatchIndices"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
