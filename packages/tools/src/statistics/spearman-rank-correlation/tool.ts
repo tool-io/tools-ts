@@ -72,6 +72,12 @@ export const spearmanRankCorrelationTool = defineTool<
   SpearmanRankCorrelationInput,
   SpearmanRankCorrelationOutput
 >({
+  discovery: {
+    aliases: ["Spearman Rank Correlation Calculator"],
+    collections: ["data", "learn"],
+    fields: ["statistics"],
+    keywords: [],
+  },
   contractVersion: 1,
   description:
     "Calculate Spearman correlation using one-based average ranks and the existing Pearson calculation's numeric precision, returning both rank vectors without a p-value.",
