@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly additionalAge14PlusCount: number;
   readonly under14Count: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "firstAdultCount", label: "First adult count", kind: "number" },
   {
@@ -16,7 +16,7 @@ const fields = [
   },
   { id: "under14Count", label: "Under14 count", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.firstAdultCount, "firstadult", 1, 1);
   bounded(input.additionalAge14PlusCount, "older", 0, 100);
   bounded(input.under14Count, "younger", 0, 100);
@@ -25,7 +25,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       1 + 0.5 * input.additionalAge14PlusCount + 0.3 * input.under14Count,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -44,6 +44,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { modifiedOecdEquivalenceUnits: { type: "number" } },
+        required: ["modifiedOecdEquivalenceUnits"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
