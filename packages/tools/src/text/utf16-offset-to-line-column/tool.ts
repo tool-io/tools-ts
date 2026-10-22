@@ -4,15 +4,12 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, bounded, lines } from "../batch53-shared.js";
 
 export type Input = Readonly<{ text: string; offset: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "Text", kind: "string" },
   { id: "offset", label: "Offset", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.offset, "offset", 0, i.text.length);
   const a = lines(i.text);
   let j = a.reduce((last, r, j) => (r.start <= i.offset ? j : last), 0);
@@ -22,7 +19,7 @@ const compute = (
     insideCrLf: a[j].eol === "\r\n" && i.offset === a[j].end + 1,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -41,6 +38,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          line: { type: "number" },
+          column: { type: "number" },
+          insideCrLf: { type: "boolean" },
+        },
+        required: ["line", "column", "insideCrLf"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
