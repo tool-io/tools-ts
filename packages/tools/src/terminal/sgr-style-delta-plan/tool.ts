@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ fromJson: string; toJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "fromJson", label: "fromJson", kind: "string" },
   { id: "toJson", label: "toJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({
     parameters: H.sgrDelta(H.styleRecord(i.fromJson), H.styleRecord(i.toJson)),
@@ -23,12 +23,36 @@ export const example = {
   output: { result: { parameters: [22, 1] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Terminal SGR Style Delta Plan",
+      "terminal escape sequences",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["terminal", "terminal escape sequences", "software development"],
+    keywords: ["terminal escape sequences", "software development"],
+  },
   id: "terminal/sgr-style-delta-plan",
   title: "Terminal SGR Style Delta Plan",
   description:
     "Plan supported SGR style-group deltas between complete explicit records, resetting/reapplying shared intensity group as needed; not guaranteed minimal byte encoding.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          parameters: { type: "array", items: { type: "number" } },
+        },
+        required: ["parameters"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
