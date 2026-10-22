@@ -4,14 +4,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, lines } from "../batch53-shared.js";
 
 export type Input = Readonly<{ text: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "Text", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = lines(i.text);
   const keep = a.filter((r, j) => j === 0 || r.text !== a[j - 1].text);
   return {
@@ -19,7 +16,7 @@ const compute = (
     removedLineCount: a.length - keep.length,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -38,6 +35,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          text: { type: "string" },
+          removedLineCount: { type: "number" },
+        },
+        required: ["text", "removedLineCount"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
