@@ -9,7 +9,7 @@ export type Input = Readonly<{
   scale: number;
   angleDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "refX", kind: "number", label: "refX" },
   { id: "refY", kind: "number", label: "refY" },
@@ -18,7 +18,7 @@ const fields = [
   { id: "scale", kind: "number", label: "scale" },
   { id: "angleDegrees", kind: "number", label: "angleDegrees" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.positive(i.scale);
   const t = (i.angleDegrees * Math.PI) / 180,
@@ -46,7 +46,22 @@ export const tool = createSimpleTool({
   description:
     "Place a marker reference point at an anchor after uniform scale and rotation; coordinates are in the same caller-defined plane.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          translateX: { type: "number" },
+          translateY: { type: "number" },
+        },
+        required: ["translateX", "translateY"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
