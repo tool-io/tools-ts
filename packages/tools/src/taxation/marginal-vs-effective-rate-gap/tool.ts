@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly actualTotalTaxMinor: number;
   readonly actualMatchedIncomeMinor: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyApplicableMarginalRatePercent",
@@ -31,7 +31,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (!Number.isSafeInteger(input.actualTotalTaxMinor))
     simpleError("tax", "Signed safe-integer minor-unit net tax.");
   money(input.actualMatchedIncomeMinor, "income");
@@ -44,7 +44,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.independentlyApplicableMarginalRatePercent - e,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -72,6 +72,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedEffectiveRatePercent: { type: "number" },
+          signedMarginalEffectiveGapPercentagePoints: { type: "number" },
+        },
+        required: [
+          "observedEffectiveRatePercent",
+          "signedMarginalEffectiveGapPercentagePoints",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
