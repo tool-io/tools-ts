@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly callerApplicableBandUpperAspectRatios: readonly number[];
   readonly callerBandNames: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualWidthMeters", label: "Actual width meters", kind: "number" },
   { id: "actualHeightMeters", label: "Actual height meters", kind: "number" },
@@ -29,7 +29,7 @@ const fields = [
   },
   { id: "callerBandNames", label: "Caller band names", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.actualWidthMeters, "width");
   positive(input.actualHeightMeters, "height");
   const r = input.actualWidthMeters / input.actualHeightMeters;
@@ -43,7 +43,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -73,6 +73,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedWidthHeightRatio: { type: "number" },
+          matchedCallerAspectClasses: {
+            type: "array",
+            items: { type: "string" },
+          },
+        },
+        required: ["observedWidthHeightRatio", "matchedCallerAspectClasses"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
