@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ text: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "text", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const tokens = H.escapeTokens(i.text),
     spans: { start: number; end: number; style: H.SgrStyle }[] = [];
@@ -67,12 +67,71 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Terminal SGR Style Span Map",
+      "terminal escape sequences",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["terminal", "terminal escape sequences", "software development"],
+    keywords: ["terminal escape sequences", "software development"],
+  },
   id: "terminal/sgr-style-span-map",
   title: "Terminal SGR Style Span Map",
   description:
     "Map plain-text spans to replayed supported SGR style records with original UTF-16 offsets; any non-SGR escape or incomplete control rejects, no terminal execution.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          spans: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                start: { type: "number" },
+                end: { type: "number" },
+                style: {
+                  type: "object",
+                  additionalProperties: false,
+                  properties: {
+                    bold: { type: "boolean" },
+                    faint: { type: "boolean" },
+                    italic: { type: "boolean" },
+                    underline: { type: "boolean" },
+                    inverse: { type: "boolean" },
+                    strike: { type: "boolean" },
+                    foreground: { type: "string" },
+                    background: { type: "string" },
+                  },
+                  required: [
+                    "bold",
+                    "faint",
+                    "italic",
+                    "underline",
+                    "inverse",
+                    "strike",
+                    "foreground",
+                    "background",
+                  ],
+                },
+              },
+              required: ["start", "end", "style"],
+            },
+          },
+        },
+        required: ["spans"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
