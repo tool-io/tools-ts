@@ -4,7 +4,7 @@ import { validateInput, finish, sum, graph } from "../batch46-shared.js";
 export type Input = Readonly<{
   readonly observedAlterAdjacency: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "observedAlterAdjacency",
@@ -12,7 +12,7 @@ const fields = [
     kind: "matrix",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const n = graph(input.observedAlterAdjacency),
     ties = sum(input.observedAlterAdjacency.map((r) => sum(r))) / 2;
   return {
@@ -22,7 +22,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     conditionalEffectiveSize: n - (2 * ties) / n,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -54,6 +54,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedAlterCount: { type: "number" },
+          observedAlterTieCount: { type: "number" },
+          conditionalRedundancy: { type: "number" },
+          conditionalEffectiveSize: { type: "number" },
+        },
+        required: [
+          "observedAlterCount",
+          "observedAlterTieCount",
+          "conditionalRedundancy",
+          "conditionalEffectiveSize",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
