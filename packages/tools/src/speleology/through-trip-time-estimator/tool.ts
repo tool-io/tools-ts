@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly callerIndependentlyEstablishedSegmentMinutes: readonly number[];
   readonly callerActualQueueMinutes: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerIndependentlyEstablishedSegmentMinutes",
@@ -24,7 +24,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   [
     input.callerIndependentlyEstablishedSegmentMinutes,
     input.callerActualQueueMinutes,
@@ -38,7 +38,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       sum(input.callerActualQueueMinutes),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -60,6 +60,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalInventoryDurationMinutes: { type: "number" } },
+        required: ["conditionalInventoryDurationMinutes"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
