@@ -13,7 +13,7 @@ import {
 export type Input = Readonly<{
   readonly actualDailyTrainingLoad: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualDailyTrainingLoad",
@@ -21,10 +21,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   if (input.actualDailyTrainingLoad.length < 2)
     simpleError("days", "Atleasttwoactualdaysincludingrest zeros.");
   input.actualDailyTrainingLoad.forEach((v) => nonnegative(v, "load"));
@@ -38,10 +35,7 @@ const compute = (
     strain: (sum(input.actualDailyTrainingLoad) * m) / s,
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -67,6 +61,23 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          meanDailyLoad: { type: "number" },
+          populationDailyLoadSd: { type: "number" },
+          monotony: { type: "number" },
+          strain: { type: "number" },
+        },
+        required: [
+          "meanDailyLoad",
+          "populationDailyLoadSd",
+          "monotony",
+          "strain",
+        ],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
