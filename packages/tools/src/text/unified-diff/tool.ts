@@ -212,6 +212,12 @@ export const unifiedDiffTool = createModelDefinition<
   UnifiedDiffInput,
   UnifiedDiffOutput
 >({
+  discovery: {
+    aliases: ["Unified Diff Generator"],
+    collections: ["encode-decode"],
+    fields: ["text"],
+    keywords: [],
+  },
   id: "text/unified-diff",
   title: "Unified Diff Generator",
   description:
