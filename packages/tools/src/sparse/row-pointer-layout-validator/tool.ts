@@ -8,7 +8,7 @@ export type Input = Readonly<{
   major: number;
   minor: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pointers", label: "pointers", kind: "numberList" },
   { id: "indexes", label: "indexes", kind: "numberList" },
@@ -16,7 +16,7 @@ const fields = [
   { id: "major", label: "major", kind: "integer" },
   { id: "minor", label: "minor", kind: "integer" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.compressed(i.pointers, i.indexes, i.values, i.major, i.minor);
   return H.finish({
@@ -32,12 +32,38 @@ export const example = {
   output: { result: { valid: true, entries: 1, emptyMajorIndexes: [0] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Sparse Row Pointer Layout Validator",
+      "sparse matrices",
+      "linear algebra",
+    ],
+    collections: ["data", "learn"],
+    fields: ["sparse", "sparse matrices", "linear algebra"],
+    keywords: ["sparse matrices", "linear algebra"],
+  },
   id: "sparse/row-pointer-layout-validator",
   title: "Sparse Row Pointer Layout Validator",
   description:
     "Validate CSR pointer arity, monotonicity, final entry count and minor bounds; duplicates/unsorted minor indexes remain legal observations.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          valid: { type: "boolean" },
+          entries: { type: "number" },
+          emptyMajorIndexes: { type: "array", items: { type: "number" } },
+        },
+        required: ["valid", "entries", "emptyMajorIndexes"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
