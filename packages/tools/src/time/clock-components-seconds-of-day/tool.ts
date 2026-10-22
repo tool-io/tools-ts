@@ -2,13 +2,13 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ hour: number; minute: number; second: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "hour", kind: "integer", label: "hour" },
   { id: "minute", kind: "integer", label: "minute" },
   { id: "second", kind: "integer", label: "second" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.hour, 0, 23);
   H.int(i.minute, 0, 59);
@@ -25,7 +25,19 @@ export const tool = createSimpleTool({
   description:
     "Join validated ordinary civil clock components into seconds of day; leap-second 60 is not accepted.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { seconds: { type: "number" } },
+        required: ["seconds"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
