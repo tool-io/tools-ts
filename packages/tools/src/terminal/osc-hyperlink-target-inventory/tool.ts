@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ text: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "text", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const tokens = H.escapeTokens(i.text);
   return H.finish({
@@ -35,12 +35,49 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Terminal OSC Hyperlink Target Inventory",
+      "terminal escape sequences",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["terminal", "terminal escape sequences", "software development"],
+    keywords: ["terminal escape sequences", "software development"],
+  },
   id: "terminal/osc-hyperlink-target-inventory",
   title: "Terminal OSC Hyperlink Target Inventory",
   description:
     "Inventory explicit OSC 8 open/close hyperlink target observations from complete seven-bit OSC tokens; parameters/targets remain literal, no URL resolution or rendering.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          targets: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                start: { type: "number" },
+                end: { type: "number" },
+                parameters: { type: "string" },
+                target: { type: "string" },
+              },
+              required: ["start", "end", "parameters", "target"],
+            },
+          },
+        },
+        required: ["targets"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
