@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly callerRegionPrefix: string;
   readonly callerRequiredDigitWidth: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualDesignation", label: "Actual designation", kind: "string" },
   { id: "callerRegionPrefix", label: "Caller region prefix", kind: "string" },
@@ -21,7 +21,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.callerRequiredDigitWidth, "width", 1, 20);
   if (!/^[A-Za-z0-9]{1,32}$/.test(input.callerRegionPrefix))
     simpleError("prefix", "Actual bounded ASCII regionprefix.");
@@ -37,7 +37,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -60,6 +60,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { matchesCallerScheme: { type: "boolean" } },
+        required: ["matchesCallerScheme"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
