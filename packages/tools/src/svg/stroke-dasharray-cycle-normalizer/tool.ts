@@ -10,14 +10,11 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ dashArray: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "dashArray", label: "Dash array", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!i.dashArray.length) simpleError("dash", "Explicit nonempty dash list.");
   i.dashArray.forEach((v) => nonnegative(v, "dash"));
   const normalized =
@@ -27,7 +24,7 @@ const compute = (
     cycleLength = sum(normalized);
   return { normalized, cycleLength, solidBecauseAllZero: cycleLength === 0 };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -52,6 +49,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          normalized: { type: "array", items: { type: "number" } },
+          cycleLength: { type: "number" },
+          solidBecauseAllZero: { type: "boolean" },
+        },
+        required: ["normalized", "cycleLength", "solidBecauseAllZero"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
