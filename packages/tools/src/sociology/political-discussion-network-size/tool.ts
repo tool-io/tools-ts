@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly egoId: string;
   readonly independentlyObservedDiscussionPartnerIds: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "egoId", label: "Ego id", kind: "string" },
   {
@@ -14,7 +14,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     !input.egoId.trim() ||
     input.independentlyObservedDiscussionPartnerIds.some(
@@ -28,7 +28,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     distinctObservedDiscussionPartnerIds: ids,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -55,6 +55,22 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          distinctObservedDiscussionPartnerCount: { type: "number" },
+          distinctObservedDiscussionPartnerIds: {
+            type: "array",
+            items: { type: "string" },
+          },
+        },
+        required: [
+          "distinctObservedDiscussionPartnerCount",
+          "distinctObservedDiscussionPartnerIds",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
