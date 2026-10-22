@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly actualGearMassesKg: readonly number[];
   readonly itemEvidenceKnownFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualGearItemIds",
@@ -24,7 +24,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const r = inventory(
     input.actualGearItemIds,
     input.actualGearMassesKg,
@@ -36,7 +36,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     unknownIds: r.unknownIds,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -59,6 +59,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          knownTotal: { type: "number" },
+          knownIds: { type: "array", items: { type: "string" } },
+          unknownIds: { type: "array", items: { type: "string" } },
+        },
+        required: ["knownTotal", "knownIds", "unknownIds"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
