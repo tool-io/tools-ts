@@ -5,12 +5,12 @@ export type Input = Readonly<{
   points: readonly (readonly number[])[];
   close: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "points", kind: "matrix", label: "points" },
   { id: "close", kind: "boolean", label: "close" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.points.every((r) => r.length === 2));
   const p = i.points.map((r) => [...r]);
@@ -45,7 +45,25 @@ export const tool = createSimpleTool({
   description:
     "Add or remove one exact repeated endpoint under an explicit polygon closure policy; no geometric simplification.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          points: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          initiallyClosed: { type: "boolean" },
+        },
+        required: ["points", "initiallyClosed"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
