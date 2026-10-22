@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly actualCodepointLimit: number;
   readonly actualSuffix: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualText", label: "Actual text", kind: "string" },
   {
@@ -22,10 +22,7 @@ const fields = [
   },
   { id: "actualSuffix", label: "Actual suffix", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   bounded(input.actualCodepointLimit, "limit", 0, 1000000);
   const a = Array.from(input.actualText),
     s = Array.from(input.actualSuffix);
@@ -40,10 +37,7 @@ const compute = (
     wasTruncated: true,
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -68,6 +62,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          truncatedText: { type: "string" },
+          wasTruncated: { type: "boolean" },
+        },
+        required: ["truncatedText", "wasTruncated"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
