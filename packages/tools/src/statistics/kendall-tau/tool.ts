@@ -100,6 +100,12 @@ export const kendallTauExample = {
   },
 } satisfies ToolExample<KendallTauInput, KendallTauOutput>;
 export const kendallTauTool = defineTool<KendallTauInput, KendallTauOutput>({
+  discovery: {
+    aliases: ["Kendall Tau-b Rank Correlation Calculator"],
+    collections: ["data", "learn"],
+    fields: ["statistics"],
+    keywords: [],
+  },
   contractVersion: 1,
   description:
     "Calculate tie-adjusted Kendall tau-b and disjoint concordant, discordant, and tied pair counts, without a p-value approximation.",
