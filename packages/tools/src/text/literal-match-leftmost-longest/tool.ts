@@ -4,15 +4,12 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, simpleError } from "../batch53-shared.js";
 
 export type Input = Readonly<{ text: string; needles: readonly string[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "Text", kind: "string" },
   { id: "needles", label: "Needles", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!i.needles.length || i.needles.some((v) => !v.length))
     simpleError("needles", "Nonempty literal alternatives.");
   const selected: { offset: number; needleIndex: number; text: string }[] = [];
@@ -28,7 +25,7 @@ const compute = (
   }
   return { selected };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -55,6 +52,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          selected: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                offset: { type: "number" },
+                needleIndex: { type: "number" },
+                text: { type: "string" },
+              },
+              required: ["offset", "needleIndex", "text"],
+            },
+          },
+        },
+        required: ["selected"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
