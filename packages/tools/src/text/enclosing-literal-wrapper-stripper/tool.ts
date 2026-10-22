@@ -4,16 +4,13 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, simpleError } from "../batch53-shared.js";
 
 export type Input = Readonly<{ text: string; prefix: string; suffix: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "Text", kind: "string" },
   { id: "prefix", label: "Prefix", kind: "string" },
   { id: "suffix", label: "Suffix", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!i.prefix || !i.suffix) simpleError("wrapper", "Nonempty wrapper sides.");
   const stripped =
     i.text.length >= i.prefix.length + i.suffix.length &&
@@ -26,7 +23,7 @@ const compute = (
       : i.text,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -45,6 +42,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { stripped: { type: "boolean" }, text: { type: "string" } },
+        required: ["stripped", "text"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
