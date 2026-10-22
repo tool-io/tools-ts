@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ columnJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "columnJson", kind: "string", label: "columnJson" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const v = H.arr(i.columnJson);
   const tags = v.map((x) =>
@@ -40,7 +40,33 @@ export const tool = createSimpleTool({
   description:
     "Profile actual JSON value types in a complete supplied column; no coercion, inferred dates or sampling bias.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          tags: { type: "array", items: { type: "string" } },
+          counts: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                tag: { type: "string" },
+                count: { type: "number" },
+              },
+              required: ["tag", "count"],
+            },
+          },
+        },
+        required: ["tags", "counts"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
