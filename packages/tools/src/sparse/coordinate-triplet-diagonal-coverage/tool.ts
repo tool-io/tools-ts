@@ -6,13 +6,13 @@ export type Input = Readonly<{
   rows: number;
   columns: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "tripletsJson", label: "tripletsJson", kind: "string" },
   { id: "rows", label: "rows", kind: "integer" },
   { id: "columns", label: "columns", kind: "integer" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.triplets(i.tripletsJson, i.rows, i.columns);
   return H.finish({
@@ -35,12 +35,37 @@ export const example = {
   output: { result: { missing: [0, 1], explicitZeroIndexes: [] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Sparse Diagonal Coverage Check",
+      "sparse matrices",
+      "linear algebra",
+    ],
+    collections: ["data", "learn"],
+    fields: ["sparse", "sparse matrices", "linear algebra"],
+    keywords: ["sparse matrices", "linear algebra"],
+  },
   id: "sparse/coordinate-triplet-diagonal-coverage",
   title: "Sparse Diagonal Coverage Check",
   description:
     "Audit COO diagonal observation coverage separately from explicitly observed zero diagonal values; no assumption of implicit zeros as supplied evidence.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          missing: { type: "array", items: { type: "number" } },
+          explicitZeroIndexes: { type: "array", items: { type: "number" } },
+        },
+        required: ["missing", "explicitZeroIndexes"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
