@@ -146,6 +146,12 @@ export const chiSquareIndependenceTool = defineTool<
   ChiSquareIndependenceInput,
   ChiSquareIndependenceOutput
 >({
+  discovery: {
+    aliases: ["Chi-Square Independence Statistic Calculator"],
+    collections: ["data", "learn"],
+    fields: ["statistics"],
+    keywords: [],
+  },
   contractVersion: 1,
   description:
     "Calculate Pearson's uncorrected independence statistic and expected counts for an RxC contingency table, without a p-value or small-sample validity claim.",
