@@ -4,17 +4,14 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, moveLineParse } from "../batch53-shared.js";
 
 export type Input = Readonly<{ pathData: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pathData", label: "Path data", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   return { commands: moveLineParse(i.pathData) };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -41,6 +38,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          commands: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                command: { type: "string" },
+                x: { type: "number" },
+                y: { type: "number" },
+              },
+              required: ["command", "x", "y"],
+            },
+          },
+        },
+        required: ["commands"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
