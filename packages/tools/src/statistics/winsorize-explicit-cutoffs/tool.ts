@@ -6,13 +6,13 @@ export type Input = Readonly<{
   minimum: number;
   maximum: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "values", label: "values", kind: "numberList" },
   { id: "minimum", label: "minimum", kind: "number" },
   { id: "maximum", label: "maximum", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.maximum >= i.minimum);
   return H.finish({
@@ -27,12 +27,33 @@ export const example = {
   output: { result: { values: [1, 2, 5], changed: [0, 2] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Winsorize Explicit Cutoffs"],
+    collections: ["data", "learn"],
+    fields: ["statistics"],
+    keywords: [],
+  },
   id: "statistics/winsorize-explicit-cutoffs",
   title: "Winsorize Explicit Cutoffs",
   description:
     "Winsorize finite observations at explicit inclusive numeric cutoffs, retaining original changed indexes; does not estimate population tail cutoffs.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          values: { type: "array", items: { type: "number" } },
+          changed: { type: "array", items: { type: "number" } },
+        },
+        required: ["values", "changed"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
