@@ -10,14 +10,11 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ points: readonly (readonly number[])[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "points", label: "Points", kind: "matrix" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const lengths = polylineLengths(i.points);
   let offset = 0;
   return {
@@ -29,7 +26,7 @@ const compute = (
     totalLength: sum(lengths),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -62,6 +59,29 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          segments: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                length: { type: "number" },
+                startDistance: { type: "number" },
+                endDistance: { type: "number" },
+              },
+              required: ["index", "length", "startDistance", "endDistance"],
+            },
+          },
+          totalLength: { type: "number" },
+        },
+        required: ["segments", "totalLength"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
