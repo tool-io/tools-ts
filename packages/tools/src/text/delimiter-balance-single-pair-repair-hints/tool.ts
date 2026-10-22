@@ -4,16 +4,13 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, simpleError } from "../batch53-shared.js";
 
 export type Input = Readonly<{ text: string; opener: string; closer: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "Text", kind: "string" },
   { id: "opener", label: "Opener", kind: "string" },
   { id: "closer", label: "Closer", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (i.opener.length !== 1 || i.closer.length !== 1 || i.opener === i.closer)
     simpleError("pair", "Distinct one-unit delimiters.");
   const stack: number[] = [],
@@ -31,7 +28,7 @@ const compute = (
     minimumInsertions: stack.length + extra.length,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -56,6 +53,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          unmatchedOpenOffsets: { type: "array", items: { type: "number" } },
+          unmatchedCloseOffsets: { type: "array", items: { type: "number" } },
+          minimumInsertions: { type: "number" },
+        },
+        required: [
+          "unmatchedOpenOffsets",
+          "unmatchedCloseOffsets",
+          "minimumInsertions",
+        ],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
