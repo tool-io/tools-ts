@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualEventRainfallMeters: number;
   readonly callerIndependentRunoffFraction: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualCatchmentAreaSquareMeters",
@@ -29,7 +29,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.actualCatchmentAreaSquareMeters, "area");
   nonnegative(input.actualEventRainfallMeters, "rain");
   fraction(input.callerIndependentRunoffFraction, "runoff");
@@ -40,7 +40,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.callerIndependentRunoffFraction,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -63,6 +63,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalEventRunoffCapturedCubicMeters: { type: "number" },
+        },
+        required: ["conditionalEventRunoffCapturedCubicMeters"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
