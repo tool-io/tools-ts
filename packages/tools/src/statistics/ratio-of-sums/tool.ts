@@ -5,12 +5,12 @@ export type Input = Readonly<{
   numerators: readonly number[];
   denominators: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "numerators", label: "numerators", kind: "numberList" },
   { id: "denominators", label: "denominators", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.numerators.length === i.denominators.length);
   const numerator = i.numerators.reduce((s, x) => s + x, 0),
@@ -26,12 +26,34 @@ export const example = {
   output: { result: { ratio: 1.5, numerator: 6, denominator: 4 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Ratio Of Sums"],
+    collections: ["data", "learn"],
+    fields: ["statistics"],
+    keywords: [],
+  },
   id: "statistics/ratio-of-sums",
-  title: "Ratio Of Sums",
+  title: "Ratio of Sums",
   description:
     "Compute ratio of paired sums, retaining signed denominator totals and null at zero; differs from the mean of individual ratios.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          ratio: { anyOf: [{ type: "number" }, { type: "null" }] },
+          numerator: { type: "number" },
+          denominator: { type: "number" },
+        },
+        required: ["ratio", "numerator", "denominator"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
