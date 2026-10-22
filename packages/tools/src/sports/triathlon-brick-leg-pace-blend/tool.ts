@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly actualLegElapsedSeconds: readonly number[];
   readonly actualTransitionSeconds: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualLegDistancesKm",
@@ -32,10 +32,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   aligned(input.actualLegDistancesKm, input.actualLegElapsedSeconds, "legs");
   input.actualLegDistancesKm.forEach((v) => positive(v, "distance"));
   input.actualLegElapsedSeconds.forEach((v) => nonnegative(v, "time"));
@@ -47,10 +44,7 @@ const compute = (
       sum(input.actualLegElapsedSeconds) / sum(input.actualLegDistancesKm),
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -78,6 +72,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          totalEventSeconds: { type: "number" },
+          transitionExcludedBlendedSecondsPerKm: { type: "number" },
+        },
+        required: [
+          "totalEventSeconds",
+          "transitionExcludedBlendedSecondsPerKm",
+        ],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
