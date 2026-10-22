@@ -8,16 +8,13 @@ export type Input = Readonly<{
   startMarker: string;
   endMarker: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "Text", kind: "string" },
   { id: "startMarker", label: "Start marker", kind: "string" },
   { id: "endMarker", label: "End marker", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!i.startMarker || !i.endMarker)
     simpleError("markers", "Nonempty markers.");
   const extracted: { start: number; end: number; text: string }[] = [];
@@ -37,7 +34,7 @@ const compute = (
   }
   return { extracted, unclosedStart };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -64,6 +61,28 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          extracted: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                start: { type: "number" },
+                end: { type: "number" },
+                text: { type: "string" },
+              },
+              required: ["start", "end", "text"],
+            },
+          },
+          unclosedStart: { anyOf: [{ type: "number" }, { type: "null" }] },
+        },
+        required: ["extracted", "unclosedStart"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
