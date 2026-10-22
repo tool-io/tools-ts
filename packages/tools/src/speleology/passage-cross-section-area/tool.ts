@@ -4,7 +4,7 @@ import { validateInput, finish, polygonArea } from "../batch48-shared.js";
 export type Input = Readonly<{
   readonly actualOrderedPassageBoundaryXyMeters: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualOrderedPassageBoundaryXyMeters",
@@ -12,14 +12,14 @@ const fields = [
     kind: "matrix",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   return {
     observedPolygonalPassageAreaSquareMeters: polygonArea(
       input.actualOrderedPassageBoundaryXyMeters,
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -45,6 +45,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedPolygonalPassageAreaSquareMeters: { type: "number" },
+        },
+        required: ["observedPolygonalPassageAreaSquareMeters"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
