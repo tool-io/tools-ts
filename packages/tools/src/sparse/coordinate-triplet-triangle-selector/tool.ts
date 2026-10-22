@@ -8,7 +8,7 @@ export type Input = Readonly<{
   upper: boolean;
   includeDiagonal: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "tripletsJson", label: "tripletsJson", kind: "string" },
   { id: "rows", label: "rows", kind: "integer" },
@@ -16,7 +16,7 @@ const fields = [
   { id: "upper", label: "upper", kind: "boolean" },
   { id: "includeDiagonal", label: "includeDiagonal", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.triplets(i.tripletsJson, i.rows, i.columns);
   return H.finish({
@@ -50,12 +50,48 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Sparse Coordinate Triangle Selector",
+      "sparse matrices",
+      "linear algebra",
+    ],
+    collections: ["data", "learn"],
+    fields: ["sparse", "sparse matrices", "linear algebra"],
+    keywords: ["sparse matrices", "linear algebra"],
+  },
   id: "sparse/coordinate-triplet-triangle-selector",
   title: "Sparse Coordinate Triangle Selector",
   description:
     "Select explicit upper or lower COO triangular coordinate observations with a caller diagonal policy; no implied symmetric values.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          triplets: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                row: { type: "number" },
+                column: { type: "number" },
+                value: { type: "number" },
+              },
+              required: ["row", "column", "value"],
+            },
+          },
+        },
+        required: ["triplets"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
