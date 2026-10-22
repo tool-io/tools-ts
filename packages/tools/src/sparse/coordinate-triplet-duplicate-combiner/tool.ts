@@ -6,13 +6,13 @@ export type Input = Readonly<{
   rows: number;
   columns: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "tripletsJson", label: "tripletsJson", kind: "string" },
   { id: "rows", label: "rows", kind: "integer" },
   { id: "columns", label: "columns", kind: "integer" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.triplets(i.tripletsJson, i.rows, i.columns);
   return H.finish({ triplets: H.combineTriplets(r) });
@@ -34,12 +34,48 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Sparse Coordinate Duplicate Combiner",
+      "sparse matrices",
+      "linear algebra",
+    ],
+    collections: ["data", "learn"],
+    fields: ["sparse", "sparse matrices", "linear algebra"],
+    keywords: ["sparse matrices", "linear algebra"],
+  },
   id: "sparse/coordinate-triplet-duplicate-combiner",
   title: "Sparse Coordinate Duplicate Combiner",
   description:
     "Combine duplicate COO coordinate occurrences by addition in first-coordinate appearance order, retaining explicit summed zeros; no sparsity pruning.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          triplets: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                row: { type: "number" },
+                column: { type: "number" },
+                value: { type: "number" },
+              },
+              required: ["row", "column", "value"],
+            },
+          },
+        },
+        required: ["triplets"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
