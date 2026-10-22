@@ -106,6 +106,12 @@ export const kernelDensityEstimatorTool = createModelDefinition<
   KernelDensityEstimatorInput,
   KernelDensityEstimatorOutput
 >({
+  discovery: {
+    aliases: ["Gaussian Kernel Density Estimator"],
+    collections: ["data", "learn"],
+    fields: ["statistics"],
+    keywords: [],
+  },
   id: "statistics/kernel-density-estimator",
   title: "Gaussian Kernel Density Estimator",
   description:
