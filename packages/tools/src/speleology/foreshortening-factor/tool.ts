@@ -2,7 +2,7 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, simpleError } from "../batch48-shared.js";
 export type Input = Readonly<{ readonly actualInclinationDegrees: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualInclinationDegrees",
@@ -10,7 +10,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (Math.abs(input.actualInclinationDegrees) > 90)
     simpleError("angle", "Actual inclination±90.");
   return {
@@ -19,7 +19,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -38,6 +38,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalPlanToSlopeForeshorteningFactor: { type: "number" },
+        },
+        required: ["conditionalPlanToSlopeForeshorteningFactor"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
