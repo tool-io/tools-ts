@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, moveLineParse } from "../batch53-shared.js";
 export type Input = Readonly<{ pathData: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "pathData", label: "Move/line path data", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   let x = 0,
     y = 0;
@@ -38,7 +38,31 @@ export const tool = createSimpleTool({
     "Accumulate the bounded SVG M/m/L/l branch into absolute move/line coordinates, preserving subpath starts and implicit lineto expansion. Reject curves, closepath and incomplete coordinate pairs; not a complete SVG path renderer.",
   inputs: fields,
   outputs: [
-    { id: "result", label: "Absolute move/line commands", kind: "object" },
+    {
+      id: "result",
+      label: "Absolute move/line commands",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          absoluteCommands: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                command: { type: "string" },
+                x: { type: "number" },
+                y: { type: "number" },
+              },
+              required: ["command", "x", "y"],
+            },
+          },
+        },
+        required: ["absoluteCommands"],
+      },
+    },
   ],
   calculate: (v) => calculate(v as unknown as Input),
 });
