@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly actualIndependentlyAssessedExposedRisk: number;
   readonly actualMatchedUnexposedRisk: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualIndependentlyAssessedExposedRisk",
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   fraction(input.actualIndependentlyAssessedExposedRisk, "exposed-risk");
   positive(input.actualIndependentlyAssessedExposedRisk, "exposed-risk");
   fraction(input.actualMatchedUnexposedRisk, "unexposed-risk");
@@ -36,7 +36,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       d / input.actualIndependentlyAssessedExposedRisk,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -63,6 +63,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedObservedAttributableRisk: { type: "number" },
+          conditionalExposedAttributableFraction: { type: "number" },
+        },
+        required: [
+          "signedObservedAttributableRisk",
+          "conditionalExposedAttributableFraction",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
