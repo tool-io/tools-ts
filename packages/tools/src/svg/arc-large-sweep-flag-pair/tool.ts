@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ largeArc: number; sweep: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "largeArc", kind: "integer", label: "largeArc" },
   { id: "sweep", kind: "integer", label: "sweep" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.largeArc, 0, 1);
   H.int(i.sweep, 0, 1);
@@ -27,7 +27,23 @@ export const tool = createSimpleTool({
   description:
     "Validate explicit SVG arc flag integers 0 or 1 and expose their boolean meanings; does not construct an ellipse.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          largeArc: { type: "boolean" },
+          sweep: { type: "boolean" },
+          flags: { type: "string" },
+        },
+        required: ["largeArc", "sweep", "flags"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
