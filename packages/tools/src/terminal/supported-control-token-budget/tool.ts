@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ text: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "text", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const tokens = H.escapeTokens(i.text);
   return H.finish({
@@ -30,12 +30,51 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Terminal Supported Control Token Budget",
+      "terminal escape sequences",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["terminal", "terminal escape sequences", "software development"],
+    keywords: ["terminal escape sequences", "software development"],
+  },
   id: "terminal/supported-control-token-budget",
   title: "Terminal Supported Control Token Budget",
   description:
     "Budget UTF-8 bytes in detected seven-bit ESC/CSI/OSC control tokens with lexical completeness evidence; not a complete supported-terminal command or display-width validator.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          tokens: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                start: { type: "number" },
+                end: { type: "number" },
+                type: { type: "string" },
+                complete: { type: "boolean" },
+                bytes: { type: "number" },
+              },
+              required: ["start", "end", "type", "complete", "bytes"],
+            },
+          },
+          controlBytes: { type: "number" },
+        },
+        required: ["tokens", "controlBytes"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
