@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ direction: string; count: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "direction", label: "direction", kind: "string" },
   { id: "count", label: "count", kind: "integer" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.count, 1, 1e6);
   const finals: Record<string, string> = {
@@ -24,12 +24,34 @@ export const example = {
   output: { result: { token: "\u001b[2D" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Terminal CSI Cursor Move Formatter",
+      "terminal escape sequences",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["terminal", "terminal escape sequences", "software development"],
+    keywords: ["terminal escape sequences", "software development"],
+  },
   id: "terminal/csi-cursor-move-formatter",
   title: "Terminal CSI Cursor Move Formatter",
   description:
     "Format a supported relative CSI cursor movement token with positive explicit count; directions are up/down/right/left only, no terminal execution.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { token: { type: "string" } },
+        required: ["token"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
