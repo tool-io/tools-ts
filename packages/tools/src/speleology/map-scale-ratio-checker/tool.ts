@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly actualRepresentedScaleBarGroundMeters: number;
   readonly callerIntendedScaleDenominator: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualPrintedScaleBarLengthMm",
@@ -24,7 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.actualPrintedScaleBarLengthMm, "print");
   positive(input.actualRepresentedScaleBarGroundMeters, "ground");
   positive(input.callerIntendedScaleDenominator, "scale");
@@ -36,7 +36,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     signedScaleDenominatorDiscrepancy: r - input.callerIntendedScaleDenominator,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -64,6 +64,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedPrintedScaleDenominator: { type: "number" },
+          signedScaleDenominatorDiscrepancy: { type: "number" },
+        },
+        required: [
+          "observedPrintedScaleDenominator",
+          "signedScaleDenominatorDiscrepancy",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
