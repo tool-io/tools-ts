@@ -10,7 +10,7 @@ export type Input = Readonly<{
   targetRows: number;
   targetColumns: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "tripletsJson", label: "tripletsJson", kind: "string" },
   { id: "rows", label: "rows", kind: "integer" },
@@ -20,7 +20,7 @@ const fields = [
   { id: "targetRows", label: "targetRows", kind: "integer" },
   { id: "targetColumns", label: "targetColumns", kind: "integer" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const r = H.triplets(i.tripletsJson, i.rows, i.columns);
   H.int(i.targetRows, 0, 128);
@@ -59,12 +59,48 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Sparse Coordinate Axis Offset",
+      "sparse matrices",
+      "linear algebra",
+    ],
+    collections: ["data", "learn"],
+    fields: ["sparse", "sparse matrices", "linear algebra"],
+    keywords: ["sparse matrices", "linear algebra"],
+  },
   id: "sparse/coordinate-triplet-axis-offset",
   title: "Sparse Coordinate Axis Offset",
   description:
     "Translate bounded COO coordinates into explicitly supplied target dimensions; out-of-target entries are rejected rather than clipped.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          triplets: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                value: { type: "number" },
+                row: { type: "number" },
+                column: { type: "number" },
+              },
+              required: ["value", "row", "column"],
+            },
+          },
+        },
+        required: ["triplets"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
