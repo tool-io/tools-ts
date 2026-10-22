@@ -2,13 +2,13 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ text: string; period: number; origin: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", kind: "string", label: "text" },
   { id: "period", kind: "integer", label: "period" },
   { id: "origin", kind: "integer", label: "origin" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.text.length <= 128);
   H.int(i.period, 1, 128);
@@ -31,7 +31,22 @@ export const tool = createSimpleTool({
   description:
     "Audit exact code-unit run boundaries against an explicit periodic grid and origin; text length itself is not an additional run boundary.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          boundaries: { type: "array", items: { type: "number" } },
+          unaligned: { type: "array", items: { type: "number" } },
+        },
+        required: ["boundaries", "unaligned"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
