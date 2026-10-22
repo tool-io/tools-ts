@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualSingleTicketNetYieldMinor: number;
   readonly actualMatchedSubscriptionPerPerformanceYieldMinor: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualSingleTicketNetYieldMinor",
@@ -24,7 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   money(input.actualSingleTicketNetYieldMinor, "single");
   positive(input.actualSingleTicketNetYieldMinor, "single");
   money(
@@ -43,7 +43,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.actualSingleTicketNetYieldMinor,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -70,6 +70,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedSingleMinusSubscriptionYieldMinor: { type: "number" },
+          observedSubscriptionDiscountPercent: { type: "number" },
+        },
+        required: [
+          "signedSingleMinusSubscriptionYieldMinor",
+          "observedSubscriptionDiscountPercent",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
