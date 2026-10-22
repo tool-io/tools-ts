@@ -8,22 +8,19 @@ export type Input = Readonly<{
   newline: string;
   enabled: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "Text", kind: "string" },
   { id: "newline", label: "Newline", kind: "string" },
   { id: "enabled", label: "Enabled", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!["\n", "\r", "\r\n"].includes(i.newline))
     simpleError("newline", "CR, LF or CRLF.");
   const base = i.text.replace(/(?:\r\n|\r|\n)+$/, "");
   return { text: base + (i.enabled ? i.newline : "") };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -42,6 +39,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { text: { type: "string" } },
+        required: ["text"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
