@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly actualIntervalDosesMgPerKg: readonly number[];
   readonly actualIntervalDurationsDays: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualIntervalDosesMgPerKg",
@@ -25,7 +25,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.actualIntervalDosesMgPerKg,
     input.actualIntervalDurationsDays,
@@ -44,7 +44,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       t / positive(sum(input.actualIntervalDurationsDays), "duration"),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -71,6 +71,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedCumulativeDoseMgPerKg: { type: "number" },
+          observedTimeWeightedDailyDoseMgPerKg: { type: "number" },
+        },
+        required: [
+          "observedCumulativeDoseMgPerKg",
+          "observedTimeWeightedDailyDoseMgPerKg",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
