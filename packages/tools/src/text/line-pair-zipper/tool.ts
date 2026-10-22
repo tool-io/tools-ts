@@ -4,26 +4,26 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, lines } from "../batch53-shared.js";
 
 export type Input = Readonly<{ left: string; right: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", label: "Left", kind: "string" },
   { id: "right", label: "Right", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = lines(i.left),
     b = lines(i.right);
   return {
-    pairs: Array.from({ length: Math.max(a.length, b.length) }, (_, j) => ({
-      line: j + 1,
-      left: a[j]?.text ?? null,
-      right: b[j]?.text ?? null,
-    })),
+    pairs: Array.from(
+      { length: Math.max(a.length, b.length) },
+      (_, j): { line: number; left: string | null; right: string | null } => ({
+        line: j + 1,
+        left: a[j]?.text ?? null,
+        right: b[j]?.text ?? null,
+      }),
+    ),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -49,6 +49,27 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          pairs: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                line: { type: "number" },
+                left: { anyOf: [{ type: "string" }, { type: "null" }] },
+                right: { anyOf: [{ type: "string" }, { type: "null" }] },
+              },
+              required: ["line", "left", "right"],
+            },
+          },
+        },
+        required: ["pairs"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
