@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly actualTapeTemperatureKelvin: number;
   readonly callerTapeCalibrationTemperatureKelvin: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualRecordedTapeLengthMeters",
@@ -36,7 +36,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.actualRecordedTapeLengthMeters, "length");
   nonnegative(input.callerVerifiedTapeExpansionPerKelvin, "alpha");
   positive(input.actualTapeTemperatureKelvin, "kelvin");
@@ -54,7 +54,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     signedTemperatureCorrectionMeters: c,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -83,6 +83,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalTemperatureCorrectedDistanceMeters: { type: "number" },
+          signedTemperatureCorrectionMeters: { type: "number" },
+        },
+        required: [
+          "conditionalTemperatureCorrectedDistanceMeters",
+          "signedTemperatureCorrectionMeters",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
