@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ left: string; right: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "left", kind: "string", label: "left" },
   { id: "right", kind: "string", label: "right" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({
     offsets: H.rotations(i.left).flatMap((s, j) => (s === i.right ? [j] : [])),
@@ -23,7 +23,19 @@ export const tool = createSimpleTool({
   description:
     "Return all cyclic left-rotation offsets mapping one UTF-16 string to another; all tied witnesses are retained, including periodic strings.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { offsets: { type: "array", items: { type: "number" } } },
+        required: ["offsets"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
