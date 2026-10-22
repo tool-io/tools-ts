@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly actualMatchedDischargesVolumePerSecond: readonly number[];
   readonly actualInjectedTracerMass: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualObservedElapsedSeconds",
@@ -37,7 +37,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.actualObservedElapsedSeconds,
     input.actualMatchedDischargesVolumePerSecond,
@@ -62,7 +62,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       (100 * m) / input.actualInjectedTracerMass,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -91,6 +91,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedIntegratedRecoveredTracerMass: { type: "number" },
+          conditionalObservedRecoveryPercent: { type: "number" },
+        },
+        required: [
+          "observedIntegratedRecoveredTracerMass",
+          "conditionalObservedRecoveryPercent",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
