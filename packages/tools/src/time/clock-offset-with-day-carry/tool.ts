@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ seconds: number; offset: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "seconds", kind: "integer", label: "seconds" },
   { id: "offset", kind: "integer", label: "offset" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.clock(i.seconds);
   H.int(i.offset, -1e9, 1e9);
@@ -27,7 +27,22 @@ export const tool = createSimpleTool({
   description:
     "Offset civil seconds of day and retain signed day carry; no time-zone transitions or date interpretation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          seconds: { type: "number" },
+          dayCarry: { type: "number" },
+        },
+        required: ["seconds", "dayCarry"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
