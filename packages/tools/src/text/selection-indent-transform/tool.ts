@@ -15,17 +15,14 @@ export type Input = Readonly<{
   end: number;
   indent: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "Text", kind: "string" },
   { id: "start", label: "Start", kind: "number" },
   { id: "end", label: "End", kind: "number" },
   { id: "indent", label: "Indent", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   span(i.start, i.end, i.text.length);
   if (!/^[ \t]+$(?![\s\S])/.test(i.indent))
     simpleError("indent", "Nonempty literal spaces/tabs.");
@@ -44,7 +41,7 @@ const compute = (
     .join("");
   return { text: output, changedLines: changed };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -63,6 +60,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          text: { type: "string" },
+          changedLines: { type: "array", items: { type: "number" } },
+        },
+        required: ["text", "changedLines"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
