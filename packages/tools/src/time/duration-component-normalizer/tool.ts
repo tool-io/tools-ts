@@ -7,14 +7,14 @@ export type Input = Readonly<{
   minutes: number;
   seconds: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "days", kind: "integer", label: "days" },
   { id: "hours", kind: "integer", label: "hours" },
   { id: "minutes", kind: "integer", label: "minutes" },
   { id: "seconds", kind: "integer", label: "seconds" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   for (const v of [i.days, i.hours, i.minutes, i.seconds]) H.int(v, -1e9, 1e9);
   const t = i.days * 86400 + i.hours * 3600 + i.minutes * 60 + i.seconds,
@@ -37,7 +37,24 @@ export const tool = createSimpleTool({
   description:
     "Normalize signed fixed-day duration components by floor division into a signed day count plus nonnegative subday components.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          days: { type: "number" },
+          hours: { type: "number" },
+          minutes: { type: "number" },
+          seconds: { type: "number" },
+        },
+        required: ["days", "hours", "minutes", "seconds"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
