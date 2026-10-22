@@ -8,16 +8,13 @@ export type Input = Readonly<{
   needle: string;
   replacement: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "Text", kind: "string" },
   { id: "needle", label: "Needle", kind: "string" },
   { id: "replacement", label: "Replacement", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = occurrences(i.text, i.needle, false);
   let delta = 0;
   return {
@@ -33,7 +30,7 @@ const compute = (
     }),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -59,6 +56,33 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          ranges: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                sourceStart: { type: "number" },
+                sourceEnd: { type: "number" },
+                targetStart: { type: "number" },
+                targetEnd: { type: "number" },
+              },
+              required: [
+                "sourceStart",
+                "sourceEnd",
+                "targetStart",
+                "targetEnd",
+              ],
+            },
+          },
+        },
+        required: ["ranges"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
