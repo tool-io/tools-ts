@@ -8,16 +8,13 @@ export type Input = Readonly<{
   firstLine: number;
   lastLine: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "Text", kind: "string" },
   { id: "firstLine", label: "First line", kind: "number" },
   { id: "lastLine", label: "Last line", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = lines(i.text);
   bounded(i.firstLine, "first", 1, a.length);
   bounded(i.lastLine, "last", i.firstLine, a.length);
@@ -30,7 +27,7 @@ const compute = (
     end: a[i.lastLine - 1].end + a[i.lastLine - 1].eol.length,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -49,6 +46,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          text: { type: "string" },
+          start: { type: "number" },
+          end: { type: "number" },
+        },
+        required: ["text", "start", "end"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
