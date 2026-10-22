@@ -118,6 +118,12 @@ export const kurtosisTool = createModelDefinition<
   KurtosisInput,
   KurtosisOutput
 >({
+  discovery: {
+    aliases: ["Sample Kurtosis Calculator"],
+    collections: ["data", "learn"],
+    fields: ["statistics"],
+    keywords: [],
+  },
   id: "statistics/kurtosis",
   title: "Sample Kurtosis Calculator",
   description:
