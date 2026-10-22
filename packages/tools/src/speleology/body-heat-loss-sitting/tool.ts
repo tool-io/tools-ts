@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly actualContactAreaSquareMeters: number;
   readonly actualSkinToSurfaceTemperatureDifferenceKelvin: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerEffectiveContactConductanceWattsPerSquareMeterKelvin",
@@ -24,7 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(
     input.callerEffectiveContactConductanceWattsPerSquareMeterKelvin,
     "conductance",
@@ -37,7 +37,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.actualSkinToSurfaceTemperatureDifferenceKelvin,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -60,6 +60,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalSignedContactHeatLossWatts: { type: "number" },
+        },
+        required: ["conditionalSignedContactHeatLossWatts"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
