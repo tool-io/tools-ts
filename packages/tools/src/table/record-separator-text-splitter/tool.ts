@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ text: string; separator: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", kind: "string", label: "text" },
   { id: "separator", kind: "string", label: "separator" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.separator.length > 0);
   const records = i.text.split(i.separator);
@@ -24,7 +24,19 @@ export const tool = createSimpleTool({
   description:
     "Split literal nonempty record separators preserving empty text records; no quoting or escaping.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { records: { type: "array", items: { type: "string" } } },
+        required: ["records"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
