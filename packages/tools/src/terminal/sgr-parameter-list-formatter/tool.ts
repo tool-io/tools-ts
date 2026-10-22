@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ parameters: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "parameters", label: "parameters", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   i.parameters.forEach((x) => H.int(x, 0, 255));
   return H.finish({ token: "[" + i.parameters.join(";") + "m" });
@@ -16,12 +16,34 @@ export const example = {
   output: { result: { token: "\u001b[1;31m" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Terminal SGR Parameter List Formatter",
+      "terminal escape sequences",
+      "software development",
+    ],
+    collections: ["encode-decode"],
+    fields: ["terminal", "terminal escape sequences", "software development"],
+    keywords: ["terminal escape sequences", "software development"],
+  },
   id: "terminal/sgr-parameter-list-formatter",
   title: "Terminal SGR Parameter List Formatter",
   description:
     "Format explicit bounded numeric SGR parameters as a seven-bit CSI token; empty parameter list emits the standard empty/reset SGR, no terminal effects.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { token: { type: "string" } },
+        required: ["token"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
