@@ -8,16 +8,13 @@ export type Input = Readonly<{
   openMarker: string;
   closeMarker: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "Text", kind: "string" },
   { id: "openMarker", label: "Open marker", kind: "string" },
   { id: "closeMarker", label: "Close marker", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!i.openMarker || !i.closeMarker)
     simpleError("markers", "Nonempty markers.");
   const names: string[] = [],
@@ -34,7 +31,7 @@ const compute = (
   }
   return { names, spans, uniqueNames: [...new Set(names)] };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -63,6 +60,20 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          names: { type: "array", items: { type: "string" } },
+          spans: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          uniqueNames: { type: "array", items: { type: "string" } },
+        },
+        required: ["names", "spans", "uniqueNames"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
