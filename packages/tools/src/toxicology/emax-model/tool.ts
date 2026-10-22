@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly callerIndependentlyFittedHalfMaximumDose: number;
   readonly actualDose: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerIndependentlyFittedBaselineResponse",
@@ -31,7 +31,7 @@ const fields = [
   },
   { id: "actualDose", label: "Actual dose", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.callerIndependentlyFittedHalfMaximumDose, "ED50");
   nonnegative(input.actualDose, "dose");
   return {
@@ -42,7 +42,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
         (input.callerIndependentlyFittedHalfMaximumDose + input.actualDose),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -66,6 +66,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalEmaxResponse: { type: "number" } },
+        required: ["conditionalEmaxResponse"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
