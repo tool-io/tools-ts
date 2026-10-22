@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly independentlyVerifiedRecordValuesMeters: readonly number[];
   readonly recordEvidenceKnownFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualCaveRecordIds",
@@ -24,14 +24,14 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   return ranking(
     input.actualCaveRecordIds,
     input.independentlyVerifiedRecordValuesMeters,
     input.recordEvidenceKnownFlags,
   );
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -60,6 +60,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          rankedKnownIds: { type: "array", items: { type: "string" } },
+          competitionRanks: { type: "array", items: { type: "number" } },
+          unknownIds: { type: "array", items: { type: "string" } },
+        },
+        required: ["rankedKnownIds", "competitionRanks", "unknownIds"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
