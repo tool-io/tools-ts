@@ -10,21 +10,18 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ text: string; codePointIndex: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "Text", kind: "string" },
   { id: "codePointIndex", label: "Code point index", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   scalarText(i.text);
   const a = [...i.text];
   bounded(i.codePointIndex, "index", 0, a.length);
   return { byteOffset: utf8(a.slice(0, i.codePointIndex).join("")) };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -43,6 +40,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { byteOffset: { type: "number" } },
+        required: ["byteOffset"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
