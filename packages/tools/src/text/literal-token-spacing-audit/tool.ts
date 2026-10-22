@@ -13,16 +13,13 @@ export type Input = Readonly<{
   token: string;
   minimumSpaces: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "Text", kind: "string" },
   { id: "token", label: "Token", kind: "string" },
   { id: "minimumSpaces", label: "Minimum spaces", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.minimumSpaces, "spaces", 0, 128);
   return {
     matches: occurrences(i.text, i.token).map((offset) => {
@@ -39,7 +36,7 @@ const compute = (
     }),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -70,6 +67,35 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          matches: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                offset: { type: "number" },
+                leftSpaces: { type: "number" },
+                rightSpaces: { type: "number" },
+                leftPass: { type: "boolean" },
+                rightPass: { type: "boolean" },
+              },
+              required: [
+                "offset",
+                "leftSpaces",
+                "rightSpaces",
+                "leftPass",
+                "rightPass",
+              ],
+            },
+          },
+        },
+        required: ["matches"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
