@@ -6,13 +6,13 @@ export type Input = Readonly<{
   value: string;
   delimiter: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "name", kind: "string", label: "name" },
   { id: "value", kind: "string", label: "value" },
   { id: "delimiter", kind: "string", label: "delimiter" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.delimiter.length > 0 && !i.name.includes(i.delimiter));
   return H.finish({ line: i.name + i.delimiter + i.value });
@@ -27,7 +27,19 @@ export const tool = createSimpleTool({
   description:
     "Format a literal name-value line while rejecting delimiters inside its name to retain first-split reversibility.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { line: { type: "string" } },
+        required: ["line"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
