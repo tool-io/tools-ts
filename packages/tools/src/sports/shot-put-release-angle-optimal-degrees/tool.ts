@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly callerGravity: number;
   readonly actualReleaseHeightAboveLanding: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualReleaseSpeed", label: "Actual release speed", kind: "number" },
   { id: "callerGravity", label: "Caller gravity", kind: "number" },
@@ -22,10 +22,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   positive(input.actualReleaseSpeed, "actualReleaseSpeed");
   positive(input.callerGravity, "callerGravity");
   nonnegative(
@@ -45,10 +42,7 @@ const compute = (
       Math.PI,
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -71,6 +65,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { value: { type: "number" } },
+        required: ["value"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
