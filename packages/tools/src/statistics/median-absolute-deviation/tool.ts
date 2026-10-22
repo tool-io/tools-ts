@@ -27,6 +27,12 @@ export const medianAbsoluteDeviationTool = createModelDefinition<
   MedianAbsoluteDeviationInput,
   MedianAbsoluteDeviationOutput
 >({
+  discovery: {
+    aliases: ["Median Absolute Deviation Calculator"],
+    collections: ["data", "learn"],
+    fields: ["statistics"],
+    keywords: [],
+  },
   id: "statistics/median-absolute-deviation",
   title: "Median Absolute Deviation Calculator",
   description:
