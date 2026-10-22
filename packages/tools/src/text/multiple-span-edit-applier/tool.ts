@@ -4,22 +4,19 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, edits } from "../batch53-shared.js";
 
 export type Input = Readonly<{ text: string; editsJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "Text", kind: "string" },
   { id: "editsJson", label: "Edits json", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = edits(i.editsJson, i.text.length);
   let s = i.text;
   for (const e of [...a].reverse())
     s = s.slice(0, e.start) + e.text + s.slice(e.end);
   return { text: s, editCount: a.length };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -38,6 +35,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { text: { type: "string" }, editCount: { type: "number" } },
+        required: ["text", "editCount"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
