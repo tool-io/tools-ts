@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ values: readonly number[]; reference: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "values", label: "values", kind: "numberList" },
   { id: "reference", label: "reference", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({
     deviation: H.median(i.values.map((x) => Math.abs(x - i.reference))),
@@ -18,12 +18,30 @@ export const example = {
   output: { result: { deviation: 1 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Median Absolute Deviation from Reference"],
+    collections: ["data", "learn"],
+    fields: ["statistics"],
+    keywords: [],
+  },
   id: "statistics/median-absolute-deviation-from-reference",
   title: "Median Absolute Deviation from Reference",
   description:
     "Compute median absolute deviation about an explicitly supplied reference, not automatically the sample median and not normal-consistency scaled.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { deviation: { type: "number" } },
+        required: ["deviation"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
