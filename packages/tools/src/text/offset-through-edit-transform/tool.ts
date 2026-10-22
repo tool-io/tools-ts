@@ -15,23 +15,20 @@ export type Input = Readonly<{
   editsJson: string;
   rightAffinity: boolean;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "sourceLength", label: "Source length", kind: "number" },
   { id: "offset", label: "Offset", kind: "number" },
   { id: "editsJson", label: "Edits json", kind: "string" },
   { id: "rightAffinity", label: "Right affinity", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.sourceLength, "length", 0, 8192);
   bounded(i.offset, "offset", 0, i.sourceLength);
   const a = edits(i.editsJson, i.sourceLength);
   return { transformedOffset: throughEdits(i.offset, a, i.rightAffinity) };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -55,6 +52,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { transformedOffset: { type: "number" } },
+        required: ["transformedOffset"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
