@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly actualIndependentlyAssessedResponseRisk: number;
   readonly matchedIndependentlyAssessedBackgroundRisk: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualIndependentlyAssessedResponseRisk",
@@ -18,7 +18,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   fraction(input.actualIndependentlyAssessedResponseRisk, "response");
   fraction(input.matchedIndependentlyAssessedBackgroundRisk, "background");
   return {
@@ -27,7 +27,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.matchedIndependentlyAssessedBackgroundRisk,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -49,6 +49,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { signedObservedAddedRisk: { type: "number" } },
+        required: ["signedObservedAddedRisk"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
