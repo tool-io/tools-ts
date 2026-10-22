@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly exclusiveAmount: number;
   readonly callerVatRateFraction: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "exclusiveAmount", label: "Exclusive amount", kind: "number" },
   {
@@ -14,12 +14,12 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.exclusiveAmount, "amount");
   nonnegative(i.callerVatRateFraction, "rate");
   return { inclusiveAmount: i.exclusiveAmount * (1 + i.callerVatRateFraction) };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -38,6 +38,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { inclusiveAmount: { type: "number" } },
+        required: ["inclusiveAmount"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
