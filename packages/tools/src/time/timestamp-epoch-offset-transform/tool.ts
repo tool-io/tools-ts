@@ -6,13 +6,13 @@ export type Input = Readonly<{
   sourceEpoch: string;
   targetEpoch: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "timestamp", kind: "string", label: "timestamp" },
   { id: "sourceEpoch", kind: "string", label: "sourceEpoch" },
   { id: "targetEpoch", kind: "string", label: "targetEpoch" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({
     timestamp: String(
@@ -30,7 +30,19 @@ export const tool = createSimpleTool({
   description:
     "Translate integer timestamps between explicitly supplied epoch origins expressed in the same units; no calendar or leap-second conversion.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { timestamp: { type: "string" } },
+        required: ["timestamp"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
