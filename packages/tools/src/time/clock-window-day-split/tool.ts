@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../binary/batch54-shared.js";
 export type Input = Readonly<{ windowsJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "windowsJson", kind: "string", label: "windowsJson" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   return H.finish({ segments: H.clockSpans(i.windowsJson) });
 };
@@ -28,7 +28,29 @@ export const tool = createSimpleTool({
   description:
     "Split each ordinary or overnight half-open civil clock window into same-day segments; no time-zone inference.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          segments: {
+            type: "array",
+            items: {
+              type: "array",
+              items: { type: "number" },
+              minItems: 2,
+              maxItems: 2,
+            },
+          },
+        },
+        required: ["segments"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
