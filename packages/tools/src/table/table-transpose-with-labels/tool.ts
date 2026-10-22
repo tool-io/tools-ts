@@ -6,13 +6,13 @@ export type Input = Readonly<{
   rowLabels: readonly string[];
   columnLabels: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "table", kind: "matrix", label: "table" },
   { id: "rowLabels", kind: "stringList", label: "rowLabels" },
   { id: "columnLabels", kind: "stringList", label: "columnLabels" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.table.length === i.rowLabels.length &&
@@ -50,7 +50,26 @@ export const tool = createSimpleTool({
   description:
     "Transpose a rectangular numeric table together with explicit row and column labels; label identities remain unchanged.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          table: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          rowLabels: { type: "array", items: { type: "string" } },
+          columnLabels: { type: "array", items: { type: "string" } },
+        },
+        required: ["table", "rowLabels", "columnLabels"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
