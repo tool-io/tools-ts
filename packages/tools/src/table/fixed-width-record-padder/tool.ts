@@ -6,13 +6,13 @@ export type Input = Readonly<{
   widths: readonly number[];
   pad: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "cells", kind: "stringList", label: "cells" },
   { id: "widths", kind: "numberList", label: "widths" },
   { id: "pad", kind: "string", label: "pad" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.cells.length === i.widths.length && i.pad.length === 1);
   const parts = i.cells.map((s, j) => {
@@ -32,7 +32,19 @@ export const tool = createSimpleTool({
   description:
     "Pad caller cells into explicit UTF-16 fixed-width fields; overflow is rejected instead of silently truncated.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { record: { type: "string" } },
+        required: ["record"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
