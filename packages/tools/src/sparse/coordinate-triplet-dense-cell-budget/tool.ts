@@ -7,14 +7,14 @@ export type Input = Readonly<{
   bytesPerCell: number;
   budget: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "rows", label: "rows", kind: "integer" },
   { id: "columns", label: "columns", kind: "integer" },
   { id: "bytesPerCell", label: "bytesPerCell", kind: "integer" },
   { id: "budget", label: "budget", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.rows, 0, 1e9);
   H.int(i.columns, 0, 1e9);
@@ -33,12 +33,34 @@ export const example = {
   output: { result: { cells: "10000", bytes: "80000", fits: false } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Sparse Dense Cell Budget", "sparse matrices", "linear algebra"],
+    collections: ["data", "learn"],
+    fields: ["sparse", "sparse matrices", "linear algebra"],
+    keywords: ["sparse matrices", "linear algebra"],
+  },
   id: "sparse/coordinate-triplet-dense-cell-budget",
   title: "Sparse Dense Cell Budget",
   description:
     "Budget exact dense storage for explicit sparse matrix dimensions and bytes per cell without materializing a matrix; excludes allocator overhead.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          cells: { type: "string" },
+          bytes: { type: "string" },
+          fits: { type: "boolean" },
+        },
+        required: ["cells", "bytes", "fits"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
