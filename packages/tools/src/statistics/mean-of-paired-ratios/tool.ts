@@ -5,12 +5,12 @@ export type Input = Readonly<{
   numerators: readonly number[];
   denominators: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "numerators", label: "numerators", kind: "numberList" },
   { id: "denominators", label: "denominators", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.numerators.length === i.denominators.length &&
@@ -24,12 +24,33 @@ export const example = {
   output: { result: { ratios: [2, 1], mean: 1.5 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Mean Of Paired Ratios"],
+    collections: ["data", "learn"],
+    fields: ["statistics"],
+    keywords: [],
+  },
   id: "statistics/mean-of-paired-ratios",
-  title: "Mean Of Paired Ratios",
+  title: "Mean of Paired Ratios",
   description:
     "Compute the mean of explicit paired finite ratios, rejecting any zero denominator rather than silently omitting undefined pairs; no ratio-of-sums substitution.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          ratios: { type: "array", items: { type: "number" } },
+          mean: { type: "number" },
+        },
+        required: ["ratios", "mean"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
