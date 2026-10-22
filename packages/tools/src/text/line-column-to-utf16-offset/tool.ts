@@ -4,23 +4,20 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, bounded, lines } from "../batch53-shared.js";
 
 export type Input = Readonly<{ text: string; line: number; column: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "text", label: "Text", kind: "string" },
   { id: "line", label: "Line", kind: "number" },
   { id: "column", label: "Column", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = lines(i.text);
   bounded(i.line, "line", 1, a.length);
   const r = a[i.line - 1];
   bounded(i.column, "column", 1, r.text.length + 1);
   return { offset: r.start + i.column - 1 };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -39,6 +36,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { offset: { type: "number" } },
+        required: ["offset"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
