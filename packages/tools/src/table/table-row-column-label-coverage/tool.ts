@@ -7,14 +7,14 @@ export type Input = Readonly<{
   rowLabels: readonly string[];
   columnLabels: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "rows", kind: "integer", label: "rows" },
   { id: "columns", kind: "integer", label: "columns" },
   { id: "rowLabels", kind: "stringList", label: "rowLabels" },
   { id: "columnLabels", kind: "stringList", label: "columnLabels" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.rows, 0, 128);
   H.int(i.columns, 0, 128);
@@ -42,7 +42,51 @@ export const tool = createSimpleTool({
   description:
     "Audit explicit table label counts and exact duplicate labels, without inventing missing identifiers.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          rowCountMatches: { type: "boolean" },
+          columnCountMatches: { type: "boolean" },
+          duplicateRows: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                key: { type: "string" },
+                indexes: { type: "array", items: { type: "number" } },
+              },
+              required: ["key", "indexes"],
+            },
+          },
+          duplicateColumns: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                key: { type: "string" },
+                indexes: { type: "array", items: { type: "number" } },
+              },
+              required: ["key", "indexes"],
+            },
+          },
+        },
+        required: [
+          "rowCountMatches",
+          "columnCountMatches",
+          "duplicateRows",
+          "duplicateColumns",
+        ],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
