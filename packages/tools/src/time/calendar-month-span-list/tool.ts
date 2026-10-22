@@ -7,14 +7,14 @@ export type Input = Readonly<{
   endYear: number;
   endMonth: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "startYear", kind: "integer", label: "startYear" },
   { id: "startMonth", kind: "integer", label: "startMonth" },
   { id: "endYear", kind: "integer", label: "endYear" },
   { id: "endMonth", kind: "integer", label: "endMonth" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.int(i.startYear, -1e6, 1e6);
   H.int(i.endYear, -1e6, 1e6);
@@ -48,7 +48,32 @@ export const tool = createSimpleTool({
   description:
     "List an inclusive bounded proleptic month span with explicit start and end; rejects backwards or oversized spans.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          months: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                year: { type: "number" },
+                month: { type: "number" },
+              },
+              required: ["year", "month"],
+            },
+          },
+        },
+        required: ["months"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
