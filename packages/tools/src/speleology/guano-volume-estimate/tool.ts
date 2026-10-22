@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualGuanoPileEllipticalBaseSemiaxesMeters: readonly number[];
   readonly actualGuanoPileHeightMeters: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualGuanoPileEllipticalBaseSemiaxesMeters",
@@ -24,7 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (input.actualGuanoPileEllipticalBaseSemiaxesMeters.length !== 2)
     simpleError("base", "Two independently measured semiaxes.");
   input.actualGuanoPileEllipticalBaseSemiaxesMeters.forEach((v) =>
@@ -40,7 +40,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       3,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -66,6 +66,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalEllipticalConeGuanoVolumeCubicMeters: { type: "number" },
+        },
+        required: ["conditionalEllipticalConeGuanoVolumeCubicMeters"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
