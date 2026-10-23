@@ -13,16 +13,13 @@ export type Input = Readonly<{
   a230: number;
   callerMinimumRatio: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "a260", label: "A260", kind: "number" },
   { id: "a230", label: "A230", kind: "number" },
   { id: "callerMinimumRatio", label: "Caller minimum ratio", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   nonnegative(i.a260, "a260");
   positive(i.a230, "a230");
   nonnegative(i.callerMinimumRatio, "minimum");
@@ -33,7 +30,7 @@ const compute = (
     contaminantIdentified: false,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -58,6 +55,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          ratio: { type: "number" },
+          belowCallerMinimum: { type: "boolean" },
+          contaminantIdentified: { type: "boolean" },
+        },
+        required: ["ratio", "belowCallerMinimum", "contaminantIdentified"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
