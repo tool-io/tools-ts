@@ -7,14 +7,11 @@ import {
   parseHeaderParameter,
 } from "../../http/content-type-parser/tool.js";
 export type Input = Readonly<{ parameterList: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "parameterList", label: "Parameter list", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const parts = splitHeaderValue(i.parameterList, ";");
   if (!parts) simpleError("parameters", "Well-formed quoted parameter list.");
   const names = parts.map((v) => {
@@ -31,7 +28,7 @@ const compute = (
       })),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -50,6 +47,26 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          duplicates: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                name: { type: "string" },
+                indexes: { type: "array", items: { type: "number" } },
+              },
+              required: ["name", "indexes"],
+            },
+          },
+        },
+        required: ["duplicates"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
