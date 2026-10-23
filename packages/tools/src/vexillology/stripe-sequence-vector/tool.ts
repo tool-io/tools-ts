@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly orderedStripeColorIds: readonly string[];
   readonly callerPaletteOrder: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "orderedStripeColorIds",
@@ -25,7 +25,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.callerPaletteOrder, "palette");
   if (!input.orderedStripeColorIds.length)
     simpleError("stripes", "Explicit nonempty caller ordered stripes.");
@@ -35,7 +35,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -57,6 +57,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          stripePaletteVector: { type: "array", items: { type: "number" } },
+        },
+        required: ["stripePaletteVector"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
