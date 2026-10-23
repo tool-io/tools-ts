@@ -3,12 +3,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../histogram/batch56-shared.js";
 export type Input = Readonly<{ edgesJson: string; rootTerminal: boolean }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "edgesJson", label: "edgesJson", kind: "string" },
   { id: "rootTerminal", label: "rootTerminal", kind: "boolean" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const e = H.records(i.edgesJson).map((v) => {
     H.check(typeof v.terminal === "boolean");
@@ -62,12 +62,49 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Prefix Trie Compressed Edge Node Expander",
+      "prefix tries",
+      "software development",
+    ],
+    collections: ["data", "learn"],
+    fields: ["trie", "prefix tries", "software development"],
+    keywords: ["prefix tries", "software development"],
+  },
   id: "trie/compressed-edge-node-expander",
   title: "Prefix Trie Compressed Edge Node Expander",
   description:
     "Expand an explicit compressed rooted trie edge table into stable insertion-code-unit nodes, validating complete unique-parent acyclic structure and unambiguous outgoing first characters; IDs are reallocated, not preserved.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          nodes: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                id: { type: "number" },
+                parent: { anyOf: [{ type: "number" }, { type: "null" }] },
+                character: { type: "string" },
+                terminal: { type: "boolean" },
+              },
+              required: ["id", "parent", "character", "terminal"],
+            },
+          },
+        },
+        required: ["nodes"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
