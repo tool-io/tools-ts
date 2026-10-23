@@ -32,5 +32,11 @@
       "fast-uri@<3.1.8": "3.1.9",
       "source-map-js@<1.2.2": "1.2.2"
     }
-  }
+  },
+  "homepage": "https://tool.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tool-io/tools-ts.git"
+  },
+  "bugs": "https://github.com/tool-io/tools-ts/issues"
 }

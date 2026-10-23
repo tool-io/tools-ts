@@ -1,8 +1,15 @@
 {
   "name": "@tool.io/tools",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.1",
   "private": false,
   "description": "Framework-independent TypeScript tools for tool.io",
+  "homepage": "https://tool.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tool-io/tools-ts.git",
+    "directory": "packages/tools"
+  },
+  "bugs": "https://github.com/tool-io/tools-ts/issues",
   "engines": {
     "node": ">=24.0.0"
   },
@@ -17,9 +24,16 @@
   "license": "MIT",
   "type": "module",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "alpha"
   },
   "sideEffects": false,
+  "imports": {
+    "#tool-catalog": {
+      "types": "./catalog-data.d.ts",
+      "default": "./catalog.generated.json"
+    }
+  },
   "files": [
     "dist",
     "catalog-data.d.ts",
@@ -111,11 +125,5 @@
     "@noble/hashes": "2.4.0",
     "sqids": "0.3.0",
     "ts-fsrs": "5.4.1"
-  },
-  "imports": {
-    "#tool-catalog": {
-      "types": "./catalog-data.d.ts",
-      "default": "./catalog.generated.json"
-    }
   }
 }
