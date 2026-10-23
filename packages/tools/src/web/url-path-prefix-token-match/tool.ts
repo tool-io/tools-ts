@@ -9,22 +9,19 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ path: string; prefix: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "path", label: "Path", kind: "string" },
   { id: "prefix", label: "Prefix", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (/[?#]/.test(i.path + i.prefix))
     simpleError("path", "Raw path components only.");
   const a = i.path.split("/"),
     b = i.prefix.split("/");
   return { matches: b.length <= a.length && b.every((v, j) => v === a[j]) };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -43,6 +40,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { matches: { type: "boolean" } },
+        required: ["matches"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
