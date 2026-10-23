@@ -12,7 +12,7 @@ export type Input = Readonly<{
   substitutionsPerSitePerCycle: number;
   callerBoundary: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "substitutionsPerSitePerCycle",
@@ -21,10 +21,7 @@ const fields = [
   },
   { id: "callerBoundary", label: "Caller boundary", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   nonnegative(i.substitutionsPerSitePerCycle, "rate");
   positive(i.callerBoundary, "boundary");
   return {
@@ -38,7 +35,7 @@ const compute = (
         : Math.floor(Math.log10(i.substitutionsPerSitePerCycle)),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -62,6 +59,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          relativeClass: { type: "string" },
+          rateOrderOfMagnitude: {
+            anyOf: [{ type: "number" }, { type: "null" }],
+          },
+        },
+        required: ["relativeClass", "rateOrderOfMagnitude"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
