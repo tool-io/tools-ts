@@ -6,12 +6,12 @@ export type Input = Readonly<{
   utc: readonly number[];
   offsets: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "utc", label: "utc", kind: "numberList" },
   { id: "offsets", label: "offsets", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(
     i.utc.length === i.offsets.length &&
@@ -36,12 +36,38 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Time Zone Local Event Order Witness",
+      "time zones",
+      "UTC offsets",
+    ],
+    collections: ["data", "learn"],
+    fields: ["zone", "time zones", "UTC offsets"],
+    keywords: ["time zones", "UTC offsets"],
+  },
   id: "zone/offset-local-event-order-witness",
   title: "Time Zone Local Event Order Witness",
   description:
-    "Supplied synthetic civil-second offset observations only, no IANA database, DST rule inference or leap seconds; retain UTC versus local-coordinate order witnesses from paired event offsets; no reordering or claim that fold observations are corrupt. ",
+    "Supplied synthetic civil-second offset observations only, no IANA database, DST rule inference or leap seconds; retain UTC versus local-coordinate order witnesses from paired event offsets; no reordering or claim that fold observations are corrupt.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          local: { type: "array", items: { type: "number" } },
+          utcDescending: { type: "array", items: { type: "number" } },
+          localDescending: { type: "array", items: { type: "number" } },
+        },
+        required: ["local", "utcDescending", "localDescending"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
