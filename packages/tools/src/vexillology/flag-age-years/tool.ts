@@ -11,15 +11,12 @@ export type Input = Readonly<{
   readonly actualAdoptionDate: string;
   readonly actualAsOfDate: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualAdoptionDate", label: "Actual adoption date", kind: "string" },
   { id: "actualAsOfDate", label: "Actual as of date", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   nonnegative(
     daysBetween(input.actualAdoptionDate, input.actualAsOfDate),
     "dateorder",
@@ -33,10 +30,7 @@ const compute = (
       (b.slice(5) < a.slice(5) ? 1 : 0),
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -55,6 +49,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { completedAdoptionAnniversaryYears: { type: "number" } },
+        required: ["completedAdoptionAnniversaryYears"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
