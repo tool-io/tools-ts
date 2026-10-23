@@ -9,7 +9,7 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ moi: number; callerSingleStepMinimum: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "moi", label: "Moi", kind: "number" },
   {
@@ -18,10 +18,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   nonnegative(i.moi, "moi");
   positive(i.callerSingleStepMinimum, "threshold");
   return {
@@ -32,7 +29,7 @@ const compute = (
     experimentDesignConfirmed: false,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -56,6 +53,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          regimeScreen: { type: "string" },
+          experimentDesignConfirmed: { type: "boolean" },
+        },
+        required: ["regimeScreen", "experimentDesignConfirmed"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
