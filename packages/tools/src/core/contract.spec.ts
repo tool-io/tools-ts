@@ -1,8 +1,128 @@
 import { describe, expect, it } from "vitest";
 import { bodyMassIndexTool } from "../body-mass-index/tool.js";
 import { matchesToolJsonSchema, validateToolContract } from "./contract.js";
+import type { ToolJsonSchema } from "./definition.js";
 
 describe("tool contract linter", () => {
+  it.each(["constructor", "__proto__", "toString"])(
+    "rejects undeclared own property %s in closed schemas",
+    (key) => {
+      const value = Object.fromEntries([[key, 123]]);
+      expect(
+        matchesToolJsonSchema(value, {
+          type: "object",
+          properties: {},
+          additionalProperties: false,
+        }),
+      ).toBe(false);
+      expect(
+        matchesToolJsonSchema(value, {
+          type: "object",
+          properties: {},
+          additionalProperties: { type: "string" },
+        }),
+      ).toBe(false);
+      expect(
+        matchesToolJsonSchema(value, {
+          type: "object",
+          properties: Object.fromEntries([[key, { type: "number" }]]),
+          additionalProperties: false,
+        }),
+      ).toBe(true);
+    },
+  );
+
+  it("counts Unicode code points for schema string lengths", () => {
+    const schema = { type: "string", minLength: 1, maxLength: 1 } as const;
+    expect(matchesToolJsonSchema("😀", schema)).toBe(true);
+    expect(matchesToolJsonSchema("𐐀", schema)).toBe(true);
+    expect(matchesToolJsonSchema("😀a", schema)).toBe(false);
+    expect(matchesToolJsonSchema("e\u0301", schema)).toBe(false);
+  });
+
+  it("rejects nonportable values even inside unrestricted JSON objects", () => {
+    const cyclic: Record<string, unknown> = {};
+    cyclic.self = cyclic;
+    const schema = { type: "object", additionalProperties: true } as const;
+    for (const value of [
+      { number: Infinity },
+      { number: NaN },
+      { missing: undefined },
+      { list: Array(1) },
+      { object: new Date() },
+      cyclic,
+    ])
+      expect(matchesToolJsonSchema(value, schema)).toBe(false);
+    const shared = { value: 1 };
+    expect(
+      matchesToolJsonSchema({ first: shared, second: shared }, schema),
+    ).toBe(true);
+  });
+
+  it.each([
+    { execution: { kind: "data", datasets: [null] } },
+    { execution: { kind: "data", datasets: {} } },
+    { execution: { kind: "device", capabilities: [null] } },
+    { execution: { kind: "device", capabilities: {} } },
+    { ports: { inputs: [null], outputs: [] } },
+    { ports: { inputs: {}, outputs: [] } },
+    { inputSchema: { type: "string", default: "x", anyOf: {} } },
+    { inputSchema: { type: "string", pattern: "[" } },
+    { inputSchema: null },
+  ])("reports malformed contract metadata without throwing: %j", (patch) => {
+    expect(
+      validateToolContract({ ...bodyMassIndexTool, ...patch }).length,
+    ).toBeGreaterThan(0);
+  });
+
+  it("rejects cyclic and malformed runtime schemas without throwing", () => {
+    const schema: { type: "array"; items?: ToolJsonSchema } = { type: "array" };
+    schema.items = schema;
+    expect(matchesToolJsonSchema([], schema)).toBe(false);
+    expect(
+      validateToolContract({ ...bodyMassIndexTool, inputSchema: schema }),
+    ).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          code: "schema_not_portable",
+          path: "/inputSchema",
+        }),
+      ]),
+    );
+    expect(
+      matchesToolJsonSchema("x", { type: "string", anyOf: {} } as never),
+    ).toBe(false);
+  });
+
+  it("does not resolve inherited schema properties as real port paths", () => {
+    const definition = {
+      ...bodyMassIndexTool,
+      inputSchema: {
+        type: "object",
+        properties: {},
+        required: ["constructor"],
+        additionalProperties: false,
+      },
+      ports: {
+        inputs: [
+          {
+            id: "constructor",
+            label: "Constructor",
+            required: true,
+            valueType: { type: "object" },
+          },
+        ],
+        outputs: bodyMassIndexTool.ports.outputs,
+      },
+    };
+    expect(validateToolContract(definition).map((issue) => issue.code)).toEqual(
+      expect.arrayContaining([
+        "schema_required_unknown",
+        "port_schema_path_missing",
+      ]),
+    );
+  });
+
   it("matches portable values against object, collection, and numeric constraints", () => {
     expect(
       matchesToolJsonSchema(

@@ -4,6 +4,7 @@ import type {
   ToolPortDefinition,
 } from "./definition.js";
 import { isToolValueType } from "./value-type.js";
+import { isPortableJsonValue } from "./json-value.js";
 
 export type ToolContractIssue = {
   readonly code: string;
@@ -46,19 +47,24 @@ const valuesEqual = (left: unknown, right: unknown): boolean => {
   );
 };
 
-export const matchesToolJsonSchema = (
-  value: unknown,
-  schema: ToolJsonSchema,
-): boolean => {
+const matchesSchema = (value: unknown, schema: ToolJsonSchema): boolean => {
+  if (!isRecord(schema)) return false;
   if (
-    schema.anyOf &&
-    !schema.anyOf.some((candidate) => matchesToolJsonSchema(value, candidate))
+    schema.anyOf !== undefined &&
+    (!Array.isArray(schema.anyOf) ||
+      schema.anyOf.length === 0 ||
+      !schema.anyOf.some((candidate) => matchesSchema(value, candidate)))
   )
     return false;
   if (schema.const !== undefined && !valuesEqual(value, schema.const))
     return false;
-  if (schema.enum && !schema.enum.some((entry) => valuesEqual(value, entry)))
+  if (
+    schema.enum !== undefined &&
+    (!Array.isArray(schema.enum) ||
+      !schema.enum.some((entry) => valuesEqual(value, entry)))
+  )
     return false;
+  if (schema.type !== undefined && !schemaTypes.has(schema.type)) return false;
   if (schema.type === "null") return value === null;
   if (schema.type === "boolean") return typeof value === "boolean";
   if (schema.type === "number" || schema.type === "integer")
@@ -74,12 +80,16 @@ export const matchesToolJsonSchema = (
     );
   if (schema.type === "string") {
     if (typeof value !== "string") return false;
-    if (schema.minLength !== undefined && value.length < schema.minLength)
+    let length = 0;
+    if (schema.minLength !== undefined || schema.maxLength !== undefined)
+      for (const _character of value) length += 1;
+    if (schema.minLength !== undefined && length < schema.minLength)
       return false;
-    if (schema.maxLength !== undefined && value.length > schema.maxLength)
+    if (schema.maxLength !== undefined && length > schema.maxLength)
       return false;
     if (schema.pattern !== undefined) {
       try {
+        if (typeof schema.pattern !== "string") return false;
         if (!new RegExp(schema.pattern, "u").test(value)) return false;
       } catch {
         return false;
@@ -93,26 +103,49 @@ export const matchesToolJsonSchema = (
       (schema.minItems === undefined || value.length >= schema.minItems) &&
       (schema.maxItems === undefined || value.length <= schema.maxItems) &&
       (schema.items === undefined ||
-        value.every((entry) => matchesToolJsonSchema(entry, schema.items!)))
+        value.every((entry) => matchesSchema(entry, schema.items!)))
     );
   if (schema.type === "object") {
     if (!isRecord(value)) return false;
-    if (schema.required?.some((property) => !Object.hasOwn(value, property)))
+    if (
+      schema.required !== undefined &&
+      (!Array.isArray(schema.required) ||
+        schema.required.some(
+          (property) =>
+            typeof property !== "string" || !Object.hasOwn(value, property),
+        ))
+    )
+      return false;
+    if (schema.properties !== undefined && !isRecord(schema.properties))
       return false;
     for (const [property, entry] of Object.entries(value)) {
-      const propertySchema = schema.properties?.[property];
-      if (propertySchema) {
-        if (!matchesToolJsonSchema(entry, propertySchema)) return false;
+      const declared =
+        schema.properties !== undefined &&
+        Object.hasOwn(schema.properties, property);
+      if (declared) {
+        if (!matchesSchema(entry, schema.properties![property])) return false;
       } else if (schema.additionalProperties === false) return false;
       else if (
         isRecord(schema.additionalProperties) &&
-        !matchesToolJsonSchema(entry, schema.additionalProperties)
+        !matchesSchema(entry, schema.additionalProperties)
       )
         return false;
     }
     return true;
   }
   return true;
+};
+
+export const matchesToolJsonSchema = (
+  value: unknown,
+  schema: ToolJsonSchema,
+): boolean => {
+  if (!isPortableJsonValue(value) || !isPortableJsonValue(schema)) return false;
+  try {
+    return matchesSchema(value, schema);
+  } catch {
+    return false;
+  }
 };
 
 const identifierListIssues = (
@@ -151,6 +184,14 @@ const schemaIssues = (
       {
         code: "schema_object_required",
         message: "Schema must be an object.",
+        path,
+      },
+    ];
+  if (!isPortableJsonValue(schema))
+    return [
+      {
+        code: "schema_not_portable",
+        message: "Schema must be finite, acyclic JSON data.",
         path,
       },
     ];
@@ -293,7 +334,7 @@ const schemaIssues = (
         });
       if (isRecord(schema.properties))
         for (const key of schema.required)
-          if (!(key in schema.properties))
+          if (!Object.hasOwn(schema.properties, key))
             issues.push({
               code: "schema_required_unknown",
               message: `Required property ${key} is not declared.`,
@@ -307,6 +348,28 @@ const schemaIssues = (
       message: "Object schemas must state additionalProperties explicitly.",
       path,
     });
+  if (
+    schema.additionalProperties !== undefined &&
+    typeof schema.additionalProperties !== "boolean"
+  )
+    issues.push(
+      ...schemaIssues(
+        schema.additionalProperties,
+        `${path}/additionalProperties`,
+      ),
+    );
+  if (schema.pattern !== undefined) {
+    try {
+      if (typeof schema.pattern !== "string") throw new TypeError();
+      new RegExp(schema.pattern, "u");
+    } catch {
+      issues.push({
+        code: "schema_pattern_invalid",
+        message: "pattern must be a valid Unicode regular expression.",
+        path: `${path}/pattern`,
+      });
+    }
+  }
   return issues;
 };
 
@@ -315,7 +378,11 @@ const resolveSchemaPath = (
   path: readonly string[],
 ): ToolJsonSchema | undefined => {
   let current: ToolJsonSchema | undefined = schema;
-  for (const segment of path) current = current?.properties?.[segment];
+  for (const segment of path)
+    current =
+      current?.properties && Object.hasOwn(current.properties, segment)
+        ? current.properties[segment]
+        : undefined;
   return current;
 };
 
@@ -324,7 +391,8 @@ const primitiveMatchesSchema = (
   schema: ToolJsonSchema,
 ): boolean => {
   const primitive = port.valueType?.type;
-  if (schema.anyOf)
+  if (!isRecord(schema)) return false;
+  if (Array.isArray(schema.anyOf))
     return schema.anyOf.some((candidate) =>
       primitiveMatchesSchema(port, candidate),
     );
@@ -338,13 +406,30 @@ const portIssues = (
   definition: ToolDefinition<unknown, unknown>,
   direction: "inputs" | "outputs",
 ): readonly ToolContractIssue[] => {
-  const ports = definition.ports?.[direction] ?? [];
+  const ports = definition.ports?.[direction];
   const schema =
     direction === "inputs" ? definition.inputSchema : definition.outputSchema;
   const issues: ToolContractIssue[] = [];
+  if (!Array.isArray(ports))
+    return [
+      {
+        code: "ports_invalid",
+        message: "Ports must be an array of port definitions.",
+        path: `/ports/${direction}`,
+      },
+    ];
   const seen = new Set<string>();
   const seenPaths = new Set<string>();
-  for (const port of ports) {
+  for (const candidate of ports) {
+    if (!isRecord(candidate)) {
+      issues.push({
+        code: "port_invalid",
+        message: "Port must be an object.",
+        path: `/ports/${direction}`,
+      });
+      continue;
+    }
+    const port = candidate as unknown as ToolPortDefinition;
     const base = `/ports/${direction}/${port.id}`;
     if (seen.has(port.id))
       issues.push({
@@ -394,15 +479,8 @@ const portIssues = (
         });
     }
     const path = port.path ?? [port.id];
-    const pathKey = JSON.stringify(path);
-    if (seenPaths.has(pathKey))
-      issues.push({
-        code: "duplicate_port_path",
-        message: `Schema path ${path.join(".")} is exposed more than once.`,
-        path: base,
-      });
-    seenPaths.add(pathKey);
     if (
+      !Array.isArray(path) ||
       path.some(
         (segment) => typeof segment !== "string" || segment.trim() === "",
       )
@@ -414,6 +492,14 @@ const portIssues = (
       });
       continue;
     }
+    const pathKey = JSON.stringify(path);
+    if (seenPaths.has(pathKey))
+      issues.push({
+        code: "duplicate_port_path",
+        message: `Schema path ${path.join(".")} is exposed more than once.`,
+        path: base,
+      });
+    seenPaths.add(pathKey);
     const portSchema = resolveSchemaPath(schema, path);
     if (!portSchema)
       issues.push({
@@ -430,8 +516,12 @@ const portIssues = (
     if (direction === "inputs") {
       let parent: ToolJsonSchema | undefined = schema;
       const requiredPath = path.every((segment) => {
-        const required = parent?.required?.includes(segment) ?? false;
-        parent = parent?.properties?.[segment];
+        const required =
+          Array.isArray(parent?.required) && parent.required.includes(segment);
+        parent =
+          parent?.properties && Object.hasOwn(parent.properties, segment)
+            ? parent.properties[segment]
+            : undefined;
         return required;
       });
       if (port.required && !requiredPath)
@@ -451,7 +541,7 @@ const portIssues = (
   return issues;
 };
 
-export const validateToolContract = (
+const collectContractIssues = (
   value: unknown,
 ): readonly ToolContractIssue[] => {
   if (!isRecord(value))
@@ -530,13 +620,25 @@ export const validateToolContract = (
     });
   else {
     const capabilityIds = new Set<string>();
-    for (const [index, capability] of (
-      definition.execution.capabilities ?? []
+    const capabilities =
+      definition.execution.capabilities === undefined
+        ? []
+        : definition.execution.capabilities;
+    if (!Array.isArray(capabilities))
+      issues.push({
+        code: "capability_requirement_invalid",
+        message: "Capabilities must be an array.",
+        path: "/execution/capabilities",
+      });
+    for (const [index, capability] of (Array.isArray(capabilities)
+      ? capabilities
+      : []
     ).entries()) {
       if (
         !isRecord(capability) ||
         typeof capability.id !== "string" ||
         !datasetIdPattern.test(capability.id) ||
+        typeof capability.schemaVersion !== "number" ||
         !Number.isSafeInteger(capability.schemaVersion) ||
         capability.schemaVersion < 1 ||
         typeof capability.required !== "boolean"
@@ -553,15 +655,28 @@ export const validateToolContract = (
           message: `Capability ${capability.id} is required more than once.`,
           path: `/execution/capabilities/${index}`,
         });
-      capabilityIds.add(String(capability.id));
+      if (isRecord(capability)) capabilityIds.add(String(capability.id));
     }
     const datasetIds = new Set<string>();
-    for (const [index, dataset] of (
-      definition.execution.datasets ?? []
+    const datasets =
+      definition.execution.datasets === undefined
+        ? []
+        : definition.execution.datasets;
+    if (!Array.isArray(datasets))
+      issues.push({
+        code: "dataset_requirement_invalid",
+        message: "Datasets must be an array.",
+        path: "/execution/datasets",
+      });
+    for (const [index, dataset] of (Array.isArray(datasets)
+      ? datasets
+      : []
     ).entries()) {
       if (
+        !isRecord(dataset) ||
         typeof dataset.id !== "string" ||
         !datasetIdPattern.test(dataset.id) ||
+        typeof dataset.schemaVersion !== "number" ||
         !Number.isSafeInteger(dataset.schemaVersion) ||
         dataset.schemaVersion < 1
       )
@@ -577,7 +692,7 @@ export const validateToolContract = (
           message: `Dataset ${dataset.id} is required more than once.`,
           path: `/execution/datasets/${index}`,
         });
-      datasetIds.add(dataset.id);
+      if (isRecord(dataset)) datasetIds.add(String(dataset.id));
     }
     if (
       definition.execution.kind === "pure" &&
@@ -603,4 +718,20 @@ export const validateToolContract = (
     issues.push(...portIssues(definition, "outputs"));
   }
   return issues;
+};
+
+export const validateToolContract = (
+  value: unknown,
+): readonly ToolContractIssue[] => {
+  try {
+    return collectContractIssues(value);
+  } catch {
+    return [
+      {
+        code: "definition_invalid",
+        message: "Contract contains malformed metadata.",
+        path: "",
+      },
+    ];
+  }
 };

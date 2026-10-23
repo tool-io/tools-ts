@@ -1,11 +1,19 @@
 import {
   defineTool,
+  type ToolDiscovery,
   type ToolExecutionContext,
   type ToolDefinition,
   type ToolJsonSchema,
 } from "./definition.js";
 import { toolResourceLimits } from "./limits.js";
-import { invalidInput, toolSuccess, type ToolResult } from "./result.js";
+import { isPortableJsonValue } from "./json-value.js";
+import { matchesToolJsonSchema } from "./contract.js";
+import {
+  invalidInput,
+  toolExecutionFailed,
+  toolSuccess,
+  type ToolResult,
+} from "./result.js";
 import type { ToolValueType } from "./value-type.js";
 
 export type SimpleValueKind =
@@ -29,6 +37,8 @@ export type SimpleField = {
   readonly maximum?: number;
   readonly minimum?: number;
   readonly required?: boolean;
+  /** Explicit nested object contract. Never derive it from one example value. */
+  readonly schema?: ToolJsonSchema;
   readonly unit?: string;
 };
 export class SimpleToolError extends Error {
@@ -80,7 +90,12 @@ const schemaFor = (field: SimpleField): ToolJsonSchema => {
       items: { items: { type: "number" }, type: "array" },
       type: "array",
     };
-  return { ...limits, additionalProperties: true, type: "object" };
+  return {
+    ...limits,
+    additionalProperties: true,
+    type: "object",
+    ...field.schema,
+  };
 };
 const valueTypeFor = (field: SimpleField): ToolValueType => {
   const metadata = {
@@ -124,11 +139,17 @@ const validValue = (value: unknown, field: SimpleField): boolean => {
       value.length <= toolResourceLimits.textCharacters
     );
   if (field.kind === "boolean") return typeof value === "boolean";
-  if (field.kind === "object") return isRecord(value);
+  if (field.kind === "object")
+    return (
+      isRecord(value) &&
+      isPortableJsonValue(value) &&
+      (field.schema === undefined || matchesToolJsonSchema(value, field.schema))
+    );
   if (field.kind === "numberList")
     return (
       Array.isArray(value) &&
       value.length <= toolResourceLimits.generatedValues &&
+      isPortableJsonValue(value) &&
       value.every(
         (entry) => typeof entry === "number" && Number.isFinite(entry),
       )
@@ -137,6 +158,7 @@ const validValue = (value: unknown, field: SimpleField): boolean => {
     return (
       Array.isArray(value) &&
       value.length <= toolResourceLimits.generatedValues &&
+      isPortableJsonValue(value) &&
       value.every(
         (entry) =>
           typeof entry === "string" &&
@@ -150,10 +172,12 @@ const validValue = (value: unknown, field: SimpleField): boolean => {
       (row) =>
         Array.isArray(row) &&
         row.length <= toolResourceLimits.matrixDimension &&
+        isPortableJsonValue(row) &&
         row.every(
           (entry) => typeof entry === "number" && Number.isFinite(entry),
         ),
-    )
+    ) &&
+    isPortableJsonValue(value)
   );
 };
 
@@ -164,6 +188,7 @@ export type SimpleToolConfig<Output extends Readonly<Record<string, unknown>>> =
       context: ToolExecutionContext,
     ) => Output | null;
     readonly description: string;
+    readonly discovery?: ToolDiscovery;
     readonly id: string;
     readonly inputs: readonly SimpleField[];
     readonly outputs: readonly SimpleField[];
@@ -174,6 +199,15 @@ export const createSimpleTool = <
 >(
   config: SimpleToolConfig<Output>,
 ): ToolDefinition<Record<string, unknown>, Output> => {
+  for (const field of [...config.inputs, ...config.outputs]) {
+    if (
+      field.schema !== undefined &&
+      (field.kind !== "object" || field.schema.type !== "object")
+    )
+      throw new TypeError(
+        `Nested schema for ${field.id} must describe an object field.`,
+      );
+  }
   const inputIds = new Set(config.inputs.map((field) => field.id));
   const outputIds = new Set(config.outputs.map((field) => field.id));
   const inputProperties = Object.fromEntries(
@@ -185,6 +219,19 @@ export const createSimpleTool = <
   const requiredInputs = config.inputs
     .filter((field) => field.required !== false && field.default === undefined)
     .map((field) => field.id);
+  const requiredOutputs = config.outputs
+    .filter((field) => field.required !== false)
+    .map((field) => field.id);
+  const invalidOutput = (
+    field: string,
+    message: string,
+  ): ToolResult<never> => ({
+    ok: false,
+    error: {
+      code: "execution_failed",
+      issues: [{ code: "invalid_output", field, message }],
+    },
+  });
   const execute = (
     input: unknown,
     context: ToolExecutionContext = {},
@@ -197,6 +244,40 @@ export const createSimpleTool = <
           message: "Input must be an object.",
         },
       ]);
+    try {
+      const prototype: unknown = Object.getPrototypeOf(input);
+      if (prototype !== Object.prototype && prototype !== null)
+        return invalidInput([
+          {
+            code: "object_required",
+            field: "",
+            message: "Input must be a plain data object.",
+          },
+        ]);
+      for (const field of Reflect.ownKeys(input)) {
+        const descriptor = Object.getOwnPropertyDescriptor(input, field);
+        if (
+          typeof field !== "string" ||
+          !descriptor?.enumerable ||
+          !Object.hasOwn(descriptor, "value")
+        )
+          return invalidInput([
+            {
+              code: "invalid_field",
+              field: typeof field === "string" ? field : "",
+              message: "Input fields must be enumerable data properties.",
+            },
+          ]);
+      }
+    } catch {
+      return invalidInput([
+        {
+          code: "object_required",
+          field: "",
+          message: "Input must be a readable plain data object.",
+        },
+      ]);
+    }
     const unknownFields = Object.keys(input).filter(
       (field) => !inputIds.has(field),
     );
@@ -224,43 +305,48 @@ export const createSimpleTool = <
     try {
       const output = config.calculate(normalized, context);
       if (!isRecord(output))
-        return simpleError(
+        return invalidOutput(
           "",
-          "The calculation did not produce an output.",
-          "invalid_output",
+          "The calculation did not produce a portable output object.",
         );
       for (const field of Object.keys(output))
         if (!outputIds.has(field))
-          simpleError(
+          return invalidOutput(
             field,
             `${field} is not a declared output field.`,
-            "invalid_output",
           );
-      for (const field of config.outputs)
-        if (!validValue(output[field.id], field))
-          simpleError(
+      for (const field of config.outputs) {
+        const descriptor = Object.getOwnPropertyDescriptor(output, field.id);
+        if (!descriptor && field.required === false) continue;
+        if (
+          !descriptor ||
+          !Object.hasOwn(descriptor, "value") ||
+          descriptor.value === undefined ||
+          !validValue(descriptor.value, field)
+        )
+          return invalidOutput(
             field.id,
             `${field.label} could not be calculated.`,
-            "invalid_output",
           );
+      }
+      if (!isPortableJsonValue(output))
+        return invalidOutput(
+          "",
+          "The calculation did not produce a portable output object.",
+        );
       return toolSuccess(output);
     } catch (error) {
       return error instanceof SimpleToolError
         ? invalidInput([
             { code: error.code, field: error.field, message: error.message },
           ])
-        : invalidInput([
-            {
-              code: "calculation_failed",
-              field: "",
-              message: "The calculation could not be completed.",
-            },
-          ]);
+        : toolExecutionFailed("The calculation could not be completed.");
     }
   };
   return defineTool({
     contractVersion: 1,
     description: config.description,
+    ...(config.discovery === undefined ? {} : { discovery: config.discovery }),
     execute,
     execution: { kind: "pure" },
     id: config.id,
@@ -273,7 +359,7 @@ export const createSimpleTool = <
     outputSchema: {
       additionalProperties: false,
       properties: outputProperties,
-      required: config.outputs.map((field) => field.id),
+      required: requiredOutputs,
       type: "object",
     },
     ports: {
@@ -287,6 +373,7 @@ export const createSimpleTool = <
         valueType: valueTypeFor(field),
       })),
       outputs: config.outputs.map((field) => ({
+        ...(field.required === false ? { required: false } : {}),
         ...(field.description === undefined
           ? {}
           : { description: field.description }),
