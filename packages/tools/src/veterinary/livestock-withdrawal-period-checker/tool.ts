@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly callerVerifiedApplicableWithdrawalDays: number;
   readonly plannedFoodProductReleaseDate: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualLastTreatmentDate",
@@ -30,7 +30,7 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(
     input.callerVerifiedApplicableWithdrawalDays,
     "verified-period",
@@ -49,7 +49,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -77,6 +77,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observation, conditional calculation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalCallerCalendarReleaseDate: { type: "string" },
+          signedDaysAfterCallerCalendarRelease: { type: "number" },
+        },
+        required: [
+          "conditionalCallerCalendarReleaseDate",
+          "signedDaysAfterCallerCalendarRelease",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
