@@ -2,12 +2,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ dimensions: readonly number[]; halo: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "dimensions", label: "dimensions", kind: "numberList" },
   { id: "halo", label: "halo", kind: "integer" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.dimensions(i.dimensions);
   H.int(i.halo, 0, 1e6);
@@ -24,12 +24,34 @@ export const example = {
   output: { result: { core: "24", expanded: "120", haloCells: "96" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Voxel Box Halo Cell Budget", "voxels", "3D geometry"],
+    collections: ["data", "learn"],
+    fields: ["voxel", "voxels", "3D geometry"],
+    keywords: ["voxels", "3D geometry"],
+  },
   id: "voxel/box-halo-cell-budget",
   title: "Voxel Box Halo Cell Budget",
   description:
     "Budget exact additional voxel cells for a symmetric integer halo around a supplied positive cuboid, counting edges/corners once; no boundary clipping or memory overhead.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          core: { type: "string" },
+          expanded: { type: "string" },
+          haloCells: { type: "string" },
+        },
+        required: ["core", "expanded", "haloCells"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
