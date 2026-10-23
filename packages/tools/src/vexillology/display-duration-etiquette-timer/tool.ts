@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly actualReviewUtcIsoDate: string;
   readonly callerIndependentlyApplicableDisplayDurationDays: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualDisplayStartUtcIsoDate",
@@ -31,10 +31,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const n = daysBetween(
     input.actualDisplayStartUtcIsoDate,
     input.actualReviewUtcIsoDate,
@@ -54,10 +51,7 @@ const compute = (
       n > input.callerIndependentlyApplicableDisplayDurationDays,
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -86,6 +80,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          elapsedDisplayDays: { type: "number" },
+          signedRemainingCallerDays: { type: "number" },
+          callerDurationExceeded: { type: "boolean" },
+        },
+        required: [
+          "elapsedDisplayDays",
+          "signedRemainingCallerDays",
+          "callerDurationExceeded",
+        ],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
