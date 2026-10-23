@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly bandPerpendicularWidth: number;
   readonly angleDegrees: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "bandPerpendicularWidth",
@@ -21,7 +21,7 @@ const fields = [
   },
   { id: "angleDegrees", label: "Angle degrees", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.bandPerpendicularWidth, "bandPerpendicularWidth");
   if (input.angleDegrees <= 0 || input.angleDegrees >= 90)
     simpleError("angle", "Strictly0–90 degrees nonsingular oblique angle.");
@@ -34,7 +34,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       Math.abs(Math.sin(rad(input.angleDegrees))),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -58,6 +58,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          verticalInterceptWidth: { type: "number" },
+          horizontalInterceptWidth: { type: "number" },
+        },
+        required: ["verticalInterceptWidth", "horizontalInterceptWidth"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
