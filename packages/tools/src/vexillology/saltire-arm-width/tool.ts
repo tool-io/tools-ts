@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly fly: number;
   readonly verifiedArmFractionOfHoist: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "hoist", label: "Hoist", kind: "number" },
   { id: "fly", label: "Fly", kind: "number" },
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.hoist, "hoist");
   positive(input.fly, "fly");
   fraction(input.verifiedArmFractionOfHoist, "verifiedArmFractionOfHoist");
@@ -32,7 +32,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     saltireAngleDegrees: deg(Math.atan2(input.hoist, input.fly)),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -56,6 +56,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          perpendicularArmWidth: { type: "number" },
+          saltireAngleDegrees: { type: "number" },
+        },
+        required: ["perpendicularArmWidth", "saltireAngleDegrees"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
