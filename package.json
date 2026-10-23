@@ -16,7 +16,8 @@
     "unittest": "pnpm --filter @tool.io/tools unittest",
     "validate": "pnpm --filter @tool.io/tools validate",
     "benchmark:discovery": "node scripts/benchmark-discovery.mjs",
-    "benchmark:scale": "node scripts/benchmark-discovery-scale.mjs"
+    "benchmark:scale": "node scripts/benchmark-discovery-scale.mjs",
+    "validate:limited": "node scripts/with-validation-limits.mjs"
   },
   "devDependencies": {
     "@types/node": "24.13.3",
