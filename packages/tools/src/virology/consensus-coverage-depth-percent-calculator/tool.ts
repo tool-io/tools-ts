@@ -13,15 +13,12 @@ export type Input = Readonly<{
   depths: readonly number[];
   minimumDepth: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "depths", label: "Depths", kind: "numberList" },
   { id: "minimumDepth", label: "Minimum depth", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   bounded(i.minimumDepth, "minimum", 1, 1e9);
   if (!i.depths.length) simpleError("depths", "Per-base observations.");
   i.depths.forEach((v) => bounded(v, "depth", 0, 1e9));
@@ -33,7 +30,7 @@ const compute = (
     meanDepth: mean(i.depths),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -54,6 +51,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          coveredBaseCount: { type: "number" },
+          coveredPercent: { type: "number" },
+          meanDepth: { type: "number" },
+        },
+        required: ["coveredBaseCount", "coveredPercent", "meanDepth"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
