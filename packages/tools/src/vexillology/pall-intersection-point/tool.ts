@@ -8,7 +8,7 @@ export type Input = Readonly<{
   readonly callerVerifiedJunctionXFraction: number;
   readonly callerVerifiedJunctionYFraction: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "fly", label: "Fly", kind: "number" },
   { id: "hoist", label: "Hoist", kind: "number" },
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   canvas(input.fly, input.hoist);
   fraction(input.callerVerifiedJunctionXFraction, "x");
   fraction(input.callerVerifiedJunctionYFraction, "y");
@@ -36,7 +36,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     viewerRightRay: [[input.fly - x, input.hoist / 2 - y]],
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -67,6 +67,32 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          junction: { type: "array", items: { type: "number" } },
+          viewerLeftUpperRay: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          viewerLeftLowerRay: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+          viewerRightRay: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: [
+          "junction",
+          "viewerLeftUpperRay",
+          "viewerLeftLowerRay",
+          "viewerRightRay",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
