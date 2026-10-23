@@ -15,7 +15,7 @@ export type Input = Readonly<{
   readonly wiltingFractions: readonly number[];
   readonly rootedFractions: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "layerThicknessMm", label: "Layer thickness mm", kind: "numberList" },
   {
@@ -26,7 +26,7 @@ const fields = [
   { id: "wiltingFractions", label: "Wilting fractions", kind: "numberList" },
   { id: "rootedFractions", label: "Rooted fractions", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   aligned(i.layerThicknessMm, i.fieldCapacityFractions, "layers");
   aligned(i.layerThicknessMm, i.wiltingFractions, "layers");
   aligned(i.layerThicknessMm, i.rootedFractions, "layers");
@@ -49,7 +49,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     totalAvailableWaterMm: sum(layers),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -75,6 +75,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          availableWaterMmByLayer: { type: "array", items: { type: "number" } },
+          totalAvailableWaterMm: { type: "number" },
+        },
+        required: ["availableWaterMmByLayer", "totalAvailableWaterMm"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
