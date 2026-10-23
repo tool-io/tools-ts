@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly measuredGlyphAdvanceUnits: number;
   readonly unitsPerEm: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "measuredGlyphAdvanceUnits",
@@ -19,12 +19,12 @@ const fields = [
   },
   { id: "unitsPerEm", label: "Units per em", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.measuredGlyphAdvanceUnits, "advance");
   positive(i.unitsPerEm, "upem");
   return { measuredFractionEm: i.measuredGlyphAdvanceUnits / i.unitsPerEm };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -43,6 +43,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { measuredFractionEm: { type: "number" } },
+        required: ["measuredFractionEm"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
