@@ -8,14 +8,14 @@ export type Input = Readonly<{
   readonly referenceHoistUnits: number;
   readonly referenceFlyUnits: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "observedHoist", label: "Observed hoist", kind: "number" },
   { id: "observedFly", label: "Observed fly", kind: "number" },
   { id: "referenceHoistUnits", label: "Reference hoist units", kind: "number" },
   { id: "referenceFlyUnits", label: "Reference fly units", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.observedHoist, "observedHoist");
   positive(input.observedFly, "observedFly");
   positive(input.referenceHoistUnits, "referenceHoistUnits");
@@ -27,7 +27,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.referenceHoistUnits / input.referenceFlyUnits,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -56,6 +56,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedHoistToFly: { type: "number" },
+          signedRatioDifference: { type: "number" },
+        },
+        required: ["observedHoistToFly", "signedRatioDifference"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
