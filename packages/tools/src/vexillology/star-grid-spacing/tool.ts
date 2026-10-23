@@ -6,7 +6,7 @@ export type Input = Readonly<{
   readonly availableCantonHeight: number;
   readonly starRows: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "availableCantonHeight",
@@ -15,7 +15,7 @@ const fields = [
   },
   { id: "starRows", label: "Star rows", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.availableCantonHeight, "availableCantonHeight");
   bounded(input.starRows, "rows", 1, 64);
   return {
@@ -26,7 +26,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     rowSpacing: input.availableCantonHeight / input.starRows,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -47,6 +47,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          equalCellCenterY: { type: "array", items: { type: "number" } },
+          rowSpacing: { type: "number" },
+        },
+        required: ["equalCellCenterY", "rowSpacing"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
