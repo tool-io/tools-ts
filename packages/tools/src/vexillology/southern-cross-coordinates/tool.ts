@@ -15,7 +15,7 @@ export type Input = Readonly<{
   readonly callerVerifiedStarIds: readonly string[];
   readonly callerVerifiedNormalizedPoints: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "hoist", label: "Hoist", kind: "number" },
   { id: "fly", label: "Fly", kind: "number" },
@@ -30,7 +30,7 @@ const fields = [
     kind: "matrix",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   canvas(input.fly, input.hoist);
   unique(input.callerVerifiedStarIds, "stars");
   aligned(
@@ -47,7 +47,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ]),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -82,6 +82,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          starIds: { type: "array", items: { type: "string" } },
+          starCenters: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["starIds", "starCenters"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
