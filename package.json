@@ -1,6 +1,12 @@
 {
   "name": "tools-ts-workspace",
   "private": true,
+  "homepage": "https://tool.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tool-io/tools-ts.git"
+  },
+  "bugs": "https://github.com/tool-io/tools-ts/issues",
   "engines": {
     "node": ">=24.0.0"
   },
@@ -9,15 +15,26 @@
     "build": "pnpm --filter @tool.io/tools build",
     "check": "pnpm --filter @tool.io/tools check",
     "check:contribution": "node scripts/validate-contributions.mjs",
-    "check:generated": "node --test scripts/implementation-dates.test.mjs scripts/contract-schema-validation.test.mjs scripts/portable-schema-validation.test.mjs scripts/tabular-schema-validation.test.mjs && pnpm --filter @tool.io/tools check:generated",
+    "check:generated": "node --test --test-concurrency=1 scripts/implementation-dates.test.mjs scripts/contract-schema-validation.test.mjs scripts/portable-schema-validation.test.mjs scripts/tabular-schema-validation.test.mjs scripts/package-build.test.mjs scripts/release-version.test.mjs scripts/example-metadata.test.mjs scripts/audit-history.test.mjs scripts/validation-limits.test.mjs scripts/compiler-batches.test.mjs scripts/unit-batches.test.mjs && pnpm --filter @tool.io/tools check:generated",
+    "check:reference": "node scripts/check-reference-vectors.mjs",
+    "check:public-source": "node scripts/review-public-source.mjs",
     "check:release": "pnpm --filter @tool.io/tools check:release",
+    "check:browser": "node scripts/verify-browser.mjs",
+    "check:history": "node scripts/audit-history.mjs",
+    "check:checkout": "node scripts/verify-checkout.mjs",
+    "validate:limited": "node scripts/with-validation-limits.mjs",
+    "benchmark:discovery": "node scripts/benchmark-discovery.mjs",
+    "benchmark:scale": "node scripts/benchmark-discovery-scale.mjs",
     "generate": "pnpm --filter @tool.io/tools generate",
     "test:unit": "pnpm --filter @tool.io/tools test:unit",
     "unittest": "pnpm --filter @tool.io/tools unittest",
-    "validate": "pnpm --filter @tool.io/tools validate",
-    "benchmark:discovery": "node scripts/benchmark-discovery.mjs",
-    "benchmark:scale": "node scripts/benchmark-discovery-scale.mjs",
-    "validate:limited": "node scripts/with-validation-limits.mjs"
+    "validate": "pnpm --filter @tool.io/tools validate"
+  },
+  "pnpm": {
+    "overrides": {
+      "fast-uri@<3.1.8": "3.1.9",
+      "source-map-js@<1.2.2": "1.2.2"
+    }
   },
   "devDependencies": {
     "@types/node": "24.13.3",
@@ -26,17 +43,5 @@
     "typescript": "^7.0.2",
     "vite": "8.1.6",
     "vitest": "^4.1.12"
-  },
-  "pnpm": {
-    "overrides": {
-      "fast-uri@<3.1.8": "3.1.9",
-      "source-map-js@<1.2.2": "1.2.2"
-    }
-  },
-  "homepage": "https://tool.io",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tool-io/tools-ts.git"
-  },
-  "bugs": "https://github.com/tool-io/tools-ts/issues"
+  }
 }
