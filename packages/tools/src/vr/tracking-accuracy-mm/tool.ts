@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly actualMeasuredPositionMm: readonly number[];
   readonly actualIndependentGroundTruthPositionMm: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualMeasuredPositionMm",
@@ -18,7 +18,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     input.actualMeasuredPositionMm.length !== 3 ||
     input.actualIndependentGroundTruthPositionMm.length !== 3
@@ -32,7 +32,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -54,6 +54,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { observedEuclideanPositionErrorMm: { type: "number" } },
+        required: ["observedEuclideanPositionErrorMm"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
