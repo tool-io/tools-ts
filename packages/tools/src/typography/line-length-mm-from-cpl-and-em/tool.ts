@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly emMm: number;
   readonly measuredMeanAdvanceEm: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "charactersPerLine", label: "Characters per line", kind: "number" },
   { id: "emMm", label: "Em mm", kind: "number" },
@@ -21,7 +21,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.charactersPerLine, "cpl");
   positive(i.emMm, "em");
   positive(i.measuredMeanAdvanceEm, "advance");
@@ -29,7 +29,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     lineLengthMm: i.charactersPerLine * i.emMm * i.measuredMeanAdvanceEm,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -48,6 +48,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { lineLengthMm: { type: "number" } },
+        required: ["lineLengthMm"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
