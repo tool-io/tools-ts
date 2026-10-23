@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly independentlyCodedEdemaScores: readonly number[];
   readonly actualObservationKnownFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyCodedErythemaScores",
@@ -31,7 +31,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.independentlyCodedErythemaScores,
     input.independentlyCodedEdemaScores,
@@ -60,7 +60,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -88,6 +88,22 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedKnownPrimaryIrritationIndex: { type: "number" },
+          unknownObservationIndices: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: [
+          "observedKnownPrimaryIrritationIndex",
+          "unknownObservationIndices",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
