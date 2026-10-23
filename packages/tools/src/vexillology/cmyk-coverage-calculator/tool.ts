@@ -15,7 +15,7 @@ export type Input = Readonly<{
   readonly actualNonoverlappingPatchAreasCm2: readonly number[];
   readonly callerActualMatchedCmykFractions: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualNonoverlappingPatchAreasCm2",
@@ -28,10 +28,7 @@ const fields = [
     kind: "matrix",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   aligned(
     input.actualNonoverlappingPatchAreasCm2,
     input.callerActualMatchedCmykFractions,
@@ -55,10 +52,7 @@ const compute = (
     ),
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -83,6 +77,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          equivalentFullToneChannelAreasCm2: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: ["equivalentFullToneChannelAreasCm2"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
