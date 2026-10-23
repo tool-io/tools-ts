@@ -5,16 +5,16 @@ export type Input = Readonly<{
   readonly emPx: number;
   readonly callerOffsetEm: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "emPx", label: "Em px", kind: "number" },
   { id: "callerOffsetEm", label: "Caller offset em", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.emPx, "em");
   return { offsetPx: i.emPx * i.callerOffsetEm };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -33,6 +33,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { offsetPx: { type: "number" } },
+        required: ["offsetPx"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
