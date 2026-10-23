@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly actualFlagLabels: readonly string[];
   readonly callerIndependentApplicablePrecedenceRanks: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualFlagLabels", label: "Actual flag labels", kind: "stringList" },
   {
@@ -21,10 +21,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   unique(input.actualFlagLabels, "flags");
   aligned(
     input.actualFlagLabels,
@@ -47,10 +44,7 @@ const compute = (
     hasUnresolvedEqualRank: groups.some((a) => a.length > 1),
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -77,6 +71,19 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          orderedFlagGroups: {
+            type: "array",
+            items: { type: "array", items: { type: "string" } },
+          },
+          hasUnresolvedEqualRank: { type: "boolean" },
+        },
+        required: ["orderedFlagGroups", "hasUnresolvedEqualRank"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
