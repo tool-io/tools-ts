@@ -7,7 +7,7 @@ export type Input = Readonly<{
   readonly evenRowFirstCenterX: number;
   readonly oddRowFirstCenterX: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "columnSpacing", label: "Column spacing", kind: "number" },
   {
@@ -17,7 +17,7 @@ const fields = [
   },
   { id: "oddRowFirstCenterX", label: "Odd row first center x", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.columnSpacing, "columnSpacing");
   return {
     signedStaggerOffset: input.oddRowFirstCenterX - input.evenRowFirstCenterX,
@@ -26,7 +26,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.columnSpacing,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -45,6 +45,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedStaggerOffset: { type: "number" },
+          staggerAsColumnFraction: { type: "number" },
+        },
+        required: ["signedStaggerOffset", "staggerAsColumnFraction"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
