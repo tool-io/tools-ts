@@ -3,12 +3,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../histogram/batch56-shared.js";
 export type Input = Readonly<{ nodesJson: string; word: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "nodesJson", label: "nodesJson", kind: "string" },
   { id: "word", label: "word", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.trieNodes(i.nodesJson);
   const lookup = H.trieLookup(t, i.word);
@@ -31,12 +31,36 @@ export const example = {
   output: { result: { prefix: "ab" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Prefix Trie Word Shortest Unique Prefix",
+      "prefix tries",
+      "software development",
+    ],
+    collections: ["data", "learn"],
+    fields: ["trie", "prefix tries", "software development"],
+    keywords: ["prefix tries", "software development"],
+  },
   id: "trie/word-shortest-unique-prefix",
   title: "Prefix Trie Word Shortest Unique Prefix",
   description:
     "Bounded explicit prefix trie with root ID 0, unique sibling UTF-16 code-unit edges and terminal flags; find the shortest literal prefix uniquely completing to a stored terminal word; a word that prefixes others may have no unique prefix.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          prefix: { anyOf: [{ type: "string" }, { type: "null" }] },
+        },
+        required: ["prefix"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
