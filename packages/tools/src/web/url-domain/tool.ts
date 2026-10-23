@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly actualAbsoluteUrl: string;
   readonly callerVerifiedExactPublicSuffixes: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualAbsoluteUrl", label: "Actual absolute url", kind: "string" },
   {
@@ -14,7 +14,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const a = domainParts(
     input.actualAbsoluteUrl,
     input.callerVerifiedExactPublicSuffixes,
@@ -25,7 +25,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     matchedRegistrableDomainAvailable: a.available,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -53,6 +53,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedQualifiedRegistrableDomain: { type: "string" },
+          matchedExactPublicSuffix: { type: "string" },
+          matchedRegistrableDomainAvailable: { type: "boolean" },
+        },
+        required: [
+          "observedQualifiedRegistrableDomain",
+          "matchedExactPublicSuffix",
+          "matchedRegistrableDomainAvailable",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
