@@ -3,6 +3,20 @@ export type ToolExample<Input, Output = never> = {
   readonly output?: Output;
 };
 
+export type ToolExampleMetadata = {
+  readonly id: string;
+  readonly contractVersion: number;
+  readonly contractFingerprint: string;
+  readonly example: ToolExample<unknown, unknown>;
+};
+
+export type ToolExampleCollection = {
+  readonly schemaVersion: 1;
+  readonly catalogFingerprint: string;
+  readonly examplesFingerprint: string;
+  readonly examples: readonly ToolExampleMetadata[];
+};
+
 const numericTolerance = 64 * Number.EPSILON;
 
 const numbersMatch = (actual: number, expected: number): boolean => {

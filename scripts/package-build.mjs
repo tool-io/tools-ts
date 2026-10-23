@@ -110,6 +110,7 @@ export const buildFingerprint = async (configuration) => {
       "scripts/compiler-batches.mjs",
       "scripts/generate-structure.mjs",
       "scripts/generate-catalog.mjs",
+      "scripts/example-metadata.mjs",
       "scripts/implementation-dates.mjs",
       "scripts/contract-schema-validation.mjs",
     ].map((file) => path.join(root, file)),

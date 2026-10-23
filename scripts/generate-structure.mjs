@@ -185,6 +185,8 @@ const exports = {
   "./catalog": "./catalog.generated.json",
   "./contracts": "./contracts.generated.json",
   "./contracts/schema": "./tool-contract.schema.json",
+  "./examples": "./examples.generated.json",
+  "./examples/schema": "./tool-example-collection.schema.json",
   "./chain": exportEntry("chain"),
   "./core": exportEntry("core"),
   "./dictionary": exportEntry("dictionary"),
@@ -210,7 +212,10 @@ packageJson.exports = Object.fromEntries(
 packageJson.files = [
   "dist",
   "catalog-data.d.ts",
+  "catalog.generated.json",
   "contracts.generated.json",
+  "examples.generated.json",
+  "tool-example-collection.schema.json",
   "tool-contract.schema.json",
   "portable-value.schema.json",
   "table-data.schema.json",
@@ -241,6 +246,7 @@ const outputs = [
   ...(await Promise.all(
     [
       "portable-value.schema.json",
+      "tool-example-collection.schema.json",
       "table-data.schema.json",
       "tabular-presentation.schema.json",
     ].map(async (name) => [

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tool.io/contracts/tool-example-collection.schema.json",
+  "title": "Tool.io canonical example collection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "catalogFingerprint",
+    "examplesFingerprint",
+    "examples"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "catalogFingerprint": { "$ref": "#/$defs/fingerprint" },
+    "examplesFingerprint": { "$ref": "#/$defs/fingerprint" },
+    "examples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "contractVersion", "contractFingerprint", "example"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*(?:/[a-z0-9]+(?:-[a-z0-9]+)*)*$"
+          },
+          "contractVersion": { "type": "integer", "minimum": 1 },
+          "contractFingerprint": { "$ref": "#/$defs/fingerprint" },
+          "example": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["input"],
+            "properties": { "input": {}, "output": {} }
+          }
+        }
+      }
+    }
+  },
+  "$defs": { "fingerprint": { "type": "string", "pattern": "^[0-9a-f]{64}$" } }
+}

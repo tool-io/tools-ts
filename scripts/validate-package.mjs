@@ -2,6 +2,10 @@ import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { isDeepStrictEqual } from "node:util";
 import { assertContractCollectionMatchesSchema } from "./contract-schema-validation.mjs";
+import {
+  createExampleCollection,
+  createExampleMetadata,
+} from "./example-metadata.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const packageRoot = path.join(root, "packages/tools");
@@ -23,6 +27,12 @@ const { exampleOutputsMatch } = await import(
 );
 const generatedContracts = JSON.parse(
   await readFile(path.join(packageRoot, "contracts.generated.json"), "utf8"),
+);
+const generatedCatalog = JSON.parse(
+  await readFile(path.join(packageRoot, "catalog.generated.json"), "utf8"),
+);
+const metadataById = new Map(
+  generatedCatalog.entries.map((entry) => [entry.id, entry]),
 );
 const [collectionSchema, toolSchema] = await Promise.all([
   readFile(
@@ -72,6 +82,7 @@ const contractById = new Map(
 
 const toolsWithoutExamples = [];
 let authoredExampleCount = 0;
+const authoredMetadata = [];
 for (const directory of manifest.tools) {
   const module = await import(
     path.join(packageRoot, `dist/${directory}/index.js`)
@@ -102,6 +113,16 @@ for (const directory of manifest.tools) {
   if (!isRecord(example) || !("input" in example))
     throw new Error(`${directory} exports an invalid authored example.`);
   assertJsonSerializable(example.input, `${directory} example input`);
+  const metadata = metadataById.get(directory);
+  if (!metadata) throw new Error(`${directory}: missing catalog metadata.`);
+  authoredMetadata.push(
+    createExampleMetadata({
+      id: directory,
+      contractVersion: definition.contractVersion,
+      contractFingerprint: metadata.contractFingerprint,
+      example,
+    }),
+  );
   if (!matchesToolJsonSchema(example.input, definition.inputSchema))
     throw new Error(`${directory} example input does not match its schema.`);
   const result = await definition.execute(example.input);
@@ -128,6 +149,22 @@ if (toolsWithoutExamples.length > 0)
         ? `:\n${toolsWithoutExamples.join("\n")}`
         : ". Run with --examples-report to list them."
     }`,
+  );
+
+const generatedExamples = JSON.parse(
+  await readFile(path.join(packageRoot, "examples.generated.json"), "utf8"),
+);
+if (
+  !isDeepStrictEqual(
+    generatedExamples,
+    createExampleCollection(
+      generatedCatalog.catalogFingerprint,
+      authoredMetadata,
+    ),
+  )
+)
+  throw new Error(
+    "Generated canonical examples differ from the authored package examples.",
   );
 
 const walk = async (directory) => {

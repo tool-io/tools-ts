@@ -25,6 +25,8 @@
     "catalog-data.d.ts",
     "catalog.generated.json",
     "contracts.generated.json",
+    "examples.generated.json",
+    "tool-example-collection.schema.json",
     "tool-contract.schema.json",
     "portable-value.schema.json",
     "table-data.schema.json",
@@ -60,6 +62,8 @@
       "types": "./dist/discovery.d.ts",
       "import": "./dist/discovery.js"
     },
+    "./examples": "./examples.generated.json",
+    "./examples/schema": "./tool-example-collection.schema.json",
     "./flashcards": {
       "types": "./dist/flashcards/index.d.ts",
       "import": "./dist/flashcards/index.js"

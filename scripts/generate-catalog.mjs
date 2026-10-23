@@ -8,6 +8,11 @@ import {
   unknownImplementationDate,
 } from "./implementation-dates.mjs";
 import { assertContractCollectionMatchesSchema } from "./contract-schema-validation.mjs";
+import Ajv2020 from "ajv/dist/2020.js";
+import {
+  createExampleCollection,
+  createExampleMetadata,
+} from "./example-metadata.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const packageRoot = path.join(root, "packages/tools");
@@ -21,7 +26,7 @@ const { createToolCatalogEntry, toolCatalogSource } = await import(
 const { portableToolContract } = await import(
   path.join(packageRoot, "dist/core/portable-contract.js")
 );
-const { validateToolContract } = await import(
+const { validateToolContract, matchesToolJsonSchema } = await import(
   path.join(packageRoot, "dist/core/contract.js")
 );
 const committed = path.join(packageRoot, "catalog.generated.json");
@@ -48,9 +53,10 @@ const implementationDates = resolveImplementationDates({
 });
 const entries = [];
 const contracts = [];
+const examples = [];
 for (const directory of manifest.tools) {
   const module = await import(
-    path.join(packageRoot, `dist/${directory}/tool.js`)
+    path.join(packageRoot, `dist/${directory}/index.js`)
   );
   const definition = module.default;
   const issues = validateToolContract(definition);
@@ -67,6 +73,21 @@ for (const directory of manifest.tools) {
     ),
   );
   contracts.push(portableToolContract(definition));
+  const record = createExampleMetadata({
+    id: definition.id,
+    contractVersion: definition.contractVersion,
+    contractFingerprint,
+    example: module.example,
+  });
+  if (
+    !matchesToolJsonSchema(record.example.input, definition.inputSchema) ||
+    (Object.hasOwn(record.example, "output") &&
+      !matchesToolJsonSchema(record.example.output, definition.outputSchema))
+  )
+    throw new Error(
+      `${directory}: canonical example does not match its contract.`,
+    );
+  examples.push(record);
 }
 entries.sort((left, right) => left.id.localeCompare(right.id));
 contracts.sort((left, right) => left.id.localeCompare(right.id));
@@ -91,6 +112,25 @@ assertContractCollectionMatchesSchema({
   toolSchema,
 });
 const contractCollection = `${JSON.stringify(contractCollectionValue)}\n`;
+const exampleCollectionValue = createExampleCollection(
+  catalogFingerprint,
+  examples,
+);
+const exampleSchema = JSON.parse(
+  await readFile(
+    path.join(contractsRoot, "tool-example-collection.schema.json"),
+    "utf8",
+  ),
+);
+const validateExamples = new Ajv2020({ strict: true, allErrors: true }).compile(
+  exampleSchema,
+);
+if (!validateExamples(exampleCollectionValue))
+  throw new Error(
+    "Canonical examples do not match the public collection schema.",
+  );
+const exampleCollection = `${JSON.stringify(exampleCollectionValue)}\n`;
+const examplesFile = path.join(packageRoot, "examples.generated.json");
 if (process.argv.includes("--check")) {
   const current = await readFile(committed, "utf8").catch(() => "");
   if (current !== catalog) {
@@ -105,10 +145,17 @@ if (process.argv.includes("--check")) {
     process.stderr.write("packages/tools/contracts.generated.json is stale.\n");
     process.exitCode = 1;
   }
+  if (
+    (await readFile(examplesFile, "utf8").catch(() => "")) !== exampleCollection
+  ) {
+    process.stderr.write("packages/tools/examples.generated.json is stale.\n");
+    process.exitCode = 1;
+  }
 } else {
   await writeFile(committed, catalog);
   await writeFile(
     path.join(packageRoot, "contracts.generated.json"),
     contractCollection,
   );
+  await writeFile(examplesFile, exampleCollection);
 }
