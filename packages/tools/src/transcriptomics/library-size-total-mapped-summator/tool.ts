@@ -4,21 +4,18 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, bounded, sum } from "../batch53-shared.js";
 
 export type Input = Readonly<{ mappedCounts: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "mappedCounts", label: "Mapped counts", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   i.mappedCounts.forEach((v) => bounded(v, "counts", 0, 1e12));
   return {
     totalMappedCounts: sum(i.mappedCounts),
     features: i.mappedCounts.length,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -37,6 +34,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          totalMappedCounts: { type: "number" },
+          features: { type: "number" },
+        },
+        required: ["totalMappedCounts", "features"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
