@@ -14,7 +14,7 @@ export type Input = Readonly<{
   reciprocalDilutions: readonly number[];
   fixationPresent: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "reciprocalDilutions",
@@ -23,10 +23,7 @@ const fields = [
   },
   { id: "fixationPresent", label: "Fixation present", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   aligned(i.reciprocalDilutions, i.fixationPresent, "assay");
   binary(i.fixationPresent, "fixation");
   if (!i.reciprocalDilutions.length)
@@ -44,7 +41,7 @@ const compute = (
     rightCensored: i.fixationPresent.at(-1) === 1,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -63,6 +60,18 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedEndpointReciprocal: {
+            anyOf: [{ type: "number" }, { type: "null" }],
+          },
+          rightCensored: { type: "boolean" },
+        },
+        required: ["observedEndpointReciprocal", "rightCensored"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
