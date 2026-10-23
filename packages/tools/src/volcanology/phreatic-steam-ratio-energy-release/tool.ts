@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly flashedSteamFraction: number;
   readonly callerEnthalpyReleaseJPerKg: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "waterMassKg", label: "Water mass kg", kind: "number" },
   {
@@ -25,7 +25,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.waterMassKg, "mass");
   fraction(i.flashedSteamFraction, "fraction");
   nonnegative(i.callerEnthalpyReleaseJPerKg, "enthalpy");
@@ -34,7 +34,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       i.waterMassKg * i.flashedSteamFraction * i.callerEnthalpyReleaseJPerKg,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -57,6 +57,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalEnergyJ: { type: "number" } },
+        required: ["conditionalEnergyJ"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
