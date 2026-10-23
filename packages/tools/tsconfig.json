@@ -9,6 +9,7 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ES2022",
+    "types": [],
     "verbatimModuleSyntax": true
   },
   "include": ["src/**/*.ts"]

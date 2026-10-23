@@ -7,3 +7,4 @@ dist/
 coverage/
 *.tsbuildinfo
 /DEVELOPER.md
+/packages/tools/src/generated/registry-buckets/*.generated.typecheck.ts

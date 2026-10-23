@@ -22,6 +22,7 @@
   "sideEffects": false,
   "files": [
     "dist",
+    "catalog-data.d.ts",
     "catalog.generated.json",
     "contracts.generated.json",
     "tool-contract.schema.json",
@@ -92,9 +93,9 @@
     }
   },
   "scripts": {
-    "build": "node ../../scripts/generate-structure.mjs && tsc -p tsconfig.build.json && node ../../scripts/generate-catalog.mjs",
-    "check": "tsc -p tsconfig.json --noEmit",
-    "check:generated": "node ../../scripts/generate-structure.mjs --check && tsc -p tsconfig.build.json && node ../../scripts/generate-catalog.mjs --check",
+    "build": "node ../../scripts/build-package.mjs",
+    "check": "node ../../scripts/check-types.mjs",
+    "check:generated": "node ../../scripts/build-package.mjs --check",
     "check:release": "node ../../scripts/validate-release-package.mjs",
     "generate": "node ../../scripts/generate-structure.mjs",
     "test:unit": "vitest run",
@@ -106,5 +107,11 @@
     "@noble/hashes": "2.4.0",
     "sqids": "0.3.0",
     "ts-fsrs": "5.4.1"
+  },
+  "imports": {
+    "#tool-catalog": {
+      "types": "./catalog-data.d.ts",
+      "default": "./catalog.generated.json"
+    }
   }
 }

@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import {
@@ -112,5 +112,3 @@ if (process.argv.includes("--check")) {
     contractCollection,
   );
 }
-await mkdir(path.join(packageRoot, "dist"), { recursive: true });
-await writeFile(path.join(packageRoot, "dist/catalog.json"), catalog);

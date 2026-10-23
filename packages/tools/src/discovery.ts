@@ -1,4 +1,4 @@
-import catalogJson from "../catalog.generated.json" with { type: "json" };
+import catalogJson from "#tool-catalog" with { type: "json" };
 import type { ToolCatalog, ToolCatalogEntry } from "./core/catalog.js";
 import type { ToolExecutionKind } from "./core/definition.js";
 

@@ -209,7 +209,7 @@ packageJson.exports = Object.fromEntries(
 );
 packageJson.files = [
   "dist",
-  "catalog.generated.json",
+  "catalog-data.d.ts",
   "contracts.generated.json",
   "tool-contract.schema.json",
   "portable-value.schema.json",
@@ -258,7 +258,7 @@ for (const entry of await readdir(registryBucketRoot, {
 }).catch(() => [])) {
   if (
     !entry.isFile() ||
-    !/^\d+\.generated\.ts$/.test(entry.name) ||
+    !/^\d+\.generated(?:\.typecheck(?:\.d)?)?\.ts$/.test(entry.name) ||
     expectedOutputFiles.has(path.join(registryBucketRoot, entry.name))
   )
     continue;
