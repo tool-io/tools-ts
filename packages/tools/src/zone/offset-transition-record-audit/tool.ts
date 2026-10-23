@@ -3,11 +3,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../histogram/batch56-shared.js";
 export type Input = Readonly<{ transitionsJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "transitionsJson", label: "transitionsJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.zoneTransitions(i.transitionsJson);
   return H.finish({
@@ -28,12 +28,49 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Time Zone Offset Transition Record Audit",
+      "time zones",
+      "UTC offsets",
+    ],
+    collections: ["data", "learn"],
+    fields: ["zone", "time zones", "UTC offsets"],
+    keywords: ["time zones", "UTC offsets"],
+  },
   id: "zone/offset-transition-record-audit",
   title: "Time Zone Offset Transition Record Audit",
   description:
     "Supplied synthetic civil-second offset observations only, no IANA database, DST rule inference or leap seconds; audit transition chronological order, duplicate instants and adjacent before/after offset continuity without sorting or repairing.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          duplicateInstants: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                key: { type: "string" },
+                indexes: { type: "array", items: { type: "number" } },
+              },
+              required: ["key", "indexes"],
+            },
+          },
+          nonIncreasing: { type: "array", items: { type: "number" } },
+          discontinuous: { type: "array", items: { type: "number" } },
+        },
+        required: ["duplicateInstants", "nonIncreasing", "discontinuous"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
