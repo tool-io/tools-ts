@@ -12,12 +12,12 @@ export type Input = Readonly<{
   readonly irrigationEcDsM: number;
   readonly targetSoilEcDsM: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "irrigationEcDsM", label: "Irrigation ec ds m", kind: "number" },
   { id: "targetSoilEcDsM", label: "Target soil ec ds m", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.irrigationEcDsM, "ecw");
   positive(i.targetSoilEcDsM, "ece");
   positive(5 * i.targetSoilEcDsM - i.irrigationEcDsM, "denominator");
@@ -28,7 +28,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       i.irrigationEcDsM / (5 * i.targetSoilEcDsM - i.irrigationEcDsM),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -47,6 +47,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalLeachingFraction: { type: "number" } },
+        required: ["conditionalLeachingFraction"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
