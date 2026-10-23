@@ -8,14 +8,14 @@ export type Input = Readonly<{
   start: number;
   end: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "transitionsJson", label: "transitionsJson", kind: "string" },
   { id: "initialOffset", label: "initialOffset", kind: "number" },
   { id: "start", label: "start", kind: "number" },
   { id: "end", label: "end", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.zoneTransitions(i.transitionsJson);
   H.check(
@@ -63,12 +63,48 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Time Zone Offset Effective Span Table",
+      "time zones",
+      "UTC offsets",
+    ],
+    collections: ["data", "learn"],
+    fields: ["zone", "time zones", "UTC offsets"],
+    keywords: ["time zones", "UTC offsets"],
+  },
   id: "zone/offset-transition-effective-spans",
   title: "Time Zone Offset Effective Span Table",
   description:
-    "Supplied synthetic civil-second offset observations only, no IANA database, DST rule inference or leap seconds; derive bounded half-open UTC effective spans from a complete ordered transition chain, clipping to explicit UTC endpoints. ",
+    "Supplied synthetic civil-second offset observations only, no IANA database, DST rule inference or leap seconds; derive bounded half-open UTC effective spans from a complete ordered transition chain, clipping to explicit UTC endpoints.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          spans: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                start: { type: "number" },
+                end: { type: "number" },
+                offset: { type: "number" },
+              },
+              required: ["start", "end", "offset"],
+            },
+          },
+        },
+        required: ["spans"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
