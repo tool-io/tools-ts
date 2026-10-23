@@ -3,13 +3,13 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../histogram/batch56-shared.js";
 export type Input = Readonly<{ spansJson: string; start: number; end: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "spansJson", label: "spansJson", kind: "string" },
   { id: "start", label: "start", kind: "number" },
   { id: "end", label: "end", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const s = H.zoneSpans(i.spansJson);
   H.check(
@@ -65,12 +65,54 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Time Zone UTC Span Local Split", "time zones", "UTC offsets"],
+    collections: ["data", "learn"],
+    fields: ["zone", "time zones", "UTC offsets"],
+    keywords: ["time zones", "UTC offsets"],
+  },
   id: "zone/offset-utc-span-local-split",
   title: "Time Zone UTC Span Local Split",
   description:
-    "Supplied synthetic civil-second offset observations only, no IANA database, DST rule inference or leap seconds; intersect UTC windows with every supplied offset span and map each piece independently into local coordinates; gaps/overlaps are not concealed. ",
+    "Supplied synthetic civil-second offset observations only, no IANA database, DST rule inference or leap seconds; intersect UTC windows with every supplied offset span and map each piece independently into local coordinates; gaps/overlaps are not concealed.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          pieces: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                index: { type: "number" },
+                utcStart: { type: "number" },
+                utcEnd: { type: "number" },
+                localStart: { type: "number" },
+                localEnd: { type: "number" },
+                offset: { type: "number" },
+              },
+              required: [
+                "index",
+                "utcStart",
+                "utcEnd",
+                "localStart",
+                "localEnd",
+                "offset",
+              ],
+            },
+          },
+        },
+        required: ["pieces"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
