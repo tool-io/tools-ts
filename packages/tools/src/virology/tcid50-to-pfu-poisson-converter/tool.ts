@@ -4,21 +4,18 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, nonnegative } from "../batch53-shared.js";
 
 export type Input = Readonly<{ tcid50Units: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "tcid50Units", label: "Tcid50 units", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   nonnegative(i.tcid50Units, "units");
   return {
     conditionalPfu: i.tcid50Units * Math.LN2,
     assumption: "ideal-single-hit-Poisson",
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -42,6 +39,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalPfu: { type: "number" },
+          assumption: { type: "string" },
+        },
+        required: ["conditionalPfu", "assumption"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
