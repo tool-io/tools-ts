@@ -7,13 +7,13 @@ export type Input = Readonly<{
   local: number;
   policy: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "spansJson", label: "spansJson", kind: "string" },
   { id: "local", label: "local", kind: "number" },
   { id: "policy", label: "policy", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const s = H.zoneSpans(i.spansJson);
   H.check(["earliest", "latest", "unique"].includes(i.policy));
@@ -47,12 +47,51 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Time Zone Local Candidate Policy Selector",
+      "time zones",
+      "UTC offsets",
+    ],
+    collections: ["data", "learn"],
+    fields: ["zone", "time zones", "UTC offsets"],
+    keywords: ["time zones", "UTC offsets"],
+  },
   id: "zone/offset-local-candidate-policy-selector",
   title: "Time Zone Local Candidate Policy Selector",
   description:
-    "Supplied synthetic civil-second offset observations only, no IANA database, DST rule inference or leap seconds; choose earliest/latest UTC candidate or unique-only under an explicit policy; empty or unresolved evidence returns null. ",
+    "Supplied synthetic civil-second offset observations only, no IANA database, DST rule inference or leap seconds; choose earliest/latest UTC candidate or unique-only under an explicit policy; empty or unresolved evidence returns null.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          selected: {
+            anyOf: [
+              {
+                type: "object",
+                additionalProperties: false,
+                properties: {
+                  index: { type: "number" },
+                  utc: { type: "number" },
+                  offset: { type: "number" },
+                },
+                required: ["index", "utc", "offset"],
+              },
+              { type: "null" },
+            ],
+          },
+          candidateCount: { type: "number" },
+        },
+        required: ["selected", "candidateCount"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
