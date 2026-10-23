@@ -4,14 +4,11 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, lines } from "../batch53-shared.js";
 
 export type Input = Readonly<{ headerBlock: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "headerBlock", label: "Header block", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   const a = lines(i.headerBlock);
   return {
     foldedLineNumbers: a.flatMap((r, j) =>
@@ -21,7 +18,7 @@ const compute = (
     bareCrLineNumbers: a.flatMap((r, j) => (r.eol === "\r" ? [j + 1] : [])),
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -46,6 +43,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          foldedLineNumbers: { type: "array", items: { type: "number" } },
+          bareLfLineNumbers: { type: "array", items: { type: "number" } },
+          bareCrLineNumbers: { type: "array", items: { type: "number" } },
+        },
+        required: [
+          "foldedLineNumbers",
+          "bareLfLineNumbers",
+          "bareCrLineNumbers",
+        ],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
