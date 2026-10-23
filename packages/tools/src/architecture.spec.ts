@@ -1,24 +1,30 @@
 import { describe, expect, it } from "vitest";
+import { readdirSync, readFileSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import manifest from "../package.json" with { type: "json" };
 
-const sourceModules = (
-  import.meta as unknown as {
-    glob<T>(
-      pattern: string,
-      options: { eager: true; import: "default"; query: "?raw" },
-    ): Record<string, T>;
+// Read source text directly: turning every file into a Vite raw-import module
+// retained tens of thousands of unnecessary transformed modules in the runner.
+const sourceRoot = fileURLToPath(new URL("./", import.meta.url));
+const sources = new Map<string, string>();
+const pending = [sourceRoot];
+while (pending.length) {
+  const directory = pending.pop()!;
+  for (const entry of readdirSync(directory, { withFileTypes: true })) {
+    const file = path.join(directory, entry.name);
+    if (entry.isDirectory()) pending.push(file);
+    else if (
+      entry.name.endsWith(".ts") &&
+      !entry.name.endsWith(".spec.ts") &&
+      !entry.name.endsWith(".test.ts")
+    )
+      sources.set(
+        `./${path.relative(sourceRoot, file).split(path.sep).join("/")}`,
+        readFileSync(file, "utf8"),
+      );
   }
-).glob<string>("./**/*.ts", {
-  eager: true,
-  import: "default",
-  query: "?raw",
-});
-
-const sources = new Map(
-  Object.entries(sourceModules).filter(
-    ([file]) => !file.endsWith(".spec.ts") && !file.endsWith(".test.ts"),
-  ),
-);
+}
 
 const imports = (source: string): readonly string[] => {
   const specifiers = new Set<string>();
@@ -71,7 +77,9 @@ describe("package architecture", () => {
         file,
         imports(source)
           .map((specifier) => resolveRelativeImport(file, specifier))
-          .filter((dependency): dependency is string => dependency !== undefined),
+          .filter(
+            (dependency): dependency is string => dependency !== undefined,
+          ),
       ]),
     );
     const visiting = new Set<string>();
@@ -95,7 +103,7 @@ describe("package architecture", () => {
   it.each(["./parse/numeric-dataset", "./statistics/median"])(
     "publishes the %s subpath",
     (subpath) => {
-    expect(manifest.exports).toHaveProperty(subpath);
+      expect(manifest.exports).toHaveProperty(subpath);
     },
   );
 });

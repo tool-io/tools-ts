@@ -102,8 +102,8 @@
     "check:generated": "node ../../scripts/build-package.mjs --check",
     "check:release": "node ../../scripts/validate-release-package.mjs",
     "generate": "node ../../scripts/generate-structure.mjs",
-    "test:unit": "vitest run",
-    "unittest": "vitest run",
+    "test:unit": "node ../../scripts/test-unit.mjs",
+    "unittest": "node ../../scripts/test-unit.mjs",
     "validate": "pnpm build && node ../../scripts/validate-package.mjs"
   },
   "dependencies": {

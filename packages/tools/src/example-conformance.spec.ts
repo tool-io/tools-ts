@@ -7,6 +7,7 @@ import {
 import type { ToolJsonSchema } from "./core/definition.js";
 import type { ToolResult } from "./core/result.js";
 import { exampleOutputsMatch } from "./core/example.js";
+import { selectConformanceTools } from "./example-conformance-test-support.js";
 
 type ToolModule = {
   readonly default: {
@@ -28,14 +29,18 @@ const moduleLoaders = (
 ).glob<ToolModule>("./**/index.ts");
 
 const batchSize = 100;
+const selected = selectConformanceTools(
+  manifest.tools,
+  process.env.TOOLIO_EXAMPLE_SHARD,
+);
 const toolBatches = Array.from(
-  { length: Math.ceil(manifest.tools.length / batchSize) },
+  { length: Math.ceil(selected.tools.length / batchSize) },
   (_, index) => {
     const start = index * batchSize;
-    const directories = manifest.tools.slice(start, start + batchSize);
+    const directories = selected.tools.slice(start, start + batchSize);
     return {
       directories,
-      range: `${start + 1}-${start + directories.length}`,
+      range: `${selected.start + start + 1}-${selected.start + start + directories.length}`,
     };
   },
 );
