@@ -7,13 +7,13 @@ export type Input = Readonly<{
   left: string;
   right: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "parentsJson", label: "parentsJson", kind: "string" },
   { id: "left", label: "left", kind: "string" },
   { id: "right", label: "right", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.parentRecords(i.parentsJson);
   H.forest(p);
@@ -33,12 +33,36 @@ export const example = {
   output: { result: { ancestor: "a" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Parent Forest Lowest Common Ancestor",
+      "tree data structures",
+      "software development",
+    ],
+    collections: ["data", "learn"],
+    fields: ["tree", "tree data structures", "software development"],
+    keywords: ["tree data structures", "software development"],
+  },
   id: "tree/parent-record-lowest-common-ancestor",
   title: "Parent Forest Lowest Common Ancestor",
   description:
     "Explicit complete acyclic parent forests with exact unique string node IDs and null roots; find the lowest common ancestor including self; different components return null, not a fabricated shared root.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          ancestor: { anyOf: [{ type: "string" }, { type: "null" }] },
+        },
+        required: ["ancestor"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
