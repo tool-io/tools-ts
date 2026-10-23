@@ -6,13 +6,13 @@ export type Input = Readonly<{
   dimensions: readonly number[];
   reflect: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "coordinate", label: "coordinate", kind: "numberList" },
   { id: "dimensions", label: "dimensions", kind: "numberList" },
   { id: "reflect", label: "reflect", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.dimensions(i.dimensions);
   H.voxel(i.coordinate);
@@ -29,12 +29,32 @@ export const example = {
   output: { result: { coordinate: [2, 1, 0] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Voxel Coordinate Axis Reflection", "voxels", "3D geometry"],
+    collections: ["data", "learn"],
+    fields: ["voxel", "voxels", "3D geometry"],
+    keywords: ["voxels", "3D geometry"],
+  },
   id: "voxel/coordinate-axis-reflection",
   title: "Voxel Coordinate Axis Reflection",
   description:
     "Reflect explicitly selected voxel cell axes within a bounded volume, preserving the other coordinates and dimensions; no world-coordinate transformation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          coordinate: { type: "array", items: { type: "number" } },
+        },
+        required: ["coordinate"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
