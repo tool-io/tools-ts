@@ -11,13 +11,13 @@ export type Input = Readonly<{
   readonly minutesPerVine: number;
   readonly workers: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "vinesPerHectare", label: "Vines per hectare", kind: "number" },
   { id: "minutesPerVine", label: "Minutes per vine", kind: "number" },
   { id: "workers", label: "Workers", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.vinesPerHectare, "vines");
   nonnegative(i.minutesPerVine, "minutes");
   bounded(i.workers, "workers", 1, 1000000);
@@ -26,7 +26,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       (i.vinesPerHectare * i.minutesPerVine) / (60 * i.workers),
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -45,6 +45,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { crewHoursPerHectare: { type: "number" } },
+        required: ["crewHoursPerHectare"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
