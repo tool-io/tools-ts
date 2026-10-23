@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly callerChevronAxialDepths: readonly number[];
   readonly callerGaps: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "stackExtent", label: "Stack extent", kind: "number" },
   {
@@ -24,7 +24,7 @@ const fields = [
   },
   { id: "callerGaps", label: "Caller gaps", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.stackExtent, "stackExtent");
   input.callerChevronAxialDepths.forEach((v) =>
     nonnegative(v, "callerChevronAxialDepths"),
@@ -41,7 +41,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     signedRemainingExtent: input.stackExtent - used,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -64,6 +64,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          stackUsedExtent: { type: "number" },
+          signedRemainingExtent: { type: "number" },
+        },
+        required: ["stackUsedExtent", "signedRemainingExtent"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
