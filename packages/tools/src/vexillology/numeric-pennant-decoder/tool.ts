@@ -5,7 +5,7 @@ import { validateInput, finish, simpleError, pick } from "../batch51-shared.js";
 export type Input = Readonly<{
   readonly actualIndependentlyIdentifiedNumericPennantLabels: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualIndependentlyIdentifiedNumericPennantLabels",
@@ -13,10 +13,7 @@ const fields = [
     kind: "stringList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   const t = {
     zero: "0",
     one: "1",
@@ -38,10 +35,7 @@ const compute = (
         .join(""),
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -62,6 +56,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { decodedDecimalDigits: { type: "string" } },
+        required: ["decodedDecimalDigits"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
