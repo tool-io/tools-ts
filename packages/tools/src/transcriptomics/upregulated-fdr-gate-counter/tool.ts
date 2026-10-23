@@ -8,16 +8,13 @@ export type Input = Readonly<{
   adjustedPValues: readonly number[];
   maximumFdr: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "log2FoldChanges", label: "Log2 fold changes", kind: "numberList" },
   { id: "adjustedPValues", label: "Adjusted p values", kind: "numberList" },
   { id: "maximumFdr", label: "Maximum fdr", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   aligned(i.log2FoldChanges, i.adjustedPValues, "genes");
   fraction(i.maximumFdr, "fdr");
   i.adjustedPValues.forEach((v) => fraction(v, "adjusted-p"));
@@ -26,7 +23,7 @@ const compute = (
   );
   return { selectedCount: indexes.length, selectedIndexes: indexes };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -49,6 +46,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          selectedCount: { type: "number" },
+          selectedIndexes: { type: "array", items: { type: "number" } },
+        },
+        required: ["selectedCount", "selectedIndexes"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
