@@ -3,12 +3,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../histogram/batch56-shared.js";
 export type Input = Readonly<{ parentsJson: string; root: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "parentsJson", label: "parentsJson", kind: "string" },
   { id: "root", label: "root", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.parentRecords(i.parentsJson);
   H.forest(p);
@@ -17,7 +17,7 @@ export const calculate = (i: Input): Output => {
     map = new Map(p.map((v) => [v.id, v.parent]));
   chain.forEach((id, j) => map.set(id, j ? chain[j - 1] : null));
   return H.finish({
-    parents: p.map((v) => ({ id: v.id, parent: map.get(v.id)! })),
+    parents: p.map((v) => ({ id: v.id, parent: map.get(v.id) ?? null })),
   });
 };
 export const example = {
@@ -38,12 +38,47 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Parent Tree Reroot Transform",
+      "tree data structures",
+      "software development",
+    ],
+    collections: ["data", "learn"],
+    fields: ["tree", "tree data structures", "software development"],
+    keywords: ["tree data structures", "software development"],
+  },
   id: "tree/parent-record-reroot-transform",
   title: "Parent Tree Reroot Transform",
   description:
     "Explicit complete acyclic parent forests with exact unique string node IDs and null roots; reroot only the queried tree by reversing its old ancestor chain, preserving every off-path edge and other component.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          parents: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                id: { type: "string" },
+                parent: { anyOf: [{ type: "string" }, { type: "null" }] },
+              },
+              required: ["id", "parent"],
+            },
+          },
+        },
+        required: ["parents"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
