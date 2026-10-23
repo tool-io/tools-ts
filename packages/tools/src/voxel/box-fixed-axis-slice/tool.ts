@@ -7,14 +7,14 @@ export type Input = Readonly<{
   axis: number;
   coordinate: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "low", label: "low", kind: "numberList" },
   { id: "high", label: "high", kind: "numberList" },
   { id: "axis", label: "axis", kind: "integer" },
   { id: "coordinate", label: "coordinate", kind: "integer" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.voxelBox(i.low, i.high);
   H.int(i.axis, 0, 2);
@@ -31,12 +31,35 @@ export const example = {
   output: { result: { empty: true, axes: [0, 2], low: [0, 0], high: [2, 4] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Voxel Box Fixed Axis Slice", "voxels", "3D geometry"],
+    collections: ["data", "learn"],
+    fields: ["voxel", "voxels", "3D geometry"],
+    keywords: ["voxels", "3D geometry"],
+  },
   id: "voxel/box-fixed-axis-slice",
   title: "Voxel Box Fixed Axis Slice",
   description:
     "Report the two-dimensional half-open cross-section bounds and explicit emptiness of one integer fixed-axis voxel-box slice; no cell enumeration or interpolation.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          empty: { type: "boolean" },
+          axes: { type: "array", items: { type: "number" } },
+          low: { type: "array", items: { type: "number" } },
+          high: { type: "array", items: { type: "number" } },
+        },
+        required: ["empty", "axes", "low", "high"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
