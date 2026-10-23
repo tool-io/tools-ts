@@ -16,7 +16,7 @@ export type Input = Readonly<{
   readonly callerVerifiedDiagonalWhiteWidthFraction: number;
   readonly callerVerifiedDiagonalRedWidthFraction: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "hoist", label: "Hoist", kind: "number" },
   { id: "fly", label: "Fly", kind: "number" },
@@ -41,7 +41,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   canvas(input.fly, input.hoist);
   for (const x of [
     input.callerVerifiedCentralRedCrossWidthFraction,
@@ -69,7 +69,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     diagonalCenterlineSlope: input.hoist / input.fly,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -103,6 +103,25 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          centralRedWidth: { type: "number" },
+          centralWhiteWidth: { type: "number" },
+          diagonalWhiteWidth: { type: "number" },
+          diagonalRedWidth: { type: "number" },
+          diagonalCenterlineSlope: { type: "number" },
+        },
+        required: [
+          "centralRedWidth",
+          "centralWhiteWidth",
+          "diagonalWhiteWidth",
+          "diagonalRedWidth",
+          "diagonalCenterlineSlope",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
