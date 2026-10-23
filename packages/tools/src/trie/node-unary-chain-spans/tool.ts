@@ -3,11 +3,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../histogram/batch56-shared.js";
 export type Input = Readonly<{ nodesJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "nodesJson", label: "nodesJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.trieNodes(i.nodesJson);
   return H.finish({
@@ -29,12 +29,49 @@ export const example = {
   output: { result: { chains: [] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Prefix Trie Unary Chain Spans",
+      "prefix tries",
+      "software development",
+    ],
+    collections: ["data", "learn"],
+    fields: ["trie", "prefix tries", "software development"],
+    keywords: ["prefix tries", "software development"],
+  },
   id: "trie/node-unary-chain-spans",
   title: "Prefix Trie Unary Chain Spans",
   description:
     "Bounded explicit prefix trie with root ID 0, unique sibling UTF-16 code-unit edges and terminal flags; inventory maximal compressible nonterminal unary chains, stopping at terminal words even when they have one child.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          chains: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                from: { type: "number" },
+                to: { type: "number" },
+                codeUnits: { type: "number" },
+                label: { type: "string" },
+              },
+              required: ["from", "to", "codeUnits", "label"],
+            },
+          },
+        },
+        required: ["chains"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
