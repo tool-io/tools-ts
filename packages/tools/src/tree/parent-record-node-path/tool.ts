@@ -7,13 +7,13 @@ export type Input = Readonly<{
   left: string;
   right: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "parentsJson", label: "parentsJson", kind: "string" },
   { id: "left", label: "left", kind: "string" },
   { id: "right", label: "right", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.parentRecords(i.parentsJson);
   H.forest(p);
@@ -41,12 +41,41 @@ export const example = {
   output: { result: { path: ["d", "b", "a", "c"] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Parent Forest Node Path",
+      "tree data structures",
+      "software development",
+    ],
+    collections: ["data", "learn"],
+    fields: ["tree", "tree data structures", "software development"],
+    keywords: ["tree data structures", "software development"],
+  },
   id: "tree/parent-record-node-path",
   title: "Parent Forest Node Path",
   description:
     "Explicit complete acyclic parent forests with exact unique string node IDs and null roots; return the unique undirected node path through the lowest common ancestor; different components have null path.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          path: {
+            anyOf: [
+              { type: "array", items: { type: "string" } },
+              { type: "null" },
+            ],
+          },
+        },
+        required: ["path"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
