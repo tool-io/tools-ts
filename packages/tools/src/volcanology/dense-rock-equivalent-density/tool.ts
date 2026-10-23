@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly tephraBulkDensityKgM3: number;
   readonly denseRockDensityKgM3: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "tephraVolumeM3", label: "Tephra volume m3", kind: "number" },
   {
@@ -25,7 +25,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.tephraVolumeM3, "volume");
   positive(i.tephraBulkDensityKgM3, "bulk density");
   positive(i.denseRockDensityKgM3, "rock density");
@@ -34,7 +34,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       (i.tephraVolumeM3 * i.tephraBulkDensityKgM3) / i.denseRockDensityKgM3,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -57,6 +57,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { denseRockEquivalentVolumeM3: { type: "number" } },
+        required: ["denseRockEquivalentVolumeM3"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
