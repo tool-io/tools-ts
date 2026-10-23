@@ -6,12 +6,12 @@ export type Input = Readonly<{
   parentsJson: string;
   selected: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "parentsJson", label: "parentsJson", kind: "string" },
   { id: "selected", label: "selected", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.parentRecords(i.parentsJson);
   H.forest(p);
@@ -47,12 +47,47 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Parent Forest Selected Node Ancestor Collapse",
+      "tree data structures",
+      "software development",
+    ],
+    collections: ["data", "learn"],
+    fields: ["tree", "tree data structures", "software development"],
+    keywords: ["tree data structures", "software development"],
+  },
   id: "tree/parent-record-collapse-ancestors",
   title: "Parent Forest Selected Node Ancestor Collapse",
   description:
     "Explicit complete acyclic parent forests with exact unique string node IDs and null roots; retain only caller-selected nodes, connecting each to its nearest retained ancestor or null root; no invented IDs or edge paths.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          parents: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                id: { type: "string" },
+                parent: { anyOf: [{ type: "string" }, { type: "null" }] },
+              },
+              required: ["id", "parent"],
+            },
+          },
+        },
+        required: ["parents"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
