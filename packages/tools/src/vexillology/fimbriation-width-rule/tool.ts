@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly callerVerifiedFimbriationWidthEachSide: number;
   readonly availablePerpendicularBandEnvelope: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualInnerStripeWidth",
@@ -30,7 +30,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.actualInnerStripeWidth, "actualInnerStripeWidth");
   positive(
     input.availablePerpendicularBandEnvelope,
@@ -48,7 +48,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     signedRemainingEnvelope: input.availablePerpendicularBandEnvelope - total,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -71,6 +71,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          outerStripeWidth: { type: "number" },
+          signedRemainingEnvelope: { type: "number" },
+        },
+        required: ["outerStripeWidth", "signedRemainingEnvelope"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
