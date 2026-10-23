@@ -10,7 +10,7 @@ import {
 export type Input = Readonly<{
   readonly actualStationaryRepeatedPositionsMm: readonly (readonly number[])[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualStationaryRepeatedPositionsMm",
@@ -18,7 +18,7 @@ const fields = [
     kind: "matrix",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (
     input.actualStationaryRepeatedPositionsMm.length < 2 ||
     input.actualStationaryRepeatedPositionsMm.some((v) => v.length !== 3)
@@ -37,7 +37,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -61,6 +61,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedRmsRepeatabilityAroundCentroidMm: { type: "number" },
+        },
+        required: ["observedRmsRepeatabilityAroundCentroidMm"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
