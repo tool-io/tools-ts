@@ -10,14 +10,11 @@ import {
 } from "../batch53-shared.js";
 
 export type Input = Readonly<{ segmentSizesKb: readonly number[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "segmentSizesKb", label: "Segment sizes kb", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!i.segmentSizesKb.length) simpleError("segments", "Explicit segments.");
   i.segmentSizesKb.forEach((v) => positive(v, "kb"));
   return {
@@ -26,7 +23,7 @@ const compute = (
     totalBases: sum(i.segmentSizesKb) * 1000,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -51,6 +48,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          segmentCount: { type: "number" },
+          segmentSizesBases: { type: "array", items: { type: "number" } },
+          totalBases: { type: "number" },
+        },
+        required: ["segmentCount", "segmentSizesBases", "totalBases"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
