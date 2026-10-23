@@ -16,7 +16,7 @@ export type Input = Readonly<{
   readonly callerIndependentlyChosenStripeHoistWeights: readonly number[];
   readonly callerActualInternalSeamAllowance: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualFinishedFlagHoist",
@@ -44,10 +44,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   positive(input.actualFinishedFlagHoist, "H");
   positive(input.actualFinishedFlagFly, "F");
   aligned(
@@ -72,10 +69,7 @@ const compute = (
     stripeColorLabels: [...input.actualStripeColorLabels],
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -106,6 +100,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          stripeCutHoists: { type: "array", items: { type: "number" } },
+          stripeCutFlies: { type: "array", items: { type: "number" } },
+          stripeColorLabels: { type: "array", items: { type: "string" } },
+        },
+        required: ["stripeCutHoists", "stripeCutFlies", "stripeColorLabels"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
