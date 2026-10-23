@@ -6,13 +6,13 @@ export type Input = Readonly<{
   dimensions: readonly number[];
   order: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "coordinate", label: "coordinate", kind: "numberList" },
   { id: "dimensions", label: "dimensions", kind: "numberList" },
   { id: "order", label: "order", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.dimensions(i.dimensions);
   H.voxel(i.coordinate);
@@ -29,12 +29,33 @@ export const example = {
   output: { result: { coordinate: [1, 1, 2], dimensions: [2, 3, 4] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Voxel Coordinate Axis Permutation", "voxels", "3D geometry"],
+    collections: ["data", "learn"],
+    fields: ["voxel", "voxels", "3D geometry"],
+    keywords: ["voxels", "3D geometry"],
+  },
   id: "voxel/coordinate-axis-permutation",
   title: "Voxel Coordinate Axis Permutation",
   description:
     "Permute a bounded voxel coordinate together with volume dimensions using an explicit output-to-input axis permutation; no interpolation or spatial resampling.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          coordinate: { type: "array", items: { type: "number" } },
+          dimensions: { type: "array", items: { type: "number" } },
+        },
+        required: ["coordinate", "dimensions"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
