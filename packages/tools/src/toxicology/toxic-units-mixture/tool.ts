@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly actualMixtureConcentrations: readonly number[];
   readonly callerVerifiedMatchedEndpointConcentrations: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualMixtureConcentrations",
@@ -25,7 +25,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   aligned(
     input.actualMixtureConcentrations,
     input.callerVerifiedMatchedEndpointConcentrations,
@@ -45,7 +45,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     conditionalConcentrationAdditionToxicUnits: sum(t),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -72,6 +72,22 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          observedComponentToxicUnits: {
+            type: "array",
+            items: { type: "number" },
+          },
+          conditionalConcentrationAdditionToxicUnits: { type: "number" },
+        },
+        required: [
+          "observedComponentToxicUnits",
+          "conditionalConcentrationAdditionToxicUnits",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
