@@ -4,19 +4,16 @@ import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, simpleError } from "../batch53-shared.js";
 
 export type Input = Readonly<{ value: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "value", label: "Value", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   if (!/^(?:0(?:\.[0-9]{0,3})?|1(?:\.0{0,3})?)$(?![\s\S])/.test(i.value))
     simpleError("quality", "RFC qvalue 0–1 with at most three decimal digits.");
   return { thousandths: Math.round(Number(i.value) * 1000) };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -35,6 +32,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { thousandths: { type: "number" } },
+        required: ["thousandths"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
