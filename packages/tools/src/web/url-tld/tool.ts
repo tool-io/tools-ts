@@ -7,17 +7,17 @@ import {
   absoluteUrl,
 } from "../batch50-shared.js";
 export type Input = Readonly<{ readonly actualAbsoluteUrl: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualAbsoluteUrl", label: "Actual absolute url", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const h = absoluteUrl(input.actualAbsoluteUrl).hostname;
   if (!h || h.startsWith("[") || /^[0-9.]+$/.test(h))
     simpleError("host", "ActualDNShostname,noIPliteral.");
   return { observedLastDnsLabel: h.replace(/\.$/, "").split(".").at(-1)! };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -36,6 +36,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { observedLastDnsLabel: { type: "string" } },
+        required: ["observedLastDnsLabel"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
