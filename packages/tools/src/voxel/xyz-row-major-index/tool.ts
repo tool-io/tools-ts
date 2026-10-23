@@ -5,12 +5,12 @@ export type Input = Readonly<{
   coordinate: readonly number[];
   dimensions: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "coordinate", label: "coordinate", kind: "numberList" },
   { id: "dimensions", label: "dimensions", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.dimensions(i.dimensions);
   H.voxel(i.coordinate);
@@ -29,12 +29,30 @@ export const example = {
   output: { result: { index: "19" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Voxel XYZ Row Major Index", "voxels", "3D geometry"],
+    collections: ["data", "learn"],
+    fields: ["voxel", "voxels", "3D geometry"],
+    keywords: ["voxels", "3D geometry"],
+  },
   id: "voxel/xyz-row-major-index",
   title: "Voxel XYZ Row Major Index",
   description:
     "Encode bounded voxel x,y,z to an exact row-major linear index with x fastest, then y, then z; dimensions are explicit positive cell counts.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { index: { type: "string" } },
+        required: ["index"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
