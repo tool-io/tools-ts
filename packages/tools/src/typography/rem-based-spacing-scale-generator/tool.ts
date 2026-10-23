@@ -11,19 +11,19 @@ export type Input = Readonly<{
   readonly baseRem: number;
   readonly multipliers: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "baseRem", label: "Base rem", kind: "number" },
   { id: "multipliers", label: "Multipliers", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.baseRem, "base");
   if (!i.multipliers.length || i.multipliers.length > 128)
     simpleError("multipliers", "1–128 steps.");
   i.multipliers.forEach((v) => nonnegative(v, "multiplier"));
   return { spacingRem: i.multipliers.map((v) => v * i.baseRem) };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -42,6 +42,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          spacingRem: { type: "array", items: { type: "number" } },
+        },
+        required: ["spacingRem"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
