@@ -5,12 +5,12 @@ export type Input = Readonly<{
   readonly initialDistanceM: number;
   readonly observedDistanceM: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "initialDistanceM", label: "Initial distance m", kind: "number" },
   { id: "observedDistanceM", label: "Observed distance m", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.initialDistanceM, "initial");
   positive(i.observedDistanceM, "observed");
   return {
@@ -18,7 +18,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       (100 * (i.observedDistanceM - i.initialDistanceM)) / i.initialDistanceM,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -37,6 +37,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { signedDistanceChangePercent: { type: "number" } },
+        required: ["signedDistanceChangePercent"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
