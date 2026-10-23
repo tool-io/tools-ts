@@ -11,13 +11,13 @@ export type Input = Readonly<{
   readonly meanDepthM: number;
   readonly meanVelocityMPerS: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "channelWidthM", label: "Channel width m", kind: "number" },
   { id: "meanDepthM", label: "Mean depth m", kind: "number" },
   { id: "meanVelocityMPerS", label: "Mean velocity m per s", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   positive(i.channelWidthM, "width");
   positive(i.meanDepthM, "depth");
   nonnegative(i.meanVelocityMPerS, "velocity");
@@ -25,7 +25,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
     dischargeM3PerS: i.channelWidthM * i.meanDepthM * i.meanVelocityMPerS,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -44,6 +44,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { dischargeM3PerS: { type: "number" } },
+        required: ["dischargeM3PerS"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
