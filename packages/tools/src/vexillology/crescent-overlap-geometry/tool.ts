@@ -12,13 +12,13 @@ export type Input = Readonly<{
   readonly cutoutRadius: number;
   readonly centerSeparation: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "outerRadius", label: "Outer radius", kind: "number" },
   { id: "cutoutRadius", label: "Cutout radius", kind: "number" },
   { id: "centerSeparation", label: "Center separation", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.outerRadius, "outer");
   positive(input.cutoutRadius, "cutout");
   nonnegative(input.centerSeparation, "distance");
@@ -48,7 +48,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     remainingCrescentArea: Math.max(0, Math.PI * r * r - overlap),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -72,6 +72,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          circularOverlapArea: { type: "number" },
+          remainingCrescentArea: { type: "number" },
+        },
+        required: ["circularOverlapArea", "remainingCrescentArea"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
