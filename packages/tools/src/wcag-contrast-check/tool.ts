@@ -102,6 +102,28 @@ export const wcagContrastTool = createSimpleTool({
       id: "result",
       kind: "object",
       label: "WCAG contrast result",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          background: { type: "string" },
+          foreground: { type: "string" },
+          passes: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              aaLarge: { type: "boolean" },
+              aaNormal: { type: "boolean" },
+              aaaLarge: { type: "boolean" },
+              aaaNormal: { type: "boolean" },
+            },
+            required: ["aaLarge", "aaNormal", "aaaLarge", "aaaNormal"],
+          },
+          ratio: { type: "number" },
+        },
+        required: ["background", "foreground", "passes", "ratio"],
+      },
     },
   ],
   calculate: (input) => {
