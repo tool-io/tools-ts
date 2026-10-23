@@ -7,13 +7,13 @@ export type Input = Readonly<{
   start: number;
   end: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "transitionsJson", label: "transitionsJson", kind: "string" },
   { id: "start", label: "start", kind: "number" },
   { id: "end", label: "end", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.zoneTransitions(i.transitionsJson);
   H.check(i.start <= i.end);
@@ -35,12 +35,49 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Time Zone Transition Window Selector",
+      "time zones",
+      "UTC offsets",
+    ],
+    collections: ["data", "learn"],
+    fields: ["zone", "time zones", "UTC offsets"],
+    keywords: ["time zones", "UTC offsets"],
+  },
   id: "zone/offset-transition-window-selector",
   title: "Time Zone Transition Window Selector",
   description:
-    "Supplied synthetic civil-second offset observations only, no IANA database, DST rule inference or leap seconds; select transition occurrence records inside a half-open UTC window without sorting or deduplicating. ",
+    "Supplied synthetic civil-second offset observations only, no IANA database, DST rule inference or leap seconds; select transition occurrence records inside a half-open UTC window without sorting or deduplicating.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          transitions: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                at: { type: "number" },
+                before: { type: "number" },
+                after: { type: "number" },
+                index: { type: "number" },
+              },
+              required: ["at", "before", "after", "index"],
+            },
+          },
+        },
+        required: ["transitions"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
