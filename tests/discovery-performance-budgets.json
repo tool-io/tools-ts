@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "reference": {
+    "platform": "linux",
+    "architecture": "x64",
+    "cpu": "Intel(R) Core(TM) i7-10750H CPU @ 2.60GHz",
+    "nodeMajor": 24
+  },
+  "entries": 100000,
+  "samples": 3,
+  "ceilings": {
+    "importMs": 5000,
+    "lookupMs": 250,
+    "firstSearchMs": 8000,
+    "warmSearchMedianMs": 1000,
+    "retainedHeapBytes": 1610612736
+  }
+}

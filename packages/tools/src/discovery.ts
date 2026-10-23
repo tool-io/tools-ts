@@ -1,6 +1,7 @@
 import catalogJson from "#tool-catalog" with { type: "json" };
 import type { ToolCatalog, ToolCatalogEntry } from "./core/catalog.js";
 import type { ToolExecutionKind } from "./core/definition.js";
+import { boundedRank } from "./core/discovery-ranking.js";
 
 export type ToolSearchOptions = {
   readonly collections?: readonly string[];
@@ -24,24 +25,29 @@ if (
 )
   throw new Error("The generated tool catalog is invalid or stale.");
 
-const entries: ToolCatalogEntry[] = [...catalog.entries].sort((left, right) =>
-  left.id.localeCompare(right.id, "en"),
-);
-const entryById = new Map(entries.map((entry) => [entry.id, entry]));
+let sortedEntries: readonly ToolCatalogEntry[] | undefined;
+let entryById: Map<string, ToolCatalogEntry> | undefined;
+const entries = (): readonly ToolCatalogEntry[] =>
+  (sortedEntries ??= [...catalog.entries].sort((left, right) =>
+    left.id.localeCompare(right.id, "en"),
+  ));
 
-const normalize = (value: string): string =>
-  value
-    .normalize("NFKD")
-    .replace(/\p{Mark}/gu, "")
-    .toLocaleLowerCase("en-US")
-    .trim();
+const normalize = (value: string): string => {
+  // ASCII cannot contain compatibility characters or combining marks. Avoid
+  // Unicode decomposition for the common catalog case, preserving the same
+  // normalization for every other script.
+  const text = /[^\x00-\x7f]/u.test(value)
+    ? value.normalize("NFKD").replace(/\p{Mark}/gu, "")
+    : value;
+  return text.toLowerCase().trim();
+};
 
 const words = (value: string): readonly string[] =>
   normalize(value)
     .split(/[^a-z0-9]+/u)
     .filter(Boolean);
 
-const searchableEntries = entries.map((entry) => {
+const searchableEntry = (entry: ToolCatalogEntry) => {
   const aliases = entry.aliases.map(normalize);
   const title = normalize(entry.title);
   const id = normalize(entry.id);
@@ -68,9 +74,11 @@ const searchableEntries = entries.map((entry) => {
     id,
     searchable: values.join(" "),
     title,
-    words: new Set(values.flatMap(words)),
+    // These values are already normalized; do not normalize every token twice.
+    words: ` ${[...new Set(values.flatMap((value) => value.split(/[^a-z0-9]+/u).filter(Boolean)))].join(" ")} `,
   };
-});
+};
+let searchIndex: readonly ReturnType<typeof searchableEntry>[] | undefined;
 
 const normalizedLimit = (limit: number | undefined): number => {
   if (limit === undefined) return 20;
@@ -98,7 +106,7 @@ const matchesFilters = (
     options.executionKinds.includes(entry.execution.kind));
 
 const relevance = (
-  candidate: (typeof searchableEntries)[number],
+  candidate: ReturnType<typeof searchableEntry>,
   query: string,
   tokens: readonly string[],
 ): number => {
@@ -118,45 +126,69 @@ const relevance = (
   else if (candidate.aliases.some((alias) => alias.includes(query)))
     score += 2_000;
 
-  score += tokens.filter((token) => candidate.words.has(token)).length * 100;
+  score +=
+    tokens.filter((token) => candidate.words.includes(` ${token} `)).length *
+    100;
   return score;
 };
 
 export const toolCatalogFingerprint = catalog.catalogFingerprint;
-export const toolCatalogSize = entries.length;
+export const toolCatalogSize = catalog.entries.length;
 
-export const getToolMetadata = (id: string): ToolCatalogEntry | undefined =>
-  entryById.get(id);
+export const getToolMetadata = (id: string): ToolCatalogEntry | undefined => {
+  entryById ??= new Map(catalog.entries.map((entry) => [entry.id, entry]));
+  return entryById.get(id);
+};
+
+const listing = (
+  options: ToolSearchOptions,
+  limit: number,
+  offset: number,
+): ToolSearchPage => {
+  const page: ToolCatalogEntry[] = [];
+  let total = 0;
+  for (const entry of entries()) {
+    if (!matchesFilters(entry, options)) continue;
+    if (total >= offset && page.length < limit) page.push(entry);
+    total++;
+  }
+  return { entries: page, limit, offset, total };
+};
 
 export const searchTools = (
   query: string,
   options: ToolSearchOptions = {},
 ): ToolSearchPage => {
-  const normalizedQuery = normalize(query);
-  const tokens = words(normalizedQuery);
-  const matches = searchableEntries
-    .filter(({ entry }) => matchesFilters(entry, options))
-    .map((candidate) => ({
-      candidate,
-      score: relevance(candidate, normalizedQuery, tokens),
-    }))
-    .filter(({ score }) => score >= 0)
-    .sort(
-      (left, right) =>
-        right.score - left.score ||
-        left.candidate.id.localeCompare(right.candidate.id, "en"),
-    );
+  // Validate before normalization, filtering, or constructing the optional index.
   const limit = normalizedLimit(options.limit);
   const offset = normalizedOffset(options.offset);
+  const normalizedQuery = normalize(query);
+  if (!normalizedQuery) return listing(options, limit, offset);
+  const tokens = words(normalizedQuery);
+  searchIndex ??= catalog.entries.map(searchableEntry);
+  const capacity = Math.min(toolCatalogSize, offset + limit);
+  const matches = boundedRank(
+    searchIndex,
+    capacity,
+    (candidate) =>
+      matchesFilters(candidate.entry, options)
+        ? relevance(candidate, normalizedQuery, tokens)
+        : -1,
+    (candidate) => candidate.id,
+  );
   return {
-    entries: matches
+    entries: matches.entries
       .slice(offset, offset + limit)
       .map(({ candidate }) => candidate.entry),
     limit,
     offset,
-    total: matches.length,
+    total: matches.total,
   };
 };
 
 export const listTools = (options: ToolSearchOptions = {}): ToolSearchPage =>
-  searchTools("", options);
+  listing(
+    options,
+    normalizedLimit(options.limit),
+    normalizedOffset(options.offset),
+  );

@@ -25,6 +25,17 @@ describe("tool discovery", () => {
     );
   });
 
+  it("normalizes ASCII, accents, combining marks and compatibility forms equally", () => {
+    const expected = searchTools("body-mass-index", { limit: 3 });
+    for (const query of [
+      "  BODY-MASS-INDEX  ",
+      "bódy-máss-índex",
+      "bo\u0301dy-ma\u0301ss-i\u0301ndex",
+      "ｂｏｄｙ-ｍａｓｓ-ｉｎｄｅｘ",
+    ])
+      expect(searchTools(query, { limit: 3 })).toEqual(expected);
+  });
+
   it("filters by execution kind", () => {
     const results = searchTools("ip", {
       executionKinds: ["remote"],
@@ -52,5 +63,21 @@ describe("tool discovery", () => {
     );
     expect(() => listTools({ limit: 0 })).toThrow(RangeError);
     expect(() => listTools({ offset: -1 })).toThrow(RangeError);
+  });
+
+  it("preserves ordering, filters, totals, and out-of-range pagination", () => {
+    expect(searchTools("  ", { limit: 3 })).toEqual(listTools({ limit: 3 }));
+    const first = searchTools("median", { limit: 10 });
+    expect(searchTools("median", { offset: 3, limit: 2 }).entries).toEqual(
+      first.entries.slice(3, 5),
+    );
+    expect(
+      searchTools("median", { offset: Number.MAX_SAFE_INTEGER }).entries,
+    ).toEqual([]);
+    expect(listTools({ collections: ["no-such-collection"] }).total).toBe(0);
+    expect(() => searchTools("median", { offset: Infinity })).toThrow(
+      RangeError,
+    );
+    expect(() => searchTools("median", { limit: 101 })).toThrow(RangeError);
   });
 });

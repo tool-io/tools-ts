@@ -196,7 +196,7 @@ export const createModelDefinition = <Input, Output>(
     ToolDefinition<Input, Output>,
     "description" | "execute" | "id" | "inputSchema" | "outputSchema" | "title"
   > &
-    Partial<Pick<ToolDefinition<Input, Output>, "execution">>,
+    Partial<Pick<ToolDefinition<Input, Output>, "discovery" | "execution">>,
 ): ToolDefinition<Input, Output> =>
   defineTool({
     ...config,
