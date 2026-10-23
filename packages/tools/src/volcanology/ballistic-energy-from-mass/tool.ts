@@ -5,17 +5,17 @@ export type Input = Readonly<{
   readonly massKg: number;
   readonly speedMPerS: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "massKg", label: "Mass kg", kind: "number" },
   { id: "speedMPerS", label: "Speed m per s", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.massKg, "mass");
   nonnegative(i.speedMPerS, "speed");
   return { kineticJoules: (i.massKg * i.speedMPerS ** 2) / 2 };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -34,6 +34,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { kineticJoules: { type: "number" } },
+        required: ["kineticJoules"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
