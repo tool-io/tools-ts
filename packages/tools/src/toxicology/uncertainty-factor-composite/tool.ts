@@ -12,7 +12,7 @@ export type Input = Readonly<{
   readonly callerIndependentlyJustifiedFactorIds: readonly string[];
   readonly callerIndependentlyJustifiedFactors: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "callerIndependentlyJustifiedFactorIds",
@@ -25,7 +25,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   unique(input.callerIndependentlyJustifiedFactorIds, "factors");
   aligned(
     input.callerIndependentlyJustifiedFactorIds,
@@ -44,7 +44,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       ),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -66,6 +66,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conditionalCompositeUncertaintyFactor: { type: "number" },
+        },
+        required: ["conditionalCompositeUncertaintyFactor"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
