@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly settledDepthM: number;
   readonly looseToSettledFactor: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "rows", label: "Rows", kind: "number" },
   { id: "rowLengthM", label: "Row length m", kind: "number" },
@@ -26,7 +26,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   bounded(i.rows, "rows", 0, 1000000);
   [i.rowLengthM, i.stripWidthM, i.settledDepthM].forEach((v) =>
     nonnegative(v, "dimension"),
@@ -41,7 +41,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       i.looseToSettledFactor,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -66,6 +66,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { looseVolumeM3: { type: "number" } },
+        required: ["looseVolumeM3"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
