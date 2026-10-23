@@ -3,11 +3,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../histogram/batch56-shared.js";
 export type Input = Readonly<{ nodesJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "nodesJson", label: "nodesJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.trieNodes(i.nodesJson);
   return H.finish({
@@ -32,12 +32,50 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Prefix Trie Path Compressed Edge Table",
+      "prefix tries",
+      "software development",
+    ],
+    collections: ["data", "learn"],
+    fields: ["trie", "prefix tries", "software development"],
+    keywords: ["prefix tries", "software development"],
+  },
   id: "trie/node-path-compressed-edge-table",
   title: "Prefix Trie Path Compressed Edge Table",
   description:
     "Bounded explicit prefix trie with root ID 0, unique sibling UTF-16 code-unit edges and terminal flags; compress unary nonterminal chains to multi-code-unit edge labels while retaining source endpoint IDs and all terminal boundaries.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          rootTerminal: { type: "boolean" },
+          edges: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                from: { type: "number" },
+                to: { type: "number" },
+                label: { type: "string" },
+                terminal: { type: "boolean" },
+              },
+              required: ["from", "to", "label", "terminal"],
+            },
+          },
+        },
+        required: ["rootTerminal", "edges"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
