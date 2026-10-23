@@ -7,13 +7,13 @@ export type Input = Readonly<{
   scores: readonly number[];
   prefix: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "words", label: "words", kind: "stringList" },
   { id: "scores", label: "scores", kind: "numberList" },
   { id: "prefix", label: "prefix", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.check(i.words.length === i.scores.length);
   return H.finish({
@@ -35,12 +35,48 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Prefix Trie Completion Explicit Score Order",
+      "prefix tries",
+      "software development",
+    ],
+    collections: ["data", "learn"],
+    fields: ["trie", "prefix tries", "software development"],
+    keywords: ["prefix tries", "software development"],
+  },
   id: "trie/completion-explicit-score-order",
   title: "Prefix Trie Completion Explicit Score Order",
   description:
     "Order explicit scored prefix completions by descending score with stable source ties, retaining distinct occurrence IDs; no authoritative autocomplete dictionary.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          completions: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                word: { type: "string" },
+                score: { type: "number" },
+                index: { type: "number" },
+              },
+              required: ["word", "score", "index"],
+            },
+          },
+        },
+        required: ["completions"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
