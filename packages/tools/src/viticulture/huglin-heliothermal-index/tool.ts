@@ -14,7 +14,7 @@ export type Input = Readonly<{
   readonly actualCompleteSeasonDailyMaximumC: readonly number[];
   readonly callerIndependentLatitudeDaylengthCoefficient: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualCompleteSeasonDailyMeanC",
@@ -32,10 +32,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   aligned(
     input.actualCompleteSeasonDailyMeanC,
     input.actualCompleteSeasonDailyMaximumC,
@@ -61,10 +58,7 @@ const compute = (
       ),
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -87,6 +81,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { conditionalHuglinIndex: { type: "number" } },
+        required: ["conditionalHuglinIndex"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
