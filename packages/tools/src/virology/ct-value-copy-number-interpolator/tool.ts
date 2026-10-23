@@ -16,7 +16,7 @@ export type Input = Readonly<{
   callerVerifiedContext: string;
   callerVerifiedAsOfDate: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "ct", label: "Ct", kind: "number" },
   { id: "standardCts", label: "Standard cts", kind: "numberList" },
@@ -41,10 +41,7 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   ownReference(
     i.callerVerifiedSource,
     i.callerVerifiedContext,
@@ -53,7 +50,7 @@ const compute = (
   const log10Copies = lerpTable(i.standardCts, i.standardLog10Copies, i.ct);
   return { log10Copies, copies: 10 ** log10Copies };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -80,6 +77,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          log10Copies: { type: "number" },
+          copies: { type: "number" },
+        },
+        required: ["log10Copies", "copies"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
