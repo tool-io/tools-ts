@@ -13,7 +13,7 @@ export type Input = Readonly<{
   readonly seededStripWidthM: number;
   readonly seedKgPerSeededHectare: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "blockHectares", label: "Block hectares", kind: "number" },
   { id: "rowSpacingM", label: "Row spacing m", kind: "number" },
@@ -24,7 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (i: Input): Readonly<Record<string, unknown>> => {
+const compute = (i: Input) => {
   nonnegative(i.blockHectares, "area");
   positive(i.rowSpacingM, "spacing");
   nonnegative(i.seededStripWidthM, "strip");
@@ -37,7 +37,7 @@ const compute = (i: Input): Readonly<Record<string, unknown>> => {
       i.seedKgPerSeededHectare,
   };
 };
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   validateInput(i, fields);
   return finish({ result: compute(i) });
 };
@@ -61,6 +61,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { seedKg: { type: "number" } },
+        required: ["seedKg"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
