@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../css/batch55-shared.js";
 export type Input = Readonly<{ coordinates: readonly (readonly number[])[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "coordinates", label: "coordinates", kind: "matrix" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.voxels(i.coordinates);
   return H.finish({
@@ -28,12 +28,45 @@ export const example = {
   output: { result: { box: { low: [0, 0, 0], high: [2, 3, 4] } } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Voxel Occupancy Bounding Box", "voxels", "3D geometry"],
+    collections: ["data", "learn"],
+    fields: ["voxel", "voxels", "3D geometry"],
+    keywords: ["voxels", "3D geometry"],
+  },
   id: "voxel/occupancy-bounding-box",
   title: "Voxel Occupancy Bounding Box",
   description:
     "Compute a half-open integer cell envelope of explicit unique occupied voxels, adding one at inclusive maximum cells; empty occupancy has null box.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          box: {
+            anyOf: [
+              {
+                type: "object",
+                additionalProperties: false,
+                properties: {
+                  low: { type: "array", items: { type: "number" } },
+                  high: { type: "array", items: { type: "number" } },
+                },
+                required: ["low", "high"],
+              },
+              { type: "null" },
+            ],
+          },
+        },
+        required: ["box"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
