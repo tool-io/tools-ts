@@ -5,7 +5,7 @@ import { validateInput, finish, simpleError } from "../batch51-shared.js";
 export type Input = Readonly<{
   readonly actualCanonicalDecimalHoistFlyRatio: string;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualCanonicalDecimalHoistFlyRatio",
@@ -13,10 +13,7 @@ const fields = [
     kind: "string",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   if (
     !/^(0|[1-9][0-9]{0,11})(?:\.[0-9]{1,12})?$/.test(
       input.actualCanonicalDecimalHoistFlyRatio,
@@ -39,10 +36,7 @@ const compute = (
     formattedRatio: `${a / x}:${b / x}`,
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -63,6 +57,17 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          reducedHoist: { type: "string" },
+          reducedFly: { type: "string" },
+          formattedRatio: { type: "string" },
+        },
+        required: ["reducedHoist", "reducedFly", "formattedRatio"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
