@@ -194,7 +194,14 @@ export const vincentyInverse = (
   l1: number,
   p2: number,
   l2: number,
-): Record<string, unknown> => {
+): {
+  converged: boolean;
+  iterations: number;
+  distanceMeters: number | null;
+  initialBearingDegrees: number | null;
+  finalBearingDegrees: number | null;
+  reason?: string;
+} => {
   const b = ellipsoid(a, f).b,
     L = B.mod(l2 - l1 + Math.PI, 2 * Math.PI) - Math.PI,
     U1 = Math.atan((1 - f) * Math.tan(p1)),
@@ -303,7 +310,13 @@ export const vincentyDirect = (
   lam: number,
   az: number,
   distance: number,
-): Record<string, unknown> => {
+): {
+  converged: boolean;
+  iterations: number;
+  latitudeDegrees: number | null;
+  longitudeDegrees: number | null;
+  finalBearingDegrees: number | null;
+} => {
   const b = ellipsoid(a, f).b;
   B.check(distance >= 0 && distance <= Math.PI * a);
   if (distance === 0)
@@ -417,7 +430,7 @@ export const molodensky = (
   dz: number,
   da: number,
   df: number,
-): Record<string, unknown> => {
+) => {
   const e = ellipsoid(a, f),
     r = radii(a, f, phi);
   B.check(Math.abs(phi) < rad(89.9) && Math.abs(h) <= 1e5 && h > -0.1 * a);
@@ -457,7 +470,7 @@ export const inverseMeridian = (
   f: number,
   arc: number,
   tolerance: number,
-): Record<string, unknown> => {
+) => {
   const quarter = meridianArc(a, f, Math.PI / 2);
   B.check(Math.abs(arc) <= quarter && tolerance > 0 && tolerance <= 1);
   let lo = -Math.PI / 2,
@@ -610,7 +623,7 @@ export const adjustTraverse = (
   lengths: readonly number[],
   azimuths: readonly number[],
   transit: boolean,
-): Record<string, unknown> => {
+) => {
   const t = traverse(lengths, azimuths),
     sn = transit ? t.north.reduce((s, x) => s + Math.abs(x), 0) : t.perimeter,
     se = transit ? t.east.reduce((s, x) => s + Math.abs(x), 0) : t.perimeter,
@@ -681,9 +694,9 @@ export const aeqd = (
         Math.sin(phi0) * Math.cos(phi) * Math.cos(dl)),
   ];
 };
-export const finish = (
-  result: Readonly<Record<string, unknown>>,
-): { readonly result: Readonly<Record<string, unknown>> } => {
+export const finish = <T extends Readonly<Record<string, unknown>>>(
+  result: T,
+): { readonly result: T } => {
   let nodes = 0;
   const visit = (v: unknown, depth = 0): void => {
     B.check(depth < 20 && ++nodes <= 50000);

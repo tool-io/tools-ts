@@ -193,8 +193,8 @@ export const repertoire = (
     },
   };
 };
-export const corpus = (
-  base: ToolDefinition<unknown, unknown>,
+export const corpus = <Output>(
+  base: ToolDefinition<unknown, Output>,
   input: SampleInput & Readonly<{ candidateInputsJson: readonly string[] }>,
   context?: ToolExecutionContext,
 ): {
@@ -204,7 +204,7 @@ export const corpus = (
     unusedCandidateIndices: number[];
     exercises: readonly {
       input: Readonly<Record<string, unknown>>;
-      answer: unknown;
+      answer: Output;
     }[];
   };
 } => {

@@ -32,8 +32,8 @@ export const validateInput = (
       simpleError(f.id, "Batch-local text is bounded to 8,192 UTF-16 units.");
   for (const f of fields) if (f.kind === "object") inspectJson(r[f.id]);
 };
-export type Json =
-  null | boolean | number | string | Json[] | { [key: string]: Json };
+export type JsonScalar = null | boolean | number | string;
+export type Json = JsonScalar | Json[] | { [key: string]: Json };
 export const inspectJson = (value: unknown): void => {
   let nodes = 0;
   const walk = (v: unknown, depth: number): void => {
@@ -90,11 +90,12 @@ export const records = (s: string): { [key: string]: Json }[] => {
     simpleError("records", "At most 128 JSON records.");
   return v.map(record);
 };
-export const scalarKey = (v: Json): string => {
+export const scalarValue = (v: Json): JsonScalar => {
   if (v !== null && typeof v === "object")
     simpleError("key", "Scalar key required.");
-  return JSON.stringify(v);
+  return v;
 };
+export const scalarKey = (v: Json): string => JSON.stringify(scalarValue(v));
 export const typeOf = (v: Json): string =>
   v === null ? "null" : Array.isArray(v) ? "array" : typeof v;
 export const exactLookup = <T>(
@@ -114,7 +115,13 @@ export const qualifiedLookup = (
     callerVerifiedContext: string;
     callerVerifiedAsOfDate: string;
   },
-): Record<string, unknown> => {
+): {
+  matched: boolean;
+  referenceText: string | null;
+  source: string;
+  context: string;
+  asOfDate: string;
+} => {
   ownReference(
     ref.callerVerifiedSource,
     ref.callerVerifiedContext,

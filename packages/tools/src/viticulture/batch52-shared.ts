@@ -90,7 +90,7 @@ export const topo = (
   ids: readonly string[],
   from: readonly number[],
   to: readonly number[],
-): Record<string, unknown> => {
+) => {
   if (!ids.length) simpleError("nodes", "Nonempty explicit node inventory.");
   unique(ids, "nodes");
   if (from.length !== to.length) simpleError("edges", "Matched edge arrays.");
@@ -116,10 +116,7 @@ export const topo = (
   }
   return { orderedItemIds: out };
 };
-export const jenks = (
-  x: readonly number[],
-  k: number,
-): Record<string, unknown> => {
+export const jenks = (x: readonly number[], k: number) => {
   bounded(x.length, "observations", 1, 128);
   bounded(k, "classes", 1, x.length);
   const a = [...x].sort((a, b) => a - b),
@@ -169,7 +166,7 @@ export const areaBreaks = (
   x: readonly number[],
   area: readonly number[],
   k: number,
-): Record<string, unknown> => {
+) => {
   aligned(x, area, "feature areas");
   bounded(k, "classes", 1, Math.min(128, x.length));
   area.forEach((v) => positive(v, "area"));
@@ -194,7 +191,7 @@ export const minecraftXp = (n: number): number =>
     : n <= 31
       ? 2.5 * n * n - 40.5 * n + 360
       : 4.5 * n * n - 162.5 * n + 2220;
-export const languageTagShape = (s: string): Record<string, unknown> => {
+export const languageTagShape = (s: string) => {
   const grandfathered = new Set(
     "en-gb-oed i-ami i-bnn i-default i-enochian i-hak i-klingon i-lux i-mingo i-navajo i-pwn i-tao i-tay i-tsu sgn-be-fr sgn-be-nl sgn-ch-de art-lojban cel-gaulish no-bok no-nyn zh-guoyu zh-hakka zh-min zh-min-nan zh-xiang".split(
       " ",
@@ -277,11 +274,7 @@ export const manuscriptRoman = (s: string): number => {
     ),
   );
 };
-export const legacyFrame = (
-  ra: number,
-  dec: number,
-  inverse: boolean,
-): Record<string, unknown> => {
+export const legacyFrame = (ra: number, dec: number, inverse: boolean) => {
   const m = [
       [0.9999256782, -0.0111820611, -0.0048579477],
       [0.011182061, 0.9999374784, -0.0000271765],
@@ -322,7 +315,7 @@ type Node =
   | { op: "atom"; name: string }
   | { op: "not"; a: Node }
   | { op: "and" | "or"; a: Node; b: Node };
-export const cnfCounts = (s: string): Record<string, unknown> => {
+export const cnfCounts = (s: string) => {
   if (s.length > 1024) simpleError("expression", "At most 1024 characters.");
   const tokens = s.match(/[A-Z][A-Z0-9_]*|[!&|()]/g) ?? [];
   if (tokens.join("") !== s.replace(/\s/g, ""))

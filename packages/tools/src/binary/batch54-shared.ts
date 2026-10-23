@@ -53,9 +53,9 @@ export const validate = (i: unknown, fields: readonly SimpleField[]): void => {
     }
   }
 };
-export const finish = (
-  result: Readonly<Record<string, unknown>>,
-): { readonly result: Readonly<Record<string, unknown>> } => {
+export const finish = <T extends Readonly<Record<string, unknown>>>(
+  result: T,
+): { readonly result: T } => {
   let nodes = 0;
   const visit = (v: unknown, depth = 0): void => {
     check(depth < 20 && ++nodes <= 50000, "Output evidence budget exceeded");
