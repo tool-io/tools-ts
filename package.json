@@ -2,7 +2,7 @@
   "name": "tools-ts-workspace",
   "private": true,
   "engines": {
-    "node": ">=20.19.0"
+    "node": ">=24.0.0"
   },
   "packageManager": "pnpm@10.28.2",
   "scripts": {
@@ -17,9 +17,17 @@
     "validate": "pnpm --filter @tool.io/tools validate"
   },
   "devDependencies": {
+    "@types/node": "24.13.3",
     "ajv": "8.20.0",
     "prettier": "^3.9.6",
     "typescript": "^7.0.2",
-    "vitest": "^4.1.11"
+    "vite": "8.1.6",
+    "vitest": "^4.1.12"
+  },
+  "pnpm": {
+    "overrides": {
+      "fast-uri@<3.1.8": "3.1.9",
+      "source-map-js@<1.2.2": "1.2.2"
+    }
   }
 }

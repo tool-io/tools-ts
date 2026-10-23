@@ -4,7 +4,7 @@
   "private": false,
   "description": "Framework-independent TypeScript tools for tool.io",
   "engines": {
-    "node": ">=20.19.0"
+    "node": ">=24.0.0"
   },
   "keywords": [
     "tool.io",
