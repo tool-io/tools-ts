@@ -10,7 +10,7 @@ export type Input = Readonly<{
   readonly independentlyMeasuredDarkConditionIc50: number;
   readonly independentlyMatchedLightConditionIc50: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyMeasuredDarkConditionIc50",
@@ -23,7 +23,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.independentlyMeasuredDarkConditionIc50, "numerator");
   positive(input.independentlyMatchedLightConditionIc50, "denominator");
   return {
@@ -32,7 +32,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.independentlyMatchedLightConditionIc50,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -54,6 +54,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { observedRatio: { type: "number" } },
+        required: ["observedRatio"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
