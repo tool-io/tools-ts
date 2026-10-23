@@ -13,16 +13,13 @@ export type Input = Readonly<{
   existingBackboneKb: number;
   insertKb: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "capacityKb", label: "Capacity kb", kind: "number" },
   { id: "existingBackboneKb", label: "Existing backbone kb", kind: "number" },
   { id: "insertKb", label: "Insert kb", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  i: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (i: Input, context?: ToolExecutionContext) => {
   positive(i.capacityKb, "capacity");
   nonnegative(i.existingBackboneKb, "backbone");
   nonnegative(i.insertKb, "insert");
@@ -31,7 +28,7 @@ const compute = (
     withinSuppliedCapacity: i.existingBackboneKb + i.insertKb <= i.capacityKb,
   };
 };
-export const calculate = (i: Input, context?: ToolExecutionContext): Output => {
+export const calculate = (i: Input, context?: ToolExecutionContext) => {
   validateInput(i, fields);
   return finish({ result: compute(i, context) });
 };
@@ -50,6 +47,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified evidence",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          remainingKb: { type: "number" },
+          withinSuppliedCapacity: { type: "boolean" },
+        },
+        required: ["remainingKb", "withinSuppliedCapacity"],
+      },
     },
   ],
   calculate: (v, context) => calculate(v as unknown as Input, context),
