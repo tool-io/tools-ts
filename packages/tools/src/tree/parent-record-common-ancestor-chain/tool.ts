@@ -3,12 +3,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../histogram/batch56-shared.js";
 export type Input = Readonly<{ parentsJson: string; ids: readonly string[] }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "parentsJson", label: "parentsJson", kind: "string" },
   { id: "ids", label: "ids", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.parentRecords(i.parentsJson);
   H.forest(p);
@@ -29,12 +29,34 @@ export const example = {
   output: { result: { ancestors: ["b", "a"] } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Parent Forest Common Ancestor Chain",
+      "tree data structures",
+      "software development",
+    ],
+    collections: ["data", "learn"],
+    fields: ["tree", "tree data structures", "software development"],
+    keywords: ["tree data structures", "software development"],
+  },
   id: "tree/parent-record-common-ancestor-chain",
   title: "Parent Forest Common Ancestor Chain",
   description:
     "Explicit complete acyclic parent forests with exact unique string node IDs and null roots; intersect inclusive ancestor chains for an explicit node set in nearest-first order from its first node; empty query has empty common evidence.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { ancestors: { type: "array", items: { type: "string" } } },
+        required: ["ancestors"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
