@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly fly: number;
   readonly callerOrderedFlyWeights: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "fly", label: "Fly", kind: "number" },
   {
@@ -20,12 +20,12 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (input.callerOrderedFlyWeights.length !== 3)
     simpleError("segments", "Exactly three explicit hoist-to-fly weights.");
   return bands(input.fly, input.callerOrderedFlyWeights);
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -44,6 +44,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          boundaries: { type: "array", items: { type: "number" } },
+          widths: { type: "array", items: { type: "number" } },
+        },
+        required: ["boundaries", "widths"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
