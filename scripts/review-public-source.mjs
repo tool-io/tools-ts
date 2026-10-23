@@ -1,18 +1,35 @@
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
-import { mkdir, readFile, writeFile, lstat } from "node:fs/promises";
+import {
+  mkdir,
+  readFile,
+  writeFile,
+  lstat,
+} from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const command = promisify(execFile);
 const git = async (...args) =>
-  (await command("git", args, { cwd: root, maxBuffer: 64 * 1024 * 1024 }))
-    .stdout;
+  (
+    await command("git", args, {
+      cwd: root,
+      maxBuffer: 64 * 1024 * 1024,
+    })
+  ).stdout;
 const files = [
   ...new Set(
-    (await git("ls-files", "--cached", "--others", "--exclude-standard", "-z"))
+    (
+      await git(
+        "ls-files",
+        "--cached",
+        "--others",
+        "--exclude-standard",
+        "-z",
+      )
+    )
       .split("\0")
       .filter(Boolean),
   ),
@@ -24,6 +41,8 @@ const findings = [],
 const allowedRoots = new Set([
   ".github",
   ".gitignore",
+  ".prettierrc",
+  ".prettierignore",
   "CHANGELOG.md",
   "CONTRIBUTING.md",
   "SECURITY.md",
@@ -39,10 +58,15 @@ const allowedRoots = new Set([
   "pnpm-lock.yaml",
   "pnpm-workspace.yaml",
 ]);
-const treeHash = (await import("node:crypto")).createHash("sha256");
+const treeHash = (await import("node:crypto")).createHash(
+  "sha256",
+);
 for (const file of files) {
-  const stat = await lstat(path.join(root, file)).catch((error) =>
-    error.code === "ENOENT" ? undefined : Promise.reject(error),
+  const stat = await lstat(path.join(root, file)).catch(
+    (error) =>
+      error.code === "ENOENT"
+        ? undefined
+        : Promise.reject(error),
   );
   if (!stat) continue; // A tracked deletion is absent from the proposed tree.
   const top = file.split("/")[0];
@@ -50,15 +74,24 @@ for (const file of files) {
   const extension = path.extname(file) || "(none)";
   extensions[extension] = (extensions[extension] ?? 0) + 1;
   if (!allowedRoots.has(top))
-    findings.push({ file, reason: "Unreviewed top-level scope" });
+    findings.push({
+      file,
+      reason: "Unreviewed top-level scope",
+    });
   if (
     /(?:^|\/)(?:DEVELOPER\.md|AGENTS\.md|\.log|\.env(?:\..*)?|node_modules|coverage|credentials)(?:\/|$)|\.(?:tgz|zip|db|sqlite|p12|pfx)$/i.test(
       file,
     )
   )
-    findings.push({ file, reason: "Private or operational artifact path" });
+    findings.push({
+      file,
+      reason: "Private or operational artifact path",
+    });
   if (stat.isSymbolicLink()) {
-    findings.push({ file, reason: "Public source symlink requires review" });
+    findings.push({
+      file,
+      reason: "Public source symlink requires review",
+    });
     continue;
   }
   const bytes = await readFile(path.join(root, file));
@@ -79,24 +112,42 @@ for (const file of files) {
     attributionFiles.push(file);
   if (
     !/\.(?:ts|json|md|mjs|yaml|yml|txt)$/i.test(file) &&
-      ![".gitignore", "LICENSE"].includes(path.basename(file))
+    ![
+      ".gitignore",
+      ".prettierrc",
+      ".prettierignore",
+      "LICENSE",
+    ].includes(path.basename(file))
   )
     findings.push({
       file,
       reason: "Non-code asset needs redistribution review",
     });
 }
-assert.match(await readFile(path.join(root, "LICENSE"), "utf8"), /MIT License/);
+assert.match(
+  await readFile(path.join(root, "LICENSE"), "utf8"),
+  /MIT License/,
+);
 const manifest = JSON.parse(
-  await readFile(path.join(root, "packages/tools/package.json"), "utf8"),
+  await readFile(
+    path.join(root, "packages/tools/package.json"),
+    "utf8",
+  ),
 );
 const dependencies = [];
 for (const [name, expectedVersion] of Object.entries(
   manifest.dependencies ?? {},
 )) {
-  const directory = path.join(root, "packages/tools/node_modules", name);
+  const directory = path.join(
+    root,
+    "packages/tools/node_modules",
+    name,
+  );
   const installed = JSON.parse(
-    await readFile(path.join(directory, "package.json"), "utf8"),
+    await readFile(
+      path.join(directory, "package.json"),
+      "utf8",
+    ),
   );
   assert.equal(
     installed.version,
@@ -119,8 +170,11 @@ for (const [name, expectedVersion] of Object.entries(
     ),
     `${name}: install hook needs review`,
   );
-  const license = await readFile(path.join(directory, "LICENSE"), "utf8").catch(
-    () => readFile(path.join(directory, "LICENSE.txt"), "utf8"),
+  const license = await readFile(
+    path.join(directory, "LICENSE"),
+    "utf8",
+  ).catch(() =>
+    readFile(path.join(directory, "LICENSE.txt"), "utf8"),
   );
   assert.match(license, /Permission is hereby granted/);
   dependencies.push({
@@ -154,7 +208,8 @@ console.log(
     files: files.length,
     dependencies,
     findings,
-    candidateContentFingerprint: report.candidateContentFingerprint,
+    candidateContentFingerprint:
+      report.candidateContentFingerprint,
   }),
 );
 if (findings.length) process.exitCode = 1;
