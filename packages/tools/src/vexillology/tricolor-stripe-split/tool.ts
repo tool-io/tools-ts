@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly perpendicularFieldExtent: number;
   readonly callerStripeWeights: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "perpendicularFieldExtent",
@@ -24,7 +24,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   if (input.callerStripeWeights.length !== 3)
     simpleError(
       "tricolor",
@@ -32,7 +32,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     );
   return bands(input.perpendicularFieldExtent, input.callerStripeWeights);
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -51,6 +51,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          boundaries: { type: "array", items: { type: "number" } },
+          widths: { type: "array", items: { type: "number" } },
+        },
+        required: ["boundaries", "widths"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
