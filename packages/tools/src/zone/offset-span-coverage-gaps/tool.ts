@@ -3,13 +3,13 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../histogram/batch56-shared.js";
 export type Input = Readonly<{ spansJson: string; start: number; end: number }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "spansJson", label: "spansJson", kind: "string" },
   { id: "start", label: "start", kind: "number" },
   { id: "end", label: "end", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const s = H.zoneSpans(i.spansJson);
   H.check(i.start <= i.end);
@@ -43,12 +43,39 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Time Zone Offset Span Coverage Gaps",
+      "time zones",
+      "UTC offsets",
+    ],
+    collections: ["data", "learn"],
+    fields: ["zone", "time zones", "UTC offsets"],
+    keywords: ["time zones", "UTC offsets"],
+  },
   id: "zone/offset-span-coverage-gaps",
   title: "Time Zone Offset Span Coverage Gaps",
   description:
-    "Supplied synthetic civil-second offset observations only, no IANA database, DST rule inference or leap seconds; audit uncovered portions of a finite UTC window after unioning all supplied coverage regardless of offsets; not a claim of timezone rule completeness. ",
+    "Supplied synthetic civil-second offset observations only, no IANA database, DST rule inference or leap seconds; audit uncovered portions of a finite UTC window after unioning all supplied coverage regardless of offsets; not a claim of timezone rule completeness.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          gaps: {
+            type: "array",
+            items: { type: "array", items: { type: "number" } },
+          },
+        },
+        required: ["gaps"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
