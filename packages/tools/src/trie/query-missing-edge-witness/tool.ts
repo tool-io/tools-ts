@@ -3,12 +3,12 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../histogram/batch56-shared.js";
 export type Input = Readonly<{ nodesJson: string; query: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "nodesJson", label: "nodesJson", kind: "string" },
   { id: "query", label: "query", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.trieNodes(i.nodesJson);
   const lookup = H.trieLookup(t, i.query);
@@ -32,12 +32,50 @@ export const example = {
   output: { result: { witness: { position: 1, character: "c", prefix: "a" } } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Prefix Trie Query Missing Edge Witness",
+      "prefix tries",
+      "software development",
+    ],
+    collections: ["data", "learn"],
+    fields: ["trie", "prefix tries", "software development"],
+    keywords: ["prefix tries", "software development"],
+  },
   id: "trie/query-missing-edge-witness",
   title: "Prefix Trie Query Missing Edge Witness",
   description:
     "Bounded explicit prefix trie with root ID 0, unique sibling UTF-16 code-unit edges and terminal flags; report the first missing literal edge with matched prefix; a fully matched nonterminal path is structurally present, not a missing edge.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          witness: {
+            anyOf: [
+              {
+                type: "object",
+                additionalProperties: false,
+                properties: {
+                  position: { type: "number" },
+                  character: { anyOf: [{ type: "string" }, { type: "null" }] },
+                  prefix: { type: "string" },
+                },
+                required: ["position", "character", "prefix"],
+              },
+              { type: "null" },
+            ],
+          },
+        },
+        required: ["witness"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
