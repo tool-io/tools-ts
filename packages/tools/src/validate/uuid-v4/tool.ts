@@ -3,14 +3,11 @@ import type { ToolExecutionContext } from "../../core/definition.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish } from "../batch51-shared.js";
 export type Input = Readonly<{ readonly actualUuid: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualUuid", label: "Actual uuid", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   return {
     validRfcVariantUuidV4:
       /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
@@ -18,10 +15,7 @@ const compute = (
       ),
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -40,6 +34,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { validRfcVariantUuidV4: { type: "boolean" } },
+        required: ["validRfcVariantUuidV4"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
