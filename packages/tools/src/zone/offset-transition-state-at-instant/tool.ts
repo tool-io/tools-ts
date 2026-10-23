@@ -7,13 +7,13 @@ export type Input = Readonly<{
   initialOffset: number;
   instant: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "transitionsJson", label: "transitionsJson", kind: "string" },
   { id: "initialOffset", label: "initialOffset", kind: "number" },
   { id: "instant", label: "instant", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const t = H.zoneTransitions(i.transitionsJson);
   H.check(Math.abs(i.initialOffset) <= 86400 && Math.abs(i.instant) <= 1e12);
@@ -43,12 +43,33 @@ export const example = {
   output: { result: { offset: 2, transitionIndex: 0 } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Time Zone Offset State at Instant", "time zones", "UTC offsets"],
+    collections: ["data", "learn"],
+    fields: ["zone", "time zones", "UTC offsets"],
+    keywords: ["time zones", "UTC offsets"],
+  },
   id: "zone/offset-transition-state-at-instant",
   title: "Time Zone Offset State at Instant",
   description:
-    "Supplied synthetic civil-second offset observations only, no IANA database, DST rule inference or leap seconds; lookup explicit offset state at an instant, transitions effective inclusively and initial offset valid before the first. ",
+    "Supplied synthetic civil-second offset observations only, no IANA database, DST rule inference or leap seconds; lookup explicit offset state at an instant, transitions effective inclusively and initial offset valid before the first.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          offset: { type: "number" },
+          transitionIndex: { anyOf: [{ type: "number" }, { type: "null" }] },
+        },
+        required: ["offset", "transitionIndex"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
