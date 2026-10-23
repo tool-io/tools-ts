@@ -7,7 +7,7 @@ export type Input = Readonly<{
   readonly secondSrgb: readonly number[];
   readonly callerModelSpaceMinimumSeparation: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "firstSrgb", label: "First srgb", kind: "numberList" },
   { id: "secondSrgb", label: "Second srgb", kind: "numberList" },
@@ -17,7 +17,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   nonnegative(input.callerModelSpaceMinimumSeparation, "threshold");
   const a = simulateColor({ baseRgb: input.firstSrgb }),
     b = simulateColor({ baseRgb: input.secondSrgb }),
@@ -29,7 +29,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     secondClippedChannelIndices: [...b.clippedLinearChannelIndices],
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -59,6 +59,29 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          simulatedEncodedSrgbDistance: { type: "number" },
+          meetsCallerModelThreshold: { type: "boolean" },
+          firstClippedChannelIndices: {
+            type: "array",
+            items: { type: "number" },
+          },
+          secondClippedChannelIndices: {
+            type: "array",
+            items: { type: "number" },
+          },
+        },
+        required: [
+          "simulatedEncodedSrgbDistance",
+          "meetsCallerModelThreshold",
+          "firstClippedChannelIndices",
+          "secondClippedChannelIndices",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
