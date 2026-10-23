@@ -2,11 +2,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import { validateInput, finish, simpleError } from "../batch50-shared.js";
 export type Input = Readonly<{ readonly actualExtension: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "actualExtension", label: "Actual extension", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   const k = input.actualExtension.replace(/^\./, "").toLowerCase();
   if (!/^[a-z0-9]+$/.test(k))
     simpleError("extension", "Simpleactualextensiontoken.");
@@ -27,7 +27,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     foundInBoundedInventory: Object.hasOwn(table, k),
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -48,6 +48,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Actual calculation or qualified reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          mimeType: { type: "string" },
+          foundInBoundedInventory: { type: "boolean" },
+        },
+        required: ["mimeType", "foundInBoundedInventory"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
