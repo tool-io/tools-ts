@@ -5,12 +5,12 @@ export type Input = Readonly<{
   dimensions: readonly number[];
   order: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "dimensions", label: "dimensions", kind: "numberList" },
   { id: "order", label: "order", kind: "numberList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   H.dimensions(i.dimensions);
   H.permutation(i.order);
@@ -28,12 +28,33 @@ export const example = {
   output: { result: { strides: ["2", "6", "1"], cells: "24" } },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: ["Voxel Axis Order Stride Record", "voxels", "3D geometry"],
+    collections: ["data", "learn"],
+    fields: ["voxel", "voxels", "3D geometry"],
+    keywords: ["voxels", "3D geometry"],
+  },
   id: "voxel/axis-order-stride-record",
   title: "Voxel Axis Order Stride Record",
   description:
     "Compute exact per-axis voxel strides for an explicit fastest-to-slowest axis permutation; distinguish physical axis order from a fixed row-major convention.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          strides: { type: "array", items: { type: "string" } },
+          cells: { type: "string" },
+        },
+        required: ["strides", "cells"],
+      },
+    },
+  ],
   calculate: (v) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
