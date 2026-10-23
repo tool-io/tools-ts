@@ -13,14 +13,14 @@ export type Input = Readonly<{
   readonly verticalSplitX: number;
   readonly horizontalSplitY: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "fly", label: "Fly", kind: "number" },
   { id: "hoist", label: "Hoist", kind: "number" },
   { id: "verticalSplitX", label: "Vertical split x", kind: "number" },
   { id: "horizontalSplitY", label: "Horizontal split y", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.fly, "fly");
   positive(input.hoist, "hoist");
   if (
@@ -40,7 +40,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     ],
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -59,6 +59,15 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          quadrantAreas: { type: "array", items: { type: "number" } },
+        },
+        required: ["quadrantAreas"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
