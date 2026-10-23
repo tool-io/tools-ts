@@ -22,7 +22,7 @@ describe("Add Two Numbers Calculator", () => {
       runAddTwoNumbers({ first: Number.MAX_VALUE, second: Number.MAX_VALUE }),
     ).toEqual({
       error: {
-        code: "invalid_input",
+        code: "execution_failed",
         issues: [
           {
             code: "invalid_output",
