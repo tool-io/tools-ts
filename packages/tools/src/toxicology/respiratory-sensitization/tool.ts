@@ -5,7 +5,7 @@ export type Input = Readonly<{
   readonly independentlyObservedFeatureFlags: readonly number[];
   readonly featureEvidenceKnownFlags: readonly number[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyObservedFeatureFlags",
@@ -18,7 +18,7 @@ const fields = [
     kind: "numberList",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   return featureClasses(
     input.independentlyObservedFeatureFlags,
     input.featureEvidenceKnownFlags,
@@ -26,7 +26,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
     [[1, 1, 1]],
   );
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -54,6 +54,21 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Qualified observed calculation or explicit reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          compatibleClasses: { type: "array", items: { type: "string" } },
+          witnessedClasses: { type: "array", items: { type: "string" } },
+          unknownFeatureIndices: { type: "array", items: { type: "number" } },
+        },
+        required: [
+          "compatibleClasses",
+          "witnessedClasses",
+          "unknownFeatureIndices",
+        ],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
