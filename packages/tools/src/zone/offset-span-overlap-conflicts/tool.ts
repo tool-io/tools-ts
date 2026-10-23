@@ -3,11 +3,11 @@ import type { ToolExample } from "../../core/example.js";
 import { createSimpleTool, type SimpleField } from "../../core/simple.js";
 import * as H from "../../histogram/batch56-shared.js";
 export type Input = Readonly<{ spansJson: string }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "spansJson", label: "spansJson", kind: "string" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const s = H.zoneSpans(i.spansJson);
   return H.finish({
@@ -45,12 +45,58 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Time Zone Offset Span Overlap Conflicts",
+      "time zones",
+      "UTC offsets",
+    ],
+    collections: ["data", "learn"],
+    fields: ["zone", "time zones", "UTC offsets"],
+    keywords: ["time zones", "UTC offsets"],
+  },
   id: "zone/offset-span-overlap-conflicts",
   title: "Time Zone Offset Span Overlap Conflicts",
   description:
-    "Supplied synthetic civil-second offset observations only, no IANA database, DST rule inference or leap seconds; report every positive-length UTC span overlap with unequal offset evidence; touching or identical offsets are not conflicts. ",
+    "Supplied synthetic civil-second offset observations only, no IANA database, DST rule inference or leap seconds; report every positive-length UTC span overlap with unequal offset evidence; touching or identical offsets are not conflicts.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          conflicts: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                left: { type: "number" },
+                right: { type: "number" },
+                start: { type: "number" },
+                end: { type: "number" },
+                leftOffset: { type: "number" },
+                rightOffset: { type: "number" },
+              },
+              required: [
+                "left",
+                "right",
+                "start",
+                "end",
+                "leftOffset",
+                "rightOffset",
+              ],
+            },
+          },
+        },
+        required: ["conflicts"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
