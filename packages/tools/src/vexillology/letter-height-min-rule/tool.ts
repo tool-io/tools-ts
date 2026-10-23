@@ -11,7 +11,7 @@ export type Input = Readonly<{
   readonly actualObservedLetterHeight: number;
   readonly callerIndependentRequiredLetterHeight: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "actualObservedLetterHeight",
@@ -24,10 +24,7 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Readonly<Record<string, unknown>> => {
+const compute = (input: Input, context?: ToolExecutionContext) => {
   nonnegative(input.actualObservedLetterHeight, "actual");
   positive(input.callerIndependentRequiredLetterHeight, "minimum");
   return {
@@ -39,10 +36,7 @@ const compute = (
       input.callerIndependentRequiredLetterHeight,
   };
 };
-export const calculate = (
-  input: Input,
-  context?: ToolExecutionContext,
-): Output => {
+export const calculate = (input: Input, context?: ToolExecutionContext) => {
   validateInput(input, fields);
   return finish({ result: compute(input, context) });
 };
@@ -66,6 +60,16 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculation or explicitly qualified result",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          signedLetterHeightMargin: { type: "number" },
+          meetsCallerMinimumHeight: { type: "boolean" },
+        },
+        required: ["signedLetterHeightMargin", "meetsCallerMinimumHeight"],
+      },
     },
   ],
   calculate: (value, context) => calculate(value as unknown as Input, context),
