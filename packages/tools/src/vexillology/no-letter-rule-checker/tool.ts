@@ -5,7 +5,7 @@ import { validateInput, finish, bounded } from "../batch43-shared.js";
 export type Input = Readonly<{
   readonly independentlyObservedLetterCount: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   {
     id: "independentlyObservedLetterCount",
@@ -13,11 +13,11 @@ const fields = [
     kind: "number",
   },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   bounded(input.independentlyObservedLetterCount, "count", 0, 10000);
   return { hasObservedLetters: input.independentlyObservedLetterCount > 0 };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -36,6 +36,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { hasObservedLetters: { type: "boolean" } },
+        required: ["hasObservedLetters"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
