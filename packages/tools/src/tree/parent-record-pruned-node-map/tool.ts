@@ -6,12 +6,12 @@ export type Input = Readonly<{
   parentsJson: string;
   remove: readonly string[];
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "parentsJson", label: "parentsJson", kind: "string" },
   { id: "remove", label: "remove", kind: "stringList" },
 ] as const satisfies readonly SimpleField[];
-export const calculate = (i: Input): Output => {
+export const calculate = (i: Input) => {
   H.validate(i, fields);
   const p = H.parentRecords(i.parentsJson);
   H.forest(p);
@@ -41,12 +41,48 @@ export const example = {
   },
 } satisfies ToolExample<Input, Output>;
 export const tool = createSimpleTool({
+  discovery: {
+    aliases: [
+      "Parent Forest Pruned Node Map",
+      "tree data structures",
+      "software development",
+    ],
+    collections: ["data", "learn"],
+    fields: ["tree", "tree data structures", "software development"],
+    keywords: ["tree data structures", "software development"],
+  },
   id: "tree/parent-record-pruned-node-map",
   title: "Parent Forest Pruned Node Map",
   description:
     "Explicit complete acyclic parent forests with exact unique string node IDs and null roots; prune selected nodes and their entire descendant subtrees, retaining untouched source order and explicit removed identities.",
   inputs: fields,
-  outputs: [{ id: "result", label: "Explicit bounded result", kind: "object" }],
+  outputs: [
+    {
+      id: "result",
+      label: "Explicit bounded result",
+      kind: "object",
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          parents: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                id: { type: "string" },
+                parent: { anyOf: [{ type: "string" }, { type: "null" }] },
+              },
+              required: ["id", "parent"],
+            },
+          },
+          removed: { type: "array", items: { type: "string" } },
+        },
+        required: ["parents", "removed"],
+      },
+    },
+  ],
   calculate: (v, context) => calculate(v as unknown as Input),
 });
 export const run = tool.execute;
