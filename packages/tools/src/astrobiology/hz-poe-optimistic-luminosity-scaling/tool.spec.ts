@@ -121,15 +121,23 @@ describe("astrobiology/hz-poe-optimistic-luminosity-scaling", () => {
     },
   );
 
-  it("rejects an absent or inherited luminosity field", () => {
-    for (const input of [{}, Object.create({ luminositySolar: 4 })])
-      expect(tool.execute(input)).toMatchObject({
-        ok: false,
-        error: {
-          code: "invalid_input",
-          issues: [{ code: "invalid_field", field: "luminositySolar" }],
-        },
-      });
+  it("rejects an absent luminosity field", () => {
+    expect(tool.execute({})).toMatchObject({
+      ok: false,
+      error: {
+        code: "invalid_input",
+        issues: [{ code: "invalid_field", field: "luminositySolar" }],
+      },
+    });
+  });
+  it("rejects a non-plain input with an inherited luminosity field", () => {
+    expect(tool.execute(Object.create({ luminositySolar: 4 }))).toMatchObject({
+      ok: false,
+      error: {
+        code: "invalid_input",
+        issues: [{ code: "object_required", field: "" }],
+      },
+    });
   });
 
   it.each(["temperatureK", "callerRecentVenusFlux", "extra"])(
