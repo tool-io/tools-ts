@@ -13,13 +13,13 @@ export type Input = Readonly<{
   readonly starRadialExtent: number;
   readonly callerEdgeMargin: number;
 }>;
-export type Output = { readonly result: Readonly<Record<string, unknown>> };
+export type Output = ReturnType<typeof calculate>;
 const fields = [
   { id: "availableDiameter", label: "Available diameter", kind: "number" },
   { id: "starRadialExtent", label: "Star radial extent", kind: "number" },
   { id: "callerEdgeMargin", label: "Caller edge margin", kind: "number" },
 ] as const satisfies readonly SimpleField[];
-const compute = (input: Input): Readonly<Record<string, unknown>> => {
+const compute = (input: Input) => {
   positive(input.availableDiameter, "availableDiameter");
   nonnegative(input.starRadialExtent, "starRadialExtent");
   nonnegative(input.callerEdgeMargin, "callerEdgeMargin");
@@ -35,7 +35,7 @@ const compute = (input: Input): Readonly<Record<string, unknown>> => {
       input.callerEdgeMargin,
   };
 };
-export const calculate = (input: Input): Output => {
+export const calculate = (input: Input) => {
   validateInput(input, fields);
   return finish({ result: compute(input) });
 };
@@ -54,6 +54,13 @@ export const tool = createSimpleTool({
       id: "result",
       label: "Calculated observation or reference",
       kind: "object",
+
+      schema: {
+        type: "object",
+        additionalProperties: false,
+        properties: { maximumCenterRingRadius: { type: "number" } },
+        required: ["maximumCenterRingRadius"],
+      },
     },
   ],
   calculate: (value) => calculate(value as unknown as Input),
