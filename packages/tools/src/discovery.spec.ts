@@ -25,6 +25,15 @@ describe("tool discovery", () => {
     );
   });
 
+  it("does not return unrelated tools for queries with no searchable tokens", () => {
+    for (const query of ["你好", "💡", "!!!"]) {
+      expect(searchTools(query, { limit: 3 })).toMatchObject({
+        entries: [],
+        total: 0,
+      });
+    }
+  });
+
   it("normalizes ASCII, accents, combining marks and compatibility forms equally", () => {
     const expected = searchTools("body-mass-index", { limit: 3 });
     for (const query of [
