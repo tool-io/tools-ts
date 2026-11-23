@@ -163,8 +163,9 @@ export const searchTools = (
   const limit = normalizedLimit(options.limit);
   const offset = normalizedOffset(options.offset);
   const normalizedQuery = normalize(query);
-  if (!normalizedQuery) return listing(options, limit, offset);
+  if (!normalizedQuery && !query.trim()) return listing(options, limit, offset);
   const tokens = words(normalizedQuery);
+  if (!tokens.length) return { entries: [], limit, offset, total: 0 };
   searchIndex ??= catalog.entries.map(searchableEntry);
   const capacity = Math.min(toolCatalogSize, offset + limit);
   const matches = boundedRank(
