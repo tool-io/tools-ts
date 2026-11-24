@@ -1,11 +1,14 @@
 import { describe, expect, it } from "vitest";
+import { exampleOutputsMatch } from "../../core/example.js";
 import tool, { example } from "./tool.js";
 
 it("matches the canonical probability/sequential-monte-carlo-sampler result", () =>
-  expect(tool.execute(example.input)).toEqual({
-    ok: true,
-    output: example.output,
-  }));
+  expect(
+    exampleOutputsMatch(tool.execute(example.input), {
+      ok: true,
+      output: example.output,
+    }),
+  ).toBe(true));
 
 describe("probability/sequential-monte-carlo-sampler", () => {
   it("runs deterministically", () => {

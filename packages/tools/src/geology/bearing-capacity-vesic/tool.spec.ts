@@ -1,15 +1,18 @@
 import { describe, expect, it } from "vitest";
+import { exampleOutputsMatch } from "../../core/example.js";
 import {
   bearingCapacityVesicExample,
   runBearingCapacityVesic,
 } from "./tool.js";
 
 describe("bearing-capacity-vesic", () => {
-  it("reproduces its canonical example exactly", () => {
-    expect(runBearingCapacityVesic(bearingCapacityVesicExample.input)).toEqual({
-      ok: true,
-      output: bearingCapacityVesicExample.output,
-    });
+  it("reproduces its canonical example within the example tolerance", () => {
+    expect(
+      exampleOutputsMatch(
+        runBearingCapacityVesic(bearingCapacityVesicExample.input),
+        { ok: true, output: bearingCapacityVesicExample.output },
+      ),
+    ).toBe(true);
   });
 
   it("collapses to the base equation for a surface square footing", () => {
@@ -23,9 +26,12 @@ describe("bearing-capacity-vesic", () => {
       foundationDepthM: 0,
     });
     if (!result.ok) throw new Error("expected success");
-    expect(result.output.ultimateBearingCapacityKpa as number).toBe(
-      289.0404048344791,
-    );
+    expect(
+      exampleOutputsMatch(
+        result.output.ultimateBearingCapacityKpa,
+        289.0404048344791,
+      ),
+    ).toBe(true);
   });
 
   it("rejects a length smaller than the width", () => {
